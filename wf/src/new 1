@@ -1,0 +1,57 @@
+enum LU_X_BIT_POS { 
+
+LU_X_AA_CMD_BIT  = 1,  
+LU_X_BB_CMD_BIT  = 1,  
+
+TOTAL_LU_X_BITS
+//
+};
+typedef union LU_X_stp_state_Unn{ 
+   struct {
+      unsigned int po_I1_lead_low_side  : 1; //1
+      unsigned int po_I1_lead_high_side : 1; //2
+      unsigned int po_I2_lead_low_side  : 1; //3
+      unsigned int po_I2_lead_high_side : 1; //4
+      unsigned int po_I2_I1_ls_lead     : 1; //5
+      unsigned int po_I2_I1_hs_lead     : 1; //6
+//      unsigned int po_ : 1; //7
+//      unsigned int po_ : 1; //8
+//      unsigned int po_ : 1; //9
+    } bool_val;
+    long lVl;
+} LU_X_stp_state; 
+LU_X_stp_state lu_stp_state ;
+
+enum LU_Y_BIT_POS { 
+
+LU_X_AA_BIT  = 0,  
+LU_Y_BB_CMD_BIT  = 1,  
+
+TOTAL_LU_Y_BITS
+//
+};
+const unsigned short WITH_LU = TOTAL_LU_Y_BITS;
+typedef union U8_state_Unn{ 
+   struct {
+      unsigned int bt0 : 1; //1
+      unsigned int bt1 : 1; //2
+      unsigned int bt2 : 1; //3
+      unsigned int bt3 : 1; //4
+      unsigned int bt4 : 1; //5
+      unsigned int bt5 : 1; //6
+      unsigned int bt6 : 1; //7
+      unsigned int bt7 : 1; //8
+    } bool_val;
+    unsigned char U8V;
+} U8_state_wrp; 
+U8_state_wrp  arrU8_state_wrp[WITH_LU] ;
+//Bit selection
+index_bit_x = LU_Y_BB_CMD_BIT>>3;
+mask_bit_x  = (LU_Y_BB_CMD_BIT-( (LU_Y_BB_CMD_BIT>>3) << 3)));
+unsigned long ulV = U8_state_wrp_YY[index_bit_x]&(1<<mask_bit_x);
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>$WS_DIR$\v_19_00\A01v_19_0_0_0.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\v_19_00\A01v_19_1_0_0.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\v_19_00\A01v_19_2_0_0.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\v_19_00\A01v_19_3_0_0.ewp</path>
+    </project>
+    <batchBuild />
+</workspace>
