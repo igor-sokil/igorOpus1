@@ -1,6 +1,7 @@
 #include "header.h"
 #include "PrefixedWriteIterator_for_UInt16_Binary.h"
 #include "SerializationTemplates.h"
+#include <string.h>
 
    PrefixedWriteIterator_for_UInt16_Binary Null_in_PrefixedWriteIterator_for_UInt16_Binary_static(void)
 {

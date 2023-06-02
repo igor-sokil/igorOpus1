@@ -21,7 +21,6 @@
 #define OPENDNP3_COUNTWRITEITERATOR_for_UInt8_Binary_H
 
 ////#include "app/Serializer.h"
-#include <string.h>
 #include "Serializer.h"
 #include "RSeq.h"
 #include "WSeq.h"

@@ -31,50 +31,420 @@
 #include "IEventType.h"
 #include "TypedEventRecord.h"
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+////template<class T> class EventTypeImpl final : public IEventType
+
+//----------------------------------Binary-------------------------------------------
+typedef struct
 {
 
-template<class T> class EventTypeImpl final : public IEventType
+////private:
+////    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////
+////    static EventTypeImpl instance;
+////
+////public:
+////    static IEventType* Instance()
+////    {
+////        return &instance;
+////    }
+////
+////    virtual void SelectDefaultVariation(EventRecord& record) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        node->value.selectedVariation = node->value.defaultVariation;
+////    }
+////
+////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
+////                               EventLists& lists,
+////                               IEventWriteHandler& handler) const override
+////    {
+////        const auto pos = iterator.CurrentValue();
+////        const auto type = TypedStorage<T>::Retrieve(*pos);
+////
+////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////
+////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
+////    }
+////
+////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        lists.GetList<T>().Remove(node);
+////    }
+
+  IEventType iIEventType;
+} EventTypeImpl_TypedEventRecord_for_BinarySpec;
+
+////template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+//EventTypeImpl_TypedEventRecord_for_BinarySpec instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec;
+IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static(void);
+void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(EventRecord* record);
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(Iterator_in_List_for_EventRecord* iteratorEv,
+    EventLists* lists,
+    IEventWriteHandler* handler);
+void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(EventRecord* record, EventLists* lists);
+//----------------------------------Binary-------------------------------------------
+//----------------------------------DoubleBitBinary-------------------------------------------
+typedef struct
 {
 
-private:
-    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////private:
+////    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////
+////    static EventTypeImpl instance;
+////
+////public:
+////    static IEventType* Instance()
+////    {
+////        return &instance;
+////    }
+////
+////    virtual void SelectDefaultVariation(EventRecord& record) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        node->value.selectedVariation = node->value.defaultVariation;
+////    }
+////
+////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
+////                               EventLists& lists,
+////                               IEventWriteHandler& handler) const override
+////    {
+////        const auto pos = iterator.CurrentValue();
+////        const auto type = TypedStorage<T>::Retrieve(*pos);
+////
+////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////
+////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
+////    }
+////
+////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        lists.GetList<T>().Remove(node);
+////    }
 
-    static EventTypeImpl instance;
+  IEventType iIEventType;
+} EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec;
 
-public:
-    static IEventType* Instance()
-    {
-        return &instance;
-    }
+////template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+//EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec;
+IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_static(void);
+void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec(EventRecord* record);
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_for_EventRecord* iteratorEv,
+    EventLists* lists,
+    IEventWriteHandler* handler);
+void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec(EventRecord* record, EventLists* lists);
+//----------------------------------DoubleBitBinary-------------------------------------------
+//----------------------------------Analog-------------------------------------------
+typedef struct
+{
 
-    virtual void SelectDefaultVariation(EventRecord& record) const override
-    {
-        auto node = TypedStorage<T>::Retrieve(record);
-        node->value.selectedVariation = node->value.defaultVariation;
-    }
+////private:
+////    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////
+////    static EventTypeImpl instance;
+////
+////public:
+////    static IEventType* Instance()
+////    {
+////        return &instance;
+////    }
+////
+////    virtual void SelectDefaultVariation(EventRecord& record) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        node->value.selectedVariation = node->value.defaultVariation;
+////    }
+////
+////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
+////                               EventLists& lists,
+////                               IEventWriteHandler& handler) const override
+////    {
+////        const auto pos = iterator.CurrentValue();
+////        const auto type = TypedStorage<T>::Retrieve(*pos);
+////
+////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////
+////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
+////    }
+////
+////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        lists.GetList<T>().Remove(node);
+////    }
 
-    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
-                               EventLists& lists,
-                               IEventWriteHandler& handler) const override
-    {
-        const auto pos = iterator.CurrentValue();
-        const auto type = TypedStorage<T>::Retrieve(*pos);
+  IEventType iIEventType;
+} EventTypeImpl_TypedEventRecord_for_AnalogSpec;
 
-        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+//EventTypeImpl_TypedEventRecord_for_AnalogSpec instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec;
+IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static(void);
+void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(EventRecord* record);
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(Iterator_in_List_for_EventRecord* iteratorEv,
+    EventLists* lists,
+    IEventWriteHandler* handler);
+void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(EventRecord* record, EventLists* lists);
+//----------------------------------Analog-------------------------------------------
+//----------------------------------Counter-------------------------------------------
+typedef struct
+{
 
-        return handler.Write(type->value.selectedVariation, type->value.value, collection);
-    }
+////private:
+////    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////
+////    static EventTypeImpl instance;
+////
+////public:
+////    static IEventType* Instance()
+////    {
+////        return &instance;
+////    }
+////
+////    virtual void SelectDefaultVariation(EventRecord& record) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        node->value.selectedVariation = node->value.defaultVariation;
+////    }
+////
+////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
+////                               EventLists& lists,
+////                               IEventWriteHandler& handler) const override
+////    {
+////        const auto pos = iterator.CurrentValue();
+////        const auto type = TypedStorage<T>::Retrieve(*pos);
+////
+////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////
+////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
+////    }
+////
+////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        lists.GetList<T>().Remove(node);
+////    }
 
-    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
-    {
-        auto node = TypedStorage<T>::Retrieve(record);
-        lists.GetList<T>().Remove(node);
-    }
-};
+  IEventType iIEventType;
+} EventTypeImpl_TypedEventRecord_for_CounterSpec;
 
-template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+////template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+//EventTypeImpl_TypedEventRecord_for_CounterSpec instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec;
+IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_static(void);
+void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(EventRecord* record);
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(Iterator_in_List_for_EventRecord* iteratorEv,
+    EventLists* lists,
+    IEventWriteHandler* handler);
+void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(EventRecord* record, EventLists* lists);
+//----------------------------------Counter-------------------------------------------
+//----------------------------------FrozenCounter-------------------------------------------
+typedef struct
+{
 
-} // namespace opendnp3
+////private:
+////    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////
+////    static EventTypeImpl instance;
+////
+////public:
+////    static IEventType* Instance()
+////    {
+////        return &instance;
+////    }
+////
+////    virtual void SelectDefaultVariation(EventRecord& record) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        node->value.selectedVariation = node->value.defaultVariation;
+////    }
+////
+////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
+////                               EventLists& lists,
+////                               IEventWriteHandler& handler) const override
+////    {
+////        const auto pos = iterator.CurrentValue();
+////        const auto type = TypedStorage<T>::Retrieve(*pos);
+////
+////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////
+////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
+////    }
+////
+////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        lists.GetList<T>().Remove(node);
+////    }
+
+  IEventType iIEventType;
+} EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec;
+
+////template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+//EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec;
+IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_static(void);
+void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec(EventRecord* record);
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec(Iterator_in_List_for_EventRecord* iteratorEv,
+    EventLists* lists,
+    IEventWriteHandler* handler);
+void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec(EventRecord* record, EventLists* lists);
+//----------------------------------FrozenCounter-------------------------------------------
+//----------------------------------BinaryOutputStatus-------------------------------------------
+typedef struct
+{
+
+////private:
+////    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////
+////    static EventTypeImpl instance;
+////
+////public:
+////    static IEventType* Instance()
+////    {
+////        return &instance;
+////    }
+////
+////    virtual void SelectDefaultVariation(EventRecord& record) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        node->value.selectedVariation = node->value.defaultVariation;
+////    }
+////
+////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
+////                               EventLists& lists,
+////                               IEventWriteHandler& handler) const override
+////    {
+////        const auto pos = iterator.CurrentValue();
+////        const auto type = TypedStorage<T>::Retrieve(*pos);
+////
+////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////
+////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
+////    }
+////
+////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        lists.GetList<T>().Remove(node);
+////    }
+
+  IEventType iIEventType;
+} EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec;
+
+////template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+//EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec;
+IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_static(void);
+void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec(EventRecord* record);
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec(Iterator_in_List_for_EventRecord* iteratorEv,
+    EventLists* lists,
+    IEventWriteHandler* handler);
+void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec(EventRecord* record, EventLists* lists);
+//----------------------------------BinaryOutputStatus-------------------------------------------
+//----------------------------------AnalogOutputStatus-------------------------------------------
+typedef struct
+{
+
+////private:
+////    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////
+////    static EventTypeImpl instance;
+////
+////public:
+////    static IEventType* Instance()
+////    {
+////        return &instance;
+////    }
+////
+////    virtual void SelectDefaultVariation(EventRecord& record) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        node->value.selectedVariation = node->value.defaultVariation;
+////    }
+////
+////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
+////                               EventLists& lists,
+////                               IEventWriteHandler& handler) const override
+////    {
+////        const auto pos = iterator.CurrentValue();
+////        const auto type = TypedStorage<T>::Retrieve(*pos);
+////
+////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////
+////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
+////    }
+////
+////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        lists.GetList<T>().Remove(node);
+////    }
+
+  IEventType iIEventType;
+} EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec;
+
+////template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+//EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec;
+IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_static(void);
+void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec(EventRecord* record);
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_for_EventRecord* iteratorEv,
+    EventLists* lists,
+    IEventWriteHandler* handler);
+void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec(EventRecord* record, EventLists* lists);
+//----------------------------------AnalogOutputStatus-------------------------------------------
+//----------------------------------OctetString-------------------------------------------
+typedef struct
+{
+
+////private:
+////    EventTypeImpl() : IEventType(T::EventTypeEnum) {}
+////
+////    static EventTypeImpl instance;
+////
+////public:
+////    static IEventType* Instance()
+////    {
+////        return &instance;
+////    }
+////
+////    virtual void SelectDefaultVariation(EventRecord& record) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        node->value.selectedVariation = node->value.defaultVariation;
+////    }
+////
+////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
+////                               EventLists& lists,
+////                               IEventWriteHandler& handler) const override
+////    {
+////        const auto pos = iterator.CurrentValue();
+////        const auto type = TypedStorage<T>::Retrieve(*pos);
+////
+////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
+////
+////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
+////    }
+////
+////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
+////    {
+////        auto node = TypedStorage<T>::Retrieve(record);
+////        lists.GetList<T>().Remove(node);
+////    }
+
+  IEventType iIEventType;
+} EventTypeImpl_TypedEventRecord_for_OctetStringSpec;
+
+////template<class T> EventTypeImpl<T> EventTypeImpl<T>::instance;
+//EventTypeImpl_TypedEventRecord_for_OctetStringSpec instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec;
+IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_static(void);
+void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec(EventRecord* record);
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec(Iterator_in_List_for_EventRecord* iteratorEv,
+    EventLists* lists,
+    IEventWriteHandler* handler);
+void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec(EventRecord* record, EventLists* lists);
+//----------------------------------OctetString-------------------------------------------
+
+////} // namespace opendnp3
 
 #endif

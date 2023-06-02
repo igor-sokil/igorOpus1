@@ -1,6 +1,7 @@
 #include "header.h"
 #include "RangeWriteIterator_for_UInt8_Counter.h"
 #include "SerializationTemplates.h"
+#include <string.h>
 
 RangeWriteIterator_for_UInt8_Counter Null_in_RangeWriteIterator_for_UInt8_Counter_static(void)
 {

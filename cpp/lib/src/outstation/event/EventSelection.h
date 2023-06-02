@@ -53,82 +53,94 @@
 ////                                        typename T::event_variation_t variation,
 ////                                        uint32_t max);
 ////};
-    uint32_t SelectByClass_in_EventSelection_static(EventLists* lists, ClassField* clazz, uint32_t max);
+uint32_t SelectByClass_in_EventSelection_static(EventLists* lists, ClassField* clazz, uint32_t max);
 
 //----------------------------------BinarySpec-----------------------------------------------
 ////    template<class T>
-     uint32_t SelectByTypeGeneric_for_BinarySpec_in_EventSelection_static(EventLists* lists,
-                                        boolean useDefaultVariation,
+uint32_t SelectByTypeGeneric_for_BinarySpec_in_EventSelection_static(EventLists* lists,
+    boolean useDefaultVariation,
 ////                                        typename T::event_variation_t variation,
-                                        event_variation_t_in_BinaryInfo variation,
-                                        uint32_t max);
+    event_variation_t_in_BinaryInfo variation,
+    uint32_t max);
+uint32_t SelectByType_for_BinarySpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max);
+uint32_t SelectByType_for_BinarySpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_BinaryInfo variation, uint32_t max);
 
 //----------------------------------BinarySpec-----------------------------------------------
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
 ////    template<class T>
-     uint32_t SelectByTypeGeneric_for_DoubleBitBinarySpec_in_EventSelection_static(EventLists* lists,
-                                        boolean useDefaultVariation,
+uint32_t SelectByTypeGeneric_for_DoubleBitBinarySpec_in_EventSelection_static(EventLists* lists,
+    boolean useDefaultVariation,
 ////                                        typename T::event_variation_t variation,
-                                        event_variation_t_in_DoubleBitBinaryInfo variation,
-                                        uint32_t max);
+    event_variation_t_in_DoubleBitBinaryInfo variation,
+    uint32_t max);
+uint32_t SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max);
+uint32_t SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_DoubleBitBinaryInfo variation, uint32_t max);
 
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
 //----------------------------------AnalogSpec-----------------------------------------------
 ////    template<class T>
-     uint32_t SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(EventLists* lists,
-                                        boolean useDefaultVariation,
+uint32_t SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(EventLists* lists,
+    boolean useDefaultVariation,
 ////                                        typename T::event_variation_t variation,
-                                        event_variation_t_in_AnalogInfo variation,
-                                        uint32_t max);
+    event_variation_t_in_AnalogInfo variation,
+    uint32_t max);
+uint32_t SelectByType_for_AnalogSpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max);
+uint32_t SelectByType_for_AnalogSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_AnalogInfo variation, uint32_t max);
 
 //----------------------------------AnalogSpec-----------------------------------------------
 //----------------------------------CounterSpec-----------------------------------------------
 ////    template<class T>
-     uint32_t SelectByTypeGeneric_for_CounterSpec_in_EventSelection_static(EventLists* lists,
-                                        boolean useDefaultVariation,
+uint32_t SelectByTypeGeneric_for_CounterSpec_in_EventSelection_static(EventLists* lists,
+    boolean useDefaultVariation,
 ////                                        typename T::event_variation_t variation,
-                                        event_variation_t_in_CounterInfo variation,
-                                        uint32_t max);
+    event_variation_t_in_CounterInfo variation,
+    uint32_t max);
+uint32_t SelectByType_for_CounterSpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max);
+uint32_t SelectByType_for_CounterSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_CounterInfo variation, uint32_t max);
 
 //----------------------------------CounterSpec-----------------------------------------------
 //----------------------------------FrozenCounterSpec-----------------------------------------------
 ////    template<class T>
-     uint32_t SelectByTypeGeneric_for_FrozenCounterSpec_in_EventSelection_static(EventLists* lists,
-                                        boolean useDefaultVariation,
+uint32_t SelectByTypeGeneric_for_FrozenCounterSpec_in_EventSelection_static(EventLists* lists,
+    boolean useDefaultVariation,
 ////                                        typename T::event_variation_t variation,
-                                        event_variation_t_in_FrozenCounterInfo variation,
-                                        uint32_t max);
-
+    event_variation_t_in_FrozenCounterInfo variation,
+    uint32_t max);
+uint32_t SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max);
+uint32_t SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_FrozenCounterInfo variation, uint32_t max);
 
 //----------------------------------FrozenCounterSpec-----------------------------------------------
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
 ////    template<class T>
-     uint32_t SelectByTypeGeneric_for_BinaryOutputStatusSpec_in_EventSelection_static(EventLists* lists,
-                                        boolean useDefaultVariation,
+uint32_t SelectByTypeGeneric_for_BinaryOutputStatusSpec_in_EventSelection_static(EventLists* lists,
+    boolean useDefaultVariation,
 ////                                        typename T::event_variation_t variation,
-                                        event_variation_t_in_BinaryOutputStatusInfo variation,
-                                        uint32_t max);
-
+    event_variation_t_in_BinaryOutputStatusInfo variation,
+    uint32_t max);
+uint32_t SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max);
+uint32_t SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_BinaryOutputStatusInfo variation, uint32_t max);
 
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
 ////    template<class T>
-     uint32_t SelectByTypeGeneric_for_AnalogOutputStatusSpec_in_EventSelection_static(EventLists* lists,
-                                        boolean useDefaultVariation,
+uint32_t SelectByTypeGeneric_for_AnalogOutputStatusSpec_in_EventSelection_static(EventLists* lists,
+    boolean useDefaultVariation,
 ////                                        typename T::event_variation_t variation,
-                                        event_variation_t_in_AnalogOutputStatusInfo variation,
-                                        uint32_t max);
-
+    event_variation_t_in_AnalogOutputStatusInfo variation,
+    uint32_t max);
+uint32_t SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max);
+uint32_t SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_AnalogOutputStatusInfo variation, uint32_t max);
 
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
 //----------------------------------OctetStringSpec-----------------------------------------------
 ////    template<class T>
-     uint32_t SelectByTypeGeneric_for_OctetStringSpec_in_EventSelection_static(EventLists* lists,
-                                        boolean useDefaultVariation,
+uint32_t SelectByTypeGeneric_for_OctetStringSpec_in_EventSelection_static(EventLists* lists,
+    boolean useDefaultVariation,
 ////                                        typename T::event_variation_t variation,
-                                        event_variation_t_in_OctetStringInfo variation,
-                                        uint32_t max);
-
+    event_variation_t_in_OctetStringInfo variation,
+    uint32_t max);
+uint32_t SelectByType_for_OctetStringSpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max);
+uint32_t SelectByType_for_OctetStringSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_OctetStringInfo variation, uint32_t max);
 
 //----------------------------------OctetStringSpec-----------------------------------------------
 
@@ -164,6 +176,5 @@
 ////}
 ////
 ////} // namespace opendnp3
-////
-////#endif
-////
+
+#endif

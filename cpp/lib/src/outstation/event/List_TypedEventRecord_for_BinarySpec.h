@@ -20,10 +20,12 @@
 #ifndef OPENDNP3_List_TypedEventRecord_for_BinarySpec_H
 #define OPENDNP3_List_TypedEventRecord_for_BinarySpec_H
 
-#include <string.h>
 #include "HasLength.h"
 #include "EventRecord.h"
+//#include "EventLists.h"
 ////#include <ser4cpp/container/Array.h>
+#include "Array__for__Node_TypedEventRecord_for_BinarySpec.h"
+#include "Node_TypedEventRecord_for_BinarySpec.h"
 
 ////#include <cstdint>
 
@@ -31,29 +33,6 @@
 ////{
 
 ////using list_size_type_t = uint32_t;
-/*
-////template<class T> class Node
-typedef struct
-{
-////public:
-////    Node() = default;
-
-////    T value;
-  EventRecord value;
-
-////private:
-////    Node* prev = nullptr;
-////    Node_for_EventRecord * prev;
-  void * prev;
-////    Node_for_EventRecord * next;
-  void * next;
-////    Node* next = nullptr;
-
-////    template<class U> friend class List;
-} Node_for_EventRecord;
-
-void Node_for_EventRecord_in_Node_for_EventRecord(Node_for_EventRecord *pNode_for_EventRecord);
-*/
 
 ////    class Iterator
 typedef struct
@@ -94,18 +73,18 @@ typedef struct
 ////        Iterator(Node<T>* start) : current(start) {}
 ////
 ////        Node<T>* current;
-  Node_for_EventRecord * current;
+  Node_TypedEventRecord_for_BinarySpec * current;
 } Iterator_in_List_TypedEventRecord_for_BinarySpec;
 
-Iterator_in_List_TypedEventRecord_for_BinarySpec From__in__Iterator_in_List_TypedEventRecord_for_BinarySpec_static(Node_for_EventRecord* start);
+Iterator_in_List_TypedEventRecord_for_BinarySpec From__in__Iterator_in_List_TypedEventRecord_for_BinarySpec_static(Node_TypedEventRecord_for_BinarySpec* start);
 
-EventRecord* CurrentValue__in__Iterator_in_List_TypedEventRecord_for_BinarySpec(Iterator_in_List_TypedEventRecord_for_BinarySpec *pIterator_in_List_TypedEventRecord_for_BinarySpec);
-Node_for_EventRecord* Current__in__Iterator_in_List_TypedEventRecord_for_BinarySpec(Iterator_in_List_TypedEventRecord_for_BinarySpec *pIterator_in_List_TypedEventRecord_for_BinarySpec);
-Node_for_EventRecord* Next__in__Iterator_in_List_TypedEventRecord_for_BinarySpec(Iterator_in_List_TypedEventRecord_for_BinarySpec *pIterator_in_List_TypedEventRecord_for_BinarySpec);
+TypedEventRecord_for_BinarySpec* CurrentValue__in__Iterator_in_List_TypedEventRecord_for_BinarySpec(Iterator_in_List_TypedEventRecord_for_BinarySpec *pIterator_in_List_TypedEventRecord_for_BinarySpec);
+Node_TypedEventRecord_for_BinarySpec* Current__in__Iterator_in_List_TypedEventRecord_for_BinarySpec(Iterator_in_List_TypedEventRecord_for_BinarySpec *pIterator_in_List_TypedEventRecord_for_BinarySpec);
+Node_TypedEventRecord_for_BinarySpec* Next__in__Iterator_in_List_TypedEventRecord_for_BinarySpec(Iterator_in_List_TypedEventRecord_for_BinarySpec *pIterator_in_List_TypedEventRecord_for_BinarySpec);
 boolean HasNext__in__Iterator_in_List_TypedEventRecord_for_BinarySpec(Iterator_in_List_TypedEventRecord_for_BinarySpec *pIterator_in_List_TypedEventRecord_for_BinarySpec);
 
 void  Iterator_in_List_TypedEventRecord_for_BinarySpec__in__Iterator_in_List_TypedEventRecord_for_BinarySpec(Iterator_in_List_TypedEventRecord_for_BinarySpec *pIterator_in_List_TypedEventRecord_for_BinarySpec,
-    Node_for_EventRecord* start);
+    Node_TypedEventRecord_for_BinarySpec* start);
 
 // A container adapter for a -linked list
 ////template<class T> class List : public ser4cpp::HasLength<list_size_type_t>
@@ -191,11 +170,12 @@ typedef struct
   Iterator_in_List_TypedEventRecord_for_BinarySpec iIterator_in_List_TypedEventRecord_for_BinarySpec;
   HasLength_for_Uint32_t hHasLength_for_Uint32_t;
 
-  Node_for_EventRecord* head;// = nullptr;
-  Node_for_EventRecord* tail;// = nullptr;
-  Node_for_EventRecord* free;// = nullptr;
+  Node_TypedEventRecord_for_BinarySpec* head;// = nullptr;
+  Node_TypedEventRecord_for_BinarySpec* tail;// = nullptr;
+  Node_TypedEventRecord_for_BinarySpec* free;// = nullptr;
 
 ////    ser4cpp::Array<Node<T>, list_size_type_t> underlying;
+  Array__for__Node_TypedEventRecord_for_BinarySpec  underlying;
 
 ////    Node<T>* Insert(const T& value, Node<T>* left, Node<T>* right);
 
@@ -204,25 +184,36 @@ typedef struct
 ////    void Initialize();
 } List_TypedEventRecord_for_BinarySpec;
 
-void List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
+void List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpecOver1(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
+void List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpecOver2(
+  List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec,
+  uint32_t maxSize);
+
+Iterator_in_List_TypedEventRecord_for_BinarySpec Iterate_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
+
+void Initialize_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_BinarySpec(EventStorage *pEventStorage,
+//                            List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec,
+//                            boolean (*match)(EventStorage *pEventStorage,
+//                            EventRecord* record));//const U& match);
+
+void Remove_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec, Node_TypedEventRecord_for_BinarySpec* node);
+void Link_in_List_TypedEventRecord_for_BinarySpec_static(Node_TypedEventRecord_for_BinarySpec* first, Node_TypedEventRecord_for_BinarySpec* second);
+
+uint32_t Capacity_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
+boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
+Node_TypedEventRecord_for_BinarySpec* Head_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
+Node_TypedEventRecord_for_BinarySpec* Add_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec,
+                                      TypedEventRecord_for_BinarySpec* value);
+Node_TypedEventRecord_for_BinarySpec* Insert_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec,
+                                                                TypedEventRecord_for_BinarySpec* value,
+                                                                Node_TypedEventRecord_for_BinarySpec* left,
+                                                                Node_TypedEventRecord_for_BinarySpec* right
+                                                                  );
 
 
-
-////template<class T> Node<T>* List<T>::Add(const T& value)
-////{
-////    return this->Insert(value, this->tail, nullptr);
-////}
-////
 ////template<class T> template<class U> void List<T>::ForeachWhile(const U& select)
-////{
-////    auto iter = this->Iterate();
-////    bool result = true;
-////    while (result && iter.HasNext())
-////    {
-////        result = select(iter.Next()->value);
-////    }
-////}
-////
+
 ////template<class T> template<class U> void List<T>::Foreach(const U& action)
 ////{
 ////    auto iter = this->Iterate();
@@ -256,35 +247,6 @@ void List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpe
 ////    return count;
 ////}
 ////
-////template<class T> Node<T>* List<T>::Insert(const T& value, Node<T>* left, Node<T>* right)
-////{
-////    if (!this->free)
-////        return nullptr;
-////
-////    // initialize the new node, and increment the size
-////    auto new_node = this->free;
-////    this->free = this->free->next;
-////
-////    new_node->value = value;
-////    ++(this->m_length);
-////
-////    this->Link(left, new_node);
-////    this->Link(new_node, right);
-////
-////    // change of head
-////    if (!left)
-////    {
-////        this->head = new_node;
-////    }
-////
-////    // change of tail
-////    if (!right)
-////    {
-////        this->tail = new_node;
-////    }
-////
-////    return new_node;
-////}
 ////
 ////template<class T> void List<T>::Remove(Node<T>* node)
 ////{

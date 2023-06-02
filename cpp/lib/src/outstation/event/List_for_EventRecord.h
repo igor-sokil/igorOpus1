@@ -20,10 +20,10 @@
 #ifndef OPENDNP3_LIST_for_EventRecord_H
 #define OPENDNP3_LIST_for_EventRecord_H
 
-#include <string.h>
 #include "HasLength.h"
-#include "EventRecord.h"
+//#include "EventRecord.h"
 ////#include <ser4cpp/container/Array.h>
+#include "Array__for__Node_for_EventRecord.h"
 #include "Node_for_EventRecord.h"
 
 ////#include <cstdint>
@@ -33,29 +33,6 @@
 ////{
 
 ////using list_size_type_t = uint32_t;
-/*
-////template<class T> class Node
-typedef struct
-{
-////public:
-////    Node() = default;
-
-////    T value;
-  EventRecord value;
-
-////private:
-////    Node* prev = nullptr;
-////    Node_for_EventRecord * prev;
-  void * prev;
-////    Node_for_EventRecord * next;
-  void * next;
-////    Node* next = nullptr;
-
-////    template<class U> friend class List;
-} Node_for_EventRecord;
-
-void Node_for_EventRecord_in_Node_for_EventRecord(Node_for_EventRecord *pNode_for_EventRecord);
-*/
 ////    class Iterator
 typedef struct
 {
@@ -107,7 +84,10 @@ boolean HasNext__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_Event
 
 void  Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord,
     Node_for_EventRecord* start);
+EventRecord *Find__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord,
+                                                        boolean (*matches)(EventRecord* pEventRecord));
 
+////template<class T> template<class U> T* List<T>::Iterator::Find(const U& matches)
 // A container adapter for a -linked list
 ////template<class T> class List : public ser4cpp::HasLength<list_size_type_t>
 typedef struct
@@ -152,7 +132,7 @@ typedef struct
 ////
 ////        Node<T>* current;
 ////    };
-////MYTODO
+////
 ////    List(list_size_type_t maxSize) : ser4cpp::HasLength<list_size_type_t>(0), underlying(maxSize)
 ////    {
 ////        Initialize();
@@ -196,7 +176,8 @@ typedef struct
   Node_for_EventRecord* tail;// = nullptr;
   Node_for_EventRecord* free;// = nullptr;
 
-////    ser4cpp::Array<Node<T>, list_size_type_t> underlying;MYTODO
+////    ser4cpp::Array<Node<T>, list_size_type_t> underlying;
+  Array__for__Node_for_EventRecord  underlying;
 
 ////    Node<T>* Insert(const T& value, Node<T>* left, Node<T>* right);
 
@@ -206,18 +187,36 @@ typedef struct
 } List_for_EventRecord;
 
 ////    List(list_size_type_t maxSize) : ser4cpp::HasLength<list_size_type_t>(0), underlying(maxSize)
-////    {
-////        Initialize();
-////    }
 
-void List_for_EventRecord_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
-//Iterator_in_List_for_EventRecord From__in__Iterator_in_List_for_EventRecord_static(Node_for_EventRecord* start);
+void List_for_EventRecord_in_List_for_EventRecordOver2(List_for_EventRecord *pList_for_EventRecord, uint32_t maxSize);
+void List_for_EventRecord_in_List_for_EventRecordOver1(List_for_EventRecord *pList_for_EventRecord);
     Iterator_in_List_for_EventRecord Iterate_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
 
-////  uint32_t RemoveAll_in_List_for_EventRecord(EventStorage *pEventStorage, List_for_EventRecord *pList_for_EventRecord, boolean (*match)(EventStorage *pEventStorage, EventRecord* record));//const U& match);
+  void Initialize_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
 
    void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
    void Link_in_List_for_EventRecord_static(Node_for_EventRecord* first, Node_for_EventRecord* second);
+
+     uint32_t Capacity_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
+boolean IsFullAndCapacityNotZero_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
+Node_for_EventRecord* Head_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
+Node_for_EventRecord* Add_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, EventRecord* value);
+Node_for_EventRecord*  Insert_in_List_for_EventRecord(List_for_EventRecord* pList_for_EventRecord, 
+                                                      EventRecord* value, Node_for_EventRecord* left, 
+                                                                          Node_for_EventRecord* right);
+void    Foreach_in_List_for_EventRecord(
+                                       List_for_EventRecord *pList_for_EventRecord, 
+                                       void (*action)(EventRecord* record)
+                                       );
+
+
+//     uint32_t Capacity_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord) 
+////template<class T> bool List<T>::IsFullAndCapacityNotZero() const
+
+////    List(list_size_type_t maxSize) : ser4cpp::HasLength<list_size_type_t>(0), underlying(maxSize)
+////    {
+////        Initialize();
+////    }
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{
@@ -300,6 +299,7 @@ void List_for_EventRecord_in_List_for_EventRecord(List_for_EventRecord *pList_fo
 ////template<class T> void List<T>::Remove(Node<T>* node)
 
 ////
+//     uint32_t Capacity_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord) 
 ////template<class T> bool List<T>::IsFullAndCapacityNotZero() const
 ////{
 ////    return !(this->free) && Capacity() > 0;

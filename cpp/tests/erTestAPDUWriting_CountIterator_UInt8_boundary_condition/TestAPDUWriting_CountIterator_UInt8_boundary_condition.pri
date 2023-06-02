@@ -5,10 +5,12 @@ INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\gen
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\master
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\outstation
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\util
+INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\link
 INCLUDEPATH  += ..\..\..\cpp\lib\src\app
 INCLUDEPATH  += ..\..\..\cpp\lib\src\app\parsing
 INCLUDEPATH  += ..\..\..\cpp\lib\src\link
-INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\link
+INCLUDEPATH  += ..\..\..\cpp\lib\src\outstation
+INCLUDEPATH  += ..\..\..\cpp\lib\src\outstation\event
 
 INCLUDEPATH  += ..\..\..\cpp\lib\src\gen
 INCLUDEPATH  += ..\..\..\cpp\lib\src\gen\objects
@@ -86,6 +88,8 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp \
                 ..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp \
                 ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp \
+                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp \
+                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp \
                 ..\..\..\cpp\lib\src\app\ClassField.cpp \
                 ..\..\..\cpp\lib\src\app\ControlRelayOutputBlock.cpp \
                 ..\..\..\cpp\lib\src\app\DNP3Serializer.cpp \
@@ -102,9 +106,19 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\app\OctetData.cpp \
                 ..\..\..\cpp\lib\src\app\QualityFlags.cpp \
                 ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp \
                 ..\..\..\cpp\lib\src\app\Serializer.cpp \
                 ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp \
                 ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Counter.cpp \
+                ..\..\..\cpp\lib\src\app\DownSampling.cpp \
+                \
+                ..\..\..\cpp\lib\src\outstation\Event.cpp \
+                ..\..\..\cpp\lib\src\outstation\EventBufferConfig.cpp \
+                \
+                ..\..\..\cpp\lib\src\outstation\event\ClazzCount.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventRecord.cpp \
                 \
                 ..\..\..\cpp\lib\src\gen\Attributes.cpp \
                 ..\..\..\cpp\lib\src\gen\DoubleBit.cpp \
@@ -114,6 +128,11 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 \
                 ..\..\..\cpp\lib\src\gen\objects\Group60.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group1.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group2.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group20.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group30.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group50.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group51.cpp \
                 \
                 ..\..\..\cpp\tests\unit\utils\APDUHelpers.cpp
 

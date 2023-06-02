@@ -25,12 +25,12 @@
 
 ////#include "opendnp3/app/EventType.h"
 
-//#include "List_for_EventRecord.h"
+#include "EventLists.h"
 
 #include "EventType.h"
 //#include "EventLists.h"
 #include "EventRecord.h"
-//#include "IEventWriteHandler.h"
+#include "IEventWriteHandler.h"
 ////namespace opendnp3
 ////{
 
@@ -43,7 +43,7 @@ typedef struct
 {
 
 ////public:
-    EventType value;
+    EventType_uint16_t value;
 
 ////    inline bool IsEqual(EventType type) const
 ////    {
@@ -65,13 +65,17 @@ typedef struct
 ////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const = 0;
-//     uint16_t (*pWriteSome)(Iterator_in_List_for_EventRecord* iterator,
-//                               EventLists* lists,
-//                               IEventWriteHandler* handler);// const = 0;
+     uint16_t (*pWriteSome)(Iterator_in_List_for_EventRecord* iterator,
+                               EventLists* lists,
+                               IEventWriteHandler* handler);// const = 0;
 
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const = 0;
      void (*pRemoveTypeFromStorage)(EventRecord* record, EventLists* lists);// const = 0;
 } IEventType;
+
+   void IEventType_in_IEventType(IEventType *pIEventType, EventType_uint16_t value);
+   boolean IsEqual_in_IEventType(IEventType* pIEventType, EventType_uint16_t type);
+   boolean IsNotEqual_in_IEventType(IEventType* pIEventType, EventType_uint16_t type);
 
 ////} // namespace opendnp3
 

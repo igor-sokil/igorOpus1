@@ -62,6 +62,24 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                  ser4cpp\container\Settable.cpp \
                  ser4cpp\container\BufferSer4.cpp \
                  ser4cpp\container\StaticBuffer.cpp \
+                 ser4cpp\container\Array__for__Node_for_EventRecord.cpp \
+                 ser4cpp\container\ArrayView__for__Node_for_EventRecord.cpp \
+                 ser4cpp\container\Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.cpp \
+                 ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.cpp \
+                 ser4cpp\container\Array__for__Node_TypedEventRecord_for_AnalogSpec.cpp \
+                 ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_AnalogSpec.cpp \
+                 ser4cpp\container\Array__for__Node_TypedEventRecord_for_BinaryOutputStatusSpec.cpp \
+                 ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_BinaryOutputStatusSpec.cpp \
+                 ser4cpp\container\Array__for__Node_TypedEventRecord_for_BinarySpec.cpp \
+                 ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_BinarySpec.cpp \
+                 ser4cpp\container\Array__for__Node_TypedEventRecord_for_CounterSpec.cpp \
+                 ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_CounterSpec.cpp \
+                 ser4cpp\container\Array__for__Node_TypedEventRecord_for_DoubleBitBinarySpec.cpp \
+                 ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_DoubleBitBinarySpec.cpp \
+                 ser4cpp\container\Array__for__Node_TypedEventRecord_for_FrozenCounterSpec.cpp \
+                 ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec.cpp \
+                 ser4cpp\container\Array__for__Node_TypedEventRecord_for_OctetStringSpec.cpp \
+                 ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_OctetStringSpec.cpp \
                  ser4cpp\serialization\SerializationTemplates.cpp \
                 \
                 cpp\lib\include\opendnp3\util\Buffer.cpp \
@@ -119,9 +137,36 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\EventBufferConfig.cpp \
                 \
                 cpp\lib\src\outstation\event\ClazzCount.cpp \
+                cpp\lib\src\outstation\event\EventCollection.cpp \
+                cpp\lib\src\outstation\event\EventLists.cpp \
+                cpp\lib\src\outstation\event\EventRecord.cpp \
+                cpp\lib\src\outstation\event\EventSelection.cpp \
+                cpp\lib\src\outstation\event\EventStorage.cpp \
+                cpp\lib\src\outstation\event\EventTypeImpl.cpp \
+                cpp\lib\src\outstation\event\EventUpdate.cpp \
+                cpp\lib\src\outstation\event\EventWriting.cpp \
+                cpp\lib\src\outstation\event\IEventType.cpp \
+                cpp\lib\src\outstation\event\TypedStorage.cpp \
                 cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
                 cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
-                cpp\lib\src\outstation\event\EventRecord.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogOutputStatusSpec_part1.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogOutputStatusSpec_part2.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogSpec_part1.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogSpec_part2.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_BinaryOutputStatusSpec_part1.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_BinaryOutputStatusSpec_part2.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_BinarySpec_part1.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_BinarySpec_part2.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_CounterSpec_part1.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_CounterSpec_part2.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_DoubleBitBinarySpec_part1.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_DoubleBitBinarySpec_part2.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_FrozenCounterSpec_part1.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_FrozenCounterSpec_part2.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_OctetStringSpec_part1.cpp \
+                cpp\lib\src\outstation\event\List_TypedEventRecord_for_OctetStringSpec_part2.cpp \
+                cpp\lib\src\outstation\event\Nodes.cpp \
+                cpp\lib\src\outstation\event\TypedEventRecord.cpp \
                 \
                 cpp\lib\src\gen\Attributes.cpp \
                 cpp\lib\src\gen\DoubleBit.cpp \
@@ -139,4 +184,5 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\tests\unit\utils\APDUHelpers.cpp
 
-#                cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
+#                cpp\lib\src\outstation\event\EventStorage.cpp \
+

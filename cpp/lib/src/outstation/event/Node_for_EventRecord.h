@@ -1,7 +1,6 @@
 #ifndef OPENDNP3_NODE_for_EventRecord_H
 #define OPENDNP3_NODE_for_EventRecord_H
 
-//#include <string.h>
 //#include "HasLength.h"
 #include "EventRecord.h"
 ////#include <ser4cpp/container/Array.h>

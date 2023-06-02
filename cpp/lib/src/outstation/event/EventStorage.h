@@ -34,6 +34,7 @@
 
 #include "ClassField.h"
 
+#include "List_for_EventRecord.h"
 ////#include <limits>
 
 ////namespace opendnp3
@@ -108,6 +109,15 @@ typedef struct
 
 void EventStorage_in_EventStorage(EventStorage *pEventStorage, EventBufferConfig* config);
 
+boolean Update_for_OctetStringSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_OctetStringSpec* evt);
+boolean Update_for_AnalogOutputStatusSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_AnalogOutputStatusSpec* evt);
+boolean Update_for_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt);
+boolean Update_for_BinaryOutputStatusSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinaryOutputStatusSpec* evt);
+boolean Update_for_FrozenCounterSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_FrozenCounterSpec* evt);
+boolean Update_for_CounterSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_CounterSpec* evt);
+boolean Update_for_AnalogSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_AnalogSpec* evt);
+boolean Update_for_DoubleBitBinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_DoubleBitBinarySpec* evt);
+
     uint32_t SelectByType_in_EventStorageOver1(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
     uint32_t SelectByType_in_EventStorageOver2(EventStorage *pEventStorage, EventDoubleBinaryVariation_uint8_t variation, uint32_t max);
     uint32_t SelectByType_in_EventStorageOver3(EventStorage *pEventStorage, EventAnalogVariation_uint8_t variation, uint32_t max);
@@ -129,6 +139,22 @@ void EventStorage_in_EventStorage(EventStorage *pEventStorage, EventBufferConfig
 
     uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage);
 
+    boolean IsAnyTypeFull_in_EventStorage(EventStorage *pEventStorage);
+
+  // number selected
+    uint32_t NumSelected_in_EventStorage(EventStorage *pEventStorage);
+
+  // unselected/selected but not already written
+    uint32_t NumUnwritten_in_EventStorage(EventStorage *pEventStorage, EventClass_uint8_t clazz);
+
+  // all written and selected events are reverted to unselected state
+    void Unselect_in_EventStorage(EventStorage *pEventStorage);
+
 ////} // namespace opendnp3
+
+  uint32_t RemoveAll_in_List_for_EventRecord(EventStorage *pEventStorage, 
+                            List_for_EventRecord *pList_for_EventRecord, 
+                            boolean (*match)(EventStorage *pEventStorage, 
+                            EventRecord* record));//const U& match);
 
 #endif

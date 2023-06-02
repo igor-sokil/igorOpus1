@@ -59,9 +59,18 @@ boolean Any_in_ClazzCount(ClazzCount *pClazzCount)
   return (pClazzCount->num_class_1 > 0) || (pClazzCount->num_class_2 > 0) || (pClazzCount->num_class_3 > 0);
 }
 
+void ClazzCount_in_ClazzCount(ClazzCount* pClazzCount)
+{
+  pClazzCount->num_class_1 = 0;
+  pClazzCount->num_class_2 = 0;
+  pClazzCount->num_class_3 = 0;
+}
+
 void EventClassCounters_in_EventClassCounters(EventClassCounters *pEventClassCounters)
 {
   pEventClassCounters->selected = 0;
+  ClazzCount_in_ClazzCount(&(pEventClassCounters->total));
+  ClazzCount_in_ClazzCount(&(pEventClassCounters->written));
 }
 
 void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz)

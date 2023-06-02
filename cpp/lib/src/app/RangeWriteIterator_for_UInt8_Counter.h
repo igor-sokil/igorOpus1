@@ -21,7 +21,6 @@
 #define OPENDNP3_RANGEWRITEITERATOR_UINT8_COUNTER_H
 
 ////#include "app/Serializer.h"
-#include <string.h>
 #include "Serializer.h"
 
 ////namespace opendnp3

@@ -1,0 +1,4 @@
+TEST_CASE(SUITE("can_construct"))
+{
+    EventStorage storage(EventBufferConfig::AllTypes(10));
+}

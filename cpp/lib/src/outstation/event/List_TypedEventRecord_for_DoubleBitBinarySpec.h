@@ -20,10 +20,11 @@
 #ifndef OPENDNP3_List_TypedEventRecord_for_DoubleBitBinarySpec_H
 #define OPENDNP3_List_TypedEventRecord_for_DoubleBitBinarySpec_H
 
-#include <string.h>
 #include "HasLength.h"
 #include "EventRecord.h"
 ////#include <ser4cpp/container/Array.h>
+#include "Array__for__Node_TypedEventRecord_for_DoubleBitBinarySpec.h"
+#include "Node_TypedEventRecord_for_DoubleBitBinarySpec.h"
 
 ////#include <cstdint>
 
@@ -31,29 +32,6 @@
 ////{
 
 ////using list_size_type_t = uint32_t;
-/*
-////template<class T> class Node
-typedef struct
-{
-////public:
-////    Node() = default;
-
-////    T value;
-  EventRecord value;
-
-////private:
-////    Node* prev = nullptr;
-////    Node_for_EventRecord * prev;
-  void * prev;
-////    Node_for_EventRecord * next;
-  void * next;
-////    Node* next = nullptr;
-
-////    template<class U> friend class List;
-} Node_for_EventRecord;
-
-void Node_for_EventRecord_in_Node_for_EventRecord(Node_for_EventRecord *pNode_for_EventRecord);
-*/
 ////    class Iterator
 typedef struct
 {
@@ -93,18 +71,18 @@ typedef struct
 ////        Iterator(Node<T>* start) : current(start) {}
 ////
 ////        Node<T>* current;
-  Node_for_EventRecord * current;
+  Node_TypedEventRecord_for_DoubleBitBinarySpec * current;
 } Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec;
 
-Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec From__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec_static(Node_for_EventRecord* start);
+Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec From__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec_static(Node_TypedEventRecord_for_DoubleBitBinarySpec* start);
 
-EventRecord* CurrentValue__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec *pIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec);
-Node_for_EventRecord* Current__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec *pIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec);
-Node_for_EventRecord* Next__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec *pIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec);
+TypedEventRecord_for_DoubleBitBinarySpec* CurrentValue__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec *pIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec);
+Node_TypedEventRecord_for_DoubleBitBinarySpec* Current__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec *pIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec);
+Node_TypedEventRecord_for_DoubleBitBinarySpec* Next__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec *pIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec);
 boolean HasNext__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec *pIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec);
 
 void  Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec(Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec *pIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec,
-    Node_for_EventRecord* start);
+    Node_TypedEventRecord_for_DoubleBitBinarySpec* start);
 
 // A container adapter for a -linked list
 ////template<class T> class List : public ser4cpp::HasLength<list_size_type_t>
@@ -190,11 +168,12 @@ typedef struct
   Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec iIterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec;
   HasLength_for_Uint32_t hHasLength_for_Uint32_t;
 
-  Node_for_EventRecord* head;// = nullptr;
-  Node_for_EventRecord* tail;// = nullptr;
-  Node_for_EventRecord* free;// = nullptr;
+  Node_TypedEventRecord_for_DoubleBitBinarySpec* head;// = nullptr;
+  Node_TypedEventRecord_for_DoubleBitBinarySpec* tail;// = nullptr;
+  Node_TypedEventRecord_for_DoubleBitBinarySpec* free;// = nullptr;
 
 ////    ser4cpp::Array<Node<T>, list_size_type_t> underlying;
+  Array__for__Node_TypedEventRecord_for_DoubleBitBinarySpec  underlying;
 
 ////    Node<T>* Insert(const T& value, Node<T>* left, Node<T>* right);
 
@@ -203,9 +182,33 @@ typedef struct
 ////    void Initialize();
 } List_TypedEventRecord_for_DoubleBitBinarySpec;
 
-void List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+void List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver1(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+void List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver2(
+       List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
+       uint32_t maxSize);
 
+    Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec Iterate_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
 
+  void Initialize_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_DoubleBitBinarySpec(EventStorage *pEventStorage, 
+//                            List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec, 
+//                            boolean (*match)(EventStorage *pEventStorage, 
+//                            EventRecord* record));//const U& match);
+
+   void Remove_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec, Node_TypedEventRecord_for_DoubleBitBinarySpec* node);
+   void Link_in_List_TypedEventRecord_for_DoubleBitBinarySpec_static(Node_TypedEventRecord_for_DoubleBitBinarySpec* first, Node_TypedEventRecord_for_DoubleBitBinarySpec* second);
+
+     uint32_t Capacity_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+Node_TypedEventRecord_for_DoubleBitBinarySpec* Head_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+
+Node_TypedEventRecord_for_DoubleBitBinarySpec* Add_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
+                                      TypedEventRecord_for_DoubleBitBinarySpec* value);
+Node_TypedEventRecord_for_DoubleBitBinarySpec* Insert_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
+                                                                TypedEventRecord_for_DoubleBitBinarySpec* value,
+                                                                Node_TypedEventRecord_for_DoubleBitBinarySpec* left,
+                                                                Node_TypedEventRecord_for_DoubleBitBinarySpec* right
+                                                                  );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

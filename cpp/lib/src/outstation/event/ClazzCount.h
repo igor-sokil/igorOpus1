@@ -95,11 +95,12 @@ typedef struct
 ////    }
 
 ////private:
-  uint32_t num_class_1 = 0;
-  uint32_t num_class_2 = 0;
-  uint32_t num_class_3 = 0;
+  uint32_t num_class_1;// = 0;
+  uint32_t num_class_2;// = 0;
+  uint32_t num_class_3;// = 0;
 } ClazzCount;
 
+void ClazzCount_in_ClazzCount(ClazzCount* pClazzCount);
 boolean Any_in_ClazzCount(ClazzCount *pClazzCount);
 void Decrement_in_ClazzCount(ClazzCount *pClazzCount, EventClass_uint8_t clazz);
 void Increment_in_ClazzCount(ClazzCount *pClazzCount, EventClass_uint8_t clazz);

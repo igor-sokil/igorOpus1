@@ -30,6 +30,7 @@
  * The object to represent a setpoint request from the master. Think of
  * this like turning a dial on the front of a machine to desired setting.
  */
+//----------------------------------AnalogOutput_for_Int16----------------------------------
 ////template<class T> class AnalogOutput
 typedef struct
 {
@@ -63,6 +64,8 @@ typedef struct
 ////{
 ////    return pAnalogOutput_for_Int16->value == lhs->value;
 ////}
+//----------------------------------AnalogOutput_for_Int16----------------------------------
+//----------------------------------AnalogOutput_for_Int32----------------------------------
 
 typedef struct
 {
@@ -96,6 +99,8 @@ typedef struct
 ////{
 ////    return pAnalogOutput_for_Int32->value == lhs->value;
 ////}
+//----------------------------------AnalogOutput_for_Int32----------------------------------
+//----------------------------------AnalogOutput_for_Float32----------------------------------
 
 typedef struct
 {
@@ -123,12 +128,14 @@ typedef struct
   void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over1(AnalogOutput_for_Float32 *);
   void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over2(AnalogOutput_for_Float32 *, float value_);
   void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over3(AnalogOutput_for_Float32 *, float value_, CommandStatus_uint8_t status_);
-  boolean ValuesEqual_in_AnalogOutput_for_Float32(AnalogOutput_for_Float32 *pAnalogOutput_for_Float32, AnalogOutput_for_Float32 *lhs);
+//  boolean ValuesEqual_in_AnalogOutput_for_Float32(AnalogOutput_for_Float32 *pAnalogOutput_for_Float32, AnalogOutput_for_Float32 *lhs);
 
 ////  boolean ValuesEqual_in_AnalogOutput_for_Float32(AnalogOutput_for_Float32 *pAnalogOutput_for_Float32, AnalogOutput_for_Float32 *lhs)
 ////{
 ////    return pAnalogOutput_for_Float32->value == lhs->value;
 ////}
+//----------------------------------AnalogOutput_for_Float32----------------------------------
+//----------------------------------AnalogOutput_for_Double64----------------------------------
 
 typedef struct
 {
@@ -156,12 +163,13 @@ typedef struct
   void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over1(AnalogOutput_for_Double64 *);
   void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over2(AnalogOutput_for_Double64 *, double value_);
   void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over3(AnalogOutput_for_Double64 *, double value_, CommandStatus_uint8_t status_);
-  boolean ValuesEqual_in_AnalogOutput_for_Double64(AnalogOutput_for_Double64 *pAnalogOutput_for_Double64, AnalogOutput_for_Double64 *lhs);
+//  boolean ValuesEqual_in_AnalogOutput_for_Double64(AnalogOutput_for_Double64 *pAnalogOutput_for_Double64, AnalogOutput_for_Double64 *lhs);
 
 ////  boolean ValuesEqual_in_AnalogOutput_for_Double64(AnalogOutput_for_Double64 *pAnalogOutput_for_Double64, AnalogOutput_for_Double64 *lhs)
 ////{
 ////    return pAnalogOutput_for_Double64->value == lhs->value;
 ////}
+//----------------------------------AnalogOutput_for_Double64----------------------------------
 
 /**
  *	16-bit signed integer analog output. The underlying serialization is Group41, Variation 2
@@ -173,7 +181,7 @@ typedef struct
 ////    AnalogOutputInt16();
 ////    AnalogOutputInt16(int16_t);
 ////    AnalogOutputInt16(int16_t, CommandStatus);
-  AnalogOutput_for_Int16 AnalogOutput_for_Int16;
+  AnalogOutput_for_Int16 aAnalogOutput_for_Int16;
 
 ////    bool operator==(const AnalogOutputInt16& arRHS) const;
 
@@ -194,7 +202,7 @@ typedef struct
 ////    AnalogOutputInt32();
 ////    AnalogOutputInt32(int32_t);
 ////    AnalogOutputInt32(int32_t, CommandStatus);
-  AnalogOutput_for_Int32 AnalogOutput_for_Int32;
+  AnalogOutput_for_Int32 aAnalogOutput_for_Int32;
 
 ////    bool operator==(const AnalogOutputInt32& arRHS) const;
 } AnalogOutputInt32;
@@ -214,7 +222,7 @@ typedef struct
 ////    AnalogOutputFloat32();
 ////    AnalogOutputFloat32(float);
 ////    AnalogOutputFloat32(float, CommandStatus);
-  AnalogOutput_for_Float32 AnalogOutput_for_Float32;
+  AnalogOutput_for_Float32 aAnalogOutput_for_Float32;
 
 ////    bool operator==(const AnalogOutputFloat32& arRHS) const;
 } AnalogOutputFloat32;
@@ -234,7 +242,7 @@ typedef struct
 ////    AnalogOutputDouble64();
 ////    AnalogOutputDouble64(double);
 ////    AnalogOutputDouble64(double, CommandStatus);
-  AnalogOutput_for_Double64 AnalogOutput_for_Double64;
+  AnalogOutput_for_Double64 aAnalogOutput_for_Double64;
 
 ////    bool operator==(const AnalogOutputDouble64& arRHS) const;
 } AnalogOutputDouble64;

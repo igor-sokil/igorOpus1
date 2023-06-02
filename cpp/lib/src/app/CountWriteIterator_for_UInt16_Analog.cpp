@@ -1,6 +1,7 @@
 #include "header.h"
 #include "CountWriteIterator_for_UInt16_Analog.h"
 #include "SerializationTemplates.h"
+#include <string.h>
 
     CountWriteIterator_for_UInt16_Analog Null_in_CountWriteIterator_for_UInt16_Analog_static(void)
 {

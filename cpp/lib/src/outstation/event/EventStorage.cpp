@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+#include "header.h"
 #include "EventStorage.h"
 
 #include "EventSelection.h"
@@ -104,43 +104,43 @@ boolean Update_for_OctetStringSpec_in_EventStorage(EventStorage *pEventStorage, 
 
 uint32_t SelectByType_in_EventStorageOver1(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max)
 {
-  return SelectByType_for_BinarySpec_in_EventSelection(&(pEventStorage->state), variation, max);
+  return SelectByType_for_BinarySpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
 }
 
 uint32_t SelectByType_in_EventStorageOver2(EventStorage *pEventStorage, EventDoubleBinaryVariation_uint8_t variation, uint32_t max)
 {
-  return SelectByType_for_DoubleBitBinarySpec_in_EventSelection(&(pEventStorage->state), variation, max);
+  return SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
 }
 
 uint32_t SelectByType_in_EventStorageOver3(EventStorage *pEventStorage, EventAnalogVariation_uint8_t variation, uint32_t max)
 {
-  return SelectByType_for_AnalogSpec_in_EventSelection_static(&(pEventStorage->state), variation, max);
+  return SelectByType_for_AnalogSpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
 }
 
 uint32_t SelectByType_in_EventStorageOver4(EventStorage *pEventStorage, EventCounterVariation_uint8_t variation, uint32_t max)
 {
-  return SelectByType_for_CounterSpec_in_EventSelection_static(&(pEventStorage->state), variation, max);
+  return SelectByType_for_CounterSpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
 }
 
 uint32_t SelectByType_in_EventStorageOver5(EventStorage *pEventStorage, EventFrozenCounterVariation_uint8_t variation, uint32_t max)
 {
-  return SelectByType_for_FrozenCounterSpec_in_EventSelection_static(&(pEventStorage->state), variation, max);
+  return SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
 }
 
 uint32_t SelectByType_in_EventStorageOver6(EventStorage *pEventStorage, EventBinaryOutputStatusVariation_uint8_t variation, uint32_t max)
 {
-  return SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_static(&(pEventStorage->state), variation, max);
+  return SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
 ////  return 0;
 }
 
 uint32_t SelectByType_in_EventStorageOver7(EventStorage *pEventStorage, EventAnalogOutputStatusVariation_uint8_t variation, uint32_t max)
 {
-  return SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_static(&(pEventStorage->state), variation, max);
+  return SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
 }
 
 uint32_t SelectByType_in_EventStorageOver8(EventStorage *pEventStorage, EventOctetStringVariation_uint8_t variation, uint32_t max)
 {
-  return SelectByType_for_OctetStringSpec_in_EventSelection_static(&(pEventStorage->state), variation, max);
+  return SelectByType_for_OctetStringSpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
 }
 
 uint32_t SelectByType_in_EventStorageOver9(EventStorage *pEventStorage, EventType_uint16_t type, uint32_t max)
@@ -148,21 +148,21 @@ uint32_t SelectByType_in_EventStorageOver9(EventStorage *pEventStorage, EventTyp
   switch (type)
   {
   case (EventType_Binary):
-    return SelectByType_for_BinarySpec_in_EventSelection_static(&(pEventStorage->state), max);
+    return SelectByType_for_BinarySpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
   case (EventType_DoubleBitBinary):
-    return SelectByType_for_DoubleBitBinarySpec_in_EventSelection(&(pEventStorage->state), max);
+    return SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
   case (EventType_Counter):
-    return SelectByType_for_CounterSpec_in_EventSelection_static(&(pEventStorage->state), max);
+    return SelectByType_for_CounterSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
   case (EventType_FrozenCounter):
-    return SelectByType_for_FrozenCounterSpec_in_EventSelection_static(&(pEventStorage->state), max);
+    return SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
   case (EventType_Analog):
-    return SelectByType_for_AnalogSpec_in_EventSelection_static(&(pEventStorage->state), max);
+    return SelectByType_for_AnalogSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
   case (EventType_BinaryOutputStatus):
-    return SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_static(&(pEventStorage->state), max);
+    return SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
   case (EventType_AnalogOutputStatus):
-    return SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_static(&(pEventStorage->state), max);
+    return SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
   case (EventType_OctetString):
-    return SelectByType_for_OctetStringSpec_in_EventSelection_static(&(pEventStorage->state), max);
+    return SelectByType_for_OctetStringSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
   default:
     return 0;
   }
@@ -200,11 +200,13 @@ uint32_t SelectByType_in_EventStorageOver9(EventStorage *pEventStorage, EventTyp
 }
 
 ////uint32_t EventStorage::Write(IEventWriteHandler* handler)
-    uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler);
+    uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler)
 {
 ////  return EventWriting::Write(this->state, handler);
     return Write_in_EventWriting_static(&(pEventStorage->state), handler);
 }
+
+ boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record);
 
  boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record)
 {
@@ -239,17 +241,37 @@ uint32_t SelectByType_in_EventStorageOver9(EventStorage *pEventStorage, EventTyp
 
 ////  return this->state.events.RemoveAll(&((pEventStorage->state).events), written);
  return RemoveAll_in_List_for_EventRecord(pEventStorage, &((pEventStorage->state).events), written_in_EventStorage);
-
 }
 
-void EventStorage::Unselect()
+void clear_in_EventStorage(EventRecord* record);
+void clear_in_EventStorage(EventRecord* record)
 {
-  auto clear = [](EventRecord& record) -> void { record.state = EventState::unselected; };
+  record->state = EventState_unselected;
+}
 
-  this->state.events.Foreach(clear);
+void Unselect_in_EventStorage(EventStorage *pEventStorage)
+{
+//  EventLists state;
+//  List_for_EventRecord events;
+//  EventClassCounters counters;
+//void ResetOnFail_in_EventClassCounters(EventClassCounters *pEventClassCounters);
+////  auto clear = [](EventRecord& record) -> void { record.state = EventState::unselected; };
+
+////  this->state.events.Foreach(clear);
+      Foreach_in_List_for_EventRecord(&((pEventStorage->state).events), clear_in_EventStorage);
 
   // keep the total, but clear the selected/written
-  this->state.counters.ResetOnFail();
+////  this->state.counters.ResetOnFail();
+  ResetOnFail_in_EventClassCounters(&((pEventStorage->state).counters));
 }
-
+/*
+////template<class T> template<class U> void List<T>::Foreach(const U& action)
+////{
+////    auto iter = this->Iterate();
+////    while (iter.HasNext())
+////    {
+////        action(iter.Next()->value);
+////    }
+////}
+*/
 ////} // namespace opendnp3

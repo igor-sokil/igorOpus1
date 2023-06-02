@@ -3,13 +3,6 @@
 #include "List_for_EventRecord.h"
 #include <string.h>
 
-void Node_for_EventRecord_in_Node_for_EventRecord(Node_for_EventRecord *pNode_for_EventRecord)
-{
-  EventRecord_in_EventRecordOver1(&(pNode_for_EventRecord->value));
-  pNode_for_EventRecord->prev = NULL;
-  pNode_for_EventRecord->next = NULL;
-}
-
 void List_for_EventRecord_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord)
 {
   (pList_for_EventRecord->iIterator_in_List_for_EventRecord).current = NULL;
@@ -107,3 +100,106 @@ void   Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord(It
         second->prev = (void *)first;
 }
 
+void List_for_EventRecord_in_List_for_EventRecordOver2(List_for_EventRecord *pList_for_EventRecord, uint32_t maxSize)
+    {
+// ser4cpp::HasLength<list_size_type_t>(0), underlying(maxSize)
+//    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
+        HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_for_EventRecord->hHasLength_for_Uint32_t), 0);
+//void Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(Array__for__Node_for_EventRecord *pArray__for__Node_for_EventRecord, uint32_t size);
+        Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(&(pList_for_EventRecord->underlying), maxSize);
+        Initialize_in_List_for_EventRecord(pList_for_EventRecord);
+    }
+
+void Initialize_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord)
+{
+////    if (underlying.is_empty())
+//    boolean is_empty_in_HasLength_for_Uint32_t(HasLength_for_Uint32_t *pHasLength);
+    if(is_empty_in_HasLength_for_Uint32_t(&(pList_for_EventRecord -> underlying).hHasLength_for_Uint32_t))
+        return;
+
+    pList_for_EventRecord->free = &((pList_for_EventRecord->underlying).buffer[0]);////&underlying[0];
+////    for (list_size_type_t i = 1; i < underlying.length(); ++i)
+    for (uint32_t i = 1; i < length_in_HasLength_for_Uint32_t(&(pList_for_EventRecord -> underlying).hHasLength_for_Uint32_t); ++i)
+    {
+////        Link(&underlying[i - 1], &underlying[i]);
+    Link_in_List_for_EventRecord_static(&((pList_for_EventRecord->underlying).buffer[i - 1]),
+                                        &((pList_for_EventRecord->underlying).buffer[i]));
+    }
+}
+
+     uint32_t Capacity_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord) 
+    {
+//        return underlying.length();
+     return length_in_HasLength_for_Uint32_t(&((pList_for_EventRecord->underlying).hHasLength_for_Uint32_t));
+    }
+
+boolean IsFullAndCapacityNotZero_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord)
+{
+    return !(pList_for_EventRecord->free) && Capacity_in_List_for_EventRecord(pList_for_EventRecord) > 0;
+}
+
+Node_for_EventRecord* Head_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord)
+    {
+        return pList_for_EventRecord->head;
+    }
+
+Node_for_EventRecord* Add_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, EventRecord* value)
+{
+////    return this->Insert(value, this->tail, nullptr);
+    return  Insert_in_List_for_EventRecord(pList_for_EventRecord, value, pList_for_EventRecord->tail, NULL);
+}
+
+////template<class T> Node<T>* List<T>::Insert(const T& value, Node<T>* left, Node<T>* right)
+Node_for_EventRecord*  Insert_in_List_for_EventRecord(List_for_EventRecord* pList_for_EventRecord, 
+                                                      EventRecord* value, Node_for_EventRecord* left, 
+                                                                          Node_for_EventRecord* right)
+{
+    if (!pList_for_EventRecord->free)
+        return NULL;
+
+    // initialize the new node, and increment the size
+    Node_for_EventRecord* new_node = pList_for_EventRecord->free;
+    pList_for_EventRecord->free = (Node_for_EventRecord*)pList_for_EventRecord->free->next;
+
+    new_node->value = *value;
+////    ++(this->m_length);
+    ++((pList_for_EventRecord->hHasLength_for_Uint32_t).m_length);
+
+//   void Link_in_List_for_EventRecord_static(Node_for_EventRecord* first, Node_for_EventRecord* second);
+////    this->Link(left, new_node);
+     Link_in_List_for_EventRecord_static(left, new_node);
+
+////    this->Link(new_node, right);
+     Link_in_List_for_EventRecord_static(new_node, right);
+
+    // change of head
+    if (!left)
+    {
+        pList_for_EventRecord->head = new_node;
+    }
+
+    // change of tail
+    if (!right)
+    {
+        pList_for_EventRecord->tail = new_node;
+    }
+
+    return new_node;
+}
+
+EventRecord *Find__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord,
+                                                        boolean (*matches)(EventRecord* pEventRecord))
+{
+////    while (this->current)
+    while (pIterator_in_List_for_EventRecord->current)
+    {
+        if (matches(&(pIterator_in_List_for_EventRecord->current->value)))
+        {
+            return &(pIterator_in_List_for_EventRecord->current->value);
+       }
+
+        pIterator_in_List_for_EventRecord->current = (Node_for_EventRecord*)pIterator_in_List_for_EventRecord->current->next;
+    }
+
+    return NULL;
+}

@@ -20,10 +20,11 @@
 #ifndef OPENDNP3_List_TypedEventRecord_for_AnalogSpec_H
 #define OPENDNP3_List_TypedEventRecord_for_AnalogSpec_H
 
-#include <string.h>
 #include "HasLength.h"
 #include "EventRecord.h"
 ////#include <ser4cpp/container/Array.h>
+#include "Array__for__Node_TypedEventRecord_for_AnalogSpec.h"
+#include "Node_TypedEventRecord_for_AnalogSpec.h"
 
 ////#include <cstdint>
 
@@ -31,29 +32,6 @@
 ////{
 
 ////using list_size_type_t = uint32_t;
-/*
-////template<class T> class Node
-typedef struct
-{
-////public:
-////    Node() = default;
-
-////    T value;
-  EventRecord value;
-
-////private:
-////    Node* prev = nullptr;
-////    Node_for_EventRecord * prev;
-  void * prev;
-////    Node_for_EventRecord * next;
-  void * next;
-////    Node* next = nullptr;
-
-////    template<class U> friend class List;
-} Node_for_EventRecord;
-
-void Node_for_EventRecord_in_Node_for_EventRecord(Node_for_EventRecord *pNode_for_EventRecord);
-*/
 ////    class Iterator
 typedef struct
 {
@@ -93,18 +71,18 @@ typedef struct
 ////        Iterator(Node<T>* start) : current(start) {}
 ////
 ////        Node<T>* current;
-  Node_for_EventRecord * current;
+  Node_TypedEventRecord_for_AnalogSpec * current;
 } Iterator_in_List_TypedEventRecord_for_AnalogSpec;
 
-Iterator_in_List_TypedEventRecord_for_AnalogSpec From__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec_static(Node_for_EventRecord* start);
+Iterator_in_List_TypedEventRecord_for_AnalogSpec From__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec_static(Node_TypedEventRecord_for_AnalogSpec* start);
 
-EventRecord* CurrentValue__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec(Iterator_in_List_TypedEventRecord_for_AnalogSpec *pIterator_in_List_TypedEventRecord_for_AnalogSpec);
-Node_for_EventRecord* Current__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec(Iterator_in_List_TypedEventRecord_for_AnalogSpec *pIterator_in_List_TypedEventRecord_for_AnalogSpec);
-Node_for_EventRecord* Next__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec(Iterator_in_List_TypedEventRecord_for_AnalogSpec *pIterator_in_List_TypedEventRecord_for_AnalogSpec);
+TypedEventRecord_for_AnalogSpec* CurrentValue__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec(Iterator_in_List_TypedEventRecord_for_AnalogSpec *pIterator_in_List_TypedEventRecord_for_AnalogSpec);
+Node_TypedEventRecord_for_AnalogSpec* Current__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec(Iterator_in_List_TypedEventRecord_for_AnalogSpec *pIterator_in_List_TypedEventRecord_for_AnalogSpec);
+Node_TypedEventRecord_for_AnalogSpec* Next__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec(Iterator_in_List_TypedEventRecord_for_AnalogSpec *pIterator_in_List_TypedEventRecord_for_AnalogSpec);
 boolean HasNext__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec(Iterator_in_List_TypedEventRecord_for_AnalogSpec *pIterator_in_List_TypedEventRecord_for_AnalogSpec);
 
 void  Iterator_in_List_TypedEventRecord_for_AnalogSpec__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec(Iterator_in_List_TypedEventRecord_for_AnalogSpec *pIterator_in_List_TypedEventRecord_for_AnalogSpec,
-    Node_for_EventRecord* start);
+    Node_TypedEventRecord_for_AnalogSpec* start);
 
 // A container adapter for a -linked list
 ////template<class T> class List : public ser4cpp::HasLength<list_size_type_t>
@@ -190,11 +168,12 @@ typedef struct
   Iterator_in_List_TypedEventRecord_for_AnalogSpec iIterator_in_List_TypedEventRecord_for_AnalogSpec;
   HasLength_for_Uint32_t hHasLength_for_Uint32_t;
 
-  Node_for_EventRecord* head;// = nullptr;
-  Node_for_EventRecord* tail;// = nullptr;
-  Node_for_EventRecord* free;// = nullptr;
+  Node_TypedEventRecord_for_AnalogSpec* head;// = nullptr;
+  Node_TypedEventRecord_for_AnalogSpec* tail;// = nullptr;
+  Node_TypedEventRecord_for_AnalogSpec* free;// = nullptr;
 
 ////    ser4cpp::Array<Node<T>, list_size_type_t> underlying;
+  Array__for__Node_TypedEventRecord_for_AnalogSpec  underlying;
 
 ////    Node<T>* Insert(const T& value, Node<T>* left, Node<T>* right);
 
@@ -203,9 +182,33 @@ typedef struct
 ////    void Initialize();
 } List_TypedEventRecord_for_AnalogSpec;
 
-void List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+void List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver1(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+void List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver2(
+       List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
+       uint32_t maxSize);
 
+    Iterator_in_List_TypedEventRecord_for_AnalogSpec Iterate_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
 
+  void Initialize_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_AnalogSpec(EventStorage *pEventStorage, 
+//                            List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec, 
+//                            boolean (*match)(EventStorage *pEventStorage, 
+//                            EventRecord* record));//const U& match);
+
+   void Remove_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec, Node_TypedEventRecord_for_AnalogSpec* node);
+   void Link_in_List_TypedEventRecord_for_AnalogSpec_static(Node_TypedEventRecord_for_AnalogSpec* first, Node_TypedEventRecord_for_AnalogSpec* second);
+
+     uint32_t Capacity_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+Node_TypedEventRecord_for_AnalogSpec* Head_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+
+Node_TypedEventRecord_for_AnalogSpec* Add_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
+                                      TypedEventRecord_for_AnalogSpec* value);
+Node_TypedEventRecord_for_AnalogSpec* Insert_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
+                                                                TypedEventRecord_for_AnalogSpec* value,
+                                                                Node_TypedEventRecord_for_AnalogSpec* left,
+                                                                Node_TypedEventRecord_for_AnalogSpec* right
+                                                                  );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

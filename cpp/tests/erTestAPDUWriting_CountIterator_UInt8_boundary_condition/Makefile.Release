@@ -16,7 +16,7 @@ CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -fno-keep-inline-dllexport -O2 -Wall -W -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -O2 -Wall -W -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I. -I..\..\..\qtsrc -I..\..\..\cpp\lib\include\opendnp3\app -I..\..\..\cpp\lib\include\opendnp3\gen -I..\..\..\cpp\lib\include\opendnp3\master -I..\..\..\cpp\lib\include\opendnp3\outstation -I..\..\..\cpp\lib\include\opendnp3\util -I..\..\..\cpp\lib\src\app -I..\..\..\cpp\lib\src\app\parsing -I..\..\..\cpp\lib\src\link -I..\..\..\cpp\lib\include\opendnp3\link -I..\..\..\cpp\lib\src\gen -I..\..\..\cpp\lib\src\gen\objects -I..\..\..\ser4cpp\container -I..\..\..\ser4cpp\util -I..\..\..\ser4cpp\serialization -I..\..\..\cpp\tests\unit\utils -ID:\QT_5.12\5.12.3\mingw73_32\include -ID:\QT_5.12\5.12.3\mingw73_32\include\QtWidgets -ID:\QT_5.12\5.12.3\mingw73_32\include\QtGui -ID:\QT_5.12\5.12.3\mingw73_32\include\QtANGLE -ID:\QT_5.12\5.12.3\mingw73_32\include\QtCore -Irelease -ID:\QT_5.12\5.12.3\mingw73_32\mkspecs\win32-g++ 
+INCPATH       = -I. -I..\..\..\qtsrc -I..\..\..\cpp\lib\include\opendnp3\app -I..\..\..\cpp\lib\include\opendnp3\gen -I..\..\..\cpp\lib\include\opendnp3\master -I..\..\..\cpp\lib\include\opendnp3\outstation -I..\..\..\cpp\lib\include\opendnp3\util -I..\..\..\cpp\lib\include\opendnp3\link -I..\..\..\cpp\lib\src\app -I..\..\..\cpp\lib\src\app\parsing -I..\..\..\cpp\lib\src\link -I..\..\..\cpp\lib\src\outstation -I..\..\..\cpp\lib\src\outstation\event -I..\..\..\cpp\lib\src\gen -I..\..\..\cpp\lib\src\gen\objects -I..\..\..\ser4cpp\container -I..\..\..\ser4cpp\util -I..\..\..\ser4cpp\serialization -I..\..\..\cpp\tests\unit\utils -ID:\QT_5.12\5.12.3\mingw73_32\include -ID:\QT_5.12\5.12.3\mingw73_32\include\QtWidgets -ID:\QT_5.12\5.12.3\mingw73_32\include\QtGui -ID:\QT_5.12\5.12.3\mingw73_32\include\QtANGLE -ID:\QT_5.12\5.12.3\mingw73_32\include\QtCore -Irelease -ID:\QT_5.12\5.12.3\mingw73_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,console -mthreads
 LIBS        =        -LD:\QT_5.12\5.12.3\mingw73_32\lib D:\QT_5.12\5.12.3\mingw73_32\lib\libQt5Widgets.a D:\QT_5.12\5.12.3\mingw73_32\lib\libQt5Gui.a D:\QT_5.12\5.12.3\mingw73_32\lib\libQt5Core.a   
@@ -77,6 +77,8 @@ SOURCES       = ..\..\..\ser4cpp\util\Comparisons.cpp \
 		..\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp \
 		..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp \
 		..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp \
+		..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp \
+		..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp \
 		..\..\..\cpp\lib\src\app\ClassField.cpp \
 		..\..\..\cpp\lib\src\app\ControlRelayOutputBlock.cpp \
 		..\..\..\cpp\lib\src\app\DNP3Serializer.cpp \
@@ -93,9 +95,17 @@ SOURCES       = ..\..\..\ser4cpp\util\Comparisons.cpp \
 		..\..\..\cpp\lib\src\app\OctetData.cpp \
 		..\..\..\cpp\lib\src\app\QualityFlags.cpp \
 		..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp \
+		..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp \
 		..\..\..\cpp\lib\src\app\Serializer.cpp \
 		..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp \
 		..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Counter.cpp \
+		..\..\..\cpp\lib\src\app\DownSampling.cpp \
+		..\..\..\cpp\lib\src\outstation\Event.cpp \
+		..\..\..\cpp\lib\src\outstation\EventBufferConfig.cpp \
+		..\..\..\cpp\lib\src\outstation\event\ClazzCount.cpp \
+		..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
+		..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
+		..\..\..\cpp\lib\src\outstation\event\EventRecord.cpp \
 		..\..\..\cpp\lib\src\gen\Attributes.cpp \
 		..\..\..\cpp\lib\src\gen\DoubleBit.cpp \
 		..\..\..\cpp\lib\src\gen\CommandStatus.cpp \
@@ -103,6 +113,11 @@ SOURCES       = ..\..\..\ser4cpp\util\Comparisons.cpp \
 		..\..\..\cpp\lib\src\gen\FunctionCode.cpp \
 		..\..\..\cpp\lib\src\gen\objects\Group60.cpp \
 		..\..\..\cpp\lib\src\gen\objects\Group1.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group2.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group20.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group30.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group50.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group51.cpp \
 		..\..\..\cpp\tests\unit\utils\APDUHelpers.cpp \
 		MainWindow.cpp \
 		loghandler.cpp \
@@ -138,6 +153,8 @@ OBJECTS       = release/Comparisons.o \
 		release/BinaryCommandEvent.o \
 		release/BitfieldRangeWriteIterator_for_uint8.o \
 		release/CountWriteIterator_for_UInt8_Binary.o \
+		release/CountWriteIterator_for_UInt16_Analog.o \
+		release/CountWriteIterator_for_UInt8_Analog.o \
 		release/ClassField.o \
 		release/ControlRelayOutputBlock.o \
 		release/DNP3Serializer.o \
@@ -154,9 +171,17 @@ OBJECTS       = release/Comparisons.o \
 		release/OctetData.o \
 		release/QualityFlags.o \
 		release/PrefixedWriteIterator_for_UInt16_OctetString.o \
+		release/PrefixedWriteIterator_for_UInt16_Binary.o \
 		release/Serializer.o \
 		release/RangeWriteIterator_for_UInt8_Binary.o \
 		release/RangeWriteIterator_for_UInt8_Counter.o \
+		release/DownSampling.o \
+		release/Event.o \
+		release/EventBufferConfig.o \
+		release/ClazzCount.o \
+		release/List_for_EventRecord_part1.o \
+		release/List_for_EventRecord_part2.o \
+		release/EventRecord.o \
 		release/Attributes.o \
 		release/DoubleBit.o \
 		release/CommandStatus.o \
@@ -164,6 +189,11 @@ OBJECTS       = release/Comparisons.o \
 		release/FunctionCode.o \
 		release/Group60.o \
 		release/Group1.o \
+		release/Group2.o \
+		release/Group20.o \
+		release/Group30.o \
+		release/Group50.o \
+		release/Group51.o \
 		release/APDUHelpers.o \
 		release/MainWindow.o \
 		release/loghandler.o \
@@ -224,6 +254,8 @@ DIST          =  ..\..\..\qtsrc\loghandler.h \
 		..\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp \
 		..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp \
 		..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp \
+		..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp \
+		..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp \
 		..\..\..\cpp\lib\src\app\ClassField.cpp \
 		..\..\..\cpp\lib\src\app\ControlRelayOutputBlock.cpp \
 		..\..\..\cpp\lib\src\app\DNP3Serializer.cpp \
@@ -240,9 +272,17 @@ DIST          =  ..\..\..\qtsrc\loghandler.h \
 		..\..\..\cpp\lib\src\app\OctetData.cpp \
 		..\..\..\cpp\lib\src\app\QualityFlags.cpp \
 		..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp \
+		..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp \
 		..\..\..\cpp\lib\src\app\Serializer.cpp \
 		..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp \
 		..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Counter.cpp \
+		..\..\..\cpp\lib\src\app\DownSampling.cpp \
+		..\..\..\cpp\lib\src\outstation\Event.cpp \
+		..\..\..\cpp\lib\src\outstation\EventBufferConfig.cpp \
+		..\..\..\cpp\lib\src\outstation\event\ClazzCount.cpp \
+		..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
+		..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
+		..\..\..\cpp\lib\src\outstation\event\EventRecord.cpp \
 		..\..\..\cpp\lib\src\gen\Attributes.cpp \
 		..\..\..\cpp\lib\src\gen\DoubleBit.cpp \
 		..\..\..\cpp\lib\src\gen\CommandStatus.cpp \
@@ -250,6 +290,11 @@ DIST          =  ..\..\..\qtsrc\loghandler.h \
 		..\..\..\cpp\lib\src\gen\FunctionCode.cpp \
 		..\..\..\cpp\lib\src\gen\objects\Group60.cpp \
 		..\..\..\cpp\lib\src\gen\objects\Group1.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group2.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group20.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group30.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group50.cpp \
+		..\..\..\cpp\lib\src\gen\objects\Group51.cpp \
 		..\..\..\cpp\tests\unit\utils\APDUHelpers.cpp \
 		MainWindow.cpp \
 		loghandler.cpp \
@@ -273,12 +318,13 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) TestAPDUWriting_CountIterator_UInt8_boundary_condition.zip $(SOURCES) $(DIST) TestAPDUWriting_CountIterator_UInt8_boundary_condition.pro D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\spec_pre.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\qdevice.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\device_config.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\sanitize.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\gcc-base.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\g++-base.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\angle.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\windows-vulkan.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\g++-win32.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\qconfig.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\qt_functions.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\qt_config.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\win32-g++\qmake.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\spec_post.prf ..\..\..\.qmake.stash D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\exclusive_builds.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\toolchain.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\default_pre.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\win32\default_pre.prf TestAPDUWriting_CountIterator_UInt8_boundary_condition.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\resolve_config.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\exclusive_builds_post.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\default_post.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\build_pass.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\win32\console.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\precompile_header.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\warn_on.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\qt.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\resources.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\moc.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\win32\opengl.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\uic.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\qmake_use.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\file_copies.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\testcase_targets.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\exceptions.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\yacc.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\lex.prf TestAPDUWriting_CountIterator_UInt8_boundary_condition.pro D:\QT_5.12\5.12.3\mingw73_32\lib\Qt5Widgets.prl D:\QT_5.12\5.12.3\mingw73_32\lib\Qt5Gui.prl D:\QT_5.12\5.12.3\mingw73_32\lib\Qt5Core.prl    D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\data\dummy.cpp ..\..\..\qtsrc\loghandler.h ..\..\..\qtsrc\key_filter.h ..\..\..\qtsrc\MainWindow.h ..\..\..\qtsrc\header.h ..\..\..\ser4cpp\util\Comparisons.h ..\..\..\ser4cpp\container\HasLength.h ..\..\..\ser4cpp\container\RSeq.h ..\..\..\cpp\lib\include\opendnp3\app\BaseMeasurementTypes.h ..\..\..\cpp\lib\include\opendnp3\app\MeasurementInfo.h ..\..\..\cpp\lib\include\opendnp3\app\DNPTime.h ..\..\..\cpp\lib\include\opendnp3\app\Flags.h ..\..\..\cpp\lib\include\opendnp3\app\EventTriggers.h ..\..\..\cpp\lib\include\opendnp3\app\AnalogOutput.h ..\..\..\cpp\lib\include\opendnp3\app\IINField.h ..\..\..\cpp\lib\include\opendnp3\app\ClassField.h ..\..\..\cpp\lib\include\opendnp3\app\ControlRelayOutputBlock.h ..\..\..\cpp\lib\include\opendnp3\app\BinaryCommandEvent.h ..\..\..\cpp\lib\include\opendnp3\gen\CommandStatus.h ..\..\..\cpp\lib\include\opendnp3\master\ResponseInfo.h ..\..\..\cpp\lib\include\opendnp3\outstation\MeasurementConfig.h ..\..\..\cpp\lib\src\app\Functions.h ..\..\..\cpp\lib\src\app\AppControlField.h ..\..\..\cpp\lib\src\app\APDUHeader.h ..\..\..\cpp\lib\src\app\Serializer.h  ..\..\..\ser4cpp\util\Comparisons.cpp ..\..\..\ser4cpp\container\HasLength.cpp ..\..\..\ser4cpp\container\RSeq.cpp ..\..\..\ser4cpp\container\WSeq.cpp ..\..\..\ser4cpp\container\Settable.cpp ..\..\..\ser4cpp\container\BufferSer4.cpp ..\..\..\ser4cpp\container\StaticBuffer.cpp ..\..\..\ser4cpp\serialization\SerializationTemplates.cpp ..\..\..\cpp\lib\include\opendnp3\util\Buffer.cpp ..\..\..\cpp\lib\include\opendnp3\master\CommandPointResult.cpp ..\..\..\cpp\lib\include\opendnp3\master\HeaderInfo.cpp ..\..\..\cpp\lib\include\opendnp3\app\BaseMeasurementTypes.cpp ..\..\..\cpp\lib\include\opendnp3\app\DNPTime.cpp ..\..\..\cpp\lib\include\opendnp3\app\Flags.cpp ..\..\..\cpp\lib\include\opendnp3\app\GroupVariationID.cpp ..\..\..\cpp\lib\include\opendnp3\app\OctetString.cpp ..\..\..\cpp\lib\include\opendnp3\app\Indexed.cpp ..\..\..\cpp\lib\src\link\Addresses.cpp ..\..\..\cpp\lib\src\app\parsing\APDUHeaderParser.cpp ..\..\..\cpp\lib\src\app\parsing\ParseResult.cpp ..\..\..\cpp\lib\src\app\AnalogCommandEvent.cpp ..\..\..\cpp\lib\src\app\AnalogOutput.cpp ..\..\..\cpp\lib\src\app\APDUHeader.cpp ..\..\..\cpp\lib\src\app\AppControlField.cpp ..\..\..\cpp\lib\src\app\APDURequest.cpp ..\..\..\cpp\lib\src\app\APDUWrapper.cpp ..\..\..\cpp\lib\src\app\APDUResponse.cpp ..\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp ..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp ..\..\..\cpp\lib\src\app\ClassField.cpp ..\..\..\cpp\lib\src\app\ControlRelayOutputBlock.cpp ..\..\..\cpp\lib\src\app\DNP3Serializer.cpp ..\..\..\cpp\lib\src\app\IINField.cpp ..\..\..\cpp\lib\src\app\EventTriggers.cpp ..\..\..\cpp\lib\src\app\Functions.cpp ..\..\..\cpp\lib\src\app\HeaderWriter.cpp ..\..\..\cpp\lib\src\app\GroupVariationRecord.cpp ..\..\..\cpp\lib\src\app\MeasurementInfo.cpp ..\..\..\cpp\lib\src\app\MeasurementTypeSpecs.cpp ..\..\..\cpp\lib\src\app\MeasurementFactory.cpp ..\..\..\cpp\lib\src\app\MeasurementTypes.cpp ..\..\..\cpp\lib\src\app\range.cpp ..\..\..\cpp\lib\src\app\OctetData.cpp ..\..\..\cpp\lib\src\app\QualityFlags.cpp ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp ..\..\..\cpp\lib\src\app\Serializer.cpp ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Counter.cpp ..\..\..\cpp\lib\src\gen\Attributes.cpp ..\..\..\cpp\lib\src\gen\DoubleBit.cpp ..\..\..\cpp\lib\src\gen\CommandStatus.cpp ..\..\..\cpp\lib\src\gen\IntervalUnits.cpp ..\..\..\cpp\lib\src\gen\FunctionCode.cpp ..\..\..\cpp\lib\src\gen\objects\Group60.cpp ..\..\..\cpp\lib\src\gen\objects\Group1.cpp ..\..\..\cpp\tests\unit\utils\APDUHelpers.cpp MainWindow.cpp loghandler.cpp main.cpp     
+	$(ZIP) TestAPDUWriting_CountIterator_UInt8_boundary_condition.zip $(SOURCES) $(DIST) TestAPDUWriting_CountIterator_UInt8_boundary_condition.pro D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\spec_pre.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\qdevice.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\device_config.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\sanitize.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\gcc-base.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\g++-base.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\angle.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\windows-vulkan.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\common\g++-win32.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\qconfig.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\qt_functions.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\qt_config.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\win32-g++\qmake.conf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\exclusive_builds.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\toolchain.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\default_pre.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\win32\default_pre.prf TestAPDUWriting_CountIterator_UInt8_boundary_condition.pri D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\resolve_config.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\exclusive_builds_post.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\default_post.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\build_pass.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\win32\console.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\precompile_header.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\warn_on.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\qt.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\resources.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\moc.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\win32\opengl.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\uic.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\qmake_use.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\file_copies.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\testcase_targets.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\exceptions.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\yacc.prf D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\lex.prf TestAPDUWriting_CountIterator_UInt8_boundary_condition.pro D:\QT_5.12\5.12.3\mingw73_32\lib\Qt5Widgets.prl D:\QT_5.12\5.12.3\mingw73_32\lib\Qt5Gui.prl D:\QT_5.12\5.12.3\mingw73_32\lib\Qt5Core.prl    D:\QT_5.12\5.12.3\mingw73_32\mkspecs\features\data\dummy.cpp ..\..\..\qtsrc\loghandler.h ..\..\..\qtsrc\key_filter.h ..\..\..\qtsrc\MainWindow.h ..\..\..\qtsrc\header.h ..\..\..\ser4cpp\util\Comparisons.h ..\..\..\ser4cpp\container\HasLength.h ..\..\..\ser4cpp\container\RSeq.h ..\..\..\cpp\lib\include\opendnp3\app\BaseMeasurementTypes.h ..\..\..\cpp\lib\include\opendnp3\app\MeasurementInfo.h ..\..\..\cpp\lib\include\opendnp3\app\DNPTime.h ..\..\..\cpp\lib\include\opendnp3\app\Flags.h ..\..\..\cpp\lib\include\opendnp3\app\EventTriggers.h ..\..\..\cpp\lib\include\opendnp3\app\AnalogOutput.h ..\..\..\cpp\lib\include\opendnp3\app\IINField.h ..\..\..\cpp\lib\include\opendnp3\app\ClassField.h ..\..\..\cpp\lib\include\opendnp3\app\ControlRelayOutputBlock.h ..\..\..\cpp\lib\include\opendnp3\app\BinaryCommandEvent.h ..\..\..\cpp\lib\include\opendnp3\gen\CommandStatus.h ..\..\..\cpp\lib\include\opendnp3\master\ResponseInfo.h ..\..\..\cpp\lib\include\opendnp3\outstation\MeasurementConfig.h ..\..\..\cpp\lib\src\app\Functions.h ..\..\..\cpp\lib\src\app\AppControlField.h ..\..\..\cpp\lib\src\app\APDUHeader.h ..\..\..\cpp\lib\src\app\Serializer.h  ..\..\..\ser4cpp\util\Comparisons.cpp ..\..\..\ser4cpp\container\HasLength.cpp ..\..\..\ser4cpp\container\RSeq.cpp ..\..\..\ser4cpp\container\WSeq.cpp ..\..\..\ser4cpp\container\Settable.cpp ..\..\..\ser4cpp\container\BufferSer4.cpp ..\..\..\ser4cpp\container\StaticBuffer.cpp ..\..\..\ser4cpp\serialization\SerializationTemplates.cpp ..\..\..\cpp\lib\include\opendnp3\util\Buffer.cpp ..\..\..\cpp\lib\include\opendnp3\master\CommandPointResult.cpp ..\..\..\cpp\lib\include\opendnp3\master\HeaderInfo.cpp ..\..\..\cpp\lib\include\opendnp3\app\BaseMeasurementTypes.cpp ..\..\..\cpp\lib\include\opendnp3\app\DNPTime.cpp ..\..\..\cpp\lib\include\opendnp3\app\Flags.cpp ..\..\..\cpp\lib\include\opendnp3\app\GroupVariationID.cpp ..\..\..\cpp\lib\include\opendnp3\app\OctetString.cpp ..\..\..\cpp\lib\include\opendnp3\app\Indexed.cpp ..\..\..\cpp\lib\src\link\Addresses.cpp ..\..\..\cpp\lib\src\app\parsing\APDUHeaderParser.cpp ..\..\..\cpp\lib\src\app\parsing\ParseResult.cpp ..\..\..\cpp\lib\src\app\AnalogCommandEvent.cpp ..\..\..\cpp\lib\src\app\AnalogOutput.cpp ..\..\..\cpp\lib\src\app\APDUHeader.cpp ..\..\..\cpp\lib\src\app\AppControlField.cpp ..\..\..\cpp\lib\src\app\APDURequest.cpp ..\..\..\cpp\lib\src\app\APDUWrapper.cpp ..\..\..\cpp\lib\src\app\APDUResponse.cpp ..\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp ..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp ..\..\..\cpp\lib\src\app\ClassField.cpp ..\..\..\cpp\lib\src\app\ControlRelayOutputBlock.cpp ..\..\..\cpp\lib\src\app\DNP3Serializer.cpp ..\..\..\cpp\lib\src\app\IINField.cpp ..\..\..\cpp\lib\src\app\EventTriggers.cpp ..\..\..\cpp\lib\src\app\Functions.cpp ..\..\..\cpp\lib\src\app\HeaderWriter.cpp ..\..\..\cpp\lib\src\app\GroupVariationRecord.cpp ..\..\..\cpp\lib\src\app\MeasurementInfo.cpp ..\..\..\cpp\lib\src\app\MeasurementTypeSpecs.cpp ..\..\..\cpp\lib\src\app\MeasurementFactory.cpp ..\..\..\cpp\lib\src\app\MeasurementTypes.cpp ..\..\..\cpp\lib\src\app\range.cpp ..\..\..\cpp\lib\src\app\OctetData.cpp ..\..\..\cpp\lib\src\app\QualityFlags.cpp ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp ..\..\..\cpp\lib\src\app\Serializer.cpp ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Counter.cpp ..\..\..\cpp\lib\src\app\DownSampling.cpp ..\..\..\cpp\lib\src\outstation\Event.cpp ..\..\..\cpp\lib\src\outstation\EventBufferConfig.cpp ..\..\..\cpp\lib\src\outstation\event\ClazzCount.cpp ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp ..\..\..\cpp\lib\src\outstation\event\EventRecord.cpp ..\..\..\cpp\lib\src\gen\Attributes.cpp ..\..\..\cpp\lib\src\gen\DoubleBit.cpp ..\..\..\cpp\lib\src\gen\CommandStatus.cpp ..\..\..\cpp\lib\src\gen\IntervalUnits.cpp ..\..\..\cpp\lib\src\gen\FunctionCode.cpp ..\..\..\cpp\lib\src\gen\objects\Group60.cpp ..\..\..\cpp\lib\src\gen\objects\Group1.cpp ..\..\..\cpp\lib\src\gen\objects\Group2.cpp ..\..\..\cpp\lib\src\gen\objects\Group20.cpp ..\..\..\cpp\lib\src\gen\objects\Group30.cpp ..\..\..\cpp\lib\src\gen\objects\Group50.cpp ..\..\..\cpp\lib\src\gen\objects\Group51.cpp ..\..\..\cpp\tests\unit\utils\APDUHelpers.cpp MainWindow.cpp loghandler.cpp main.cpp     
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\Comparisons.o release\HasLength.o release\RSeq.o release\WSeq.o release\Settable.o release\BufferSer4.o release\StaticBuffer.o release\SerializationTemplates.o release\Buffer.o release\CommandPointResult.o release\HeaderInfo.o release\BaseMeasurementTypes.o release\DNPTime.o release\Flags.o release\GroupVariationID.o release\OctetString.o release\Indexed.o release\Addresses.o release\APDUHeaderParser.o release\ParseResult.o release\AnalogCommandEvent.o release\AnalogOutput.o release\APDUHeader.o release\AppControlField.o release\APDURequest.o release\APDUWrapper.o release\APDUResponse.o release\BinaryCommandEvent.o release\BitfieldRangeWriteIterator_for_uint8.o release\CountWriteIterator_for_UInt8_Binary.o release\ClassField.o release\ControlRelayOutputBlock.o release\DNP3Serializer.o release\IINField.o release\EventTriggers.o release\Functions.o release\HeaderWriter.o release\GroupVariationRecord.o release\MeasurementInfo.o release\MeasurementTypeSpecs.o release\MeasurementFactory.o release\MeasurementTypes.o release\range.o release\OctetData.o release\QualityFlags.o release\PrefixedWriteIterator_for_UInt16_OctetString.o release\Serializer.o release\RangeWriteIterator_for_UInt8_Binary.o release\RangeWriteIterator_for_UInt8_Counter.o release\Attributes.o release\DoubleBit.o release\CommandStatus.o release\IntervalUnits.o release\FunctionCode.o release\Group60.o release\Group1.o release\APDUHelpers.o release\MainWindow.o release\loghandler.o release\main.o release\moc_key_filter.o release\moc_MainWindow.o
+	-$(DEL_FILE) release\Comparisons.o release\HasLength.o release\RSeq.o release\WSeq.o release\Settable.o release\BufferSer4.o release\StaticBuffer.o release\SerializationTemplates.o release\Buffer.o release\CommandPointResult.o release\HeaderInfo.o release\BaseMeasurementTypes.o release\DNPTime.o release\Flags.o release\GroupVariationID.o release\OctetString.o release\Indexed.o release\Addresses.o release\APDUHeaderParser.o release\ParseResult.o release\AnalogCommandEvent.o release\AnalogOutput.o release\APDUHeader.o release\AppControlField.o release\APDURequest.o release\APDUWrapper.o release\APDUResponse.o release\BinaryCommandEvent.o release\BitfieldRangeWriteIterator_for_uint8.o release\CountWriteIterator_for_UInt8_Binary.o release\CountWriteIterator_for_UInt16_Analog.o release\CountWriteIterator_for_UInt8_Analog.o release\ClassField.o release\ControlRelayOutputBlock.o release\DNP3Serializer.o release\IINField.o release\EventTriggers.o release\Functions.o release\HeaderWriter.o release\GroupVariationRecord.o release\MeasurementInfo.o release\MeasurementTypeSpecs.o release\MeasurementFactory.o release\MeasurementTypes.o release\range.o release\OctetData.o release\QualityFlags.o release\PrefixedWriteIterator_for_UInt16_OctetString.o release\PrefixedWriteIterator_for_UInt16_Binary.o release\Serializer.o release\RangeWriteIterator_for_UInt8_Binary.o release\RangeWriteIterator_for_UInt8_Counter.o release\DownSampling.o release\Event.o release\EventBufferConfig.o release\ClazzCount.o release\List_for_EventRecord_part1.o release\List_for_EventRecord_part2.o release\EventRecord.o release\Attributes.o release\DoubleBit.o release\CommandStatus.o release\IntervalUnits.o release\FunctionCode.o release\Group60.o release\Group1.o release\Group2.o release\Group20.o release\Group30.o release\Group50.o release\Group51.o release\APDUHelpers.o release\MainWindow.o release\loghandler.o release\main.o release\moc_key_filter.o release\moc_MainWindow.o
 
 distclean: clean 
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Release
 
@@ -770,7 +816,7 @@ release/moc_key_filter.cpp: ../../../qtsrc/key_filter.h \
 		D:/QT_5.12/5.12.3/mingw73_32/include/QtWidgets/qtwidgetsversion.h \
 		release/moc_predefs.h \
 		D:/QT_5.12/5.12.3/mingw73_32/bin/moc.exe
-	D:\QT_5.12\5.12.3\mingw73_32\bin\moc.exe $(DEFINES) --include D:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/tests/TestAPDUWriting_6/release/moc_predefs.h -ID:/QT_5.12/5.12.3/mingw73_32/mkspecs/win32-g++ -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/tests/TestAPDUWriting_6 -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/qtsrc -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/app -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/gen -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/master -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/outstation -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/util -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/app -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/app/parsing -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/link -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/link -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/gen -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/gen/objects -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/ser4cpp/container -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/ser4cpp/util -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/ser4cpp/serialization -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/tests/unit/utils -ID:/QT_5.12/5.12.3/mingw73_32/include -ID:/QT_5.12/5.12.3/mingw73_32/include/QtWidgets -ID:/QT_5.12/5.12.3/mingw73_32/include/QtGui -ID:/QT_5.12/5.12.3/mingw73_32/include/QtANGLE -ID:/QT_5.12/5.12.3/mingw73_32/include/QtCore -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT_5.12/Tools/mingw730_32/i686-w64-mingw32/include ..\..\..\qtsrc\key_filter.h -o release\moc_key_filter.cpp
+	D:\QT_5.12\5.12.3\mingw73_32\bin\moc.exe $(DEFINES) --include D:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/tests/erTestAPDUWriting_CountIterator_UInt8_boundary_condition/release/moc_predefs.h -ID:/QT_5.12/5.12.3/mingw73_32/mkspecs/win32-g++ -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/tests/erTestAPDUWriting_CountIterator_UInt8_boundary_condition -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/qtsrc -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/app -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/gen -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/master -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/outstation -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/util -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/link -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/app -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/app/parsing -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/link -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/outstation -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/outstation/event -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/gen -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/gen/objects -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/ser4cpp/container -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/ser4cpp/util -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/ser4cpp/serialization -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/tests/unit/utils -ID:/QT_5.12/5.12.3/mingw73_32/include -ID:/QT_5.12/5.12.3/mingw73_32/include/QtWidgets -ID:/QT_5.12/5.12.3/mingw73_32/include/QtGui -ID:/QT_5.12/5.12.3/mingw73_32/include/QtANGLE -ID:/QT_5.12/5.12.3/mingw73_32/include/QtCore -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT_5.12/Tools/mingw730_32/i686-w64-mingw32/include ..\..\..\qtsrc\key_filter.h -o release\moc_key_filter.cpp
 
 release/moc_MainWindow.cpp: ../../../qtsrc/MainWindow.h \
 		D:/QT_5.12/5.12.3/mingw73_32/include/QtWidgets/QDialog \
@@ -879,7 +925,7 @@ release/moc_MainWindow.cpp: ../../../qtsrc/MainWindow.h \
 		D:/QT_5.12/5.12.3/mingw73_32/include/QtGui/qtouchdevice.h \
 		release/moc_predefs.h \
 		D:/QT_5.12/5.12.3/mingw73_32/bin/moc.exe
-	D:\QT_5.12\5.12.3\mingw73_32\bin\moc.exe $(DEFINES) --include D:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/tests/TestAPDUWriting_6/release/moc_predefs.h -ID:/QT_5.12/5.12.3/mingw73_32/mkspecs/win32-g++ -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/tests/TestAPDUWriting_6 -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/qtsrc -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/app -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/gen -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/master -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/outstation -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/util -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/app -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/app/parsing -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/link -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/include/opendnp3/link -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/gen -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/lib/src/gen/objects -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/ser4cpp/container -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/ser4cpp/util -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/ser4cpp/serialization -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/Device2_19.b.c.d_old2/cpp/tests/unit/utils -ID:/QT_5.12/5.12.3/mingw73_32/include -ID:/QT_5.12/5.12.3/mingw73_32/include/QtWidgets -ID:/QT_5.12/5.12.3/mingw73_32/include/QtGui -ID:/QT_5.12/5.12.3/mingw73_32/include/QtANGLE -ID:/QT_5.12/5.12.3/mingw73_32/include/QtCore -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT_5.12/Tools/mingw730_32/i686-w64-mingw32/include ..\..\..\qtsrc\MainWindow.h -o release\moc_MainWindow.cpp
+	D:\QT_5.12\5.12.3\mingw73_32\bin\moc.exe $(DEFINES) --include D:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/tests/erTestAPDUWriting_CountIterator_UInt8_boundary_condition/release/moc_predefs.h -ID:/QT_5.12/5.12.3/mingw73_32/mkspecs/win32-g++ -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/tests/erTestAPDUWriting_CountIterator_UInt8_boundary_condition -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/qtsrc -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/app -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/gen -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/master -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/outstation -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/util -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/include/opendnp3/link -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/app -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/app/parsing -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/link -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/outstation -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/outstation/event -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/gen -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/lib/src/gen/objects -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/ser4cpp/container -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/ser4cpp/util -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/ser4cpp/serialization -ID:/MRZV_HOME/Xtended/dnp3/CODE_opendnp3-mrzs/opendnp3-mrzs/cpp/tests/unit/utils -ID:/QT_5.12/5.12.3/mingw73_32/include -ID:/QT_5.12/5.12.3/mingw73_32/include/QtWidgets -ID:/QT_5.12/5.12.3/mingw73_32/include/QtGui -ID:/QT_5.12/5.12.3/mingw73_32/include/QtANGLE -ID:/QT_5.12/5.12.3/mingw73_32/include/QtCore -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT_5.12/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT_5.12/Tools/mingw730_32/i686-w64-mingw32/include ..\..\..\qtsrc\MainWindow.h -o release\moc_MainWindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1096,9 +1142,42 @@ release/APDURequest.o: ../../../cpp/lib/src/app/APDURequest.cpp ../../../qtsrc/h
 		../../lib/src/app/Range.h \
 		../../../cpp/lib/include/opendnp3/gen/GroupVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/QualifierCode.h \
+		../../lib/src/app/PrefixedWriteIterator_for_UInt16_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Counter.h \
 		../../lib/src/app/CountWriteIterator_for_UInt8_Binary.h \
+		../../lib/src/app/CountWriteIterator_for_UInt16_Analog.h \
+		../../lib/src/app/CountWriteIterator_for_UInt8_Analog.h \
+		../../../cpp/lib/src/gen/objects/Group50.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../../cpp/lib/src/gen/objects/Group51.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h \
 		../../../ser4cpp/container/Settable.h \
 		../../../cpp/lib/include/opendnp3/gen/FunctionCode.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\APDURequest.o ..\..\..\cpp\lib\src\app\APDURequest.cpp
@@ -1135,9 +1214,42 @@ release/APDUWrapper.o: ../../../cpp/lib/src/app/APDUWrapper.cpp ../../../qtsrc/h
 		../../lib/src/app/Range.h \
 		../../../cpp/lib/include/opendnp3/gen/GroupVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/QualifierCode.h \
+		../../lib/src/app/PrefixedWriteIterator_for_UInt16_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Counter.h \
 		../../lib/src/app/CountWriteIterator_for_UInt8_Binary.h \
+		../../lib/src/app/CountWriteIterator_for_UInt16_Analog.h \
+		../../lib/src/app/CountWriteIterator_for_UInt8_Analog.h \
+		../../../cpp/lib/src/gen/objects/Group50.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../../cpp/lib/src/gen/objects/Group51.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h \
 		../../../ser4cpp/container/Settable.h \
 		../../../cpp/lib/include/opendnp3/gen/FunctionCode.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\APDUWrapper.o ..\..\..\cpp\lib\src\app\APDUWrapper.cpp
@@ -1175,9 +1287,42 @@ release/APDUResponse.o: ../../../cpp/lib/src/app/APDUResponse.cpp ../../../qtsrc
 		../../lib/src/app/Range.h \
 		../../../cpp/lib/include/opendnp3/gen/GroupVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/QualifierCode.h \
+		../../lib/src/app/PrefixedWriteIterator_for_UInt16_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Counter.h \
 		../../lib/src/app/CountWriteIterator_for_UInt8_Binary.h \
+		../../lib/src/app/CountWriteIterator_for_UInt16_Analog.h \
+		../../lib/src/app/CountWriteIterator_for_UInt8_Analog.h \
+		../../../cpp/lib/src/gen/objects/Group50.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../../cpp/lib/src/gen/objects/Group51.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h \
 		../../../ser4cpp/container/Settable.h \
 		../../../cpp/lib/include/opendnp3/gen/FunctionCode.h \
 		../../../cpp/lib/include/opendnp3/app/IINField.h
@@ -1233,6 +1378,60 @@ release/CountWriteIterator_for_UInt8_Binary.o: ../../../cpp/lib/src/app/CountWri
 		../../lib/include/opendnp3/util/Buffer.h \
 		../../../ser4cpp/serialization/SerializationTemplates.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\CountWriteIterator_for_UInt8_Binary.o ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp
+
+release/CountWriteIterator_for_UInt16_Analog.o: ../../../cpp/lib/src/app/CountWriteIterator_for_UInt16_Analog.cpp ../../../qtsrc/header.h \
+		../../lib/src/app/CountWriteIterator_for_UInt16_Analog.h \
+		../../lib/src/app/Serializer.h \
+		../../../ser4cpp/container/RSeq.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../../ser4cpp/util/Comparisons.h \
+		../../../ser4cpp/container/WSeq.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\CountWriteIterator_for_UInt16_Analog.o ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp
+
+release/CountWriteIterator_for_UInt8_Analog.o: ../../../cpp/lib/src/app/CountWriteIterator_for_UInt8_Analog.cpp ../../../qtsrc/header.h \
+		../../lib/src/app/CountWriteIterator_for_UInt8_Analog.h \
+		../../lib/src/app/Serializer.h \
+		../../../ser4cpp/container/RSeq.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../../ser4cpp/util/Comparisons.h \
+		../../../ser4cpp/container/WSeq.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\CountWriteIterator_for_UInt8_Analog.o ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp
 
 release/ClassField.o: ../../../cpp/lib/src/app/ClassField.cpp ../../../qtsrc/header.h \
 		../../../cpp/lib/include/opendnp3/app/ClassField.h \
@@ -1329,11 +1528,43 @@ release/HeaderWriter.o: ../../../cpp/lib/src/app/HeaderWriter.cpp ../../../qtsrc
 		../../lib/src/app/Range.h \
 		../../../cpp/lib/include/opendnp3/gen/GroupVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/QualifierCode.h \
+		../../lib/src/app/PrefixedWriteIterator_for_UInt16_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Counter.h \
 		../../lib/src/app/CountWriteIterator_for_UInt8_Binary.h \
-		../../../ser4cpp/container/Settable.h \
-		../../../ser4cpp/serialization/SerializationTemplates.h
+		../../lib/src/app/CountWriteIterator_for_UInt16_Analog.h \
+		../../lib/src/app/CountWriteIterator_for_UInt8_Analog.h \
+		../../../cpp/lib/src/gen/objects/Group50.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../../cpp/lib/src/gen/objects/Group51.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h \
+		../../../ser4cpp/container/Settable.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\HeaderWriter.o ..\..\..\cpp\lib\src\app\HeaderWriter.cpp
 
 release/GroupVariationRecord.o: ../../../cpp/lib/src/app/GroupVariationRecord.cpp ../../../qtsrc/header.h \
@@ -1361,6 +1592,9 @@ release/MeasurementInfo.o: ../../../cpp/lib/src/app/MeasurementInfo.cpp ../../..
 		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
 		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
 		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
 		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
@@ -1384,7 +1618,7 @@ release/MeasurementInfo.o: ../../../cpp/lib/src/app/MeasurementInfo.cpp ../../..
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\MeasurementInfo.o ..\..\..\cpp\lib\src\app\MeasurementInfo.cpp
 
 release/MeasurementTypeSpecs.o: ../../../cpp/lib/src/app/MeasurementTypeSpecs.cpp ../../../qtsrc/header.h \
-		../../lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
 		../../../cpp/lib/include/opendnp3/app/EventCells.h \
 		../../lib/include/opendnp3/app/EventType.h \
 		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
@@ -1528,6 +1762,33 @@ release/PrefixedWriteIterator_for_UInt16_OctetString.o: ../../../cpp/lib/src/app
 		../../../ser4cpp/serialization/SerializationTemplates.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\PrefixedWriteIterator_for_UInt16_OctetString.o ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp
 
+release/PrefixedWriteIterator_for_UInt16_Binary.o: ../../../cpp/lib/src/app/PrefixedWriteIterator_for_UInt16_Binary.cpp ../../../qtsrc/header.h \
+		../../lib/src/app/PrefixedWriteIterator_for_UInt16_Binary.h \
+		../../lib/src/app/Serializer.h \
+		../../../ser4cpp/container/RSeq.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../../ser4cpp/util/Comparisons.h \
+		../../../ser4cpp/container/WSeq.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\PrefixedWriteIterator_for_UInt16_Binary.o ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp
+
 release/Serializer.o: ../../../cpp/lib/src/app/Serializer.cpp ../../../qtsrc/header.h \
 		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
 		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
@@ -1607,6 +1868,156 @@ release/RangeWriteIterator_for_UInt8_Counter.o: ../../../cpp/lib/src/app/RangeWr
 		../../../ser4cpp/serialization/SerializationTemplates.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\RangeWriteIterator_for_UInt8_Counter.o ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Counter.cpp
 
+release/DownSampling.o: ../../../cpp/lib/src/app/DownSampling.cpp ../../../qtsrc/header.h \
+		../../lib/src/app/DownSampling.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\DownSampling.o ..\..\..\cpp\lib\src\app\DownSampling.cpp
+
+release/Event.o: ../../../cpp/lib/src/outstation/Event.cpp ../../../qtsrc/header.h \
+		../../lib/src/outstation/Event.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Event.o ..\..\..\cpp\lib\src\outstation\Event.cpp
+
+release/EventBufferConfig.o: ../../../cpp/lib/src/outstation/EventBufferConfig.cpp ../../../qtsrc/header.h \
+		../../../cpp/lib/include/opendnp3/outstation/EventBufferConfig.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\EventBufferConfig.o ..\..\..\cpp\lib\src\outstation\EventBufferConfig.cpp
+
+release/ClazzCount.o: ../../../cpp/lib/src/outstation/event/ClazzCount.cpp ../../../qtsrc/header.h \
+		../../lib/src/outstation/event/ClazzCount.h \
+		../../lib/src/outstation/event/EventState.h \
+		../../lib/include/opendnp3/app/EventType.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\ClazzCount.o ..\..\..\cpp\lib\src\outstation\event\ClazzCount.cpp
+
+release/List_for_EventRecord_part1.o: ../../../cpp/lib/src/outstation/event/List_for_EventRecord_part1.cpp ../../../qtsrc/header.h \
+		../../lib/src/outstation/event/List_for_EventRecord.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../lib/src/outstation/event/EventRecord.h \
+		../../lib/src/outstation/event/EventState.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../lib/src/outstation/event/Node_for_EventRecord.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\List_for_EventRecord_part1.o ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp
+
+release/List_for_EventRecord_part2.o: ../../../cpp/lib/src/outstation/event/List_for_EventRecord_part2.cpp ../../../qtsrc/header.h \
+		../../lib/src/outstation/event/EventStorage.h \
+		../../lib/src/outstation/event/EventLists.h \
+		../../lib/src/outstation/event/ClazzCount.h \
+		../../lib/src/outstation/event/EventState.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../lib/src/outstation/event/List_for_EventRecord.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../lib/src/outstation/event/EventRecord.h \
+		../../lib/src/outstation/event/Node_for_EventRecord.h \
+		../../lib/src/outstation/event/TypedEventRecord.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../../cpp/lib/include/opendnp3/outstation/EventBufferConfig.h \
+		../../lib/src/outstation/event/List_TypedEventRecord_for_BinarySpec.h \
+		../../lib/src/outstation/event/List_TypedEventRecord_for_DoubleBitBinarySpec.h \
+		../../lib/src/outstation/event/List_TypedEventRecord_for_AnalogSpec.h \
+		../../lib/src/outstation/event/List_TypedEventRecord_for_CounterSpec.h \
+		../../lib/src/outstation/event/List_TypedEventRecord_for_FrozenCounterSpec.h \
+		../../lib/src/outstation/event/List_TypedEventRecord_for_BinaryOutputStatusSpec.h \
+		../../lib/src/outstation/event/List_TypedEventRecord_for_AnalogOutputStatusSpec.h \
+		../../lib/src/outstation/event/List_TypedEventRecord_for_OctetStringSpec.h \
+		../../lib/src/outstation/event/IEventWriteHandler.h \
+		../../lib/src/outstation/Event.h \
+		../../../cpp/lib/include/opendnp3/app/ClassField.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\List_for_EventRecord_part2.o ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp
+
+release/EventRecord.o: ../../../cpp/lib/src/outstation/event/EventRecord.cpp ../../../qtsrc/header.h \
+		../../lib/src/outstation/event/EventRecord.h \
+		../../lib/src/outstation/event/EventState.h \
+		../../lib/include/opendnp3/app/EventType.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\EventRecord.o ..\..\..\cpp\lib\src\outstation\event\EventRecord.cpp
+
 release/Attributes.o: ../../../cpp/lib/src/gen/Attributes.cpp ../../../qtsrc/header.h \
 		../../../cpp/lib/include/opendnp3/gen/Attributes.h \
 		../../../cpp/lib/include/opendnp3/gen/GroupVariation.h
@@ -1659,7 +2070,7 @@ release/Group1.o: ../../../cpp/lib/src/gen/objects/Group1.cpp ../../../qtsrc/hea
 		../../lib/include/opendnp3/app/OctetString.h \
 		../../lib/include/opendnp3/app/OctetData.h \
 		../../lib/include/opendnp3/util/Buffer.h \
-		../../lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
 		../../../cpp/lib/include/opendnp3/app/EventCells.h \
 		../../lib/include/opendnp3/app/EventType.h \
 		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
@@ -1697,6 +2108,275 @@ release/Group1.o: ../../../cpp/lib/src/gen/objects/Group1.cpp ../../../qtsrc/hea
 		../../../ser4cpp/serialization/SerializationTemplates.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Group1.o ..\..\..\cpp\lib\src\gen\objects\Group1.cpp
 
+release/Group2.o: ../../../cpp/lib/src/gen/objects/Group2.cpp ../../../qtsrc/header.h \
+		../../lib/src/gen/objects/Group2.h \
+		../../lib/include/opendnp3/app/GroupVariationID.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/src/app/DNP3Serializer.h \
+		../../lib/src/app/Serializer.h \
+		../../../ser4cpp/container/RSeq.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../../ser4cpp/util/Comparisons.h \
+		../../../ser4cpp/container/WSeq.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../lib/src/app/MeasurementFactory.h \
+		../../../cpp/lib/include/opendnp3/app/AnalogCommandEvent.h \
+		../../../cpp/lib/include/opendnp3/gen/CommandStatus.h \
+		../../lib/include/opendnp3/app/AnalogOutput.h \
+		../../../cpp/lib/include/opendnp3/app/BinaryCommandEvent.h \
+		../../../cpp/lib/include/opendnp3/app/ControlRelayOutputBlock.h \
+		../../../cpp/lib/include/opendnp3/gen/OperationType.h \
+		../../../cpp/lib/include/opendnp3/gen/TripCloseCode.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Group2.o ..\..\..\cpp\lib\src\gen\objects\Group2.cpp
+
+release/Group20.o: ../../../cpp/lib/src/gen/objects/Group20.cpp ../../../qtsrc/header.h \
+		../../lib/src/gen/objects/Group20.h \
+		../../lib/include/opendnp3/app/GroupVariationID.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/src/app/DNP3Serializer.h \
+		../../lib/src/app/Serializer.h \
+		../../../ser4cpp/container/RSeq.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../../ser4cpp/util/Comparisons.h \
+		../../../ser4cpp/container/WSeq.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../lib/src/app/MeasurementFactory.h \
+		../../../cpp/lib/include/opendnp3/app/AnalogCommandEvent.h \
+		../../../cpp/lib/include/opendnp3/gen/CommandStatus.h \
+		../../lib/include/opendnp3/app/AnalogOutput.h \
+		../../../cpp/lib/include/opendnp3/app/BinaryCommandEvent.h \
+		../../../cpp/lib/include/opendnp3/app/ControlRelayOutputBlock.h \
+		../../../cpp/lib/include/opendnp3/gen/OperationType.h \
+		../../../cpp/lib/include/opendnp3/gen/TripCloseCode.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Group20.o ..\..\..\cpp\lib\src\gen\objects\Group20.cpp
+
+release/Group30.o: ../../../cpp/lib/src/gen/objects/Group30.cpp ../../../qtsrc/header.h \
+		../../lib/src/app/DownSampling.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/src/gen/objects/Group30.h \
+		../../lib/include/opendnp3/app/GroupVariationID.h \
+		../../lib/src/app/DNP3Serializer.h \
+		../../lib/src/app/Serializer.h \
+		../../../ser4cpp/container/RSeq.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../../ser4cpp/util/Comparisons.h \
+		../../../ser4cpp/container/WSeq.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../lib/src/app/MeasurementFactory.h \
+		../../../cpp/lib/include/opendnp3/app/AnalogCommandEvent.h \
+		../../../cpp/lib/include/opendnp3/gen/CommandStatus.h \
+		../../lib/include/opendnp3/app/AnalogOutput.h \
+		../../../cpp/lib/include/opendnp3/app/BinaryCommandEvent.h \
+		../../../cpp/lib/include/opendnp3/app/ControlRelayOutputBlock.h \
+		../../../cpp/lib/include/opendnp3/gen/OperationType.h \
+		../../../cpp/lib/include/opendnp3/gen/TripCloseCode.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Group30.o ..\..\..\cpp\lib\src\gen\objects\Group30.cpp
+
+release/Group50.o: ../../../cpp/lib/src/gen/objects/Group50.cpp ../../../qtsrc/header.h \
+		../../../cpp/lib/src/gen/objects/Group50.h \
+		../../lib/include/opendnp3/app/GroupVariationID.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../lib/src/app/DNP3Serializer.h \
+		../../lib/src/app/Serializer.h \
+		../../../ser4cpp/container/RSeq.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../../ser4cpp/util/Comparisons.h \
+		../../../ser4cpp/container/WSeq.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementTypes.h \
+		../../lib/include/opendnp3/app/BaseMeasurementTypes.h \
+		../../lib/include/opendnp3/app/Flags.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/AnalogQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryOutputStatusQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/BinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/CounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBitBinaryQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/FrozenCounterQuality.h \
+		../../../cpp/lib/include/opendnp3/gen/DoubleBit.h \
+		../../../cpp/lib/include/opendnp3/gen/IntervalUnits.h \
+		../../lib/include/opendnp3/app/OctetString.h \
+		../../lib/include/opendnp3/app/OctetData.h \
+		../../lib/include/opendnp3/util/Buffer.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../lib/src/app/MeasurementFactory.h \
+		../../../cpp/lib/include/opendnp3/app/AnalogCommandEvent.h \
+		../../../cpp/lib/include/opendnp3/gen/CommandStatus.h \
+		../../lib/include/opendnp3/app/AnalogOutput.h \
+		../../../cpp/lib/include/opendnp3/app/BinaryCommandEvent.h \
+		../../../cpp/lib/include/opendnp3/app/ControlRelayOutputBlock.h \
+		../../../cpp/lib/include/opendnp3/gen/OperationType.h \
+		../../../cpp/lib/include/opendnp3/gen/TripCloseCode.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Group50.o ..\..\..\cpp\lib\src\gen\objects\Group50.cpp
+
+release/Group51.o: ../../../cpp/lib/src/gen/objects/Group51.cpp ../../../qtsrc/header.h \
+		../../../cpp/lib/src/gen/objects/Group51.h \
+		../../lib/include/opendnp3/app/GroupVariationID.h \
+		../../lib/include/opendnp3/app/DNPTime.h \
+		../../../cpp/lib/include/opendnp3/gen/TimestampQuality.h \
+		../../../ser4cpp/container/RSeq.h \
+		../../../ser4cpp/container/HasLength.h \
+		../../../ser4cpp/util/Comparisons.h \
+		../../../ser4cpp/container/WSeq.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Group51.o ..\..\..\cpp\lib\src\gen\objects\Group51.cpp
+
 release/APDUHelpers.o: ../../../cpp/tests/unit/utils/APDUHelpers.cpp ../../../qtsrc/header.h \
 		../unit/utils/APDUHelpers.h \
 		../../lib/src/app/APDURequest.h \
@@ -1731,9 +2411,42 @@ release/APDUHelpers.o: ../../../cpp/tests/unit/utils/APDUHelpers.cpp ../../../qt
 		../../lib/src/app/Range.h \
 		../../../cpp/lib/include/opendnp3/gen/GroupVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/QualifierCode.h \
+		../../lib/src/app/PrefixedWriteIterator_for_UInt16_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Counter.h \
 		../../lib/src/app/CountWriteIterator_for_UInt8_Binary.h \
+		../../lib/src/app/CountWriteIterator_for_UInt16_Analog.h \
+		../../lib/src/app/CountWriteIterator_for_UInt8_Analog.h \
+		../../../cpp/lib/src/gen/objects/Group50.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
+		../../../cpp/lib/include/opendnp3/app/EventCells.h \
+		../../lib/include/opendnp3/app/EventType.h \
+		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
+		../../../cpp/lib/include/opendnp3/app/EventTriggers.h \
+		../../../cpp/lib/include/opendnp3/outstation/MeasurementConfig.h \
+		../../../cpp/lib/include/opendnp3/app/MeasurementInfo.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/EventSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticAnalogVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticDoubleBinaryVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticFrozenCounterVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../../cpp/lib/src/gen/objects/Group51.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h \
 		../../../ser4cpp/container/Settable.h \
 		../../../cpp/lib/include/opendnp3/gen/FunctionCode.h \
 		../../lib/src/app/APDUResponse.h \
@@ -3184,18 +3897,14 @@ release/main.o: main.cpp D:/QT_5.12/5.12.3/mingw73_32/include/QtWidgets/QApplica
 		../../lib/src/app/Range.h \
 		../../../cpp/lib/include/opendnp3/gen/GroupVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/QualifierCode.h \
+		../../lib/src/app/PrefixedWriteIterator_for_UInt16_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Binary.h \
 		../../lib/src/app/RangeWriteIterator_for_UInt8_Counter.h \
 		../../lib/src/app/CountWriteIterator_for_UInt8_Binary.h \
-		../../../ser4cpp/container/Settable.h \
-		../../../cpp/lib/include/opendnp3/gen/FunctionCode.h \
-		../../lib/src/app/APDUResponse.h \
-		../../../cpp/lib/include/opendnp3/app/IINField.h \
-		../../lib/src/app/APDUHeader.h \
-		../../../cpp/lib/include/opendnp3/master/ResponseInfo.h \
-		../../../ser4cpp/serialization/SerializationTemplates.h \
-		../../lib/src/gen/objects/Group1.h \
-		../../lib/src/app/MeasurementTypeSpecs.h \
+		../../lib/src/app/CountWriteIterator_for_UInt16_Analog.h \
+		../../lib/src/app/CountWriteIterator_for_UInt8_Analog.h \
+		../../../cpp/lib/src/gen/objects/Group50.h \
+		../../../cpp/lib/src/app/MeasurementTypeSpecs.h \
 		../../../cpp/lib/include/opendnp3/app/EventCells.h \
 		../../lib/include/opendnp3/app/EventType.h \
 		../../../cpp/lib/include/opendnp3/gen/PointClass.h \
@@ -3221,7 +3930,16 @@ release/main.o: main.cpp D:/QT_5.12/5.12.3/mingw73_32/include/QtWidgets/QApplica
 		../../../cpp/lib/include/opendnp3/gen/StaticOctetStringVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/StaticSecurityStatVariation.h \
 		../../../cpp/lib/include/opendnp3/gen/StaticTimeAndIntervalVariation.h \
-		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h
+		../../../cpp/lib/include/opendnp3/gen/StaticTypeBitmask.h \
+		../../../cpp/lib/src/gen/objects/Group51.h \
+		../../../ser4cpp/serialization/SerializationTemplates.h \
+		../../../ser4cpp/container/Settable.h \
+		../../../cpp/lib/include/opendnp3/gen/FunctionCode.h \
+		../../lib/src/app/APDUResponse.h \
+		../../../cpp/lib/include/opendnp3/app/IINField.h \
+		../../lib/src/app/APDUHeader.h \
+		../../../cpp/lib/include/opendnp3/master/ResponseInfo.h \
+		../../lib/src/gen/objects/Group1.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
 
 release/moc_key_filter.o: release/moc_key_filter.cpp 

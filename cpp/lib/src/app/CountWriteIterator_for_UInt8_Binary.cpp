@@ -1,6 +1,7 @@
 #include "header.h"
 #include "CountWriteIterator_for_UInt8_Binary.h"
 #include "SerializationTemplates.h"
+#include <string.h>
 
     CountWriteIterator_for_UInt8_Binary Null_in_CountWriteIterator_for_UInt8_Binary_static(void)
 {

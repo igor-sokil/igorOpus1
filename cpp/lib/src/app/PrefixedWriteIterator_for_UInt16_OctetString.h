@@ -21,7 +21,6 @@
 #define OPENDNP3_PREFIXEDWRITEITERATOR_for_UInt16_OctetString_H
 
 ////#include "app/Serializer.h"
-#include <string.h>
 #include "Serializer.h"
 #include "OctetString.h"
 

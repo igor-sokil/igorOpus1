@@ -1,6 +1,7 @@
 #include "header.h"
 #include "RangeWriteIterator_for_UInt8_Binary.h"
 #include "SerializationTemplates.h"
+#include <string.h>
 
 RangeWriteIterator_for_UInt8_Binary Null_in_RangeWriteIterator_for_UInt8_Binary_static(void)
 {

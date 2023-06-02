@@ -20,10 +20,11 @@
 #ifndef OPENDNP3_List_TypedEventRecord_for_AnalogOutputStatusSpec_H
 #define OPENDNP3_List_TypedEventRecord_for_AnalogOutputStatusSpec_H
 
-#include <string.h>
 #include "HasLength.h"
-#include "EventRecord.h"
+//#include "EventRecord.h"
 ////#include <ser4cpp/container/Array.h>
+#include "Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.h"
+#include "Node_TypedEventRecord_for_AnalogOutputStatusSpec.h"
 
 ////#include <cstdint>
 
@@ -31,29 +32,6 @@
 ////{
 
 ////using list_size_type_t = uint32_t;
-/*
-////template<class T> class Node
-typedef struct
-{
-////public:
-////    Node() = default;
-
-////    T value;
-  EventRecord value;
-
-////private:
-////    Node* prev = nullptr;
-////    Node_for_EventRecord * prev;
-  void * prev;
-////    Node_for_EventRecord * next;
-  void * next;
-////    Node* next = nullptr;
-
-////    template<class U> friend class List;
-} Node_for_EventRecord;
-
-void Node_for_EventRecord_in_Node_for_EventRecord(Node_for_EventRecord *pNode_for_EventRecord);
-*/
 ////    class Iterator
 typedef struct
 {
@@ -93,18 +71,18 @@ typedef struct
 ////        Iterator(Node<T>* start) : current(start) {}
 ////
 ////        Node<T>* current;
-  Node_for_EventRecord * current;
+  Node_TypedEventRecord_for_AnalogOutputStatusSpec * current;
 } Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec;
 
-Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec From__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec_static(Node_for_EventRecord* start);
+Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec From__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec_static(Node_TypedEventRecord_for_AnalogOutputStatusSpec* start);
 
-EventRecord* CurrentValue__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec *pIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec);
-Node_for_EventRecord* Current__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec *pIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec);
-Node_for_EventRecord* Next__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec *pIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec);
+TypedEventRecord_for_AnalogOutputStatusSpec* CurrentValue__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec *pIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec);
+Node_TypedEventRecord_for_AnalogOutputStatusSpec* Current__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec *pIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec);
+Node_TypedEventRecord_for_AnalogOutputStatusSpec* Next__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec *pIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec);
 boolean HasNext__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec *pIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec);
 
 void  Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec__in__Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec *pIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec,
-    Node_for_EventRecord* start);
+    Node_TypedEventRecord_for_AnalogOutputStatusSpec* start);
 
 // A container adapter for a -linked list
 ////template<class T> class List : public ser4cpp::HasLength<list_size_type_t>
@@ -190,11 +168,12 @@ typedef struct
   Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec iIterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec;
   HasLength_for_Uint32_t hHasLength_for_Uint32_t;
 
-  Node_for_EventRecord* head;// = nullptr;
-  Node_for_EventRecord* tail;// = nullptr;
-  Node_for_EventRecord* free;// = nullptr;
+  Node_TypedEventRecord_for_AnalogOutputStatusSpec* head;// = nullptr;
+  Node_TypedEventRecord_for_AnalogOutputStatusSpec* tail;// = nullptr;
+  Node_TypedEventRecord_for_AnalogOutputStatusSpec* free;// = nullptr;
 
 ////    ser4cpp::Array<Node<T>, list_size_type_t> underlying;
+  Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec  underlying;
 
 ////    Node<T>* Insert(const T& value, Node<T>* left, Node<T>* right);
 
@@ -203,9 +182,32 @@ typedef struct
 ////    void Initialize();
 } List_TypedEventRecord_for_AnalogOutputStatusSpec;
 
-void List_TypedEventRecord_for_AnalogOutputStatusSpec_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+void List_TypedEventRecord_for_AnalogOutputStatusSpec_in_List_TypedEventRecord_for_AnalogOutputStatusSpecOver1(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+void List_TypedEventRecord_for_AnalogOutputStatusSpec_in_List_TypedEventRecord_for_AnalogOutputStatusSpecOver2(
+       List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
+       uint32_t maxSize);
+    Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec Iterate_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
 
+  void Initialize_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(EventStorage *pEventStorage, 
+//                            List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec, 
+//                            boolean (*match)(EventStorage *pEventStorage, 
+//                            EventRecord* record));//const U& match);
 
+   void Remove_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec, Node_TypedEventRecord_for_AnalogOutputStatusSpec* node);
+   void Link_in_List_TypedEventRecord_for_AnalogOutputStatusSpec_static(Node_TypedEventRecord_for_AnalogOutputStatusSpec* first, Node_TypedEventRecord_for_AnalogOutputStatusSpec* second);
+
+     uint32_t Capacity_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+Node_TypedEventRecord_for_AnalogOutputStatusSpec* Head_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+
+Node_TypedEventRecord_for_AnalogOutputStatusSpec* Add_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
+                                      TypedEventRecord_for_AnalogOutputStatusSpec* value);
+Node_TypedEventRecord_for_AnalogOutputStatusSpec* Insert_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
+                                                                TypedEventRecord_for_AnalogOutputStatusSpec* value,
+                                                                Node_TypedEventRecord_for_AnalogOutputStatusSpec* left,
+                                                                Node_TypedEventRecord_for_AnalogOutputStatusSpec* right
+                                                                  );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

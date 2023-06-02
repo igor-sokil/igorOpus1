@@ -90,7 +90,74 @@ typedef struct
 } EventLists;
 
   void EventLists_in_EventLists(EventLists *pEventLists, EventBufferConfig* config);
-  List_TypedEventRecord_for_BinarySpec* GetList_for_BinarySpec_in_EventLists(EventLists *pEventLists);
+
+  List_TypedEventRecord_for_BinarySpec*             GetList_for_BinarySpec_in_EventLists(EventLists *pEventLists);
+  List_TypedEventRecord_for_DoubleBitBinarySpec*    GetList_for_DoubleBitBinarySpec_in_EventLists(EventLists *pEventLists);
+  List_TypedEventRecord_for_AnalogSpec*             GetList_for_AnalogSpec_in_EventLists(EventLists *pEventLists);
+  List_TypedEventRecord_for_CounterSpec*            GetList_for_CounterSpec_in_EventLists(EventLists *pEventLists);
+  List_TypedEventRecord_for_FrozenCounterSpec*      GetList_for_FrozenCounterSpec_in_EventLists(EventLists *pEventLists);
+  List_TypedEventRecord_for_BinaryOutputStatusSpec* GetList_for_BinaryOutputStatusSpec_in_EventLists(EventLists *pEventLists);
+  List_TypedEventRecord_for_AnalogOutputStatusSpec* GetList_for_AnalogOutputStatusSpec_in_EventLists(EventLists *pEventLists);
+  List_TypedEventRecord_for_OctetStringSpec*        GetList_for_OctetStringSpec_in_EventLists(EventLists *pEventLists);
+
+  boolean IsAnyTypeFull_in_EventLists(EventLists *pEventLists);
+
+void  ForeachWhile_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
+    EventLists* lists,
+    uint32_t num_selected, uint32_t maxEv,
+    event_variation_t_in_BinaryInfo variation,
+    boolean useDefaultVariation,
+    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_AnalogOutputStatusSpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation, boolean useDefaultVariation));
+
+void  ForeachWhile_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
+    EventLists* lists,
+    uint32_t num_selected, uint32_t maxEv,
+    event_variation_t_in_BinaryInfo variation,
+    boolean useDefaultVariation,
+    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_AnalogSpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation, boolean useDefaultVariation));
+
+void  ForeachWhile_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec,
+    EventLists* lists,
+    uint32_t num_selected, uint32_t maxEv,
+    event_variation_t_in_BinaryInfo variation,
+    boolean useDefaultVariation,
+    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_BinaryOutputStatusSpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation, boolean useDefaultVariation));
+
+void  ForeachWhile_in_List_TypedEventRecord_for_BinarySpec( List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec,
+    EventLists* lists,
+    uint32_t num_selected, uint32_t maxEv,
+    event_variation_t_in_BinaryInfo variation,
+    boolean useDefaultVariation,
+    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation, boolean useDefaultVariation));
+
+void  ForeachWhile_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec,
+    EventLists* lists,
+    uint32_t num_selected, uint32_t maxEv,
+    event_variation_t_in_BinaryInfo variation,
+    boolean useDefaultVariation,
+    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_CounterSpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation, boolean useDefaultVariation));
+
+void  ForeachWhile_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
+    EventLists* lists,
+    uint32_t num_selected, uint32_t maxEv,
+    event_variation_t_in_BinaryInfo variation,
+    boolean useDefaultVariation,
+    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_DoubleBitBinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation, boolean useDefaultVariation));
+
+void  ForeachWhile_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec,
+    EventLists* lists,
+    uint32_t num_selected, uint32_t maxEv,
+    event_variation_t_in_BinaryInfo variation,
+    boolean useDefaultVariation,
+    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_FrozenCounterSpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation, boolean useDefaultVariation));
+
+void  ForeachWhile_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec,
+    EventLists* lists,
+    uint32_t num_selected, uint32_t maxEv,
+    event_variation_t_in_BinaryInfo variation,
+    boolean useDefaultVariation,
+    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_OctetStringSpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation, boolean useDefaultVariation));
+
 
 ////} // namespace opendnp3
 

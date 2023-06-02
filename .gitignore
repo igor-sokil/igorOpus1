@@ -7,7 +7,7 @@
 # ignore my.bat
 my.bat
 *.ses
-*.txt
+# *.txt
 *.log
 *.o
 moc*.cpp
