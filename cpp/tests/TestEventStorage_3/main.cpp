@@ -13,7 +13,7 @@
 #include "APDUHeader.h"
 #include "SerializationTemplates.h"
 #include "Group2.h"
-#include "Group50.h"
+#include "EventStorage.h"
 
 DWORD get_fattime (void);
 
@@ -36,6 +36,12 @@ TEST_CASE(SUITE("can_construct"))
     EventStorage storage(EventBufferConfig::AllTypes(10));
 }
 */
+ EventStorage storage;
+//   EventBufferConfig AllTypes_in_EventBufferConfig_static(uint16_t sizes);
+   EventBufferConfig temp = AllTypes_in_EventBufferConfig_static(MAX_EventRecord);
+ EventStorage_in_EventStorage(&storage, &temp);
+
+  qDebug()<<"sizeof(storage)= "<<sizeof(storage);
 /*
      APDURequest request = 
                 Request_in_APDUHelpers_static(FunctionCode_WRITE, SIZE_in_APDUHelpers);// = SIZE);

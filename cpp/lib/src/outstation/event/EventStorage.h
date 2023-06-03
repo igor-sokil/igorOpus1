@@ -127,10 +127,10 @@ boolean Update_for_DoubleBitBinarySpec_in_EventStorage(EventStorage *pEventStora
     uint32_t SelectByType_in_EventStorageOver7(EventStorage *pEventStorage, EventAnalogOutputStatusVariation_uint8_t variation, uint32_t max);
     uint32_t SelectByType_in_EventStorageOver8(EventStorage *pEventStorage, EventOctetStringVariation_uint8_t variation, uint32_t max);
 
-    uint32_t SelectByType_in_EventStorageOver9(EventStorage *pEventStorage, EventType type, uint32_t max);
+    uint32_t SelectByType_in_EventStorageOver9(EventStorage *pEventStorage, EventType_uint16_t type, uint32_t max);
 
-    uint32_t SelectByClass_in_EventStorageOver1(EventStorage *pEventStorage, EventClass* clazz);
-    uint32_t SelectByClass_in_EventStorageOver2(EventStorage *pEventStorage, EventClass* clazz, uint32_t max);
+    uint32_t SelectByClass_in_EventStorageOver1(EventStorage *pEventStorage, EventClass_uint8_t clazz);
+    uint32_t SelectByClass_in_EventStorageOver2(EventStorage *pEventStorage, EventClass_uint8_t clazz, uint32_t max);
 
     uint32_t SelectByClass_in_EventStorageOver3(EventStorage *pEventStorage, ClassField* clazz);
     uint32_t SelectByClass_in_EventStorageOver4(EventStorage *pEventStorage, ClassField* clazz, uint32_t max);

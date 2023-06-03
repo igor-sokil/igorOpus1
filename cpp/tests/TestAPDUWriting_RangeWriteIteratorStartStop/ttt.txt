@@ -1,0 +1,14 @@
+TEST_CASE(SUITE("RangeWriteIteratorStartStop"))
+{
+    APDUResponse response(APDUHelpers::Response());
+    auto writer = response.GetWriter();
+
+    {
+        auto iterator
+            = writer.IterateOverRange<UInt8, Counter>(QualifierCode::UINT8_START_STOP, Group20Var6::Inst(), 2);
+        REQUIRE(iterator.Write(Counter(9)));
+        REQUIRE(iterator.Write(Counter(7)));
+    }
+
+    REQUIRE("C0 81 00 00 14 06 00 02 03 09 00 07 00" == HexConversions::to_hex(response.ToRSeq()));
+}

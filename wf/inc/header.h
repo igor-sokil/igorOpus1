@@ -11,4 +11,7 @@
 
 #include "variables_external_m.h"
 
+//макс к-сть EventRecord
+#define MAX_EventRecord  10
+
 #endif

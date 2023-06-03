@@ -82,7 +82,7 @@ boolean select__for__TypedEventRecord_for_BinarySpec_in_EventSelection(EventList
   }
 
   return true;
-};
+}
 
 uint32_t SelectByTypeGeneric_for_BinarySpec_in_EventSelection_static(EventLists* lists,
     boolean useDefaultVariation,
@@ -169,7 +169,7 @@ boolean select__for__TypedEventRecord_for_DoubleBitBinarySpec_in_EventSelection(
   }
 
   return true;
-};
+}
 
 uint32_t SelectByTypeGeneric_for_DoubleBitBinarySpec_in_EventSelection_static(EventLists* lists,
     boolean useDefaultVariation,
@@ -254,7 +254,7 @@ boolean select__for__TypedEventRecord_for_AnalogSpec_in_EventSelection(EventList
   }
 
   return true;
-};
+}
 
 uint32_t SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(EventLists* lists,
     boolean useDefaultVariation,
@@ -339,7 +339,7 @@ boolean select__for__TypedEventRecord_for_CounterSpec_in_EventSelection(EventLis
   }
 
   return true;
-};
+}
 
 uint32_t SelectByTypeGeneric_for_CounterSpec_in_EventSelection_static(EventLists* lists,
     boolean useDefaultVariation,
@@ -424,7 +424,7 @@ boolean select__for__TypedEventRecord_for_FrozenCounterSpec_in_EventSelection(Ev
   }
 
   return true;
-};
+}
 
 uint32_t SelectByTypeGeneric_for_FrozenCounterSpec_in_EventSelection_static(EventLists* lists,
     boolean useDefaultVariation,
@@ -509,7 +509,7 @@ boolean select__for__TypedEventRecord_for_BinaryOutputStatusSpec_in_EventSelecti
   }
 
   return true;
-};
+}
 
 uint32_t SelectByTypeGeneric_for_BinaryOutputStatusSpec_in_EventSelection_static(EventLists* lists,
     boolean useDefaultVariation,
@@ -594,7 +594,7 @@ boolean select__for__TypedEventRecord_for_AnalogOutputStatusSpec_in_EventSelecti
   }
 
   return true;
-};
+}
 
 uint32_t SelectByTypeGeneric_for_AnalogOutputStatusSpec_in_EventSelection_static(EventLists* lists,
     boolean useDefaultVariation,
@@ -679,7 +679,7 @@ boolean select__for__TypedEventRecord_for_OctetStringSpec_in_EventSelection(Even
   }
 
   return true;
-};
+}
 
 uint32_t SelectByTypeGeneric_for_OctetStringSpec_in_EventSelection_static(EventLists* lists,
     boolean useDefaultVariation,

@@ -1,0 +1,21 @@
+TEST_CASE(SUITE("CountIterator UInt8 boundary condition"))
+{
+    APDUResponse response(APDUHelpers::Response());
+    auto writer = response.GetWriter();
+
+    {
+        auto iterator = writer.IterateOverCount<UInt8, Binary>(QualifierCode::UINT8_CNT, Group1Var2::Inst());
+
+        for (int i = 0; i < 255; ++i)
+        {
+            REQUIRE(iterator.Write(Binary(true)));
+        }
+
+        REQUIRE_FALSE(iterator.Write(Binary(true)));
+    }
+
+    std::string beginsWith("C0 81 00 00 01 02 07 FF");
+    auto truncated = HexConversions::to_hex(response.ToRSeq()).substr(0, beginsWith.size());
+
+    REQUIRE(beginsWith == truncated);
+}

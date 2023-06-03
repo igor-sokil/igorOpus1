@@ -31,9 +31,9 @@
 
 /// A null object for types that have no metadata
 ////struct EmptyEventCell
-typedef struct
-{
-} EmptyEventCell;
+//typedef struct
+//{
+//} EmptyEventCell;
 
 /// Base class for different types of event metadata
 ////template<class Spec> struct EventCellBase

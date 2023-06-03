@@ -3,7 +3,7 @@
 #include "List_for_EventRecord.h"
 #include <string.h>
 
-void List_for_EventRecord_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord)
+void List_for_EventRecord_in_List_for_EventRecordOver1(List_for_EventRecord *pList_for_EventRecord)
 {
   (pList_for_EventRecord->iIterator_in_List_for_EventRecord).current = NULL;
 

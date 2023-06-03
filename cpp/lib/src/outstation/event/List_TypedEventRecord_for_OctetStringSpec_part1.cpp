@@ -3,6 +3,7 @@
 #include "List_TypedEventRecord_for_OctetStringSpec.h"
 #include <string.h>
 
+//void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpec_staticOver1(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec)
 void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver1(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec)
 {
   (pList_TypedEventRecord_for_OctetStringSpec->iIterator_in_List_TypedEventRecord_for_OctetStringSpec).current = NULL;

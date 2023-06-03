@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("WriteSingleValue"))
+{
+    APDURequest request(APDUHelpers::Request(FunctionCode::WRITE));
+    auto writer = request.GetWriter();
+
+    Group50Var1 obj;
+    obj.time = DNPTime(0x1234);
+    REQUIRE(writer.WriteSingleValue<UInt8>(QualifierCode::UINT8_CNT, obj));
+
+    REQUIRE("C0 02 32 01 07 01 34 12 00 00 00 00" == HexConversions::to_hex(request.ToRSeq()));
+}

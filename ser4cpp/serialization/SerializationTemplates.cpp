@@ -347,14 +347,14 @@
         float f;
     } floatUnion;
         floatUnion.f = value;
-        uint8_t exponent = (uint8_t)((floatUnion.bytes >> 23) & 0xFF);
+        uint8_t expon = (uint8_t)((floatUnion.bytes >> 23) & 0xFF);
         boolean sign = (floatUnion.bytes & 0x80000000) != 0;
 
         uint32_t encoded_value = 0;
 
 ////        if (std::isnan(value))
 
-        if(exponent == 0xFF)////((uint32_t)(value&0xFF000000)) == 0xFF000000)
+        if(expon == 0xFF)////((uint32_t)(value&0xFF000000)) == 0xFF000000)
         {
             // NaN has all exponent bit set to 1, and mantissa with a least a 1. Sign bit is ignored.
             // Here, I use x86 qNaN (because libiec61850 simply cast the value into a double)
@@ -374,10 +374,10 @@
 ////            float fraction_part = std::frexp(std::abs(value), &integral_part);
             float fraction_part = frexp( fabs(value), &integral_part );
 
-            uint16_t exponent = integral_part + 126;
+            uint16_t expon1 = integral_part + 126;
 ////            encoded_value |= (static_cast<uint32_t>(exponent) & 0xFF) << 23;
 ////            encoded_value |= static_cast<uint32_t>(fraction_part * (uint32_t{1} << 24)) & 0x007FFFFF;
-            encoded_value |= (((uint32_t)(exponent)) & 0xFF) << 23;
+            encoded_value |= (((uint32_t)(expon1)) & 0xFF) << 23;
             encoded_value |= (uint32_t)(fraction_part * (((uint32_t)1) << 24)) & 0x007FFFFF;
         }
 

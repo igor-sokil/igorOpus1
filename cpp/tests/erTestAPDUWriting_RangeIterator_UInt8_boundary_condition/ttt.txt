@@ -1,0 +1,21 @@
+TEST_CASE(SUITE("RangeIterator UInt8 boundary condition"))
+{
+    APDUResponse response(APDUHelpers::Response());
+    auto writer = response.GetWriter();
+
+    {
+        auto iterator = writer.IterateOverRange<UInt8, Binary>(QualifierCode::UINT8_START_STOP, Group1Var2::Inst(), 0);
+
+        for (int i = 0; i < 256; ++i)
+        {
+            REQUIRE(iterator.Write(Binary(true)));
+        }
+
+        REQUIRE_FALSE(iterator.Write(Binary(true)));
+    }
+
+    std::string beginsWith("C0 81 00 00 01 02 00 00 FF");
+    auto truncated = HexConversions::to_hex(response.ToRSeq()).substr(0, beginsWith.size());
+
+    REQUIRE(beginsWith == truncated);
+}

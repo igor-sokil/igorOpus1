@@ -1,0 +1,15 @@
+TEST_CASE(SUITE("CountWriteIteratorFillsUpCorrectly"))
+{
+    APDUResponse response(APDUHelpers::Response(15));
+    auto writer = response.GetWriter();
+
+    {
+        auto iter = writer.IterateOverCount<UInt8, Analog>(QualifierCode::UINT8_CNT, Group30Var2::Inst());
+
+        REQUIRE(iter.Write(Analog(9, Flags(0xFF))));
+        REQUIRE(iter.Write(Analog(7, Flags(0xFF))));
+        REQUIRE(!iter.Write(Analog(7, Flags(0xFF)))); // we're full
+    }
+
+    REQUIRE("C0 81 00 00 1E 02 07 02 FF 09 00 FF 07 00" == HexConversions::to_hex(response.ToRSeq()));
+}

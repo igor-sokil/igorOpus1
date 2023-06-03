@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("HeaderParsingEmptySring"))
+{
+    HexSequence buffer("");
+    REQUIRE(!APDUHeaderParser::ParseRequest(buffer.ToRSeq()).success);
+}

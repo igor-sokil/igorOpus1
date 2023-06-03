@@ -182,7 +182,7 @@ typedef struct
 ////    void Initialize();
 } List_TypedEventRecord_for_OctetStringSpec;
 
-void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
+void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver1(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
 void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver2(
        List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec,
        uint32_t maxSize);

@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("CountWriteIteratorAllowsCountOfZero"))
+{
+    APDUResponse response(APDUHelpers::Response());
+    auto writer = response.GetWriter();
+
+    writer.IterateOverCount<UInt16, Analog>(QualifierCode::UINT16_CNT, Group30Var1::Inst());
+
+    REQUIRE("C0 81 00 00 1E 01 08 00 00" == HexConversions::to_hex(response.ToRSeq()));
+}

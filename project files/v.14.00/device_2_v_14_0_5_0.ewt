@@ -1522,16 +1522,40 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\APDURequest.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\APDUResponse.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\APDUWrapper.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\AppControlField.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\ClassField.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\ControlRelayOutputBlock.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\DNP3Serializer.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\DownSampling.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\EventTriggers.cpp</name>
@@ -1541,6 +1565,9 @@
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\GroupVariationRecord.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\HeaderWriter.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\IINField.cpp</name>
@@ -1555,7 +1582,13 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\MeasurementTypes.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\MeasurementTypeSpecs.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\OctetData.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp</name>
@@ -1565,6 +1598,9 @@
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\range.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\Serializer.cpp</name>
@@ -1596,6 +1632,81 @@
                 </group>
                 <group>
                     <name>master</name>
+                </group>
+                <group>
+                    <name>outstation</name>
+                    <group>
+                        <name>event</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\ClazzCount.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventCollection.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventLists.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventRecord.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventSelection.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventStorage.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventTypeImpl.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventUpdate.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventWriting.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\IEventType.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogSpec_part1.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogSpec_part2.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_BinaryOutputStatusSpec_part2.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_BinarySpec_part1.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_FrozenCounterSpec_part1.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_OctetStringSpec_part1.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_OctetStringSpec_part2.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\Nodes.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\TypedEventRecord.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\TypedStorage.cpp</name>
+                        </file>
+                    </group>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\Event.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\EventBufferConfig.cpp</name>
+                    </file>
                 </group>
                 <group>
                     <name>util</name>
@@ -2294,135 +2405,12 @@
                     <name>component</name>
                     <group>
                         <name>filePERIF2021</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ANLCONF1Register20.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ANLDATA1_8Register20.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_CTRLVVRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_DRCONF1Register20.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_DRDATA1Register20.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_DRDATA2Register20.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_DSREGRegister20.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ELANDRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ELDTRRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ELMFTRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ELNOTRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ELORRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ELPFRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_ELXORRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_PKV1Register2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_PKV2Register2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_PKV3Register2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_PKV4Register2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_PKV6Register2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_RAIRegister20.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_REGANLRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_REGDISRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePERIF2021\filePERIF_TRANSRegister2021.c</name>
-                        </file>
                     </group>
                     <group>
                         <name>filePROT2021</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_AJRRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_APVRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_COMMRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_DZORegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_DZRRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_JAPVRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_MTZORegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_MTZRRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_OMPRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_UPRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_UROVRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_ZNMAXRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\filePROT2021\filePROT_ZNMINRegister2021.c</name>
-                        </file>
                     </group>
                     <group>
                         <name>fileUVV2021</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\fileUVV2021\fileUVV_DOUTRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\fileUVV2021\fileUVV_DVRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\fileUVV2021\fileUVV_KEYRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\fileUVV2021\fileUVV_RPRRegister2021.c</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\fileUVV2021\fileUVV_SDIRegister2021.c</name>
-                        </file>
                     </group>
                     <file>
                         <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\ACMDSmallComponent.c</name>
@@ -2725,30 +2713,6 @@
             </group>
             <group>
                 <name>src</name>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\usb\usb_bsp.c</name>
-                    <configuration>
-                        <name>Flash-Debug</name>
-                    </configuration>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\usb\usbd_cdc_vcp.c</name>
-                    <configuration>
-                        <name>Flash-Debug</name>
-                    </configuration>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\usb\usbd_desc.c</name>
-                    <configuration>
-                        <name>Flash-Debug</name>
-                    </configuration>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\usb\usbd_usr.c</name>
-                    <configuration>
-                        <name>Flash-Debug</name>
-                    </configuration>
-                </file>
             </group>
         </group>
     </group>
