@@ -1,0 +1,11 @@
+#include "header.h"
+#include "Array__for__Node_for_EventRecord.h"
+
+void __Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(Array__for__Node_for_EventRecord *pArray__for__Node_for_EventRecord, uint32_t size);
+void __HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
+
+void __Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(Array__for__Node_for_EventRecord *pArray__for__Node_for_EventRecord, uint32_t size)
+{
+//    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
+  __HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pArray__for__Node_for_EventRecord->hHasLength_for_Uint32_t), size);
+}

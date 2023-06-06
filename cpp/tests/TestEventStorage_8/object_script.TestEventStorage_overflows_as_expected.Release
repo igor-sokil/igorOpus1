@@ -112,7 +112,6 @@ release/Group1.o
 release/Group2.o
 release/Group20.o
 release/Group30.o
-release/Group32.o
 release/Group50.o
 release/Group51.o
 release/APDUHelpers.o

@@ -15,6 +15,9 @@ class LogHandler
    void LogEntryShort(QString message);
    void LogEntryShort(QString &message);
    void clearFileLog();
+   void logHandlerStampArray(const char * title, unsigned int *data, int size);
+   void logHandlerStampInteger(const char * title, int data);
+   QString appendTimeStamp(QString str_response);
 
  private:
 

@@ -179,6 +179,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group2.cpp \
                 cpp\lib\src\gen\objects\Group20.cpp \
                 cpp\lib\src\gen\objects\Group30.cpp \
+                cpp\lib\src\gen\objects\Group32.cpp \
                 cpp\lib\src\gen\objects\Group50.cpp \
                 cpp\lib\src\gen\objects\Group51.cpp \
                 \

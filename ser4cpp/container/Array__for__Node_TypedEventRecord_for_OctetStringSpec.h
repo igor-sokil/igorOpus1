@@ -83,7 +83,7 @@ typedef struct
   HasLength_for_Uint32_t hHasLength_for_Uint32_t;
 ////protected:
 ////    T* buffer;
-  Node_TypedEventRecord_for_OctetStringSpec buffer[MAX_EventRecord];
+  Node_TypedEventRecord_for_OctetStringSpec buffer[SIZE_TypedEventRecord_for_OctetStringSpec];
 
 ////private:
 ////    Array& operator=(const Array&) = delete;
