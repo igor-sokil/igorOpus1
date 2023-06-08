@@ -10,6 +10,10 @@ void List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_
   pList_TypedEventRecord_for_DoubleBitBinarySpec->head = NULL;
   pList_TypedEventRecord_for_DoubleBitBinarySpec->tail = NULL;
   pList_TypedEventRecord_for_DoubleBitBinarySpec->free = NULL;
+  for(int i=0; i<SIZE_TypedEventRecord_for_DoubleBitBinarySpec; i++)
+  {
+   Node_TypedEventRecord_for_DoubleBitBinarySpec_in_Node_TypedEventRecord_for_DoubleBitBinarySpec(&((pList_TypedEventRecord_for_DoubleBitBinarySpec->underlying).buffer[i]));
+  }
 }
 
 Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec From__in__Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec_static(Node_TypedEventRecord_for_DoubleBitBinarySpec* start)
@@ -102,6 +106,7 @@ void Link_in_List_TypedEventRecord_for_DoubleBitBinarySpec_static(Node_TypedEven
 
 void List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver2(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec, uint32_t maxSize)
 {
+  List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver1(pList_TypedEventRecord_for_DoubleBitBinarySpec);
 //    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
   HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_TypedEventRecord_for_DoubleBitBinarySpec->hHasLength_for_Uint32_t), 0);
 //void Array__for__Node_TypedEventRecord_for_DoubleBitBinarySpec_in_Array__for__Node_TypedEventRecord_for_DoubleBitBinarySpecOver2(Array__for__Node_TypedEventRecord_for_DoubleBitBinarySpec *pArray__for__Node_TypedEventRecord_for_DoubleBitBinarySpec, uint32_t size);

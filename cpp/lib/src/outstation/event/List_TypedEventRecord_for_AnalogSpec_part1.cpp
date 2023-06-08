@@ -10,6 +10,10 @@ void List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpe
   pList_TypedEventRecord_for_AnalogSpec->head = NULL;
   pList_TypedEventRecord_for_AnalogSpec->tail = NULL;
   pList_TypedEventRecord_for_AnalogSpec->free = NULL;
+  for(int i=0; i<SIZE_TypedEventRecord_for_AnalogSpec; i++)
+  {
+   Node_TypedEventRecord_for_AnalogSpec_in_Node_TypedEventRecord_for_AnalogSpec(&((pList_TypedEventRecord_for_AnalogSpec->underlying).buffer[i]));
+  }
 }
 
 Iterator_in_List_TypedEventRecord_for_AnalogSpec From__in__Iterator_in_List_TypedEventRecord_for_AnalogSpec_static(Node_TypedEventRecord_for_AnalogSpec* start)
@@ -102,6 +106,7 @@ void Link_in_List_TypedEventRecord_for_AnalogSpec_static(Node_TypedEventRecord_f
 
 void List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver2(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec, uint32_t maxSize)
 {
+  List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver1(pList_TypedEventRecord_for_AnalogSpec);
 //    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
   HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_TypedEventRecord_for_AnalogSpec->hHasLength_for_Uint32_t), 0);
 //void Array__for__Node_TypedEventRecord_for_AnalogSpec_in_Array__for__Node_TypedEventRecord_for_AnalogSpecOver2(Array__for__Node_TypedEventRecord_for_AnalogSpec *pArray__for__Node_TypedEventRecord_for_AnalogSpec, uint32_t size);

@@ -10,6 +10,10 @@ void List_TypedEventRecord_for_FrozenCounterSpec_in_List_TypedEventRecord_for_Fr
   pList_TypedEventRecord_for_FrozenCounterSpec->head = NULL;
   pList_TypedEventRecord_for_FrozenCounterSpec->tail = NULL;
   pList_TypedEventRecord_for_FrozenCounterSpec->free = NULL;
+  for(int i=0; i<SIZE_TypedEventRecord_for_FrozenCounterSpec; i++)
+  {
+   Node_TypedEventRecord_for_FrozenCounterSpec_in_Node_TypedEventRecord_for_FrozenCounterSpec(&((pList_TypedEventRecord_for_FrozenCounterSpec->underlying).buffer[i]));
+  }
 }
 
 Iterator_in_List_TypedEventRecord_for_FrozenCounterSpec From__in__Iterator_in_List_TypedEventRecord_for_FrozenCounterSpec_static(Node_TypedEventRecord_for_FrozenCounterSpec* start)
@@ -102,6 +106,7 @@ void Link_in_List_TypedEventRecord_for_FrozenCounterSpec_static(Node_TypedEventR
 
 void List_TypedEventRecord_for_FrozenCounterSpec_in_List_TypedEventRecord_for_FrozenCounterSpecOver2(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec, uint32_t maxSize)
 {
+  List_TypedEventRecord_for_FrozenCounterSpec_in_List_TypedEventRecord_for_FrozenCounterSpecOver1(pList_TypedEventRecord_for_FrozenCounterSpec);
 //    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
   HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_TypedEventRecord_for_FrozenCounterSpec->hHasLength_for_Uint32_t), 0);
 //void Array__for__Node_TypedEventRecord_for_FrozenCounterSpec_in_Array__for__Node_TypedEventRecord_for_FrozenCounterSpecOver2(Array__for__Node_TypedEventRecord_for_FrozenCounterSpec *pArray__for__Node_TypedEventRecord_for_FrozenCounterSpec, uint32_t size);

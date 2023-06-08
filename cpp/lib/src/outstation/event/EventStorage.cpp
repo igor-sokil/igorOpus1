@@ -27,11 +27,11 @@
 ////namespace opendnp3
 ////{
 
-  uint32_t RemoveAll_in_List_for_EventRecord(EventStorage *pEventStorage, List_for_EventRecord *pList_for_EventRecord, boolean (*match)(EventStorage *pEventStorage, EventRecord* record));//const U& match);
+uint32_t RemoveAll_in_List_for_EventRecord(EventStorage *pEventStorage, List_for_EventRecord *pList_for_EventRecord, boolean (*match)(EventStorage *pEventStorage, EventRecord* record));//const U& match);
 
 void EventStorage_in_EventStorage(EventStorage *pEventStorage, EventBufferConfig* config)
 {
- ////: state(config) {}
+////: state(config) {}
   EventLists_in_EventLists(&(pEventStorage->state), config);
 }
 
@@ -168,64 +168,64 @@ uint32_t SelectByType_in_EventStorageOver9(EventStorage *pEventStorage, EventTyp
   }
 }
 
-    uint32_t SelectByClass_in_EventStorageOver1(EventStorage *pEventStorage, EventClass_uint8_t clazz)
+uint32_t SelectByClass_in_EventStorageOver1(EventStorage *pEventStorage, EventClass_uint8_t clazz)
 {
 ////  return EventSelection::SelectByClass(this->state, ClassField(clazz), 0xFFFFFFFF);//std::numeric_limits<uint32_t>::max());
-      ClassField cClassField;
-      ClassField_in_ClassFieldOver3(&cClassField, clazz);
-    return SelectByClass_in_EventSelection_static(&(pEventStorage->state), &cClassField, 0xFFFFFFFF);
+  ClassField cClassField;
+  ClassField_in_ClassFieldOver3(&cClassField, clazz);
+  return SelectByClass_in_EventSelection_static(&(pEventStorage->state), &cClassField, 0xFFFFFFFF);
 }
 
 ////uint32_t EventStorage::SelectByClass(EventClass_uint8_t* clazz, uint32_t max)
-    uint32_t SelectByClass_in_EventStorageOver2(EventStorage *pEventStorage, EventClass_uint8_t clazz, uint32_t max)
+uint32_t SelectByClass_in_EventStorageOver2(EventStorage *pEventStorage, EventClass_uint8_t clazz, uint32_t max)
 {
-      ClassField cClassField;
-      ClassField_in_ClassFieldOver3(&cClassField, clazz);
+  ClassField cClassField;
+  ClassField_in_ClassFieldOver3(&cClassField, clazz);
 ////  return EventSelection::SelectByClass(this->state, ClassField(clazz), max);
-    return SelectByClass_in_EventSelection_static(&(pEventStorage->state), &cClassField, max);
+  return SelectByClass_in_EventSelection_static(&(pEventStorage->state), &cClassField, max);
 }
 
 //uint32_t EventStorage::SelectByClass(ClassField* clazz)
-    uint32_t SelectByClass_in_EventStorageOver3(EventStorage *pEventStorage, ClassField* clazz)
+uint32_t SelectByClass_in_EventStorageOver3(EventStorage *pEventStorage, ClassField* clazz)
 {
 ////  return EventSelection::SelectByClass(this->state, clazz, 0xFFFFFFFF);//std::numeric_limits<uint32_t>::max());
-    return SelectByClass_in_EventSelection_static(&(pEventStorage->state), clazz, 0xFFFFFFFF);
+  return SelectByClass_in_EventSelection_static(&(pEventStorage->state), clazz, 0xFFFFFFFF);
 }
 
 //uint32_t EventStorage::SelectByClass(const ClassField* clazz, uint32_t max)
-    uint32_t SelectByClass_in_EventStorageOver4(EventStorage *pEventStorage, ClassField* clazz, uint32_t max)
+uint32_t SelectByClass_in_EventStorageOver4(EventStorage *pEventStorage, ClassField* clazz, uint32_t max)
 {
 ////  return EventSelection::SelectByClass(this->state, clazz, max);
-    return SelectByClass_in_EventSelection_static(&(pEventStorage->state), clazz, max);
+  return SelectByClass_in_EventSelection_static(&(pEventStorage->state), clazz, max);
 }
 
 ////uint32_t EventStorage::Write(IEventWriteHandler* handler)
-    uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler)
+uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler)
 {
 ////  return EventWriting::Write(this->state, handler);
-    return Write_in_EventWriting_static(&(pEventStorage->state), handler);
+  return Write_in_EventWriting_static(&(pEventStorage->state), handler);
 }
 
- boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record);
+boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record);
 
- boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record)
+boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record)
 {
 ////  auto written = [this](EventRecord& record) -> bool {
-    if (record->state == EventState_written)
-    {
+  if (record->state == EventState_written)
+  {
 //     void (*pRemoveTypeFromStorage)(EventRecord* record, EventLists* lists);// const = 0;
 ////      record.type->RemoveTypeFromStorage(record, this->state);
-       ((IEventType*)record->type)->pRemoveTypeFromStorage(record, &(pEventStorage->state));
+    ((IEventType*)record->type)->pRemoveTypeFromStorage(record, &(pEventStorage->state));
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////      this->state.counters.OnRemove(record.clazz, record.state);
-      OnRemove_in_EventClassCounters(&((pEventStorage->state).counters), record->clazz, record->state);
-      return true;
-    }
+    OnRemove_in_EventClassCounters(&((pEventStorage->state).counters), record->clazz, record->state);
+    return true;
+  }
 
-    return false;
+  return false;
 }
 ////uint32_t EventStorage::ClearWritten()
-    uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage)
+uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage)
 {
 ////  auto written = [this](EventRecord& record) -> bool {
 ////    if (record.state == EventState::written)
@@ -240,7 +240,7 @@ uint32_t SelectByType_in_EventStorageOver9(EventStorage *pEventStorage, EventTyp
 ////  };
 
 ////  return this->state.events.RemoveAll(&((pEventStorage->state).events), written);
- return RemoveAll_in_List_for_EventRecord(pEventStorage, &((pEventStorage->state).events), written_in_EventStorage);
+  return RemoveAll_in_List_for_EventRecord(pEventStorage, &((pEventStorage->state).events), written_in_EventStorage);
 }
 
 void clear_in_EventStorage(EventRecord* record);
@@ -258,7 +258,7 @@ void Unselect_in_EventStorage(EventStorage *pEventStorage)
 ////  auto clear = [](EventRecord& record) -> void { record.state = EventState::unselected; };
 
 ////  this->state.events.Foreach(clear);
-      Foreach_in_List_for_EventRecord(&((pEventStorage->state).events), clear_in_EventStorage);
+  Foreach_in_List_for_EventRecord(&((pEventStorage->state).events), clear_in_EventStorage);
 
   // keep the total, but clear the selected/written
 ////  this->state.counters.ResetOnFail();

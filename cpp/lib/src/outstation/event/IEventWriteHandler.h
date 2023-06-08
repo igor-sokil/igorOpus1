@@ -65,7 +65,7 @@ typedef struct
 {
 ////public:
 ////  virtual
- boolean (*pWrite_in_IEventWriter_for_Binary)(Binary* meas, uint16_t index);// = 0;
+  boolean (*pWrite_in_IEventWriter_for_Binary)(Binary* meas, uint16_t index);// = 0;
 } IEventWriter_for_Binary;
 
 ////template<class T> class IEventCollection
@@ -82,7 +82,7 @@ typedef struct
 {
 ////public:
 ////  virtual
- boolean (*pWrite_in_IEventWriter_for_DoubleBitBinary)(DoubleBitBinary* meas, uint16_t index);// = 0;
+  boolean (*pWrite_in_IEventWriter_for_DoubleBitBinary)(DoubleBitBinary* meas, uint16_t index);// = 0;
 } IEventWriter_for_DoubleBitBinary;
 
 ////template<class T> class IEventCollection
@@ -99,7 +99,7 @@ typedef struct
 {
 ////public:
 ////  virtual
- boolean (*pWrite_in_IEventWriter_for_FrozenCounter)(FrozenCounter* meas, uint16_t index);// = 0;
+  boolean (*pWrite_in_IEventWriter_for_FrozenCounter)(FrozenCounter* meas, uint16_t index);// = 0;
 } IEventWriter_for_FrozenCounter;
 
 ////template<class T> class IEventCollection
@@ -116,7 +116,7 @@ typedef struct
 {
 ////public:
 ////  virtual
- boolean (*pWrite_in_IEventWriter_for_Counter)(Counter* meas, uint16_t index);// = 0;
+  boolean (*pWrite_in_IEventWriter_for_Counter)(Counter* meas, uint16_t index);// = 0;
 } IEventWriter_for_Counter;
 
 ////template<class T> class IEventCollection
@@ -133,7 +133,7 @@ typedef struct
 {
 ////public:
 ////  virtual
- boolean (*pWrite_in_IEventWriter_for_BinaryOutputStatus)(BinaryOutputStatus* meas, uint16_t index);// = 0;
+  boolean (*pWrite_in_IEventWriter_for_BinaryOutputStatus)(BinaryOutputStatus* meas, uint16_t index);// = 0;
 } IEventWriter_for_BinaryOutputStatus;
 
 ////template<class T> class IEventCollection
@@ -150,7 +150,7 @@ typedef struct
 {
 ////public:
 ////  virtual
- boolean (*pWrite_in_IEventWriter_for_AnalogOutputStatus)(AnalogOutputStatus* meas, uint16_t index);// = 0;
+  boolean (*pWrite_in_IEventWriter_for_AnalogOutputStatus)(AnalogOutputStatus* meas, uint16_t index);// = 0;
 } IEventWriter_for_AnalogOutputStatus;
 
 ////template<class T> class IEventCollection
@@ -167,7 +167,7 @@ typedef struct
 {
 ////public:
 ////  virtual
- boolean (*pWrite_in_IEventWriter_for_Analog)(Analog* meas, uint16_t index);// = 0;
+  boolean (*pWrite_in_IEventWriter_for_Analog)(Analog* meas, uint16_t index);// = 0;
 } IEventWriter_for_Analog;
 
 ////template<class T> class IEventCollection
@@ -184,7 +184,7 @@ typedef struct
 {
 ////public:
 ////  virtual
- boolean (*pWrite_in_IEventWriter_for_OctetString)(OctetString* meas, uint16_t index);// = 0;
+  boolean (*pWrite_in_IEventWriter_for_OctetString)(OctetString* meas, uint16_t index);// = 0;
 } IEventWriter_for_OctetString;
 
 ////template<class T> class IEventCollection
@@ -200,36 +200,36 @@ typedef struct
 {
 ////public:
 ////  virtual
-     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);//// = 0;
+  uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);//// = 0;
 
-////  virtual 
-      uint16_t (*pWrite_in_IEventWriteHandlerOver2)(EventDoubleBinaryVariation_uint8_t variation,
-                         DoubleBitBinary* first,
-                         IEventCollection_for_DoubleBitBinary* items);
+////  virtual
+  uint16_t (*pWrite_in_IEventWriteHandlerOver2)(EventDoubleBinaryVariation_uint8_t variation,
+      DoubleBitBinary* first,
+      IEventCollection_for_DoubleBitBinary* items);
 ////    = 0;
-////  virtual 
-     uint16_t (*pWrite_in_IEventWriteHandlerOver3)(EventCounterVariation_uint8_t variation, Counter* first, IEventCollection_for_Counter* items);//// = 0;
-////  virtual 
-   uint16_t (*pWrite_in_IEventWriteHandlerOver4)(EventFrozenCounterVariation_uint8_t variation,
-                         FrozenCounter* first,
-                         IEventCollection_for_FrozenCounter* items);
+////  virtual
+  uint16_t (*pWrite_in_IEventWriteHandlerOver3)(EventCounterVariation_uint8_t variation, Counter* first, IEventCollection_for_Counter* items);//// = 0;
+////  virtual
+  uint16_t (*pWrite_in_IEventWriteHandlerOver4)(EventFrozenCounterVariation_uint8_t variation,
+      FrozenCounter* first,
+      IEventCollection_for_FrozenCounter* items);
 ////    = 0;
-////  virtual 
+////  virtual
   uint16_t (*pWrite_in_IEventWriteHandlerOver5)(EventAnalogVariation_uint8_t variation, Analog* first, IEventCollection_for_Analog* items);//// = 0;
 ////  virtual
   uint16_t (*pWrite_in_IEventWriteHandlerOver6)(EventBinaryOutputStatusVariation_uint8_t variation,
-                         BinaryOutputStatus* first,
-                         IEventCollection_for_BinaryOutputStatus* items);
+      BinaryOutputStatus* first,
+      IEventCollection_for_BinaryOutputStatus* items);
 ////    = 0;
-////  virtual 
+////  virtual
   uint16_t (*pWrite_in_IEventWriteHandlerOver7)(EventAnalogOutputStatusVariation_uint8_t variation,
-                         AnalogOutputStatus* first,
-                         IEventCollection_for_AnalogOutputStatus* items);
+      AnalogOutputStatus* first,
+      IEventCollection_for_AnalogOutputStatus* items);
 ////    = 0;
-////  virtual 
-   uint16_t (*pWrite_in_IEventWriteHandlerOver8)(EventOctetStringVariation_uint8_t variation,
-                         OctetString* first,
-                         IEventCollection_for_OctetString* items);
+////  virtual
+  uint16_t (*pWrite_in_IEventWriteHandlerOver8)(EventOctetStringVariation_uint8_t variation,
+      OctetString* first,
+      IEventCollection_for_OctetString* items);
 ////    = 0;
 } IEventWriteHandler;
 ////} // namespace opendnp3

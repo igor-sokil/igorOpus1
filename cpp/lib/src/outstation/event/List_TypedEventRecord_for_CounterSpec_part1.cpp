@@ -10,6 +10,10 @@ void List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterS
   pList_TypedEventRecord_for_CounterSpec->head = NULL;
   pList_TypedEventRecord_for_CounterSpec->tail = NULL;
   pList_TypedEventRecord_for_CounterSpec->free = NULL;
+  for(int i=0; i<SIZE_TypedEventRecord_for_CounterSpec; i++)
+  {
+   Node_TypedEventRecord_for_CounterSpec_in_Node_TypedEventRecord_for_CounterSpec(&((pList_TypedEventRecord_for_CounterSpec->underlying).buffer[i]));
+  }
 }
 
 Iterator_in_List_TypedEventRecord_for_CounterSpec From__in__Iterator_in_List_TypedEventRecord_for_CounterSpec_static(Node_TypedEventRecord_for_CounterSpec* start)
@@ -102,6 +106,7 @@ void Link_in_List_TypedEventRecord_for_CounterSpec_static(Node_TypedEventRecord_
 
 void List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterSpecOver2(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec, uint32_t maxSize)
 {
+  List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterSpecOver1(pList_TypedEventRecord_for_CounterSpec);
 //    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
   HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_TypedEventRecord_for_CounterSpec->hHasLength_for_Uint32_t), 0);
 //void Array__for__Node_TypedEventRecord_for_CounterSpec_in_Array__for__Node_TypedEventRecord_for_CounterSpecOver2(Array__for__Node_TypedEventRecord_for_CounterSpec *pArray__for__Node_TypedEventRecord_for_CounterSpec, uint32_t size);

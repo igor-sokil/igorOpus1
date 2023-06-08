@@ -10,6 +10,10 @@ void List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpe
   pList_TypedEventRecord_for_BinarySpec->head = NULL;
   pList_TypedEventRecord_for_BinarySpec->tail = NULL;
   pList_TypedEventRecord_for_BinarySpec->free = NULL;
+  for(int i=0; i<SIZE_TypedEventRecord_for_BinarySpec; i++)
+  {
+   Node_TypedEventRecord_for_BinarySpec_in_Node_TypedEventRecord_for_BinarySpec(&((pList_TypedEventRecord_for_BinarySpec->underlying).buffer[i]));
+  }
 }
 
 Iterator_in_List_TypedEventRecord_for_BinarySpec From__in__Iterator_in_List_TypedEventRecord_for_BinarySpec_static(Node_TypedEventRecord_for_BinarySpec* start)
@@ -102,6 +106,7 @@ void Link_in_List_TypedEventRecord_for_BinarySpec_static(Node_TypedEventRecord_f
 
 void List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpecOver2(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec, uint32_t maxSize)
 {
+  List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpecOver1(pList_TypedEventRecord_for_BinarySpec);
 //    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
   HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_TypedEventRecord_for_BinarySpec->hHasLength_for_Uint32_t), 0);
 //void Array__for__Node_TypedEventRecord_for_BinarySpec_in_Array__for__Node_TypedEventRecord_for_BinarySpecOver2(Array__for__Node_TypedEventRecord_for_BinarySpec *pArray__for__Node_TypedEventRecord_for_BinarySpec, uint32_t size);

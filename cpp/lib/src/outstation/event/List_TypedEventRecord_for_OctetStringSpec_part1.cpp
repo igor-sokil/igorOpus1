@@ -3,7 +3,6 @@
 #include "List_TypedEventRecord_for_OctetStringSpec.h"
 #include <string.h>
 
-//void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpec_staticOver1(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec)
 void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver1(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec)
 {
   (pList_TypedEventRecord_for_OctetStringSpec->iIterator_in_List_TypedEventRecord_for_OctetStringSpec).current = NULL;
@@ -11,6 +10,10 @@ void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_Octe
   pList_TypedEventRecord_for_OctetStringSpec->head = NULL;
   pList_TypedEventRecord_for_OctetStringSpec->tail = NULL;
   pList_TypedEventRecord_for_OctetStringSpec->free = NULL;
+  for(int i=0; i<SIZE_TypedEventRecord_for_OctetStringSpec; i++)
+  {
+   Node_TypedEventRecord_for_OctetStringSpec_in_Node_TypedEventRecord_for_OctetStringSpec(&((pList_TypedEventRecord_for_OctetStringSpec->underlying).buffer[i]));
+  }
 }
 
 Iterator_in_List_TypedEventRecord_for_OctetStringSpec From__in__Iterator_in_List_TypedEventRecord_for_OctetStringSpec_static(Node_TypedEventRecord_for_OctetStringSpec* start)
@@ -103,6 +106,7 @@ void Link_in_List_TypedEventRecord_for_OctetStringSpec_static(Node_TypedEventRec
 
 void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver2(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec, uint32_t maxSize)
 {
+  List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver1(pList_TypedEventRecord_for_OctetStringSpec);
 //    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
   HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_TypedEventRecord_for_OctetStringSpec->hHasLength_for_Uint32_t), 0);
 //void Array__for__Node_TypedEventRecord_for_OctetStringSpec_in_Array__for__Node_TypedEventRecord_for_OctetStringSpecOver2(Array__for__Node_TypedEventRecord_for_OctetStringSpec *pArray__for__Node_TypedEventRecord_for_OctetStringSpec, uint32_t size);

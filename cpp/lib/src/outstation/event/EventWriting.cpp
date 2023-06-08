@@ -29,53 +29,53 @@
 ////{
 
 ////uint32_t EventWriting::Write(EventLists& lists, IEventWriteHandler& handler)
-    uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler)
+uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler)
 {
-    uint32_t total_num_written = 0;
+  uint32_t total_num_written = 0;
 
 //    Iterator_in_List_for_EventRecord Iterate_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
 ////    auto iterator = lists.events.Iterate();
-    Iterator_in_List_for_EventRecord iter = Iterate_in_List_for_EventRecord(&(lists->events));
+  Iterator_in_List_for_EventRecord iter = Iterate_in_List_for_EventRecord(&(lists->events));
 
-    while (true)
-    {
-        // continue calling WriteSome(..) until it fails to make progress
+  while (true)
+  {
+    // continue calling WriteSome(..) until it fails to make progress
 //    uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler);
 ////        auto num_written = WriteSome(iterator, lists, handler);
     uint16_t num_written = WriteSome_in_EventWriting_static(&iter, lists, handler);
 
-        if (num_written == 0)
-        {
-            return total_num_written;
-        }
-
-        total_num_written += num_written;
+    if (num_written == 0)
+    {
+      return total_num_written;
     }
+
+    total_num_written += num_written;
+  }
 }
 
 ////EventRecord* EventWriting::FindNextSelected(event_iter_t& iter, EventType type)
-    EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type)
+EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type)
 {
-    while (true)
-    {
+  while (true)
+  {
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        auto current = iter.CurrentValue();
-EventRecord* current = CurrentValue__in__Iterator_in_List_for_EventRecord(iter);
-        if (!current)
-            return NULL;
+    EventRecord* current = CurrentValue__in__Iterator_in_List_for_EventRecord(iter);
+    if (!current)
+      return NULL;
 
-        if (current->state == EventState_selected)
-        {
-            // we terminate here since the type has changed
+    if (current->state == EventState_selected)
+    {
+      // we terminate here since the type has changed
 //   boolean IsEqual_in_IEventType(IEventType* pIEventType, EventType_uint16_t type);
 ////            return current->type->IsEqual(type) ? current : nullptr;
-   return IsEqual_in_IEventType((IEventType*)(current->type), type) ? current : NULL;
-           
-        }
+      return IsEqual_in_IEventType((IEventType*)(current->type), type) ? current : NULL;
+
+    }
 
 ////        iter.Next();
-   Next__in__Iterator_in_List_for_EventRecord(iter);
-    }
+    Next__in__Iterator_in_List_for_EventRecord(iter);
+  }
 }
 
 boolean matches_in_EventWriting(EventRecord* pEventRecord);
@@ -85,19 +85,19 @@ boolean matches_in_EventWriting(EventRecord* record)
 }
 
 ////uint16_t EventWriting::WriteSome(event_iter_t& iterator, EventLists& lists, IEventWriteHandler& handler)
-    uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler)
+uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler)
 {
-    // don't bother searching
+  // don't bother searching
 ////    if (lists.counters.selected == 0)
-        if (lists->counters.selected == 0)
-        return 0;
+  if (lists->counters.selected == 0)
+    return 0;
 
 //EventRecord *Find__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord
 ////    const auto value = iterator.Find([](const EventRecord& record) { return record.state == EventState::selected; });
-EventRecord *value = Find__in__Iterator_in_List_for_EventRecord(iteratorEv, matches_in_EventWriting);
+  EventRecord *value = Find__in__Iterator_in_List_for_EventRecord(iteratorEv, matches_in_EventWriting);
 
-    if (!value)
-        return 0; // no match
+  if (!value)
+    return 0; // no match
 
 //     uint16_t (*pWriteSome)(Iterator_in_List_for_EventRecord* iterator,
 //                               EventLists* lists,
