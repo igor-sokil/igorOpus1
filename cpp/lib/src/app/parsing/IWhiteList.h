@@ -37,7 +37,7 @@ typedef struct
 {
 ////public:
 ////    virtual bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) = 0;
-     boolean (*pIsAllowed)(uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+     boolean (*pIsAllowed)(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 } IWhiteList;
 
 ////} // namespace opendnp3

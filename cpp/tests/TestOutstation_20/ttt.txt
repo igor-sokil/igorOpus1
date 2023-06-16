@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("WriteTimeDateMultipleObjects"))
+{
+    OutstationConfig cfg;
+    OutstationTestObject t(cfg);
+    t.LowerLayerUp();
+
+    t.SendToOutstation(
+        "C0 02 32 01 07 02 D2 04 00 00 00 00 D2 04 00 00 00 00"); // write Grp50Var1, value = 1234 ms after epoch
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 04");           // param error +  need time still set
+    REQUIRE(t.application->timestamps.empty());
+}

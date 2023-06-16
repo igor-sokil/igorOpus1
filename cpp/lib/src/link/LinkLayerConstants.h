@@ -60,12 +60,12 @@ enum LinkHeaderIndex //: uint8_t
 #define ControlMask_uint8_t  uint8_t
 enum ControlMask //: uint8_t
 {
-    MASK_DIR = 0x80,
-    MASK_PRM = 0x40,
-    MASK_FCB = 0x20,
-    MASK_FCV = 0x10,
-    MASK_FUNC = 0x0F,
-    MASK_FUNC_OR_PRM = MASK_PRM | MASK_FUNC
+    ControlMask_MASK_DIR = 0x80,
+    ControlMask_MASK_PRM = 0x40,
+    ControlMask_MASK_FCB = 0x20,
+    ControlMask_MASK_FCV = 0x10,
+    ControlMask_MASK_FUNC = 0x0F,
+    ControlMask_MASK_FUNC_OR_PRM = ControlMask_MASK_PRM | ControlMask_MASK_FUNC
 };
 
 ////} // namespace opendnp3

@@ -38,35 +38,35 @@
 
 //----------------------------------BinarySpec-------------------------------------------
 ////template<class T> bool EventUpdate::Update(EventLists& lists, const Event<T>& event)
-boolean Update_for_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_BinarySpec* event);
+boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_BinarySpec* event);
 //----------------------------------BinarySpec-------------------------------------------
 //----------------------------------DoubleBitBinarySpec-------------------------------------------
 ////template<class T> bool EventUpdate::Update(EventLists& lists, const Event<T>& event)
-boolean Update_for_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_DoubleBitBinarySpec* event);
+boolean Update_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_DoubleBitBinarySpec* event);
 //----------------------------------DoubleBitBinarySpec-------------------------------------------
 //----------------------------------AnalogSpec-------------------------------------------
 ////template<class T> bool EventUpdate::Update(EventLists& lists, const Event<T>& event)
-boolean Update_for_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogSpec* event);
+boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogSpec* event);
 //----------------------------------AnalogSpec-------------------------------------------
 //----------------------------------CounterSpec-------------------------------------------
 ////template<class T> bool EventUpdate::Update(EventLists& lists, const Event<T>& event)
-boolean Update_for_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_CounterSpec* event);
+boolean Update_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_CounterSpec* event);
 //----------------------------------CounterSpec-------------------------------------------
 //----------------------------------FrozenCounterSpec-------------------------------------------
 ////template<class T> bool EventUpdate::Update(EventLists& lists, const Event<T>& event)
-boolean Update_for_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_FrozenCounterSpec* event);
+boolean Update_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_FrozenCounterSpec* event);
 //----------------------------------FrozenCounterSpec-------------------------------------------
 //----------------------------------BinaryOutputStatusSpec-------------------------------------------
 ////template<class T> bool EventUpdate::Update(EventLists& lists, const Event<T>& event)
-boolean Update_for_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_BinaryOutputStatusSpec* event);
+boolean Update_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_BinaryOutputStatusSpec* event);
 //----------------------------------BinaryOutputStatusSpec-------------------------------------------
 //----------------------------------AnalogOutputStatusSpec-------------------------------------------
 ////template<class T> bool EventUpdate::Update(EventLists& lists, const Event<T>& event)
-boolean Update_for_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogOutputStatusSpec* event);
+boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogOutputStatusSpec* event);
 //----------------------------------AnalogOutputStatusSpec-------------------------------------------
 //----------------------------------OctetStringSpec-------------------------------------------
 ////template<class T> bool EventUpdate::Update(EventLists& lists, const Event<T>& event)
-boolean Update_for_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_for_OctetStringSpec* event);
+boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_for_OctetStringSpec* event);
 //----------------------------------OctetStringSpec-------------------------------------------
 
 //} // namespace opendnp3

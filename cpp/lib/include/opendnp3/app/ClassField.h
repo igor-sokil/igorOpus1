@@ -114,14 +114,14 @@ typedef struct
 
   void Set_in_ClassFieldOver2(ClassField *pClassField, PointClass_uint8_t pc);
 
-    static const uint8_t CLASS_0_in_ClassField = PointClass_Class0;
-    static const uint8_t CLASS_1_in_ClassField = PointClass_Class1;
-    static const uint8_t CLASS_2_in_ClassField = PointClass_Class2;
-    static const uint8_t CLASS_3_in_ClassField = PointClass_Class3;
-    static const uint8_t EVENT_CLASSES_in_ClassField = /*CLASS_1_in_ClassField*/PointClass_Class1 | 
+    const uint8_t CLASS_0_in_ClassField = PointClass_Class0;
+    const uint8_t CLASS_1_in_ClassField = PointClass_Class1;
+    const uint8_t CLASS_2_in_ClassField = PointClass_Class2;
+    const uint8_t CLASS_3_in_ClassField = PointClass_Class3;
+    const uint8_t EVENT_CLASSES_in_ClassField = /*CLASS_1_in_ClassField*/PointClass_Class1 | 
                                                        /*CLASS_2_in_ClassField*/PointClass_Class2 |
                                                        /*CLASS_3_in_ClassField*/PointClass_Class3;
-    static const uint8_t ALL_CLASSES_in_ClassField = //EVENT_CLASSES_in_ClassField | CLASS_0_in_ClassField;
+    const uint8_t ALL_CLASSES_in_ClassField = //EVENT_CLASSES_in_ClassField | CLASS_0_in_ClassField;
                                                      /*CLASS_1_in_ClassField*/PointClass_Class1 |
                                                      /*CLASS_2_in_ClassField*/PointClass_Class2 |
                                                      /*CLASS_3_in_ClassField*/PointClass_Class3 | 

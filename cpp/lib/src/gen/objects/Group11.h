@@ -54,14 +54,6 @@
 
   GroupVariationID ID_in_Group11Var0_static(void);
 
-  GroupVariationID ID_in_Group11Var0_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 11, 0);
-//// return GroupVariationID(11,0);
- return gGroupVariationID;
-}
-
 // Binary Output Event - Output Status Without Time
 ////struct Group11Var1
 typedef struct
@@ -84,44 +76,15 @@ typedef struct
 } Group11Var1;
 
   uint16_t Size_in_Group11Var1_static(void);
-
- uint16_t Size_in_Group11Var1_static(void) 
-{
- return 1; 
-}
-
  void Group2Var1_in_Group11Var1(Group11Var1 *pGroup11Var1);
-
-  GroupVariationID ID_in_Group11Var1_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 11, 1);
-////  return GroupVariationID(11,1); 
- return gGroupVariationID;
-}
+  GroupVariationID ID_in_Group11Var1_static(void);
 
  boolean Read_in_Group11Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
  boolean Write_in_Group11Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group11Var1_static(RSeq_for_Uint16_t*, BinaryOutputStatus*);
  boolean WriteTarget_in_Group11Var1_static(BinaryOutputStatus*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_BinaryOutputStatus  Inst_in_Group11Var1_static(void)
-{
-   DNP3Serializer_for_BinaryOutputStatus dDNP3Serializer_for_BinaryOutputStatus;
-   DNP3Serializer_for_BinaryOutputStatus_in_DNP3Serializer_for_BinaryOutputStatus(&dDNP3Serializer_for_BinaryOutputStatus,
-                   ID_in_Group11Var1_static(),
-                   Size_in_Group11Var1_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group11Var1_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group11Var1_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_BinaryOutputStatus;
-}
+ DNP3Serializer_for_BinaryOutputStatus  Inst_in_Group11Var1_static(void);
 
 // Binary Output Event - Output Status With Time
 ////struct Group11Var2
@@ -147,20 +110,8 @@ typedef struct
 
   uint16_t Size_in_Group11Var2_static(void);
 
- uint16_t Size_in_Group11Var2_static(void) 
-{
- return 7; 
-}
-
  void Group2Var1_in_Group11Var2(Group11Var2 *pGroup11Var2);
-
-  GroupVariationID ID_in_Group11Var2_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 11, 2);
-////  return GroupVariationID(11,2); 
- return gGroupVariationID;
-}
+  GroupVariationID ID_in_Group11Var2_static(void);
 
  boolean Read_in_Group11Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
  boolean Write_in_Group11Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
@@ -168,22 +119,7 @@ typedef struct
  boolean ReadTarget_in_Group11Var2_static(RSeq_for_Uint16_t*, BinaryOutputStatus*);
  boolean WriteTarget_in_Group11Var2_static(BinaryOutputStatus*, WSeq_for_Uint16_t*);
 
- DNP3Serializer_for_BinaryOutputStatus  Inst_in_Group11Var2_static(void)
-{
-   DNP3Serializer_for_BinaryOutputStatus dDNP3Serializer_for_BinaryOutputStatus;
-   DNP3Serializer_for_BinaryOutputStatus_in_DNP3Serializer_for_BinaryOutputStatus(&dDNP3Serializer_for_BinaryOutputStatus,
-                   ID_in_Group11Var2_static(),
-                   Size_in_Group11Var2_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group11Var2_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group11Var2_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_BinaryOutputStatus;
-}
+ DNP3Serializer_for_BinaryOutputStatus  Inst_in_Group11Var2_static(void);
 
 ////}
 

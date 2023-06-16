@@ -62,7 +62,7 @@ void  EventCollection_for_Binary_in_EventCollection_for_Binary(EventCollection_f
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_BinaryInfo variation);
-uint16_t WriteSome_in_EventCollection_for_Binary(/*EventCollection_for_Binary*/void *pEventCollection_for_Binary, IEventWriter_for_Binary* writer);
+uint16_t WriteSome_in_EventCollection_for_Binary(void *pEventCollection_for_Binary, IEventWriter_for_Binary* writer);
 boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEventCollection_for_Binary, IEventWriter_for_Binary* writer);
 //---------------------------------Binary------------------------------------------
 //---------------------------------DoubleBitBinary------------------------------------------
@@ -232,7 +232,7 @@ void  EventCollection_for_BinaryOutputStatus_in_EventCollection_for_BinaryOutput
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_BinaryOutputStatusInfo variation);
-uint16_t WriteSome_in_EventCollection_for_BinaryOutputStatus(/*EventCollection_for_BinaryOutputStatus*/void *pEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer);
+uint16_t WriteSome_in_EventCollection_for_BinaryOutputStatus(void *pEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer);
 boolean WriteOne_in_EventCollection_for_BinaryOutputStatus(EventCollection_for_BinaryOutputStatus *pEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer);
 //---------------------------------BinaryOutputStatus------------------------------------------
 //---------------------------------AnalogOutputStatus------------------------------------------

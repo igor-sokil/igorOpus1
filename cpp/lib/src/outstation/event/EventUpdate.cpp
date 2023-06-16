@@ -2,7 +2,7 @@
 #include "EventUpdate.h"
 
 //----------------------------------BinarySpec-------------------------------------------
-boolean Update_for_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_BinarySpec* event)
+boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_BinarySpec* event)
 {
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_BinarySpec*  listEv = GetList_for_BinarySpec_in_EventLists(lists);
@@ -74,7 +74,8 @@ boolean Update_for_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for
 }
 //----------------------------------BinarySpec-------------------------------------------
 //----------------------------------DoubleBitBinarySpec-------------------------------------------
-boolean Update_for_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_DoubleBitBinarySpec* event)
+/*
+boolean Update_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_DoubleBitBinarySpec* event)
 {
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_DoubleBitBinarySpec*  listEv = GetList_for_DoubleBitBinarySpec_in_EventLists(lists);
@@ -144,9 +145,11 @@ boolean Update_for_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, 
 
   return overflow;
 }
+*/
 //----------------------------------DoubleBitBinarySpec-------------------------------------------
 //----------------------------------AnalogSpec-------------------------------------------
-boolean Update_for_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogSpec* event)
+/*
+boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_AnalogSpec*  listEv = GetList_for_AnalogSpec_in_EventLists(lists);
@@ -216,9 +219,11 @@ boolean Update_for_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for
 
   return overflow;
 }
+*/
 //----------------------------------AnalogSpec-------------------------------------------
 //----------------------------------CounterSpec-------------------------------------------
-boolean Update_for_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_CounterSpec* event)
+/*
+boolean Update_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_CounterSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_CounterSpec*  listEv = GetList_for_CounterSpec_in_EventLists(lists);
@@ -288,9 +293,11 @@ boolean Update_for_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_fo
 
   return overflow;
 }
+*/
 //----------------------------------CounterSpec-------------------------------------------
 //----------------------------------FrozenCounterSpec-------------------------------------------
-boolean Update_for_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_FrozenCounterSpec* event)
+/*
+boolean Update_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_FrozenCounterSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_FrozenCounterSpec*  listEv = GetList_for_FrozenCounterSpec_in_EventLists(lists);
@@ -360,9 +367,11 @@ boolean Update_for_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Ev
 
   return overflow;
 }
+*/
 //----------------------------------FrozenCounterSpec-------------------------------------------
 //----------------------------------BinaryOutputStatusSpec-------------------------------------------
-boolean Update_for_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_BinaryOutputStatusSpec* event)
+/*
+boolean Update_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_BinaryOutputStatusSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_BinaryOutputStatusSpec*  listEv = GetList_for_BinaryOutputStatusSpec_in_EventLists(lists);
@@ -432,9 +441,11 @@ boolean Update_for_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* list
 
   return overflow;
 }
+*/
 //----------------------------------BinaryOutputStatusSpec-------------------------------------------
 //----------------------------------AnalogOutputStatusSpec-------------------------------------------
-boolean Update_for_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogOutputStatusSpec* event)
+/*
+boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogOutputStatusSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_AnalogOutputStatusSpec*  listEv = GetList_for_AnalogOutputStatusSpec_in_EventLists(lists);
@@ -504,9 +515,11 @@ boolean Update_for_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* list
 
   return overflow;
 }
+*/
 //----------------------------------AnalogOutputStatusSpec-------------------------------------------
 //----------------------------------OctetStringSpec-------------------------------------------
-boolean Update_for_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_for_OctetStringSpec* event)
+/*
+boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_for_OctetStringSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_OctetStringSpec*  listEv = GetList_for_OctetStringSpec_in_EventLists(lists);
@@ -576,4 +589,5 @@ boolean Update_for_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Even
 
   return overflow;
 }
+*/
 //----------------------------------OctetStringSpec-------------------------------------------

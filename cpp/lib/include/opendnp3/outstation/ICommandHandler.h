@@ -22,12 +22,16 @@
 
 #include "IUpdateHandler.h"
 
-#include "opendnp3/app/AnalogOutput.h"
-#include "opendnp3/app/ControlRelayOutputBlock.h"
-#include "opendnp3/gen/OperateType.h"
+////#include "opendnp3/app/AnalogOutput.h"
+////#include "opendnp3/app/ControlRelayOutputBlock.h"
+////#include "opendnp3/gen/OperateType.h"
 
-namespace opendnp3
-{
+#include "AnalogOutput.h"
+#include "ControlRelayOutputBlock.h"
+#include "OperateType.h"
+
+////namespace opendnp3
+////{
 
 /**
  * Interface used to dispatch SELECT / OPERATE / DIRECT OPERATE (Binary/Analog output) from the outstation to
@@ -35,20 +39,21 @@ namespace opendnp3
  *
  * The ITransactable sub-interface is used to determine the start and end of an ASDU containing commands.
  */
-class ICommandHandler
+////class ICommandHandler
+typedef struct
 {
-public:
-    virtual ~ICommandHandler() = default;
+////public:
+////    virtual ~ICommandHandler() = default;
 
     /**
      * called when a command APDU begins processing
      */
-    virtual void Begin() = 0;
+    void (*pBegin_in_ICommandHandler)(void*);// = 0;
 
     /**
      * called when a command APDU ends processing
      */
-    virtual void End() = 0;
+    void (*pEnd_in_ICommandHandler)(void*);// = 0;
 
     /**
      * Ask if the application supports a ControlRelayOutputBlock - group 12 variation 1
@@ -57,7 +62,7 @@ public:
      * @param index index of the command
      * @return result of request
      */
-    virtual CommandStatus Select(const ControlRelayOutputBlock& command, uint16_t index) = 0;
+    CommandStatus_uint8_t (*pSelect_ControlRelayOutputBlock_in_ICommandHandler)(void*, ControlRelayOutputBlock* command, uint16_t index);// = 0;
 
     /**
      * Operate a ControlRelayOutputBlock - group 12 variation 1
@@ -68,11 +73,11 @@ public:
      * @param opType the operation type the outstation received.
      * @return result of request
      */
-    virtual CommandStatus Operate(const ControlRelayOutputBlock& command,
+    CommandStatus_uint8_t (*pOperate_ControlRelayOutputBlock_in_ICommandHandler)(void*, ControlRelayOutputBlock* command,
                                   uint16_t index,
-                                  IUpdateHandler& handler,
-                                  OperateType opType)
-        = 0;
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+//        = 0;
 
     /**
      * Ask if the application supports a 16 bit analog output - group 41 variation 2
@@ -81,7 +86,7 @@ public:
      * @param index index of the command
      * @return result of request
      */
-    virtual CommandStatus Select(const AnalogOutputInt16& command, uint16_t index) = 0;
+    CommandStatus_uint8_t (*pSelect_AnalogOutputInt16_in_ICommandHandler)(void*, AnalogOutputInt16* command, uint16_t index);// = 0;
 
     /**
      * Ask if the application supports a 16 bit analog output - group 41 variation 2
@@ -92,11 +97,11 @@ public:
      * @param opType the operation type the outstation received.
      * @return result of request
      */
-    virtual CommandStatus Operate(const AnalogOutputInt16& command,
+    CommandStatus_uint8_t (*pOperate_AnalogOutputInt16_in_ICommandHandler)(void*, AnalogOutputInt16* command,
                                   uint16_t index,
-                                  IUpdateHandler& handler,
-                                  OperateType opType)
-        = 0;
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+//        = 0;
 
     /**
      * Ask if the application supports a 32 bit analog output - group 41 variation 1
@@ -105,7 +110,7 @@ public:
      * @param index index of the command
      * @return result of request
      */
-    virtual CommandStatus Select(const AnalogOutputInt32& command, uint16_t index) = 0;
+    CommandStatus_uint8_t (*pSelect_AnalogOutputInt32_in_ICommandHandler)(void*, AnalogOutputInt32* command, uint16_t index);// = 0;
 
     /**
      * Operate a 32 bit analog output - group 41 variation 1
@@ -116,11 +121,11 @@ public:
      * @param opType the operation type the outstation received.
      * @return result of request
      */
-    virtual CommandStatus Operate(const AnalogOutputInt32& command,
+    CommandStatus_uint8_t (*pOperate_AnalogOutputInt32_in_ICommandHandler)(void*, AnalogOutputInt32* command,
                                   uint16_t index,
-                                  IUpdateHandler& handler,
-                                  OperateType opType)
-        = 0;
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+//        = 0;
 
     /**
      * Ask if the application supports a single precision, floating point analog output - group 41 variation 3
@@ -129,7 +134,7 @@ public:
      * @param index index of the command
      * @return result of request
      */
-    virtual CommandStatus Select(const AnalogOutputFloat32& command, uint16_t index) = 0;
+    CommandStatus_uint8_t (*pSelect_AnalogOutputFloat32_in_ICommandHandler)(void*, AnalogOutputFloat32* command, uint16_t index);// = 0;
 
     /**
      * Operate a single precision, floating point analog output - group 41 variation 3
@@ -140,11 +145,11 @@ public:
      * @param opType the operation type the outstation received.
      * @return result of request
      */
-    virtual CommandStatus Operate(const AnalogOutputFloat32& command,
+    CommandStatus_uint8_t (*pOperate_AnalogOutputFloat32_in_ICommandHandler)(void*, AnalogOutputFloat32* command,
                                   uint16_t index,
-                                  IUpdateHandler& handler,
-                                  OperateType opType)
-        = 0;
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+//        = 0;
 
     /**
      * Ask if the application supports a double precision, floating point analog output - group 41 variation 4
@@ -153,7 +158,7 @@ public:
      * @param index index of the command
      * @return result of request
      */
-    virtual CommandStatus Select(const AnalogOutputDouble64& command, uint16_t index) = 0;
+    CommandStatus_uint8_t (*pSelect_AnalogOutputDouble64_in_ICommandHandler)(void*, AnalogOutputDouble64* command, uint16_t index);// = 0;
 
     /**
      * Operate a double precision, floating point analog output - group 41 variation 4
@@ -164,13 +169,13 @@ public:
      * @param opType the operation type the outstation received.
      * @return result of request
      */
-    virtual CommandStatus Operate(const AnalogOutputDouble64& command,
+    CommandStatus_uint8_t (*pOperate_AnalogOutputDouble64_in_ICommandHandler)(void*, AnalogOutputDouble64* command,
                                   uint16_t index,
-                                  IUpdateHandler& handler,
-                                  OperateType opType)
-        = 0;
-};
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+//        = 0;
+} ICommandHandler;
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

@@ -20,28 +20,35 @@
 #ifndef OPENDNP3_IDNPTIMESOURCE_H
 #define OPENDNP3_IDNPTIMESOURCE_H
 
-#include "opendnp3/app/DNPTime.h"
+////#include "opendnp3/app/DNPTime.h"
+#include "DNPTime.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  *  Interface that defines a method to get DNPTime source
  */
-class IDnpTimeSource
+////class IDnpTimeSource
+typedef struct
 {
 
-public:
-    /**
-     * Returns a DNPTime of the current time.
-     * This value is used when freezing counters.
-     */
-    virtual DNPTime Now()
-    {
-        return DNPTime(0, TimestampQuality::INVALID);
-    }
-};
+  DNPTime (*pNow_in_IDnpTimeSource_static)(void);
+////public:
+  /**
+   * Returns a DNPTime of the current time.
+   * This value is used when freezing counters.
+   */
+////    virtual DNPTime Now()
+////    {
+////        return DNPTime(0, TimestampQuality::INVALID);
+////    }
+} IDnpTimeSource;
 
-} // namespace opendnp3
+DNPTime Now_in_IDnpTimeSource_static(void);
+void IDnpTimeSource_in_IDnpTimeSource(IDnpTimeSource *pIDnpTimeSource);
+
+
+////} // namespace opendnp3
 
 #endif

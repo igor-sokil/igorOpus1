@@ -56,6 +56,8 @@ enum LinkFunction
   LinkFunction_INVALID = 0xFF
 };
 
+LinkFunction_uint8_t from_type_in_LinkFunctionSpec(uint8_t arg);
+
 ////struct LinkFunctionSpec
 ////{
 ////  using enum_type_t = LinkFunction;

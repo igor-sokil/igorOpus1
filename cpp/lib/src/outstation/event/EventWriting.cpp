@@ -27,7 +27,7 @@
 
 ////namespace opendnp3
 ////{
-
+/*
 ////uint32_t EventWriting::Write(EventLists& lists, IEventWriteHandler& handler)
 uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler)
 {
@@ -52,7 +52,7 @@ uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* han
     total_num_written += num_written;
   }
 }
-
+*/
 ////EventRecord* EventWriting::FindNextSelected(event_iter_t& iter, EventType type)
 EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type)
 {
@@ -83,7 +83,7 @@ boolean matches_in_EventWriting(EventRecord* record)
 {
   return record->state == EventState_selected;
 }
-
+/*
 ////uint16_t EventWriting::WriteSome(event_iter_t& iterator, EventLists& lists, IEventWriteHandler& handler)
 uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler)
 {
@@ -105,5 +105,5 @@ uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter
 ////    return value->type->WriteSome(iterator, lists, handler);
   return  ((IEventType*)(value->type))->pWriteSome(iteratorEv, lists, handler);
 }
-
+*/
 ////} // namespace opendnp3

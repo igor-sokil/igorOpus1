@@ -20,12 +20,16 @@
 #ifndef OPENDNP3_OUTSTATIONCONFIG_H
 #define OPENDNP3_OUTSTATIONCONFIG_H
 
-#include "opendnp3/outstation/EventBufferConfig.h"
-#include "opendnp3/outstation/OutstationParams.h"
-#include "opendnp3/util/TimeDuration.h"
+////#include "opendnp3/outstation/EventBufferConfig.h"
+////#include "opendnp3/outstation/OutstationParams.h"
+////#include "opendnp3/util/TimeDuration.h"
 
-namespace opendnp3
-{
+#include "EventBufferConfig.h"
+#include "OutstationParams.h"
+//#include "TimeDuration.h"
+
+////namespace opendnp3
+////{
 
 /** Configuration information for a dnp3 outstation (outstation)
 
@@ -36,15 +40,17 @@ Major feature areas are unsolicited responses, time synchronization requests, ev
 object/variations to use by default when the master requests class data or variation 0.
 
 */
-struct OutstationConfig
+////struct OutstationConfig
+typedef struct
 {
     /// Various parameters that govern outstation behavior
     OutstationParams params;
 
     /// Describes the sizes in the event buffer
     EventBufferConfig eventBufferConfig;
-};
+} OutstationConfig;
+ void OutstationConfig_in_OutstationConfig(OutstationConfig *pOutstationConfig);
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

@@ -15,7 +15,7 @@ void  EventCollection_for_Binary_in_EventCollection_for_Binary(EventCollection_f
 }
 
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_Binary(/*EventCollection_for_Binary*/void *pEventCollection_for_Binary, IEventWriter_for_Binary* writer)
+uint16_t WriteSome_in_EventCollection_for_Binary(void *pEventCollection_for_Binary, IEventWriter_for_Binary* writer)
 {
   uint16_t num_written = 0;
   while (WriteOne_in_EventCollection_for_Binary((EventCollection_for_Binary*)pEventCollection_for_Binary, writer))
@@ -51,7 +51,7 @@ boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEven
   // unable to write
 // boolean (*pWrite_in_IEventWriter_for_Binary)(Binary* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
-  if (!writer->pWrite_in_IEventWriter_for_Binary(&((data->value).value), record->index))
+  if (!writer->pWrite_in_IEventWriter_for_Binary(pEventCollection_for_Binary, &((data->value).value), record->index))
     return false;
 
   // success!
@@ -66,6 +66,7 @@ boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEven
 }
 //---------------------------------Binary------------------------------------------
 //---------------------------------DoubleBitBinary------------------------------------------
+/*
 void  EventCollection_for_DoubleBitBinary_in_EventCollection_for_DoubleBitBinary(EventCollection_for_DoubleBitBinary *pEventCollection_for_DoubleBitBinary,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
@@ -77,9 +78,10 @@ void  EventCollection_for_DoubleBitBinary_in_EventCollection_for_DoubleBitBinary
   (pEventCollection_for_DoubleBitBinary->iIEventCollection_for_DoubleBitBinary).pWriteSome_in_IEventCollection_for_DoubleBitBinary =
     WriteSome_in_EventCollection_for_DoubleBitBinary;
 }
-
+*/
+/*
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_DoubleBitBinary(/*EventCollection_for_DoubleBitBinary*/void *pEventCollection_for_DoubleBitBinary, IEventWriter_for_DoubleBitBinary* writer)
+uint16_t WriteSome_in_EventCollection_for_DoubleBitBinary(void *pEventCollection_for_DoubleBitBinary, IEventWriter_for_DoubleBitBinary* writer)
 {
   uint16_t num_written = 0;
   while (WriteOne_in_EventCollection_for_DoubleBitBinary((EventCollection_for_DoubleBitBinary*)pEventCollection_for_DoubleBitBinary, writer))
@@ -88,7 +90,8 @@ uint16_t WriteSome_in_EventCollection_for_DoubleBitBinary(/*EventCollection_for_
   }
   return num_written;
 }
-
+*/
+/*
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_DoubleBitBinary(EventCollection_for_DoubleBitBinary *pEventCollection_for_DoubleBitBinary, IEventWriter_for_DoubleBitBinary* writer)
 {
@@ -128,8 +131,10 @@ boolean WriteOne_in_EventCollection_for_DoubleBitBinary(EventCollection_for_Doub
   Next__in__Iterator_in_List_for_EventRecord(pEventCollection_for_DoubleBitBinary->iteratorEv);
   return true;
 }
+*/
 //---------------------------------DoubleBitBinary------------------------------------------
 //---------------------------------Analog------------------------------------------
+/*
 void  EventCollection_for_Analog_in_EventCollection_for_Analog(EventCollection_for_Analog *pEventCollection_for_Analog,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
@@ -141,9 +146,10 @@ void  EventCollection_for_Analog_in_EventCollection_for_Analog(EventCollection_f
   (pEventCollection_for_Analog->iIEventCollection_for_Analog).pWriteSome_in_IEventCollection_for_Analog =
     WriteSome_in_EventCollection_for_Analog;
 }
-
+*/
+/*
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_Analog(/*EventCollection_for_Analog*/void *pEventCollection_for_Analog, IEventWriter_for_Analog* writer)
+uint16_t WriteSome_in_EventCollection_for_Analog(void *pEventCollection_for_Analog, IEventWriter_for_Analog* writer)
 {
   uint16_t num_written = 0;
   while (WriteOne_in_EventCollection_for_Analog((EventCollection_for_Analog*)pEventCollection_for_Analog, writer))
@@ -152,7 +158,8 @@ uint16_t WriteSome_in_EventCollection_for_Analog(/*EventCollection_for_Analog*/v
   }
   return num_written;
 }
-
+*/
+/*
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_Analog(EventCollection_for_Analog *pEventCollection_for_Analog, IEventWriter_for_Analog* writer)
 {
@@ -192,8 +199,10 @@ boolean WriteOne_in_EventCollection_for_Analog(EventCollection_for_Analog *pEven
   Next__in__Iterator_in_List_for_EventRecord(pEventCollection_for_Analog->iteratorEv);
   return true;
 }
+*/
 //---------------------------------Analog------------------------------------------
 //---------------------------------Counter------------------------------------------
+/*
 void  EventCollection_for_Counter_in_EventCollection_for_Counter(EventCollection_for_Counter *pEventCollection_for_Counter,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
@@ -205,9 +214,10 @@ void  EventCollection_for_Counter_in_EventCollection_for_Counter(EventCollection
   (pEventCollection_for_Counter->iIEventCollection_for_Counter).pWriteSome_in_IEventCollection_for_Counter =
     WriteSome_in_EventCollection_for_Counter;
 }
-
+*/
+/*
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_Counter(/*EventCollection_for_Counter*/void *pEventCollection_for_Counter, IEventWriter_for_Counter* writer)
+uint16_t WriteSome_in_EventCollection_for_Counter(void *pEventCollection_for_Counter, IEventWriter_for_Counter* writer)
 {
   uint16_t num_written = 0;
   while (WriteOne_in_EventCollection_for_Counter((EventCollection_for_Counter*)pEventCollection_for_Counter, writer))
@@ -216,7 +226,8 @@ uint16_t WriteSome_in_EventCollection_for_Counter(/*EventCollection_for_Counter*
   }
   return num_written;
 }
-
+*/
+/*
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_Counter(EventCollection_for_Counter *pEventCollection_for_Counter, IEventWriter_for_Counter* writer)
 {
@@ -256,8 +267,10 @@ boolean WriteOne_in_EventCollection_for_Counter(EventCollection_for_Counter *pEv
   Next__in__Iterator_in_List_for_EventRecord(pEventCollection_for_Counter->iteratorEv);
   return true;
 }
+*/
 //---------------------------------Counter------------------------------------------
 //---------------------------------FrozenCounter------------------------------------------
+/*
 void  EventCollection_for_FrozenCounter_in_EventCollection_for_FrozenCounter(EventCollection_for_FrozenCounter *pEventCollection_for_FrozenCounter,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
@@ -269,9 +282,10 @@ void  EventCollection_for_FrozenCounter_in_EventCollection_for_FrozenCounter(Eve
   (pEventCollection_for_FrozenCounter->iIEventCollection_for_FrozenCounter).pWriteSome_in_IEventCollection_for_FrozenCounter =
     WriteSome_in_EventCollection_for_FrozenCounter;
 }
-
+*/
+/*
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_FrozenCounter(/*EventCollection_for_FrozenCounter*/void *pEventCollection_for_FrozenCounter, IEventWriter_for_FrozenCounter* writer)
+uint16_t WriteSome_in_EventCollection_for_FrozenCounter(void *pEventCollection_for_FrozenCounter, IEventWriter_for_FrozenCounter* writer)
 {
   uint16_t num_written = 0;
   while (WriteOne_in_EventCollection_for_FrozenCounter((EventCollection_for_FrozenCounter*)pEventCollection_for_FrozenCounter, writer))
@@ -280,7 +294,8 @@ uint16_t WriteSome_in_EventCollection_for_FrozenCounter(/*EventCollection_for_Fr
   }
   return num_written;
 }
-
+*/
+/*
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_FrozenCounter(EventCollection_for_FrozenCounter *pEventCollection_for_FrozenCounter, IEventWriter_for_FrozenCounter* writer)
 {
@@ -320,8 +335,10 @@ boolean WriteOne_in_EventCollection_for_FrozenCounter(EventCollection_for_Frozen
   Next__in__Iterator_in_List_for_EventRecord(pEventCollection_for_FrozenCounter->iteratorEv);
   return true;
 }
+*/
 //---------------------------------FrozenCounter------------------------------------------
 //---------------------------------BinaryOutputStatus------------------------------------------
+/*
 void  EventCollection_for_BinaryOutputStatus_in_EventCollection_for_BinaryOutputStatus(EventCollection_for_BinaryOutputStatus *pEventCollection_for_BinaryOutputStatus,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
@@ -333,9 +350,10 @@ void  EventCollection_for_BinaryOutputStatus_in_EventCollection_for_BinaryOutput
   (pEventCollection_for_BinaryOutputStatus->iIEventCollection_for_BinaryOutputStatus).pWriteSome_in_IEventCollection_for_BinaryOutputStatus =
     WriteSome_in_EventCollection_for_BinaryOutputStatus;
 }
-
+*/
+/*
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_BinaryOutputStatus(/*EventCollection_for_BinaryOutputStatus*/void *pEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer)
+uint16_t WriteSome_in_EventCollection_for_BinaryOutputStatus(void *pEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer)
 {
   uint16_t num_written = 0;
   while (WriteOne_in_EventCollection_for_BinaryOutputStatus((EventCollection_for_BinaryOutputStatus*)pEventCollection_for_BinaryOutputStatus, writer))
@@ -344,7 +362,8 @@ uint16_t WriteSome_in_EventCollection_for_BinaryOutputStatus(/*EventCollection_f
   }
   return num_written;
 }
-
+*/
+/*
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_BinaryOutputStatus(EventCollection_for_BinaryOutputStatus *pEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer)
 {
@@ -384,8 +403,10 @@ boolean WriteOne_in_EventCollection_for_BinaryOutputStatus(EventCollection_for_B
   Next__in__Iterator_in_List_for_EventRecord(pEventCollection_for_BinaryOutputStatus->iteratorEv);
   return true;
 }
+*/
 //---------------------------------BinaryOutputStatus------------------------------------------
 //---------------------------------AnalogOutputStatus------------------------------------------
+/*
 void  EventCollection_for_AnalogOutputStatus_in_EventCollection_for_AnalogOutputStatus(EventCollection_for_AnalogOutputStatus *pEventCollection_for_AnalogOutputStatus,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
@@ -397,9 +418,10 @@ void  EventCollection_for_AnalogOutputStatus_in_EventCollection_for_AnalogOutput
   (pEventCollection_for_AnalogOutputStatus->iIEventCollection_for_AnalogOutputStatus).pWriteSome_in_IEventCollection_for_AnalogOutputStatus =
     WriteSome_in_EventCollection_for_AnalogOutputStatus;
 }
-
+*/
+/*
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_AnalogOutputStatus(/*EventCollection_for_AnalogOutputStatus*/void *pEventCollection_for_AnalogOutputStatus, IEventWriter_for_AnalogOutputStatus* writer)
+uint16_t WriteSome_in_EventCollection_for_AnalogOutputStatus(void *pEventCollection_for_AnalogOutputStatus, IEventWriter_for_AnalogOutputStatus* writer)
 {
   uint16_t num_written = 0;
   while (WriteOne_in_EventCollection_for_AnalogOutputStatus((EventCollection_for_AnalogOutputStatus*)pEventCollection_for_AnalogOutputStatus, writer))
@@ -408,7 +430,8 @@ uint16_t WriteSome_in_EventCollection_for_AnalogOutputStatus(/*EventCollection_f
   }
   return num_written;
 }
-
+*/
+/*
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_AnalogOutputStatus(EventCollection_for_AnalogOutputStatus *pEventCollection_for_AnalogOutputStatus, IEventWriter_for_AnalogOutputStatus* writer)
 {
@@ -448,8 +471,10 @@ boolean WriteOne_in_EventCollection_for_AnalogOutputStatus(EventCollection_for_A
   Next__in__Iterator_in_List_for_EventRecord(pEventCollection_for_AnalogOutputStatus->iteratorEv);
   return true;
 }
+*/
 //---------------------------------AnalogOutputStatus------------------------------------------
 //---------------------------------OctetString------------------------------------------
+/*
 void  EventCollection_for_OctetString_in_EventCollection_for_OctetString(EventCollection_for_OctetString *pEventCollection_for_OctetString,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
@@ -461,9 +486,10 @@ void  EventCollection_for_OctetString_in_EventCollection_for_OctetString(EventCo
   (pEventCollection_for_OctetString->iIEventCollection_for_OctetString).pWriteSome_in_IEventCollection_for_OctetString =
     WriteSome_in_EventCollection_for_OctetString;
 }
-
+*/
+/*
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_OctetString(/*EventCollection_for_OctetString*/void *pEventCollection_for_OctetString, IEventWriter_for_OctetString* writer)
+uint16_t WriteSome_in_EventCollection_for_OctetString(void *pEventCollection_for_OctetString, IEventWriter_for_OctetString* writer)
 {
   uint16_t num_written = 0;
   while (WriteOne_in_EventCollection_for_OctetString((EventCollection_for_OctetString*)pEventCollection_for_OctetString, writer))
@@ -472,7 +498,8 @@ uint16_t WriteSome_in_EventCollection_for_OctetString(/*EventCollection_for_Octe
   }
   return num_written;
 }
-
+*/
+/*
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_OctetString(EventCollection_for_OctetString *pEventCollection_for_OctetString, IEventWriter_for_OctetString* writer)
 {
@@ -512,4 +539,5 @@ boolean WriteOne_in_EventCollection_for_OctetString(EventCollection_for_OctetStr
   Next__in__Iterator_in_List_for_EventRecord(pEventCollection_for_OctetString->iteratorEv);
   return true;
 }
+*/
 //---------------------------------OctetString------------------------------------------

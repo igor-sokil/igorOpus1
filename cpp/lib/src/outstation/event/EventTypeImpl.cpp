@@ -33,7 +33,8 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(Eve
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
-uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(Iterator_in_List_for_EventRecord* iteratorEv,
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(
+    Iterator_in_List_for_EventRecord* iteratorEv,
     EventLists* lists,
     IEventWriteHandler* handler)
 {
@@ -58,7 +59,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(Iterator_in_
 
 //     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);//// = 0;
 ////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
-  return handler->pWrite_in_IEventWriteHandlerOver1((type->value).selectedVariation,
+  return handler->pWrite_EventBinary_in_IEventWriteHandler((type->value).selectedVariation,
          &((type->value).value),
          &(collection.iIEventCollection_for_Binary));
 }
@@ -77,6 +78,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(Ev
 }
 //----------------------------------Binary-------------------------------------------
 //----------------------------------DoubleBitBinary-------------------------------------------
+/*
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_static(void)
 {
   instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec.iIEventType.pSelectDefaultVariation =
@@ -87,7 +89,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_s
     RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec;
   return &(instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec.iIEventType);
 }
-
+*/
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec(EventRecord* record)
 {
 //    Node_TypedEventRecord_for_DoubleBitBinarySpec* Retrieve_in_TypedStorage_for_DoubleBitBinarySpec_static(EventRecord* record);
@@ -95,7 +97,7 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinar
   Node_TypedEventRecord_for_DoubleBitBinarySpec* node = Retrieve_in_TypedStorage_for_DoubleBitBinarySpec_static(record);
   node->value.selectedVariation = node->value.defaultVariation;
 }
-
+/*
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
@@ -128,7 +130,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec(Ite
          &((type->value).value),
          &(collection.iIEventCollection_for_DoubleBitBinary));
 }
-
+*/
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec(EventRecord* record, EventLists* lists)
 {
@@ -143,6 +145,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBina
 }
 //----------------------------------DoubleBitBinary-------------------------------------------
 //----------------------------------Analog-------------------------------------------
+/*
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static(void)
 {
   instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec.iIEventType.pSelectDefaultVariation =
@@ -153,7 +156,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static(voi
     RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec;
   return &(instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec.iIEventType);
 }
-
+*/
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(EventRecord* record)
 {
 //    Node_TypedEventRecord_for_AnalogSpec* Retrieve_in_TypedStorage_for_AnalogSpec_static(EventRecord* record);
@@ -161,7 +164,7 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(Eve
   Node_TypedEventRecord_for_AnalogSpec* node = Retrieve_in_TypedStorage_for_AnalogSpec_static(record);
   node->value.selectedVariation = node->value.defaultVariation;
 }
-
+/*
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
@@ -194,7 +197,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(Iterator_in_
          &((type->value).value),
          &(collection.iIEventCollection_for_Analog));
 }
-
+*/
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(EventRecord* record, EventLists* lists)
 {
@@ -209,6 +212,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec(Ev
 }
 //----------------------------------Analog-------------------------------------------
 //----------------------------------Counter-------------------------------------------
+/*
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_static(void)
 {
   instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec.iIEventType.pSelectDefaultVariation =
@@ -219,7 +223,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_static(vo
     RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_CounterSpec;
   return &(instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec.iIEventType);
 }
-
+*/
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(EventRecord* record)
 {
 //    Node_TypedEventRecord_for_CounterSpec* Retrieve_in_TypedStorage_for_CounterSpec_static(EventRecord* record);
@@ -227,7 +231,7 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(Ev
   Node_TypedEventRecord_for_CounterSpec* node = Retrieve_in_TypedStorage_for_CounterSpec_static(record);
   node->value.selectedVariation = node->value.defaultVariation;
 }
-
+/*
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
@@ -260,7 +264,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(Iterator_in
          &((type->value).value),
          &(collection.iIEventCollection_for_Counter));
 }
-
+*/
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(EventRecord* record, EventLists* lists)
 {
@@ -275,6 +279,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_CounterSpec(E
 }
 //----------------------------------Counter-------------------------------------------
 //----------------------------------FrozenCounter-------------------------------------------
+/*
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_static(void)
 {
   instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec.iIEventType.pSelectDefaultVariation =
@@ -285,7 +290,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_sta
     RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec;
   return &(instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec.iIEventType);
 }
-
+*/
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec(EventRecord* record)
 {
 //    Node_TypedEventRecord_for_FrozenCounterSpec* Retrieve_in_TypedStorage_for_FrozenCounterSpec_static(EventRecord* record);
@@ -293,7 +298,7 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterS
   Node_TypedEventRecord_for_FrozenCounterSpec* node = Retrieve_in_TypedStorage_for_FrozenCounterSpec_static(record);
   node->value.selectedVariation = node->value.defaultVariation;
 }
-
+/*
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
@@ -326,7 +331,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec(Itera
          &((type->value).value),
          &(collection.iIEventCollection_for_FrozenCounter));
 }
-
+*/
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec(EventRecord* record, EventLists* lists)
 {
@@ -341,6 +346,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_FrozenCounter
 }
 //----------------------------------FrozenCounter-------------------------------------------
 //----------------------------------BinaryOutputStatus-------------------------------------------
+/*
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_static(void)
 {
   instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec.iIEventType.pSelectDefaultVariation =
@@ -351,7 +357,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpe
     RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec;
   return &(instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec.iIEventType);
 }
-
+*/
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec(EventRecord* record)
 {
 //    Node_TypedEventRecord_for_BinaryOutputStatusSpec* Retrieve_in_TypedStorage_for_BinaryOutputStatusSpec_static(EventRecord* record);
@@ -359,7 +365,7 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputSt
   Node_TypedEventRecord_for_BinaryOutputStatusSpec* node = Retrieve_in_TypedStorage_for_BinaryOutputStatusSpec_static(record);
   node->value.selectedVariation = node->value.defaultVariation;
 }
-
+/*
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
@@ -392,7 +398,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec(
          &((type->value).value),
          &(collection.iIEventCollection_for_BinaryOutputStatus));
 }
-
+*/
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec(EventRecord* record, EventLists* lists)
 {
@@ -407,6 +413,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputS
 }
 //----------------------------------BinaryOutputStatus-------------------------------------------
 //----------------------------------AnalogOutputStatus-------------------------------------------
+/*
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_static(void)
 {
   instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec.iIEventType.pSelectDefaultVariation =
@@ -417,7 +424,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpe
     RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec;
   return &(instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec.iIEventType);
 }
-
+*/
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec(EventRecord* record)
 {
 //    Node_TypedEventRecord_for_AnalogOutputStatusSpec* Retrieve_in_TypedStorage_for_AnalogOutputStatusSpec_static(EventRecord* record);
@@ -425,7 +432,7 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputSt
   Node_TypedEventRecord_for_AnalogOutputStatusSpec* node = Retrieve_in_TypedStorage_for_AnalogOutputStatusSpec_static(record);
   node->value.selectedVariation = node->value.defaultVariation;
 }
-
+/*
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
@@ -458,7 +465,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec(
          &((type->value).value),
          &(collection.iIEventCollection_for_AnalogOutputStatus));
 }
-
+*/
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec(EventRecord* record, EventLists* lists)
 {
@@ -473,6 +480,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputS
 }
 //----------------------------------AnalogOutputStatus-------------------------------------------
 //----------------------------------OctetString-------------------------------------------
+/*
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_static(void)
 {
   instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec.iIEventType.pSelectDefaultVariation =
@@ -483,7 +491,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_stati
     RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec;
   return &(instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec.iIEventType);
 }
-
+*/
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec(EventRecord* record)
 {
 //    Node_TypedEventRecord_for_OctetStringSpec* Retrieve_in_TypedStorage_for_OctetStringSpec_static(EventRecord* record);
@@ -491,7 +499,7 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpe
   Node_TypedEventRecord_for_OctetStringSpec* node = Retrieve_in_TypedStorage_for_OctetStringSpec_static(record);
   node->value.selectedVariation = node->value.defaultVariation;
 }
-
+/*
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
@@ -524,7 +532,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec(Iterato
          &((type->value).value),
          &(collection.iIEventCollection_for_OctetString));
 }
-
+*/
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec(EventRecord* record, EventLists* lists)
 {

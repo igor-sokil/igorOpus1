@@ -20,21 +20,28 @@
 #ifndef OPENDNP3_IUPDATEHANDLER_H
 #define OPENDNP3_IUPDATEHANDLER_H
 
-#include "opendnp3/app/MeasurementTypes.h"
-#include "opendnp3/app/OctetString.h"
-#include "opendnp3/gen/EventMode.h"
-#include "opendnp3/gen/FlagsType.h"
+////#include "opendnp3/app/MeasurementTypes.h"
+////#include "opendnp3/app/OctetString.h"
+////#include "opendnp3/gen/EventMode.h"
+////#include "opendnp3/gen/FlagsType.h"
 
-namespace opendnp3
-{
+#include "MeasurementTypes.h"
+#include "OctetString.h"
+#include "EventMode.h"
+#include "FlagsType.h"
+
+////namespace opendnp3
+////{
 
 /**
  * An interface used to update measurement values.
  */
-class IUpdateHandler
+////class IUpdateHandler
+typedef struct
 {
-public:
-    virtual ~IUpdateHandler() {}
+////public:
+    //virtual ~
+    void (*pIUpdateHandler_destr_IUpdateHandler)(void*);
 
     /**
      * Update a Binary measurement
@@ -43,7 +50,7 @@ public:
      * @param mode Describes how event generation is handled for this method
      * @return true if the value exists and it was updated
      */
-    virtual bool Update(const Binary& meas, uint16_t index, EventMode mode = EventMode::Detect) = 0;
+    boolean (*pUpdate_Binary_in_IUpdateHandler)(void*, Binary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
     /**
      * Update a DoubleBitBinary measurement
@@ -52,7 +59,7 @@ public:
      * @param mode Describes how event generation is handled for this method
      * @return true if the value exists and it was updated
      */
-    virtual bool Update(const DoubleBitBinary& meas, uint16_t index, EventMode mode = EventMode::Detect) = 0;
+    boolean (*pUpdate_DoubleBitBinary_in_IUpdateHandler)(void*, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
     /**
      * Update an Analog measurement
@@ -61,7 +68,7 @@ public:
      * @param mode Describes how event generation is handled for this method
      * @return true if the value exists and it was updated
      */
-    virtual bool Update(const Analog& meas, uint16_t index, EventMode mode = EventMode::Detect) = 0;
+    boolean (*pUpdate_Analog_in_IUpdateHandler)(void*, Analog* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
     /**
      * Update a Counter measurement
@@ -70,7 +77,7 @@ public:
      * @param mode Describes how event generation is handled for this method
      * @return true if the value exists and it was updated
      */
-    virtual bool Update(const Counter& meas, uint16_t index, EventMode mode = EventMode::Detect) = 0;
+    boolean (*pUpdate_Counter_in_IUpdateHandler)(void*, Counter* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
     /**
      * Freeze a Counter measurement
@@ -79,7 +86,7 @@ public:
      * @param mode Describes how event generation is handled for this method
      * @return true if the value exists and it was updated
      */
-    virtual bool FreezeCounter(uint16_t index, bool clear = false, EventMode mode = EventMode::Detect) = 0;
+    boolean (*pFreezeCounter_in_IUpdateHandler)(void*, uint16_t index, boolean clear, EventMode_uint8_t mode);//bool clear = false, EventMode mode = EventMode::Detect) = 0;
 
     /**
      * Update a BinaryOutputStatus measurement
@@ -88,7 +95,7 @@ public:
      * @param mode Describes how event generation is handled for this method
      * @return true if the value exists and it was updated
      */
-    virtual bool Update(const BinaryOutputStatus& meas, uint16_t index, EventMode mode = EventMode::Detect) = 0;
+    boolean (*pUpdate_BinaryOutputStatus_in_IUpdateHandler)(void*, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
     /**
      * Update a AnalogOutputStatus measurement
@@ -97,7 +104,7 @@ public:
      * @param mode Describes how event generation is handled for this method
      * @return true if the value exists and it was updated
      */
-    virtual bool Update(const AnalogOutputStatus& meas, uint16_t index, EventMode mode = EventMode::Detect) = 0;
+    boolean (*pUpdate_AnalogOutputStatus_in_IUpdateHandler)(void*, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
     /**
      * Update an octet string value
@@ -106,7 +113,7 @@ public:
      * @param mode Describes how event generation is handled for this method
      * @return true if the value exists and it was updated
      */
-    virtual bool Update(const OctetString& meas, uint16_t index, EventMode mode = EventMode::Detect) = 0;
+    boolean (*pUpdate_OctetString_in_IUpdateHandler)(void*, OctetString* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
     /**
      * Update a TimeAndInterval valueindex
@@ -114,7 +121,7 @@ public:
      * @param index index of the measurement
      * @return true if the value exists and it was updated
      */
-    virtual bool Update(const TimeAndInterval& meas, uint16_t index) = 0;
+    boolean (*pUpdate_TimeAndInterval_in_IUpdateHandler)(void*, TimeAndInterval* meas, uint16_t index);// = 0;
 
     /**
      * Update the flags of a measurement without changing it's value
@@ -123,9 +130,9 @@ public:
      * @param stop the stop index at which to end changing flags
      * @param flags the new value of the flags
      */
-    virtual bool Modify(FlagsType type, uint16_t start, uint16_t stop, uint8_t flags) = 0;
-};
+    boolean (*pModify_in_IUpdateHandler)(void*, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);// = 0;
+} IUpdateHandler;
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

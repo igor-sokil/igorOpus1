@@ -21,27 +21,29 @@
 #include "ASDUEventWriteHandler.h"
 
 #include "EventWriters.h"
-#include "gen/objects/Group11.h"
-#include "gen/objects/Group2.h"
-#include "gen/objects/Group22.h"
-#include "gen/objects/Group23.h"
-#include "gen/objects/Group32.h"
-#include "gen/objects/Group4.h"
-#include "gen/objects/Group42.h"
+#include "Group11.h"
+#include "Group2.h"
+#include "Group22.h"
+#include "Group23.h"
+#include "Group32.h"
+#include "Group4.h"
+#include "Group42.h"
 
-namespace opendnp3
-{
-uint16_t ASDUEventWriteHandler::Write(EventBinaryVariation variation,
-                                      const Binary& first,
-                                      IEventCollection<Binary>& items)
+////namespace opendnp3
+////{
+MYTODO
+uint16_t Write_for_Binary_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler,
+                                      EventBinaryVariation_uint8_t variation,
+                                      Binary* first,
+                                      IEventCollection_for_Binary* items)
 {
     switch (variation)
     {
-    case (EventBinaryVariation::Group2Var1):
+    case (EventBinaryVariation_Group2Var1):
         return EventWriters::Write(this->writer, items, Group2Var1::Inst());
-    case (EventBinaryVariation::Group2Var2):
+    case (EventBinaryVariation_Group2Var2):
         return EventWriters::Write(this->writer, items, Group2Var2::Inst());
-    case (EventBinaryVariation::Group2Var3):
+    case (EventBinaryVariation_Group2Var3):
         return EventWriters::WriteWithCTO(first.time, this->writer, items, Group2Var3::Inst());
     default:
         return EventWriters::Write(this->writer, items, Group2Var1::Inst());
@@ -179,4 +181,51 @@ uint16_t ASDUEventWriteHandler::Write(EventOctetStringVariation /*variation*/,
     return EventWriters::Write(first.Size(), this->writer, items);
 }
 
-} // namespace opendnp3
+////} // namespace opendnp3
+  void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer)
+{
+  writer = *writer;
+  //signatura_ASDUEventWriteHandler
+  (pASDUEventWriteHandler->iIEventWriteHandler).pParentPointer = pASDUEventWriteHandler;
+  (pASDUEventWriteHandler->iIEventWriteHandler).parentType = PARENTTYPE_ASDUEventWriteHandler;
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventBinary_in_IEventWriteHandler = Write_EventBinary_in_ASDUEventWriteHandler;
+////    virtual uint16_t Write(EventBinaryVariation variation,
+////                           const Binary& first,
+////                           IEventCollection<Binary>& items) override;
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventDoubleBinary_in_IEventWriteHandler = Write_EventDoubleBinary_in_ASDUEventWriteHandler;
+////    virtual uint16_t Write(EventDoubleBinaryVariation variation,
+////                           const DoubleBitBinary& first,
+////                           IEventCollection<DoubleBitBinary>& items) override;
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventCounter_in_IEventWriteHandler = Write_EventCounter_in_ASDUEventWriteHandler;
+////    virtual uint16_t Write(EventCounterVariation variation,
+////                           const Counter& first,
+////                           IEventCollection<Counter>& items) override;
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventFrozenCounter_in_IEventWriteHandler = Write_EventFrozenCounter_in_ASDUEventWriteHandler;
+////    virtual uint16_t Write(EventFrozenCounterVariation variation,
+////                           const FrozenCounter& first,
+////                           IEventCollection<FrozenCounter>& items) override;
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventAnalog_in_IEventWriteHandler = Write_EventAnalog_in_ASDUEventWriteHandler;
+////    virtual uint16_t Write(EventAnalogVariation variation,
+////                           const Analog& first,
+////                           IEventCollection<Analog>& items) override;
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventBinaryOutputStatus_in_IEventWriteHandler = Write_EventBinaryOutputStatus_in_ASDUEventWriteHandler;
+////    virtual uint16_t Write(EventBinaryOutputStatusVariation variation,
+////                           const BinaryOutputStatus& first,
+////                           IEventCollection<BinaryOutputStatus>& items) override;
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventAnalogOutputStatus_in_IEventWriteHandler = Write_EventAnalogOutputStatus_in_ASDUEventWriteHandler;
+////    virtual uint16_t Write(EventAnalogOutputStatusVariation variation,
+////                           const AnalogOutputStatus& first,
+////                           IEventCollection<AnalogOutputStatus>& items) override;
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventOctetString_in_IEventWriteHandler = Write_EventOctetString_in_ASDUEventWriteHandler;
+////    virtual uint16_t Write(EventOctetStringVariation variation,
+////                           const OctetString& first,
+////                           IEventCollection<OctetString>& items) override;
+}

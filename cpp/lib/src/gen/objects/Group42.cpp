@@ -313,4 +313,236 @@ bool Group42Var8::WriteTarget(const AnalogOutputStatus& value, ser4cpp::wseq_t& 
 }
 
 
+////}
+  GroupVariationID ID_in_Group42Var0_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 0);
+//// return GroupVariationID(42,0);
+ return gGroupVariationID;
 }
+
+ uint16_t Size_in_Group42Var1_static(void) 
+{
+ return 5; 
+}
+
+  GroupVariationID ID_in_Group42Var1_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 1);
+////  return GroupVariationID(42,1); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var1_static(void)
+{
+   DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
+   DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
+                   ID_in_Group42Var1_static(),
+                   Size_in_Group42Var1_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group42Var1_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group42Var1_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_AnalogOutputStatus;
+}
+
+ uint16_t Size_in_Group42Var2_static(void) 
+{
+ return 3; 
+}
+
+  GroupVariationID ID_in_Group42Var2_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 2);
+////  return GroupVariationID(42,2); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var2_static(void)
+{
+   DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
+   DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
+                   ID_in_Group42Var2_static(),
+                   Size_in_Group42Var2_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group42Var2_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group42Var2_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_AnalogOutputStatus;
+}
+
+ uint16_t Size_in_Group42Var3_static(void) 
+{
+ return 11; 
+}
+
+  GroupVariationID ID_in_Group42Var3_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 3);
+////  return GroupVariationID(42,3); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var3_static(void)
+{
+   DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
+   DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
+                   ID_in_Group42Var3_static(),
+                   Size_in_Group42Var3_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group42Var3_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group42Var3_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_AnalogOutputStatus;
+}
+
+ uint16_t Size_in_Group42Var4_static(void) 
+{
+ return 9; 
+}
+
+  GroupVariationID ID_in_Group42Var4_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 4);
+////  return GroupVariationID(42,4); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var4_static(void)
+{
+   DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
+   DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
+                   ID_in_Group42Var4_static(),
+                   Size_in_Group42Var4_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group42Var4_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group42Var4_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_AnalogOutputStatus;
+}
+
+ uint16_t Size_in_Group42Var5_static(void) 
+{
+ return 5; 
+}
+
+  GroupVariationID ID_in_Group42Var5_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 5);
+////  return GroupVariationID(42,5); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var4_static(void)
+{
+   DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
+   DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
+                   ID_in_Group42Var4_static(),
+                   Size_in_Group42Var4_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group42Var4_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group42Var4_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_AnalogOutputStatus;
+}
+
+ uint16_t Size_in_Group42Var6_static(void) 
+{
+ return 9; 
+}
+
+  GroupVariationID ID_in_Group42Var6_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 6);
+////  return GroupVariationID(42,6); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var6_static(void)
+{
+   DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
+   DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
+                   ID_in_Group42Var6_static(),
+                   Size_in_Group42Var6_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group42Var6_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group42Var6_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_AnalogOutputStatus;
+}
+
+ uint16_t Size_in_Group42Var7_static(void) 
+{
+ return 1; 
+}
+
+  GroupVariationID ID_in_Group42Var7_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 7);
+////  return GroupVariationID(42,7); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var7_static(void)
+{
+   DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
+   DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
+                   ID_in_Group42Var7_static(),
+                   Size_in_Group42Var7_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group42Var7_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group42Var7_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_AnalogOutputStatus;
+}
+
+ uint16_t Size_in_Group42Var8_static(void) 
+{
+ return 15; 
+}
+
+  GroupVariationID ID_in_Group42Var8_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 42, 8);
+////  return GroupVariationID(42,8); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var8_static(void)
+{
+   DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
+   DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
+                   ID_in_Group42Var8_static(),
+                   Size_in_Group42Var8_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group42Var8_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group42Var8_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_AnalogOutputStatus;
+}
+

@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 ////#include "opendnp3/util/TimeDuration.h"
+#include "header.h"
 #include "TimeDuration.h"
 
 ////#include <exe4cpp/Typedefs.h>
@@ -41,7 +42,7 @@
 ////}
 ////
 ////template<class T> TimeDuration TimeDuration::FromValue(int64_t value)
-TimeDuration FromValue_in_TimeDuration(int64_t value)
+TimeDuration FromValue_in_TimeDuration_static(int64_t value)
 {
 ////    // > this will overflow when converting to nanos
 ////    const auto MAX = std::chrono::duration_cast<T>(std::chrono::steady_clock::duration::max()).count();
@@ -69,11 +70,11 @@ TimeDuration FromValue_in_TimeDuration(int64_t value)
 ////}
 ////
 ////
-////TimeDuration TimeDuration::Seconds(int64_t seconds)
-////{
-////    return FromValue<std::chrono::seconds>(seconds);
-////}
-////
+TimeDuration Seconds_in_TimeDuration_static(int64_t seconds)
+{
+    return FromValue_in_TimeDuration_static(seconds*1000);
+}
+
 ////TimeDuration TimeDuration::Minutes(int64_t minutes)
 ////{
 ////    return FromValue<std::chrono::minutes>(minutes);
@@ -106,10 +107,10 @@ TimeDuration FromValue_in_TimeDuration(int64_t value)
 ////    return this->value == other.value;
 ////}
 ////
-////bool TimeDuration::operator<(const TimeDuration& other) const
-////{
-////    return this->value < other.value;
-////}
+boolean operatorLT_in_TimeDuration(TimeDuration *pTimeDuration, TimeDuration* other) 
+{
+    return pTimeDuration->duration_value < other->duration_value;
+}
 ////
 ////bool TimeDuration::operator<=(const TimeDuration& other) const
 ////{

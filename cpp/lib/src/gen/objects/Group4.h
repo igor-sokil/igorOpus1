@@ -54,14 +54,6 @@
 
   GroupVariationID ID_in_Group4Var0_static(void);
 
-  GroupVariationID ID_in_Group4Var0_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 4, 0);
-//// return GroupVariationID(4,0);
- return gGroupVariationID;
-}
-
 // Double-bit Binary Input Event - Without Time
 ////struct Group4Var1
 typedef struct
@@ -85,43 +77,15 @@ typedef struct
 
   uint16_t Size_in_Group4Var1_static(void);
 
- uint16_t Size_in_Group4Var1_static(void) 
-{
- return 1; 
-}
-
  void Group4Var1_in_Group4Var1(Group4Var1 *pGroup4Var1);
+  GroupVariationID ID_in_Group4Var1_static(void);
 
-  GroupVariationID ID_in_Group4Var1_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 4, 1);
-////  return GroupVariationID(4,1); 
- return gGroupVariationID;
-}
-
- boolean Read_in_Group4Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group4Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group4Var1_static(RSeq_for_Uint16_t *, Group4Var1*);
+ boolean Write_in_Group4Var1_static(Group4Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group4Var1_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
  boolean WriteTarget_in_Group4Var1_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var1_static(void)
-{
-   DNP3Serializer_for_DoubleBitBinary dDNP3Serializer_for_DoubleBitBinary;
-   DNP3Serializer_for_DoubleBitBinary_in_DNP3Serializer_for_DoubleBitBinary(&dDNP3Serializer_for_DoubleBitBinary,
-                   ID_in_Group4Var1_static(),
-                   Size_in_Group4Var1_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group4Var1_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group4Var1_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_DoubleBitBinary;
-}
+ DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var1_static(void);
 
 // Double-bit Binary Input Event - With Absolute Time
 ////struct Group4Var2
@@ -147,43 +111,15 @@ typedef struct
 
   uint16_t Size_in_Group4Var2_static(void);
 
- uint16_t Size_in_Group4Var2_static(void) 
-{
- return 7; 
-}
-
  void Group2Var2_in_Group4Var2(Group4Var2 *pGroup4Var2);
+  GroupVariationID ID_in_Group4Var2_static(void);
 
-  GroupVariationID ID_in_Group4Var2_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 4, 2);
-////  return GroupVariationID(4,2); 
- return gGroupVariationID;
-}
-
- boolean Read_in_Group4Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group4Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group4Var2_static(RSeq_for_Uint16_t *, Group4Var2*);
+ boolean Write_in_Group4Var2_static(Group4Var2*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group4Var2_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
  boolean WriteTarget_in_Group4Var2_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var2_static(void)
-{
-   DNP3Serializer_for_DoubleBitBinary dDNP3Serializer_for_DoubleBitBinary;
-   DNP3Serializer_for_DoubleBitBinary_in_DNP3Serializer_for_DoubleBitBinary(&dDNP3Serializer_for_DoubleBitBinary,
-                   ID_in_Group4Var2_static(),
-                   Size_in_Group4Var2_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group4Var2_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group4Var2_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_DoubleBitBinary;
-}
+ DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var2_static(void);
 
 // Double-bit Binary Input Event - With Relative Time
 ////struct Group4Var3
@@ -209,43 +145,15 @@ typedef struct
 
   uint16_t Size_in_Group4Var3_static(void);
 
- uint16_t Size_in_Group4Var3_static(void) 
-{
- return 3; 
-}
-
  void Group2Var3_in_Group4Var3(Group4Var3 *pGroup4Var3);
+  GroupVariationID ID_in_Group4Var3_static(void);
 
-  GroupVariationID ID_in_Group4Var3_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 4, 3);
-////  return GroupVariationID(4,3); 
- return gGroupVariationID;
-}
-
- boolean Read_in_Group4Var3_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group4Var3_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group4Var3_static(RSeq_for_Uint16_t *, Group4Var3*);
+ boolean Write_in_Group4Var3_static(Group4Var3*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group4Var3_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
  boolean WriteTarget_in_Group4Var3_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var3_static(void)
-{
-   DNP3Serializer_for_DoubleBitBinary dDNP3Serializer_for_DoubleBitBinary;
-   DNP3Serializer_for_DoubleBitBinary_in_DNP3Serializer_for_DoubleBitBinary(&dDNP3Serializer_for_DoubleBitBinary,
-                   ID_in_Group4Var3_static(),
-                   Size_in_Group4Var3_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group4Var3_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group4Var3_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_DoubleBitBinary;
-}
+ DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var3_static(void);
 
 ////}   
 

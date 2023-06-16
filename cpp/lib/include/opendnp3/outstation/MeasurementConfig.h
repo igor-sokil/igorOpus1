@@ -123,9 +123,10 @@ typedef struct
 } OctetStringConfig_for_EventConfig_for_OctetStringInfo;
 
 ////struct TimeAndIntervalConfig : public StaticConfig<TimeAndIntervalInfo>
-//typedef struct
-//{
-//} TimeAndIntervalConfig_for_StaticConfig_for_TimeAndIntervalInfo;
+typedef struct
+{
+  static_variation_t_in_TimeAndIntervalInfo svariation;
+} TimeAndIntervalConfig_for_StaticConfig_for_TimeAndIntervalInfo;
 
 ////struct SecurityStatConfig
 //typedef struct

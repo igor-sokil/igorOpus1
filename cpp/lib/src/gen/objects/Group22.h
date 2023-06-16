@@ -54,14 +54,6 @@
 
   GroupVariationID ID_in_Group22Var0_static(void);
 
-  GroupVariationID ID_in_Group22Var0_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 0);
-//// return GroupVariationID(22,0);
- return gGroupVariationID;
-}
-
 // Counter Event - 32-bit With Flag
 ////struct Group22Var1
 typedef struct
@@ -86,42 +78,17 @@ typedef struct
 } Group22Var1;
 
   uint16_t Size_in_Group22Var1_static(void);
-
- uint16_t Size_in_Group22Var1_static(void) 
-{
- return 5; 
-}
+ uint16_t Size_in_Group22Var1_static(void);
 
  void Group22Var1_in_Group22Var1(Group22Var1 *pGroup22Var1);
+  GroupVariationID ID_in_Group22Var1_static(void);
 
-  GroupVariationID ID_in_Group22Var1_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 1);
-////  return GroupVariationID(22,1); 
- return gGroupVariationID;
-}
-
- boolean Read_in_Group22Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group22Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group22Var1_static(RSeq_for_Uint16_t *, Group22Var1*);
+ boolean Write_in_Group22Var1_static(Group22Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group22Var1_static(RSeq_for_Uint16_t*, Counter*);
  boolean WriteTarget_in_Group22Var1_static(Counter*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_Counter  Inst_in_Group22Var1_static(void)
-{
-   DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
-   DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
-                   ID_in_Group22Var1_static(),
-                   Size_in_Group22Var1_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group22Var1_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group22Var1_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Counter;
-}
+ DNP3Serializer_for_Counter  Inst_in_Group22Var1_static(void);
 
 // Counter Event - 16-bit With Flag
 ////struct Group22Var2
@@ -148,41 +115,15 @@ typedef struct
 
   uint16_t Size_in_Group22Var2_static(void);
 
- uint16_t Size_in_Group22Var2_static(void) 
-{
- return 3; 
-}
-
  void Group22Var2_in_Group22Var2(Group22Var2 *pGroup22Var2);
+  GroupVariationID ID_in_Group22Var2_static(void);
 
-  GroupVariationID ID_in_Group22Var2_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 2);
-////  return GroupVariationID(22,2); 
- return gGroupVariationID;
-}
-
- boolean Read_in_Group22Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group22Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group22Var2_static(RSeq_for_Uint16_t *, Group22Var2*);
+ boolean Write_in_Group22Var2_static(Group22Var2*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group22Var2_static(RSeq_for_Uint16_t*, Counter*);
  boolean WriteTarget_in_Group22Var2_static(Counter*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_Counter  Inst_in_Group22Var2_static(void)
-{
-   DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
-   DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
-                   ID_in_Group22Var2_static(),
-                   Size_in_Group22Var2_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group22Var2_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group22Var2_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Counter;
-}
+ DNP3Serializer_for_Counter  Inst_in_Group22Var2_static(void);
 
 // Counter Event - 32-bit With Flag and Time
 ////struct Group22Var5
@@ -210,41 +151,15 @@ typedef struct
 
   uint16_t Size_in_Group22Var5_static(void);
 
- uint16_t Size_in_Group22Var5_static(void) 
-{
- return 11; 
-}
-
  void Group22Var5_in_Group2Var5(Group22Var5 *pGroup22Var5);
+  GroupVariationID ID_in_Group22Var5_static(void);
 
-  GroupVariationID ID_in_Group22Var5_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 5);
-////  return GroupVariationID(22,5); 
- return gGroupVariationID;
-}
-
- boolean Read_in_Group22Var5_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group22Var5_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group22Var5_static(RSeq_for_Uint16_t *, Group22Var5*);
+ boolean Write_in_Group22Var5_static(Group22Var5*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group22Var5_static(RSeq_for_Uint16_t*, Counter*);
  boolean WriteTarget_in_Group22Var5_static(Counter*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_Counter  Inst_in_Group22Var5_static(void)
-{
-   DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
-   DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
-                   ID_in_Group22Var5_static(),
-                   Size_in_Group22Var5_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group22Var5_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group22Var5_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Counter;
-}
+ DNP3Serializer_for_Counter  Inst_in_Group22Var5_static(void);
 
 // Counter Event - 16-bit With Flag and Time
 ////struct Group22Var6
@@ -272,41 +187,16 @@ typedef struct
 
   uint16_t Size_in_Group22Var6_static(void);
 
- uint16_t Size_in_Group22Var6_static(void) 
-{
- return 9; 
-}
-
  void Group22Var6_in_Group22Var6(Group22Var6 *pGroup22Var6);
+  GroupVariationID ID_in_Group22Var6_static(void);
 
-  GroupVariationID ID_in_Group22Var6_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 6);
-////  return GroupVariationID(22,6); 
- return gGroupVariationID;
-}
-
- boolean Read_in_Group22Var6_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group22Var6_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group22Var6_static(RSeq_for_Uint16_t *, Group22Var6*);
+ boolean Write_in_Group22Var6_static(Group22Var6*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group22Var6_static(RSeq_for_Uint16_t*, Counter*);
  boolean WriteTarget_in_Group22Var6_static(Counter*, WSeq_for_Uint16_t*);
+ DNP3Serializer_for_Counter  Inst_in_Group22Var6_static(void);
 
- DNP3Serializer_for_Counter  Inst_in_Group22Var6_static(void)
-{
-   DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
-   DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
-                   ID_in_Group22Var6_static(),
-                   Size_in_Group22Var6_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group22Var6_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group26Var6_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Counter;
-}
 
 ////}
 

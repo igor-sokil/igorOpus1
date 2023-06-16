@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("WriteIIN"))
+{
+    OutstationConfig config;
+    OutstationTestObject t(config);
+    t.LowerLayerUp();
+
+    t.SendToOutstation(hex::ClearRestartIIN(0));
+    REQUIRE(t.lower->PopWriteAsHex() == hex::EmptyResponse(0));
+}

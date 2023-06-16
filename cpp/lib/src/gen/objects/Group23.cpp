@@ -177,4 +177,123 @@ bool Group23Var6::WriteTarget(const FrozenCounter& value, ser4cpp::wseq_t& buff)
 }
 
 
+////}
+  GroupVariationID ID_in_Group23Var0_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 23, 0);
+//// return GroupVariationID(23,0);
+ return gGroupVariationID;
+}
+
+ uint16_t Size_in_Group23Var1_static(void) 
+{
+ return 5; 
+}
+
+  GroupVariationID ID_in_Group23Var1_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 23, 1);
+////  return GroupVariationID(23,1); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var1_static(void)
+{
+   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+                   ID_in_Group23Var1_static(),
+                   Size_in_Group23Var1_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group23Var1_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group23Var1_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_FrozenCounter;
+}
+
+ uint16_t Size_in_Group23Var2_static(void) 
+{
+ return 3; 
+}
+
+  GroupVariationID ID_in_Group23Var2_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 23, 2);
+////  return GroupVariationID(23,2); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var2_static(void)
+{
+   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+                   ID_in_Group23Var2_static(),
+                   Size_in_Group23Var2_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group23Var2_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group23Var2_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_FrozenCounter;
+}
+
+ uint16_t Size_in_Group23Var5_static(void) 
+{
+ return 11; 
+}
+
+  GroupVariationID ID_in_Group23Var5_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 23, 5);
+////  return GroupVariationID(23,5); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var5_static(void)
+{
+   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+                   ID_in_Group23Var5_static(),
+                   Size_in_Group23Var5_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group23Var5_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group23Var5_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_FrozenCounter;
+}
+
+ uint16_t Size_in_Group23Var6_static(void) 
+{
+ return 9; 
+}
+
+  GroupVariationID ID_in_Group23Var6_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 23, 6);
+////  return GroupVariationID(23,6); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var6_static(void)
+{
+   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+                   ID_in_Group23Var16static(),
+                   Size_in_Group23Var6_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   &ReadTarget_in_Group23Var6_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   &WriteTarget_in_Group23Var6_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_FrozenCounter;
 }

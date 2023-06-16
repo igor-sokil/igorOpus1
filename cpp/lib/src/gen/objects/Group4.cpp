@@ -143,4 +143,101 @@ bool Group4Var3::WriteTarget(const DoubleBitBinary& value, ser4cpp::wseq_t& buff
 }
 
 
+////}
+  GroupVariationID ID_in_Group4Var0_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 4, 0);
+//// return GroupVariationID(4,0);
+ return gGroupVariationID;
+}
+
+ uint16_t Size_in_Group4Var1_static(void) 
+{
+ return 1; 
+}
+
+  GroupVariationID ID_in_Group4Var1_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 4, 1);
+////  return GroupVariationID(4,1); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var1_static(void)
+{
+   DNP3Serializer_for_DoubleBitBinary dDNP3Serializer_for_DoubleBitBinary;
+   DNP3Serializer_for_DoubleBitBinary_in_DNP3Serializer_for_DoubleBitBinary(&dDNP3Serializer_for_DoubleBitBinary,
+                   ID_in_Group4Var1_static(),
+                   Size_in_Group4Var1_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
+                   &ReadTarget_in_Group4Var1_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
+                   &WriteTarget_in_Group4Var1_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_DoubleBitBinary;
+}
+
+ uint16_t Size_in_Group4Var2_static(void) 
+{
+ return 7; 
+}
+
+  GroupVariationID ID_in_Group4Var2_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 4, 2);
+////  return GroupVariationID(4,2); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var2_static(void)
+{
+   DNP3Serializer_for_DoubleBitBinary dDNP3Serializer_for_DoubleBitBinary;
+   DNP3Serializer_for_DoubleBitBinary_in_DNP3Serializer_for_DoubleBitBinary(&dDNP3Serializer_for_DoubleBitBinary,
+                   ID_in_Group4Var2_static(),
+                   Size_in_Group4Var2_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
+                   &ReadTarget_in_Group4Var2_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
+                   &WriteTarget_in_Group4Var2_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_DoubleBitBinary;
+}
+
+ uint16_t Size_in_Group4Var3_static(void) 
+{
+ return 3; 
+}
+
+  GroupVariationID ID_in_Group4Var3_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 4, 3);
+////  return GroupVariationID(4,3); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var3_static(void)
+{
+   DNP3Serializer_for_DoubleBitBinary dDNP3Serializer_for_DoubleBitBinary;
+   DNP3Serializer_for_DoubleBitBinary_in_DNP3Serializer_for_DoubleBitBinary(&dDNP3Serializer_for_DoubleBitBinary,
+                   ID_in_Group4Var3_static(),
+                   Size_in_Group4Var3_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
+                   &ReadTarget_in_Group4Var3_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
+                   &WriteTarget_in_Group4Var3_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_DoubleBitBinary;
 }

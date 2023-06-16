@@ -86,6 +86,7 @@ typedef struct
     uint16_t maxOctetStringEvents;
 } EventBufferConfig;
 
+   void EventBufferConfig_in_EventBufferConfigOver1(EventBufferConfig *pEventBufferConfig);
    void EventBufferConfig_in_EventBufferConfigOver2(EventBufferConfig *pEventBufferConfig,
                       uint16_t maxBinaryEvents,// = 0,
                       uint16_t maxDoubleBinaryEvents,// = 0,

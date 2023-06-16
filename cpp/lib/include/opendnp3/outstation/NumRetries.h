@@ -20,31 +20,41 @@
 #ifndef OPENDNP3_NUMRETRIES_H
 #define OPENDNP3_NUMRETRIES_H
 
-#include <cstddef>
+////#include <cstddef>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  *	Unsolicited response number of retries
  */
-class NumRetries final
+////class NumRetries final
+typedef struct
 {
-public:
-    static NumRetries Fixed(std::size_t maxNumRetries);
-    static NumRetries Infinite();
+////public:
+////    static NumRetries Fixed(std::size_t maxNumRetries);
+////    static NumRetries Infinite();
 
-    bool Retry();
-    void Reset();
+////    bool Retry();
+////    void Reset();
 
-private:
-    NumRetries(std::size_t maxNumRetries, bool isInfinite);
+////private:
+////    NumRetries(std::size_t maxNumRetries, bool isInfinite);
 
-    std::size_t numRetries;
-    std::size_t maxNumRetries;
-    bool isInfinite;
-};
+    uint16_t numRetries;
+    uint16_t maxNumRetries;
+    boolean isInfinite;
+} NumRetries;
 
-} // namespace opendnp3
+    NumRetries Fixed_in_NumRetries_static(uint16_t maxNumRetries);
+    NumRetries Infinite_in_NumRetries_static(void);
+
+   boolean Retry_in_NumRetries(NumRetries *pNumRetries);
+   void Reset_in_NumRetries(NumRetries *pNumRetries);
+
+////private:
+   void NumRetries_in_NumRetries(NumRetries *pNumRetries, uint16_t maxNumRetries, boolean isInfinite);
+
+////} // namespace opendnp3
 
 #endif

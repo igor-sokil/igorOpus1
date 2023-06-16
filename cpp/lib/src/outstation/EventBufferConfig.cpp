@@ -32,6 +32,11 @@ EventBufferConfig AllTypes_in_EventBufferConfig_static(uint16_t sizes)
     return eEventBufferConfig;
 }
 
+void EventBufferConfig_in_EventBufferConfigOver1(EventBufferConfig *pEventBufferConfig)
+{
+  UNUSED(pEventBufferConfig);
+}
+
 void EventBufferConfig_in_EventBufferConfigOver2(EventBufferConfig *pEventBufferConfig,
                                      uint16_t maxBinaryEvents,
                                      uint16_t maxDoubleBinaryEvents,

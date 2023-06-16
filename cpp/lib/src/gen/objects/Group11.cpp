@@ -109,4 +109,71 @@ bool Group11Var2::WriteTarget(const BinaryOutputStatus& value, ser4cpp::wseq_t& 
 }
 
 
+////}
+  GroupVariationID ID_in_Group11Var0_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 11, 0);
+//// return GroupVariationID(11,0);
+ return gGroupVariationID;
+}
+
+ uint16_t Size_in_Group11Var1_static(void) 
+{
+ return 1; 
+}
+
+  GroupVariationID ID_in_Group11Var1_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 11, 1);
+////  return GroupVariationID(11,1); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_BinaryOutputStatus  Inst_in_Group11Var1_static(void)
+{
+   DNP3Serializer_for_BinaryOutputStatus dDNP3Serializer_for_BinaryOutputStatus;
+   DNP3Serializer_for_BinaryOutputStatus_in_DNP3Serializer_for_BinaryOutputStatus(&dDNP3Serializer_for_BinaryOutputStatus,
+                   ID_in_Group11Var1_static(),
+                   Size_in_Group11Var1_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
+                   &ReadTarget_in_Group11Var1_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
+                   &WriteTarget_in_Group11Var1_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_BinaryOutputStatus;
+}
+
+ uint16_t Size_in_Group11Var2_static(void) 
+{
+ return 7; 
+}
+
+  GroupVariationID ID_in_Group11Var2_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 11, 2);
+////  return GroupVariationID(11,2); 
+ return gGroupVariationID;
+}
+
+ DNP3Serializer_for_BinaryOutputStatus  Inst_in_Group11Var2_static(void)
+{
+   DNP3Serializer_for_BinaryOutputStatus dDNP3Serializer_for_BinaryOutputStatus;
+   DNP3Serializer_for_BinaryOutputStatus_in_DNP3Serializer_for_BinaryOutputStatus(&dDNP3Serializer_for_BinaryOutputStatus,
+                   ID_in_Group11Var2_static(),
+                   Size_in_Group11Var2_static(),
+////                   typename Serializer<T>::read_func_t read_func,
+                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
+                   &ReadTarget_in_Group11Var2_static,
+////                   typename Serializer<T>::write_func_t write_func)
+                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
+                   &WriteTarget_in_Group11Var2_static);
+
+//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
+   return dDNP3Serializer_for_BinaryOutputStatus;
 }

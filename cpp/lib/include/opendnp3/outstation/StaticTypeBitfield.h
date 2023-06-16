@@ -20,41 +20,50 @@
 #ifndef OPENDNP3_STATICTYPEBITFIELD_H
 #define OPENDNP3_STATICTYPEBITFIELD_H
 
-#include "opendnp3/gen/StaticTypeBitmask.h"
+////#include "opendnp3/gen/StaticTypeBitmask.h"
 
-#include <cstdint>
+#include "StaticTypeBitmask.h"
 
-namespace opendnp3
-{
+////#include <cstdint>
+
+////namespace opendnp3
+////{
 
 /**
  * A bitfield that describes a subset of all static types, e.g. { Binary, Analog } or {Analog, Counter, FrozenCounter }
  */
-struct StaticTypeBitField
+////struct StaticTypeBitField
+typedef struct
 {
-    StaticTypeBitField() : mask(0) {}
+////    StaticTypeBitField() : mask(0) {}
 
-    StaticTypeBitField(uint16_t mask) : mask(mask) {}
+////    StaticTypeBitField(uint16_t mask) : mask(mask) {}
 
-    static StaticTypeBitField AllTypes()
-    {
-        return StaticTypeBitField(~0);
-    }
+////    static StaticTypeBitField AllTypes()
+////    {
+////        return StaticTypeBitField(~0);
+////    }
 
-    bool IsSet(StaticTypeBitmask type) const
-    {
-        return (mask & static_cast<uint16_t>(type)) != 0;
-    }
+////    bool IsSet(StaticTypeBitmask type) const
+////    {
+////        return (mask & static_cast<uint16_t>(type)) != 0;
+////    }
 
-    StaticTypeBitField Except(StaticTypeBitmask type) const
-    {
-        return StaticTypeBitField(mask & ~static_cast<uint16_t>(type));
-    }
+////    StaticTypeBitField Except(StaticTypeBitmask type) const
+////    {
+////        return StaticTypeBitField(mask & ~static_cast<uint16_t>(type));
+////    }
 
-private:
+////private:
     uint16_t mask;
-};
+} StaticTypeBitField;
 
-} // namespace opendnp3
+  void StaticTypeBitField_in_StaticTypeBitFieldOver1(StaticTypeBitField *pStaticTypeBitField);
+  void StaticTypeBitField_in_StaticTypeBitFieldOver2(StaticTypeBitField *pStaticTypeBitField, uint16_t mask);
+     StaticTypeBitField AllTypes_in_StaticTypeBitField_static(void);
+    boolean IsSet_in_StaticTypeBitField(StaticTypeBitField *pStaticTypeBitField, StaticTypeBitmask_uint16_t type);
+    StaticTypeBitField Except_in_StaticTypeBitField(StaticTypeBitField *pStaticTypeBitField, StaticTypeBitmask_uint16_t type);
+
+////} // namespace opendnp3
 
 #endif

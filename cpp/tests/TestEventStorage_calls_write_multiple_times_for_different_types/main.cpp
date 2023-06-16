@@ -342,8 +342,8 @@ int main(int argc, char *argv[])
       EventClass_EC1,
       EventBinaryVariation_Group2Var1);
 
-//boolean Update_for_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt);
-  tempBool = Update_for_BinarySpec_in_EventStorage(&storage, &eEvent_for_BinarySpec);
+//boolean Update_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt);
+  tempBool = Update_BinarySpec_in_EventStorage(&storage, &eEvent_for_BinarySpec);
   qDebug()<<"REQUIRE_FALSE(storage.Update(Event<BinarySpec>(Binary(true), 0, EventClass::EC1, EventBinaryVariation::Group2Var1)))";
   qDebug()<<"tempBool= "<<tempBool;
 

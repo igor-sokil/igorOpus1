@@ -54,54 +54,54 @@ uint32_t NumUnwritten_in_EventStorage(EventStorage *pEventStorage, EventClass_ui
          Get_in_ClazzCount(&((pEventStorage->state).counters.written), clazz);
 }
 
-boolean Update_for_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt)
+boolean Update_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
-  return Update_for_BinarySpec_in_EventUpdate_static(&(pEventStorage->state), evt);
+  return Update_BinarySpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
-
-boolean Update_for_DoubleBitBinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_DoubleBitBinarySpec* evt)
+/*
+boolean Update_DoubleBitBinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_DoubleBitBinarySpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
-  return Update_for_DoubleBitBinarySpec_in_EventUpdate_static(&(pEventStorage->state), evt);
+  return Update_DoubleBitBinarySpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
 
-boolean Update_for_AnalogSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_AnalogSpec* evt)
+boolean Update_AnalogSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_AnalogSpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
-  return Update_for_AnalogSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
+  return Update_AnalogSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
 
-boolean Update_for_CounterSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_CounterSpec* evt)
+boolean Update_CounterSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_CounterSpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
-  return Update_for_CounterSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
+  return Update_CounterSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
 
-boolean Update_for_FrozenCounterSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_FrozenCounterSpec* evt)
+boolean Update_FrozenCounterSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_FrozenCounterSpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
-  return Update_for_FrozenCounterSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
+  return Update_FrozenCounterSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
 
-boolean Update_for_BinaryOutputStatusSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinaryOutputStatusSpec* evt)
+boolean Update_BinaryOutputStatusSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinaryOutputStatusSpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
-  return Update_for_BinaryOutputStatusSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
+  return Update_BinaryOutputStatusSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
 
-boolean Update_for_AnalogOutputStatusSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_AnalogOutputStatusSpec* evt)
+boolean Update_AnalogOutputStatusSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_AnalogOutputStatusSpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
-  return Update_for_AnalogOutputStatusSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
+  return Update_AnalogOutputStatusSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
 
-boolean Update_for_OctetStringSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_OctetStringSpec* evt)
+boolean Update_OctetStringSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_OctetStringSpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
-  return Update_for_OctetStringSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
+  return Update_OctetStringSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
-
+*/
 uint32_t SelectByType_in_EventStorageOver1(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max)
 {
   return SelectByType_for_BinarySpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
@@ -198,16 +198,16 @@ uint32_t SelectByClass_in_EventStorageOver4(EventStorage *pEventStorage, ClassFi
 ////  return EventSelection::SelectByClass(this->state, clazz, max);
   return SelectByClass_in_EventSelection_static(&(pEventStorage->state), clazz, max);
 }
-
+/*
 ////uint32_t EventStorage::Write(IEventWriteHandler* handler)
 uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler)
 {
 ////  return EventWriting::Write(this->state, handler);
   return Write_in_EventWriting_static(&(pEventStorage->state), handler);
 }
-
+*/
 boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record);
-
+/*
 boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record)
 {
 ////  auto written = [this](EventRecord& record) -> bool {
@@ -224,6 +224,8 @@ boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record
 
   return false;
 }
+*/
+/*
 ////uint32_t EventStorage::ClearWritten()
 uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage)
 {
@@ -242,7 +244,7 @@ uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage)
 ////  return this->state.events.RemoveAll(&((pEventStorage->state).events), written);
   return RemoveAll_in_List_for_EventRecord(pEventStorage, &((pEventStorage->state).events), written_in_EventStorage);
 }
-
+*/
 void clear_in_EventStorage(EventRecord* record);
 void clear_in_EventStorage(EventRecord* record)
 {

@@ -1,15 +1,19 @@
 
 INCLUDEPATH  += qtsrc
 INCLUDEPATH  += cpp\lib\include\opendnp3\app
+INCLUDEPATH  += cpp\lib\include\opendnp3\app\parsing
 INCLUDEPATH  += cpp\lib\include\opendnp3\gen
 INCLUDEPATH  += cpp\lib\include\opendnp3\master
 INCLUDEPATH  += cpp\lib\include\opendnp3\outstation
 INCLUDEPATH  += cpp\lib\include\opendnp3\util
 INCLUDEPATH  += cpp\lib\include\opendnp3\link
 
+INCLUDEPATH  += cpp\lib\src
+
 INCLUDEPATH  += cpp\lib\src\app
 INCLUDEPATH  += cpp\lib\src\app\parsing
 INCLUDEPATH  += cpp\lib\src\link
+INCLUDEPATH  += cpp\lib\src\util
 
 INCLUDEPATH  += cpp\lib\src\outstation
 
@@ -94,7 +98,20 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\OctetString.cpp \
                 cpp\lib\include\opendnp3\app\Indexed.cpp \
                 \
+                cpp\lib\include\opendnp3\app\parsing\ICollection.cpp \
+                \
+                cpp\lib\include\opendnp3\outstation\OutstationParams.cpp \
+                cpp\lib\include\opendnp3\outstation\OutstationConfig.cpp \
+                cpp\lib\include\opendnp3\outstation\StaticTypeBitfield.cpp \
+                cpp\lib\include\opendnp3\outstation\IDnpTimeSource.cpp \
+                \
+                cpp\lib\src\LayerInterfaces.cpp \
+                cpp\lib\src\SequenceNum.cpp \
+                \
                 cpp\lib\src\link\Addresses.cpp \
+                cpp\lib\src\link\CRC.cpp \
+                cpp\lib\src\link\LinkHeader.cpp \
+                cpp\lib\src\link\LinkFrame.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\ParseResult.cpp \
@@ -135,6 +152,14 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\src\outstation\Event.cpp \
                 cpp\lib\src\outstation\EventBufferConfig.cpp \
+                cpp\lib\src\outstation\SimpleCommandHandler.cpp \
+                cpp\lib\src\outstation\NumRetries.cpp \
+                cpp\lib\src\outstation\Database.cpp \
+                cpp\lib\src\outstation\ControlState.cpp \
+                cpp\lib\src\outstation\OctetStringSerializer.cpp \
+                \
+                cpp\lib\src\util\TimeDuration.cpp \
+                cpp\lib\src\util\Timestamp.cpp \
                 \
                 cpp\lib\src\outstation\event\ClazzCount.cpp \
                 cpp\lib\src\outstation\event\EventCollection.cpp \
@@ -145,7 +170,9 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\event\EventTypeImpl.cpp \
                 cpp\lib\src\outstation\event\EventUpdate.cpp \
                 cpp\lib\src\outstation\event\EventWriting.cpp \
+                cpp\lib\src\outstation\event\EventWriters_for_Binary.cpp \
                 cpp\lib\src\outstation\event\IEventType.cpp \
+                cpp\lib\src\outstation\event\IEventWriteHandler.cpp \
                 cpp\lib\src\outstation\event\TypedStorage.cpp \
                 cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
                 cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
@@ -173,6 +200,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\CommandStatus.cpp \
                 cpp\lib\src\gen\IntervalUnits.cpp \
                 cpp\lib\src\gen\FunctionCode.cpp \
+                cpp\lib\src\gen\LinkFunction.cpp \
                 \
                 cpp\lib\src\gen\objects\Group60.cpp \
                 cpp\lib\src\gen\objects\Group1.cpp \
@@ -185,5 +213,4 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\tests\unit\utils\APDUHelpers.cpp
 
-#                cpp\lib\src\outstation\event\EventStorage.cpp \
 

@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
    EventBufferConfig temp = AllTypes_in_EventBufferConfig_static(MAX_EventRecord);
  EventStorage_in_EventStorage(&storage, &temp);
   qDebug()<<"1111";
-//boolean Update_for_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt);
+//boolean Update_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt);
 //   void Event_for_BinarySpec_in_Event_for_BinarySpecOver2(Event_for_BinarySpec *pEvent_for_BinarySpec,
 //                                                  Binary* value, uint16_t index,
 //                                                  EventClass_uint8_t clazz,
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
                                                   EventBinaryVariation_Group2Var1);//event_variation_t_in_BinaryInfo variation);
   qDebug()<<"2222";
 
-boolean Booltemp = Update_for_BinarySpec_in_EventStorage(&storage, &eEvent_for_BinarySpec);
+boolean Booltemp = Update_BinarySpec_in_EventStorage(&storage, &eEvent_for_BinarySpec);
   qDebug()<<"3333";
   qDebug()<<"REQUIRE_FALSE(storage.Update(Event<BinarySpec>(Binary(true), 0, EventClass::EC1, EventBinaryVariation::Group2Var1)))";
   qDebug()<<"Booltemp= "<<Booltemp;
