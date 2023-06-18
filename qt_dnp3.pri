@@ -202,7 +202,6 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\FunctionCode.cpp \
                 cpp\lib\src\gen\LinkFunction.cpp \
                 \
-                cpp\lib\src\gen\objects\Group60.cpp \
                 cpp\lib\src\gen\objects\Group1.cpp \
                 cpp\lib\src\gen\objects\Group2.cpp \
                 cpp\lib\src\gen\objects\Group20.cpp \
@@ -210,6 +209,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group32.cpp \
                 cpp\lib\src\gen\objects\Group50.cpp \
                 cpp\lib\src\gen\objects\Group51.cpp \
+                cpp\lib\src\gen\objects\Group60.cpp \
                 \
                 cpp\tests\unit\utils\APDUHelpers.cpp
 

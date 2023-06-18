@@ -16,13 +16,13 @@ uint8_t Get_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *
 ////        return this->seq;
 ////    }
 ////
-void SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16)
+void SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over1(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16)
 {
   pSequenceNum_for_uint8_Modulus16->seq = 0;
 }
 
 ////    SequenceNum(T value) : seq(value) {}
-void SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t value)
+void SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t value)
 {
   pSequenceNum_for_uint8_Modulus16->seq = value;
 }

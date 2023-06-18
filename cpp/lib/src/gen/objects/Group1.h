@@ -90,6 +90,7 @@ typedef struct
 ////  typedef Binary Target_in_Group1Var2;
 ////  typedef BinarySpec Spec_in_Group1Var2;
 
+  void Group1Var2_in_Group1Var2(Group1Var2 *pGroup1Var2);
   const StaticBinaryVariation_uint8_t svariation_in_Group1Var2 = StaticBinaryVariation_Group1Var2;
 
   boolean ReadTarget_in_Group1Var2_static(RSeq_for_Uint16_t *, Binary*);

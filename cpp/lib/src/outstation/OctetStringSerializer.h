@@ -72,7 +72,7 @@ typedef struct
 ////    static bool Write(const OctetString& value, ser4cpp::wseq_t& buffer);
 } OctetStringSerializer;
 
-void OctetStringSerializer_in_OctetStringSerializer(boolean isEvent, uint8_t size);
+void OctetStringSerializer_in_OctetStringSerializer(OctetStringSerializer *pOctetStringSerializer, boolean isEvent, uint8_t size);
 boolean Write_in_OctetStringSerializer_static(OctetString* value, WSeq_for_Uint16_t* buffer);
 
 ////} // namespace opendnp3

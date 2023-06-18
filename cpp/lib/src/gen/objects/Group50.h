@@ -123,7 +123,7 @@ typedef struct
 
  boolean ReadTarget_in_Group50Var4_static(RSeq_for_Uint16_t*, TimeAndInterval*);
  boolean WriteTarget_in_Group50Var4_static(TimeAndInterval*, WSeq_for_Uint16_t*);
-
+ DNP3Serializer_for_TimeAndInterval  Inst_in_Group50Var4_static(void);
 
   const StaticTimeAndIntervalVariation_uint8_t svariation_in_Group50Var4 = StaticTimeAndIntervalVariation_Group50Var4;
 

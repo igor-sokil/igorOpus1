@@ -227,7 +227,7 @@ typedef struct
 
 void CTOEventWriter_for_Binary_Group51Var1_in_CTOEventWriter_for_Binary_Group51Var1(CTOEventWriter_for_Binary_Group51Var1 *pCTOEventWriter_for_Binary_Group51Var1,
     Group51Var1* cto,
-    HeaderWriter& writer,
+    HeaderWriter* writer,
     DNP3Serializer_for_Binary* serializer);
 boolean Write_in_CTOEventWriter_for_Binary_Group51Var1_override(void* pIEventWriter_for_Binary, Binary* meas, uint16_t index);
 

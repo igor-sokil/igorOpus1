@@ -1448,6 +1448,12 @@
                     <name>opendnp3</name>
                     <group>
                         <name>app</name>
+                        <group>
+                            <name>parsing</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection.cpp</name>
+                            </file>
+                        </group>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\BaseMeasurementTypes.cpp</name>
                         </file>
@@ -1512,6 +1518,9 @@
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\app\parsing\ParseResult.cpp</name>
                         </file>
                     </group>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\AnalogCommandEvent.cpp</name>
+                    </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\AnalogOutput.cpp</name>
                     </file>
@@ -1610,6 +1619,30 @@
                     <name>gen</name>
                     <group>
                         <name>objects</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group1.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group2.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group20.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group30.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group32.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group50.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group51.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group60.cpp</name>
+                        </file>
                     </group>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\Attributes.cpp</name>
@@ -1621,7 +1654,13 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\DoubleBit.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\FunctionCode.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\IntervalUnits.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\LinkFunction.cpp</name>
                     </file>
                 </group>
                 <group>
@@ -1662,13 +1701,22 @@
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventUpdate.cpp</name>
                         </file>
                         <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventWriters_for_Binary.cpp</name>
+                        </file>
+                        <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventWriting.cpp</name>
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\IEventType.cpp</name>
                         </file>
                         <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\IEventWriteHandler.cpp</name>
+                        </file>
+                        <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp</name>
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogSpec_part1.cpp</name>
@@ -1684,6 +1732,9 @@
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_FrozenCounterSpec_part1.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_FrozenCounterSpec_part2.cpp</name>
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_OctetStringSpec_part1.cpp</name>
@@ -1702,10 +1753,22 @@
                         </file>
                     </group>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\ControlState.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\Event.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\EventBufferConfig.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\NumRetries.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\OctetStringSerializer.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\SimpleCommandHandler.cpp</name>
                     </file>
                 </group>
                 <group>

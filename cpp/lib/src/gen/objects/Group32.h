@@ -88,6 +88,7 @@ typedef struct
   uint16_t Size_in_Group32Var1_static(void);
  void Group32Var1_in_Group32Var1(Group32Var1 *pGroup32Var1);
   GroupVariationID ID_in_Group32Var1_static(void);
+ DNP3Serializer_for_Analog  Inst_in_Group32Var1_static(void);
 
  boolean Read_in_Group32Var1_static(RSeq_for_Uint16_t *, Group32Var1*);
  boolean Write_in_Group32Var1_static(Group32Var1*, WSeq_for_Uint16_t*);

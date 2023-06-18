@@ -79,7 +79,7 @@ typedef struct
 } Group20Var1;
 
   uint16_t Size_in_Group20Var1_static(void);
- void Group2Var1_in_Group20Var1(Group20Var1 *pGroup20Var1);
+ void Group20Var1_in_Group20Var1(Group20Var1 *pGroup20Var1);
   GroupVariationID ID_in_Group20Var1_static(void);
   DNP3Serializer_for_Counter Inst_in_Group20Var1_static(void);
 

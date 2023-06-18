@@ -118,14 +118,14 @@ boolean Update_CounterSpec_in_EventStorage(EventStorage *pEventStorage, Event_fo
 boolean Update_AnalogSpec_in_EventStorage(EventStorage *pEventStorage, Event_for_AnalogSpec* evt);
 boolean Update_DoubleBitBinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_DoubleBitBinarySpec* evt);
 
-    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
-    uint32_t SelectByType_EventDoubleBinary_in_EventStorage(EventStorage *pEventStorage, EventDoubleBinaryVariation_uint8_t variation, uint32_t max);
-    uint32_t SelectByType_EventAnalog_in_EventStorage(EventStorage *pEventStorage, EventAnalogVariation_uint8_t variation, uint32_t max);
-    uint32_t SelectByType_EventCounter_in_EventStorage(EventStorage *pEventStorage, EventCounterVariation_uint8_t variation, uint32_t max);
-    uint32_t SelectByType_EventFrozenCounter_in_EventStorage(EventStorage *pEventStorage, EventFrozenCounterVariation_uint8_t variation, uint32_t max);
-    uint32_t SelectByType_EventBinaryOutputStatus_in_EventStorage(EventStorage *pEventStorage, EventBinaryOutputStatusVariation_uint8_t variation, uint32_t max);
-    uint32_t SelectByType_EventAnalogOutputStatus_in_EventStorage(EventStorage *pEventStorage, EventAnalogOutputStatusVariation_uint8_t variation, uint32_t max);
-    uint32_t SelectByType_EventOctetString_in_EventStorage(EventStorage *pEventStorage, EventOctetStringVariation_uint8_t variation, uint32_t max);
+    uint32_t SelectByType_BinarySpec_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
+    uint32_t SelectByType_DoubleBitBinarySpec_in_EventStorage(EventStorage *pEventStorage, EventDoubleBinaryVariation_uint8_t variation, uint32_t max);
+    uint32_t SelectByType_AnalogSpec_in_EventStorage(EventStorage *pEventStorage, EventAnalogVariation_uint8_t variation, uint32_t max);
+    uint32_t SelectByType_CounterSpec_in_EventStorage(EventStorage *pEventStorage, EventCounterVariation_uint8_t variation, uint32_t max);
+    uint32_t SelectByType_FrozenCounterSpec_in_EventStorage(EventStorage *pEventStorage, EventFrozenCounterVariation_uint8_t variation, uint32_t max);
+    uint32_t SelectByType_BinaryOutputStatusSpec_in_EventStorage(EventStorage *pEventStorage, EventBinaryOutputStatusVariation_uint8_t variation, uint32_t max);
+    uint32_t SelectByType_AnalogOutputStatusSpec_in_EventStorage(EventStorage *pEventStorage, EventAnalogOutputStatusVariation_uint8_t variation, uint32_t max);
+    uint32_t SelectByType_OctetStringSpec_in_EventStorage(EventStorage *pEventStorage, EventOctetStringVariation_uint8_t variation, uint32_t max);
 
     uint32_t SelectByType_in_EventStorage(EventStorage *pEventStorage, EventType_uint16_t type, uint32_t max);
 
