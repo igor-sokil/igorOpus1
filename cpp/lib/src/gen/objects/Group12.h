@@ -93,7 +93,7 @@ typedef struct
  return 11; 
 }
 
- void Group2Var1_in_Group12Var1(Group2Var1 *pGroup12Var1);
+ void Group12Var1_in_Group12Var1(Group12Var1 *pGroup12Var1);
 
   GroupVariationID ID_in_Group12Var1_static(void)
 {
@@ -103,8 +103,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group12Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group12Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group12Var1_static(RSeq_for_Uint16_t *, Group12Var1*);
+ boolean Write_in_Group12Var1_static(Group12Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group12Var1_static(RSeq_for_Uint16_t*, ControlRelayOutputBlock*);
  boolean WriteTarget_in_Group12Var1_static(ControlRelayOutputBlock*, WSeq_for_Uint16_t*);

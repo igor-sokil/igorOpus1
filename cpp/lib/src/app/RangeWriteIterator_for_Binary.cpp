@@ -1,8 +1,8 @@
 #include "header.h"
-#include "RangeWriteIterator_for_UInt8_Binary.h"
+#include "RangeWriteIterator_for_Binary.h"
 #include "SerializationTemplates.h"
 #include <string.h>
-
+//-------------------Uint8---------------------------------------------------
 RangeWriteIterator_for_UInt8_Binary Null_in_RangeWriteIterator_for_UInt8_Binary_static(void)
 {
   RangeWriteIterator_for_UInt8_Binary rRangeWriteIterator_for_UInt8_Binary;
@@ -82,3 +82,4 @@ boolean IsValid_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UI
 {
   return pRangeWriteIterator_for_UInt8_Binary->isValid;
 }
+//-------------------Uint8---------------------------------------------------

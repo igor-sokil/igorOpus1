@@ -21,9 +21,8 @@
 #define OPENDNP3_EVENTWRITERS_for_Binary_H
 
 #include "IEventWriteHandler.h"
-#include "DNP3Serializer.h"
 #include "HeaderWriter.h"
-#include "Group51.h"
+#include "PrefixedWriteIterator_for_Binary.h"
 
 ////#include <ser4cpp/serialization/LittleEndian.h>
 
@@ -135,29 +134,13 @@
 ////////} // namespace opendnp3
 
 uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
+uint16_t WriteWithCTO_for_Binary_in_EventWriters_static(DNPTime* cto,
+    HeaderWriter* writer,
+    IEventCollection_for_Binary* items,
+    DNP3Serializer_for_Binary* serializer);
 
 
 ////    template<class T>
-////    static uint16_t WriteWithCTO(const DNPTime& cto,
-////                                 HeaderWriter& writer,
-////                                 IEventCollection<T>& items,
-////                                 const DNP3Serializer<T>& serializer)
-////    {
-////        if (cto.quality == TimestampQuality::SYNCHRONIZED)
-////        {
-////            Group51Var1 value;
-////            value.time = cto;
-////            CTOEventWriter<T, Group51Var1> handler(value, writer, serializer);
-////            return items.WriteSome(handler);
-////        }
-////        else
-////        {
-////            Group51Var2 value;
-////            value.time = cto;
-////            CTOEventWriter<T, Group51Var2> handler(value, writer, serializer);
-////            return items.WriteSome(handler);
-////        }
-////    }
 ////
 ////    static uint16_t Write(uint8_t firstSize, HeaderWriter& writer, IEventCollection<OctetString>& items);
 ////
@@ -230,6 +213,62 @@ void CTOEventWriter_for_Binary_Group51Var1_in_CTOEventWriter_for_Binary_Group51V
     HeaderWriter* writer,
     DNP3Serializer_for_Binary* serializer);
 boolean Write_in_CTOEventWriter_for_Binary_Group51Var1_override(void* pIEventWriter_for_Binary, Binary* meas, uint16_t index);
+
+////    template<class T, class U> class CTOEventWriter final : public IEventWriter<T>
+typedef struct
+{
+  IEventWriter_for_Binary iIEventWriter_for_Binary;
+  DNPTime cto;
+////        PrefixedWriteIterator<ser4cpp::UInt16, T> iterator;
+  PrefixedWriteIterator_for_UInt16_Binary iterator;
+
+////    public:
+////        CTOEventWriter(const U& cto, HeaderWriter& writer, const DNP3Serializer<T>& serializer)
+////            : cto(cto.time),
+////              iterator(writer.IterateOverCountWithPrefixAndCTO<ser4cpp::UInt16, T, U>(
+////                  QualifierCode::UINT16_CNT_UINT16_INDEX, serializer, cto))
+////        {
+////        }
+////
+////        virtual bool Write(const T& meas, uint16_t index) override
+////        {
+////            if (!this->iterator.IsValid())
+////                return false;
+////
+  // Check that the quality of the measurement fits with the CTO variation
+////            if (this->cto.quality == TimestampQuality::SYNCHRONIZED)
+////            {
+////                if (meas.time.quality != TimestampQuality::SYNCHRONIZED)
+////                    return false;
+////            }
+////            else
+////            {
+////                if (meas.time.quality == TimestampQuality::SYNCHRONIZED)
+////                    return false;
+////            }
+////
+////            // can't encode timestamps that go backwards
+////            if (meas.time.value < this->cto.value)
+////                return false;
+////
+////            const auto diff = meas.time.value - this->cto.value;
+
+  // can't encode timestamps where the diff is greater than uint16_t
+////            if (diff > ser4cpp::UInt16::max_value)
+////                return false;
+////
+////            auto copy = meas;
+////            copy.time = DNPTime(diff);
+////
+////            return this->iterator.Write(copy, index);
+////        }
+} CTOEventWriter_for_Binary_Group51Var2;
+
+void CTOEventWriter_for_Binary_Group51Var2_in_CTOEventWriter_for_Binary_Group51Var2(CTOEventWriter_for_Binary_Group51Var2 *pCTOEventWriter_for_Binary_Group51Var2,
+    Group51Var2* cto,
+    HeaderWriter* writer,
+    DNP3Serializer_for_Binary* serializer);
+boolean Write_in_CTOEventWriter_for_Binary_Group51Var2_override(void* pIEventWriter_for_Binary, Binary* meas, uint16_t index);
 
 
 #endif

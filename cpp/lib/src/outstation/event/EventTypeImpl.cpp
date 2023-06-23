@@ -57,9 +57,11 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(
       &(lists->counters),
       (type->value).selectedVariation);
 
-//     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);//// = 0;
+//uint16_t Write_for_Binary_in_IEventWriteHandler(IEventWriteHandler *, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);//// = 0;
 ////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
-  return handler->pWrite_EventBinary_in_IEventWriteHandler((type->value).selectedVariation,
+//  return handler->pWrite_EventBinary_in_IEventWriteHandler((type->value).selectedVariation,
+    return Write_for_Binary_in_IEventWriteHandler(handler,
+         (type->value).selectedVariation,
          &((type->value).value),
          &(collection.iIEventCollection_for_Binary));
 }

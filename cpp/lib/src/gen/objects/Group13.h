@@ -73,8 +73,8 @@ typedef struct
  return 1; 
 }
 
- boolean Read_in_Group13Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group13Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group13Var1_static(RSeq_for_Uint16_t *, Group13Var1*);
+ boolean Write_in_Group13Var1_static(Group13Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group13Var1_static(RSeq_for_Uint16_t*, BinaryCommandEvent*);
  boolean WriteTarget_in_Group13Var1_static(BinaryCommandEvent*, WSeq_for_Uint16_t*);
@@ -124,7 +124,7 @@ typedef struct
  return 7; 
 }
 
- void Group2Var1_in_Group13Var2(Group13Var2 *pGroup13Var2);
+ void Group13Var2_in_Group13Var2(Group13Var2 *pGroup13Var2);
 
   GroupVariationID ID_in_Group13Var2_static(void)
 {
@@ -134,8 +134,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group13Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group13Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group13Var2_static(RSeq_for_Uint16_t *, Group13Var2*);
+ boolean Write_in_Group13Var2_static(Group13Var2*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group13Var2_static(RSeq_for_Uint16_t*, BinaryCommandEvent*);
  boolean WriteTarget_in_Group13Var2_static(BinaryCommandEvent*, WSeq_for_Uint16_t*);

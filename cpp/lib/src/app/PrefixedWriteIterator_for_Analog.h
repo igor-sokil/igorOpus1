@@ -17,8 +17,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_PREFIXEDWRITEITERATOR_for_UInt16_Binary_H
-#define OPENDNP3_PREFIXEDWRITEITERATOR_for_UInt16_Binary_H
+#ifndef OPENDNP3_PREFIXEDWRITEITERATOR_for_Analog_H
+#define OPENDNP3_PREFIXEDWRITEITERATOR_for_Analog_H
 
 ////#include "app/Serializer.h"
 #include "Serializer.h"
@@ -26,6 +26,7 @@
 
 ////namespace opendnp3
 ////{
+//-------------------Uint16---------------------------------------------------
 
 // A facade for writing APDUs to an external buffer
 ////template<class PrefixType, class WriteType> class PrefixedWriteIterator
@@ -83,7 +84,7 @@ typedef struct
 ////
 ////private:
 
-    Serializer_for_Binary serializer;
+    Serializer_for_Analog serializer;
     uint16_t sizeOfTypePlusIndex;
 
 ////    typename PrefixType::type_t count;
@@ -93,17 +94,18 @@ typedef struct
 
     WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
     WSeq_for_Uint16_t* pPosition;
-} PrefixedWriteIterator_for_UInt16_Binary;
+} PrefixedWriteIterator_for_UInt16_Analog;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_PrefixedWriteIterator_for_UInt16_Binary(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary);
-    boolean Write_in_PrefixedWriteIterator_for_UInt16_Binary(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary,
-                                                                  Binary* value, uint16_t index);
-   void PrefixedWriteIterator_for_UInt16_Binary_destr_PrefixedWriteIterator_for_UInt16_Binary(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary);
-   void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver2(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary,
-                                                 Serializer_for_Binary* serializer, WSeq_for_Uint16_t* position);
-   void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver1(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary);
-   PrefixedWriteIterator_for_UInt16_Binary Null_in_PrefixedWriteIterator_for_UInt16_Binary_static(void);
+    boolean IsValid_in_PrefixedWriteIterator_for_UInt16_Analog(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog);
+    boolean Write_in_PrefixedWriteIterator_for_UInt16_Analog(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog,
+                                                                  Analog* value, uint16_t index);
+   void PrefixedWriteIterator_for_UInt16_Analog_destr_PrefixedWriteIterator_for_UInt16_Analog(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog);
+   void PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver2(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog,
+                                                 Serializer_for_Analog* serializer, WSeq_for_Uint16_t* position);
+   void PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver1(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog);
+   PrefixedWriteIterator_for_UInt16_Analog Null_in_PrefixedWriteIterator_for_UInt16_Analog_static(void);
 
+//-------------------Uint16---------------------------------------------------
 
 #endif

@@ -125,9 +125,8 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\APDUResponse.cpp \
                 cpp\lib\src\app\BinaryCommandEvent.cpp \
                 cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp \
-                cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp \
-                cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp \
-                cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_Binary.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_Analog.cpp \
                 cpp\lib\src\app\ClassField.cpp \
                 cpp\lib\src\app\ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\DNP3Serializer.cpp \
@@ -135,6 +134,11 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\EventTriggers.cpp \
                 cpp\lib\src\app\Functions.cpp \
                 cpp\lib\src\app\HeaderWriter.cpp \
+                cpp\lib\src\app\HeaderWriter_for_Analog.cpp \
+                cpp\lib\src\app\HeaderWriter_for_Binary.cpp \
+                cpp\lib\src\app\HeaderWriter_for_DoubleBitBinary.cpp \
+                cpp\lib\src\app\HeaderWriter_for_Counter.cpp \
+                cpp\lib\src\app\HeaderWriter_for_OctetString.cpp \
                 cpp\lib\src\app\GroupVariationRecord.cpp \
                 cpp\lib\src\app\MeasurementInfo.cpp \
                 cpp\lib\src\app\MeasurementTypeSpecs.cpp \
@@ -143,11 +147,19 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\range.cpp \
                 cpp\lib\src\app\OctetData.cpp \
                 cpp\lib\src\app\QualityFlags.cpp \
-                cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp \
-                cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_Analog.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_AnalogOutputStatus.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_Binary.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_BinaryOutputStatus.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_DoubleBitBinary.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_Counter.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_FrozenCounter.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_OctetString.cpp \
                 cpp\lib\src\app\Serializer.cpp \
-                cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp \
-                cpp\lib\src\app\RangeWriteIterator_for_UInt8_Counter.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_Binary.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_DoubleBitBinary.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_Counter.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_OctetString.cpp \
                 cpp\lib\src\app\DownSampling.cpp \
                 \
                 cpp\lib\src\outstation\Event.cpp \
@@ -161,6 +173,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\util\TimeDuration.cpp \
                 cpp\lib\src\util\Timestamp.cpp \
                 \
+                cpp\lib\src\outstation\event\ASDUEventWriteHandler.cpp \
                 cpp\lib\src\outstation\event\ClazzCount.cpp \
                 cpp\lib\src\outstation\event\EventCollection.cpp \
                 cpp\lib\src\outstation\event\EventLists.cpp \
@@ -170,7 +183,10 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\event\EventTypeImpl.cpp \
                 cpp\lib\src\outstation\event\EventUpdate.cpp \
                 cpp\lib\src\outstation\event\EventWriting.cpp \
+                cpp\lib\src\outstation\event\EventWriters_for_Analog.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_Binary.cpp \
+                cpp\lib\src\outstation\event\EventWriters_for_DoubleBitBinary.cpp \
+                cpp\lib\src\outstation\event\EventWriters_for_OctetString.cpp \
                 cpp\lib\src\outstation\event\IEventType.cpp \
                 cpp\lib\src\outstation\event\IEventWriteHandler.cpp \
                 cpp\lib\src\outstation\event\TypedStorage.cpp \
@@ -204,9 +220,14 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\src\gen\objects\Group1.cpp \
                 cpp\lib\src\gen\objects\Group2.cpp \
+                cpp\lib\src\gen\objects\Group4.cpp \
+                cpp\lib\src\gen\objects\Group11.cpp \
                 cpp\lib\src\gen\objects\Group20.cpp \
+                cpp\lib\src\gen\objects\Group22.cpp \
+                cpp\lib\src\gen\objects\Group23.cpp \
                 cpp\lib\src\gen\objects\Group30.cpp \
                 cpp\lib\src\gen\objects\Group32.cpp \
+                cpp\lib\src\gen\objects\Group42.cpp \
                 cpp\lib\src\gen\objects\Group50.cpp \
                 cpp\lib\src\gen\objects\Group51.cpp \
                 cpp\lib\src\gen\objects\Group60.cpp \

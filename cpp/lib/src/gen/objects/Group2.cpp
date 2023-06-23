@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -56,19 +56,19 @@ Group2Var3 Apply_in_ConvertGroup2Var3_static(Binary* src);
 
 void Group2Var1_in_Group2Var1(Group2Var1 *pGroup2Var1)
 {
- pGroup2Var1->flags = 0;
+  pGroup2Var1->flags = 0;
 }
 
 boolean Read_in_Group2Var1_static(RSeq_for_Uint16_t* buffer, Group2Var1* output)
 {
 //  return LittleEndian::read(buffer, output.flags);
-    return read_from_in_UInt8_static(buffer, &(output->flags));
+  return read_from_in_UInt8_static(buffer, &(output->flags));
 }
 
 boolean Write_in_Group2Var1_static(Group2Var1* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.flags);
-    return write_to_in_UInt8_static(buffer, arg->flags);
+  return write_to_in_UInt8_static(buffer, arg->flags);
 }
 
 boolean ReadTarget_in_Group2Var1_static(RSeq_for_Uint16_t* buff, Binary* output)
@@ -79,8 +79,8 @@ boolean ReadTarget_in_Group2Var1_static(RSeq_for_Uint16_t* buff, Binary* output)
   if(Read_in_Group2Var1_static(buff, &value))
   {
 ////    output = BinaryFactory::From(value.flags);
-   Binary temp = From_in_BinaryFactory_staticOver1(value.flags);
-   *output = temp;
+    Binary temp = From_in_BinaryFactory_staticOver1(value.flags);
+    *output = temp;
     return true;
   }
   else
@@ -127,15 +127,15 @@ void Group2Var2_in_Group2Var2(Group2Var2 *pGroup2Var2)
 boolean Read_in_Group2Var2_static(RSeq_for_Uint16_t* buffer, Group2Var2* output)
 {
 ////  return LittleEndian::read(buffer, output.flags, output.time);
-    return read_from_in_UInt8_static(buffer, &(output->flags)) &&
-           read_from_in_UInt48_static(buffer, &((output->timeDNPTime).value));
+  return read_from_in_UInt8_static(buffer, &(output->flags)) &&
+         read_from_in_UInt48_static(buffer, &((output->timeDNPTime).value));
 }
 
 boolean Write_in_Group2Var2_static(Group2Var2* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.flags, arg.time);
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-            write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);
 }
 
 boolean ReadTarget_in_Group2Var2_static(RSeq_for_Uint16_t* buff, Binary* output)
@@ -146,8 +146,8 @@ boolean ReadTarget_in_Group2Var2_static(RSeq_for_Uint16_t* buff, Binary* output)
   if(Read_in_Group2Var2_static(buff, &value))
   {
 ////    output = BinaryFactory::From(value.flags, value.time);
-   Binary temp = From_in_BinaryFactory_staticOver3(value.flags, value.timeDNPTime);
-   *output = temp;
+    Binary temp = From_in_BinaryFactory_staticOver3(value.flags, value.timeDNPTime);
+    *output = temp;
     return true;
   }
   else
@@ -195,15 +195,15 @@ void Group2Var3_in_Group2Var3(Group2Var3 *pGroup2Var3)
 boolean Read_in_Group2Var3_static(RSeq_for_Uint16_t* buffer, Group2Var3* output)
 {
 //  return LittleEndian::read(buffer, output.flags, output.time);
-    return read_from_in_UInt8_static(buffer, &(output->flags)) &&
-           read_from_in_UInt16_static(buffer, &(output->time_uint16_t));
+  return read_from_in_UInt8_static(buffer, &(output->flags)) &&
+         read_from_in_UInt16_static(buffer, &(output->time_uint16_t));
 }
 
 boolean Write_in_Group2Var3_static(Group2Var3* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.flags, arg.time);
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-           write_to_in_UInt16_static(buffer, arg->time_uint16_t);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt16_static(buffer, arg->time_uint16_t);
 }
 
 boolean ReadTarget_in_Group2Var3_static(RSeq_for_Uint16_t* buff, Binary* output)
@@ -214,8 +214,8 @@ boolean ReadTarget_in_Group2Var3_static(RSeq_for_Uint16_t* buff, Binary* output)
   if(Read_in_Group2Var3_static(buff, &value))
   {
 ////    output = BinaryFactory::From(value.flags, value.time);
-   Binary temp = From_in_BinaryFactory_staticOver2(value.flags, value.time_uint16_t);
-   *output = temp;
+    Binary temp = From_in_BinaryFactory_staticOver2(value.flags, value.time_uint16_t);
+    *output = temp;
     return true;
   }
   else
@@ -254,93 +254,93 @@ Group2Var3 Apply_in_ConvertGroup2Var3_static(Binary* src)
 
 
 ////}
-  GroupVariationID ID_in_Group2Var0_static(void)
+GroupVariationID ID_in_Group2Var0_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 2, 0);
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 2, 0);
 //// return GroupVariationID(2,0);
- return gGroupVariationID;
+  return gGroupVariationID;
 }
 
-  GroupVariationID ID_in_Group2Var1_static(void)
+GroupVariationID ID_in_Group2Var1_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 2, 1);
-////  return GroupVariationID(2,1); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 2, 1);
+////  return GroupVariationID(2,1);
+  return gGroupVariationID;
 }
 ////  static size_t Size() { return 1; }
- uint16_t Size_in_Group2Var1_static(void) 
+uint16_t Size_in_Group2Var1_static(void)
 {
- return 1; 
+  return 1;
 }
 
- DNP3Serializer_for_Binary  Inst_in_Group2Var1_static(void)
+DNP3Serializer_for_Binary  Inst_in_Group2Var1_static(void)
 {
-   DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
-   DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
-                   ID_in_Group2Var1_static(),
-                   Size_in_Group2Var1_static(),
+  DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
+  DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
+      ID_in_Group2Var1_static(),
+      Size_in_Group2Var1_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group2Var1_static,
+      //void *read_func,// read_func_t_in_Serializer_for_Binary,
+      &ReadTarget_in_Group2Var1_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group2Var1_static);
+      //void *write_func);//write_func_t_in_Serializer_for_Binary);
+      &WriteTarget_in_Group2Var1_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Binary;
+  return dDNP3Serializer_for_Binary;
 }
 
-  GroupVariationID ID_in_Group2Var2_static(void)
+GroupVariationID ID_in_Group2Var2_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 2, 2);
-////  return GroupVariationID(2,2); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 2, 2);
+////  return GroupVariationID(2,2);
+  return gGroupVariationID;
 }
 
- uint16_t Size_in_Group2Var2_static(void) 
+uint16_t Size_in_Group2Var2_static(void)
 {
- return 7; 
+  return 7;
 }
 
- DNP3Serializer_for_Binary  Inst_in_Group2Var2_static(void)
+DNP3Serializer_for_Binary  Inst_in_Group2Var2_static(void)
 {
-   DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
-   DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
-                   ID_in_Group2Var2_static(),
-                   Size_in_Group2Var2_static(),
-                   &ReadTarget_in_Group2Var2_static,
-                   &WriteTarget_in_Group2Var2_static);
+  DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
+  DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
+      ID_in_Group2Var2_static(),
+      Size_in_Group2Var2_static(),
+      &ReadTarget_in_Group2Var2_static,
+      &WriteTarget_in_Group2Var2_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Binary;
+  return dDNP3Serializer_for_Binary;
 }
 
-  GroupVariationID ID_in_Group2Var3_static(void)
+GroupVariationID ID_in_Group2Var3_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 2, 3);
-////  return GroupVariationID(2,3); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 2, 3);
+////  return GroupVariationID(2,3);
+  return gGroupVariationID;
 }
 
- uint16_t Size_in_Group2Var3_static(void) 
+uint16_t Size_in_Group2Var3_static(void)
 {
- return 3; 
+  return 3;
 }
 
 ////  static DNP3Serializer<Binary> Inst() { return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget); }
- DNP3Serializer_for_Binary  Inst_in_Group2Var3_static(void)
+DNP3Serializer_for_Binary  Inst_in_Group2Var3_static(void)
 {
-   DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
-   DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
-                   ID_in_Group2Var3_static(),
-                   Size_in_Group2Var3_static(),
-                   &ReadTarget_in_Group2Var3_static,
-                   &WriteTarget_in_Group2Var3_static);
+  DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
+  DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
+      ID_in_Group2Var3_static(),
+      Size_in_Group2Var3_static(),
+      &ReadTarget_in_Group2Var3_static,
+      &WriteTarget_in_Group2Var3_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Binary;
+  return dDNP3Serializer_for_Binary;
 }

@@ -101,8 +101,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group41Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group41Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group41Var1_static(RSeq_for_Uint16_t *, Group41Var1*);
+ boolean Write_in_Group41Var1_static(Group41Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group41Var1_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
  boolean WriteTarget_in_Group41Var1_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
@@ -161,8 +161,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group41Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group41Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group41Var2_static(RSeq_for_Uint16_t *, Group41Var2*);
+ boolean Write_in_Group41Var2_static(Group41Var2*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group41Var2_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
  boolean WriteTarget_in_Group41Var2_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
@@ -221,8 +221,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group41Var3_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group41Var3_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group41Var3_static(RSeq_for_Uint16_t *, Group41Var3*);
+ boolean Write_in_Group41Var3_static(Group41Var3*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group41Var3_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
  boolean WriteTarget_in_Group41Var3_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
@@ -281,8 +281,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group41Var4_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group41Var4_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group41Var4_static(RSeq_for_Uint16_t *, Group41Var4*);
+ boolean Write_in_Group41Var4_static(Group41Var4*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group41Var4_static(RSeq_for_Uint16_t*, AnalogOutputDouble64*);
  boolean WriteTarget_in_Group41Var4_static(AnalogOutputDouble64*, WSeq_for_Uint16_t*);

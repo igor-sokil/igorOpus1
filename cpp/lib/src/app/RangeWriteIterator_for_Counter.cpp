@@ -1,8 +1,9 @@
 #include "header.h"
-#include "RangeWriteIterator_for_UInt8_Counter.h"
+#include "RangeWriteIterator_for_Counter.h"
 #include "SerializationTemplates.h"
 #include <string.h>
 
+//-------------------Uint8---------------------------------------------------
 RangeWriteIterator_for_UInt8_Counter Null_in_RangeWriteIterator_for_UInt8_Counter_static(void)
 {
   RangeWriteIterator_for_UInt8_Counter rRangeWriteIterator_for_UInt8_Counter;
@@ -82,3 +83,4 @@ boolean IsValid_in_RangeWriteIterator_for_UInt8_Counter(RangeWriteIterator_for_U
 {
   return pRangeWriteIterator_for_UInt8_Counter->isValid;
 }
+//-------------------Uint8---------------------------------------------------

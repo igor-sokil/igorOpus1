@@ -104,8 +104,8 @@ typedef struct
  boolean Read_in_Group3Var2_static(RSeq_for_Uint16_t *, Group3Var2*);
  boolean Write_in_Group3Var2_static(Group3Var2*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group2Var1_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
- boolean WriteTarget_in_Group2Var1_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
+ boolean ReadTarget_in_Group3Var2_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
+ boolean WriteTarget_in_Group3Var2_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
  DNP3Serializer_for_Binary  Inst_in_Group3Var2_static(void);
 ////  static const StaticDoubleBinaryVariation svariation = StaticDoubleBinaryVariation::Group3Var2;
  const StaticDoubleBinaryVariation_uint8_t  svariation_in_Group3Var2 = StaticDoubleBinaryVariation_Group3Var2;

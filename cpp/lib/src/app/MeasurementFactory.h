@@ -209,8 +209,8 @@
 ////        return AnalogOutputStatus(value, Flags(flags), time);
 ////    }
 ////};
-    AnalogOutputStatus From_in_AnalogOutputStatusFactoryOver1_static(uint8_t flags, double value);
-    AnalogOutputStatus From_in_AnalogOutputStatusFactoryOver2_static(uint8_t flags, double value, DNPTime timeDNPTime);
+    AnalogOutputStatus From_in_AnalogOutputStatusFactory_staticOver1(uint8_t flags, double value);
+    AnalogOutputStatus From_in_AnalogOutputStatusFactory_staticOver2(uint8_t flags, double value, DNPTime timeDNPTime);
 
 
 

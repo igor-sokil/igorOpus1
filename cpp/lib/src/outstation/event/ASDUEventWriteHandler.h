@@ -36,7 +36,7 @@
 ////class ASDUEventWriteHandler final : public IEventWriteHandler, private Uncopyable
 typedef struct
 {
-     IEventWriteHandler iIEventWriteHandler;
+  IEventWriteHandler iIEventWriteHandler;
 
 ////public:
 ////    explicit ASDUEventWriteHandler(const HeaderWriter& writer) : writer(writer) {}
@@ -67,10 +67,43 @@ typedef struct
 ////                           IEventCollection<OctetString>& items) override;
 
 ////private:
-    HeaderWriter writer;
+  HeaderWriter writer;
 } ASDUEventWriteHandler;
 
-  void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer);
+void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer);
+
+uint16_t Write_for_Binary_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventBinaryVariation_uint8_t variation,
+    Binary* first,
+    IEventCollection_for_Binary* items);
+uint16_t Write_for_DoubleBitBinary_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventDoubleBinaryVariation variation,
+    DoubleBitBinary* first,
+    IEventCollection_for_DoubleBitBinary* items);
+uint16_t Write_for_Counter_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventCounterVariation variation,
+    Counter* first,
+    IEventCollection_for_Counter* items);
+uint16_t Write_for_FrozenCounter_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventFrozenCounterVariation variation,
+    FrozenCounter* first,
+    IEventCollection_for_FrozenCounter* items);
+uint16_t Write_for_Analog_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventAnalogVariation variation,
+    Analog* first,
+    IEventCollection_for_Analog* items);
+uint16_t Write_for_BinaryOutputStatus_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventBinaryOutputStatusVariation variation,
+    BinaryOutputStatus* first,
+    IEventCollection_for_BinaryOutputStatus* items);
+uint16_t Write_for_AnalogOutputStatus_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventAnalogOutputStatusVariation variation,
+    AnalogOutputStatus* first,
+    IEventCollection_for_AnalogOutputStatus* items);
+uint16_t Write_for_OctetString_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventOctetStringVariation variation,
+    OctetString* first,
+    IEventCollection_for_OctetString* items);
 
 
 ////} // namespace opendnp3

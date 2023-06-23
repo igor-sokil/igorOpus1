@@ -103,8 +103,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group21Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group21Var1_static(RSeq_for_Uint16_t *, Group21Var1*);
+ boolean Write_in_Group21Var1_static(Group21Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group21Var1_static(RSeq_for_Uint16_t*, FrozenCounter*);
  boolean WriteTarget_in_Group21Var1_static(FrozenCounter*, WSeq_for_Uint16_t*);
@@ -167,8 +167,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group21Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group21Var2_static(RSeq_for_Uint16_t *, Group21Var2*);
+ boolean Write_in_Group21Var2_static(Group21Var2*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group21Var2_static(RSeq_for_Uint16_t*, FrozenCounter*);
  boolean WriteTarget_in_Group21Var2_static(FrozenCounter*, WSeq_for_Uint16_t*);
@@ -232,8 +232,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var5_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group21Var5_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group21Var5_static(RSeq_for_Uint16_t *, Group21Var5*);
+ boolean Write_in_Group21Var5_static(Group21Var5*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group21Var5_static(RSeq_for_Uint16_t*, FrozenCounter*);
  boolean WriteTarget_in_Group21Var5_static(FrozenCounter*, WSeq_for_Uint16_t*);
@@ -297,8 +297,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var6_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group21Var6_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group21Var6_static(RSeq_for_Uint16_t *, Group21Var6*);
+ boolean Write_in_Group21Var6_static(Group21Var6*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group21Var6_static(RSeq_for_Uint16_t*, FrozenCounter*);
  boolean WriteTarget_in_Group21Var6_static(FrozenCounter*, WSeq_for_Uint16_t*);
@@ -360,8 +360,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var9_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group21Var9_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group21Var9_static(RSeq_for_Uint16_t *, Group21Var9*);
+ boolean Write_in_Group21Var9_static(Group21Var9*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group21Var9_static(RSeq_for_Uint16_t*, FrozenCounter*);
  boolean WriteTarget_in_Group21Var9_static(FrozenCounter*, WSeq_for_Uint16_t*);
@@ -423,8 +423,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var10_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group21Var10_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group21Var10_static(RSeq_for_Uint16_t *, Group21Var10*);
+ boolean Write_in_Group21Var10_static(Group21Var10*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group21Var10_static(RSeq_for_Uint16_t*, FrozenCounter*);
  boolean WriteTarget_in_Group21Var10_static(FrozenCounter*, WSeq_for_Uint16_t*);

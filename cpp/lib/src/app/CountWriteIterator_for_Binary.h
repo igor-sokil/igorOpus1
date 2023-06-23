@@ -17,8 +17,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_COUNTWRITEITERATOR_for_UInt8_Analog_H
-#define OPENDNP3_COUNTWRITEITERATOR_for_UInt8_Analog_H
+#ifndef OPENDNP3_COUNTWRITEITERATOR_for_Binary_H
+#define OPENDNP3_COUNTWRITEITERATOR_for_Binary_H
 
 ////#include "app/Serializer.h"
 #include "Serializer.h"
@@ -28,6 +28,7 @@
 
 ////namespace opendnp3
 ////{
+//-------------------Uint8---------------------------------------------------
 
 // A facade for writing APDUs to an external buffer
 ////template<class CountType, class WriteType> class CountWriteIterator
@@ -86,23 +87,24 @@ typedef struct
 ////    Serializer<WriteType> serializer;
 
     uint8_t count;
-    Serializer_for_Analog serializer;
+    Serializer_for_Binary serializer;
 
     boolean isValid;
 
     WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
     WSeq_for_Uint16_t* pPosition;
-} CountWriteIterator_for_UInt8_Analog;
+} CountWriteIterator_for_UInt8_Binary;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_CountWriteIterator_for_UInt8_Analog(CountWriteIterator_for_UInt8_Analog *pCountWriteIterator_for_UInt8_Analog);
-    boolean Write_in_CountWriteIterator_for_UInt8_Analog(CountWriteIterator_for_UInt8_Analog *pCountWriteIterator_for_UInt8_Analog, Analog *value);////const WriteType& value)
-    void CountWriteIterator_for_UInt8_Analog_destr_CountWriteIterator_for_UInt8_Analog(CountWriteIterator_for_UInt8_Analog *pCountWriteIterator_for_UInt8_Analog);
-    void CountWriteIterator_for_UInt8_Analog_in_CountWriteIterator_for_UInt8_AnalogOver2(CountWriteIterator_for_UInt8_Analog *pCountWriteIterator_for_UInt8_Analog,
-                                            Serializer_for_Analog *serializer, WSeq_for_Uint16_t *position);
-    void CountWriteIterator_for_UInt8_Analog_in_CountWriteIterator_for_UInt8_AnalogOver1(CountWriteIterator_for_UInt8_Analog *pCountWriteIterator_for_UInt8_Analog);
-    CountWriteIterator_for_UInt8_Analog Null_in_CountWriteIterator_for_UInt8_Analog_static(void);
+    boolean IsValid_in_CountWriteIterator_for_UInt8_Binary(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary);
+    boolean Write_in_CountWriteIterator_for_UInt8_Binary(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary, Binary *value);////const WriteType& value)
+    void CountWriteIterator_for_UInt8_Binary_destr_CountWriteIterator_for_UInt8_Binary(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary);
+    void CountWriteIterator_for_UInt8_Binary_in_CountWriteIterator_for_UInt8_BinaryOver2(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary,
+                                            Serializer_for_Binary *serializer, WSeq_for_Uint16_t *position);
+    void CountWriteIterator_for_UInt8_Binary_in_CountWriteIterator_for_UInt8_BinaryOver1(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary);
+    CountWriteIterator_for_UInt8_Binary Null_in_CountWriteIterator_for_UInt8_Binary_static(void);
 
+//-------------------Uint8---------------------------------------------------
 
 
 #endif

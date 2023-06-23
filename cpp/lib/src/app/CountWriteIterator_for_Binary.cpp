@@ -1,8 +1,9 @@
 #include "header.h"
-#include "CountWriteIterator_for_UInt8_Binary.h"
+#include "CountWriteIterator_for_Binary.h"
 #include "SerializationTemplates.h"
 #include <string.h>
 
+//-------------------Uint8---------------------------------------------------
     CountWriteIterator_for_UInt8_Binary Null_in_CountWriteIterator_for_UInt8_Binary_static(void)
 {
     CountWriteIterator_for_UInt8_Binary cCountWriteIterator_for_UInt8_Binary;
@@ -71,3 +72,4 @@
 {
     return pCountWriteIterator_for_UInt8_Binary->isValid;
 }
+//-------------------Uint8---------------------------------------------------

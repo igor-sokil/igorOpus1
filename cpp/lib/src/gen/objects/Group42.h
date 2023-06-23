@@ -138,7 +138,7 @@ typedef struct
 ////  typedef int32_t ValueType;
   uint8_t flags;
   int32_t value;
-  DNPTime time;
+  DNPTime timeDNPTime;
 
 ////  typedef AnalogOutputStatus Target;
 ////  typedef AnalogOutputStatusSpec Spec;
@@ -228,8 +228,8 @@ typedef struct
 
  boolean ReadTarget_in_Group42Var5_static(RSeq_for_Uint16_t*, AnalogOutputStatus*);
  boolean WriteTarget_in_Group42Var5_static(AnalogOutputStatus*, WSeq_for_Uint16_t*);
- DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var4_static(void);
-
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var5_static(void);
+/*
 // Analog Output Event - Double-precision With Flag
 ////struct Group42Var6
 typedef struct
@@ -264,7 +264,7 @@ typedef struct
  boolean ReadTarget_in_Group42Var6_static(RSeq_for_Uint16_t*, AnalogOutputStatus*);
  boolean WriteTarget_in_Group42Var6_static(AnalogOutputStatus*, WSeq_for_Uint16_t*);
  DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var6_static(void);
-
+*/
 // Analog Output Event - Single-precision With Flag and Time
 ////struct Group42Var7
 typedef struct
@@ -300,7 +300,7 @@ typedef struct
  boolean ReadTarget_in_Group42Var7_static(RSeq_for_Uint16_t*, AnalogOutputStatus*);
  boolean WriteTarget_in_Group42Var7_static(AnalogOutputStatus*, WSeq_for_Uint16_t*);
  DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var7_static(void);
-
+/*
 // Analog Output Event - Double-precision With Flag and Time
 ////struct Group42Var8
 typedef struct
@@ -336,7 +336,7 @@ typedef struct
  boolean ReadTarget_in_Group42Var8_static(RSeq_for_Uint16_t*, AnalogOutputStatus*);
  boolean WriteTarget_in_Group42Var8_static(AnalogOutputStatus*, WSeq_for_Uint16_t*);
  DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var8_static(void);
-
+*/
 ////}
 
 #endif

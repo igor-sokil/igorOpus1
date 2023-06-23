@@ -10,15 +10,21 @@ void  EventCollection_for_Binary_in_EventCollection_for_Binary(EventCollection_f
   pEventCollection_for_Binary->iteratorEv = iteratorEv;
   pEventCollection_for_Binary->counters = counters;
   pEventCollection_for_Binary->variation = variation;
+
   (pEventCollection_for_Binary->iIEventCollection_for_Binary).pWriteSome_in_IEventCollection_for_Binary =
-    WriteSome_in_EventCollection_for_Binary;
+    WriteSome_in_IEventCollection_for_Binary_override;
+  setParentPointer_in_IEventCollection_for_Binary(&(pEventCollection_for_Binary->iIEventCollection_for_Binary), pEventCollection_for_Binary);
 }
 
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
-uint16_t WriteSome_in_EventCollection_for_Binary(void *pEventCollection_for_Binary, IEventWriter_for_Binary* writer)
+uint16_t WriteSome_in_IEventCollection_for_Binary_override(void *pIEventCollection_for_Binary, IEventWriter_for_Binary* writer)
 {
   uint16_t num_written = 0;
-  while (WriteOne_in_EventCollection_for_Binary((EventCollection_for_Binary*)pEventCollection_for_Binary, writer))
+
+  EventCollection_for_Binary *parent = 
+         (EventCollection_for_Binary*)getParentPointer_in_IEventWriter_for_Binary((IEventWriter_for_Binary*)pIEventCollection_for_Binary);
+
+  while (WriteOne_in_EventCollection_for_Binary(parent, writer))
   {
     ++num_written;
   }
@@ -49,9 +55,10 @@ boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEven
     return false;
 
   // unable to write
-// boolean (*pWrite_in_IEventWriter_for_Binary)(Binary* meas, uint16_t index);// = 0;
+//  boolean Write_in_IEventWriter_for_Binary(IEventWriter_for_Binary*, Binary* meas, uint16_t index);
 ////    if (!writer.Write(data->value.value, record->index))
-  if (!writer->pWrite_in_IEventWriter_for_Binary(pEventCollection_for_Binary, &((data->value).value), record->index))
+//  if (!writer->pWrite_in_IEventWriter_for_Binary(pEventCollection_for_Binary, &((data->value).value), record->index))
+    if (!Write_in_IEventWriter_for_Binary(writer, &((data->value).value), record->index))
     return false;
 
   // success!

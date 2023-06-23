@@ -76,11 +76,11 @@ typedef struct
 } Group11Var1;
 
   uint16_t Size_in_Group11Var1_static(void);
- void Group2Var1_in_Group11Var1(Group11Var1 *pGroup11Var1);
+ void Group11Var1_in_Group11Var1(Group11Var1 *pGroup11Var1);
   GroupVariationID ID_in_Group11Var1_static(void);
 
- boolean Read_in_Group11Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group11Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group11Var1_static(RSeq_for_Uint16_t *, Group11Var1*);
+ boolean Write_in_Group11Var1_static(Group11Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group11Var1_static(RSeq_for_Uint16_t*, BinaryOutputStatus*);
  boolean WriteTarget_in_Group11Var1_static(BinaryOutputStatus*, WSeq_for_Uint16_t*);
@@ -110,11 +110,11 @@ typedef struct
 
   uint16_t Size_in_Group11Var2_static(void);
 
- void Group2Var1_in_Group11Var2(Group11Var2 *pGroup11Var2);
+ void Group11Var2_in_Group11Var2(Group11Var2 *pGroup11Var2);
   GroupVariationID ID_in_Group11Var2_static(void);
 
- boolean Read_in_Group11Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group11Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group11Var2_static(RSeq_for_Uint16_t *, Group11Var2*);
+ boolean Write_in_Group11Var2_static(Group11Var2*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group11Var2_static(RSeq_for_Uint16_t*, BinaryOutputStatus*);
  boolean WriteTarget_in_Group11Var2_static(BinaryOutputStatus*, WSeq_for_Uint16_t*);

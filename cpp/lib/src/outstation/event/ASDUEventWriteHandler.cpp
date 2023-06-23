@@ -18,214 +18,341 @@
  * limitations under the License.
  */
 
+#include "header.h"
 #include "ASDUEventWriteHandler.h"
 
-#include "EventWriters.h"
-#include "Group11.h"
+#include "EventWriters_for_Analog.h"
+#include "EventWriters_for_AnalogOutputStatus.h"
+#include "EventWriters_for_Binary.h"
+#include "EventWriters_for_BinaryOutputStatus.h"
+#include "EventWriters_for_DoubleBitBinary.h"
+#include "EventWriters_for_Counter.h"
+#include "EventWriters_for_FrozenCounter.h"
 #include "Group2.h"
+#include "Group4.h"
+#include "Group11.h"
 #include "Group22.h"
 #include "Group23.h"
 #include "Group32.h"
-#include "Group4.h"
 #include "Group42.h"
 
 ////namespace opendnp3
 ////{
-MYTODO
-uint16_t Write_for_Binary_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler,
-                                      EventBinaryVariation_uint8_t variation,
-                                      Binary* first,
-                                      IEventCollection_for_Binary* items)
+uint16_t Write_for_Binary_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventBinaryVariation_uint8_t variation,
+    Binary* first,
+    IEventCollection_for_Binary* items)
 {
-    switch (variation)
+  switch (variation)
+  {
+  case (EventBinaryVariation_Group2Var1):
     {
-    case (EventBinaryVariation_Group2Var1):
-        return EventWriters::Write(this->writer, items, Group2Var1::Inst());
-    case (EventBinaryVariation_Group2Var2):
-        return EventWriters::Write(this->writer, items, Group2Var2::Inst());
-    case (EventBinaryVariation_Group2Var3):
-        return EventWriters::WriteWithCTO(first.time, this->writer, items, Group2Var3::Inst());
-    default:
-        return EventWriters::Write(this->writer, items, Group2Var1::Inst());
+//uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
+ DNP3Serializer_for_Binary temp = Inst_in_Group2Var1_static();
+    return Write_for_Binary_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
     }
-}
-
-uint16_t ASDUEventWriteHandler::Write(EventDoubleBinaryVariation variation,
-                                      const DoubleBitBinary& first,
-                                      IEventCollection<DoubleBitBinary>& items)
-{
-    switch (variation)
+  case (EventBinaryVariation_Group2Var2):
     {
-    case (EventDoubleBinaryVariation::Group4Var1):
-        return EventWriters::Write(this->writer, items, Group4Var1::Inst());
-    case (EventDoubleBinaryVariation::Group4Var2):
-        return EventWriters::Write(this->writer, items, Group4Var2::Inst());
-    case (EventDoubleBinaryVariation::Group4Var3):
-        return EventWriters::WriteWithCTO(first.time, this->writer, items, Group4Var3::Inst());
-    default:
-        return EventWriters::Write(this->writer, items, Group4Var1::Inst());
-    }
+//uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
+ DNP3Serializer_for_Binary temp = Inst_in_Group2Var2_static();
+    return Write_for_Binary_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
 }
-
-uint16_t ASDUEventWriteHandler::Write(EventCounterVariation variation,
-                                      const Counter& /*first*/,
-                                      IEventCollection<Counter>& items)
-{
-    switch (variation)
+  case (EventBinaryVariation_Group2Var3):
     {
-    case (EventCounterVariation::Group22Var1):
-        return EventWriters::Write(this->writer, items, Group22Var1::Inst());
-    case (EventCounterVariation::Group22Var2):
-        return EventWriters::Write(this->writer, items, Group22Var2::Inst());
-    case (EventCounterVariation::Group22Var5):
-        return EventWriters::Write(this->writer, items, Group22Var5::Inst());
-    case (EventCounterVariation::Group22Var6):
-        return EventWriters::Write(this->writer, items, Group22Var6::Inst());
-    default:
-        return EventWriters::Write(this->writer, items, Group22Var1::Inst());
+//uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
+ DNP3Serializer_for_Binary temp = Inst_in_Group2Var3_static();
+    return WriteWithCTO_for_Binary_in_EventWriters_static(&((first->tTypedMeasurement_for_Boolean).mMeasurement.timeDNPTime), &(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
     }
-}
-
-uint16_t ASDUEventWriteHandler::Write(EventFrozenCounterVariation variation,
-                                      const FrozenCounter& /*first*/,
-                                      IEventCollection<FrozenCounter>& items)
-{
-    switch (variation)
+  default:
     {
-    case (EventFrozenCounterVariation::Group23Var1):
-        return EventWriters::Write(this->writer, items, Group23Var1::Inst());
-    case (EventFrozenCounterVariation::Group23Var2):
-        return EventWriters::Write(this->writer, items, Group23Var2::Inst());
-    case (EventFrozenCounterVariation::Group23Var5):
-        return EventWriters::Write(this->writer, items, Group23Var5::Inst());
-    case (EventFrozenCounterVariation::Group23Var6):
-        return EventWriters::Write(this->writer, items, Group23Var6::Inst());
-    default:
-        return 0;
+//uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
+ DNP3Serializer_for_Binary temp = Inst_in_Group2Var1_static();
+    return Write_for_Binary_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
     }
+  }
 }
 
-uint16_t ASDUEventWriteHandler::Write(EventAnalogVariation variation,
-                                      const Analog& /*first*/,
-                                      IEventCollection<Analog>& items)
+uint16_t Write_for_DoubleBitBinary_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventDoubleBinaryVariation variation,
+    DoubleBitBinary* first,
+    IEventCollection_for_DoubleBitBinary* items)
 {
-    switch (variation)
+  switch (variation)
+  {
+  case (EventDoubleBinaryVariation_Group4Var1):
     {
-    case (EventAnalogVariation::Group32Var1):
-        return EventWriters::Write(this->writer, items, Group32Var1::Inst());
-    case (EventAnalogVariation::Group32Var2):
-        return EventWriters::Write(this->writer, items, Group32Var2::Inst());
-    case (EventAnalogVariation::Group32Var3):
-        return EventWriters::Write(this->writer, items, Group32Var3::Inst());
-    case (EventAnalogVariation::Group32Var4):
-        return EventWriters::Write(this->writer, items, Group32Var4::Inst());
-    case (EventAnalogVariation::Group32Var5):
-        return EventWriters::Write(this->writer, items, Group32Var5::Inst());
-    case (EventAnalogVariation::Group32Var6):
-        return EventWriters::Write(this->writer, items, Group32Var6::Inst());
-    case (EventAnalogVariation::Group32Var7):
-        return EventWriters::Write(this->writer, items, Group32Var7::Inst());
-    case (EventAnalogVariation::Group32Var8):
-        return EventWriters::Write(this->writer, items, Group32Var8::Inst());
-    default:
-        return EventWriters::Write(this->writer, items, Group32Var1::Inst());
-    }
+DNP3Serializer_for_DoubleBitBinary temp = Inst_in_Group4Var1_static();
+    return Write_for_DoubleBitBinary_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
 }
-
-uint16_t ASDUEventWriteHandler::Write(EventBinaryOutputStatusVariation variation,
-                                      const BinaryOutputStatus& /*first*/,
-                                      IEventCollection<BinaryOutputStatus>& items)
-{
-    switch (variation)
+  case (EventDoubleBinaryVariation_Group4Var2):
     {
-    case (EventBinaryOutputStatusVariation::Group11Var1):
-        return EventWriters::Write(this->writer, items, Group11Var1::Inst());
-    case (EventBinaryOutputStatusVariation::Group11Var2):
-        return EventWriters::Write(this->writer, items, Group11Var2::Inst());
-    default:
-        return EventWriters::Write(this->writer, items, Group11Var1::Inst());
-    }
+DNP3Serializer_for_DoubleBitBinary temp = Inst_in_Group4Var2_static();
+    return Write_for_DoubleBitBinary_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
 }
-
-uint16_t ASDUEventWriteHandler::Write(EventAnalogOutputStatusVariation variation,
-                                      const AnalogOutputStatus& /*first*/,
-                                      IEventCollection<AnalogOutputStatus>& items)
-{
-    switch (variation)
+  case (EventDoubleBinaryVariation_Group4Var3):
     {
-    case (EventAnalogOutputStatusVariation::Group42Var1):
-        return EventWriters::Write(this->writer, items, Group42Var1::Inst());
-    case (EventAnalogOutputStatusVariation::Group42Var2):
-        return EventWriters::Write(this->writer, items, Group42Var2::Inst());
-    case (EventAnalogOutputStatusVariation::Group42Var3):
-        return EventWriters::Write(this->writer, items, Group42Var3::Inst());
-    case (EventAnalogOutputStatusVariation::Group42Var4):
-        return EventWriters::Write(this->writer, items, Group42Var4::Inst());
-    case (EventAnalogOutputStatusVariation::Group42Var5):
-        return EventWriters::Write(this->writer, items, Group42Var5::Inst());
-    case (EventAnalogOutputStatusVariation::Group42Var6):
-        return EventWriters::Write(this->writer, items, Group42Var6::Inst());
-    case (EventAnalogOutputStatusVariation::Group42Var7):
-        return EventWriters::Write(this->writer, items, Group42Var7::Inst());
-    case (EventAnalogOutputStatusVariation::Group42Var8):
-        return EventWriters::Write(this->writer, items, Group42Var8::Inst());
-    default:
-        return EventWriters::Write(this->writer, items, Group42Var1::Inst());
-    }
+DNP3Serializer_for_DoubleBitBinary temp = Inst_in_Group4Var3_static();
+    return WriteWithCTO_for_DoubleBitBinary_in_EventWriters_static(&((first->tTypedMeasurement_for_DoubleBit_uint8_t).mMeasurement.timeDNPTime), &(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  default:
+    {
+DNP3Serializer_for_DoubleBitBinary temp = Inst_in_Group4Var1_static();
+    return Write_for_DoubleBitBinary_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  }
 }
 
-uint16_t ASDUEventWriteHandler::Write(EventOctetStringVariation /*variation*/,
-                                      const OctetString& first,
-                                      IEventCollection<OctetString>& items)
+uint16_t Write_for_Counter_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventCounterVariation variation,
+    Counter* first,
+    IEventCollection_for_Counter* items)
 {
-    return EventWriters::Write(first.Size(), this->writer, items);
+  UNUSED(first);
+  switch (variation)
+  {
+  case (EventCounterVariation_Group22Var1):
+    {
+DNP3Serializer_for_Counter temp = Inst_in_Group22Var1_static();
+    return Write_for_Counter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventCounterVariation_Group22Var2):
+    {
+DNP3Serializer_for_Counter temp = Inst_in_Group22Var2_static();
+    return Write_for_Counter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventCounterVariation_Group22Var5):
+    {
+DNP3Serializer_for_Counter temp = Inst_in_Group22Var5_static();
+    return Write_for_Counter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventCounterVariation_Group22Var6):
+    {
+DNP3Serializer_for_Counter temp = Inst_in_Group22Var6_static();
+    return Write_for_Counter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  default:
+    {
+DNP3Serializer_for_Counter temp = Inst_in_Group22Var1_static();
+    return Write_for_Counter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  }
 }
 
+uint16_t Write_for_FrozenCounter_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventFrozenCounterVariation variation,
+    FrozenCounter* first,
+    IEventCollection_for_FrozenCounter* items)
+{
+  UNUSED(first);
+  switch (variation)
+  {
+  case (EventFrozenCounterVariation_Group23Var1):
+    {
+DNP3Serializer_for_FrozenCounter temp = Inst_in_Group23Var1_static();
+    return Write_for_FrozenCounter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventFrozenCounterVariation_Group23Var2):
+    {
+DNP3Serializer_for_FrozenCounter temp = Inst_in_Group23Var2_static();
+    return Write_for_FrozenCounter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventFrozenCounterVariation_Group23Var5):
+    {
+DNP3Serializer_for_FrozenCounter temp = Inst_in_Group23Var5_static();
+    return Write_for_FrozenCounter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventFrozenCounterVariation_Group23Var6):
+    {
+DNP3Serializer_for_FrozenCounter temp = Inst_in_Group23Var6_static();
+    return Write_for_FrozenCounter_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  default:
+    return 0;
+  }
+}
+
+uint16_t Write_for_Analog_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventAnalogVariation variation,
+    Analog* first,
+    IEventCollection_for_Analog* items)
+{
+  UNUSED(first);
+  switch (variation)
+  {
+  case (EventAnalogVariation_Group32Var1):
+{
+DNP3Serializer_for_Analog temp = Inst_in_Group32Var1_static();
+    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventAnalogVariation_Group32Var2):
+{
+DNP3Serializer_for_Analog temp = Inst_in_Group32Var2_static();
+    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventAnalogVariation_Group32Var3):
+{
+DNP3Serializer_for_Analog temp = Inst_in_Group32Var3_static();
+    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventAnalogVariation_Group32Var4):
+{
+DNP3Serializer_for_Analog temp = Inst_in_Group32Var4_static();
+    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventAnalogVariation_Group32Var5):
+{
+DNP3Serializer_for_Analog temp = Inst_in_Group32Var5_static();
+    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+//  case (EventAnalogVariation_Group32Var6):
+//    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, Inst_in_Group32Var6_static());
+  case (EventAnalogVariation_Group32Var7):
+{
+DNP3Serializer_for_Analog temp = Inst_in_Group32Var7_static();
+    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+//  case (EventAnalogVariation_Group32Var8):
+//    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, Inst_in_Group32Var8_static());
+  default:
+{
+DNP3Serializer_for_Analog temp = Inst_in_Group32Var1_static();
+    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  }
+}
+
+uint16_t Write_for_BinaryOutputStatus_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventBinaryOutputStatusVariation variation,
+    BinaryOutputStatus* first,
+    IEventCollection_for_BinaryOutputStatus* items)
+{
+  UNUSED(first);
+  switch (variation)
+  {
+  case (EventBinaryOutputStatusVariation_Group11Var1):
+{
+DNP3Serializer_for_BinaryOutputStatus temp = Inst_in_Group11Var1_static();
+    return Write_for_BinaryOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventBinaryOutputStatusVariation_Group11Var2):
+{
+DNP3Serializer_for_BinaryOutputStatus temp = Inst_in_Group11Var2_static();
+    return Write_for_BinaryOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  default:
+{
+DNP3Serializer_for_BinaryOutputStatus temp = Inst_in_Group11Var1_static();
+    return Write_for_BinaryOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  }
+}
+
+uint16_t Write_for_AnalogOutputStatus_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventAnalogOutputStatusVariation variation,
+    AnalogOutputStatus* first,
+    IEventCollection_for_AnalogOutputStatus* items)
+{
+  UNUSED(first);
+  switch (variation)
+  {
+  case (EventAnalogOutputStatusVariation_Group42Var1):
+{
+DNP3Serializer_for_AnalogOutputStatus temp = Inst_in_Group42Var1_static();
+    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventAnalogOutputStatusVariation_Group42Var2):
+{
+DNP3Serializer_for_AnalogOutputStatus temp = Inst_in_Group42Var2_static();
+    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventAnalogOutputStatusVariation_Group42Var3):
+{
+DNP3Serializer_for_AnalogOutputStatus temp = Inst_in_Group42Var3_static();
+    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventAnalogOutputStatusVariation_Group42Var4):
+{
+DNP3Serializer_for_AnalogOutputStatus temp = Inst_in_Group42Var4_static();
+    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+  case (EventAnalogOutputStatusVariation_Group42Var5):
+{
+DNP3Serializer_for_AnalogOutputStatus temp = Inst_in_Group42Var5_static();
+    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+//  case (EventAnalogOutputStatusVariation_Group42Var6):
+//    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, Inst_in_Group42Var6_static());
+  case (EventAnalogOutputStatusVariation_Group42Var7):
+{
+DNP3Serializer_for_AnalogOutputStatus temp = Inst_in_Group42Var7_static();
+    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+//  case (EventAnalogOutputStatusVariation_Group42Var8):
+//    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, Inst_in_Group42Var8_static());
+  default:
+{
+DNP3Serializer_for_AnalogOutputStatus temp = Inst_in_Group42Var1_static();
+    return Write_for_AnalogOutputStatus_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, &temp);
+}
+}
+}
+/*
+uint16_t Write_for_OctetString_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+    EventOctetStringVariation variation,
+    OctetString* first,
+    IEventCollection_for_OctetString* items)
+{
+  UNUSED(variation);
+//   uint16_t Size_in_OctetData(OctetData *pOctetData);
+  return Write_for_OctetString_in_EventWriters_static(Size_in_OctetData(&(first->oOctetData)), &(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items);
+}
+*/
 ////} // namespace opendnp3
-  void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer)
+/*
+void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer)
 {
-  writer = *writer;
-  //signatura_ASDUEventWriteHandler
-  (pASDUEventWriteHandler->iIEventWriteHandler).pParentPointer = pASDUEventWriteHandler;
-  (pASDUEventWriteHandler->iIEventWriteHandler).parentType = PARENTTYPE_ASDUEventWriteHandler;
+  pASDUEventWriteHandler->writer = *writer;
 
-  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventBinary_in_IEventWriteHandler = Write_EventBinary_in_ASDUEventWriteHandler;
+  setParentPointer_in_IEventWriteHandler(&(pASDUEventWriteHandler->iIEventWriteHandler), pASDUEventWriteHandler);
+
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_for_Binary_in_IEventWriteHandler = Write_for_Binary_in_ASDUEventWriteHandler_override;
 ////    virtual uint16_t Write(EventBinaryVariation variation,
 ////                           const Binary& first,
 ////                           IEventCollection<Binary>& items) override;
 
-  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventDoubleBinary_in_IEventWriteHandler = Write_EventDoubleBinary_in_ASDUEventWriteHandler;
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_for_DoubleBinary_in_IEventWriteHandler = Write_for_DoubleBinary_in_ASDUEventWriteHandler_override;
 ////    virtual uint16_t Write(EventDoubleBinaryVariation variation,
 ////                           const DoubleBitBinary& first,
 ////                           IEventCollection<DoubleBitBinary>& items) override;
 
-  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventCounter_in_IEventWriteHandler = Write_EventCounter_in_ASDUEventWriteHandler;
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_for_Counter_in_IEventWriteHandler = Write_for_Counter_in_ASDUEventWriteHandler_override;
 ////    virtual uint16_t Write(EventCounterVariation variation,
 ////                           const Counter& first,
 ////                           IEventCollection<Counter>& items) override;
 
-  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventFrozenCounter_in_IEventWriteHandler = Write_EventFrozenCounter_in_ASDUEventWriteHandler;
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_for_FrozenCounter_in_IEventWriteHandler = Write_for_FrozenCounter_in_ASDUEventWriteHandler_override;
 ////    virtual uint16_t Write(EventFrozenCounterVariation variation,
 ////                           const FrozenCounter& first,
 ////                           IEventCollection<FrozenCounter>& items) override;
 
-  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventAnalog_in_IEventWriteHandler = Write_EventAnalog_in_ASDUEventWriteHandler;
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_for_Analog_in_IEventWriteHandler = Write_for_Analog_in_ASDUEventWriteHandler_override;
 ////    virtual uint16_t Write(EventAnalogVariation variation,
 ////                           const Analog& first,
 ////                           IEventCollection<Analog>& items) override;
 
-  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventBinaryOutputStatus_in_IEventWriteHandler = Write_EventBinaryOutputStatus_in_ASDUEventWriteHandler;
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_for_BinaryOutputStatus_in_IEventWriteHandler = Write_for_BinaryOutputStatus_in_ASDUEventWriteHandler_override;
 ////    virtual uint16_t Write(EventBinaryOutputStatusVariation variation,
 ////                           const BinaryOutputStatus& first,
 ////                           IEventCollection<BinaryOutputStatus>& items) override;
 
-  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventAnalogOutputStatus_in_IEventWriteHandler = Write_EventAnalogOutputStatus_in_ASDUEventWriteHandler;
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_for_AnalogOutputStatus_in_IEventWriteHandler = Write_for_AnalogOutputStatus_in_ASDUEventWriteHandler_override;
 ////    virtual uint16_t Write(EventAnalogOutputStatusVariation variation,
 ////                           const AnalogOutputStatus& first,
 ////                           IEventCollection<AnalogOutputStatus>& items) override;
 
-  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_EventOctetString_in_IEventWriteHandler = Write_EventOctetString_in_ASDUEventWriteHandler;
+  (pASDUEventWriteHandler->iIEventWriteHandler).pWrite_for_OctetString_in_IEventWriteHandler = Write_for_OctetString_in_ASDUEventWriteHandler_override;
 ////    virtual uint16_t Write(EventOctetStringVariation variation,
 ////                           const OctetString& first,
 ////                           IEventCollection<OctetString>& items) override;
 }
+*/

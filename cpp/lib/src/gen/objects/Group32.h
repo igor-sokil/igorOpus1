@@ -122,6 +122,7 @@ typedef struct
   uint16_t Size_in_Group32Var2_static(void);
  void Group32Var2_in_Group32Var2(Group32Var2 *pGroup32Var2);
   GroupVariationID ID_in_Group32Var2_static(void);
+ DNP3Serializer_for_Analog  Inst_in_Group32Var2_static(void);
 
  boolean Read_in_Group32Var2_static(RSeq_for_Uint16_t *, Group32Var2*);
  boolean Write_in_Group32Var2_static(Group32Var2*, WSeq_for_Uint16_t*);
@@ -156,6 +157,7 @@ typedef struct
   uint16_t Size_in_Group32Var3_static(void);
  void Group32Var3_in_Group32Var3(Group32Var3 *pGroup32Var3);
   GroupVariationID ID_in_Group32Var3_static(void);
+ DNP3Serializer_for_Analog  Inst_in_Group32Var3_static(void);
 
  boolean Read_in_Group32Var3_static(RSeq_for_Uint16_t *, Group32Var3*);
  boolean Write_in_Group32Var3_static(Group32Var3*, WSeq_for_Uint16_t*);
@@ -190,6 +192,7 @@ typedef struct
   uint16_t Size_in_Group32Var4_static(void);
  void Group32Var4_in_Group32Var4(Group32Var4 *pGroup32Var4);
   GroupVariationID ID_in_Group32Var4_static(void);
+ DNP3Serializer_for_Analog  Inst_in_Group32Var4_static(void);
 
  boolean Read_in_Group32Var4_static(RSeq_for_Uint16_t *, Group32Var4*);
  boolean Write_in_Group32Var4_static(Group32Var4*, WSeq_for_Uint16_t*);
@@ -223,13 +226,14 @@ typedef struct
   uint16_t Size_in_Group32Var5_static(void);
  void Group32Var5_in_Group32Var5(Group32Var5 *pGroup32Var5);
   GroupVariationID ID_in_Group32Var5_static(void);
+ DNP3Serializer_for_Analog  Inst_in_Group32Var5_static(void);
 
  boolean Read_in_Group32Var5_static(RSeq_for_Uint16_t *, Group32Var5*);
  boolean Write_in_Group32Var5_static(Group32Var5*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group32Var5_static(RSeq_for_Uint16_t*, Analog*);
  boolean WriteTarget_in_Group32Var5_static(Analog*, WSeq_for_Uint16_t*);
-
+/*
 // Analog Input Event - Double-precision With Flag
 ////struct Group32Var6
 typedef struct
@@ -256,13 +260,14 @@ typedef struct
   uint16_t Size_in_Group32Var6_static(void);
  void Group32Var6_in_Group32Var6(Group32Var6 *pGroup32Var6);
   GroupVariationID ID_in_Group32Var6_static(void);
+ DNP3Serializer_for_Analog  Inst_in_Group32Var6_static(void);
 
  boolean Read_in_Group32Var6_static(RSeq_for_Uint16_t *, Group32Var6*);
  boolean Write_in_Group32Var6_static(Group32Var6*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group32Var6_static(RSeq_for_Uint16_t*, Analog*);
  boolean WriteTarget_in_Group32Var6_static(Analog*, WSeq_for_Uint16_t*);
-
+*/
 // Analog Input Event - Single-precision With Flag and Time
 ////struct Group32Var7
 typedef struct
@@ -290,13 +295,14 @@ typedef struct
   uint16_t Size_in_Group32Var7_static(void);
  void Group32Var7_in_Group32Var7(Group32Var7 *pGroup32Var7);
   GroupVariationID ID_in_Group32Var7_static(void);
+ DNP3Serializer_for_Analog  Inst_in_Group32Var7_static(void);
 
  boolean Read_in_Group32Var7_static(RSeq_for_Uint16_t *, Group32Var7*);
  boolean Write_in_Group32Var7_static(Group32Var7*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group32Var7_static(RSeq_for_Uint16_t*, Analog*);
  boolean WriteTarget_in_Group32Var7_static(Analog*, WSeq_for_Uint16_t*);
-
+/*
 // Analog Input Event - Double-precision With Flag and Time
 ////struct Group32Var8
 typedef struct
@@ -324,14 +330,14 @@ typedef struct
   uint16_t Size_in_Group32Var8_static(void);
  void Group32Var8_in_Group32Var8(Group32Var8 *pGroup32Var8);
   GroupVariationID ID_in_Group32Var8_static(void);
-
+ DNP3Serializer_for_Analog  Inst_in_Group32Var8_static(void);
 
  boolean Read_in_Group32Var8_static(RSeq_for_Uint16_t *, Group32Var8*);
  boolean Write_in_Group32Var8_static(Group32Var8*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group32Var8_static(RSeq_for_Uint16_t*, Analog*);
  boolean WriteTarget_in_Group32Var8_static(Analog*, WSeq_for_Uint16_t*);
-
+*/
 
 ////}
 

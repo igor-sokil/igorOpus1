@@ -106,8 +106,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group52Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group52Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group52Var2_static(RSeq_for_Uint16_t *, Group52Var2*);
+ boolean Write_in_Group52Var2_static(Group52Var2*, WSeq_for_Uint16_t*);
 
 ////}
 

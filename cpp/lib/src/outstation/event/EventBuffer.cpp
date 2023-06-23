@@ -342,7 +342,7 @@ boolean HasAnySelection_in_EventBuffer(EventBuffer *pEventBuffer)
 boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer)
 {
 MYTODO
-    ASDUEventWriteHandler handler(writer);
+////    ASDUEventWriteHandler handler(writer);
     this->storage.Write(handler);
     // all selected events were written?
     return this->storage.NumSelected() == 0;

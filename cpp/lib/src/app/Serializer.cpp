@@ -3,6 +3,123 @@
 #include "MeasurementTypes.h"
 #include "Serializer.h"
 
+//------------------------Serializer_for_FrozenCounter----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_FrozenCounter(Serializer_for_FrozenCounter *pSerializer_for_FrozenCounter) 
+{
+    return pSerializer_for_FrozenCounter->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_FrozenCounter(Serializer_for_FrozenCounter *pSerializer_for_FrozenCounter, RSeq_for_Uint16_t *buffer, FrozenCounter *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_FrozenCounter->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_FrozenCounter(Serializer_for_FrozenCounter *pSerializer_for_FrozenCounter, FrozenCounter *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_FrozenCounter->write_func)(value, buffer);
+}
+
+   void Serializer_for_FrozenCounter_in_Serializer_for_FrozenCounter(Serializer_for_FrozenCounter *pSerializer_for_FrozenCounter,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_FrozenCounter  read_func,
+                                               write_func_t_in_Serializer_for_FrozenCounter write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_FrozenCounter->size = size;
+  pSerializer_for_FrozenCounter->read_func = read_func;
+  pSerializer_for_FrozenCounter->write_func = write_func;
+}
+//------------------------Serializer_for_FrozenCounter----------------------------------------------------
+//------------------------Serializer_for_BinaryOutputStatus----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_BinaryOutputStatus(Serializer_for_BinaryOutputStatus *pSerializer_for_BinaryOutputStatus) 
+{
+    return pSerializer_for_BinaryOutputStatus->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_BinaryOutputStatus(Serializer_for_BinaryOutputStatus *pSerializer_for_BinaryOutputStatus, RSeq_for_Uint16_t *buffer, BinaryOutputStatus *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_BinaryOutputStatus->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_BinaryOutputStatus(Serializer_for_BinaryOutputStatus *pSerializer_for_BinaryOutputStatus, BinaryOutputStatus *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_BinaryOutputStatus->write_func)(value, buffer);
+}
+
+   void Serializer_for_BinaryOutputStatus_in_Serializer_for_BinaryOutputStatus(Serializer_for_BinaryOutputStatus *pSerializer_for_BinaryOutputStatus,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_BinaryOutputStatus  read_func,
+                                               write_func_t_in_Serializer_for_BinaryOutputStatus write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_BinaryOutputStatus->size = size;
+  pSerializer_for_BinaryOutputStatus->read_func = read_func;
+  pSerializer_for_BinaryOutputStatus->write_func = write_func;
+}
+//------------------------Serializer_for_BinaryOutputStatus----------------------------------------------------
+//------------------------Serializer_for_DoubleBitBinary----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_DoubleBitBinary(Serializer_for_DoubleBitBinary *pSerializer_for_DoubleBitBinary) 
+{
+    return pSerializer_for_DoubleBitBinary->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_DoubleBitBinary(Serializer_for_DoubleBitBinary *pSerializer_for_DoubleBitBinary, RSeq_for_Uint16_t *buffer, DoubleBitBinary *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_DoubleBitBinary->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_DoubleBitBinary(Serializer_for_DoubleBitBinary *pSerializer_for_DoubleBitBinary, DoubleBitBinary *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_DoubleBitBinary->write_func)(value, buffer);
+}
+
+   void Serializer_for_DoubleBitBinary_in_Serializer_for_DoubleBitBinary(Serializer_for_DoubleBitBinary *pSerializer_for_DoubleBitBinary,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_DoubleBitBinary  read_func,
+                                               write_func_t_in_Serializer_for_DoubleBitBinary write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_DoubleBitBinary->size = size;
+  pSerializer_for_DoubleBitBinary->read_func = read_func;
+  pSerializer_for_DoubleBitBinary->write_func = write_func;
+}
+//------------------------Serializer_for_DoubleBitBinary----------------------------------------------------
 //------------------------Serializer_for_Binary----------------------------------------------------
     /**
      * @return The size (in bytes) required for every call to read/write
@@ -159,6 +276,45 @@
   pSerializer_for_Analog->write_func = write_func;
 }
 //------------------------Serializer_for_Analog----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputStatus----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_AnalogOutputStatus(Serializer_for_AnalogOutputStatus *pSerializer_for_AnalogOutputStatus) 
+{
+    return pSerializer_for_AnalogOutputStatus->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_AnalogOutputStatus(Serializer_for_AnalogOutputStatus *pSerializer_for_AnalogOutputStatus, RSeq_for_Uint16_t *buffer, AnalogOutputStatus *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputStatus->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_AnalogOutputStatus(Serializer_for_AnalogOutputStatus *pSerializer_for_AnalogOutputStatus, AnalogOutputStatus *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputStatus->write_func)(value, buffer);
+}
+
+   void Serializer_for_AnalogOutputStatus_in_Serializer_for_AnalogOutputStatus(Serializer_for_AnalogOutputStatus *pSerializer_for_AnalogOutputStatus,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputStatus  read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputStatus write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_AnalogOutputStatus->size = size;
+  pSerializer_for_AnalogOutputStatus->read_func = read_func;
+  pSerializer_for_AnalogOutputStatus->write_func = write_func;
+}
+//------------------------Serializer_for_AnalogOutputStatus----------------------------------------------------
 //------------------------Serializer_for_TimeAndInterval----------------------------------------------------
     /**
      * @return The size (in bytes) required for every call to read/write

@@ -17,14 +17,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_RANGEWRITEITERATOR_UINT8_COUNTER_H
-#define OPENDNP3_RANGEWRITEITERATOR_UINT8_COUNTER_H
+#ifndef OPENDNP3_RANGEWRITEITERATOR_UINT8_BINARY_H
+#define OPENDNP3_RANGEWRITEITERATOR_BINARY_H
 
 ////#include "app/Serializer.h"
 #include "Serializer.h"
 
 ////namespace opendnp3
 ////{
+//-------------------Uint8---------------------------------------------------
 
 // A facade for writing APDUs to an external buffer
 ////template<class IndexType, class WriteType> class RangeWriteIterator
@@ -87,7 +88,7 @@ typedef struct
 ////    typename IndexType::type_t start;
     uint8_t start;
 //    Serializer<WriteType> serializer;
-    Serializer_for_Counter  serializer;
+    Serializer_for_Binary  serializer;
     uint32_t count;
 
     boolean isValid;
@@ -97,22 +98,23 @@ typedef struct
 
 //    ser4cpp::wseq_t* pPosition;
     WSeq_for_Uint16_t* pPosition;
-} RangeWriteIterator_for_UInt8_Counter;
+} RangeWriteIterator_for_UInt8_Binary;
 
-   boolean IsValid_in_RangeWriteIterator_for_UInt8_Counter(RangeWriteIterator_for_UInt8_Counter *pRangeWriteIterator_for_UInt8_Counter);
-    boolean Write_in_RangeWriteIterator_for_UInt8_Counter(RangeWriteIterator_for_UInt8_Counter *pRangeWriteIterator_for_UInt8_Counter,
-                                                         Counter* value);
-    void RangeWriteIterator_for_UInt8_Counter_destr_RangeWriteIterator_for_UInt8_Counter(RangeWriteIterator_for_UInt8_Counter *pRangeWriteIterator_for_UInt8_Counter);
-    void RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_CounterOver2(RangeWriteIterator_for_UInt8_Counter *pRangeWriteIterator_for_UInt8_Counter,
+   boolean IsValid_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
+    boolean Write_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary,
+                                                         Binary* value);
+    void RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
+    void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver2(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary,
 //                   typename IndexType::type_t start_,
                    uint8_t start_,
 //                   const Serializer<WriteType>& serializer,
-                   Serializer_for_Counter*  serializer,
+                   Serializer_for_Binary*  serializer,
 //                   ser4cpp::wseq_t& position)
                    WSeq_for_Uint16_t* position);
-    void RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_CounterOver1(RangeWriteIterator_for_UInt8_Counter *pRangeWriteIterator_for_UInt8_Counter);
-     RangeWriteIterator_for_UInt8_Counter Null_in_RangeWriteIterator_for_UInt8_Counter_static(void);
+    void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver1(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
+     RangeWriteIterator_for_UInt8_Binary Null_in_RangeWriteIterator_for_UInt8_Binary_static(void);
 
+//-------------------Uint8---------------------------------------------------
 
 ////} // namespace opendnp3
 

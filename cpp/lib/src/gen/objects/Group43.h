@@ -85,8 +85,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group43Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group43Var1_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group43Var1_static(RSeq_for_Uint16_t *, Group43Var1*);
+ boolean Write_in_Group43Var1_static(Group43Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group43Var1_static(RSeq_for_Uint16_t*, AnalogCommandEvent*);
  boolean WriteTarget_in_Group43Var1_static(AnalogCommandEvent*, WSeq_for_Uint16_t*);
@@ -130,8 +130,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group43Var2_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group43Var2_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group43Var2_static(RSeq_for_Uint16_t *, Group43Var2*);
+ boolean Write_in_Group43Var2_static(Group43Var2*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group43Var2_static(RSeq_for_Uint16_t*, AnalogCommandEvent*);
  boolean WriteTarget_in_Group43Var2_static(AnalogCommandEvent*, WSeq_for_Uint16_t*);
@@ -191,8 +191,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group43Var3_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group43Var3_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group43Var3_static(RSeq_for_Uint16_t *, Group43Var3*);
+ boolean Write_in_Group43Var3_static(Group43Var3*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group43Var3_static(RSeq_for_Uint16_t*, AnalogCommandEvent*);
  boolean WriteTarget_in_Group43Var3_static(AnalogCommandEvent*, WSeq_for_Uint16_t*);
@@ -252,8 +252,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group43Var4_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group43Var4_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group43Var4_static(RSeq_for_Uint16_t *, Group43Var4*);
+ boolean Write_in_Group43Var4_static(Group43Var4*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group43Var4_static(RSeq_for_Uint16_t*, AnalogCommandEvent*);
  boolean WriteTarget_in_Group43Var4_static(AnalogCommandEvent*, WSeq_for_Uint16_t*);
@@ -312,8 +312,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group43Var5_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group43Var5_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group43Var5_static(RSeq_for_Uint16_t *, Group43Var5*);
+ boolean Write_in_Group43Var5_static(Group43Var5*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group43Var5_static(RSeq_for_Uint16_t*, AnalogCommandEvent*);
  boolean WriteTarget_in_Group43Var5_static(AnalogCommandEvent*, WSeq_for_Uint16_t*);
@@ -372,8 +372,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group43Var6_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group43Var6_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group43Var6_static(RSeq_for_Uint16_t *, Group43Var6*);
+ boolean Write_in_Group43Var6_static(Group43Var6*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group43Var6_static(RSeq_for_Uint16_t*, AnalogCommandEvent*);
  boolean WriteTarget_in_Group43Var6_static(AnalogCommandEvent*, WSeq_for_Uint16_t*);
@@ -433,8 +433,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group43Var7_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group43Var7_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group43Var7_static(RSeq_for_Uint16_t *, Group43Var7*);
+ boolean Write_in_Group43Var7_static(Group43Var7*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group43Var7_static(RSeq_for_Uint16_t*, AnalogCommandEvent*);
  boolean WriteTarget_in_Group43Var7_static(AnalogCommandEvent*, WSeq_for_Uint16_t*);
@@ -494,8 +494,8 @@ typedef struct
  return gGroupVariationID;
 }
 
- boolean Read_in_Group43Var8_static(RSeq_for_Uint16_t *, Group2Var1*);
- boolean Write_in_Group43Var8_static(Group2Var1*, WSeq_for_Uint16_t*);
+ boolean Read_in_Group43Var8_static(RSeq_for_Uint16_t *, Group43Var8*);
+ boolean Write_in_Group43Var8_static(Group43Var8*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group43Var8_static(RSeq_for_Uint16_t*, AnalogCommandEvent*);
  boolean WriteTarget_in_Group43Var8_static(AnalogCommandEvent*, WSeq_for_Uint16_t*);

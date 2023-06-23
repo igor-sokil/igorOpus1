@@ -17,15 +17,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_PREFIXEDWRITEITERATOR_for_UInt16_OctetString_H
-#define OPENDNP3_PREFIXEDWRITEITERATOR_for_UInt16_OctetString_H
+#ifndef OPENDNP3_PREFIXEDWRITEITERATOR_for_Counter_H
+#define OPENDNP3_PREFIXEDWRITEITERATOR_for_Counter_H
 
 ////#include "app/Serializer.h"
 #include "Serializer.h"
-#include "OctetString.h"
+#include "MeasurementTypes.h"
 
 ////namespace opendnp3
 ////{
+//-------------------Uint16---------------------------------------------------
 
 // A facade for writing APDUs to an external buffer
 ////template<class PrefixType, class WriteType> class PrefixedWriteIterator
@@ -83,7 +84,7 @@ typedef struct
 ////
 ////private:
 
-    Serializer_for_OctetString serializer;
+    Serializer_for_Counter serializer;
     uint16_t sizeOfTypePlusIndex;
 
 ////    typename PrefixType::type_t count;
@@ -93,17 +94,18 @@ typedef struct
 
     WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
     WSeq_for_Uint16_t* pPosition;
-} PrefixedWriteIterator_for_UInt16_OctetString;
+} PrefixedWriteIterator_for_UInt16_Counter;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_PrefixedWriteIterator_for_UInt16_OctetString(PrefixedWriteIterator_for_UInt16_OctetString *pPrefixedWriteIterator_for_UInt16_OctetString) ;
-    boolean Write_in_PrefixedWriteIterator_for_UInt16_OctetString(PrefixedWriteIterator_for_UInt16_OctetString *pPrefixedWriteIterator_for_UInt16_OctetString,
-                                                                  OctetString* value, uint16_t index);
-   void PrefixedWriteIterator_for_UInt16_OctetString_destr_PrefixedWriteIterator_for_UInt16_OctetString(PrefixedWriteIterator_for_UInt16_OctetString *pPrefixedWriteIterator_for_UInt16_OctetString);
-   void PrefixedWriteIterator_for_UInt16_OctetString_in_PrefixedWriteIterator_for_UInt16_OctetStringOver2(PrefixedWriteIterator_for_UInt16_OctetString *pPrefixedWriteIterator_for_UInt16_OctetString,
-                                                 Serializer_for_OctetString* serializer, WSeq_for_Uint16_t* position);
-   void PrefixedWriteIterator_for_UInt16_OctetString_in_PrefixedWriteIterator_for_UInt16_OctetStringOver1(PrefixedWriteIterator_for_UInt16_OctetString *pPrefixedWriteIterator_for_UInt16_OctetString);
-   PrefixedWriteIterator_for_UInt16_OctetString Null_in_PrefixedWriteIterator_for_UInt16_OctetString_static(void);
+    boolean IsValid_in_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
+    boolean Write_in_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter,
+                                                                  Counter* value, uint16_t index);
+   void PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
+   void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver2(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter,
+                                                 Serializer_for_Counter* serializer, WSeq_for_Uint16_t* position);
+   void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver1(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
+   PrefixedWriteIterator_for_UInt16_Counter Null_in_PrefixedWriteIterator_for_UInt16_Counter_static(void);
+//-------------------Uint16---------------------------------------------------
 
 
 #endif
