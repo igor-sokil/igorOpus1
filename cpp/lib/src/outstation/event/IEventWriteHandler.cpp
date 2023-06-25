@@ -59,6 +59,93 @@ void  setParentPointer_in_IEventCollection_for_Binary(IEventCollection_for_Binar
   pIEventCollection_for_Binary->pParentPointer_in_IEventCollection_for_Binary = pParentPointer;
 }
 //---------------------------------Binary---------------------------------
+//---------------------------------Counter---------------------------------
+boolean Write_in_IEventWriter_for_Counter(IEventWriter_for_Counter* pIEventWriter_for_Counter, Counter* meas, uint16_t index)
+{
+  return (pIEventWriter_for_Counter->pWrite_in_IEventWriter_for_Counter)(pIEventWriter_for_Counter, meas, index);
+}
+
+void* getParentPointer_in_IEventWriter_for_Counter(IEventWriter_for_Counter* pIEventWriter_for_Counter)
+{
+  return pIEventWriter_for_Counter->pParentPointer_in_IEventWriter_for_Counter;
+}
+void  setParentPointer_in_IEventWriter_for_Counter(IEventWriter_for_Counter* pIEventWriter_for_Counter, void* pParentPointer)
+{
+  pIEventWriter_for_Counter->pParentPointer_in_IEventWriter_for_Counter = pParentPointer;
+}
+
+uint16_t WriteSome_in_IEventCollection_for_Counter(IEventCollection_for_Counter* pIEventCollection_for_Counter, IEventWriter_for_Counter* handler)
+{
+  return (pIEventCollection_for_Counter->pWriteSome_in_IEventCollection_for_Counter)(pIEventCollection_for_Counter, handler);
+}
+
+void* getParentPointer_in_IEventCollection_for_Counter(IEventCollection_for_Counter* pIEventCollection_for_Counter)
+{
+  return pIEventCollection_for_Counter->pParentPointer_in_IEventCollection_for_Counter;
+}
+void  setParentPointer_in_IEventCollection_for_Counter(IEventCollection_for_Counter* pIEventCollection_for_Counter, void* pParentPointer)
+{
+  pIEventCollection_for_Counter->pParentPointer_in_IEventCollection_for_Counter = pParentPointer;
+}
+//---------------------------------Counter---------------------------------
+//---------------------------------FrozenCounter---------------------------------
+boolean Write_in_IEventWriter_for_FrozenCounter(IEventWriter_for_FrozenCounter* pIEventWriter_for_FrozenCounter, FrozenCounter* meas, uint16_t index)
+{
+  return (pIEventWriter_for_FrozenCounter->pWrite_in_IEventWriter_for_FrozenCounter)(pIEventWriter_for_FrozenCounter, meas, index);
+}
+
+void* getParentPointer_in_IEventWriter_for_FrozenCounter(IEventWriter_for_FrozenCounter* pIEventWriter_for_FrozenCounter)
+{
+  return pIEventWriter_for_FrozenCounter->pParentPointer_in_IEventWriter_for_FrozenCounter;
+}
+void  setParentPointer_in_IEventWriter_for_FrozenCounter(IEventWriter_for_FrozenCounter* pIEventWriter_for_FrozenCounter, void* pParentPointer)
+{
+  pIEventWriter_for_FrozenCounter->pParentPointer_in_IEventWriter_for_FrozenCounter = pParentPointer;
+}
+
+uint16_t WriteSome_in_IEventCollection_for_FrozenCounter(IEventCollection_for_FrozenCounter* pIEventCollection_for_FrozenCounter, IEventWriter_for_FrozenCounter* handler)
+{
+  return (pIEventCollection_for_FrozenCounter->pWriteSome_in_IEventCollection_for_FrozenCounter)(pIEventCollection_for_FrozenCounter, handler);
+}
+
+void* getParentPointer_in_IEventCollection_for_FrozenCounter(IEventCollection_for_FrozenCounter* pIEventCollection_for_FrozenCounter)
+{
+  return pIEventCollection_for_FrozenCounter->pParentPointer_in_IEventCollection_for_FrozenCounter;
+}
+void  setParentPointer_in_IEventCollection_for_FrozenCounter(IEventCollection_for_FrozenCounter* pIEventCollection_for_FrozenCounter, void* pParentPointer)
+{
+  pIEventCollection_for_FrozenCounter->pParentPointer_in_IEventCollection_for_FrozenCounter = pParentPointer;
+}
+//---------------------------------FrozenCounter---------------------------------
+//---------------------------------DoubleBitBinary---------------------------------
+boolean Write_in_IEventWriter_for_DoubleBitBinary(IEventWriter_for_DoubleBitBinary* pIEventWriter_for_DoubleBitBinary, DoubleBitBinary* meas, uint16_t index)
+{
+  return (pIEventWriter_for_DoubleBitBinary->pWrite_in_IEventWriter_for_DoubleBitBinary)(pIEventWriter_for_DoubleBitBinary, meas, index);
+}
+
+void* getParentPointer_in_IEventWriter_for_DoubleBitBinary(IEventWriter_for_DoubleBitBinary* pIEventWriter_for_DoubleBitBinary)
+{
+  return pIEventWriter_for_DoubleBitBinary->pParentPointer_in_IEventWriter_for_DoubleBitBinary;
+}
+void  setParentPointer_in_IEventWriter_for_DoubleBitBinary(IEventWriter_for_DoubleBitBinary* pIEventWriter_for_DoubleBitBinary, void* pParentPointer)
+{
+  pIEventWriter_for_DoubleBitBinary->pParentPointer_in_IEventWriter_for_DoubleBitBinary = pParentPointer;
+}
+
+uint16_t WriteSome_in_IEventCollection_for_DoubleBitBinary(IEventCollection_for_DoubleBitBinary* pIEventCollection_for_DoubleBitBinary, IEventWriter_for_DoubleBitBinary* handler)
+{
+  return (pIEventCollection_for_DoubleBitBinary->pWriteSome_in_IEventCollection_for_DoubleBitBinary)(pIEventCollection_for_DoubleBitBinary, handler);
+}
+
+void* getParentPointer_in_IEventCollection_for_DoubleBitBinary(IEventCollection_for_DoubleBitBinary* pIEventCollection_for_DoubleBitBinary)
+{
+  return pIEventCollection_for_DoubleBitBinary->pParentPointer_in_IEventCollection_for_DoubleBitBinary;
+}
+void  setParentPointer_in_IEventCollection_for_DoubleBitBinary(IEventCollection_for_DoubleBitBinary* pIEventCollection_for_DoubleBitBinary, void* pParentPointer)
+{
+  pIEventCollection_for_DoubleBitBinary->pParentPointer_in_IEventCollection_for_DoubleBitBinary = pParentPointer;
+}
+//---------------------------------DoubleBitBinary---------------------------------
 //---------------------------------OctetString---------------------------------
 
 uint16_t Write_in_IEventWriter_for_OctetString(IEventWriter_for_OctetString *pIEventWriter_for_OctetString, OctetString* meas, uint16_t index)

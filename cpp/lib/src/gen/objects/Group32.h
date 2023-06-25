@@ -54,13 +54,6 @@
 
   GroupVariationID ID_in_Group32Var0_static(void);
 
-  GroupVariationID ID_in_Group32Var0_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 32, 0);
-//// return GroupVariationID(32,0);
- return gGroupVariationID;
-}
 
 // Analog Input Event - 32-bit With Flag
 ////struct Group32Var1

@@ -866,22 +866,22 @@ bool Group42Var8::WriteTarget(const AnalogOutputStatus& value, ser4cpp::wseq_t& 
 ////  return GroupVariationID(42,5); 
  return gGroupVariationID;
 }
-/*
- DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var4_static(void)
+
+ DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group42Var5_static(void)
 {
    DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
    DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
-                   ID_in_Group42Var4_static(),
-                   Size_in_Group42Var4_static(),
+                   ID_in_Group42Var5_static(),
+                   Size_in_Group42Var5_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group42Var4_static,
+                   &ReadTarget_in_Group42Var5_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group42Var4_static);
+                   &WriteTarget_in_Group42Var5_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
    return dDNP3Serializer_for_AnalogOutputStatus;
 }
-
+/*
  uint16_t Size_in_Group42Var6_static(void) 
 {
  return 9; 

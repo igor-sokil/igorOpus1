@@ -1204,22 +1204,10 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp</name>
-                    </file>
-                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\ClassField.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\ControlRelayOutputBlock.cpp</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\DNP3Serializer.cpp</name>
@@ -1258,19 +1246,10 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\OctetData.cpp</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp</name>
-                    </file>
-                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\QualityFlags.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\range.cpp</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\Serializer.cpp</name>
@@ -5452,54 +5431,6 @@
                         <name>fileUVV2021</name>
                     </group>
                     <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\ACMDSmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\AISmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\DOUTSmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\DVSmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\GCMDSmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\IUSmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\KEYSmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\PERIFComponent2021.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\PKVBigComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\PREGBigComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\PROTComponent2021.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\REG1BigComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\REG2BigComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\RPRSmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\SDISmallComponent.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\UVVComponent2021.c</name>
-                    </file>
-                    <file>
                         <name>$PROJ_DIR$\..\..\wf\src\modbusroutine\component\YustBigComponent.c</name>
                     </file>
                 </group>
@@ -5846,106 +5777,7 @@
                     <name>$PROJ_DIR$\..\..\wf\src\menu_chose_settings_protection.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_chose_settings_registrators.c</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\..\wf\src\menu_chose_settings_uvv.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_configuration.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_data_time_settings.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_df.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_diagnostyka.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_dt.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_dzo.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_dzr.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_energy.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_extended_logic.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_general_pickups_el.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_info.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_inputs_outputs_leds_reg_df_buttons.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_level_password.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_main.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_mtz.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_mtzo.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_mtzr.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_point_time_settings.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_registrators.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_resurs.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_setting_language.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_state_inputs_outputs.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_switch.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_tf.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_time.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_transformator.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_tznp.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_Umax.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_Umin.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_UP.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_urov.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\menu_vidkluchennja.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\wf\src\menu_view_measurement.c</name>

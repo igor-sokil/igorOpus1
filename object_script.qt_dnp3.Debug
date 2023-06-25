@@ -55,8 +55,11 @@ debug/APDUWrapper.o
 debug/APDUResponse.o
 debug/BinaryCommandEvent.o
 debug/BitfieldRangeWriteIterator_for_uint8.o
-debug/CountWriteIterator_for_Binary.o
 debug/CountWriteIterator_for_Analog.o
+debug/CountWriteIterator_for_AnalogOutputStatus.o
+debug/CountWriteIterator_for_Binary.o
+debug/CountWriteIterator_for_BinaryOutputStatus.o
+debug/CountWriteIterator_for_DoubleBitBinary.o
 debug/ClassField.o
 debug/ControlRelayOutputBlock.o
 debug/DNP3Serializer.o
@@ -65,9 +68,12 @@ debug/EventTriggers.o
 debug/Functions.o
 debug/HeaderWriter.o
 debug/HeaderWriter_for_Analog.o
+debug/HeaderWriter_for_AnalogOutputStatus.o
 debug/HeaderWriter_for_Binary.o
+debug/HeaderWriter_for_BinaryOutputStatus.o
 debug/HeaderWriter_for_DoubleBitBinary.o
 debug/HeaderWriter_for_Counter.o
+debug/HeaderWriter_for_FrozenCounter.o
 debug/HeaderWriter_for_OctetString.o
 debug/GroupVariationRecord.o
 debug/MeasurementInfo.o
@@ -87,8 +93,10 @@ debug/PrefixedWriteIterator_for_FrozenCounter.o
 debug/PrefixedWriteIterator_for_OctetString.o
 debug/Serializer.o
 debug/RangeWriteIterator_for_Binary.o
+debug/RangeWriteIterator_for_BinaryOutputStatus.o
 debug/RangeWriteIterator_for_DoubleBitBinary.o
 debug/RangeWriteIterator_for_Counter.o
+debug/RangeWriteIterator_for_FrozenCounter.o
 debug/RangeWriteIterator_for_OctetString.o
 debug/DownSampling.o
 debug/Event.o
@@ -112,6 +120,7 @@ debug/EventUpdate.o
 debug/EventWriting.o
 debug/EventWriters_for_Analog.o
 debug/EventWriters_for_Binary.o
+debug/EventWriters_for_Counter.o
 debug/EventWriters_for_DoubleBitBinary.o
 debug/EventWriters_for_OctetString.o
 debug/IEventType.o

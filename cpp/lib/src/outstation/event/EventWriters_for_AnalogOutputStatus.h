@@ -21,7 +21,7 @@
 #define OPENDNP3_EVENTWRITERS_for_AnalogOutputStatus_H
 
 #include "IEventWriteHandler.h"
-#include "HeaderWriter.h"
+#include "HeaderWriter_for_AnalogOutputStatus.h"
 #include "PrefixedWriteIterator_for_AnalogOutputStatus.h"
 
 ////#include <ser4cpp/serialization/LittleEndian.h>

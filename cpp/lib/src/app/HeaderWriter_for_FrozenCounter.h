@@ -17,8 +17,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_HEADERWRITER_for_Counter_H
-#define OPENDNP3_HEADERWRITER_for_Counter_H
+#ifndef OPENDNP3_HEADERWRITER_for_FrozenCounter_H
+#define OPENDNP3_HEADERWRITER_for_FrozenCounter_H
 
 ////#include "app/BitfieldRangeWriteIterator.h"
 ////#include "app/CountWriteIterator.h"
@@ -42,14 +42,14 @@
 //#include "PrefixedWriteIterator_for_UInt16_AnalogOutputStatus.h"
 //#include "PrefixedWriteIterator_for_UInt16_Binary.h"
 //#include "PrefixedWriteIterator_for_UInt16_BinaryOutputStatus.h"
-#include "PrefixedWriteIterator_for_Counter.h"
+#include "PrefixedWriteIterator_for_FrozenCounter.h"
 //#include "PrefixedWriteIterator_for_UInt16_DoubleBitBinary.h"
-//#include "PrefixedWriteIterator_for_UInt16_FrozenCounter.h"
+//#include "PrefixedWriteIterator_for_UInt16_FrozenFrozenCounter.h"
 //#include "PrefixedWriteIterator_for_UInt16_OctetString.h"
 //#include "PrefixedWriteIterator.h"
 
 //#include "RangeWriteIterator_for_UInt8_Binary.h"
-#include "RangeWriteIterator_for_Counter.h"
+#include "RangeWriteIterator_for_FrozenCounter.h"
 //#include "RangeWriteIterator_for_UInt16_OctetString.h"
 
 //#include "CountWriteIterator_for_UInt8_Binary.h"
@@ -232,53 +232,53 @@ typedef struct
 
 //--------------------------------IterateOverCountWithPrefix_for_UInt16_Binary--------------------------------------------------------
 */
-//================================================Counter=================================================================
-//--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_Counter_Group51Var1_in_HeaderWriter--------------------------------------------------------
+//================================================FrozenCounter=================================================================
+//--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_FrozenCounter_Group51Var1_in_HeaderWriter--------------------------------------------------------
 ////    template<class PrefixType, class WriteType, class CTOType>
 ////    PrefixedWriteIterator<PrefixType, WriteType> IterateOverCountWithPrefixAndCTO(
 ////        QualifierCode qc, const DNP3Serializer<WriteType>& serializer, const CTOType& cto);
-    PrefixedWriteIterator_for_UInt16_Counter IterateOverCountWithPrefixAndCTO_for_UInt16_Counter_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    PrefixedWriteIterator_for_UInt16_FrozenCounter IterateOverCountWithPrefixAndCTO_for_UInt16_FrozenCounter_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                               QualifierCode_uint8_t qc,
-                                                              DNP3Serializer_for_Counter* serializer,
+                                                              DNP3Serializer_for_FrozenCounter* serializer,
                                                               Group51Var1* cto);
-//--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_Counter_Group51Var1_in_HeaderWriter--------------------------------------------------------
-//--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_Counter_Group51Var2_in_HeaderWriter--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_FrozenCounter_Group51Var1_in_HeaderWriter--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_FrozenCounter_Group51Var2_in_HeaderWriter--------------------------------------------------------
 ////    template<class PrefixType, class WriteType, class CTOType>
 ////    PrefixedWriteIterator<PrefixType, WriteType> IterateOverCountWithPrefixAndCTO(
 ////        QualifierCode qc, const DNP3Serializer<WriteType>& serializer, const CTOType& cto);
-    PrefixedWriteIterator_for_UInt16_Counter IterateOverCountWithPrefixAndCTO_for_UInt16_Counter_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    PrefixedWriteIterator_for_UInt16_FrozenCounter IterateOverCountWithPrefixAndCTO_for_UInt16_FrozenCounter_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                               QualifierCode_uint8_t qc,
-                                                              DNP3Serializer_for_Counter* serializer,
+                                                              DNP3Serializer_for_FrozenCounter* serializer,
                                                               Group51Var2* cto);
-//--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_Counter_Group51Var2_in_HeaderWriter--------------------------------------------------------
-//--------------------------------IterateOverCountWithPrefix_for_UInt16_Counter--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_FrozenCounter_Group51Var2_in_HeaderWriter--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_FrozenCounter--------------------------------------------------------
 ////template<class PrefixType, class WriteType>
 ////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
 ////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
-  PrefixedWriteIterator_for_UInt16_Counter IterateOverCountWithPrefix_for_UInt16_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
-    QualifierCode_uint8_t qc, DNP3Serializer_for_Counter* serializer);
+  PrefixedWriteIterator_for_UInt16_FrozenCounter IterateOverCountWithPrefix_for_UInt16_FrozenCounter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_FrozenCounter* serializer);
 
-//--------------------------------IterateOverCountWithPrefix_for_UInt16_Counter--------------------------------------------------------
-//--------------------------------IterateOverCountWithPrefix_for_UInt16_Counter--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_FrozenCounter--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_FrozenCounter--------------------------------------------------------
 ////template<class PrefixType, class WriteType>
 ////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
 ////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
-  PrefixedWriteIterator_for_UInt16_Counter IterateOverCountWithPrefix_for_UInt16_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
-    QualifierCode_uint8_t qc, DNP3Serializer_for_Counter* serializer);
+  PrefixedWriteIterator_for_UInt16_FrozenCounter IterateOverCountWithPrefix_for_UInt16_FrozenCounter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_FrozenCounter* serializer);
 
 //--------------------------------IterateOverCountWithPrefix_for_UInt16_Binary--------------------------------------------------------
-//--------------------------------IterateOverRange_for_UInt8_Counter_in_HeaderWriter--------------------------------------------------------
+//--------------------------------IterateOverRange_for_UInt8_FrozenCounter_in_HeaderWriter--------------------------------------------------------
 ////    template<class IndexType, class WriteType>
 ////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer,
 ////                                                              typename IndexType::type_t start);
-    RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    RangeWriteIterator_for_UInt8_FrozenCounter IterateOverRange_for_UInt8_FrozenCounter_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
                                                    QualifierCode_uint8_t qc,
-                                                   DNP3Serializer_for_Counter *serializer,
+                                                   DNP3Serializer_for_FrozenCounter *serializer,
                                                    uint8_t start
                                                   );
-//--------------------------------IterateOverRange_for_UInt8_Counter_in_HeaderWriter--------------------------------------------------------
-//================================================Counter=================================================================
+//--------------------------------IterateOverRange_for_UInt8_FrozenCounter_in_HeaderWriter--------------------------------------------------------
+//================================================FrozenCounter=================================================================
 
 ////template<class IndexType>
 ////bool HeaderWriter::WriteRangeHeader(QualifierCode qc,

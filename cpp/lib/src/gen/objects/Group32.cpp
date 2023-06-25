@@ -59,6 +59,14 @@ Group32Var5 Apply_in_ConvertGroup32Var5_static(Analog* src, uint8_t Overrange);
 Group32Var7 Apply_in_ConvertGroup32Var7_static(Analog* src, uint8_t Overrange);
 //Group32Var8 Apply_in_ConvertGroup32Var8_static(Analog* src);
 
+  GroupVariationID ID_in_Group32Var0_static(void)
+{
+ GroupVariationID gGroupVariationID;
+ GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 32, 0);
+//// return GroupVariationID(32,0);
+ return gGroupVariationID;
+}
+
 // ------- Group32Var1 -------
 
 void Group32Var1_in_Group32Var1(Group32Var1 *pGroup32Var1)

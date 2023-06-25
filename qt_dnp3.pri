@@ -125,8 +125,11 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\APDUResponse.cpp \
                 cpp\lib\src\app\BinaryCommandEvent.cpp \
                 cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp \
-                cpp\lib\src\app\CountWriteIterator_for_Binary.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_Analog.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_AnalogOutputStatus.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_Binary.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_BinaryOutputStatus.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_DoubleBitBinary.cpp \
                 cpp\lib\src\app\ClassField.cpp \
                 cpp\lib\src\app\ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\DNP3Serializer.cpp \
@@ -135,9 +138,12 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\Functions.cpp \
                 cpp\lib\src\app\HeaderWriter.cpp \
                 cpp\lib\src\app\HeaderWriter_for_Analog.cpp \
+                cpp\lib\src\app\HeaderWriter_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\app\HeaderWriter_for_Binary.cpp \
+                cpp\lib\src\app\HeaderWriter_for_BinaryOutputStatus.cpp \
                 cpp\lib\src\app\HeaderWriter_for_DoubleBitBinary.cpp \
                 cpp\lib\src\app\HeaderWriter_for_Counter.cpp \
+                cpp\lib\src\app\HeaderWriter_for_FrozenCounter.cpp \
                 cpp\lib\src\app\HeaderWriter_for_OctetString.cpp \
                 cpp\lib\src\app\GroupVariationRecord.cpp \
                 cpp\lib\src\app\MeasurementInfo.cpp \
@@ -157,8 +163,10 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_OctetString.cpp \
                 cpp\lib\src\app\Serializer.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Binary.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_BinaryOutputStatus.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_DoubleBitBinary.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Counter.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_FrozenCounter.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_OctetString.cpp \
                 cpp\lib\src\app\DownSampling.cpp \
                 \
@@ -185,6 +193,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\event\EventWriting.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_Analog.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_Binary.cpp \
+                cpp\lib\src\outstation\event\EventWriters_for_Counter.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_DoubleBitBinary.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_OctetString.cpp \
                 cpp\lib\src\outstation\event\IEventType.cpp \

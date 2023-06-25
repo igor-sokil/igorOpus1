@@ -22,7 +22,7 @@
 
 #include "IEventWriteHandler.h"
 //#include "DNP3Serializer.h"
-#include "HeaderWriter.h"
+#include "HeaderWriter_for_Analog.h"
 //#include "Group51.h"
 #include "PrefixedWriteIterator_for_Analog.h"
 

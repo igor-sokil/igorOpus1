@@ -21,7 +21,7 @@
 #define OPENDNP3_EVENTWRITERS_for_Binary_H
 
 #include "IEventWriteHandler.h"
-#include "HeaderWriter.h"
+#include "HeaderWriter_for_Binary.h"
 #include "PrefixedWriteIterator_for_Binary.h"
 
 ////#include <ser4cpp/serialization/LittleEndian.h>

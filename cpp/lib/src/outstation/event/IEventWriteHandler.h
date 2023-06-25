@@ -160,6 +160,8 @@ typedef struct
 ////public:
 ////  virtual
   uint16_t (*pWriteSome_in_IEventCollection_for_Counter)(void *, IEventWriter_for_Counter* handler);//// = 0;
+
+  void* pParentPointer_in_IEventCollection_for_Counter;
 } IEventCollection_for_Counter;
 uint16_t WriteSome_in_IEventCollection_for_Counter(IEventCollection_for_Counter *, IEventWriter_for_Counter* handler);
 void* getParentPointer_in_IEventCollection_for_Counter(IEventCollection_for_Counter*);

@@ -55,8 +55,11 @@ release/APDUWrapper.o
 release/APDUResponse.o
 release/BinaryCommandEvent.o
 release/BitfieldRangeWriteIterator_for_uint8.o
-release/CountWriteIterator_for_Binary.o
 release/CountWriteIterator_for_Analog.o
+release/CountWriteIterator_for_AnalogOutputStatus.o
+release/CountWriteIterator_for_Binary.o
+release/CountWriteIterator_for_BinaryOutputStatus.o
+release/CountWriteIterator_for_DoubleBitBinary.o
 release/ClassField.o
 release/ControlRelayOutputBlock.o
 release/DNP3Serializer.o
@@ -65,9 +68,12 @@ release/EventTriggers.o
 release/Functions.o
 release/HeaderWriter.o
 release/HeaderWriter_for_Analog.o
+release/HeaderWriter_for_AnalogOutputStatus.o
 release/HeaderWriter_for_Binary.o
+release/HeaderWriter_for_BinaryOutputStatus.o
 release/HeaderWriter_for_DoubleBitBinary.o
 release/HeaderWriter_for_Counter.o
+release/HeaderWriter_for_FrozenCounter.o
 release/HeaderWriter_for_OctetString.o
 release/GroupVariationRecord.o
 release/MeasurementInfo.o
@@ -87,8 +93,10 @@ release/PrefixedWriteIterator_for_FrozenCounter.o
 release/PrefixedWriteIterator_for_OctetString.o
 release/Serializer.o
 release/RangeWriteIterator_for_Binary.o
+release/RangeWriteIterator_for_BinaryOutputStatus.o
 release/RangeWriteIterator_for_DoubleBitBinary.o
 release/RangeWriteIterator_for_Counter.o
+release/RangeWriteIterator_for_FrozenCounter.o
 release/RangeWriteIterator_for_OctetString.o
 release/DownSampling.o
 release/Event.o
@@ -112,6 +120,7 @@ release/EventUpdate.o
 release/EventWriting.o
 release/EventWriters_for_Analog.o
 release/EventWriters_for_Binary.o
+release/EventWriters_for_Counter.o
 release/EventWriters_for_DoubleBitBinary.o
 release/EventWriters_for_OctetString.o
 release/IEventType.o
