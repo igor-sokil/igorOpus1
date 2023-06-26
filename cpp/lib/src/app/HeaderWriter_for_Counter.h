@@ -259,14 +259,6 @@ typedef struct
     QualifierCode_uint8_t qc, DNP3Serializer_for_Counter* serializer);
 
 //--------------------------------IterateOverCountWithPrefix_for_UInt16_Counter--------------------------------------------------------
-//--------------------------------IterateOverCountWithPrefix_for_UInt16_Counter--------------------------------------------------------
-////template<class PrefixType, class WriteType>
-////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
-////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
-  PrefixedWriteIterator_for_UInt16_Counter IterateOverCountWithPrefix_for_UInt16_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
-    QualifierCode_uint8_t qc, DNP3Serializer_for_Counter* serializer);
-
-//--------------------------------IterateOverCountWithPrefix_for_UInt16_Binary--------------------------------------------------------
 //--------------------------------IterateOverRange_for_UInt8_Counter_in_HeaderWriter--------------------------------------------------------
 ////    template<class IndexType, class WriteType>
 ////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,

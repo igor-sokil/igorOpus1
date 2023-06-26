@@ -119,8 +119,11 @@ debug/EventTypeImpl.o
 debug/EventUpdate.o
 debug/EventWriting.o
 debug/EventWriters_for_Analog.o
+debug/EventWriters_for_AnalogOutputStatus.o
 debug/EventWriters_for_Binary.o
+debug/EventWriters_for_BinaryOutputStatus.o
 debug/EventWriters_for_Counter.o
+debug/EventWriters_for_FrozenCounter.o
 debug/EventWriters_for_DoubleBitBinary.o
 debug/EventWriters_for_OctetString.o
 debug/IEventType.o

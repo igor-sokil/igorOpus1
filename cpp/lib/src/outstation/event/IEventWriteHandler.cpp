@@ -30,6 +30,35 @@ void  setParentPointer_in_IEventCollection_for_Analog(IEventCollection_for_Analo
   pIEventCollection_for_Analog->pParentPointer_in_IEventCollection_for_Analog = pParentPointer;
 }
 //---------------------------------Analog---------------------------------
+//---------------------------------AnalogOutputStatus---------------------------------
+boolean Write_in_IEventWriter_for_AnalogOutputStatus(IEventWriter_for_AnalogOutputStatus* pIEventWriter_for_AnalogOutputStatus, AnalogOutputStatus* meas, uint16_t index)
+{
+  return (pIEventWriter_for_AnalogOutputStatus->pWrite_in_IEventWriter_for_AnalogOutputStatus)(pIEventWriter_for_AnalogOutputStatus, meas, index);
+}
+
+void* getParentPointer_in_IEventWriter_for_AnalogOutputStatus(IEventWriter_for_AnalogOutputStatus* pIEventWriter_for_AnalogOutputStatus)
+{
+  return pIEventWriter_for_AnalogOutputStatus->pParentPointer_in_IEventWriter_for_AnalogOutputStatus;
+}
+void  setParentPointer_in_IEventWriter_for_AnalogOutputStatus(IEventWriter_for_AnalogOutputStatus* pIEventWriter_for_AnalogOutputStatus, void* pParentPointer)
+{
+  pIEventWriter_for_AnalogOutputStatus->pParentPointer_in_IEventWriter_for_AnalogOutputStatus = pParentPointer;
+}
+
+uint16_t WriteSome_in_IEventCollection_for_AnalogOutputStatus(IEventCollection_for_AnalogOutputStatus* pIEventCollection_for_AnalogOutputStatus, IEventWriter_for_AnalogOutputStatus* handler)
+{
+  return (pIEventCollection_for_AnalogOutputStatus->pWriteSome_in_IEventCollection_for_AnalogOutputStatus)(pIEventCollection_for_AnalogOutputStatus, handler);
+}
+
+void* getParentPointer_in_IEventCollection_for_AnalogOutputStatus(IEventCollection_for_AnalogOutputStatus* pIEventCollection_for_AnalogOutputStatus)
+{
+  return pIEventCollection_for_AnalogOutputStatus->pParentPointer_in_IEventCollection_for_AnalogOutputStatus;
+}
+void  setParentPointer_in_IEventCollection_for_AnalogOutputStatus(IEventCollection_for_AnalogOutputStatus* pIEventCollection_for_AnalogOutputStatus, void* pParentPointer)
+{
+  pIEventCollection_for_AnalogOutputStatus->pParentPointer_in_IEventCollection_for_AnalogOutputStatus = pParentPointer;
+}
+//---------------------------------AnalogOutputStatus---------------------------------
 //---------------------------------Binary---------------------------------
 boolean Write_in_IEventWriter_for_Binary(IEventWriter_for_Binary* pIEventWriter_for_Binary, Binary* meas, uint16_t index)
 {
@@ -59,6 +88,35 @@ void  setParentPointer_in_IEventCollection_for_Binary(IEventCollection_for_Binar
   pIEventCollection_for_Binary->pParentPointer_in_IEventCollection_for_Binary = pParentPointer;
 }
 //---------------------------------Binary---------------------------------
+//---------------------------------BinaryOutputStatus---------------------------------
+boolean Write_in_IEventWriter_for_BinaryOutputStatus(IEventWriter_for_BinaryOutputStatus* pIEventWriter_for_BinaryOutputStatus, BinaryOutputStatus* meas, uint16_t index)
+{
+  return (pIEventWriter_for_BinaryOutputStatus->pWrite_in_IEventWriter_for_BinaryOutputStatus)(pIEventWriter_for_BinaryOutputStatus, meas, index);
+}
+
+void* getParentPointer_in_IEventWriter_for_BinaryOutputStatus(IEventWriter_for_BinaryOutputStatus* pIEventWriter_for_BinaryOutputStatus)
+{
+  return pIEventWriter_for_BinaryOutputStatus->pParentPointer_in_IEventWriter_for_BinaryOutputStatus;
+}
+void  setParentPointer_in_IEventWriter_for_BinaryOutputStatus(IEventWriter_for_BinaryOutputStatus* pIEventWriter_for_BinaryOutputStatus, void* pParentPointer)
+{
+  pIEventWriter_for_BinaryOutputStatus->pParentPointer_in_IEventWriter_for_BinaryOutputStatus = pParentPointer;
+}
+
+uint16_t WriteSome_in_IEventCollection_for_BinaryOutputStatus(IEventCollection_for_BinaryOutputStatus* pIEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* handler)
+{
+  return (pIEventCollection_for_BinaryOutputStatus->pWriteSome_in_IEventCollection_for_BinaryOutputStatus)(pIEventCollection_for_BinaryOutputStatus, handler);
+}
+
+void* getParentPointer_in_IEventCollection_for_BinaryOutputStatus(IEventCollection_for_BinaryOutputStatus* pIEventCollection_for_BinaryOutputStatus)
+{
+  return pIEventCollection_for_BinaryOutputStatus->pParentPointer_in_IEventCollection_for_BinaryOutputStatus;
+}
+void  setParentPointer_in_IEventCollection_for_BinaryOutputStatus(IEventCollection_for_BinaryOutputStatus* pIEventCollection_for_BinaryOutputStatus, void* pParentPointer)
+{
+  pIEventCollection_for_BinaryOutputStatus->pParentPointer_in_IEventCollection_for_BinaryOutputStatus = pParentPointer;
+}
+//---------------------------------BinaryOutputStatus---------------------------------
 //---------------------------------Counter---------------------------------
 boolean Write_in_IEventWriter_for_Counter(IEventWriter_for_Counter* pIEventWriter_for_Counter, Counter* meas, uint16_t index)
 {

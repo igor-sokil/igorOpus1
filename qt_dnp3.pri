@@ -192,8 +192,11 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\event\EventUpdate.cpp \
                 cpp\lib\src\outstation\event\EventWriting.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_Analog.cpp \
+                cpp\lib\src\outstation\event\EventWriters_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_Binary.cpp \
+                cpp\lib\src\outstation\event\EventWriters_for_BinaryOutputStatus.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_Counter.cpp \
+                cpp\lib\src\outstation\event\EventWriters_for_FrozenCounter.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_DoubleBitBinary.cpp \
                 cpp\lib\src\outstation\event\EventWriters_for_OctetString.cpp \
                 cpp\lib\src\outstation\event\IEventType.cpp \

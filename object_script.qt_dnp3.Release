@@ -119,8 +119,11 @@ release/EventTypeImpl.o
 release/EventUpdate.o
 release/EventWriting.o
 release/EventWriters_for_Analog.o
+release/EventWriters_for_AnalogOutputStatus.o
 release/EventWriters_for_Binary.o
+release/EventWriters_for_BinaryOutputStatus.o
 release/EventWriters_for_Counter.o
+release/EventWriters_for_FrozenCounter.o
 release/EventWriters_for_DoubleBitBinary.o
 release/EventWriters_for_OctetString.o
 release/IEventType.o
