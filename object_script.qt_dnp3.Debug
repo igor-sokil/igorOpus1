@@ -110,6 +110,7 @@ debug/TimeDuration.o
 debug/Timestamp.o
 debug/ASDUEventWriteHandler.o
 debug/ClazzCount.o
+debug/EventBuffer.o
 debug/EventCollection.o
 debug/EventLists.o
 debug/EventRecord.o

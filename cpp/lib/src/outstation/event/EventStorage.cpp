@@ -59,7 +59,7 @@ boolean Update_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for
 ////  return EventUpdate::Update(state, evt);
   return Update_BinarySpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
-/*
+
 boolean Update_DoubleBitBinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_DoubleBitBinarySpec* evt)
 {
 ////  return EventUpdate::Update(state, evt);
@@ -101,7 +101,7 @@ boolean Update_OctetStringSpec_in_EventStorage(EventStorage *pEventStorage, Even
 ////  return EventUpdate::Update(state, evt);
   return Update_OctetStringSpec_in_EventUpdate_static(&(pEventStorage->state), evt);
 }
-*/
+
 uint32_t SelectByType_BinarySpec_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max)
 {
   return SelectByType_for_BinarySpec_in_EventSelection_staticOver2(&(pEventStorage->state), variation, max);
@@ -198,24 +198,27 @@ uint32_t SelectByClass_in_EventStorageOver4(EventStorage *pEventStorage, ClassFi
 ////  return EventSelection::SelectByClass(this->state, clazz, max);
   return SelectByClass_in_EventSelection_static(&(pEventStorage->state), clazz, max);
 }
-/*
+
 ////uint32_t EventStorage::Write(IEventWriteHandler* handler)
 uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler)
 {
+//    uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler);
 ////  return EventWriting::Write(this->state, handler);
   return Write_in_EventWriting_static(&(pEventStorage->state), handler);
 }
-*/
+
 boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record);
-/*
+
 boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record)
 {
 ////  auto written = [this](EventRecord& record) -> bool {
   if (record->state == EventState_written)
   {
 //     void (*pRemoveTypeFromStorage)(EventRecord* record, EventLists* lists);// const = 0;
+//void RemoveTypeFromStorage_in_IEventType(IEventType *, EventRecord* record, EventLists* lists);
 ////      record.type->RemoveTypeFromStorage(record, this->state);
-    ((IEventType*)record->type)->pRemoveTypeFromStorage(record, &(pEventStorage->state));
+    //((IEventType*)record->type)->
+    RemoveTypeFromStorage_in_IEventType(((IEventType*)record->type), record, &(pEventStorage->state));//pRemoveTypeFromStorage(record, &(pEventStorage->state));
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////      this->state.counters.OnRemove(record.clazz, record.state);
     OnRemove_in_EventClassCounters(&((pEventStorage->state).counters), record->clazz, record->state);
@@ -224,8 +227,8 @@ boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record
 
   return false;
 }
-*/
-/*
+
+
 ////uint32_t EventStorage::ClearWritten()
 uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage)
 {
@@ -244,7 +247,7 @@ uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage)
 ////  return this->state.events.RemoveAll(&((pEventStorage->state).events), written);
   return RemoveAll_in_List_for_EventRecord(pEventStorage, &((pEventStorage->state).events), written_in_EventStorage);
 }
-*/
+
 void clear_in_EventStorage(EventRecord* record);
 void clear_in_EventStorage(EventRecord* record)
 {

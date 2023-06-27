@@ -74,7 +74,7 @@ boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_Bin
 }
 //----------------------------------BinarySpec-------------------------------------------
 //----------------------------------DoubleBitBinarySpec-------------------------------------------
-/*
+
 boolean Update_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_DoubleBitBinarySpec* event)
 {
 ////    auto& list = lists.GetList<T>();
@@ -145,10 +145,10 @@ boolean Update_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Even
 
   return overflow;
 }
-*/
+
 //----------------------------------DoubleBitBinarySpec-------------------------------------------
 //----------------------------------AnalogSpec-------------------------------------------
-/*
+
 boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
@@ -219,10 +219,10 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
 
   return overflow;
 }
-*/
+
 //----------------------------------AnalogSpec-------------------------------------------
 //----------------------------------CounterSpec-------------------------------------------
-/*
+
 boolean Update_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_CounterSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
@@ -293,10 +293,10 @@ boolean Update_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_Co
 
   return overflow;
 }
-*/
+
 //----------------------------------CounterSpec-------------------------------------------
 //----------------------------------FrozenCounterSpec-------------------------------------------
-/*
+
 boolean Update_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_FrozenCounterSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
@@ -367,10 +367,10 @@ boolean Update_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_
 
   return overflow;
 }
-*/
+
 //----------------------------------FrozenCounterSpec-------------------------------------------
 //----------------------------------BinaryOutputStatusSpec-------------------------------------------
-/*
+
 boolean Update_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_BinaryOutputStatusSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
@@ -441,10 +441,10 @@ boolean Update_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
 
   return overflow;
 }
-*/
+
 //----------------------------------BinaryOutputStatusSpec-------------------------------------------
 //----------------------------------AnalogOutputStatusSpec-------------------------------------------
-/*
+
 boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogOutputStatusSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
@@ -515,10 +515,10 @@ boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
 
   return overflow;
 }
-*/
+
 //----------------------------------AnalogOutputStatusSpec-------------------------------------------
 //----------------------------------OctetStringSpec-------------------------------------------
-/*
+
 boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_for_OctetStringSpec* event)
 {
 ////    auto& list = lists.GetList<T>();
@@ -589,5 +589,5 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
 
   return overflow;
 }
-*/
+
 //----------------------------------OctetStringSpec-------------------------------------------

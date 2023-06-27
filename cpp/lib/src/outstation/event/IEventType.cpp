@@ -15,3 +15,33 @@
     {
         return type != pIEventType->value;
     }
+
+void SelectDefaultVariation_in_IEventType(IEventType *pIEventType, EventRecord* record)
+{
+  return (pIEventType->pSelectDefaultVariation_in_IEventType)(pIEventType, record);
+}
+uint16_t WriteSome_in_IEventType(IEventType *pIEventType, 
+                              Iterator_in_List_for_EventRecord* iterator,
+                               EventLists* lists,
+                               IEventWriteHandler* handler)
+{
+  return (pIEventType->pWriteSome_in_IEventType)(pIEventType, 
+                               iterator,
+                                lists,
+                                handler);
+}
+
+void RemoveTypeFromStorage_in_IEventType(IEventType *pIEventType, EventRecord* record, EventLists* lists)
+{
+  return (pIEventType->pRemoveTypeFromStorage_in_IEventType)(pIEventType, record, lists);
+}
+
+void* getParentPointer_in_IEventType(IEventType* pIEventType)
+{
+  return pIEventType->pParentPointer_in_IEventType;
+}
+
+void  setParentPointer_in_IEventType(IEventType* pIEventType, void* pParentPointer)
+{
+  pIEventType->pParentPointer_in_IEventType = pParentPointer;
+}

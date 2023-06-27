@@ -93,7 +93,7 @@ typedef struct
 }
 
 ////uint16_t EventWriters::Write(uint8_t firstSize, HeaderWriter& writer, IEventCollection<OctetString>& items)
-  uint16_t Write_in_EventWriters_static(uint8_t firstSize, HeaderWriter* writer, IEventCollection_for_OctetString* items)
+  uint16_t Write_for_OctetString_in_EventWriters_static(uint8_t firstSize, HeaderWriter* writer, IEventCollection_for_OctetString* items)
 {
 //  void  OctetStringEventWriter_in_OctetStringEventWriter(OctetStringEventWriter *pOctetStringEventWriter, HeaderWriter* writer, uint8_t size)
 ////    OctetStringEventWriter handler(writer, firstSize);

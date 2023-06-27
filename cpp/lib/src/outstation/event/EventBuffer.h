@@ -132,7 +132,7 @@ typedef struct
  void UpdateAny_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_OctetStringSpec *evt);
 
  IINField  SelectByType_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventBinaryVariation_uint8_t type);
- IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBitBinaryVariation_uint8_t type);
+ IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBinaryVariation_uint8_t type);
  IINField  SelectByType_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventAnalogVariation_uint8_t type);
  IINField  SelectByType_CounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventCounterVariation_uint8_t type);
  IINField  SelectByType_FrozenCounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventFrozenCounterVariation_uint8_t type);
@@ -157,9 +157,9 @@ typedef struct
 
      void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
 
-     IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint8_t gv);
+     IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv);
 
-     IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint8_t gv, uint16_t count);
+     IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint16_t count);
 
     // ------- IResponseLoader -------
 
@@ -179,7 +179,7 @@ typedef struct
 
     uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t ec);
 
-    IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint8_t gv, uint32_t maximum);
+    IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint32_t maximum);
 
 ////} // namespace opendnp3
 

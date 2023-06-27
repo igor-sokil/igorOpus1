@@ -110,6 +110,7 @@ release/TimeDuration.o
 release/Timestamp.o
 release/ASDUEventWriteHandler.o
 release/ClazzCount.o
+release/EventBuffer.o
 release/EventCollection.o
 release/EventLists.o
 release/EventRecord.o

@@ -72,36 +72,40 @@ typedef struct
 
 void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer);
 
-uint16_t Write_for_Binary_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
+uint16_t Write_for_Binary_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,
     EventBinaryVariation_uint8_t variation,
     Binary* first,
     IEventCollection_for_Binary* items);
-uint16_t Write_for_DoubleBitBinary_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
-    EventDoubleBinaryVariation variation,
+uint16_t Write_for_DoubleBitBinary_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,
+    EventDoubleBinaryVariation_uint8_t variation,
     DoubleBitBinary* first,
     IEventCollection_for_DoubleBitBinary* items);
-uint16_t Write_for_Counter_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
-    EventCounterVariation variation,
+uint16_t Write_for_Counter_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,
+    EventCounterVariation_uint8_t variation,
     Counter* first,
     IEventCollection_for_Counter* items);
-uint16_t Write_for_FrozenCounter_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
-    EventFrozenCounterVariation variation,
+uint16_t Write_for_FrozenCounter_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,
+    EventFrozenCounterVariation_uint8_t variation,
     FrozenCounter* first,
     IEventCollection_for_FrozenCounter* items);
-uint16_t Write_for_Analog_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
-    EventAnalogVariation variation,
+uint16_t Write_for_Analog_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,
+    EventAnalogVariation_uint8_t variation,
     Analog* first,
     IEventCollection_for_Analog* items);
-uint16_t Write_for_BinaryOutputStatus_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
-    EventBinaryOutputStatusVariation variation,
+uint16_t Write_for_BinaryOutputStatus_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,
+    EventBinaryOutputStatusVariation_uint8_t variation,
     BinaryOutputStatus* first,
     IEventCollection_for_BinaryOutputStatus* items);
-uint16_t Write_for_AnalogOutputStatus_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
-    EventAnalogOutputStatusVariation variation,
+uint16_t Write_for_AnalogOutputStatus_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,
+    EventAnalogOutputStatusVariation_uint8_t variation,
     AnalogOutputStatus* first,
     IEventCollection_for_AnalogOutputStatus* items);
-uint16_t Write_for_OctetString_in_ASDUEventWriteHandler_override(void *pASDUEventWriteHandler,
-    EventOctetStringVariation variation,
+/*
+undefined reference to 
+        `Write_for_OctetString_in_ASDUEventWriteHandler_override(void*, unsigned char, OctetString*, IEventCollection_for_OctetString*)'
+*/
+uint16_t Write_for_OctetString_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,
+    EventOctetStringVariation_uint8_t variation,
     OctetString* first,
     IEventCollection_for_OctetString* items);
 

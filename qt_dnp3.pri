@@ -183,6 +183,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\src\outstation\event\ASDUEventWriteHandler.cpp \
                 cpp\lib\src\outstation\event\ClazzCount.cpp \
+                cpp\lib\src\outstation\event\EventBuffer.cpp \
                 cpp\lib\src\outstation\event\EventCollection.cpp \
                 cpp\lib\src\outstation\event\EventLists.cpp \
                 cpp\lib\src\outstation\event\EventRecord.cpp \

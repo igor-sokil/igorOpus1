@@ -60,18 +60,31 @@ typedef struct
 
 ////public:
 ////    virtual void SelectDefaultVariation(EventRecord& record) const = 0;
-     void (*pSelectDefaultVariation)(EventRecord* record);
+     void (*pSelectDefaultVariation_in_IEventType)(void *, EventRecord* record);
 
 ////    virtual uint16_t WriteSome(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const = 0;
-     uint16_t (*pWriteSome)(Iterator_in_List_for_EventRecord* iterator,
+     uint16_t (*pWriteSome_in_IEventType)(void *, 
+                              Iterator_in_List_for_EventRecord* iterator,
                                EventLists* lists,
                                IEventWriteHandler* handler);// const = 0;
 
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const = 0;
-     void (*pRemoveTypeFromStorage)(EventRecord* record, EventLists* lists);// const = 0;
+     void (*pRemoveTypeFromStorage_in_IEventType)(void *, EventRecord* record, EventLists* lists);// const = 0;
+
+  void* pParentPointer_in_IEventType;
 } IEventType;
+
+void SelectDefaultVariation_in_IEventType(IEventType *, EventRecord* record);
+uint16_t WriteSome_in_IEventType(IEventType *, 
+                              Iterator_in_List_for_EventRecord* iterator,
+                               EventLists* lists,
+                               IEventWriteHandler* handler);
+void RemoveTypeFromStorage_in_IEventType(IEventType *, EventRecord* record, EventLists* lists);
+
+void* getParentPointer_in_IEventType(IEventType*);
+void  setParentPointer_in_IEventType(IEventType*, void*);
 
    void IEventType_in_IEventType(IEventType *pIEventType, EventType_uint16_t value);
    boolean IsEqual_in_IEventType(IEventType* pIEventType, EventType_uint16_t type);

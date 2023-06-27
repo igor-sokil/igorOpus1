@@ -62,7 +62,7 @@ void  EventCollection_for_Binary_in_EventCollection_for_Binary(EventCollection_f
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_BinaryInfo variation);
-uint16_t WriteSome_in_IEventCollection_for_Binary_override(void *pIEventCollection_for_Binary, IEventWriter_for_Binary* writer);
+uint16_t WriteSome_in_EventCollection_for_Binary_override(void *pIEventCollection_for_Binary, IEventWriter_for_Binary* writer);
 boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEventCollection_for_Binary, IEventWriter_for_Binary* writer);
 //---------------------------------Binary------------------------------------------
 //---------------------------------DoubleBitBinary------------------------------------------
@@ -96,7 +96,7 @@ void  EventCollection_for_DoubleBitBinary_in_EventCollection_for_DoubleBitBinary
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_DoubleBitBinaryInfo variation);
-uint16_t WriteSome_in_IEventCollection_for_DoubleBitBinary_override(void *pIEventCollection_for_DoubleBitBinary, IEventWriter_for_DoubleBitBinary* writer);
+uint16_t WriteSome_in_EventCollection_for_DoubleBitBinary_override(void *pIEventCollection_for_DoubleBitBinary, IEventWriter_for_DoubleBitBinary* writer);
 boolean WriteOne_in_EventCollection_for_DoubleBitBinary(EventCollection_for_DoubleBitBinary *pEventCollection_for_DoubleBitBinary, IEventWriter_for_DoubleBitBinary* writer);
 //---------------------------------DoubleBitBinary------------------------------------------
 //---------------------------------Analog------------------------------------------
@@ -130,7 +130,7 @@ void  EventCollection_for_Analog_in_EventCollection_for_Analog(EventCollection_f
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_AnalogInfo variation);
-uint16_t WriteSome_in_IEventCollection_for_Analog_override(void *pIEventCollection_for_Analog, IEventWriter_for_Analog* writer);
+uint16_t WriteSome_in_EventCollection_for_Analog_override(void *pIEventCollection_for_Analog, IEventWriter_for_Analog* writer);
 boolean WriteOne_in_EventCollection_for_Analog(EventCollection_for_Analog *pEventCollection_for_Analog, IEventWriter_for_Analog* writer);
 //---------------------------------Analog------------------------------------------
 //---------------------------------Counter------------------------------------------
@@ -164,7 +164,7 @@ void  EventCollection_for_Counter_in_EventCollection_for_Counter(EventCollection
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_CounterInfo variation);
-uint16_t WriteSome_in_IEventCollection_for_Counter_override(void *pIEventCollection_for_Counter, IEventWriter_for_Counter* writer);
+uint16_t WriteSome_in_EventCollection_for_Counter_override(void *pIEventCollection_for_Counter, IEventWriter_for_Counter* writer);
 boolean WriteOne_in_EventCollection_for_Counter(EventCollection_for_Counter *pEventCollection_for_Counter, IEventWriter_for_Counter* writer);
 //---------------------------------Counter------------------------------------------
 //---------------------------------FrozenCounter------------------------------------------
@@ -198,7 +198,7 @@ void  EventCollection_for_FrozenCounter_in_EventCollection_for_FrozenCounter(Eve
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_FrozenCounterInfo variation);
-uint16_t WriteSome_in_IEventCollection_for_FrozenCounter_override(void *pIEventCollection_for_FrozenCounter, IEventWriter_for_FrozenCounter* writer);
+uint16_t WriteSome_in_EventCollection_for_FrozenCounter_override(void *pIEventCollection_for_FrozenCounter, IEventWriter_for_FrozenCounter* writer);
 boolean WriteOne_in_EventCollection_for_FrozenCounter(EventCollection_for_FrozenCounter *pEventCollection_for_FrozenCounter, IEventWriter_for_FrozenCounter* writer);
 //---------------------------------FrozenCounter------------------------------------------
 //---------------------------------BinaryOutputStatus------------------------------------------
@@ -232,7 +232,7 @@ void  EventCollection_for_BinaryOutputStatus_in_EventCollection_for_BinaryOutput
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_BinaryOutputStatusInfo variation);
-uint16_t WriteSome_in_IEventCollection_for_BinaryOutputStatus_override(void *pIEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer);
+uint16_t WriteSome_in_EventCollection_for_BinaryOutputStatus_override(void *pIEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer);
 boolean WriteOne_in_EventCollection_for_BinaryOutputStatus(EventCollection_for_BinaryOutputStatus *pEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer);
 //---------------------------------BinaryOutputStatus------------------------------------------
 //---------------------------------AnalogOutputStatus------------------------------------------
@@ -266,7 +266,7 @@ void  EventCollection_for_AnalogOutputStatus_in_EventCollection_for_AnalogOutput
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_AnalogOutputStatusInfo variation);
-uint16_t WriteSome_in_IEventCollection_for_AnalogOutputStatus_override(void *pIEventCollection_for_AnalogOutputStatus, IEventWriter_for_AnalogOutputStatus* writer);
+uint16_t WriteSome_in_EventCollection_for_AnalogOutputStatus_override(void *pIEventCollection_for_AnalogOutputStatus, IEventWriter_for_AnalogOutputStatus* writer);
 boolean WriteOne_in_EventCollection_for_AnalogOutputStatus(EventCollection_for_AnalogOutputStatus *pEventCollection_for_AnalogOutputStatus, IEventWriter_for_AnalogOutputStatus* writer);
 //---------------------------------AnalogOutputStatus------------------------------------------
 //---------------------------------OctetString------------------------------------------
@@ -300,7 +300,7 @@ void  EventCollection_for_OctetString_in_EventCollection_for_OctetString(EventCo
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventClassCounters* counters,
     event_variation_t_in_OctetStringInfo variation);
-uint16_t WriteSome_in_IEventCollection_for_OctetString_override(void *pIEventCollection_for_OctetString, IEventWriter_for_OctetString* writer);
+uint16_t WriteSome_in_EventCollection_for_OctetString_override(void *pIEventCollection_for_OctetString, IEventWriter_for_OctetString* writer);
 boolean WriteOne_in_EventCollection_for_OctetString(EventCollection_for_OctetString *pEventCollection_for_OctetString, IEventWriter_for_OctetString* writer);
 //---------------------------------OctetString------------------------------------------
 

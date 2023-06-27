@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "header.h"
 #include "EventBuffer.h"
 
 #include "ASDUEventWriteHandler.h"
@@ -29,7 +30,7 @@ void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfi
   EventBuffer_in_EventBufferOver1(pEventBuffer);
 //void EventStorage_in_EventStorage(EventStorage *pEventStorage, EventBufferConfig* config);
 //// : storage(config) {}
-  EventStorage_in_EventStorage(pEventBuffer->storage, config);
+  EventStorage_in_EventStorage(&(pEventBuffer->storage), config);
 }
 
 ////void EventBuffer::Update(const Event<BinarySpec>& evt)
@@ -171,7 +172,7 @@ void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfi
 }
 
 ////IINField EventBuffer::SelectAll(GroupVariation gv)
-     IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint8_t gv)
+     IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv)
 {
 //    IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint8_t gv, uint32_t maximum);
 ////    return SelectMaxCount(gv, std::numeric_limits<uint32_t>::max());
@@ -184,7 +185,7 @@ IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation gv
     return SelectMaxCount_in_EventBuffer(pEventBuffer, gv, count);
 }
 
-IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation gv, uint32_t maximum)
+IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint32_t maximum)
 {
     switch (gv)
     {
@@ -201,17 +202,18 @@ IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation
         return SelectByType_BinarySpec_in_EventBuffer(pEventBuffer, maximum, EventBinaryVariation_Group2Var3);
 ////        return this->SelectByType(maximum, EventBinaryVariation::Group2Var3);
 
+// IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBinaryVariation_uint8_t type);
     case (GroupVariation_Group4Var0):
-        return SelectByType_DoubleBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventType_DoubleBitBinary);
+        return SelectByType_DoubleBitBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventType_DoubleBitBinary);
 ////        return this->SelectByType(maximum, EventType::DoubleBitBinary);
     case (GroupVariation_Group4Var1):
-        return SelectByType_DoubleBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var1);
+        return SelectByType_DoubleBitBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var1);
 ////        return this->SelectByType(maximum, EventDoubleBinaryVariation::Group4Var1);
     case (GroupVariation_Group4Var2):
-        return SelectByType_DoubleBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var2);
+        return SelectByType_DoubleBitBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var2);
 ////        return this->SelectByType(maximum, EventDoubleBinaryVariation::Group4Var2);
     case (GroupVariation_Group4Var3):
-        return SelectByType_DoubleBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var3);
+        return SelectByType_DoubleBitBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var3);
 ////        return this->SelectByType(maximum, EventDoubleBinaryVariation::Group4Var3);
 
     case (GroupVariation_Group11Var0):
@@ -285,7 +287,8 @@ IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var8);
 
     case (GroupVariation_Group42Var0):
-        return this->SelectByType(maximum, EventType::AnalogOutputStatus);
+////        return this->SelectByType(maximum, EventType::AnalogOutputStatus);
+        return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventType_AnalogOutputStatus);
     case (GroupVariation_Group42Var1):
         return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var1);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var1);
@@ -327,7 +330,13 @@ IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation
 ////        return this->SelectByType(maximum, EventOctetStringVariation::Group111Var0);
 
     default:
-        return IINBit_FUNC_NOT_SUPPORTED;
+{
+//   void IINField_in_IINFieldOver2(IINField *pIINField, IINBit_uint8_t bit);
+//        return IINBit_FUNC_NOT_SUPPORTED;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
+    return iIINField;
+}
     }
 }
 
@@ -341,44 +350,64 @@ boolean HasAnySelection_in_EventBuffer(EventBuffer *pEventBuffer)
 
 boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer)
 {
-MYTODO
+//void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer);
 ////    ASDUEventWriteHandler handler(writer);
-    this->storage.Write(handler);
+    ASDUEventWriteHandler handler;
+    ASDUEventWriteHandler_in_ASDUEventWriteHandler(&handler, writer);
+//    uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler);
+////    this->storage.Write(handler);
+    Write_in_EventStorage(&(pEventBuffer->storage), &(handler.iIEventWriteHandler));
     // all selected events were written?
-    return this->storage.NumSelected() == 0;
+//    uint32_t NumSelected_in_EventStorage(EventStorage *pEventStorage);
+//    return this->storage.NumSelected() == 0;
+    return NumSelected_in_EventStorage(&(pEventBuffer->storage)) == 0;
 }
 
-ClassField EventBuffer::UnwrittenClassField() const
+ClassField UnwrittenClassField_in_EventBuffer(EventBuffer *pEventBuffer)
 {
-    return ClassField(false, storage.NumUnwritten(EventClass::EC1) > 0, storage.NumUnwritten(EventClass::EC2) > 0,
-                      storage.NumUnwritten(EventClass::EC3) > 0);
+    ClassField cClassField;
+//  void ClassField_in_ClassFieldOver5(ClassField *pClassField, boolean class0, boolean class1, boolean class2, boolean class3);
+//    uint32_t NumUnwritten_in_EventStorage(EventStorage *pEventStorage, EventClass_uint8_t clazz);
+////    return ClassField(false, storage.NumUnwritten(EventClass::EC1) > 0, storage.NumUnwritten(EventClass::EC2) > 0,
+////                      storage.NumUnwritten(EventClass::EC3) > 0);
+   ClassField_in_ClassFieldOver5(&cClassField, false,
+                                             NumUnwritten_in_EventStorage(&(pEventBuffer->storage), EventClass_EC1) > 0,
+                                             NumUnwritten_in_EventStorage(&(pEventBuffer->storage), EventClass_EC2) > 0,
+                                             NumUnwritten_in_EventStorage(&(pEventBuffer->storage), EventClass_EC3) > 0);
+  return cClassField;
 }
 
-bool EventBuffer::IsOverflown()
+boolean IsOverflown_in_EventBuffer(EventBuffer *pEventBuffer)
 {
-    if (overflow && !this->storage.IsAnyTypeFull())
+//    boolean IsAnyTypeFull_in_EventStorage(EventStorage *pEventStorage);
+////    if (overflow && !this->storage.IsAnyTypeFull())
+    if (pEventBuffer->overflow && !IsAnyTypeFull_in_EventStorage(&(pEventBuffer->storage)))
     {
-        overflow = false;
+        pEventBuffer->overflow = false;
     }
 
-    return overflow;
+    return pEventBuffer->overflow;
 }
 
-void EventBuffer::SelectAllByClass(const ClassField& clazz)
+void SelectAllByClass_in_EventBuffer(EventBuffer *pEventBuffer, ClassField* clazz)
 {
 //    uint32_t SelectByClass_in_EventStorageOver3(EventStorage *pEventStorage, ClassField* clazz);
 ////    this->storage.SelectByClass(clazz);
-      SelectByClass_in_EventStorageOver3();
+      SelectByClass_in_EventStorageOver3(&(pEventBuffer->storage), clazz);
 }
 
-void EventBuffer::ClearWritten()
+void ClearWritten_in_EventBuffer(EventBuffer *pEventBuffer)
 {
-    this->storage.ClearWritten();
+//    uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage);
+////    this->storage.ClearWritten();
+    ClearWritten_in_EventStorage(&(pEventBuffer->storage));
 }
 
-uint32_t EventBuffer::NumEvents(EventClass ec) const
+uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t ec) 
 {
-    return this->storage.NumUnwritten(ec);
+//    uint32_t NumUnwritten_in_EventStorage(EventStorage *pEventStorage, EventClass_uint8_t clazz);
+////    return this->storage.NumUnwritten(ec);
+    return NumUnwritten_in_EventStorage(&(pEventBuffer->storage), ec);
 }
 
 ////} // namespace opendnp3
@@ -392,15 +421,15 @@ uint32_t EventBuffer::NumEvents(EventClass ec) const
     {
 //    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
 ////        this->storage.SelectByType(type, max);
-           SelectByType_EventBinary_in_EventStorage(&(pEventBuffer->storage), type, max);
+           SelectByType_BinarySpec_in_EventStorage(&(pEventBuffer->storage), type, max);
 ////        return IINField::Empty();
            return Empty_in_IINField_static();
     }
-      IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBitBinaryVariation_uint8_t type)
+      IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBinaryVariation_uint8_t type)
     {
 //    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
 ////        this->storage.SelectByType(type, max);
-           SelectByType_EventDoubleBitBinary_in_EventStorage(&(pEventBuffer->storage), type, max);
+           SelectByType_DoubleBitBinarySpec_in_EventStorage(&(pEventBuffer->storage), type, max);
 ////        return IINField::Empty();
            return Empty_in_IINField_static();
     }
@@ -408,7 +437,7 @@ uint32_t EventBuffer::NumEvents(EventClass ec) const
     {
 //    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
 ////        this->storage.SelectByType(type, max);
-           SelectByType_EventAnalog_in_EventStorage(&(pEventBuffer->storage), type, max);
+           SelectByType_AnalogSpec_in_EventStorage(&(pEventBuffer->storage), type, max);
 ////        return IINField::Empty();
            return Empty_in_IINField_static();
     }
@@ -416,7 +445,7 @@ uint32_t EventBuffer::NumEvents(EventClass ec) const
     {
 //    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
 ////        this->storage.SelectByType(type, max);
-           SelectByType_EventCounter_in_EventStorage(&(pEventBuffer->storage), type, max);
+           SelectByType_CounterSpec_in_EventStorage(&(pEventBuffer->storage), type, max);
 ////        return IINField::Empty();
            return Empty_in_IINField_static();
     }
@@ -424,7 +453,7 @@ uint32_t EventBuffer::NumEvents(EventClass ec) const
     {
 //    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
 ////        this->storage.SelectByType(type, max);
-           SelectByType_EventFrozenCounter_in_EventStorage(&(pEventBuffer->storage), type, max);
+           SelectByType_FrozenCounterSpec_in_EventStorage(&(pEventBuffer->storage), type, max);
 ////        return IINField::Empty();
            return Empty_in_IINField_static();
     }
@@ -432,7 +461,7 @@ uint32_t EventBuffer::NumEvents(EventClass ec) const
     {
 //    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
 ////        this->storage.SelectByType(type, max);
-           SelectByType_EventBinaryOutputStatus_in_EventStorage(&(pEventBuffer->storage), type, max);
+           SelectByType_BinaryOutputStatusSpec_in_EventStorage(&(pEventBuffer->storage), type, max);
 ////        return IINField::Empty();
            return Empty_in_IINField_static();
     }
@@ -440,7 +469,7 @@ uint32_t EventBuffer::NumEvents(EventClass ec) const
     {
 //    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
 ////        this->storage.SelectByType(type, max);
-           SelectByType_EventAnalogOutputStatus_in_EventStorage(&(pEventBuffer->storage), type, max);
+           SelectByType_AnalogOutputStatusSpec_in_EventStorage(&(pEventBuffer->storage), type, max);
 ////        return IINField::Empty();
            return Empty_in_IINField_static();
     }
@@ -448,7 +477,7 @@ uint32_t EventBuffer::NumEvents(EventClass ec) const
     {
 //    uint32_t SelectByType_EventBinary_in_EventStorage(EventStorage *pEventStorage, EventBinaryVariation_uint8_t variation, uint32_t max);
 ////        this->storage.SelectByType(type, max);
-           SelectByType_EventOctetString_in_EventStorage(&(pEventBuffer->storage), type, max);
+           SelectByType_OctetStringSpec_in_EventStorage(&(pEventBuffer->storage), type, max);
 ////        return IINField::Empty();
            return Empty_in_IINField_static();
     }

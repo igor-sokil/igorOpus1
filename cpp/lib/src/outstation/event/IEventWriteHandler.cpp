@@ -241,11 +241,11 @@ uint16_t Write_for_Binary_in_IEventWriteHandler(IEventWriteHandler *pIEventWrite
   return (pIEventWriteHandler->pWrite_for_Binary_in_IEventWriteHandler)(pIEventWriteHandler, variation, first, items);
 }
 
-uint16_t Write_for_DoubleBinary_in_IEventWriteHandler(IEventWriteHandler *pIEventWriteHandler, EventDoubleBinaryVariation_uint8_t variation,
+uint16_t Write_for_DoubleBitBinary_in_IEventWriteHandler(IEventWriteHandler *pIEventWriteHandler, EventDoubleBinaryVariation_uint8_t variation,
     DoubleBitBinary* first,
     IEventCollection_for_DoubleBitBinary* items)
 {
-  return (pIEventWriteHandler->pWrite_for_DoubleBinary_in_IEventWriteHandler)(pIEventWriteHandler, variation,
+  return (pIEventWriteHandler->pWrite_for_DoubleBitBinary_in_IEventWriteHandler)(pIEventWriteHandler, variation,
          first,
          items);
 }

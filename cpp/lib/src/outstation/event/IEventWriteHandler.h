@@ -286,7 +286,7 @@ typedef struct
   uint16_t (*pWrite_for_Binary_in_IEventWriteHandler)(void *, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);//// = 0;
 
 ////  virtual
-  uint16_t (*pWrite_for_DoubleBinary_in_IEventWriteHandler)(void *, EventDoubleBinaryVariation_uint8_t variation,
+  uint16_t (*pWrite_for_DoubleBitBinary_in_IEventWriteHandler)(void *, EventDoubleBinaryVariation_uint8_t variation,
       DoubleBitBinary* first,
       IEventCollection_for_DoubleBitBinary* items);
 ////    = 0;
@@ -320,7 +320,7 @@ typedef struct
 
 uint16_t Write_for_Binary_in_IEventWriteHandler(IEventWriteHandler *, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);
 
-uint16_t Write_for_DoubleBinary_in_IEventWriteHandler(IEventWriteHandler *, EventDoubleBinaryVariation_uint8_t variation,
+uint16_t Write_for_DoubleBitBinary_in_IEventWriteHandler(IEventWriteHandler *, EventDoubleBinaryVariation_uint8_t variation,
     DoubleBitBinary* first,
     IEventCollection_for_DoubleBitBinary* items);
 
