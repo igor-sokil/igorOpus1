@@ -1,17 +1,20 @@
 
 INCLUDEPATH  += ..\..\..\qtsrc
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\app
+INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\app\parsing
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\gen
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\master
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\outstation
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\util
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\link
+INCLUDEPATH  += ..\..\..\cpp\lib\src
 INCLUDEPATH  += ..\..\..\cpp\lib\src\app
 INCLUDEPATH  += ..\..\..\cpp\lib\src\app\parsing
 INCLUDEPATH  += ..\..\..\cpp\lib\src\link
-INCLUDEPATH  += ..\..\..\cpp\lib\src\outstation
+INCLUDEPATH  += ..\..\..\cpp\lib\src\util
 INCLUDEPATH  += ..\..\..\cpp\lib\src\outstation\event
-INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\link
+INCLUDEPATH  += ..\..\..\cpp\lib\src\outstation\event
+INCLUDEPATH  += ..\..\..\cpp\lib\src\outstation
 
 INCLUDEPATH  += ..\..\..\cpp\lib\src\gen
 INCLUDEPATH  += ..\..\..\cpp\lib\src\gen\objects
@@ -95,7 +98,22 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\app\OctetString.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\app\Indexed.cpp \
                 \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection.cpp \
+                \
+                ..\..\..\cpp\lib\include\opendnp3\link\LinkConfig.cpp \
+                \
+                ..\..\..\cpp\lib\include\opendnp3\outstation\OutstationParams.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\outstation\OutstationConfig.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\outstation\StaticTypeBitfield.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\outstation\IDnpTimeSource.cpp \
+                \
+                ..\..\..\cpp\lib\src\LayerInterfaces.cpp \
+                ..\..\..\cpp\lib\src\SequenceNum.cpp \
+                \
                 ..\..\..\cpp\lib\src\link\Addresses.cpp \
+                ..\..\..\cpp\lib\src\link\CRC.cpp \
+                ..\..\..\cpp\lib\src\link\LinkHeader.cpp \
+                ..\..\..\cpp\lib\src\link\LinkFrame.cpp \
                 \
                 ..\..\..\cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 ..\..\..\cpp\lib\src\app\parsing\ParseResult.cpp \
@@ -109,9 +127,11 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\app\APDUResponse.cpp \
                 ..\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp \
                 ..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp \
-                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Binary.cpp \
-                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt16_Analog.cpp \
-                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_UInt8_Analog.cpp \
+                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_Analog.cpp \
+                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_AnalogOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_Binary.cpp \
+                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_BinaryOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\app\CountWriteIterator_for_DoubleBitBinary.cpp \
                 ..\..\..\cpp\lib\src\app\ClassField.cpp \
                 ..\..\..\cpp\lib\src\app\ControlRelayOutputBlock.cpp \
                 ..\..\..\cpp\lib\src\app\DNP3Serializer.cpp \
@@ -119,6 +139,14 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\app\EventTriggers.cpp \
                 ..\..\..\cpp\lib\src\app\Functions.cpp \
                 ..\..\..\cpp\lib\src\app\HeaderWriter.cpp \
+                ..\..\..\cpp\lib\src\app\HeaderWriter_for_Analog.cpp \
+                ..\..\..\cpp\lib\src\app\HeaderWriter_for_AnalogOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\app\HeaderWriter_for_Binary.cpp \
+                ..\..\..\cpp\lib\src\app\HeaderWriter_for_BinaryOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\app\HeaderWriter_for_DoubleBitBinary.cpp \
+                ..\..\..\cpp\lib\src\app\HeaderWriter_for_Counter.cpp \
+                ..\..\..\cpp\lib\src\app\HeaderWriter_for_FrozenCounter.cpp \
+                ..\..\..\cpp\lib\src\app\HeaderWriter_for_OctetString.cpp \
                 ..\..\..\cpp\lib\src\app\GroupVariationRecord.cpp \
                 ..\..\..\cpp\lib\src\app\MeasurementInfo.cpp \
                 ..\..\..\cpp\lib\src\app\MeasurementTypeSpecs.cpp \
@@ -127,17 +155,47 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\app\range.cpp \
                 ..\..\..\cpp\lib\src\app\OctetData.cpp \
                 ..\..\..\cpp\lib\src\app\QualityFlags.cpp \
-                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_OctetString.cpp \
-                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_UInt16_Binary.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_Analog.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_AnalogOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_Binary.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_BinaryOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_DoubleBitBinary.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_Counter.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_FrozenCounter.cpp \
+                ..\..\..\cpp\lib\src\app\PrefixedWriteIterator_for_OctetString.cpp \
                 ..\..\..\cpp\lib\src\app\Serializer.cpp \
-                ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Binary.cpp \
-                ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_UInt8_Counter.cpp \
+                ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_Binary.cpp \
+                ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_BinaryOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_DoubleBitBinary.cpp \
+                ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_Counter.cpp \
+                ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_FrozenCounter.cpp \
+                ..\..\..\cpp\lib\src\app\RangeWriteIterator_for_OctetString.cpp \
                 ..\..\..\cpp\lib\src\app\DownSampling.cpp \
                 \
+                ..\..\..\cpp\lib\src\outstation\Database.cpp \
+                ..\..\..\cpp\lib\src\outstation\DeferredRequest.cpp \
+                ..\..\..\cpp\lib\src\outstation\ControlState.cpp \
                 ..\..\..\cpp\lib\src\outstation\Event.cpp \
                 ..\..\..\cpp\lib\src\outstation\EventBufferConfig.cpp \
+                ..\..\..\cpp\lib\src\outstation\IClassAssigner.cpp \
+                ..\..\..\cpp\lib\src\outstation\IEventReceiver.cpp \
+                ..\..\..\cpp\lib\src\outstation\IEventSelector.cpp \
+                ..\..\..\cpp\lib\src\outstation\IResponseLoader.cpp \
+                ..\..\..\cpp\lib\src\outstation\IStaticSelector.cpp \
+                ..\..\..\cpp\lib\src\outstation\ParsedRequest.cpp \
+                ..\..\..\cpp\lib\src\outstation\ResponseContext.cpp \
+                ..\..\..\cpp\lib\src\outstation\RequestHistory.cpp \
+                ..\..\..\cpp\lib\src\outstation\SimpleCommandHandler.cpp \
+                ..\..\..\cpp\lib\src\outstation\TimeSyncState.cpp \
+                ..\..\..\cpp\lib\src\outstation\NumRetries.cpp \
+                ..\..\..\cpp\lib\src\outstation\OctetStringSerializer.cpp \
                 \
+                ..\..\..\cpp\lib\src\util\TimeDuration.cpp \
+                ..\..\..\cpp\lib\src\util\Timestamp.cpp \
+                \
+                ..\..\..\cpp\lib\src\outstation\event\ASDUEventWriteHandler.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\ClazzCount.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventBuffer.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\EventCollection.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\EventLists.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\EventRecord.cpp \
@@ -146,7 +204,16 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\EventTypeImpl.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\EventUpdate.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\EventWriting.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_Analog.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_AnalogOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_Binary.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_BinaryOutputStatus.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_Counter.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_FrozenCounter.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_DoubleBitBinary.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_OctetString.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\IEventType.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\IEventWriteHandler.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\TypedStorage.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
@@ -174,15 +241,21 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\gen\CommandStatus.cpp \
                 ..\..\..\cpp\lib\src\gen\IntervalUnits.cpp \
                 ..\..\..\cpp\lib\src\gen\FunctionCode.cpp \
+                ..\..\..\cpp\lib\src\gen\LinkFunction.cpp \
                 \
-                ..\..\..\cpp\lib\src\gen\objects\Group60.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group1.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group2.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group4.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group11.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group20.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group22.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group23.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group30.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group32.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group42.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group50.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group51.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group60.cpp \
                 \
                 ..\..\..\cpp\tests\unit\utils\APDUHelpers.cpp 
 

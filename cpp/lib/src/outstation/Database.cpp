@@ -17,9 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include "header.h"
+#include <QApplication>
+#include "header.h"
 //#define uint64_t  long long
-#define boolean  int
+//#define boolean  int
 #include "Database.h"
 
 ////#include "outstation/StaticWriters.h"

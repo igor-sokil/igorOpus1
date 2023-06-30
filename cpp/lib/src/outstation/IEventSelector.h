@@ -38,7 +38,15 @@ typedef struct
      IINField (*pSelectAll_in_IEventSelector)(void*, GroupVariation_uint16_t gv);// = 0;
 
      IINField (*pSelectCount_in_IEventSelector)(void*, GroupVariation_uint16_t gv, uint16_t count);// = 0;
+
+  void* pParentPointer_in_IEventSelector;
 } IEventSelector;
+
+IINField SelectAll_in_IEventSelector(IEventSelector *, GroupVariation_uint16_t gv);
+IINField SelectCount_in_IEventSelector(IEventSelector *, GroupVariation_uint16_t gv, uint16_t count);
+
+void* getParentPointer_in_IEventSelector(IEventSelector*);
+void  setParentPointer_in_IEventSelector(IEventSelector*, void*);
 
 ////} // namespace opendnp3
 

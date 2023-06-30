@@ -53,7 +53,21 @@ typedef struct
      void (*pUpdate_AnalogOutputStatusSpec_in_IEventReceiver)(void*, Event_for_AnalogOutputStatusSpec* evt);// = 0;
 
      void (*pUpdateOctetStringSpec_in_IEventReceiver)(void*, Event_for_OctetStringSpec* evt);// = 0;
+
+  void* pParentPointer_in_IEventReceiver;
 } IEventReceiver;
+
+void Update_BinarySpec_in_IEventReceiver(IEventReceiver *, Event_for_BinarySpec* evt);
+void Update_DoubleBitBinarySpec_in_IEventReceiver(IEventReceiver *, Event_for_DoubleBitBinarySpec* evt);
+void Update_AnalogSpec_in_IEventReceiver(IEventReceiver *, Event_for_AnalogSpec* evt);
+void Update_CounterSpec_in_IEventReceiver(IEventReceiver *, Event_for_CounterSpec* evt);
+void Update_FrozenCounterSpec_in_IEventReceiver(IEventReceiver *, Event_for_FrozenCounterSpec* evt);
+void Update_BinaryOutputStatusSpec_in_IEventReceiver(IEventReceiver *, Event_for_BinaryOutputStatusSpec* evt);
+void Update_AnalogOutputStatusSpec_in_IEventReceiver(IEventReceiver *, Event_for_AnalogOutputStatusSpec* evt);
+void UpdateOctetStringSpec_in_IEventReceiver(IEventReceiver *, Event_for_OctetStringSpec* evt);
+
+void* getParentPointer_in_IEventReceiver(IEventReceiver*);
+void  setParentPointer_in_IEventReceiver(IEventReceiver*, void*);
 
 ////} // namespace opendnp3
 

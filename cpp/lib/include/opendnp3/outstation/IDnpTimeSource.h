@@ -33,7 +33,7 @@
 typedef struct
 {
 
-  DNPTime (*pNow_in_IDnpTimeSource_static)(void);
+  DNPTime (*pNow_in_IDnpTimeSource_static)(void*);
 ////public:
   /**
    * Returns a DNPTime of the current time.
@@ -43,10 +43,15 @@ typedef struct
 ////    {
 ////        return DNPTime(0, TimestampQuality::INVALID);
 ////    }
+
+  void* pParentPointer_in_IDnpTimeSource;
 } IDnpTimeSource;
 
-DNPTime Now_in_IDnpTimeSource_static(void);
+DNPTime Now_in_IDnpTimeSource_static(void*);
 void IDnpTimeSource_in_IDnpTimeSource(IDnpTimeSource *pIDnpTimeSource);
+
+void* getParentPointer_in_IDnpTimeSource(IDnpTimeSource*);
+void  setParentPointer_in_IDnpTimeSource(IDnpTimeSource*, void*);
 
 
 ////} // namespace opendnp3

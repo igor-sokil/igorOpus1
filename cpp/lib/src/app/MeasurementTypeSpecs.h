@@ -26,11 +26,10 @@
 ////#include "opendnp3/outstation/MeasurementConfig.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>
-
-#include "EventCells.h"
 #include "EventTriggers.h"
 #include "OctetString.h"
 #include "MeasurementConfig.h"
+#include "EventCells.h"
 
 #include "RSeq.h"
 
@@ -42,7 +41,7 @@
 ////struct BinarySpec : public BinaryInfo
 ////typedef struct
 ////{
-#define meas_t_in_BinarySpec  meas_t_in_BinaryInfo       
+#define meas_t_in_BinarySpec  meas_t_in_BinaryInfo
 
 ////    typedef BinaryConfig config_t;
 ////    typedef SimpleEventCell<BinarySpec> event_cell_t;
@@ -57,10 +56,10 @@
 ////        return old_value.flags.value != new_value.flags.value;
 ////    }
 ////} BinarySpec;
-    boolean IsQualityOnlineOnly_in_BinarySpec_static(Binary *binary);
-    boolean IsEvent_in_BinarySpec_static(Binary *old_value, 
-                                         Binary *new_value, 
-                                         BinaryConfig_for_EventConfig_for_BinaryInfo *config);////const config_t& config)
+boolean IsQualityOnlineOnly_in_BinarySpec_static(Binary *binary);
+boolean IsEvent_in_BinarySpec_static(Binary *old_value,
+                                     Binary *new_value,
+                                     BinaryConfig_for_EventConfig_for_BinaryInfo *config);////const config_t& config)
 
 ////struct DoubleBitBinarySpec : public DoubleBitBinaryInfo
 ////{
@@ -74,9 +73,9 @@
 ////        return old_value.flags.value != new_value.flags.value;
 ////    }
 ////};
-    boolean IsEvent_in_DoubleBitBinarySpec_static(DoubleBitBinary *old_value,
-                               DoubleBitBinary *new_value,
-                               DoubleBitBinaryConfig_for_EventConfig_for_DoubleBitBinaryInfo  *config);////const config_t& config)
+boolean IsEvent_in_DoubleBitBinarySpec_static(DoubleBitBinary *old_value,
+    DoubleBitBinary *new_value,
+    DoubleBitBinaryConfig_for_EventConfig_for_DoubleBitBinaryInfo  *config);////const config_t& config)
 
 
 ////struct BinaryOutputStatusSpec : public BinaryOutputStatusInfo
@@ -91,9 +90,9 @@
 ////        return old_value.flags.value != new_value.flags.value;
 ////    }
 ////};
-    boolean IsEvent_in_BinaryOutputStatusSpec_static(BinaryOutputStatus *old_value,
-                               BinaryOutputStatus *new_value,
-                               BOStatusConfig_for_EventConfig_for_BinaryOutputStatusInfo *config);////const config_t& config)
+boolean IsEvent_in_BinaryOutputStatusSpec_static(BinaryOutputStatus *old_value,
+    BinaryOutputStatus *new_value,
+    BOStatusConfig_for_EventConfig_for_BinaryOutputStatusInfo *config);////const config_t& config)
 
 
 ////struct AnalogSpec : public AnalogInfo
@@ -106,10 +105,10 @@
 ////        return measurements::IsEvent(new_value, old_value, config.deadband);
 ////    }
 ////};
-    boolean IsEvent_in_AnalogSpec_for_AnalogInfo_static(
-                                         Analog *old_value,
-                                         Analog *new_value,
-                                         AnalogConfig_for_DeadbandConfig_for_AnalogInfo *config);////const config_t& config)
+boolean IsEvent_in_AnalogSpec_for_AnalogInfo_static(
+  Analog *old_value,
+  Analog *new_value,
+  AnalogConfig_for_DeadbandConfig_for_AnalogInfo *config);////const config_t& config)
 
 ////struct CounterSpec : public CounterInfo
 ////{
@@ -129,10 +128,10 @@
 ////    }
 ////};
 //CounterConfig_for_DeadbandConfig_for_CounterInfo
-    boolean IsEvent_in_CounterSpec_for_CounterInfo_static(
-                                                        Counter *old_value,
-                                                        Counter *new_value, 
-                                                        CounterConfig_for_DeadbandConfig_for_CounterInfo *config);////const config_t& config)
+boolean IsEvent_in_CounterSpec_for_CounterInfo_static(
+  Counter *old_value,
+  Counter *new_value,
+  CounterConfig_for_DeadbandConfig_for_CounterInfo *config);////const config_t& config)
 
 
 ////struct FrozenCounterSpec : public FrozenCounterInfo
@@ -152,10 +151,10 @@
 ////        }
 ////    }
 ////};
-    boolean IsEvent_in_FrozenCounterSpec_for_FrozenCounterInfo_static(
-                                                        FrozenCounter *old_value,
-                                                        FrozenCounter *new_value, 
-                                                        FrozenCounterConfig_for_DeadbandConfig_for_FrozenCounterInfo *config);////const config_t& config)
+boolean IsEvent_in_FrozenCounterSpec_for_FrozenCounterInfo_static(
+  FrozenCounter *old_value,
+  FrozenCounter *new_value,
+  FrozenCounterConfig_for_DeadbandConfig_for_FrozenCounterInfo *config);////const config_t& config)
 
 ////struct AnalogOutputStatusSpec : public AnalogOutputStatusInfo
 ////{
@@ -169,10 +168,10 @@
 ////        return measurements::IsEvent(new_value, old_value, config.deadband);
 ////    }
 ////};
-    boolean IsEvent_in_AnalogOutputStatusSpec_for_AnalogOutputStatusInfo_static(
-                               AnalogOutputStatus *old_value,
-                               AnalogOutputStatus *new_value,
-                               AOStatusConfig_for_DeadbandConfig_for_AnalogOutputStatusInfo *config);//const config_t& config)
+boolean IsEvent_in_AnalogOutputStatusSpec_for_AnalogOutputStatusInfo_static(
+  AnalogOutputStatus *old_value,
+  AnalogOutputStatus *new_value,
+  AOStatusConfig_for_DeadbandConfig_for_AnalogOutputStatusInfo *config);//const config_t& config)
 
 ////struct OctetStringSpec : public OctetStringInfo
 ////{
@@ -190,10 +189,10 @@
 ////};
 
 ////    inline static bool IsEvent(const OctetString& old_value, const OctetString& new_value, const config_t& config)
-    boolean IsEvent_in_OctetStringSpec_for_OctetStringInfo_static(
-                               OctetString *old_value,
-                               OctetString *new_value,
-                               void *config);//const config_t& config)
+boolean IsEvent_in_OctetStringSpec_for_OctetStringInfo_static(
+  OctetString *old_value,
+  OctetString *new_value,
+  void *config);//const config_t& config)
 
 
 ////struct TimeAndIntervalSpec : public TimeAndIntervalInfo

@@ -41,6 +41,11 @@ AppControlField Request_in_AppControlField_static(uint8_t seq)
   return appControlField;
 }
 
+void AppControlField_in_AppControlFieldOver3(AppControlField *pAppControlField, boolean fir, boolean fin, boolean con, boolean uns)
+{
+ AppControlField_in_AppControlFieldOver4(pAppControlField, fir, fin, con, uns, 0);
+}
+
 void AppControlField_in_AppControlFieldOver4(AppControlField *pAppControlField, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq)
 {
   pAppControlField->FIR = fir;

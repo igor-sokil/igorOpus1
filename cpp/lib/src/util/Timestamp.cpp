@@ -112,6 +112,10 @@ boolean  operatorEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
 ////{
 ////    return this->value < other.value;
 ////}
+boolean  operatorLT_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
+{
+    return pTimestamp->time_point_value < other->time_point_value;
+}
 
 ////bool Timestamp::operator<=(const Timestamp& other) const
 boolean  operatorLTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)

@@ -20,34 +20,38 @@
 #ifndef OPENDNP3_APPLICATIONIIN_H
 #define OPENDNP3_APPLICATIONIIN_H
 
-#include "opendnp3/app/IINField.h"
+////#include "opendnp3/app/IINField.h"
+#include "IINField.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
     Some IIN bits are necessarily controlled by the outstation application,
     not the underlying protocol stack. This structure describes the state of
     the bits controllable by the application.
 */
-class ApplicationIIN
+////class ApplicationIIN
+typedef struct
 {
 
-public:
-    ApplicationIIN() = default;
+////public:
+////    ApplicationIIN() = default;
 
     // flags normally controlled by the application, not the stack
-    bool needTime = false;
-    bool localControl = false;
-    bool deviceTrouble = false;
-    bool configCorrupt = false;
+    boolean needTime;// = false;
+    boolean localControl;// = false;
+    boolean deviceTrouble;// = false;
+    boolean configCorrupt;// = false;
 
     // this is only for appliactions that have an additional external event buffer that can overflow
-    bool eventBufferOverflow = false;
+    boolean eventBufferOverflow;// = false;
 
-    IINField ToIIN() const;
-};
+////    IINField ToIIN() const;
+} ApplicationIIN;
 
-} // namespace opendnp3
+ void ApplicationIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN);
+ IINField ToIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN);
+////} // namespace opendnp3
 
 #endif

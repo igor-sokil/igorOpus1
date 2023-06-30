@@ -38,23 +38,7 @@ TEST_CASE(SUITE("UnsupportedFunction"))
 }
 */
     OutstationConfig config;
-    OutstationTestObject t(config);
-/*
-    BufferSer4 buffer;
-    BufferSer4_in_BufferSer4Over2(&buffer, MAX_BufferSer4);
-
-    WSeq_for_Uint16_t write = as_wslice_in_BufferSer4(&buffer);
-//    RSeq_for_Uint16_t FormatRequestLinkStatus_in_LinkFrame_static(
-//        WSeq_for_Uint16_t* buffer, boolean aIsMaster, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
-////    auto wrapper = LinkFrame::FormatRequestLinkStatus(write, false, 1, 1024, nullptr);
-    RSeq_for_Uint16_t rseq = FormatRequestLinkStatus_in_LinkFrame_static(
-        &write, false, 1, 1024);//, Logger* pLogger);
-
-    qDebug()<<"REQUIRE(HexConversions::to_hex(wrapper) == '05 64 05 49 01 00 00 04 D2 36')";
-     qDebug()<<"rseq.buffer_[0]= "<<hex<<rseq.buffer_[0] <<hex<<rseq.buffer_[1] <<hex<<rseq.buffer_[2] <<hex<<rseq.buffer_[3]
-                                  <<hex<<rseq.buffer_[4] <<hex<<rseq.buffer_[5] <<hex<<rseq.buffer_[6] <<hex<<rseq.buffer_[7]
-                                  <<hex<<rseq.buffer_[8] <<hex<<rseq.buffer_[9];
-*/
+//    OutstationTestObject t(config);
 
   MainWindow mainWindowObj;
   mainWindow = &mainWindowObj;

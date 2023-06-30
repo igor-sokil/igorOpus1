@@ -19,25 +19,57 @@
  */
 #include "OutstationContext.h"
 
-#include "app/APDUBuilders.h"
-#include "app/APDULogging.h"
-#include "app/Functions.h"
-#include "app/parsing/APDUHeaderParser.h"
-#include "app/parsing/APDUParser.h"
-#include "logging/LogMacros.h"
-#include "outstation/AssignClassHandler.h"
-#include "outstation/ClassBasedRequestHandler.h"
-#include "outstation/CommandActionAdapter.h"
-#include "outstation/CommandResponseHandler.h"
-#include "outstation/ConstantCommandAction.h"
-#include "outstation/FreezeRequestHandler.h"
-#include "outstation/IINHelpers.h"
-#include "outstation/ReadHandler.h"
-#include "outstation/WriteHandler.h"
+////#include "app/APDUBuilders.h"
+////#include "app/APDULogging.h"
+////#include "app/Functions.h"
+////#include "app/parsing/APDUHeaderParser.h"
+////#include "app/parsing/APDUParser.h"
+////#include "logging/LogMacros.h"
+////#include "outstation/AssignClassHandler.h"
+////#include "outstation/ClassBasedRequestHandler.h"
+////#include "outstation/CommandActionAdapter.h"
+////#include "outstation/CommandResponseHandler.h"
+////#include "outstation/ConstantCommandAction.h"
+////#include "outstation/FreezeRequestHandler.h"
+////#include "outstation/IINHelpers.h"
+////#include "outstation/ReadHandler.h"
+////#include "outstation/WriteHandler.h"
 
-#include "opendnp3/logging/LogLevels.h"
+////#include "opendnp3/logging/LogLevels.h"
 
-#include <utility>
+////#include <utility>
+MYTODO
+////#include "app/APDUBuilders.h"
+////#include "app/APDULogging.h"
+////#include "app/Functions.h"
+////#include "app/parsing/APDUHeaderParser.h"
+////#include "app/parsing/APDUParser.h"
+////#include "logging/LogMacros.h"
+////#include "outstation/AssignClassHandler.h"
+////#include "outstation/ClassBasedRequestHandler.h"
+////#include "outstation/CommandActionAdapter.h"
+////#include "outstation/CommandResponseHandler.h"
+////#include "outstation/ConstantCommandAction.h"
+////#include "outstation/FreezeRequestHandler.h"
+////#include "outstation/IINHelpers.h"
+////#include "outstation/ReadHandler.h"
+////#include "outstation/WriteHandler.h"
+
+#include "APDUBuilders.h"
+//#include "app/APDULogging.h"
+#include "Functions.h"
+#include "APDUHeaderParser.h"
+#include "APDUParser.h"
+//#include "logging/LogMacros.h"
+#include "AssignClassHandler.h"
+#include "ClassBasedRequestHandler.h"
+#include "CommandActionAdapter.h"
+#include "CommandResponseHandler.h"
+#include "ConstantCommandAction.h"
+#include "FreezeRequestHandler.h"
+#include "IINHelpers.h"
+#include "ReadHandler.h"
+#include "WriteHandler.h"
 
 namespace opendnp3
 {
@@ -45,8 +77,8 @@ namespace opendnp3
 OContext::OContext(const Addresses& addresses,
                    const OutstationConfig& config,
                    const DatabaseConfig& db_config,
-                   const Logger& logger,
-                   const std::shared_ptr<exe4cpp::IExecutor>& executor,
+////                   const Logger& logger,
+////                   const std::shared_ptr<exe4cpp::IExecutor>& executor,
                    std::shared_ptr<ILowerLayer> lower,
                    std::shared_ptr<ICommandHandler> commandHandler,
                    std::shared_ptr<IOutstationApplication> application)

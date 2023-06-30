@@ -100,10 +100,15 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\include\opendnp3\app\parsing\ICollection.cpp \
                 \
+                cpp\lib\include\opendnp3\link\ILinkListener.cpp \
+                cpp\lib\include\opendnp3\link\LinkConfig.cpp \
+                \
                 cpp\lib\include\opendnp3\outstation\OutstationParams.cpp \
                 cpp\lib\include\opendnp3\outstation\OutstationConfig.cpp \
                 cpp\lib\include\opendnp3\outstation\StaticTypeBitfield.cpp \
                 cpp\lib\include\opendnp3\outstation\IDnpTimeSource.cpp \
+                cpp\lib\include\opendnp3\outstation\IOutstationApplication.cpp \
+                cpp\lib\include\opendnp3\outstation\IOutstation.cpp \
                 \
                 cpp\lib\src\LayerInterfaces.cpp \
                 cpp\lib\src\SequenceNum.cpp \
@@ -115,6 +120,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\ParseResult.cpp \
+                cpp\lib\src\app\parsing\IWhiteList.cpp \
                 \
                 cpp\lib\src\app\AnalogCommandEvent.cpp \
                 cpp\lib\src\app\AnalogOutput.cpp \
@@ -150,6 +156,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\MeasurementTypeSpecs.cpp \
                 cpp\lib\src\app\MeasurementFactory.cpp \
                 cpp\lib\src\app\MeasurementTypes.cpp \
+                cpp\lib\src\app\Message.cpp \
                 cpp\lib\src\app\range.cpp \
                 cpp\lib\src\app\OctetData.cpp \
                 cpp\lib\src\app\QualityFlags.cpp \
@@ -170,12 +177,24 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_OctetString.cpp \
                 cpp\lib\src\app\DownSampling.cpp \
                 \
+                cpp\lib\src\outstation\ApplicationIIN.cpp \
+                cpp\lib\src\outstation\Database.cpp \
+                cpp\lib\src\outstation\DeferredRequest.cpp \
+                cpp\lib\src\outstation\ControlState.cpp \
                 cpp\lib\src\outstation\Event.cpp \
                 cpp\lib\src\outstation\EventBufferConfig.cpp \
+                cpp\lib\src\outstation\IClassAssigner.cpp \
+                cpp\lib\src\outstation\IEventReceiver.cpp \
+                cpp\lib\src\outstation\IEventSelector.cpp \
+                cpp\lib\src\outstation\IResponseLoader.cpp \
+                cpp\lib\src\outstation\IStaticSelector.cpp \
+                cpp\lib\src\outstation\ParsedRequest.cpp \
+                cpp\lib\src\outstation\ResponseContext.cpp \
+                cpp\lib\src\outstation\RequestHistory.cpp \
                 cpp\lib\src\outstation\SimpleCommandHandler.cpp \
+                cpp\lib\src\outstation\StaticDataCell.cpp \
+                cpp\lib\src\outstation\TimeSyncState.cpp \
                 cpp\lib\src\outstation\NumRetries.cpp \
-                cpp\lib\src\outstation\Database.cpp \
-                cpp\lib\src\outstation\ControlState.cpp \
                 cpp\lib\src\outstation\OctetStringSerializer.cpp \
                 \
                 cpp\lib\src\util\TimeDuration.cpp \

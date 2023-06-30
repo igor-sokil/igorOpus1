@@ -64,6 +64,7 @@ typedef struct
  void Timestamp_in_TimestampOver2(Timestamp *pTimestamp, uint64_t value);
  boolean  operatorEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
  boolean  operatorLTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
+ boolean  operatorLT_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
  TimeDuration operatorMINUS_in_Timestamp(Timestamp* pTimestamp, Timestamp* timestamp);
 
 ////} // namespace opendnp3

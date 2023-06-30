@@ -174,7 +174,40 @@ typedef struct
                                   IUpdateHandler* handler,
                                   OperateType_uint8_t opType);
 //        = 0;
+  void* pParentPointer_in_ICommandHandler;
+
 } ICommandHandler;
+
+    void Begin_in_ICommandHandler(ICommandHandler*);// = 0;
+    void End_in_ICommandHandler(ICommandHandler*);// = 0;
+    CommandStatus_uint8_t Select_ControlRelayOutputBlock_in_ICommandHandler(ICommandHandler*, ControlRelayOutputBlock* command, uint16_t index);// = 0;
+    CommandStatus_uint8_t Operate_ControlRelayOutputBlock_in_ICommandHandler(ICommandHandler*, ControlRelayOutputBlock* command,
+                                  uint16_t index,
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+    CommandStatus_uint8_t Select_AnalogOutputInt16_in_ICommandHandler(ICommandHandler*, AnalogOutputInt16* command, uint16_t index);// = 0;
+    CommandStatus_uint8_t Operate_AnalogOutputInt16_in_ICommandHandler(ICommandHandler*, AnalogOutputInt16* command,
+                                  uint16_t index,
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+    CommandStatus_uint8_t Select_AnalogOutputInt32_in_ICommandHandler(ICommandHandler*, AnalogOutputInt32* command, uint16_t index);// = 0;
+    CommandStatus_uint8_t Operate_AnalogOutputInt32_in_ICommandHandler(ICommandHandler*, AnalogOutputInt32* command,
+                                  uint16_t index,
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+    CommandStatus_uint8_t Select_AnalogOutputFloat32_in_ICommandHandler(ICommandHandler*, AnalogOutputFloat32* command, uint16_t index);// = 0;
+    CommandStatus_uint8_t Operate_AnalogOutputFloat32_in_ICommandHandler(ICommandHandler*, AnalogOutputFloat32* command,
+                                  uint16_t index,
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+    CommandStatus_uint8_t Select_AnalogOutputDouble64_in_ICommandHandler(ICommandHandler*, AnalogOutputDouble64* command, uint16_t index);// = 0;
+    CommandStatus_uint8_t Operate_AnalogOutputDouble64_in_ICommandHandler(ICommandHandler*, AnalogOutputDouble64* command,
+                                  uint16_t index,
+                                  IUpdateHandler* handler,
+                                  OperateType_uint8_t opType);
+
+void* getParentPointer_in_ICommandHandler(ICommandHandler*);
+void  setParentPointer_in_ICommandHandler(ICommandHandler*, void*);
 
 ////} // namespace opendnp3
 

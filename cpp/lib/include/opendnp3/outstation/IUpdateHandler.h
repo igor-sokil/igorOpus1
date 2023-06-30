@@ -131,7 +131,24 @@ typedef struct
      * @param flags the new value of the flags
      */
     boolean (*pModify_in_IUpdateHandler)(void*, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);// = 0;
+
+  void* pParentPointer_in_IUpdateHandler;
 } IUpdateHandler;
+
+    void IUpdateHandler_destr_IUpdateHandler(IUpdateHandler*);
+    boolean Update_Binary_in_IUpdateHandler(IUpdateHandler*, Binary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+    boolean Update_DoubleBitBinary_in_IUpdateHandler(IUpdateHandler*, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+    boolean Update_Analog_in_IUpdateHandler(IUpdateHandler*, Analog* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+    boolean Update_Counter_in_IUpdateHandler(IUpdateHandler*, Counter* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+    boolean FreezeCounter_in_IUpdateHandler(IUpdateHandler*, uint16_t index, boolean clear, EventMode_uint8_t mode);//bool clear = false, EventMode mode = EventMode::Detect) = 0;
+    boolean Update_BinaryOutputStatus_in_IUpdateHandler(IUpdateHandler*, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+    boolean Update_AnalogOutputStatus_in_IUpdateHandler(IUpdateHandler*, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+    boolean Update_OctetString_in_IUpdateHandler(IUpdateHandler*, OctetString* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+    boolean Update_TimeAndInterval_in_IUpdateHandler(IUpdateHandler*, TimeAndInterval* meas, uint16_t index);// = 0;
+    boolean Modify_in_IUpdateHandler(IUpdateHandler*, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);// = 0;
+
+void* getParentPointer_in_IUpdateHandler(IUpdateHandler*);
+void  setParentPointer_in_IUpdateHandler(IUpdateHandler*, void*);
 
 ////} // namespace opendnp3
 

@@ -51,7 +51,15 @@ typedef struct
      *	@return the portion of the requested range that is valid, an invalid range if the type doesn't exist
      */
     Range (*pAssignClassToRange_in_IClassAssigner)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);// = 0;
+
+  void* pParentPointer_in_IClassAssigner;
 } IClassAssigner;
+
+Range AssignClassToAll_in_IClassAssigner(IClassAssigner *, AssignClassType_uint8_t type, PointClass_uint8_t clazz);
+Range AssignClassToRange_in_IClassAssigner(IClassAssigner *, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
+
+void* getParentPointer_in_IClassAssigner(IClassAssigner*);
+void  setParentPointer_in_IClassAssigner(IClassAssigner*, void*);
 
 ////} // namespace opendnp3
 

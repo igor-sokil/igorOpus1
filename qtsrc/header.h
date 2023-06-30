@@ -1,17 +1,35 @@
 #ifndef __HEADER__
 #define __HEADER__
 
+#ifndef uint8_t
 #define uint8_t  unsigned char
+#endif
+#ifndef int8_t
 #define int8_t            char
+#endif
+#ifndef uint16_t
 #define uint16_t unsigned short
+#endif
+#ifndef  int16_t
 #define  int16_t          short
+#endif
+#ifndef uint32_t
 #define uint32_t unsigned int
+#endif
+#ifndef  int32_t
 #define  int32_t          int
+#endif
 
+#ifndef uint64_t
 #define uint64_t unsigned long long
+#endif
+#ifndef  int64_t
 #define  int64_t          long long
+#endif
 
+#ifndef  boolean
 #define  boolean          int
+#endif
 
 //#define CommandStatus_uint8_t  uint8_t
 

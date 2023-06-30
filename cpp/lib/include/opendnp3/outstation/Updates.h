@@ -20,45 +20,51 @@
 #ifndef OPENDNP3_UPDATES_H
 #define OPENDNP3_UPDATES_H
 
-#include "opendnp3/outstation/IUpdateHandler.h"
+////#include "opendnp3/outstation/IUpdateHandler.h"
+#include "IUpdateHandler.h"
 
-#include <functional>
-#include <memory>
-#include <vector>
+////#include <functional>
+////#include <memory>
+////#include <vector>
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+////typedef std::function<void(IUpdateHandler&)> update_func_t;
+////typedef std::vector<update_func_t> shared_updates_t;
+typedef void (*pfn_MyFuncType)(IUpdateHandler*);
+//pfn_MyFuncType * myFuncTypeArray;
+// или
+//pfn_MyFuncType myFuncTypeArray[10];
+////class Updates
+typedef struct
 {
+////    friend class UpdateBuilder;
 
-typedef std::function<void(IUpdateHandler&)> update_func_t;
-typedef std::vector<update_func_t> shared_updates_t;
+////public:
+////    void Apply(IUpdateHandler& handler) const
+////    {
+////        if (!updates)
+////            return;
+////
+////        for (auto& update : *updates)
+////        {
+////            update(handler);
+////        }
+////    }
 
-class Updates
-{
-    friend class UpdateBuilder;
+////    bool IsEmpty() const
+////    {
+////        return updates ? updates->empty() : true;
+////    }
 
-public:
-    void Apply(IUpdateHandler& handler) const
-    {
-        if (!updates)
-            return;
+////private:
+////    Updates(std::shared_ptr<shared_updates_t> updates) : updates(std::move(updates)) {}
 
-        for (auto& update : *updates)
-        {
-            update(handler);
-        }
-    }
+////    const std::shared_ptr<shared_updates_t> updates;
+pfn_MyFuncType updates[10];
+} Updates;
 
-    bool IsEmpty() const
-    {
-        return updates ? updates->empty() : true;
-    }
-
-private:
-    Updates(std::shared_ptr<shared_updates_t> updates) : updates(std::move(updates)) {}
-
-    const std::shared_ptr<shared_updates_t> updates;
-};
-
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

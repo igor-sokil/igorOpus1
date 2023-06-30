@@ -46,7 +46,17 @@ typedef struct
      IINField (*pSelectIndices_in_IStaticSelector)(void*, GroupVariation_uint16_t gv, ICollection_for_uint16* indices);// = 0;
 
      void (*pUnselect_in_IStaticSelector)(void*);// = 0;
+
+  void* pParentPointer_in_IStaticSelector;
 } IStaticSelector;
+
+IINField SelectAll_in_IStaticSelector(IStaticSelector *, GroupVariation_uint16_t gv);
+IINField SelectRange_in_IStaticSelector(IStaticSelector *, GroupVariation_uint16_t gv,  Range* range);
+IINField SelectIndices_in_IStaticSelector(IStaticSelector *, GroupVariation_uint16_t gv, ICollection_for_uint16* indices);
+void Unselect_in_IStaticSelector(IStaticSelector *);
+
+void* getParentPointer_in_IStaticSelector(IStaticSelector*);
+void  setParentPointer_in_IStaticSelector(IStaticSelector*, void*);
 
 ////} // namespace opendnp3
 

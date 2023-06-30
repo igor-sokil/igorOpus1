@@ -20,17 +20,22 @@
 #ifndef OPENDNP3_LINKCONFIG_H
 #define OPENDNP3_LINKCONFIG_H
 
-#include "opendnp3/link/Addresses.h"
-#include "opendnp3/util/TimeDuration.h"
+////#include "opendnp3/link/Addresses.h"
+////#include "opendnp3/util/TimeDuration.h"
 
-namespace opendnp3
-{
+#include "Addresses.h"
+#include "TimeDuration.h"
+
+////namespace opendnp3
+////{
 
 /**
     Configuration for the dnp3 link layer
 */
-struct LinkConfig
+////struct LinkConfig
+typedef struct
 {
+/*
     LinkConfig() = delete;
 
     LinkConfig(
@@ -69,9 +74,9 @@ struct LinkConfig
     {
         return Addresses(this->LocalAddr, this->RemoteAddr);
     }
-
+*/
     /// The master/outstation bit set on all messages
-    bool IsMaster;
+    boolean IsMaster;
 
     /// dnp3 address of the local device
     uint16_t LocalAddr;
@@ -85,8 +90,11 @@ struct LinkConfig
     /// the interval for keep-alive messages (link status requests)
     /// if set to TimeDuration::Max(), the keep-alive is disabled
     TimeDuration KeepAliveTimeout;
-};
+} LinkConfig;
 
-} // namespace opendnp3
+void  LinkConfig_in_LinkConfig(LinkConfig *pLinkConfig, boolean isMaster);
+
+
+////} // namespace opendnp3
 
 #endif

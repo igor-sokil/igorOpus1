@@ -21,7 +21,7 @@
 #define OPENDNP3_DATABASECONFIG_H
 
 //#include "opendnp3/outstation/MeasurementConfig.h"
-#include <QApplication>
+//#include <QApplication>
 
 #include "MeasurementConfig.h"
 

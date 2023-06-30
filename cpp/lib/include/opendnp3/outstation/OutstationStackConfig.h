@@ -20,23 +20,29 @@
 #ifndef OPENDNP3_OUTSTATIONSTACKCONFIG_H
 #define OPENDNP3_OUTSTATIONSTACKCONFIG_H
 
-#include "opendnp3/link/LinkConfig.h"
-#include "opendnp3/outstation/DatabaseConfig.h"
-#include "opendnp3/outstation/EventBufferConfig.h"
-#include "opendnp3/outstation/OutstationConfig.h"
+////#include "opendnp3/link/LinkConfig.h"
+////#include "opendnp3/outstation/DatabaseConfig.h"
+////#include "opendnp3/outstation/EventBufferConfig.h"
+////#include "opendnp3/outstation/OutstationConfig.h"
 
-namespace opendnp3
-{
+#include "LinkConfig.h"
+#include "DatabaseConfig.h"
+#include "EventBufferConfig.h"
+#include "OutstationConfig.h"
+
+////namespace opendnp3
+////{
 
 /**
     A composite configuration struct that contains all the config
     information for a dnp3 outstation stack
 */
-struct OutstationStackConfig
+////struct OutstationStackConfig
+typedef struct
 {
-    OutstationStackConfig() : link(false) {}
+////    OutstationStackConfig() : link(false) {}
 
-    OutstationStackConfig(const DatabaseConfig& database) : database(database), link(false) {}
+////    OutstationStackConfig(const DatabaseConfig& database) : database(database), link(false) {}
 
     // Configuration of the database
     DatabaseConfig database;
@@ -46,8 +52,15 @@ struct OutstationStackConfig
 
     /// Link layer config
     LinkConfig link;
-};
+} OutstationStackConfig;
 
-} // namespace opendnp3
+  void  OutstationStackConfig_in_OutstationStackConfig(OutstationStackConfig *pOutstationStackConfig)
+{
+  pOutstationStackConfig->link = false) {}
+}
+
+////    OutstationStackConfig(const DatabaseConfig& database) : database(database), link(false) {}
+
+////} // namespace opendnp3
 
 #endif

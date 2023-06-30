@@ -20,39 +20,54 @@
 #ifndef OPENDNP3_IOUTSTATION_H
 #define OPENDNP3_IOUTSTATION_H
 
-#include "opendnp3/IStack.h"
-#include "opendnp3/logging/LogLevels.h"
-#include "opendnp3/outstation/Updates.h"
+////#include "opendnp3/IStack.h"
+////#include "opendnp3/logging/LogLevels.h"
+////#include "opendnp3/outstation/Updates.h"
+//#include "opendnp3/IStack.h"
+//#include "opendnp3/logging/LogLevels.h"
+//#include "opendnp3/outstation/Updates.h"
+#include "Updates.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Interface representing a running outstation.
  */
-class IOutstation : public IStack
+////class IOutstation : public IStack
+typedef struct
 {
 
-public:
-    ~IOutstation() override = default;
+////public:
+/////    ~IOutstation() override = default;
 
     /**
      *  @param filters Adjust the filters to this value
      */
-    virtual void SetLogFilters(const opendnp3::LogLevels& filters) = 0;
+////    virtual void SetLogFilters(const opendnp3::LogLevels& filters) = 0;
 
     /**
      * Sets the restart IIN bit. Normally applications should not
      * touch this bit, but it is provided for simulating restarts.
      */
-    virtual void SetRestartIIN() = 0;
+    void (*pSetRestartIIN_in_IOutstation)(void*);
+////    virtual void SetRestartIIN() = 0;
 
     /**
      * Apply a set of measurement updates to the outstation
      */
-    virtual void Apply(const Updates& updates) = 0;
-};
+    void (*pApply_in_IOutstation)(void*, Updates* updates);
+////    virtual void Apply(const Updates& updates) = 0;
 
-} // namespace opendnp3
+  void* pParentPointer_in_IOutstation;
+} IOutstation;
+
+    void SetRestartIIN_in_IOutstation(IOutstation*);
+    void Apply_in_IOutstation(IOutstation*, Updates* updates);
+
+void* getParentPointer_in_IOutstation(IOutstation*);
+void  setParentPointer_in_IOutstation(IOutstation*, void*);
+
+////} // namespace opendnp3
 
 #endif

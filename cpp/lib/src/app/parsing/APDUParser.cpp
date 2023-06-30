@@ -122,7 +122,7 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
 
     // if a white-list is defined and it doesn't validate, exit early
 ////    if (pWhiteList && !pWhiteList->IsAllowed(count, GV.enumeration, QualifierCodeSpec::from_type(header.qualifier)))
-     if(pWhiteList && !(pWhiteList->pIsAllowed)(count, GV.enumeration, from_type_in_QualifierCodeSpec(header.qualifier)))
+     if(pWhiteList && !IsAllowed_in_IWhiteList(pWhiteList, count, GV.enumeration, from_type_in_QualifierCodeSpec(header.qualifier)))
     {
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Header (%i) w/ Object (%i,%i) and qualifier (%i) failed whitelist",
 ////                            count, header.group, header.variation, header.qualifier);

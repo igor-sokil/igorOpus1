@@ -17,7 +17,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-MYTODO
 #ifndef OPENDNP3_OUTSTATIONCONTEXT_H
 #define OPENDNP3_OUTSTATIONCONTEXT_H
 
@@ -46,11 +45,21 @@ MYTODO
 
 ////#include <exe4cpp/IExecutor.h>
 
-#include "OutstationConfig.h"
-
 #include "LayerInterfaces.h"
 #include "LinkLayerConstants.h"
 #include "ControlState.h"
+
+#include "Database.h"
+#include "ControlState.h"
+#include "DeferredRequest.h"
+#include "RequestHistory.h"
+#include "ResponseContext.h"
+#include "TimeSyncState.h"
+#include "EventBuffer.h"
+
+#include "ICommandHandler.h"
+#include "IOutstationApplication.h"
+#include "OutstationConfig.h"
 
 ////namespace opendnp3
 ////{
@@ -192,26 +201,26 @@ typedef struct
 ////    const std::shared_ptr<IOutstationApplication> application;
 
     // ------ Database, event buffer, and response tracking
-////    EventBuffer eventBuffer;
-////    Database database;
-////    ResponseContext rspContext;
+    EventBuffer eventBuffer;
+    Database database;
+    ResponseContext rspContext;
 ////
     // ------ Static configuration -------
-////    OutstationParams params;
+    OutstationParams params;
 
     // ------ Shared dynamic state --------
-////    bool isOnline;
-////    bool isTransmitting;
-////    IINField staticIIN;
+    boolean isOnline;
+    boolean isTransmitting;
+    IINField staticIIN;
 ////    exe4cpp::Timer confirmTimer;
-////    RequestHistory history;
-////    DeferredRequest deferred;
+    RequestHistory history;
+    DeferredRequest deferred;
 
     // ------ Dynamic state related to controls ------
-////    ControlState control;
+    ControlState control;
 
     // ------ Dynamic state related to time synchronization ------
-////    TimeSyncState time;
+    TimeSyncState time;
 
     // ------ Dynamic state related to solicited and unsolicited modes ------
 ////    OutstationSolState sol;
@@ -223,6 +232,16 @@ typedef struct
     // ------ Dynamic state related to broadcast messages ------
 ////    ser4cpp::Settable<LinkBroadcastAddress> lastBroadcastMessageReceived;
 } OContext;
+
+   void OContext_in_OContext(OContext *pOContext,
+             Addresses* addresses,
+             OutstationConfig* config,
+             DatabaseConfig* db_config,
+//             const Logger& logger,
+//             const std::shared_ptr<exe4cpp::IExecutor>& executor,
+             ILowerLayer* lower,
+             ICommandHandler* commandHandler,
+             IOutstationApplication* application);
 
 ////} // namespace opendnp3
 

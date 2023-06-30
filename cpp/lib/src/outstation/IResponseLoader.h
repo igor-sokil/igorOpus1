@@ -42,7 +42,15 @@ typedef struct
      * @return True if all data was loaded, false if there is no more space
      */
      boolean (*pLoad_in_IResponseLoader)(void*, HeaderWriter* writer);// = 0;
+
+  void* pParentPointer_in_IResponseLoader;
 } IResponseLoader;
+
+boolean HasAnySelection_in_IResponseLoader(IResponseLoader *);
+boolean Load_in_IResponseLoader(IResponseLoader *, HeaderWriter* writer);
+
+void* getParentPointer_in_IResponseLoader(IResponseLoader*);
+void  setParentPointer_in_IResponseLoader(IResponseLoader*, void*);
 
 ////} // namespace opendnp3
 

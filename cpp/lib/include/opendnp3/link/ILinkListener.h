@@ -21,36 +21,65 @@
 #ifndef OPENDNP3_ILINK_LISTENER_H
 #define OPENDNP3_ILINK_LISTENER_H
 
-#include "opendnp3/gen/LinkStatus.h"
+////#include "opendnp3/gen/LinkStatus.h"
+#include "LinkStatus.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Various optional callbacks that can be received for the link layer
  */
-class ILinkListener
+////class ILinkListener
+typedef struct
 {
-public:
+////public:
     /// Called when a the reset/unreset status of the link layer changes
-    virtual void OnStateChange(LinkStatus value) {}
+    void (*pOnStateChange_in_ILinkListener)(void*, LinkStatus_uint8_t value);
+////    virtual void OnStateChange(LinkStatus value) {}
 
     /// Called when a link-layer frame is received from an unknown destination address
-    virtual void OnUnknownDestinationAddress(uint16_t destination) {}
+    void (*pOnUnknownDestinationAddress_in_ILinkListener)(void*, uint16_t destination);
+////    virtual void OnUnknownDestinationAddress(uint16_t destination) {}
 
     /// Called when a link-layer frame is received from an unknown source address
-    virtual void OnUnknownSourceAddress(uint16_t source) {}
+    void (*pOnUnknownSourceAddress_in_ILinkListener)(void*, uint16_t source);
+////    virtual void OnUnknownSourceAddress(uint16_t source) {}
 
     /// Called when the keep alive timer elapses. This doesn't denote a keep-alive failure, it's just a notification
-    virtual void OnKeepAliveInitiated() {}
+    void (*pOnKeepAliveInitiated_in_ILinkListener)(void*);
+////    virtual void OnKeepAliveInitiated() {}
 
     /// Called when a keep alive message (request link status) receives no response
-    virtual void OnKeepAliveFailure() {}
+    void (*pOnKeepAliveFailure_in_ILinkListener)(void*);
+////    virtual void OnKeepAliveFailure() {}
 
     /// Called when a keep alive message receives a valid response
-    virtual void OnKeepAliveSuccess() {}
-};
+    void (*pOnKeepAliveSuccess_in_ILinkListener)(void*);
+////    virtual void OnKeepAliveSuccess() {}
 
-} // namespace opendnp3
+  void* pParentPointer_in_ILinkListener;
+} ILinkListener;
+
+void ILinkListener_in_ILinkListener(ILinkListener *pILinkListener);
+
+    void OnStateChange_in_ILinkListener(ILinkListener*, LinkStatus_uint8_t value);
+    void OnUnknownDestinationAddress_in_ILinkListener(ILinkListener*, uint16_t destination);
+    void OnUnknownSourceAddress_in_ILinkListener(ILinkListener*, uint16_t source);
+    void OnKeepAliveInitiated_in_ILinkListener(ILinkListener*);
+    void OnKeepAliveFailure_in_ILinkListener(ILinkListener*);
+    void OnKeepAliveSuccess_in_ILinkListener(ILinkListener*);
+
+    void OnStateChange_in_ILinkListener_default(void*, LinkStatus_uint8_t value);
+    void OnUnknownDestinationAddress_in_ILinkListener_default(void*, uint16_t destination);
+    void OnUnknownSourceAddress_in_ILinkListener_default(void*, uint16_t source);
+    void OnKeepAliveInitiated_in_ILinkListener_default(void*);
+    void OnKeepAliveFailure_in_ILinkListener_default(void*);
+    void OnKeepAliveSuccess_in_ILinkListener_default(void*);
+
+void* getParentPointer_in_ILinkListener(ILinkListener*);
+void  setParentPointer_in_ILinkListener(ILinkListener*, void*);
+
+////} // namespace opendnp3
 
 #endif

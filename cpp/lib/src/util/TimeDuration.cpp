@@ -75,6 +75,10 @@ TimeDuration Seconds_in_TimeDuration_static(int64_t seconds)
     return FromValue_in_TimeDuration_static(seconds*1000);
 }
 
+TimeDuration Minutes_in_TimeDuration_static(int64_t minutes)
+{
+  return Seconds_in_TimeDuration_static(60*minutes);
+}
 ////TimeDuration TimeDuration::Minutes(int64_t minutes)
 ////{
 ////    return FromValue<std::chrono::minutes>(minutes);
