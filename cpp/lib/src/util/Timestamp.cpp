@@ -46,7 +46,7 @@
 ////    return value == exe4cpp::steady_time_t::min();
 ////}
 
-void Timestamp_in_Timestamp(Timestamp *pTimestamp)
+void Timestamp_in_TimestampOver1(Timestamp *pTimestamp)
 {
  ////: value(exe4cpp::steady_time_t::min()) {}
   pTimestamp->time_point_value = 0;

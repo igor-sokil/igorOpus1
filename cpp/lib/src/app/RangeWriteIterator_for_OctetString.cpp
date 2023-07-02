@@ -23,7 +23,7 @@ void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_
 
 void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_OctetStringOver2(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString,
 //                   typename IndexType::type_t start_,
-    uint8_t start_,
+    uint16_t start_,
 //                   const Serializer<WriteType>& serializer,
     Serializer_for_OctetString*  serializer,
 //                   ser4cpp::wseq_t& position)
