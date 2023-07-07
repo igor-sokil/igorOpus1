@@ -44,6 +44,9 @@
 #include "DNP3Serializer.h"
 #include "MeasurementTypeSpecs.h"
 
+#include "RSeq.h"
+#include "WSeq.h"
+
 ////namespace opendnp3 {
 
 // Analog Input Event - Any Variation

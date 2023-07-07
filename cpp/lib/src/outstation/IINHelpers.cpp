@@ -17,22 +17,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "outstation/IINHelpers.h"
+////#include "outstation/IINHelpers.h"
+#include "header.h"
+#include "IINHelpers.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
-IINField IINFromParseResult(ParseResult result)
+IINField IINFromParseResult(ParseResult_uint8_t result)
 {
-    switch (result)
-    {
-    case (ParseResult::OK):
-        return IINField::Empty();
-    case (ParseResult::UNKNOWN_OBJECT):
-        return IINField(IINBit::OBJECT_UNKNOWN);
-    default:
-        return IINField(IINBit::PARAM_ERROR);
-    }
+  switch (result)
+  {
+  case (ParseResult_OK):
+    return Empty_in_IINField_static();
+////        return IINField::Empty();
+  case (ParseResult_UNKNOWN_OBJECT):
+  {
+//   void IINField_in_IINFieldOver2(IINField *pIINField, IINBit_uint8_t bit);
+////        return IINField(IINBit::OBJECT_UNKNOWN);
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_OBJECT_UNKNOWN);
+    return iIINField;
+  }
+  default:
+  {
+////        return IINField(IINBit::PARAM_ERROR);
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+    return iIINField;
+  }
+  }
 }
 
-} // namespace opendnp3
+////} // namespace opendnp3

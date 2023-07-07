@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -52,15 +52,7 @@
 ////  static GroupVariationID ID() { return GroupVariationID(12,0); }
 ////};
 
-  GroupVariationID ID_in_Group12Var0_static(void);
-
-  GroupVariationID ID_in_Group12Var0_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 12, 0);
-//// return GroupVariationID(12,0);
- return gGroupVariationID;
-}
+GroupVariationID ID_in_Group12Var0_static(void);
 
 // Binary Command - CROB
 ////struct Group12Var1
@@ -86,45 +78,16 @@ typedef struct
 ////  static DNP3Serializer<ControlRelayOutputBlock> Inst() { return DNP3Serializer<ControlRelayOutputBlock>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group12Var1;
 
-  uint16_t Size_in_Group12Var1_static(void);
+uint16_t Size_in_Group12Var1_static(void);
 
- uint16_t Size_in_Group12Var1_static(void) 
-{
- return 11; 
-}
+void Group12Var1_in_Group12Var1(Group12Var1 *pGroup12Var1);
 
- void Group12Var1_in_Group12Var1(Group12Var1 *pGroup12Var1);
+boolean Read_in_Group12Var1_static(RSeq_for_Uint16_t *, Group12Var1*);
+boolean Write_in_Group12Var1_static(Group12Var1*, WSeq_for_Uint16_t*);
 
-  GroupVariationID ID_in_Group12Var1_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 12, 1);
-////  return GroupVariationID(12,1); 
- return gGroupVariationID;
-}
+boolean ReadTarget_in_Group12Var1_static(RSeq_for_Uint16_t*, ControlRelayOutputBlock*);
+boolean WriteTarget_in_Group12Var1_static(ControlRelayOutputBlock*, WSeq_for_Uint16_t*);
 
- boolean Read_in_Group12Var1_static(RSeq_for_Uint16_t *, Group12Var1*);
- boolean Write_in_Group12Var1_static(Group12Var1*, WSeq_for_Uint16_t*);
-
- boolean ReadTarget_in_Group12Var1_static(RSeq_for_Uint16_t*, ControlRelayOutputBlock*);
- boolean WriteTarget_in_Group12Var1_static(ControlRelayOutputBlock*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_ControlRelayOutputBlock  Inst_in_Group12Var1_static(void)
-{
-   DNP3Serializer_for_ControlRelayOutputBlock dDNP3Serializer_for_ControlRelayOutputBlock;
-   DNP3Serializer_for_ControlRelayOutputBlock_in_DNP3Serializer_for_ControlRelayOutputBlock(&dDNP3Serializer_for_ControlRelayOutputBlock,
-                   ID_in_Group12Var1_static(),
-                   Size_in_Group12Var1_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group12Var1_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group12Var1_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_ControlRelayOutputBlock;
-}
 
 ////}
 

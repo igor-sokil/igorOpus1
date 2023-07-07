@@ -54,14 +54,6 @@
 
   GroupVariationID ID_in_Group41Var0_static(void);
 
-  GroupVariationID ID_in_Group41Var0_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 41, 0);
-//// return GroupVariationID(41,0);
- return gGroupVariationID;
-}
-
 // Analog Output - 32-bit With Flag
 ////struct Group41Var1
 typedef struct
@@ -86,41 +78,14 @@ typedef struct
 
   uint16_t Size_in_Group41Var1_static(void);
 
- uint16_t Size_in_Group41Var1_static(void) 
-{
- return 5; 
-}
 
  void Group41Var1_in_Group41Var1(Group41Var1 *pGroup41Var1);
-
-  GroupVariationID ID_in_Group41Var1_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 41, 1);
-////  return GroupVariationID(41,1); 
- return gGroupVariationID;
-}
 
  boolean Read_in_Group41Var1_static(RSeq_for_Uint16_t *, Group41Var1*);
  boolean Write_in_Group41Var1_static(Group41Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group41Var1_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
  boolean WriteTarget_in_Group41Var1_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_AnalogOutputInt32  Inst_in_Group41Var1_static(void)
-{
-   DNP3Serializer_for_AnalogOutputInt32 dDNP3Serializer_for_AnalogOutputInt32;
-   DNP3Serializer_for_AnalogOutputInt32_in_DNP3Serializer_for_AnalogOutputInt32(&dDNP3Serializer_for_AnalogOutputInt32,
-                   ID_in_Group41Var1_static(),
-                   Size_in_Group41Var1_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group41Var1_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group41Var1_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_AnalogOutputInt32;
-}
 
 // Analog Output - 16-bit With Flag
 ////struct Group41Var2
@@ -145,42 +110,13 @@ typedef struct
 } Group41Var2;
 
   uint16_t Size_in_Group41Var2_static(void);
-
- uint16_t Size_in_Group41Var2_static(void) 
-{
- return 3; 
-}
-
  void Group41Var2_in_Group41Var2(Group41Var2 *pGroup41Var2);
-
-  GroupVariationID ID_in_Group41Var2_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 41, 2);
-////  return GroupVariationID(41,2); 
- return gGroupVariationID;
-}
 
  boolean Read_in_Group41Var2_static(RSeq_for_Uint16_t *, Group41Var2*);
  boolean Write_in_Group41Var2_static(Group41Var2*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group41Var2_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
  boolean WriteTarget_in_Group41Var2_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_AnalogOutputInt32  Inst_in_Group41Var2_static(void)
-{
-   DNP3Serializer_for_AnalogOutputInt32 dDNP3Serializer_for_AnalogOutputInt32;
-   DNP3Serializer_for_AnalogOutputInt32_in_DNP3Serializer_for_AnalogOutputInt32(&dDNP3Serializer_for_AnalogOutputInt32,
-                   ID_in_Group41Var2_static(),
-                   Size_in_Group41Var2_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group41Var2_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group41Var2_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_AnalogOutputInt32;
-}
 
 // Analog Output - Single-precision
 ////struct Group41Var3
@@ -205,42 +141,13 @@ typedef struct
 } Group41Var3;
 
   uint16_t Size_in_Group41Var3_static(void);
-
- uint16_t Size_in_Group41Var3_static(void) 
-{
- return 5; 
-}
-
  void Group41Var3_in_Group41Var3(Group41Var3 *pGroup41Var3);
-
-  GroupVariationID ID_in_Group41Var3_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 41, 3);
-////  return GroupVariationID(41,3); 
- return gGroupVariationID;
-}
 
  boolean Read_in_Group41Var3_static(RSeq_for_Uint16_t *, Group41Var3*);
  boolean Write_in_Group41Var3_static(Group41Var3*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group41Var3_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
  boolean WriteTarget_in_Group41Var3_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_AnalogOutputFloat32  Inst_in_Group41Var3_static(void)
-{
-   DNP3Serializer_for_AnalogOutputFloat32 dDNP3Serializer_for_AnalogOutputFloat32;
-   DNP3Serializer_for_AnalogOutputFloat32_in_DNP3Serializer_for_AnalogOutputFloat32(&dDNP3Serializer_for_AnalogOutputFloat32,
-                   ID_in_Group41Var3_static(),
-                   Size_in_Group41Var3_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group41Var3_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group41Var3_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_AnalogOutputFloat32;
-}
 
 // Analog Output - Double-precision
 ////struct Group41Var4
@@ -265,21 +172,7 @@ typedef struct
 } Group41Var4;
 
   uint16_t Size_in_Group41Var4_static(void);
-
- uint16_t Size_in_Group41Var4_static(void) 
-{
- return 9; 
-}
-
  void Group41Var4_in_Group41Var4(Group41Var4 *pGroup41Var4);
-
-  GroupVariationID ID_in_Group41Var4_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 41, 4);
-////  return GroupVariationID(41,4); 
- return gGroupVariationID;
-}
 
  boolean Read_in_Group41Var4_static(RSeq_for_Uint16_t *, Group41Var4*);
  boolean Write_in_Group41Var4_static(Group41Var4*, WSeq_for_Uint16_t*);
@@ -287,20 +180,6 @@ typedef struct
  boolean ReadTarget_in_Group41Var4_static(RSeq_for_Uint16_t*, AnalogOutputDouble64*);
  boolean WriteTarget_in_Group41Var4_static(AnalogOutputDouble64*, WSeq_for_Uint16_t*);
 
- DNP3Serializer_for_AnalogOutputDouble64  Inst_in_Group41Var4_static(void)
-{
-   DNP3Serializer_for_AnalogOutputDouble64 dDNP3Serializer_for_AnalogOutputDouble64;
-   DNP3Serializer_for_AnalogOutputDouble64_in_DNP3Serializer_for_AnalogOutputDouble64(&dDNP3Serializer_for_AnalogOutputDouble64,
-                   ID_in_Group41Var4_static(),
-                   Size_in_Group41Var4_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group41Var4_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group41Var4_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_AnalogOutputDouble64;
-}
 
 ////}
 

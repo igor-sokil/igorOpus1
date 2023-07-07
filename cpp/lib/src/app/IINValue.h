@@ -35,18 +35,9 @@ typedef struct
 } IINValue;
 
   void IINValue_in_IINValueOver1(IINValue *pIINValue);
-
-  void IINValue_in_IINValueOver1(IINValue *pIINValue)
-{
-  pIINValue->value = false;
-}
+  void IINValue_in_IINValueOver2(IINValue *pIINValue, boolean value_);
 
 
-////    IINValue(bool value_) : value(value_) {}
-  void IINValue_in_IINValueOver2(IINValue *pIINValue, boolean value_)
-{
-  pIINValue->value = value_;
-}
 
 ////} // namespace opendnp3
 

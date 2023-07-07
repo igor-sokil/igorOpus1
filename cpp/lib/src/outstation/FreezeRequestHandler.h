@@ -17,31 +17,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-MYTODO
 #ifndef OPENDNP3_FREEZEREQUESTHANDLER_H
 #define OPENDNP3_FREEZEREQUESTHANDLER_H
 
-#include "app/parsing/IAPDUHandler.h"
-#include "outstation/Database.h"
+////#include "app/parsing/IAPDUHandler.h"
+////#include "outstation/Database.h"
 
-namespace opendnp3
+#include "IAPDUHandler.h"
+#include "Database.h"
+
+////namespace opendnp3
+////{
+
+////class FreezeRequestHandler final : public IAPDUHandler
+typedef struct
 {
+  IAPDUHandler iIAPDUHandler;
+/////public:
+////    FreezeRequestHandler(bool clear, Database& database);
 
-class FreezeRequestHandler final : public IAPDUHandler
-{
-public:
-    FreezeRequestHandler(bool clear, Database& database);
+////    bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) final;
 
-    bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) final;
+////private:
+////    IINField ProcessHeader(const AllObjectsHeader& record) final;
+////    IINField ProcessHeader(const RangeHeader& header) final;
 
-private:
-    IINField ProcessHeader(const AllObjectsHeader& record) final;
-    IINField ProcessHeader(const RangeHeader& header) final;
+    boolean clear;
+    Database* database;
+} FreezeRequestHandler;
 
-    bool clear;
-    Database& database;
-};
+   void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeRequestHandler, boolean clear, Database* database);
 
-} // namespace opendnp3
+////    bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) final;
+boolean IsAllowed_in_FreezeRequestHandler_override(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+
+////private:
+    IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *, AllObjectsHeader* record);
+    IINField ProcessHeader_RangeHeader_in_FreezeRequestHandler_override(void *, RangeHeader* header);
+
+////} // namespace opendnp3
 
 #endif

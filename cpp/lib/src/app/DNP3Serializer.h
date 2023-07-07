@@ -300,6 +300,171 @@ typedef struct
 
 
 //-----------------------------DNP3Serializer_for_TimeAndInterval-------------------------------------------
+//-----------------------------DNP3Serializer_for_ControlRelayOutputBlock-------------------------------------------
+////template<class T> class DNP3Serializer : public Serializer<T>
+typedef struct
+{
+  Serializer_for_ControlRelayOutputBlock sSerializer_for_ControlRelayOutputBlock;
+////public:
+////    DNP3Serializer(GroupVariationID id,
+////                   size_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+////        : Serializer<T>(size, read_func, write_func), id(id)
+////    {
+////    }
+
+////    GroupVariationID ID() const
+////    {
+////        return id;
+////    }
+
+////private:
+    GroupVariationID id;
+} DNP3Serializer_for_ControlRelayOutputBlock;
+    GroupVariationID ID_in_DNP3Serializer_for_ControlRelayOutputBlock(DNP3Serializer_for_ControlRelayOutputBlock *pDNP3Serializer_for_ControlRelayOutputBlock);
+
+    void DNP3Serializer_for_ControlRelayOutputBlock_in_DNP3Serializer_for_ControlRelayOutputBlock(DNP3Serializer_for_ControlRelayOutputBlock *pDNP3Serializer_for_ControlRelayOutputBlock,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                    read_func_t_in_Serializer_for_ControlRelayOutputBlock read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+                    write_func_t_in_Serializer_for_ControlRelayOutputBlock write_func);
+
+//-----------------------------DNP3Serializer_for_ControlRelayOutputBlock-------------------------------------------
+//-----------------------------DNP3Serializer_for_AnalogOutputInt16-------------------------------------------
+////template<class T> class DNP3Serializer : public Serializer<T>
+typedef struct
+{
+  Serializer_for_AnalogOutputInt16 sSerializer_for_AnalogOutputInt16;
+////public:
+////    DNP3Serializer(GroupVariationID id,
+////                   size_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+////        : Serializer<T>(size, read_func, write_func), id(id)
+////    {
+////    }
+
+////    GroupVariationID ID() const
+////    {
+////        return id;
+////    }
+
+////private:
+    GroupVariationID id;
+} DNP3Serializer_for_AnalogOutputInt16;
+    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputInt16(DNP3Serializer_for_AnalogOutputInt16 *pDNP3Serializer_for_AnalogOutputInt16);
+
+    void DNP3Serializer_for_AnalogOutputInt16_in_DNP3Serializer_for_AnalogOutputInt16(DNP3Serializer_for_AnalogOutputInt16 *pDNP3Serializer_for_AnalogOutputInt16,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                    read_func_t_in_Serializer_for_AnalogOutputInt16 read_func,// read_func_t_in_Serializer_for_Binary,
+////                   typename Serializer<T>::write_func_t write_func)
+                    write_func_t_in_Serializer_for_AnalogOutputInt16 write_func);//write_func_t_in_Serializer_for_Binary);
+
+//-----------------------------DNP3Serializer_for_AnalogOutputInt16-------------------------------------------
+//-----------------------------DNP3Serializer_for_AnalogOutputInt32-------------------------------------------
+////template<class T> class DNP3Serializer : public Serializer<T>
+typedef struct
+{
+  Serializer_for_AnalogOutputInt32 sSerializer_for_AnalogOutputInt32;
+////public:
+////    DNP3Serializer(GroupVariationID id,
+////                   size_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+////        : Serializer<T>(size, read_func, write_func), id(id)
+////    {
+////    }
+
+////    GroupVariationID ID() const
+////    {
+////        return id;
+////    }
+
+////private:
+    GroupVariationID id;
+} DNP3Serializer_for_AnalogOutputInt32;
+    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputInt32(DNP3Serializer_for_AnalogOutputInt32 *pDNP3Serializer_for_AnalogOutputInt32);
+
+    void DNP3Serializer_for_AnalogOutputInt32_in_DNP3Serializer_for_AnalogOutputInt32(DNP3Serializer_for_AnalogOutputInt32 *pDNP3Serializer_for_AnalogOutputInt32,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                    read_func_t_in_Serializer_for_AnalogOutputInt32 read_func,// read_func_t_in_Serializer_for_Binary,
+////                   typename Serializer<T>::write_func_t write_func)
+                    write_func_t_in_Serializer_for_AnalogOutputInt32 write_func);//write_func_t_in_Serializer_for_Binary);
+
+//-----------------------------DNP3Serializer_for_AnalogOutputInt32-------------------------------------------
+//-----------------------------DNP3Serializer_for_AnalogOutputFloat32-------------------------------------------
+////template<class T> class DNP3Serializer : public Serializer<T>
+typedef struct
+{
+  Serializer_for_AnalogOutputFloat32 sSerializer_for_AnalogOutputFloat32;
+////public:
+////    DNP3Serializer(GroupVariationID id,
+////                   size_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+////        : Serializer<T>(size, read_func, write_func), id(id)
+////    {
+////    }
+
+////    GroupVariationID ID() const
+////    {
+////        return id;
+////    }
+
+////private:
+    GroupVariationID id;
+} DNP3Serializer_for_AnalogOutputFloat32;
+    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputFloat32(DNP3Serializer_for_AnalogOutputFloat32 *pDNP3Serializer_for_AnalogOutputFloat32);
+
+    void DNP3Serializer_for_AnalogOutputFloat32_in_DNP3Serializer_for_AnalogOutputFloat32(DNP3Serializer_for_AnalogOutputFloat32 *pDNP3Serializer_for_AnalogOutputFloat32,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                    read_func_t_in_Serializer_for_AnalogOutputFloat32 read_func,// read_func_t_in_Serializer_for_Binary,
+////                   typename Serializer<T>::write_func_t write_func)
+                    write_func_t_in_Serializer_for_AnalogOutputFloat32 write_func);//write_func_t_in_Serializer_for_Binary);
+
+//-----------------------------DNP3Serializer_for_AnalogOutputFloat32-------------------------------------------
+//-----------------------------DNP3Serializer_for_AnalogOutputDouble64-------------------------------------------
+////template<class T> class DNP3Serializer : public Serializer<T>
+typedef struct
+{
+  Serializer_for_AnalogOutputDouble64 sSerializer_for_AnalogOutputDouble64;
+////public:
+////    DNP3Serializer(GroupVariationID id,
+////                   size_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+////        : Serializer<T>(size, read_func, write_func), id(id)
+////    {
+////    }
+
+////    GroupVariationID ID() const
+////    {
+////        return id;
+////    }
+
+////private:
+    GroupVariationID id;
+} DNP3Serializer_for_AnalogOutputDouble64;
+    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputDouble64(DNP3Serializer_for_AnalogOutputDouble64 *pDNP3Serializer_for_AnalogOutputDouble64);
+
+    void DNP3Serializer_for_AnalogOutputDouble64_in_DNP3Serializer_for_AnalogOutputDouble64(DNP3Serializer_for_AnalogOutputDouble64 *pDNP3Serializer_for_AnalogOutputDouble64,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                    read_func_t_in_Serializer_for_AnalogOutputDouble64 read_func,// read_func_t_in_Serializer_for_Binary,
+////                   typename Serializer<T>::write_func_t write_func)
+                    write_func_t_in_Serializer_for_AnalogOutputDouble64 write_func);//write_func_t_in_Serializer_for_Binary);
+
+//-----------------------------DNP3Serializer_for_AnalogOutputDouble64-------------------------------------------
 
 ////} // namespace opendnp3
 

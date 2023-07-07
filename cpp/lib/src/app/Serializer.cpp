@@ -354,3 +354,198 @@
   pSerializer_for_TimeAndInterval->write_func = write_func;
 }
 //------------------------Serializer_for_TimeAndInterval----------------------------------------------------
+//------------------------Serializer_for_ControlRelayOutputBlock----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock) 
+{
+    return pSerializer_for_ControlRelayOutputBlock->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock, RSeq_for_Uint16_t *buffer, ControlRelayOutputBlock *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_ControlRelayOutputBlock->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock, ControlRelayOutputBlock *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_ControlRelayOutputBlock->write_func)(value, buffer);
+}
+
+   void Serializer_for_ControlRelayOutputBlock_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_ControlRelayOutputBlock  read_func,
+                                               write_func_t_in_Serializer_for_ControlRelayOutputBlock write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_ControlRelayOutputBlock->size = size;
+  pSerializer_for_ControlRelayOutputBlock->read_func = read_func;
+  pSerializer_for_ControlRelayOutputBlock->write_func = write_func;
+}
+//------------------------Serializer_for_ControlRelayOutputBlock----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputInt16----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_AnalogOutputInt16(Serializer_for_AnalogOutputInt16 *pSerializer_for_AnalogOutputInt16) 
+{
+    return pSerializer_for_AnalogOutputInt16->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_AnalogOutputInt16(Serializer_for_AnalogOutputInt16 *pSerializer_for_AnalogOutputInt16, RSeq_for_Uint16_t *buffer, AnalogOutputInt16 *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputInt16->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_AnalogOutputInt16(Serializer_for_AnalogOutputInt16 *pSerializer_for_AnalogOutputInt16, AnalogOutputInt16 *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputInt16->write_func)(value, buffer);
+}
+
+   void Serializer_for_AnalogOutputInt16_in_Serializer_for_AnalogOutputInt16(Serializer_for_AnalogOutputInt16 *pSerializer_for_AnalogOutputInt16,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputInt16  read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputInt16 write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_AnalogOutputInt16->size = size;
+  pSerializer_for_AnalogOutputInt16->read_func = read_func;
+  pSerializer_for_AnalogOutputInt16->write_func = write_func;
+}
+//------------------------Serializer_for_AnalogOutputInt16----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputInt32----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_AnalogOutputInt32(Serializer_for_AnalogOutputInt32 *pSerializer_for_AnalogOutputInt32) 
+{
+    return pSerializer_for_AnalogOutputInt32->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_AnalogOutputInt32(Serializer_for_AnalogOutputInt32 *pSerializer_for_AnalogOutputInt32, RSeq_for_Uint16_t *buffer, AnalogOutputInt32 *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputInt32->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_AnalogOutputInt32(Serializer_for_AnalogOutputInt32 *pSerializer_for_AnalogOutputInt32, AnalogOutputInt32 *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputInt32->write_func)(value, buffer);
+}
+
+   void Serializer_for_AnalogOutputInt32_in_Serializer_for_AnalogOutputInt32(Serializer_for_AnalogOutputInt32 *pSerializer_for_AnalogOutputInt32,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputInt32  read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputInt32 write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_AnalogOutputInt32->size = size;
+  pSerializer_for_AnalogOutputInt32->read_func = read_func;
+  pSerializer_for_AnalogOutputInt32->write_func = write_func;
+}
+//------------------------Serializer_for_AnalogOutputInt32----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputFloat32----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_AnalogOutputFloat32(Serializer_for_AnalogOutputFloat32 *pSerializer_for_AnalogOutputFloat32) 
+{
+    return pSerializer_for_AnalogOutputFloat32->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_AnalogOutputFloat32(Serializer_for_AnalogOutputFloat32 *pSerializer_for_AnalogOutputFloat32, RSeq_for_Uint16_t *buffer, AnalogOutputFloat32 *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputFloat32->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_AnalogOutputFloat32(Serializer_for_AnalogOutputFloat32 *pSerializer_for_AnalogOutputFloat32, AnalogOutputFloat32 *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputFloat32->write_func)(value, buffer);
+}
+
+   void Serializer_for_AnalogOutputFloat32_in_Serializer_for_AnalogOutputFloat32(Serializer_for_AnalogOutputFloat32 *pSerializer_for_AnalogOutputFloat32,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputFloat32  read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputFloat32 write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_AnalogOutputFloat32->size = size;
+  pSerializer_for_AnalogOutputFloat32->read_func = read_func;
+  pSerializer_for_AnalogOutputFloat32->write_func = write_func;
+}
+//------------------------Serializer_for_AnalogOutputFloat32----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputDouble64----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_AnalogOutputDouble64(Serializer_for_AnalogOutputDouble64 *pSerializer_for_AnalogOutputDouble64) 
+{
+    return pSerializer_for_AnalogOutputDouble64->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_AnalogOutputDouble64(Serializer_for_AnalogOutputDouble64 *pSerializer_for_AnalogOutputDouble64, RSeq_for_Uint16_t *buffer, AnalogOutputDouble64 *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputDouble64->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_AnalogOutputDouble64(Serializer_for_AnalogOutputDouble64 *pSerializer_for_AnalogOutputDouble64, AnalogOutputDouble64 *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_AnalogOutputDouble64->write_func)(value, buffer);
+}
+
+   void Serializer_for_AnalogOutputDouble64_in_Serializer_for_AnalogOutputDouble64(Serializer_for_AnalogOutputDouble64 *pSerializer_for_AnalogOutputDouble64,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputDouble64  read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputDouble64 write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_AnalogOutputDouble64->size = size;
+  pSerializer_for_AnalogOutputDouble64->read_func = read_func;
+  pSerializer_for_AnalogOutputDouble64->write_func = write_func;
+}
+//------------------------Serializer_for_AnalogOutputDouble64----------------------------------------------------

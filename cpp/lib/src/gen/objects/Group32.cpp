@@ -44,8 +44,8 @@
 #include "SerializationTemplates.h"
 #include "DownSampling.h"
 
-#include "RSeq.h"
-#include "WSeq.h"
+//#include "RSeq.h"
+//#include "WSeq.h"
 
 ////using namespace ser4cpp;
 

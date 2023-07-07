@@ -22,8 +22,10 @@
 
 #include "RSeq.h"
 #include "WSeq.h"
+#include "AnalogOutput.h"
 #include "MeasurementTypes.h"
 #include "OctetString.h"
+#include "ControlRelayOutputBlock.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>
 
@@ -633,5 +635,343 @@ typedef struct
 
 
 //------------------------Serializer_for_TimeAndInterval----------------------------------------------------
+//------------------------Serializer_for_ControlRelayOutputBlock----------------------------------------------------
+
+   typedef boolean (*read_func_t_in_Serializer_for_ControlRelayOutputBlock) (RSeq_for_Uint16_t *buffer, ControlRelayOutputBlock *output);
+   typedef boolean (*write_func_t_in_Serializer_for_ControlRelayOutputBlock)(ControlRelayOutputBlock *value, WSeq_for_Uint16_t *buffer);
+
+////template<class T> class Serializer
+typedef struct
+{
+////public:
+////    using read_func_t = bool (*)(ser4cpp::rseq_t& buffer, T& output);
+////    using write_func_t = bool (*)(const T& value, ser4cpp::wseq_t& buffer);
+
+////    Serializer() = default;
+
+////    Serializer(size_t size, read_func_t read_func, write_func_t write_func)
+////        : size(size), read_func(read_func), write_func(write_func)
+////    {
+////    }
+
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+////    size_t get_size() const
+////    {
+////        return size;
+////    }
+
+    /**
+     * reads the value and advances the read buffer
+     */
+////    bool read(ser4cpp::rseq_t& buffer, T& output) const
+////    {
+////        return (*read_func)(buffer, output);
+////    }
+
+    /**
+     * writes the value and advances the write buffer
+     */
+////    bool write(const T& value, ser4cpp::wseq_t& buffer) const
+////    {
+////        return (*write_func)(value, buffer);
+////    }
+
+////private:
+    ////size_t size = 0;
+////    read_func_t read_func = nullptr;
+////    write_func_t write_func = nullptr;
+    uint16_t size;
+    read_func_t_in_Serializer_for_ControlRelayOutputBlock  read_func;
+    write_func_t_in_Serializer_for_ControlRelayOutputBlock write_func;
+
+} Serializer_for_ControlRelayOutputBlock;
+////} // namespace opendnp3
+
+
+   uint16_t get_size_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock);
+   boolean read_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock, RSeq_for_Uint16_t *buffer, ControlRelayOutputBlock *output);
+   boolean write_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock, ControlRelayOutputBlock *value, WSeq_for_Uint16_t *buffer);
+
+   void Serializer_for_ControlRelayOutputBlock_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_ControlRelayOutputBlock read_func,
+                                               write_func_t_in_Serializer_for_ControlRelayOutputBlock write_func);
+
+
+//------------------------Serializer_for_ControlRelayOutputBlock----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputInt16----------------------------------------------------
+
+   typedef boolean (*read_func_t_in_Serializer_for_AnalogOutputInt16) (RSeq_for_Uint16_t *buffer, AnalogOutputInt16 *output);
+   typedef boolean (*write_func_t_in_Serializer_for_AnalogOutputInt16)(AnalogOutputInt16 *value, WSeq_for_Uint16_t *buffer);
+//#define POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION(function)   (*(read_func_t_in_Serializer_for_Binary *)function)
+//#define POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION(function)  (*(write_func_t_in_Serializer_for_Binary *)function)
+
+////template<class T> class Serializer
+typedef struct
+{
+////public:
+////    using read_func_t = bool (*)(ser4cpp::rseq_t& buffer, T& output);
+////    using write_func_t = bool (*)(const T& value, ser4cpp::wseq_t& buffer);
+
+////    Serializer() = default;
+
+////    Serializer(size_t size, read_func_t read_func, write_func_t write_func)
+////        : size(size), read_func(read_func), write_func(write_func)
+////    {
+////    }
+
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+////    size_t get_size() const
+////    {
+////        return size;
+////    }
+
+    /**
+     * reads the value and advances the read buffer
+     */
+////    bool read(ser4cpp::rseq_t& buffer, T& output) const
+////    {
+////        return (*read_func)(buffer, output);
+////    }
+
+    /**
+     * writes the value and advances the write buffer
+     */
+////    bool write(const T& value, ser4cpp::wseq_t& buffer) const
+////    {
+////        return (*write_func)(value, buffer);
+////    }
+
+////private:
+    ////size_t size = 0;
+////    read_func_t read_func = nullptr;
+////    write_func_t write_func = nullptr;
+    uint16_t size;
+    read_func_t_in_Serializer_for_AnalogOutputInt16  read_func;
+    write_func_t_in_Serializer_for_AnalogOutputInt16 write_func;
+
+} Serializer_for_AnalogOutputInt16;
+////} // namespace opendnp3
+
+
+   uint16_t get_size_in_Serializer_for_AnalogOutputInt16(Serializer_for_AnalogOutputInt16 *pSerializer_for_AnalogOutputInt16);
+   boolean read_in_Serializer_for_AnalogOutputInt16(Serializer_for_AnalogOutputInt16 *pSerializer_for_AnalogOutputInt16, RSeq_for_Uint16_t *buffer, AnalogOutputInt16 *output);
+   boolean write_in_Serializer_for_AnalogOutputInt16(Serializer_for_AnalogOutputInt16 *pSerializer_for_AnalogOutputInt16, AnalogOutputInt16 *value, WSeq_for_Uint16_t *buffer);
+
+   void Serializer_for_AnalogOutputInt16_in_Serializer_for_AnalogOutputInt16(Serializer_for_AnalogOutputInt16 *pSerializer_for_AnalogOutputInt16,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputInt16 read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputInt16 write_func);
+
+
+//------------------------Serializer_for_AnalogOutputInt16----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputInt32----------------------------------------------------
+
+   typedef boolean (*read_func_t_in_Serializer_for_AnalogOutputInt32) (RSeq_for_Uint16_t *buffer, AnalogOutputInt32 *output);
+   typedef boolean (*write_func_t_in_Serializer_for_AnalogOutputInt32)(AnalogOutputInt32 *value, WSeq_for_Uint16_t *buffer);
+//#define POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION(function)   (*(read_func_t_in_Serializer_for_Binary *)function)
+//#define POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION(function)  (*(write_func_t_in_Serializer_for_Binary *)function)
+
+////template<class T> class Serializer
+typedef struct
+{
+////public:
+////    using read_func_t = bool (*)(ser4cpp::rseq_t& buffer, T& output);
+////    using write_func_t = bool (*)(const T& value, ser4cpp::wseq_t& buffer);
+
+////    Serializer() = default;
+
+////    Serializer(size_t size, read_func_t read_func, write_func_t write_func)
+////        : size(size), read_func(read_func), write_func(write_func)
+////    {
+////    }
+
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+////    size_t get_size() const
+////    {
+////        return size;
+////    }
+
+    /**
+     * reads the value and advances the read buffer
+     */
+////    bool read(ser4cpp::rseq_t& buffer, T& output) const
+////    {
+////        return (*read_func)(buffer, output);
+////    }
+
+    /**
+     * writes the value and advances the write buffer
+     */
+////    bool write(const T& value, ser4cpp::wseq_t& buffer) const
+////    {
+////        return (*write_func)(value, buffer);
+////    }
+
+////private:
+    ////size_t size = 0;
+////    read_func_t read_func = nullptr;
+////    write_func_t write_func = nullptr;
+    uint16_t size;
+    read_func_t_in_Serializer_for_AnalogOutputInt32  read_func;
+    write_func_t_in_Serializer_for_AnalogOutputInt32 write_func;
+
+} Serializer_for_AnalogOutputInt32;
+////} // namespace opendnp3
+
+
+   uint16_t get_size_in_Serializer_for_AnalogOutputInt32(Serializer_for_AnalogOutputInt32 *pSerializer_for_AnalogOutputInt32);
+   boolean read_in_Serializer_for_AnalogOutputInt32(Serializer_for_AnalogOutputInt32 *pSerializer_for_AnalogOutputInt32, RSeq_for_Uint16_t *buffer, AnalogOutputInt32 *output);
+   boolean write_in_Serializer_for_AnalogOutputInt32(Serializer_for_AnalogOutputInt32 *pSerializer_for_AnalogOutputInt32, AnalogOutputInt32 *value, WSeq_for_Uint16_t *buffer);
+
+   void Serializer_for_AnalogOutputInt32_in_Serializer_for_AnalogOutputInt32(Serializer_for_AnalogOutputInt32 *pSerializer_for_AnalogOutputInt32,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputInt32 read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputInt32 write_func);
+
+
+//------------------------Serializer_for_AnalogOutputInt32----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputFloat32----------------------------------------------------
+
+   typedef boolean (*read_func_t_in_Serializer_for_AnalogOutputFloat32) (RSeq_for_Uint16_t *buffer, AnalogOutputFloat32 *output);
+   typedef boolean (*write_func_t_in_Serializer_for_AnalogOutputFloat32)(AnalogOutputFloat32 *value, WSeq_for_Uint16_t *buffer);
+//#define POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION(function)   (*(read_func_t_in_Serializer_for_Binary *)function)
+//#define POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION(function)  (*(write_func_t_in_Serializer_for_Binary *)function)
+
+////template<class T> class Serializer
+typedef struct
+{
+////public:
+////    using read_func_t = bool (*)(ser4cpp::rseq_t& buffer, T& output);
+////    using write_func_t = bool (*)(const T& value, ser4cpp::wseq_t& buffer);
+
+////    Serializer() = default;
+
+////    Serializer(size_t size, read_func_t read_func, write_func_t write_func)
+////        : size(size), read_func(read_func), write_func(write_func)
+////    {
+////    }
+
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+////    size_t get_size() const
+////    {
+////        return size;
+////    }
+
+    /**
+     * reads the value and advances the read buffer
+     */
+////    bool read(ser4cpp::rseq_t& buffer, T& output) const
+////    {
+////        return (*read_func)(buffer, output);
+////    }
+
+    /**
+     * writes the value and advances the write buffer
+     */
+////    bool write(const T& value, ser4cpp::wseq_t& buffer) const
+////    {
+////        return (*write_func)(value, buffer);
+////    }
+
+////private:
+    ////size_t size = 0;
+////    read_func_t read_func = nullptr;
+////    write_func_t write_func = nullptr;
+    uint16_t size;
+    read_func_t_in_Serializer_for_AnalogOutputFloat32  read_func;
+    write_func_t_in_Serializer_for_AnalogOutputFloat32 write_func;
+
+} Serializer_for_AnalogOutputFloat32;
+////} // namespace opendnp3
+
+
+   uint16_t get_size_in_Serializer_for_AnalogOutputFloat32(Serializer_for_AnalogOutputFloat32 *pSerializer_for_AnalogOutputFloat32);
+   boolean read_in_Serializer_for_AnalogOutputFloat32(Serializer_for_AnalogOutputFloat32 *pSerializer_for_AnalogOutputFloat32, RSeq_for_Uint16_t *buffer, AnalogOutputFloat32 *output);
+   boolean write_in_Serializer_for_AnalogOutputFloat32(Serializer_for_AnalogOutputFloat32 *pSerializer_for_AnalogOutputFloat32, AnalogOutputFloat32 *value, WSeq_for_Uint16_t *buffer);
+
+   void Serializer_for_AnalogOutputFloat32_in_Serializer_for_AnalogOutputFloat32(Serializer_for_AnalogOutputFloat32 *pSerializer_for_AnalogOutputFloat32,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputFloat32 read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputFloat32 write_func);
+
+
+//------------------------Serializer_for_AnalogOutputFloat32----------------------------------------------------
+//------------------------Serializer_for_AnalogOutputDouble64----------------------------------------------------
+
+   typedef boolean (*read_func_t_in_Serializer_for_AnalogOutputDouble64) (RSeq_for_Uint16_t *buffer, AnalogOutputDouble64 *output);
+   typedef boolean (*write_func_t_in_Serializer_for_AnalogOutputDouble64)(AnalogOutputDouble64 *value, WSeq_for_Uint16_t *buffer);
+//#define POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION(function)   (*(read_func_t_in_Serializer_for_Binary *)function)
+//#define POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION(function)  (*(write_func_t_in_Serializer_for_Binary *)function)
+
+////template<class T> class Serializer
+typedef struct
+{
+////public:
+////    using read_func_t = bool (*)(ser4cpp::rseq_t& buffer, T& output);
+////    using write_func_t = bool (*)(const T& value, ser4cpp::wseq_t& buffer);
+
+////    Serializer() = default;
+
+////    Serializer(size_t size, read_func_t read_func, write_func_t write_func)
+////        : size(size), read_func(read_func), write_func(write_func)
+////    {
+////    }
+
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+////    size_t get_size() const
+////    {
+////        return size;
+////    }
+
+    /**
+     * reads the value and advances the read buffer
+     */
+////    bool read(ser4cpp::rseq_t& buffer, T& output) const
+////    {
+////        return (*read_func)(buffer, output);
+////    }
+
+    /**
+     * writes the value and advances the write buffer
+     */
+////    bool write(const T& value, ser4cpp::wseq_t& buffer) const
+////    {
+////        return (*write_func)(value, buffer);
+////    }
+
+////private:
+    ////size_t size = 0;
+////    read_func_t read_func = nullptr;
+////    write_func_t write_func = nullptr;
+    uint16_t size;
+    read_func_t_in_Serializer_for_AnalogOutputDouble64  read_func;
+    write_func_t_in_Serializer_for_AnalogOutputDouble64 write_func;
+
+} Serializer_for_AnalogOutputDouble64;
+////} // namespace opendnp3
+
+
+   uint16_t get_size_in_Serializer_for_AnalogOutputDouble64(Serializer_for_AnalogOutputDouble64 *pSerializer_for_AnalogOutputDouble64);
+   boolean read_in_Serializer_for_AnalogOutputDouble64(Serializer_for_AnalogOutputDouble64 *pSerializer_for_AnalogOutputDouble64, RSeq_for_Uint16_t *buffer, AnalogOutputDouble64 *output);
+   boolean write_in_Serializer_for_AnalogOutputDouble64(Serializer_for_AnalogOutputDouble64 *pSerializer_for_AnalogOutputDouble64, AnalogOutputDouble64 *value, WSeq_for_Uint16_t *buffer);
+
+   void Serializer_for_AnalogOutputDouble64_in_Serializer_for_AnalogOutputDouble64(Serializer_for_AnalogOutputDouble64 *pSerializer_for_AnalogOutputDouble64,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_AnalogOutputDouble64 read_func,
+                                               write_func_t_in_Serializer_for_AnalogOutputDouble64 write_func);
+
+
+//------------------------Serializer_for_AnalogOutputDouble64----------------------------------------------------
 
 #endif

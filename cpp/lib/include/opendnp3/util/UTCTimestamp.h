@@ -20,25 +20,30 @@
 #ifndef OPENDNP3_UTCTIMESTAMP_H
 #define OPENDNP3_UTCTIMESTAMP_H
 
-#include <cstdint>
+////#include <cstdint>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  *  Strong typing for UTCTimestamps
  */
-class UTCTimestamp
+////class UTCTimestamp
+typedef struct
 {
 
-public:
-    UTCTimestamp() = default;
+////public:
+////    UTCTimestamp() = default;
 
-    UTCTimestamp(uint64_t msSinceEpoch) : msSinceEpoch(msSinceEpoch) {}
+////    UTCTimestamp(uint64_t msSinceEpoch) : msSinceEpoch(msSinceEpoch) {}
 
-    uint64_t msSinceEpoch = 0;
-};
+  uint64_t msSinceEpoch;// = 0;
+} UTCTimestamp;
 
-} // namespace opendnp3
+void UTCTimestamp_in_UTCTimestampOver1(UTCTimestamp *pUTCTimestamp);
+void UTCTimestamp_in_UTCTimestampOver2(UTCTimestamp *pUTCTimestamp, uint64_t msSinceEpoch);
+
+
+////} // namespace opendnp3
 
 #endif

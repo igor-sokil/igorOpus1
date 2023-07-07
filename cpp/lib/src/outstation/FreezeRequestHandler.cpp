@@ -17,12 +17,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "outstation/FreezeRequestHandler.h"
+/////#include "outstation/FreezeRequestHandler.h"
 
-#include "gen/objects/Group12.h"
-#include "gen/objects/Group41.h"
+/////#include "gen/objects/Group12.h"
+/////#include "gen/objects/Group41.h"
 
-#include <ser4cpp/serialization/LittleEndian.h>
+////#include <ser4cpp/serialization/LittleEndian.h>
+
+#include "FreezeRequestHandler.h"
+
+#include "Group12.h"
+#include "Group41.h"
+
 
 namespace opendnp3
 {

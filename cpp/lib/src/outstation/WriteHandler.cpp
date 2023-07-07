@@ -24,55 +24,110 @@
 namespace opendnp3
 {
 
-WriteHandler::WriteHandler(
-    IOutstationApplication& application, TimeSyncState& timeSyncState, AppSeqNum seq, Timestamp now, IINField* writeIIN)
-    : application(&application), timeSyncState(&timeSyncState), seq(seq), now(now), writeIIN(writeIIN)
+void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
+    IOutstationApplication* application, TimeSyncState* timeSyncState, AppSeqNum seq, Timestamp now, IINField* writeIIN)
 {
+    pWriteHandler->application = application;
+    pWriteHandler->timeSyncState = timeSyncState;
+    pWriteHandler->seq = seq;
+    pWriteHandler->now = now;
+    pWriteHandler->writeIIN = writeIIN;
+
+    pWriteHandler->wroteTime = false;
+    pWriteHandler->wroteIIN = false;
 }
 
-IINField WriteHandler::ProcessHeader(const RangeHeader& /*header*/, const ICollection<Indexed<IINValue>>& values)
+IINField ProcessHeader_RangeHeader_in_WriteHandler_override(void *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values)
 {
-    Indexed<IINValue> pair;
+UNUSED(header);
+  WriteHandler *parent =
+    (WriteHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 
-    if (!values.ReadOnlyValue(pair))
+    Indexed_for_IINValue pair;
+    Indexed_for_IINValue_in_Indexed_for_IINValueOver1(&pair);
+
+////    if (!values.ReadOnlyValue(pair))
+    if (!ReadOnlyValue_in_ICollection_Indexed_for_IINValue(values, &pair))
     {
-        return IINBit::PARAM_ERROR;
+////        return IINBit::PARAM_ERROR;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+    return iIINField;
     }
 
-    if (wroteIIN)
+    if (parent->wroteIIN)
     {
-        return IINBit::PARAM_ERROR;
+////        return IINBit::PARAM_ERROR;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+    return iIINField;
     }
 
-    if (pair.index != static_cast<uint16_t>(IINBit::DEVICE_RESTART))
+////    if (pair.index != static_cast<uint16_t>(IINBit::DEVICE_RESTART))
+    if (pair.index != (uint16_t)(IINBit_DEVICE_RESTART))
     {
-        return IINBit::PARAM_ERROR;
+////        return IINBit::PARAM_ERROR;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+    return iIINField;
     }
 
     if (pair.value.value)
     {
-        return IINBit::PARAM_ERROR;
+////        return IINBit::PARAM_ERROR;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+    return iIINField;
     }
 
-    wroteIIN = true;
-    writeIIN->ClearBit(IINBit::DEVICE_RESTART);
-    return IINField();
+    parent->wroteIIN = true;
+//    void ClearBit_in_IINField(IINField *, IINBit_uint8_t bit);
+////    parent->writeIIN->ClearBit(IINBit::DEVICE_RESTART);
+    ClearBit_in_IINField(parent->writeIIN, IINBit_DEVICE_RESTART);
+////    return IINField();
+    IINField iIINField;
+    IINField_in_IINFieldOver1(&iIINField);
+    return iIINField;
 }
 
-IINField WriteHandler::ProcessHeader(const CountHeader& /*header*/, const ICollection<Group50Var1>& values)
+IINField WriteHandler::ProcessHeader(const CountHeader* header, ICollection_for_Group50Var1* values)
 {
-    if (this->wroteTime)
-        return IINBit::PARAM_ERROR;
+UNUSED(header);
+  WriteHandler *parent =
+    (WriteHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 
-    if (!application->SupportsWriteAbsoluteTime())
-        return IINBit::FUNC_NOT_SUPPORTED;
+    if (parent->wroteTime)
+{
+////        return IINBit::PARAM_ERROR;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+    return iIINField;
+}
+
+//    boolean SupportsWriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*);
+////    if (!application->SupportsWriteAbsoluteTime())
+    if (!SupportsWriteAbsoluteTime_in_IOutstationApplication(parent->application))
+{
+////        return IINBit::FUNC_NOT_SUPPORTED;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
+    return iIINField;
+}
 
     Group50Var1 value;
-    if (!values.ReadOnlyValue(value))
-        return IINBit::PARAM_ERROR;
+    Group50Var1_in_Group50Var1(&value);
 
-    this->wroteTime = true;
-    return application->WriteAbsoluteTime(UTCTimestamp(value.time.value)) ? IINField::Empty() : IINBit::PARAM_ERROR;
+    if (!values.ReadOnlyValue(value))
+{
+////        return IINBit::PARAM_ERROR;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+    return iIINField;
+}
+
+    parent->wroteTime = true;
+//void UTCTimestamp_in_UTCTimestampOver2(UTCTimestamp *pUTCTimestamp, uint64_t msSinceEpoch);
+////    return application->WriteAbsoluteTime(UTCTimestamp(value.time.value)) ? IINField::Empty() : IINBit::PARAM_ERROR;
 }
 
 IINField WriteHandler::ProcessHeader(const CountHeader& /*header*/, const ICollection<Group50Var3>& values)

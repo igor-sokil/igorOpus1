@@ -211,13 +211,19 @@ void ClearBit_in_IINField(IINField *pIINField, IINBit_uint8_t bit)
     pIINField -> MSB = aMSB;
 }
 
-/*
     void IINField_in_IINFieldOver1(IINField *pIINField)
 {
    pIINField -> LSB = 0;
    pIINField -> MSB = 0;
 }
-*/
+
+    IINField operatorOREQ_in_IINField(IINField *pIINField, IINField* aIIN)
+    {
+        pIINField->MSB |= aIIN->MSB;
+        pIINField->LSB |= aIIN->LSB;
+        return *pIINField;
+    }
+
 ////    bool IsSet(IINBit bit) const;
 
     boolean IsClear_in_IINField(IINField *pIINField, IINBit_uint8_t bit)

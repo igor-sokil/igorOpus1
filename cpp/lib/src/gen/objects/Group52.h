@@ -38,7 +38,9 @@
 
 #include "GroupVariationID.h"
 //#include <ser4cpp/container/SequenceTypes.h>
-#include "DNPTime.h"
+//#include "DNPTime.h"
+#include "RSeq.h"
+#include "WSeq.h"
 
 ////namespace opendnp3 {
 
@@ -59,20 +61,10 @@ typedef struct
 
   uint16_t Size_in_Group52Var1_static(void);
 
- uint16_t Size_in_Group52Var1_static(void) 
-{
- return 2; 
-}
-
  void Group52Var1_in_Group52Var1(Group52Var1 *pGroup52Var1);
 
-  GroupVariationID ID_in_Group52Var1_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 52, 1);
-////  return GroupVariationID(52,1); 
- return gGroupVariationID;
-}
+ boolean Read_in_Group52Var1_static(RSeq_for_Uint16_t *, Group52Var1*);
+ boolean Write_in_Group52Var1_static(Group52Var1*, WSeq_for_Uint16_t*);
 
 // Time Delay - Fine
 ////struct Group52Var2
@@ -91,20 +83,8 @@ typedef struct
 
   uint16_t Size_in_Group52Var2_static(void);
 
- uint16_t Size_in_Group52Var2_static(void) 
-{
- return 2; 
-}
-
  void Group52Var2_in_Group52Var2(Group52Var2 *pGroup52Var2);
 
-  GroupVariationID ID_in_Group52Var2_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 52, 2);
-////  return GroupVariationID(52,2); 
- return gGroupVariationID;
-}
 
  boolean Read_in_Group52Var2_static(RSeq_for_Uint16_t *, Group52Var2*);
  boolean Write_in_Group52Var2_static(Group52Var2*, WSeq_for_Uint16_t*);

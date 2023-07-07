@@ -21,11 +21,15 @@
 #define OPENDNP3_INDEXED_H
 
 #include "AnalogOutput.h"
+#include "IINValue.h"
+#include "ControlRelayOutputBlock.h"
+#include "OperationType.h"
 ////#include <cstdint>
 
 ////namespace opendnp3
 ////{
 
+//------------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------------
 /**
  * A simple tuple for pairing Values with an index
  */
@@ -47,6 +51,116 @@ typedef struct
    Indexed_for_AnalogOutputInt16 WithIndex_in_Indexed_for_AnalogOutputInt16(//Indexed_for_AnalogOutputInt16 *pIndexed_for_AnalogOutputInt16, 
                                    AnalogOutputInt16* value, uint16_t index);
 //------------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------------
+//------------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+    AnalogOutputInt32 value;
+    uint16_t index;
+} Indexed_for_AnalogOutputInt32;
+
+   void Indexed_for_AnalogOutputInt32_in_Indexed_for_AnalogOutputInt32Over1(Indexed_for_AnalogOutputInt32 *pIndexed_for_AnalogOutputInt32);
+   void Indexed_for_AnalogOutputInt32_in_Indexed_for_AnalogOutputInt32Over2(Indexed_for_AnalogOutputInt32 *pIndexed_for_AnalogOutputInt32,
+                                   AnalogOutputInt32* value_, uint16_t index_);
+   Indexed_for_AnalogOutputInt32 WithIndex_in_Indexed_for_AnalogOutputInt32(//Indexed_for_AnalogOutputInt32 *pIndexed_for_AnalogOutputInt32, 
+                                   AnalogOutputInt32* value, uint16_t index);
+//------------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------------
+//------------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+    AnalogOutputFloat32 value;
+    uint16_t index;
+} Indexed_for_AnalogOutputFloat32;
+
+   void Indexed_for_AnalogOutputFloat32_in_Indexed_for_AnalogOutputFloat32Over1(Indexed_for_AnalogOutputFloat32 *pIndexed_for_AnalogOutputFloat32);
+   void Indexed_for_AnalogOutputFloat32_in_Indexed_for_AnalogOutputFloat32Over2(Indexed_for_AnalogOutputFloat32 *pIndexed_for_AnalogOutputFloat32,
+                                   AnalogOutputFloat32* value_, uint16_t index_);
+   Indexed_for_AnalogOutputFloat32 WithIndex_in_Indexed_for_AnalogOutputFloat32(//Indexed_for_AnalogOutputFloat32 *pIndexed_for_AnalogOutputFloat32, 
+                                   AnalogOutputFloat32* value, uint16_t index);
+//------------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------------
+//------------------------------------Indexed_for_AnalogOutputDouble64---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+    AnalogOutputDouble64 value;
+    uint16_t index;
+} Indexed_for_AnalogOutputDouble64;
+
+   void Indexed_for_AnalogOutputDouble64_in_Indexed_for_AnalogOutputDouble64Over1(Indexed_for_AnalogOutputDouble64 *pIndexed_for_AnalogOutputDouble64);
+   void Indexed_for_AnalogOutputDouble64_in_Indexed_for_AnalogOutputDouble64Over2(Indexed_for_AnalogOutputDouble64 *pIndexed_for_AnalogOutputDouble64,
+                                   AnalogOutputDouble64* value_, uint16_t index_);
+   Indexed_for_AnalogOutputDouble64 WithIndex_in_Indexed_for_AnalogOutputDouble64(//Indexed_for_AnalogOutputDouble64 *pIndexed_for_AnalogOutputDouble64, 
+                                   AnalogOutputDouble64* value, uint16_t index);
+//------------------------------------Indexed_for_AnalogOutputDouble64---------------------------------------------------------
+//------------------------------------Indexed_for_IINValue---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+    IINValue value;
+    uint16_t index;
+} Indexed_for_IINValue;
+
+   void Indexed_for_IINValue_in_Indexed_for_IINValueOver1(Indexed_for_IINValue *pIndexed_for_IINValue);
+   void Indexed_for_IINValue_in_Indexed_for_IINValueOver2(Indexed_for_IINValue *pIndexed_for_IINValue,
+                                   IINValue* value_, uint16_t index_);
+   Indexed_for_IINValue WithIndex_in_Indexed_for_IINValue(
+                                   IINValue* value, uint16_t index);
+//------------------------------------Indexed_for_IINValue---------------------------------------------------------
+//------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+    ControlRelayOutputBlock value;
+    uint16_t index;
+} Indexed_for_ControlRelayOutputBlock;
+
+   void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver1(Indexed_for_ControlRelayOutputBlock *pIndexed_for_ControlRelayOutputBlock);
+   void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver2(Indexed_for_ControlRelayOutputBlock *pIndexed_for_ControlRelayOutputBlock,
+                                   ControlRelayOutputBlock* value_, uint16_t index_);
+   Indexed_for_ControlRelayOutputBlock WithIndex_in_Indexed_for_ControlRelayOutputBlock(
+                                   ControlRelayOutputBlock* value, uint16_t index);
+//------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
 
 ////} // namespace opendnp3
 

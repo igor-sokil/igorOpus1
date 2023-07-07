@@ -184,3 +184,118 @@
 
 }
 //-----------------------------DNP3Serializer_for_TimeAndInterval-------------------------------------------
+//-----------------------------DNP3Serializer_for_ControlRelayOutputBlock-------------------------------------------
+
+    GroupVariationID ID_in_DNP3Serializer_for_ControlRelayOutputBlock(DNP3Serializer_for_ControlRelayOutputBlock *pDNP3Serializer_for_ControlRelayOutputBlock) 
+{
+    return pDNP3Serializer_for_ControlRelayOutputBlock->id;
+}
+    void DNP3Serializer_for_ControlRelayOutputBlock_in_DNP3Serializer_for_ControlRelayOutputBlock(DNP3Serializer_for_ControlRelayOutputBlock *pDNP3Serializer_for_ControlRelayOutputBlock,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                   read_func_t_in_Serializer_for_ControlRelayOutputBlock read_func, 
+////                   typename Serializer<T>::write_func_t write_func)
+                   write_func_t_in_Serializer_for_ControlRelayOutputBlock write_func)
+{
+////        : Serializer<T>(size, read_func, write_func), id(id)
+  pDNP3Serializer_for_ControlRelayOutputBlock->id = id;
+  Serializer_for_ControlRelayOutputBlock_in_Serializer_for_ControlRelayOutputBlock(&(pDNP3Serializer_for_ControlRelayOutputBlock->sSerializer_for_ControlRelayOutputBlock),
+                                                  size,
+                                               read_func,
+                                               write_func);
+
+}
+//-----------------------------DNP3Serializer_for_ControlRelayOutputBlock-------------------------------------------
+//-----------------------------DNP3Serializer_for_AnalogOutputInt16-------------------------------------------
+
+    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputInt16(DNP3Serializer_for_AnalogOutputInt16 *pDNP3Serializer_for_AnalogOutputInt16) 
+{
+    return pDNP3Serializer_for_AnalogOutputInt16->id;
+}
+    void DNP3Serializer_for_AnalogOutputInt16_in_DNP3Serializer_for_AnalogOutputInt16(DNP3Serializer_for_AnalogOutputInt16 *pDNP3Serializer_for_AnalogOutputInt16,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                   read_func_t_in_Serializer_for_AnalogOutputInt16 read_func, 
+////                   typename Serializer<T>::write_func_t write_func)
+                   write_func_t_in_Serializer_for_AnalogOutputInt16 write_func)
+{
+////        : Serializer<T>(size, read_func, write_func), id(id)
+  pDNP3Serializer_for_AnalogOutputInt16->id = id;
+  Serializer_for_AnalogOutputInt16_in_Serializer_for_AnalogOutputInt16(&(pDNP3Serializer_for_AnalogOutputInt16->sSerializer_for_AnalogOutputInt16),
+                                                  size,
+                                               read_func,
+                                               write_func);
+
+}
+//-----------------------------DNP3Serializer_for_AnalogOutputInt16-------------------------------------------
+//-----------------------------DNP3Serializer_for_AnalogOutputInt32-------------------------------------------
+
+    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputInt32(DNP3Serializer_for_AnalogOutputInt32 *pDNP3Serializer_for_AnalogOutputInt32) 
+{
+    return pDNP3Serializer_for_AnalogOutputInt32->id;
+}
+    void DNP3Serializer_for_AnalogOutputInt32_in_DNP3Serializer_for_AnalogOutputInt32(DNP3Serializer_for_AnalogOutputInt32 *pDNP3Serializer_for_AnalogOutputInt32,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                   read_func_t_in_Serializer_for_AnalogOutputInt32 read_func, 
+////                   typename Serializer<T>::write_func_t write_func)
+                   write_func_t_in_Serializer_for_AnalogOutputInt32 write_func)
+{
+////        : Serializer<T>(size, read_func, write_func), id(id)
+  pDNP3Serializer_for_AnalogOutputInt32->id = id;
+  Serializer_for_AnalogOutputInt32_in_Serializer_for_AnalogOutputInt32(&(pDNP3Serializer_for_AnalogOutputInt32->sSerializer_for_AnalogOutputInt32),
+                                                  size,
+                                               read_func,
+                                               write_func);
+
+}
+//-----------------------------DNP3Serializer_for_AnalogOutputInt32-------------------------------------------
+//-----------------------------DNP3Serializer_for_AnalogOutputFloat32-------------------------------------------
+
+    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputFloat32(DNP3Serializer_for_AnalogOutputFloat32 *pDNP3Serializer_for_AnalogOutputFloat32) 
+{
+    return pDNP3Serializer_for_AnalogOutputFloat32->id;
+}
+    void DNP3Serializer_for_AnalogOutputFloat32_in_DNP3Serializer_for_AnalogOutputFloat32(DNP3Serializer_for_AnalogOutputFloat32 *pDNP3Serializer_for_AnalogOutputFloat32,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                   read_func_t_in_Serializer_for_AnalogOutputFloat32 read_func, 
+////                   typename Serializer<T>::write_func_t write_func)
+                   write_func_t_in_Serializer_for_AnalogOutputFloat32 write_func)
+{
+////        : Serializer<T>(size, read_func, write_func), id(id)
+  pDNP3Serializer_for_AnalogOutputFloat32->id = id;
+  Serializer_for_AnalogOutputFloat32_in_Serializer_for_AnalogOutputFloat32(&(pDNP3Serializer_for_AnalogOutputFloat32->sSerializer_for_AnalogOutputFloat32),
+                                                  size,
+                                               read_func,
+                                               write_func);
+
+}
+//-----------------------------DNP3Serializer_for_AnalogOutputFloat32-------------------------------------------
+//-----------------------------DNP3Serializer_for_AnalogOutputDouble64-------------------------------------------
+
+    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputDouble64(DNP3Serializer_for_AnalogOutputDouble64 *pDNP3Serializer_for_AnalogOutputDouble64) 
+{
+    return pDNP3Serializer_for_AnalogOutputDouble64->id;
+}
+    void DNP3Serializer_for_AnalogOutputDouble64_in_DNP3Serializer_for_AnalogOutputDouble64(DNP3Serializer_for_AnalogOutputDouble64 *pDNP3Serializer_for_AnalogOutputDouble64,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                   read_func_t_in_Serializer_for_AnalogOutputDouble64 read_func, 
+////                   typename Serializer<T>::write_func_t write_func)
+                   write_func_t_in_Serializer_for_AnalogOutputDouble64 write_func)
+{
+////        : Serializer<T>(size, read_func, write_func), id(id)
+  pDNP3Serializer_for_AnalogOutputDouble64->id = id;
+  Serializer_for_AnalogOutputDouble64_in_Serializer_for_AnalogOutputDouble64(&(pDNP3Serializer_for_AnalogOutputDouble64->sSerializer_for_AnalogOutputDouble64),
+                                                  size,
+                                               read_func,
+                                               write_func);
+
+}
+//-----------------------------DNP3Serializer_for_AnalogOutputDouble64-------------------------------------------

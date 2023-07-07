@@ -17,40 +17,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-MYTODO
+
 #ifndef OPENDNP3_CLASSBASEDREQUESTHANDLER_H
 #define OPENDNP3_CLASSBASEDREQUESTHANDLER_H
 
-#include "app/parsing/IAPDUHandler.h"
+////#include "app/parsing/IAPDUHandler.h"
 
-#include "opendnp3/app/ClassField.h"
-#include "opendnp3/app/IINField.h"
-#include "opendnp3/logging/Logger.h"
+////#include "opendnp3/app/ClassField.h"
+////#include "opendnp3/app/IINField.h"
+////#include "opendnp3/logging/Logger.h"
 
-namespace opendnp3
+#include "IAPDUHandler.h"
+
+#include "ClassField.h"
+#include "IINField.h"
+////#include "opendnp3/logging/Logger.h"
+
+////namespace opendnp3
+/////{
+
+////class ClassBasedRequestHandler : public IAPDUHandler
+typedef struct
 {
+  IAPDUHandler iIAPDUHandler;
+/////public:
+/////    ClassBasedRequestHandler() {}
 
-class ClassBasedRequestHandler : public IAPDUHandler
-{
-public:
-    ClassBasedRequestHandler() {}
+////    ClassField GetClassField() const
+////    {
+////        return classField;
+////    }
 
-    ClassField GetClassField() const
-    {
-        return classField;
-    }
+////    virtual bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) override final
+////    {
+////        return true;
+////    }
 
-    virtual bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) override final
-    {
-        return true;
-    }
-
-private:
-    virtual IINField ProcessHeader(const AllObjectsHeader& header) override final;
+////private:
+////    virtual IINField ProcessHeader(const AllObjectsHeader& header) override final;
 
     ClassField classField;
-};
 
-} // namespace opendnp3
+} ClassBasedRequestHandler;
+
+void ClassBasedRequestHandler_in_ClassBasedRequestHandler(ClassBasedRequestHandler *pClassBasedRequestHandler);
+boolean IsAllowed_in_ClassBasedRequestHandler_override(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+IINField ProcessHeader_AllObjectsHeader_in_ClassBasedRequestHandler_override(void*, AllObjectsHeader* record);
+
+
+
+////} // namespace opendnp3
 
 #endif

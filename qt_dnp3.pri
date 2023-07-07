@@ -87,6 +87,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                  ser4cpp\serialization\SerializationTemplates.cpp \
                 \
                 cpp\lib\include\opendnp3\util\Buffer.cpp \
+                cpp\lib\include\opendnp3\util\UTCTimestamp.cpp \
                 \
                 cpp\lib\include\opendnp3\master\CommandPointResult.cpp \
                 cpp\lib\include\opendnp3\master\HeaderInfo.cpp \
@@ -103,12 +104,13 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\link\ILinkListener.cpp \
                 cpp\lib\include\opendnp3\link\LinkConfig.cpp \
                 \
+                cpp\lib\include\opendnp3\outstation\IDnpTimeSource.cpp \
+                cpp\lib\include\opendnp3\outstation\ICommandHandler.cpp \
+                cpp\lib\include\opendnp3\outstation\IOutstationApplication.cpp \
+                cpp\lib\include\opendnp3\outstation\IOutstation.cpp \
                 cpp\lib\include\opendnp3\outstation\OutstationParams.cpp \
                 cpp\lib\include\opendnp3\outstation\OutstationConfig.cpp \
                 cpp\lib\include\opendnp3\outstation\StaticTypeBitfield.cpp \
-                cpp\lib\include\opendnp3\outstation\IDnpTimeSource.cpp \
-                cpp\lib\include\opendnp3\outstation\IOutstationApplication.cpp \
-                cpp\lib\include\opendnp3\outstation\IOutstation.cpp \
                 \
                 cpp\lib\src\LayerInterfaces.cpp \
                 cpp\lib\src\SequenceNum.cpp \
@@ -121,6 +123,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\ParseResult.cpp \
                 cpp\lib\src\app\parsing\IWhiteList.cpp \
+                cpp\lib\src\app\parsing\IAPDUHandler.cpp \
                 \
                 cpp\lib\src\app\AnalogCommandEvent.cpp \
                 cpp\lib\src\app\AnalogOutput.cpp \
@@ -136,10 +139,12 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_Binary.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_BinaryOutputStatus.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_DoubleBitBinary.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\ClassField.cpp \
                 cpp\lib\src\app\ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\DNP3Serializer.cpp \
                 cpp\lib\src\app\IINField.cpp \
+                cpp\lib\src\app\IINValue.cpp \
                 cpp\lib\src\app\EventTriggers.cpp \
                 cpp\lib\src\app\Functions.cpp \
                 cpp\lib\src\app\HeaderWriter.cpp \
@@ -151,6 +156,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\HeaderWriter_for_Counter.cpp \
                 cpp\lib\src\app\HeaderWriter_for_FrozenCounter.cpp \
                 cpp\lib\src\app\HeaderWriter_for_OctetString.cpp \
+                cpp\lib\src\app\HeaderWriter_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\GroupVariationRecord.cpp \
                 cpp\lib\src\app\MeasurementInfo.cpp \
                 cpp\lib\src\app\MeasurementTypeSpecs.cpp \
@@ -168,6 +174,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_Counter.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_FrozenCounter.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_OctetString.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\Serializer.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Binary.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_BinaryOutputStatus.cpp \
@@ -178,17 +185,24 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\DownSampling.cpp \
                 \
                 cpp\lib\src\outstation\ApplicationIIN.cpp \
+                cpp\lib\src\outstation\AssignClassHandler.cpp \
                 cpp\lib\src\outstation\Database.cpp \
                 cpp\lib\src\outstation\DeferredRequest.cpp \
                 cpp\lib\src\outstation\ControlState.cpp \
+                cpp\lib\src\outstation\CommandActionAdapter.cpp \
+                cpp\lib\src\outstation\ConstantCommandAction.cpp \
+                cpp\lib\src\outstation\ClassBasedRequestHandler.cpp \
                 cpp\lib\src\outstation\Event.cpp \
                 cpp\lib\src\outstation\EventBufferConfig.cpp \
                 cpp\lib\src\outstation\IClassAssigner.cpp \
+                cpp\lib\src\outstation\ICommandAction.cpp \
                 cpp\lib\src\outstation\IEventReceiver.cpp \
                 cpp\lib\src\outstation\IEventSelector.cpp \
+                cpp\lib\src\outstation\IINHelpers.cpp \
                 cpp\lib\src\outstation\IResponseLoader.cpp \
                 cpp\lib\src\outstation\IStaticSelector.cpp \
                 cpp\lib\src\outstation\ParsedRequest.cpp \
+                cpp\lib\src\outstation\ReadHandler.cpp \
                 cpp\lib\src\outstation\ResponseContext.cpp \
                 cpp\lib\src\outstation\RequestHistory.cpp \
                 cpp\lib\src\outstation\SimpleCommandHandler.cpp \
@@ -254,14 +268,17 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group2.cpp \
                 cpp\lib\src\gen\objects\Group4.cpp \
                 cpp\lib\src\gen\objects\Group11.cpp \
+                cpp\lib\src\gen\objects\Group12.cpp \
                 cpp\lib\src\gen\objects\Group20.cpp \
                 cpp\lib\src\gen\objects\Group22.cpp \
                 cpp\lib\src\gen\objects\Group23.cpp \
                 cpp\lib\src\gen\objects\Group30.cpp \
                 cpp\lib\src\gen\objects\Group32.cpp \
+                cpp\lib\src\gen\objects\Group41.cpp \
                 cpp\lib\src\gen\objects\Group42.cpp \
                 cpp\lib\src\gen\objects\Group50.cpp \
                 cpp\lib\src\gen\objects\Group51.cpp \
+                cpp\lib\src\gen\objects\Group52.cpp \
                 cpp\lib\src\gen\objects\Group60.cpp \
                 \
                 cpp\tests\unit\utils\APDUHelpers.cpp

@@ -194,6 +194,7 @@ typedef struct
 } IINField;
 
    IINField Empty_in_IINField_static(void);
+   void IINField_in_IINFieldOver1(IINField *pIINField);
    void IINField_in_IINFieldOver2(IINField *pIINField, IINBit_uint8_t bit);
    void IINField_in_IINFieldOver3(IINField *pIINField, uint8_t aLSB, uint8_t aMSB);
     boolean HasRequestError_in_IINField(IINField *pIINField);
@@ -212,6 +213,9 @@ typedef struct
     void SetBitToValue_in_IINField(IINField *, IINBit_uint8_t bit, boolean value);
     boolean IsSet_in_IINField(IINField *, IINBit_uint8_t bit);
 
+
+////    IINField& operator|=(const IINField& aIIN)
+    IINField operatorOREQ_in_IINField(IINField *pIINField, IINField* aIIN);
 
 ////} // namespace opendnp3
 

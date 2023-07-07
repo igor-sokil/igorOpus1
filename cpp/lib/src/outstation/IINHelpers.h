@@ -17,18 +17,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-MYTODO
 #ifndef OPENDNP3_IINHELPERS_H
 #define OPENDNP3_IINHELPERS_H
 
-#include "app/parsing/ParseResult.h"
+////#include "app/parsing/ParseResult.h"
 
-#include "opendnp3/app/IINField.h"
+////#include "opendnp3/app/IINField.h"
 
-namespace opendnp3
-{
+#include "ParseResult.h"
 
-IINField IINFromParseResult(ParseResult result);
-}
+#include "IINField.h"
+
+////namespace opendnp3
+////{
+
+IINField IINFromParseResult(ParseResult_uint8_t result);
+////}
 
 #endif

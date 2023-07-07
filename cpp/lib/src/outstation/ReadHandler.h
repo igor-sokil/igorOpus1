@@ -17,43 +17,62 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-MYTODO
 #ifndef OPENDNP3_READHANDLER_H
 #define OPENDNP3_READHANDLER_H
 
-#include "app/parsing/IAPDUHandler.h"
-#include "outstation/IEventSelector.h"
-#include "outstation/IStaticSelector.h"
+////#include "app/parsing/IAPDUHandler.h"
+////#include "outstation/IEventSelector.h"
+////#include "outstation/IStaticSelector.h"
 
-#include "opendnp3/logging/Logger.h"
-#include "opendnp3/outstation/StaticTypeBitfield.h"
+////#include "opendnp3/logging/Logger.h"
+////#include "opendnp3/outstation/StaticTypeBitfield.h"
 
-namespace opendnp3
+#include "IAPDUHandler.h"
+#include "IEventSelector.h"
+#include "IStaticSelector.h"
+
+#include "StaticTypeBitfield.h"
+
+////namespace opendnp3
+////{
+
+////class ReadHandler final : public IAPDUHandler
+typedef struct
 {
+  IAPDUHandler iIAPDUHandler;
+////public:
+////    ReadHandler(IStaticSelector& staticSelector, IEventSelector& eventSelector);
 
-class ReadHandler final : public IAPDUHandler
-{
-public:
-    ReadHandler(IStaticSelector& staticSelector, IEventSelector& eventSelector);
+////    bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) override final
+////    {
+////        return true;
+////    }
 
-    bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) override final
-    {
-        return true;
-    }
+////private:
+////    IINField ProcessHeader(const AllObjectsHeader& header) override;
 
-private:
-    IINField ProcessHeader(const AllObjectsHeader& header) override;
+////    IINField ProcessHeader(const RangeHeader& header) override;
 
-    IINField ProcessHeader(const RangeHeader& header) override;
+////    IINField ProcessHeader(const CountHeader& header) override;
 
-    IINField ProcessHeader(const CountHeader& header) override;
+////    IINField ProcessHeader(const PrefixHeader& header, const ICollection<uint16_t>& indices) override;
 
-    IINField ProcessHeader(const PrefixHeader& header, const ICollection<uint16_t>& indices) override;
+  IStaticSelector* pStaticSelector;
+  IEventSelector* pEventSelector;
+} ReadHandler;
 
-    IStaticSelector* pStaticSelector;
-    IEventSelector* pEventSelector;
-};
+void  ReadHandler_in_ReadHandler(ReadHandler *pReadHandler, IStaticSelector* staticSelector, IEventSelector* eventSelector);
 
-} // namespace opendnp3
+boolean IsAllowed_in_ReadHandler_override(void *, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc) ;
+
+IINField ProcessHeader_AllObjectsHeader_in_ReadHandler_override(void *, AllObjectsHeader* header);
+
+IINField ProcessHeader_RangeHeader_in_ReadHandler_override(void *, RangeHeader* header);
+
+IINField ProcessHeader_CountHeader_in_ReadHandler_override(void *, CountHeader* header);
+
+IINField ProcessHeader_PrefixHeader_for_uint16_in_ReadHandler_override(void *, PrefixHeader* header, ICollection_for_uint16* indices);
+
+////} // namespace opendnp3
 
 #endif

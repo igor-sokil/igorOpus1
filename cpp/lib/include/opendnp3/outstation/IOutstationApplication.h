@@ -42,7 +42,7 @@
 #include "ILinkListener.h"
 #include "ApplicationIIN.h"
 #include "IDnpTimeSource.h"
-//#include "UTCTimestamp.h"
+#include "UTCTimestamp.h"
 
 //#include <memory>
 
@@ -71,7 +71,7 @@ typedef struct
     /// @return boolean value indicating if the time value supplied was accepted. Returning
     /// false will cause the outstation to set IIN 2.3 (PARAM_ERROR) in its response.
     /// The outstation should clear its NEED_TIME field when handling this response
-//    boolean (*pWriteAbsoluteTime_in_IOutstationApplication)(void*, UTCTimestamp* timestamp);
+    boolean (*pWriteAbsoluteTime_in_IOutstationApplication)(void*, UTCTimestamp* timestamp);
 ////    virtual bool WriteAbsoluteTime(const UTCTimestamp& timestamp)
 ////    {
 ////        return false;
@@ -91,7 +91,7 @@ typedef struct
     /// behavior is desired
     /// @return boolean value indicating if the values supplied were accepted. Returning
     /// false will cause the outstation to set IIN 2.3 (PARAM_ERROR) in its response.
-//    boolean (*pWriteTimeAndInterval_in_IOutstationApplication)(void*, ICollection__for__Indexed_for_TimeAndInterval* values);
+//    boolean (*pWriteTimeAndInterval_in_IOutstationApplication)(void*, ICollection_Indexed_for_TimeAndInterval* values);
 ////    virtual bool WriteTimeAndInterval(const ICollection<Indexed<TimeAndInterval>>& values)
 ////    {
 ////        return false;
@@ -172,9 +172,9 @@ typedef struct
 } IOutstationApplication;
 
     boolean SupportsWriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*);
-//    boolean WriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*, UTCTimestamp* timestamp);
+    boolean WriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*, UTCTimestamp* timestamp);
     boolean SupportsWriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*);
-//    boolean WriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*, ICollection__for__Indexed_for_TimeAndInterval* values);
+//    boolean WriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*, ICollection_Indexed_for_TimeAndInterval* values);
      boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
     void RecordClassAssignment_in_IOutstationApplication(IOutstationApplication*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
     ApplicationIIN GetApplicationIIN_in_IOutstationApplication(IOutstationApplication*);
@@ -185,19 +185,19 @@ typedef struct
     void OnConfirmProcessed_in_IOutstationApplication(IOutstationApplication*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
     void IOutstationApplication_destr_IOutstationApplication(IOutstationApplication*);
 
-    boolean SupportsWriteAbsoluteTime_in_IOutstationApplication_default(void*);
-//    boolean WriteAbsoluteTime_in_IOutstationApplication_default(void*, UTCTimestamp* timestamp);
-    boolean SupportsWriteTimeAndInterval_in_IOutstationApplication_default(void*);
-//    boolean WriteTimeAndInterval_in_IOutstationApplication_default(void*, ICollection__for__Indexed_for_TimeAndInterval* values);
-     boolean SupportsAssignClass_in_IOutstationApplication_default(void*);
-    void RecordClassAssignment_in_IOutstationApplication_default(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
-    ApplicationIIN GetApplicationIIN_in_IOutstationApplication_default(void*);
-    RestartMode_uint8_t ColdRestartSupport_in_IOutstationApplication_default(void*);
-    RestartMode_uint8_t WarmRestartSupport_in_IOutstationApplication_default(void*);
-    uint16_t ColdRestart_in_IOutstationApplication_default(void*);
-    uint16_t WarmRestart_in_IOutstationApplication_default(void*);
-    void OnConfirmProcessed_in_IOutstationApplication_default(void*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
-    void IOutstationApplication_destr_IOutstationApplication_default(void*);
+    boolean SupportsWriteAbsoluteTime_in_IOutstationApplication_override(void*);
+    boolean WriteAbsoluteTime_in_IOutstationApplication_override(void*, UTCTimestamp* timestamp);
+    boolean SupportsWriteTimeAndInterval_in_IOutstationApplication_override(void*);
+//    boolean WriteTimeAndInterval_in_IOutstationApplication_override(void*, ICollection_Indexed_for_TimeAndInterval* values);
+     boolean SupportsAssignClass_in_IOutstationApplication_override(void*);
+    void RecordClassAssignment_in_IOutstationApplication_override(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
+    ApplicationIIN GetApplicationIIN_in_IOutstationApplication_override(void*);
+    RestartMode_uint8_t ColdRestartSupport_in_IOutstationApplication_override(void*);
+    RestartMode_uint8_t WarmRestartSupport_in_IOutstationApplication_override(void*);
+    uint16_t ColdRestart_in_IOutstationApplication_override(void*);
+    uint16_t WarmRestart_in_IOutstationApplication_override(void*);
+    void OnConfirmProcessed_in_IOutstationApplication_override(void*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
+    void IOutstationApplication_destr_IOutstationApplication_override(void*);
 
     void IOutstationApplication_in_IOutstationApplication(IOutstationApplication*);
 void* getParentPointer_in_IOutstationApplication(IOutstationApplication*);
