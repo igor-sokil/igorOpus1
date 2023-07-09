@@ -48,18 +48,18 @@ uint16_t crcTable_in_CRC[256]
        0xDC4D, 0xEA13, 0xB0F1, 0x86AF, 0x0535, 0x336B, 0x6989, 0x5FD7, 0x23C4, 0x159A, 0x4F78, 0x7926, 0xFABC, 0xCCE2,
        0x9600, 0xA05E, 0x6E26, 0x5878, 0x029A, 0x34C4, 0xB75E, 0x8100, 0xDBE2, 0xEDBC, 0x91AF, 0xA7F1, 0xFD13, 0xCB4D,
        0x48D7, 0x7E89, 0x246B, 0x1235};
-//*/
-uint16_t CalcCrc_in_CRC_staticOver1(uint8_t* input, uint16_t length)
+
+uint16_t CalcCrc_in_CRC_staticOver1(uint8_t* input1, uint16_t length)
 {
-    uint16_t CRC = 0;
+    uint16_t CRC1 = 0;
 
     for (uint32_t i = 0; i < length; ++i)
     {
-        uint8_t index = (CRC ^ input[i]) & 0xFF;
-        CRC = crcTable_in_CRC[index] ^ (CRC >> 8);
+        uint8_t index = (CRC1 ^ input1[i]) & 0xFF;
+        CRC1 = crcTable_in_CRC[index] ^ (CRC1 >> 8);
     }
 
-    return ~CRC;
+    return ~(int)CRC1;
 }
 
 uint16_t CalcCrc_in_CRC_staticOver2(RSeq_for_Uint16_t* view)

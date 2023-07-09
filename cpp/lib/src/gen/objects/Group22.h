@@ -151,7 +151,7 @@ typedef struct
 
   uint16_t Size_in_Group22Var5_static(void);
 
- void Group22Var5_in_Group2Var5(Group22Var5 *pGroup22Var5);
+ void Group22Var5_in_Group22Var5(Group22Var5 *pGroup22Var5);
   GroupVariationID ID_in_Group22Var5_static(void);
 
  boolean Read_in_Group22Var5_static(RSeq_for_Uint16_t *, Group22Var5*);
@@ -200,5 +200,10 @@ typedef struct
 
 ////}
 
+ 
 #endif
+ 
+ 
+ 
+ 
     

@@ -60,7 +60,7 @@ void ChangeFCB_in_LinkHeader(LinkHeader *pLinkHeader, boolean aFCB)
     }
     else
     {
-        pLinkHeader->ctrl &= ~ControlMask_MASK_FCB;
+        pLinkHeader->ctrl &= ~(int)ControlMask_MASK_FCB;
     }
 }
 

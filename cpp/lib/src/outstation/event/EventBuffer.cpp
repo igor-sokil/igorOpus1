@@ -179,7 +179,7 @@ void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfi
     return SelectMaxCount_in_EventBuffer(pEventBuffer, gv, 0xFFFFFFFF);
 }
 
-IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation gv, uint16_t count)
+IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint16_t count)
 {
 ////    return SelectMaxCount(gv, count);
     return SelectMaxCount_in_EventBuffer(pEventBuffer, gv, count);
@@ -482,7 +482,7 @@ uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t 
            return Empty_in_IINField_static();
     }
 
-    IINField SelectByClass_EventClass_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventClass clazz)
+    IINField SelectByClass_EventClass_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventClass_uint8_t clazz)
     {
 //    uint32_t SelectByClass_in_EventStorageOver2(EventStorage *pEventStorage, EventClass_uint8_t clazz, uint32_t max);
 ////        this->storage.SelectByClass(clazz, max);

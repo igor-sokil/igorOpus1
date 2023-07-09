@@ -111,7 +111,7 @@ typedef struct
 
   uint16_t Size_in_Group4Var2_static(void);
 
- void Group2Var2_in_Group4Var2(Group4Var2 *pGroup4Var2);
+ void Group4Var2_in_Group4Var2(Group4Var2 *pGroup4Var2);
   GroupVariationID ID_in_Group4Var2_static(void);
 
  boolean Read_in_Group4Var2_static(RSeq_for_Uint16_t *, Group4Var2*);
@@ -145,7 +145,7 @@ typedef struct
 
   uint16_t Size_in_Group4Var3_static(void);
 
- void Group2Var3_in_Group4Var3(Group4Var3 *pGroup4Var3);
+ void Group4Var3_in_Group4Var3(Group4Var3 *pGroup4Var3);
   GroupVariationID ID_in_Group4Var3_static(void);
 
  boolean Read_in_Group4Var3_static(RSeq_for_Uint16_t *, Group4Var3*);

@@ -81,13 +81,14 @@ typedef struct
 uint16_t Size_in_Group12Var1_static(void);
 
 void Group12Var1_in_Group12Var1(Group12Var1 *pGroup12Var1);
+GroupVariationID ID_in_Group12Var1_static(void);
 
 boolean Read_in_Group12Var1_static(RSeq_for_Uint16_t *, Group12Var1*);
 boolean Write_in_Group12Var1_static(Group12Var1*, WSeq_for_Uint16_t*);
 
 boolean ReadTarget_in_Group12Var1_static(RSeq_for_Uint16_t*, ControlRelayOutputBlock*);
 boolean WriteTarget_in_Group12Var1_static(ControlRelayOutputBlock*, WSeq_for_Uint16_t*);
-
+DNP3Serializer_for_ControlRelayOutputBlock  Inst_in_Group12Var1_static(void);
 
 ////}
 

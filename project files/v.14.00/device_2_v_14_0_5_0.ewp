@@ -1205,6 +1205,9 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\ClassField.cpp</name>
                     </file>
                     <file>
@@ -1221,6 +1224,9 @@
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_BinaryOutputStatus.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_ControlRelayOutputBlock.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\app\CountWriteIterator_for_DoubleBitBinary.cpp</name>
@@ -1336,16 +1342,28 @@
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group1.cpp</name>
                         </file>
                         <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group11.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group12.cpp</name>
+                        </file>
+                        <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group2.cpp</name>
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group20.cpp</name>
                         </file>
                         <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group22.cpp</name>
+                        </file>
+                        <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group30.cpp</name>
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group32.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group4.cpp</name>
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\gen\objects\Group50.cpp</name>
@@ -1381,6 +1399,15 @@
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\link\Addresses.cpp</name>
                     </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\link\CRC.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\link\LinkFrame.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\link\LinkHeader.cpp</name>
+                    </file>
                 </group>
                 <group>
                     <name>master</name>
@@ -1390,7 +1417,13 @@
                     <group>
                         <name>event</name>
                         <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\ASDUEventWriteHandler.cpp</name>
+                        </file>
+                        <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\ClazzCount.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventBuffer.cpp</name>
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventCollection.cpp</name>
@@ -1414,7 +1447,16 @@
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventUpdate.cpp</name>
                         </file>
                         <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventWriters_for_Analog.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventWriters_for_AnalogOutputStatus.cpp</name>
+                        </file>
+                        <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventWriters_for_Binary.cpp</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventWriters_for_Counter.cpp</name>
                         </file>
                         <file>
                             <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\event\EventWriting.cpp</name>
@@ -1469,7 +1511,19 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\ApplicationIIN.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\AssignClassHandler.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\ClassBasedRequestHandler.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\CommandActionAdapter.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\ControlState.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\DeferredRequest.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\Event.cpp</name>
@@ -1481,7 +1535,16 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\IClassAssigner.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\ICommandAction.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\IEventReceiver.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\IEventSelector.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\IINHelpers.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\IResponseLoader.cpp</name>
@@ -1496,7 +1559,22 @@
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\OctetStringSerializer.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\ParsedRequest.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\ReadHandler.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\ResponseContext.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\SimpleCommandHandler.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\StaticDataCell.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\cpp\lib\src\outstation\TimeSyncState.cpp</name>
                     </file>
                 </group>
                 <group>

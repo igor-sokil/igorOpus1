@@ -121,7 +121,7 @@ typedef struct
 } EventBuffer;
 
  void EventBuffer_in_EventBufferOver1(EventBuffer *pEventBuffer);
- void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfig& config);
+ void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfig* config);
  void UpdateAny_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinarySpec *evt);
  void UpdateAny_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_DoubleBitBinarySpec *evt);
  void UpdateAny_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogSpec *evt);
@@ -140,7 +140,7 @@ typedef struct
  IINField  SelectByType_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventAnalogOutputStatusVariation_uint8_t type);
  IINField  SelectByType_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventOctetStringVariation_uint8_t type);
 
- IINField SelectByClass_EventClass_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventClass clazz);
+ IINField SelectByClass_EventClass_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventClass_uint8_t clazz);
 
     // ------- IEventReceiver ------
 

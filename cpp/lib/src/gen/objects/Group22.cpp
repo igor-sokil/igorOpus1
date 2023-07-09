@@ -547,3 +547,5 @@ Group22Var6 Apply_in_ConvertGroup22Var6_static(Counter* src)
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
    return dDNP3Serializer_for_Counter;
 }
+
+
