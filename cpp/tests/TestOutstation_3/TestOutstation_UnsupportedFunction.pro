@@ -7,6 +7,8 @@ TARGET = TestOutstation_UnsupportedFunction
 
 QT += widgets
 
+INCLUDEPATH  += .
+
 include(TestOutstation_UnsupportedFunction.pri)
 
 SOURCES      += MainWindow.cpp \

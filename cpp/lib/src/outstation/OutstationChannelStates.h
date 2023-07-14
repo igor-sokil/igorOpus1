@@ -20,40 +20,55 @@
 #ifndef OPENDNP3_OUTSTATIONCHANNEL_STATES_H
 #define OPENDNP3_OUTSTATIONCHANNEL_STATES_H
 
-#include "app/TxBuffer.h"
-#include "outstation/OutstationSeqNum.h"
+////#include "app/TxBuffer.h"
+////#include "outstation/OutstationSeqNum.h"
 
-#include "opendnp3/util/Uncopyable.h"
+////#include "opendnp3/util/Uncopyable.h"
 
-namespace opendnp3
+#include "TxBuffer.h"
+#include "OutstationSeqNum.h"
+
+////namespace opendnp3
+////{
+
+////class OutstationSolState : private Uncopyable
+typedef struct
 {
+////public:
+////    OutstationSolState(uint32_t maxTxSize) : tx(maxTxSize) {}
 
-class OutstationSolState : private Uncopyable
-{
-public:
-    OutstationSolState(uint32_t maxTxSize) : tx(maxTxSize) {}
-
-    void Reset() {}
+////    void Reset() {}
 
     OutstationSeqNum seq;
     TxBuffer tx;
-};
+} OutstationSolState;
 
-class OutstationUnsolState : private Uncopyable
+  void  OutstationSolState_in_OutstationSolState(OutstationSolState *pOutstationSolState, uint32_t maxTxSize);
+
+    void Reset_in_OutstationSolState(OutstationSolState *pOutstationSolState);
+
+
+////class OutstationUnsolState : private Uncopyable
+typedef struct
 {
-public:
-    OutstationUnsolState(uint32_t maxTxSize) : completedNull(false), tx(maxTxSize) {}
+////public:
+////    OutstationUnsolState(uint32_t maxTxSize) : completedNull(false), tx(maxTxSize) {}
 
-    void Reset()
-    {
-        completedNull = false;
-    }
+////    void Reset()
+////    {
+////        completedNull = false;
+////    }
 
-    bool completedNull;
+    boolean completedNull;
     OutstationSeqNum seq;
     TxBuffer tx;
-};
+} OutstationUnsolState;
 
-} // namespace opendnp3
+    void Reset_in_OutstationUnsolState(OutstationUnsolState *pOutstationUnsolState);
+   void OutstationUnsolState_in_OutstationUnsolState(OutstationUnsolState *pOutstationUnsolState, uint32_t maxTxSize);
+
+
+
+////} // namespace opendnp3
 
 #endif

@@ -7,6 +7,8 @@ TARGET = qt_dnp3
 
 QT += widgets
 
+INCLUDEPATH  += .
+
 include(qt_dnp3.pri)
 
 SOURCES      += qtsrc\MainWindow.cpp \

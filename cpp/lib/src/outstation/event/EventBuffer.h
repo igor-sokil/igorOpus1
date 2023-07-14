@@ -52,6 +52,9 @@
 ////class EventBuffer final : public IEventReceiver, public IEventSelector, public IResponseLoader
 typedef struct
 {
+IEventReceiver iIEventReceiver;
+IEventSelector iIEventSelector;
+IResponseLoader iIResponseLoader;
 ////public:
 ////    explicit EventBuffer(const EventBufferConfig& config);
 

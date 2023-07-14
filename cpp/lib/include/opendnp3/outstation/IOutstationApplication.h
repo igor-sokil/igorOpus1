@@ -91,7 +91,7 @@ typedef struct
     /// behavior is desired
     /// @return boolean value indicating if the values supplied were accepted. Returning
     /// false will cause the outstation to set IIN 2.3 (PARAM_ERROR) in its response.
-//    boolean (*pWriteTimeAndInterval_in_IOutstationApplication)(void*, ICollection_Indexed_for_TimeAndInterval* values);
+    boolean (*pWriteTimeAndInterval_in_IOutstationApplication)(void*, ICollection_Indexed_for_TimeAndInterval* values);
 ////    virtual bool WriteTimeAndInterval(const ICollection<Indexed<TimeAndInterval>>& values)
 ////    {
 ////        return false;
@@ -174,7 +174,7 @@ typedef struct
     boolean SupportsWriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*);
     boolean WriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*, UTCTimestamp* timestamp);
     boolean SupportsWriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*);
-//    boolean WriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*, ICollection_Indexed_for_TimeAndInterval* values);
+    boolean WriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*, ICollection_Indexed_for_TimeAndInterval* values);
      boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
     void RecordClassAssignment_in_IOutstationApplication(IOutstationApplication*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
     ApplicationIIN GetApplicationIIN_in_IOutstationApplication(IOutstationApplication*);

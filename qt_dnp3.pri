@@ -26,6 +26,8 @@ INCLUDEPATH  += ser4cpp\container
 INCLUDEPATH  += ser4cpp\util
 INCLUDEPATH  += ser4cpp\serialization
 
+INCLUDEPATH  += exe4cpp
+
 INCLUDEPATH  += cpp\tests\unit\utils
 
 HEADERS       = qtsrc\loghandler.h \
@@ -63,9 +65,11 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                  ser4cpp\container\HasLength.cpp \
                  ser4cpp\container\RSeq.cpp \
                  ser4cpp\container\WSeq.cpp \
-                 ser4cpp\container\Settable.cpp \
+                 ser4cpp\container\Settable_for_WSeq.cpp \
+                 ser4cpp\container\Settable_for_LinkBroadcastAddress.cpp \
                  ser4cpp\container\BufferSer4.cpp \
                  ser4cpp\container\StaticBuffer.cpp \
+                 ser4cpp\container\Pair_for_IINField_AppControlField.cpp \
                  ser4cpp\container\Array__for__Node_for_EventRecord.cpp \
                  ser4cpp\container\ArrayView__for__Node_for_EventRecord.cpp \
                  ser4cpp\container\Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.cpp \
@@ -85,6 +89,10 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                  ser4cpp\container\Array__for__Node_TypedEventRecord_for_OctetStringSpec.cpp \
                  ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_OctetStringSpec.cpp \
                  ser4cpp\serialization\SerializationTemplates.cpp \
+                \
+                 exe4cpp\TimerExe4cpp.cpp \
+                 exe4cpp\ISteadyTimeSourceExe4cpp.cpp \
+                 exe4cpp\IExecutorExe4cpp.cpp \
                 \
                 cpp\lib\include\opendnp3\util\Buffer.cpp \
                 cpp\lib\include\opendnp3\util\UTCTimestamp.cpp \
@@ -143,6 +151,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\ClassField.cpp \
                 cpp\lib\src\app\ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\DNP3Serializer.cpp \
+                cpp\lib\src\app\DownSampling.cpp \
                 cpp\lib\src\app\IINField.cpp \
                 cpp\lib\src\app\IINValue.cpp \
                 cpp\lib\src\app\EventTriggers.cpp \
@@ -182,12 +191,13 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Counter.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_FrozenCounter.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_OctetString.cpp \
-                cpp\lib\src\app\DownSampling.cpp \
+                cpp\lib\src\app\TxBuffer.cpp \
                 \
                 cpp\lib\src\outstation\ApplicationIIN.cpp \
                 cpp\lib\src\outstation\AssignClassHandler.cpp \
                 cpp\lib\src\outstation\Database.cpp \
                 cpp\lib\src\outstation\DeferredRequest.cpp \
+                cpp\lib\src\outstation\DeferredRequest_part2.cpp \
                 cpp\lib\src\outstation\ControlState.cpp \
                 cpp\lib\src\outstation\CommandActionAdapter.cpp \
                 cpp\lib\src\outstation\ConstantCommandAction.cpp \
@@ -210,6 +220,8 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\TimeSyncState.cpp \
                 cpp\lib\src\outstation\NumRetries.cpp \
                 cpp\lib\src\outstation\OctetStringSerializer.cpp \
+                cpp\lib\src\outstation\OutstationChannelStates.cpp \
+                cpp\lib\src\outstation\WriteHandler.cpp \
                 \
                 cpp\lib\src\util\TimeDuration.cpp \
                 cpp\lib\src\util\Timestamp.cpp \

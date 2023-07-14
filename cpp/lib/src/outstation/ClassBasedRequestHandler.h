@@ -63,6 +63,7 @@ typedef struct
 void ClassBasedRequestHandler_in_ClassBasedRequestHandler(ClassBasedRequestHandler *pClassBasedRequestHandler);
 boolean IsAllowed_in_ClassBasedRequestHandler_override(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 IINField ProcessHeader_AllObjectsHeader_in_ClassBasedRequestHandler_override(void*, AllObjectsHeader* record);
+ClassField GetClassField_in_ClassBasedRequestHandler(ClassBasedRequestHandler *pClassBasedRequestHandler);
 
 
 

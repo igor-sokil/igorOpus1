@@ -31,11 +31,8 @@
 #define  boolean          int
 #endif
 
-//#define CommandStatus_uint8_t  uint8_t
-
 #define UNUSED(x) (void)(x)
 
-//#define  NULL          0
 //макс к-сть EventRecord
 #define MAX_EventRecord  10
 #define SIZE_TypedEventRecord_for_AnalogOutputStatusSpec MAX_EventRecord
@@ -46,14 +43,11 @@
 #define SIZE_TypedEventRecord_for_DoubleBitBinarySpec    MAX_EventRecord
 #define SIZE_TypedEventRecord_for_FrozenCounterSpec      MAX_EventRecord
 #define SIZE_TypedEventRecord_for_OctetStringSpec        MAX_EventRecord
-#define SIZE_for_EventRecord                             SIZE_TypedEventRecord_for_AnalogOutputStatusSpec + \
-                                                         SIZE_TypedEventRecord_for_AnalogSpec + \
-                                                         SIZE_TypedEventRecord_for_BinaryOutputStatusSpec + \
-                                                         SIZE_TypedEventRecord_for_BinarySpec + \
-                                                         SIZE_TypedEventRecord_for_CounterSpec + \
-                                                         SIZE_TypedEventRecord_for_DoubleBitBinarySpec + \
-                                                         SIZE_TypedEventRecord_for_FrozenCounterSpec + \
-                                                         SIZE_TypedEventRecord_for_OctetStringSpec 
-#define MAX_BufferSer4  292
 
+#define MAX_BufferSer4  292
+#define SIZE_TxBuffer_in_OutstationSolState    MAX_BufferSer4
+#define SIZE_TxBuffer_in_OutstationUnsolState  MAX_BufferSer4
+#define SIZE_BufferSer4_in_DeferredRequest     MAX_BufferSer4
+
+#include "memory_header.h"
 #endif

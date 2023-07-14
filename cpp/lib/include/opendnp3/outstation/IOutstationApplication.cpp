@@ -57,6 +57,15 @@
    (pIOutstationApplication->pIOutstationApplication_destr_IOutstationApplication)(pIOutstationApplication);
 }
 
+    boolean WriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication* pIOutstationApplication, UTCTimestamp* timestamp)
+{
+   return (pIOutstationApplication->pWriteAbsoluteTime_in_IOutstationApplication)(pIOutstationApplication, timestamp);
+}
+
+    boolean WriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication* pIOutstationApplication, ICollection_Indexed_for_TimeAndInterval* values)
+{
+   return (pIOutstationApplication->pWriteTimeAndInterval_in_IOutstationApplication)(pIOutstationApplication, values);
+}
 
     void IOutstationApplication_in_IOutstationApplication(IOutstationApplication* pIOutstationApplication)
 {

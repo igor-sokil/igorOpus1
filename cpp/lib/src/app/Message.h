@@ -43,6 +43,7 @@ typedef struct
     RSeq_for_Uint16_t payload;
 } Message;
 
+  void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
 
 ////} // namespace opendnp3
 

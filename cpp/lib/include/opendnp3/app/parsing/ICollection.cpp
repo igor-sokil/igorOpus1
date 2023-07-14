@@ -96,6 +96,54 @@ boolean ReadOnlyValue_in_ICollection_Indexed_for_IINValue(ICollection_Indexed_fo
   }
 }
 //--------------------------------ICollection_Indexed_for_IINValue--------------------------------
+//--------------------------------ICollection_Indexed_for_TimeAndInterval--------------------------------
+
+void FunctorVisitor__for__Indexed_for_TimeAndInterval_in_FunctorVisitor__for__Indexed_for_TimeAndInterval(FunctorVisitor__for__Indexed_for_TimeAndInterval *pFunctorVisitor__for__Indexed_for_TimeAndInterval,
+    ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval,
+    void (*fun)(ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval, Indexed_for_TimeAndInterval* item))
+{
+  pFunctorVisitor__for__Indexed_for_TimeAndInterval->Fun = fun;
+  pFunctorVisitor__for__Indexed_for_TimeAndInterval->pICollection_Indexed_for_TimeAndInterval = pICollection_Indexed_for_TimeAndInterval;
+  (pFunctorVisitor__for__Indexed_for_TimeAndInterval->iIVisitor__for__Indexed_for_TimeAndInterval).pOnValue_in_IVisitor__for__Indexed_for_TimeAndInterval = OnValue_in_FunctorVisitor__for__Indexed_for_TimeAndInterval;
+}
+
+void OnValue_in_FunctorVisitor__for__Indexed_for_TimeAndInterval(void *pFunctorVisitor__for__Indexed_for_TimeAndInterval, Indexed_for_TimeAndInterval *value)
+{
+  ((FunctorVisitor__for__Indexed_for_TimeAndInterval*)pFunctorVisitor__for__Indexed_for_TimeAndInterval)->Fun(((FunctorVisitor__for__Indexed_for_TimeAndInterval*)pFunctorVisitor__for__Indexed_for_TimeAndInterval)->pICollection_Indexed_for_TimeAndInterval,
+      value);
+}
+
+void ForeachItem_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval, void (*fun)(ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval, Indexed_for_TimeAndInterval* item))
+{
+  FunctorVisitor__for__Indexed_for_TimeAndInterval visitor;
+  FunctorVisitor__for__Indexed_for_TimeAndInterval_in_FunctorVisitor__for__Indexed_for_TimeAndInterval(&visitor, pICollection_Indexed_for_TimeAndInterval, fun);
+  (pICollection_Indexed_for_TimeAndInterval->pForeach_in_ICollection_Indexed_for_TimeAndInterval)(pICollection_Indexed_for_TimeAndInterval, &(visitor.iIVisitor__for__Indexed_for_TimeAndInterval));
+}
+
+void assignValue_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval, Indexed_for_TimeAndInterval* item);
+
+void assignValue_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval, Indexed_for_TimeAndInterval* item)
+{
+  *(pICollection_Indexed_for_TimeAndInterval->pValue_in_ICollection_Indexed_for_TimeAndInterval) = *item;
+}
+
+boolean ReadOnlyValue_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval, Indexed_for_TimeAndInterval* pValue)
+{
+  pICollection_Indexed_for_TimeAndInterval->pValue_in_ICollection_Indexed_for_TimeAndInterval = pValue;
+////        if (this->Count() == 1)
+  if ((pICollection_Indexed_for_TimeAndInterval->pCount_in_ICollection_Indexed_for_TimeAndInterval)(pICollection_Indexed_for_TimeAndInterval) == 1)
+  {
+////            auto assignValue = [&value](const T& item) { value = item; };
+////            this->ForeachItem(assignValue);
+    ForeachItem_in_ICollection_Indexed_for_TimeAndInterval(pICollection_Indexed_for_TimeAndInterval, assignValue_in_ICollection_Indexed_for_TimeAndInterval);
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+//--------------------------------ICollection_Indexed_for_TimeAndInterval--------------------------------
 //--------------------------------ICollection_Indexed_for_AnalogOutputInt16--------------------------------
 
 void FunctorVisitor__for__Indexed_for_AnalogOutputInt16_in_FunctorVisitor__for__Indexed_for_AnalogOutputInt16(FunctorVisitor__for__Indexed_for_AnalogOutputInt16 *pFunctorVisitor__for__Indexed_for_AnalogOutputInt16,
@@ -384,3 +432,51 @@ boolean ReadOnlyValue_in_ICollection_for_Group50Var1(ICollection_for_Group50Var1
   }
 }
 //--------------------------------ICollection_for_Group50Var1--------------------------------
+//--------------------------------ICollection_for_Group50Var3--------------------------------
+
+void FunctorVisitor_for_Group50Var3_in_FunctorVisitor_for_Group50Var3(FunctorVisitor_for_Group50Var3 *pFunctorVisitor_for_Group50Var3,
+    ICollection_for_Group50Var3 *pICollection_for_Group50Var3,
+    void (*fun)(ICollection_for_Group50Var3 *pICollection_for_Group50Var3, Group50Var3* item))
+{
+  pFunctorVisitor_for_Group50Var3->Fun = fun;
+  pFunctorVisitor_for_Group50Var3->pICollection_for_Group50Var3 = pICollection_for_Group50Var3;
+  (pFunctorVisitor_for_Group50Var3->iIVisitor_for_Group50Var3).pOnValue_in_IVisitor_for_Group50Var3 = OnValue_in_FunctorVisitor_for_Group50Var3;
+}
+
+void OnValue_in_FunctorVisitor_for_Group50Var3(void *pFunctorVisitor_for_Group50Var3, Group50Var3 *value)
+{
+  ((FunctorVisitor_for_Group50Var3*)pFunctorVisitor_for_Group50Var3)->Fun(((FunctorVisitor_for_Group50Var3*)pFunctorVisitor_for_Group50Var3)->pICollection_for_Group50Var3,
+      value);
+}
+
+void ForeachItem_in_ICollection_for_Group50Var3(ICollection_for_Group50Var3 *pICollection_for_Group50Var3, void (*fun)(ICollection_for_Group50Var3 *pICollection_for_Group50Var3, Group50Var3* item))
+{
+  FunctorVisitor_for_Group50Var3 visitor;
+  FunctorVisitor_for_Group50Var3_in_FunctorVisitor_for_Group50Var3(&visitor, pICollection_for_Group50Var3, fun);
+  (pICollection_for_Group50Var3->pForeach_in_ICollection_for_Group50Var3)(pICollection_for_Group50Var3, &(visitor.iIVisitor_for_Group50Var3));
+}
+
+void assignValue_in_ICollection_for_Group50Var3(ICollection_for_Group50Var3 *pICollection_for_Group50Var3, Group50Var3* item);
+
+void assignValue_in_ICollection_for_Group50Var3(ICollection_for_Group50Var3 *pICollection_for_Group50Var3, Group50Var3* item)
+{
+  *(pICollection_for_Group50Var3->pValue_in_ICollection_for_Group50Var3) = *item;
+}
+
+boolean ReadOnlyValue_in_ICollection_for_Group50Var3(ICollection_for_Group50Var3 *pICollection_for_Group50Var3, Group50Var3* pValue)
+{
+  pICollection_for_Group50Var3->pValue_in_ICollection_for_Group50Var3 = pValue;
+////        if (this->Count() == 1)
+  if ((pICollection_for_Group50Var3->pCount_in_ICollection_for_Group50Var3)(pICollection_for_Group50Var3) == 1)
+  {
+////            auto assignValue = [&value](const T& item) { value = item; };
+////            this->ForeachItem(assignValue);
+    ForeachItem_in_ICollection_for_Group50Var3(pICollection_for_Group50Var3, assignValue_in_ICollection_for_Group50Var3);
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+//--------------------------------ICollection_for_Group50Var3--------------------------------

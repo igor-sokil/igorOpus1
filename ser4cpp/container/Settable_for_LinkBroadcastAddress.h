@@ -22,10 +22,8 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef SER4CPP_SETTABLE_H
-#define SER4CPP_SETTABLE_H
-
-#include "WSeq.h"
+#ifndef SER4CPP_SETTABLE_for_LinkBroadcastAddress_H
+#define SER4CPP_SETTABLE_for_LinkBroadcastAddress_H
 
 ////namespace ser4cpp
 ////{
@@ -78,17 +76,17 @@ typedef struct
 ////    }
 ////
 ////private:
-    boolean              value_is_set;
-    WSeq_for_Uint16_t value;
-} Settable_for_WSeq_t;
+  boolean              value_is_set;
+  uint16_t value;
+} Settable_for_LinkBroadcastAddress;
 
-    void set_in_Settable_for_WSeq_t(Settable_for_WSeq_t *pSettable_for_WSeq_t, WSeq_for_Uint16_t *value_);
-    void clear_in_Settable_for_WSeq_t(Settable_for_WSeq_t *pSettable_for_WSeq_t);
-    boolean pop_in_Settable_for_WSeq_t(Settable_for_WSeq_t *pSettable_for_WSeq_t, WSeq_for_Uint16_t *output);
-    WSeq_for_Uint16_t get_in_Settable_for_WSeq_t(Settable_for_WSeq_t *pSettable_for_WSeq_t);
-    boolean is_empty_in_Settable_for_WSeq_t(Settable_for_WSeq_t *pSettable_for_WSeq_t); 
-    boolean is_set_in_Settable_for_WSeq_t(Settable_for_WSeq_t *pSettable_for_WSeq_t); 
-   void Settable_for_WSeq_t_in_Settable_for_WSeq_t(Settable_for_WSeq_t *pSettable_for_WSeq_t);
+void set_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress, uint16_t *value_);
+void clear_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
+boolean pop_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress, uint16_t *output);
+uint16_t get_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
+boolean is_empty_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
+boolean is_set_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
+void Settable_for_LinkBroadcastAddress_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
 
 
 ////}

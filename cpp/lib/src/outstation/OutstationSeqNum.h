@@ -20,25 +20,27 @@
 #ifndef OPENDNP3_OUTSTATIONSEQNUM_H
 #define OPENDNP3_OUTSTATIONSEQNUM_H
 
-#include "app/AppSeqNum.h"
+////#include "app/AppSeqNum.h"
+#include "AppSeqNum.h"
 
-#include <cstdint>
+////#include <cstdint>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 ///
 /// Sequence numbers for one channel (sol or unsol)
 ///
-class OutstationSeqNum
+////class OutstationSeqNum
+typedef struct
 {
-public:
-    OutstationSeqNum() {}
+////public:
+////    OutstationSeqNum() {}
 
     AppSeqNum num;
     AppSeqNum confirmNum;
-};
+} OutstationSeqNum;
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

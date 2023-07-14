@@ -9,7 +9,7 @@
 #include "Group51.h"
 
 #include "WSeq.h"
-#include "Settable.h"
+#include "Settable_for_WSeq.h"
 
 // A facade for writing APDUs to an external buffer
 ////class HeaderWriter

@@ -60,40 +60,19 @@ typedef struct
 ////    }
 
 ////private:
-    RSeq_for_Uint16_t lastResponse;
-    AppControlField control;
+  RSeq_for_Uint16_t lastResponse;
+  AppControlField control;
 
-    BufferSer4 buffer;
+  BufferSer4 buffer;
 } TxBuffer;
 
 ////} // namespace opendnp3
 
-   void TxBuffer_in_TxBuffer(TxBuffer *pTxBuffer, uint32_t maxTxSize)
-{
-//// : buffer(maxTxSize) {}
-    BufferSer4_in_BufferSer4Over2(pTxBuffer->buffer, maxTxSize);
-}
+void TxBuffer_in_TxBuffer(TxBuffer *pTxBuffer, uint32_t maxTxSize);
+APDUResponse Start_in_TxBuffer(TxBuffer *pTxBuffer);
+void Record_in_TxBuffer(TxBuffer *pTxBuffer, AppControlField* control, RSeq_for_Uint16_t* view);
+RSeq_for_Uint16_t* GetLastResponse_in_TxBuffer(TxBuffer *pTxBuffer);
+AppControlField* GetLastControl_in_TxBuffer(TxBuffer *pTxBuffer);
 
-    APDUResponse Start()
-{
-    APDUResponse response(buffer.as_wslice());
-    return response;
-}
-
-////    void Record(const AppControlField& control, const ser4cpp::rseq_t& view)
-////    {
-////        this->control = control;
-////        this->lastResponse = view;
-////    }
-////
-////    const ser4cpp::rseq_t& GetLastResponse() const
-////    {
-////        return lastResponse;
-////    }
-////
-////    const AppControlField& GetLastControl() const
-////    {
-////        return control;
-////    }
 
 #endif

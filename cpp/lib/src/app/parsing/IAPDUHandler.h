@@ -143,14 +143,14 @@ typedef struct
     IINField (*pProcessHeader_RangeHeader_in_IAPDUHandler)(void*, RangeHeader* header);
     IINField (*pProcessHeader_CountHeader_in_IAPDUHandler)(void*, CountHeader* header);
 
-//    IINField (*pProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group50Var1* values);
-//    IINField (*pProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group50Var3* values);
+    IINField (*pProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group50Var1* values);
+    IINField (*pProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group50Var3* values);
 //    IINField (*pProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group51Var1* values);
 //    IINField (*pProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group51Var2* values);
 //    IINField (*pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group52Var1* values);
 //    IINField (*pProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group52Var2* values);
 
-//    IINField (*pProcessHeader_RangeHeader_for_IINValue_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
+    IINField (*pProcessHeader_RangeHeader_for_IINValue_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
 //    IINField (*pProcessHeader_RangeHeader_for_Binary_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_Binary* values);
 //    IINField (*pProcessHeader_RangeHeader_for_DoubleBitBinary_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_DoubleBitBinary* values);
 //    IINField (*pProcessHeader_RangeHeader_for_BinaryOutputStatus_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_BinaryOutputStatus* values);
@@ -169,7 +169,7 @@ typedef struct
 //    IINField (*pProcessHeader_PrefixHeader_for_Analog_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_Analog* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_AnalogOutputStatus_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputStatus* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_OctetString_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_OctetString* values);
-//    IINField (*pProcessHeader_PrefixHeader_for_TimeAndInterval_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_TimeAndInterval* values);
+    IINField (*pProcessHeader_PrefixHeader_for_TimeAndInterval_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_TimeAndInterval* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_BinaryCommandEvent_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_BinaryCommandEvent* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_AnalogCommandEvent_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogCommandEvent* values);
 

@@ -2,9 +2,11 @@ debug/Comparisons.o
 debug/HasLength.o
 debug/RSeq.o
 debug/WSeq.o
-debug/Settable.o
+debug/Settable_for_WSeq.o
+debug/Settable_for_LinkBroadcastAddress.o
 debug/BufferSer4.o
 debug/StaticBuffer.o
+debug/Pair_for_IINField_AppControlField.o
 debug/Array__for__Node_for_EventRecord.o
 debug/ArrayView__for__Node_for_EventRecord.o
 debug/Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.o
@@ -24,6 +26,9 @@ debug/ArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec.o
 debug/Array__for__Node_TypedEventRecord_for_OctetStringSpec.o
 debug/ArrayView__for__Node_TypedEventRecord_for_OctetStringSpec.o
 debug/SerializationTemplates.o
+debug/TimerExe4cpp.o
+debug/ISteadyTimeSourceExe4cpp.o
+debug/IExecutorExe4cpp.o
 debug/Buffer.o
 debug/UTCTimestamp.o
 debug/CommandPointResult.o
@@ -72,6 +77,7 @@ debug/CountWriteIterator_for_ControlRelayOutputBlock.o
 debug/ClassField.o
 debug/ControlRelayOutputBlock.o
 debug/DNP3Serializer.o
+debug/DownSampling.o
 debug/IINField.o
 debug/IINValue.o
 debug/EventTriggers.o
@@ -111,11 +117,12 @@ debug/RangeWriteIterator_for_DoubleBitBinary.o
 debug/RangeWriteIterator_for_Counter.o
 debug/RangeWriteIterator_for_FrozenCounter.o
 debug/RangeWriteIterator_for_OctetString.o
-debug/DownSampling.o
+debug/TxBuffer.o
 debug/ApplicationIIN.o
 debug/AssignClassHandler.o
 debug/Database.o
 debug/DeferredRequest.o
+debug/DeferredRequest_part2.o
 debug/ControlState.o
 debug/CommandActionAdapter.o
 debug/ConstantCommandAction.o
@@ -138,6 +145,8 @@ debug/StaticDataCell.o
 debug/TimeSyncState.o
 debug/NumRetries.o
 debug/OctetStringSerializer.o
+debug/OutstationChannelStates.o
+debug/WriteHandler.o
 debug/TimeDuration.o
 debug/Timestamp.o
 debug/ASDUEventWriteHandler.o

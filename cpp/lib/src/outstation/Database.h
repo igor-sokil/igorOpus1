@@ -48,15 +48,16 @@
 
 #include "DatabaseConfig.h"
 
-//   void Database_in_Database(void);
-
-
 ////namespace opendnp3
 ////{
 
 ////class Database final : public IStaticSelector, public IClassAssigner, public IResponseLoader, public IUpdateHandler
 typedef struct
 {
+IStaticSelector iIStaticSelector;
+IClassAssigner  iIClassAssigner;
+IResponseLoader iIResponseLoader;
+IUpdateHandler  iIUpdateHandler;
 ////public:
 ////    Database(const DatabaseConfig& config,
 ////             IEventReceiver& event_receiver,
@@ -122,6 +123,14 @@ typedef struct
 ////                                 const Range& range,
 ///                                 typename Spec::static_variation_t variation);
 } Database;
+
+  void  Database_in_Database(Database *pDatabase,
+             DatabaseConfig* config,
+             IEventReceiver* event_receiver,
+             IDnpTimeSource* time_source,
+             StaticTypeBitField allowed_class_zero_types);
+
+    void Unselect_in_Database(Database *pDatabase);
 
 ////} // namespace opendnp3
 #endif

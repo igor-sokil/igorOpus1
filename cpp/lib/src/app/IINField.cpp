@@ -224,6 +224,15 @@ void ClearBit_in_IINField(IINField *pIINField, IINBit_uint8_t bit)
         return *pIINField;
     }
 
+////    IINField operator|(const IINField& aIIN) const
+    IINField operatorOR_in_IINField(IINField *pIINField, IINField* aIIN)
+    {
+////        return IINField(LSB | aIIN.LSB, MSB | aIIN.MSB);
+        pIINField->MSB | aIIN->MSB;
+        pIINField->LSB | aIIN->LSB;
+        return *pIINField;
+    }
+
 ////    bool IsSet(IINBit bit) const;
 
     boolean IsClear_in_IINField(IINField *pIINField, IINBit_uint8_t bit)

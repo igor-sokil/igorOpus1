@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 #include "header.h"
+//#include "OutstationContext.h"
 #include "DeferredRequest.h"
 
 ////namespace opendnp3
@@ -57,5 +58,6 @@ void Set_in_DeferredRequest(DeferredRequest* pDeferredRequest, ParsedRequest* re
 ////    this->objects = dest.copy_from(request.objects);
     pDeferredRequest->objects = copy_from_in_WSeq_for_Uint16_t(&dest, &(request->objects));
 }
+
 
 ////} // namespace opendnp3

@@ -46,7 +46,15 @@ typedef struct
     // Called by a lower layer when it is no longer available to this layer
     // return false if the layer is already down
     boolean (*pOnLowerLayerDown_in_IUpDown)(void*);// = 0;
+
+  void* pParentPointer_in_IUpDown;
 } IUpDown;
+
+void* getParentPointer_in_IUpDown(IUpDown*);
+void  setParentPointer_in_IUpDown(IUpDown*, void*);
+
+boolean OnLowerLayerUp_in_IUpDown(IUpDown *);
+boolean OnLowerLayerDown_in_IUpDown(IUpDown *);
 
 ////class IUpperLayer : public IUpDown
 typedef struct
@@ -61,7 +69,15 @@ typedef struct
 
     // Called by the lower layer when it is ready to transmit more data
     boolean (*pOnTxReady_in_IUpperLayer)(void*);// = 0;
+
+  void* pParentPointer_in_IUpperLayer;
 } IUpperLayer;
+
+void* getParentPointer_in_IUpperLayer(IUpperLayer*);
+void  setParentPointer_in_IUpperLayer(IUpperLayer*, void*);
+
+boolean OnReceive_in_IUpperLayer(IUpperLayer *, Message* message);
+boolean OnTxReady_in_IUpperLayer(IUpperLayer *);
 
 ////class ILowerLayer
 typedef struct
@@ -71,7 +87,14 @@ typedef struct
 ////    virtual ~ILowerLayer() {}
 
    boolean (*pBeginTransmit_in_ILowerLayer)(void*, Message* message);// = 0;
+
+  void* pParentPointer_in_ILowerLayer;
 } ILowerLayer;
+
+void* getParentPointer_in_ILowerLayer(ILowerLayer*);
+void  setParentPointer_in_ILowerLayer(ILowerLayer*, void*);
+
+boolean BeginTransmit_in_ILowerLayer(ILowerLayer *, Message* message);
 
 ////class HasLowerLayer
 typedef struct

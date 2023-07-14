@@ -216,6 +216,7 @@ typedef struct
 
 ////    IINField& operator|=(const IINField& aIIN)
     IINField operatorOREQ_in_IINField(IINField *pIINField, IINField* aIIN);
+    IINField operatorOR_in_IINField(IINField *pIINField, IINField* aIIN);
 
 ////} // namespace opendnp3
 

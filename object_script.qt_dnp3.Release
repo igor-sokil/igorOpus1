@@ -2,9 +2,11 @@ release/Comparisons.o
 release/HasLength.o
 release/RSeq.o
 release/WSeq.o
-release/Settable.o
+release/Settable_for_WSeq.o
+release/Settable_for_LinkBroadcastAddress.o
 release/BufferSer4.o
 release/StaticBuffer.o
+release/Pair_for_IINField_AppControlField.o
 release/Array__for__Node_for_EventRecord.o
 release/ArrayView__for__Node_for_EventRecord.o
 release/Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.o
@@ -24,6 +26,9 @@ release/ArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec.o
 release/Array__for__Node_TypedEventRecord_for_OctetStringSpec.o
 release/ArrayView__for__Node_TypedEventRecord_for_OctetStringSpec.o
 release/SerializationTemplates.o
+release/TimerExe4cpp.o
+release/ISteadyTimeSourceExe4cpp.o
+release/IExecutorExe4cpp.o
 release/Buffer.o
 release/UTCTimestamp.o
 release/CommandPointResult.o
@@ -72,6 +77,7 @@ release/CountWriteIterator_for_ControlRelayOutputBlock.o
 release/ClassField.o
 release/ControlRelayOutputBlock.o
 release/DNP3Serializer.o
+release/DownSampling.o
 release/IINField.o
 release/IINValue.o
 release/EventTriggers.o
@@ -111,11 +117,12 @@ release/RangeWriteIterator_for_DoubleBitBinary.o
 release/RangeWriteIterator_for_Counter.o
 release/RangeWriteIterator_for_FrozenCounter.o
 release/RangeWriteIterator_for_OctetString.o
-release/DownSampling.o
+release/TxBuffer.o
 release/ApplicationIIN.o
 release/AssignClassHandler.o
 release/Database.o
 release/DeferredRequest.o
+release/DeferredRequest_part2.o
 release/ControlState.o
 release/CommandActionAdapter.o
 release/ConstantCommandAction.o
@@ -138,6 +145,8 @@ release/StaticDataCell.o
 release/TimeSyncState.o
 release/NumRetries.o
 release/OctetStringSerializer.o
+release/OutstationChannelStates.o
+release/WriteHandler.o
 release/TimeDuration.o
 release/Timestamp.o
 release/ASDUEventWriteHandler.o

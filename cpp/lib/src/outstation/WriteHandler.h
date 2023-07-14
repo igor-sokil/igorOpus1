@@ -75,6 +75,13 @@ typedef struct
     boolean wroteIIN;// = false;
 } WriteHandler;
 
+IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
+IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var1* values);
+IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var3* values);
+IINField ProcessHeader_PrefixHeader_for_TimeAndInterval_in_WriteHandler_override(void* pIAPDUHandler, PrefixHeader* header,
+                                     ICollection_Indexed_for_TimeAndInterval* values);
+boolean IsAllowed_in_WriteHandler_override(void* pIWhiteList, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+
 ////} // namespace opendnp3
 
 #endif

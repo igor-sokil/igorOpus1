@@ -145,6 +145,34 @@
    return iIndexed_for_IINValue;
 }
 //------------------------------------Indexed_for_IINValue---------------------------------------------------------
+//------------------------------------Indexed_for_TimeAndInterval---------------------------------------------------------
+   void Indexed_for_TimeAndInterval_in_Indexed_for_TimeAndIntervalOver1(Indexed_for_TimeAndInterval *pIndexed_for_TimeAndInterval)
+{
+   TimeAndInterval_in_TimeAndIntervalOver1(&(pIndexed_for_TimeAndInterval->value));
+   pIndexed_for_TimeAndInterval->index = 0;
+}
+
+   void Indexed_for_TimeAndInterval_in_Indexed_for_TimeAndIntervalOver2(Indexed_for_TimeAndInterval *pIndexed_for_TimeAndInterval,
+                                   TimeAndInterval* value_, uint16_t index_)
+{
+//  TimeAndInterval_in_TimeAndIntervalOver2(value_, index_);
+  pIndexed_for_TimeAndInterval->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_TimeAndInterval->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+   Indexed_for_TimeAndInterval WithIndex_in_Indexed_for_TimeAndInterval(
+                                                        TimeAndInterval* value, uint16_t index)
+{
+   Indexed_for_TimeAndInterval iIndexed_for_TimeAndInterval;
+   Indexed_for_TimeAndInterval_in_Indexed_for_TimeAndIntervalOver2(&iIndexed_for_TimeAndInterval,
+                                   value, index);
+////    return Indexed<T>(value, index);
+   return iIndexed_for_TimeAndInterval;
+}
+//------------------------------------Indexed_for_TimeAndInterval---------------------------------------------------------
 //------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
    void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver1(Indexed_for_ControlRelayOutputBlock *pIndexed_for_ControlRelayOutputBlock)
 {

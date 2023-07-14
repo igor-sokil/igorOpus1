@@ -25,6 +25,15 @@
 
 ////const AppControlField AppControlField::DEFAULT(true, true, false, false, 0);
 
+void AppControlField_in_AppControlFieldOver1(AppControlField *pAppControlField)
+{
+  pAppControlField->FIR = true;
+  pAppControlField->FIN = true;
+  pAppControlField->CON = false;
+  pAppControlField->UNS = false;
+  pAppControlField->SEQ = 0;
+}
+
 void AppControlField_in_AppControlFieldOver2(AppControlField *pAppControlField, uint8_t byte)
 {
   pAppControlField->FIR = ((byte & AppControlField_FIR_MASK) != 0);

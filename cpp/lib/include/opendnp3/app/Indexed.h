@@ -24,6 +24,7 @@
 #include "IINValue.h"
 #include "ControlRelayOutputBlock.h"
 #include "OperationType.h"
+#include "MeasurementTypes.h"
 ////#include <cstdint>
 
 ////namespace opendnp3
@@ -139,6 +140,28 @@ typedef struct
    Indexed_for_IINValue WithIndex_in_Indexed_for_IINValue(
                                    IINValue* value, uint16_t index);
 //------------------------------------Indexed_for_IINValue---------------------------------------------------------
+//------------------------------------Indexed_for_TimeAndInterval---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+    TimeAndInterval value;
+    uint16_t index;
+} Indexed_for_TimeAndInterval;
+
+   void Indexed_for_TimeAndInterval_in_Indexed_for_TimeAndIntervalOver1(Indexed_for_TimeAndInterval *pIndexed_for_TimeAndInterval);
+   void Indexed_for_TimeAndInterval_in_Indexed_for_TimeAndIntervalOver2(Indexed_for_TimeAndInterval *pIndexed_for_TimeAndInterval,
+                                   TimeAndInterval* value_, uint16_t index_);
+   Indexed_for_TimeAndInterval WithIndex_in_Indexed_for_TimeAndInterval(
+                                   TimeAndInterval* value, uint16_t index);
+//------------------------------------Indexed_for_TimeAndInterval---------------------------------------------------------
 //------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
 /**
  * A simple tuple for pairing Values with an index
