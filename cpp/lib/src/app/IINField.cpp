@@ -228,9 +228,9 @@ void ClearBit_in_IINField(IINField *pIINField, IINBit_uint8_t bit)
     IINField operatorOR_in_IINField(IINField *pIINField, IINField* aIIN)
     {
 ////        return IINField(LSB | aIIN.LSB, MSB | aIIN.MSB);
-        pIINField->MSB | aIIN->MSB;
-        pIINField->LSB | aIIN->LSB;
-        return *pIINField;
+        IINField iIINField;
+        IINField_in_IINFieldOver3(&iIINField, pIINField->LSB | aIIN->LSB, pIINField->MSB | aIIN->MSB);
+        return iIINField;
     }
 
 ////    bool IsSet(IINBit bit) const;

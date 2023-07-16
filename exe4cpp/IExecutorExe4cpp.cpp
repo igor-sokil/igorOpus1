@@ -8,7 +8,7 @@ TimerExe4cpp Start_in_IExecutorExe4cpp(IExecutorExe4cpp *pIExecutorExe4cpp, uint
 
 void Post_in_IExecutorExe4cpp(IExecutorExe4cpp *pIExecutorExe4cpp, void (*pAction)(void))
 {
-  return (pIExecutorExe4cpp->pPost_in_IExecutorExe4cpp)(pIExecutorExe4cpp, pAction);
+   (pIExecutorExe4cpp->pPost_in_IExecutorExe4cpp)(pIExecutorExe4cpp, pAction);
 }
 
 void* getParentPointer_in_IExecutorExe4cpp(IExecutorExe4cpp* pIExecutorExe4cpp)

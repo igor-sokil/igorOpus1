@@ -1928,6 +1928,18 @@
         </group>
     </group>
     <group>
+        <name>exe4cpp</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\exe4cpp\IExecutorExe4cpp.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\exe4cpp\ISteadyTimeSourceExe4cpp.cpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\exe4cpp\TimerExe4cpp.cpp</name>
+        </file>
+    </group>
+    <group>
         <name>FatFs</name>
         <group>
             <name>inc</name>
@@ -2028,6 +2040,45 @@
         <group>
             <name>container</name>
             <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_for_EventRecord.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_TypedEventRecord_for_AnalogSpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_TypedEventRecord_for_BinaryOutputStatusSpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_TypedEventRecord_for_BinarySpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_TypedEventRecord_for_CounterSpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_TypedEventRecord_for_DoubleBitBinarySpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_TypedEventRecord_for_FrozenCounterSpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\Array__for__Node_TypedEventRecord_for_OctetStringSpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\ArrayView__for__Node_for_EventRecord.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_AnalogSpec.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_BinaryOutputStatusSpec.cpp</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\ser4cpp\container\BufferSer4.cpp</name>
             </file>
             <file>
@@ -2035,9 +2086,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\ser4cpp\container\RSeq.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\ser4cpp\container\Settable.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\ser4cpp\container\StaticBuffer.cpp</name>
@@ -2748,9 +2796,6 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\wf\src\measurement.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\wf\src\protections.c</name>
                 </file>
             </group>
             <group>
