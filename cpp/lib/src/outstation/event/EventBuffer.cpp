@@ -414,6 +414,134 @@ uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t 
  void EventBuffer_in_EventBufferOver1(EventBuffer *pEventBuffer)
 {
   pEventBuffer->overflow = false;
+
+    // ------- IEventReceiver ------
+
+(pEventBuffer->iIEventReceiver).pUpdate_BinarySpec_in_IEventReceiver = Update_BinarySpec_in_EventBuffer_override;
+(pEventBuffer->iIEventReceiver).pUpdate_DoubleBitBinarySpec_in_IEventReceiver = Update_DoubleBitBinarySpec_in_EventBuffer_override;
+(pEventBuffer->iIEventReceiver).pUpdate_AnalogSpec_in_IEventReceiver = Update_AnalogSpec_in_EventBuffer_override;
+(pEventBuffer->iIEventReceiver).pUpdate_CounterSpec_in_IEventReceiver = Update_CounterSpec_in_EventBuffer_override;
+(pEventBuffer->iIEventReceiver).pUpdate_FrozenCounterSpec_in_IEventReceiver = Update_FrozenCounterSpec_in_EventBuffer_override;
+(pEventBuffer->iIEventReceiver).pUpdate_BinaryOutputStatusSpec_in_IEventReceiver = Update_BinaryOutputStatusSpec_in_EventBuffer_override;
+(pEventBuffer->iIEventReceiver).pUpdate_AnalogOutputStatusSpec_in_IEventReceiver = Update_AnalogOutputStatusSpec_in_EventBuffer_override;
+(pEventBuffer->iIEventReceiver).pUpdate_OctetStringSpec_in_IEventReceiver = Update_OctetStringSpec_in_EventBuffer_override;
+
+ setParentPointer_in_IEventReceiver(&(pEventBuffer->iIEventReceiver), pEventBuffer);
+
+    // ------- IEventSelector ------
+
+//(pEventBuffer->iIEventSelector).pUnselect_in_IEventSelector = Unselect_in_EventBuffer_override;
+
+(pEventBuffer->iIEventSelector).pSelectAll_in_IEventSelector = SelectAll_in_EventBuffer_override;
+(pEventBuffer->iIEventSelector).pSelectCount_in_IEventSelector = SelectCount_in_EventBuffer_override;
+
+ setParentPointer_in_IEventSelector(&(pEventBuffer->iIEventSelector), pEventBuffer);
+
+    // ------- IResponseLoader -------
+
+(pEventBuffer->iIResponseLoader).pHasAnySelection_in_IResponseLoader = HasAnySelection_in_EventBuffer_override;
+(pEventBuffer->iIResponseLoader).pLoad_in_IResponseLoader = Load_in_EventBuffer_override;
+
+ setParentPointer_in_IResponseLoader(&(pEventBuffer->iIResponseLoader), pEventBuffer);
+
+}
+
+    void Update_BinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinarySpec *evt)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventReceiver((IEventReceiver*)pIEventReceiver);
+
+     Update_BinarySpec_in_EventBuffer(parent, evt);
+}
+    void Update_DoubleBitBinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_DoubleBitBinarySpec* evt)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventReceiver((IEventReceiver*)pIEventReceiver);
+
+    Update_DoubleBitBinarySpec_in_EventBuffer(parent, evt);
+}
+    void Update_AnalogSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_AnalogSpec* evt)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventReceiver((IEventReceiver*)pIEventReceiver);
+
+    Update_AnalogSpec_in_EventBuffer(parent, evt);
+}
+    void Update_CounterSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_CounterSpec* evt)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventReceiver((IEventReceiver*)pIEventReceiver);
+
+     Update_CounterSpec_in_EventBuffer(parent, evt);
+}
+    void Update_FrozenCounterSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_FrozenCounterSpec* evt)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventReceiver((IEventReceiver*)pIEventReceiver);
+
+     Update_FrozenCounterSpec_in_EventBuffer(parent, evt);
+}
+    void Update_BinaryOutputStatusSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinaryOutputStatusSpec* evt)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventReceiver((IEventReceiver*)pIEventReceiver);
+
+    Update_BinaryOutputStatusSpec_in_EventBuffer(parent, evt);
+}
+    void Update_AnalogOutputStatusSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_AnalogOutputStatusSpec* evt)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventReceiver((IEventReceiver*)pIEventReceiver);
+
+    Update_AnalogOutputStatusSpec_in_EventBuffer(parent, evt);
+}
+    void Update_OctetStringSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_OctetStringSpec* evt)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventReceiver((IEventReceiver*)pIEventReceiver);
+
+   Update_OctetStringSpec_in_EventBuffer(parent, evt);
+}
+
+    // ------- IEventSelector ------
+
+     void Unselect_in_EventBuffer_override(void *pIEventSelector)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventSelector((IEventSelector*)pIEventSelector);
+
+      Unselect_in_EventBuffer(parent);
+}
+     IINField SelectAll_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventSelector((IEventSelector*)pIEventSelector);
+
+     return SelectAll_in_EventBuffer(parent, gv);
+}
+     IINField SelectCount_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv, uint16_t count)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IEventSelector((IEventSelector*)pIEventSelector);
+
+     return SelectCount_in_EventBuffer(parent, gv, count);
+}
+
+    // ------- IResponseLoader -------
+
+     boolean HasAnySelection_in_EventBuffer_override(void *pIResponseLoader)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IResponseLoader((IResponseLoader*)pIResponseLoader);
+
+     return HasAnySelection_in_EventBuffer(parent);
+}
+     boolean Load_in_EventBuffer_override(void *pIResponseLoader, HeaderWriter* writer)
+{
+  EventBuffer *parent = 
+         (EventBuffer*)getParentPointer_in_IResponseLoader((IResponseLoader*)pIResponseLoader);
+
+     return Load_in_EventBuffer(parent, writer);
 }
 
 ////    template<class T> IINField SelectByType(uint32_t max, T type)

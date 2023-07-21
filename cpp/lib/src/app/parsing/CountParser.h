@@ -30,12 +30,12 @@
 ////#include "opendnp3/logging/Logger.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>
-#include "BufferedCollection.h"
+//#include "BufferedCollection.h"
 #include "Functions.h"
 #include "IAPDUHandler.h"
 #include "NumParser.h"
 #include "ParseResult.h"
-#include "ParserSettings.h"
+//#include "ParserSettings.h"
 
 //#include "opendnp3/logging/Logger.h"
 
@@ -46,6 +46,11 @@
 ////namespace opendnp3
 ////{
 
+    typedef void (*HandleFun_in_CountParser)( HeaderRecord* record,
+                              uint16_t count,
+                              RSeq_for_Uint16_t* buffer,
+                              IAPDUHandler handler);
+
 ////class CountParser
 typedef struct
 {
@@ -54,64 +59,71 @@ typedef struct
 ////                              const ser4cpp::rseq_t& buffer,
 ////                              IAPDUHandler& handler);
 
-public:
-    static ParseResult ParseHeader(ser4cpp::rseq_t& buffer,
-                                   const NumParser& numparser,
-                                   const ParserSettings& settings,
-                                   const HeaderRecord& record,
-                                   Logger* pLogger,
-                                   IAPDUHandler* pHandler);
-
-private:
-    // Process the count handler against the buffer
-    ParseResult Process(const HeaderRecord& record,
-                        ser4cpp::rseq_t& buffer,
-                        IAPDUHandler* pHandler,
-                        Logger* pLogger) const;
-
+////public:
+////    static ParseResult ParseHeader(ser4cpp::rseq_t& buffer,
+////                                   const NumParser& numparser,
+////                                   const ParserSettings& settings,
+////                                   const HeaderRecord& record,
+////                                   Logger* pLogger,
+////                                   IAPDUHandler* pHandler);
+////
+////private:
+////    // Process the count handler against the buffer
+////    ParseResult Process(const HeaderRecord& record,
+////                        ser4cpp::rseq_t& buffer,
+////                        IAPDUHandler* pHandler,
+////                        Logger* pLogger) const;
+////
     // Create a count handler from a fixed size descriptor
-    template<class Descriptor> static CountParser From(uint16_t count);
+////    template<class Descriptor> static CountParser From(uint16_t count);
 
-    static ParseResult ParseCountOfObjects(
-        ser4cpp::rseq_t& buffer, const HeaderRecord& record, uint16_t count, Logger* pLogger, IAPDUHandler* pHandler);
+////    static ParseResult ParseCountOfObjects(
+////        ser4cpp::rseq_t& buffer, const HeaderRecord& record, uint16_t count, Logger* pLogger, IAPDUHandler* pHandler);
 
-    template<class Descriptor>
-    static void InvokeCountOf(const HeaderRecord& record,
-                              uint16_t count,
-                              const ser4cpp::rseq_t& buffer,
-                              IAPDUHandler& handler);
+////    template<class Descriptor>
+////    static void InvokeCountOf(const HeaderRecord& record,
+////                              uint16_t count,
+////                              const ser4cpp::rseq_t& buffer,
+////                              IAPDUHandler& handler);
 
-    CountParser(uint16_t count, size_t required_size, HandleFun handler);
+////    CountParser(uint16_t count, size_t required_size, HandleFun handler);
 
     uint16_t count;
-    size_t required_size;
-    HandleFun handler;
+    uint16_t required_size;
+    HandleFun_in_CountParser handler;
 
-    CountParser() = delete;
+////    CountParser() = delete;
 } CountParser;
 
-template<class Descriptor> CountParser CountParser::From(uint16_t count)
-{
-    const auto size = static_cast<size_t>(count) * Descriptor::Size();
-    return CountParser(count, size, &InvokeCountOf<Descriptor>);
-}
+     ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
+                                   NumParser* numparser,
+                                   ////const ParserSettings& settings,
+                                   HeaderRecord* record,
+                                   ////Logger* pLogger,
+                                   IAPDUHandler* pHandler);
 
-template<class T>
-void CountParser::InvokeCountOf(const HeaderRecord& record,
-                                uint16_t count,
-                                const ser4cpp::rseq_t& buffer,
-                                IAPDUHandler& handler)
-{
-    auto read = [](ser4cpp::rseq_t& buffer, uint32_t) -> T {
-        T value;
-        T::Read(buffer, value);
-        return value;
-    };
+////template<class Descriptor> CountParser CountParser::From(uint16_t count)
+////{
+////    const auto size = static_cast<size_t>(count) * Descriptor::Size();
+////    return CountParser(count, size, &InvokeCountOf<Descriptor>);
+////}
 
-    auto collection = CreateBufferedCollection<T>(buffer, count, read);
-    handler.OnHeader(CountHeader(record, count), collection);
-}
+////template<class T>
+////void CountParser::InvokeCountOf(const HeaderRecord& record,
+////                                uint16_t count,
+////                                const ser4cpp::rseq_t& buffer,
+////                                IAPDUHandler& handler)
+////{
+////    auto read = [](ser4cpp::rseq_t& buffer, uint32_t) -> T {
+////        T value;
+////        T::Read(buffer, value);
+////        return value;
+////    };
+////
+////    auto collection = CreateBufferedCollection<T>(buffer, count, read);
+////    handler.OnHeader(CountHeader(record, count), collection);
+////}
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

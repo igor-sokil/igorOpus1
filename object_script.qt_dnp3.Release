@@ -29,6 +29,7 @@ release/SerializationTemplates.o
 release/TimerExe4cpp.o
 release/ISteadyTimeSourceExe4cpp.o
 release/IExecutorExe4cpp.o
+release/MockExecutorExe4cpp.o
 release/Buffer.o
 release/UTCTimestamp.o
 release/CommandPointResult.o
@@ -56,13 +57,17 @@ release/CRC.o
 release/LinkHeader.o
 release/LinkFrame.o
 release/APDUHeaderParser.o
+release/APDUParser.o
+release/ObjectHeaderParser.o
 release/ParseResult.o
 release/IWhiteList.o
 release/IAPDUHandler.o
+release/NumParser.o
 release/AnalogCommandEvent.o
 release/AnalogOutput.o
-release/APDUHeader.o
 release/AppControlField.o
+release/APDUHeader.o
+release/APDUBuilders.o
 release/APDURequest.o
 release/APDUWrapper.o
 release/APDUResponse.o
@@ -125,10 +130,12 @@ release/DeferredRequest.o
 release/DeferredRequest_part2.o
 release/ControlState.o
 release/CommandActionAdapter.o
+release/CommandResponseHandler.o
 release/ConstantCommandAction.o
 release/ClassBasedRequestHandler.o
 release/Event.o
 release/EventBufferConfig.o
+release/FreezeRequestHandler.o
 release/IClassAssigner.o
 release/ICommandAction.o
 release/IEventReceiver.o
@@ -146,6 +153,8 @@ release/TimeSyncState.o
 release/NumRetries.o
 release/OctetStringSerializer.o
 release/OutstationChannelStates.o
+release/OutstationContext.o
+release/OutstationStates.o
 release/WriteHandler.o
 release/TimeDuration.o
 release/Timestamp.o
@@ -202,6 +211,7 @@ release/Group2.o
 release/Group4.o
 release/Group11.o
 release/Group12.o
+release/Group13.o
 release/Group20.o
 release/Group22.o
 release/Group23.o

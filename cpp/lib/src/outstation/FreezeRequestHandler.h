@@ -50,6 +50,7 @@ typedef struct
 
 ////    bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) final;
 boolean IsAllowed_in_FreezeRequestHandler_override(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+//     boolean (*pIsAllowed_in_IWhiteList)(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 
 ////private:
     IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *, AllObjectsHeader* record);

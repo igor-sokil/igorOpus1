@@ -28,39 +28,80 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
+#include "header.h"
 #include "Group43.h"
 
-#include "app/parsing/DNPTimeParsing.h"
-#include <ser4cpp/serialization/LittleEndian.h>
-#include "app/MeasurementFactory.h"
-#include "app/WriteConversions.h"
+////#include "app/parsing/DNPTimeParsing.h"
+////#include <ser4cpp/serialization/LittleEndian.h>
+////#include "app/MeasurementFactory.h"
+////#include "app/WriteConversions.h"
+#include "MeasurementFactory.h"
+//#include "app/WriteConversions.h"
+#include "SerializationTemplates.h"
+#include "DownSampling.h"
 
-using namespace ser4cpp;
+#include "RSeq.h"
+#include "WSeq.h"
 
-namespace opendnp3 {
+////using namespace ser4cpp;
+
+////namespace opendnp3 {
 
 // ------- Group43Var1 -------
 
-Group43Var1::Group43Var1() : status(0), value(0)
-{}
-
-bool Group43Var1::Read(rseq_t& buffer, Group43Var1& output)
+////Group43Var1::Group43Var1() : status(0), value(0)
+////{}
+void Group43Var1_in_Group43Var1(Group43Var1 *pGroup43Var1)
 {
-  return LittleEndian::read(buffer, output.status, output.value);
+  pGroup43Var1->flags = 0;
+  pGroup43Var1->value = 0;
 }
 
-bool Group43Var1::Write(const Group43Var1& arg, ser4cpp::wseq_t& buffer)
+////bool Group43Var1::Read(rseq_t& buffer, Group43Var1& output)
+////{
+////  return LittleEndian::read(buffer, output.status, output.value);
+////}
+boolean Read_in_Group43Var1_static(RSeq_for_Uint16_t* buffer, Group43Var1* output)
 {
-  return LittleEndian::write(buffer, arg.status, arg.value);
+////  return LittleEndian::read(buffer, output.flags, output.value);
+    return read_from_in_UInt8_static(buffer,  &(output->flags)) &&
+           read_from_in_UInt32_static(buffer, (uint32_t*)&(output->value));
 }
 
-bool Group43Var1::ReadTarget(rseq_t& buff, AnalogCommandEvent& output)
+////bool Group43Var1::Write(const Group43Var1& arg, ser4cpp::wseq_t& buffer)
+////{
+////  return LittleEndian::write(buffer, arg.status, arg.value);
+////}
+boolean Write_in_Group43Var1_static(Group43Var1* arg, WSeq_for_Uint16_t* buffer)
+{
+////  return LittleEndian::write(buffer, arg.flags, arg.value);
+    return write_to_in_UInt8_static(buffer, arg->flags) &&
+           write_to_in_UInt32_static(buffer, arg->value);
+}
+
+////bool Group43Var1::ReadTarget(rseq_t& buff, AnalogCommandEvent& output)
+////{
+////  Group43Var1 value;
+////  if(Read(buff, value))
+////  {
+////    output = AnalogCommandEventFactory::From(value.status, value.value);
+////    return true;
+////  }
+////  else
+////  {
+////    return false;
+////  }
+////}
+boolean ReadTarget_in_Group43Var1_static(RSeq_for_Uint16_t* buff, AnalogCommandEvent* output)
 {
   Group43Var1 value;
-  if(Read(buff, value))
+//  if(Read(buff, value))
+  Group43Var1_in_Group43Var1(&value);
+  if(Read_in_Group43Var1_static(buff, &value))
   {
-    output = AnalogCommandEventFactory::From(value.status, value.value);
+////    output = AnalogFactory::From(value.flags, value.value);
+   AnalogCommandEvent temp = From_in_AnalogCommandEventFactory_staticOver1(value.flags, value.value);
+   *output = temp;
     return true;
   }
   else
@@ -69,10 +110,41 @@ bool Group43Var1::ReadTarget(rseq_t& buff, AnalogCommandEvent& output)
   }
 }
 
-bool Group43Var1::WriteTarget(const AnalogCommandEvent& value, ser4cpp::wseq_t& buff)
+////bool Group43Var1::WriteTarget(const AnalogCommandEvent& value, ser4cpp::wseq_t& buff)
+////{
+////  return Group43Var1::Write(ConvertGroup43Var1::Apply(value), buff);
+////}
+boolean WriteTarget_in_Group43Var1_static(AnalogCommandEvent* value, WSeq_for_Uint16_t* buff)
 {
-  return Group43Var1::Write(ConvertGroup43Var1::Apply(value), buff);
+//typedef ConvertGroup43RangeCheck<Group43Var1> ConvertGroup43Var1;
+  Group43Var1 temp = Apply_in_ConvertGroup43Var1_static(value);
+  return Write_in_Group43Var1_static(&temp, buff);
 }
+
+Group43Var1 Apply_in_ConvertGroup43Var1_static(AnalogCommandEvent* src)
+{
+  Group43Var1 target;
+  Group43Var1_in_Group43Var1(&target);
+////        auto overrange = DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
+  boolean overrange = Apply_in_DownSampling_for_uint32((src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
+
+////        t.flags = overrange ? Overrange : 0;
+  target.flags = overrange ? Overrange : 0;
+////        t.flags |= src.flags.value;
+  target.flags |= (src->tTypedMeasurement_for_Double64).mMeasurement.flags.value;
+  return target;
+}
+
+////template<class Target> struct ConvertGroup43RangeCheck : private StaticOnly
+////{
+////    static Target Apply(const AnalogCommandEvent& src)
+////    {
+////        Target t;
+////        DownSampling<double, typename Target::ValueType>::Apply(src.value, t.value);
+////        t.status = CommandStatusSpec::to_type(src.status);
+////        return t;
+////    }
+////};
 
 // ------- Group43Var2 -------
 

@@ -65,7 +65,7 @@ void ObjectHeader_in_ObjectHeader(ObjectHeader *pObjectHeader);
 ////};
 
     ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader *header, RSeq_for_Uint16_t *buffer);////, Logger* pLogger);
-    boolean ReadFirstGroupVariation_in_ObjectHeaderParser_static(RSeq_for_Uint16_t *objects, GroupVariation *gv);
+    boolean ReadFirstGroupVariation_in_ObjectHeaderParser_static(RSeq_for_Uint16_t *objects, GroupVariation_uint16_t *gv);
 
 ////} // namespace opendnp3
 

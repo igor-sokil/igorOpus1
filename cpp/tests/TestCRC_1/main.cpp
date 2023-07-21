@@ -8,28 +8,15 @@
 #include "key_filter.h"
 
 #include "header.h"
-/*
-#include "APDUHelpers.h"
-#include "APDUHeader.h"
-#include "SerializationTemplates.h"
-#include "Group2.h"
-#include "EventStorage.h"
-
-#include <EventType.h>
-#include <MeasurementInfo.h>
-
-#include <IEventWriteHandler.h>
-
-#include <deque>
-
-#include "loghandler.h"
-*/
 
 #include "loghandler.h"
 #include "CRC.h"
 
 #define UNUSED(x) (void)(x)
 
+void* pPointerGlobal1;
+void* pPointerGlobal2;
+void* pPointerGlobal3;
 
 key_filter *pkf;
 

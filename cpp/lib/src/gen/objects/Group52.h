@@ -65,6 +65,7 @@ typedef struct
 
  boolean Read_in_Group52Var1_static(RSeq_for_Uint16_t *, Group52Var1*);
  boolean Write_in_Group52Var1_static(Group52Var1*, WSeq_for_Uint16_t*);
+  GroupVariationID ID_in_Group52Var1_static(void);
 
 // Time Delay - Fine
 ////struct Group52Var2
@@ -88,6 +89,7 @@ typedef struct
 
  boolean Read_in_Group52Var2_static(RSeq_for_Uint16_t *, Group52Var2*);
  boolean Write_in_Group52Var2_static(Group52Var2*, WSeq_for_Uint16_t*);
+  GroupVariationID ID_in_Group52Var2_static(void);
 
 ////}
 

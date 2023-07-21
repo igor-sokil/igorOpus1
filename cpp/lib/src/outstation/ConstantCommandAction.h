@@ -64,7 +64,7 @@ typedef struct
   CommandStatus_uint8_t status;
 } ConstantCommandAction;
 
-void ConstantCommandAction_in_ConstantCommandAction(ConstantCommandAction *pConstantCommandAction, CommandStatus status_);
+void ConstantCommandAction_in_ConstantCommandAction(ConstantCommandAction *pConstantCommandAction, CommandStatus_uint8_t status_);
 CommandStatus_uint8_t Action_AnalogOutputDouble64_in_ConstantCommandAction_override(void *pICommandAction, AnalogOutputDouble64* arCommand, uint16_t aIndex);
 CommandStatus_uint8_t Action_AnalogOutputFloat32_in_ConstantCommandAction_override(void *pICommandAction, AnalogOutputFloat32* arCommand, uint16_t aIndex);
 CommandStatus_uint8_t Action_AnalogOutputInt32_in_ConstantCommandAction_override(void *pICommandAction, AnalogOutputInt32* arCommand, uint16_t aIndex);

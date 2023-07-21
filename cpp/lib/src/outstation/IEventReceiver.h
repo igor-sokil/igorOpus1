@@ -52,7 +52,7 @@ typedef struct
 
      void (*pUpdate_AnalogOutputStatusSpec_in_IEventReceiver)(void*, Event_for_AnalogOutputStatusSpec* evt);// = 0;
 
-     void (*pUpdateOctetStringSpec_in_IEventReceiver)(void*, Event_for_OctetStringSpec* evt);// = 0;
+     void (*pUpdate_OctetStringSpec_in_IEventReceiver)(void*, Event_for_OctetStringSpec* evt);// = 0;
 
   void* pParentPointer_in_IEventReceiver;
 } IEventReceiver;

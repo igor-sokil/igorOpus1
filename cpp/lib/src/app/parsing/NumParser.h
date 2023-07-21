@@ -29,6 +29,8 @@
 
 #include "Range.h"
 #include "ParseResult.h"
+#include "SerializationTemplates.h"
+#include "RSeq.h"
 
 //#include "opendnp3/logging/Logger.h"
 
@@ -37,7 +39,7 @@
 ////namespace opendnp3
 ////{
 
-    typedef uint16_t (*ReadFun)(RSeqTemplateUint8_t *buffer);
+    typedef uint16_t (*ReadFun_in_NumParser)(RSeq_for_Uint16_t *buffer);
 
 // A one or two byte unsigned integer parser
 ////class NumParser
@@ -67,7 +69,7 @@ typedef struct
 
 ////    NumParser(ReadFun pReadFun, uint8_t size);
 
-    ReadFun pReadFun;
+    ReadFun_in_NumParser pReadFun;
     uint8_t size;
 
 ////    NumParser() = delete;
@@ -75,20 +77,20 @@ typedef struct
 
     uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
 
-    ParseResult ParseCount_in_NumParser(NumParser *pNumParser, RSeqTemplateUint8_t *buffer, uint16_t *count);////, Logger* pLogger) const;
-    ParseResult ParseRange_in_NumParser(NumParser *pNumParser, RSeqTemplateUint8_t *buffer, Range *range);////, Logger* pLogger) const;
+    ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, uint16_t *count);////, Logger* pLogger) const;
+    ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, Range *range);////, Logger* pLogger) const;
 
-    uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeqTemplateUint8_t *buffer);
+    uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
 
     NumParser OneByte_in_NumParser_static(void);
     NumParser TwoByte_in_NumParser_static(void);
 
-    boolean Read_in_NumParser(NumParser *pNumParser, uint16_t *num, RSeqTemplateUint8_t *buffer);
+    boolean Read_in_NumParser(NumParser *pNumParser, uint16_t *num, RSeq_for_Uint16_t *buffer);
 
-    uint16_t ReadOneByte_in_NumParser_static(RSeqTemplateUint8_t *buffer);
-    uint16_t ReadTwoBytes_in_NumParser_static(RSeqTemplateUint8_t *buffer);
+    uint16_t ReadOneByte_in_NumParser_static(RSeq_for_Uint16_t *buffer);
+    uint16_t ReadTwoBytes_in_NumParser_static(RSeq_for_Uint16_t *buffer);
 
-    void NumParser_in_NumParser(NumParser *pNumParser, ReadFun pReadFun, uint8_t size);
+    void NumParser_in_NumParser(NumParser *pNumParser, ReadFun_in_NumParser pReadFun, uint8_t size);
 
 //} // namespace opendnp3
 

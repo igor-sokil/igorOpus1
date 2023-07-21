@@ -35,26 +35,32 @@ typedef struct
 {
 ////public:
     /// Called when a the reset/unreset status of the link layer changes
+/// Вызывается при изменении состояния сброса/сброса уровня ссылки
     void (*pOnStateChange_in_ILinkListener)(void*, LinkStatus_uint8_t value);
 ////    virtual void OnStateChange(LinkStatus value) {}
 
     /// Called when a link-layer frame is received from an unknown destination address
+/// Вызывается при получении кадра канального уровня с неизвестного адреса назначения
     void (*pOnUnknownDestinationAddress_in_ILinkListener)(void*, uint16_t destination);
 ////    virtual void OnUnknownDestinationAddress(uint16_t destination) {}
 
     /// Called when a link-layer frame is received from an unknown source address
+/// Вызывается при получении фрейма канального уровня с неизвестного адреса источника
     void (*pOnUnknownSourceAddress_in_ILinkListener)(void*, uint16_t source);
 ////    virtual void OnUnknownSourceAddress(uint16_t source) {}
 
     /// Called when the keep alive timer elapses. This doesn't denote a keep-alive failure, it's just a notification
+/// Вызывается, когда истекает таймер проверки активности. Это не означает сбой проверки активности, это просто уведомление
     void (*pOnKeepAliveInitiated_in_ILinkListener)(void*);
 ////    virtual void OnKeepAliveInitiated() {}
 
     /// Called when a keep alive message (request link status) receives no response
+/// Вызывается, когда сообщение проверки активности (состояние ссылки запроса) не получает ответа
     void (*pOnKeepAliveFailure_in_ILinkListener)(void*);
 ////    virtual void OnKeepAliveFailure() {}
 
     /// Called when a keep alive message receives a valid response
+/// Вызывается, когда сообщение проверки активности получает допустимый ответ
     void (*pOnKeepAliveSuccess_in_ILinkListener)(void*);
 ////    virtual void OnKeepAliveSuccess() {}
 

@@ -17,11 +17,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "utils/OutstationTestObject.h"
+#include "OutstationTestObject.h"
 
-#include "utils/BufferHelpers.h"
+////#include "utils/BufferHelpers.h"
 
-using namespace opendnp3;
+////using namespace opendnp3;
+
+///   void OContext_in_OContext(OContext *pOContext,
+///             Addresses* addresses,
+///             OutstationConfig* config,
+///             DatabaseConfig* db_config,
+//             const Logger& logger,
+///             IExecutorExe4cpp* executor,
+///             ILowerLayer* lower,
+///             ICommandHandler* commandHandler,
+///             IOutstationApplication* application);
 
 OutstationTestObject::OutstationTestObject(const OutstationConfig& config, const opendnp3::DatabaseConfig& db_config)
     : exe(std::make_shared<exe4cpp::MockExecutor>()),
@@ -33,7 +43,8 @@ OutstationTestObject::OutstationTestObject(const OutstationConfig& config, const
     lower->SetUpperLayer(context);
 }
 
-size_t OutstationTestObject::LowerLayerUp()
+////size_t OutstationTestObject::LowerLayerUp()
+   uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
 {
     context.OnLowerLayerUp();
     return exe->run_many();

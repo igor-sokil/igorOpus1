@@ -3,6 +3,45 @@
 #include "MeasurementTypes.h"
 #include "Serializer.h"
 
+//------------------------Serializer_for_BinaryCommandEvent----------------------------------------------------
+    /**
+     * @return The size (in bytes) required for every call to read/write
+     */
+   uint16_t get_size_in_Serializer_for_BinaryCommandEvent(Serializer_for_BinaryCommandEvent *pSerializer_for_BinaryCommandEvent) 
+{
+    return pSerializer_for_BinaryCommandEvent->size;
+}
+
+    /**
+     * reads the value and advances the read buffer
+     */
+    boolean read_in_Serializer_for_BinaryCommandEvent(Serializer_for_BinaryCommandEvent *pSerializer_for_BinaryCommandEvent, RSeq_for_Uint16_t *buffer, BinaryCommandEvent *output)
+{
+    return //POINTER_read_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_BinaryCommandEvent->read_func)(buffer, output);
+ 
+}
+
+    /**
+     * writes the value and advances the write buffer
+     */
+    boolean write_in_Serializer_for_BinaryCommandEvent(Serializer_for_BinaryCommandEvent *pSerializer_for_BinaryCommandEvent, BinaryCommandEvent *value, WSeq_for_Uint16_t *buffer)
+{
+    return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
+           (pSerializer_for_BinaryCommandEvent->write_func)(value, buffer);
+}
+
+   void Serializer_for_BinaryCommandEvent_in_Serializer_for_BinaryCommandEvent(Serializer_for_BinaryCommandEvent *pSerializer_for_BinaryCommandEvent,
+                                               uint16_t size,
+                                               read_func_t_in_Serializer_for_BinaryCommandEvent  read_func,
+                                               write_func_t_in_Serializer_for_BinaryCommandEvent write_func)
+{
+////        : size(size), read_func(read_func), write_func(write_func)
+  pSerializer_for_BinaryCommandEvent->size = size;
+  pSerializer_for_BinaryCommandEvent->read_func = read_func;
+  pSerializer_for_BinaryCommandEvent->write_func = write_func;
+}
+//------------------------Serializer_for_BinaryCommandEvent----------------------------------------------------
 //------------------------Serializer_for_FrozenCounter----------------------------------------------------
     /**
      * @return The size (in bytes) required for every call to read/write

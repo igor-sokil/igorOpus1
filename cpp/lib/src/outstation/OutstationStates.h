@@ -130,13 +130,13 @@ typedef struct
     boolean IsIdle_in_StateIdle_override(void* pOutstationState);
     char* Name_in_StateIdle_override(void* pOutstationState);
 
-    OutstationState* OnConfirm_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnConfirmTimeout_in_StateIdle_override(void* pOutstationState, void *pOContext);
-    OutstationState* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnNewNonReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnRepeatNonReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnRepeatReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnBroadcastMessage_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnConfirm_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnConfirmTimeout_in_StateIdle_override(void* pOutstationState, void *pOContext);
+    void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnNewNonReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnRepeatNonReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnRepeatReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnBroadcastMessage_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
 
 /*
  * waiting for a confirm to a solicited read response
@@ -184,13 +184,13 @@ typedef struct
 //    boolean IsIdle_in_StateSolicitedConfirmWait_override(void* pOutstationState);
     char* Name_in_StateSolicitedConfirmWait_override(void* pOutstationState);
 
-    OutstationState* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnConfirmTimeout_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext);
-    OutstationState* OnNewReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnNewNonReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnRepeatNonReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnRepeatReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnBroadcastMessage_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnConfirmTimeout_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext);
+    void* OnNewReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnNewNonReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnRepeatNonReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnRepeatReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnBroadcastMessage_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
 
 /*
  * waiting for a confirm to an unsolicited read response
@@ -238,13 +238,13 @@ typedef struct
 //    boolean IsIdle_in_StateUnsolicitedConfirmWait_override(void* pOutstationState);
     char* Name_in_StateUnsolicitedConfirmWait_override(void* pOutstationState);
 
-    OutstationState* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext);
-    OutstationState* OnNewReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnNewNonReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnRepeatNonReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnRepeatReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
-    OutstationState* OnBroadcastMessage_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext);
+    void* OnNewReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnNewNonReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnRepeatNonReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnRepeatReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnBroadcastMessage_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
 
 /*
  * waiting for a confirm for an unsolicited NULL response (only used in the workaround)
@@ -279,7 +279,7 @@ typedef struct
 //    boolean IsIdle_in_StateNullUnsolicitedConfirmWait_override(void* pOutstationState);
     char* Name_in_StateNullUnsolicitedConfirmWait_override(void* pOutstationState);
 
-    OutstationState* OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
+    void* OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override(void* pOutstationState, void *pOContext, ParsedRequest* request);
 
 /////} // namespace opendnp3
 

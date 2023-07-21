@@ -1,5 +1,28 @@
 #include "header.h"
 #include "DNP3Serializer.h"
+//-----------------------------DNP3Serializer_for_BinaryCommandEvent-------------------------------------------
+
+    GroupVariationID ID_in_DNP3Serializer_for_BinaryCommandEvent(DNP3Serializer_for_BinaryCommandEvent *pDNP3Serializer_for_BinaryCommandEvent) 
+{
+    return pDNP3Serializer_for_BinaryCommandEvent->id;
+}
+    void DNP3Serializer_for_BinaryCommandEvent_in_DNP3Serializer_for_BinaryCommandEvent(DNP3Serializer_for_BinaryCommandEvent *pDNP3Serializer_for_BinaryCommandEvent,
+                   GroupVariationID id,
+                   uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+                   read_func_t_in_Serializer_for_BinaryCommandEvent read_func, 
+////                   typename Serializer<T>::write_func_t write_func)
+                   write_func_t_in_Serializer_for_BinaryCommandEvent write_func)
+{
+////        : Serializer<T>(size, read_func, write_func), id(id)
+  pDNP3Serializer_for_BinaryCommandEvent->id = id;
+  Serializer_for_BinaryCommandEvent_in_Serializer_for_BinaryCommandEvent(&(pDNP3Serializer_for_BinaryCommandEvent->sSerializer_for_BinaryCommandEvent),
+                                                  size,
+                                               read_func,
+                                               write_func);
+
+}
+//-----------------------------DNP3Serializer_for_BinaryCommandEvent-------------------------------------------
 //-----------------------------DNP3Serializer_for_FrozenCounter-------------------------------------------
 
     GroupVariationID ID_in_DNP3Serializer_for_FrozenCounter(DNP3Serializer_for_FrozenCounter *pDNP3Serializer_for_FrozenCounter) 

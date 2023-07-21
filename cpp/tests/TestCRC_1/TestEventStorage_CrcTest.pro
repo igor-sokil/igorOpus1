@@ -7,6 +7,8 @@ TARGET = TestEventStorage_CrcTest
 
 QT += widgets
 
+INCLUDEPATH  += .
+
 include(TestEventStorage_CrcTest.pri)
 
 SOURCES      += MainWindow.cpp \

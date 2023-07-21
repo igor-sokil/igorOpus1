@@ -29,6 +29,7 @@ debug/SerializationTemplates.o
 debug/TimerExe4cpp.o
 debug/ISteadyTimeSourceExe4cpp.o
 debug/IExecutorExe4cpp.o
+debug/MockExecutorExe4cpp.o
 debug/Buffer.o
 debug/UTCTimestamp.o
 debug/CommandPointResult.o
@@ -56,13 +57,17 @@ debug/CRC.o
 debug/LinkHeader.o
 debug/LinkFrame.o
 debug/APDUHeaderParser.o
+debug/APDUParser.o
+debug/ObjectHeaderParser.o
 debug/ParseResult.o
 debug/IWhiteList.o
 debug/IAPDUHandler.o
+debug/NumParser.o
 debug/AnalogCommandEvent.o
 debug/AnalogOutput.o
-debug/APDUHeader.o
 debug/AppControlField.o
+debug/APDUHeader.o
+debug/APDUBuilders.o
 debug/APDURequest.o
 debug/APDUWrapper.o
 debug/APDUResponse.o
@@ -125,10 +130,12 @@ debug/DeferredRequest.o
 debug/DeferredRequest_part2.o
 debug/ControlState.o
 debug/CommandActionAdapter.o
+debug/CommandResponseHandler.o
 debug/ConstantCommandAction.o
 debug/ClassBasedRequestHandler.o
 debug/Event.o
 debug/EventBufferConfig.o
+debug/FreezeRequestHandler.o
 debug/IClassAssigner.o
 debug/ICommandAction.o
 debug/IEventReceiver.o
@@ -146,6 +153,8 @@ debug/TimeSyncState.o
 debug/NumRetries.o
 debug/OctetStringSerializer.o
 debug/OutstationChannelStates.o
+debug/OutstationContext.o
+debug/OutstationStates.o
 debug/WriteHandler.o
 debug/TimeDuration.o
 debug/Timestamp.o
@@ -202,6 +211,7 @@ debug/Group2.o
 debug/Group4.o
 debug/Group11.o
 debug/Group12.o
+debug/Group13.o
 debug/Group20.o
 debug/Group22.o
 debug/Group23.o

@@ -1,7 +1,7 @@
 #include "header.h"
 #include "ConstantCommandAction.h"
 
-void ConstantCommandAction_in_ConstantCommandAction(ConstantCommandAction *pConstantCommandAction, CommandStatus status_)
+void ConstantCommandAction_in_ConstantCommandAction(ConstantCommandAction *pConstantCommandAction, CommandStatus_uint8_t status_)
 {
   pConstantCommandAction->status = status_;
 

@@ -314,6 +314,7 @@ void  setParentPointer_in_IAPDUHandler(IAPDUHandler*, void*);
 //   void OnHeader_PrefixHeader_for_TimeAndInterval_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, Collection_Indexed_for_TimeAndInterval* values);
 //   void OnHeader_PrefixHeader_for_BinaryCommandEvent_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryCommandEvent* values);
 //   void OnHeader_PrefixHeader_for_AnalogCommandEvent_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogCommandEvent* values);
+/*     void OnHeader_PrefixHeader_for_Indexed_Group2Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header,  ICollection_Indexed_Group2Var1* values);*/
 
     // adhoc read by index
 //   void OnHeader_PrefixHeader_for_uint16_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_for_uint16* values);

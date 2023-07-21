@@ -29,6 +29,7 @@ INCLUDEPATH  += ser4cpp\serialization
 INCLUDEPATH  += exe4cpp
 
 INCLUDEPATH  += cpp\tests\unit\utils
+INCLUDEPATH  += cpp\tests\dnp3mocks\include\dnp3mocks
 
 HEADERS       = qtsrc\loghandler.h \
 		qtsrc\key_filter.h \
@@ -93,6 +94,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                  exe4cpp\TimerExe4cpp.cpp \
                  exe4cpp\ISteadyTimeSourceExe4cpp.cpp \
                  exe4cpp\IExecutorExe4cpp.cpp \
+                 exe4cpp\MockExecutorExe4cpp.cpp \
                 \
                 cpp\lib\include\opendnp3\util\Buffer.cpp \
                 cpp\lib\include\opendnp3\util\UTCTimestamp.cpp \
@@ -129,14 +131,18 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\link\LinkFrame.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
+                cpp\lib\src\app\parsing\APDUParser.cpp \
+                cpp\lib\src\app\parsing\ObjectHeaderParser.cpp \
                 cpp\lib\src\app\parsing\ParseResult.cpp \
                 cpp\lib\src\app\parsing\IWhiteList.cpp \
                 cpp\lib\src\app\parsing\IAPDUHandler.cpp \
+                cpp\lib\src\app\parsing\NumParser.cpp \
                 \
                 cpp\lib\src\app\AnalogCommandEvent.cpp \
                 cpp\lib\src\app\AnalogOutput.cpp \
-                cpp\lib\src\app\APDUHeader.cpp \
                 cpp\lib\src\app\AppControlField.cpp \
+                cpp\lib\src\app\APDUHeader.cpp \
+                cpp\lib\src\app\APDUBuilders.cpp \
                 cpp\lib\src\app\APDURequest.cpp \
                 cpp\lib\src\app\APDUWrapper.cpp \
                 cpp\lib\src\app\APDUResponse.cpp \
@@ -200,10 +206,12 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\DeferredRequest_part2.cpp \
                 cpp\lib\src\outstation\ControlState.cpp \
                 cpp\lib\src\outstation\CommandActionAdapter.cpp \
+                cpp\lib\src\outstation\CommandResponseHandler.cpp \
                 cpp\lib\src\outstation\ConstantCommandAction.cpp \
                 cpp\lib\src\outstation\ClassBasedRequestHandler.cpp \
                 cpp\lib\src\outstation\Event.cpp \
                 cpp\lib\src\outstation\EventBufferConfig.cpp \
+                cpp\lib\src\outstation\FreezeRequestHandler.cpp \
                 cpp\lib\src\outstation\IClassAssigner.cpp \
                 cpp\lib\src\outstation\ICommandAction.cpp \
                 cpp\lib\src\outstation\IEventReceiver.cpp \
@@ -221,6 +229,8 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\NumRetries.cpp \
                 cpp\lib\src\outstation\OctetStringSerializer.cpp \
                 cpp\lib\src\outstation\OutstationChannelStates.cpp \
+                cpp\lib\src\outstation\OutstationContext.cpp \
+                cpp\lib\src\outstation\OutstationStates.cpp \
                 cpp\lib\src\outstation\WriteHandler.cpp \
                 \
                 cpp\lib\src\util\TimeDuration.cpp \
@@ -281,6 +291,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group4.cpp \
                 cpp\lib\src\gen\objects\Group11.cpp \
                 cpp\lib\src\gen\objects\Group12.cpp \
+                cpp\lib\src\gen\objects\Group13.cpp \
                 cpp\lib\src\gen\objects\Group20.cpp \
                 cpp\lib\src\gen\objects\Group22.cpp \
                 cpp\lib\src\gen\objects\Group23.cpp \
@@ -293,6 +304,8 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group52.cpp \
                 cpp\lib\src\gen\objects\Group60.cpp \
                 \
-                cpp\tests\unit\utils\APDUHelpers.cpp
+                cpp\tests\unit\utils\APDUHelpers.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp
 
 
+#                cpp\lib\src\gen\objects\Group43.cpp \

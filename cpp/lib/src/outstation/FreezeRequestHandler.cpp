@@ -23,46 +23,77 @@
 /////#include "gen/objects/Group41.h"
 
 ////#include <ser4cpp/serialization/LittleEndian.h>
-
+#include <QApplication>
+#include "header.h"
 #include "FreezeRequestHandler.h"
 
 #include "Group12.h"
 #include "Group41.h"
 
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
-FreezeRequestHandler::FreezeRequestHandler(bool clear, Database& database) : clear(clear), database(database) {}
-
-bool FreezeRequestHandler::IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc)
+////FreezeRequestHandler::FreezeRequestHandler(bool clear, Database& database) : clear(clear), database(database) {}
+   void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeRequestHandler, boolean clear, Database* database)
 {
-    if (gv != GroupVariation::Group20Var0)
+ pFreezeRequestHandler->clear = clear;
+ pFreezeRequestHandler->database = database;
+/*
+ (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_AllObjectsHeader_in_IAPDUHandler = ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override;
+ (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_RangeHeader_in_IAPDUHandler = ProcessHeader_RangeHeader_in_FreezeRequestHandler_override;
+*/
+ (pFreezeRequestHandler->iIAPDUHandler).iIWhiteList.pIsAllowed_in_IWhiteList = IsAllowed_in_FreezeRequestHandler_override;
+
+ setParentPointer_in_IWhiteList(&((pFreezeRequestHandler->iIAPDUHandler).iIWhiteList), pFreezeRequestHandler);
+ setParentPointer_in_IAPDUHandler(&(pFreezeRequestHandler->iIAPDUHandler), pFreezeRequestHandler);
+}
+
+//     boolean (*pIsAllowed_in_IWhiteList)(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+////bool FreezeRequestHandler::IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc)
+boolean IsAllowed_in_FreezeRequestHandler_override(void* v, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc)
+{
+UNUSED(v);
+UNUSED(headerCount);
+    if (gv != GroupVariation_Group20Var0)
         return false;
 
     switch (qc)
     {
-    case QualifierCode::ALL_OBJECTS:
-    case QualifierCode::UINT8_START_STOP:
-    case QualifierCode::UINT16_START_STOP:
+    case QualifierCode_ALL_OBJECTS:
+    case QualifierCode_UINT8_START_STOP:
+    case QualifierCode_UINT16_START_STOP:
         return true;
     default:
         return false;
     }
 }
-
-IINField FreezeRequestHandler::ProcessHeader(const AllObjectsHeader& record)
+/*
+////IINField FreezeRequestHandler::ProcessHeader(const AllObjectsHeader& record)
+    IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *pIAPDUHandler, AllObjectsHeader* record)
 {
-    this->database.SelectAll(record.enumeration);
-    this->database.FreezeSelectedCounters(clear);
-    return IINField::Empty();
+  FreezeRequestHandler* parent = (FreezeRequestHandler*) getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
+//    IINField SelectAll_in_Database(Database *pDatabase, GroupVariation_uint16_t gv);
+////    this->database.SelectAll(record.enumeration);
+    SelectAll_in_Database(parent->database, record->hHeaderRecord.gGroupVariationRecord.enumeration);
+////    this->database.FreezeSelectedCounters(clear);
+    FreezeSelectedCounters_in_Database(parent->database, parent->clear, EventMode_Detect);// = EventMode::Detect);
+///    return IINField::Empty();
+   return Empty_in_IINField_static();
 }
-
-IINField FreezeRequestHandler::ProcessHeader(const RangeHeader& header)
+*/
+/*
+////IINField FreezeRequestHandler::ProcessHeader(const RangeHeader& header)
+    IINField ProcessHeader_RangeHeader_in_FreezeRequestHandler_override(void *pIAPDUHandler, RangeHeader* header)
 {
-    this->database.SelectRange(header.enumeration, header.range);
-    this->database.FreezeSelectedCounters(clear);
-    return IINField::Empty();
+  FreezeRequestHandler* parent = (FreezeRequestHandler*) getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
+//    IINField SelectRange_in_Database(Database *pDatabase, GroupVariation_uint16_t gv, Range* range);
+////    this->database.SelectRange(header.enumeration, header.range);
+    SelectRange_in_Database(parent->database, header->hHeaderRecord.gGroupVariationRecord.enumeration, &(header->range));
+////    this->database.FreezeSelectedCounters(clear);
+    FreezeSelectedCounters_in_Database(parent->database, parent->clear, EventMode_Detect);// = EventMode::Detect);
+////    return IINField::Empty();
+   return Empty_in_IINField_static();
 }
-
-} // namespace opendnp3
+*/
+////} // namespace opendnp3

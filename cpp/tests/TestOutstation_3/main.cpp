@@ -16,6 +16,9 @@
 
 #define UNUSED(x) (void)(x)
 
+void* pPointerGlobal1;
+void* pPointerGlobal2;
+void* pPointerGlobal3;
 
 key_filter *pkf;
 
@@ -38,7 +41,9 @@ TEST_CASE(SUITE("UnsupportedFunction"))
 }
 */
     OutstationConfig config;
+    OutstationConfig_in_OutstationConfig(&config);
 //    OutstationTestObject t(config);
+    OutstationTestObject t;
 
   MainWindow mainWindowObj;
   mainWindow = &mainWindowObj;

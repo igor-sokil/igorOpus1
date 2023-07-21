@@ -90,4 +90,9 @@ uint8_t ToByte_in_AppControlField(AppControlField *pAppControlField)
   return ret | seq;
 }
 
+  boolean IsFirAndFin_in_AppControlField(AppControlField *pAppControlField)
+    {
+        return pAppControlField->FIR && pAppControlField->FIN;
+    }
+
 ////} // namespace opendnp3

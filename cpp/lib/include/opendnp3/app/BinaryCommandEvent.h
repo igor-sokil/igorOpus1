@@ -53,7 +53,7 @@ typedef struct
 ////    DNPTime time;
     boolean value;
     CommandStatus_uint8_t status;
-    DNPTime time_DNPTime;
+    DNPTime timeDNPTime;
 
 ////    Flags GetFlags() const;
 
@@ -73,11 +73,11 @@ typedef struct
 
     void BinaryCommandEvent_In_BinaryCommandEventOver1(BinaryCommandEvent *pBinaryCommandEvent);
     void BinaryCommandEvent_In_BinaryCommandEventOver2(BinaryCommandEvent *pBinaryCommandEvent, Flags flags);
-    void BinaryCommandEvent_In_BinaryCommandEventOver3(BinaryCommandEvent *pBinaryCommandEvent, Flags flags, DNPTime time_DNPTime);
+    void BinaryCommandEvent_In_BinaryCommandEventOver3(BinaryCommandEvent *pBinaryCommandEvent, Flags flags, DNPTime timeDNPTime);
     void BinaryCommandEvent_In_BinaryCommandEventOver4(BinaryCommandEvent *pBinaryCommandEvent, boolean value,
                                                   CommandStatus_uint8_t status);
     void BinaryCommandEvent_In_BinaryCommandEventOver5(BinaryCommandEvent *pBinaryCommandEvent, boolean value,
-                                                  CommandStatus_uint8_t status, DNPTime time_DNPTime);
+                                                  CommandStatus_uint8_t status, DNPTime timeDNPTime);
     boolean operatorEQ_in_BinaryCommandEvent(BinaryCommandEvent *pBinaryCommandEvent, BinaryCommandEvent *rhs);
 
     Flags GetFlags_in_BinaryCommandEvent(BinaryCommandEvent *pBinaryCommandEvent);

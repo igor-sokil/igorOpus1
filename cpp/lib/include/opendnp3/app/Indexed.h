@@ -25,6 +25,7 @@
 #include "ControlRelayOutputBlock.h"
 #include "OperationType.h"
 #include "MeasurementTypes.h"
+#include "Group2.h"
 ////#include <cstdint>
 
 ////namespace opendnp3
@@ -184,6 +185,28 @@ typedef struct
    Indexed_for_ControlRelayOutputBlock WithIndex_in_Indexed_for_ControlRelayOutputBlock(
                                    ControlRelayOutputBlock* value, uint16_t index);
 //------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
+//------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+    Group2Var1 value;
+    uint16_t index;
+} Indexed_for_Group2Var1;
+
+   void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over1(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1);
+   void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over2(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1,
+                                   Group2Var1* value_, uint16_t index_);
+   Indexed_for_Group2Var1 WithIndex_in_Indexed_for_Group2Var1(
+                                   Group2Var1* value, uint16_t index);
+//------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
 
 ////} // namespace opendnp3
 

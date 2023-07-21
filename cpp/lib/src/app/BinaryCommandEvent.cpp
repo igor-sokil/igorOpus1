@@ -30,7 +30,7 @@ void BinaryCommandEvent_In_BinaryCommandEventOver1(BinaryCommandEvent *pBinaryCo
 {
   pBinaryCommandEvent->value = false;
   pBinaryCommandEvent->status = CommandStatus_SUCCESS;
-  DNPTime_in_DNPTimeOver2(&(pBinaryCommandEvent->time_DNPTime), 0);
+  DNPTime_in_DNPTimeOver2(&(pBinaryCommandEvent->timeDNPTime), 0);
 }
 
 ////BinaryCommandEvent::BinaryCommandEvent(Flags flags) : value(GetValueFromFlags(flags)), status(GetStatusFromFlags(flags))
@@ -39,11 +39,11 @@ void BinaryCommandEvent_In_BinaryCommandEventOver2(BinaryCommandEvent *pBinaryCo
   pBinaryCommandEvent->value = GetValueFromFlags_In_BinaryCommandEvent_static(flags);
 }
 
-void BinaryCommandEvent_In_BinaryCommandEventOver3(BinaryCommandEvent *pBinaryCommandEvent, Flags flags, DNPTime time_DNPTime)
+void BinaryCommandEvent_In_BinaryCommandEventOver3(BinaryCommandEvent *pBinaryCommandEvent, Flags flags, DNPTime timeDNPTime)
 {
   pBinaryCommandEvent->value = GetValueFromFlags_In_BinaryCommandEvent_static(flags);
   pBinaryCommandEvent->status = GetStatusFromFlags_In_BinaryCommandEvent_static(flags);
-  pBinaryCommandEvent->time_DNPTime = time_DNPTime;
+  pBinaryCommandEvent->timeDNPTime = timeDNPTime;
 }
 
 void BinaryCommandEvent_In_BinaryCommandEventOver4(BinaryCommandEvent *pBinaryCommandEvent,
@@ -54,11 +54,11 @@ void BinaryCommandEvent_In_BinaryCommandEventOver4(BinaryCommandEvent *pBinaryCo
 }
 
 void BinaryCommandEvent_In_BinaryCommandEventOver5(BinaryCommandEvent *pBinaryCommandEvent,
-    boolean value, CommandStatus_uint8_t status, DNPTime time_DNPTime)
+    boolean value, CommandStatus_uint8_t status, DNPTime timeDNPTime)
 {
   pBinaryCommandEvent->value = value;
   pBinaryCommandEvent->status = status;
-  pBinaryCommandEvent->time_DNPTime = time_DNPTime;
+  pBinaryCommandEvent->timeDNPTime = timeDNPTime;
 }
 
 Flags GetFlags_in_BinaryCommandEvent(BinaryCommandEvent *pBinaryCommandEvent)
@@ -72,7 +72,7 @@ boolean operatorEQ_in_BinaryCommandEvent(BinaryCommandEvent *pBinaryCommandEvent
 {
   return pBinaryCommandEvent->value == rhs->value &&
          pBinaryCommandEvent->status == rhs->status &&
-         operatorEQ_in_DNPTime(&(pBinaryCommandEvent->time_DNPTime), &(rhs->time_DNPTime));
+         operatorEQ_in_DNPTime(&(pBinaryCommandEvent->timeDNPTime), &(rhs->timeDNPTime));
 }
 
 boolean GetValueFromFlags_In_BinaryCommandEvent_static(Flags flags)

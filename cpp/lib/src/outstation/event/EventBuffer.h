@@ -72,6 +72,7 @@ IResponseLoader iIResponseLoader;
     // ------- IEventSelector ------
 
 ////    virtual void Unselect();
+//     void (*pUnselect_in_EventBuffer)(void*);
 
 ////    virtual IINField SelectAll(GroupVariation gv) override final;
 
@@ -156,19 +157,32 @@ IResponseLoader iIResponseLoader;
     void Update_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogOutputStatusSpec* evt);
     void Update_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_OctetStringSpec* evt);
 
+    void Update_BinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinarySpec *evt);
+    void Update_DoubleBitBinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_DoubleBitBinarySpec* evt);
+    void Update_AnalogSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_AnalogSpec* evt);
+    void Update_CounterSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_CounterSpec* evt);
+    void Update_FrozenCounterSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_FrozenCounterSpec* evt);
+    void Update_BinaryOutputStatusSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinaryOutputStatusSpec* evt);
+    void Update_AnalogOutputStatusSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_AnalogOutputStatusSpec* evt);
+    void Update_OctetStringSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_OctetStringSpec* evt);
+
     // ------- IEventSelector ------
 
      void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
-
      IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv);
-
      IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint16_t count);
+
+//     void Unselect_in_EventBuffer_override(void *pIEventSelector);
+     IINField SelectAll_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv);
+     IINField SelectCount_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv, uint16_t count);
 
     // ------- IResponseLoader -------
 
      boolean HasAnySelection_in_EventBuffer(EventBuffer *pEventBuffer);
-
      boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer);
+
+     boolean HasAnySelection_in_EventBuffer_override(void *pIResponseLoader);
+     boolean Load_in_EventBuffer_override(void *pIResponseLoader, HeaderWriter* writer);
 
     // ------- Misc -------
 

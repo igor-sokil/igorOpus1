@@ -67,34 +67,13 @@ typedef struct
 } Group13Var1;
 
   uint16_t Size_in_Group13Var1_static(void);
-
- uint16_t Size_in_Group13Var1_static(void) 
-{
- return 1; 
-}
+  GroupVariationID ID_in_Group13Var1_static(void);
 
  boolean Read_in_Group13Var1_static(RSeq_for_Uint16_t *, Group13Var1*);
  boolean Write_in_Group13Var1_static(Group13Var1*, WSeq_for_Uint16_t*);
 
  boolean ReadTarget_in_Group13Var1_static(RSeq_for_Uint16_t*, BinaryCommandEvent*);
  boolean WriteTarget_in_Group13Var1_static(BinaryCommandEvent*, WSeq_for_Uint16_t*);
-
- DNP3Serializer_for_BinaryCommandEvent  Inst_in_Group13Var1_static(void)
-{
-   DNP3Serializer_for_BinaryCommandEvent dDNP3Serializer_for_BinaryCommandEvent;
-   DNP3Serializer_for_BinaryCommandEvent_in_DNP3Serializer_for_BinaryCommandEvent(&dDNP3Serializer_for_BinaryCommandEvent,
-                   ID_in_Group13Var1_static(),
-                   Size_in_Group13Var1_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group13Var1_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group13Var1_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_BinaryCommandEvent;
-}
 
 // Binary Command Event - With Time
 ////struct Group13Var2
@@ -119,20 +98,8 @@ typedef struct
 
   uint16_t Size_in_Group13Var2_static(void);
 
- uint16_t Size_in_Group13Var2_static(void) 
-{
- return 7; 
-}
-
  void Group13Var2_in_Group13Var2(Group13Var2 *pGroup13Var2);
-
-  GroupVariationID ID_in_Group13Var2_static(void)
-{
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 13, 2);
-////  return GroupVariationID(13,2); 
- return gGroupVariationID;
-}
+  GroupVariationID ID_in_Group13Var2_static(void);
 
  boolean Read_in_Group13Var2_static(RSeq_for_Uint16_t *, Group13Var2*);
  boolean Write_in_Group13Var2_static(Group13Var2*, WSeq_for_Uint16_t*);
@@ -140,22 +107,6 @@ typedef struct
  boolean ReadTarget_in_Group13Var2_static(RSeq_for_Uint16_t*, BinaryCommandEvent*);
  boolean WriteTarget_in_Group13Var2_static(BinaryCommandEvent*, WSeq_for_Uint16_t*);
 
- DNP3Serializer_for_BinaryCommandEvent  Inst_in_Group13Var2_static(void)
-{
-   DNP3Serializer_for_BinaryCommandEvent dDNP3Serializer_for_BinaryCommandEvent;
-   DNP3Serializer_for_BinaryCommandEvent_in_DNP3Serializer_for_BinaryCommandEvent(&dDNP3Serializer_for_BinaryCommandEvent,
-                   ID_in_Group13Var2_static(),
-                   Size_in_Group13Var2_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group13Var2_static,
-////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group13Var2_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_BinaryCommandEvent;
-}
 
 ////}
 

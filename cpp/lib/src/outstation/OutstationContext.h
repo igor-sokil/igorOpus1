@@ -251,6 +251,7 @@ typedef struct
     // ------ Dynamic state related to broadcast messages ------
 ////    ser4cpp::Settable<LinkBroadcastAddress> lastBroadcastMessageReceived;
     Settable_for_LinkBroadcastAddress lastBroadcastMessageReceived;
+
 } OContext;
 
    void OContext_in_OContext(OContext *pOContext,
@@ -291,7 +292,7 @@ typedef struct
 
    void BeginTx_in_OContext(OContext *pOContext, uint16_t destination, RSeq_for_Uint16_t* message);
    OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t destination, APDUResponse* response);
-   PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter writer);
+   PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
    OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 
    IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
@@ -315,6 +316,7 @@ typedef struct
    void CheckForUnsolicited_in_OContext(OContext *pOContext);
    boolean CanTransmit_in_OContext(OContext *pOContext);
    boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
-////} // namespace opendnp3
+   void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_t destination);
 
+////} // namespace opendnp3
 #endif

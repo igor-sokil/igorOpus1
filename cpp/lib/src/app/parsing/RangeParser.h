@@ -33,12 +33,12 @@
 ////#include <ser4cpp/container/SequenceTypes.h>
 
 #include "Range.h"
-#include "BitReader.h"
-#include "BufferedCollection.h"
+//#include "BitReader.h"
+//#include "BufferedCollection.h"
 #include "IAPDUHandler.h"
 #include "NumParser.h"
 #include "ParseResult.h"
-#include "ParserSettings.h"
+//#include "ParserSettings.h"
 
 //#include "pendnp3/logging/Logger.h"
 
@@ -49,8 +49,12 @@
 ////namespace opendnp3
 ////{
 
-////class RangeParser
+    typedef void (*HandleFun_in_RangeParser)( HeaderRecord* record,
+                               Range* range,
+                               RSeq_for_Uint16_t* buffer,
+                              IAPDUHandler* handler);
 
+////class RangeParser
 typedef struct
 {
 ////    typedef void (*HandleFun)(const HeaderRecord& record,
@@ -123,9 +127,8 @@ typedef struct
 
     Range range;
     uint16_t requiredSize;
-#define HandleFun_function void*
 //    HandleFun handler;
-    HandleFun_function  handler;
+    HandleFun_in_RangeParser  handler;
 
 ////    RangeParser() = delete;
 } RangeParser;
@@ -133,7 +136,7 @@ typedef struct
    ParseResult ParseHeader_in_RangeParser_static(
                                    RSeq_for_Uint16_t *buffer,
                                    NumParser *numparser,
-                                   ParserSettings *settings,
+//                                   ParserSettings *settings,
                                    HeaderRecord *record,
 //                                   Logger* pLogger,
                                    IAPDUHandler* pHandler);
@@ -167,104 +170,104 @@ typedef struct
 ////    return RangeParser(range, size, &InvokeRangeOf<Descriptor>);
 ////}
 
-template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
-{
-    const auto size = range.Count() * Descriptor::Size();
-    return RangeParser(range, size, &InvokeRangeOf<Descriptor>);
-}
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+////{
+////    const auto size = range.Count() * Descriptor::Size();
+////    return RangeParser(range, size, &InvokeRangeOf<Descriptor>);
+////}
 
-template<class Type> RangeParser RangeParser::FromFixedSizeType(const Range& range)
-{
-    const auto size = range.Count() * Type::Size();
-    return RangeParser(range, size, &InvokeRangeOfType<Type>);
-}
+////template<class Type> RangeParser RangeParser::FromFixedSizeType(const Range& range)
+////{
+////    const auto size = range.Count() * Type::Size();
+////    return RangeParser(range, size, &InvokeRangeOfType<Type>);
+////}
 
-template<class Descriptor>
-void RangeParser::InvokeRangeOf(const HeaderRecord& record,
-                                const Range& range,
-                                const ser4cpp::rseq_t& buffer,
-                                IAPDUHandler& handler)
-{
-    const auto COUNT = range.Count();
+////template<class Descriptor>
+////void RangeParser::InvokeRangeOf(const HeaderRecord& record,
+////                                const Range& range,
+////                                const ser4cpp::rseq_t& buffer,
+////                                IAPDUHandler& handler)
+////{
+////    const auto COUNT = range.Count();
+////
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////        typename Descriptor::Target target;
+////        Descriptor::ReadTarget(buffer, target);
+////        return WithIndex(target, range.start + pos);
+////    };
+////
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
+////
+////    handler.OnHeader(RangeHeader(record, range), collection);
+////}
+////
+////template<class Type>
+////void RangeParser::InvokeRangeOfType(const HeaderRecord& record,
+////                                    const Range& range,
+////                                    const ser4cpp::rseq_t& buffer,
+////                                    IAPDUHandler& handler)
+////{
+////    const auto COUNT = range.Count();
+////
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
+////        Type target;
+////        Type::Read(buffer, target);
+////        return WithIndex(target, range.start + pos);
+////    };
+////
+////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
+////
+////    handler.OnHeader(RangeHeader(record, range), collection);
+////}
+////
+////template<class Type> RangeParser RangeParser::FromBitfieldType(const Range& range)
+////{
+////    const auto SIZE = NumBytesInBits(range.Count());
+////    return RangeParser(range, SIZE, &InvokeRangeBitfieldType<Type>);
+////}
+////
+////template<class Type>
+////void RangeParser::InvokeRangeBitfieldType(const HeaderRecord& record,
+////                                          const Range& range,
+////                                          const ser4cpp::rseq_t& buffer,
+////                                          IAPDUHandler& handler)
+////{
+////    const auto COUNT = range.Count();
+////
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
+////        Type value(GetBit(buffer, pos));
+////        return WithIndex(value, range.start + pos);
+////    };
+////
+////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
+////
+////    handler.OnHeader(RangeHeader(record, range), collection);
+////}
+////
+////template<class Type> RangeParser RangeParser::FromDoubleBitfieldType(const Range& range)
+////{
+////    const auto size = NumBytesInDoubleBits(range.Count());
+////    return RangeParser(range, size, &InvokeRangeDoubleBitfieldType<Type>);
+////}
+////
+////template<class Type>
+////void RangeParser::InvokeRangeDoubleBitfieldType(const HeaderRecord& record,
+////                                                const Range& range,
+////                                                const ser4cpp::rseq_t& buffer,
+////                                                IAPDUHandler& handler)
+////{
+////    const auto COUNT = range.Count();
 
-    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
-        typename Descriptor::Target target;
-        Descriptor::ReadTarget(buffer, target);
-        return WithIndex(target, range.start + pos);
-    };
-
-    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-
-    handler.OnHeader(RangeHeader(record, range), collection);
-}
-
-template<class Type>
-void RangeParser::InvokeRangeOfType(const HeaderRecord& record,
-                                    const Range& range,
-                                    const ser4cpp::rseq_t& buffer,
-                                    IAPDUHandler& handler)
-{
-    const auto COUNT = range.Count();
-
-    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
-        Type target;
-        Type::Read(buffer, target);
-        return WithIndex(target, range.start + pos);
-    };
-
-    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-
-    handler.OnHeader(RangeHeader(record, range), collection);
-}
-
-template<class Type> RangeParser RangeParser::FromBitfieldType(const Range& range)
-{
-    const auto SIZE = NumBytesInBits(range.Count());
-    return RangeParser(range, SIZE, &InvokeRangeBitfieldType<Type>);
-}
-
-template<class Type>
-void RangeParser::InvokeRangeBitfieldType(const HeaderRecord& record,
-                                          const Range& range,
-                                          const ser4cpp::rseq_t& buffer,
-                                          IAPDUHandler& handler)
-{
-    const auto COUNT = range.Count();
-
-    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
-        Type value(GetBit(buffer, pos));
-        return WithIndex(value, range.start + pos);
-    };
-
-    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-
-    handler.OnHeader(RangeHeader(record, range), collection);
-}
-
-template<class Type> RangeParser RangeParser::FromDoubleBitfieldType(const Range& range)
-{
-    const auto size = NumBytesInDoubleBits(range.Count());
-    return RangeParser(range, size, &InvokeRangeDoubleBitfieldType<Type>);
-}
-
-template<class Type>
-void RangeParser::InvokeRangeDoubleBitfieldType(const HeaderRecord& record,
-                                                const Range& range,
-                                                const ser4cpp::rseq_t& buffer,
-                                                IAPDUHandler& handler)
-{
-    const auto COUNT = range.Count();
-
-    auto read = [range](ser4cpp::rseq_t& buffer, size_t pos) -> Indexed<Type> {
-        Type value(GetDoubleBit(buffer, pos));
-        return WithIndex(value, static_cast<uint16_t>(range.start + pos));
-    };
-
-    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-
-    handler.OnHeader(RangeHeader(record, range), collection);
-}
-
-} // namespace opendnp3
+////    auto read = [range](ser4cpp::rseq_t& buffer, size_t pos) -> Indexed<Type> {
+////        Type value(GetDoubleBit(buffer, pos));
+////        return WithIndex(value, static_cast<uint16_t>(range.start + pos));
+////    };
+////
+////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
+////
+////    handler.OnHeader(RangeHeader(record, range), collection);
+////}
+////
+////} // namespace opendnp3
 
 #endif

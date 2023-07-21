@@ -209,3 +209,39 @@
    return iIndexed_for_ControlRelayOutputBlock;
 }
 //------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
+//------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
+   void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over1(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1)
+{
+//   Group2Var1_in_Group2Var1Over1(&(pIndexed_for_Group2Var1->value));
+   Group2Var1_in_Group2Var1(&(pIndexed_for_Group2Var1->value));
+//                            OperationType_LATCH_ON,
+//                            TripCloseCode_NUL,
+//                            false,
+//                             1,
+//                             100,
+//                             100,
+//                             CommandStatus_SUCCESS);
+   pIndexed_for_Group2Var1->index = 0;
+}
+
+   void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over2(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1,
+                                   Group2Var1* value_, uint16_t index_)
+{
+//  Group2Var1_in_Group2Var1Over2(value_, index_);
+  pIndexed_for_Group2Var1->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_Group2Var1->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+   Indexed_for_Group2Var1 WithIndex_in_Indexed_for_Group2Var1(
+                                                        Group2Var1* value, uint16_t index)
+{
+   Indexed_for_Group2Var1 iIndexed_for_Group2Var1;
+   Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over2(&iIndexed_for_Group2Var1,
+                                   value, index);
+////    return Indexed<T>(value, index);
+   return iIndexed_for_Group2Var1;
+}
+//------------------------------------Indexed_for_Group2Var1---------------------------------------------------------

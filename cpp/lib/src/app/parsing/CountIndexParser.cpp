@@ -17,218 +17,242 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+MYTODO
+#include "header.h"
 #include "CountIndexParser.h"
 
-#include "app/parsing/BufferedCollection.h"
-#include "gen/objects/Group11.h"
-#include "gen/objects/Group12.h"
-#include "gen/objects/Group13.h"
-#include "gen/objects/Group2.h"
-#include "gen/objects/Group22.h"
-#include "gen/objects/Group23.h"
-#include "gen/objects/Group32.h"
-#include "gen/objects/Group4.h"
-#include "gen/objects/Group41.h"
-#include "gen/objects/Group42.h"
-#include "gen/objects/Group43.h"
-#include "logging/LogMacros.h"
+#include "BufferedCollection.h"
+#include "Group11.h"
+#include "Group12.h"
+#include "Group13.h"
+#include "Group2.h"
+#include "Group22.h"
+#include "Group23.h"
+#include "Group32.h"
+#include "Group4.h"
+#include "Group41.h"
+#include "Group42.h"
+//#include "Group43.h"
+////#include "logging/LogMacros.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+///{
 
-CountIndexParser::CountIndexParser(uint16_t count, size_t requiredSize, const NumParser& numparser, HandleFun handler)
-    : count(count), requiredSize(requiredSize), numparser(numparser), handler(handler)
+extern void* pPointerGlobal1;
+
+void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser* numparser, HandleFun_in_CountIndexParser handler)
 {
+   pCountIndexParser->count = count;
+   pCountIndexParser->requiredSize = requiredSize;
+   pCountIndexParser->numparser = numparser;
+   pCountIndexParser->handler = handler;
 }
 
-ParseResult CountIndexParser::ParseHeader(ser4cpp::rseq_t& buffer,
-                                          const NumParser& numparser,
-                                          const ParserSettings& settings,
-                                          const HeaderRecord& record,
-                                          Logger* pLogger,
+ParseResult_uint8_t ParseHeader_in_CountIndexParser(CountIndexParser *pCountIndexParser,
+                                          RSeq_for_Uint16_t* buffer,
+                                          NumParser* numparser,
+                                          //const ParserSettings& settings,
+                                          HeaderRecord* record,
+                                          //Logger* pLogger,
                                           IAPDUHandler* pHandler)
 {
     uint16_t count;
-    auto res = numparser.ParseCount(buffer, count, pLogger);
-    if (res == ParseResult::OK)
+//    ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, uint16_t *count);////, Logger* pLogger) const;
+////    auto res = numparser.ParseCount(buffer, count, pLogger);
+    ParseResult_uint8_t res = ParseCount_in_NumParser(pNumParser, buffer, &count);////, Logger* pLogger) const;
+    if (res == ParseResult_OK)
     {
-        FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u %s, %s [%u]", record.group, record.variation,
-                            GroupVariationSpec::to_human_string(record.enumeration),
-                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), count);
+////        FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u %s, %s [%u]", record.group, record.variation,
+////                            GroupVariationSpec::to_human_string(record.enumeration),
+////                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), count);
 
-        if (settings.ExpectsContents())
-        {
-            return ParseCountOfObjects(buffer, record, numparser, count, pLogger, pHandler);
-        }
-        else
-        {
-            return ParseCountOfIndices(buffer, record, numparser, count, pLogger, pHandler);
-        }
+////        if (settings.ExpectsContents())
+////        {
+/////            return ParseCountOfObjects_in_CountIndexParser_static(buffer, record, numparser, count, /*pLogger,*/ pHandler);
+////        }
+////        else
+////        {
+           return ParseCountOfIndices_in_CountIndexParser_static(buffer, record, numparser, count, /*pLogger,*/ pHandler);
+///        }
     }
 
     return res;
 }
 
-ParseResult CountIndexParser::Process(const HeaderRecord& record,
-                                      ser4cpp::rseq_t& buffer,
-                                      IAPDUHandler* pHandler,
-                                      Logger* pLogger) const
+ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexParser, 
+                                      HeaderRecord* record,
+                                      RSeq_for_Uint16_t* buffer,
+                                      IAPDUHandler* pHandler)
+                                      ////Logger* pLogger) const
 {
-    if (buffer.length() < requiredSize)
+////    if (buffer.length() < requiredSize)
+        if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < pCountIndexParser->requiredSize)
     {
-        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
-        return ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS;
+////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
+        return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
     }
 
     if (pHandler)
     {
-        handler(record, count, numparser, buffer, *pHandler);
+//    typedef void (*HandleFun_in_CountIndexParser)(HeaderRecord *record,
+//                              uint16_t count,
+//                              /*NumParser *numparser,*/
+//                              RSeq_for_Uint16_t *buffer,
+//                              IAPDUHandler *handler);
+        pCountIndexParser->handler(record, count, /*&(pCountIndexParser->numparser),*/ buffer, pHandler);
     }
-    buffer.advance(requiredSize);
-    return ParseResult::OK;
+//    void advance_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
+////    buffer.advance(requiredSize);
+    advance_in_RSeq_for_Uint16_t(buffer, requiredSize);
+    return ParseResult_OK;
 }
 
-ParseResult CountIndexParser::ParseCountOfObjects(ser4cpp::rseq_t& buffer,
-                                                  const HeaderRecord& record,
-                                                  const NumParser& numparser,
+////ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
+////                                                  RSeq_for_Uint16_t* buffer,
+////                                                  HeaderRecord* record,
+////                                                  NumParser* numparser,
+////                                                  uint16_t count,
+////                                                  ////Logger* pLogger,
+////                                                  IAPDUHandler* pHandler)
+////{
+////    switch (record->gGroupVariationRecord.enumeration)
+////    {
+////    case (GroupVariation_Group2Var1):
+////////        return CountIndexParser::From<Group2Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group2Var2):
+////        return CountIndexParser::From<Group2Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group2Var3):
+////        return CountIndexParser::From<Group2Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
+
+////    case (GroupVariation::Group4Var1):
+////        return CountIndexParser::From<Group4Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group4Var2):
+////        return CountIndexParser::From<Group4Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group4Var3):
+////        return CountIndexParser::From<Group4Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////
+////    case (GroupVariation::Group11Var1):
+////        return CountIndexParser::From<Group11Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group11Var2):
+////        return CountIndexParser::From<Group11Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////
+////    case (GroupVariation::Group12Var1):
+////        return CountIndexParser::From<Group12Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////
+////    case (GroupVariation::Group13Var1):
+////        return CountIndexParser::From<Group13Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group13Var2):
+////        return CountIndexParser::From<Group13Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////
+////    case (GroupVariation::Group22Var1):
+////        return CountIndexParser::From<Group22Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group22Var2):
+////        return CountIndexParser::From<Group22Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group22Var5):
+////        return CountIndexParser::From<Group22Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group22Var6):
+////        return CountIndexParser::From<Group22Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
+
+////    case (GroupVariation::Group23Var1):
+////        return CountIndexParser::From<Group23Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group23Var2):
+////        return CountIndexParser::From<Group23Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group23Var5):
+////        return CountIndexParser::From<Group23Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group23Var6):
+////        return CountIndexParser::From<Group23Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
+
+////    case (GroupVariation::Group32Var1):
+////        return CountIndexParser::From<Group32Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group32Var2):
+////        return CountIndexParser::From<Group32Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group32Var3):
+////        return CountIndexParser::From<Group32Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group32Var4):
+////        return CountIndexParser::From<Group32Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group32Var5):
+////        return CountIndexParser::From<Group32Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group32Var6):
+////        return CountIndexParser::From<Group32Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group32Var7):
+////        return CountIndexParser::From<Group32Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group32Var8):
+////        return CountIndexParser::From<Group32Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
+
+////    case (GroupVariation::Group41Var1):
+////        return CountIndexParser::From<Group41Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group41Var2):
+////        return CountIndexParser::From<Group41Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group41Var3):
+////        return CountIndexParser::From<Group41Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group41Var4):
+////        return CountIndexParser::From<Group41Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
+
+////    case (GroupVariation::Group42Var1):
+////        return CountIndexParser::From<Group42Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group42Var2):
+////        return CountIndexParser::From<Group42Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group42Var3):
+////        return CountIndexParser::From<Group42Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group42Var4):
+////        return CountIndexParser::From<Group42Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group42Var5):
+////        return CountIndexParser::From<Group42Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group42Var6):
+////        return CountIndexParser::From<Group42Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group42Var7):
+////        return CountIndexParser::From<Group42Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group42Var8):
+////        return CountIndexParser::From<Group42Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
+
+////    case (GroupVariation::Group43Var1):
+////        return CountIndexParser::From<Group43Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group43Var2):
+////        return CountIndexParser::From<Group43Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group43Var3):
+////        return CountIndexParser::From<Group43Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group43Var4):
+////        return CountIndexParser::From<Group43Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group43Var5):
+////        return CountIndexParser::From<Group43Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group43Var6):
+////        return CountIndexParser::From<Group43Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group43Var7):
+////        return CountIndexParser::From<Group43Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group43Var8):
+////        return CountIndexParser::From<Group43Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group50Var4):
+////        return CountIndexParser::From<Group50Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
+////    case (GroupVariation::Group111Var0):
+////        return ParseIndexPrefixedOctetData(buffer, record, numparser, count, pLogger, pHandler);
+
+////    default:
+////
+////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unsupported qualifier/object - %s - %i / %i",
+////                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), record.group,
+////                            record.variation);
+////
+////        return ParseResult::INVALID_OBJECT_QUALIFIER;
+////    }
+/////}
+
+    ParseResult_uint8_t ParseCountOfIndices_in_CountIndexParser_static(
+                                                  RSeq_for_Uint16_t* buffer,
+                                                  HeaderRecord* record,
+                                                  NumParser* numparser,
                                                   uint16_t count,
-                                                  Logger* pLogger,
+                                                  ////Logger* pLogger,
                                                   IAPDUHandler* pHandler)
 {
-    switch (record.enumeration)
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const auto SIZE = static_cast<size_t>(count) * static_cast<size_t>(numparser.NumBytes());
+    const uint16_t SIZE = (count) * (uint16_t)(NumBytes_in_NumParser(numparser));
+
+////    if (buffer.length() < SIZE)
+    if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < SIZE)
     {
-    case (GroupVariation::Group2Var1):
-        return CountIndexParser::From<Group2Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group2Var2):
-        return CountIndexParser::From<Group2Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group2Var3):
-        return CountIndexParser::From<Group2Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group4Var1):
-        return CountIndexParser::From<Group4Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group4Var2):
-        return CountIndexParser::From<Group4Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group4Var3):
-        return CountIndexParser::From<Group4Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group11Var1):
-        return CountIndexParser::From<Group11Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group11Var2):
-        return CountIndexParser::From<Group11Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group12Var1):
-        return CountIndexParser::From<Group12Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group13Var1):
-        return CountIndexParser::From<Group13Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group13Var2):
-        return CountIndexParser::From<Group13Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group22Var1):
-        return CountIndexParser::From<Group22Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group22Var2):
-        return CountIndexParser::From<Group22Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group22Var5):
-        return CountIndexParser::From<Group22Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group22Var6):
-        return CountIndexParser::From<Group22Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group23Var1):
-        return CountIndexParser::From<Group23Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group23Var2):
-        return CountIndexParser::From<Group23Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group23Var5):
-        return CountIndexParser::From<Group23Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group23Var6):
-        return CountIndexParser::From<Group23Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group32Var1):
-        return CountIndexParser::From<Group32Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group32Var2):
-        return CountIndexParser::From<Group32Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group32Var3):
-        return CountIndexParser::From<Group32Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group32Var4):
-        return CountIndexParser::From<Group32Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group32Var5):
-        return CountIndexParser::From<Group32Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group32Var6):
-        return CountIndexParser::From<Group32Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group32Var7):
-        return CountIndexParser::From<Group32Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group32Var8):
-        return CountIndexParser::From<Group32Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group41Var1):
-        return CountIndexParser::From<Group41Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group41Var2):
-        return CountIndexParser::From<Group41Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group41Var3):
-        return CountIndexParser::From<Group41Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group41Var4):
-        return CountIndexParser::From<Group41Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group42Var1):
-        return CountIndexParser::From<Group42Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group42Var2):
-        return CountIndexParser::From<Group42Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group42Var3):
-        return CountIndexParser::From<Group42Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group42Var4):
-        return CountIndexParser::From<Group42Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group42Var5):
-        return CountIndexParser::From<Group42Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group42Var6):
-        return CountIndexParser::From<Group42Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group42Var7):
-        return CountIndexParser::From<Group42Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group42Var8):
-        return CountIndexParser::From<Group42Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
-
-    case (GroupVariation::Group43Var1):
-        return CountIndexParser::From<Group43Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group43Var2):
-        return CountIndexParser::From<Group43Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group43Var3):
-        return CountIndexParser::From<Group43Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group43Var4):
-        return CountIndexParser::From<Group43Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group43Var5):
-        return CountIndexParser::From<Group43Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group43Var6):
-        return CountIndexParser::From<Group43Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group43Var7):
-        return CountIndexParser::From<Group43Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group43Var8):
-        return CountIndexParser::From<Group43Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group50Var4):
-        return CountIndexParser::From<Group50Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation::Group111Var0):
-        return ParseIndexPrefixedOctetData(buffer, record, numparser, count, pLogger, pHandler);
-
-    default:
-
-        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unsupported qualifier/object - %s - %i / %i",
-                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), record.group,
-                            record.variation);
-
-        return ParseResult::INVALID_OBJECT_QUALIFIER;
-    }
-}
-
-ParseResult CountIndexParser::ParseCountOfIndices(ser4cpp::rseq_t& buffer,
-                                                  const HeaderRecord& record,
-                                                  const NumParser& numparser,
-                                                  uint16_t count,
-                                                  Logger* pLogger,
-                                                  IAPDUHandler* pHandler)
-{
-    const auto SIZE = static_cast<size_t>(count) * static_cast<size_t>(numparser.NumBytes());
-
-    if (buffer.length() < SIZE)
-    {
-        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified sequence of indices");
-        return ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS;
+////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified sequence of indices");
+        return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
     }
 
     if (pHandler)

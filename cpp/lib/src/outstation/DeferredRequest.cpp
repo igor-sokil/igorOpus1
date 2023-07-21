@@ -24,10 +24,12 @@
 ////namespace opendnp3
 ////{
 
-////void DeferredRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, uint32_t maxAPDUSize)
-////{
+void DeferredRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, uint32_t maxAPDUSize)
+{
 //// : isSet(false), buffer(maxAPDUSize) {}
-////}
+ pDeferredRequest->isSet = false;
+ BufferSer4_in_BufferSer4Over2(&(pDeferredRequest->buffer), maxAPDUSize);
+}
 
 void Reset_in_DeferredRequest(DeferredRequest* pDeferredRequest)
 {

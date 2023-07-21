@@ -69,7 +69,7 @@ typedef struct
 
   void Set_in_DeferredRequest(DeferredRequest *pDeferredRequest, ParsedRequest* request);
 
-  boolean  Process_for_handlerBooleanParsedRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, void*, boolean (*pHandlerBooleanParsedRequest)(ParsedRequest*));
+  boolean  Process_for_handlerBooleanParsedRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, void*, boolean (*pHandlerBooleanParsedRequest)(void*, ParsedRequest*));
 ////template<class Handler> bool DeferredRequest::Process(const Handler& handler)
 
 ////template<class Handler> bool DeferredRequest::Process(const Handler& handler)

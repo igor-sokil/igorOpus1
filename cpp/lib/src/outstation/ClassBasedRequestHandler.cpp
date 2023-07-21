@@ -79,3 +79,8 @@ UNUSED(gv);
 UNUSED(qc);
         return true;
 }
+
+ClassField GetClassField_in_ClassBasedRequestHandler(ClassBasedRequestHandler *pClassBasedRequestHandler)
+    {
+        return pClassBasedRequestHandler->classField;
+    }

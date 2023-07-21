@@ -21,6 +21,10 @@ key_filter *pkf;
 
 MainWindow *mainWindow;
 
+void* pPointerGlobal1;
+void* pPointerGlobal2;
+void* pPointerGlobal3;
+
 int main(int argc, char *argv[])
 {
   QApplication app(argc, argv);

@@ -40,7 +40,7 @@
         ClassRequest_in_APDUBuilders_static(request, FunctionCode_READ, classes, seq);
     }
 
-    void ReadAllObjects_in_APDUBuilders_static(APDURequest* request, GroupVariationID_uint8_t gvId, uint8_t seq)
+    void ReadAllObjects_in_APDUBuilders_static(APDURequest* request, GroupVariationID gvId, uint8_t seq)
     {
 //  void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
 //  void AppControlField_in_AppControlFieldOver4(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq);
@@ -59,7 +59,7 @@
      WriteHeader_in_HeaderWriter(&writer, gvId, QualifierCode_ALL_OBJECTS);
     }
 
-    void ClassRequest_in_APDUBuilders_static(APDURequest& request, FunctionCode_uint8_t fc,  ClassField* classes, uint8_t seq)
+    void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint8_t fc,  ClassField* classes, uint8_t seq)
     {
 ///        request.SetControl(AppControlField(true, true, false, false, seq));
    AppControlField aAppControlField;
@@ -121,42 +121,82 @@
     void DisableUnsolicited_in_APDUBuilders_static(APDURequest* request, uint8_t seq)
     {
 //  ClassField  AllEventClasses_in_ClassField_static(void);
-ClassField temp =AllEventClasses_in_ClassField_static();
+ClassField temp = AllEventClasses_in_ClassField_static();
         ClassRequest_in_APDUBuilders_static(request, FunctionCode_DISABLE_UNSOLICITED, &temp, seq);
     }
 
-    void EnableUnsolicited(APDURequest& request, const ClassField& classes, uint8_t seq)
+////    void EnableUnsolicited(APDURequest& request, const ClassField& classes, uint8_t seq)
+    void EnableUnsolicited_in_APDUBuilders_static(APDURequest* request, ClassField* classes, uint8_t seq)
     {
-        ClassRequest_in_APDUBuilders_static(request, FunctionCode::ENABLE_UNSOLICITED, classes, seq);
+        ClassRequest_in_APDUBuilders_static(request, FunctionCode_ENABLE_UNSOLICITED, classes, seq);
     }
 
-    void ClearRestartIIN_in_APDUBuilders_static(APDURequest& request, uint8_t seq)
+    void ClearRestartIIN_in_APDUBuilders_static(APDURequest* request, uint8_t seq)
     {
-        request.SetFunction(FunctionCode::WRITE);
-        request.SetControl(AppControlField(true, true, false, false, seq));
-        auto writer = request.GetWriter();
-        auto iter = writer.IterateOverSingleBitfield<ser4cpp::UInt8>(
-            GroupVariationID(80, 1), QualifierCode::UINT8_START_STOP, static_cast<uint8_t>(IINBit::DEVICE_RESTART));
-        iter.Write(false);
+//  void SetFunction_in_APDUWrapper(APDUWrapper *pAPDUWrapper, FunctionCode_uint8_t code);
+////        request.SetFunction(FunctionCode::WRITE);
+   SetFunction_in_APDUWrapper(&(request->aAPDUWrapper), FunctionCode_WRITE);
+
+//  void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
+//  void AppControlField_in_AppControlFieldOver4(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq);
+////        request.SetControl(AppControlField(true, true, false, false, seq));
+   AppControlField aAppControlField;
+   AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, false, false, seq);
+   SetControl_in_APDUWrapper(&(request->aAPDUWrapper), aAppControlField);
+
+//  HeaderWriter GetWriter_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
+////        auto writer = request.GetWriter();
+  HeaderWriter writer = GetWriter_in_APDUWrapper(&(request->aAPDUWrapper));
+
+//    BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+//                                                                    GroupVariationID id,
+//                                                                    QualifierCode_uint8_t qc,
+//                                                                    uint8_t start);
+//    void GroupVariationID_in_GroupVariationIDOver2(GroupVariationID *pGroupVariationID, uint8_t aGroup, uint8_t aVariation);
+////        auto iter = writer.IterateOverSingleBitfield<ser4cpp::UInt8>(
+////            GroupVariationID(80, 1), QualifierCode::UINT8_START_STOP, static_cast<uint8_t>(IINBit::DEVICE_RESTART));
+    GroupVariationID gGroupVariationID;
+    GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 80, 1);
+    BitfieldRangeWriteIterator_for_UInt8 iter = IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(&writer,
+                                                                    gGroupVariationID,
+                                                                    QualifierCode_UINT8_START_STOP,
+                                                                    IINBit_DEVICE_RESTART);
+//    boolean Write_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8, boolean value);
+////        iter.Write(false);
+    Write_in_BitfieldRangeWriteIterator_for_UInt8(&iter, false);
+    BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(&iter);
     }
 
-    void MeasureDelay_in_APDUBuilders_static(APDURequest& request, uint8_t seq)
+    void MeasureDelay_in_APDUBuilders_static(APDURequest* request, uint8_t seq)
     {
-        request.SetFunction(FunctionCode::DELAY_MEASURE);
-        request.SetControl(AppControlField::Request(seq));
+//  void SetFunction_in_APDUWrapper(APDUWrapper *pAPDUWrapper, FunctionCode_uint8_t code);
+////        request.SetFunction(FunctionCode::DELAY_MEASURE);
+   SetFunction_in_APDUWrapper(&(request->aAPDUWrapper), FunctionCode_DELAY_MEASURE);
+//  void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
+//  AppControlField Request_in_AppControlField_static(uint8_t seq);
+////        request.SetControl(AppControlField::Request(seq));
+  SetControl_in_APDUWrapper(&(request->aAPDUWrapper), Request_in_AppControlField_static(seq));
     }
 
-    void RecordCurrentTime_in_APDUBuilders_static(APDURequest& request, uint8_t seq)
+    void RecordCurrentTime_in_APDUBuilders_static(APDURequest* request, uint8_t seq)
     {
-        request.SetFunction(FunctionCode::RECORD_CURRENT_TIME);
-        request.SetControl(AppControlField::Request(seq));
+////        request.SetFunction(FunctionCode::RECORD_CURRENT_TIME);
+   SetFunction_in_APDUWrapper(&(request->aAPDUWrapper), FunctionCode_RECORD_CURRENT_TIME);
+////        request.SetControl(AppControlField::Request(seq));
+  SetControl_in_APDUWrapper(&(request->aAPDUWrapper), Request_in_AppControlField_static(seq));
     }
 
-    void NullUnsolicited_in_APDUBuilders_static(APDUResponse& response, uint8_t seq, const IINField& iin)
+    void NullUnsolicited_in_APDUBuilders_static(APDUResponse* response, uint8_t seq, IINField* iin)
     {
-        response.SetControl(AppControlField(true, true, true, true, seq));
-        response.SetFunction(FunctionCode::UNSOLICITED_RESPONSE);
-        response.SetIIN(iin);
+   AppControlField aAppControlField;
+   AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, true, true, seq);
+////        response.SetControl(AppControlField(true, true, true, true, seq));
+  SetControl_in_APDUWrapper(&(response->aAPDUWrapper), aAppControlField);
+////        response.SetFunction(FunctionCode::UNSOLICITED_RESPONSE);
+   SetFunction_in_APDUWrapper(&(response->aAPDUWrapper), FunctionCode_UNSOLICITED_RESPONSE);
+//    void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications);
+////        response.SetIIN(iin);
+     SetIIN_in_APDUResponse(response, iin);
     }
 
 ////} // namespace build

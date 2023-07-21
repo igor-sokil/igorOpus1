@@ -167,6 +167,13 @@ IINField Errors_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
 
 // --- index prefixes ----
 
+//     void OnHeader_PrefixHeader_for_Indexed_Group2Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header,  ICollection_Indexed_Group2Var1* values)
+//{
+//    void Record_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, HeaderRecord* record, IINField* result);
+////    Record(header, this->ProcessHeader(header, values));
+//     Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), IINField* result);
+//}
+
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<Binary>>& values)
 ////{
 ////    Record(header, this->ProcessHeader(header, values));

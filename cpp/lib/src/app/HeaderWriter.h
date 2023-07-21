@@ -5,8 +5,10 @@
 #include "GroupVariationRecord.h"
 #include "GroupVariationID.h"
 #include "QualifierCode.h"
+#include "BitfieldRangeWriteIterator_for_uint8.h"
 #include "Group50.h"
 #include "Group51.h"
+#include "Group52.h"
 
 #include "WSeq.h"
 #include "Settable_for_WSeq.h"
@@ -90,6 +92,12 @@ typedef struct
     boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                        GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve);
 
+////    template<class IndexType>
+    BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+                                                                    GroupVariationID id,
+                                                                    QualifierCode_uint8_t qc,
+                                                                    uint8_t start);
+
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var1--------------------------------------------------------
     boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
                                                                     QualifierCode_uint8_t qc, Group51Var1*);
@@ -100,6 +108,18 @@ typedef struct
                                                                     QualifierCode_uint8_t qc, Group51Var2*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var2--------------------------------------------------------
+
+//--------------------------------WriteSingleValue_for_UInt8_Group52Var1--------------------------------------------------------
+    boolean WriteSingleValue_for_UInt8_Group52Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+                                                                    QualifierCode_uint8_t qc, Group52Var1*);
+
+//--------------------------------WriteSingleValue_for_UInt8_Group52Var1--------------------------------------------------------
+//--------------------------------WriteSingleValue_for_UInt8_Group52Var2--------------------------------------------------------
+    boolean WriteSingleValue_for_UInt8_Group52Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+                                                                    QualifierCode_uint8_t qc, Group52Var2*);
+
+//--------------------------------WriteSingleValue_for_UInt8_Group52Var2--------------------------------------------------------
+
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
     boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
                                                                     QualifierCode_uint8_t qc, Group50Var1*);

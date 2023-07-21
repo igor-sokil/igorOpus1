@@ -17,14 +17,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "header.h"
 #include "CountParser.h"
 
-#include "logging/LogMacros.h"
+////#include "logging/LogMacros.h"
 
-#include "opendnp3/logging/LogLevels.h"
+////#include "opendnp3/logging/LogLevels.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 CountParser::CountParser(uint16_t count, size_t required_size, HandleFun handler)
     : count(count), required_size(required_size), handler(handler)
@@ -115,4 +116,4 @@ ParseResult CountParser::ParseCountOfObjects(
     }
 }
 
-} // namespace opendnp3
+////} // namespace opendnp3
