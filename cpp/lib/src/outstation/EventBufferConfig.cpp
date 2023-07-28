@@ -18,6 +18,8 @@
  * limitations under the License.
  */
 ////#include "opendnp3/outstation/EventBufferConfig.h"
+
+#include <QtWidgets>
 #include "header.h"
 #include "EventBufferConfig.h"
 
@@ -59,6 +61,14 @@ void EventBufferConfig_in_EventBufferConfigOver2(EventBufferConfig *pEventBuffer
 
 uint32_t TotalEvents_in_EventBufferConfig(EventBufferConfig *pEventBufferConfig) 
 {
+qDebug()<<"pEventBufferConfig->maxBinaryEvents= "                    <<pEventBufferConfig->maxBinaryEvents;
+qDebug()<<";; pEventBufferConfig->maxDoubleBinaryEvents="            <<pEventBufferConfig->maxDoubleBinaryEvents;
+qDebug()<<";; pEventBufferConfig->maxAnalogEvents= "                 <<pEventBufferConfig->maxAnalogEvents;
+qDebug()<<";; pEventBufferConfig->maxCounterEvents= "                <<pEventBufferConfig->maxCounterEvents;
+qDebug()<<";; pEventBufferConfig->maxBinaryOutputStatusEvents= "     <<pEventBufferConfig->maxBinaryOutputStatusEvents;
+qDebug()<<";; pEventBufferConfig->maxAnalogOutputStatusEvents= "     <<pEventBufferConfig->maxAnalogOutputStatusEvents;
+qDebug()<<";; pEventBufferConfig->maxOctetStringEvents= "            <<pEventBufferConfig->maxOctetStringEvents;
+
     return pEventBufferConfig->maxBinaryEvents + pEventBufferConfig->maxDoubleBinaryEvents +
            pEventBufferConfig->maxAnalogEvents + pEventBufferConfig->maxCounterEvents + 
            pEventBufferConfig->maxFrozenCounterEvents +

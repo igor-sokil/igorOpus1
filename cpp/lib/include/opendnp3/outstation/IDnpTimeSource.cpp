@@ -13,3 +13,12 @@ DNPTime Now_in_IDnpTimeSource_static(void* v)
 ////        return DNPTime(0, TimestampQuality::INVALID);
   return dDNPTime;
 }
+
+void* getParentPointer_in_IDnpTimeSource(IDnpTimeSource* pIDnpTimeSource)
+{
+  return pIDnpTimeSource->pParentPointer_in_IDnpTimeSource;
+}
+void  setParentPointer_in_IDnpTimeSource(IDnpTimeSource* pIDnpTimeSource, void* pParentPointer)
+{
+  pIDnpTimeSource->pParentPointer_in_IDnpTimeSource = pParentPointer;
+}

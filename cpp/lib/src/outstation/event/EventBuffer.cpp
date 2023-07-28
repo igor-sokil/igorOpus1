@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//#include <QtWidgets>
 #include "header.h"
 #include "EventBuffer.h"
 
@@ -27,10 +28,13 @@
 
 void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfig* config)
 {
+//qDebug()<<"EventBuffer_in_EventBufferOver2 1";
   EventBuffer_in_EventBufferOver1(pEventBuffer);
 //void EventStorage_in_EventStorage(EventStorage *pEventStorage, EventBufferConfig* config);
 //// : storage(config) {}
+//qDebug()<<"EventBuffer_in_EventBufferOver2 2";
   EventStorage_in_EventStorage(&(pEventBuffer->storage), config);
+//qDebug()<<"EventBuffer_in_EventBufferOver2 3";
 }
 
 ////void EventBuffer::Update(const Event<BinarySpec>& evt)

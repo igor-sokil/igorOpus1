@@ -97,7 +97,7 @@ typedef struct
 ////             std::shared_ptr<ICommandHandler> commandHandler,
 ////             std::shared_ptr<IOutstationApplication> application);
 
-    /// ----- Implement IUpperLayer ------
+  /// ----- Implement IUpperLayer ------
 
 ////    virtual bool OnLowerLayerUp() override;
 ////
@@ -107,7 +107,7 @@ typedef struct
 ////
 ////    virtual bool OnReceive(const Message& message) override final;
 ////
-    /// --- Other public members ----
+  /// --- Other public members ----
 
 ////    void HandleNewEvents();
 ////
@@ -128,7 +128,7 @@ typedef struct
 ////
 ////    OutstationState& RespondToNonReadRequest(const ParsedRequest& request);
 
-    // ---- Processing functions --------
+  // ---- Processing functions --------
 
 ////    bool ProcessMessage(const Message& message);
 ////
@@ -142,7 +142,7 @@ typedef struct
 
 ////    bool ProcessConfirm(const ParsedRequest& request);
 
-    // ---- common helper methods ----
+  // ---- common helper methods ----
 
 ////    OutstationState& BeginResponseTx(uint16_t destination, APDUResponse& response);
 ////
@@ -178,17 +178,17 @@ typedef struct
 ////
 ////    void CheckForBroadcastConfirmation(APDUResponse& response);
 
-    /// --- methods for handling app-layer functions ---
+  /// --- methods for handling app-layer functions ---
 
-    /// Handles non-read function codes that require a response. builds the response using the supplied writer.
-    /// @return An IIN field indicating the validity of the request, and to be returned in the response.
+  /// Handles non-read function codes that require a response. builds the response using the supplied writer.
+  /// @return An IIN field indicating the validity of the request, and to be returned in the response.
 ////    IINField HandleNonReadResponse(const APDUHeader& header, const ser4cpp::rseq_t& objects, HeaderWriter& writer);
 
-    /// Handles read function codes. May trigger an unsolicited response
-    /// @return an IIN field and a partial AppControlField (missing sequence info)
+  /// Handles read function codes. May trigger an unsolicited response
+  /// @return an IIN field and a partial AppControlField (missing sequence info)
 ////    ser4cpp::Pair<IINField, AppControlField> HandleRead(const ser4cpp::rseq_t& objects, HeaderWriter& writer);
 
-    // ------ Function Handlers ------
+  // ------ Function Handlers ------
 
 ////    IINField HandleWrite(const ser4cpp::rseq_t& objects);
 ////    IINField HandleSelect(const ser4cpp::rseq_t& objects, HeaderWriter& writer);
@@ -204,119 +204,124 @@ typedef struct
 ////    IINField HandleFreeze(const ser4cpp::rseq_t& objects);
 ////    IINField HandleFreezeAndClear(const ser4cpp::rseq_t& objects);
 
-    // ------ resources --------
-   Addresses addresses;
+  // ------ resources --------
+  Addresses addresses;
 ////    Logger logger;
 ////    const std::shared_ptr<exe4cpp::IExecutor> executor;
-   IExecutorExe4cpp* executor;
+  IExecutorExe4cpp* executor;
 ////    const std::shared_ptr<ILowerLayer> lower;
-   ILowerLayer* lower;
+  ILowerLayer* lower;
 ////    const std::shared_ptr<ICommandHandler> commandHandler;
-   ICommandHandler* commandHandler;
+  ICommandHandler* commandHandler;
 ////    const std::shared_ptr<IOutstationApplication> application;
-   IOutstationApplication* application;
-                   
-    // ------ Database, event buffer, and response tracking
-    EventBuffer eventBuffer;
-    Database database;
-    ResponseContext rspContext;//constructor default
+  IOutstationApplication* application;
+
+  // ------ Database, event buffer, and response tracking
+  EventBuffer eventBuffer;
+  Database database;
+  ResponseContext rspContext;//constructor default
 ////
-    // ------ Static configuration -------
-    OutstationParams params;
+  // ------ Static configuration -------
+  OutstationParams params;
 
-    // ------ Shared dynamic state --------
-    boolean isOnline;
-    boolean isTransmitting;
-    IINField staticIIN;
+  // ------ Shared dynamic state --------
+  boolean isOnline;
+  boolean isTransmitting;
+  IINField staticIIN;
 ////    exe4cpp::Timer confirmTimer;
-    TimerExe4cpp confirmTimer;
+  TimerExe4cpp confirmTimer;
 
-    RequestHistory history;
-    DeferredRequest deferred;//constructor default
+  RequestHistory history;
+  DeferredRequest deferred;//constructor default
 
-    // ------ Dynamic state related to controls ------
-    ControlState control;
+  // ------ Dynamic state related to controls ------
+  ControlState control;
 
-    // ------ Dynamic state related to time synchronization ------
-    TimeSyncState timeTimeSyncState;
+  // ------ Dynamic state related to time synchronization ------
+  TimeSyncState timeTimeSyncState;
 
-    // ------ Dynamic state related to solicited and unsolicited modes ------
-    OutstationSolState sol;
-    OutstationUnsolState unsol;
-    NumRetries unsolRetries;//constructor default
-    boolean shouldCheckForUnsolicited;
+  // ------ Dynamic state related to solicited and unsolicited modes ------
+  OutstationSolState sol;
+  OutstationUnsolState unsol;
+  NumRetries unsolRetries;//constructor default
+  boolean shouldCheckForUnsolicited;
 ////    OutstationState* state = &StateIdle::Inst();
-    OutstationState* state;//// = &StateIdle::Inst();
+  OutstationState* state;//// = &StateIdle::Inst();
 
-    // ------ Dynamic state related to broadcast messages ------
+  // ------ Dynamic state related to broadcast messages ------
 ////    ser4cpp::Settable<LinkBroadcastAddress> lastBroadcastMessageReceived;
-    Settable_for_LinkBroadcastAddress lastBroadcastMessageReceived;
+  Settable_for_LinkBroadcastAddress lastBroadcastMessageReceived;
 
 } OContext;
 
-   void OContext_in_OContext(OContext *pOContext,
-             Addresses* addresses,
-             OutstationConfig* config,
-             DatabaseConfig* db_config,
+void OContext_in_OContext(OContext *pOContext,
+                          Addresses* addresses,
+                          OutstationConfig* config,
+                          DatabaseConfig* db_config,
 //             const Logger& logger,
-             IExecutorExe4cpp* executor,
-             ILowerLayer* lower,
-             ICommandHandler* commandHandler,
-             IOutstationApplication* application);
+                          IExecutorExe4cpp* executor,
+                          ILowerLayer* lower,
+                          ICommandHandler* commandHandler,
+                          IOutstationApplication* application);
 
-     boolean OnLowerLayerUp_in_OContext_override(void*);
-     boolean OnLowerLayerDown_in_OContext_override(void*);
-     boolean OnTxReady_in_OContext_override(void*);
-     boolean OnReceive_in_OContext_override(void*, Message* message);
+boolean OnLowerLayerUp_in_OContext_override(void*);
+boolean OnLowerLayerDown_in_OContext_override(void*);
+boolean OnTxReady_in_OContext_override(void*);
+boolean OnReceive_in_OContext_override(void*, Message* message);
 
-    OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addresses* addresses, AppSeqNum* seq);
-    OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
-    OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
-    boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
-    boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message);
-    OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
-    boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request);
-    boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
-    boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* request);
-    boolean ProcessConfirm_in_OContext(OContext *pOContext, ParsedRequest* request);
+boolean OnLowerLayerUp_in_OContext(OContext*);
+boolean OnLowerLayerDown_in_OContext(OContext*);
+boolean OnTxReady_in_OContext(OContext*);
+boolean OnReceive_in_OContext(OContext*, Message* message);
 
-    void BeginRetransmitLastResponse_in_OContext(OContext *pOContext, uint16_t destination);
-    void BeginRetransmitLastUnsolicitedResponse_in_OContext(OContext *pOContext);
-    void RestartSolConfirmTimer_in_OContext(OContext *pOContext);
-    void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext);
+OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addresses* addresses, AppSeqNum* seq);
+OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
+OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
+boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
+boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message);
+OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
+boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request);
+boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
+boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* request);
+boolean ProcessConfirm_in_OContext(OContext *pOContext, ParsedRequest* request);
 
-    void CheckForTaskStart_in_OContext(OContext *pOContext);
-    IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* header, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-    IINField GetResponseIIN_in_OContext(OContext *pOContext);
-    IINField GetDynamicIIN_in_OContext(OContext *pOContext);
+void BeginRetransmitLastResponse_in_OContext(OContext *pOContext, uint16_t destination);
+void BeginRetransmitLastUnsolicitedResponse_in_OContext(OContext *pOContext);
+void RestartSolConfirmTimer_in_OContext(OContext *pOContext);
+void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext);
 
-   void BeginTx_in_OContext(OContext *pOContext, uint16_t destination, RSeq_for_Uint16_t* message);
-   OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t destination, APDUResponse* response);
-   PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-   OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
+void CheckForTaskStart_in_OContext(OContext *pOContext);
+IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* header, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
+IINField GetResponseIIN_in_OContext(OContext *pOContext);
+IINField GetDynamicIIN_in_OContext(OContext *pOContext);
 
-   IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
-   IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter);
-   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
-   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
-   IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
-   IINField HandleRecordCurrentTime_in_OContext(OContext *pOContext);
-   IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-   IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-   IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-   IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-   IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, boolean isWarmRestart, HeaderWriter* pWriter);
-   IINField HandleDelayMeasure_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-   IINField HandleCommandWithConstant_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer, CommandStatus_uint8_t status);
+void BeginTx_in_OContext(OContext *pOContext, uint16_t destination, RSeq_for_Uint16_t* message);
+OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t destination, APDUResponse* response);
+PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
+OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 
-   void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse* response);
-   void BeginUnsolTx_in_OContext(OContext *pOContext, APDUResponse* response);
-   void CheckForDeferredRequest_in_OContext(OContext *pOContext);
-   void CheckForUnsolicitedNull_in_OContext(OContext *pOContext);
-   void CheckForUnsolicited_in_OContext(OContext *pOContext);
-   boolean CanTransmit_in_OContext(OContext *pOContext);
-   boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
-   void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_t destination);
+IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
+IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter);
+IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
+IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
+IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
+IINField HandleRecordCurrentTime_in_OContext(OContext *pOContext);
+IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
+IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
+IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
+IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
+IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, boolean isWarmRestart, HeaderWriter* pWriter);
+IINField HandleDelayMeasure_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
+IINField HandleCommandWithConstant_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer, CommandStatus_uint8_t status);
+
+void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse* response);
+void BeginUnsolTx_in_OContext(OContext *pOContext, APDUResponse* response);
+void CheckForDeferredRequest_in_OContext(OContext *pOContext);
+void CheckForUnsolicitedNull_in_OContext(OContext *pOContext);
+void CheckForUnsolicited_in_OContext(OContext *pOContext);
+boolean CanTransmit_in_OContext(OContext *pOContext);
+boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
+void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_t destination);
 
 ////} // namespace opendnp3
 #endif

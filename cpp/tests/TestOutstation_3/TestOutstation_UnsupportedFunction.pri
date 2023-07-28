@@ -26,6 +26,7 @@ INCLUDEPATH  += ..\..\..\ser4cpp\serialization
 
 INCLUDEPATH  += ..\..\..\exe4cpp
 INCLUDEPATH  += ..\..\..\cpp\tests\unit\utils
+INCLUDEPATH  += cpp\tests\dnp3mocks\include\dnp3mocks
 
 HEADERS       = ..\..\..\qtsrc\loghandler.h \
 		..\..\..\qtsrc\key_filter.h \
@@ -105,7 +106,16 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\app\OctetString.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\app\Indexed.cpp \
                 \
-                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var1.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var3.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_for_uint16.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputDouble64.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputFloat32.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputInt16.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputInt32.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_ControlRelayOutputBlock.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_IINValue.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_TimeAndInterval.cpp \
                 \
                 ..\..\..\cpp\lib\include\opendnp3\link\ILinkListener.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\link\LinkConfig.cpp \
@@ -301,7 +311,12 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group60.cpp \
                 \
                 ..\..\..\cpp\tests\unit\utils\APDUHelpers.cpp \
-                ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp
+                ..\..\..\cpp\tests\unit\utils\OutstationTestObject.cpp \
+                \
+                ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
+                ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \
+                \
+                ..\..\..\cpp\tests\dnp3mocks\src\MockLowerLayer.cpp
 
 
 #                cpp\lib\src\gen\objects\Group43.cpp \

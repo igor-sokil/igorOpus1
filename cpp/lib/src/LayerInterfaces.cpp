@@ -1,3 +1,5 @@
+
+//#include <QtWidgets>
 #include "header.h"
 #include "LayerInterfaces.h"
 #include <string.h>
@@ -59,6 +61,7 @@ void  setParentPointer_in_ILowerLayer(ILowerLayer* pILowerLayer, void* pParentPo
 
     void SetLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer, ILowerLayer* lowerLayer)
     {
+//qDebug()<<"pHasLowerLayer="<<pHasLowerLayer<<";   lowerLayer= "<<lowerLayer;
 ////        assert(!pLowerLayer);
         pHasLowerLayer->pLowerLayer = lowerLayer;
     }

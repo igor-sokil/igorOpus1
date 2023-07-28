@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//#include <QtWidgets>
 #include "header.h"
 #include "EventLists.h"
 
@@ -38,26 +39,36 @@
 
 void EventLists_in_EventLists(EventLists *pEventLists, EventBufferConfig* config)
 {
+//qDebug()<<"EventLists_in_EventLists1";
      EventClassCounters_in_EventClassCounters(&(pEventLists->counters));
+//qDebug()<<"EventLists_in_EventLists1.1";
 //   uint32_t TotalEvents_in_EventBufferConfig(EventBufferConfig *pEventBufferConfig);
 //    pEventLists->events = TotalEvents_in_EventBufferConfig(config);//(config.TotalEvents()),
      List_for_EventRecord_in_List_for_EventRecordOver2(&(pEventLists->events), TotalEvents_in_EventBufferConfig(config));
+//qDebug()<<"EventLists_in_EventLists1.2";
 ////    pEventLists->binary = config->maxBinaryEvents),
      List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpecOver2(&(pEventLists->binary),
        config->maxBinaryEvents);
 ////      doubleBinary(config.maxDoubleBinaryEvents),
+
+//qDebug()<<"EventLists_in_EventLists2";
      List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver2(&(pEventLists->doubleBinary),
        config->maxDoubleBinaryEvents);
+//qDebug()<<"EventLists_in_EventLists2.1";
 ////      analog(config.maxAnalogEvents),
      List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver2(&(pEventLists->analog),
        config->maxAnalogEvents);
+//qDebug()<<"EventLists_in_EventLists2.2";
 ////      counter(config.maxCounterEvents),
      List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterSpecOver2(&(pEventLists->counter),
        config->maxCounterEvents);
+//qDebug()<<"EventLists_in_EventLists2.3";
 ////      frozenCounter(config.maxFrozenCounterEvents),
      List_TypedEventRecord_for_FrozenCounterSpec_in_List_TypedEventRecord_for_FrozenCounterSpecOver2(&(pEventLists->frozenCounter),
        config->maxFrozenCounterEvents);
 ////      binaryOutputStatus(config.maxBinaryOutputStatusEvents),
+//qDebug()<<"EventLists_in_EventLists3";
+
      List_TypedEventRecord_for_BinaryOutputStatusSpec_in_List_TypedEventRecord_for_BinaryOutputStatusSpecOver2(&(pEventLists->binaryOutputStatus),
        config->maxBinaryOutputStatusEvents);
 ////      analogOutputStatus(config.maxAnalogOutputStatusEvents),
@@ -66,6 +77,7 @@ void EventLists_in_EventLists(EventLists *pEventLists, EventBufferConfig* config
 ////      octetString(config.maxOctetStringEvents)
      List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver2(&(pEventLists->octetString),
        config->maxOctetStringEvents);
+//qDebug()<<"EventLists_in_EventLists4";
 }
 
 boolean IsAnyTypeFull_in_EventLists(EventLists *pEventLists) 

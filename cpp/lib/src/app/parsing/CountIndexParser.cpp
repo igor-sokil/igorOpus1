@@ -38,8 +38,6 @@ MYTODO
 ////namespace opendnp3
 ///{
 
-extern void* pPointerGlobal1;
-
 void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser* numparser, HandleFun_in_CountIndexParser handler)
 {
    pCountIndexParser->count = count;

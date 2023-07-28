@@ -56,6 +56,7 @@
 #include "MeasurementTypes.h"
 #include "OctetString.h"
 #include "ICollection.h"
+#include "ICollection.h"
 #include "QualifierCode.h"
 
 ////namespace opendnp3

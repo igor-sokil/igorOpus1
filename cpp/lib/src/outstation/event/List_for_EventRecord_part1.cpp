@@ -1,4 +1,4 @@
-
+//#include <QtWidgets>
 #include "header.h"
 #include "List_for_EventRecord.h"
 #include <string.h>
@@ -102,6 +102,7 @@ void   Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord(It
 
 void List_for_EventRecord_in_List_for_EventRecordOver2(List_for_EventRecord *pList_for_EventRecord, uint32_t maxSize)
     {
+//qDebug()<<"List_for_EventRecord_in_List_for_EventRecordOver2 1"<<"  maxSize="<<maxSize;
        List_for_EventRecord_in_List_for_EventRecordOver1(pList_for_EventRecord);
 // ser4cpp::HasLength<list_size_type_t>(0), underlying(maxSize)
 //    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);

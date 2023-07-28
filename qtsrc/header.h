@@ -50,4 +50,18 @@
 #define SIZE_BufferSer4_in_DeferredRequest     MAX_BufferSer4
 
 #include "memory_header.h"
+
+#define SIZE_for_EventRecord                             SIZE_TypedEventRecord_for_AnalogOutputStatusSpec + \
+                                                         SIZE_TypedEventRecord_for_AnalogSpec + \
+                                                         SIZE_TypedEventRecord_for_BinaryOutputStatusSpec + \
+                                                         SIZE_TypedEventRecord_for_BinarySpec + \
+                                                         SIZE_TypedEventRecord_for_CounterSpec + \
+                                                         SIZE_TypedEventRecord_for_DoubleBitBinarySpec + \
+                                                         SIZE_TypedEventRecord_for_FrozenCounterSpec + \
+                                                         SIZE_TypedEventRecord_for_OctetStringSpec 
+
+extern void* pPointerGlobal1;
+extern void* pPointerGlobal2;
+extern void* pPointerGlobal3;
+
 #endif

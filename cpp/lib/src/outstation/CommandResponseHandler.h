@@ -181,10 +181,10 @@ IINField RespondToHeaderWithIterator_for_ControlRelayOutputBlock_uint16_in_Comma
 
 
   void process_for_ControlRelayOutputBlock_in_CommandResponseHandler(
-                                           CommandResponseHandler *pCommandResponseHandler,
-                                      ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock, 
-                                         PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock* pIterator,
-                                           IINField* ret,
+//                                           CommandResponseHandler *pCommandResponseHandler,
+//                                      ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock, 
+//                                         PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock* pIterator,
+//                                           IINField* ret,
                                             Indexed_for_ControlRelayOutputBlock* pair);
 
 ////template<class Target, class IndexType>

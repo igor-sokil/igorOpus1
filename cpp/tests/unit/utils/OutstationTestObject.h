@@ -35,9 +35,12 @@
 
 ////#include <functional>
 
+#include "MockExecutorExe4cpp.h"
+#include "MockCommandHandler.h"
+#include "MockLowerLayer.h"
+#include "MockOutstationApplication.h"
 //#include "Database.h"
 #include "OutstationContext.h"
-#include "MockExecutorExe4cpp.h"
 
 ////class OutstationTestObject
 typedef struct
@@ -77,14 +80,17 @@ typedef struct
    MockExecutor  exe;
 ////public:
 ////    const std::shared_ptr<MockLowerLayer> lower;
+   MockLowerLayer lower;
 ////    const std::shared_ptr<MockCommandHandler> cmdHandler;
+   MockCommandHandler cmdHandler;
 ////    const std::shared_ptr<MockOutstationApplication> application;
+    MockOutstationApplication application;
     OContext context;
 } OutstationTestObject;
 
 //   void OutstationTestObject_in_OutstationTestObject(OutstationConfig* config,
 //                                                     DatabaseConfig* db_config);// = opendnp3::DatabaseConfig());
-   void OutstationTestObject_in_OutstationTestObject(OutstationConfig* config);
+   void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, OutstationConfig* config);
 //                                                     DatabaseConfig* db_config);// = opendnp3::DatabaseConfig());
 
    uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);

@@ -42,8 +42,13 @@ TEST_CASE(SUITE("UnsupportedFunction"))
 */
     OutstationConfig config;
     OutstationConfig_in_OutstationConfig(&config);
-//    OutstationTestObject t(config);
+////    OutstationTestObject t(config);
     OutstationTestObject t;
+    OutstationTestObject_in_OutstationTestObject(&t, &config);
+
+//   uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
+////    t.LowerLayerUp();
+    LowerLayerUp_in_OutstationTestObject(&t);
 
   MainWindow mainWindowObj;
   mainWindow = &mainWindowObj;

@@ -8,12 +8,15 @@ TARGET = TestOutstation_UnsupportedFunction
 QT += widgets
 
 INCLUDEPATH  += .
+INCLUDEPATH  += ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks
 
 include(TestOutstation_UnsupportedFunction.pri)
 
 SOURCES      += MainWindow.cpp \
                 loghandler.cpp \
                 main.cpp 
+
+#SOURCES      += __ICollection.cpp 
 
 #SOURCES      += __List_for_EventRecord_part1.cpp \
 #                __HasLength.cpp \

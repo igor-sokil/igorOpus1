@@ -5,6 +5,9 @@ TEMPLATE      = app
 
 TARGET = TestAPDUWriting_AllObjectsAndRollback
 
+INCLUDEPATH  += .
+INCLUDEPATH  += ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks
+
 QT += widgets
 
 include(TestAPDUWriting_AllObjectsAndRollback.pri)

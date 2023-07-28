@@ -24,10 +24,6 @@
 #include "Group41.h"
 #include <string.h>
 
-extern void* pPointerGlobal1;
-extern void* pPointerGlobal2;
-extern void* pPointerGlobal3;
-
 ////#include <ser4cpp/serialization/LittleEndian.h>
 
 ////namespace opendnp3
@@ -378,7 +374,7 @@ DNP3Serializer_for_ControlRelayOutputBlock temp = Inst_in_Group12Var1_static();
 
 //---------------------------------------ControlRelayOutputBlock----------------------------------------------------------
 
-  void process_for_ControlRelayOutputBlock_in_CommandResponseHandler(ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock, 
+  void process_for_ControlRelayOutputBlock_in_CommandResponseHandler(//ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock, 
                                             Indexed_for_ControlRelayOutputBlock* pair)
 {
  CommandResponseHandler* pCommandResponseHandler = (CommandResponseHandler*)pPointerGlobal1;//CommandResponseHandler*
@@ -464,8 +460,8 @@ UNUSED(values);
 ////    };
 ////
 //void ForeachItem_in_ICollection_Indexed_for_ControlRelayOutputBlock(
-//        ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock, 
-//        void (*fun)(ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock, Indexed_for_ControlRelayOutputBlock* item));
+//      ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock,
+//        void (*fun)(Indexed_for_ControlRelayOutputBlock* item));
 
 ////    values.ForeachItem(process);
  ForeachItem_in_ICollection_Indexed_for_ControlRelayOutputBlock(values,

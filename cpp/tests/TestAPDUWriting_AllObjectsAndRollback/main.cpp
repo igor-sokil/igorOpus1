@@ -16,6 +16,10 @@
 
 DWORD get_fattime (void);
 
+void* pPointerGlobal1;
+void* pPointerGlobal2;
+void* pPointerGlobal3;
+
 #define UNUSED(x) (void)(x)
 
 key_filter *pkf;

@@ -45,8 +45,6 @@
 
    void APDUHeader_in_APDUHeaderOver1(APDUHeader *pAPDUHeader)
 {
-//qDebug()<<"pAPDUHeader"<< pAPDUHeader;
-//qDebug()<<"pAPDUHeader->function"<< pAPDUHeader->function;
    pAPDUHeader->function = FunctionCode_UNKNOWN;
 }
 

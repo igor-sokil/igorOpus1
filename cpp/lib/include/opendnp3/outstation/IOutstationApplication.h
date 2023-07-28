@@ -35,7 +35,7 @@
 
 #include "Indexed.h"
 #include "MeasurementTypes.h"
-#include "parsing/ICollection.h"
+#include "ICollection.h"
 #include "AssignClassType.h"
 #include "PointClass.h"
 #include "RestartMode.h"

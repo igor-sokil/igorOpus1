@@ -1,6 +1,15 @@
 #include "header.h"
 #include "ICommandHandler.h"
 
+void* getParentPointer_in_ICommandHandler(ICommandHandler* pICommandHandler)
+{
+  return pICommandHandler->pParentPointer_in_ICommandHandler;
+}
+void  setParentPointer_in_ICommandHandler(ICommandHandler* pICommandHandler, void* pParentPointer)
+{
+  pICommandHandler->pParentPointer_in_ICommandHandler = pParentPointer;
+}
+
     void Begin_in_ICommandHandler(ICommandHandler* pICommandHandler)
 {
     (pICommandHandler->pBegin_in_ICommandHandler)(pICommandHandler);
