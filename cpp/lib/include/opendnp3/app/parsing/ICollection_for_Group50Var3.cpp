@@ -7,11 +7,11 @@
  *
  */
 
-void* getParentPointer_in_IVisitor__for__Group50Var3(IVisitor__for__Group50Var3* pIVisitor__for__Group50Var3)
+void* getParentPointer_in_IVisitor_for_Group50Var3(IVisitor__for__Group50Var3* pIVisitor__for__Group50Var3)
 {
   return pIVisitor__for__Group50Var3->pParentPointer_in_IVisitor__for__Group50Var3;
 }
-void  setParentPointer_in_IVisitor__for__Group50Var3(IVisitor__for__Group50Var3* pIVisitor__for__Group50Var3, void* pParentPointer)
+void  setParentPointer_in_IVisitor_for_Group50Var3(IVisitor__for__Group50Var3* pIVisitor__for__Group50Var3, void* pParentPointer)
 {
   pIVisitor__for__Group50Var3->pParentPointer_in_IVisitor__for__Group50Var3 = pParentPointer;
 }
@@ -37,12 +37,12 @@ void     Foreach_in_ICollection_for_Group50Var3(ICollection_for_Group50Var3* pIC
   (pICollection_Group50Var3, visitor);
 }
 
-void* getParentPointer_in_ICollection_Group50Var3(ICollection_for_Group50Var3* pICollection_Group50Var3)
+void* getParentPointer_in_ICollection_for_Group50Var3(ICollection_for_Group50Var3* pICollection_Group50Var3)
 {
   return pICollection_Group50Var3->pParentPointer_in_ICollection_for_Group50Var3;
 }
 
-void  setParentPointer_in_ICollection_Group50Var3(ICollection_for_Group50Var3* pICollection_Group50Var3, void* pParentPointer)
+void  setParentPointer_in_ICollection_for_Group50Var3(ICollection_for_Group50Var3* pICollection_Group50Var3, void* pParentPointer)
 {
   pICollection_Group50Var3->pParentPointer_in_ICollection_for_Group50Var3 = pParentPointer;
 }
@@ -115,7 +115,7 @@ void FunctorVisitor__for__Group50Var3_in_FunctorVisitor__for__Group50Var3(Functo
   pFunctorVisitor__for__Group50Var3->iIVisitor__for__Group50Var3.pOnValue_in_IVisitor__for__Group50Var3 =
     OnValue_in_FunctorVisitor__for__Group50Var3_override;
 
-  setParentPointer_in_IVisitor__for__Group50Var3(&(pFunctorVisitor__for__Group50Var3->iIVisitor__for__Group50Var3), pFunctorVisitor__for__Group50Var3);
+  setParentPointer_in_IVisitor_for_Group50Var3(&(pFunctorVisitor__for__Group50Var3->iIVisitor__for__Group50Var3), pFunctorVisitor__for__Group50Var3);
 }
 
 void OnValue_in_FunctorVisitor__for__Group50Var3_override(void *pFunctorVisitor__for__Group50Var3,

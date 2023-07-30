@@ -1451,7 +1451,34 @@
                         <group>
                             <name>parsing</name>
                             <file>
-                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection.cpp</name>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var1.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var3.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_for_uint16.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputDouble64.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputFloat32.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputInt16.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputInt32.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_ControlRelayOutputBlock.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_IINValue.cpp</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\..\cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_TimeAndInterval.cpp</name>
                             </file>
                         </group>
                         <file>

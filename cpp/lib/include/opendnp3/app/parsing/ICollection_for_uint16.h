@@ -22,8 +22,8 @@ typedef struct
   void* pParentPointer_in_IVisitor__for__uint16;
 } IVisitor__for__uint16;
 
-void* getParentPointer_in_IVisitor__for__uint16(IVisitor__for__uint16*);
-void  setParentPointer_in_IVisitor__for__uint16(IVisitor__for__uint16*, void*);
+void* getParentPointer_in_IVisitor_for_uint16(IVisitor__for__uint16*);
+void  setParentPointer_in_IVisitor_for_uint16(IVisitor__for__uint16*, void*);
 
 void OnValue_in_IVisitor__for__uint16(IVisitor__for__uint16 *, uint16_t* );
 

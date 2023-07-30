@@ -22,8 +22,8 @@ typedef struct
   void* pParentPointer_in_IVisitor__for__Group50Var1;
 } IVisitor__for__Group50Var1;
 
-void* getParentPointer_in_IVisitor__for__Group50Var1(IVisitor__for__Group50Var1*);
-void  setParentPointer_in_IVisitor__for__Group50Var1(IVisitor__for__Group50Var1*, void*);
+void* getParentPointer_in_IVisitor_for_Group50Var1(IVisitor__for__Group50Var1*);
+void  setParentPointer_in_IVisitor_for_Group50Var1(IVisitor__for__Group50Var1*, void*);
 
 void OnValue_in_IVisitor__for__Group50Var1(IVisitor__for__Group50Var1 *, Group50Var1* );
 

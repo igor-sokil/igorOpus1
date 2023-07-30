@@ -31,4 +31,8 @@
                                                          SIZE_TypedEventRecord_for_OctetStringSpec 
 #define MAX_BufferSer4  292
 
+extern void* pPointerGlobal1;
+extern void* pPointerGlobal2;
+extern void* pPointerGlobal3;
+
 #endif

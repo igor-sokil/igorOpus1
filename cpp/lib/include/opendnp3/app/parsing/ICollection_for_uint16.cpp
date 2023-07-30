@@ -7,11 +7,11 @@
  *
  */
 
-void* getParentPointer_in_IVisitor__for__uint16(IVisitor__for__uint16* pIVisitor__for__uint16)
+void* getParentPointer_in_IVisitor_for_uint16(IVisitor__for__uint16* pIVisitor__for__uint16)
 {
   return pIVisitor__for__uint16->pParentPointer_in_IVisitor__for__uint16;
 }
-void  setParentPointer_in_IVisitor__for__uint16(IVisitor__for__uint16* pIVisitor__for__uint16, void* pParentPointer)
+void  setParentPointer_in_IVisitor_for_uint16(IVisitor__for__uint16* pIVisitor__for__uint16, void* pParentPointer)
 {
   pIVisitor__for__uint16->pParentPointer_in_IVisitor__for__uint16 = pParentPointer;
 }
@@ -37,12 +37,12 @@ void     Foreach_in_ICollection_for_uint16(ICollection_for_uint16* pICollection_
   (pICollection_uint16, visitor);
 }
 
-void* getParentPointer_in_ICollection_uint16(ICollection_for_uint16* pICollection_uint16)
+void* getParentPointer_in_ICollection_for_uint16(ICollection_for_uint16* pICollection_uint16)
 {
   return pICollection_uint16->pParentPointer_in_ICollection_for_uint16;
 }
 
-void  setParentPointer_in_ICollection_uint16(ICollection_for_uint16* pICollection_uint16, void* pParentPointer)
+void  setParentPointer_in_ICollection_for_uint16(ICollection_for_uint16* pICollection_uint16, void* pParentPointer)
 {
   pICollection_uint16->pParentPointer_in_ICollection_for_uint16 = pParentPointer;
 }
@@ -54,7 +54,7 @@ void assignValue_in_ICollection_uint16(uint16_t* item)
   *((uint16_t*)pPointerGlobal1) = *item;
 }
 
-boolean ReadOnlyValue_in_ICollection_uint16(
+boolean ReadOnlyValue_in_ICollection_for_uint16(
   ICollection_for_uint16 *pICollection_uint16, uint16_t* pValue)
 {
   pPointerGlobal1 = pValue;
@@ -115,7 +115,7 @@ void FunctorVisitor__for__uint16_in_FunctorVisitor__for__uint16(FunctorVisitor__
   pFunctorVisitor__for__uint16->iIVisitor__for__uint16.pOnValue_in_IVisitor__for__uint16 =
     OnValue_in_FunctorVisitor__for__uint16_override;
 
-  setParentPointer_in_IVisitor__for__uint16(&(pFunctorVisitor__for__uint16->iIVisitor__for__uint16), pFunctorVisitor__for__uint16);
+  setParentPointer_in_IVisitor_for_uint16(&(pFunctorVisitor__for__uint16->iIVisitor__for__uint16), pFunctorVisitor__for__uint16);
 }
 
 void OnValue_in_FunctorVisitor__for__uint16_override(void *pFunctorVisitor__for__uint16,

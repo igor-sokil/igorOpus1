@@ -172,7 +172,7 @@ IResponseLoader iIResponseLoader;
      IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv);
      IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint16_t count);
 
-//     void Unselect_in_EventBuffer_override(void *pIEventSelector);
+     void Unselect_in_EventBuffer_override(void *pIEventSelector);
      IINField SelectAll_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv);
      IINField SelectCount_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv, uint16_t count);
 
