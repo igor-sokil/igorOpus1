@@ -18,45 +18,60 @@
  * limitations under the License.
  */
 
-#include "dnp3mocks/DataSink.h"
+#include <QApplication>
+#include "header.h"
+#include "DataSink.h"
 
-#include <ser4cpp/util/HexConversions.h>
+////#include <ser4cpp/util/HexConversions.h>
 
-#include <memory>
-#include <stdexcept>
+////#include <memory>
+////#include <stdexcept>
 
-using namespace ser4cpp;
+////using namespace ser4cpp;
 
-void DataSink::Write(const rseq_t& data)
+////void DataSink::Write(const rseq_t& data)
+void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
 {
-    for (size_t i = 0; i < data.length(); ++i)
+//    uint16_t length_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
+////    for (uint16_t i = 0; i < data.length(); ++i)
+  for (uint16_t i = 0; i < length_in_HasLength_for_Uint16_t(&(data->hHasLength)); ++i)
+  {
+    pDataSink->buffer.push_back(data->buffer_[i]);////data[i]);
+  }
+}
+
+void Clear_in_DataSink(DataSink *pDataSink)
+{
+  pDataSink->buffer.clear();
+}
+
+boolean Equals_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
+{
+////    if (data.length() != this->buffer.size())
+  if (length_in_HasLength_for_Uint16_t(&(data->hHasLength)) != pDataSink->buffer.size())
+    return false;
+
+  for (uint16_t i = 0; i < pDataSink->buffer.size(); i++)
+  {
+    if (data->buffer_[i] != pDataSink->buffer[i])
     {
-        this->buffer.push_back(data[i]);
+      return false;
     }
+  }
+  return true;
 }
 
-void DataSink::Clear()
-{
-    buffer.clear();
-}
-
-bool DataSink::Equals(const rseq_t& data) const
-{
-    if (data.length() != this->buffer.size())
-        return false;
-
-    for (size_t i = 0; i < this->buffer.size(); i++)
+////std::string DataSink::AsHex(bool spaced) const
+////{
+////    const ser4cpp::rseq_t temp(this->buffer.data(), this->buffer.size());
+////    return HexConversions::to_hex(temp, spaced);
+////}
+     boolean IsEmpty_in_DataSink(DataSink *pDataSink)
     {
-        if (data[i] != this->buffer[i])
-        {
-            return false;
-        }
+        return pDataSink->buffer.size() == 0;
     }
-    return true;
-}
 
-std::string DataSink::AsHex(bool spaced) const
-{
-    const ser4cpp::rseq_t temp(this->buffer.data(), this->buffer.size());
-    return HexConversions::to_hex(temp, spaced);
-}
+   uint16_t Size_in_DataSink(DataSink *pDataSink)
+    {
+        return pDataSink->buffer.size();
+   }

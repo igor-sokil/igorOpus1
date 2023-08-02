@@ -20,25 +20,33 @@
 #ifndef OPENDNP3_LINK_HEADER_FIELDS_H
 #define OPENDNP3_LINK_HEADER_FIELDS_H
 
-#include "opendnp3/gen/LinkFunction.h"
-#include "opendnp3/link/Addresses.h"
+////#include "opendnp3/gen/LinkFunction.h"
+////#include "opendnp3/link/Addresses.h"
 
-namespace opendnp3
+#include "LinkFunction.h"
+#include "Addresses.h"
+
+////namespace opendnp3
+////{
+
+////struct LinkHeaderFields
+typedef struct
 {
+////    LinkHeaderFields();
 
-struct LinkHeaderFields
-{
-    LinkHeaderFields();
+////    LinkHeaderFields(LinkFunction func, bool isMaster, bool fcb, bool fcvdfc, Addresses addresses);
 
-    LinkHeaderFields(LinkFunction func, bool isMaster, bool fcb, bool fcvdfc, Addresses addresses);
-
-    LinkFunction func;
-    bool isFromMaster;
-    bool fcb;
-    bool fcvdfc;
+    LinkFunction_uint8_t func;
+    boolean isFromMaster;
+    boolean fcb;
+    boolean fcvdfc;
     Addresses addresses;
-};
+} LinkHeaderFields;
 
-} // namespace opendnp3
+  void LinkHeaderFields_in_LinkHeaderFieldsOver1(LinkHeaderFields *pLinkHeaderFields);
+
+  void LinkHeaderFields_in_LinkHeaderFieldsOver2(LinkHeaderFields *pLinkHeaderFields, LinkFunction_uint8_t func, boolean isMaster, boolean fcb, boolean fcvdfc, Addresses addresses);
+
+////} // namespace opendnp3
 
 #endif

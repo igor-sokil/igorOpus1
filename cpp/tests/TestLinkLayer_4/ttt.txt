@@ -1,0 +1,21 @@
+TEST_CASE(SUITE("SecondaryResetConfirmedUserData"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
+    REQUIRE(t.NumTotalWrites() == 1);
+    t.link.OnTxReady();
+
+    ByteStr bytes(250, 0);
+    t.OnFrame(LinkFunction::PRI_CONFIRMED_USER_DATA, false, true, false, 1, 1024, bytes.ToRSeq());
+    REQUIRE(t.NumTotalWrites() == 2);
+    t.link.OnTxReady();
+
+    REQUIRE(t.upper->receivedQueue.front() == bytes.ToHex());
+    t.upper->receivedQueue.clear();
+
+    t.OnFrame(LinkFunction::PRI_CONFIRMED_USER_DATA, false, true, false, 1, 1024,
+              bytes.ToRSeq());               // send with wrong FCB
+    REQUIRE(t.NumTotalWrites() == 3);        // should still get an ACK
+    REQUIRE(t.upper->receivedQueue.empty()); // but no data
+}

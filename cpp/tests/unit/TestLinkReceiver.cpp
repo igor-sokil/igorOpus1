@@ -271,6 +271,7 @@ TEST_CASE(SUITE("TestTwoPackets"))
 //////////////////////////////////////////
 
 // Test that the parser is able to resync without discarding
+// ѕровер€ем, может ли парсер выполнить повторную синхронизацию без отбрасывани€
 TEST_CASE(SUITE("Resync0564"))
 {
     LinkParserTest t;
@@ -286,6 +287,8 @@ TEST_CASE(SUITE("Resync0564"))
 
 // Test that the parser is able to handle many packets successively without
 // doing something stupid like overflowing it's buffer
+// ѕровер€ем, может ли анализатор последовательно обрабатывать множество пакетов без
+// делаем глупости вроде переполнени€ буфера
 TEST_CASE(SUITE("ManyReceives"))
 {
 

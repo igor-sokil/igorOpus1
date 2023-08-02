@@ -1,0 +1,19 @@
+// When we get another reset links when we're already reset,
+// ACK it and reset the link state
+// Когда мы получим еще одну ссылку сброса, когда мы уже сбросились,
+// Подтверждаем это и сбрасываем состояние ссылки
+TEST_CASE(SUITE("SecondaryResetResetLinkStates"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
+    REQUIRE(t.NumTotalWrites() == 1);
+    t.link.OnTxReady();
+
+    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
+    REQUIRE(t.NumTotalWrites() == 2);
+    t.link.OnTxReady();
+
+    REQUIRE(t.NumTotalWrites() == 2);
+    REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1));
+}

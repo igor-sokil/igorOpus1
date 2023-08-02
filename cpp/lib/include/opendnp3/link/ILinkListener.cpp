@@ -26,21 +26,21 @@
  (pILinkListener->pOnKeepAliveSuccess_in_ILinkListener)(pILinkListener);
 }
 
-    void OnStateChange_in_ILinkListener_default(void* v, LinkStatus_uint8_t value){UNUSED(v); UNUSED(value);}
-    void OnUnknownDestinationAddress_in_ILinkListener_default(void* v, uint16_t destination){UNUSED(v); UNUSED(destination);}
-    void OnUnknownSourceAddress_in_ILinkListener_default(void* v, uint16_t source){UNUSED(v); UNUSED(source);}
-    void OnKeepAliveInitiated_in_ILinkListener_default(void* v){UNUSED(v);}
-    void OnKeepAliveFailure_in_ILinkListener_default(void* v){UNUSED(v);}
-    void OnKeepAliveSuccess_in_ILinkListener_default(void* v){UNUSED(v);}
+    void OnStateChange_in_ILinkListener_override(void* v, LinkStatus_uint8_t value){UNUSED(v); UNUSED(value);}
+    void OnUnknownDestinationAddress_in_ILinkListener_override(void* v, uint16_t destination){UNUSED(v); UNUSED(destination);}
+    void OnUnknownSourceAddress_in_ILinkListener_override(void* v, uint16_t source){UNUSED(v); UNUSED(source);}
+    void OnKeepAliveInitiated_in_ILinkListener_override(void* v){UNUSED(v);}
+    void OnKeepAliveFailure_in_ILinkListener_override(void* v){UNUSED(v);}
+    void OnKeepAliveSuccess_in_ILinkListener_override(void* v){UNUSED(v);}
 
 void ILinkListener_in_ILinkListener(ILinkListener *pILinkListener)
 {
- pILinkListener->pOnStateChange_in_ILinkListener = OnStateChange_in_ILinkListener_default;
- pILinkListener->pOnUnknownDestinationAddress_in_ILinkListener = OnUnknownDestinationAddress_in_ILinkListener_default;
- pILinkListener->pOnUnknownSourceAddress_in_ILinkListener = OnUnknownSourceAddress_in_ILinkListener_default;
- pILinkListener->pOnKeepAliveInitiated_in_ILinkListener = OnKeepAliveInitiated_in_ILinkListener_default;
- pILinkListener->pOnKeepAliveFailure_in_ILinkListener = OnKeepAliveFailure_in_ILinkListener_default;
- pILinkListener->pOnKeepAliveSuccess_in_ILinkListener = OnKeepAliveSuccess_in_ILinkListener_default;
+ pILinkListener->pOnStateChange_in_ILinkListener = OnStateChange_in_ILinkListener_override;
+ pILinkListener->pOnUnknownDestinationAddress_in_ILinkListener = OnUnknownDestinationAddress_in_ILinkListener_override;
+ pILinkListener->pOnUnknownSourceAddress_in_ILinkListener = OnUnknownSourceAddress_in_ILinkListener_override;
+ pILinkListener->pOnKeepAliveInitiated_in_ILinkListener = OnKeepAliveInitiated_in_ILinkListener_override;
+ pILinkListener->pOnKeepAliveFailure_in_ILinkListener = OnKeepAliveFailure_in_ILinkListener_override;
+ pILinkListener->pOnKeepAliveSuccess_in_ILinkListener = OnKeepAliveSuccess_in_ILinkListener_override;
 }
 
 void* getParentPointer_in_ILinkListener(ILinkListener* pILinkListener)

@@ -120,9 +120,6 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_IINValue.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_TimeAndInterval.cpp \
                 \
-                cpp\lib\include\opendnp3\link\ILinkListener.cpp \
-                cpp\lib\include\opendnp3\link\LinkConfig.cpp \
-                \
                 cpp\lib\include\opendnp3\outstation\IDnpTimeSource.cpp \
                 cpp\lib\include\opendnp3\outstation\ICommandHandler.cpp \
                 cpp\lib\include\opendnp3\outstation\IOutstationApplication.cpp \
@@ -131,13 +128,24 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\outstation\OutstationConfig.cpp \
                 cpp\lib\include\opendnp3\outstation\StaticTypeBitfield.cpp \
                 \
+                cpp\lib\include\opendnp3\link\LinkConfig.cpp \
+                cpp\lib\include\opendnp3\link\LinkStatistics.cpp \
+                cpp\lib\include\opendnp3\link\ILinkListener.cpp \
+                \
                 cpp\lib\src\LayerInterfaces.cpp \
                 cpp\lib\src\SequenceNum.cpp \
                 \
                 cpp\lib\src\link\Addresses.cpp \
                 cpp\lib\src\link\CRC.cpp \
+                cpp\lib\src\link\IFrameSink.cpp \
+                cpp\lib\src\link\ILinkSession.cpp \
+                cpp\lib\src\link\ITransportSegment.cpp \
+                cpp\lib\src\link\ILinkLayer.cpp \
                 cpp\lib\src\link\LinkHeader.cpp \
                 cpp\lib\src\link\LinkFrame.cpp \
+                cpp\lib\src\link\LinkHeaderFields.cpp \
+                cpp\lib\src\link\LinkLayerParser.cpp \
+                cpp\lib\src\link\ShiftableBuffer.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\APDUParser.cpp \
@@ -314,12 +322,17 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group60.cpp \
                 \
                 cpp\tests\unit\utils\APDUHelpers.cpp \
+                cpp\tests\unit\utils\LinkParserTest.cpp \
                 cpp\tests\unit\utils\OutstationTestObject.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockLinkListener.cpp \
                 \
-                cpp\tests\dnp3mocks\src\MockLowerLayer.cpp
+                cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
+                cpp\tests\dnp3mocks\src\MockFrameSink.cpp \
+                cpp\tests\dnp3mocks\src\DataSink.cpp
 
 
 #                cpp\lib\src\gen\objects\Group43.cpp \
+#                cpp\lib\include\opendnp3\link\ILinkListener.cpp \

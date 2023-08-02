@@ -20,37 +20,50 @@
 #ifndef OPENDNP3_UNITTESTS_DATASINK_H
 #define OPENDNP3_UNITTESTS_DATASINK_H
 
-#include <ser4cpp/container/SequenceTypes.h>
+////#include <ser4cpp/container/SequenceTypes.h>
 
-#include <cstdint>
-#include <string>
+////#include <cstdint>
+////#include <string>
+#include "RSeq.h"
+
 #include <vector>
 
-class DataSink final
+////class DataSink final
+typedef struct
 {
-public:
-    DataSink() = default;
+////public:
+////    DataSink() = default;
 
-    void Write(const ser4cpp::rseq_t& data);
+////    void Write(const ser4cpp::rseq_t& data);
 
-    bool Equals(const ser4cpp::rseq_t& data) const;
+////    bool Equals(const ser4cpp::rseq_t& data) const;
 
-    std::string AsHex(bool spaced = true) const;
+////    std::string AsHex(bool spaced = true) const;
 
-    inline bool IsEmpty() const
-    {
-        return buffer.size() == 0;
-    }
+////    inline bool IsEmpty() const
+////    {
+////        return buffer.size() == 0;
+////    }
 
-    void Clear();
+////    void Clear();
 
-    size_t Size() const
-    {
-        return buffer.size();
-    }
+////    size_t Size() const
+////    {
+////        return buffer.size();
+////    }
 
-private:
+////private:
     std::vector<uint8_t> buffer;
-};
+} DataSink;
+
+    void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data);
+
+    boolean Equals_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data);
+     boolean IsEmpty_in_DataSink(DataSink *pDataSink);
+   void Clear_in_DataSink(DataSink *pDataSink);
+   uint16_t Size_in_DataSink(DataSink *pDataSink);
+
+////    std::string AsHex(bool spaced = true) const;
+
 
 #endif

@@ -76,12 +76,12 @@ void ILinkListener_in_ILinkListener(ILinkListener *pILinkListener);
     void OnKeepAliveFailure_in_ILinkListener(ILinkListener*);
     void OnKeepAliveSuccess_in_ILinkListener(ILinkListener*);
 
-    void OnStateChange_in_ILinkListener_default(void*, LinkStatus_uint8_t value);
-    void OnUnknownDestinationAddress_in_ILinkListener_default(void*, uint16_t destination);
-    void OnUnknownSourceAddress_in_ILinkListener_default(void*, uint16_t source);
-    void OnKeepAliveInitiated_in_ILinkListener_default(void*);
-    void OnKeepAliveFailure_in_ILinkListener_default(void*);
-    void OnKeepAliveSuccess_in_ILinkListener_default(void*);
+    void OnStateChange_in_ILinkListener_override(void*, LinkStatus_uint8_t value);
+    void OnUnknownDestinationAddress_in_ILinkListener_override(void*, uint16_t destination);
+    void OnUnknownSourceAddress_in_ILinkListener_override(void*, uint16_t source);
+    void OnKeepAliveInitiated_in_ILinkListener_override(void*);
+    void OnKeepAliveFailure_in_ILinkListener_override(void*);
+    void OnKeepAliveSuccess_in_ILinkListener_override(void*);
 
 void* getParentPointer_in_ILinkListener(ILinkListener*);
 void  setParentPointer_in_ILinkListener(ILinkListener*, void*);

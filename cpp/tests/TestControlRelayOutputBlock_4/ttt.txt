@@ -1,0 +1,6 @@
+TEST_CASE(SUITE("From raw code preserves the QU bit"))
+{
+    ControlRelayOutputBlock crob(0x91, 10, 100, 100, CommandStatus::SUCCESS);
+
+    REQUIRE(crob.rawCode == 0x91);
+}

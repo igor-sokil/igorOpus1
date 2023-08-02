@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("InitializationState"))
+{
+    LinkParserTest t;
+    REQUIRE(t.sink.m_num_frames == 0);
+}
