@@ -20,126 +20,139 @@
 #ifndef OPENDNP3_SECLINKLAYERSTATES_H
 #define OPENDNP3_SECLINKLAYERSTATES_H
 
-#include "link/LinkContext.h"
-#include "link/Singleton.h"
-#include "logging/LogMacros.h"
+#include "LinkContext.h"
+////#include "link/Singleton.h"
+////#include "logging/LogMacros.h"
 
-#include "opendnp3/logging/LogLevels.h"
+////#include "opendnp3/logging/LogLevels.h"
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+////class SecStateBase
+typedef struct
 {
+////public:
+  // Incoming messages to secondary station
 
-class SecStateBase
-{
-public:
-    // Incoming messages to secondary station
+  void* (*pOnResetLinkStates_in_SecStateBase)(void*, LinkContext*, uint16_t source);// = 0;
+  void* (*pOnRequestLinkStatus_in_SecStateBase)(void*, LinkContext*, uint16_t source);// = 0;
 
-    virtual SecStateBase& OnResetLinkStates(LinkContext&, uint16_t source) = 0;
-    virtual SecStateBase& OnRequestLinkStatus(LinkContext&, uint16_t source) = 0;
+  void* (*pOnTestLinkStatus_in_SecStateBase)(void*, LinkContext*, uint16_t source, boolean fcb);// = 0;
+  void* (*pOnConfirmedUserData_in_SecStateBase)(void*,
+      LinkContext*, uint16_t source, boolean fcb, boolean isBroadcast, Message* message);
+//        = 0;
 
-    virtual SecStateBase& OnTestLinkStatus(LinkContext&, uint16_t source, bool fcb) = 0;
-    virtual SecStateBase& OnConfirmedUserData(
-        LinkContext&, uint16_t source, bool fcb, bool isBroadcast, const Message& message)
-        = 0;
+  void* (*pOnTxReady_in_SecStateBase)(void*, LinkContext* ctx);
 
-    virtual SecStateBase& OnTxReady(LinkContext& ctx);
+  // every concrete state implements this for logging purposes
 
-    // every concrete state implements this for logging purposes
+////    virtual char const* Name() const = 0;
+  void* pParentPointer_in_SecStateBase;
+} SecStateBase;
 
-    virtual char const* Name() const = 0;
-};
+void SecStateBase_in_SecStateBase(SecStateBase *pSecStateBase);
+
+//     void* OnResetLinkStates_in_SecStateBase_override(void*, LinkContext*, uint16_t source);
+//     void* OnRequestLinkStatus_in_SecStateBase_override(void*, LinkContext*, uint16_t source);
+
+//     void* OnTestLinkStatus_in_SecStateBase_override(void*, LinkContext*, uint16_t source, boolean fcb);
+//     void* OnConfirmedUserData_in_SecStateBase_override(void*,
+//        LinkContext*, uint16_t source, boolean fcb, boolean isBroadcast, Message* message);
+
+void* OnTxReady_in_SecStateBase_override(void*, LinkContext* ctx);
+
+SecStateBase* OnResetLinkStates_in_SecStateBase(SecStateBase*, LinkContext*, uint16_t source);
+SecStateBase* OnRequestLinkStatus_in_SecStateBase(SecStateBase*, LinkContext*, uint16_t source);
+
+SecStateBase* OnTestLinkStatus_in_SecStateBase(SecStateBase*, LinkContext*, uint16_t source, boolean fcb);
+SecStateBase* OnConfirmedUserData_in_SecStateBase(SecStateBase*,
+    LinkContext*, uint16_t source, boolean fcb, boolean isBroadcast, Message* message);
+
+SecStateBase* OnTxReady_in_SecStateBase(SecStateBase*, LinkContext* ctx);
+
+void* getParentPointer_in_SecStateBase(SecStateBase*);
+void  setParentPointer_in_SecStateBase(SecStateBase*, void*);
+
 
 ////////////////////////////////////////////////////////
 //	Class SLLS_TransmitWait
 ////////////////////////////////////////////////////////
-template<class NextState> class SLLS_TransmitWaitBase : public SecStateBase
-{
+//-----------------------------------SLLS_Reset--------------------------------
+////template<class NextState> class SLLS_TransmitWaitBase : public SecStateBase
+//typedef struct
+//{
+//  SecStateBase sSecStateBase;
 
-protected:
-    SLLS_TransmitWaitBase() {}
+////protected:
+////    SLLS_TransmitWaitBase() {}
 
-public:
-    virtual SecStateBase& OnTxReady(LinkContext& ctx) override final;
-    virtual SecStateBase& OnResetLinkStates(LinkContext&, uint16_t source) override final;
-    virtual SecStateBase& OnRequestLinkStatus(LinkContext&, uint16_t source) override final;
-    virtual SecStateBase& OnTestLinkStatus(LinkContext&, uint16_t source, bool fcb) override final;
-    virtual SecStateBase& OnConfirmedUserData(
-        LinkContext&, uint16_t source, bool fcb, bool isBroadcast, const Message& message) override final;
-};
+////public:
+////    virtual SecStateBase& OnTxReady(LinkContext& ctx) override final;
+////    virtual SecStateBase& OnResetLinkStates(LinkContext&, uint16_t source) override final;
+////    virtual SecStateBase& OnRequestLinkStatus(LinkContext&, uint16_t source) override final;
+////    virtual SecStateBase& OnTestLinkStatus(LinkContext&, uint16_t source, bool fcb) override final;
+////    virtual SecStateBase& OnConfirmedUserData(
+////        LinkContext&, uint16_t source, bool fcb, bool isBroadcast, const Message& message) override final;
+//} SLLS_TransmitWaitBase_SLLS_Reset;
 
-template<class NextState> SecStateBase& SLLS_TransmitWaitBase<NextState>::OnTxReady(LinkContext& ctx)
-{
-    return NextState::Instance();
-}
+void SLLS_TransmitWaitBase_SLLS_Reset_in_SLLS_Reset(SecStateBase *pSecStateBase);
 
-template<class NextState>
-SecStateBase& SLLS_TransmitWaitBase<NextState>::OnResetLinkStates(LinkContext& ctx, uint16_t source)
-{
-    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
-    return *this;
-}
+SecStateBase* OnConfirmedUserData_in_SLLS_Reset(SecStateBase *pSecStateBase,
+    LinkContext* ctx, uint16_t source, boolean fcb, boolean isBroadcast, Message* message);
+SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb);
+SecStateBase* OnRequestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source);
+SecStateBase* OnResetLinkStates_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source);
+SecStateBase* OnTxReady_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx);
 
-template<class NextState>
-SecStateBase& SLLS_TransmitWaitBase<NextState>::OnRequestLinkStatus(LinkContext& ctx, uint16_t source)
-{
-    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
-    return *this;
-}
+void* OnConfirmedUserData_in_SLLS_Reset_override(void *pSecStateBase,
+    LinkContext* ctx, uint16_t source, boolean fcb, boolean isBroadcast, Message* message);
+void* OnTestLinkStatus_in_SLLS_Reset_override(void *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb);
+void* OnRequestLinkStatus_in_SLLS_Reset_override(void *pSecStateBase, LinkContext* ctx, uint16_t source);
+void* OnResetLinkStates_in_SLLS_Reset_override(void *pSecStateBase, LinkContext* ctx, uint16_t source);
+void* OnTxReady_in_SLLS_Reset_override(void *pSecStateBase, LinkContext* ctx);
 
-template<class NextState>
-SecStateBase& SLLS_TransmitWaitBase<NextState>::OnTestLinkStatus(LinkContext& ctx, uint16_t source, bool fcb)
-{
-    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
-    return *this;
-}
-
-template<class NextState>
-SecStateBase& SLLS_TransmitWaitBase<NextState>::OnConfirmedUserData(
-    LinkContext& ctx, uint16_t source, bool fcb, bool isBroadcast, const Message& message)
-{
-    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
-    return *this;
-}
+//-----------------------------------SLLS_Reset--------------------------------
 
 ////////////////////////////////////////////////////////
 //	Class SLLS_UnReset
 ////////////////////////////////////////////////////////
-class SLLS_NotReset final : public SecStateBase
-{
-public:
-    MACRO_STATE_SINGLETON_INSTANCE(SLLS_NotReset);
+////class SLLS_NotReset final : public SecStateBase
+////{
+////public:
+////    MACRO_STATE_SINGLETON_INSTANCE(SLLS_NotReset);
 
-    virtual SecStateBase& OnConfirmedUserData(
-        LinkContext&, uint16_t source, bool fcb, bool isBroadcast, const Message& message) override;
-    virtual SecStateBase& OnResetLinkStates(LinkContext&, uint16_t source) override;
-    virtual SecStateBase& OnRequestLinkStatus(LinkContext&, uint16_t source) override;
-    virtual SecStateBase& OnTestLinkStatus(LinkContext&, uint16_t source, bool fcb) override;
-};
+////    virtual SecStateBase& OnConfirmedUserData(
+////        LinkContext&, uint16_t source, bool fcb, bool isBroadcast, const Message& message) override;
+////    virtual SecStateBase& OnResetLinkStates(LinkContext&, uint16_t source) override;
+////    virtual SecStateBase& OnRequestLinkStatus(LinkContext&, uint16_t source) override;
+////    virtual SecStateBase& OnTestLinkStatus(LinkContext&, uint16_t source, bool fcb) override;
+////};
 
 ////////////////////////////////////////////////////////
 //	Class SLLS_Reset
 ////////////////////////////////////////////////////////
-class SLLS_Reset final : public SecStateBase
-{
-    MACRO_STATE_SINGLETON_INSTANCE(SLLS_Reset);
+////class SLLS_Reset final : public SecStateBase
+////{
+////    MACRO_STATE_SINGLETON_INSTANCE(SLLS_Reset);
+////
+////    virtual SecStateBase& OnConfirmedUserData(
+////        LinkContext&, uint16_t source, bool fcb, bool isBroadcast, const Message& message) override;
+////    virtual SecStateBase& OnResetLinkStates(LinkContext&, uint16_t source) override;
+////    virtual SecStateBase& OnRequestLinkStatus(LinkContext&, uint16_t source) override;
+////    virtual SecStateBase& OnTestLinkStatus(LinkContext&, uint16_t source, bool fcb) override;
+////};
 
-    virtual SecStateBase& OnConfirmedUserData(
-        LinkContext&, uint16_t source, bool fcb, bool isBroadcast, const Message& message) override;
-    virtual SecStateBase& OnResetLinkStates(LinkContext&, uint16_t source) override;
-    virtual SecStateBase& OnRequestLinkStatus(LinkContext&, uint16_t source) override;
-    virtual SecStateBase& OnTestLinkStatus(LinkContext&, uint16_t source, bool fcb) override;
-};
+////class SLLS_TransmitWaitReset : public SLLS_TransmitWaitBase<SLLS_Reset>
+////{
+////    MACRO_STATE_SINGLETON_INSTANCE(SLLS_TransmitWaitReset);
+////};
 
-class SLLS_TransmitWaitReset : public SLLS_TransmitWaitBase<SLLS_Reset>
-{
-    MACRO_STATE_SINGLETON_INSTANCE(SLLS_TransmitWaitReset);
-};
+////class SLLS_TransmitWaitNotReset : public SLLS_TransmitWaitBase<SLLS_NotReset>
+////{
+////    MACRO_STATE_SINGLETON_INSTANCE(SLLS_TransmitWaitNotReset);
+////};
 
-class SLLS_TransmitWaitNotReset : public SLLS_TransmitWaitBase<SLLS_NotReset>
-{
-    MACRO_STATE_SINGLETON_INSTANCE(SLLS_TransmitWaitNotReset);
-};
-
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

@@ -17,41 +17,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_ILINKTX_H
-#define OPENDNP3_ILINKTX_H
-
-////#include "link/ILinkSession.h"
-#include "ILinkSession.h"
-
-////#include <ser4cpp/container/SequenceTypes.h>
+#ifndef OPENDNP3_IRESOURCE_H
+#define OPENDNP3_IRESOURCE_H
 
 ////namespace opendnp3
 ////{
 
 /**
- * Interface the link layer uses to transmit data
+ *	Anything that can be shutdown
  */
-////class ILinkTx
+////struct IResource
 typedef struct
 {
 ////public:
-////    virtual ~ILinkTx() {}
+////    virtual ~IResource() = default;
 
-  /**
-   * Begin transmission of a frame. Callback happens OFF the call stack (via executor)
-  * Начать передачу кадра. Обратный вызов происходит вне стека вызовов (через исполнителя)
-   */
-  void (*pBeginTransmit_in_ILinkTx)(void*, RSeq_for_Uint16_t* buffer, ILinkSession* context);// = 0;
+  void (*pShutdown_in_IResource)(void*);// = 0;
 
-  void* pParentPointer_in_ILinkTx;
-} ILinkTx;
+  void* pParentPointer_in_IResource;
+} IResource;
 
-void BeginTransmit_in_ILinkTx(ILinkTx*, RSeq_for_Uint16_t* buffer, ILinkSession* context);
+void Shutdown_in_IResource(IResource* pIResource);
 
-void* getParentPointer_in_ILinkTx(ILinkTx*);
-void  setParentPointer_in_ILinkTx(ILinkTx*, void*);
+void* getParentPointer_in_IResource(IResource*);
+void  setParentPointer_in_IResource(IResource*, void*);
 
 ////} // namespace opendnp3
-
 
 #endif

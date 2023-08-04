@@ -1,5 +1,7 @@
 
 INCLUDEPATH  += qtsrc
+INCLUDEPATH  += cpp\lib\include\opendnp3
+
 INCLUDEPATH  += cpp\lib\include\opendnp3\app
 INCLUDEPATH  += cpp\lib\include\opendnp3\app\parsing
 INCLUDEPATH  += cpp\lib\include\opendnp3\gen
@@ -66,10 +68,12 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                  ser4cpp\container\HasLength.cpp \
                  ser4cpp\container\RSeq.cpp \
                  ser4cpp\container\WSeq.cpp \
+                 ser4cpp\container\Settable_for_RSeq.cpp \
                  ser4cpp\container\Settable_for_WSeq.cpp \
                  ser4cpp\container\Settable_for_LinkBroadcastAddress.cpp \
                  ser4cpp\container\BufferSer4.cpp \
-                 ser4cpp\container\StaticBuffer.cpp \
+                 ser4cpp\container\StaticBuffer_for_LPDU_HEADER_SIZE.cpp \
+                 ser4cpp\container\StaticBuffer_for_LPDU_MAX_FRAME_SIZE.cpp \
                  ser4cpp\container\Pair_for_IINField_AppControlField.cpp \
                  ser4cpp\container\Array__for__Node_for_EventRecord.cpp \
                  ser4cpp\container\ArrayView__for__Node_for_EventRecord.cpp \
@@ -101,6 +105,9 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\include\opendnp3\master\CommandPointResult.cpp \
                 cpp\lib\include\opendnp3\master\HeaderInfo.cpp \
+                \
+                cpp\lib\include\opendnp3\IResource.cpp \
+                cpp\lib\include\opendnp3\StackStatistics.cpp \
                 \
                 cpp\lib\include\opendnp3\app\BaseMeasurementTypes.cpp \
                 cpp\lib\include\opendnp3\app\DNPTime.cpp \
@@ -141,9 +148,11 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\link\ILinkSession.cpp \
                 cpp\lib\src\link\ITransportSegment.cpp \
                 cpp\lib\src\link\ILinkLayer.cpp \
+                cpp\lib\src\link\ILinkTx.cpp \
                 cpp\lib\src\link\LinkHeader.cpp \
                 cpp\lib\src\link\LinkFrame.cpp \
                 cpp\lib\src\link\LinkHeaderFields.cpp \
+                cpp\lib\src\link\LinkLayerConfig.cpp \
                 cpp\lib\src\link\LinkLayerParser.cpp \
                 cpp\lib\src\link\ShiftableBuffer.cpp \
                 \

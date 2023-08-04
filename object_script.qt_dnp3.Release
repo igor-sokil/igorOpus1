@@ -2,10 +2,12 @@ release/Comparisons.o
 release/HasLength.o
 release/RSeq.o
 release/WSeq.o
+release/Settable_for_RSeq.o
 release/Settable_for_WSeq.o
 release/Settable_for_LinkBroadcastAddress.o
 release/BufferSer4.o
-release/StaticBuffer.o
+release/StaticBuffer_for_LPDU_HEADER_SIZE.o
+release/StaticBuffer_for_LPDU_MAX_FRAME_SIZE.o
 release/Pair_for_IINField_AppControlField.o
 release/Array__for__Node_for_EventRecord.o
 release/ArrayView__for__Node_for_EventRecord.o
@@ -34,6 +36,8 @@ release/Buffer.o
 release/UTCTimestamp.o
 release/CommandPointResult.o
 release/HeaderInfo.o
+release/IResource.o
+release/StackStatistics.o
 release/BaseMeasurementTypes.o
 release/DNPTime.o
 release/Flags.o
@@ -68,9 +72,11 @@ release/IFrameSink.o
 release/ILinkSession.o
 release/ITransportSegment.o
 release/ILinkLayer.o
+release/ILinkTx.o
 release/LinkHeader.o
 release/LinkFrame.o
 release/LinkHeaderFields.o
+release/LinkLayerConfig.o
 release/LinkLayerParser.o
 release/ShiftableBuffer.o
 release/APDUHeaderParser.o

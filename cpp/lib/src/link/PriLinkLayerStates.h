@@ -20,72 +20,143 @@
 #ifndef OPENDNP3_PRILINKLAYERSTATES_H
 #define OPENDNP3_PRILINKLAYERSTATES_H
 
-#include "link/Singleton.h"
+////#include "link/Singleton.h"
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+////class LinkContext;
+////class ITransportSegment;
+
+#include "LinkContext.h"
+#include "ITransportSegment.h"
+
+////class PriStateBase
+typedef struct
 {
+////public:
+  // Incoming messages for primary station
+  void* (*pOnAck_in_PriStateBase)(void*, LinkContext*, boolean receiveBuffFull);//=0
+  void* (*pOnNack_in_PriStateBase)(void*, LinkContext*, boolean receiveBuffFull);//=0
+  void* (*pOnLinkStatus_in_PriStateBase)(void*, LinkContext*, boolean receiveBuffFull);//=0
+  void* (*pOnNotSupported_in_PriStateBase)(void*, LinkContext*, boolean receiveBuffFull);//=0
 
-class LinkContext;
-class ITransportSegment;
+  void* (*pOnTxReady_in_PriStateBase)(void*, LinkContext*);//=0
 
-class PriStateBase
-{
-public:
-    // Incoming messages for primary station
-    virtual PriStateBase& OnAck(LinkContext&, bool receiveBuffFull);
-    virtual PriStateBase& OnNack(LinkContext&, bool receiveBuffFull);
-    virtual PriStateBase& OnLinkStatus(LinkContext&, bool receiveBuffFull);
-    virtual PriStateBase& OnNotSupported(LinkContext&, bool receiveBuffFull);
+  void* (*pOnTimeout_in_PriStateBase)(void*, LinkContext*);//=0
 
-    virtual PriStateBase& OnTxReady(LinkContext&);
+  // transmission events to handle
+  void* (*pTrySendUnconfirmed_in_PriStateBase)(void*, LinkContext*, ITransportSegment* segments);//=0
+  void* (*pTrySendRequestLinkStatus_in_PriStateBase)(void*, LinkContext*);//=0
 
-    virtual PriStateBase& OnTimeout(LinkContext&);
+  // every concrete state implements this for logging purposes
+////    virtual char const* Name() const = 0;
 
-    // transmission events to handle
-    virtual PriStateBase& TrySendUnconfirmed(LinkContext&, ITransportSegment& segments);
-    virtual PriStateBase& TrySendRequestLinkStatus(LinkContext&);
+  void* pParentPointer_in_PriStateBase;
+} PriStateBase;
 
-    // every concrete state implements this for logging purposes
-    virtual char const* Name() const = 0;
-};
+void PriStateBase_in_PriStateBase(PriStateBase *pPriStateBase);
+
+void* OnAck_in_PriStateBase_override(void*, LinkContext*, boolean receiveBuffFull);
+void* OnNack_in_PriStateBase_override(void*, LinkContext*, boolean receiveBuffFull);
+void* OnLinkStatus_in_PriStateBase_override(void*, LinkContext*, boolean receiveBuffFull);
+void* OnNotSupported_in_PriStateBase_override(void*, LinkContext*, boolean receiveBuffFull);
+
+void* OnTxReady_in_PriStateBase_override(void*, LinkContext*);
+
+void* OnTimeout_in_PriStateBase_override(void*, LinkContext*);
+
+void* TrySendUnconfirmed_in_PriStateBase_override(void*, LinkContext*, ITransportSegment* segments);
+void* TrySendRequestLinkStatus_in_PriStateBase_override(void*, LinkContext*);
+
+
+PriStateBase* OnAck_in_PriStateBase(PriStateBase*, LinkContext*, boolean receiveBuffFull);
+PriStateBase* OnNack_in_PriStateBase(PriStateBase*, LinkContext*, boolean receiveBuffFull);
+PriStateBase* OnLinkStatus_in_PriStateBase(PriStateBase*, LinkContext*, boolean receiveBuffFull);
+PriStateBase* OnNotSupported_in_PriStateBase(PriStateBase*, LinkContext*, boolean receiveBuffFull);
+
+PriStateBase* OnTxReady_in_PriStateBase(PriStateBase*, LinkContext*);
+
+PriStateBase* OnTimeout_in_PriStateBase(PriStateBase*, LinkContext*);
+
+PriStateBase* TrySendUnconfirmed_in_PriStateBase(PriStateBase*, LinkContext*, ITransportSegment* segments);
+PriStateBase* TrySendRequestLinkStatus_in_PriStateBase(PriStateBase*, LinkContext*);
+
+void* getParentPointer_in_PriStateBase(PriStateBase*);
+void  setParentPointer_in_PriStateBase(PriStateBase*, void*);
 
 //	@section desc Entry state for primary station
-class PLLS_Idle final : public PriStateBase
-{
-    MACRO_STATE_SINGLETON_INSTANCE(PLLS_Idle);
+////class PLLS_Idle final : public PriStateBase
+//typedef struct
+//{
+////    MACRO_STATE_SINGLETON_INSTANCE(PLLS_Idle);
+//  PriStateBase pPriStateBase;
 
-    PriStateBase& TrySendUnconfirmed(LinkContext&, ITransportSegment& segments) override;
-    PriStateBase& TrySendRequestLinkStatus(LinkContext&) override;
-};
+////    PriStateBase& TrySendUnconfirmed(LinkContext&, ITransportSegment& segments) override;
+////    PriStateBase& TrySendRequestLinkStatus(LinkContext&) override;
+//} PLLS_Idle;
+
+void PLLS_Idle_in_PLLS_Idle(PriStateBase *pPriStateBase);
+
+void* TrySendUnconfirmed_in_PLLS_Idle_override(void*, LinkContext*, ITransportSegment* segments);
+void* TrySendRequestLinkStatus_in_PLLS_Idle_override(void*, LinkContext*);
+PriStateBase* TrySendUnconfirmed_in_PLLS_Idle(PriStateBase*, LinkContext*, ITransportSegment* segments);
+PriStateBase* TrySendRequestLinkStatus_in_PLLS_Idle(PriStateBase*, LinkContext*);
 
 /////////////////////////////////////////////////////////////////////////////
 // Wait state for send unconfirmed data
 /////////////////////////////////////////////////////////////////////////////
 
-class PLLS_SendUnconfirmedTransmitWait final : public PriStateBase
-{
-    MACRO_STATE_SINGLETON_INSTANCE(PLLS_SendUnconfirmedTransmitWait);
+////class PLLS_SendUnconfirmedTransmitWait final : public PriStateBase
+//typedef struct
+//{
+//  PriStateBase pPriStateBase;
+////    MACRO_STATE_SINGLETON_INSTANCE(PLLS_SendUnconfirmedTransmitWait);
 
-    virtual PriStateBase& OnTxReady(LinkContext& ctx) override;
-};
+////    virtual PriStateBase& OnTxReady(LinkContext& ctx) override;
+//} PLLS_SendUnconfirmedTransmitWait;
+
+void PLLS_SendUnconfirmedTransmitWait_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriStateBase);
+
+void* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait_override(void *, LinkContext* ctx);
+PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriStateBase,
+    LinkContext* ctx);
 
 /////////////////////////////////////////////////////////////////////////////
 // Waiting for a link status response
 /////////////////////////////////////////////////////////////////////////////
 
 //	@section desc As soon as we get an ACK, send the delayed pri frame
-class PLLS_RequestLinkStatusWait final : public PriStateBase
-{
-    MACRO_STATE_SINGLETON_INSTANCE(PLLS_RequestLinkStatusWait);
+////class PLLS_RequestLinkStatusWait final : public PriStateBase
+//typedef struct
+//{
+//  PriStateBase pPriStateBase;
+////    MACRO_STATE_SINGLETON_INSTANCE(PLLS_RequestLinkStatusWait);
 
-    PriStateBase& OnAck(LinkContext& ctx, bool) override;
-    PriStateBase& OnNack(LinkContext& ctx, bool) override;
-    PriStateBase& OnLinkStatus(LinkContext& ctx, bool) override;
-    PriStateBase& OnNotSupported(LinkContext& ctx, bool) override;
-    PriStateBase& OnTxReady(LinkContext&) override;
-    PriStateBase& OnTimeout(LinkContext&) override;
-};
+////    PriStateBase& OnAck(LinkContext& ctx, bool) override;
+////    PriStateBase& OnNack(LinkContext& ctx, bool) override;
+////    PriStateBase& OnLinkStatus(LinkContext& ctx, bool) override;
+////    PriStateBase& OnNotSupported(LinkContext& ctx, bool) override;
+////    PriStateBase& OnTxReady(LinkContext&) override;
+////    PriStateBase& OnTimeout(LinkContext&) override;
+//} PLLS_RequestLinkStatusWait;
 
-} // namespace opendnp3
+void PLLS_RequestLinkStatusWait_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase);
+
+void* OnAck_in_PLLS_RequestLinkStatusWait_override(void *, LinkContext* ctx, boolean);
+void* OnNack_in_PLLS_RequestLinkStatusWait_override(void *, LinkContext* ctx, boolean);
+void* OnLinkStatus_in_PLLS_RequestLinkStatusWait_override(void *, LinkContext* ctx, boolean);
+void* OnNotSupported_in_PLLS_RequestLinkStatusWait_override(void *, LinkContext* ctx, boolean);
+void* OnTxReady_in_PLLS_RequestLinkStatusWait_override(void *, LinkContext*);
+void* OnTimeout_in_PLLS_RequestLinkStatusWait_override(void *, LinkContext*);
+
+PriStateBase* OnAck_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, boolean);
+PriStateBase* OnNack_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, boolean);
+PriStateBase* OnLinkStatus_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, boolean);
+PriStateBase* OnNotSupported_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, boolean);
+PriStateBase* OnTxReady_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext*);
+PriStateBase* OnTimeout_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext*);
+
+////} // namespace opendnp3
 
 #endif

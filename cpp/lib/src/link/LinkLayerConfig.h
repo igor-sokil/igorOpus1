@@ -20,28 +20,35 @@
 #ifndef OPENDNP3_LINKLAYERCONFIG_H
 #define OPENDNP3_LINKLAYERCONFIG_H
 
-#include "opendnp3/link/LinkConfig.h"
+////#include "opendnp3/link/LinkConfig.h"
+#include "LinkConfig.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
     Includes additional parameters that should not be externally configurable
 */
-struct LinkLayerConfig : public LinkConfig
+////struct LinkLayerConfig : public LinkConfig
+typedef struct
 {
-    LinkLayerConfig(const LinkConfig& config, bool respondToAnySource)
-        : LinkConfig(config), respondToAnySource(respondToAnySource)
-    {
-    }
+  LinkConfig lLinkConfig;
 
-    /**
-     * If true, the the link-layer will respond to any source address
-     * user data frames will be passed up to transport reassembly for these frames
-     */
-    bool respondToAnySource;
-};
+////    LinkLayerConfig(const LinkConfig& config, bool respondToAnySource)
+////        : LinkConfig(config), respondToAnySource(respondToAnySource)
+////    {
+////    }
 
-} // namespace opendnp3
+  /**
+   * If true, the the link-layer will respond to any source address
+   * user data frames will be passed up to transport reassembly for these frames
+   */
+  boolean respondToAnySource;
+} LinkLayerConfig;
+
+void LinkLayerConfig_in_LinkLayerConfig(LinkLayerConfig *pLinkLayerConfig, LinkConfig* config, boolean respondToAnySource);
+
+
+////} // namespace opendnp3
 
 #endif

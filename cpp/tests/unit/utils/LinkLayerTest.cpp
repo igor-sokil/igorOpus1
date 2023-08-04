@@ -17,24 +17,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "utils/LinkLayerTest.h"
+#include "LinkLayerTest.h"
 
-#include <ser4cpp/util/HexConversions.h>
+////#include <ser4cpp/util/HexConversions.h>
 
-using namespace opendnp3;
-using namespace ser4cpp;
-
-LinkLayerTest::LinkLayerTest(const LinkConfig& config) : LinkLayerTest(LinkLayerConfig(config, false)) {}
-
-LinkLayerTest::LinkLayerTest(const LinkLayerConfig& config)
-    : exe(std::make_shared<exe4cpp::MockExecutor>()),
-      listener(std::make_shared<MockLinkListener>()),
-      upper(std::make_shared<MockTransportLayer>()),
-      link(log.logger, exe, upper, listener, config),
-      numTotalWrites(0)
+////using namespace opendnp3;
+////using namespace ser4cpp;
+/*
+  void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkConfig* config)
 {
-    upper->SetLinkLayer(link);
-    link.SetRouter(*this);
+  pLinkLayerTest->iILinkTx.pBeginTransmit_in_ILinkTx = BeginTransmit_in_LinkLayerTest_override;
+  setParentPointer_in_ILinkTx(&(pLinkLayerTest->iILinkTx), pLinkLayerTest);
+}
+*/
+////LinkLayerTest::LinkLayerTest(const LinkConfig& config) : LinkLayerTest(LinkLayerConfig(config, false)) {}
+
+////LinkLayerTest::LinkLayerTest(const LinkLayerConfig& config)
+////    : exe(std::make_shared<exe4cpp::MockExecutor>()),
+////      listener(std::make_shared<MockLinkListener>()),
+////      upper(std::make_shared<MockTransportLayer>()),
+////      link(log.logger, exe, upper, listener, config),
+////      numTotalWrites(0)
+////{
+////    upper->SetLinkLayer(link);
+////    link.SetRouter(*this);
+////}
+
+  void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkConfig* config)
+{
+ MockExecutor_in_MockExecutor(&(pLinkLayerTest->exe));
+ MockLinkListener_in_MockLinkListener(&(pLinkLayerTest->listener));
+ MockTransportLayer_in_MockTransportLayer(&(pLinkLayerTest->upper));
+
+  pLinkLayerTest->iILinkTx.pBeginTransmit_in_ILinkTx = BeginTransmit_in_LinkLayerTest_override;
+  setParentPointer_in_ILinkTx(&(pLinkLayerTest->iILinkTx), pLinkLayerTest);
 }
 
 bool LinkLayerTest::OnFrame(LinkFunction func,
@@ -81,3 +97,10 @@ LinkLayerConfig LinkLayerTest::DefaultConfig()
 {
     return LinkLayerConfig(LinkConfig(true), false);
 }
+
+   void BeginTransmit_in_LinkLayerTest_override(void *pILinkTx, RSeq_for_Uint16_t* buffer, ILinkSession* context)
+{
+  LinkLayerTest* parent = (LinkLayerTest*) getParentPointer_in_ILinkTx((ILinkTx*) pILinkTx);
+  BeginTransmit_in_LinkLayerTest(parent, buffer, context);
+}
+

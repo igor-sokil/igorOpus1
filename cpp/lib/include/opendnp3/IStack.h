@@ -20,36 +20,47 @@
 #ifndef OPENDNP3_ISTACK_H
 #define OPENDNP3_ISTACK_H
 
-#include "opendnp3/IResource.h"
-#include "opendnp3/StackStatistics.h"
+#include "IResource.h"
+#include "StackStatistics.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Base class for masters or outstations
  */
-class IStack : public IResource
+////class IStack : public IResource
+typedef struct
 {
-public:
-    virtual ~IStack() {}
+IResource iIResource;
+////public:
+////    virtual ~IStack() {}
 
     /**
      * Synchronously enable communications
      */
-    virtual bool Enable() = 0;
+    boolean (*pEnable_in_IStack)(void*);// = 0;
 
     /**
      * Synchronously disable communications
      */
-    virtual bool Disable() = 0;
+    boolean (*pDisable_in_IStack)(void*);// = 0;
 
     /**
      * @return stack statistics counters
      */
-    virtual StackStatistics GetStackStatistics() = 0;
-};
+    StackStatistics (*pGetStackStatistics_in_IStack)(void*);// = 0;
 
-} // namespace opendnp3
+  void* pParentPointer_in_IStack;
+} IStack;
+
+void Enable_in_IStack(IStack* pIStack);
+void Disable_in_IStack(IStack* pIStack);
+void GetStackStatistics_in_IStack(IStack* pIStack);
+
+void* getParentPointer_in_IStack(IStack*);
+void  setParentPointer_in_IStack(IStack*, void*);
+
+////} // namespace opendnp3
 
 #endif

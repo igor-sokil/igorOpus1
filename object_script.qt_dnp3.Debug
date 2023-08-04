@@ -2,10 +2,12 @@ debug/Comparisons.o
 debug/HasLength.o
 debug/RSeq.o
 debug/WSeq.o
+debug/Settable_for_RSeq.o
 debug/Settable_for_WSeq.o
 debug/Settable_for_LinkBroadcastAddress.o
 debug/BufferSer4.o
-debug/StaticBuffer.o
+debug/StaticBuffer_for_LPDU_HEADER_SIZE.o
+debug/StaticBuffer_for_LPDU_MAX_FRAME_SIZE.o
 debug/Pair_for_IINField_AppControlField.o
 debug/Array__for__Node_for_EventRecord.o
 debug/ArrayView__for__Node_for_EventRecord.o
@@ -34,6 +36,8 @@ debug/Buffer.o
 debug/UTCTimestamp.o
 debug/CommandPointResult.o
 debug/HeaderInfo.o
+debug/IResource.o
+debug/StackStatistics.o
 debug/BaseMeasurementTypes.o
 debug/DNPTime.o
 debug/Flags.o
@@ -68,9 +72,11 @@ debug/IFrameSink.o
 debug/ILinkSession.o
 debug/ITransportSegment.o
 debug/ILinkLayer.o
+debug/ILinkTx.o
 debug/LinkHeader.o
 debug/LinkFrame.o
 debug/LinkHeaderFields.o
+debug/LinkLayerConfig.o
 debug/LinkLayerParser.o
 debug/ShiftableBuffer.o
 debug/APDUHeaderParser.o

@@ -22,14 +22,15 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef SER4CPP_STATICBUFFER_H
-#define SER4CPP_STATICBUFFER_H
+#ifndef SER4CPP_StaticBuffer_for_LPDU_MAX_FRAME_SIZE_H
+#define SER4CPP_StaticBuffer_for_LPDU_MAX_FRAME_SIZE_H
 
 ////#include "ser4cpp/util/Comparisons.h"
 ////#include "ser4cpp/util/Uncopyable.h"
 ////#include "ser4cpp/container/SequenceTypes.h"
 
 #include "Comparisons.h"
+#include "LinkLayerConstants.h"
 //#include "ser4cpp/util/Uncopyable.h"
 //#include "ser4cpp/container/SequenceTypes.h"
 #include "RSeq.h"
@@ -42,7 +43,7 @@
 ////{
 ////template <size_t LENGTH>
 ////class StaticBuffer final
-#define LENGTH10  10
+//#define LENGTH10  10
 typedef struct
 {
 
@@ -75,16 +76,16 @@ typedef struct
 ////    }
 ////
 ////private:
-    uint8_t buffer[LENGTH10];//LENGTH];// = { 0 };
-} StaticBuffer_for_LENGTH10;
+  uint8_t buffer[LPDU_MAX_FRAME_SIZE];//LENGTH];// = { 0 };
+} StaticBuffer_for_LPDU_MAX_FRAME_SIZE;//_for_LENGTH10;
 ////
 ////}
 
-   uint16_t length_in_StaticBuffer_for_LENGTH10(void);
-   WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LENGTH10Over2(StaticBuffer_for_LENGTH10 *pStaticBuffer_for_LENGTH10, uint16_t max_size);
-   WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LENGTH10Over1(StaticBuffer_for_LENGTH10 *pStaticBuffer_for_LENGTH10);
-    RSeq_for_Uint16_t as_seq_in_StaticBuffer_for_LENGTH10Over2(StaticBuffer_for_LENGTH10 *pStaticBuffer_for_LENGTH10, uint16_t max_size);
-   RSeq_for_Uint16_t as_seq_in_StaticBuffer_for_LENGTH10Over1(StaticBuffer_for_LENGTH10 *pStaticBuffer_for_LENGTH10);
+uint16_t length_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZE(void);
+WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver2(StaticBuffer_for_LPDU_MAX_FRAME_SIZE *pStaticBuffer, uint16_t max_size);
+WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(StaticBuffer_for_LPDU_MAX_FRAME_SIZE *pStaticBuffer);
+RSeq_for_Uint16_t as_seq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver2(StaticBuffer_for_LPDU_MAX_FRAME_SIZE *pStaticBuffer, uint16_t max_size);
+RSeq_for_Uint16_t as_seq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(StaticBuffer_for_LPDU_MAX_FRAME_SIZE *pStaticBuffer);
 
 
 #endif

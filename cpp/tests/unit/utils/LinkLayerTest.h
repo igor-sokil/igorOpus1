@@ -21,53 +21,84 @@ MYTODO
 #ifndef OPENDNP3_UNITTESTS_LINKLAYERTEST_H
 #define OPENDNP3_UNITTESTS_LINKLAYERTEST_H
 
-#include <opendnp3/logging/LogLevels.h>
+////#include <opendnp3/logging/LogLevels.h>
 
-#include <exe4cpp/MockExecutor.h>
+////#include <exe4cpp/MockExecutor.h>
+#include "MockExecutor.h"
 
-#include "dnp3mocks/MockLinkListener.h"
-#include "dnp3mocks/MockLogHandler.h"
-#include "dnp3mocks/MockTransportLayer.h"
+////#include "dnp3mocks/MockLinkListener.h"
+#include "MockLinkListener.h"
+////#include "dnp3mocks/MockLogHandler.h"
+////#include "dnp3mocks/MockTransportLayer.h"
+#include "MockTransportLayer.h"
 
-#include <link/ILinkTx.h>
-#include <link/LinkLayer.h>
+////#include <link/ILinkTx.h>
+////#include <link/LinkLayer.h>
+
+#include "ILinkTx.h"
+#include "LinkLayer.h"
 
 #include <queue>
 
-class LinkLayerTest : public opendnp3::ILinkTx
+////class LinkLayerTest : public opendnp3::ILinkTx
+typedef struct
 {
-public:
-    LinkLayerTest(const opendnp3::LinkConfig& config);
+ ILinkTx iILinkTx;
+////public:
+////    LinkLayerTest(const opendnp3::LinkConfig& config);
 
-    LinkLayerTest(const opendnp3::LinkLayerConfig& config = DefaultConfig());
+////    LinkLayerTest(const opendnp3::LinkLayerConfig& config = DefaultConfig());
 
-    bool OnFrame(opendnp3::LinkFunction func,
-                 bool isMaster,
-                 bool fcb,
-                 bool fcvdfc,
-                 uint16_t dest,
-                 uint16_t source,
-                 const ser4cpp::rseq_t& userdata = ser4cpp::rseq_t::empty());
+////    bool OnFrame(opendnp3::LinkFunction func,
+////                 bool isMaster,
+////                 bool fcb,
+////                 bool fcvdfc,
+////                 uint16_t dest,
+////                 uint16_t source,
+////                 const ser4cpp::rseq_t& userdata = ser4cpp::rseq_t::empty());
 
     // ILinkTx interface
-    void BeginTransmit(const ser4cpp::rseq_t& buffer, opendnp3::ILinkSession& context) final;
+////    void BeginTransmit(const ser4cpp::rseq_t& buffer, opendnp3::ILinkSession& context) final;
 
-    static opendnp3::LinkLayerConfig DefaultConfig();
+////    static opendnp3::LinkLayerConfig DefaultConfig();
 
-    MockLogHandler log;
-    std::shared_ptr<exe4cpp::MockExecutor> exe;
-    std::shared_ptr<MockLinkListener> listener;
-    std::shared_ptr<MockTransportLayer> upper;
+////    MockLogHandler log;
+////    std::shared_ptr<exe4cpp::MockExecutor> exe;
+////    std::shared_ptr<MockLinkListener> listener;
+////    std::shared_ptr<MockTransportLayer> upper;
+    MockExecutor exe;
+    MockLinkListener listener;
+    MockTransportLayer upper;
 
-    opendnp3::LinkLayer link;
+    LinkLayer link;
 
-    std::string PopLastWriteAsHex();
-    uint32_t NumTotalWrites();
+////    std::string PopLastWriteAsHex();
+////    QString PopLastWriteAsHex();
+////    uint32_t NumTotalWrites();
 
-private:
+////private:
     uint32_t numTotalWrites;
 
-    std::deque<std::string> writeQueue;
-};
+////    std::deque<std::string> writeQueue;
+    std::deque<QString> writeQueue;
+} LinkLayerTest;
+
+  void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkConfig* config);
+
+////    LinkLayerTest(const opendnp3::LinkLayerConfig& config = DefaultConfig());
+
+  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
+                 LinkFunction_uint8_t func,
+                 boolean isMaster,
+                 boolean fcb,
+                 boolean fcvdfc,
+                 uint16_t dest,
+                 uint16_t source,
+                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
+
+    // ILinkTx interface
+   void BeginTransmit_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, RSeq_for_Uint16_t* buffer, ILinkSession* context);
+   void BeginTransmit_in_LinkLayerTest_override(void *pILinkTx, RSeq_for_Uint16_t* buffer, ILinkSession* context);
+
 
 #endif
