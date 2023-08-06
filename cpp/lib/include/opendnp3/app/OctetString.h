@@ -32,37 +32,37 @@
 ////class OctetString : public OctetData
 typedef struct
 {
-    OctetData oOctetData;
+  OctetData oOctetData;
 ////public:
-    /**
-     * Construct with a default value of [0x00] (length == 1)
-     */
+  /**
+   * Construct with a default value of [0x00] (length == 1)
+   */
 ////    OctetString() : OctetData() {}
 
-    /**
-     * Construct from a c-style string
-     *
-     * strlen() is used internally to determine the length
-     *
-     * If the length is 0, the default value of [0x00] is assigned
-     * If the length is > 255, only the first 255 bytes are copied
-     *
-     * The null terminator is NOT copied as part of buffer
-     */
+  /**
+   * Construct from a c-style string
+   *
+   * strlen() is used internally to determine the length
+   *
+   * If the length is 0, the default value of [0x00] is assigned
+   * If the length is > 255, only the first 255 bytes are copied
+   *
+   * The null terminator is NOT copied as part of buffer
+   */
 ////    OctetString(const char* input) : OctetData(input) {}
 
-    /**
-     * Construct from read-only buffer slice
-     *
-     * If the length is 0, the default value of [0x00] is assigned
-     * If the length is > 255, only the first 255 bytes are copied
-     */
+  /**
+   * Construct from read-only buffer slice
+   *
+   * If the length is 0, the default value of [0x00] is assigned
+   * If the length is > 255, only the first 255 bytes are copied
+   */
 ////    OctetString(const Buffer& buffer) : OctetData(buffer) {}
 } OctetString;
 
-   void OctetString_in_OctetStringOver1(OctetString *pOctetString);
-   void OctetString_in_OctetStringOver2(OctetString *pOctetString, char* input);
-   void OctetString_in_OctetStringOver3(OctetString *pOctetString, Buffer *buffer);
+void OctetString_in_OctetStringOver1(OctetString *pOctetString);
+void OctetString_in_OctetStringOver2(OctetString *pOctetString, char* input);
+void OctetString_in_OctetStringOver3(OctetString *pOctetString, Buffer *buffer);
 
 ////} // namespace opendnp3
 

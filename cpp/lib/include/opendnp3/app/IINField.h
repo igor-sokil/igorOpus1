@@ -28,56 +28,56 @@
 #define IINBit_uint8_t uint8_t
 enum IINBit
 {
-    IINBit_BROADCAST = 0,
-    IINBit_CLASS1_EVENTS,
-    IINBit_CLASS2_EVENTS,
-    IINBit_CLASS3_EVENTS,
-    IINBit_NEED_TIME,
-    IINBit_LOCAL_CONTROL,
-    IINBit_DEVICE_TROUBLE,
-    IINBit_DEVICE_RESTART,
-    IINBit_FUNC_NOT_SUPPORTED,
-    IINBit_OBJECT_UNKNOWN,
-    IINBit_PARAM_ERROR,
-    IINBit_EVENT_BUFFER_OVERFLOW,
-    IINBit_ALREADY_EXECUTING,
-    IINBit_CONFIG_CORRUPT,
-    IINBit_RESERVED1,
-    IINBit_RESERVED2 = 15
+  IINBit_BROADCAST = 0,
+  IINBit_CLASS1_EVENTS,
+  IINBit_CLASS2_EVENTS,
+  IINBit_CLASS3_EVENTS,
+  IINBit_NEED_TIME,
+  IINBit_LOCAL_CONTROL,
+  IINBit_DEVICE_TROUBLE,
+  IINBit_DEVICE_RESTART,
+  IINBit_FUNC_NOT_SUPPORTED,
+  IINBit_OBJECT_UNKNOWN,
+  IINBit_PARAM_ERROR,
+  IINBit_EVENT_BUFFER_OVERFLOW,
+  IINBit_ALREADY_EXECUTING,
+  IINBit_CONFIG_CORRUPT,
+  IINBit_RESERVED1,
+  IINBit_RESERVED2 = 15
 };
 
 /** DNP3 two-byte IIN field.
  */
 //    enum class LSBMask : uint8_t
 #define LSBMask_uint8_t uint8_t
-    enum LSBMask
-    {
-        LSBMask_BROADCAST = 0x01,
-        LSBMask_CLASS1_EVENTS = 0x02,
-        LSBMask_CLASS2_EVENTS = 0x04,
-        LSBMask_CLASS3_EVENTS = 0x08,
-        LSBMask_NEED_TIME = 0x10,
-        LSBMask_LOCAL_CONTROL = 0x20,
-        LSBMask_DEVICE_TROUBLE = 0x40,
-        LSBMask_DEVICE_RESTART = 0x80,
-    };
+enum LSBMask
+{
+  LSBMask_BROADCAST = 0x01,
+  LSBMask_CLASS1_EVENTS = 0x02,
+  LSBMask_CLASS2_EVENTS = 0x04,
+  LSBMask_CLASS3_EVENTS = 0x08,
+  LSBMask_NEED_TIME = 0x10,
+  LSBMask_LOCAL_CONTROL = 0x20,
+  LSBMask_DEVICE_TROUBLE = 0x40,
+  LSBMask_DEVICE_RESTART = 0x80,
+};
 
 ////    enum class MSBMask : uint8_t
 #define MSBMask_uint8_t uint8_t
-    enum MSBMask 
-    {
-        MSBMask_FUNC_NOT_SUPPORTED = 0x01,
-        MSBMask_OBJECT_UNKNOWN = 0x02,
-        MSBMask_PARAM_ERROR = 0x04,
-        MSBMask_EVENT_BUFFER_OVERFLOW = 0x08,
-        MSBMask_ALREADY_EXECUTING = 0x10,
-        MSBMask_CONFIG_CORRUPT = 0x20,
-        MSBMask_RESERVED1 = 0x40,
-        MSBMask_RESERVED2 = 0x80,
+enum MSBMask
+{
+  MSBMask_FUNC_NOT_SUPPORTED = 0x01,
+  MSBMask_OBJECT_UNKNOWN = 0x02,
+  MSBMask_PARAM_ERROR = 0x04,
+  MSBMask_EVENT_BUFFER_OVERFLOW = 0x08,
+  MSBMask_ALREADY_EXECUTING = 0x10,
+  MSBMask_CONFIG_CORRUPT = 0x20,
+  MSBMask_RESERVED1 = 0x40,
+  MSBMask_RESERVED2 = 0x80,
 
-        // special mask that indicates if there was any error processing a request
-        MSBMask_REQUEST_ERROR_MASK = MSBMask_FUNC_NOT_SUPPORTED | MSBMask_OBJECT_UNKNOWN | MSBMask_PARAM_ERROR
-    };
+  // special mask that indicates if there was any error processing a request
+  MSBMask_REQUEST_ERROR_MASK = MSBMask_FUNC_NOT_SUPPORTED | MSBMask_OBJECT_UNKNOWN | MSBMask_PARAM_ERROR
+};
 
 ////class IINField
 typedef struct
@@ -158,8 +158,8 @@ typedef struct
 ////        return IINField(~LSB, ~MSB);
 ////    }
 
-    uint8_t LSB;
-    uint8_t MSB;
+  uint8_t LSB;
+  uint8_t MSB;
 
 ////private:
 ////    static const uint8_t REQUEST_ERROR_MASK;
@@ -193,30 +193,30 @@ typedef struct
 ////    }
 } IINField;
 
-   IINField Empty_in_IINField_static(void);
-   void IINField_in_IINFieldOver1(IINField *pIINField);
-   void IINField_in_IINFieldOver2(IINField *pIINField, IINBit_uint8_t bit);
-   void IINField_in_IINFieldOver3(IINField *pIINField, uint8_t aLSB, uint8_t aMSB);
-    boolean HasRequestError_in_IINField(IINField *pIINField);
-   void Clear_in_IINField(IINField *pIINField);
-    boolean Any_in_IINField(IINField *pIINField);
-    boolean IsClear_in_IINField(IINField *pIINField, IINBit_uint8_t bit);
-    boolean Get_in_IINField_MSB(IINField *pIINField, MSBMask_uint8_t bit);
-    boolean Get_in_IINField_LSB(IINField *pIINField, LSBMask_uint8_t bit);
-    void Clear_in_IINField_LSB(IINField *pIINField, LSBMask_uint8_t bit);
-    void Clear_in_IINField_MSB(IINField *pIINField, MSBMask_uint8_t bit);
-    void Set_in_IINField_LSB(IINField *pIINField, LSBMask_uint8_t bit);
-    void Set_in_IINField_MSB(IINField *pIINField, MSBMask_uint8_t bit);
+IINField Empty_in_IINField_static(void);
+void IINField_in_IINFieldOver1(IINField *pIINField);
+void IINField_in_IINFieldOver2(IINField *pIINField, IINBit_uint8_t bit);
+void IINField_in_IINFieldOver3(IINField *pIINField, uint8_t aLSB, uint8_t aMSB);
+boolean HasRequestError_in_IINField(IINField *pIINField);
+void Clear_in_IINField(IINField *pIINField);
+boolean Any_in_IINField(IINField *pIINField);
+boolean IsClear_in_IINField(IINField *pIINField, IINBit_uint8_t bit);
+boolean Get_in_IINField_MSB(IINField *pIINField, MSBMask_uint8_t bit);
+boolean Get_in_IINField_LSB(IINField *pIINField, LSBMask_uint8_t bit);
+void Clear_in_IINField_LSB(IINField *pIINField, LSBMask_uint8_t bit);
+void Clear_in_IINField_MSB(IINField *pIINField, MSBMask_uint8_t bit);
+void Set_in_IINField_LSB(IINField *pIINField, LSBMask_uint8_t bit);
+void Set_in_IINField_MSB(IINField *pIINField, MSBMask_uint8_t bit);
 
-    void ClearBit_in_IINField(IINField *, IINBit_uint8_t bit);
-    void SetBit_in_IINField(IINField *, IINBit_uint8_t bit);
-    void SetBitToValue_in_IINField(IINField *, IINBit_uint8_t bit, boolean value);
-    boolean IsSet_in_IINField(IINField *, IINBit_uint8_t bit);
+void ClearBit_in_IINField(IINField *, IINBit_uint8_t bit);
+void SetBit_in_IINField(IINField *, IINBit_uint8_t bit);
+void SetBitToValue_in_IINField(IINField *, IINBit_uint8_t bit, boolean value);
+boolean IsSet_in_IINField(IINField *, IINBit_uint8_t bit);
 
 
 ////    IINField& operator|=(const IINField& aIIN)
-    IINField operatorOREQ_in_IINField(IINField *pIINField, IINField* aIIN);
-    IINField operatorOR_in_IINField(IINField *pIINField, IINField* aIIN);
+IINField operatorOREQ_in_IINField(IINField *pIINField, IINField* aIIN);
+IINField operatorOR_in_IINField(IINField *pIINField, IINField* aIIN);
 
 ////} // namespace opendnp3
 

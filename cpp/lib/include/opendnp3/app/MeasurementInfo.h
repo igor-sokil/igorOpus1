@@ -80,7 +80,7 @@
 #define meas_t_in_BinaryInfo             Binary
 #define value_t_in_BinaryInfo            boolean
 
-#define DefaultStaticVariation_in_BinaryInfo static_variation_t_in_BinaryInfo 
+#define DefaultStaticVariation_in_BinaryInfo static_variation_t_in_BinaryInfo
 #define DefaultEventVariation_in_BinaryInfo  event_variation_t_in_BinaryInfo
 
 ////struct BinaryInfo : private StaticOnly

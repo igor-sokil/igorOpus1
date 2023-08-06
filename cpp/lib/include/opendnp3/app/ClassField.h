@@ -87,58 +87,58 @@ typedef struct
 
 ////private:
 ////    uint8_t bitfield;
-    uint8_t bitfield;
+  uint8_t bitfield;
 } ClassField;
 
-  void ClassField_in_ClassFieldOver1(ClassField *pClassField);
+void ClassField_in_ClassFieldOver1(ClassField *pClassField);
 
-  void ClassField_in_ClassFieldOver2(ClassField *pClassField, PointClass_uint8_t pc);
+void ClassField_in_ClassFieldOver2(ClassField *pClassField, PointClass_uint8_t pc);
 
-  void ClassField_in_ClassFieldOver3(ClassField *pClassField, EventClass_uint8_t ec);
+void ClassField_in_ClassFieldOver3(ClassField *pClassField, EventClass_uint8_t ec);
 
-  void ClassField_in_ClassFieldOver4(ClassField *pClassField, uint8_t mask_);
+void ClassField_in_ClassFieldOver4(ClassField *pClassField, uint8_t mask_);
 
-  void ClassField_in_ClassFieldOver5(ClassField *pClassField, boolean class0, boolean class1, boolean class2, boolean class3);
+void ClassField_in_ClassFieldOver5(ClassField *pClassField, boolean class0, boolean class1, boolean class2, boolean class3);
 
-  boolean IsEmpty_in_ClassField(ClassField *pClassField);
+boolean IsEmpty_in_ClassField(ClassField *pClassField);
 
-  boolean Intersects_in_ClassField(ClassField *pClassField, ClassField *other);
+boolean Intersects_in_ClassField(ClassField *pClassField, ClassField *other);
 
-  uint8_t GetBitfield_in_ClassField(ClassField *pClassField);
+uint8_t GetBitfield_in_ClassField(ClassField *pClassField);
 
-  ClassField OnlyEventClasses_in_ClassField(ClassField *pClassField);
+ClassField OnlyEventClasses_in_ClassField(ClassField *pClassField);
 
-  void Clear_in_ClassField(ClassField *pClassField, ClassField *field);
+void Clear_in_ClassField(ClassField *pClassField, ClassField *field);
 
-  void Set_in_ClassFieldOver1(ClassField *pClassField, ClassField *field);
+void Set_in_ClassFieldOver1(ClassField *pClassField, ClassField *field);
 
-  void Set_in_ClassFieldOver2(ClassField *pClassField, PointClass_uint8_t pc);
+void Set_in_ClassFieldOver2(ClassField *pClassField, PointClass_uint8_t pc);
 
-    const uint8_t CLASS_0_in_ClassField = PointClass_Class0;
-    const uint8_t CLASS_1_in_ClassField = PointClass_Class1;
-    const uint8_t CLASS_2_in_ClassField = PointClass_Class2;
-    const uint8_t CLASS_3_in_ClassField = PointClass_Class3;
-    const uint8_t EVENT_CLASSES_in_ClassField = /*CLASS_1_in_ClassField*/PointClass_Class1 | 
-                                                       /*CLASS_2_in_ClassField*/PointClass_Class2 |
-                                                       /*CLASS_3_in_ClassField*/PointClass_Class3;
-    const uint8_t ALL_CLASSES_in_ClassField = //EVENT_CLASSES_in_ClassField | CLASS_0_in_ClassField;
-                                                     /*CLASS_1_in_ClassField*/PointClass_Class1 |
-                                                     /*CLASS_2_in_ClassField*/PointClass_Class2 |
-                                                     /*CLASS_3_in_ClassField*/PointClass_Class3 | 
-                                                                              PointClass_Class0;
-  boolean HasEventType_in_ClassField(ClassField *pClassField, EventClass_uint8_t ec);
+const uint8_t CLASS_0_in_ClassField = PointClass_Class0;
+const uint8_t CLASS_1_in_ClassField = PointClass_Class1;
+const uint8_t CLASS_2_in_ClassField = PointClass_Class2;
+const uint8_t CLASS_3_in_ClassField = PointClass_Class3;
+const uint8_t EVENT_CLASSES_in_ClassField = /*CLASS_1_in_ClassField*/PointClass_Class1 |
+    /*CLASS_2_in_ClassField*/PointClass_Class2 |
+    /*CLASS_3_in_ClassField*/PointClass_Class3;
+const uint8_t ALL_CLASSES_in_ClassField = //EVENT_CLASSES_in_ClassField | CLASS_0_in_ClassField;
+  /*CLASS_1_in_ClassField*/PointClass_Class1 |
+  /*CLASS_2_in_ClassField*/PointClass_Class2 |
+  /*CLASS_3_in_ClassField*/PointClass_Class3 |
+  PointClass_Class0;
+boolean HasEventType_in_ClassField(ClassField *pClassField, EventClass_uint8_t ec);
 
-  boolean HasClass0_in_ClassField(ClassField *pClassField);
-  boolean HasClass1_in_ClassField(ClassField *pClassField);
-  boolean HasClass2_in_ClassField(ClassField *pClassField);
-  boolean HasClass3_in_ClassField(ClassField *pClassField);
+boolean HasClass0_in_ClassField(ClassField *pClassField);
+boolean HasClass1_in_ClassField(ClassField *pClassField);
+boolean HasClass2_in_ClassField(ClassField *pClassField);
+boolean HasClass3_in_ClassField(ClassField *pClassField);
 
-  boolean HasEventClass_in_ClassField(ClassField *pClassField);
-  boolean HasAnyClass_in_ClassField(ClassField *pClassField);
+boolean HasEventClass_in_ClassField(ClassField *pClassField);
+boolean HasAnyClass_in_ClassField(ClassField *pClassField);
 
-  ClassField  None_in_ClassField_static(void);
-  ClassField  AllClasses_in_ClassField_static(void);
-  ClassField  AllEventClasses_in_ClassField_static(void);
+ClassField  None_in_ClassField_static(void);
+ClassField  AllClasses_in_ClassField_static(void);
+ClassField  AllEventClasses_in_ClassField_static(void);
 
 ////} // namespace opendnp3
 

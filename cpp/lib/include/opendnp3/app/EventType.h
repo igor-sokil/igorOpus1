@@ -27,25 +27,25 @@
 
 //enum class EventType : uint16_t
 #define EventType_uint16_t uint16_t
-enum EventType 
+enum EventType
 {
-    EventType_Binary = 0,
-    EventType_Analog = 1,
-    EventType_Counter = 2,
-    EventType_FrozenCounter = 3,
-    EventType_DoubleBitBinary = 4,
-    EventType_BinaryOutputStatus = 5,
-    EventType_AnalogOutputStatus = 6,
-    EventType_OctetString = 7
+  EventType_Binary = 0,
+  EventType_Analog = 1,
+  EventType_Counter = 2,
+  EventType_FrozenCounter = 3,
+  EventType_DoubleBitBinary = 4,
+  EventType_BinaryOutputStatus = 5,
+  EventType_AnalogOutputStatus = 6,
+  EventType_OctetString = 7
 };
 
 //enum class EventClass : uint8_t
 #define EventClass_uint8_t uint8_t
-enum EventClass 
+enum EventClass
 {
-    EventClass_EC1 = 0,
-    EventClass_EC2 = 1,
-    EventClass_EC3 = 2
+  EventClass_EC1 = 0,
+  EventClass_EC2 = 1,
+  EventClass_EC3 = 2
 };
 
 ////} // namespace opendnp3

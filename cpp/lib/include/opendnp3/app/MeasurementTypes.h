@@ -39,7 +39,7 @@
 ////class Binary : public TypedMeasurement<bool>
 typedef struct
 {
-   TypedMeasurement_for_Boolean tTypedMeasurement_for_Boolean;
+  TypedMeasurement_for_Boolean tTypedMeasurement_for_Boolean;
 ////public:
 ////    Binary();
 ////
@@ -54,12 +54,12 @@ typedef struct
 ////    Binary(bool value, Flags flags, DNPTime time);
 } Binary;
 
-   void Binary_in_BinaryOver1(Binary *pBinary);
-   void Binary_in_BinaryOver2(Binary *pBinary, boolean value);
-   void Binary_in_BinaryOver3(Binary *pBinary, Flags flags);
-   void Binary_in_BinaryOver4(Binary *pBinary, Flags flags, DNPTime timeDNPTime);
-   void Binary_in_BinaryOver5(Binary *pBinary, boolean value, Flags flags);
-   void Binary_in_BinaryOver6(Binary *pBinary, boolean value, Flags flags, DNPTime timeDNPTime);
+void Binary_in_BinaryOver1(Binary *pBinary);
+void Binary_in_BinaryOver2(Binary *pBinary, boolean value);
+void Binary_in_BinaryOver3(Binary *pBinary, Flags flags);
+void Binary_in_BinaryOver4(Binary *pBinary, Flags flags, DNPTime timeDNPTime);
+void Binary_in_BinaryOver5(Binary *pBinary, boolean value, Flags flags);
+void Binary_in_BinaryOver6(Binary *pBinary, boolean value, Flags flags, DNPTime timeDNPTime);
 
 /**
 The Double-bit Binary data type has two stable states, on and off, and an in transit state. Motor operated switches
@@ -68,7 +68,7 @@ or binary valves are good examples.
 ////class DoubleBitBinary : public TypedMeasurement<DoubleBit>
 typedef struct
 {
-   TypedMeasurement_for_DoubleBit_uint8_t  tTypedMeasurement_for_DoubleBit_uint8_t;
+  TypedMeasurement_for_DoubleBit_uint8_t  tTypedMeasurement_for_DoubleBit_uint8_t;
 ////public:
 ////    DoubleBitBinary();
 ////
@@ -91,19 +91,19 @@ typedef struct
 ////    static Flags GetFlags(Flags flags, DoubleBit state);
 } DoubleBitBinary;
 
-   void DoubleBitBinary_in_DoubleBitBinaryOver1(DoubleBitBinary *pDoubleBitBinary);
-   void DoubleBitBinary_in_DoubleBitBinaryOver2(DoubleBitBinary *pDoubleBitBinary, DoubleBit_uint8_t value);
-   void DoubleBitBinary_in_DoubleBitBinaryOver3(DoubleBitBinary *pDoubleBitBinary, Flags flags);
-   void DoubleBitBinary_in_DoubleBitBinaryOver4(DoubleBitBinary *pDoubleBitBinary, Flags flags, DNPTime timeDNPTime);
-   void DoubleBitBinary_in_DoubleBitBinaryOver5(DoubleBitBinary *pDoubleBitBinary, DoubleBit_uint8_t value, Flags flags);
-   void DoubleBitBinary_in_DoubleBitBinaryOver6(DoubleBitBinary *pDoubleBitBinary, DoubleBit_uint8_t value, Flags flags, DNPTime timeDNPTime);
+void DoubleBitBinary_in_DoubleBitBinaryOver1(DoubleBitBinary *pDoubleBitBinary);
+void DoubleBitBinary_in_DoubleBitBinaryOver2(DoubleBitBinary *pDoubleBitBinary, DoubleBit_uint8_t value);
+void DoubleBitBinary_in_DoubleBitBinaryOver3(DoubleBitBinary *pDoubleBitBinary, Flags flags);
+void DoubleBitBinary_in_DoubleBitBinaryOver4(DoubleBitBinary *pDoubleBitBinary, Flags flags, DNPTime timeDNPTime);
+void DoubleBitBinary_in_DoubleBitBinaryOver5(DoubleBitBinary *pDoubleBitBinary, DoubleBit_uint8_t value, Flags flags);
+void DoubleBitBinary_in_DoubleBitBinaryOver6(DoubleBitBinary *pDoubleBitBinary, DoubleBit_uint8_t value, Flags flags, DNPTime timeDNPTime);
 
-   const uint8_t ValueMask_in_DoubleBitBinary = 0xC0;
-   const uint8_t QualityMask_in_DoubleBitBinary = 0x3F;
+const uint8_t ValueMask_in_DoubleBitBinary = 0xC0;
+const uint8_t QualityMask_in_DoubleBitBinary = 0x3F;
 
-   DoubleBit_uint8_t GetValue_in_DoubleBitBinary_static(Flags flags);
+DoubleBit_uint8_t GetValue_in_DoubleBitBinary_static(Flags flags);
 
-   Flags GetFlags_in_DoubleBitBinary_static(Flags flags, DoubleBit_uint8_t state);
+Flags GetFlags_in_DoubleBitBinary_static(Flags flags, DoubleBit_uint8_t state);
 
 /**
     BinaryOutputStatus is used for describing the current state of a control. It is very infrequently
@@ -113,7 +113,7 @@ typedef struct
 ////class BinaryOutputStatus : public TypedMeasurement<bool>
 typedef struct
 {
-   TypedMeasurement_for_Boolean tTypedMeasurement_for_Boolean;
+  TypedMeasurement_for_Boolean tTypedMeasurement_for_Boolean;
 ////public:
 ////    BinaryOutputStatus();
 
@@ -128,12 +128,12 @@ typedef struct
 ////    BinaryOutputStatus(bool value, Flags flags, DNPTime time);
 } BinaryOutputStatus;
 
-   void BinaryOutputStatus_in_BinaryOutputStatusOver1(BinaryOutputStatus *pBinaryOutputStatus);
-   void BinaryOutputStatus_in_BinaryOutputStatusOver2(BinaryOutputStatus *pBinaryOutputStatus, boolean value);
-   void BinaryOutputStatus_in_BinaryOutputStatusOver3(BinaryOutputStatus *pBinaryOutputStatus, Flags flags);
-   void BinaryOutputStatus_in_BinaryOutputStatusOver4(BinaryOutputStatus *pBinaryOutputStatus, Flags flags, DNPTime timeDNPTime);
-   void BinaryOutputStatus_in_BinaryOutputStatusOver5(BinaryOutputStatus *pBinaryOutputStatus, boolean value, Flags flags);
-   void BinaryOutputStatus_in_BinaryOutputStatusOver6(BinaryOutputStatus *pBinaryOutputStatus, boolean value, Flags flags, DNPTime timeDNPTime);
+void BinaryOutputStatus_in_BinaryOutputStatusOver1(BinaryOutputStatus *pBinaryOutputStatus);
+void BinaryOutputStatus_in_BinaryOutputStatusOver2(BinaryOutputStatus *pBinaryOutputStatus, boolean value);
+void BinaryOutputStatus_in_BinaryOutputStatusOver3(BinaryOutputStatus *pBinaryOutputStatus, Flags flags);
+void BinaryOutputStatus_in_BinaryOutputStatusOver4(BinaryOutputStatus *pBinaryOutputStatus, Flags flags, DNPTime timeDNPTime);
+void BinaryOutputStatus_in_BinaryOutputStatusOver5(BinaryOutputStatus *pBinaryOutputStatus, boolean value, Flags flags);
+void BinaryOutputStatus_in_BinaryOutputStatusOver6(BinaryOutputStatus *pBinaryOutputStatus, boolean value, Flags flags, DNPTime timeDNPTime);
 
 /**
     Analogs are used for variable data points that usually reflect a real world value.
@@ -143,7 +143,7 @@ typedef struct
 ////class Analog : public TypedMeasurement<double>
 typedef struct
 {
-   TypedMeasurement_for_Double64  tTypedMeasurement_for_Double64;
+  TypedMeasurement_for_Double64  tTypedMeasurement_for_Double64;
 ////public:
 ////    Analog();
 
@@ -154,10 +154,10 @@ typedef struct
 ////    Analog(double value, Flags flags, DNPTime time);
 } Analog;
 
-   void Analog_in_AnalogOver1(Analog *pAnalog);
-   void Analog_in_AnalogOver2(Analog *pAnalog, double value);
-   void Analog_in_AnalogOver3(Analog *pAnalog, double value, Flags flags);
-   void Analog_in_AnalogOver4(Analog *pAnalog, double value, Flags flags, DNPTime timeDNPTime);
+void Analog_in_AnalogOver1(Analog *pAnalog);
+void Analog_in_AnalogOver2(Analog *pAnalog, double value);
+void Analog_in_AnalogOver3(Analog *pAnalog, double value, Flags flags);
+void Analog_in_AnalogOver4(Analog *pAnalog, double value, Flags flags, DNPTime timeDNPTime);
 
 /**
     Counters are used for describing generally increasing values (non-negative!). Good examples are
@@ -166,7 +166,7 @@ typedef struct
 ////class Counter : public TypedMeasurement<uint32_t>
 typedef struct
 {
-   TypedMeasurement_for_Uint32  tTypedMeasurement_for_Uint32;
+  TypedMeasurement_for_Uint32  tTypedMeasurement_for_Uint32;
 ////public:
 ////    Counter();
 ////
@@ -177,10 +177,10 @@ typedef struct
 ////    Counter(uint32_t value, Flags flags, DNPTime time);
 } Counter;
 
-   void Counter_in_CounterOver1(Counter *pCounter);
-   void Counter_in_CounterOver2(Counter *pCounter, uint32_t value);
-   void Counter_in_CounterOver3(Counter *pCounter, uint32_t value, Flags flags);
-   void Counter_in_CounterOver4(Counter *pCounter, uint32_t value, Flags flags, DNPTime timeDNPTime);
+void Counter_in_CounterOver1(Counter *pCounter);
+void Counter_in_CounterOver2(Counter *pCounter, uint32_t value);
+void Counter_in_CounterOver3(Counter *pCounter, uint32_t value, Flags flags);
+void Counter_in_CounterOver4(Counter *pCounter, uint32_t value, Flags flags, DNPTime timeDNPTime);
 
 /**
     Frozen counters are used to report the value of a counter point captured at the instant when the count is frozen.
@@ -188,7 +188,7 @@ typedef struct
 ////class FrozenCounter : public TypedMeasurement<uint32_t>
 typedef struct
 {
-   TypedMeasurement_for_Uint32  tTypedMeasurement_for_Uint32;
+  TypedMeasurement_for_Uint32  tTypedMeasurement_for_Uint32;
 ////public:
 ////    FrozenCounter();
 
@@ -199,10 +199,10 @@ typedef struct
 ////    FrozenCounter(uint32_t value, Flags flags, DNPTime time);
 } FrozenCounter;
 
-   void FrozenCounter_in_FrozenCounterOver1(FrozenCounter *pFrozenCounter);
-   void FrozenCounter_in_FrozenCounterOver2(FrozenCounter *pFrozenCounter, uint32_t value);
-   void FrozenCounter_in_FrozenCounterOver3(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags);
-   void FrozenCounter_in_FrozenCounterOver4(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags, DNPTime timeDNPTime);
+void FrozenCounter_in_FrozenCounterOver1(FrozenCounter *pFrozenCounter);
+void FrozenCounter_in_FrozenCounterOver2(FrozenCounter *pFrozenCounter, uint32_t value);
+void FrozenCounter_in_FrozenCounterOver3(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags);
+void FrozenCounter_in_FrozenCounterOver4(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags, DNPTime timeDNPTime);
 
 /**
     Describes the last set value of the set-point. Like the BinaryOutputStatus data type it is not
@@ -211,7 +211,7 @@ typedef struct
 ////class AnalogOutputStatus : public TypedMeasurement<double>
 typedef struct
 {
-   TypedMeasurement_for_Double64  tTypedMeasurement_for_Double64;
+  TypedMeasurement_for_Double64  tTypedMeasurement_for_Double64;
 ////public:
 ////    AnalogOutputStatus();
 
@@ -222,10 +222,10 @@ typedef struct
 ////    AnalogOutputStatus(double value, Flags flags, DNPTime time);
 } AnalogOutputStatus;
 
-   void AnalogOutputStatus_in_AnalogOutputStatusOver1(AnalogOutputStatus *pAnalogOutputStatus);
-   void AnalogOutputStatus_in_AnalogOutputStatusOver2(AnalogOutputStatus *pAnalogOutputStatus, double value);
-   void AnalogOutputStatus_in_AnalogOutputStatusOver3(AnalogOutputStatus *pAnalogOutputStatus, double value, Flags flags);
-   void AnalogOutputStatus_in_AnalogOutputStatusOver4(AnalogOutputStatus *pAnalogOutputStatus, double value, Flags flags, DNPTime timeDNPTime);
+void AnalogOutputStatus_in_AnalogOutputStatusOver1(AnalogOutputStatus *pAnalogOutputStatus);
+void AnalogOutputStatus_in_AnalogOutputStatusOver2(AnalogOutputStatus *pAnalogOutputStatus, double value);
+void AnalogOutputStatus_in_AnalogOutputStatusOver3(AnalogOutputStatus *pAnalogOutputStatus, double value, Flags flags);
+void AnalogOutputStatus_in_AnalogOutputStatusOver4(AnalogOutputStatus *pAnalogOutputStatus, double value, Flags flags, DNPTime timeDNPTime);
 
 /**
     Maps to Group50Var4
@@ -243,16 +243,16 @@ typedef struct
 
 ////    IntervalUnits GetUnitsEnum() const;
 
-    DNPTime timeDNPTime;
-    uint32_t interval;
-    uint8_t units;
+  DNPTime timeDNPTime;
+  uint32_t interval;
+  uint8_t units;
 } TimeAndInterval;
 
-   void TimeAndInterval_in_TimeAndIntervalOver1(TimeAndInterval *pTimeAndInterval);
-   void TimeAndInterval_in_TimeAndIntervalOver2(TimeAndInterval *pTimeAndInterval, DNPTime timeDNPTime, uint32_t interval, uint8_t units);
-   void TimeAndInterval_in_TimeAndIntervalOver3(TimeAndInterval *pTimeAndInterval, DNPTime timeDNPTime, uint32_t interval, IntervalUnits_uint8_t units);
+void TimeAndInterval_in_TimeAndIntervalOver1(TimeAndInterval *pTimeAndInterval);
+void TimeAndInterval_in_TimeAndIntervalOver2(TimeAndInterval *pTimeAndInterval, DNPTime timeDNPTime, uint32_t interval, uint8_t units);
+void TimeAndInterval_in_TimeAndIntervalOver3(TimeAndInterval *pTimeAndInterval, DNPTime timeDNPTime, uint32_t interval, IntervalUnits_uint8_t units);
 
-   IntervalUnits_uint8_t GetUnitsEnum_in_TimeAndInterval(TimeAndInterval *pTimeAndInterval);
+IntervalUnits_uint8_t GetUnitsEnum_in_TimeAndInterval(TimeAndInterval *pTimeAndInterval);
 
 ////} // namespace opendnp3
 

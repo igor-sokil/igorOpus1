@@ -42,17 +42,17 @@ typedef struct
 
 ////    AnalogCommandEvent(double value, CommandStatus status, DNPTime time);
 
-    double value;
-    CommandStatus_uint8_t status;
-    DNPTime timeDNPTime;
+  double value;
+  CommandStatus_uint8_t status;
+  DNPTime timeDNPTime;
 
 ////    bool operator==(const AnalogCommandEvent& rhs) const;
 } AnalogCommandEvent;
 
-  void AnalogCommandEvent_in_AnalogCommandEventOver1(AnalogCommandEvent *pAnalogCommandEvent);
-  void AnalogCommandEvent_in_AnalogCommandEventOver2(AnalogCommandEvent *pAnalogCommandEvent, double value, CommandStatus_uint8_t status);
-  void AnalogCommandEvent_in_AnalogCommandEventOver3(AnalogCommandEvent *pAnalogCommandEvent, double value, CommandStatus_uint8_t status, DNPTime timeDNPTime);
-  boolean operatorEQ_in_AnalogCommandEvent(AnalogCommandEvent *pAnalogCommandEvent, AnalogCommandEvent *rhs);
+void AnalogCommandEvent_in_AnalogCommandEventOver1(AnalogCommandEvent *pAnalogCommandEvent);
+void AnalogCommandEvent_in_AnalogCommandEventOver2(AnalogCommandEvent *pAnalogCommandEvent, double value, CommandStatus_uint8_t status);
+void AnalogCommandEvent_in_AnalogCommandEventOver3(AnalogCommandEvent *pAnalogCommandEvent, double value, CommandStatus_uint8_t status, DNPTime timeDNPTime);
+boolean operatorEQ_in_AnalogCommandEvent(AnalogCommandEvent *pAnalogCommandEvent, AnalogCommandEvent *rhs);
 
 ////} // namespace opendnp3
 

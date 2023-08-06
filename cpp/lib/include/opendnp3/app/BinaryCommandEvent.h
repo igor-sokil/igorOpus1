@@ -51,9 +51,9 @@ typedef struct
 ////    bool value;
 ////    CommandStatus status;
 ////    DNPTime time;
-    boolean value;
-    CommandStatus_uint8_t status;
-    DNPTime timeDNPTime;
+  boolean value;
+  CommandStatus_uint8_t status;
+  DNPTime timeDNPTime;
 
 ////    Flags GetFlags() const;
 
@@ -65,22 +65,22 @@ typedef struct
 ////    static CommandStatus GetStatusFromFlags(Flags flags);
 } BinaryCommandEvent;
 
-     const uint8_t ValueMask_in_BinaryCommandEvent = 0x80;
-     const uint8_t StatusMask_in_BinaryCommandEvent = 0x7F;
+const uint8_t ValueMask_in_BinaryCommandEvent = 0x80;
+const uint8_t StatusMask_in_BinaryCommandEvent = 0x7F;
 
-    boolean GetValueFromFlags_In_BinaryCommandEvent_static(Flags flags);
-    CommandStatus_uint8_t GetStatusFromFlags_In_BinaryCommandEvent_static(Flags flags);
+boolean GetValueFromFlags_In_BinaryCommandEvent_static(Flags flags);
+CommandStatus_uint8_t GetStatusFromFlags_In_BinaryCommandEvent_static(Flags flags);
 
-    void BinaryCommandEvent_In_BinaryCommandEventOver1(BinaryCommandEvent *pBinaryCommandEvent);
-    void BinaryCommandEvent_In_BinaryCommandEventOver2(BinaryCommandEvent *pBinaryCommandEvent, Flags flags);
-    void BinaryCommandEvent_In_BinaryCommandEventOver3(BinaryCommandEvent *pBinaryCommandEvent, Flags flags, DNPTime timeDNPTime);
-    void BinaryCommandEvent_In_BinaryCommandEventOver4(BinaryCommandEvent *pBinaryCommandEvent, boolean value,
-                                                  CommandStatus_uint8_t status);
-    void BinaryCommandEvent_In_BinaryCommandEventOver5(BinaryCommandEvent *pBinaryCommandEvent, boolean value,
-                                                  CommandStatus_uint8_t status, DNPTime timeDNPTime);
-    boolean operatorEQ_in_BinaryCommandEvent(BinaryCommandEvent *pBinaryCommandEvent, BinaryCommandEvent *rhs);
+void BinaryCommandEvent_In_BinaryCommandEventOver1(BinaryCommandEvent *pBinaryCommandEvent);
+void BinaryCommandEvent_In_BinaryCommandEventOver2(BinaryCommandEvent *pBinaryCommandEvent, Flags flags);
+void BinaryCommandEvent_In_BinaryCommandEventOver3(BinaryCommandEvent *pBinaryCommandEvent, Flags flags, DNPTime timeDNPTime);
+void BinaryCommandEvent_In_BinaryCommandEventOver4(BinaryCommandEvent *pBinaryCommandEvent, boolean value,
+    CommandStatus_uint8_t status);
+void BinaryCommandEvent_In_BinaryCommandEventOver5(BinaryCommandEvent *pBinaryCommandEvent, boolean value,
+    CommandStatus_uint8_t status, DNPTime timeDNPTime);
+boolean operatorEQ_in_BinaryCommandEvent(BinaryCommandEvent *pBinaryCommandEvent, BinaryCommandEvent *rhs);
 
-    Flags GetFlags_in_BinaryCommandEvent(BinaryCommandEvent *pBinaryCommandEvent);
+Flags GetFlags_in_BinaryCommandEvent(BinaryCommandEvent *pBinaryCommandEvent);
 
 ////} // namespace opendnp3
 

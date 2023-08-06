@@ -40,7 +40,7 @@
 ////    PointClass clazz;
 ////    typename Spec::meas_t lastEvent;
 ////    typename Spec::event_variation_t evariation;
-   
+
 ////    void SetEventValue(const typename Spec::meas_t& value)
 ////    {
 ////        lastEvent = value;
@@ -51,14 +51,14 @@
 ////};
 //---------------------------------Analog---------------------------------------
 ////template<class Spec> struct EventCellBase
- typedef struct
+typedef struct
 {
-    PointClass_uint8_t clazz;
+  PointClass_uint8_t clazz;
 ////    typename Spec::meas_t lastEvent;
-   Analog lastEvent;
+  Analog lastEvent;
 ////    typename Spec::event_variation_t evariation;
-   event_variation_t_in_AnalogInfo evariation;
-   
+  event_variation_t_in_AnalogInfo evariation;
+
 ////    void SetEventValue(const typename Spec::meas_t& value)
 ////    {
 ////        lastEvent = value;
@@ -67,50 +67,50 @@
 ////protected:
 ////    EventCellBase() : clazz(PointClass::Class1), lastEvent(), evariation(Spec::DefaultEventVariation) {}
 } EventCellBase_for_Analog;
- void EventCellBase_for_Analog_in_EventCellBase_for_Analog(EventCellBase_for_Analog *pEventCellBase_for_Analog);
-    void SetEventValue_in_EventCellBase_for_Analog(EventCellBase_for_Analog *pEventCellBase_for_Analog, Analog* value);
+void EventCellBase_for_Analog_in_EventCellBase_for_Analog(EventCellBase_for_Analog *pEventCellBase_for_Analog);
+void SetEventValue_in_EventCellBase_for_Analog(EventCellBase_for_Analog *pEventCellBase_for_Analog, Analog* value);
 
 /// Metatype w/o a deadband
 ////template<class Spec> struct SimpleEventCell : EventCellBase<Spec>
 typedef struct
 {
-EventCellBase_for_Analog eEventCellBase_for_Analog;
+  EventCellBase_for_Analog eEventCellBase_for_Analog;
 ////    bool IsEvent(const typename Spec::config_t& config, const typename Spec::meas_t& newValue) const
 ////    {
 ////        return Spec::IsEvent(this->lastEvent, newValue);
 ////    }
 } SimpleEventCell_for_Analog;
 
-    boolean IsEvent_in_SimpleEventCell_for_Analog(SimpleEventCell_for_Analog *pSimpleEventCell_for_Analog,
-                                                  AnalogConfig_for_DeadbandConfig_for_AnalogInfo *config,
-                                                  Analog* newValue);
+boolean IsEvent_in_SimpleEventCell_for_Analog(SimpleEventCell_for_Analog *pSimpleEventCell_for_Analog,
+    AnalogConfig_for_DeadbandConfig_for_AnalogInfo *config,
+    Analog* newValue);
 
 /// Structure for holding metadata information on points that have support deadbanding
 ////template<class Spec> struct DeadbandEventCell : SimpleEventCell<Spec>
 typedef struct
 {
-SimpleEventCell_for_Analog sSimpleEventCell_for_Analog;
+  SimpleEventCell_for_Analog sSimpleEventCell_for_Analog;
 ////    bool IsEvent(const typename Spec::config_t& config, const typename Spec::meas_t& newValue) const
 ////    {
 ////        return Spec::IsEvent(this->lastEvent, newValue, config.deadband);
 ////    }
 } DeadbandEventCell_for_Analog;
 
-    boolean IsEvent_in_DeadbandEventCell_for_Analog(DeadbandEventCell_for_Analog *pDeadbandEventCell_for_Analog,
-                                                    AnalogConfig_for_DeadbandConfig_for_AnalogInfo *config,
-                                                    Analog* newValue);
+boolean IsEvent_in_DeadbandEventCell_for_Analog(DeadbandEventCell_for_Analog *pDeadbandEventCell_for_Analog,
+    AnalogConfig_for_DeadbandConfig_for_AnalogInfo *config,
+    Analog* newValue);
 
 //---------------------------------Analog---------------------------------------
 //---------------------------------Binary---------------------------------------
 ////template<class Spec> struct EventCellBase
- typedef struct
+typedef struct
 {
-    PointClass_uint8_t clazz;
+  PointClass_uint8_t clazz;
 ////    typename Spec::meas_t lastEvent;
-   Binary lastEvent;
+  Binary lastEvent;
 ////    typename Spec::event_variation_t evariation;
-   event_variation_t_in_BinaryInfo evariation;
-   
+  event_variation_t_in_BinaryInfo evariation;
+
 ////    void SetEventValue(const typename Spec::meas_t& value)
 ////    {
 ////        lastEvent = value;
@@ -119,38 +119,38 @@ SimpleEventCell_for_Analog sSimpleEventCell_for_Analog;
 ////protected:
 ////    EventCellBase() : clazz(PointClass::Class1), lastEvent(), evariation(Spec::DefaultEventVariation) {}
 } EventCellBase_for_Binary;
- void EventCellBase_for_Binary_in_EventCellBase_for_Binary(EventCellBase_for_Binary *pEventCellBase_for_Binary);
-    void SetEventValue_in_EventCellBase_for_Binary(EventCellBase_for_Binary *pEventCellBase_for_Binary, Binary* value);
+void EventCellBase_for_Binary_in_EventCellBase_for_Binary(EventCellBase_for_Binary *pEventCellBase_for_Binary);
+void SetEventValue_in_EventCellBase_for_Binary(EventCellBase_for_Binary *pEventCellBase_for_Binary, Binary* value);
 
 /// Metatype w/o a deadband
 ////template<class Spec> struct SimpleEventCell : EventCellBase<Spec>
 typedef struct
 {
-EventCellBase_for_Binary eEventCellBase_for_Binary;
+  EventCellBase_for_Binary eEventCellBase_for_Binary;
 ////    bool IsEvent(const typename Spec::config_t& config, const typename Spec::meas_t& newValue) const
 ////    {
 ////        return Spec::IsEvent(this->lastEvent, newValue);
 ////    }
 } SimpleEventCell_for_Binary;
 
-    boolean IsEvent_in_SimpleEventCell_for_Binary(SimpleEventCell_for_Binary *pSimpleEventCell_for_Binary,
-                                                  BinaryConfig_for_EventConfig_for_BinaryInfo *config,
-                                                  Binary* newValue);
+boolean IsEvent_in_SimpleEventCell_for_Binary(SimpleEventCell_for_Binary *pSimpleEventCell_for_Binary,
+    BinaryConfig_for_EventConfig_for_BinaryInfo *config,
+    Binary* newValue);
 
 /// Structure for holding metadata information on points that have support deadbanding
 ////template<class Spec> struct DeadbandEventCell : SimpleEventCell<Spec>
 typedef struct
 {
-SimpleEventCell_for_Binary sSimpleEventCell_for_Binary;
+  SimpleEventCell_for_Binary sSimpleEventCell_for_Binary;
 ////    bool IsEvent(const typename Spec::config_t& config, const typename Spec::meas_t& newValue) const
 ////    {
 ////        return Spec::IsEvent(this->lastEvent, newValue, config.deadband);
 ////    }
 } DeadbandEventCell_for_Binary;
 
-    boolean IsEvent_in_DeadbandEventCell_for_Binary(DeadbandEventCell_for_Binary *pDeadbandEventCell_for_Binary,
-                                                    BinaryConfig_for_EventConfig_for_BinaryInfo *config,
-                                                    Binary* newValue);
+boolean IsEvent_in_DeadbandEventCell_for_Binary(DeadbandEventCell_for_Binary *pDeadbandEventCell_for_Binary,
+    BinaryConfig_for_EventConfig_for_BinaryInfo *config,
+    Binary* newValue);
 
 //---------------------------------Binary---------------------------------------
 

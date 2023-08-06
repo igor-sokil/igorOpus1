@@ -41,32 +41,32 @@ typedef struct
 ////public:
 ////    const static uint8_t MAX_SIZE = 255;
 
-    /**
-     * Construct with a default value of [0x00] (length == 1)
-     */
+  /**
+   * Construct with a default value of [0x00] (length == 1)
+   */
 ////    OctetData();
 
-    /**
-     * Construct from a c-style string
-     *
-     * strlen() is used internally to determine the length
-     *
-     * If the length is 0, the default value of [0x00] is assigned
-     * If the length is > 255, only the first 255 bytes are copied.
-     *
-     * The null terminator is NOT copied as part of buffer
-     */
+  /**
+   * Construct from a c-style string
+   *
+   * strlen() is used internally to determine the length
+   *
+   * If the length is 0, the default value of [0x00] is assigned
+   * If the length is > 255, only the first 255 bytes are copied.
+   *
+   * The null terminator is NOT copied as part of buffer
+   */
 ////    OctetData(const char* input);
 
-    /**
-     * Construct from read-only buffer slice
-     *
-     *
-     * If the length is 0, the default value of [0x00] is assigned
-     * If the length is > 255, only the first 255 bytes are copied.
-     *
-     * The null terminator is NOT copied as part of buffer
-     */
+  /**
+   * Construct from read-only buffer slice
+   *
+   *
+   * If the length is 0, the default value of [0x00] is assigned
+   * If the length is > 255, only the first 255 bytes are copied.
+   *
+   * The null terminator is NOT copied as part of buffer
+   */
 ////    OctetData(const Buffer& input);
 
 ////    inline uint8_t Size() const
@@ -74,52 +74,52 @@ typedef struct
 ////        return size;
 ////    }
 
-    /**
-     * Set the octet data to the input buffer
-     *
-     * If the length is 0, the default value of [0x00] is assigned
-     * If the length is > 255, only the first 255 bytes are copied
-     *
-     * @param input the input data to copy into this object
-     *
-     * @return true if the input meets the length requirements, false otherwise
-     */
+  /**
+   * Set the octet data to the input buffer
+   *
+   * If the length is 0, the default value of [0x00] is assigned
+   * If the length is > 255, only the first 255 bytes are copied
+   *
+   * @param input the input data to copy into this object
+   *
+   * @return true if the input meets the length requirements, false otherwise
+   */
 ////    bool Set(const Buffer& input);
 
-    /**
-     * Set the buffer equal to the supplied c-string
-     *
-     * If the length is 0, the default value of [0x00] is assigned
-     * If the length is > 255, only the first 255 bytes are copied
-     *
-     * @param input c-style string to copy into this object
-     *
-     * @return true if the input meets the length requirements, false otherwise
-     */
+  /**
+   * Set the buffer equal to the supplied c-string
+   *
+   * If the length is 0, the default value of [0x00] is assigned
+   * If the length is > 255, only the first 255 bytes are copied
+   *
+   * @param input c-style string to copy into this object
+   *
+   * @return true if the input meets the length requirements, false otherwise
+   */
 ////    bool Set(const char* input);
 
-    /**
-     * @return a view of the current data
-     */
+  /**
+   * @return a view of the current data
+   */
 ////    const Buffer ToBuffer() const;
 
 ////private:
 ////    static const Buffer ToSlice(const char* input);
 
 ////    std::array<uint8_t, MAX_SIZE> buffer = {{0x00}};
-    uint8_t buffer[MAX_SIZE_in_OctetData];
-    uint16_t size;
+  uint8_t buffer[MAX_SIZE_in_OctetData];
+  uint16_t size;
 } OctetData;
 
 ////} // namespace opendnp3
 
-   void OctetData_in_OctetDataOver1(OctetData *pOctetData);
-   void OctetData_in_OctetDataOver2(OctetData *pOctetData, char* input);
-   void OctetData_in_OctetDataOver3(OctetData *pOctetData, Buffer *input);
-   uint16_t Size_in_OctetData(OctetData *pOctetData);
-   boolean Set_in_OctetDataOver1(OctetData *pOctetData, Buffer *input);
-   boolean Set_in_OctetDataOver2(OctetData *pOctetData,  char* input);
-   Buffer  ToBuffer_in_OctetData(OctetData *pOctetData);
-   Buffer ToSlice_in_OctetData_static(char* input);
+void OctetData_in_OctetDataOver1(OctetData *pOctetData);
+void OctetData_in_OctetDataOver2(OctetData *pOctetData, char* input);
+void OctetData_in_OctetDataOver3(OctetData *pOctetData, Buffer *input);
+uint16_t Size_in_OctetData(OctetData *pOctetData);
+boolean Set_in_OctetDataOver1(OctetData *pOctetData, Buffer *input);
+boolean Set_in_OctetDataOver2(OctetData *pOctetData,  char* input);
+Buffer  ToBuffer_in_OctetData(OctetData *pOctetData);
+Buffer ToSlice_in_OctetData_static(char* input);
 
 #endif

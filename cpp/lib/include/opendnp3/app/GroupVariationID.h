@@ -33,12 +33,12 @@ typedef struct
 
 ////    GroupVariationID(uint8_t aGroup, uint8_t aVariation) : group(aGroup), variation(aVariation) {}
 
-    uint8_t group;
-    uint8_t variation;
+  uint8_t group;
+  uint8_t variation;
 } GroupVariationID;
 
-    void GroupVariationID_in_GroupVariationIDOver1(GroupVariationID *pGroupVariationID);
-    void GroupVariationID_in_GroupVariationIDOver2(GroupVariationID *pGroupVariationID, uint8_t aGroup, uint8_t aVariation);
+void GroupVariationID_in_GroupVariationIDOver1(GroupVariationID *pGroupVariationID);
+void GroupVariationID_in_GroupVariationIDOver2(GroupVariationID *pGroupVariationID, uint8_t aGroup, uint8_t aVariation);
 
 
 ////} // namespace opendnp3

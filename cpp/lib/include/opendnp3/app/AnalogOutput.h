@@ -47,18 +47,18 @@ typedef struct
 ////    }
 
 ////    T value;
-    int16_t value;
+  int16_t value;
 
-    /**
-     * The status value defaults to CS_SUCCESS for requests
-     */
-    CommandStatus_uint8_t status;
+  /**
+   * The status value defaults to CS_SUCCESS for requests
+   */
+  CommandStatus_uint8_t status;
 } AnalogOutput_for_Int16;
 
-  void AnalogOutput_for_Int16_in_AnalogOutput_for_Int16Over1(AnalogOutput_for_Int16 *);
-  void AnalogOutput_for_Int16_in_AnalogOutput_for_Int16Over2(AnalogOutput_for_Int16 *, int16_t value_);
-  void AnalogOutput_for_Int16_in_AnalogOutput_for_Int16Over3(AnalogOutput_for_Int16 *, int16_t value_, CommandStatus_uint8_t status_);
-  boolean ValuesEqual_in_AnalogOutput_for_Int16(AnalogOutput_for_Int16 *pAnalogOutput_for_Int16, AnalogOutput_for_Int16 * lhs);
+void AnalogOutput_for_Int16_in_AnalogOutput_for_Int16Over1(AnalogOutput_for_Int16 *);
+void AnalogOutput_for_Int16_in_AnalogOutput_for_Int16Over2(AnalogOutput_for_Int16 *, int16_t value_);
+void AnalogOutput_for_Int16_in_AnalogOutput_for_Int16Over3(AnalogOutput_for_Int16 *, int16_t value_, CommandStatus_uint8_t status_);
+boolean ValuesEqual_in_AnalogOutput_for_Int16(AnalogOutput_for_Int16 *pAnalogOutput_for_Int16, AnalogOutput_for_Int16 * lhs);
 
 ////  boolean ValuesEqual_in_AnalogOutput_for_Int16(AnalogOutput_for_Int16 *pAnalogOutput_for_Int16, AnalogOutput_for_Int16 * lhs)
 ////{
@@ -82,20 +82,20 @@ typedef struct
 ////    }
 
 ////    T value;
-    int32_t value;
+  int32_t value;
 
-    /**
-     * The status value defaults to CS_SUCCESS for requests
-     */
-    CommandStatus_uint8_t status;
+  /**
+   * The status value defaults to CS_SUCCESS for requests
+   */
+  CommandStatus_uint8_t status;
 } AnalogOutput_for_Int32;
 
-  void AnalogOutput_for_Int32_in_AnalogOutput_for_Int32Over1(AnalogOutput_for_Int32 *);
-  void AnalogOutput_for_Int32_in_AnalogOutput_for_Int32Over2(AnalogOutput_for_Int32 *, int32_t value_);
-  void AnalogOutput_for_Int32_in_AnalogOutput_for_Int32Over3(AnalogOutput_for_Int32 *, int32_t value_, CommandStatus_uint8_t status_);
-  boolean ValuesEqual_in_AnalogOutput_for_Int32(AnalogOutput_for_Int32 *pAnalogOutput_for_Int32, AnalogOutput_for_Int32 *lhs) ;
+void AnalogOutput_for_Int32_in_AnalogOutput_for_Int32Over1(AnalogOutput_for_Int32 *);
+void AnalogOutput_for_Int32_in_AnalogOutput_for_Int32Over2(AnalogOutput_for_Int32 *, int32_t value_);
+void AnalogOutput_for_Int32_in_AnalogOutput_for_Int32Over3(AnalogOutput_for_Int32 *, int32_t value_, CommandStatus_uint8_t status_);
+boolean ValuesEqual_in_AnalogOutput_for_Int32(AnalogOutput_for_Int32 *pAnalogOutput_for_Int32, AnalogOutput_for_Int32 *lhs) ;
 
-////  boolean ValuesEqual_in_AnalogOutput_for_Int32(AnalogOutput_for_Int32 *pAnalogOutput_for_Int32, AnalogOutput_for_Int32 *lhs) 
+////  boolean ValuesEqual_in_AnalogOutput_for_Int32(AnalogOutput_for_Int32 *pAnalogOutput_for_Int32, AnalogOutput_for_Int32 *lhs)
 ////{
 ////    return pAnalogOutput_for_Int32->value == lhs->value;
 ////}
@@ -117,17 +117,17 @@ typedef struct
 ////    }
 
 ////    T value;
-    float value;
+  float value;
 
-    /**
-     * The status value defaults to CS_SUCCESS for requests
-     */
-    CommandStatus_uint8_t status;
+  /**
+   * The status value defaults to CS_SUCCESS for requests
+   */
+  CommandStatus_uint8_t status;
 } AnalogOutput_for_Float32;
 
-  void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over1(AnalogOutput_for_Float32 *);
-  void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over2(AnalogOutput_for_Float32 *, float value_);
-  void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over3(AnalogOutput_for_Float32 *, float value_, CommandStatus_uint8_t status_);
+void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over1(AnalogOutput_for_Float32 *);
+void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over2(AnalogOutput_for_Float32 *, float value_);
+void AnalogOutput_for_Float32_in_AnalogOutput_for_Float32Over3(AnalogOutput_for_Float32 *, float value_, CommandStatus_uint8_t status_);
 //  boolean ValuesEqual_in_AnalogOutput_for_Float32(AnalogOutput_for_Float32 *pAnalogOutput_for_Float32, AnalogOutput_for_Float32 *lhs);
 
 ////  boolean ValuesEqual_in_AnalogOutput_for_Float32(AnalogOutput_for_Float32 *pAnalogOutput_for_Float32, AnalogOutput_for_Float32 *lhs)
@@ -152,17 +152,17 @@ typedef struct
 ////    }
 
 ////    T value;
-    double value;
+  double value;
 
-    /**
-     * The status value defaults to CS_SUCCESS for requests
-     */
-    CommandStatus_uint8_t status;
+  /**
+   * The status value defaults to CS_SUCCESS for requests
+   */
+  CommandStatus_uint8_t status;
 } AnalogOutput_for_Double64;
 
-  void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over1(AnalogOutput_for_Double64 *);
-  void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over2(AnalogOutput_for_Double64 *, double value_);
-  void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over3(AnalogOutput_for_Double64 *, double value_, CommandStatus_uint8_t status_);
+void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over1(AnalogOutput_for_Double64 *);
+void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over2(AnalogOutput_for_Double64 *, double value_);
+void AnalogOutput_for_Double64_in_AnalogOutput_for_Double64Over3(AnalogOutput_for_Double64 *, double value_, CommandStatus_uint8_t status_);
 //  boolean ValuesEqual_in_AnalogOutput_for_Double64(AnalogOutput_for_Double64 *pAnalogOutput_for_Double64, AnalogOutput_for_Double64 *lhs);
 
 ////  boolean ValuesEqual_in_AnalogOutput_for_Double64(AnalogOutput_for_Double64 *pAnalogOutput_for_Double64, AnalogOutput_for_Double64 *lhs)
@@ -187,10 +187,10 @@ typedef struct
 
 } AnalogOutputInt16;
 
-  void AnalogOutputInt16_in_AnalogOutputInt16Over1(AnalogOutputInt16 *);
-  void AnalogOutputInt16_in_AnalogOutputInt16Over2(AnalogOutputInt16 *, int16_t value_);
-  void AnalogOutputInt16_in_AnalogOutputInt16Over3(AnalogOutputInt16 *, int16_t value_, CommandStatus_uint8_t status_);
-  boolean operatorEQ_in_AnalogOutputInt16(AnalogOutputInt16 *, AnalogOutputInt16 *);
+void AnalogOutputInt16_in_AnalogOutputInt16Over1(AnalogOutputInt16 *);
+void AnalogOutputInt16_in_AnalogOutputInt16Over2(AnalogOutputInt16 *, int16_t value_);
+void AnalogOutputInt16_in_AnalogOutputInt16Over3(AnalogOutputInt16 *, int16_t value_, CommandStatus_uint8_t status_);
+boolean operatorEQ_in_AnalogOutputInt16(AnalogOutputInt16 *, AnalogOutputInt16 *);
 
 /**
  *	32-bit signed integer analog output. The underlying serialization is Group41, Variation 1
@@ -207,10 +207,10 @@ typedef struct
 ////    bool operator==(const AnalogOutputInt32& arRHS) const;
 } AnalogOutputInt32;
 
-  void AnalogOutputInt32_in_AnalogOutputInt32Over1(AnalogOutputInt32 *);
-  void AnalogOutputInt32_in_AnalogOutputInt32Over2(AnalogOutputInt32 *, int32_t value_);
-  void AnalogOutputInt32_in_AnalogOutputInt32Over3(AnalogOutputInt32 *, int32_t value_, CommandStatus_uint8_t status_);
-  boolean operatorEQ_in_AnalogOutputInt32(AnalogOutputInt32 *pAnalogOutputInt32, AnalogOutputInt32 *arRHS);
+void AnalogOutputInt32_in_AnalogOutputInt32Over1(AnalogOutputInt32 *);
+void AnalogOutputInt32_in_AnalogOutputInt32Over2(AnalogOutputInt32 *, int32_t value_);
+void AnalogOutputInt32_in_AnalogOutputInt32Over3(AnalogOutputInt32 *, int32_t value_, CommandStatus_uint8_t status_);
+boolean operatorEQ_in_AnalogOutputInt32(AnalogOutputInt32 *pAnalogOutputInt32, AnalogOutputInt32 *arRHS);
 
 /**
  *	Single precision analog output. The underlying serialization is Group41, Variation 3
@@ -227,10 +227,10 @@ typedef struct
 ////    bool operator==(const AnalogOutputFloat32& arRHS) const;
 } AnalogOutputFloat32;
 
-  void AnalogOutputFloat32_in_AnalogOutputFloat32Over1(AnalogOutputFloat32 *);
-  void AnalogOutputFloat32_in_AnalogOutputFloat32Over2(AnalogOutputFloat32 *, float value_);
-  void AnalogOutputFloat32_in_AnalogOutputFloat32Over3(AnalogOutputFloat32 *, float value_, CommandStatus_uint8_t status_);
-  boolean operatorEQ_in_AnalogOutputFloat32(AnalogOutputFloat32 *, AnalogOutputFloat32 *);
+void AnalogOutputFloat32_in_AnalogOutputFloat32Over1(AnalogOutputFloat32 *);
+void AnalogOutputFloat32_in_AnalogOutputFloat32Over2(AnalogOutputFloat32 *, float value_);
+void AnalogOutputFloat32_in_AnalogOutputFloat32Over3(AnalogOutputFloat32 *, float value_, CommandStatus_uint8_t status_);
+boolean operatorEQ_in_AnalogOutputFloat32(AnalogOutputFloat32 *, AnalogOutputFloat32 *);
 
 /**
  *	Double precision analog output. The underlying serialization is Group41, Variation 3
@@ -247,10 +247,10 @@ typedef struct
 ////    bool operator==(const AnalogOutputDouble64& arRHS) const;
 } AnalogOutputDouble64;
 
-  void AnalogOutputDouble64_in_AnalogOutputDouble64Over1(AnalogOutputDouble64 *);
-  void AnalogOutputDouble64_in_AnalogOutputDouble64Over2(AnalogOutputDouble64 *, double value_);
-  void AnalogOutputDouble64_in_AnalogOutputDouble64Over3(AnalogOutputDouble64 *, double value_, CommandStatus_uint8_t status_);
-  boolean operatorEQ_in_AnalogOutputDouble64(AnalogOutputDouble64 *, AnalogOutputDouble64 *);
+void AnalogOutputDouble64_in_AnalogOutputDouble64Over1(AnalogOutputDouble64 *);
+void AnalogOutputDouble64_in_AnalogOutputDouble64Over2(AnalogOutputDouble64 *, double value_);
+void AnalogOutputDouble64_in_AnalogOutputDouble64Over3(AnalogOutputDouble64 *, double value_, CommandStatus_uint8_t status_);
+boolean operatorEQ_in_AnalogOutputDouble64(AnalogOutputDouble64 *, AnalogOutputDouble64 *);
 
 
 ////} // namespace opendnp3

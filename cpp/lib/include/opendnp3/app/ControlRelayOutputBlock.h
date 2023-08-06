@@ -41,7 +41,7 @@
 typedef struct
 {
 ////public:
-    // primary constructor where the control code is split by its components
+  // primary constructor where the control code is split by its components
 ////    ControlRelayOutputBlock(OperationType opType = OperationType::LATCH_ON,
 ////                            TripCloseCode tcc = TripCloseCode::NUL,
 ////                            bool clear = false,
@@ -50,33 +50,33 @@ typedef struct
 ////                            uint32_t offTime = 100,
 ////                            CommandStatus status = CommandStatus::SUCCESS);
 
-    // overloaded constructor that allows the user to set a raw control code for non-standard codes
+  // overloaded constructor that allows the user to set a raw control code for non-standard codes
 ////    ControlRelayOutputBlock(uint8_t rawCode,
 ////                            uint8_t count = 1,
 ////                            uint32_t onTime = 100,
 ////                            uint32_t offTime = 100,
 ////                            CommandStatus status = CommandStatus::SUCCESS);
 
-    /// operation type
+  /// operation type
 ////    OperationType opType;
-    OperationType_uint8_t opType;
-    // trip-close code
+  OperationType_uint8_t opType;
+  // trip-close code
 ////    TripCloseCode tcc;
-    TripCloseCode_uint8_t tcc;
-    // clear bit
+  TripCloseCode_uint8_t tcc;
+  // clear bit
 ////    bool clear;
-    boolean clear;
-    /// the number of times to repeat the operation
-    uint8_t count;
-    /// the 'on' time for the pulse train
-    uint32_t onTimeMS;
-    /// the 'off' time for the pulse train
-    uint32_t offTimeMS;
-    /// status of the resulting operation
+  boolean clear;
+  /// the number of times to repeat the operation
+  uint8_t count;
+  /// the 'on' time for the pulse train
+  uint32_t onTimeMS;
+  /// the 'off' time for the pulse train
+  uint32_t offTimeMS;
+  /// status of the resulting operation
 //    CommandStatus status;
-    CommandStatus_uint8_t status;
-    /// The raw code in bytes
-    uint8_t rawCode;
+  CommandStatus_uint8_t status;
+  /// The raw code in bytes
+  uint8_t rawCode;
 
 ////    bool IsQUFlagSet() const
 ////    {
@@ -95,23 +95,23 @@ typedef struct
 ////    }
 } ControlRelayOutputBlock;
 
-  void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1(ControlRelayOutputBlock *pControlRelayOutputBlock,
-                            OperationType_uint8_t opType,//// = OperationType::LATCH_ON,
-                            TripCloseCode_uint8_t tcc,//// = TripCloseCode::NUL,
-                            boolean clear,//// = false,
-                            uint8_t count,//// = 1,
-                            uint32_t onTime,//// = 100,
-                            uint32_t offTime,//// = 100,
-                            CommandStatus_uint8_t status);//// = CommandStatus::SUCCESS);
-  void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2(ControlRelayOutputBlock *pControlRelayOutputBlock,
-                            uint8_t rawCode,
-                            uint8_t count,//// = 1,
-                            uint32_t onTime,//// = 100,
-                            uint32_t offTime,//// = 100,
-                            CommandStatus_uint8_t status);//// = CommandStatus::SUCCESS);
+void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1(ControlRelayOutputBlock *pControlRelayOutputBlock,
+    OperationType_uint8_t opType,//// = OperationType::LATCH_ON,
+    TripCloseCode_uint8_t tcc,//// = TripCloseCode::NUL,
+    boolean clear,//// = false,
+    uint8_t count,//// = 1,
+    uint32_t onTime,//// = 100,
+    uint32_t offTime,//// = 100,
+    CommandStatus_uint8_t status);//// = CommandStatus::SUCCESS);
+void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2(ControlRelayOutputBlock *pControlRelayOutputBlock,
+    uint8_t rawCode,
+    uint8_t count,//// = 1,
+    uint32_t onTime,//// = 100,
+    uint32_t offTime,//// = 100,
+    CommandStatus_uint8_t status);//// = CommandStatus::SUCCESS);
 
-  boolean IsQUFlagSet_in_ControlRelayOutputBlock(ControlRelayOutputBlock *pControlRelayOutputBlock);
-  boolean ValuesEqual_in_ControlRelayOutputBlock(ControlRelayOutputBlock *pControlRelayOutputBlock, ControlRelayOutputBlock *lhs);
+boolean IsQUFlagSet_in_ControlRelayOutputBlock(ControlRelayOutputBlock *pControlRelayOutputBlock);
+boolean ValuesEqual_in_ControlRelayOutputBlock(ControlRelayOutputBlock *pControlRelayOutputBlock, ControlRelayOutputBlock *lhs);
 
 
 ////} // namespace opendnp3

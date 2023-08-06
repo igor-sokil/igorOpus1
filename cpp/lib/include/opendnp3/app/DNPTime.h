@@ -41,15 +41,15 @@ typedef struct
 ////    }
 
 ////    uint64_t value;
-    uint64_t value;
+  uint64_t value;
 ////    TimestampQuality quality;
-    TimestampQuality_uint8_t quality;
+  TimestampQuality_uint8_t quality;
 } DNPTime;
 
-  void DNPTime_in_DNPTimeOver1(DNPTime *pDNPTime);
-  void DNPTime_in_DNPTimeOver2(DNPTime *pDNPTime, uint64_t value);
-  void DNPTime_in_DNPTimeOver3(DNPTime *pDNPTime, uint64_t value, TimestampQuality_uint8_t quality);
-  boolean operatorEQ_in_DNPTime(DNPTime *pDNPTime, DNPTime *rhs);
+void DNPTime_in_DNPTimeOver1(DNPTime *pDNPTime);
+void DNPTime_in_DNPTimeOver2(DNPTime *pDNPTime, uint64_t value);
+void DNPTime_in_DNPTimeOver3(DNPTime *pDNPTime, uint64_t value, TimestampQuality_uint8_t quality);
+boolean operatorEQ_in_DNPTime(DNPTime *pDNPTime, DNPTime *rhs);
 
 ////} // namespace opendnp3
 

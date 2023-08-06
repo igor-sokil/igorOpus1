@@ -29,8 +29,8 @@
 ////{
 ////    template<class T, class U> bool IsEvent(const T& val1, const T& val2, T deadband)
 ////    {
-        // T can be unsigned data type so std::abs won't work since it only directly supports signed data types
-        // If one uses std::abs and T is unsigned one will get an ambiguous override error.
+// T can be unsigned data type so std::abs won't work since it only directly supports signed data types
+// If one uses std::abs and T is unsigned one will get an ambiguous override error.
 
 ////        U diff = (val2 > val1) ? (static_cast<U>(val2) - static_cast<U>(val1))
 ////                               : (static_cast<U>(val1) - static_cast<U>(val2));
@@ -39,15 +39,15 @@
 ////    }
 
 ////    bool IsEvent(const TypedMeasurement<double>& newMeas, const TypedMeasurement<double>& oldMeas, double deadband);
-    boolean IsEvent_in_EventTriggers_for_TypedMeasurement_for_Double64(
-                                     TypedMeasurement_for_Double64 *newMeas,
-                                     TypedMeasurement_for_Double64 *oldMeas,
-                                     double deadband);
+boolean IsEvent_in_EventTriggers_for_TypedMeasurement_for_Double64(
+  TypedMeasurement_for_Double64 *newMeas,
+  TypedMeasurement_for_Double64 *oldMeas,
+  double deadband);
 
-    boolean IsEvent_in_EventTriggers_for_TypedMeasurement_for_Uint32(
-                                     TypedMeasurement_for_Uint32 *val1,
-                                     TypedMeasurement_for_Uint32 *val2,
-                                     uint32_t deadband);
+boolean IsEvent_in_EventTriggers_for_TypedMeasurement_for_Uint32(
+  TypedMeasurement_for_Uint32 *val1,
+  TypedMeasurement_for_Uint32 *val2,
+  uint32_t deadband);
 
 
 ////} // namespace measurements

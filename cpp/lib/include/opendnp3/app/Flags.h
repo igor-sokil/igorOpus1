@@ -108,7 +108,7 @@ typedef struct
 ////        SetAny(flag);
 ////    }
 
-    uint8_t value;
+  uint8_t value;
 
 ////protected:
 ////    template<class T> bool IsSetAny(T flag) const
@@ -122,12 +122,12 @@ typedef struct
 ////    }
 } Flags;
 
-  void Flags_In_FlagsOver1(Flags *pFlags);
-  void Flags_In_FlagsOver2(Flags *pFlags, uint8_t value);
-  void SetAny_In_Flags(Flags *pFlags, uint8_t flag);
-  boolean IsSetAny_In_Flags(Flags *pFlags, uint8_t flag);
-  void Set_In_Flags(Flags *pFlags, uint8_t flag);
-  boolean IsSet_In_Flags(Flags *pFlags, uint8_t flag);
+void Flags_In_FlagsOver1(Flags *pFlags);
+void Flags_In_FlagsOver2(Flags *pFlags, uint8_t value);
+void SetAny_In_Flags(Flags *pFlags, uint8_t flag);
+boolean IsSetAny_In_Flags(Flags *pFlags, uint8_t flag);
+void Set_In_Flags(Flags *pFlags, uint8_t flag);
+boolean IsSet_In_Flags(Flags *pFlags, uint8_t flag);
 
 
 ////} // namespace opendnp3
