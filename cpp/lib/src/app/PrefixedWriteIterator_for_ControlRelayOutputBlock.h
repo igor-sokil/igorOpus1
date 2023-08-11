@@ -84,27 +84,27 @@ typedef struct
 ////
 ////private:
 
-    Serializer_for_ControlRelayOutputBlock serializer;
-    uint16_t sizeOfTypePlusIndex;
+  Serializer_for_ControlRelayOutputBlock serializer;
+  uint16_t sizeOfTypePlusIndex;
 
 ////    typename PrefixType::type_t count;
-    uint16_t count;
+  uint16_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock);
-    boolean Write_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock,
-                                                                  ControlRelayOutputBlock* value, uint16_t index);
-   void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_destr_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock);
-   void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlockOver2(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock,
-                                                 Serializer_for_ControlRelayOutputBlock* serializer, WSeq_for_Uint16_t* position);
-   void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlockOver1(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock);
-   PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock Null_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_static(void);
+boolean IsValid_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock);
+boolean Write_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock,
+    ControlRelayOutputBlock* value, uint16_t index);
+void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_destr_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock);
+void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlockOver2(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock,
+    Serializer_for_ControlRelayOutputBlock* serializer, WSeq_for_Uint16_t* position);
+void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlockOver1(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock);
+PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock Null_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_static(void);
 
 //-------------------Uint16---------------------------------------------------
 

@@ -84,27 +84,27 @@ typedef struct
 ////
 ////private:
 
-    Serializer_for_AnalogOutputStatus serializer;
-    uint16_t sizeOfTypePlusIndex;
+  Serializer_for_AnalogOutputStatus serializer;
+  uint16_t sizeOfTypePlusIndex;
 
 ////    typename PrefixType::type_t count;
-    uint16_t count;
+  uint16_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } PrefixedWriteIterator_for_UInt16_AnalogOutputStatus;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus);
-    boolean Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus,
-                                                                  AnalogOutputStatus* value, uint16_t index);
-   void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus);
-   void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver2(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus,
-                                                 Serializer_for_AnalogOutputStatus* serializer, WSeq_for_Uint16_t* position);
-   void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver1(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus);
-   PrefixedWriteIterator_for_UInt16_AnalogOutputStatus Null_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_static(void);
+boolean IsValid_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus);
+boolean Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus,
+    AnalogOutputStatus* value, uint16_t index);
+void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus);
+void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver2(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus,
+    Serializer_for_AnalogOutputStatus* serializer, WSeq_for_Uint16_t* position);
+void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver1(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus);
+PrefixedWriteIterator_for_UInt16_AnalogOutputStatus Null_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_static(void);
 
 //-------------------Uint16---------------------------------------------------
 

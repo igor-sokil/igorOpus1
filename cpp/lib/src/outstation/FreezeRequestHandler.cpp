@@ -35,38 +35,38 @@
 ////{
 
 ////FreezeRequestHandler::FreezeRequestHandler(bool clear, Database& database) : clear(clear), database(database) {}
-   void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeRequestHandler, boolean clear, Database* database)
+void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeRequestHandler, boolean clear, Database* database)
 {
- pFreezeRequestHandler->clear = clear;
- pFreezeRequestHandler->database = database;
-/*
- (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_AllObjectsHeader_in_IAPDUHandler = ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override;
- (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_RangeHeader_in_IAPDUHandler = ProcessHeader_RangeHeader_in_FreezeRequestHandler_override;
-*/
- (pFreezeRequestHandler->iIAPDUHandler).iIWhiteList.pIsAllowed_in_IWhiteList = IsAllowed_in_FreezeRequestHandler_override;
+  pFreezeRequestHandler->clear = clear;
+  pFreezeRequestHandler->database = database;
+  /*
+   (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_AllObjectsHeader_in_IAPDUHandler = ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override;
+   (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_RangeHeader_in_IAPDUHandler = ProcessHeader_RangeHeader_in_FreezeRequestHandler_override;
+  */
+  (pFreezeRequestHandler->iIAPDUHandler).iIWhiteList.pIsAllowed_in_IWhiteList = IsAllowed_in_FreezeRequestHandler_override;
 
- setParentPointer_in_IWhiteList(&((pFreezeRequestHandler->iIAPDUHandler).iIWhiteList), pFreezeRequestHandler);
- setParentPointer_in_IAPDUHandler(&(pFreezeRequestHandler->iIAPDUHandler), pFreezeRequestHandler);
+  setParentPointer_in_IWhiteList(&((pFreezeRequestHandler->iIAPDUHandler).iIWhiteList), pFreezeRequestHandler);
+  setParentPointer_in_IAPDUHandler(&(pFreezeRequestHandler->iIAPDUHandler), pFreezeRequestHandler);
 }
 
 //     boolean (*pIsAllowed_in_IWhiteList)(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 ////bool FreezeRequestHandler::IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc)
 boolean IsAllowed_in_FreezeRequestHandler_override(void* v, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc)
 {
-UNUSED(v);
-UNUSED(headerCount);
-    if (gv != GroupVariation_Group20Var0)
-        return false;
+  UNUSED(v);
+  UNUSED(headerCount);
+  if (gv != GroupVariation_Group20Var0)
+    return false;
 
-    switch (qc)
-    {
-    case QualifierCode_ALL_OBJECTS:
-    case QualifierCode_UINT8_START_STOP:
-    case QualifierCode_UINT16_START_STOP:
-        return true;
-    default:
-        return false;
-    }
+  switch (qc)
+  {
+  case QualifierCode_ALL_OBJECTS:
+  case QualifierCode_UINT8_START_STOP:
+  case QualifierCode_UINT16_START_STOP:
+    return true;
+  default:
+    return false;
+  }
 }
 /*
 ////IINField FreezeRequestHandler::ProcessHeader(const AllObjectsHeader& record)

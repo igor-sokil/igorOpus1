@@ -40,7 +40,7 @@ ArrayView__for__Node_TypedEventRecord_for_OctetStringSpec to_view_in_Array__for_
   ArrayView__for__Node_TypedEventRecord_for_OctetStringSpec aArrayView__for__Node_TypedEventRecord_for_OctetStringSpec;
   ArrayView__for__Node_TypedEventRecord_for_OctetStringSpec_in_ArrayView__for__Node_TypedEventRecord_for_OctetStringSpec(&aArrayView__for__Node_TypedEventRecord_for_OctetStringSpec, pArray__for__Node_TypedEventRecord_for_OctetStringSpec->buffer,
       (pArray__for__Node_TypedEventRecord_for_OctetStringSpec->hHasLength_for_Uint32_t).m_length
-                                                                              );
+                                                                                                                        );
   return aArrayView__for__Node_TypedEventRecord_for_OctetStringSpec;
 }
 

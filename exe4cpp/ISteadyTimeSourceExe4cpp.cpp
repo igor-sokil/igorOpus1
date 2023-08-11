@@ -5,7 +5,7 @@
 void ISteadyTimeSourceExe4cpp_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *pISteadyTimeSourceExe4cpp)
 {
 //qDebug()<<"ISteadyTimeSourceExe4cpp_in_ISteadyTimeSourceExe4cpp1= "<<(uint32_t)Get_time_in_ISteadyTimeSourceExe4cpp_override;
- pISteadyTimeSourceExe4cpp->pGet_time_in_ISteadyTimeSourceExe4cpp = Get_time_in_ISteadyTimeSourceExe4cpp_override;
+  pISteadyTimeSourceExe4cpp->pGet_time_in_ISteadyTimeSourceExe4cpp = Get_time_in_ISteadyTimeSourceExe4cpp_override;
 }
 
 uint64_t Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *pISteadyTimeSourceExe4cpp)

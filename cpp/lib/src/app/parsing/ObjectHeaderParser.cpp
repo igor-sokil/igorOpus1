@@ -33,46 +33,46 @@
 
 void ObjectHeader_in_ObjectHeader(ObjectHeader *pObjectHeader)
 {
- pObjectHeader->group = 0; 
- pObjectHeader->variation = 0; 
- pObjectHeader->qualifier = 0;
+  pObjectHeader->group = 0;
+  pObjectHeader->variation = 0;
+  pObjectHeader->qualifier = 0;
 }
 
 ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader* header, RSeq_for_Uint16_t* buffer)////, Logger* pLogger)
 {
 ////    if (buffer.length() < 3)
-    if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)))
-    {
+  if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)))
+  {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for header");
-        return ParseResult_NOT_ENOUGH_DATA_FOR_HEADER;
-    }
+    return ParseResult_NOT_ENOUGH_DATA_FOR_HEADER;
+  }
 
 //    boolean read_from_in_UInt8_static(RSeq_for_Uint16_t *input, uint8_t *out);
 ////    ser4cpp::UInt8::read_from(buffer, header.group);
 ////    ser4cpp::UInt8::read_from(buffer, header.variation);
 ////    ser4cpp::UInt8::read_from(buffer, header.qualifier);
-    read_from_in_UInt8_static(buffer, &(header->group));
-    read_from_in_UInt8_static(buffer, &(header->variation));
-    read_from_in_UInt8_static(buffer, &(header->qualifier));
-    return ParseResult_OK;
+  read_from_in_UInt8_static(buffer, &(header->group));
+  read_from_in_UInt8_static(buffer, &(header->variation));
+  read_from_in_UInt8_static(buffer, &(header->qualifier));
+  return ParseResult_OK;
 }
 
 boolean ReadFirstGroupVariation_in_ObjectHeaderParser_static(RSeq_for_Uint16_t* objects, GroupVariation_uint16_t* gv)
 {
-    RSeq_for_Uint16_t copy = *objects;
-    ObjectHeader oheader;
+  RSeq_for_Uint16_t copy = *objects;
+  ObjectHeader oheader;
 //ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader* header, RSeq_for_Uint16_t* buffer)////, Logger* pLogger)
 ////    if (ObjectHeaderParser::ParseObjectHeader(oheader, copy, nullptr) != ParseResult::OK)
-    if (ParseObjectHeader_in_ObjectHeaderParser_static(&oheader, &copy) != ParseResult_OK)////, Logger* pLogger)
-    {
-        return false;
-    }
+  if (ParseObjectHeader_in_ObjectHeaderParser_static(&oheader, &copy) != ParseResult_OK)////, Logger* pLogger)
+  {
+    return false;
+  }
 
 //    GroupVariationRecord GetRecord_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
 ////    gv = GroupVariationRecord::GetRecord(oheader.group, oheader.variation).enumeration;
-    *gv = GetRecord_in_GroupVariationRecord_static(oheader.group, oheader.variation).enumeration;
+  *gv = GetRecord_in_GroupVariationRecord_static(oheader.group, oheader.variation).enumeration;
 
-    return true;
+  return true;
 }
 
 ////} // namespace opendnp3

@@ -49,14 +49,14 @@ typedef struct
 
 ////    bool IsBroadcast() const;
 
-    uint16_t source;// = 0;
-    uint16_t destination;// = 0;
+  uint16_t source;// = 0;
+  uint16_t destination;// = 0;
 } Addresses;
 
-    boolean IsBroadcast_in_Addresses(Addresses *pAddresses);
-    Addresses Reverse_in_Addresses(Addresses *pAddresses);
-  void Addresses_in_AddressesOver2(Addresses *pAddresses, uint16_t source, uint16_t destination);
-  void Addresses_in_AddressesOver1(Addresses *pAddresses);
+boolean IsBroadcast_in_Addresses(Addresses *pAddresses);
+Addresses Reverse_in_Addresses(Addresses *pAddresses);
+void Addresses_in_AddressesOver2(Addresses *pAddresses, uint16_t source, uint16_t destination);
+void Addresses_in_AddressesOver1(Addresses *pAddresses);
 
 
 ////    inline bool operator==(const Addresses& other) const

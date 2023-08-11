@@ -39,12 +39,12 @@ typedef struct
 ////    {
 ////    }
 
-    Addresses addresses;
-    APDUHeader header;
-    RSeq_for_Uint16_t objects;
+  Addresses addresses;
+  APDUHeader header;
+  RSeq_for_Uint16_t objects;
 } ParsedRequest;
 
-  void  ParsedRequest_in_ParsedRequest(ParsedRequest *pParsedRequest, Addresses* addresses, APDUHeader* header, RSeq_for_Uint16_t* objects);
+void  ParsedRequest_in_ParsedRequest(ParsedRequest *pParsedRequest, Addresses* addresses, APDUHeader* header, RSeq_for_Uint16_t* objects);
 
 
 ////} // namespace opendnp3

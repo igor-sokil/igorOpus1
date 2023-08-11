@@ -39,9 +39,9 @@
 #define APDUEquality_uint8_t  uint8_t
 enum APDUEquality
 {
-    APDUEquality_FULL_EQUALITY,
-    APDUEquality_OBJECT_HEADERS_EQUAL,
-    APDUEquality_NONE
+  APDUEquality_FULL_EQUALITY,
+  APDUEquality_OBJECT_HEADERS_EQUAL,
+  APDUEquality_NONE
 };
 
 // This class is used to write to an underlying buffer
@@ -70,25 +70,25 @@ typedef struct
 ////    size_t Remaining() const;
 
 ////protected:
-    boolean valid;
+  boolean valid;
 ////    ser4cpp::wseq_t buffer;
 ////    ser4cpp::wseq_t remaining;
-    WSeq_for_Uint16_t buffer;
-    WSeq_for_Uint16_t remaining;
+  WSeq_for_Uint16_t buffer;
+  WSeq_for_Uint16_t remaining;
 } APDUWrapper;
 
-  void APDUWrapper_in_APDUWrapperOver1(APDUWrapper *pAPDUWrapper);
-  void APDUWrapper_in_APDUWrapperOver2(APDUWrapper *pAPDUWrapper, WSeq_for_Uint16_t *buffer);
-  boolean IsValid_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
-  void SetFunction_in_APDUWrapper(APDUWrapper *pAPDUWrapper, FunctionCode_uint8_t code);
-  FunctionCode_uint8_t GetFunction_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
-  AppControlField GetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
-  void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
-  uint16_t Size_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
-  RSeq_for_Uint16_t ToRSeq_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
+void APDUWrapper_in_APDUWrapperOver1(APDUWrapper *pAPDUWrapper);
+void APDUWrapper_in_APDUWrapperOver2(APDUWrapper *pAPDUWrapper, WSeq_for_Uint16_t *buffer);
+boolean IsValid_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
+void SetFunction_in_APDUWrapper(APDUWrapper *pAPDUWrapper, FunctionCode_uint8_t code);
+FunctionCode_uint8_t GetFunction_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
+AppControlField GetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
+void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
+uint16_t Size_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
+RSeq_for_Uint16_t ToRSeq_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 ////    HeaderWriter GetWriter();
-  HeaderWriter GetWriter_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
-  uint16_t Remaining_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
+HeaderWriter GetWriter_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
+uint16_t Remaining_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 
 ////} // namespace opendnp3
 

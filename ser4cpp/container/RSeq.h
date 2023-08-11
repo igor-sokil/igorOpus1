@@ -104,19 +104,19 @@ typedef struct
 ////        }
 ////    }
 
-    HasLength_for_Uint16_t hHasLength;
+  HasLength_for_Uint16_t hHasLength;
 ////protected:
-    uint8_t * buffer_;//// = nullptr;
+  uint8_t * buffer_;//// = nullptr;
 } RSeq_for_Uint16_t;
 
-     RSeq_for_Uint16_t empty_in_RSeq_for_Uint16_t_static(void);
-    void RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver1(RSeq_for_Uint16_t *pRSeq);
-    void RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(RSeq_for_Uint16_t *pRSeq, uint8_t * buffer, uint16_t length);
-    void make_empty_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq);
-    RSeq_for_Uint16_t take_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
-    RSeq_for_Uint16_t skip_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
-    void advance_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
-    boolean equals_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq_for_Uint16_t, RSeq_for_Uint16_t *rhs);
+RSeq_for_Uint16_t empty_in_RSeq_for_Uint16_t_static(void);
+void RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver1(RSeq_for_Uint16_t *pRSeq);
+void RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(RSeq_for_Uint16_t *pRSeq, uint8_t * buffer, uint16_t length);
+void make_empty_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq);
+RSeq_for_Uint16_t take_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
+RSeq_for_Uint16_t skip_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
+void advance_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
+boolean equals_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq_for_Uint16_t, RSeq_for_Uint16_t *rhs);
 
 
 ////    operator uint8_t const* () const

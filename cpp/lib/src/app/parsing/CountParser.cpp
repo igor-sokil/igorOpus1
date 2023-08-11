@@ -28,7 +28,7 @@
 ////{
 
 CountParser::CountParser(uint16_t count, size_t required_size, HandleFun handler)
-    : count(count), required_size(required_size), handler(handler)
+  : count(count), required_size(required_size), handler(handler)
 {
 }
 
@@ -37,18 +37,18 @@ ParseResult CountParser::Process(const HeaderRecord& record,
                                  IAPDUHandler* pHandler,
                                  Logger* pLogger) const
 {
-    if (buffer.length() < required_size)
-    {
-        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
-        return ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS;
-    }
+  if (buffer.length() < required_size)
+  {
+    SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
+    return ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS;
+  }
 
-    if (pHandler)
-    {
-        handler(record, count, buffer, *pHandler);
-    }
-    buffer.advance(required_size);
-    return ParseResult::OK;
+  if (pHandler)
+  {
+    handler(record, count, buffer, *pHandler);
+  }
+  buffer.advance(required_size);
+  return ParseResult::OK;
 }
 
 ParseResult CountParser::ParseHeader(ser4cpp::rseq_t& buffer,
@@ -58,62 +58,62 @@ ParseResult CountParser::ParseHeader(ser4cpp::rseq_t& buffer,
                                      Logger* pLogger,
                                      IAPDUHandler* pHandler)
 {
-    uint16_t count;
-    auto result = numParser.ParseCount(buffer, count, pLogger);
-    if (result == ParseResult::OK)
+  uint16_t count;
+  auto result = numParser.ParseCount(buffer, count, pLogger);
+  if (result == ParseResult::OK)
+  {
+    FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u %s, %s [%u]", record.group, record.variation,
+                        GroupVariationSpec::to_human_string(record.enumeration),
+                        QualifierCodeSpec::to_human_string(record.GetQualifierCode()), count);
+
+    if (settings.ExpectsContents())
     {
-        FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u %s, %s [%u]", record.group, record.variation,
-                            GroupVariationSpec::to_human_string(record.enumeration),
-                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), count);
-
-        if (settings.ExpectsContents())
-        {
-            return ParseCountOfObjects(buffer, record, count, pLogger, pHandler);
-        }
-
-        if (pHandler)
-        {
-            pHandler->OnHeader(CountHeader(record, count));
-        }
-
-        return ParseResult::OK;
+      return ParseCountOfObjects(buffer, record, count, pLogger, pHandler);
     }
-    else
+
+    if (pHandler)
     {
-        return result;
+      pHandler->OnHeader(CountHeader(record, count));
     }
+
+    return ParseResult::OK;
+  }
+  else
+  {
+    return result;
+  }
 }
 
 ParseResult CountParser::ParseCountOfObjects(
-    ser4cpp::rseq_t& buffer, const HeaderRecord& record, uint16_t count, Logger* pLogger, IAPDUHandler* pHandler)
+  ser4cpp::rseq_t& buffer, const HeaderRecord& record, uint16_t count, Logger* pLogger, IAPDUHandler* pHandler)
 {
-    switch (record.enumeration)
-    {
-    case (GroupVariation::Group50Var1):
-        return CountParser::From<Group50Var1>(count).Process(record, buffer, pHandler, pLogger);
+  switch (record.enumeration)
+  {
+  case (GroupVariation::Group50Var1):
+    return CountParser::From<Group50Var1>(count).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation::Group50Var3):
-        return CountParser::From<Group50Var3>(count).Process(record, buffer, pHandler, pLogger);
+  case (GroupVariation::Group50Var3):
+    return CountParser::From<Group50Var3>(count).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation::Group51Var1):
-        return CountParser::From<Group51Var1>(count).Process(record, buffer, pHandler, pLogger);
+  case (GroupVariation::Group51Var1):
+    return CountParser::From<Group51Var1>(count).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation::Group51Var2):
-        return CountParser::From<Group51Var2>(count).Process(record, buffer, pHandler, pLogger);
+  case (GroupVariation::Group51Var2):
+    return CountParser::From<Group51Var2>(count).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation::Group52Var1):
-        return CountParser::From<Group52Var1>(count).Process(record, buffer, pHandler, pLogger);
+  case (GroupVariation::Group52Var1):
+    return CountParser::From<Group52Var1>(count).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation::Group52Var2):
-        return CountParser::From<Group52Var2>(count).Process(record, buffer, pHandler, pLogger);
+  case (GroupVariation::Group52Var2):
+    return CountParser::From<Group52Var2>(count).Process(record, buffer, pHandler, pLogger);
 
-    default:
-        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unsupported qualifier/object - %s - %i / %i",
-                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), record.group,
-                            record.variation);
+  default:
+    FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unsupported qualifier/object - %s - %i / %i",
+                        QualifierCodeSpec::to_human_string(record.GetQualifierCode()), record.group,
+                        record.variation);
 
-        return ParseResult::INVALID_OBJECT_QUALIFIER;
-    }
+    return ParseResult::INVALID_OBJECT_QUALIFIER;
+  }
 }
 
 ////} // namespace opendnp3

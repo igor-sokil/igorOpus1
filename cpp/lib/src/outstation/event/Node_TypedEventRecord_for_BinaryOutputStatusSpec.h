@@ -34,5 +34,5 @@ typedef struct
 } Node_TypedEventRecord_for_BinaryOutputStatusSpec;
 
 void Node_TypedEventRecord_for_BinaryOutputStatusSpec_in_Node_TypedEventRecord_for_BinaryOutputStatusSpec(
-                    Node_TypedEventRecord_for_BinaryOutputStatusSpec *pNode_TypedEventRecord_for_BinaryOutputStatusSpec);
+  Node_TypedEventRecord_for_BinaryOutputStatusSpec *pNode_TypedEventRecord_for_BinaryOutputStatusSpec);
 #endif

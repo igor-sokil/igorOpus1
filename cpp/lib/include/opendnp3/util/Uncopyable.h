@@ -29,15 +29,15 @@ namespace opendnp3
 class Uncopyable
 {
 protected:
-    Uncopyable() = default; // allow construction/destruction/move
-    Uncopyable(Uncopyable&&) = default;
-    virtual ~Uncopyable() = default;
-    Uncopyable& operator=(Uncopyable&&) = default;
+  Uncopyable() = default; // allow construction/destruction/move
+  Uncopyable(Uncopyable&&) = default;
+  virtual ~Uncopyable() = default;
+  Uncopyable& operator=(Uncopyable&&) = default;
 
 private:
-    // prevent these functions
-    Uncopyable(const Uncopyable&) = delete;
-    Uncopyable& operator=(const Uncopyable&) = delete;
+  // prevent these functions
+  Uncopyable(const Uncopyable&) = delete;
+  Uncopyable& operator=(const Uncopyable&) = delete;
 };
 
 } // namespace opendnp3

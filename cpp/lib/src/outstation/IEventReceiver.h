@@ -38,21 +38,21 @@ typedef struct
 ////public:
 ////    virtual ~IEventReceiver() {}
 
-     void (*pUpdate_BinarySpec_in_IEventReceiver)(void*, Event_for_BinarySpec* evt);// = 0;
+  void (*pUpdate_BinarySpec_in_IEventReceiver)(void*, Event_for_BinarySpec* evt);// = 0;
 
-     void (*pUpdate_DoubleBitBinarySpec_in_IEventReceiver)(void*, Event_for_DoubleBitBinarySpec* evt);// = 0;
+  void (*pUpdate_DoubleBitBinarySpec_in_IEventReceiver)(void*, Event_for_DoubleBitBinarySpec* evt);// = 0;
 
-     void (*pUpdate_AnalogSpec_in_IEventReceiver)(void*, Event_for_AnalogSpec* evt);// = 0;
+  void (*pUpdate_AnalogSpec_in_IEventReceiver)(void*, Event_for_AnalogSpec* evt);// = 0;
 
-     void (*pUpdate_CounterSpec_in_IEventReceiver)(void*, Event_for_CounterSpec* evt);// = 0;
+  void (*pUpdate_CounterSpec_in_IEventReceiver)(void*, Event_for_CounterSpec* evt);// = 0;
 
-     void (*pUpdate_FrozenCounterSpec_in_IEventReceiver)(void*, Event_for_FrozenCounterSpec* evt);// = 0;
+  void (*pUpdate_FrozenCounterSpec_in_IEventReceiver)(void*, Event_for_FrozenCounterSpec* evt);// = 0;
 
-     void (*pUpdate_BinaryOutputStatusSpec_in_IEventReceiver)(void*, Event_for_BinaryOutputStatusSpec* evt);// = 0;
+  void (*pUpdate_BinaryOutputStatusSpec_in_IEventReceiver)(void*, Event_for_BinaryOutputStatusSpec* evt);// = 0;
 
-     void (*pUpdate_AnalogOutputStatusSpec_in_IEventReceiver)(void*, Event_for_AnalogOutputStatusSpec* evt);// = 0;
+  void (*pUpdate_AnalogOutputStatusSpec_in_IEventReceiver)(void*, Event_for_AnalogOutputStatusSpec* evt);// = 0;
 
-     void (*pUpdate_OctetStringSpec_in_IEventReceiver)(void*, Event_for_OctetStringSpec* evt);// = 0;
+  void (*pUpdate_OctetStringSpec_in_IEventReceiver)(void*, Event_for_OctetStringSpec* evt);// = 0;
 
   void* pParentPointer_in_IEventReceiver;
 } IEventReceiver;

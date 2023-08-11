@@ -56,21 +56,21 @@ typedef struct
 ////private:
 ////    static AppControlField GetControl(bool fir, bool fin, bool hasEvents);
 
-    uint16_t fragmentCount;
-    IResponseLoader* pStaticLoader;
-    IResponseLoader* pEventLoader;
+  uint16_t fragmentCount;
+  IResponseLoader* pStaticLoader;
+  IResponseLoader* pEventLoader;
 } ResponseContext;
 
- void ResponseContext_in_ResponseContext(ResponseContext *pResponseContext, IResponseLoader* staticLoader, IResponseLoader* eventLoader);
+void ResponseContext_in_ResponseContext(ResponseContext *pResponseContext, IResponseLoader* staticLoader, IResponseLoader* eventLoader);
 
- boolean HasSelection_in_ResponseContext(ResponseContext *pResponseContext);
+boolean HasSelection_in_ResponseContext(ResponseContext *pResponseContext);
 
- void Reset_in_ResponseContext(ResponseContext *pResponseContext);
+void Reset_in_ResponseContext(ResponseContext *pResponseContext);
 
- AppControlField LoadResponse_in_ResponseContext(ResponseContext *pResponseContext, HeaderWriter* writer);
+AppControlField LoadResponse_in_ResponseContext(ResponseContext *pResponseContext, HeaderWriter* writer);
 
 ////private:
- AppControlField GetControl_in_ResponseContext_static(boolean fir, boolean fin, boolean hasEvents);
+AppControlField GetControl_in_ResponseContext_static(boolean fir, boolean fin, boolean hasEvents);
 
 ////} // namespace opendnp3
 

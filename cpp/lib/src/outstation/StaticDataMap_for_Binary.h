@@ -61,7 +61,7 @@
 //typedef struct
 class StaticDataMap_for_BinarySpec
 {
-    using map_t = std::map<uint16_t, StaticDataCell_for_Binary>;
+  using map_t = std::map<uint16_t, StaticDataCell_for_Binary>;
 ////    using map_iter_t = typename map_t::iterator;
 
 ////public:
@@ -107,7 +107,7 @@ class StaticDataMap_for_BinarySpec
 ////                    return;
 ////                }
 ////
-                // shorten the range
+  // shorten the range
 ////                this->range.start = iter->first;
 ////
 ////                if (iter->second.selection.selected)
@@ -180,8 +180,8 @@ class StaticDataMap_for_BinarySpec
 ////    iterator end();
 
 ////private:
-    map_t map;
-    Range selected;
+  map_t map;
+  Range selected;
 
 ////    Range get_full_range() const;
 ////
@@ -190,12 +190,12 @@ class StaticDataMap_for_BinarySpec
 ////                EventMode mode,
 ////                IEventReceiver& receiver);
 
-    // generic implementation of select_all that accepts a function
-    // that can use or override the default variation
+  // generic implementation of select_all that accepts a function
+  // that can use or override the default variation
 ////    template<class F> size_t select_all(F get_variation);
 
-    // generic implementation of select that accepts a function
-    // that can use or override the default variation
+  // generic implementation of select that accepts a function
+  // that can use or override the default variation
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 

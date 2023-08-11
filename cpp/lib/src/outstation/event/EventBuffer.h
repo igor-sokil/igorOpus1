@@ -52,13 +52,13 @@
 ////class EventBuffer final : public IEventReceiver, public IEventSelector, public IResponseLoader
 typedef struct
 {
-IEventReceiver iIEventReceiver;
-IEventSelector iIEventSelector;
-IResponseLoader iIResponseLoader;
+  IEventReceiver iIEventReceiver;
+  IEventSelector iIEventSelector;
+  IResponseLoader iIResponseLoader;
 ////public:
 ////    explicit EventBuffer(const EventBufferConfig& config);
 
-    // ------- IEventReceiver ------
+  // ------- IEventReceiver ------
 
 ////    virtual void Update(const Event<BinarySpec>& evt) override;
 ////    virtual void Update(const Event<DoubleBitBinarySpec>& evt) override;
@@ -69,7 +69,7 @@ IResponseLoader iIResponseLoader;
 ////    virtual void Update(const Event<AnalogOutputStatusSpec>& evt) override;
 ////    virtual void Update(const Event<OctetStringSpec>& evt) override;
 
-    // ------- IEventSelector ------
+  // ------- IEventSelector ------
 
 ////    virtual void Unselect();
 //     void (*pUnselect_in_EventBuffer)(void*);
@@ -78,13 +78,13 @@ IResponseLoader iIResponseLoader;
 
 ////    virtual IINField SelectCount(GroupVariation gv, uint16_t count) override final;
 
-    // ------- IResponseLoader -------
+  // ------- IResponseLoader -------
 
 ////    virtual bool HasAnySelection() const override final;
 
 ////    virtual bool Load(HeaderWriter& writer) override final;
 
-    // ------- Misc -------
+  // ------- Misc -------
 
 ////    void ClearWritten(); // called when a transmission succeeds
 
@@ -95,11 +95,11 @@ IResponseLoader iIResponseLoader;
 ////    void SelectAllByClass(const ClassField& clazz);
 
 ////    uint32_t NumEvents(EventClass ec) const;
-    
+
 
 ////private:
-    boolean overflow;// = false;
-    EventStorage storage;
+  boolean overflow;// = false;
+  EventStorage storage;
 
 ////    IINField SelectMaxCount(GroupVariation gv, uint32_t maximum);
 
@@ -124,79 +124,79 @@ IResponseLoader iIResponseLoader;
 ////    }
 } EventBuffer;
 
- void EventBuffer_in_EventBufferOver1(EventBuffer *pEventBuffer);
- void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfig* config);
- void UpdateAny_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinarySpec *evt);
- void UpdateAny_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_DoubleBitBinarySpec *evt);
- void UpdateAny_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogSpec *evt);
- void UpdateAny_CounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_CounterSpec *evt);
- void UpdateAny_FrozenCounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_FrozenCounterSpec *evt);
- void UpdateAny_BinaryOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinaryOutputStatusSpec *evt);
- void UpdateAny_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogOutputStatusSpec *evt);
- void UpdateAny_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_OctetStringSpec *evt);
+void EventBuffer_in_EventBufferOver1(EventBuffer *pEventBuffer);
+void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfig* config);
+void UpdateAny_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinarySpec *evt);
+void UpdateAny_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_DoubleBitBinarySpec *evt);
+void UpdateAny_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogSpec *evt);
+void UpdateAny_CounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_CounterSpec *evt);
+void UpdateAny_FrozenCounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_FrozenCounterSpec *evt);
+void UpdateAny_BinaryOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinaryOutputStatusSpec *evt);
+void UpdateAny_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogOutputStatusSpec *evt);
+void UpdateAny_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_OctetStringSpec *evt);
 
- IINField  SelectByType_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventBinaryVariation_uint8_t type);
- IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBinaryVariation_uint8_t type);
- IINField  SelectByType_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventAnalogVariation_uint8_t type);
- IINField  SelectByType_CounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventCounterVariation_uint8_t type);
- IINField  SelectByType_FrozenCounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventFrozenCounterVariation_uint8_t type);
- IINField  SelectByType_BinaryOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventBinaryOutputStatusVariation_uint8_t type);
- IINField  SelectByType_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventAnalogOutputStatusVariation_uint8_t type);
- IINField  SelectByType_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventOctetStringVariation_uint8_t type);
+IINField  SelectByType_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventBinaryVariation_uint8_t type);
+IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBinaryVariation_uint8_t type);
+IINField  SelectByType_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventAnalogVariation_uint8_t type);
+IINField  SelectByType_CounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventCounterVariation_uint8_t type);
+IINField  SelectByType_FrozenCounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventFrozenCounterVariation_uint8_t type);
+IINField  SelectByType_BinaryOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventBinaryOutputStatusVariation_uint8_t type);
+IINField  SelectByType_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventAnalogOutputStatusVariation_uint8_t type);
+IINField  SelectByType_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventOctetStringVariation_uint8_t type);
 
- IINField SelectByClass_EventClass_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventClass_uint8_t clazz);
+IINField SelectByClass_EventClass_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventClass_uint8_t clazz);
 
-    // ------- IEventReceiver ------
+// ------- IEventReceiver ------
 
-    void Update_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinarySpec *evt);
-    void Update_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_DoubleBitBinarySpec* evt);
-    void Update_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogSpec* evt);
-    void Update_CounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_CounterSpec* evt);
-    void Update_FrozenCounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_FrozenCounterSpec* evt);
-    void Update_BinaryOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinaryOutputStatusSpec* evt);
-    void Update_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogOutputStatusSpec* evt);
-    void Update_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_OctetStringSpec* evt);
+void Update_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinarySpec *evt);
+void Update_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_DoubleBitBinarySpec* evt);
+void Update_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogSpec* evt);
+void Update_CounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_CounterSpec* evt);
+void Update_FrozenCounterSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_FrozenCounterSpec* evt);
+void Update_BinaryOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinaryOutputStatusSpec* evt);
+void Update_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogOutputStatusSpec* evt);
+void Update_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_OctetStringSpec* evt);
 
-    void Update_BinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinarySpec *evt);
-    void Update_DoubleBitBinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_DoubleBitBinarySpec* evt);
-    void Update_AnalogSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_AnalogSpec* evt);
-    void Update_CounterSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_CounterSpec* evt);
-    void Update_FrozenCounterSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_FrozenCounterSpec* evt);
-    void Update_BinaryOutputStatusSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinaryOutputStatusSpec* evt);
-    void Update_AnalogOutputStatusSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_AnalogOutputStatusSpec* evt);
-    void Update_OctetStringSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_OctetStringSpec* evt);
+void Update_BinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinarySpec *evt);
+void Update_DoubleBitBinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_DoubleBitBinarySpec* evt);
+void Update_AnalogSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_AnalogSpec* evt);
+void Update_CounterSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_CounterSpec* evt);
+void Update_FrozenCounterSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_FrozenCounterSpec* evt);
+void Update_BinaryOutputStatusSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinaryOutputStatusSpec* evt);
+void Update_AnalogOutputStatusSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_AnalogOutputStatusSpec* evt);
+void Update_OctetStringSpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_OctetStringSpec* evt);
 
-    // ------- IEventSelector ------
+// ------- IEventSelector ------
 
-     void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
-     IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv);
-     IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint16_t count);
+void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
+IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv);
+IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint16_t count);
 
-     void Unselect_in_EventBuffer_override(void *pIEventSelector);
-     IINField SelectAll_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv);
-     IINField SelectCount_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv, uint16_t count);
+void Unselect_in_EventBuffer_override(void *pIEventSelector);
+IINField SelectAll_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv);
+IINField SelectCount_in_EventBuffer_override(void *pIEventSelector, GroupVariation_uint16_t gv, uint16_t count);
 
-    // ------- IResponseLoader -------
+// ------- IResponseLoader -------
 
-     boolean HasAnySelection_in_EventBuffer(EventBuffer *pEventBuffer);
-     boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer);
+boolean HasAnySelection_in_EventBuffer(EventBuffer *pEventBuffer);
+boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer);
 
-     boolean HasAnySelection_in_EventBuffer_override(void *pIResponseLoader);
-     boolean Load_in_EventBuffer_override(void *pIResponseLoader, HeaderWriter* writer);
+boolean HasAnySelection_in_EventBuffer_override(void *pIResponseLoader);
+boolean Load_in_EventBuffer_override(void *pIResponseLoader, HeaderWriter* writer);
 
-    // ------- Misc -------
+// ------- Misc -------
 
-    void ClearWritten_in_EventBuffer(EventBuffer *pEventBuffer); // called when a transmission succeeds
+void ClearWritten_in_EventBuffer(EventBuffer *pEventBuffer); // called when a transmission succeeds
 
-    ClassField UnwrittenClassField_in_EventBuffer(EventBuffer *pEventBuffer);
+ClassField UnwrittenClassField_in_EventBuffer(EventBuffer *pEventBuffer);
 
-    boolean IsOverflown_in_EventBuffer(EventBuffer *pEventBuffer);
+boolean IsOverflown_in_EventBuffer(EventBuffer *pEventBuffer);
 
-    void SelectAllByClass_in_EventBuffer(EventBuffer *pEventBuffer, ClassField* clazz);
+void SelectAllByClass_in_EventBuffer(EventBuffer *pEventBuffer, ClassField* clazz);
 
-    uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t ec);
+uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t ec);
 
-    IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint32_t maximum);
+IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint32_t maximum);
 
 ////} // namespace opendnp3
 

@@ -47,9 +47,9 @@ typedef struct
 ////public:
 ////    ObjectHeader();
 
-    uint8_t group;
-    uint8_t variation;
-    uint8_t qualifier;
+  uint8_t group;
+  uint8_t variation;
+  uint8_t qualifier;
 } ObjectHeader;
 
 void ObjectHeader_in_ObjectHeader(ObjectHeader *pObjectHeader);
@@ -59,13 +59,13 @@ void ObjectHeader_in_ObjectHeader(ObjectHeader *pObjectHeader);
 ////public:
 ////    static ParseResult ParseObjectHeader(ObjectHeader& header, ser4cpp::rseq_t& buffer, Logger* pLogger);
 
-    // Provides stateless inspection of the first object header, provided that it exists
-    // return false on failure (e.g. < 3 bytes)
+// Provides stateless inspection of the first object header, provided that it exists
+// return false on failure (e.g. < 3 bytes)
 ////    static bool ReadFirstGroupVariation(const ser4cpp::rseq_t& objects, GroupVariation& gv);
 ////};
 
-    ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader *header, RSeq_for_Uint16_t *buffer);////, Logger* pLogger);
-    boolean ReadFirstGroupVariation_in_ObjectHeaderParser_static(RSeq_for_Uint16_t *objects, GroupVariation_uint16_t *gv);
+ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader *header, RSeq_for_Uint16_t *buffer);////, Logger* pLogger);
+boolean ReadFirstGroupVariation_in_ObjectHeaderParser_static(RSeq_for_Uint16_t *objects, GroupVariation_uint16_t *gv);
 
 ////} // namespace opendnp3
 

@@ -33,17 +33,17 @@ void RequestHistory_in_RequestHistory(RequestHistory *pRequestHistory)
 
 void Reset_in_RequestHistory(RequestHistory *pRequestHistory)
 {
-    pRequestHistory->hasLast = false;
+  pRequestHistory->hasLast = false;
 }
 
 void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects)
 {
-    pRequestHistory->hasLast = true;
-    pRequestHistory->lastHeader = *header;
+  pRequestHistory->hasLast = true;
+  pRequestHistory->lastHeader = *header;
 //    uint16_t length_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
-    pRequestHistory->lastObjectsLength = length_in_HasLength_for_Uint16_t(&(objects->hHasLength));////objects.length();
+  pRequestHistory->lastObjectsLength = length_in_HasLength_for_Uint16_t(&(objects->hHasLength));////objects.length();
 // uint16_t CalcCrc_in_CRC_staticOver2(RSeq_for_Uint16_t* view);
-    pRequestHistory->lastDigest = CalcCrc_in_CRC_staticOver2(objects);
+  pRequestHistory->lastDigest = CalcCrc_in_CRC_staticOver2(objects);
 }
 
 boolean FullyEqualsLastRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects)
@@ -51,31 +51,31 @@ boolean FullyEqualsLastRequest_in_RequestHistory(RequestHistory *pRequestHistory
 //   boolean Equals_in_APDUHeader(APDUHeader *pAPDUHeader, APDUHeader *header);
 //   boolean EqualsLastObjects_in_RequestHistory(RequestHistory *pRequestHistory, RSeq_for_Uint16_t objects);
 ////    return lastHeader.Equals(header) && EqualsLastObjects(objects);
-   return  Equals_in_APDUHeader(&(pRequestHistory->lastHeader), header) && EqualsLastObjects_in_RequestHistory(pRequestHistory, objects);
+  return  Equals_in_APDUHeader(&(pRequestHistory->lastHeader), header) && EqualsLastObjects_in_RequestHistory(pRequestHistory, objects);
 }
 
-APDUHeader GetLastHeader_in_RequestHistory(RequestHistory *pRequestHistory) 
+APDUHeader GetLastHeader_in_RequestHistory(RequestHistory *pRequestHistory)
 {
 //   void APDUHeader_in_APDUHeaderOver1(APDUHeader*);
 ////    return hasLast ? lastHeader : APDUHeader();
-       APDUHeader aAPDUHeader;
-       APDUHeader_in_APDUHeaderOver1(&aAPDUHeader);
-       return pRequestHistory->hasLast ? pRequestHistory->lastHeader : aAPDUHeader;
+  APDUHeader aAPDUHeader;
+  APDUHeader_in_APDUHeaderOver1(&aAPDUHeader);
+  return pRequestHistory->hasLast ? pRequestHistory->lastHeader : aAPDUHeader;
 }
 
-boolean EqualsLastObjects_in_RequestHistory(RequestHistory *pRequestHistory, RSeq_for_Uint16_t* objects) 
+boolean EqualsLastObjects_in_RequestHistory(RequestHistory *pRequestHistory, RSeq_for_Uint16_t* objects)
 {
 //    uint16_t length_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
 // uint16_t CalcCrc_in_CRC_staticOver2(RSeq_for_Uint16_t* view);
 ////    return hasLast && (lastObjectsLength == objects.length()) && (lastDigest == CRC::CalcCrc(objects));
-        return pRequestHistory->hasLast && 
-               (pRequestHistory->lastObjectsLength == length_in_HasLength_for_Uint16_t(&(objects->hHasLength))) &&
-               (pRequestHistory->lastDigest == CalcCrc_in_CRC_staticOver2(objects));
+  return pRequestHistory->hasLast &&
+         (pRequestHistory->lastObjectsLength == length_in_HasLength_for_Uint16_t(&(objects->hHasLength))) &&
+         (pRequestHistory->lastDigest == CalcCrc_in_CRC_staticOver2(objects));
 }
 
 ////} // namespace opendnp3
-    boolean HasLastRequest_in_RequestHistory(RequestHistory *pRequestHistory) 
-    {
-        return pRequestHistory->hasLast;
-    }
+boolean HasLastRequest_in_RequestHistory(RequestHistory *pRequestHistory)
+{
+  return pRequestHistory->hasLast;
+}
 

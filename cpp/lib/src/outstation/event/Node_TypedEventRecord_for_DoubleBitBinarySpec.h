@@ -34,5 +34,5 @@ typedef struct
 } Node_TypedEventRecord_for_DoubleBitBinarySpec;
 
 void Node_TypedEventRecord_for_DoubleBitBinarySpec_in_Node_TypedEventRecord_for_DoubleBitBinarySpec(
-                    Node_TypedEventRecord_for_DoubleBitBinarySpec *pNode_TypedEventRecord_for_DoubleBitBinarySpec);
+  Node_TypedEventRecord_for_DoubleBitBinarySpec *pNode_TypedEventRecord_for_DoubleBitBinarySpec);
 #endif

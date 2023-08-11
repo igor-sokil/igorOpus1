@@ -5,25 +5,25 @@
 //      Foreach_in_List_for_EventRecord(&((pEventStorage->state).events), clear_in_EventStorage);
 ////template<class T> template<class U> void List<T>::Foreach(const U& action)
 void    Foreach_in_List_for_EventRecord(
-                                       List_for_EventRecord *pList_for_EventRecord, 
-                                       void (*action)(EventRecord* record)
-                                       )
+  List_for_EventRecord *pList_for_EventRecord,
+  void (*action)(EventRecord* record)
+)
 //&((pEventStorage->state).events), clear_in_EventStorage);
 {
 ////    auto iter = this->Iterate();
   Iterator_in_List_for_EventRecord iter = Iterate_in_List_for_EventRecord(pList_for_EventRecord);
 ////    while (iter.HasNext())
-    while (HasNext__in__Iterator_in_List_for_EventRecord(&iter))
-    {
+  while (HasNext__in__Iterator_in_List_for_EventRecord(&iter))
+  {
 ////        action(iter.Next()->value);
-  Node_for_EventRecord* current = Next__in__Iterator_in_List_for_EventRecord(&iter);
-  action(&(current->value));
-    }
+    Node_for_EventRecord* current = Next__in__Iterator_in_List_for_EventRecord(&iter);
+    action(&(current->value));
+  }
 }
 
 uint32_t RemoveAll_in_List_for_EventRecord(EventStorage *pEventStorage,
-                                           List_for_EventRecord *pList_for_EventRecord, 
-                                           boolean (*match)(EventStorage *pEventStorage, EventRecord* record))
+    List_for_EventRecord *pList_for_EventRecord,
+    boolean (*match)(EventStorage *pEventStorage, EventRecord* record))
 {
   uint32_t count = 0;
 

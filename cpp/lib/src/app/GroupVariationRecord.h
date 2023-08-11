@@ -41,27 +41,27 @@
 
 ////enum class GroupVariationType : int
 #define GroupVariationType_int32_t int32_t
-enum GroupVariationType 
+enum GroupVariationType
 {
-    GroupVariationType_STATIC,
-    GroupVariationType_EVENT,
-    GroupVariationType_OTHER
+  GroupVariationType_STATIC,
+  GroupVariationType_EVENT,
+  GroupVariationType_OTHER
 };
 
 ////struct EnumAndType
-typedef struct 
+typedef struct
 {
 ////    GroupVariation enumeration;
-   GroupVariation_uint16_t    enumeration;
+  GroupVariation_uint16_t    enumeration;
 ////    GroupVariationType type;
-   GroupVariationType_int32_t type;
+  GroupVariationType_int32_t type;
 } EnumAndType;
 
-   void EnumAndType_in_EnumAndType(EnumAndType *pEnumAndType,
-                                   GroupVariation_uint16_t enumeration_, GroupVariationType_int32_t type_);
+void EnumAndType_in_EnumAndType(EnumAndType *pEnumAndType,
+                                GroupVariation_uint16_t enumeration_, GroupVariationType_int32_t type_);
 
 ////class GroupVariationRecord
-typedef struct 
+typedef struct
 {
 
 ////public:
@@ -80,30 +80,30 @@ typedef struct
 ////    {
 ////    }
 
-    GroupVariation_uint16_t enumeration;
-    GroupVariationType_int32_t type;
-    uint8_t group;
-    uint8_t variation;
+  GroupVariation_uint16_t enumeration;
+  GroupVariationType_int32_t type;
+  uint8_t group;
+  uint8_t variation;
 } GroupVariationRecord;
 
-    EnumAndType GetEnumAndType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
+EnumAndType GetEnumAndType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
 
-    uint16_t GetGroupVar_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
+uint16_t GetGroupVar_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
 
-    GroupVariationRecord GetRecord_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
+GroupVariationRecord GetRecord_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
 
-    GroupVariationType_int32_t GetType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
+GroupVariationType_int32_t GetType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation);
 
-    void GroupVariationRecord_in_GroupVariationRecordOver2(GroupVariationRecord *pGroupVariationRecord,
-                                                           uint8_t group_, uint8_t variation_,
-                                                           GroupVariation_uint16_t enumeration_, 
-                                                           GroupVariationType_int32_t type_);
-    void GroupVariationRecord_in_GroupVariationRecordOver1(GroupVariationRecord *pGroupVariationRecord);
+void GroupVariationRecord_in_GroupVariationRecordOver2(GroupVariationRecord *pGroupVariationRecord,
+    uint8_t group_, uint8_t variation_,
+    GroupVariation_uint16_t enumeration_,
+    GroupVariationType_int32_t type_);
+void GroupVariationRecord_in_GroupVariationRecordOver1(GroupVariationRecord *pGroupVariationRecord);
 
 ////class HeaderRecord : public GroupVariationRecord
 typedef struct
 {
-    GroupVariationRecord gGroupVariationRecord;
+  GroupVariationRecord gGroupVariationRecord;
 ////public:
 ////    HeaderRecord() : qualifier(0), headerIndex(0) {}
 ////
@@ -111,17 +111,17 @@ typedef struct
 ////
 ////    QualifierCode GetQualifierCode() const;
 
-    uint8_t qualifier;
-    uint32_t headerIndex;
+  uint8_t qualifier;
+  uint32_t headerIndex;
 } HeaderRecord;
 
-   void HeaderRecord_in_HeaderRecordOver1(HeaderRecord *pHeaderRecord);
+void HeaderRecord_in_HeaderRecordOver1(HeaderRecord *pHeaderRecord);
 
-   void HeaderRecord_in_HeaderRecordOver2(HeaderRecord *pHeaderRecord, 
-                                          GroupVariationRecord *gv,
-                                          uint8_t qualifier, uint32_t headerIndex);
+void HeaderRecord_in_HeaderRecordOver2(HeaderRecord *pHeaderRecord,
+                                       GroupVariationRecord *gv,
+                                       uint8_t qualifier, uint32_t headerIndex);
 ////
-   QualifierCode_uint8_t GetQualifierCode_in_HeaderRecord(HeaderRecord *pHeaderRecord);
+QualifierCode_uint8_t GetQualifierCode_in_HeaderRecord(HeaderRecord *pHeaderRecord);
 
 // ---- Specific header types  ---
 
@@ -132,7 +132,7 @@ typedef struct
 ////public:
 ////    explicit AllObjectsHeader(const HeaderRecord& record) : HeaderRecord(record) {}
 } AllObjectsHeader;
-  void AllObjectsHeader_in_AllObjectsHeader(AllObjectsHeader *pAllObjectsHeader, HeaderRecord *record);
+void AllObjectsHeader_in_AllObjectsHeader(AllObjectsHeader *pAllObjectsHeader, HeaderRecord *record);
 
 ////class CountHeader : public HeaderRecord
 typedef struct
@@ -141,10 +141,10 @@ typedef struct
 ////public:
 ////    CountHeader(const HeaderRecord& record, uint16_t count_) : HeaderRecord(record), count(count_) {}
 
-    uint16_t count;
+  uint16_t count;
 } CountHeader;
 
-   void CountHeader_in_CountHeader(CountHeader *pCountHeader, HeaderRecord *record, uint16_t count_);
+void CountHeader_in_CountHeader(CountHeader *pCountHeader, HeaderRecord *record, uint16_t count_);
 
 ////class FreeFormatHeader : public HeaderRecord
 typedef struct
@@ -153,10 +153,10 @@ typedef struct
 ////public:
 ////    FreeFormatHeader(const HeaderRecord& record, uint16_t count_) : HeaderRecord(record), count(count_) {}
 
-    uint16_t count;
+  uint16_t count;
 } FreeFormatHeader;
 
-   void FreeFormatHeader_in_FreeFormatHeader(FreeFormatHeader *pFreeFormatHeader, HeaderRecord *record, uint16_t count_);
+void FreeFormatHeader_in_FreeFormatHeader(FreeFormatHeader *pFreeFormatHeader, HeaderRecord *record, uint16_t count_);
 
 ////class RangeHeader : public HeaderRecord
 typedef struct
@@ -165,10 +165,10 @@ typedef struct
 ////public:
 ////    RangeHeader(const HeaderRecord& record, const Range& range_) : HeaderRecord(record), range(range_) {}
 
-    Range range;
+  Range range;
 } RangeHeader;
 
-  void RangeHeader_in_RangeHeader(RangeHeader *pRangeHeader, HeaderRecord *record, Range *range_);
+void RangeHeader_in_RangeHeader(RangeHeader *pRangeHeader, HeaderRecord *record, Range *range_);
 
 ////class PrefixHeader : public HeaderRecord
 typedef struct
@@ -177,10 +177,10 @@ typedef struct
 ////public:
 ////    PrefixHeader(const HeaderRecord& record, uint16_t count_) : HeaderRecord(record), count(count_) {}
 
-    uint16_t count;
+  uint16_t count;
 } PrefixHeader;
 
-  void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
 
 ////} // namespace opendnp3
 

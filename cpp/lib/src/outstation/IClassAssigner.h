@@ -42,15 +42,15 @@
 typedef struct
 {
 ////public:
-    /**
-     *	@return the full range for the actual type, an invalid range if the type doesn't exist
-     */
-     Range (*pAssignClassToAll_in_IClassAssigner)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz);// = 0;
+  /**
+   *	@return the full range for the actual type, an invalid range if the type doesn't exist
+   */
+  Range (*pAssignClassToAll_in_IClassAssigner)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz);// = 0;
 
-    /**
-     *	@return the portion of the requested range that is valid, an invalid range if the type doesn't exist
-     */
-    Range (*pAssignClassToRange_in_IClassAssigner)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);// = 0;
+  /**
+   *	@return the portion of the requested range that is valid, an invalid range if the type doesn't exist
+   */
+  Range (*pAssignClassToRange_in_IClassAssigner)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);// = 0;
 
   void* pParentPointer_in_IClassAssigner;
 } IClassAssigner;

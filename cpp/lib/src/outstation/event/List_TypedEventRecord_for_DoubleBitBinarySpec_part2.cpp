@@ -8,11 +8,11 @@ void  ForeachWhile_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEv
     event_variation_t_in_BinaryInfo variation,
     boolean useDefaultVariation,
 //    boolean (*select_match)(EventLists* lists, TypedEventRecord_for_DoubleBitBinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation))
-boolean (*select_match)(EventLists* lists,
-    TypedEventRecord_for_DoubleBitBinarySpec* node,
-    uint32_t num_selected, uint32_t maxEv,
-    event_variation_t_in_DoubleBitBinaryInfo variation,
-    boolean useDefaultVariation))
+    boolean (*select_match)(EventLists* lists,
+                            TypedEventRecord_for_DoubleBitBinarySpec* node,
+                            uint32_t num_selected, uint32_t maxEv,
+                            event_variation_t_in_DoubleBitBinaryInfo variation,
+                            boolean useDefaultVariation))
 {
 ////    auto iter = this->Iterate();
   Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec iter = Iterate_in_List_TypedEventRecord_for_DoubleBitBinarySpec(pList_TypedEventRecord_for_DoubleBitBinarySpec);

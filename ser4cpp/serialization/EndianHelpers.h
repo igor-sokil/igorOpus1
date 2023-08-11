@@ -39,61 +39,61 @@ bool read_one(rseq_t& input, T& out);
 template<>
 inline bool read_one(rseq_t& input, uint8_t& out)
 {
-    return UInt8::read_from(input, out);
+  return UInt8::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, int16_t& out)
 {
-    return Int16::read_from(input, out);
+  return Int16::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, uint16_t& out)
 {
-    return UInt16::read_from(input, out);
+  return UInt16::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, int32_t& out)
 {
-    return Int32::read_from(input, out);
+  return Int32::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, uint32_t& out)
 {
-    return UInt32::read_from(input, out);
+  return UInt32::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, int64_t& out)
 {
-    return Int64::read_from(input, out);
+  return Int64::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, uint64_t& out)
 {
-    return UInt64::read_from(input, out);
+  return UInt64::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, UInt48Type& out)
 {
-    return UInt48::read_from(input, out);
+  return UInt48::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, double& out)
 {
-    return DoubleFloat::read_from(input, out);
+  return DoubleFloat::read_from(input, out);
 }
 
 template<>
 inline bool read_one(rseq_t& input, float& out)
 {
-    return SingleFloat::read_from(input, out);
+  return SingleFloat::read_from(input, out);
 }
 
 template<typename T>
@@ -102,61 +102,61 @@ bool write_one(wseq_t& dest, const T& value);
 template<>
 inline bool write_one(wseq_t& dest, const uint8_t& value)
 {
-    return UInt8::write_to(dest, value);
+  return UInt8::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const int16_t& value)
 {
-    return Int16::write_to(dest, value);
+  return Int16::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const uint16_t& value)
 {
-    return UInt16::write_to(dest, value);
+  return UInt16::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const int32_t& value)
 {
-    return Int32::write_to(dest, value);
+  return Int32::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const uint32_t& value)
 {
-    return UInt32::write_to(dest, value);
+  return UInt32::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const int64_t& value)
 {
-    return Int64::write_to(dest, value);
+  return Int64::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const uint64_t& value)
 {
-    return UInt64::write_to(dest, value);
+  return UInt64::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const UInt48Type& value)
 {
-    return UInt48::write_to(dest, value);
+  return UInt48::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const double& value)
 {
-    return DoubleFloat::write_to(dest, value);
+  return DoubleFloat::write_to(dest, value);
 }
 
 template<>
 inline bool write_one(wseq_t& dest, const float& value)
 {
-    return SingleFloat::write_to(dest, value);
+  return SingleFloat::write_to(dest, value);
 }
 
 } // namespace serializers
@@ -165,28 +165,28 @@ class EndianHelpers : private StaticOnly
 {
 
 public:
-    template <class T, typename... Args>
-    static bool read(rseq_t& input, T& value, Args& ... args)
-    {
-        return serializers::read_one(input, value) && read(input, args...);
-    }
+  template <class T, typename... Args>
+  static bool read(rseq_t& input, T& value, Args& ... args)
+  {
+    return serializers::read_one(input, value) && read(input, args...);
+  }
 
-    template <class T, typename... Args>
-    static bool write(wseq_t& dest, const T& value, const Args& ... args)
-    {
-        return serializers::write_one(dest, value) && write(dest, args...);
-    }
+  template <class T, typename... Args>
+  static bool write(wseq_t& dest, const T& value, const Args& ... args)
+  {
+    return serializers::write_one(dest, value) && write(dest, args...);
+  }
 
 private:
-    static inline bool read(rseq_t& input)
-    {
-        return true;
-    }
+  static inline bool read(rseq_t& input)
+  {
+    return true;
+  }
 
-    static inline bool write(wseq_t& dest)
-    {
-        return true;
-    }
+  static inline bool write(wseq_t& dest)
+  {
+    return true;
+  }
 };
 
 } // namespace ser4cpp

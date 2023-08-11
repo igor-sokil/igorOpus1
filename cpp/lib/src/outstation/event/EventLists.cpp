@@ -40,126 +40,126 @@
 void EventLists_in_EventLists(EventLists *pEventLists, EventBufferConfig* config)
 {
 //qDebug()<<"EventLists_in_EventLists1";
-     EventClassCounters_in_EventClassCounters(&(pEventLists->counters));
+  EventClassCounters_in_EventClassCounters(&(pEventLists->counters));
 //qDebug()<<"EventLists_in_EventLists1.1";
 //   uint32_t TotalEvents_in_EventBufferConfig(EventBufferConfig *pEventBufferConfig);
 //    pEventLists->events = TotalEvents_in_EventBufferConfig(config);//(config.TotalEvents()),
-     List_for_EventRecord_in_List_for_EventRecordOver2(&(pEventLists->events), TotalEvents_in_EventBufferConfig(config));
+  List_for_EventRecord_in_List_for_EventRecordOver2(&(pEventLists->events), TotalEvents_in_EventBufferConfig(config));
 //qDebug()<<"EventLists_in_EventLists1.2";
 ////    pEventLists->binary = config->maxBinaryEvents),
-     List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpecOver2(&(pEventLists->binary),
-       config->maxBinaryEvents);
+  List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpecOver2(&(pEventLists->binary),
+      config->maxBinaryEvents);
 ////      doubleBinary(config.maxDoubleBinaryEvents),
 
 //qDebug()<<"EventLists_in_EventLists2";
-     List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver2(&(pEventLists->doubleBinary),
-       config->maxDoubleBinaryEvents);
+  List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver2(&(pEventLists->doubleBinary),
+      config->maxDoubleBinaryEvents);
 //qDebug()<<"EventLists_in_EventLists2.1";
 ////      analog(config.maxAnalogEvents),
-     List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver2(&(pEventLists->analog),
-       config->maxAnalogEvents);
+  List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver2(&(pEventLists->analog),
+      config->maxAnalogEvents);
 //qDebug()<<"EventLists_in_EventLists2.2";
 ////      counter(config.maxCounterEvents),
-     List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterSpecOver2(&(pEventLists->counter),
-       config->maxCounterEvents);
+  List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterSpecOver2(&(pEventLists->counter),
+      config->maxCounterEvents);
 //qDebug()<<"EventLists_in_EventLists2.3";
 ////      frozenCounter(config.maxFrozenCounterEvents),
-     List_TypedEventRecord_for_FrozenCounterSpec_in_List_TypedEventRecord_for_FrozenCounterSpecOver2(&(pEventLists->frozenCounter),
-       config->maxFrozenCounterEvents);
+  List_TypedEventRecord_for_FrozenCounterSpec_in_List_TypedEventRecord_for_FrozenCounterSpecOver2(&(pEventLists->frozenCounter),
+      config->maxFrozenCounterEvents);
 ////      binaryOutputStatus(config.maxBinaryOutputStatusEvents),
 //qDebug()<<"EventLists_in_EventLists3";
 
-     List_TypedEventRecord_for_BinaryOutputStatusSpec_in_List_TypedEventRecord_for_BinaryOutputStatusSpecOver2(&(pEventLists->binaryOutputStatus),
-       config->maxBinaryOutputStatusEvents);
+  List_TypedEventRecord_for_BinaryOutputStatusSpec_in_List_TypedEventRecord_for_BinaryOutputStatusSpecOver2(&(pEventLists->binaryOutputStatus),
+      config->maxBinaryOutputStatusEvents);
 ////      analogOutputStatus(config.maxAnalogOutputStatusEvents),
-     List_TypedEventRecord_for_AnalogOutputStatusSpec_in_List_TypedEventRecord_for_AnalogOutputStatusSpecOver2(&(pEventLists->analogOutputStatus),
-       config->maxAnalogOutputStatusEvents);
+  List_TypedEventRecord_for_AnalogOutputStatusSpec_in_List_TypedEventRecord_for_AnalogOutputStatusSpecOver2(&(pEventLists->analogOutputStatus),
+      config->maxAnalogOutputStatusEvents);
 ////      octetString(config.maxOctetStringEvents)
-     List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver2(&(pEventLists->octetString),
-       config->maxOctetStringEvents);
+  List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver2(&(pEventLists->octetString),
+      config->maxOctetStringEvents);
 //qDebug()<<"EventLists_in_EventLists4";
 }
 
-boolean IsAnyTypeFull_in_EventLists(EventLists *pEventLists) 
+boolean IsAnyTypeFull_in_EventLists(EventLists *pEventLists)
 {
-return IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_BinarySpec(&(pEventLists->binary)) ||
-IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_DoubleBitBinarySpec(&(pEventLists->doubleBinary)) ||
+  return IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_BinarySpec(&(pEventLists->binary)) ||
+         IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_DoubleBitBinarySpec(&(pEventLists->doubleBinary)) ||
 ////    return this->binary.IsFullAndCapacityNotZero() || this->doubleBinary.IsFullAndCapacityNotZero()
 ////        || this->counter.IsFullAndCapacityNotZero() || this->frozenCounter.IsFullAndCapacityNotZero()
-IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_CounterSpec(&(pEventLists->counter)) ||
-IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_FrozenCounterSpec(&(pEventLists->frozenCounter)) ||
+         IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_CounterSpec(&(pEventLists->counter)) ||
+         IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_FrozenCounterSpec(&(pEventLists->frozenCounter)) ||
 ////        || this->analog.IsFullAndCapacityNotZero() || this->binaryOutputStatus.IsFullAndCapacityNotZero()
 ////        || this->analogOutputStatus.IsFullAndCapacityNotZero() || this->octetString.IsFullAndCapacityNotZero();
-IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogSpec(&(pEventLists->analog)) ||
-IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(&(pEventLists->analogOutputStatus));
+         IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogSpec(&(pEventLists->analog)) ||
+         IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(&(pEventLists->analogOutputStatus));
 }
 
-  List_TypedEventRecord_for_BinarySpec*  GetList_for_BinarySpec_in_EventLists(EventLists *pEventLists)
+List_TypedEventRecord_for_BinarySpec*  GetList_for_BinarySpec_in_EventLists(EventLists *pEventLists)
 {
-    return &(pEventLists->binary);
+  return &(pEventLists->binary);
 }
 ////template<> List<TypedEventRecord<BinarySpec>>& EventLists::GetList()
 ////{
 ////    return this->binary;
 ////}
 
-  List_TypedEventRecord_for_DoubleBitBinarySpec*    GetList_for_DoubleBitBinarySpec_in_EventLists(EventLists *pEventLists)
+List_TypedEventRecord_for_DoubleBitBinarySpec*    GetList_for_DoubleBitBinarySpec_in_EventLists(EventLists *pEventLists)
 {
-    return &(pEventLists->doubleBinary);
+  return &(pEventLists->doubleBinary);
 }
 ////template<> List<TypedEventRecord<DoubleBitBinarySpec>>& EventLists::GetList()
 ////{
 ////    return this->doubleBinary;
 ////}
 
-  List_TypedEventRecord_for_CounterSpec*            GetList_for_CounterSpec_in_EventLists(EventLists *pEventLists)
+List_TypedEventRecord_for_CounterSpec*            GetList_for_CounterSpec_in_EventLists(EventLists *pEventLists)
 {
-    return &(pEventLists->counter);
+  return &(pEventLists->counter);
 }
 ////template<> List<TypedEventRecord<CounterSpec>>& EventLists::GetList()
 ////{
 ////    return this->counter;
 ////}
 
-  List_TypedEventRecord_for_FrozenCounterSpec*      GetList_for_FrozenCounterSpec_in_EventLists(EventLists *pEventLists)
+List_TypedEventRecord_for_FrozenCounterSpec*      GetList_for_FrozenCounterSpec_in_EventLists(EventLists *pEventLists)
 {
-    return &(pEventLists->frozenCounter);
+  return &(pEventLists->frozenCounter);
 }
 ////template<> List<TypedEventRecord<FrozenCounterSpec>>& EventLists::GetList()
 ////{
 ////    return this->frozenCounter;
 ////}
 
-  List_TypedEventRecord_for_AnalogSpec*             GetList_for_AnalogSpec_in_EventLists(EventLists *pEventLists)
+List_TypedEventRecord_for_AnalogSpec*             GetList_for_AnalogSpec_in_EventLists(EventLists *pEventLists)
 {
-    return &(pEventLists->analog);
+  return &(pEventLists->analog);
 }
 ////template<> List<TypedEventRecord<AnalogSpec>>& EventLists::GetList()
 ////{
 ////    return this->analog;
 ////}
 
-  List_TypedEventRecord_for_BinaryOutputStatusSpec* GetList_for_BinaryOutputStatusSpec_in_EventLists(EventLists *pEventLists)
+List_TypedEventRecord_for_BinaryOutputStatusSpec* GetList_for_BinaryOutputStatusSpec_in_EventLists(EventLists *pEventLists)
 {
-    return &(pEventLists->binaryOutputStatus);
+  return &(pEventLists->binaryOutputStatus);
 }
 ////template<> List<TypedEventRecord<BinaryOutputStatusSpec>>& EventLists::GetList()
 ////{
 ////    return this->binaryOutputStatus;
 ////}
 
-  List_TypedEventRecord_for_AnalogOutputStatusSpec* GetList_for_AnalogOutputStatusSpec_in_EventLists(EventLists *pEventLists)
+List_TypedEventRecord_for_AnalogOutputStatusSpec* GetList_for_AnalogOutputStatusSpec_in_EventLists(EventLists *pEventLists)
 {
-    return &(pEventLists->analogOutputStatus);
+  return &(pEventLists->analogOutputStatus);
 }
 ////template<> List<TypedEventRecord<AnalogOutputStatusSpec>>& EventLists::GetList()
 ////{
 ////    return this->analogOutputStatus;
 ////}
 
-  List_TypedEventRecord_for_OctetStringSpec*        GetList_for_OctetStringSpec_in_EventLists(EventLists *pEventLists)
+List_TypedEventRecord_for_OctetStringSpec*        GetList_for_OctetStringSpec_in_EventLists(EventLists *pEventLists)
 {
-    return &(pEventLists->octetString);
+  return &(pEventLists->octetString);
 }
 ////template<> List<TypedEventRecord<OctetStringSpec>>& EventLists::GetList()
 ////{

@@ -36,11 +36,11 @@ typedef struct
 ////    {
 ////    }
 
-    boolean selected;// = false;
+  boolean selected;// = false;
 ////    typename Spec::meas_t value;
-    Binary value;
+  Binary value;
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
-    static_variation_t_in_BinaryInfo variation;
+  static_variation_t_in_BinaryInfo variation;
 } SelectedValue_for_BinarySpec;
 
 /**
@@ -51,13 +51,13 @@ typedef struct
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-    Binary  value;       // current value
+  Binary  value;       // current value
 ////    typename Spec::config_t config;    // configuration
-    BinaryConfig_for_EventConfig_for_BinaryInfo  config;    // configuration
+  BinaryConfig_for_EventConfig_for_BinaryInfo  config;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-    SimpleEventCell_for_Binary event; // event cell
+  SimpleEventCell_for_Binary event; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-    SelectedValue_for_BinarySpec  selection;     // selected value
+  SelectedValue_for_BinarySpec  selection;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -66,11 +66,11 @@ typedef struct
 ////    StaticDataCell(const typename Spec::config_t& config) : config(config) {}
 } StaticDataCell_for_Binary;
 
-    void StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1(StaticDataCell_for_Binary *pStaticDataCell_for_Binary,
-                                                                BinaryConfig_for_EventConfig_for_BinaryInfo* config);
-  void  StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver2(StaticDataCell_for_Binary *pStaticDataCell_for_Binary,
-                                                           Binary* value, 
-                                                           BinaryConfig_for_EventConfig_for_BinaryInfo* config);
+void StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1(StaticDataCell_for_Binary *pStaticDataCell_for_Binary,
+    BinaryConfig_for_EventConfig_for_BinaryInfo* config);
+void  StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver2(StaticDataCell_for_Binary *pStaticDataCell_for_Binary,
+    Binary* value,
+    BinaryConfig_for_EventConfig_for_BinaryInfo* config);
 
 
 ////} // namespace opendnp3

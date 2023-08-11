@@ -1,13 +1,13 @@
 #include "header.h"
 #include "IOutstation.h"
 
-    void SetRestartIIN_in_IOutstation(IOutstation* pIOutstation)
+void SetRestartIIN_in_IOutstation(IOutstation* pIOutstation)
 {
- (pIOutstation->pSetRestartIIN_in_IOutstation)(pIOutstation);
+  (pIOutstation->pSetRestartIIN_in_IOutstation)(pIOutstation);
 }
-    void Apply_in_IOutstation(IOutstation* pIOutstation, Updates* updates)
+void Apply_in_IOutstation(IOutstation* pIOutstation, Updates* updates)
 {
- (pIOutstation->pApply_in_IOutstation)(pIOutstation, updates);
+  (pIOutstation->pApply_in_IOutstation)(pIOutstation, updates);
 }
 
 void* getParentPointer_in_IOutstation(IOutstation* pIOutstation)

@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -52,7 +52,7 @@
 ////  static GroupVariationID ID() { return GroupVariationID(23,0); }
 ////};
 
-  GroupVariationID ID_in_Group23Var0_static(void);
+GroupVariationID ID_in_Group23Var0_static(void);
 
 // Frozen Counter Event - 32-bit With Flag
 ////struct Group23Var1
@@ -77,17 +77,17 @@ typedef struct
 ////  static DNP3Serializer<FrozenCounter> Inst() { return DNP3Serializer<FrozenCounter>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group23Var1;
 
-  uint16_t Size_in_Group23Var1_static(void);
+uint16_t Size_in_Group23Var1_static(void);
 
- void Group23Var1_in_Group23Var1(Group23Var1 *pGroup23Var1);
-  GroupVariationID ID_in_Group23Var1_static(void);
+void Group23Var1_in_Group23Var1(Group23Var1 *pGroup23Var1);
+GroupVariationID ID_in_Group23Var1_static(void);
 
- boolean Read_in_Group23Var1_static(RSeq_for_Uint16_t *, Group23Var1*);
- boolean Write_in_Group23Var1_static(Group23Var1*, WSeq_for_Uint16_t*);
+boolean Read_in_Group23Var1_static(RSeq_for_Uint16_t *, Group23Var1*);
+boolean Write_in_Group23Var1_static(Group23Var1*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group23Var1_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group23Var1_static(FrozenCounter*, WSeq_for_Uint16_t*);
- DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var1_static(void);
+boolean ReadTarget_in_Group23Var1_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group23Var1_static(FrozenCounter*, WSeq_for_Uint16_t*);
+DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var1_static(void);
 
 // Frozen Counter Event - 16-bit With Flag
 ////struct Group23Var2
@@ -112,17 +112,17 @@ typedef struct
 ////  static DNP3Serializer<FrozenCounter> Inst() { return DNP3Serializer<FrozenCounter>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group23Var2;
 
-  uint16_t Size_in_Group23Var2_static(void);
+uint16_t Size_in_Group23Var2_static(void);
 
- void Group23Var2_in_Group23Var2(Group23Var2 *pGroup23Var2);
-  GroupVariationID ID_in_Group23Var2_static(void);
+void Group23Var2_in_Group23Var2(Group23Var2 *pGroup23Var2);
+GroupVariationID ID_in_Group23Var2_static(void);
 
- boolean Read_in_Group23Var2_static(RSeq_for_Uint16_t *, Group23Var2*);
- boolean Write_in_Group23Var2_static(Group23Var2*, WSeq_for_Uint16_t*);
+boolean Read_in_Group23Var2_static(RSeq_for_Uint16_t *, Group23Var2*);
+boolean Write_in_Group23Var2_static(Group23Var2*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group23Var2_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group23Var2_static(FrozenCounter*, WSeq_for_Uint16_t*);
- DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var2_static(void);
+boolean ReadTarget_in_Group23Var2_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group23Var2_static(FrozenCounter*, WSeq_for_Uint16_t*);
+DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var2_static(void);
 
 // Frozen Counter Event - 32-bit With Flag and Time
 ////struct Group23Var5
@@ -148,17 +148,17 @@ typedef struct
 ////  static DNP3Serializer<FrozenCounter> Inst() { return DNP3Serializer<FrozenCounter>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group23Var5;
 
-  uint16_t Size_in_Group23Var5_static(void);
+uint16_t Size_in_Group23Var5_static(void);
 
- void Group23Var5_in_Group23Var5(Group23Var5 *pGroup23Var5);
-  GroupVariationID ID_in_Group23Var5_static(void);
+void Group23Var5_in_Group23Var5(Group23Var5 *pGroup23Var5);
+GroupVariationID ID_in_Group23Var5_static(void);
 
- boolean Read_in_Group23Var5_static(RSeq_for_Uint16_t *, Group23Var5*);
- boolean Write_in_Group23Var5_static(Group23Var5*, WSeq_for_Uint16_t*);
+boolean Read_in_Group23Var5_static(RSeq_for_Uint16_t *, Group23Var5*);
+boolean Write_in_Group23Var5_static(Group23Var5*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group23Var5_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group23Var5_static(FrozenCounter*, WSeq_for_Uint16_t*);
- DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var5_static(void);
+boolean ReadTarget_in_Group23Var5_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group23Var5_static(FrozenCounter*, WSeq_for_Uint16_t*);
+DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var5_static(void);
 
 // Frozen Counter Event - 16-bit With Flag and Time
 ////struct Group23Var6
@@ -184,17 +184,17 @@ typedef struct
 ////  static DNP3Serializer<FrozenCounter> Inst() { return DNP3Serializer<FrozenCounter>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group23Var6;
 
-  uint16_t Size_in_Group23Var6_static(void);
+uint16_t Size_in_Group23Var6_static(void);
 
- void Group23Var6_in_Group23Var6(Group23Var6 *pGroup23Var6);
-  GroupVariationID ID_in_Group23Var6_static(void);
+void Group23Var6_in_Group23Var6(Group23Var6 *pGroup23Var6);
+GroupVariationID ID_in_Group23Var6_static(void);
 
- boolean Read_in_Group23Var6_static(RSeq_for_Uint16_t *, Group23Var6*);
- boolean Write_in_Group23Var6_static(Group23Var6*, WSeq_for_Uint16_t*);
+boolean Read_in_Group23Var6_static(RSeq_for_Uint16_t *, Group23Var6*);
+boolean Write_in_Group23Var6_static(Group23Var6*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group23Var6_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group23Var6_static(FrozenCounter*, WSeq_for_Uint16_t*);
- DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var6_static(void);
+boolean ReadTarget_in_Group23Var6_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group23Var6_static(FrozenCounter*, WSeq_for_Uint16_t*);
+DNP3Serializer_for_FrozenCounter  Inst_in_Group23Var6_static(void);
 
 
 ////}

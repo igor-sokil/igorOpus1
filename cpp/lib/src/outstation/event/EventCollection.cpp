@@ -21,8 +21,8 @@ uint16_t WriteSome_in_EventCollection_for_Binary_override(void *pIEventCollectio
 {
   uint16_t num_written = 0;
 
-  EventCollection_for_Binary *parent = 
-         (EventCollection_for_Binary*)getParentPointer_in_IEventCollection_for_Binary((IEventCollection_for_Binary*)pIEventCollection_for_Binary);
+  EventCollection_for_Binary *parent =
+    (EventCollection_for_Binary*)getParentPointer_in_IEventCollection_for_Binary((IEventCollection_for_Binary*)pIEventCollection_for_Binary);
 
   while (WriteOne_in_EventCollection_for_Binary(parent, writer))
   {
@@ -58,7 +58,7 @@ boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEven
 //  boolean Write_in_IEventWriter_for_Binary(IEventWriter_for_Binary*, Binary* meas, uint16_t index);
 ////    if (!writer.Write(data->value.value, record->index))
 //  if (!writer->pWrite_in_IEventWriter_for_Binary(pEventCollection_for_Binary, &((data->value).value), record->index))
-    if (!Write_in_IEventWriter_for_Binary(writer, &((data->value).value), record->index))
+  if (!Write_in_IEventWriter_for_Binary(writer, &((data->value).value), record->index))
     return false;
 
   // success!
@@ -93,8 +93,8 @@ uint16_t WriteSome_in_EventCollection_for_DoubleBitBinary_override(void *pIEvent
 {
   uint16_t num_written = 0;
 
-  EventCollection_for_DoubleBitBinary *parent = 
-         (EventCollection_for_DoubleBitBinary*)getParentPointer_in_IEventCollection_for_DoubleBitBinary((IEventCollection_for_DoubleBitBinary*)pIEventCollection_for_DoubleBitBinary);
+  EventCollection_for_DoubleBitBinary *parent =
+    (EventCollection_for_DoubleBitBinary*)getParentPointer_in_IEventCollection_for_DoubleBitBinary((IEventCollection_for_DoubleBitBinary*)pIEventCollection_for_DoubleBitBinary);
 
   while (WriteOne_in_EventCollection_for_DoubleBitBinary(parent, writer))
   {
@@ -130,7 +130,7 @@ boolean WriteOne_in_EventCollection_for_DoubleBitBinary(EventCollection_for_Doub
 // boolean (*pWrite_in_IEventWriter_for_DoubleBitBinary)(DoubleBitBinary* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
 //  if (!writer->pWrite_in_IEventWriter_for_DoubleBitBinary(&((data->value).value), record->index))
-    if (!Write_in_IEventWriter_for_DoubleBitBinary(writer, &((data->value).value), record->index))
+  if (!Write_in_IEventWriter_for_DoubleBitBinary(writer, &((data->value).value), record->index))
     return false;
 
   // success!
@@ -164,8 +164,8 @@ void  EventCollection_for_Analog_in_EventCollection_for_Analog(EventCollection_f
 uint16_t WriteSome_in_EventCollection_for_Analog_override(void *pIEventCollection_for_Analog, IEventWriter_for_Analog* writer)
 {
   uint16_t num_written = 0;
-  EventCollection_for_Analog *parent = 
-         (EventCollection_for_Analog*)getParentPointer_in_IEventCollection_for_Analog((IEventCollection_for_Analog*)pIEventCollection_for_Analog);
+  EventCollection_for_Analog *parent =
+    (EventCollection_for_Analog*)getParentPointer_in_IEventCollection_for_Analog((IEventCollection_for_Analog*)pIEventCollection_for_Analog);
 
   while (WriteOne_in_EventCollection_for_Analog(parent, writer))
   {
@@ -201,7 +201,7 @@ boolean WriteOne_in_EventCollection_for_Analog(EventCollection_for_Analog *pEven
 // boolean (*pWrite_in_IEventWriter_for_Analog)(Analog* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
 //  if (!writer->pWrite_in_IEventWriter_for_Analog(&((data->value).value), record->index))
-    if (!Write_in_IEventWriter_for_Analog(writer, &((data->value).value), record->index))
+  if (!Write_in_IEventWriter_for_Analog(writer, &((data->value).value), record->index))
     return false;
 
   // success!
@@ -233,8 +233,8 @@ void  EventCollection_for_Counter_in_EventCollection_for_Counter(EventCollection
 uint16_t WriteSome_in_EventCollection_for_Counter_override(void *pIEventCollection_for_Counter, IEventWriter_for_Counter* writer)
 {
   uint16_t num_written = 0;
-  EventCollection_for_Counter *parent = 
-         (EventCollection_for_Counter*)getParentPointer_in_IEventCollection_for_Counter((IEventCollection_for_Counter*)pIEventCollection_for_Counter);
+  EventCollection_for_Counter *parent =
+    (EventCollection_for_Counter*)getParentPointer_in_IEventCollection_for_Counter((IEventCollection_for_Counter*)pIEventCollection_for_Counter);
 
   while (WriteOne_in_EventCollection_for_Counter(parent, writer))
   {
@@ -270,7 +270,7 @@ boolean WriteOne_in_EventCollection_for_Counter(EventCollection_for_Counter *pEv
 // boolean (*pWrite_in_IEventWriter_for_Counter)(Counter* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
 //  if (!writer->pWrite_in_IEventWriter_for_Counter(&((data->value).value), record->index))
-    if (!Write_in_IEventWriter_for_Counter(writer, &((data->value).value), record->index))
+  if (!Write_in_IEventWriter_for_Counter(writer, &((data->value).value), record->index))
     return false;
 
   // success!
@@ -303,8 +303,8 @@ void  EventCollection_for_FrozenCounter_in_EventCollection_for_FrozenCounter(Eve
 uint16_t WriteSome_in_EventCollection_for_FrozenCounter_override(void *pIEventCollection_for_FrozenCounter, IEventWriter_for_FrozenCounter* writer)
 {
   uint16_t num_written = 0;
-  EventCollection_for_FrozenCounter *parent = 
-         (EventCollection_for_FrozenCounter*)getParentPointer_in_IEventCollection_for_FrozenCounter((IEventCollection_for_FrozenCounter*)pIEventCollection_for_FrozenCounter);
+  EventCollection_for_FrozenCounter *parent =
+    (EventCollection_for_FrozenCounter*)getParentPointer_in_IEventCollection_for_FrozenCounter((IEventCollection_for_FrozenCounter*)pIEventCollection_for_FrozenCounter);
 
   while (WriteOne_in_EventCollection_for_FrozenCounter(parent, writer))
   {
@@ -340,7 +340,7 @@ boolean WriteOne_in_EventCollection_for_FrozenCounter(EventCollection_for_Frozen
 // boolean (*pWrite_in_IEventWriter_for_FrozenCounter)(FrozenCounter* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
 //  if (!writer->pWrite_in_IEventWriter_for_FrozenCounter(&((data->value).value), record->index))
-    if (!Write_in_IEventWriter_for_FrozenCounter(writer, &((data->value).value), record->index))
+  if (!Write_in_IEventWriter_for_FrozenCounter(writer, &((data->value).value), record->index))
     return false;
 
   // success!
@@ -373,8 +373,8 @@ void  EventCollection_for_BinaryOutputStatus_in_EventCollection_for_BinaryOutput
 uint16_t WriteSome_in_EventCollection_for_BinaryOutputStatus_override(void *pIEventCollection_for_BinaryOutputStatus, IEventWriter_for_BinaryOutputStatus* writer)
 {
   uint16_t num_written = 0;
-  EventCollection_for_BinaryOutputStatus *parent = 
-         (EventCollection_for_BinaryOutputStatus*)getParentPointer_in_IEventCollection_for_BinaryOutputStatus((IEventCollection_for_BinaryOutputStatus*)pIEventCollection_for_BinaryOutputStatus);
+  EventCollection_for_BinaryOutputStatus *parent =
+    (EventCollection_for_BinaryOutputStatus*)getParentPointer_in_IEventCollection_for_BinaryOutputStatus((IEventCollection_for_BinaryOutputStatus*)pIEventCollection_for_BinaryOutputStatus);
 
   while (WriteOne_in_EventCollection_for_BinaryOutputStatus(parent, writer))
   {
@@ -410,7 +410,7 @@ boolean WriteOne_in_EventCollection_for_BinaryOutputStatus(EventCollection_for_B
 // boolean (*pWrite_in_IEventWriter_for_BinaryOutputStatus)(BinaryOutputStatus* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
 //  if (!writer->pWrite_in_IEventWriter_for_BinaryOutputStatus(&((data->value).value), record->index))
-    if (!Write_in_IEventWriter_for_BinaryOutputStatus(writer, &((data->value).value), record->index))
+  if (!Write_in_IEventWriter_for_BinaryOutputStatus(writer, &((data->value).value), record->index))
     return false;
 
   // success!
@@ -443,8 +443,8 @@ void  EventCollection_for_AnalogOutputStatus_in_EventCollection_for_AnalogOutput
 uint16_t WriteSome_in_EventCollection_for_AnalogOutputStatus_override(void *pIEventCollection_for_AnalogOutputStatus, IEventWriter_for_AnalogOutputStatus* writer)
 {
   uint16_t num_written = 0;
-  EventCollection_for_AnalogOutputStatus *parent = 
-         (EventCollection_for_AnalogOutputStatus*)getParentPointer_in_IEventCollection_for_AnalogOutputStatus((IEventCollection_for_AnalogOutputStatus*)pIEventCollection_for_AnalogOutputStatus);
+  EventCollection_for_AnalogOutputStatus *parent =
+    (EventCollection_for_AnalogOutputStatus*)getParentPointer_in_IEventCollection_for_AnalogOutputStatus((IEventCollection_for_AnalogOutputStatus*)pIEventCollection_for_AnalogOutputStatus);
 
   while (WriteOne_in_EventCollection_for_AnalogOutputStatus(parent, writer))
   {
@@ -480,7 +480,7 @@ boolean WriteOne_in_EventCollection_for_AnalogOutputStatus(EventCollection_for_A
 // boolean (*pWrite_in_IEventWriter_for_AnalogOutputStatus)(AnalogOutputStatus* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
 //  if (!writer->pWrite_in_IEventWriter_for_AnalogOutputStatus(&((data->value).value), record->index))
-    if (!Write_in_IEventWriter_for_AnalogOutputStatus(writer, &((data->value).value), record->index))
+  if (!Write_in_IEventWriter_for_AnalogOutputStatus(writer, &((data->value).value), record->index))
     return false;
 
   // success!
@@ -513,8 +513,8 @@ void  EventCollection_for_OctetString_in_EventCollection_for_OctetString(EventCo
 uint16_t WriteSome_in_EventCollection_for_OctetString_override(void *pIEventCollection_for_OctetString, IEventWriter_for_OctetString* writer)
 {
   uint16_t num_written = 0;
-  EventCollection_for_OctetString *parent = 
-         (EventCollection_for_OctetString*)getParentPointer_in_IEventCollection_for_OctetString((IEventCollection_for_OctetString*)pIEventCollection_for_OctetString);
+  EventCollection_for_OctetString *parent =
+    (EventCollection_for_OctetString*)getParentPointer_in_IEventCollection_for_OctetString((IEventCollection_for_OctetString*)pIEventCollection_for_OctetString);
 
   while (WriteOne_in_EventCollection_for_OctetString(parent, writer))
   {
@@ -550,7 +550,7 @@ boolean WriteOne_in_EventCollection_for_OctetString(EventCollection_for_OctetStr
 // boolean (*pWrite_in_IEventWriter_for_OctetString)(OctetString* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
 //  if (!writer->pWrite_in_IEventWriter_for_OctetString(&((data->value).value), record->index))
-    if (!Write_in_IEventWriter_for_OctetString(writer, &((data->value).value), record->index))
+  if (!Write_in_IEventWriter_for_OctetString(writer, &((data->value).value), record->index))
     return false;
 
   // success!

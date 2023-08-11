@@ -86,23 +86,23 @@ typedef struct
 ////    typename CountType::type_t count;
 ////    Serializer<WriteType> serializer;
 
-    uint8_t count;
-    Serializer_for_DoubleBitBinary serializer;
+  uint8_t count;
+  Serializer_for_DoubleBitBinary serializer;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } CountWriteIterator_for_UInt8_DoubleBitBinary;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_CountWriteIterator_for_UInt8_DoubleBitBinary(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoubleBitBinary);
-    boolean Write_in_CountWriteIterator_for_UInt8_DoubleBitBinary(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoublebitBinary, DoubleBitBinary *value);////const WriteType& value)
-    void CountWriteIterator_for_UInt8_DoubleBitBinary_destr_CountWriteIterator_for_UInt8_DoubleBitBinary(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoubleBitBinary);
-    void CountWriteIterator_for_UInt8_DoubleBitBinary_in_CountWriteIterator_for_UInt8_DoubleBitBinaryOver2(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoubleBitBinary,
-                                            Serializer_for_DoubleBitBinary *serializer, WSeq_for_Uint16_t *position);
-    void CountWriteIterator_for_UInt8_DoubleBitBinary_in_CountWriteIterator_for_UInt8_DoubleBitBinaryOver1(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoubleBitBinary);
-    CountWriteIterator_for_UInt8_DoubleBitBinary Null_in_CountWriteIterator_for_UInt8_DoubleBitBinary_static(void);
+boolean IsValid_in_CountWriteIterator_for_UInt8_DoubleBitBinary(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoubleBitBinary);
+boolean Write_in_CountWriteIterator_for_UInt8_DoubleBitBinary(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoublebitBinary, DoubleBitBinary *value);////const WriteType& value)
+void CountWriteIterator_for_UInt8_DoubleBitBinary_destr_CountWriteIterator_for_UInt8_DoubleBitBinary(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoubleBitBinary);
+void CountWriteIterator_for_UInt8_DoubleBitBinary_in_CountWriteIterator_for_UInt8_DoubleBitBinaryOver2(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoubleBitBinary,
+    Serializer_for_DoubleBitBinary *serializer, WSeq_for_Uint16_t *position);
+void CountWriteIterator_for_UInt8_DoubleBitBinary_in_CountWriteIterator_for_UInt8_DoubleBitBinaryOver1(CountWriteIterator_for_UInt8_DoubleBitBinary *pCountWriteIterator_for_UInt8_DoubleBitBinary);
+CountWriteIterator_for_UInt8_DoubleBitBinary Null_in_CountWriteIterator_for_UInt8_DoubleBitBinary_static(void);
 
 //-------------------Uint8---------------------------------------------------
 

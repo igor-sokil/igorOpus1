@@ -84,27 +84,27 @@ typedef struct
 ////
 ////private:
 
-    Serializer_for_Counter serializer;
-    uint16_t sizeOfTypePlusIndex;
+  Serializer_for_Counter serializer;
+  uint16_t sizeOfTypePlusIndex;
 
 ////    typename PrefixType::type_t count;
-    uint16_t count;
+  uint16_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } PrefixedWriteIterator_for_UInt16_Counter;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
-    boolean Write_in_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter,
-                                                                  Counter* value, uint16_t index);
-   void PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
-   void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver2(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter,
-                                                 Serializer_for_Counter* serializer, WSeq_for_Uint16_t* position);
-   void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver1(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
-   PrefixedWriteIterator_for_UInt16_Counter Null_in_PrefixedWriteIterator_for_UInt16_Counter_static(void);
+boolean IsValid_in_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
+boolean Write_in_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter,
+    Counter* value, uint16_t index);
+void PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
+void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver2(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter,
+    Serializer_for_Counter* serializer, WSeq_for_Uint16_t* position);
+void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver1(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter);
+PrefixedWriteIterator_for_UInt16_Counter Null_in_PrefixedWriteIterator_for_UInt16_Counter_static(void);
 //-------------------Uint16---------------------------------------------------
 
 

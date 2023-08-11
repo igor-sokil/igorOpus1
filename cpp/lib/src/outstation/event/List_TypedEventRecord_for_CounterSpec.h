@@ -184,31 +184,31 @@ typedef struct
 
 void List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterSpecOver1(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
 void List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterSpecOver2(
-       List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec,
-       uint32_t maxSize);
+  List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec,
+  uint32_t maxSize);
 
-    Iterator_in_List_TypedEventRecord_for_CounterSpec Iterate_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
+Iterator_in_List_TypedEventRecord_for_CounterSpec Iterate_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
 
-  void Initialize_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
-//  uint32_t RemoveAll_in_List_TypedEventRecord_for_CounterSpec(EventStorage *pEventStorage, 
-//                            List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec, 
-//                            boolean (*match)(EventStorage *pEventStorage, 
+void Initialize_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_CounterSpec(EventStorage *pEventStorage,
+//                            List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec,
+//                            boolean (*match)(EventStorage *pEventStorage,
 //                            EventRecord* record));//const U& match);
 
-   void Remove_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec, Node_TypedEventRecord_for_CounterSpec* node);
-   void Link_in_List_TypedEventRecord_for_CounterSpec_static(Node_TypedEventRecord_for_CounterSpec* first, Node_TypedEventRecord_for_CounterSpec* second);
+void Remove_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec, Node_TypedEventRecord_for_CounterSpec* node);
+void Link_in_List_TypedEventRecord_for_CounterSpec_static(Node_TypedEventRecord_for_CounterSpec* first, Node_TypedEventRecord_for_CounterSpec* second);
 
-     uint32_t Capacity_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
+uint32_t Capacity_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
 boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
 Node_TypedEventRecord_for_CounterSpec* Head_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec);
 
 Node_TypedEventRecord_for_CounterSpec* Add_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec,
-                                      TypedEventRecord_for_CounterSpec* value);
+    TypedEventRecord_for_CounterSpec* value);
 Node_TypedEventRecord_for_CounterSpec* Insert_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec,
-                                                                TypedEventRecord_for_CounterSpec* value,
-                                                                Node_TypedEventRecord_for_CounterSpec* left,
-                                                                Node_TypedEventRecord_for_CounterSpec* right
-                                                                  );
+    TypedEventRecord_for_CounterSpec* value,
+    Node_TypedEventRecord_for_CounterSpec* left,
+    Node_TypedEventRecord_for_CounterSpec* right
+                                                                                      );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

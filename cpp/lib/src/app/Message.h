@@ -39,11 +39,11 @@ typedef struct
 
 ////    Message(const Addresses& addresses, const ser4cpp::rseq_t& payload) : addresses(addresses), payload(payload) {}
 
-    Addresses addresses;
-    RSeq_for_Uint16_t payload;
+  Addresses addresses;
+  RSeq_for_Uint16_t payload;
 } Message;
 
-  void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
+void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
 
 ////} // namespace opendnp3
 

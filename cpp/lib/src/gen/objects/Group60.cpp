@@ -7,9 +7,9 @@
 ////  static GroupVariationID ID() { return GroupVariationID(60,1); }
 ////};
 
-   GroupVariationID ID_in_Group60Var1_static(void)
-{ 
-////  return GroupVariationID(60,1); 
+GroupVariationID ID_in_Group60Var1_static(void)
+{
+////  return GroupVariationID(60,1);
   GroupVariationID gGroupVariationID;
   GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 60, 1);
   return gGroupVariationID;
@@ -20,9 +20,9 @@
 ////{
 ////  static GroupVariationID ID() { return GroupVariationID(60,2); }
 ////};
-   GroupVariationID ID_in_Group60Var2_static(void)
-{ 
-////  return GroupVariationID(60,2); 
+GroupVariationID ID_in_Group60Var2_static(void)
+{
+////  return GroupVariationID(60,2);
   GroupVariationID gGroupVariationID;
   GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 60, 2);
   return gGroupVariationID;
@@ -33,9 +33,9 @@
 ////{
 ////  static GroupVariationID ID() { return GroupVariationID(60,3); }
 ////};
-   GroupVariationID ID_in_Group60Var3_static(void)
-{ 
-////  return GroupVariationID(60,3); 
+GroupVariationID ID_in_Group60Var3_static(void)
+{
+////  return GroupVariationID(60,3);
   GroupVariationID gGroupVariationID;
   GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 60, 3);
   return gGroupVariationID;
@@ -46,9 +46,9 @@
 ////{
 ////  static GroupVariationID ID() { return GroupVariationID(60,4); }
 ////};
-   GroupVariationID ID_in_Group60Var4_static(void)
-{ 
-////  return GroupVariationID(60,4); 
+GroupVariationID ID_in_Group60Var4_static(void)
+{
+////  return GroupVariationID(60,4);
   GroupVariationID gGroupVariationID;
   GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 60, 4);
   return gGroupVariationID;

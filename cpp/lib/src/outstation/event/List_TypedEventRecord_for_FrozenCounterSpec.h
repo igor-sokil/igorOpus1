@@ -184,31 +184,31 @@ typedef struct
 
 void List_TypedEventRecord_for_FrozenCounterSpec_in_List_TypedEventRecord_for_FrozenCounterSpecOver1(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
 void List_TypedEventRecord_for_FrozenCounterSpec_in_List_TypedEventRecord_for_FrozenCounterSpecOver2(
-       List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec,
-       uint32_t maxSize);
+  List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec,
+  uint32_t maxSize);
 
-    Iterator_in_List_TypedEventRecord_for_FrozenCounterSpec Iterate_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
+Iterator_in_List_TypedEventRecord_for_FrozenCounterSpec Iterate_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
 
-  void Initialize_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
-//  uint32_t RemoveAll_in_List_TypedEventRecord_for_FrozenCounterSpec(EventStorage *pEventStorage, 
-//                            List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec, 
-//                            boolean (*match)(EventStorage *pEventStorage, 
+void Initialize_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_FrozenCounterSpec(EventStorage *pEventStorage,
+//                            List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec,
+//                            boolean (*match)(EventStorage *pEventStorage,
 //                            EventRecord* record));//const U& match);
 
-   void Remove_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec, Node_TypedEventRecord_for_FrozenCounterSpec* node);
-   void Link_in_List_TypedEventRecord_for_FrozenCounterSpec_static(Node_TypedEventRecord_for_FrozenCounterSpec* first, Node_TypedEventRecord_for_FrozenCounterSpec* second);
+void Remove_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec, Node_TypedEventRecord_for_FrozenCounterSpec* node);
+void Link_in_List_TypedEventRecord_for_FrozenCounterSpec_static(Node_TypedEventRecord_for_FrozenCounterSpec* first, Node_TypedEventRecord_for_FrozenCounterSpec* second);
 
-     uint32_t Capacity_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
+uint32_t Capacity_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
 boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
 Node_TypedEventRecord_for_FrozenCounterSpec* Head_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec);
 
 Node_TypedEventRecord_for_FrozenCounterSpec* Add_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec,
-                                      TypedEventRecord_for_FrozenCounterSpec* value);
+    TypedEventRecord_for_FrozenCounterSpec* value);
 Node_TypedEventRecord_for_FrozenCounterSpec* Insert_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec,
-                                                                TypedEventRecord_for_FrozenCounterSpec* value,
-                                                                Node_TypedEventRecord_for_FrozenCounterSpec* left,
-                                                                Node_TypedEventRecord_for_FrozenCounterSpec* right
-                                                                  );
+    TypedEventRecord_for_FrozenCounterSpec* value,
+    Node_TypedEventRecord_for_FrozenCounterSpec* left,
+    Node_TypedEventRecord_for_FrozenCounterSpec* right
+                                                                                                  );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

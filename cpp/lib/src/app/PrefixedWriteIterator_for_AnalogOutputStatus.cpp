@@ -63,7 +63,7 @@ boolean Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(PrefixedWri
     write_to_in_UInt16_static(pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->pPosition, index);
 ////        serializer.write(value, *pPosition);
     write_in_Serializer_for_AnalogOutputStatus(&(pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->serializer), value,
-                                   pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->pPosition);
+        pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->pPosition);
     ++(pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->count);
     return true;
   }

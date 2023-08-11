@@ -45,41 +45,41 @@
 ////    template<class T> class Result
 
 typedef struct
-    {
+{
 ////    public:
-        boolean success;
-        APDUHeader header;
-        RSeq_for_Uint16_t objects;
+  boolean success;
+  APDUHeader header;
+  RSeq_for_Uint16_t objects;
 
 
 ////    private:
 
-    } Result_for_APDUHeader_in_APDUHeaderParser;
+} Result_for_APDUHeader_in_APDUHeaderParser;
 
-        Result_for_APDUHeader_in_APDUHeaderParser Ok_in_Result_for_APDUHeader_static(APDUHeader *header, RSeq_for_Uint16_t *objects);
-        Result_for_APDUHeader_in_APDUHeaderParser Error_in_Result_for_APDUHeader_static(void);
-        void Result_for_APDUHeader_in_Result_for_APDUHeaderOver1(Result_for_APDUHeader_in_APDUHeaderParser *pResult_for_APDUHeader);
-        void Result_for_APDUHeader_in_Result_for_APDUHeaderOver2(Result_for_APDUHeader_in_APDUHeaderParser *pResult_for_APDUHeader, 
-                                                                 APDUHeader *header, RSeq_for_Uint16_t *objects);
+Result_for_APDUHeader_in_APDUHeaderParser Ok_in_Result_for_APDUHeader_static(APDUHeader *header, RSeq_for_Uint16_t *objects);
+Result_for_APDUHeader_in_APDUHeaderParser Error_in_Result_for_APDUHeader_static(void);
+void Result_for_APDUHeader_in_Result_for_APDUHeaderOver1(Result_for_APDUHeader_in_APDUHeaderParser *pResult_for_APDUHeader);
+void Result_for_APDUHeader_in_Result_for_APDUHeaderOver2(Result_for_APDUHeader_in_APDUHeaderParser *pResult_for_APDUHeader,
+    APDUHeader *header, RSeq_for_Uint16_t *objects);
 
 
 typedef struct
-    {
+{
 ////    public:
-        boolean success;
-        APDUResponseHeader header;
-        RSeq_for_Uint16_t objects;
-    } Result_for_APDUResponseHeader_in_APDUHeaderParser;
+  boolean success;
+  APDUResponseHeader header;
+  RSeq_for_Uint16_t objects;
+} Result_for_APDUResponseHeader_in_APDUHeaderParser;
 
-        Result_for_APDUResponseHeader_in_APDUHeaderParser Ok_in_Result_for_APDUResponseHeader_static(APDUResponseHeader *header, RSeq_for_Uint16_t *objects);
-        Result_for_APDUResponseHeader_in_APDUHeaderParser Error_in_Result_for_APDUResponseHeader_static(void);
-        void Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver1(Result_for_APDUResponseHeader_in_APDUHeaderParser *pResult_for_APDUResponseHeader);
-        void Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver2(Result_for_APDUResponseHeader_in_APDUHeaderParser *pResult_for_APDUResponseHeader, 
-                                                                 APDUResponseHeader *header, RSeq_for_Uint16_t *objects);
+Result_for_APDUResponseHeader_in_APDUHeaderParser Ok_in_Result_for_APDUResponseHeader_static(APDUResponseHeader *header, RSeq_for_Uint16_t *objects);
+Result_for_APDUResponseHeader_in_APDUHeaderParser Error_in_Result_for_APDUResponseHeader_static(void);
+void Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver1(Result_for_APDUResponseHeader_in_APDUHeaderParser *pResult_for_APDUResponseHeader);
+void Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver2(Result_for_APDUResponseHeader_in_APDUHeaderParser *pResult_for_APDUResponseHeader,
+    APDUResponseHeader *header, RSeq_for_Uint16_t *objects);
 
 
-    Result_for_APDUHeader_in_APDUHeaderParser         ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu);////, Logger* logger = nullptr);
-    Result_for_APDUResponseHeader_in_APDUHeaderParser ParseResponse_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu);////, Logger* logger = nullptr);
+Result_for_APDUHeader_in_APDUHeaderParser         ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu);////, Logger* logger = nullptr);
+Result_for_APDUResponseHeader_in_APDUHeaderParser ParseResponse_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu);////, Logger* logger = nullptr);
 
 ////};
 

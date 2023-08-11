@@ -32,12 +32,12 @@ typedef struct
 ////    Buffer() = default;
 ////    Buffer(const uint8_t* data, std::size_t length) : data(data), length(length) {}
 
-    uint8_t* data;//// = nullptr;
-    uint16_t length;//// = 0;
+  uint8_t* data;//// = nullptr;
+  uint16_t length;//// = 0;
 } Buffer;
 
-  void Buffer_in_BufferOver1(Buffer *pBuffer);
-  void Buffer_in_BufferOver2(Buffer *pBuffer, uint8_t* data, uint16_t length);
+void Buffer_in_BufferOver1(Buffer *pBuffer);
+void Buffer_in_BufferOver2(Buffer *pBuffer, uint8_t* data, uint16_t length);
 
 
 ////} // namespace opendnp3

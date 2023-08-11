@@ -58,21 +58,21 @@ TimeDuration FromValue_in_TimeDuration_static(int64_t value)
 ////        return TimeDuration(std::chrono::steady_clock::duration::min());
 ////    }
 ////
-    TimeDuration tTimeDuration;
+  TimeDuration tTimeDuration;
 ////    return TimeDuration(T(value));
-    TimeDuration_in_TimeDuration(&tTimeDuration, value);
-    return tTimeDuration;
+  TimeDuration_in_TimeDuration(&tTimeDuration, value);
+  return tTimeDuration;
 }
 ////
 ////TimeDuration TimeDuration::Milliseconds(int64_t milliseconds)
-////{        
+////{
 ////    return FromValue<std::chrono::milliseconds>(milliseconds);
 ////}
 ////
 ////
 TimeDuration Seconds_in_TimeDuration_static(int64_t seconds)
 {
-    return FromValue_in_TimeDuration_static(seconds*1000);
+  return FromValue_in_TimeDuration_static(seconds*1000);
 }
 
 TimeDuration Minutes_in_TimeDuration_static(int64_t minutes)
@@ -111,9 +111,9 @@ TimeDuration Minutes_in_TimeDuration_static(int64_t minutes)
 ////    return this->value == other.value;
 ////}
 ////
-boolean operatorLT_in_TimeDuration(TimeDuration *pTimeDuration, TimeDuration* other) 
+boolean operatorLT_in_TimeDuration(TimeDuration *pTimeDuration, TimeDuration* other)
 {
-    return pTimeDuration->duration_value < other->duration_value;
+  return pTimeDuration->duration_value < other->duration_value;
 }
 ////
 ////bool TimeDuration::operator<=(const TimeDuration& other) const
@@ -131,7 +131,7 @@ boolean operatorLT_in_TimeDuration(TimeDuration *pTimeDuration, TimeDuration* ot
 ////    return this->value >= other.value;
 ////}
 ////
- void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, uint64_t value)
+void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, uint64_t value)
 {
 ////exe4cpp::duration_t value) : value(value) {}
   pTimeDuration->duration_value = value;

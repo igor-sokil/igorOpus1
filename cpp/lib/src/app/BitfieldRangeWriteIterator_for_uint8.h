@@ -107,25 +107,25 @@ typedef struct
 ///private:
 ////    typename IndexType::type_t start;
 ////    typename IndexType::type_t count;
-    uint8_t start;
-    uint8_t count;
+  uint8_t start;
+  uint8_t count;
 
-    uint16_t maxCount;
+  uint16_t maxCount;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t range; // make a copy to record where we write the range
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t* pPosition;
 } BitfieldRangeWriteIterator_for_UInt8;
 
 ////} // namespace opendnp3
 
-    boolean IsValid_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8);
-    boolean Write_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8, boolean value);
-   void BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8);
-  void  BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8,
-                                                   uint8_t start_, WSeq_for_Uint16_t* position_);
-    BitfieldRangeWriteIterator_for_UInt8 Null_in_BitfieldRangeWriteIterator_for_UInt8_static(void);
+boolean IsValid_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8);
+boolean Write_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8, boolean value);
+void BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8);
+void  BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8,
+    uint8_t start_, WSeq_for_Uint16_t* position_);
+BitfieldRangeWriteIterator_for_UInt8 Null_in_BitfieldRangeWriteIterator_for_UInt8_static(void);
 
 
 #endif

@@ -12,7 +12,7 @@ void List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpe
   pList_TypedEventRecord_for_BinarySpec->free = NULL;
   for(int i=0; i<SIZE_TypedEventRecord_for_BinarySpec; i++)
   {
-   Node_TypedEventRecord_for_BinarySpec_in_Node_TypedEventRecord_for_BinarySpec(&((pList_TypedEventRecord_for_BinarySpec->underlying).buffer[i]));
+    Node_TypedEventRecord_for_BinarySpec_in_Node_TypedEventRecord_for_BinarySpec(&((pList_TypedEventRecord_for_BinarySpec->underlying).buffer[i]));
   }
 }
 

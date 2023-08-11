@@ -184,31 +184,31 @@ typedef struct
 
 void List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver1(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
 void List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpecOver2(
-       List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
-       uint32_t maxSize);
+  List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
+  uint32_t maxSize);
 
-    Iterator_in_List_TypedEventRecord_for_AnalogSpec Iterate_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+Iterator_in_List_TypedEventRecord_for_AnalogSpec Iterate_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
 
-  void Initialize_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
-//  uint32_t RemoveAll_in_List_TypedEventRecord_for_AnalogSpec(EventStorage *pEventStorage, 
-//                            List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec, 
-//                            boolean (*match)(EventStorage *pEventStorage, 
+void Initialize_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_AnalogSpec(EventStorage *pEventStorage,
+//                            List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
+//                            boolean (*match)(EventStorage *pEventStorage,
 //                            EventRecord* record));//const U& match);
 
-   void Remove_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec, Node_TypedEventRecord_for_AnalogSpec* node);
-   void Link_in_List_TypedEventRecord_for_AnalogSpec_static(Node_TypedEventRecord_for_AnalogSpec* first, Node_TypedEventRecord_for_AnalogSpec* second);
+void Remove_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec, Node_TypedEventRecord_for_AnalogSpec* node);
+void Link_in_List_TypedEventRecord_for_AnalogSpec_static(Node_TypedEventRecord_for_AnalogSpec* first, Node_TypedEventRecord_for_AnalogSpec* second);
 
-     uint32_t Capacity_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
+uint32_t Capacity_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
 boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
 Node_TypedEventRecord_for_AnalogSpec* Head_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec);
 
 Node_TypedEventRecord_for_AnalogSpec* Add_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
-                                      TypedEventRecord_for_AnalogSpec* value);
+    TypedEventRecord_for_AnalogSpec* value);
 Node_TypedEventRecord_for_AnalogSpec* Insert_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec,
-                                                                TypedEventRecord_for_AnalogSpec* value,
-                                                                Node_TypedEventRecord_for_AnalogSpec* left,
-                                                                Node_TypedEventRecord_for_AnalogSpec* right
-                                                                  );
+    TypedEventRecord_for_AnalogSpec* value,
+    Node_TypedEventRecord_for_AnalogSpec* left,
+    Node_TypedEventRecord_for_AnalogSpec* right
+                                                                                    );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

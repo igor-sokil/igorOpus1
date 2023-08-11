@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -160,8 +160,8 @@ void Group22Var2_in_Group22Var2(Group22Var2 *pGroup22Var2)
 boolean Read_in_Group22Var2_static(RSeq_for_Uint16_t* buffer, Group22Var2* output)
 {
 //  return LittleEndian::read(buffer, output.flags, output.value);
-    return read_from_in_UInt8_static(buffer, &(output->flags)) &&
-           read_from_in_UInt16_static(buffer, &(output->value));
+  return read_from_in_UInt8_static(buffer, &(output->flags)) &&
+         read_from_in_UInt16_static(buffer, &(output->value));
 }
 
 ////bool Group22Var2::Write(const Group22Var2& arg, ser4cpp::wseq_t& buffer)
@@ -171,8 +171,8 @@ boolean Read_in_Group22Var2_static(RSeq_for_Uint16_t* buffer, Group22Var2* outpu
 boolean Write_in_Group22Var2_static(Group22Var2* arg, WSeq_for_Uint16_t* buffer)
 {
 //  return LittleEndian::write(buffer, arg.flags, arg.value);
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-           write_to_in_UInt16_static(buffer, arg->value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt16_static(buffer, arg->value);
 }
 
 ////bool Group22Var2::ReadTarget(rseq_t& buff, Counter& output)
@@ -196,8 +196,8 @@ boolean ReadTarget_in_Group22Var2_static(RSeq_for_Uint16_t* buff, Counter* outpu
   if(Read_in_Group22Var2_static(buff, &value))
   {
 //    output = CounterFactory::From(value.flags, value.value);
-   Counter temp = From_in_CounterFactory_staticOver2(value.flags, value.value);
-   *output = temp;
+    Counter temp = From_in_CounterFactory_staticOver2(value.flags, value.value);
+    *output = temp;
     return true;
   }
   else
@@ -243,9 +243,9 @@ Group22Var2 Apply_in_ConvertGroup22Var2_static(Counter* src)
 ////{}
 void Group22Var5_in_Group22Var5(Group22Var5 *pGroup22Var5)
 {
- pGroup22Var5->flags = 0;
- pGroup22Var5->value = 0;
- DNPTime_in_DNPTimeOver2(&(pGroup22Var5->timeDNPTime), 0);
+  pGroup22Var5->flags = 0;
+  pGroup22Var5->value = 0;
+  DNPTime_in_DNPTimeOver2(&(pGroup22Var5->timeDNPTime), 0);
 }
 
 ////bool Group22Var5::Read(rseq_t& buffer, Group22Var5& output)
@@ -265,9 +265,9 @@ boolean Read_in_Group22Var5_static(RSeq_for_Uint16_t* buffer, Group22Var5* outpu
 ////}
 boolean Write_in_Group22Var5_static(Group22Var5* arg, WSeq_for_Uint16_t* buffer)
 {
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-           write_to_in_UInt32_static(buffer, arg->value) &&
-           write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt32_static(buffer, arg->value) &&
+         write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);
 }
 
 ////bool Group22Var5::ReadTarget(rseq_t& buff, Counter& output)
@@ -291,8 +291,8 @@ boolean ReadTarget_in_Group22Var5_static(RSeq_for_Uint16_t* buff, Counter* outpu
   if(Read_in_Group22Var5_static(buff, &value))
   {
 //    output = CounterFactory::From(value.value);
-   Counter temp = From_in_CounterFactory_staticOver1(value.value);
-   *output = temp;
+    Counter temp = From_in_CounterFactory_staticOver1(value.value);
+    *output = temp;
     return true;
   }
   else
@@ -339,9 +339,9 @@ Group22Var5 Apply_in_ConvertGroup22Var5_static(Counter* src)
 ////{}
 void Group22Var6_in_Group22Var6(Group22Var6 *pGroup22Var6)
 {
- pGroup22Var6->flags = 0;
- pGroup22Var6->value = 0;
- DNPTime_in_DNPTimeOver2(&(pGroup22Var6->timeDNPTime), 0);
+  pGroup22Var6->flags = 0;
+  pGroup22Var6->value = 0;
+  DNPTime_in_DNPTimeOver2(&(pGroup22Var6->timeDNPTime), 0);
 }
 
 ////bool Group22Var6::Read(rseq_t& buffer, Group22Var6& output)
@@ -361,9 +361,9 @@ boolean Read_in_Group22Var6_static(RSeq_for_Uint16_t* buffer, Group22Var6* outpu
 ////}
 boolean Write_in_Group22Var6_static(Group22Var6* arg, WSeq_for_Uint16_t* buffer)
 {
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-           write_to_in_UInt16_static(buffer, arg->value) &&
-           write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt16_static(buffer, arg->value) &&
+         write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);
 }
 
 ////bool Group22Var6::ReadTarget(rseq_t& buff, Counter& output)
@@ -387,8 +387,8 @@ boolean ReadTarget_in_Group22Var6_static(RSeq_for_Uint16_t* buff, Counter* outpu
   if(Read_in_Group22Var6_static(buff, &value))
   {
 //    Counter From_in_CounterFactory_staticOver3(uint8_t flags, uint32_t count, DNPTime timeDNPTime);
-   Counter temp = From_in_CounterFactory_staticOver3(value.flags, value.value, value.timeDNPTime);
-   *output = temp;
+    Counter temp = From_in_CounterFactory_staticOver3(value.flags, value.value, value.timeDNPTime);
+    *output = temp;
     return true;
   }
   else
@@ -428,124 +428,124 @@ Group22Var6 Apply_in_ConvertGroup22Var6_static(Counter* src)
 ////};
 
 ////}
-  GroupVariationID ID_in_Group22Var0_static(void)
+GroupVariationID ID_in_Group22Var0_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 0);
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 0);
 //// return GroupVariationID(22,0);
- return gGroupVariationID;
+  return gGroupVariationID;
 }
 
- uint16_t Size_in_Group22Var1_static(void) 
+uint16_t Size_in_Group22Var1_static(void)
 {
- return 5; 
+  return 5;
 }
 
-  GroupVariationID ID_in_Group22Var1_static(void)
+GroupVariationID ID_in_Group22Var1_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 1);
-////  return GroupVariationID(22,1); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 1);
+////  return GroupVariationID(22,1);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Counter  Inst_in_Group22Var1_static(void)
+DNP3Serializer_for_Counter  Inst_in_Group22Var1_static(void)
 {
-   DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
-   DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
-                   ID_in_Group22Var1_static(),
-                   Size_in_Group22Var1_static(),
+  DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
+  DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
+      ID_in_Group22Var1_static(),
+      Size_in_Group22Var1_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group22Var1_static,
+      &ReadTarget_in_Group22Var1_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group22Var1_static);
+      &WriteTarget_in_Group22Var1_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Counter;
+  return dDNP3Serializer_for_Counter;
 }
 
- uint16_t Size_in_Group22Var2_static(void) 
+uint16_t Size_in_Group22Var2_static(void)
 {
- return 3; 
+  return 3;
 }
 
-  GroupVariationID ID_in_Group22Var2_static(void)
+GroupVariationID ID_in_Group22Var2_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 2);
-////  return GroupVariationID(22,2); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 2);
+////  return GroupVariationID(22,2);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Counter  Inst_in_Group22Var2_static(void)
+DNP3Serializer_for_Counter  Inst_in_Group22Var2_static(void)
 {
-   DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
-   DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
-                   ID_in_Group22Var2_static(),
-                   Size_in_Group22Var2_static(),
+  DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
+  DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
+      ID_in_Group22Var2_static(),
+      Size_in_Group22Var2_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group22Var2_static,
+      &ReadTarget_in_Group22Var2_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group22Var2_static);
+      &WriteTarget_in_Group22Var2_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Counter;
+  return dDNP3Serializer_for_Counter;
 }
 
- uint16_t Size_in_Group22Var5_static(void) 
+uint16_t Size_in_Group22Var5_static(void)
 {
- return 11; 
+  return 11;
 }
 
-  GroupVariationID ID_in_Group22Var5_static(void)
+GroupVariationID ID_in_Group22Var5_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 5);
-////  return GroupVariationID(22,5); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 5);
+////  return GroupVariationID(22,5);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Counter  Inst_in_Group22Var5_static(void)
+DNP3Serializer_for_Counter  Inst_in_Group22Var5_static(void)
 {
-   DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
-   DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
-                   ID_in_Group22Var5_static(),
-                   Size_in_Group22Var5_static(),
+  DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
+  DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
+      ID_in_Group22Var5_static(),
+      Size_in_Group22Var5_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group22Var5_static,
+      &ReadTarget_in_Group22Var5_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group22Var5_static);
+      &WriteTarget_in_Group22Var5_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Counter;
+  return dDNP3Serializer_for_Counter;
 }
 
- uint16_t Size_in_Group22Var6_static(void) 
+uint16_t Size_in_Group22Var6_static(void)
 {
- return 9; 
+  return 9;
 }
 
-  GroupVariationID ID_in_Group22Var6_static(void)
+GroupVariationID ID_in_Group22Var6_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 6);
-////  return GroupVariationID(22,6); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 22, 6);
+////  return GroupVariationID(22,6);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Counter  Inst_in_Group22Var6_static(void)
+DNP3Serializer_for_Counter  Inst_in_Group22Var6_static(void)
 {
-   DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
-   DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
-                   ID_in_Group22Var6_static(),
-                   Size_in_Group22Var6_static(),
+  DNP3Serializer_for_Counter dDNP3Serializer_for_Counter;
+  DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(&dDNP3Serializer_for_Counter,
+      ID_in_Group22Var6_static(),
+      Size_in_Group22Var6_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group22Var6_static,
+      &ReadTarget_in_Group22Var6_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group22Var6_static);
+      &WriteTarget_in_Group22Var6_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Counter;
+  return dDNP3Serializer_for_Counter;
 }
 
 

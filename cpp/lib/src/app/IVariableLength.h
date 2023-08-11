@@ -37,18 +37,18 @@ class IVariableLength
 {
 
 public:
-    virtual ~IVariableLength() {}
+  virtual ~IVariableLength() {}
 
-    virtual GroupVariationID InstanceID() const = 0;
+  virtual GroupVariationID InstanceID() const = 0;
 
-    // The size of the object in its current configuration
-    virtual size_t Size() const = 0;
+  // The size of the object in its current configuration
+  virtual size_t Size() const = 0;
 
-    // attempt to write the object to the destination buffer
-    virtual bool Write(ser4cpp::wseq_t& dest) const = 0;
+  // attempt to write the object to the destination buffer
+  virtual bool Write(ser4cpp::wseq_t& dest) const = 0;
 
-    // attempt to read the object from the input buffer
-    virtual bool Read(const ser4cpp::rseq_t& input) = 0;
+  // attempt to read the object from the input buffer
+  virtual bool Read(const ser4cpp::rseq_t& input) = 0;
 };
 
 ////} // namespace opendnp3

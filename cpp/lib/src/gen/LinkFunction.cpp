@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -46,26 +46,26 @@ LinkFunction_uint8_t from_type_in_LinkFunctionSpec(uint8_t arg)
 {
   switch(arg)
   {
-    case(0x40):
-      return LinkFunction_PRI_RESET_LINK_STATES;
-    case(0x42):
-      return LinkFunction_PRI_TEST_LINK_STATES;
-    case(0x43):
-      return LinkFunction_PRI_CONFIRMED_USER_DATA;
-    case(0x44):
-      return LinkFunction_PRI_UNCONFIRMED_USER_DATA;
-    case(0x49):
-      return LinkFunction_PRI_REQUEST_LINK_STATUS;
-    case(0x0):
-      return LinkFunction_SEC_ACK;
-    case(0x1):
-      return LinkFunction_SEC_NACK;
-    case(0xB):
-      return LinkFunction_SEC_LINK_STATUS;
-    case(0xF):
-      return LinkFunction_SEC_NOT_SUPPORTED;
-    default:
-      return LinkFunction_INVALID;
+  case(0x40):
+    return LinkFunction_PRI_RESET_LINK_STATES;
+  case(0x42):
+    return LinkFunction_PRI_TEST_LINK_STATES;
+  case(0x43):
+    return LinkFunction_PRI_CONFIRMED_USER_DATA;
+  case(0x44):
+    return LinkFunction_PRI_UNCONFIRMED_USER_DATA;
+  case(0x49):
+    return LinkFunction_PRI_REQUEST_LINK_STATUS;
+  case(0x0):
+    return LinkFunction_SEC_ACK;
+  case(0x1):
+    return LinkFunction_SEC_NACK;
+  case(0xB):
+    return LinkFunction_SEC_LINK_STATUS;
+  case(0xF):
+    return LinkFunction_SEC_NOT_SUPPORTED;
+  default:
+    return LinkFunction_INVALID;
   }
 }
 

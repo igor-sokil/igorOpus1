@@ -34,5 +34,5 @@ typedef struct
 } Node_TypedEventRecord_for_FrozenCounterSpec;
 
 void Node_TypedEventRecord_for_FrozenCounterSpec_in_Node_TypedEventRecord_for_FrozenCounterSpec(
-                    Node_TypedEventRecord_for_FrozenCounterSpec *pNode_TypedEventRecord_for_FrozenCounterSpec);
+  Node_TypedEventRecord_for_FrozenCounterSpec *pNode_TypedEventRecord_for_FrozenCounterSpec);
 #endif

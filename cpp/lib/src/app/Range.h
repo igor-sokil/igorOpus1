@@ -77,13 +77,13 @@ typedef struct
 ////        return (index >= start) && (index <= stop);
 ////    }
 
-    /// @return A new range with only values found in both ranges
+  /// @return A new range with only values found in both ranges
 ////    Range Intersection(const Range& other) const
 ////    {
 ////        return Range(ser4cpp::max<uint16_t>(start, other.start), ser4cpp::min<uint16_t>(stop, other.stop));
 ////    }
 
-    /// @return A new range with min start and the max stop of both ranges
+  /// @return A new range with min start and the max stop of both ranges
 ////    Range Union(const Range& other) const
 ////    {
 ////        if (!this->IsValid())
@@ -109,8 +109,8 @@ typedef struct
 ////        return IsValid() && (start <= 255) && (stop <= 255);
 ////    }
 
-    uint16_t start;
-    uint16_t stop;
+  uint16_t start;
+  uint16_t stop;
 
 ////private:
 ////    Range(uint16_t index_) : start(index_), stop(index_) {}
@@ -118,21 +118,21 @@ typedef struct
 ////    Range(uint16_t start_, uint16_t stop_) : start(start_), stop(stop_) {}
 } Range;
 
-    Range From_in_Range_static(uint16_t start, uint16_t stop);
-    Range Invalid_in_Range_static(void);
-    void Range_in_RangeOver1(Range *pRange);
-    uint16_t Count_in_Range(Range *pRange);
-    boolean Advance_in_Range(Range *pRange);
-    boolean Contains_in_Range(Range *pRange, uint16_t index);
-    uint16_t ser4cpp_max_uint16_t(uint16_t t1, uint16_t t2);
-    uint16_t ser4cpp_min_uint16_t(uint16_t t1, uint16_t t2);
-    boolean Equals_in_Range(Range *pRange, Range* other);
-    boolean IsValid_in_Range(Range *pRange);
-    boolean IsOneByte_in_Range(Range *pRange);
-    void Range_in_RangeOver2(Range *pRange, uint16_t index_);
-    void Range_in_RangeOver3(Range *pRange, uint16_t start_, uint16_t stop_);
-    Range Intersection_in_Range(Range *pRange, Range* other);
-    Range Union_in_Range(Range *pRange, Range* other);
+Range From_in_Range_static(uint16_t start, uint16_t stop);
+Range Invalid_in_Range_static(void);
+void Range_in_RangeOver1(Range *pRange);
+uint16_t Count_in_Range(Range *pRange);
+boolean Advance_in_Range(Range *pRange);
+boolean Contains_in_Range(Range *pRange, uint16_t index);
+uint16_t ser4cpp_max_uint16_t(uint16_t t1, uint16_t t2);
+uint16_t ser4cpp_min_uint16_t(uint16_t t1, uint16_t t2);
+boolean Equals_in_Range(Range *pRange, Range* other);
+boolean IsValid_in_Range(Range *pRange);
+boolean IsOneByte_in_Range(Range *pRange);
+void Range_in_RangeOver2(Range *pRange, uint16_t index_);
+void Range_in_RangeOver3(Range *pRange, uint16_t start_, uint16_t stop_);
+Range Intersection_in_Range(Range *pRange, Range* other);
+Range Union_in_Range(Range *pRange, Range* other);
 
 
 ////} // namespace opendnp3

@@ -38,20 +38,20 @@ typedef struct
 ////public:
 ////    ApplicationIIN() = default;
 
-    // flags normally controlled by the application, not the stack
-    boolean needTime;// = false;
-    boolean localControl;// = false;
-    boolean deviceTrouble;// = false;
-    boolean configCorrupt;// = false;
+  // flags normally controlled by the application, not the stack
+  boolean needTime;// = false;
+  boolean localControl;// = false;
+  boolean deviceTrouble;// = false;
+  boolean configCorrupt;// = false;
 
-    // this is only for appliactions that have an additional external event buffer that can overflow
-    boolean eventBufferOverflow;// = false;
+  // this is only for appliactions that have an additional external event buffer that can overflow
+  boolean eventBufferOverflow;// = false;
 
 ////    IINField ToIIN() const;
 } ApplicationIIN;
 
- void ApplicationIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN);
- IINField ToIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN);
+void ApplicationIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN);
+IINField ToIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN);
 ////} // namespace opendnp3
 
 #endif

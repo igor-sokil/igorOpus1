@@ -45,40 +45,40 @@
 ////namespace ser4cpp
 ////{
 
-    const  uint16_t size_in_UInt8 = 1;
-    const  uint8_t min_value_in_UInt8 = 0;
-    const  uint8_t max_value_in_UInt8 = 255;
+const  uint16_t size_in_UInt8 = 1;
+const  uint8_t min_value_in_UInt8 = 0;
+const  uint8_t max_value_in_UInt8 = 255;
 
-    boolean read_from_in_UInt8_static(RSeq_for_Uint16_t *input, uint8_t *out);
-    boolean write_to_in_UInt8_static(WSeq_for_Uint16_t *dest, uint8_t value);
-    uint8_t read_in_UInt8_static(uint8_t* start);
-    void write_in_UInt8_static(uint8_t* start, uint8_t value);
+boolean read_from_in_UInt8_static(RSeq_for_Uint16_t *input, uint8_t *out);
+boolean write_to_in_UInt8_static(WSeq_for_Uint16_t *dest, uint8_t value);
+uint8_t read_in_UInt8_static(uint8_t* start);
+void write_in_UInt8_static(uint8_t* start, uint8_t value);
 
-    const  uint16_t max_value_in_UInt16 = 65535;
-    const  uint16_t size_in_UInt16 = 2;
-    boolean write_to_in_UInt16_static(WSeq_for_Uint16_t *dest, uint16_t value);
-    boolean read_from_in_UInt16_static(RSeq_for_Uint16_t *input, uint16_t *out);
-    uint16_t read_in_UInt16_static(uint8_t* data);
-    void write_in_UInt16_static(uint8_t* data, uint16_t value);
+const  uint16_t max_value_in_UInt16 = 65535;
+const  uint16_t size_in_UInt16 = 2;
+boolean write_to_in_UInt16_static(WSeq_for_Uint16_t *dest, uint16_t value);
+boolean read_from_in_UInt16_static(RSeq_for_Uint16_t *input, uint16_t *out);
+uint16_t read_in_UInt16_static(uint8_t* data);
+void write_in_UInt16_static(uint8_t* data, uint16_t value);
 
-    const  uint16_t size_in_UInt32 = 4;
-    boolean write_to_in_UInt32_static(WSeq_for_Uint16_t *dest, uint32_t value);
-    boolean read_from_in_UInt32_static(RSeq_for_Uint16_t *input, uint32_t *out);
-    uint32_t read_in_UInt32_static(uint8_t* data);
-    void write_in_UInt32_static(uint8_t* data, uint32_t value);
+const  uint16_t size_in_UInt32 = 4;
+boolean write_to_in_UInt32_static(WSeq_for_Uint16_t *dest, uint32_t value);
+boolean read_from_in_UInt32_static(RSeq_for_Uint16_t *input, uint32_t *out);
+uint32_t read_in_UInt32_static(uint8_t* data);
+void write_in_UInt32_static(uint8_t* data, uint32_t value);
 
-    const  uint16_t size_in_Float32 = 4;
-    const  uint16_t size_in_Double64 = 8;
-    boolean read_from_in_Float32_static(RSeq_for_Uint16_t *input, float *out);
-    boolean read_from_in_Double64_static(RSeq_for_Uint16_t *input, double *out);
-    boolean write_to_in_Float32_static(WSeq_for_Uint16_t *dest, float value);
-    boolean write_to_in_Double64_static(WSeq_for_Uint16_t *dest, double value);
+const  uint16_t size_in_Float32 = 4;
+const  uint16_t size_in_Double64 = 8;
+boolean read_from_in_Float32_static(RSeq_for_Uint16_t *input, float *out);
+boolean read_from_in_Double64_static(RSeq_for_Uint16_t *input, double *out);
+boolean write_to_in_Float32_static(WSeq_for_Uint16_t *dest, float value);
+boolean write_to_in_Double64_static(WSeq_for_Uint16_t *dest, double value);
 
-    const  uint16_t size_in_UInt48 = 6;
-    boolean write_to_in_UInt48_static(WSeq_for_Uint16_t *dest, uint64_t value);
-    boolean read_from_in_UInt48_static(RSeq_for_Uint16_t *input, uint64_t *out);
-    uint64_t read_in_UInt48_static(uint8_t* data);
-    void write_in_UInt48_static(uint8_t* data, uint64_t value);
+const  uint16_t size_in_UInt48 = 6;
+boolean write_to_in_UInt48_static(WSeq_for_Uint16_t *dest, uint64_t value);
+boolean read_from_in_UInt48_static(RSeq_for_Uint16_t *input, uint64_t *out);
+uint64_t read_in_UInt48_static(uint8_t* data);
+void write_in_UInt48_static(uint8_t* data, uint64_t value);
 
 ////};
 /*

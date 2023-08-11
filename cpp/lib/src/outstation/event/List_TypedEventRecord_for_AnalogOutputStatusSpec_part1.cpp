@@ -13,7 +13,7 @@ void List_TypedEventRecord_for_AnalogOutputStatusSpec_in_List_TypedEventRecord_f
   for(int i=0; i<SIZE_TypedEventRecord_for_AnalogOutputStatusSpec; i++)
   {
 //void Node_TypedEventRecord_for_AnalogOutputStatusSpec_in_Node_TypedEventRecord_for_AnalogOutputStatusSpec(Node_TypedEventRecord_for_AnalogOutputStatusSpec *pNode_TypedEventRecord_for_AnalogOutputStatusSpec)
-   Node_TypedEventRecord_for_AnalogOutputStatusSpec_in_Node_TypedEventRecord_for_AnalogOutputStatusSpec(&((pList_TypedEventRecord_for_AnalogOutputStatusSpec->underlying).buffer[i]));
+    Node_TypedEventRecord_for_AnalogOutputStatusSpec_in_Node_TypedEventRecord_for_AnalogOutputStatusSpec(&((pList_TypedEventRecord_for_AnalogOutputStatusSpec->underlying).buffer[i]));
   }
 }
 

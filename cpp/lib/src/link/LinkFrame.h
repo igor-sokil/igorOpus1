@@ -44,9 +44,9 @@
 ////{
 
 ////public:
-    ////////////////////////////////////////////////
-    //	Functions for formatting outgoing Sec to Pri frames
-    ////////////////////////////////////////////////
+////////////////////////////////////////////////
+//	Functions for formatting outgoing Sec to Pri frames
+////////////////////////////////////////////////
 
 ////    static ser4cpp::rseq_t FormatAck(
 ////        ser4cpp::wseq_t& buffer, bool aIsMaster, bool aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc, Logger* pLogger);
@@ -57,9 +57,9 @@
 ////    static ser4cpp::rseq_t FormatNotSupported(
 ////        ser4cpp::wseq_t& buffer, bool aIsMaster, bool aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc, Logger* pLogger);
 
-    ////////////////////////////////////////////////
-    //	Functions for formatting outgoing Pri to Sec frames
-    ////////////////////////////////////////////////
+////////////////////////////////////////////////
+//	Functions for formatting outgoing Pri to Sec frames
+////////////////////////////////////////////////
 
 ////    static ser4cpp::rseq_t FormatTestLinkStatus(
 ////        ser4cpp::wseq_t& buffer, bool aIsMaster, bool aFcb, uint16_t aDest, uint16_t aSrc, Logger* pLogger);
@@ -81,43 +81,43 @@
 ////                                                     ser4cpp::rseq_t user_data,
 ////                                                     Logger* pLogger);
 ////
-    ////////////////////////////////////////////////
-    //	Reusable static formatting functions to any buffer
-    ////////////////////////////////////////////////
+////////////////////////////////////////////////
+//	Reusable static formatting functions to any buffer
+////////////////////////////////////////////////
 
-    /** Reads data from src to dest removing 2 byte CRC checks every 16 data bytes
-    @param apSrc Source buffer with crc checks. Must begin at data, not header
-    @param apDest Destination buffer to which the data is extracted
-    @param aLength Length of user data to read to the dest buffer. The source buffer must be larger b/c of crc bytes.
+/** Reads data from src to dest removing 2 byte CRC checks every 16 data bytes
+@param apSrc Source buffer with crc checks. Must begin at data, not header
+@param apDest Destination buffer to which the data is extracted
+@param aLength Length of user data to read to the dest buffer. The source buffer must be larger b/c of crc bytes.
 
- Считывает данные из src в dest, удаляя 2 байта CRC, проверяет каждые 16 байтов данных
-     @param apSrc Исходный буфер с проверкой crc. Должен начинаться с данных, а не с заголовка
-     @param apDest Целевой буфер, в который извлекаются данные
-     @param aLength Длина пользовательских данных для чтения в целевой буфер. Исходный буфер должен быть больше b/c байтов crc.
-    */
+Считывает данные из src в dest, удаляя 2 байта CRC, проверяет каждые 16 байтов данных
+ @param apSrc Исходный буфер с проверкой crc. Должен начинаться с данных, а не с заголовка
+ @param apDest Целевой буфер, в который извлекаются данные
+ @param aLength Длина пользовательских данных для чтения в целевой буфер. Исходный буфер должен быть больше b/c байтов crc.
+*/
 ////    static void ReadUserData(const uint8_t* apSrc, uint8_t* apDest, size_t len);
 
-    /** Validates FT3 user data integriry
-    @param apBody Beginning of the FT3 user data
-    @param aLength Number of user bytes to verify, not user + crc.
-    @return True if the body CRC is correct */
+/** Validates FT3 user data integriry
+@param apBody Beginning of the FT3 user data
+@param aLength Number of user bytes to verify, not user + crc.
+@return True if the body CRC is correct */
 /** Проверяет целостность пользовательских данных FT3
      @param apBody Начало пользовательских данных FT3
      @param aLength Количество пользовательских байтов для проверки, а не user + crc.
      @return True, если CRC тела правильный */
 ////    static bool ValidateBodyCRC(const uint8_t* apBody, size_t aLength);
 
-    // @return Total frame size based on user data length
+// @return Total frame size based on user data length
 ////    static size_t CalcFrameSize(size_t dataLength);
 
 ////private:
 ////    static size_t CalcUserDataSize(size_t dataLength);
 
-    /** Writes data from src to dest interlacing 2 byte CRC checks every 16 data bytes
-        @param apSrc Source buffer full of user data
-        @param apDest Destination buffer where the data + CRC is written
-        @param length Number of user data bytes
-    */
+/** Writes data from src to dest interlacing 2 byte CRC checks every 16 data bytes
+    @param apSrc Source buffer full of user data
+    @param apDest Destination buffer where the data + CRC is written
+    @param length Number of user data bytes
+*/
 /** Записывает данные из src в dest с чередованием 2 байт CRC проверяет каждые 16 байтов данных
          @param apSrc Исходный буфер заполнен пользовательскими данными
          @param apDest Целевой буфер, куда записываются данные + CRC
@@ -125,7 +125,7 @@
      */
 ////    static void WriteUserData(const uint8_t* pSrc, uint8_t* pDest, size_t length);
 
-    /** Write 10 header bytes to to buffer including 0x0564, all fields, and CRC */
+/** Write 10 header bytes to to buffer including 0x0564, all fields, and CRC */
 ////    static ser4cpp::rseq_t FormatHeader(ser4cpp::wseq_t& buffer,
 ////                                        uint8_t aDataLength,
 ////                                        bool aIsMaster,
@@ -139,81 +139,81 @@
 ////
 ////////} // namespace opendnp3
 
-    ////////////////////////////////////////////////
-    //	Functions for formatting outgoing Sec to Pri frames
-    ////////////////////////////////////////////////
-    RSeq_for_Uint16_t FormatAck_in_LinkFrame_static(
-        WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
-    RSeq_for_Uint16_t FormatNack_in_LinkFrame_static(
-        WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
-    RSeq_for_Uint16_t FormatLinkStatus_in_LinkFrame_static(
-        WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
-    RSeq_for_Uint16_t FormatNotSupported_in_LinkFrame_static(
-        WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
+////////////////////////////////////////////////
+//	Functions for formatting outgoing Sec to Pri frames
+////////////////////////////////////////////////
+RSeq_for_Uint16_t FormatAck_in_LinkFrame_static(
+  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
+RSeq_for_Uint16_t FormatNack_in_LinkFrame_static(
+  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
+RSeq_for_Uint16_t FormatLinkStatus_in_LinkFrame_static(
+  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
+RSeq_for_Uint16_t FormatNotSupported_in_LinkFrame_static(
+  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
 
-    ////////////////////////////////////////////////
-    //	Functions for formatting outgoing Pri to Sec frames
-    ////////////////////////////////////////////////
+////////////////////////////////////////////////
+//	Functions for formatting outgoing Pri to Sec frames
+////////////////////////////////////////////////
 
-    RSeq_for_Uint16_t FormatTestLinkStatus_in_LinkFrame_static(
-        WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aFcb, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
-    RSeq_for_Uint16_t FormatResetLinkStates_in_LinkFrame_static(
-        WSeq_for_Uint16_t* buffer, boolean aIsMaster, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
-    RSeq_for_Uint16_t FormatRequestLinkStatus_in_LinkFrame_static(
-        WSeq_for_Uint16_t* buffer, boolean aIsMaster, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
-    RSeq_for_Uint16_t FormatConfirmedUserData_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
-                                                   boolean aIsMaster,
-                                                   boolean aFcb,
-                                                   uint16_t aDest,
-                                                   uint16_t aSrc,
-                                                   RSeq_for_Uint16_t user_data);//,
-                                                   //Logger* pLogger);
-    RSeq_for_Uint16_t FormatUnconfirmedUserData_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
-                                                     boolean aIsMaster,
-                                                     uint16_t aDest,
-                                                     uint16_t aSrc,
-                                                     RSeq_for_Uint16_t user_data);//,
-                                                     //Logger* pLogger);
+RSeq_for_Uint16_t FormatTestLinkStatus_in_LinkFrame_static(
+  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aFcb, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
+RSeq_for_Uint16_t FormatResetLinkStates_in_LinkFrame_static(
+  WSeq_for_Uint16_t* buffer, boolean aIsMaster, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
+RSeq_for_Uint16_t FormatRequestLinkStatus_in_LinkFrame_static(
+  WSeq_for_Uint16_t* buffer, boolean aIsMaster, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
+RSeq_for_Uint16_t FormatConfirmedUserData_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
+    boolean aIsMaster,
+    boolean aFcb,
+    uint16_t aDest,
+    uint16_t aSrc,
+    RSeq_for_Uint16_t user_data);//,
+//Logger* pLogger);
+RSeq_for_Uint16_t FormatUnconfirmedUserData_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
+    boolean aIsMaster,
+    uint16_t aDest,
+    uint16_t aSrc,
+    RSeq_for_Uint16_t user_data);//,
+//Logger* pLogger);
 
-    ////////////////////////////////////////////////
-    //	Reusable static formatting functions to any buffer
-    ////////////////////////////////////////////////
+////////////////////////////////////////////////
+//	Reusable static formatting functions to any buffer
+////////////////////////////////////////////////
 
-    /** Reads data from src to dest removing 2 byte CRC checks every 16 data bytes
-    @param apSrc Source buffer with crc checks. Must begin at data, not header
-    @param apDest Destination buffer to which the data is extracted
-    @param aLength Length of user data to read to the dest buffer. The source buffer must be larger b/c of crc bytes.
-    */
- void ReadUserData_in_LinkFrame_static(uint8_t* apSrc, uint8_t* apDest, uint16_t len);
+/** Reads data from src to dest removing 2 byte CRC checks every 16 data bytes
+@param apSrc Source buffer with crc checks. Must begin at data, not header
+@param apDest Destination buffer to which the data is extracted
+@param aLength Length of user data to read to the dest buffer. The source buffer must be larger b/c of crc bytes.
+*/
+void ReadUserData_in_LinkFrame_static(uint8_t* apSrc, uint8_t* apDest, uint16_t len);
 
-    /** Validates FT3 user data integriry
-    @param apBody Beginning of the FT3 user data
-    @param aLength Number of user bytes to verify, not user + crc.
-    @return True if the body CRC is correct */
-    boolean ValidateBodyCRC_in_LinkFrame_static(uint8_t* apBody, uint16_t aLength);
+/** Validates FT3 user data integriry
+@param apBody Beginning of the FT3 user data
+@param aLength Number of user bytes to verify, not user + crc.
+@return True if the body CRC is correct */
+boolean ValidateBodyCRC_in_LinkFrame_static(uint8_t* apBody, uint16_t aLength);
 
-    // @return Total frame size based on user data length
- uint16_t CalcFrameSize_in_LinkFrame_static(uint16_t dataLength);
+// @return Total frame size based on user data length
+uint16_t CalcFrameSize_in_LinkFrame_static(uint16_t dataLength);
 
 ////private:
- uint16_t CalcUserDataSize_in_LinkFrame_static(uint16_t dataLength);
+uint16_t CalcUserDataSize_in_LinkFrame_static(uint16_t dataLength);
 
-    /** Writes data from src to dest interlacing 2 byte CRC checks every 16 data bytes
-        @param apSrc Source buffer full of user data
-        @param apDest Destination buffer where the data + CRC is written
-        @param length Number of user data bytes
-    */
- void WriteUserData_in_LinkFrame_static(uint8_t* pSrc, uint8_t* pDest, uint16_t length);
+/** Writes data from src to dest interlacing 2 byte CRC checks every 16 data bytes
+    @param apSrc Source buffer full of user data
+    @param apDest Destination buffer where the data + CRC is written
+    @param length Number of user data bytes
+*/
+void WriteUserData_in_LinkFrame_static(uint8_t* pSrc, uint8_t* pDest, uint16_t length);
 
-    /** Write 10 header bytes to to buffer including 0x0564, all fields, and CRC */
- RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
-                                        uint8_t aDataLength,
-                                        boolean aIsMaster,
-                                        boolean aFcb,
-                                        boolean aFcvDfc,
-                                        LinkFunction_uint8_t aFuncCode,
-                                        uint16_t aDest,
-                                        uint16_t aSrc);//,
+/** Write 10 header bytes to to buffer including 0x0564, all fields, and CRC */
+RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
+    uint8_t aDataLength,
+    boolean aIsMaster,
+    boolean aFcb,
+    boolean aFcvDfc,
+    LinkFunction_uint8_t aFuncCode,
+    uint16_t aDest,
+    uint16_t aSrc);//,
 ////                                        Logger* pLogger);
 
 #endif

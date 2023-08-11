@@ -42,21 +42,21 @@
 ////{
 
 ////APDUHeaderParser::Result<APDUHeader> APDUHeaderParser::ParseRequest(const ser4cpp::rseq_t& apdu, Logger* logger)
-    Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
+Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
 {
-    if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_REQUEST_SIZE)
-    {
+  if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_REQUEST_SIZE)
+  {
 ////        FORMAT_LOGGER_BLOCK(logger, flags::WARN, "Request fragment  with insufficient size of %zu bytes",
 ////                            apdu.length());
-        return Error_in_Result_for_APDUHeader_static();
+    return Error_in_Result_for_APDUHeader_static();
 ////Result<APDUHeader>::Error();
-    }
-    AppControlField aAppControlField;
-    AppControlField_in_AppControlFieldOver2(&aAppControlField, (apdu->buffer_)[0]);
-    APDUHeader aAPDUHeader;
-    APDUHeader_in_APDUHeaderOver2(&aAPDUHeader, &aAppControlField, from_type_in_FunctionCodeSpec((apdu->buffer_)[1]));
-    RSeq_for_Uint16_t rRSeq = skip_in_RSeq_for_Uint16_t(apdu, APDUHeader_REQUEST_SIZE);
-    return Ok_in_Result_for_APDUHeader_static(&aAPDUHeader, &rRSeq);
+  }
+  AppControlField aAppControlField;
+  AppControlField_in_AppControlFieldOver2(&aAppControlField, (apdu->buffer_)[0]);
+  APDUHeader aAPDUHeader;
+  APDUHeader_in_APDUHeaderOver2(&aAPDUHeader, &aAppControlField, from_type_in_FunctionCodeSpec((apdu->buffer_)[1]));
+  RSeq_for_Uint16_t rRSeq = skip_in_RSeq_for_Uint16_t(apdu, APDUHeader_REQUEST_SIZE);
+  return Ok_in_Result_for_APDUHeader_static(&aAPDUHeader, &rRSeq);
 ////Result<APDUHeader>::Ok(APDUHeader(AppControlField(apdu[0]), FunctionCodeSpec::from_type(apdu[1])),
 ////                                  apdu.skip(APDUHeader::REQUEST_SIZE));
 }
@@ -64,81 +64,81 @@
 ////APDUHeaderParser::Result<APDUResponseHeader> APDUHeaderParser::ParseResponse(const ser4cpp::rseq_t& apdu,
 ////                                                                             Logger* logger)
 ////    Result_for_APDUResponseHeader ParseResponse_in_APDUHeaderParser_static(RSeqSer4cpp *apdu)////, Logger* logger = nullptr);
-        Result_for_APDUResponseHeader_in_APDUHeaderParser ParseResponse_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
+Result_for_APDUResponseHeader_in_APDUHeaderParser ParseResponse_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
 {
-    if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_RESPONSE_SIZE)
-    {
+  if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_RESPONSE_SIZE)
+  {
 ////        FORMAT_LOGGER_BLOCK(logger, flags::WARN, "Response fragment  with insufficient size of %zu bytes",
 ////                            apdu.length());
-        return Error_in_Result_for_APDUResponseHeader_static();
-    }
+    return Error_in_Result_for_APDUResponseHeader_static();
+  }
 
 ////    return Result<APDUResponseHeader>::Ok(
 ////       APDUResponseHeader(AppControlField(apdu[0]), FunctionCodeSpec::from_type(apdu[1]), IINField(apdu[2], apdu[3])),
 ////        apdu.skip(APDUHeader::RESPONSE_SIZE));
-    IINField iIINField;
-    IINField_in_IINFieldOver3(&iIINField, (apdu->buffer_)[2], (apdu->buffer_)[3]);
-    AppControlField aAppControlField;
-    AppControlField_in_AppControlFieldOver2(&aAppControlField, (apdu->buffer_)[0]);
+  IINField iIINField;
+  IINField_in_IINFieldOver3(&iIINField, (apdu->buffer_)[2], (apdu->buffer_)[3]);
+  AppControlField aAppControlField;
+  AppControlField_in_AppControlFieldOver2(&aAppControlField, (apdu->buffer_)[0]);
 
-    APDUResponseHeader aAPDUResponseHeader;
-    APDUResponseHeader_in_APDUResponseHeaderOver2(&aAPDUResponseHeader, &aAppControlField, from_type_in_FunctionCodeSpec((apdu->buffer_)[1]), &iIINField);
-    RSeq_for_Uint16_t rRSeq = skip_in_RSeq_for_Uint16_t(apdu, APDUHeader_RESPONSE_SIZE);
-    return Ok_in_Result_for_APDUResponseHeader_static(&aAPDUResponseHeader, &rRSeq);
+  APDUResponseHeader aAPDUResponseHeader;
+  APDUResponseHeader_in_APDUResponseHeaderOver2(&aAPDUResponseHeader, &aAppControlField, from_type_in_FunctionCodeSpec((apdu->buffer_)[1]), &iIINField);
+  RSeq_for_Uint16_t rRSeq = skip_in_RSeq_for_Uint16_t(apdu, APDUHeader_RESPONSE_SIZE);
+  return Ok_in_Result_for_APDUResponseHeader_static(&aAPDUResponseHeader, &rRSeq);
 }
 
 ////} // namespace opendnp3
 
-        Result_for_APDUHeader_in_APDUHeaderParser Ok_in_Result_for_APDUHeader_static(APDUHeader *header, RSeq_for_Uint16_t *objects)
-        {
-            Result_for_APDUHeader_in_APDUHeaderParser rResult_for_APDUHeader;
-            Result_for_APDUHeader_in_Result_for_APDUHeaderOver2(&rResult_for_APDUHeader, header, objects);
-            return rResult_for_APDUHeader;
-        }
+Result_for_APDUHeader_in_APDUHeaderParser Ok_in_Result_for_APDUHeader_static(APDUHeader *header, RSeq_for_Uint16_t *objects)
+{
+  Result_for_APDUHeader_in_APDUHeaderParser rResult_for_APDUHeader;
+  Result_for_APDUHeader_in_Result_for_APDUHeaderOver2(&rResult_for_APDUHeader, header, objects);
+  return rResult_for_APDUHeader;
+}
 
-        Result_for_APDUHeader_in_APDUHeaderParser Error_in_Result_for_APDUHeader_static(void)
-        {
-            Result_for_APDUHeader_in_APDUHeaderParser rResult_for_APDUHeader;
-            Result_for_APDUHeader_in_Result_for_APDUHeaderOver1(&rResult_for_APDUHeader);
-            return rResult_for_APDUHeader;
-        }
+Result_for_APDUHeader_in_APDUHeaderParser Error_in_Result_for_APDUHeader_static(void)
+{
+  Result_for_APDUHeader_in_APDUHeaderParser rResult_for_APDUHeader;
+  Result_for_APDUHeader_in_Result_for_APDUHeaderOver1(&rResult_for_APDUHeader);
+  return rResult_for_APDUHeader;
+}
 
-        void Result_for_APDUHeader_in_Result_for_APDUHeaderOver2(Result_for_APDUHeader_in_APDUHeaderParser *pResult_for_APDUHeader, 
-                                                                 APDUHeader *header, RSeq_for_Uint16_t *objects)
-        {
-         pResult_for_APDUHeader->success = true;
-         pResult_for_APDUHeader->header = *header;
-         pResult_for_APDUHeader->objects = *objects;
-        }
+void Result_for_APDUHeader_in_Result_for_APDUHeaderOver2(Result_for_APDUHeader_in_APDUHeaderParser *pResult_for_APDUHeader,
+    APDUHeader *header, RSeq_for_Uint16_t *objects)
+{
+  pResult_for_APDUHeader->success = true;
+  pResult_for_APDUHeader->header = *header;
+  pResult_for_APDUHeader->objects = *objects;
+}
 
-        void Result_for_APDUHeader_in_Result_for_APDUHeaderOver1(Result_for_APDUHeader_in_APDUHeaderParser *pResult_for_APDUHeader)
-        {
-         pResult_for_APDUHeader->success = false;
-        }
+void Result_for_APDUHeader_in_Result_for_APDUHeaderOver1(Result_for_APDUHeader_in_APDUHeaderParser *pResult_for_APDUHeader)
+{
+  pResult_for_APDUHeader->success = false;
+}
 
-        Result_for_APDUResponseHeader_in_APDUHeaderParser Ok_in_Result_for_APDUResponseHeader_static(APDUResponseHeader *header, RSeq_for_Uint16_t *objects)
-        {
-            Result_for_APDUResponseHeader_in_APDUHeaderParser rResult_for_APDUResponseHeader;
-            Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver2(&rResult_for_APDUResponseHeader, header, objects);
-            return rResult_for_APDUResponseHeader;
-        }
+Result_for_APDUResponseHeader_in_APDUHeaderParser Ok_in_Result_for_APDUResponseHeader_static(APDUResponseHeader *header, RSeq_for_Uint16_t *objects)
+{
+  Result_for_APDUResponseHeader_in_APDUHeaderParser rResult_for_APDUResponseHeader;
+  Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver2(&rResult_for_APDUResponseHeader, header, objects);
+  return rResult_for_APDUResponseHeader;
+}
 
-        Result_for_APDUResponseHeader_in_APDUHeaderParser Error_in_Result_for_APDUResponseHeader_static(void)
-        {
-            Result_for_APDUResponseHeader_in_APDUHeaderParser rResult_for_APDUResponseHeader;
-            Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver1(&rResult_for_APDUResponseHeader);
-            return rResult_for_APDUResponseHeader;
-        }
+Result_for_APDUResponseHeader_in_APDUHeaderParser Error_in_Result_for_APDUResponseHeader_static(void)
+{
+  Result_for_APDUResponseHeader_in_APDUHeaderParser rResult_for_APDUResponseHeader;
+  Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver1(&rResult_for_APDUResponseHeader);
+  return rResult_for_APDUResponseHeader;
+}
 
-        void Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver2(Result_for_APDUResponseHeader_in_APDUHeaderParser *pResult_for_APDUResponseHeader, 
-                                                                 APDUResponseHeader *header, RSeq_for_Uint16_t *objects)
-        {
-         pResult_for_APDUResponseHeader->success = true;
-         pResult_for_APDUResponseHeader->header = *header;
-         pResult_for_APDUResponseHeader->objects = *objects;
-        }
+void Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver2(Result_for_APDUResponseHeader_in_APDUHeaderParser *pResult_for_APDUResponseHeader,
+    APDUResponseHeader *header, RSeq_for_Uint16_t *objects)
+{
+  pResult_for_APDUResponseHeader->success = true;
+  pResult_for_APDUResponseHeader->header = *header;
+  pResult_for_APDUResponseHeader->objects = *objects;
+}
 
-        void Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver1(Result_for_APDUResponseHeader_in_APDUHeaderParser *pResult_for_APDUResponseHeader)
-        {
-         pResult_for_APDUResponseHeader->success = false;
-        }
+void Result_for_APDUResponseHeader_in_Result_for_APDUResponseHeaderOver1(Result_for_APDUResponseHeader_in_APDUHeaderParser *pResult_for_APDUResponseHeader)
+{
+  pResult_for_APDUResponseHeader->success = false;
+}

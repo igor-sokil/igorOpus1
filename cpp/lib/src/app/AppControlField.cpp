@@ -52,7 +52,7 @@ AppControlField Request_in_AppControlField_static(uint8_t seq)
 
 void AppControlField_in_AppControlFieldOver3(AppControlField *pAppControlField, boolean fir, boolean fin, boolean con, boolean uns)
 {
- AppControlField_in_AppControlFieldOver4(pAppControlField, fir, fin, con, uns, 0);
+  AppControlField_in_AppControlFieldOver4(pAppControlField, fir, fin, con, uns, 0);
 }
 
 void AppControlField_in_AppControlFieldOver4(AppControlField *pAppControlField, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq)
@@ -90,9 +90,9 @@ uint8_t ToByte_in_AppControlField(AppControlField *pAppControlField)
   return ret | seq;
 }
 
-  boolean IsFirAndFin_in_AppControlField(AppControlField *pAppControlField)
-    {
-        return pAppControlField->FIR && pAppControlField->FIN;
-    }
+boolean IsFirAndFin_in_AppControlField(AppControlField *pAppControlField)
+{
+  return pAppControlField->FIR && pAppControlField->FIN;
+}
 
 ////} // namespace opendnp3

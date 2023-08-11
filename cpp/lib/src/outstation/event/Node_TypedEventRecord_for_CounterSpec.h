@@ -34,5 +34,5 @@ typedef struct
 } Node_TypedEventRecord_for_CounterSpec;
 
 void Node_TypedEventRecord_for_CounterSpec_in_Node_TypedEventRecord_for_CounterSpec(
-                    Node_TypedEventRecord_for_CounterSpec *pNode_TypedEventRecord_for_CounterSpec);
+  Node_TypedEventRecord_for_CounterSpec *pNode_TypedEventRecord_for_CounterSpec);
 #endif

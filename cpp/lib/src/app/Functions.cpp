@@ -24,17 +24,17 @@
 ////namespace opendnp3
 ////{
 ////bool Functions::IsNoAckFuncCode(FunctionCode code)
-    boolean IsNoAckFuncCode_in_Functions_static(FunctionCode_uint8_t code)
+boolean IsNoAckFuncCode_in_Functions_static(FunctionCode_uint8_t code)
 {
-    switch (code)
-    {
-    case (FunctionCode_DIRECT_OPERATE_NR):
-    case (FunctionCode_IMMED_FREEZE_NR):
-    case (FunctionCode_FREEZE_AT_TIME_NR):
-    case (FunctionCode_FREEZE_CLEAR_NR):
-        return true;
-    default:
-        return false;
-    }
+  switch (code)
+  {
+  case (FunctionCode_DIRECT_OPERATE_NR):
+  case (FunctionCode_IMMED_FREEZE_NR):
+  case (FunctionCode_FREEZE_AT_TIME_NR):
+  case (FunctionCode_FREEZE_CLEAR_NR):
+    return true;
+  default:
+    return false;
+  }
 }
 ////} // namespace opendnp3

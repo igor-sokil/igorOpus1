@@ -77,8 +77,8 @@ typedef struct
 
 void* getParentPointer_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval*);
 void  setParentPointer_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval*, void*);
-  uint16_t Count_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval*);
-  void     Foreach_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval*, IVisitor__for__Indexed_for_TimeAndInterval* visitor);
+uint16_t Count_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval*);
+void     Foreach_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval*, IVisitor__for__Indexed_for_TimeAndInterval* visitor);
 
 boolean ReadOnlyValue_in_ICollection_Indexed_for_TimeAndInterval(ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval, Indexed_for_TimeAndInterval* value);
 

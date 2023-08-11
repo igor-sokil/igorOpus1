@@ -86,33 +86,33 @@ typedef struct
 
 ////private:
 ////    typename IndexType::type_t start;
-    uint8_t start;
+  uint8_t start;
 //    Serializer<WriteType> serializer;
-    Serializer_for_Binary  serializer;
-    uint32_t count;
+  Serializer_for_Binary  serializer;
+  uint32_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    //ser4cpp::wseq_t range; // make a copy to record where we write the range
-    WSeq_for_Uint16_t range; // make a copy to record where we write the range
+  //ser4cpp::wseq_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
 
 //    ser4cpp::wseq_t* pPosition;
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t* pPosition;
 } RangeWriteIterator_for_UInt8_Binary;
 
-   boolean IsValid_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
-    boolean Write_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary,
-                                                         Binary* value);
-    void RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
-    void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver2(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary,
+boolean IsValid_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
+boolean Write_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary,
+    Binary* value);
+void RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
+void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver2(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary,
 //                   typename IndexType::type_t start_,
-                   uint8_t start_,
+    uint8_t start_,
 //                   const Serializer<WriteType>& serializer,
-                   Serializer_for_Binary*  serializer,
+    Serializer_for_Binary*  serializer,
 //                   ser4cpp::wseq_t& position)
-                   WSeq_for_Uint16_t* position);
-    void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver1(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
-     RangeWriteIterator_for_UInt8_Binary Null_in_RangeWriteIterator_for_UInt8_Binary_static(void);
+    WSeq_for_Uint16_t* position);
+void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver1(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
+RangeWriteIterator_for_UInt8_Binary Null_in_RangeWriteIterator_for_UInt8_Binary_static(void);
 
 //-------------------Uint8---------------------------------------------------
 

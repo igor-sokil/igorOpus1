@@ -62,7 +62,7 @@ typedef struct
 ////    Updates(std::shared_ptr<shared_updates_t> updates) : updates(std::move(updates)) {}
 
 ////    const std::shared_ptr<shared_updates_t> updates;
-pfn_MyFuncType updates[10];
+  pfn_MyFuncType updates[10];
 } Updates;
 
 ////} // namespace opendnp3

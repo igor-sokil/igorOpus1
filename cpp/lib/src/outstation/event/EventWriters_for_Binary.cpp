@@ -58,7 +58,7 @@ void CTOEventWriter_for_Binary_Group51Var1_in_CTOEventWriter_for_Binary_Group51V
 {
   DNPTime_in_DNPTimeOver2(&(pCTOEventWriter_for_Binary_Group51Var1->cto), (cto->timeDNPTime).value);
 
-  //PrefixedWriteIterator_for_UInt16_Binary temp 
+  //PrefixedWriteIterator_for_UInt16_Binary temp
   pCTOEventWriter_for_Binary_Group51Var1->iterator = IterateOverCountWithPrefixAndCTO_for_UInt16_Binary_Group51Var1_in_HeaderWriter(
         writer,
         QualifierCode_UINT16_CNT_UINT16_INDEX,
@@ -171,7 +171,7 @@ void CTOEventWriter_for_Binary_Group51Var2_in_CTOEventWriter_for_Binary_Group51V
 {
   DNPTime_in_DNPTimeOver2(&(pCTOEventWriter_for_Binary_Group51Var2->cto), (cto->timeDNPTime).value);
 
-  //PrefixedWriteIterator_for_UInt16_Binary temp 
+  //PrefixedWriteIterator_for_UInt16_Binary temp
   pCTOEventWriter_for_Binary_Group51Var2->iterator = IterateOverCountWithPrefixAndCTO_for_UInt16_Binary_Group51Var2_in_HeaderWriter(
         writer,
         QualifierCode_UINT16_CNT_UINT16_INDEX,

@@ -86,33 +86,33 @@ typedef struct
 
 ////private:
 ////    typename IndexType::type_t start;
-    uint16_t start;
+  uint16_t start;
 //    Serializer<WriteType> serializer;
-    Serializer_for_OctetString  serializer;
-    uint32_t count;
+  Serializer_for_OctetString  serializer;
+  uint32_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    //ser4cpp::wseq_t range; // make a copy to record where we write the range
-    WSeq_for_Uint16_t range; // make a copy to record where we write the range
+  //ser4cpp::wseq_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
 
 //    ser4cpp::wseq_t* pPosition;
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t* pPosition;
 } RangeWriteIterator_for_UInt16_OctetString;
 
-   boolean IsValid_in_RangeWriteIterator_for_UInt16_OctetString(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString);
-    boolean Write_in_RangeWriteIterator_for_UInt16_OctetString(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString,
-                                                         OctetString* value);
-    void RangeWriteIterator_for_UInt16_OctetString_destr_RangeWriteIterator_for_UInt16_OctetString(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString);
-    void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_OctetStringOver2(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString,
+boolean IsValid_in_RangeWriteIterator_for_UInt16_OctetString(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString);
+boolean Write_in_RangeWriteIterator_for_UInt16_OctetString(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString,
+    OctetString* value);
+void RangeWriteIterator_for_UInt16_OctetString_destr_RangeWriteIterator_for_UInt16_OctetString(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString);
+void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_OctetStringOver2(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString,
 //                   typename IndexType::type_t start_,
-                   uint16_t start_,
+    uint16_t start_,
 //                   const Serializer<WriteType>& serializer,
-                   Serializer_for_OctetString*  serializer,
+    Serializer_for_OctetString*  serializer,
 //                   ser4cpp::wseq_t& position)
-                   WSeq_for_Uint16_t* position);
-    void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_OctetStringOver1(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString);
-     RangeWriteIterator_for_UInt16_OctetString Null_in_RangeWriteIterator_for_UInt16_OctetString_static(void);
+    WSeq_for_Uint16_t* position);
+void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_OctetStringOver1(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString);
+RangeWriteIterator_for_UInt16_OctetString Null_in_RangeWriteIterator_for_UInt16_OctetString_static(void);
 //-------------------Uint16---------------------------------------------------
 
 

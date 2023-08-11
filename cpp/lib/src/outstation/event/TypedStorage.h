@@ -48,35 +48,35 @@
 ////};
 //----------------------------------BinarySpec-----------------------------------------------
 
-    Node_TypedEventRecord_for_BinarySpec* Retrieve_in_TypedStorage_for_BinarySpec_static(EventRecord* record);
+Node_TypedEventRecord_for_BinarySpec* Retrieve_in_TypedStorage_for_BinarySpec_static(EventRecord* record);
 //----------------------------------BinarySpec-----------------------------------------------
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
 
-    Node_TypedEventRecord_for_DoubleBitBinarySpec* Retrieve_in_TypedStorage_for_DoubleBitBinarySpec_static(EventRecord* record);
+Node_TypedEventRecord_for_DoubleBitBinarySpec* Retrieve_in_TypedStorage_for_DoubleBitBinarySpec_static(EventRecord* record);
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
 //----------------------------------AnalogSpec-----------------------------------------------
 
-    Node_TypedEventRecord_for_AnalogSpec* Retrieve_in_TypedStorage_for_AnalogSpec_static(EventRecord* record);
+Node_TypedEventRecord_for_AnalogSpec* Retrieve_in_TypedStorage_for_AnalogSpec_static(EventRecord* record);
 //----------------------------------AnalogSpec-----------------------------------------------
 //----------------------------------CounterSpec-----------------------------------------------
 
-    Node_TypedEventRecord_for_CounterSpec* Retrieve_in_TypedStorage_for_CounterSpec_static(EventRecord* record);
+Node_TypedEventRecord_for_CounterSpec* Retrieve_in_TypedStorage_for_CounterSpec_static(EventRecord* record);
 //----------------------------------CounterSpec-----------------------------------------------
 //----------------------------------FrozenCounterSpec-----------------------------------------------
 
-    Node_TypedEventRecord_for_FrozenCounterSpec* Retrieve_in_TypedStorage_for_FrozenCounterSpec_static(EventRecord* record);
+Node_TypedEventRecord_for_FrozenCounterSpec* Retrieve_in_TypedStorage_for_FrozenCounterSpec_static(EventRecord* record);
 //----------------------------------FrozenCounterSpec-----------------------------------------------
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
 
-    Node_TypedEventRecord_for_BinaryOutputStatusSpec* Retrieve_in_TypedStorage_for_BinaryOutputStatusSpec_static(EventRecord* record);
+Node_TypedEventRecord_for_BinaryOutputStatusSpec* Retrieve_in_TypedStorage_for_BinaryOutputStatusSpec_static(EventRecord* record);
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
 
-    Node_TypedEventRecord_for_AnalogOutputStatusSpec* Retrieve_in_TypedStorage_for_AnalogOutputStatusSpec_static(EventRecord* record);
+Node_TypedEventRecord_for_AnalogOutputStatusSpec* Retrieve_in_TypedStorage_for_AnalogOutputStatusSpec_static(EventRecord* record);
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
 //----------------------------------OctetStringSpec-----------------------------------------------
 
-    Node_TypedEventRecord_for_OctetStringSpec* Retrieve_in_TypedStorage_for_OctetStringSpec_static(EventRecord* record);
+Node_TypedEventRecord_for_OctetStringSpec* Retrieve_in_TypedStorage_for_OctetStringSpec_static(EventRecord* record);
 //----------------------------------OctetStringSpec-----------------------------------------------
 
 ////} // namespace opendnp3

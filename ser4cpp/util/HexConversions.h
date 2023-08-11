@@ -36,12 +36,12 @@
 ////namespace ser4cpp
 ////{
 
-    char to_hex_char_in_HexConversions(char c);
-    std::string byte_to_hex_in_HexConversions(uint8_t b);
-    std::string to_hex_in_HexConversions(const uint8_t* buffer, size_t length, bool spaced = false);
-    std::string to_hex_in_HexConversionsOver2(RSeq_for_Uint16_t* buffer, bool spaced = true);
+char to_hex_char_in_HexConversions(char c);
+std::string byte_to_hex_in_HexConversions(uint8_t b);
+std::string to_hex_in_HexConversions(const uint8_t* buffer, size_t length, bool spaced = false);
+std::string to_hex_in_HexConversionsOver2(RSeq_for_Uint16_t* buffer, bool spaced = true);
 
-    std::string increment_hex_in_HexConversions(uint8_t start, uint16_t count, bool spaced = true);
+std::string increment_hex_in_HexConversions(uint8_t start, uint16_t count, bool spaced = true);
 
 ////class HexConversions
 ////{

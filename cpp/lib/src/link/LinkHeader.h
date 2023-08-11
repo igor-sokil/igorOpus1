@@ -101,38 +101,38 @@ typedef struct
 ////    static uint8_t ControlByte(bool isMaster, bool fcb, bool fcvdfc, LinkFunction func);
 
 ////private:
-    // Fields read directly from the header
-    uint8_t length; // Length of field, range [5,255] valid
-    uint16_t src;   // Where the frame originated
-    uint16_t dest;  // Where the frame is going
-    uint8_t ctrl;   // Control octet, individual fields accessed using accessors below
+  // Fields read directly from the header
+  uint8_t length; // Length of field, range [5,255] valid
+  uint16_t src;   // Where the frame originated
+  uint16_t dest;  // Where the frame is going
+  uint8_t ctrl;   // Control octet, individual fields accessed using accessors below
 } LinkHeader;
 
-   void LinkHeader_in_LinkHeaderOver1(LinkHeader *pLinkHeader);
-   void LinkHeader_in_LinkHeaderOver2(LinkHeader *pLinkHeader, uint8_t len, uint16_t src, uint16_t dest, boolean aFromMaster, boolean fcvdfc, boolean fcb, LinkFunction_uint8_t aCode);
-   void Set_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t len, uint16_t src, uint16_t dest, boolean aFromMaster, boolean fcvdfc, boolean fcb, LinkFunction_uint8_t aCode);
-   void ChangeFCB_in_LinkHeader(LinkHeader *pLinkHeader, boolean aFCB);
-   uint8_t GetControl_in_LinkHeader(LinkHeader *pLinkHeader);
-   uint8_t GetLength_in_LinkHeader(LinkHeader *pLinkHeader);
-   uint16_t GetDest_in_LinkHeader(LinkHeader *pLinkHeader);
-   uint16_t GetSrc_in_LinkHeader(LinkHeader *pLinkHeader);
-   boolean IsPriToSec_in_LinkHeader(LinkHeader *pLinkHeader);
-   boolean IsFromMaster_in_LinkHeader(LinkHeader *pLinkHeader);
-   boolean IsFcbSet_in_LinkHeader(LinkHeader *pLinkHeader);
-    /** Reads the header, setting all the fields. Does NOT validate 0x0564 or CRC
-    @param apBuff Buffer of at least 10 bytes */
-    void Read_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
+void LinkHeader_in_LinkHeaderOver1(LinkHeader *pLinkHeader);
+void LinkHeader_in_LinkHeaderOver2(LinkHeader *pLinkHeader, uint8_t len, uint16_t src, uint16_t dest, boolean aFromMaster, boolean fcvdfc, boolean fcb, LinkFunction_uint8_t aCode);
+void Set_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t len, uint16_t src, uint16_t dest, boolean aFromMaster, boolean fcvdfc, boolean fcb, LinkFunction_uint8_t aCode);
+void ChangeFCB_in_LinkHeader(LinkHeader *pLinkHeader, boolean aFCB);
+uint8_t GetControl_in_LinkHeader(LinkHeader *pLinkHeader);
+uint8_t GetLength_in_LinkHeader(LinkHeader *pLinkHeader);
+uint16_t GetDest_in_LinkHeader(LinkHeader *pLinkHeader);
+uint16_t GetSrc_in_LinkHeader(LinkHeader *pLinkHeader);
+boolean IsPriToSec_in_LinkHeader(LinkHeader *pLinkHeader);
+boolean IsFromMaster_in_LinkHeader(LinkHeader *pLinkHeader);
+boolean IsFcbSet_in_LinkHeader(LinkHeader *pLinkHeader);
+/** Reads the header, setting all the fields. Does NOT validate 0x0564 or CRC
+@param apBuff Buffer of at least 10 bytes */
+void Read_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
 
-    /** Writes header to buffer including, 0x0564 and CRC
-    @param apBuff Buffer of at least 10 bytes */
-    void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
+/** Writes header to buffer including, 0x0564 and CRC
+@param apBuff Buffer of at least 10 bytes */
+void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
 
-    uint8_t ControlByte_in_LinkHeader_static(boolean isMaster, boolean fcb, boolean fcvdfc, LinkFunction_uint8_t func);
-    boolean IsFcbSet_in_LinkHeader(LinkHeader *pLinkHeader);
-    boolean IsFcvDfcSet_in_LinkHeader(LinkHeader *pLinkHeader);
-    uint8_t GetFuncByte_in_LinkHeader(LinkHeader *pLinkHeader);
-    LinkFunction_uint8_t GetFuncEnum_in_LinkHeader(LinkHeader *pLinkHeader);
-    boolean ValidLength_in_LinkHeader(LinkHeader *pLinkHeader);
+uint8_t ControlByte_in_LinkHeader_static(boolean isMaster, boolean fcb, boolean fcvdfc, LinkFunction_uint8_t func);
+boolean IsFcbSet_in_LinkHeader(LinkHeader *pLinkHeader);
+boolean IsFcvDfcSet_in_LinkHeader(LinkHeader *pLinkHeader);
+uint8_t GetFuncByte_in_LinkHeader(LinkHeader *pLinkHeader);
+LinkFunction_uint8_t GetFuncEnum_in_LinkHeader(LinkHeader *pLinkHeader);
+boolean ValidLength_in_LinkHeader(LinkHeader *pLinkHeader);
 
 
 

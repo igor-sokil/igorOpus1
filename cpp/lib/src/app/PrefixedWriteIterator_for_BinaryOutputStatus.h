@@ -84,27 +84,27 @@ typedef struct
 ////
 ////private:
 
-    Serializer_for_BinaryOutputStatus serializer;
-    uint16_t sizeOfTypePlusIndex;
+  Serializer_for_BinaryOutputStatus serializer;
+  uint16_t sizeOfTypePlusIndex;
 
 ////    typename PrefixType::type_t count;
-    uint16_t count;
+  uint16_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } PrefixedWriteIterator_for_UInt16_BinaryOutputStatus;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus);
-    boolean Write_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus,
-                                                                  BinaryOutputStatus* value, uint16_t index);
-   void PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_destr_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus);
-   void PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatusOver2(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus,
-                                                 Serializer_for_BinaryOutputStatus* serializer, WSeq_for_Uint16_t* position);
-   void PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatusOver1(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus);
-   PrefixedWriteIterator_for_UInt16_BinaryOutputStatus Null_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_static(void);
+boolean IsValid_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus);
+boolean Write_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus,
+    BinaryOutputStatus* value, uint16_t index);
+void PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_destr_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus);
+void PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatusOver2(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus,
+    Serializer_for_BinaryOutputStatus* serializer, WSeq_for_Uint16_t* position);
+void PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatusOver1(PrefixedWriteIterator_for_UInt16_BinaryOutputStatus *pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus);
+PrefixedWriteIterator_for_UInt16_BinaryOutputStatus Null_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_static(void);
 
 //-------------------Uint16---------------------------------------------------
 

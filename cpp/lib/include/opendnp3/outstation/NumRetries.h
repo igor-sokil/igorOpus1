@@ -41,19 +41,19 @@ typedef struct
 ////private:
 ////    NumRetries(std::size_t maxNumRetries, bool isInfinite);
 
-    uint16_t numRetries;
-    uint16_t maxNumRetries;
-    boolean isInfinite;
+  uint16_t numRetries;
+  uint16_t maxNumRetries;
+  boolean isInfinite;
 } NumRetries;
 
-    NumRetries Fixed_in_NumRetries_static(uint16_t maxNumRetries);
-    NumRetries Infinite_in_NumRetries_static(void);
+NumRetries Fixed_in_NumRetries_static(uint16_t maxNumRetries);
+NumRetries Infinite_in_NumRetries_static(void);
 
-   boolean Retry_in_NumRetries(NumRetries *pNumRetries);
-   void Reset_in_NumRetries(NumRetries *pNumRetries);
+boolean Retry_in_NumRetries(NumRetries *pNumRetries);
+void Reset_in_NumRetries(NumRetries *pNumRetries);
 
 ////private:
-   void NumRetries_in_NumRetries(NumRetries *pNumRetries, uint16_t maxNumRetries, boolean isInfinite);
+void NumRetries_in_NumRetries(NumRetries *pNumRetries, uint16_t maxNumRetries, boolean isInfinite);
 
 ////} // namespace opendnp3
 

@@ -52,24 +52,24 @@ typedef struct
 ////private:
 ////    DeferredRequest() = delete;
 
-    boolean isSet;
-    Addresses addresses;
-    APDUHeader header;
-    RSeq_for_Uint16_t objects;
-    BufferSer4 buffer;
+  boolean isSet;
+  Addresses addresses;
+  APDUHeader header;
+  RSeq_for_Uint16_t objects;
+  BufferSer4 buffer;
 } DeferredRequest;
 
-  void DeferredRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, uint32_t maxAPDUSize);
+void DeferredRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, uint32_t maxAPDUSize);
 
-  void Reset_in_DeferredRequest(DeferredRequest *pDeferredRequest);
+void Reset_in_DeferredRequest(DeferredRequest *pDeferredRequest);
 
-  boolean IsSet_in_DeferredRequest(DeferredRequest *pDeferredRequest);
+boolean IsSet_in_DeferredRequest(DeferredRequest *pDeferredRequest);
 
-  FunctionCode_uint8_t GetFunction_in_DeferredRequest(DeferredRequest *pDeferredRequest);
+FunctionCode_uint8_t GetFunction_in_DeferredRequest(DeferredRequest *pDeferredRequest);
 
-  void Set_in_DeferredRequest(DeferredRequest *pDeferredRequest, ParsedRequest* request);
+void Set_in_DeferredRequest(DeferredRequest *pDeferredRequest, ParsedRequest* request);
 
-  boolean  Process_for_handlerBooleanParsedRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, void*, boolean (*pHandlerBooleanParsedRequest)(void*, ParsedRequest*));
+boolean  Process_for_handlerBooleanParsedRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, void*, boolean (*pHandlerBooleanParsedRequest)(void*, ParsedRequest*));
 ////template<class Handler> bool DeferredRequest::Process(const Handler& handler)
 
 ////template<class Handler> bool DeferredRequest::Process(const Handler& handler)

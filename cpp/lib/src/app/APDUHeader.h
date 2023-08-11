@@ -33,8 +33,8 @@
 ////namespace opendnp3
 ////{
 
-    const uint32_t APDUHeader_REQUEST_SIZE = 2;
-    const uint32_t APDUHeader_RESPONSE_SIZE = 4;
+const uint32_t APDUHeader_REQUEST_SIZE = 2;
+const uint32_t APDUHeader_RESPONSE_SIZE = 4;
 
 //struct APDUHeader
 typedef struct
@@ -53,17 +53,17 @@ typedef struct
 ////        return (header.function == function) && (header.control.ToByte() == control.ToByte());
 ////    }
 
-    AppControlField control;
-    FunctionCode_uint8_t function;//// = FunctionCode::UNKNOWN;
+  AppControlField control;
+  FunctionCode_uint8_t function;//// = FunctionCode::UNKNOWN;
 } APDUHeader;
 
-   APDUHeader SolicitedConfirm_in_APDUHeader(uint8_t seq);
-   APDUHeader UnsolicitedConfirm_in_APDUHeader(uint8_t seq);
-   APDUHeader Confirm_in_APDUHeader(uint8_t seq, boolean unsolicited);
+APDUHeader SolicitedConfirm_in_APDUHeader(uint8_t seq);
+APDUHeader UnsolicitedConfirm_in_APDUHeader(uint8_t seq);
+APDUHeader Confirm_in_APDUHeader(uint8_t seq, boolean unsolicited);
 
-   void APDUHeader_in_APDUHeaderOver1(APDUHeader*);
-   void APDUHeader_in_APDUHeaderOver2(APDUHeader *pAPDUHeader, AppControlField *control, FunctionCode_uint8_t function);
-   boolean Equals_in_APDUHeader(APDUHeader *pAPDUHeader, APDUHeader *header);
+void APDUHeader_in_APDUHeaderOver1(APDUHeader*);
+void APDUHeader_in_APDUHeaderOver2(APDUHeader *pAPDUHeader, AppControlField *control, FunctionCode_uint8_t function);
+boolean Equals_in_APDUHeader(APDUHeader *pAPDUHeader, APDUHeader *header);
 
 ////struct APDUResponseHeader : public APDUHeader
 typedef struct
@@ -79,16 +79,16 @@ typedef struct
 ////    {
 ////        return ResponseInfo(this->function == FunctionCode::UNSOLICITED_RESPONSE, control.FIR, control.FIN);
 ////    }
-    APDUHeader aAPDUHeader;
+  APDUHeader aAPDUHeader;
 
-    IINField IIN;
+  IINField IIN;
 } APDUResponseHeader;
 
- void APDUResponseHeader_in_APDUResponseHeaderOver1(APDUResponseHeader *pAPDUResponseHeader);
- void APDUResponseHeader_in_APDUResponseHeaderOver2(APDUResponseHeader *pAPDUResponseHeader,
-                                                    AppControlField *control,
-                                                    FunctionCode_uint8_t function,
-                                                    IINField *pIIN);
+void APDUResponseHeader_in_APDUResponseHeaderOver1(APDUResponseHeader *pAPDUResponseHeader);
+void APDUResponseHeader_in_APDUResponseHeaderOver2(APDUResponseHeader *pAPDUResponseHeader,
+    AppControlField *control,
+    FunctionCode_uint8_t function,
+    IINField *pIIN);
 
 
 ////} // namespace opendnp3

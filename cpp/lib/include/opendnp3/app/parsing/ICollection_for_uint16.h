@@ -77,8 +77,8 @@ typedef struct
 
 void* getParentPointer_in_ICollection_for_uint16(ICollection_for_uint16*);
 void  setParentPointer_in_ICollection_for_uint16(ICollection_for_uint16*, void*);
-  uint16_t Count_in_ICollection_for_uint16(ICollection_for_uint16*);
-  void     Foreach_in_ICollection_for_uint16(ICollection_for_uint16*, IVisitor__for__uint16* visitor);
+uint16_t Count_in_ICollection_for_uint16(ICollection_for_uint16*);
+void     Foreach_in_ICollection_for_uint16(ICollection_for_uint16*, IVisitor__for__uint16* visitor);
 
 boolean ReadOnlyValue_in_ICollection_for_uint16(ICollection_for_uint16 *pICollection_for_uint16, uint16_t* value);
 

@@ -40,7 +40,7 @@ ArrayView__for__Node_TypedEventRecord_for_BinarySpec to_view_in_Array__for__Node
   ArrayView__for__Node_TypedEventRecord_for_BinarySpec aArrayView__for__Node_TypedEventRecord_for_BinarySpec;
   ArrayView__for__Node_TypedEventRecord_for_BinarySpec_in_ArrayView__for__Node_TypedEventRecord_for_BinarySpec(&aArrayView__for__Node_TypedEventRecord_for_BinarySpec, pArray__for__Node_TypedEventRecord_for_BinarySpec->buffer,
       (pArray__for__Node_TypedEventRecord_for_BinarySpec->hHasLength_for_Uint32_t).m_length
-                                                                              );
+                                                                                                              );
   return aArrayView__for__Node_TypedEventRecord_for_BinarySpec;
 }
 

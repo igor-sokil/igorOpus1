@@ -204,12 +204,12 @@ uint32_t Capacity_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_
 boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
 Node_TypedEventRecord_for_BinarySpec* Head_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec);
 Node_TypedEventRecord_for_BinarySpec* Add_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec,
-                                      TypedEventRecord_for_BinarySpec* value);
+    TypedEventRecord_for_BinarySpec* value);
 Node_TypedEventRecord_for_BinarySpec* Insert_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec,
-                                                                TypedEventRecord_for_BinarySpec* value,
-                                                                Node_TypedEventRecord_for_BinarySpec* left,
-                                                                Node_TypedEventRecord_for_BinarySpec* right
-                                                                  );
+    TypedEventRecord_for_BinarySpec* value,
+    Node_TypedEventRecord_for_BinarySpec* left,
+    Node_TypedEventRecord_for_BinarySpec* right
+                                                                                    );
 
 
 ////template<class T> template<class U> void List<T>::ForeachWhile(const U& select)

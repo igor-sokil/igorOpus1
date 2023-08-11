@@ -55,14 +55,14 @@ typedef struct
 ////    }
 
 ////private:
-    uint16_t mask;
+  uint16_t mask;
 } StaticTypeBitField;
 
-  void StaticTypeBitField_in_StaticTypeBitFieldOver1(StaticTypeBitField *pStaticTypeBitField);
-  void StaticTypeBitField_in_StaticTypeBitFieldOver2(StaticTypeBitField *pStaticTypeBitField, uint16_t mask);
-     StaticTypeBitField AllTypes_in_StaticTypeBitField_static(void);
-    boolean IsSet_in_StaticTypeBitField(StaticTypeBitField *pStaticTypeBitField, StaticTypeBitmask_uint16_t type);
-    StaticTypeBitField Except_in_StaticTypeBitField(StaticTypeBitField *pStaticTypeBitField, StaticTypeBitmask_uint16_t type);
+void StaticTypeBitField_in_StaticTypeBitFieldOver1(StaticTypeBitField *pStaticTypeBitField);
+void StaticTypeBitField_in_StaticTypeBitFieldOver2(StaticTypeBitField *pStaticTypeBitField, uint16_t mask);
+StaticTypeBitField AllTypes_in_StaticTypeBitField_static(void);
+boolean IsSet_in_StaticTypeBitField(StaticTypeBitField *pStaticTypeBitField, StaticTypeBitmask_uint16_t type);
+StaticTypeBitField Except_in_StaticTypeBitField(StaticTypeBitField *pStaticTypeBitField, StaticTypeBitmask_uint16_t type);
 
 ////} // namespace opendnp3
 

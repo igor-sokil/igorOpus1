@@ -64,10 +64,10 @@ typedef struct
 ////    PrefixedWriteIterator<PrefixType, WriteType> IterateOverCountWithPrefixAndCTO(
 ////        QualifierCode qc, const DNP3Serializer<WriteType>& serializer, const CTOType& cto);
 
-    // record the current position in case we need to rollback
+  // record the current position in case we need to rollback
 ////    void Mark();
 
-    // roll back to the last mark
+  // roll back to the last mark
 ////    bool Rollback();
 
 ////    size_t Remaining() const;
@@ -78,51 +78,51 @@ typedef struct
 ////    bool WriteHeaderWithReserve(GroupVariationID id, QualifierCode qc, size_t reserve);
 
 ////    ser4cpp::wseq_t* position;
-      WSeq_for_Uint16_t* position;
+  WSeq_for_Uint16_t* position;
 
 ////    ser4cpp::Settable<ser4cpp::wseq_t> mark;
-      Settable_for_WSeq_t mark;
+  Settable_for_WSeq_t mark;
 } HeaderWriter;
 
-    void Mark_in_HeaderWriter(HeaderWriter *pHeaderWriter);
-    boolean Rollback_in_HeaderWriter(HeaderWriter *pHeaderWriter);
-    uint16_t Remaining_in_HeaderWriter(HeaderWriter *pHeaderWriter);
-    boolean WriteHeader_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc);
-    void HeaderWriter_in_HeaderWriter(HeaderWriter *pHeaderWriter, WSeq_for_Uint16_t * position_);
-    boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter,
-                                       GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve);
+void Mark_in_HeaderWriter(HeaderWriter *pHeaderWriter);
+boolean Rollback_in_HeaderWriter(HeaderWriter *pHeaderWriter);
+uint16_t Remaining_in_HeaderWriter(HeaderWriter *pHeaderWriter);
+boolean WriteHeader_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc);
+void HeaderWriter_in_HeaderWriter(HeaderWriter *pHeaderWriter, WSeq_for_Uint16_t * position_);
+boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve);
 
 ////    template<class IndexType>
-    BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter,
-                                                                    GroupVariationID id,
-                                                                    QualifierCode_uint8_t qc,
-                                                                    uint8_t start);
+BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    GroupVariationID id,
+    QualifierCode_uint8_t qc,
+    uint8_t start);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var1--------------------------------------------------------
-    boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
-                                                                    QualifierCode_uint8_t qc, Group51Var1*);
+boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, Group51Var1*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var1--------------------------------------------------------
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var2--------------------------------------------------------
-    boolean WriteSingleValue_for_UInt8_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
-                                                                    QualifierCode_uint8_t qc, Group51Var2*);
+boolean WriteSingleValue_for_UInt8_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, Group51Var2*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var2--------------------------------------------------------
 
 //--------------------------------WriteSingleValue_for_UInt8_Group52Var1--------------------------------------------------------
-    boolean WriteSingleValue_for_UInt8_Group52Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
-                                                                    QualifierCode_uint8_t qc, Group52Var1*);
+boolean WriteSingleValue_for_UInt8_Group52Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, Group52Var1*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group52Var1--------------------------------------------------------
 //--------------------------------WriteSingleValue_for_UInt8_Group52Var2--------------------------------------------------------
-    boolean WriteSingleValue_for_UInt8_Group52Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
-                                                                    QualifierCode_uint8_t qc, Group52Var2*);
+boolean WriteSingleValue_for_UInt8_Group52Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, Group52Var2*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group52Var2--------------------------------------------------------
 
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
-    boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
-                                                                    QualifierCode_uint8_t qc, Group50Var1*);
+boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, Group50Var1*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
 

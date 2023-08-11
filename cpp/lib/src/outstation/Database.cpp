@@ -27,11 +27,11 @@
 //{
 //}
 
-  void  Database_in_Database(Database *pDatabase,
-             DatabaseConfig* config,
-             IEventReceiver* event_receiver,
-             IDnpTimeSource* time_source,
-             StaticTypeBitField allowed_class_zero_types)
+void  Database_in_Database(Database *pDatabase,
+                           DatabaseConfig* config,
+                           IEventReceiver* event_receiver,
+                           IDnpTimeSource* time_source,
+                           StaticTypeBitField allowed_class_zero_types)
 {
 }
 

@@ -29,29 +29,29 @@
 ////{
 ////namespace build
 ////{
-    // -------- requests -------------
+// -------- requests -------------
 
-    void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint8_t fc, ClassField* classes, uint8_t seq);
+void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint8_t fc, ClassField* classes, uint8_t seq);
 
-    bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes);
+bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes);
 
-    void ReadIntegrity_in_APDUBuilders_static(APDURequest* request, ClassField* classes, uint8_t seq);// = 0);
+void ReadIntegrity_in_APDUBuilders_static(APDURequest* request, ClassField* classes, uint8_t seq);// = 0);
 
-    void ReadAllObjects_in_APDUBuilders_static(APDURequest& request, GroupVariationID gvId, uint8_t seq);// = 0);
+void ReadAllObjects_in_APDUBuilders_static(APDURequest& request, GroupVariationID gvId, uint8_t seq);// = 0);
 
-    void DisableUnsolicited_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
+void DisableUnsolicited_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
 
-    void EnableUnsolicited_in_APDUBuilders_static(APDURequest* request, ClassField* classes, uint8_t seq);// = 0);
+void EnableUnsolicited_in_APDUBuilders_static(APDURequest* request, ClassField* classes, uint8_t seq);// = 0);
 
-    void ClearRestartIIN_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
+void ClearRestartIIN_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
 
-    void MeasureDelay_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
+void MeasureDelay_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
 
-    void RecordCurrentTime_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
+void RecordCurrentTime_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
 
-    // -------- responses -------------
+// -------- responses -------------
 
-    void NullUnsolicited_in_APDUBuilders_static(APDUResponse* response, uint8_t seq, IINField* iin);
+void NullUnsolicited_in_APDUBuilders_static(APDUResponse* response, uint8_t seq, IINField* iin);
 
 ////} // namespace build
 ////} // namespace opendnp3

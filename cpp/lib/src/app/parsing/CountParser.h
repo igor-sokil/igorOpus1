@@ -46,10 +46,10 @@
 ////namespace opendnp3
 ////{
 
-    typedef void (*HandleFun_in_CountParser)( HeaderRecord* record,
-                              uint16_t count,
-                              RSeq_for_Uint16_t* buffer,
-                              IAPDUHandler handler);
+typedef void (*HandleFun_in_CountParser)( HeaderRecord* record,
+    uint16_t count,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler handler);
 
 ////class CountParser
 typedef struct
@@ -74,7 +74,7 @@ typedef struct
 ////                        IAPDUHandler* pHandler,
 ////                        Logger* pLogger) const;
 ////
-    // Create a count handler from a fixed size descriptor
+  // Create a count handler from a fixed size descriptor
 ////    template<class Descriptor> static CountParser From(uint16_t count);
 
 ////    static ParseResult ParseCountOfObjects(
@@ -88,19 +88,19 @@ typedef struct
 
 ////    CountParser(uint16_t count, size_t required_size, HandleFun handler);
 
-    uint16_t count;
-    uint16_t required_size;
-    HandleFun_in_CountParser handler;
+  uint16_t count;
+  uint16_t required_size;
+  HandleFun_in_CountParser handler;
 
 ////    CountParser() = delete;
 } CountParser;
 
-     ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
-                                   NumParser* numparser,
-                                   ////const ParserSettings& settings,
-                                   HeaderRecord* record,
-                                   ////Logger* pLogger,
-                                   IAPDUHandler* pHandler);
+ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
+    NumParser* numparser,
+    ////const ParserSettings& settings,
+    HeaderRecord* record,
+    ////Logger* pLogger,
+    IAPDUHandler* pHandler);
 
 ////template<class Descriptor> CountParser CountParser::From(uint16_t count)
 ////{

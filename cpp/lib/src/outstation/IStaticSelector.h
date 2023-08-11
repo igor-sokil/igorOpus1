@@ -39,13 +39,13 @@
 typedef struct
 {
 ////public:
-     IINField (*pSelectAll_in_IStaticSelector)(void*, GroupVariation_uint16_t gv);// = 0;
+  IINField (*pSelectAll_in_IStaticSelector)(void*, GroupVariation_uint16_t gv);// = 0;
 
-     IINField (*pSelectRange_in_IStaticSelector)(void*, GroupVariation_uint16_t gv,  Range* range);// = 0;
+  IINField (*pSelectRange_in_IStaticSelector)(void*, GroupVariation_uint16_t gv,  Range* range);// = 0;
 
-     IINField (*pSelectIndices_in_IStaticSelector)(void*, GroupVariation_uint16_t gv, ICollection_for_uint16* indices);// = 0;
+  IINField (*pSelectIndices_in_IStaticSelector)(void*, GroupVariation_uint16_t gv, ICollection_for_uint16* indices);// = 0;
 
-     void (*pUnselect_in_IStaticSelector)(void*);// = 0;
+  void (*pUnselect_in_IStaticSelector)(void*);// = 0;
 
   void* pParentPointer_in_IStaticSelector;
 } IStaticSelector;

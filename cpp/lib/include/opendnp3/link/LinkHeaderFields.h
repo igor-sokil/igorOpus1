@@ -36,16 +36,16 @@ typedef struct
 
 ////    LinkHeaderFields(LinkFunction func, bool isMaster, bool fcb, bool fcvdfc, Addresses addresses);
 
-    LinkFunction_uint8_t func;
-    boolean isFromMaster;
-    boolean fcb;
-    boolean fcvdfc;
-    Addresses addresses;
+  LinkFunction_uint8_t func;
+  boolean isFromMaster;
+  boolean fcb;
+  boolean fcvdfc;
+  Addresses addresses;
 } LinkHeaderFields;
 
-  void LinkHeaderFields_in_LinkHeaderFieldsOver1(LinkHeaderFields *pLinkHeaderFields);
+void LinkHeaderFields_in_LinkHeaderFieldsOver1(LinkHeaderFields *pLinkHeaderFields);
 
-  void LinkHeaderFields_in_LinkHeaderFieldsOver2(LinkHeaderFields *pLinkHeaderFields, LinkFunction_uint8_t func, boolean isMaster, boolean fcb, boolean fcvdfc, Addresses addresses);
+void LinkHeaderFields_in_LinkHeaderFieldsOver2(LinkHeaderFields *pLinkHeaderFields, LinkFunction_uint8_t func, boolean isMaster, boolean fcb, boolean fcvdfc, Addresses addresses);
 
 ////} // namespace opendnp3
 

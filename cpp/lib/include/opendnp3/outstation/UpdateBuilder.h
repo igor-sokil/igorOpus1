@@ -30,25 +30,25 @@ class UpdateBuilder final : public IUpdateHandler
 {
 
 public:
-    bool Update(const Binary& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
-    bool Update(const DoubleBitBinary& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
-    bool Update(const Analog& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
-    bool Update(const Counter& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
-    bool FreezeCounter(uint16_t index, bool clear, EventMode mode = EventMode::Detect) override;
-    bool Update(const BinaryOutputStatus& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
-    bool Update(const AnalogOutputStatus& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
-    bool Update(const OctetString& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
-    bool Update(const TimeAndInterval& meas, uint16_t index) override;
-    bool Modify(FlagsType type, uint16_t start, uint16_t stop, uint8_t flags) override;
+  bool Update(const Binary& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
+  bool Update(const DoubleBitBinary& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
+  bool Update(const Analog& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
+  bool Update(const Counter& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
+  bool FreezeCounter(uint16_t index, bool clear, EventMode mode = EventMode::Detect) override;
+  bool Update(const BinaryOutputStatus& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
+  bool Update(const AnalogOutputStatus& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
+  bool Update(const OctetString& meas, uint16_t index, EventMode mode = EventMode::Detect) override;
+  bool Update(const TimeAndInterval& meas, uint16_t index) override;
+  bool Modify(FlagsType type, uint16_t start, uint16_t stop, uint8_t flags) override;
 
-    Updates Build();
+  Updates Build();
 
 private:
-    template<class T> bool AddMeas(const T& meas, uint16_t index, EventMode mode);
+  template<class T> bool AddMeas(const T& meas, uint16_t index, EventMode mode);
 
-    bool Add(const update_func_t& fun);
+  bool Add(const update_func_t& fun);
 
-    std::shared_ptr<shared_updates_t> updates;
+  std::shared_ptr<shared_updates_t> updates;
 };
 
 } // namespace opendnp3

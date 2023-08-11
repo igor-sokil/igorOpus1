@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -45,30 +45,30 @@ IntervalUnits_uint8_t from_type_in_IntervalUnitsSpec(uint8_t arg)
 {
   switch(arg)
   {
-    case(0x0):
-      return IntervalUnits_NoRepeat;
-    case(0x1):
-      return IntervalUnits_Milliseconds;
-    case(0x2):
-      return IntervalUnits_Seconds;
-    case(0x3):
-      return IntervalUnits_Minutes;
-    case(0x4):
-      return IntervalUnits_Hours;
-    case(0x5):
-      return IntervalUnits_Days;
-    case(0x6):
-      return IntervalUnits_Weeks;
-    case(0x7):
-      return IntervalUnits_Months7;
-    case(0x8):
-      return IntervalUnits_Months8;
-    case(0x9):
-      return IntervalUnits_Months9;
-    case(0xA):
-      return IntervalUnits_Seasons;
-    default:
-      return IntervalUnits_Undefined;
+  case(0x0):
+    return IntervalUnits_NoRepeat;
+  case(0x1):
+    return IntervalUnits_Milliseconds;
+  case(0x2):
+    return IntervalUnits_Seconds;
+  case(0x3):
+    return IntervalUnits_Minutes;
+  case(0x4):
+    return IntervalUnits_Hours;
+  case(0x5):
+    return IntervalUnits_Days;
+  case(0x6):
+    return IntervalUnits_Weeks;
+  case(0x7):
+    return IntervalUnits_Months7;
+  case(0x8):
+    return IntervalUnits_Months8;
+  case(0x9):
+    return IntervalUnits_Months9;
+  case(0xA):
+    return IntervalUnits_Seasons;
+  default:
+    return IntervalUnits_Undefined;
   }
 }
 

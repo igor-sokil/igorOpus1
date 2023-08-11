@@ -55,9 +55,9 @@
 ////    }
 ////};
 
-   Binary From_in_BinaryFactory_staticOver1(uint8_t flags);
-   Binary From_in_BinaryFactory_staticOver2(uint8_t flags, uint16_t timeDNPTime);
-   Binary From_in_BinaryFactory_staticOver3(uint8_t flags, DNPTime timeDNPTime);
+Binary From_in_BinaryFactory_staticOver1(uint8_t flags);
+Binary From_in_BinaryFactory_staticOver2(uint8_t flags, uint16_t timeDNPTime);
+Binary From_in_BinaryFactory_staticOver3(uint8_t flags, DNPTime timeDNPTime);
 
 ////struct DoubleBitBinaryFactory : private StaticOnly
 ////{
@@ -77,9 +77,9 @@
 ////    }
 ////};
 
-   DoubleBitBinary From_in_DoubleBitBinaryFactory_staticOver1(uint8_t flags);
-   DoubleBitBinary From_in_DoubleBitBinaryFactory_staticOver2(uint8_t flags, uint16_t timeDNPTime);
-   DoubleBitBinary From_in_DoubleBitBinaryFactory_staticOver3(uint8_t flags, DNPTime timeDNPTime);
+DoubleBitBinary From_in_DoubleBitBinaryFactory_staticOver1(uint8_t flags);
+DoubleBitBinary From_in_DoubleBitBinaryFactory_staticOver2(uint8_t flags, uint16_t timeDNPTime);
+DoubleBitBinary From_in_DoubleBitBinaryFactory_staticOver3(uint8_t flags, DNPTime timeDNPTime);
 
 
 ////struct AnalogFactory : private StaticOnly
@@ -98,9 +98,9 @@
 ////    }
 ////};
 
-    Analog From_in_AnalogFactory_staticOver1(int32_t count);
-    Analog From_in_AnalogFactory_staticOver2(uint8_t flags, double value);
-    Analog From_in_AnalogFactory_staticOver3(uint8_t flags, double value, DNPTime timeDNPTime);
+Analog From_in_AnalogFactory_staticOver1(int32_t count);
+Analog From_in_AnalogFactory_staticOver2(uint8_t flags, double value);
+Analog From_in_AnalogFactory_staticOver3(uint8_t flags, double value, DNPTime timeDNPTime);
 
 ////struct CounterFactory : private StaticOnly
 ////{
@@ -118,9 +118,9 @@
 ////    }
 ////};
 
-    Counter From_in_CounterFactory_staticOver1(uint32_t count);
-    Counter From_in_CounterFactory_staticOver2(uint8_t flags, uint32_t count);
-    Counter From_in_CounterFactory_staticOver3(uint8_t flags, uint32_t count, DNPTime timeDNPTime);
+Counter From_in_CounterFactory_staticOver1(uint32_t count);
+Counter From_in_CounterFactory_staticOver2(uint8_t flags, uint32_t count);
+Counter From_in_CounterFactory_staticOver3(uint8_t flags, uint32_t count, DNPTime timeDNPTime);
 
 
 ////struct FrozenCounterFactory : private StaticOnly
@@ -139,9 +139,9 @@
 ////    }
 ////};
 
-    FrozenCounter From_in_FrozenCounterFactory_staticOver1(uint32_t count);
-    FrozenCounter From_in_FrozenCounterFactory_staticOver2(uint8_t flags, uint32_t count);
-    FrozenCounter From_in_FrozenCounterFactory_staticOver3(uint8_t flags, uint32_t count, DNPTime timeDNPTime);
+FrozenCounter From_in_FrozenCounterFactory_staticOver1(uint32_t count);
+FrozenCounter From_in_FrozenCounterFactory_staticOver2(uint8_t flags, uint32_t count);
+FrozenCounter From_in_FrozenCounterFactory_staticOver3(uint8_t flags, uint32_t count, DNPTime timeDNPTime);
 
 ////struct TimeAndIntervalFactory : private StaticOnly
 ////{
@@ -150,7 +150,7 @@
 ////        return TimeAndInterval(time, interval, units);
 ////    }
 ////};
-  TimeAndInterval From_in_TimeAndIntervalFactory_static(DNPTime timeDNPTime, uint32_t interval, uint8_t units);
+TimeAndInterval From_in_TimeAndIntervalFactory_static(DNPTime timeDNPTime, uint32_t interval, uint8_t units);
 
 
 ////struct ControlRelayOutputBlockFactory : private StaticOnly
@@ -161,8 +161,8 @@
 ////        return ControlRelayOutputBlock(code, count, onTime, offTime, CommandStatusSpec::from_type(status));
 ////    }
 ////};
-   ControlRelayOutputBlock From_in_ControlRelayOutputBlock_static(
-        uint8_t code, uint8_t count, uint32_t onTime, uint32_t offTime, uint8_t status);
+ControlRelayOutputBlock From_in_ControlRelayOutputBlock_static(
+  uint8_t code, uint8_t count, uint32_t onTime, uint32_t offTime, uint8_t status);
 
 
 ////struct BinaryOutputStatusFactory : private StaticOnly
@@ -178,8 +178,8 @@
 ////    }
 ////};
 ////
-   BinaryOutputStatus From_in_BinaryOutputStatusFactory_staticOver1(uint8_t flags);
-   BinaryOutputStatus From_in_BinaryOutputStatusFactory_staticOver2(uint8_t flags, DNPTime timeDNPTime);
+BinaryOutputStatus From_in_BinaryOutputStatusFactory_staticOver1(uint8_t flags);
+BinaryOutputStatus From_in_BinaryOutputStatusFactory_staticOver2(uint8_t flags, DNPTime timeDNPTime);
 
 ////struct BinaryCommandEventFactory : private StaticOnly
 ////{
@@ -194,8 +194,8 @@
 ////    }
 ////};
 
-   BinaryCommandEvent From_in_BinaryCommandEventFactory_staticOver1(uint8_t flags);
-   BinaryCommandEvent From_in_BinaryCommandEventFactory_staticOver2(uint8_t flags, DNPTime timeDNPTime);
+BinaryCommandEvent From_in_BinaryCommandEventFactory_staticOver1(uint8_t flags);
+BinaryCommandEvent From_in_BinaryCommandEventFactory_staticOver2(uint8_t flags, DNPTime timeDNPTime);
 
 ////struct AnalogOutputStatusFactory : private StaticOnly
 ////{
@@ -209,8 +209,8 @@
 ////        return AnalogOutputStatus(value, Flags(flags), time);
 ////    }
 ////};
-    AnalogOutputStatus From_in_AnalogOutputStatusFactory_staticOver1(uint8_t flags, double value);
-    AnalogOutputStatus From_in_AnalogOutputStatusFactory_staticOver2(uint8_t flags, double value, DNPTime timeDNPTime);
+AnalogOutputStatus From_in_AnalogOutputStatusFactory_staticOver1(uint8_t flags, double value);
+AnalogOutputStatus From_in_AnalogOutputStatusFactory_staticOver2(uint8_t flags, double value, DNPTime timeDNPTime);
 
 
 
@@ -227,8 +227,8 @@
 ////    }
 ////};
 
-    AnalogCommandEvent From_in_AnalogCommandEventFactory_staticOver1(uint8_t status, double value);
-    AnalogCommandEvent From_in_AnalogCommandEventFactory_staticOver2(uint8_t status, double value, DNPTime timeDNPTime);
+AnalogCommandEvent From_in_AnalogCommandEventFactory_staticOver1(uint8_t status, double value);
+AnalogCommandEvent From_in_AnalogCommandEventFactory_staticOver2(uint8_t status, double value, DNPTime timeDNPTime);
 
 
 ////template<class Target, class ValueType> struct AnalogOutputFactory : private StaticOnly
@@ -241,21 +241,21 @@
 
 //using AnalogOutputInt32Factory = AnalogOutputFactory<AnalogOutputInt32, int32_t>;
 #define From_in_AnalogOutputInt32Factory(value, status) From_in_AnalogOutputFactory_for_Int32_t_static(value, status)
-   AnalogOutputInt32 From_in_AnalogOutputFactory_for_Int32_t_static(int32_t value, uint8_t status);
+AnalogOutputInt32 From_in_AnalogOutputFactory_for_Int32_t_static(int32_t value, uint8_t status);
 
 
 //using AnalogOutputInt16Factory = AnalogOutputFactory<AnalogOutputInt16, int16_t>;
 #define From_in_AnalogOutputInt16Factory(value, status) From_in_AnalogOutputFactory_for_Int16_t_static(value, status)
-   AnalogOutputInt16 From_in_AnalogOutputFactory_for_Int16_t_static(int16_t value, uint8_t status);
+AnalogOutputInt16 From_in_AnalogOutputFactory_for_Int16_t_static(int16_t value, uint8_t status);
 
 
 //using AnalogOutputFloat32Factory = AnalogOutputFactory<AnalogOutputFloat32, float>;
 #define From_in_AnalogOutputFloat32Factory(value, status) From_in_AnalogOutputFactory_for_Float32_static(value, status)
-   AnalogOutputFloat32 From_in_AnalogOutputFactory_for_Float32_static(float value, uint8_t status);
+AnalogOutputFloat32 From_in_AnalogOutputFactory_for_Float32_static(float value, uint8_t status);
 
 //using AnalogOutputDouble64Factory = AnalogOutputFactory<AnalogOutputDouble64, double>;
 #define From_in_AnalogOutputDouble64Factory(value, status) From_in_AnalogOutputFactory_for_Double64_static(value, status)
-   AnalogOutputDouble64 From_in_AnalogOutputFactory_for_Double64_static(double value, uint8_t status);
+AnalogOutputDouble64 From_in_AnalogOutputFactory_for_Double64_static(double value, uint8_t status);
 
 
 ////} // namespace opendnp3

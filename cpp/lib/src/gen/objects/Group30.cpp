@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -54,12 +54,12 @@ Group30Var5 Apply_in_ConvertGroup30Var5_static(Analog* src, uint8_t Overrange);
 
 ////namespace opendnp3 {
 
-  GroupVariationID ID_in_Group30Var0_static(void)
+GroupVariationID ID_in_Group30Var0_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 0);
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 0);
 //// return GroupVariationID(30,0);
- return gGroupVariationID;
+  return gGroupVariationID;
 }
 
 // ------- Group30Var1 -------
@@ -73,15 +73,15 @@ void Group30Var1_in_Group30Var1(Group30Var1 *pGroup30Var1)
 boolean Read_in_Group30Var1_static(RSeq_for_Uint16_t* buffer, Group30Var1* output)
 {
 ////  return LittleEndian::read(buffer, output.flags, output.value);
-    return read_from_in_UInt8_static(buffer, &(output->flags)) &&
-           read_from_in_UInt32_static(buffer, (uint32_t*)&(output->value));
+  return read_from_in_UInt8_static(buffer, &(output->flags)) &&
+         read_from_in_UInt32_static(buffer, (uint32_t*)&(output->value));
 }
 
 boolean Write_in_Group30Var1_static(Group30Var1* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.flags, arg.value);
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-           write_to_in_UInt32_static(buffer, arg->value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt32_static(buffer, arg->value);
 }
 
 boolean ReadTarget_in_Group30Var1_static(RSeq_for_Uint16_t* buff, Analog* output)
@@ -92,8 +92,8 @@ boolean ReadTarget_in_Group30Var1_static(RSeq_for_Uint16_t* buff, Analog* output
   if(Read_in_Group30Var1_static(buff, &value))
   {
 ////    output = AnalogFactory::From(value.flags, value.value);
-   Analog temp = From_in_AnalogFactory_staticOver2(value.flags, value.value);
-   *output = temp;
+    Analog temp = From_in_AnalogFactory_staticOver2(value.flags, value.value);
+    *output = temp;
     return true;
   }
   else
@@ -139,22 +139,22 @@ Group30Var1 Apply_in_ConvertGroup30Var1_static(Analog* src, uint8_t Overrange)
 
 void Group30Var2_in_Group30Var2(Group30Var2 *pGroup30Var2)
 {
- pGroup30Var2->flags = 0;
- pGroup30Var2->value = 0;
+  pGroup30Var2->flags = 0;
+  pGroup30Var2->value = 0;
 }
 
 boolean Read_in_Group30Var2_static(RSeq_for_Uint16_t* buffer, Group30Var2* output)
 {
 ////  return LittleEndian::read(buffer, output.flags, output.value);
-    return read_from_in_UInt8_static(buffer, &(output->flags)) &&
-           read_from_in_UInt16_static(buffer, (uint16_t*)&(output->value));
+  return read_from_in_UInt8_static(buffer, &(output->flags)) &&
+         read_from_in_UInt16_static(buffer, (uint16_t*)&(output->value));
 }
 
 boolean Write_in_Group30Var2_static(Group30Var2* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.flags, arg.value);
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-           write_to_in_UInt16_static(buffer, arg->value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt16_static(buffer, arg->value);
 }
 
 boolean ReadTarget_in_Group30Var2_static(RSeq_for_Uint16_t* buff, Analog* output)
@@ -165,8 +165,8 @@ boolean ReadTarget_in_Group30Var2_static(RSeq_for_Uint16_t* buff, Analog* output
   if(Read_in_Group30Var2_static(buff, &value))
   {
 ////    output = AnalogFactory::From(value.flags, value.value);
-   Analog temp = From_in_AnalogFactory_staticOver2(value.flags, value.value);
-   *output = temp;
+    Analog temp = From_in_AnalogFactory_staticOver2(value.flags, value.value);
+    *output = temp;
     return true;
   }
   else
@@ -207,13 +207,13 @@ void Group30Var3_in_Group30Var3(Group30Var3 *pGroup30Var3)
 boolean Read_in_Group30Var3_static(RSeq_for_Uint16_t* buffer, Group30Var3* output)
 {
 ////  return LittleEndian::read(buffer, output.value);
-    return  read_from_in_UInt32_static(buffer, (uint32_t*)&(output->value));
+  return  read_from_in_UInt32_static(buffer, (uint32_t*)&(output->value));
 }
 
 boolean Write_in_Group30Var3_static(Group30Var3* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.value);
-      return  write_to_in_UInt32_static(buffer, arg->value);
+  return  write_to_in_UInt32_static(buffer, arg->value);
 }
 
 boolean ReadTarget_in_Group30Var3_static(RSeq_for_Uint16_t* buff, Analog* output)
@@ -224,8 +224,8 @@ boolean ReadTarget_in_Group30Var3_static(RSeq_for_Uint16_t* buff, Analog* output
   if(Read_in_Group30Var3_static(buff, &value))
   {
 ////    output = AnalogFactory::From(value.value);
-   Analog temp = From_in_AnalogFactory_staticOver1(value.value);
-   *output = temp;
+    Analog temp = From_in_AnalogFactory_staticOver1(value.value);
+    *output = temp;
     return true;
   }
   else
@@ -270,13 +270,13 @@ void Group30Var4_in_Group30Var4(Group30Var4 *pGroup30Var4)
 boolean Read_in_Group30Var4_static(RSeq_for_Uint16_t* buffer, Group30Var4* output)
 {
 ////  return LittleEndian::read(buffer, output.value);
-      return  read_from_in_UInt16_static(buffer, (uint16_t*)&(output->value));
+  return  read_from_in_UInt16_static(buffer, (uint16_t*)&(output->value));
 }
 
 boolean Write_in_Group30Var4_static(Group30Var4* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.value);
-      return  write_to_in_UInt16_static(buffer, arg->value);
+  return  write_to_in_UInt16_static(buffer, arg->value);
 }
 
 boolean ReadTarget_in_Group30Var4_static(RSeq_for_Uint16_t* buff, Analog* output)
@@ -287,8 +287,8 @@ boolean ReadTarget_in_Group30Var4_static(RSeq_for_Uint16_t* buff, Analog* output
   if(Read_in_Group30Var4_static(buff, &value))
   {
 ////    output = AnalogFactory::From(value.value);
-   Analog temp = From_in_AnalogFactory_staticOver1(value.value);
-   *output = temp;
+    Analog temp = From_in_AnalogFactory_staticOver1(value.value);
+    *output = temp;
     return true;
   }
   else
@@ -325,15 +325,15 @@ void Group30Var5_in_Group30Var5(Group30Var5 *pGroup30Var5)
 boolean Read_in_Group30Var5_static(RSeq_for_Uint16_t* buffer, Group30Var5* output)
 {
 ////  return LittleEndian::read(buffer, output.flags, output.value);
-    return read_from_in_UInt8_static(buffer, &(output->flags)) &&
-           read_from_in_Float32_static(buffer, &(output->value));
+  return read_from_in_UInt8_static(buffer, &(output->flags)) &&
+         read_from_in_Float32_static(buffer, &(output->value));
 }
 
 boolean Write_in_Group30Var5_static(Group30Var5* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.flags, arg.value);
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-           write_to_in_Float32_static(buffer, arg->value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_Float32_static(buffer, arg->value);
 }
 
 boolean ReadTarget_in_Group30Var5_static(RSeq_for_Uint16_t* buff, Analog* output)
@@ -344,8 +344,8 @@ boolean ReadTarget_in_Group30Var5_static(RSeq_for_Uint16_t* buff, Analog* output
   if(Read_in_Group30Var5_static(buff, &value))
   {
 ////    output = AnalogFactory::From(value.flags, value.value);
-   Analog temp = From_in_AnalogFactory_staticOver2(value.flags, value.value);
-   *output = temp;
+    Analog temp = From_in_AnalogFactory_staticOver2(value.flags, value.value);
+    *output = temp;
     return true;
   }
   else
@@ -429,142 +429,142 @@ Group30Var5 Apply_in_ConvertGroup30Var5_static(Analog* src, uint8_t Overrange)
 
 ////}
 
- uint16_t Size_in_Group30Var5_static(void) 
+uint16_t Size_in_Group30Var5_static(void)
 {
- return 5; 
+  return 5;
 }
 
-  GroupVariationID ID_in_Group30Var5_static(void)
+GroupVariationID ID_in_Group30Var5_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 5);
-////  return GroupVariationID(30,5); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 5);
+////  return GroupVariationID(30,5);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Analog  Inst_in_Group30Var5_static(void)
+DNP3Serializer_for_Analog  Inst_in_Group30Var5_static(void)
 {
-   DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
-   DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
-                   ID_in_Group30Var5_static(),
-                   Size_in_Group30Var5_static(),
+  DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
+  DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
+      ID_in_Group30Var5_static(),
+      Size_in_Group30Var5_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group30Var5_static,
+      &ReadTarget_in_Group30Var5_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group30Var5_static);
+      &WriteTarget_in_Group30Var5_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Analog;
+  return dDNP3Serializer_for_Analog;
 }
 
- uint16_t Size_in_Group30Var4_static(void) 
+uint16_t Size_in_Group30Var4_static(void)
 {
- return 2; 
+  return 2;
 }
 
-  GroupVariationID ID_in_Group30Var4_static(void)
+GroupVariationID ID_in_Group30Var4_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 4);
-////  return GroupVariationID(30,4); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 4);
+////  return GroupVariationID(30,4);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Analog  Inst_in_Group30Var4_static(void)
+DNP3Serializer_for_Analog  Inst_in_Group30Var4_static(void)
 {
-   DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
-   DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
-                   ID_in_Group30Var4_static(),
-                   Size_in_Group30Var4_static(),
+  DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
+  DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
+      ID_in_Group30Var4_static(),
+      Size_in_Group30Var4_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group30Var4_static,
+      &ReadTarget_in_Group30Var4_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group30Var4_static);
+      &WriteTarget_in_Group30Var4_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Analog;
+  return dDNP3Serializer_for_Analog;
 }
 
- uint16_t Size_in_Group30Var3_static(void) 
+uint16_t Size_in_Group30Var3_static(void)
 {
- return 4; 
+  return 4;
 }
 
-  GroupVariationID ID_in_Group30Var3_static(void)
+GroupVariationID ID_in_Group30Var3_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 3);
-////  return GroupVariationID(2,1); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 3);
+////  return GroupVariationID(2,1);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Analog  Inst_in_Group30Var3_static(void)
+DNP3Serializer_for_Analog  Inst_in_Group30Var3_static(void)
 {
-   DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
-   DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
-                   ID_in_Group30Var3_static(),
-                   Size_in_Group30Var3_static(),
+  DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
+  DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
+      ID_in_Group30Var3_static(),
+      Size_in_Group30Var3_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group30Var3_static,
+      &ReadTarget_in_Group30Var3_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group30Var3_static);
+      &WriteTarget_in_Group30Var3_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Analog;
+  return dDNP3Serializer_for_Analog;
 }
 
- uint16_t Size_in_Group30Var2_static(void) 
+uint16_t Size_in_Group30Var2_static(void)
 {
- return 3; 
+  return 3;
 }
 
-  GroupVariationID ID_in_Group30Var2_static(void)
+GroupVariationID ID_in_Group30Var2_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 2);
-////  return GroupVariationID(30,2); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 2);
+////  return GroupVariationID(30,2);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Analog  Inst_in_Group30Var2_static(void)
+DNP3Serializer_for_Analog  Inst_in_Group30Var2_static(void)
 {
-   DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
-   DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
-                   ID_in_Group30Var2_static(),
-                   Size_in_Group30Var2_static(),
+  DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
+  DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
+      ID_in_Group30Var2_static(),
+      Size_in_Group30Var2_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group30Var2_static,
+      &ReadTarget_in_Group30Var2_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group30Var2_static);
+      &WriteTarget_in_Group30Var2_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Analog;
+  return dDNP3Serializer_for_Analog;
 }
 
- uint16_t Size_in_Group30Var1_static(void) 
+uint16_t Size_in_Group30Var1_static(void)
 {
- return 5; 
+  return 5;
 }
 
-  GroupVariationID ID_in_Group30Var1_static(void)
+GroupVariationID ID_in_Group30Var1_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 1);
-////  return GroupVariationID(30,1); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 30, 1);
+////  return GroupVariationID(30,1);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_Analog  Inst_in_Group30Var1_static(void)
+DNP3Serializer_for_Analog  Inst_in_Group30Var1_static(void)
 {
-   DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
-   DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
-                   ID_in_Group30Var1_static(),
-                   Size_in_Group30Var1_static(),
+  DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
+  DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
+      ID_in_Group30Var1_static(),
+      Size_in_Group30Var1_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group30Var1_static,
+      &ReadTarget_in_Group30Var1_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group30Var1_static);
+      &WriteTarget_in_Group30Var1_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_Analog;
+  return dDNP3Serializer_for_Analog;
 }

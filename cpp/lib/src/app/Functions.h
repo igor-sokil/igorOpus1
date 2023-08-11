@@ -33,7 +33,7 @@
 ////typedef struct
 ////{
 ////public:
-    boolean IsNoAckFuncCode_in_Functions_static(FunctionCode_uint8_t code);
+boolean IsNoAckFuncCode_in_Functions_static(FunctionCode_uint8_t code);
 ////} Functions;
 
 ////} // namespace opendnp3

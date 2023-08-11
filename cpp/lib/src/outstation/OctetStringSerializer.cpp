@@ -52,9 +52,9 @@ void DNP3Serializer_for_OctetString_in_DNP3Serializer_for_OctetString(DNP3Serial
 ////    {
 ////        return id;
 ////    }
-    GroupVariationID ID_in_DNP3Serializer_for_OctetString(DNP3Serializer_for_OctetString *pDNP3Serializer_for_OctetString) 
+GroupVariationID ID_in_DNP3Serializer_for_OctetString(DNP3Serializer_for_OctetString *pDNP3Serializer_for_OctetString)
 {
-    return pDNP3Serializer_for_OctetString->id;
+  return pDNP3Serializer_for_OctetString->id;
 }
 
 ////namespace opendnp3

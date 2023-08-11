@@ -45,166 +45,166 @@ typedef struct
 ////public:
 ////    virtual ~ICommandHandler() = default;
 
-    /**
-     * called when a command APDU begins processing
-     */
-    void (*pBegin_in_ICommandHandler)(void*);// = 0;
+  /**
+   * called when a command APDU begins processing
+   */
+  void (*pBegin_in_ICommandHandler)(void*);// = 0;
 
-    /**
-     * called when a command APDU ends processing
-     */
-    void (*pEnd_in_ICommandHandler)(void*);// = 0;
+  /**
+   * called when a command APDU ends processing
+   */
+  void (*pEnd_in_ICommandHandler)(void*);// = 0;
 
-    /**
-     * Ask if the application supports a ControlRelayOutputBlock - group 12 variation 1
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pSelect_ControlRelayOutputBlock_in_ICommandHandler)(void*, ControlRelayOutputBlock* command, uint16_t index);// = 0;
+  /**
+   * Ask if the application supports a ControlRelayOutputBlock - group 12 variation 1
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pSelect_ControlRelayOutputBlock_in_ICommandHandler)(void*, ControlRelayOutputBlock* command, uint16_t index);// = 0;
 
-    /**
-     * Operate a ControlRelayOutputBlock - group 12 variation 1
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @param handler interface for loading measurement changes
-     * @param opType the operation type the outstation received.
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pOperate_ControlRelayOutputBlock_in_ICommandHandler)(void*, ControlRelayOutputBlock* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
+  /**
+   * Operate a ControlRelayOutputBlock - group 12 variation 1
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @param handler interface for loading measurement changes
+   * @param opType the operation type the outstation received.
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pOperate_ControlRelayOutputBlock_in_ICommandHandler)(void*, ControlRelayOutputBlock* command,
+      uint16_t index,
+      IUpdateHandler* handler,
+      OperateType_uint8_t opType);
 //        = 0;
 
-    /**
-     * Ask if the application supports a 16 bit analog output - group 41 variation 2
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pSelect_AnalogOutputInt16_in_ICommandHandler)(void*, AnalogOutputInt16* command, uint16_t index);// = 0;
+  /**
+   * Ask if the application supports a 16 bit analog output - group 41 variation 2
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pSelect_AnalogOutputInt16_in_ICommandHandler)(void*, AnalogOutputInt16* command, uint16_t index);// = 0;
 
-    /**
-     * Ask if the application supports a 16 bit analog output - group 41 variation 2
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @param handler interface for loading measurement changes
-     * @param opType the operation type the outstation received.
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pOperate_AnalogOutputInt16_in_ICommandHandler)(void*, AnalogOutputInt16* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
+  /**
+   * Ask if the application supports a 16 bit analog output - group 41 variation 2
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @param handler interface for loading measurement changes
+   * @param opType the operation type the outstation received.
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pOperate_AnalogOutputInt16_in_ICommandHandler)(void*, AnalogOutputInt16* command,
+      uint16_t index,
+      IUpdateHandler* handler,
+      OperateType_uint8_t opType);
 //        = 0;
 
-    /**
-     * Ask if the application supports a 32 bit analog output - group 41 variation 1
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pSelect_AnalogOutputInt32_in_ICommandHandler)(void*, AnalogOutputInt32* command, uint16_t index);// = 0;
+  /**
+   * Ask if the application supports a 32 bit analog output - group 41 variation 1
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pSelect_AnalogOutputInt32_in_ICommandHandler)(void*, AnalogOutputInt32* command, uint16_t index);// = 0;
 
-    /**
-     * Operate a 32 bit analog output - group 41 variation 1
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @param handler interface for loading measurement changes
-     * @param opType the operation type the outstation received.
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pOperate_AnalogOutputInt32_in_ICommandHandler)(void*, AnalogOutputInt32* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
+  /**
+   * Operate a 32 bit analog output - group 41 variation 1
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @param handler interface for loading measurement changes
+   * @param opType the operation type the outstation received.
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pOperate_AnalogOutputInt32_in_ICommandHandler)(void*, AnalogOutputInt32* command,
+      uint16_t index,
+      IUpdateHandler* handler,
+      OperateType_uint8_t opType);
 //        = 0;
 
-    /**
-     * Ask if the application supports a single precision, floating point analog output - group 41 variation 3
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pSelect_AnalogOutputFloat32_in_ICommandHandler)(void*, AnalogOutputFloat32* command, uint16_t index);// = 0;
+  /**
+   * Ask if the application supports a single precision, floating point analog output - group 41 variation 3
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pSelect_AnalogOutputFloat32_in_ICommandHandler)(void*, AnalogOutputFloat32* command, uint16_t index);// = 0;
 
-    /**
-     * Operate a single precision, floating point analog output - group 41 variation 3
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @param handler interface for loading measurement changes
-     * @param opType the operation type the outstation received.
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pOperate_AnalogOutputFloat32_in_ICommandHandler)(void*, AnalogOutputFloat32* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
+  /**
+   * Operate a single precision, floating point analog output - group 41 variation 3
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @param handler interface for loading measurement changes
+   * @param opType the operation type the outstation received.
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pOperate_AnalogOutputFloat32_in_ICommandHandler)(void*, AnalogOutputFloat32* command,
+      uint16_t index,
+      IUpdateHandler* handler,
+      OperateType_uint8_t opType);
 //        = 0;
 
-    /**
-     * Ask if the application supports a double precision, floating point analog output - group 41 variation 4
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pSelect_AnalogOutputDouble64_in_ICommandHandler)(void*, AnalogOutputDouble64* command, uint16_t index);// = 0;
+  /**
+   * Ask if the application supports a double precision, floating point analog output - group 41 variation 4
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pSelect_AnalogOutputDouble64_in_ICommandHandler)(void*, AnalogOutputDouble64* command, uint16_t index);// = 0;
 
-    /**
-     * Operate a double precision, floating point analog output - group 41 variation 4
-     *
-     * @param command command to operate
-     * @param index index of the command
-     * @param handler interface for loading measurement changes
-     * @param opType the operation type the outstation received.
-     * @return result of request
-     */
-    CommandStatus_uint8_t (*pOperate_AnalogOutputDouble64_in_ICommandHandler)(void*, AnalogOutputDouble64* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
+  /**
+   * Operate a double precision, floating point analog output - group 41 variation 4
+   *
+   * @param command command to operate
+   * @param index index of the command
+   * @param handler interface for loading measurement changes
+   * @param opType the operation type the outstation received.
+   * @return result of request
+   */
+  CommandStatus_uint8_t (*pOperate_AnalogOutputDouble64_in_ICommandHandler)(void*, AnalogOutputDouble64* command,
+      uint16_t index,
+      IUpdateHandler* handler,
+      OperateType_uint8_t opType);
 //        = 0;
   void* pParentPointer_in_ICommandHandler;
 
 } ICommandHandler;
 
-    void Begin_in_ICommandHandler(ICommandHandler*);// = 0;
-    void End_in_ICommandHandler(ICommandHandler*);// = 0;
-    CommandStatus_uint8_t Select_ControlRelayOutputBlock_in_ICommandHandler(ICommandHandler*, ControlRelayOutputBlock* command, uint16_t index);// = 0;
-    CommandStatus_uint8_t Operate_ControlRelayOutputBlock_in_ICommandHandler(ICommandHandler*, ControlRelayOutputBlock* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
-    CommandStatus_uint8_t Select_AnalogOutputInt16_in_ICommandHandler(ICommandHandler*, AnalogOutputInt16* command, uint16_t index);// = 0;
-    CommandStatus_uint8_t Operate_AnalogOutputInt16_in_ICommandHandler(ICommandHandler*, AnalogOutputInt16* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
-    CommandStatus_uint8_t Select_AnalogOutputInt32_in_ICommandHandler(ICommandHandler*, AnalogOutputInt32* command, uint16_t index);// = 0;
-    CommandStatus_uint8_t Operate_AnalogOutputInt32_in_ICommandHandler(ICommandHandler*, AnalogOutputInt32* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
-    CommandStatus_uint8_t Select_AnalogOutputFloat32_in_ICommandHandler(ICommandHandler*, AnalogOutputFloat32* command, uint16_t index);// = 0;
-    CommandStatus_uint8_t Operate_AnalogOutputFloat32_in_ICommandHandler(ICommandHandler*, AnalogOutputFloat32* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
-    CommandStatus_uint8_t Select_AnalogOutputDouble64_in_ICommandHandler(ICommandHandler*, AnalogOutputDouble64* command, uint16_t index);// = 0;
-    CommandStatus_uint8_t Operate_AnalogOutputDouble64_in_ICommandHandler(ICommandHandler*, AnalogOutputDouble64* command,
-                                  uint16_t index,
-                                  IUpdateHandler* handler,
-                                  OperateType_uint8_t opType);
+void Begin_in_ICommandHandler(ICommandHandler*);// = 0;
+void End_in_ICommandHandler(ICommandHandler*);// = 0;
+CommandStatus_uint8_t Select_ControlRelayOutputBlock_in_ICommandHandler(ICommandHandler*, ControlRelayOutputBlock* command, uint16_t index);// = 0;
+CommandStatus_uint8_t Operate_ControlRelayOutputBlock_in_ICommandHandler(ICommandHandler*, ControlRelayOutputBlock* command,
+    uint16_t index,
+    IUpdateHandler* handler,
+    OperateType_uint8_t opType);
+CommandStatus_uint8_t Select_AnalogOutputInt16_in_ICommandHandler(ICommandHandler*, AnalogOutputInt16* command, uint16_t index);// = 0;
+CommandStatus_uint8_t Operate_AnalogOutputInt16_in_ICommandHandler(ICommandHandler*, AnalogOutputInt16* command,
+    uint16_t index,
+    IUpdateHandler* handler,
+    OperateType_uint8_t opType);
+CommandStatus_uint8_t Select_AnalogOutputInt32_in_ICommandHandler(ICommandHandler*, AnalogOutputInt32* command, uint16_t index);// = 0;
+CommandStatus_uint8_t Operate_AnalogOutputInt32_in_ICommandHandler(ICommandHandler*, AnalogOutputInt32* command,
+    uint16_t index,
+    IUpdateHandler* handler,
+    OperateType_uint8_t opType);
+CommandStatus_uint8_t Select_AnalogOutputFloat32_in_ICommandHandler(ICommandHandler*, AnalogOutputFloat32* command, uint16_t index);// = 0;
+CommandStatus_uint8_t Operate_AnalogOutputFloat32_in_ICommandHandler(ICommandHandler*, AnalogOutputFloat32* command,
+    uint16_t index,
+    IUpdateHandler* handler,
+    OperateType_uint8_t opType);
+CommandStatus_uint8_t Select_AnalogOutputDouble64_in_ICommandHandler(ICommandHandler*, AnalogOutputDouble64* command, uint16_t index);// = 0;
+CommandStatus_uint8_t Operate_AnalogOutputDouble64_in_ICommandHandler(ICommandHandler*, AnalogOutputDouble64* command,
+    uint16_t index,
+    IUpdateHandler* handler,
+    OperateType_uint8_t opType);
 
 void* getParentPointer_in_ICommandHandler(ICommandHandler*);
 void  setParentPointer_in_ICommandHandler(ICommandHandler*, void*);

@@ -77,8 +77,8 @@ typedef struct
 
 void* getParentPointer_in_ICollection_Indexed_for_IINValue(ICollection_Indexed_for_IINValue*);
 void  setParentPointer_in_ICollection_Indexed_for_IINValue(ICollection_Indexed_for_IINValue*, void*);
-  uint16_t Count_in_ICollection_Indexed_for_IINValue(ICollection_Indexed_for_IINValue*);
-  void     Foreach_in_ICollection_Indexed_for_IINValue(ICollection_Indexed_for_IINValue*, IVisitor__for__Indexed_for_IINValue* visitor);
+uint16_t Count_in_ICollection_Indexed_for_IINValue(ICollection_Indexed_for_IINValue*);
+void     Foreach_in_ICollection_Indexed_for_IINValue(ICollection_Indexed_for_IINValue*, IVisitor__for__Indexed_for_IINValue* visitor);
 
 boolean ReadOnlyValue_in_ICollection_Indexed_for_IINValue(ICollection_Indexed_for_IINValue *pICollection_Indexed_for_IINValue, Indexed_for_IINValue* value);
 

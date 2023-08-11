@@ -46,29 +46,29 @@ typedef struct
 ////    {
 ////        return FIR && FIN;
 ////    }
-    boolean FIR;//// = true;
-    boolean FIN;//// = true;
-    boolean CON;//// = false;
-    boolean UNS;//// = false;
+  boolean FIR;//// = true;
+  boolean FIN;//// = true;
+  boolean CON;//// = false;
+  boolean UNS;//// = false;
 
-    uint8_t SEQ;//// = 0;
+  uint8_t SEQ;//// = 0;
 
 ////private:
 } AppControlField;
 
-  void AppControlField_in_AppControlFieldOver1(AppControlField *);
-  void AppControlField_in_AppControlFieldOver2(AppControlField *, uint8_t byte);
-  void AppControlField_in_AppControlFieldOver3(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns);
-  void AppControlField_in_AppControlFieldOver4(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq);
-  AppControlField Request_in_AppControlField_static(uint8_t seq);
-  uint8_t ToByte_in_AppControlField(AppControlField *);
-  boolean IsFirAndFin_in_AppControlField(AppControlField *);
+void AppControlField_in_AppControlFieldOver1(AppControlField *);
+void AppControlField_in_AppControlFieldOver2(AppControlField *, uint8_t byte);
+void AppControlField_in_AppControlFieldOver3(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns);
+void AppControlField_in_AppControlFieldOver4(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq);
+AppControlField Request_in_AppControlField_static(uint8_t seq);
+uint8_t ToByte_in_AppControlField(AppControlField *);
+boolean IsFirAndFin_in_AppControlField(AppControlField *);
 
-     const uint8_t AppControlField_FIR_MASK = 0x80;
-     const uint8_t AppControlField_FIN_MASK = 0x40;
-     const uint8_t AppControlField_CON_MASK = 0x20;
-     const uint8_t AppControlField_UNS_MASK = 0x10;
-     const uint8_t AppControlField_SEQ_MASK = 0x0F;
+const uint8_t AppControlField_FIR_MASK = 0x80;
+const uint8_t AppControlField_FIN_MASK = 0x40;
+const uint8_t AppControlField_CON_MASK = 0x20;
+const uint8_t AppControlField_UNS_MASK = 0x10;
+const uint8_t AppControlField_SEQ_MASK = 0x0F;
 
 ////} // namespace opendnp3
 

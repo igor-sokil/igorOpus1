@@ -45,51 +45,51 @@ typedef struct
 
 ////    void SetRouter(ILinkTx&);
 
-    // ---- Events from below: ILinkSession / IFrameSink  ----
+  // ---- Events from below: ILinkSession / IFrameSink  ----
 
 ////    virtual bool OnLowerLayerUp() override;
 ////    virtual bool OnLowerLayerDown() override;
 ////    virtual bool OnTxReady() override;
 ////    virtual bool OnFrame(const LinkHeaderFields& header, const ser4cpp::rseq_t& userdata) override;
 
-    // ---- Events from above: ILinkLayer ----
+  // ---- Events from above: ILinkLayer ----
 
 ////    virtual bool Send(ITransportSegment& segments) override;
 
 ////    const StackStatistics::Link& GetStatistics() const;
 
 ////private:
-    // The full state
+  // The full state
 ////    std::shared_ptr<LinkContext> ctx;
-    LinkContext* ctx;
+  LinkContext* ctx;
 } LinkLayer;
 
-   void LinkLayer_in_LinkLayer(LinkLayer *pLinkLayer, ////const Logger& logger,
-              IExecutorExe4cpp*,
-              IUpperLayer* upper,
-              ILinkListener*,
-              LinkLayerConfig*);
+void LinkLayer_in_LinkLayer(LinkLayer *pLinkLayer, ////const Logger& logger,
+                            IExecutorExe4cpp*,
+                            IUpperLayer* upper,
+                            ILinkListener*,
+                            LinkLayerConfig*);
 
-  void SetRouter_in_LinkLayer(LinkLayer *pLinkLayer, ILinkTx*);
+void SetRouter_in_LinkLayer(LinkLayer *pLinkLayer, ILinkTx*);
 
-  Link_StackStatistics* GetStatistics_in_LinkLayer(LinkLayer *pLinkLayer);
+Link_StackStatistics* GetStatistics_in_LinkLayer(LinkLayer *pLinkLayer);
 
-    // ---- Events from below: ILinkSession / IFrameSink  ----
+// ---- Events from below: ILinkSession / IFrameSink  ----
 
-   boolean OnLowerLayerUp_in_LinkLayer(LinkLayer *pLinkLayer);
-   boolean OnLowerLayerDown_in_LinkLayer(LinkLayer *pLinkLayer);
-   boolean OnTxReady_in_LinkLayer(LinkLayer *pLinkLayer);
-   boolean OnFrame_in_LinkLayer(LinkLayer *pLinkLayer, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
+boolean OnLowerLayerUp_in_LinkLayer(LinkLayer *pLinkLayer);
+boolean OnLowerLayerDown_in_LinkLayer(LinkLayer *pLinkLayer);
+boolean OnTxReady_in_LinkLayer(LinkLayer *pLinkLayer);
+boolean OnFrame_in_LinkLayer(LinkLayer *pLinkLayer, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
 
-   boolean OnLowerLayerUp_in_LinkLayer_override(void *pILinkSession);
-   boolean OnLowerLayerDown_in_LinkLayer_override(void *pILinkSession);
-   boolean OnTxReady_in_LinkLayer_override(void *pILinkSession);
-   boolean OnFrame_in_LinkLayer_override(void *pIFrameSink, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
-    // ---- Events from above: ILinkLayer ----
+boolean OnLowerLayerUp_in_LinkLayer_override(void *pILinkSession);
+boolean OnLowerLayerDown_in_LinkLayer_override(void *pILinkSession);
+boolean OnTxReady_in_LinkLayer_override(void *pILinkSession);
+boolean OnFrame_in_LinkLayer_override(void *pIFrameSink, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
+// ---- Events from above: ILinkLayer ----
 
-   boolean Send_in_LinkLayer(LinkLayer *pLinkLayer, ITransportSegment* segments);
+boolean Send_in_LinkLayer(LinkLayer *pLinkLayer, ITransportSegment* segments);
 
-   boolean Send_in_LinkLayer_override(void *pILinkLayer, ITransportSegment* segments);
+boolean Send_in_LinkLayer_override(void *pILinkLayer, ITransportSegment* segments);
 
 ////} // namespace opendnp3
 

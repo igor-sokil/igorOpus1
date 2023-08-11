@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -52,7 +52,7 @@
 ////  static GroupVariationID ID() { return GroupVariationID(20,0); }
 ////};
 
-  GroupVariationID ID_in_Group20Var0_static(void);
+GroupVariationID ID_in_Group20Var0_static(void);
 
 // Counter - 32-bit With Flag
 ////struct Group20Var1
@@ -78,18 +78,18 @@ typedef struct
 ////  static const StaticCounterVariation svariation = StaticCounterVariation::Group20Var1;
 } Group20Var1;
 
-  uint16_t Size_in_Group20Var1_static(void);
- void Group20Var1_in_Group20Var1(Group20Var1 *pGroup20Var1);
-  GroupVariationID ID_in_Group20Var1_static(void);
-  DNP3Serializer_for_Counter Inst_in_Group20Var1_static(void);
+uint16_t Size_in_Group20Var1_static(void);
+void Group20Var1_in_Group20Var1(Group20Var1 *pGroup20Var1);
+GroupVariationID ID_in_Group20Var1_static(void);
+DNP3Serializer_for_Counter Inst_in_Group20Var1_static(void);
 
- boolean Read_in_Group20Var1_static(RSeq_for_Uint16_t *, Group20Var1*);
- boolean Write_in_Group20Var1_static(Group20Var1*, WSeq_for_Uint16_t*);
+boolean Read_in_Group20Var1_static(RSeq_for_Uint16_t *, Group20Var1*);
+boolean Write_in_Group20Var1_static(Group20Var1*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group20Var1_static(RSeq_for_Uint16_t*, Counter*);
- boolean WriteTarget_in_Group20Var1_static(Counter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group20Var1_static(RSeq_for_Uint16_t*, Counter*);
+boolean WriteTarget_in_Group20Var1_static(Counter*, WSeq_for_Uint16_t*);
 
-  const StaticCounterVariation_uint8_t svariation_in_Group20Var1 = StaticCounterVariation_Group20Var1;
+const StaticCounterVariation_uint8_t svariation_in_Group20Var1 = StaticCounterVariation_Group20Var1;
 
 // Counter - 16-bit With Flag
 ////struct Group20Var2
@@ -115,18 +115,18 @@ typedef struct
 ////  static const StaticCounterVariation svariation = StaticCounterVariation::Group20Var2;
 } Group20Var2;
 
-  uint16_t Size_in_Group20Var2_static(void);
- void Group20Var2_in_Group20Var2(Group20Var2 *pGroup20Var2);
-  GroupVariationID ID_in_Group20Var2_static(void);
-  DNP3Serializer_for_Counter Inst_in_Group20Var2_static(void);
+uint16_t Size_in_Group20Var2_static(void);
+void Group20Var2_in_Group20Var2(Group20Var2 *pGroup20Var2);
+GroupVariationID ID_in_Group20Var2_static(void);
+DNP3Serializer_for_Counter Inst_in_Group20Var2_static(void);
 
- boolean Read_in_Group20Var2_static(RSeq_for_Uint16_t *, Group20Var2*);
- boolean Write_in_Group20Var2_static(Group20Var2*, WSeq_for_Uint16_t*);
+boolean Read_in_Group20Var2_static(RSeq_for_Uint16_t *, Group20Var2*);
+boolean Write_in_Group20Var2_static(Group20Var2*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group20Var2_static(RSeq_for_Uint16_t*, Counter*);
- boolean WriteTarget_in_Group20Var2_static(Counter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group20Var2_static(RSeq_for_Uint16_t*, Counter*);
+boolean WriteTarget_in_Group20Var2_static(Counter*, WSeq_for_Uint16_t*);
 
-  const StaticCounterVariation_uint8_t svariation_in_Group20Var2 = StaticCounterVariation_Group20Var2;
+const StaticCounterVariation_uint8_t svariation_in_Group20Var2 = StaticCounterVariation_Group20Var2;
 
 // Counter - 32-bit Without Flag
 ////struct Group20Var5
@@ -151,18 +151,18 @@ typedef struct
 ////  static const StaticCounterVariation svariation = StaticCounterVariation::Group20Var5;
 } Group20Var5;
 
-  uint16_t Size_in_Group20Var5_static(void);
- void Group20Var5_in_Group20Var5(Group20Var5 *pGroup20Var5);
-  GroupVariationID ID_in_Group20Var5_static(void);
-  DNP3Serializer_for_Counter Inst_in_Group20Var5_static(void);
+uint16_t Size_in_Group20Var5_static(void);
+void Group20Var5_in_Group20Var5(Group20Var5 *pGroup20Var5);
+GroupVariationID ID_in_Group20Var5_static(void);
+DNP3Serializer_for_Counter Inst_in_Group20Var5_static(void);
 
- boolean Read_in_Group20Var5_static(RSeq_for_Uint16_t *, Group20Var5*);
- boolean Write_in_Group20Var5_static(Group20Var5*, WSeq_for_Uint16_t*);
+boolean Read_in_Group20Var5_static(RSeq_for_Uint16_t *, Group20Var5*);
+boolean Write_in_Group20Var5_static(Group20Var5*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group20Var5_static(RSeq_for_Uint16_t*, Counter*);
- boolean WriteTarget_in_Group20Var5_static(Counter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group20Var5_static(RSeq_for_Uint16_t*, Counter*);
+boolean WriteTarget_in_Group20Var5_static(Counter*, WSeq_for_Uint16_t*);
 
-  const StaticCounterVariation_uint8_t svariation_in_Group20Var5 = StaticCounterVariation_Group20Var5;
+const StaticCounterVariation_uint8_t svariation_in_Group20Var5 = StaticCounterVariation_Group20Var5;
 
 // Counter - 16-bit Without Flag
 ////struct Group20Var6
@@ -187,18 +187,18 @@ typedef struct
 ////  static const StaticCounterVariation svariation = StaticCounterVariation::Group20Var6;
 } Group20Var6;
 
-  uint16_t Size_in_Group20Var6_static(void);
-  GroupVariationID ID_in_Group20Var6_static(void);
- void Group20Var6_in_Group20Var6(Group20Var6 *pGroup20Var6);
-  DNP3Serializer_for_Counter Inst_in_Group20Var6_static(void);
+uint16_t Size_in_Group20Var6_static(void);
+GroupVariationID ID_in_Group20Var6_static(void);
+void Group20Var6_in_Group20Var6(Group20Var6 *pGroup20Var6);
+DNP3Serializer_for_Counter Inst_in_Group20Var6_static(void);
 
- boolean Read_in_Group20Var6_static(RSeq_for_Uint16_t *, Group20Var6*);
- boolean Write_in_Group20Var6_static(Group20Var6*, WSeq_for_Uint16_t*);
+boolean Read_in_Group20Var6_static(RSeq_for_Uint16_t *, Group20Var6*);
+boolean Write_in_Group20Var6_static(Group20Var6*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group20Var6_static(RSeq_for_Uint16_t*, Counter*);
- boolean WriteTarget_in_Group20Var6_static(Counter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group20Var6_static(RSeq_for_Uint16_t*, Counter*);
+boolean WriteTarget_in_Group20Var6_static(Counter*, WSeq_for_Uint16_t*);
 
-  const StaticCounterVariation_uint8_t svariation_in_Group20Var6 = StaticCounterVariation_Group20Var6;
+const StaticCounterVariation_uint8_t svariation_in_Group20Var6 = StaticCounterVariation_Group20Var6;
 
 ////}
 

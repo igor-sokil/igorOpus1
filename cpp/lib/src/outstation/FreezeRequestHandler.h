@@ -42,19 +42,19 @@ typedef struct
 ////    IINField ProcessHeader(const AllObjectsHeader& record) final;
 ////    IINField ProcessHeader(const RangeHeader& header) final;
 
-    boolean clear;
-    Database* database;
+  boolean clear;
+  Database* database;
 } FreezeRequestHandler;
 
-   void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeRequestHandler, boolean clear, Database* database);
+void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeRequestHandler, boolean clear, Database* database);
 
 ////    bool IsAllowed(uint32_t headerCount, GroupVariation gv, QualifierCode qc) final;
 boolean IsAllowed_in_FreezeRequestHandler_override(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 //     boolean (*pIsAllowed_in_IWhiteList)(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 
 ////private:
-    IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *, AllObjectsHeader* record);
-    IINField ProcessHeader_RangeHeader_in_FreezeRequestHandler_override(void *, RangeHeader* header);
+IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *, AllObjectsHeader* record);
+IINField ProcessHeader_RangeHeader_in_FreezeRequestHandler_override(void *, RangeHeader* header);
 
 ////} // namespace opendnp3
 

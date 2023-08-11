@@ -42,11 +42,11 @@ typedef struct
 ////    APDURequest();
 } APDURequest;
 
-  void APDURequest_in_APDURequestOver1(APDURequest *pAPDURequest);
-  void APDURequest_in_APDURequestOver2(APDURequest *pAPDURequest, WSeq_for_Uint16_t *buffer);
+void APDURequest_in_APDURequestOver1(APDURequest *pAPDURequest);
+void APDURequest_in_APDURequestOver2(APDURequest *pAPDURequest, WSeq_for_Uint16_t *buffer);
 //  void ConfigureHeader_in_APDURequest(FunctionCode_uint8_t code, uint8_t seq);
-  void ConfigureHeader_in_APDURequest(APDURequest *pAPDURequest, FunctionCode_uint8_t code, uint8_t seq);
-  APDUEquality_uint8_t Compare_in_APDURequest_static(RSeq_for_Uint16_t *lhs, RSeq_for_Uint16_t *rhs);
+void ConfigureHeader_in_APDURequest(APDURequest *pAPDURequest, FunctionCode_uint8_t code, uint8_t seq);
+APDUEquality_uint8_t Compare_in_APDURequest_static(RSeq_for_Uint16_t *lhs, RSeq_for_Uint16_t *rhs);
 
 ////} // namespace opendnp3
 

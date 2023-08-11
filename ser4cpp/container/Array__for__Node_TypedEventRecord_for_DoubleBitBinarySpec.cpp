@@ -40,7 +40,7 @@ ArrayView__for__Node_TypedEventRecord_for_DoubleBitBinarySpec to_view_in_Array__
   ArrayView__for__Node_TypedEventRecord_for_DoubleBitBinarySpec aArrayView__for__Node_TypedEventRecord_for_DoubleBitBinarySpec;
   ArrayView__for__Node_TypedEventRecord_for_DoubleBitBinarySpec_in_ArrayView__for__Node_TypedEventRecord_for_DoubleBitBinarySpec(&aArrayView__for__Node_TypedEventRecord_for_DoubleBitBinarySpec, pArray__for__Node_TypedEventRecord_for_DoubleBitBinarySpec->buffer,
       (pArray__for__Node_TypedEventRecord_for_DoubleBitBinarySpec->hHasLength_for_Uint32_t).m_length
-                                                                              );
+                                                                                                                                );
   return aArrayView__for__Node_TypedEventRecord_for_DoubleBitBinarySpec;
 }
 

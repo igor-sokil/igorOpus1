@@ -53,7 +53,7 @@
 //#include "RangeWriteIterator_for_UInt8_Counter.h"
 #include "RangeWriteIterator_for_OctetString.h"
 
-  PrefixedWriteIterator_for_UInt16_OctetString IterateOverCountWithPrefix_for_UInt16_OctetString_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+PrefixedWriteIterator_for_UInt16_OctetString IterateOverCountWithPrefix_for_UInt16_OctetString_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_OctetString* serializer);
 
 /*
@@ -156,17 +156,17 @@ typedef struct
 
 //================================================WriteSingleValue=================================================================
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var1--------------------------------------------------------
-    boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                                     QualifierCode_uint8_t qc, Group51Var1*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var1--------------------------------------------------------
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var2--------------------------------------------------------
-    boolean WriteSingleValue_for_UInt8_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    boolean WriteSingleValue_for_UInt8_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                                     QualifierCode_uint8_t qc, Group51Var2*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var2--------------------------------------------------------
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
-    boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                                     QualifierCode_uint8_t qc, Group50Var1*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
@@ -175,7 +175,7 @@ typedef struct
 ////    template<class CountType, class WriteType>
 ////    CountWriteIterator<CountType, WriteType> IterateOverCount(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer);
-    CountWriteIterator_for_UInt16_Analog IterateOverCount_for_UInt16_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    CountWriteIterator_for_UInt16_Analog IterateOverCount_for_UInt16_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                               QualifierCode_uint8_t qc,
                                                               DNP3Serializer_for_Analog* serializer);
 
@@ -184,7 +184,7 @@ typedef struct
 ////    template<class CountType, class WriteType>
 ////    CountWriteIterator<CountType, WriteType> IterateOverCount(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer);
-    CountWriteIterator_for_UInt8_Analog IterateOverCount_for_UInt8_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    CountWriteIterator_for_UInt8_Analog IterateOverCount_for_UInt8_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                               QualifierCode_uint8_t qc,
                                                               DNP3Serializer_for_Analog* serializer);
 
@@ -196,7 +196,7 @@ typedef struct
 ////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer,
 ////                                                              typename IndexType::type_t start);
-    RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                    QualifierCode_uint8_t qc,
                                                    DNP3Serializer_for_Binary *serializer,
                                                    uint8_t start
@@ -243,7 +243,7 @@ typedef struct
 ////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer,
 ////                                                              typename IndexType::type_t start);
-    RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                    QualifierCode_uint8_t qc,
                                                    DNP3Serializer_for_Counter *serializer,
                                                    uint8_t start

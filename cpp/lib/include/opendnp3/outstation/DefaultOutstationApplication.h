@@ -35,68 +35,68 @@ namespace opendnp3
 class DefaultOutstationApplication : public IOutstationApplication
 {
 public:
-    static std::shared_ptr<IOutstationApplication> Create(TimeDuration timeSyncRefreshRate = TimeDuration::Minutes(1))
-    {
-        return std::make_shared<DefaultOutstationApplication>(timeSyncRefreshRate);
-    }
+  static std::shared_ptr<IOutstationApplication> Create(TimeDuration timeSyncRefreshRate = TimeDuration::Minutes(1))
+  {
+    return std::make_shared<DefaultOutstationApplication>(timeSyncRefreshRate);
+  }
 
-    DefaultOutstationApplication(TimeDuration timeSyncRefreshRate = TimeDuration::Minutes(1));
-    virtual ~DefaultOutstationApplication() = default;
+  DefaultOutstationApplication(TimeDuration timeSyncRefreshRate = TimeDuration::Minutes(1));
+  virtual ~DefaultOutstationApplication() = default;
 
-    // IDnpTimeSource
-    virtual DNPTime Now() override;
+  // IDnpTimeSource
+  virtual DNPTime Now() override;
 
-    // IOutstationApplication
-    virtual bool SupportsWriteAbsoluteTime() override
-    {
-        return true;
-    }
-    virtual bool WriteAbsoluteTime(const UTCTimestamp& timestamp) override;
+  // IOutstationApplication
+  virtual bool SupportsWriteAbsoluteTime() override
+  {
+    return true;
+  }
+  virtual bool WriteAbsoluteTime(const UTCTimestamp& timestamp) override;
 
-    virtual bool SupportsWriteTimeAndInterval() override
-    {
-        return false;
-    }
-    virtual bool WriteTimeAndInterval(const ICollection<Indexed<TimeAndInterval>>& values) override
-    {
-        return false;
-    }
+  virtual bool SupportsWriteTimeAndInterval() override
+  {
+    return false;
+  }
+  virtual bool WriteTimeAndInterval(const ICollection<Indexed<TimeAndInterval>>& values) override
+  {
+    return false;
+  }
 
-    virtual bool SupportsAssignClass() override
-    {
-        return true;
-    }
-    virtual void RecordClassAssignment(AssignClassType type, PointClass clazz, uint16_t start, uint16_t stop) override
-    {
-    }
+  virtual bool SupportsAssignClass() override
+  {
+    return true;
+  }
+  virtual void RecordClassAssignment(AssignClassType type, PointClass clazz, uint16_t start, uint16_t stop) override
+  {
+  }
 
-    virtual ApplicationIIN GetApplicationIIN() const override;
+  virtual ApplicationIIN GetApplicationIIN() const override;
 
-    virtual RestartMode ColdRestartSupport() const override
-    {
-        return RestartMode::UNSUPPORTED;
-    }
-    virtual RestartMode WarmRestartSupport() const override
-    {
-        return RestartMode::UNSUPPORTED;
-    }
-    virtual uint16_t ColdRestart() override
-    {
-        return 65535;
-    }
-    virtual uint16_t WarmRestart() override
-    {
-        return 65535;
-    }
+  virtual RestartMode ColdRestartSupport() const override
+  {
+    return RestartMode::UNSUPPORTED;
+  }
+  virtual RestartMode WarmRestartSupport() const override
+  {
+    return RestartMode::UNSUPPORTED;
+  }
+  virtual uint16_t ColdRestart() override
+  {
+    return 65535;
+  }
+  virtual uint16_t WarmRestart() override
+  {
+    return 65535;
+  }
 
 private:
-    bool IsTimeValid() const;
-    bool NeedsTime() const;
+  bool IsTimeValid() const;
+  bool NeedsTime() const;
 
-    TimeDuration refresh_rate;
-    UTCTimestamp last_timestamp = UTCTimestamp();
-    std::chrono::system_clock::time_point last_update
-        = std::chrono::system_clock::time_point(std::chrono::milliseconds(0));
+  TimeDuration refresh_rate;
+  UTCTimestamp last_timestamp = UTCTimestamp();
+  std::chrono::system_clock::time_point last_update
+    = std::chrono::system_clock::time_point(std::chrono::milliseconds(0));
 };
 
 } // namespace opendnp3

@@ -50,21 +50,21 @@ typedef struct
 ////    bool FullyEqualsLastRequest(const APDUHeader& header, const ser4cpp::rseq_t& objects) const;
 
 ////private:
-    boolean hasLast;
-    APDUHeader lastHeader;
-    uint16_t lastDigest;
-    uint16_t lastObjectsLength;
+  boolean hasLast;
+  APDUHeader lastHeader;
+  uint16_t lastDigest;
+  uint16_t lastObjectsLength;
 } RequestHistory;
 
-   void RequestHistory_in_RequestHistory(RequestHistory *pRequestHistory);
-    boolean HasLastRequest_in_RequestHistory(RequestHistory *pRequestHistory);
+void RequestHistory_in_RequestHistory(RequestHistory *pRequestHistory);
+boolean HasLastRequest_in_RequestHistory(RequestHistory *pRequestHistory);
 
-   void Reset_in_RequestHistory(RequestHistory *pRequestHistory);
-   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
+void Reset_in_RequestHistory(RequestHistory *pRequestHistory);
+void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 
-   APDUHeader GetLastHeader_in_RequestHistory(RequestHistory *pRequestHistory);
-   boolean EqualsLastObjects_in_RequestHistory(RequestHistory *pRequestHistory, RSeq_for_Uint16_t* objects);
-   boolean FullyEqualsLastRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
+APDUHeader GetLastHeader_in_RequestHistory(RequestHistory *pRequestHistory);
+boolean EqualsLastObjects_in_RequestHistory(RequestHistory *pRequestHistory, RSeq_for_Uint16_t* objects);
+boolean FullyEqualsLastRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 
 ////} // namespace opendnp3
 

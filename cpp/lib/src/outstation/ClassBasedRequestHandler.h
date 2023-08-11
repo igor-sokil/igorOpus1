@@ -56,7 +56,7 @@ typedef struct
 ////private:
 ////    virtual IINField ProcessHeader(const AllObjectsHeader& header) override final;
 
-    ClassField classField;
+  ClassField classField;
 
 } ClassBasedRequestHandler;
 

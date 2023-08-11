@@ -38,7 +38,7 @@
 ////class BufferSer4 : public HasLength<size_t>, private Uncopyable
 typedef struct
 {
-   HasLength_for_Uint16_t hHasLength_for_Uint16_t;
+  HasLength_for_Uint16_t hHasLength_for_Uint16_t;
 ////public:
 ////    BufferSer4() : HasLength(0)
 ////    {}
@@ -53,7 +53,7 @@ typedef struct
 ////    BufferSer4(BufferSer4&&) = default;
 ////    BufferSer4& operator=(BufferSer4&&) = default;
 
-    // initialize with the exact length and contents
+  // initialize with the exact length and contents
 ////    explicit BufferSer4(const rseq_t& input) : BufferSer4(input.length())
 ////    {
 ////        this->as_wslice().copy_from(input);
@@ -71,16 +71,16 @@ typedef struct
 
 ////private:
 ////    std::unique_ptr<uint8_t[]> bytes;
-    uint8_t bytes[MAX_BufferSer4];
+  uint8_t bytes[MAX_BufferSer4];
 } BufferSer4;
 
 ////}
 
-  void  BufferSer4_in_BufferSer4Over1(BufferSer4 *pBufferSer4);
-   void BufferSer4_in_BufferSer4Over2(BufferSer4 *pBufferSer4, uint16_t length);
-    void BufferSer4_in_BufferSer4Over3(BufferSer4 *pBufferSer4,  RSeq_for_Uint16_t *input);
-    RSeq_for_Uint16_t as_rslice_in_BufferSer4(BufferSer4 *pBufferSer4);
-    WSeq_for_Uint16_t as_wslice_in_BufferSer4(BufferSer4 *pBufferSer4);
+void  BufferSer4_in_BufferSer4Over1(BufferSer4 *pBufferSer4);
+void BufferSer4_in_BufferSer4Over2(BufferSer4 *pBufferSer4, uint16_t length);
+void BufferSer4_in_BufferSer4Over3(BufferSer4 *pBufferSer4,  RSeq_for_Uint16_t *input);
+RSeq_for_Uint16_t as_rslice_in_BufferSer4(BufferSer4 *pBufferSer4);
+WSeq_for_Uint16_t as_wslice_in_BufferSer4(BufferSer4 *pBufferSer4);
 
 
 #endif // SER4CPP_BufferSer4_H

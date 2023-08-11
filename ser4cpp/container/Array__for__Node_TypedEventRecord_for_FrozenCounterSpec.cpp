@@ -40,7 +40,7 @@ ArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec to_view_in_Array__fo
   ArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec aArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec;
   ArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec_in_ArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec(&aArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec, pArray__for__Node_TypedEventRecord_for_FrozenCounterSpec->buffer,
       (pArray__for__Node_TypedEventRecord_for_FrozenCounterSpec->hHasLength_for_Uint32_t).m_length
-                                                                              );
+                                                                                                                            );
   return aArrayView__for__Node_TypedEventRecord_for_FrozenCounterSpec;
 }
 

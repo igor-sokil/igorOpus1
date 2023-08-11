@@ -42,7 +42,7 @@ typedef struct
 ////    bool IsMax() const;
 ////    bool IsMin() const;
 
-    // overflow capped to maximum value
+  // overflow capped to maximum value
 ////    Timestamp operator+(const TimeDuration& duration) const;
 ////    Timestamp& operator+=(const TimeDuration& duration);
 ////    Timestamp operator-(const TimeDuration& duration) const;
@@ -58,14 +58,14 @@ typedef struct
 ////    bool operator>=(const Timestamp& other) const;
 
 ////    std::chrono::steady_clock::time_point value;
-    uint64_t time_point_value;
+  uint64_t time_point_value;
 } Timestamp;
- void Timestamp_in_TimestampOver1(Timestamp *pTimestamp);
- void Timestamp_in_TimestampOver2(Timestamp *pTimestamp, uint64_t value);
- boolean  operatorEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
- boolean  operatorLTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
- boolean  operatorLT_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
- TimeDuration operatorMINUS_in_Timestamp(Timestamp* pTimestamp, Timestamp* timestamp);
+void Timestamp_in_TimestampOver1(Timestamp *pTimestamp);
+void Timestamp_in_TimestampOver2(Timestamp *pTimestamp, uint64_t value);
+boolean  operatorEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
+boolean  operatorLTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
+boolean  operatorLT_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
+TimeDuration operatorMINUS_in_Timestamp(Timestamp* pTimestamp, Timestamp* timestamp);
 
 ////} // namespace opendnp3
 

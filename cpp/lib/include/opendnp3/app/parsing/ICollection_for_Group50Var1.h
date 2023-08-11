@@ -77,8 +77,8 @@ typedef struct
 
 void* getParentPointer_in_ICollection_for_Group50Var1(ICollection_for_Group50Var1*);
 void  setParentPointer_in_ICollection_for_Group50Var1(ICollection_for_Group50Var1*, void*);
-  uint16_t Count_in_ICollection_for_Group50Var1(ICollection_for_Group50Var1*);
-  void     Foreach_in_ICollection_for_Group50Var1(ICollection_for_Group50Var1*, IVisitor__for__Group50Var1* visitor);
+uint16_t Count_in_ICollection_for_Group50Var1(ICollection_for_Group50Var1*);
+void     Foreach_in_ICollection_for_Group50Var1(ICollection_for_Group50Var1*, IVisitor__for__Group50Var1* visitor);
 
 boolean ReadOnlyValue_in_ICollection_for_Group50Var1(ICollection_for_Group50Var1 *pICollection_for_Group50Var1, Group50Var1* value);
 

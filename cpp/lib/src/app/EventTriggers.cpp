@@ -29,32 +29,32 @@
 ////namespace measurements
 ////{
 ////    boolean IsEvent_in_EventTriggers(const TypedMeasurement<double>& newMeas, const TypedMeasurement<double>& oldMeas, double deadband)
-    boolean IsEvent_in_EventTriggers_for_TypedMeasurement_for_Double64(
-                                     TypedMeasurement_for_Double64 *newMeas,
-                                     TypedMeasurement_for_Double64 *oldMeas,
-                                     double deadband)
+boolean IsEvent_in_EventTriggers_for_TypedMeasurement_for_Double64(
+  TypedMeasurement_for_Double64 *newMeas,
+  TypedMeasurement_for_Double64 *oldMeas,
+  double deadband)
 {
-        if ((newMeas->mMeasurement).flags.value != (oldMeas->mMeasurement).flags.value)
-        {
-            return true;
-        }
-        double diff = fabs(newMeas->value - oldMeas->value);
+  if ((newMeas->mMeasurement).flags.value != (oldMeas->mMeasurement).flags.value)
+  {
+    return true;
+  }
+  double diff = fabs(newMeas->value - oldMeas->value);
 
-        return diff > deadband;
+  return diff > deadband;
 }
 
-    boolean IsEvent_in_EventTriggers_for_TypedMeasurement_for_Uint32(
-                                     TypedMeasurement_for_Uint32 *val1,
-                                     TypedMeasurement_for_Uint32 *val2,
-                                     uint32_t deadband)
+boolean IsEvent_in_EventTriggers_for_TypedMeasurement_for_Uint32(
+  TypedMeasurement_for_Uint32 *val1,
+  TypedMeasurement_for_Uint32 *val2,
+  uint32_t deadband)
 {
 //       uint32_t diff = (val2 > val1) ? (static_cast<U>(val2) - static_cast<U>(val1))
 //                               : (static_cast<U>(val1) - static_cast<U>(val2));
 
-       uint32_t diff = (val2->value > val1->value) ? ((uint32_t)(val2->value) - (uint32_t)(val1->value))
-                               : ((uint32_t)(val1->value) - (uint32_t)(val2->value));
+  uint32_t diff = (val2->value > val1->value) ? ((uint32_t)(val2->value) - (uint32_t)(val1->value))
+                  : ((uint32_t)(val1->value) - (uint32_t)(val2->value));
 
-        return diff > deadband;
+  return diff > deadband;
 }
 
 /*

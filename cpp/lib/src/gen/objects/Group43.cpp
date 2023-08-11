@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -64,8 +64,8 @@ void Group43Var1_in_Group43Var1(Group43Var1 *pGroup43Var1)
 boolean Read_in_Group43Var1_static(RSeq_for_Uint16_t* buffer, Group43Var1* output)
 {
 ////  return LittleEndian::read(buffer, output.flags, output.value);
-    return read_from_in_UInt8_static(buffer,  &(output->flags)) &&
-           read_from_in_UInt32_static(buffer, (uint32_t*)&(output->value));
+  return read_from_in_UInt8_static(buffer,  &(output->flags)) &&
+         read_from_in_UInt32_static(buffer, (uint32_t*)&(output->value));
 }
 
 ////bool Group43Var1::Write(const Group43Var1& arg, ser4cpp::wseq_t& buffer)
@@ -75,8 +75,8 @@ boolean Read_in_Group43Var1_static(RSeq_for_Uint16_t* buffer, Group43Var1* outpu
 boolean Write_in_Group43Var1_static(Group43Var1* arg, WSeq_for_Uint16_t* buffer)
 {
 ////  return LittleEndian::write(buffer, arg.flags, arg.value);
-    return write_to_in_UInt8_static(buffer, arg->flags) &&
-           write_to_in_UInt32_static(buffer, arg->value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt32_static(buffer, arg->value);
 }
 
 ////bool Group43Var1::ReadTarget(rseq_t& buff, AnalogCommandEvent& output)
@@ -100,8 +100,8 @@ boolean ReadTarget_in_Group43Var1_static(RSeq_for_Uint16_t* buff, AnalogCommandE
   if(Read_in_Group43Var1_static(buff, &value))
   {
 ////    output = AnalogFactory::From(value.flags, value.value);
-   AnalogCommandEvent temp = From_in_AnalogCommandEventFactory_staticOver1(value.flags, value.value);
-   *output = temp;
+    AnalogCommandEvent temp = From_in_AnalogCommandEventFactory_staticOver1(value.flags, value.value);
+    *output = temp;
     return true;
   }
   else

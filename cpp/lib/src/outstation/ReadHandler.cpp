@@ -95,9 +95,9 @@ IINField ProcessHeader_PrefixHeader_for_uint16_in_ReadHandler_override(void* pIA
 
 boolean IsAllowed_in_ReadHandler_override(void *v, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc)
 {
-UNUSED(v);
-UNUSED(headerCount);
-UNUSED(gv);
-UNUSED(qc);
+  UNUSED(v);
+  UNUSED(headerCount);
+  UNUSED(gv);
+  UNUSED(qc);
   return true;
 }

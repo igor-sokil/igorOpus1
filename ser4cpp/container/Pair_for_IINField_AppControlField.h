@@ -37,14 +37,14 @@ typedef struct
 ////public:
 ////    Pair(const A& first_, const B& second_) : first(first_), second(second_) {}
 
-    IINField first;
-    AppControlField second;
+  IINField first;
+  AppControlField second;
 } PairSer4cpp_for_IINField_AppControlField;
 
 void PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(PairSer4cpp_for_IINField_AppControlField *pPairSer4cpp_for_IINField_AppControlField,
-                                                                           IINField *first_,
-                                                                           AppControlField *second_
-                                                                           );
+    IINField *first_,
+    AppControlField *second_
+                                                                                         );
 
 ////} // namespace ser4cpp
 

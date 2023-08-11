@@ -39,14 +39,14 @@ typedef struct
 ////public:
 ////    virtual ~ITimer() = default;
 
-    void (*pcancel_in_ITimer)(void*);// = 0;
-    uint32_t (*pexpires_at_in_ITimer)(void*);// = 0;
+  void (*pcancel_in_ITimer)(void*);// = 0;
+  uint32_t (*pexpires_at_in_ITimer)(void*);// = 0;
 
   void* pParentPointer_in_ITimer;
 } ITimer;
 
-    void cancel_in_ITimer(ITimer*);
-    uint32_t expires_at_in_ITimer(ITimer*);
+void cancel_in_ITimer(ITimer*);
+uint32_t expires_at_in_ITimer(ITimer*);
 
 void* getParentPointer_in_ITimer(ITimer*);
 void  setParentPointer_in_ITimer(ITimer*, void*);

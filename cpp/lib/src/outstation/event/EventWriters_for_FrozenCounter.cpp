@@ -57,7 +57,7 @@ void CTOEventWriter_for_FrozenCounter_Group51Var1_in_CTOEventWriter_for_FrozenCo
 {
   DNPTime_in_DNPTimeOver2(&(pCTOEventWriter_for_FrozenCounter_Group51Var1->cto), (cto->timeDNPTime).value);
 
-  //PrefixedWriteIterator_for_UInt16_FrozenCounter temp 
+  //PrefixedWriteIterator_for_UInt16_FrozenCounter temp
   pCTOEventWriter_for_FrozenCounter_Group51Var1->iterator = IterateOverCountWithPrefixAndCTO_for_UInt16_FrozenCounter_Group51Var1_in_HeaderWriter(
         writer,
         QualifierCode_UINT16_CNT_UINT16_INDEX,
@@ -170,7 +170,7 @@ void CTOEventWriter_for_FrozenCounter_Group51Var2_in_CTOEventWriter_for_FrozenCo
 {
   DNPTime_in_DNPTimeOver2(&(pCTOEventWriter_for_FrozenCounter_Group51Var2->cto), (cto->timeDNPTime).value);
 
-  //PrefixedWriteIterator_for_UInt16_FrozenCounter temp 
+  //PrefixedWriteIterator_for_UInt16_FrozenCounter temp
   pCTOEventWriter_for_FrozenCounter_Group51Var2->iterator = IterateOverCountWithPrefixAndCTO_for_UInt16_FrozenCounter_Group51Var2_in_HeaderWriter(
         writer,
         QualifierCode_UINT16_CNT_UINT16_INDEX,

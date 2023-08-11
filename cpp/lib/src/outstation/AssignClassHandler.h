@@ -44,7 +44,7 @@
 ////class AssignClassHandler : public IAPDUHandler
 typedef struct
 {
- IAPDUHandler iIAPDUHandler;
+  IAPDUHandler iIAPDUHandler;
 ////public:
 ////    AssignClassHandler(IOutstationApplication& application, IClassAssigner& assigner);
 
@@ -69,28 +69,28 @@ typedef struct
 
 ////    void NotifyApplicationOfAssignment(AssignClassType type, PointClass clazz, const Range& range);
 
-    int32_t classHeader;
-    PointClass_uint8_t clazz;
+  int32_t classHeader;
+  PointClass_uint8_t clazz;
 
-    IOutstationApplication* pApplication;
-    IClassAssigner* pAssigner;
+  IOutstationApplication* pApplication;
+  IClassAssigner* pAssigner;
 } AssignClassHandler;
 
-  void AssignClassHandler_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, IOutstationApplication* application, IClassAssigner* assigner);
+void AssignClassHandler_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, IOutstationApplication* application, IClassAssigner* assigner);
 boolean IsAllowed_in_AssignClassHandler_override(void *pIWhiteList, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 
 //    IINField (*pProcessHeader_AllObjectsHeader_in_IAPDUHandler)(void*, AllObjectsHeader* record);
 //    IINField (*pProcessHeader_RangeHeader_in_IAPDUHandler)(void*, RangeHeader* header);
- IINField ProcessHeader_AllObjectsHeader_in_AssignClassHandler_override(void *pIAPDUHandler, AllObjectsHeader* header);
+IINField ProcessHeader_AllObjectsHeader_in_AssignClassHandler_override(void *pIAPDUHandler, AllObjectsHeader* header);
 
- IINField ProcessHeader_RangeHeader_in_AssignClassHandler_override(void *pIAPDUHandler, RangeHeader* header);
+IINField ProcessHeader_RangeHeader_in_AssignClassHandler_override(void *pIAPDUHandler, RangeHeader* header);
 
- boolean IsExpectingAssignment_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler);
-  IINField ProcessAssignAll_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, AssignClassType_uint8_t type, PointClass_uint8_t clazz);
+boolean IsExpectingAssignment_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler);
+IINField ProcessAssignAll_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, AssignClassType_uint8_t type, PointClass_uint8_t clazz);
 
-   IINField ProcessAssignRange_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
-   void NotifyApplicationOfAssignment_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
-    IINField RecordClass_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, GroupVariation_uint16_t gv);
+IINField ProcessAssignRange_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
+void NotifyApplicationOfAssignment_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
+IINField RecordClass_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, GroupVariation_uint16_t gv);
 
 
 ////} // namespace opendnp3

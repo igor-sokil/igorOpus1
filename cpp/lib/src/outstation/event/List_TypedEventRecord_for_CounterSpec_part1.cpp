@@ -12,7 +12,7 @@ void List_TypedEventRecord_for_CounterSpec_in_List_TypedEventRecord_for_CounterS
   pList_TypedEventRecord_for_CounterSpec->free = NULL;
   for(int i=0; i<SIZE_TypedEventRecord_for_CounterSpec; i++)
   {
-   Node_TypedEventRecord_for_CounterSpec_in_Node_TypedEventRecord_for_CounterSpec(&((pList_TypedEventRecord_for_CounterSpec->underlying).buffer[i]));
+    Node_TypedEventRecord_for_CounterSpec_in_Node_TypedEventRecord_for_CounterSpec(&((pList_TypedEventRecord_for_CounterSpec->underlying).buffer[i]));
   }
 }
 

@@ -39,13 +39,13 @@ typedef struct
 
 ////    void Reset() {}
 
-    OutstationSeqNum seq;
-    TxBuffer tx;
+  OutstationSeqNum seq;
+  TxBuffer tx;
 } OutstationSolState;
 
-  void  OutstationSolState_in_OutstationSolState(OutstationSolState *pOutstationSolState, uint32_t maxTxSize);
+void  OutstationSolState_in_OutstationSolState(OutstationSolState *pOutstationSolState, uint32_t maxTxSize);
 
-    void Reset_in_OutstationSolState(OutstationSolState *pOutstationSolState);
+void Reset_in_OutstationSolState(OutstationSolState *pOutstationSolState);
 
 
 ////class OutstationUnsolState : private Uncopyable
@@ -59,13 +59,13 @@ typedef struct
 ////        completedNull = false;
 ////    }
 
-    boolean completedNull;
-    OutstationSeqNum seq;
-    TxBuffer tx;
+  boolean completedNull;
+  OutstationSeqNum seq;
+  TxBuffer tx;
 } OutstationUnsolState;
 
-    void Reset_in_OutstationUnsolState(OutstationUnsolState *pOutstationUnsolState);
-   void OutstationUnsolState_in_OutstationUnsolState(OutstationUnsolState *pOutstationUnsolState, uint32_t maxTxSize);
+void Reset_in_OutstationUnsolState(OutstationUnsolState *pOutstationUnsolState);
+void OutstationUnsolState_in_OutstationUnsolState(OutstationUnsolState *pOutstationUnsolState, uint32_t maxTxSize);
 
 
 

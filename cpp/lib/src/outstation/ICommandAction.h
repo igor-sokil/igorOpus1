@@ -39,19 +39,19 @@ typedef struct
 ////    virtual ~ICommandAction() {}
 
 ////    virtual CommandStatus Action(const ControlRelayOutputBlock& arCommand, uint16_t aIndex) = 0;
-     CommandStatus_uint8_t (*pAction_ControlRelayOutputBlock_in_ICommandAction)(void*, ControlRelayOutputBlock* arCommand, uint16_t aIndex);// = 0;
+  CommandStatus_uint8_t (*pAction_ControlRelayOutputBlock_in_ICommandAction)(void*, ControlRelayOutputBlock* arCommand, uint16_t aIndex);// = 0;
 
 ////    virtual CommandStatus Action(const AnalogOutputInt16& arCommand, uint16_t aIndex) = 0;
-     CommandStatus_uint8_t (*pAction_AnalogOutputInt16_in_ICommandAction)(void*, AnalogOutputInt16* arCommand, uint16_t aIndex);// = 0;
+  CommandStatus_uint8_t (*pAction_AnalogOutputInt16_in_ICommandAction)(void*, AnalogOutputInt16* arCommand, uint16_t aIndex);// = 0;
 
 ////    virtual CommandStatus Action(const AnalogOutputInt32& arCommand, uint16_t aIndex) = 0;
-     CommandStatus_uint8_t (*pAction_AnalogOutputInt32_in_ICommandAction)(void*, AnalogOutputInt32* arCommand, uint16_t aIndex);// = 0;
+  CommandStatus_uint8_t (*pAction_AnalogOutputInt32_in_ICommandAction)(void*, AnalogOutputInt32* arCommand, uint16_t aIndex);// = 0;
 
 ////    virtual CommandStatus Action(const AnalogOutputFloat32& arCommand, uint16_t aIndex) = 0;
-     CommandStatus_uint8_t (*pAction_AnalogOutputFloat32_in_ICommandAction)(void*, AnalogOutputFloat32* arCommand, uint16_t aIndex);// = 0;
+  CommandStatus_uint8_t (*pAction_AnalogOutputFloat32_in_ICommandAction)(void*, AnalogOutputFloat32* arCommand, uint16_t aIndex);// = 0;
 
 ////    virtual CommandStatus Action(const AnalogOutputDouble64& arCommand, uint16_t aIndex) = 0;
-     CommandStatus_uint8_t (*pAction_AnalogOutputDouble64_in_ICommandAction)(void*, AnalogOutputDouble64* arCommand, uint16_t aIndex);// = 0;
+  CommandStatus_uint8_t (*pAction_AnalogOutputDouble64_in_ICommandAction)(void*, AnalogOutputDouble64* arCommand, uint16_t aIndex);// = 0;
 
   void* pParentPointer_in_ICommandAction;
 } ICommandAction;

@@ -34,5 +34,5 @@ typedef struct
 } Node_TypedEventRecord_for_AnalogOutputStatusSpec;
 
 void Node_TypedEventRecord_for_AnalogOutputStatusSpec_in_Node_TypedEventRecord_for_AnalogOutputStatusSpec(
-                    Node_TypedEventRecord_for_AnalogOutputStatusSpec *pNode_TypedEventRecord_for_AnalogOutputStatusSpec);
+  Node_TypedEventRecord_for_AnalogOutputStatusSpec *pNode_TypedEventRecord_for_AnalogOutputStatusSpec);
 #endif

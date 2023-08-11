@@ -101,7 +101,7 @@ uint16_t Write_for_AnalogOutputStatus_in_ASDUEventWriteHandler_override(void *pI
     AnalogOutputStatus* first,
     IEventCollection_for_AnalogOutputStatus* items);
 /*
-undefined reference to 
+undefined reference to
         `Write_for_OctetString_in_ASDUEventWriteHandler_override(void*, unsigned char, OctetString*, IEventCollection_for_OctetString*)'
 */
 uint16_t Write_for_OctetString_in_ASDUEventWriteHandler_override(void *pIEventWriteHandler,

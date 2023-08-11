@@ -40,7 +40,7 @@ ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec to_view_in_Arra
   ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec aArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec;
   ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec_in_ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec(&aArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec, pArray__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec->buffer,
       (pArray__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec->hHasLength_for_Uint32_t).m_length
-                                                                              );
+                                                                                                                                      );
   return aArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec;
 }
 

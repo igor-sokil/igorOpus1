@@ -12,7 +12,7 @@ void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_Octe
   pList_TypedEventRecord_for_OctetStringSpec->free = NULL;
   for(int i=0; i<SIZE_TypedEventRecord_for_OctetStringSpec; i++)
   {
-   Node_TypedEventRecord_for_OctetStringSpec_in_Node_TypedEventRecord_for_OctetStringSpec(&((pList_TypedEventRecord_for_OctetStringSpec->underlying).buffer[i]));
+    Node_TypedEventRecord_for_OctetStringSpec_in_Node_TypedEventRecord_for_OctetStringSpec(&((pList_TypedEventRecord_for_OctetStringSpec->underlying).buffer[i]));
   }
 }
 

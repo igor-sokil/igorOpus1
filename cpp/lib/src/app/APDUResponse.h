@@ -35,7 +35,7 @@
 ////class APDUResponse : public APDUWrapper
 typedef struct
 {
-   APDUWrapper aAPDUWrapper;
+  APDUWrapper aAPDUWrapper;
 ////public:
 ////    explicit APDUResponse(const ser4cpp::wseq_t& buffer);
 
@@ -47,9 +47,9 @@ typedef struct
 ////    APDUResponse();
 } APDUResponse;
 
-    void APDUResponse_in_APDUResponse(APDUResponse *pAPDUResponse, WSeq_for_Uint16_t *buffer);
-    void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications);
-    IINField GetIIN_in_APDUResponse(APDUResponse *pAPDUResponse);
+void APDUResponse_in_APDUResponse(APDUResponse *pAPDUResponse, WSeq_for_Uint16_t *buffer);
+void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications);
+IINField GetIIN_in_APDUResponse(APDUResponse *pAPDUResponse);
 
 ////} // namespace opendnp3
 

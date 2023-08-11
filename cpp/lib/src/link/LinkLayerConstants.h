@@ -38,34 +38,34 @@ const uint16_t LPDU_MAX_FRAME_SIZE = 292; // 10(header) + 250 (user data) + 32 (
 #define LinkBroadcastAddress_uint16_t  uint16_t
 enum LinkBroadcastAddress//// : uint16_t
 {
-    LinkBroadcastAddress_DontConfirm = 0xFFFD,
-    LinkBroadcastAddress_ShallConfirm = 0xFFFE,
-    LinkBroadcastAddress_OptionalConfirm = 0xFFFF,
+  LinkBroadcastAddress_DontConfirm = 0xFFFD,
+  LinkBroadcastAddress_ShallConfirm = 0xFFFE,
+  LinkBroadcastAddress_OptionalConfirm = 0xFFFF,
 };
 
 /// Indices for use with buffers containing link headers
 #define LinkHeaderIndex_uint8_t  uint8_t
 enum LinkHeaderIndex //: uint8_t
 {
-    LinkHeaderIndex_LI_START_05 = 0,
-    LinkHeaderIndex_LI_START_64 = 1,
-    LinkHeaderIndex_LI_LENGTH = 2,
-    LinkHeaderIndex_LI_CONTROL = 3,
-    LinkHeaderIndex_LI_DESTINATION = 4,
-    LinkHeaderIndex_LI_SOURCE = 6,
-    LinkHeaderIndex_LI_CRC = 8
+  LinkHeaderIndex_LI_START_05 = 0,
+  LinkHeaderIndex_LI_START_64 = 1,
+  LinkHeaderIndex_LI_LENGTH = 2,
+  LinkHeaderIndex_LI_CONTROL = 3,
+  LinkHeaderIndex_LI_DESTINATION = 4,
+  LinkHeaderIndex_LI_SOURCE = 6,
+  LinkHeaderIndex_LI_CRC = 8
 };
 
 /// Masks for use with the CONTROL byte
 #define ControlMask_uint8_t  uint8_t
 enum ControlMask //: uint8_t
 {
-    ControlMask_MASK_DIR = 0x80,
-    ControlMask_MASK_PRM = 0x40,
-    ControlMask_MASK_FCB = 0x20,
-    ControlMask_MASK_FCV = 0x10,
-    ControlMask_MASK_FUNC = 0x0F,
-    ControlMask_MASK_FUNC_OR_PRM = ControlMask_MASK_PRM | ControlMask_MASK_FUNC
+  ControlMask_MASK_DIR = 0x80,
+  ControlMask_MASK_PRM = 0x40,
+  ControlMask_MASK_FCB = 0x20,
+  ControlMask_MASK_FCV = 0x10,
+  ControlMask_MASK_FUNC = 0x0F,
+  ControlMask_MASK_FUNC_OR_PRM = ControlMask_MASK_PRM | ControlMask_MASK_FUNC
 };
 
 ////} // namespace opendnp3

@@ -38,12 +38,12 @@ typedef struct
 ////public:
 /////    virtual ~IFrameSink() {}
 
-    boolean (*pOnFrame_in_IFrameSink)(void*, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);// = 0;
+  boolean (*pOnFrame_in_IFrameSink)(void*, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);// = 0;
 
   void* pParentPointer_in_IFrameSink;
 } IFrameSink;
 
-    void OnFrame_in_IFrameSink(IFrameSink*, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
+void OnFrame_in_IFrameSink(IFrameSink*, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
 
 void* getParentPointer_in_IFrameSink(IFrameSink*);
 void  setParentPointer_in_IFrameSink(IFrameSink*, void*);

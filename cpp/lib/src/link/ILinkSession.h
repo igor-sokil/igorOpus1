@@ -29,24 +29,24 @@
 ////class ILinkSession : public IFrameSink
 typedef struct
 {
- IFrameSink iIFrameSink;
+  IFrameSink iIFrameSink;
 
 ////public:
 ////    virtual ~ILinkSession() {}
 
-    // lower layer informs this layer that it is ready to transmit again
-    boolean (*pOnTxReady_in_ILinkSession)(void*);// = 0;
+  // lower layer informs this layer that it is ready to transmit again
+  boolean (*pOnTxReady_in_ILinkSession)(void*);// = 0;
 
-    boolean (*pOnLowerLayerUp_in_ILinkSession)(void*);// = 0;
+  boolean (*pOnLowerLayerUp_in_ILinkSession)(void*);// = 0;
 
-    boolean (*pOnLowerLayerDown_in_ILinkSession)(void*);// = 0;
+  boolean (*pOnLowerLayerDown_in_ILinkSession)(void*);// = 0;
 
   void* pParentPointer_in_ILinkSession;
 } ILinkSession;
 
-    void OnTxReady_in_ILinkSession(ILinkSession*);
-    void OnLowerLayerUp_in_ILinkSession(ILinkSession*);
-    void OnLowerLayerDown_in_ILinkSession(ILinkSession*);
+void OnTxReady_in_ILinkSession(ILinkSession*);
+void OnLowerLayerUp_in_ILinkSession(ILinkSession*);
+void OnLowerLayerDown_in_ILinkSession(ILinkSession*);
 
 void* getParentPointer_in_ILinkSession(ILinkSession*);
 void  setParentPointer_in_ILinkSession(ILinkSession*, void*);

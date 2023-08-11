@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -45,80 +45,80 @@ FunctionCode_uint8_t from_type_in_FunctionCodeSpec(uint8_t arg)
 {
   switch(arg)
   {
-    case(0x0):
-      return FunctionCode_CONFIRM;
-    case(0x1):
-      return FunctionCode_READ;
-    case(0x2):
-      return FunctionCode_WRITE;
-    case(0x3):
-      return FunctionCode_SELECT;
-    case(0x4):
-      return FunctionCode_OPERATE;
-    case(0x5):
-      return FunctionCode_DIRECT_OPERATE;
-    case(0x6):
-      return FunctionCode_DIRECT_OPERATE_NR;
-    case(0x7):
-      return FunctionCode_IMMED_FREEZE;
-    case(0x8):
-      return FunctionCode_IMMED_FREEZE_NR;
-    case(0x9):
-      return FunctionCode_FREEZE_CLEAR;
-    case(0xA):
-      return FunctionCode_FREEZE_CLEAR_NR;
-    case(0xB):
-      return FunctionCode_FREEZE_AT_TIME;
-    case(0xC):
-      return FunctionCode_FREEZE_AT_TIME_NR;
-    case(0xD):
-      return FunctionCode_COLD_RESTART;
-    case(0xE):
-      return FunctionCode_WARM_RESTART;
-    case(0xF):
-      return FunctionCode_INITIALIZE_DATA;
-    case(0x10):
-      return FunctionCode_INITIALIZE_APPLICATION;
-    case(0x11):
-      return FunctionCode_START_APPLICATION;
-    case(0x12):
-      return FunctionCode_STOP_APPLICATION;
-    case(0x13):
-      return FunctionCode_SAVE_CONFIGURATION;
-    case(0x14):
-      return FunctionCode_ENABLE_UNSOLICITED;
-    case(0x15):
-      return FunctionCode_DISABLE_UNSOLICITED;
-    case(0x16):
-      return FunctionCode_ASSIGN_CLASS;
-    case(0x17):
-      return FunctionCode_DELAY_MEASURE;
-    case(0x18):
-      return FunctionCode_RECORD_CURRENT_TIME;
-    case(0x19):
-      return FunctionCode_OPEN_FILE;
-    case(0x1A):
-      return FunctionCode_CLOSE_FILE;
-    case(0x1B):
-      return FunctionCode_DELETE_FILE;
-    case(0x1C):
-      return FunctionCode_GET_FILE_INFO;
-    case(0x1D):
-      return FunctionCode_AUTHENTICATE_FILE;
-    case(0x1E):
-      return FunctionCode_ABORT_FILE;
-    case(0x20):
-      return FunctionCode_AUTH_REQUEST;
-    case(0x21):
-      return FunctionCode_AUTH_REQUEST_NO_ACK;
-    case(0x81):
-      return FunctionCode_RESPONSE;
-    case(0x82):
-      return FunctionCode_UNSOLICITED_RESPONSE;
-    case(0x83):
-      return FunctionCode_AUTH_RESPONSE;
-    default:
-      return FunctionCode_UNKNOWN;
+  case(0x0):
+    return FunctionCode_CONFIRM;
+  case(0x1):
+    return FunctionCode_READ;
+  case(0x2):
+    return FunctionCode_WRITE;
+  case(0x3):
+    return FunctionCode_SELECT;
+  case(0x4):
+    return FunctionCode_OPERATE;
+  case(0x5):
+    return FunctionCode_DIRECT_OPERATE;
+  case(0x6):
+    return FunctionCode_DIRECT_OPERATE_NR;
+  case(0x7):
+    return FunctionCode_IMMED_FREEZE;
+  case(0x8):
+    return FunctionCode_IMMED_FREEZE_NR;
+  case(0x9):
+    return FunctionCode_FREEZE_CLEAR;
+  case(0xA):
+    return FunctionCode_FREEZE_CLEAR_NR;
+  case(0xB):
+    return FunctionCode_FREEZE_AT_TIME;
+  case(0xC):
+    return FunctionCode_FREEZE_AT_TIME_NR;
+  case(0xD):
+    return FunctionCode_COLD_RESTART;
+  case(0xE):
+    return FunctionCode_WARM_RESTART;
+  case(0xF):
+    return FunctionCode_INITIALIZE_DATA;
+  case(0x10):
+    return FunctionCode_INITIALIZE_APPLICATION;
+  case(0x11):
+    return FunctionCode_START_APPLICATION;
+  case(0x12):
+    return FunctionCode_STOP_APPLICATION;
+  case(0x13):
+    return FunctionCode_SAVE_CONFIGURATION;
+  case(0x14):
+    return FunctionCode_ENABLE_UNSOLICITED;
+  case(0x15):
+    return FunctionCode_DISABLE_UNSOLICITED;
+  case(0x16):
+    return FunctionCode_ASSIGN_CLASS;
+  case(0x17):
+    return FunctionCode_DELAY_MEASURE;
+  case(0x18):
+    return FunctionCode_RECORD_CURRENT_TIME;
+  case(0x19):
+    return FunctionCode_OPEN_FILE;
+  case(0x1A):
+    return FunctionCode_CLOSE_FILE;
+  case(0x1B):
+    return FunctionCode_DELETE_FILE;
+  case(0x1C):
+    return FunctionCode_GET_FILE_INFO;
+  case(0x1D):
+    return FunctionCode_AUTHENTICATE_FILE;
+  case(0x1E):
+    return FunctionCode_ABORT_FILE;
+  case(0x20):
+    return FunctionCode_AUTH_REQUEST;
+  case(0x21):
+    return FunctionCode_AUTH_REQUEST_NO_ACK;
+  case(0x81):
+    return FunctionCode_RESPONSE;
+  case(0x82):
+    return FunctionCode_UNSOLICITED_RESPONSE;
+  case(0x83):
+    return FunctionCode_AUTH_RESPONSE;
+  default:
+    return FunctionCode_UNKNOWN;
   }
 }
 

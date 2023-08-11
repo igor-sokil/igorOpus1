@@ -26,22 +26,22 @@
 
 IINField ToIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN)
 {
-    IINField ret;
+  IINField ret;
 //    void SetBitToValue_in_IINField(IINField *, IINBit_uint8_t bit, boolean value);
-    SetBitToValue_in_IINField(&ret, IINBit_NEED_TIME, pApplicationIIN->needTime);
-    SetBitToValue_in_IINField(&ret, IINBit_LOCAL_CONTROL, pApplicationIIN->localControl);
-    SetBitToValue_in_IINField(&ret, IINBit_CONFIG_CORRUPT, pApplicationIIN->configCorrupt);
-    SetBitToValue_in_IINField(&ret, IINBit_DEVICE_TROUBLE, pApplicationIIN->deviceTrouble);
-    SetBitToValue_in_IINField(&ret, IINBit_EVENT_BUFFER_OVERFLOW, pApplicationIIN->eventBufferOverflow);
-    return ret;
+  SetBitToValue_in_IINField(&ret, IINBit_NEED_TIME, pApplicationIIN->needTime);
+  SetBitToValue_in_IINField(&ret, IINBit_LOCAL_CONTROL, pApplicationIIN->localControl);
+  SetBitToValue_in_IINField(&ret, IINBit_CONFIG_CORRUPT, pApplicationIIN->configCorrupt);
+  SetBitToValue_in_IINField(&ret, IINBit_DEVICE_TROUBLE, pApplicationIIN->deviceTrouble);
+  SetBitToValue_in_IINField(&ret, IINBit_EVENT_BUFFER_OVERFLOW, pApplicationIIN->eventBufferOverflow);
+  return ret;
 }
 
 void ApplicationIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN)
 {
-pApplicationIIN->needTime = false;
-pApplicationIIN->localControl = false;
-pApplicationIIN->configCorrupt = false;
-pApplicationIIN->deviceTrouble = false;
-pApplicationIIN->eventBufferOverflow = false;
+  pApplicationIIN->needTime = false;
+  pApplicationIIN->localControl = false;
+  pApplicationIIN->configCorrupt = false;
+  pApplicationIIN->deviceTrouble = false;
+  pApplicationIIN->eventBufferOverflow = false;
 }
 ////} // namespace opendnp3

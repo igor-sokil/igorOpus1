@@ -184,31 +184,31 @@ typedef struct
 
 void List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver1(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
 void List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_DoubleBitBinarySpecOver2(
-       List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
-       uint32_t maxSize);
+  List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
+  uint32_t maxSize);
 
-    Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec Iterate_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+Iterator_in_List_TypedEventRecord_for_DoubleBitBinarySpec Iterate_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
 
-  void Initialize_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
-//  uint32_t RemoveAll_in_List_TypedEventRecord_for_DoubleBitBinarySpec(EventStorage *pEventStorage, 
-//                            List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec, 
-//                            boolean (*match)(EventStorage *pEventStorage, 
+void Initialize_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_DoubleBitBinarySpec(EventStorage *pEventStorage,
+//                            List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
+//                            boolean (*match)(EventStorage *pEventStorage,
 //                            EventRecord* record));//const U& match);
 
-   void Remove_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec, Node_TypedEventRecord_for_DoubleBitBinarySpec* node);
-   void Link_in_List_TypedEventRecord_for_DoubleBitBinarySpec_static(Node_TypedEventRecord_for_DoubleBitBinarySpec* first, Node_TypedEventRecord_for_DoubleBitBinarySpec* second);
+void Remove_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec, Node_TypedEventRecord_for_DoubleBitBinarySpec* node);
+void Link_in_List_TypedEventRecord_for_DoubleBitBinarySpec_static(Node_TypedEventRecord_for_DoubleBitBinarySpec* first, Node_TypedEventRecord_for_DoubleBitBinarySpec* second);
 
-     uint32_t Capacity_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
+uint32_t Capacity_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
 boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
 Node_TypedEventRecord_for_DoubleBitBinarySpec* Head_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec);
 
 Node_TypedEventRecord_for_DoubleBitBinarySpec* Add_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
-                                      TypedEventRecord_for_DoubleBitBinarySpec* value);
+    TypedEventRecord_for_DoubleBitBinarySpec* value);
 Node_TypedEventRecord_for_DoubleBitBinarySpec* Insert_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec,
-                                                                TypedEventRecord_for_DoubleBitBinarySpec* value,
-                                                                Node_TypedEventRecord_for_DoubleBitBinarySpec* left,
-                                                                Node_TypedEventRecord_for_DoubleBitBinarySpec* right
-                                                                  );
+    TypedEventRecord_for_DoubleBitBinarySpec* value,
+    Node_TypedEventRecord_for_DoubleBitBinarySpec* left,
+    Node_TypedEventRecord_for_DoubleBitBinarySpec* right
+                                                                                                      );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

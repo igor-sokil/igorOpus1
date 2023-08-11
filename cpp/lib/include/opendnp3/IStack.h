@@ -32,24 +32,24 @@
 ////class IStack : public IResource
 typedef struct
 {
-IResource iIResource;
+  IResource iIResource;
 ////public:
 ////    virtual ~IStack() {}
 
-    /**
-     * Synchronously enable communications
-     */
-    boolean (*pEnable_in_IStack)(void*);// = 0;
+  /**
+   * Synchronously enable communications
+   */
+  boolean (*pEnable_in_IStack)(void*);// = 0;
 
-    /**
-     * Synchronously disable communications
-     */
-    boolean (*pDisable_in_IStack)(void*);// = 0;
+  /**
+   * Synchronously disable communications
+   */
+  boolean (*pDisable_in_IStack)(void*);// = 0;
 
-    /**
-     * @return stack statistics counters
-     */
-    StackStatistics (*pGetStackStatistics_in_IStack)(void*);// = 0;
+  /**
+   * @return stack statistics counters
+   */
+  StackStatistics (*pGetStackStatistics_in_IStack)(void*);// = 0;
 
   void* pParentPointer_in_IStack;
 } IStack;

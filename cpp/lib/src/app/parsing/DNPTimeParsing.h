@@ -30,19 +30,19 @@
 ////namespace serializers
 ////{
 
-    // To use LittleEndian::write(...)
-    template<> inline bool write_one(wseq_t& dest, const opendnp3::DNPTime& value)
-    {
-        return UInt48::write_to(dest, UInt48Type(value.value));
-    }
+// To use LittleEndian::write(...)
+template<> inline bool write_one(wseq_t& dest, const opendnp3::DNPTime& value)
+{
+  return UInt48::write_to(dest, UInt48Type(value.value));
+}
 
-    template<> inline bool read_one(rseq_t& input, opendnp3::DNPTime& out)
-    {
-        UInt48Type temp;
-        bool result = UInt48::read_from(input, temp);
-        out.value = temp.Get();
-        return result;
-    }
+template<> inline bool read_one(rseq_t& input, opendnp3::DNPTime& out)
+{
+  UInt48Type temp;
+  bool result = UInt48::read_from(input, temp);
+  out.value = temp.Get();
+  return result;
+}
 
 ////} // namespace serializers
 ////} // namespace ser4cpp

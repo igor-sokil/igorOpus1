@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -52,7 +52,7 @@
 ////  static GroupVariationID ID() { return GroupVariationID(4,0); }
 ////};
 
-  GroupVariationID ID_in_Group4Var0_static(void);
+GroupVariationID ID_in_Group4Var0_static(void);
 
 // Double-bit Binary Input Event - Without Time
 ////struct Group4Var1
@@ -75,17 +75,17 @@ typedef struct
 ////  static DNP3Serializer<DoubleBitBinary> Inst() { return DNP3Serializer<DoubleBitBinary>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group4Var1;
 
-  uint16_t Size_in_Group4Var1_static(void);
+uint16_t Size_in_Group4Var1_static(void);
 
- void Group4Var1_in_Group4Var1(Group4Var1 *pGroup4Var1);
-  GroupVariationID ID_in_Group4Var1_static(void);
+void Group4Var1_in_Group4Var1(Group4Var1 *pGroup4Var1);
+GroupVariationID ID_in_Group4Var1_static(void);
 
- boolean Read_in_Group4Var1_static(RSeq_for_Uint16_t *, Group4Var1*);
- boolean Write_in_Group4Var1_static(Group4Var1*, WSeq_for_Uint16_t*);
+boolean Read_in_Group4Var1_static(RSeq_for_Uint16_t *, Group4Var1*);
+boolean Write_in_Group4Var1_static(Group4Var1*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group4Var1_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
- boolean WriteTarget_in_Group4Var1_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
- DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var1_static(void);
+boolean ReadTarget_in_Group4Var1_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
+boolean WriteTarget_in_Group4Var1_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
+DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var1_static(void);
 
 // Double-bit Binary Input Event - With Absolute Time
 ////struct Group4Var2
@@ -109,17 +109,17 @@ typedef struct
 ////  static DNP3Serializer<DoubleBitBinary> Inst() { return DNP3Serializer<DoubleBitBinary>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group4Var2;
 
-  uint16_t Size_in_Group4Var2_static(void);
+uint16_t Size_in_Group4Var2_static(void);
 
- void Group4Var2_in_Group4Var2(Group4Var2 *pGroup4Var2);
-  GroupVariationID ID_in_Group4Var2_static(void);
+void Group4Var2_in_Group4Var2(Group4Var2 *pGroup4Var2);
+GroupVariationID ID_in_Group4Var2_static(void);
 
- boolean Read_in_Group4Var2_static(RSeq_for_Uint16_t *, Group4Var2*);
- boolean Write_in_Group4Var2_static(Group4Var2*, WSeq_for_Uint16_t*);
+boolean Read_in_Group4Var2_static(RSeq_for_Uint16_t *, Group4Var2*);
+boolean Write_in_Group4Var2_static(Group4Var2*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group4Var2_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
- boolean WriteTarget_in_Group4Var2_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
- DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var2_static(void);
+boolean ReadTarget_in_Group4Var2_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
+boolean WriteTarget_in_Group4Var2_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
+DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var2_static(void);
 
 // Double-bit Binary Input Event - With Relative Time
 ////struct Group4Var3
@@ -143,18 +143,18 @@ typedef struct
 ////  static DNP3Serializer<DoubleBitBinary> Inst() { return DNP3Serializer<DoubleBitBinary>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group4Var3;
 
-  uint16_t Size_in_Group4Var3_static(void);
+uint16_t Size_in_Group4Var3_static(void);
 
- void Group4Var3_in_Group4Var3(Group4Var3 *pGroup4Var3);
-  GroupVariationID ID_in_Group4Var3_static(void);
+void Group4Var3_in_Group4Var3(Group4Var3 *pGroup4Var3);
+GroupVariationID ID_in_Group4Var3_static(void);
 
- boolean Read_in_Group4Var3_static(RSeq_for_Uint16_t *, Group4Var3*);
- boolean Write_in_Group4Var3_static(Group4Var3*, WSeq_for_Uint16_t*);
+boolean Read_in_Group4Var3_static(RSeq_for_Uint16_t *, Group4Var3*);
+boolean Write_in_Group4Var3_static(Group4Var3*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group4Var3_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
- boolean WriteTarget_in_Group4Var3_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
- DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var3_static(void);
+boolean ReadTarget_in_Group4Var3_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
+boolean WriteTarget_in_Group4Var3_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
+DNP3Serializer_for_DoubleBitBinary  Inst_in_Group4Var3_static(void);
 
-////}   
+////}
 
 #endif

@@ -61,24 +61,24 @@ typedef struct
 
 ////    void CheckStart();
 
-    boolean is_started;//// = false;
+  boolean is_started;//// = false;
 
-    ICommandHandler* handler;
-    boolean is_select;
-    IUpdateHandler* updates;
-    OperateType_uint8_t op_type;
+  ICommandHandler* handler;
+  boolean is_select;
+  IUpdateHandler* updates;
+  OperateType_uint8_t op_type;
 } CommandActionAdapter;
 
- void  CommandActionAdapter_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ICommandHandler* handler, boolean is_select, IUpdateHandler* updates, OperateType_uint8_t op_type);
- void  CommandActionAdapter_destr_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter);
+void  CommandActionAdapter_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ICommandHandler* handler, boolean is_select, IUpdateHandler* updates, OperateType_uint8_t op_type);
+void  CommandActionAdapter_destr_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter);
 
- void CheckStart_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter);
+void CheckStart_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter);
 
- CommandStatus_uint8_t ActionT_ControlRelayOutputBlock_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ControlRelayOutputBlock* command, uint16_t index);
- CommandStatus_uint8_t ActionT_AnalogOutputInt16_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, AnalogOutputInt16* command, uint16_t index);
- CommandStatus_uint8_t ActionT_AnalogOutputInt32_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, AnalogOutputInt32* command, uint16_t index);
- CommandStatus_uint8_t ActionT_AnalogOutputFloat32_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, AnalogOutputFloat32* command, uint16_t index);
- CommandStatus_uint8_t ActionT_AnalogOutputDouble64_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, AnalogOutputDouble64* command, uint16_t index);
+CommandStatus_uint8_t ActionT_ControlRelayOutputBlock_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ControlRelayOutputBlock* command, uint16_t index);
+CommandStatus_uint8_t ActionT_AnalogOutputInt16_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, AnalogOutputInt16* command, uint16_t index);
+CommandStatus_uint8_t ActionT_AnalogOutputInt32_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, AnalogOutputInt32* command, uint16_t index);
+CommandStatus_uint8_t ActionT_AnalogOutputFloat32_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, AnalogOutputFloat32* command, uint16_t index);
+CommandStatus_uint8_t ActionT_AnalogOutputDouble64_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, AnalogOutputDouble64* command, uint16_t index);
 
 CommandStatus_uint8_t Action_ControlRelayOutputBlock_in_CommandActionAdapter_override(void *, ControlRelayOutputBlock* arCommand, uint16_t aIndex);
 CommandStatus_uint8_t Action_AnalogOutputInt16_in_CommandActionAdapter_override(void *, AnalogOutputInt16* arCommand, uint16_t aIndex);

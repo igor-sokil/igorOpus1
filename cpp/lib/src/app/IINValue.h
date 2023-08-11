@@ -31,11 +31,11 @@ typedef struct
 
 ////    IINValue(bool value_) : value(value_) {}
 
-    boolean value;
+  boolean value;
 } IINValue;
 
-  void IINValue_in_IINValueOver1(IINValue *pIINValue);
-  void IINValue_in_IINValueOver2(IINValue *pIINValue, boolean value_);
+void IINValue_in_IINValueOver1(IINValue *pIINValue);
+void IINValue_in_IINValueOver2(IINValue *pIINValue, boolean value_);
 
 
 

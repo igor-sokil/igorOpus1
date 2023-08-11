@@ -24,7 +24,7 @@
 ////{
 
 //void APDURequest_in_APDURequestOver2(APDURequest *pAPDURequest, uint32_t *aBuffer_uint32_t)
-  void APDURequest_in_APDURequestOver2(APDURequest *pAPDURequest, WSeq_for_Uint16_t *aBuffer)
+void APDURequest_in_APDURequestOver2(APDURequest *pAPDURequest, WSeq_for_Uint16_t *aBuffer)
 {
   APDUWrapper_in_APDUWrapperOver2(&(pAPDURequest -> aAPDUWrapper), aBuffer);
 ////  : APDUWrapper(aBuffer) {}
@@ -32,9 +32,9 @@
 
 void ConfigureHeader_in_APDURequest(APDURequest *pAPDURequest, FunctionCode_uint8_t code, uint8_t seq)
 {
-    UNUSED(code);
-    SetFunction_in_APDUWrapper(&(pAPDURequest->aAPDUWrapper), FunctionCode_AUTH_REQUEST);
-    SetControl_in_APDUWrapper(&(pAPDURequest->aAPDUWrapper), Request_in_AppControlField_static(seq));
+  UNUSED(code);
+  SetFunction_in_APDUWrapper(&(pAPDURequest->aAPDUWrapper), FunctionCode_AUTH_REQUEST);
+  SetControl_in_APDUWrapper(&(pAPDURequest->aAPDUWrapper), Request_in_AppControlField_static(seq));
 }
 
 ////} // namespace opendnp3

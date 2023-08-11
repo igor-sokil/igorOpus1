@@ -73,25 +73,25 @@
 ////    template<class CountType, class WriteType>
 ////    CountWriteIterator<CountType, WriteType> IterateOverCount(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer);
-    CountWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCount_for_UInt16_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
-                                                              QualifierCode_uint8_t qc,
-                                                              DNP3Serializer_for_AnalogOutputStatus* serializer);
+CountWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCount_for_UInt16_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_AnalogOutputStatus* serializer);
 
 //--------------------------------IterateOverCount_for_UInt16_AnalogOutputStatus_in_HeaderWriter--------------------------------------------------------
 //--------------------------------IterateOverCount_for_UInt8_Ananlog_in_HeaderWriter--------------------------------------------------------
 ////    template<class CountType, class WriteType>
 ////    CountWriteIterator<CountType, WriteType> IterateOverCount(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer);
-    CountWriteIterator_for_UInt8_AnalogOutputStatus IterateOverCount_for_UInt8_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
-                                                              QualifierCode_uint8_t qc,
-                                                              DNP3Serializer_for_AnalogOutputStatus* serializer);
+CountWriteIterator_for_UInt8_AnalogOutputStatus IterateOverCount_for_UInt8_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_AnalogOutputStatus* serializer);
 
 //--------------------------------IterateOverCount_for_UInt8_AnalogOutputStatus_in_HeaderWriter--------------------------------------------------------
 //--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputStatus--------------------------------------------------------
 ////template<class PrefixType, class WriteType>
 ////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
 ////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
-  PrefixedWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCountWithPrefix_for_UInt16_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+PrefixedWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCountWithPrefix_for_UInt16_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputStatus* serializer);
 
 //--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputStatus--------------------------------------------------------
@@ -99,19 +99,19 @@
 ////    template<class PrefixType, class WriteType, class CTOType>
 ////    PrefixedWriteIterator<PrefixType, WriteType> IterateOverCountWithPrefixAndCTO(
 ////        QualifierCode qc, const DNP3Serializer<WriteType>& serializer, const CTOType& cto);
-    PrefixedWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCountWithPrefixAndCTO_for_UInt16_AnalogOutputStatus_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
-                                                              QualifierCode_uint8_t qc,
-                                                              DNP3Serializer_for_AnalogOutputStatus* serializer,
-                                                              Group51Var1* cto);
+PrefixedWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCountWithPrefixAndCTO_for_UInt16_AnalogOutputStatus_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_AnalogOutputStatus* serializer,
+    Group51Var1* cto);
 //--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_AnalogOutputStatus_Group51Var1_in_HeaderWriter--------------------------------------------------------
 //--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_AnalogOutputStatus_Group51Var2_in_HeaderWriter--------------------------------------------------------
 ////    template<class PrefixType, class WriteType, class CTOType>
 ////    PrefixedWriteIterator<PrefixType, WriteType> IterateOverCountWithPrefixAndCTO(
 ////        QualifierCode qc, const DNP3Serializer<WriteType>& serializer, const CTOType& cto);
-    PrefixedWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCountWithPrefixAndCTO_for_UInt16_AnalogOutputStatus_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
-                                                              QualifierCode_uint8_t qc,
-                                                              DNP3Serializer_for_AnalogOutputStatus* serializer,
-                                                              Group51Var2* cto);
+PrefixedWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCountWithPrefixAndCTO_for_UInt16_AnalogOutputStatus_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_AnalogOutputStatus* serializer,
+    Group51Var2* cto);
 //--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_AnalogOutputStatus_Group51Var2_in_HeaderWriter--------------------------------------------------------
 //================================================AnalogOutputStatus=================================================================
 /*
@@ -121,7 +121,7 @@
 ////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer,
 ////                                                              typename IndexType::type_t start);
-    RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                    QualifierCode_uint8_t qc,
                                                    DNP3Serializer_for_Binary *serializer,
                                                    uint8_t start
@@ -168,7 +168,7 @@
 ////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,
 ////                                                              const DNP3Serializer<WriteType>& serializer,
 ////                                                              typename IndexType::type_t start);
-    RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter, 
+    RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
                                                    QualifierCode_uint8_t qc,
                                                    DNP3Serializer_for_Counter *serializer,
                                                    uint8_t start

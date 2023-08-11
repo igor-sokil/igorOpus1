@@ -40,26 +40,26 @@ MYTODO
 
 void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser* numparser, HandleFun_in_CountIndexParser handler)
 {
-   pCountIndexParser->count = count;
-   pCountIndexParser->requiredSize = requiredSize;
-   pCountIndexParser->numparser = numparser;
-   pCountIndexParser->handler = handler;
+  pCountIndexParser->count = count;
+  pCountIndexParser->requiredSize = requiredSize;
+  pCountIndexParser->numparser = numparser;
+  pCountIndexParser->handler = handler;
 }
 
 ParseResult_uint8_t ParseHeader_in_CountIndexParser(CountIndexParser *pCountIndexParser,
-                                          RSeq_for_Uint16_t* buffer,
-                                          NumParser* numparser,
-                                          //const ParserSettings& settings,
-                                          HeaderRecord* record,
-                                          //Logger* pLogger,
-                                          IAPDUHandler* pHandler)
+    RSeq_for_Uint16_t* buffer,
+    NumParser* numparser,
+    //const ParserSettings& settings,
+    HeaderRecord* record,
+    //Logger* pLogger,
+    IAPDUHandler* pHandler)
 {
-    uint16_t count;
+  uint16_t count;
 //    ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, uint16_t *count);////, Logger* pLogger) const;
 ////    auto res = numparser.ParseCount(buffer, count, pLogger);
-    ParseResult_uint8_t res = ParseCount_in_NumParser(pNumParser, buffer, &count);////, Logger* pLogger) const;
-    if (res == ParseResult_OK)
-    {
+  ParseResult_uint8_t res = ParseCount_in_NumParser(pNumParser, buffer, &count);////, Logger* pLogger) const;
+  if (res == ParseResult_OK)
+  {
 ////        FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u %s, %s [%u]", record.group, record.variation,
 ////                            GroupVariationSpec::to_human_string(record.enumeration),
 ////                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), count);
@@ -70,39 +70,39 @@ ParseResult_uint8_t ParseHeader_in_CountIndexParser(CountIndexParser *pCountInde
 ////        }
 ////        else
 ////        {
-           return ParseCountOfIndices_in_CountIndexParser_static(buffer, record, numparser, count, /*pLogger,*/ pHandler);
+    return ParseCountOfIndices_in_CountIndexParser_static(buffer, record, numparser, count, /*pLogger,*/ pHandler);
 ///        }
-    }
+  }
 
-    return res;
+  return res;
 }
 
-ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexParser, 
-                                      HeaderRecord* record,
-                                      RSeq_for_Uint16_t* buffer,
-                                      IAPDUHandler* pHandler)
-                                      ////Logger* pLogger) const
+ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexParser,
+    HeaderRecord* record,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* pHandler)
+////Logger* pLogger) const
 {
 ////    if (buffer.length() < requiredSize)
-        if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < pCountIndexParser->requiredSize)
-    {
+  if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < pCountIndexParser->requiredSize)
+  {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
-        return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
-    }
+    return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
+  }
 
-    if (pHandler)
-    {
+  if (pHandler)
+  {
 //    typedef void (*HandleFun_in_CountIndexParser)(HeaderRecord *record,
 //                              uint16_t count,
 //                              /*NumParser *numparser,*/
 //                              RSeq_for_Uint16_t *buffer,
 //                              IAPDUHandler *handler);
-        pCountIndexParser->handler(record, count, /*&(pCountIndexParser->numparser),*/ buffer, pHandler);
-    }
+    pCountIndexParser->handler(record, count, /*&(pCountIndexParser->numparser),*/ buffer, pHandler);
+  }
 //    void advance_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
 ////    buffer.advance(requiredSize);
-    advance_in_RSeq_for_Uint16_t(buffer, requiredSize);
-    return ParseResult_OK;
+  advance_in_RSeq_for_Uint16_t(buffer, requiredSize);
+  return ParseResult_OK;
 }
 
 ////ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
@@ -234,76 +234,76 @@ ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexPar
 ////    }
 /////}
 
-    ParseResult_uint8_t ParseCountOfIndices_in_CountIndexParser_static(
-                                                  RSeq_for_Uint16_t* buffer,
-                                                  HeaderRecord* record,
-                                                  NumParser* numparser,
-                                                  uint16_t count,
-                                                  ////Logger* pLogger,
-                                                  IAPDUHandler* pHandler)
+ParseResult_uint8_t ParseCountOfIndices_in_CountIndexParser_static(
+  RSeq_for_Uint16_t* buffer,
+  HeaderRecord* record,
+  NumParser* numparser,
+  uint16_t count,
+  ////Logger* pLogger,
+  IAPDUHandler* pHandler)
 {
 //    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
 ////    const auto SIZE = static_cast<size_t>(count) * static_cast<size_t>(numparser.NumBytes());
-    const uint16_t SIZE = (count) * (uint16_t)(NumBytes_in_NumParser(numparser));
+  const uint16_t SIZE = (count) * (uint16_t)(NumBytes_in_NumParser(numparser));
 
 ////    if (buffer.length() < SIZE)
-    if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < SIZE)
-    {
+  if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < SIZE)
+  {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified sequence of indices");
-        return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
-    }
+    return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
+  }
 
-    if (pHandler)
-    {
-        auto read = [&numparser, record](ser4cpp::rseq_t& buffer, uint32_t pos) -> uint16_t {
-            return numparser.ReadNum(buffer);
-        };
+  if (pHandler)
+  {
+    auto read = [&numparser, record](ser4cpp::rseq_t& buffer, uint32_t pos) -> uint16_t {
+      return numparser.ReadNum(buffer);
+    };
 
-        auto collection = CreateBufferedCollection<uint16_t>(buffer, count, read);
-        pHandler->OnHeader(PrefixHeader(record, count), collection);
-    }
+    auto collection = CreateBufferedCollection<uint16_t>(buffer, count, read);
+    pHandler->OnHeader(PrefixHeader(record, count), collection);
+  }
 
-    buffer.advance(SIZE);
-    return ParseResult::OK;
+  buffer.advance(SIZE);
+  return ParseResult::OK;
 }
 
 ParseResult CountIndexParser::ParseIndexPrefixedOctetData(ser4cpp::rseq_t& buffer,
-                                                          const HeaderRecord& record,
-                                                          const NumParser& numparser,
-                                                          uint32_t count,
-                                                          Logger* pLogger,
-                                                          IAPDUHandler* pHandler)
+    const HeaderRecord& record,
+    const NumParser& numparser,
+    uint32_t count,
+    Logger* pLogger,
+    IAPDUHandler* pHandler)
 {
-    if (record.variation == 0)
-    {
-        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Octet string variation 0 may only be used in requests");
-        return ParseResult::INVALID_OBJECT;
-    }
+  if (record.variation == 0)
+  {
+    SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Octet string variation 0 may only be used in requests");
+    return ParseResult::INVALID_OBJECT;
+  }
 
-    const uint32_t TOTAL_SIZE = count * (numparser.NumBytes() + record.variation);
+  const uint32_t TOTAL_SIZE = count * (numparser.NumBytes() + record.variation);
 
-    if (buffer.length() < TOTAL_SIZE)
-    {
-        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified bitfield objects");
-        return ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS;
-    }
+  if (buffer.length() < TOTAL_SIZE)
+  {
+    SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified bitfield objects");
+    return ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS;
+  }
 
-    if (pHandler)
-    {
-        auto read = [&numparser, record](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<OctetString> {
-            auto index = numparser.ReadNum(buffer);
-            const auto octetStringSlice = buffer.take(record.variation);
-            OctetString octets(Buffer(octetStringSlice, octetStringSlice.length()));
-            buffer.advance(record.variation);
-            return WithIndex(octets, index);
-        };
+  if (pHandler)
+  {
+    auto read = [&numparser, record](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<OctetString> {
+      auto index = numparser.ReadNum(buffer);
+      const auto octetStringSlice = buffer.take(record.variation);
+      OctetString octets(Buffer(octetStringSlice, octetStringSlice.length()));
+      buffer.advance(record.variation);
+      return WithIndex(octets, index);
+    };
 
-        auto collection = CreateBufferedCollection<Indexed<OctetString>>(buffer, count, read);
-        pHandler->OnHeader(PrefixHeader(record, count), collection);
-    }
+    auto collection = CreateBufferedCollection<Indexed<OctetString>>(buffer, count, read);
+    pHandler->OnHeader(PrefixHeader(record, count), collection);
+  }
 
-    buffer.advance(TOTAL_SIZE);
-    return ParseResult::OK;
+  buffer.advance(TOTAL_SIZE);
+  return ParseResult::OK;
 }
 
 } // namespace opendnp3

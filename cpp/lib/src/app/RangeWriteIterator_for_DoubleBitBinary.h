@@ -86,33 +86,33 @@ typedef struct
 
 ////private:
 ////    typename IndexType::type_t start;
-    uint8_t start;
+  uint8_t start;
 //    Serializer<WriteType> serializer;
-    Serializer_for_DoubleBitBinary  serializer;
-    uint32_t count;
+  Serializer_for_DoubleBitBinary  serializer;
+  uint32_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    //ser4cpp::wseq_t range; // make a copy to record where we write the range
-    WSeq_for_Uint16_t range; // make a copy to record where we write the range
+  //ser4cpp::wseq_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
 
 //    ser4cpp::wseq_t* pPosition;
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t* pPosition;
 } RangeWriteIterator_for_UInt8_DoubleBitBinary;
 
-   boolean IsValid_in_RangeWriteIterator_for_UInt8_DoubleBitBinary(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary);
-    boolean Write_in_RangeWriteIterator_for_UInt8_DoubleBitBinary(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary,
-                                                         DoubleBitBinary* value);
-    void RangeWriteIterator_for_UInt8_DoubleBitBinary_destr_RangeWriteIterator_for_UInt8_DoubleBitBinary(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary);
-    void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver2(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary,
+boolean IsValid_in_RangeWriteIterator_for_UInt8_DoubleBitBinary(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary);
+boolean Write_in_RangeWriteIterator_for_UInt8_DoubleBitBinary(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary,
+    DoubleBitBinary* value);
+void RangeWriteIterator_for_UInt8_DoubleBitBinary_destr_RangeWriteIterator_for_UInt8_DoubleBitBinary(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary);
+void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver2(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary,
 //                   typename IndexType::type_t start_,
-                   uint8_t start_,
+    uint8_t start_,
 //                   const Serializer<WriteType>& serializer,
-                   Serializer_for_DoubleBitBinary*  serializer,
+    Serializer_for_DoubleBitBinary*  serializer,
 //                   ser4cpp::wseq_t& position)
-                   WSeq_for_Uint16_t* position);
-    void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver1(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary);
-     RangeWriteIterator_for_UInt8_DoubleBitBinary Null_in_RangeWriteIterator_for_UInt8_DoubleBitBinary_static(void);
+    WSeq_for_Uint16_t* position);
+void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver1(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary);
+RangeWriteIterator_for_UInt8_DoubleBitBinary Null_in_RangeWriteIterator_for_UInt8_DoubleBitBinary_static(void);
 //-------------------Uint8---------------------------------------------------
 //-------------------Uint16---------------------------------------------------
 ////namespace opendnp3
@@ -177,33 +177,33 @@ typedef struct
 
 ////private:
 ////    typename IndexType::type_t start;
-    uint16_t start;
+  uint16_t start;
 //    Serializer<WriteType> serializer;
-    Serializer_for_DoubleBitBinary  serializer;
-    uint32_t count;
+  Serializer_for_DoubleBitBinary  serializer;
+  uint32_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    //ser4cpp::wseq_t range; // make a copy to record where we write the range
-    WSeq_for_Uint16_t range; // make a copy to record where we write the range
+  //ser4cpp::wseq_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
 
 //    ser4cpp::wseq_t* pPosition;
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t* pPosition;
 } RangeWriteIterator_for_UInt16_DoubleBitBinary;
 
-   boolean IsValid_in_RangeWriteIterator_for_UInt16_DoubleBitBinary(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary);
-    boolean Write_in_RangeWriteIterator_for_UInt16_DoubleBitBinary(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary,
-                                                         DoubleBitBinary* value);
-    void RangeWriteIterator_for_UInt16_DoubleBitBinary_destr_RangeWriteIterator_for_UInt16_DoubleBitBinary(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary);
-    void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver2(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary,
+boolean IsValid_in_RangeWriteIterator_for_UInt16_DoubleBitBinary(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary);
+boolean Write_in_RangeWriteIterator_for_UInt16_DoubleBitBinary(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary,
+    DoubleBitBinary* value);
+void RangeWriteIterator_for_UInt16_DoubleBitBinary_destr_RangeWriteIterator_for_UInt16_DoubleBitBinary(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary);
+void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver2(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary,
 //                   typename IndexType::type_t start_,
-                   uint16_t start_,
+    uint16_t start_,
 //                   const Serializer<WriteType>& serializer,
-                   Serializer_for_DoubleBitBinary*  serializer,
+    Serializer_for_DoubleBitBinary*  serializer,
 //                   ser4cpp::wseq_t& position)
-                   WSeq_for_Uint16_t* position);
-    void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver1(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary);
-     RangeWriteIterator_for_UInt16_DoubleBitBinary Null_in_RangeWriteIterator_for_UInt16_DoubleBitBinary_static(void);
+    WSeq_for_Uint16_t* position);
+void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver1(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary);
+RangeWriteIterator_for_UInt16_DoubleBitBinary Null_in_RangeWriteIterator_for_UInt16_DoubleBitBinary_static(void);
 //-------------------Uint16---------------------------------------------------
 
 

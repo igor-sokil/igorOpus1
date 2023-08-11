@@ -20,7 +20,7 @@
 ////#include "opendnp3/link/Addresses.h"
 
 ////#include "link/LinkLayerConstants.h"
-#include "header.h" 
+#include "header.h"
 #include "Addresses.h"
 
 #include "LinkLayerConstants.h"
@@ -30,29 +30,29 @@
 
 boolean IsBroadcast_in_Addresses(Addresses *pAddresses)
 {
-    return pAddresses->destination == LinkBroadcastAddress_DontConfirm
-        || pAddresses->destination == LinkBroadcastAddress_ShallConfirm
-        || pAddresses->destination == LinkBroadcastAddress_OptionalConfirm;
+  return pAddresses->destination == LinkBroadcastAddress_DontConfirm
+         || pAddresses->destination == LinkBroadcastAddress_ShallConfirm
+         || pAddresses->destination == LinkBroadcastAddress_OptionalConfirm;
 }
 
 ////} // namespace opendnp3
 
-  void Addresses_in_AddressesOver1(Addresses *pAddresses)
+void Addresses_in_AddressesOver1(Addresses *pAddresses)
 {
   pAddresses->source = 0;
   pAddresses->destination = 0;
 }
 
-  void Addresses_in_AddressesOver2(Addresses *pAddresses, uint16_t source, uint16_t destination)
+void Addresses_in_AddressesOver2(Addresses *pAddresses, uint16_t source, uint16_t destination)
 {
   pAddresses->source = source;
   pAddresses->destination = destination;
 }
 
-    Addresses Reverse_in_Addresses(Addresses *pAddresses) 
+Addresses Reverse_in_Addresses(Addresses *pAddresses)
 {
-    Addresses aAddresses;
+  Addresses aAddresses;
 ////    return Addresses(this->destination, this->source);
-    Addresses_in_AddressesOver2(&aAddresses, pAddresses->destination, pAddresses->source);
-    return aAddresses;
+  Addresses_in_AddressesOver2(&aAddresses, pAddresses->destination, pAddresses->source);
+  return aAddresses;
 }

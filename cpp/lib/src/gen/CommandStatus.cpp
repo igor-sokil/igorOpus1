@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -45,48 +45,48 @@ CommandStatus_uint8_t from_type_in_CommandStatusSpec(uint8_t arg)
 {
   switch(arg)
   {
-    case(0):
-      return CommandStatus_SUCCESS;
-    case(1):
-      return CommandStatus_TIMEOUT;
-    case(2):
-      return CommandStatus_NO_SELECT;
-    case(3):
-      return CommandStatus_FORMAT_ERROR;
-    case(4):
-      return CommandStatus_NOT_SUPPORTED;
-    case(5):
-      return CommandStatus_ALREADY_ACTIVE;
-    case(6):
-      return CommandStatus_HARDWARE_ERROR;
-    case(7):
-      return CommandStatus_LOCAL;
-    case(8):
-      return CommandStatus_TOO_MANY_OPS;
-    case(9):
-      return CommandStatus_NOT_AUTHORIZED;
-    case(10):
-      return CommandStatus_AUTOMATION_INHIBIT;
-    case(11):
-      return CommandStatus_PROCESSING_LIMITED;
-    case(12):
-      return CommandStatus_OUT_OF_RANGE;
-    case(13):
-      return CommandStatus_DOWNSTREAM_LOCAL;
-    case(14):
-      return CommandStatus_ALREADY_COMPLETE;
-    case(15):
-      return CommandStatus_BLOCKED;
-    case(16):
-      return CommandStatus_CANCELLED;
-    case(17):
-      return CommandStatus_BLOCKED_OTHER_MASTER;
-    case(18):
-      return CommandStatus_DOWNSTREAM_FAIL;
-    case(126):
-      return CommandStatus_NON_PARTICIPATING;
-    default:
-      return CommandStatus_UNDEFINED;
+  case(0):
+    return CommandStatus_SUCCESS;
+  case(1):
+    return CommandStatus_TIMEOUT;
+  case(2):
+    return CommandStatus_NO_SELECT;
+  case(3):
+    return CommandStatus_FORMAT_ERROR;
+  case(4):
+    return CommandStatus_NOT_SUPPORTED;
+  case(5):
+    return CommandStatus_ALREADY_ACTIVE;
+  case(6):
+    return CommandStatus_HARDWARE_ERROR;
+  case(7):
+    return CommandStatus_LOCAL;
+  case(8):
+    return CommandStatus_TOO_MANY_OPS;
+  case(9):
+    return CommandStatus_NOT_AUTHORIZED;
+  case(10):
+    return CommandStatus_AUTOMATION_INHIBIT;
+  case(11):
+    return CommandStatus_PROCESSING_LIMITED;
+  case(12):
+    return CommandStatus_OUT_OF_RANGE;
+  case(13):
+    return CommandStatus_DOWNSTREAM_LOCAL;
+  case(14):
+    return CommandStatus_ALREADY_COMPLETE;
+  case(15):
+    return CommandStatus_BLOCKED;
+  case(16):
+    return CommandStatus_CANCELLED;
+  case(17):
+    return CommandStatus_BLOCKED_OTHER_MASTER;
+  case(18):
+    return CommandStatus_DOWNSTREAM_FAIL;
+  case(126):
+    return CommandStatus_NON_PARTICIPATING;
+  default:
+    return CommandStatus_UNDEFINED;
   }
 }
 

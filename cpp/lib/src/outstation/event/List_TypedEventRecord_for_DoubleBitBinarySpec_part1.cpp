@@ -12,7 +12,7 @@ void List_TypedEventRecord_for_DoubleBitBinarySpec_in_List_TypedEventRecord_for_
   pList_TypedEventRecord_for_DoubleBitBinarySpec->free = NULL;
   for(int i=0; i<SIZE_TypedEventRecord_for_DoubleBitBinarySpec; i++)
   {
-   Node_TypedEventRecord_for_DoubleBitBinarySpec_in_Node_TypedEventRecord_for_DoubleBitBinarySpec(&((pList_TypedEventRecord_for_DoubleBitBinarySpec->underlying).buffer[i]));
+    Node_TypedEventRecord_for_DoubleBitBinarySpec_in_Node_TypedEventRecord_for_DoubleBitBinarySpec(&((pList_TypedEventRecord_for_DoubleBitBinarySpec->underlying).buffer[i]));
   }
 }
 

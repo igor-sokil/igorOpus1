@@ -80,11 +80,11 @@ typedef struct
 ////    IINField ProcessIndexPrefixOneByte(const HeaderRecord& record,
 ////                                       const ICollection<Indexed<AnalogOutputDouble64>>& meas);
 
-    ICommandAction* pCommandAction;
-    uint32_t numRequests;
-    uint32_t numSuccess;
-    uint32_t maxCommands;
-    HeaderWriter* pWriter;
+  ICommandAction* pCommandAction;
+  uint32_t numRequests;
+  uint32_t numSuccess;
+  uint32_t maxCommands;
+  HeaderWriter* pWriter;
 
 ////    template<class T> IINField ProcessAny(const HeaderRecord& record, const ICollection<Indexed<T>>& meas);
 ////
@@ -102,70 +102,70 @@ typedef struct
 ////    template<class Target> CommandStatus ProcessCommand(const Target& command, uint16_t index);
 } CommandResponseHandler;
 
-   void CommandResponseHandler_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, uint32_t maxCommands_, ICommandAction* pCommandAction_, HeaderWriter* pWriter_);
-    boolean AllCommandsSuccessful_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler);
+void CommandResponseHandler_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, uint32_t maxCommands_, ICommandAction* pCommandAction_, HeaderWriter* pWriter_);
+boolean AllCommandsSuccessful_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler);
 
-    boolean IsAllowed_in_CommandResponseHandler_override(void *, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+boolean IsAllowed_in_CommandResponseHandler_override(void *, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 
-    IINField ProcessHeader_PrefixHeader_for_ControlRelayOutputBlock_in_CommandResponseHandler_override(void *,
-                                       PrefixHeader* header,
-                                   ICollection_Indexed_for_ControlRelayOutputBlock* meas);
-    IINField ProcessHeader_PrefixHeader_for_AnalogOutputInt16_in_CommandResponseHandler_override(void*, 
-                                       PrefixHeader* header,
-                                    ICollection_Indexed_for_AnalogOutputInt16* meas);
-    IINField ProcessHeader_PrefixHeader_for_AnalogOutputInt32_in_CommandResponseHandler_override(void *, 
-                                       PrefixHeader* header,
-                                   ICollection_Indexed_for_AnalogOutputInt32* meas);
-    IINField ProcessHeader_PrefixHeader_for_AnalogOutputFloat32_in_CommandResponseHandler_override(void*,
-                                       PrefixHeader* header,
-                                  ICollection_Indexed_for_AnalogOutputFloat32* meas);
-    IINField ProcessHeader_PrefixHeader_for_AnalogOutputDouble64_in_CommandResponseHandler_override(void *,
-                                       PrefixHeader* header,
-                                    ICollection_Indexed_for_AnalogOutputDouble64* meas);
+IINField ProcessHeader_PrefixHeader_for_ControlRelayOutputBlock_in_CommandResponseHandler_override(void *,
+    PrefixHeader* header,
+    ICollection_Indexed_for_ControlRelayOutputBlock* meas);
+IINField ProcessHeader_PrefixHeader_for_AnalogOutputInt16_in_CommandResponseHandler_override(void*,
+    PrefixHeader* header,
+    ICollection_Indexed_for_AnalogOutputInt16* meas);
+IINField ProcessHeader_PrefixHeader_for_AnalogOutputInt32_in_CommandResponseHandler_override(void *,
+    PrefixHeader* header,
+    ICollection_Indexed_for_AnalogOutputInt32* meas);
+IINField ProcessHeader_PrefixHeader_for_AnalogOutputFloat32_in_CommandResponseHandler_override(void*,
+    PrefixHeader* header,
+    ICollection_Indexed_for_AnalogOutputFloat32* meas);
+IINField ProcessHeader_PrefixHeader_for_AnalogOutputDouble64_in_CommandResponseHandler_override(void *,
+    PrefixHeader* header,
+    ICollection_Indexed_for_AnalogOutputDouble64* meas);
 
-    IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                           HeaderRecord* record,
-                                       ICollection_Indexed_for_ControlRelayOutputBlock* meas);
-    IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_AnalogOutputInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                           HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt16* meas);
-    IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_AnalogOutputInt32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                           HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt32* meas);
-   IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                           HeaderRecord* record,
-                                       ICollection_Indexed_for_AnalogOutputFloat32* meas);
-    IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_AnalogOutputDouble64_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                         HeaderRecord* record,
-                                        ICollection_Indexed_for_AnalogOutputDouble64* meas);
+IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_ControlRelayOutputBlock* meas);
+IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_AnalogOutputInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt16* meas);
+IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_AnalogOutputInt32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt32* meas);
+IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_AnalogOutputFloat32* meas);
+IINField ProcessIndexPrefixTwoByte_HeaderRecord_for_AnalogOutputDouble64_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_AnalogOutputDouble64* meas);
 
-    IINField ProcessIndexPrefixOneByte_HeaderRecord_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                            HeaderRecord* record,
-                                        ICollection_Indexed_for_ControlRelayOutputBlock* meas);
-    IINField ProcessIndexPrefixOneByte_HeaderRecord_for_AnalogOutputInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                            HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt16* meas);
-    IINField ProcessIndexPrefixOneByte_HeaderRecord_for_AnalogOutputInt32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                            HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt32* meas);
-    IINField ProcessIndexPrefixOneByte_HeaderRecord_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                            HeaderRecord* record,
-                                        ICollection_Indexed_for_AnalogOutputFloat32* meas);
-    IINField ProcessIndexPrefixOneByte_HeaderRecord_for_AnalogOutputDouble64_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                            HeaderRecord* record,
-                                        ICollection_Indexed_for_AnalogOutputDouble64* meas);
+IINField ProcessIndexPrefixOneByte_HeaderRecord_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_ControlRelayOutputBlock* meas);
+IINField ProcessIndexPrefixOneByte_HeaderRecord_for_AnalogOutputInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt16* meas);
+IINField ProcessIndexPrefixOneByte_HeaderRecord_for_AnalogOutputInt32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt32* meas);
+IINField ProcessIndexPrefixOneByte_HeaderRecord_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_AnalogOutputFloat32* meas);
+IINField ProcessIndexPrefixOneByte_HeaderRecord_for_AnalogOutputDouble64_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_AnalogOutputDouble64* meas);
 
-     IINField ProcessAny_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                               HeaderRecord* record, ICollection_Indexed_for_ControlRelayOutputBlock* meas);
-     IINField ProcessAny_for_AnalogOutputInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                               HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt16* meas);
-     IINField ProcessAny_for_AnalogOutputInt32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                               HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt32* meas);
-     IINField ProcessAny_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                               HeaderRecord* record, ICollection_Indexed_for_AnalogOutputFloat32* meas);
-     IINField ProcessAny_for_AnalogOutputDouble64_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, 
-                                               HeaderRecord* record, ICollection_Indexed_for_AnalogOutputDouble64* meas);
+IINField ProcessAny_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_ControlRelayOutputBlock* meas);
+IINField ProcessAny_for_AnalogOutputInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt16* meas);
+IINField ProcessAny_for_AnalogOutputInt32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_AnalogOutputInt32* meas);
+IINField ProcessAny_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_AnalogOutputFloat32* meas);
+IINField ProcessAny_for_AnalogOutputDouble64_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    HeaderRecord* record, ICollection_Indexed_for_AnalogOutputDouble64* meas);
 
 //---------------------------------------ControlRelayOutputBlock----------------------------------------------------------
 ////template<class Target> CommandStatus CommandResponseHandler::ProcessCommand(const Target& command, uint16_t index)
- CommandStatus_uint8_t ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
-                               ControlRelayOutputBlock* command, uint16_t index);
+CommandStatus_uint8_t ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    ControlRelayOutputBlock* command, uint16_t index);
 
 ////template<class Target, class IndexType>
 ////IINField CommandResponseHandler::RespondToHeaderWithIterator(QualifierCode qualifier,
@@ -173,29 +173,29 @@ typedef struct
 ////                                                             const ICollection<Indexed<Target>>& values,
 ////                                                             PrefixedWriteIterator<IndexType, Target>* pIterator)
 IINField RespondToHeaderWithIterator_for_ControlRelayOutputBlock_uint16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
-                                         QualifierCode_uint8_t qualifier,
-                                         DNP3Serializer_for_ControlRelayOutputBlock* serializer,
-                                         ICollection_Indexed_for_ControlRelayOutputBlock* values,
-                                         PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock* pIterator
-                                        );
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_ControlRelayOutputBlock* serializer,
+    ICollection_Indexed_for_ControlRelayOutputBlock* values,
+    PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock* pIterator
+                                                                                                 );
 
 
-  void process_for_ControlRelayOutputBlock_in_CommandResponseHandler(
+void process_for_ControlRelayOutputBlock_in_CommandResponseHandler(
 //                                           CommandResponseHandler *pCommandResponseHandler,
-//                                      ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock, 
+//                                      ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock,
 //                                         PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock* pIterator,
 //                                           IINField* ret,
-                                            Indexed_for_ControlRelayOutputBlock* pair);
+  Indexed_for_ControlRelayOutputBlock* pair);
 
 ////template<class Target, class IndexType>
 ////IINField CommandResponseHandler::RespondToHeader(QualifierCode qualifier,
 ////                                                 const DNP3Serializer<Target>& serializer,
 ////                                                 const ICollection<Indexed<Target>>& values)
- IINField  RespondToHeader_for_ControlRelayOutputBlock_uint16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
-                                                      QualifierCode_uint8_t qualifier,
-                                                     DNP3Serializer_for_ControlRelayOutputBlock* serializer,
-                                                     ICollection_Indexed_for_ControlRelayOutputBlock* values
-                                                      );
+IINField  RespondToHeader_for_ControlRelayOutputBlock_uint16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_ControlRelayOutputBlock* serializer,
+    ICollection_Indexed_for_ControlRelayOutputBlock* values
+                                                                                      );
 
 //---------------------------------------ControlRelayOutputBlock----------------------------------------------------------
 ////

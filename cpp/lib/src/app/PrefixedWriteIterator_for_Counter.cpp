@@ -63,7 +63,7 @@ boolean Write_in_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_
     write_to_in_UInt16_static(pPrefixedWriteIterator_for_UInt16_Counter->pPosition, index);
 ////        serializer.write(value, *pPosition);
     write_in_Serializer_for_Counter(&(pPrefixedWriteIterator_for_UInt16_Counter->serializer), value,
-                                   pPrefixedWriteIterator_for_UInt16_Counter->pPosition);
+                                    pPrefixedWriteIterator_for_UInt16_Counter->pPosition);
     ++(pPrefixedWriteIterator_for_UInt16_Counter->count);
     return true;
   }

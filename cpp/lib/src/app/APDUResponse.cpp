@@ -33,20 +33,20 @@ void APDUResponse_in_APDUResponse(APDUResponse *pAPDUResponse, WSeq_for_Uint16_t
 ////    : APDUWrapper(buffer)
 ////    assert(buffer.length() >= 4);
 ////    remaining.advance(2);
-    advance_in_WSeq_for_Uint16_t(&(pAPDUResponse->aAPDUWrapper.remaining), 2);
+  advance_in_WSeq_for_Uint16_t(&(pAPDUResponse->aAPDUWrapper.remaining), 2);
 }
 
 void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications)
 {
-    (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[2] = indications->LSB;
-    (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[3] = indications->MSB;
+  (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[2] = indications->LSB;
+  (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[3] = indications->MSB;
 }
 
-IINField GetIIN_in_APDUResponse(APDUResponse *pAPDUResponse) 
+IINField GetIIN_in_APDUResponse(APDUResponse *pAPDUResponse)
 {
-    IINField iIINField;
-    IINField_in_IINFieldOver3(&iIINField, (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[2], (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[3]);
-    return iIINField;
+  IINField iIINField;
+  IINField_in_IINFieldOver3(&iIINField, (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[2], (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[3]);
+  return iIINField;
 }
 
 ////} // namespace opendnp3

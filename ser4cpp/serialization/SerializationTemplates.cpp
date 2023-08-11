@@ -2,48 +2,48 @@
 #include <math.h>
 #include "header.h"
 #include "SerializationTemplates.h"
-     float to_Float32_static(uint32_t value);
-    uint32_t to_uint32_static(float value);
+float to_Float32_static(uint32_t value);
+uint32_t to_uint32_static(float value);
 
 //---------------------------------------uint8_t-----------------------------------
 ////class UInt8
 ////{
 ////public:
-    boolean read_from_in_UInt8_static(RSeq_for_Uint16_t *input, uint8_t *out)
-    {
+boolean read_from_in_UInt8_static(RSeq_for_Uint16_t *input, uint8_t *out)
+{
 ////        if (input.length() < size_in_UInt8) return false;
-        if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt8) return false;
+  if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt8) return false;
 
-        *out = read_in_UInt8_static(input->buffer_);
+  *out = read_in_UInt8_static(input->buffer_);
 ////        input.advance(size);
-        advance_in_RSeq_for_Uint16_t(input, size_in_UInt8);
-        return true;
-    }
+  advance_in_RSeq_for_Uint16_t(input, size_in_UInt8);
+  return true;
+}
 
-    boolean write_to_in_UInt8_static(WSeq_for_Uint16_t *dest, uint8_t value)
-    {
+boolean write_to_in_UInt8_static(WSeq_for_Uint16_t *dest, uint8_t value)
+{
 ////        if (dest.length() < size) return false;
-        if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_UInt8) return false;
+  if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_UInt8) return false;
 
-        write_in_UInt8_static(dest->buffer_, value);
+  write_in_UInt8_static(dest->buffer_, value);
 ////        dest.advance(size);
-        advance_in_WSeq_for_Uint16_t(dest, size_in_UInt8);
-        return true;
-    }
+  advance_in_WSeq_for_Uint16_t(dest, size_in_UInt8);
+  return true;
+}
 
 
 ////    typedef uint8_t type_t;
 
 ////private:
-    uint8_t read_in_UInt8_static(uint8_t* start)
-    {
-        return (*start);
-    }
+uint8_t read_in_UInt8_static(uint8_t* start)
+{
+  return (*start);
+}
 
-    void write_in_UInt8_static(uint8_t* start, uint8_t value)
-    {
-        *(start) = value;
-    }
+void write_in_UInt8_static(uint8_t* start, uint8_t value)
+{
+  *(start) = value;
+}
 ////};
 //---------------------------------------uint8_t-----------------------------------
 
@@ -55,27 +55,27 @@
 ////    static_assert((B0 < sizeof(T))&& (B1 < sizeof(T))&& (B0 != B1), "bad config");
 
 ////public:
-    boolean write_to_in_UInt16_static(WSeq_for_Uint16_t *dest, uint16_t value)
-    {
+boolean write_to_in_UInt16_static(WSeq_for_Uint16_t *dest, uint16_t value)
+{
 //        if (dest.length() < size) return false;
-        if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_UInt16) return false;
+  if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_UInt16) return false;
 
-        write_in_UInt16_static(dest->buffer_, value);
+  write_in_UInt16_static(dest->buffer_, value);
 ////        dest.advance(size);
-        advance_in_WSeq_for_Uint16_t(dest, size_in_UInt16);
-        return true;
-    }
+  advance_in_WSeq_for_Uint16_t(dest, size_in_UInt16);
+  return true;
+}
 
-    boolean read_from_in_UInt16_static(RSeq_for_Uint16_t *input, uint16_t *out)
-    {
+boolean read_from_in_UInt16_static(RSeq_for_Uint16_t *input, uint16_t *out)
+{
 ////        if (input.length() < size) return false;
-        if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt16) return false;
+  if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt16) return false;
 
-        *out = read_in_UInt16_static(input->buffer_);
+  *out = read_in_UInt16_static(input->buffer_);
 ////        input.advance(size);
-        advance_in_RSeq_for_Uint16_t(input, size_in_UInt16);
-        return true;
-    }
+  advance_in_RSeq_for_Uint16_t(input, size_in_UInt16);
+  return true;
+}
 
 ////    typedef T type_t;
 
@@ -84,17 +84,17 @@
 ////    const static T min_value;
 
 ////private:
-    uint16_t read_in_UInt16_static(uint8_t* data)
-    {
+uint16_t read_in_UInt16_static(uint8_t* data)
+{
 ////        return (static_cast<T>(data[B0]) << 0) | (static_cast<T>(data[B1]) << 8);
-        return (((uint16_t)(data[0])) << 0) | (((uint16_t)(data[1])) << 8);
-    }
+  return (((uint16_t)(data[0])) << 0) | (((uint16_t)(data[1])) << 8);
+}
 
-    void write_in_UInt16_static(uint8_t* data, uint16_t value)
-    {
-        data[0] = (uint8_t)(value & 0xFF);
-        data[1] = (uint8_t)((value >> 8) & 0xFF);
-    }
+void write_in_UInt16_static(uint8_t* data, uint16_t value)
+{
+  data[0] = (uint8_t)(value & 0xFF);
+  data[1] = (uint8_t)((value >> 8) & 0xFF);
+}
 ////};
 
 //---------------------------------------uint16_t-----------------------------------
@@ -113,26 +113,26 @@
 ////    static_assert((B0 < sizeof(T))&& (B1 < sizeof(T))&& (B2 < sizeof(T))&& (B3 < sizeof(T)), "bad config");
 
 ////public:
-    boolean write_to_in_UInt32_static(WSeq_for_Uint16_t *dest, uint32_t value)
-    {
+boolean write_to_in_UInt32_static(WSeq_for_Uint16_t *dest, uint32_t value)
+{
 ////        if (dest.length() < size) return false;
-        if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_UInt32) return false;
+  if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_UInt32) return false;
 
-        write_in_UInt32_static(dest->buffer_, value);
+  write_in_UInt32_static(dest->buffer_, value);
 ////        dest.advance(size);
-        advance_in_WSeq_for_Uint16_t(dest, size_in_UInt32);
-        return true;
-    }
-    boolean read_from_in_UInt32_static(RSeq_for_Uint16_t *input, uint32_t *out)
-    {
+  advance_in_WSeq_for_Uint16_t(dest, size_in_UInt32);
+  return true;
+}
+boolean read_from_in_UInt32_static(RSeq_for_Uint16_t *input, uint32_t *out)
+{
 ////        if (input.length() < size) return false;
-        if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt32) return false;
+  if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt32) return false;
 
-        *out = read_in_UInt32_static(input->buffer_);
+  *out = read_in_UInt32_static(input->buffer_);
 ////        input.advance(size);
-        advance_in_RSeq_for_Uint16_t(input, size_in_UInt32);
-        return true;
-    }
+  advance_in_RSeq_for_Uint16_t(input, size_in_UInt32);
+  return true;
+}
 
 ////    typedef T type_t;
 
@@ -141,68 +141,68 @@
 ////    const static T min_value;
 
 ////private:
-    uint32_t read_in_UInt32_static(uint8_t* data)
-    {
-        return	(((uint32_t)(data[0])) << 0) |
-                (((uint32_t)(data[1])) << 8) |
-                (((uint32_t)(data[2])) << 16) |
-                (((uint32_t)(data[3])) << 24);
-    }
+uint32_t read_in_UInt32_static(uint8_t* data)
+{
+  return	(((uint32_t)(data[0])) << 0) |
+          (((uint32_t)(data[1])) << 8) |
+          (((uint32_t)(data[2])) << 16) |
+          (((uint32_t)(data[3])) << 24);
+}
 
-    void write_in_UInt32_static(uint8_t* data, uint32_t value)
-    {
-        data[0] = (uint8_t)(value & 0xFF);
-        data[1] = (uint8_t)((value >> 8) & 0xFF);
-        data[2] = (uint8_t)((value >> 16) & 0xFF);
-        data[3] = (uint8_t)((value >> 24) & 0xFF);
-    }
+void write_in_UInt32_static(uint8_t* data, uint32_t value)
+{
+  data[0] = (uint8_t)(value & 0xFF);
+  data[1] = (uint8_t)((value >> 8) & 0xFF);
+  data[2] = (uint8_t)((value >> 16) & 0xFF);
+  data[3] = (uint8_t)((value >> 24) & 0xFF);
+}
 //---------------------------------------UInt32_t-----------------------------------
 //---------------------------------------UInt48_t-----------------------------------
-    boolean read_from_in_UInt48_static(RSeq_for_Uint16_t *input, uint64_t *out)
-    {
+boolean read_from_in_UInt48_static(RSeq_for_Uint16_t *input, uint64_t *out)
+{
 ////        if (input.length() < size) return false;
-        if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt48) return false;
+  if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt48) return false;
 
-        *out = read_in_UInt48_static(input->buffer_);
+  *out = read_in_UInt48_static(input->buffer_);
 ////        input.advance(size);
-        advance_in_RSeq_for_Uint16_t(input, size_in_UInt48);
-        return true;
-    }
+  advance_in_RSeq_for_Uint16_t(input, size_in_UInt48);
+  return true;
+}
 
-    boolean write_to_in_UInt48_static(WSeq_for_Uint16_t *dest, uint64_t value)
-    {
+boolean write_to_in_UInt48_static(WSeq_for_Uint16_t *dest, uint64_t value)
+{
 ////        if (dest.length() < size) return false;
-        if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_UInt48) return false;
+  if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_UInt48) return false;
 
-        write_in_UInt48_static(dest->buffer_, value);
+  write_in_UInt48_static(dest->buffer_, value);
 ////        dest.advance(size);
-        advance_in_WSeq_for_Uint16_t(dest, size_in_UInt48);
-        return true;
-    }
+  advance_in_WSeq_for_Uint16_t(dest, size_in_UInt48);
+  return true;
+}
 
-    uint64_t read_in_UInt48_static(uint8_t* data)
-    {
-     return (uint64_t) ((((uint64_t)(data[0])) << 0) |
-                       (((uint64_t)(data[1])) << 8)  |
-                       (((uint64_t)(data[2])) << 16) |
-                       (((uint64_t)(data[3])) << 24) |
-                       (((uint64_t)(data[4])) << 32) |
-                       (((uint64_t)(data[5])) << 40));
-    }
+uint64_t read_in_UInt48_static(uint8_t* data)
+{
+  return (uint64_t) ((((uint64_t)(data[0])) << 0) |
+                     (((uint64_t)(data[1])) << 8)  |
+                     (((uint64_t)(data[2])) << 16) |
+                     (((uint64_t)(data[3])) << 24) |
+                     (((uint64_t)(data[4])) << 32) |
+                     (((uint64_t)(data[5])) << 40));
+}
 
-    void write_in_UInt48_static(uint8_t* data, uint64_t value)
-    {
-        if (value > 281474976710655ULL)
-        {
-            value = 281474976710655ULL;////UInt48Type(max_value);
-        }
-        data[0] = (uint8_t)(value & 0xFF);
-        data[1] = (uint8_t)((value >> 8) & 0xFF);
-        data[2] = (uint8_t)((value >> 16) & 0xFF);
-        data[3] = (uint8_t)((value >> 24) & 0xFF);
-        data[4] = (uint8_t)((value >> 32) & 0xFF);
-        data[5] = (uint8_t)((value >> 40) & 0xFF);
-    }
+void write_in_UInt48_static(uint8_t* data, uint64_t value)
+{
+  if (value > 281474976710655ULL)
+  {
+    value = 281474976710655ULL;////UInt48Type(max_value);
+  }
+  data[0] = (uint8_t)(value & 0xFF);
+  data[1] = (uint8_t)((value >> 8) & 0xFF);
+  data[2] = (uint8_t)((value >> 16) & 0xFF);
+  data[3] = (uint8_t)((value >> 24) & 0xFF);
+  data[4] = (uint8_t)((value >> 32) & 0xFF);
+  data[5] = (uint8_t)((value >> 40) & 0xFF);
+}
 /*
     inline static bool read_from(rseq_t& input, UInt48Type& out)
     {
@@ -255,141 +255,141 @@
 */
 //---------------------------------------UInt48_t-----------------------------------
 //---------------------------------------Float32-----------------------------------
-    boolean read_from_in_Float32_static(RSeq_for_Uint16_t *input, float *out)
+boolean read_from_in_Float32_static(RSeq_for_Uint16_t *input, float *out)
 {
-    {
-        uint32_t value;
+  {
+    uint32_t value;
 ////        if(UInt32::read_from(input, value))
-        if(read_from_in_UInt32_static(input, &value))
-        {
-            float temp = to_Float32_static(value);
-            *out = temp;
-            return true;
-        }
-        
-        return false;
+    if(read_from_in_UInt32_static(input, &value))
+    {
+      float temp = to_Float32_static(value);
+      *out = temp;
+      return true;
     }
+
+    return false;
+  }
 }
 
-     float to_Float32_static(uint32_t value)
-    {
-        // Extract the required values
-        boolean sign = (value & 0x80000000) != 0;
+float to_Float32_static(uint32_t value)
+{
+  // Extract the required values
+  boolean sign = (value & 0x80000000) != 0;
 ////        uint8_t exponent = static_cast<uint8_t>((value >> 23) & 0xFF);
-        uint8_t exponent = (uint8_t)((value >> 23) & 0xFF);
-        uint32_t mantissa = value & 0x7FFFFF;
+  uint8_t exponent = (uint8_t)((value >> 23) & 0xFF);
+  uint32_t mantissa = value & 0x7FFFFF;
 
-        // Check special cases
-        if(exponent == 0xFF)
-        {
-            if(mantissa != 0)
-            {
-                return 0.0;////std::numeric_limits<float>::quiet_NaN();
-            }
-            else
-            {
-                if(!sign)
-                {
-                    return 0.0;////std::numeric_limits<float>::infinity();
-                }
-                else
-                {
-                    return 0.0;////-std::numeric_limits<float>::infinity();
-                }
-                
-            }
-        }
-        if(exponent == 0 && mantissa == 0)
-        {
-            return 0.0f;
-        }
-
-        // Build the actual value
-////        auto weighted_mantissa = static_cast<float>(mantissa)/(uint32_t{1} << 23);
-        float weighted_mantissa = ((float)(mantissa))/(((uint32_t)1) << 23);
-        float result;
-        if(exponent == 0)
-        {
-////            result = std::ldexp(weighted_mantissa, 2 - (uint16_t{1} << 8));
-               result = ldexp( weighted_mantissa, 2 - (((uint16_t)1) << 8) );
-        }
-        else
-        {
-////            result = std::ldexp(1.0f + weighted_mantissa, exponent - 127);
-               result = ldexp( 1.0f + weighted_mantissa, exponent - 127 );
-        }
-
-        // Adjust the sign
-        if(sign)
-        {
-            result = -result;
-        }
-
-        return result;
-    }
-
-    boolean write_to_in_Float32_static(WSeq_for_Uint16_t* dest, float value)
+  // Check special cases
+  if(exponent == 0xFF)
+  {
+    if(mantissa != 0)
     {
+      return 0.0;////std::numeric_limits<float>::quiet_NaN();
+    }
+    else
+    {
+      if(!sign)
+      {
+        return 0.0;////std::numeric_limits<float>::infinity();
+      }
+      else
+      {
+        return 0.0;////-std::numeric_limits<float>::infinity();
+      }
+
+    }
+  }
+  if(exponent == 0 && mantissa == 0)
+  {
+    return 0.0f;
+  }
+
+  // Build the actual value
+////        auto weighted_mantissa = static_cast<float>(mantissa)/(uint32_t{1} << 23);
+  float weighted_mantissa = ((float)(mantissa))/(((uint32_t)1) << 23);
+  float result;
+  if(exponent == 0)
+  {
+////            result = std::ldexp(weighted_mantissa, 2 - (uint16_t{1} << 8));
+    result = ldexp( weighted_mantissa, 2 - (((uint16_t)1) << 8) );
+  }
+  else
+  {
+////            result = std::ldexp(1.0f + weighted_mantissa, exponent - 127);
+    result = ldexp( 1.0f + weighted_mantissa, exponent - 127 );
+  }
+
+  // Adjust the sign
+  if(sign)
+  {
+    result = -result;
+  }
+
+  return result;
+}
+
+boolean write_to_in_Float32_static(WSeq_for_Uint16_t* dest, float value)
+{
 ////        if (dest.length() < size) return false;
-        if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_Float32) return false;
+  if(length_in_HasLength_for_Uint16_t(&(dest->hHasLength)) < size_in_Float32) return false;
 
 ////        const auto uint32_value = to_uint32(value);
-        uint32_t uint32_value = to_uint32_static(value);
+  uint32_t uint32_value = to_uint32_static(value);
 ////        return UInt32::write_to(dest, uint32_value);
-        return write_to_in_UInt32_static(dest, uint32_value);
-    }
- 
-    uint32_t to_uint32_static(float value)
-    {
-    union FloatUnion
-    {
-        uint32_t bytes;
-        float f;
-    } floatUnion;
-        floatUnion.f = value;
-        uint8_t expon = (uint8_t)((floatUnion.bytes >> 23) & 0xFF);
-        boolean sign = (floatUnion.bytes & 0x80000000) != 0;
+  return write_to_in_UInt32_static(dest, uint32_value);
+}
 
-        uint32_t encoded_value = 0;
+uint32_t to_uint32_static(float value)
+{
+  union FloatUnion
+  {
+    uint32_t bytes;
+    float f;
+  } floatUnion;
+  floatUnion.f = value;
+  uint8_t expon = (uint8_t)((floatUnion.bytes >> 23) & 0xFF);
+  boolean sign = (floatUnion.bytes & 0x80000000) != 0;
+
+  uint32_t encoded_value = 0;
 
 ////        if (std::isnan(value))
 
-        if(expon == 0xFF)////((uint32_t)(value&0xFF000000)) == 0xFF000000)
-        {
-            // NaN has all exponent bit set to 1, and mantissa with a least a 1. Sign bit is ignored.
-            // Here, I use x86 qNaN (because libiec61850 simply cast the value into a double)
-            encoded_value = 0x7F800001;
-        }
+  if(expon == 0xFF)////((uint32_t)(value&0xFF000000)) == 0xFF000000)
+  {
+    // NaN has all exponent bit set to 1, and mantissa with a least a 1. Sign bit is ignored.
+    // Here, I use x86 qNaN (because libiec61850 simply cast the value into a double)
+    encoded_value = 0x7F800001;
+  }
 
 ////        else if (std::isinf(value))
 ////        {
-            // Infinite has all exponent bit set to 1, and mantissa filled with zeroes. Sign bit determines
-            // which infinite it represents
+  // Infinite has all exponent bit set to 1, and mantissa filled with zeroes. Sign bit determines
+  // which infinite it represents
 ////            encoded_value = 0x7F800000;
 ////        }
 
-        else if (value != 0.0f)
-        {
-            int integral_part;
+  else if (value != 0.0f)
+  {
+    int integral_part;
 ////            float fraction_part = std::frexp(std::abs(value), &integral_part);
-            float fraction_part = frexp( fabs(value), &integral_part );
+    float fraction_part = frexp( fabs(value), &integral_part );
 
-            uint16_t expon1 = integral_part + 126;
+    uint16_t expon1 = integral_part + 126;
 ////            encoded_value |= (static_cast<uint32_t>(exponent) & 0xFF) << 23;
 ////            encoded_value |= static_cast<uint32_t>(fraction_part * (uint32_t{1} << 24)) & 0x007FFFFF;
-            encoded_value |= (((uint32_t)(expon1)) & 0xFF) << 23;
-            encoded_value |= (uint32_t)(fraction_part * (((uint32_t)1) << 24)) & 0x007FFFFF;
-        }
+    encoded_value |= (((uint32_t)(expon1)) & 0xFF) << 23;
+    encoded_value |= (uint32_t)(fraction_part * (((uint32_t)1) << 24)) & 0x007FFFFF;
+  }
 
 ////        if (std::signbit(value))
-        if(sign)////((uint32_t)(value&0x80000000)) == 0x80000000)
-        {
+  if(sign)////((uint32_t)(value&0x80000000)) == 0x80000000)
+  {
 ////            encoded_value |= uint32_t{1} << 31;
-            encoded_value |= (((uint32_t)1) << 31);
-        }
+    encoded_value |= (((uint32_t)1) << 31);
+  }
 
-        return encoded_value;
-    }
+  return encoded_value;
+}
 
 //---------------------------------------Float32-----------------------------------
 

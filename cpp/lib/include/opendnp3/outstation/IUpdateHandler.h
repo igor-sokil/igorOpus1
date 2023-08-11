@@ -40,112 +40,112 @@
 typedef struct
 {
 ////public:
-    //virtual ~
-    void (*pIUpdateHandler_destr_IUpdateHandler)(void*);
+  //virtual ~
+  void (*pIUpdateHandler_destr_IUpdateHandler)(void*);
 
-    /**
-     * Update a Binary measurement
-     * @param meas measurement to be processed
-     * @param index index of the measurement
-     * @param mode Describes how event generation is handled for this method
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pUpdate_Binary_in_IUpdateHandler)(void*, Binary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+  /**
+   * Update a Binary measurement
+   * @param meas measurement to be processed
+   * @param index index of the measurement
+   * @param mode Describes how event generation is handled for this method
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pUpdate_Binary_in_IUpdateHandler)(void*, Binary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
-    /**
-     * Update a DoubleBitBinary measurement
-     * @param meas measurement to be processed
-     * @param index index of the measurement
-     * @param mode Describes how event generation is handled for this method
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pUpdate_DoubleBitBinary_in_IUpdateHandler)(void*, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+  /**
+   * Update a DoubleBitBinary measurement
+   * @param meas measurement to be processed
+   * @param index index of the measurement
+   * @param mode Describes how event generation is handled for this method
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pUpdate_DoubleBitBinary_in_IUpdateHandler)(void*, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
-    /**
-     * Update an Analog measurement
-     * @param meas measurement to be processed
-     * @param index index of the measurement
-     * @param mode Describes how event generation is handled for this method
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pUpdate_Analog_in_IUpdateHandler)(void*, Analog* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+  /**
+   * Update an Analog measurement
+   * @param meas measurement to be processed
+   * @param index index of the measurement
+   * @param mode Describes how event generation is handled for this method
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pUpdate_Analog_in_IUpdateHandler)(void*, Analog* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
-    /**
-     * Update a Counter measurement
-     * @param meas measurement to be processed
-     * @param index index of the measurement
-     * @param mode Describes how event generation is handled for this method
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pUpdate_Counter_in_IUpdateHandler)(void*, Counter* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+  /**
+   * Update a Counter measurement
+   * @param meas measurement to be processed
+   * @param index index of the measurement
+   * @param mode Describes how event generation is handled for this method
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pUpdate_Counter_in_IUpdateHandler)(void*, Counter* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
-    /**
-     * Freeze a Counter measurement
-     * @param index index of the measurement
-     * @param clear clear the original counter
-     * @param mode Describes how event generation is handled for this method
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pFreezeCounter_in_IUpdateHandler)(void*, uint16_t index, boolean clear, EventMode_uint8_t mode);//bool clear = false, EventMode mode = EventMode::Detect) = 0;
+  /**
+   * Freeze a Counter measurement
+   * @param index index of the measurement
+   * @param clear clear the original counter
+   * @param mode Describes how event generation is handled for this method
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pFreezeCounter_in_IUpdateHandler)(void*, uint16_t index, boolean clear, EventMode_uint8_t mode);//bool clear = false, EventMode mode = EventMode::Detect) = 0;
 
-    /**
-     * Update a BinaryOutputStatus measurement
-     * @param meas measurement to be processed
-     * @param index index of the measurement
-     * @param mode Describes how event generation is handled for this method
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pUpdate_BinaryOutputStatus_in_IUpdateHandler)(void*, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+  /**
+   * Update a BinaryOutputStatus measurement
+   * @param meas measurement to be processed
+   * @param index index of the measurement
+   * @param mode Describes how event generation is handled for this method
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pUpdate_BinaryOutputStatus_in_IUpdateHandler)(void*, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
-    /**
-     * Update a AnalogOutputStatus measurement
-     * @param meas measurement to be processed
-     * @param index index of the measurement
-     * @param mode Describes how event generation is handled for this method
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pUpdate_AnalogOutputStatus_in_IUpdateHandler)(void*, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+  /**
+   * Update a AnalogOutputStatus measurement
+   * @param meas measurement to be processed
+   * @param index index of the measurement
+   * @param mode Describes how event generation is handled for this method
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pUpdate_AnalogOutputStatus_in_IUpdateHandler)(void*, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
-    /**
-     * Update an octet string value
-     * @param meas measurement to be processed
-     * @param index index of the measurement
-     * @param mode Describes how event generation is handled for this method
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pUpdate_OctetString_in_IUpdateHandler)(void*, OctetString* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+  /**
+   * Update an octet string value
+   * @param meas measurement to be processed
+   * @param index index of the measurement
+   * @param mode Describes how event generation is handled for this method
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pUpdate_OctetString_in_IUpdateHandler)(void*, OctetString* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
-    /**
-     * Update a TimeAndInterval valueindex
-     * @param meas measurement to be processed
-     * @param index index of the measurement
-     * @return true if the value exists and it was updated
-     */
-    boolean (*pUpdate_TimeAndInterval_in_IUpdateHandler)(void*, TimeAndInterval* meas, uint16_t index);// = 0;
+  /**
+   * Update a TimeAndInterval valueindex
+   * @param meas measurement to be processed
+   * @param index index of the measurement
+   * @return true if the value exists and it was updated
+   */
+  boolean (*pUpdate_TimeAndInterval_in_IUpdateHandler)(void*, TimeAndInterval* meas, uint16_t index);// = 0;
 
-    /**
-     * Update the flags of a measurement without changing it's value
-     * @param type enumeration specifiy the type to change
-     * @param start the start index at which to begin changing flags
-     * @param stop the stop index at which to end changing flags
-     * @param flags the new value of the flags
-     */
-    boolean (*pModify_in_IUpdateHandler)(void*, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);// = 0;
+  /**
+   * Update the flags of a measurement without changing it's value
+   * @param type enumeration specifiy the type to change
+   * @param start the start index at which to begin changing flags
+   * @param stop the stop index at which to end changing flags
+   * @param flags the new value of the flags
+   */
+  boolean (*pModify_in_IUpdateHandler)(void*, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);// = 0;
 
   void* pParentPointer_in_IUpdateHandler;
 } IUpdateHandler;
 
-    void IUpdateHandler_destr_IUpdateHandler(IUpdateHandler*);
-    boolean Update_Binary_in_IUpdateHandler(IUpdateHandler*, Binary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
-    boolean Update_DoubleBitBinary_in_IUpdateHandler(IUpdateHandler*, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
-    boolean Update_Analog_in_IUpdateHandler(IUpdateHandler*, Analog* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
-    boolean Update_Counter_in_IUpdateHandler(IUpdateHandler*, Counter* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
-    boolean FreezeCounter_in_IUpdateHandler(IUpdateHandler*, uint16_t index, boolean clear, EventMode_uint8_t mode);//bool clear = false, EventMode mode = EventMode::Detect) = 0;
-    boolean Update_BinaryOutputStatus_in_IUpdateHandler(IUpdateHandler*, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
-    boolean Update_AnalogOutputStatus_in_IUpdateHandler(IUpdateHandler*, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
-    boolean Update_OctetString_in_IUpdateHandler(IUpdateHandler*, OctetString* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
-    boolean Update_TimeAndInterval_in_IUpdateHandler(IUpdateHandler*, TimeAndInterval* meas, uint16_t index);// = 0;
-    boolean Modify_in_IUpdateHandler(IUpdateHandler*, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);// = 0;
+void IUpdateHandler_destr_IUpdateHandler(IUpdateHandler*);
+boolean Update_Binary_in_IUpdateHandler(IUpdateHandler*, Binary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+boolean Update_DoubleBitBinary_in_IUpdateHandler(IUpdateHandler*, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+boolean Update_Analog_in_IUpdateHandler(IUpdateHandler*, Analog* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+boolean Update_Counter_in_IUpdateHandler(IUpdateHandler*, Counter* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+boolean FreezeCounter_in_IUpdateHandler(IUpdateHandler*, uint16_t index, boolean clear, EventMode_uint8_t mode);//bool clear = false, EventMode mode = EventMode::Detect) = 0;
+boolean Update_BinaryOutputStatus_in_IUpdateHandler(IUpdateHandler*, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+boolean Update_AnalogOutputStatus_in_IUpdateHandler(IUpdateHandler*, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+boolean Update_OctetString_in_IUpdateHandler(IUpdateHandler*, OctetString* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+boolean Update_TimeAndInterval_in_IUpdateHandler(IUpdateHandler*, TimeAndInterval* meas, uint16_t index);// = 0;
+boolean Modify_in_IUpdateHandler(IUpdateHandler*, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);// = 0;
 
 void* getParentPointer_in_IUpdateHandler(IUpdateHandler*);
 void  setParentPointer_in_IUpdateHandler(IUpdateHandler*, void*);

@@ -56,9 +56,9 @@
 ////    }
 ////};
 
-  boolean Apply_in_DownSampling_for_uint32(double src, uint32_t *target);
-  boolean Apply_in_DownSampling_for_uint16(double src, uint16_t *target);
-  boolean Apply_in_DownSampling_for_Float32(double src, float *target);
+boolean Apply_in_DownSampling_for_uint32(double src, uint32_t *target);
+boolean Apply_in_DownSampling_for_uint16(double src, uint16_t *target);
+boolean Apply_in_DownSampling_for_Float32(double src, float *target);
 
 ////template<class Source, class Target>
 ////const Target DownSampling<Source, Target>::TARGET_MAX(std::numeric_limits<Target>::max());

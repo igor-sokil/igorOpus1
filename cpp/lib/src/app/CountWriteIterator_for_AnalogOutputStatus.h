@@ -86,23 +86,23 @@ typedef struct
 ////    typename CountType::type_t count;
 ////    Serializer<WriteType> serializer;
 
-    uint8_t count;
-    Serializer_for_AnalogOutputStatus serializer;
+  uint8_t count;
+  Serializer_for_AnalogOutputStatus serializer;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } CountWriteIterator_for_UInt8_AnalogOutputStatus;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_CountWriteIterator_for_UInt8_AnalogOutputStatus(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus);
-    boolean Write_in_CountWriteIterator_for_UInt8_AnalogOutputStatus(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus, AnalogOutputStatus *value);////const WriteType& value)
-    void CountWriteIterator_for_UInt8_AnalogOutputStatus_destr_CountWriteIterator_for_UInt8_AnalogOutputStatus(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus);
-    void CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver2(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus,
-                                            Serializer_for_AnalogOutputStatus *serializer, WSeq_for_Uint16_t *position);
-    void CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver1(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus);
-    CountWriteIterator_for_UInt8_AnalogOutputStatus Null_in_CountWriteIterator_for_UInt8_AnalogOutputStatus_static(void);
+boolean IsValid_in_CountWriteIterator_for_UInt8_AnalogOutputStatus(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus);
+boolean Write_in_CountWriteIterator_for_UInt8_AnalogOutputStatus(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus, AnalogOutputStatus *value);////const WriteType& value)
+void CountWriteIterator_for_UInt8_AnalogOutputStatus_destr_CountWriteIterator_for_UInt8_AnalogOutputStatus(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus);
+void CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver2(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus,
+    Serializer_for_AnalogOutputStatus *serializer, WSeq_for_Uint16_t *position);
+void CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver1(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus);
+CountWriteIterator_for_UInt8_AnalogOutputStatus Null_in_CountWriteIterator_for_UInt8_AnalogOutputStatus_static(void);
 //-------------------Uint8---------------------------------------------------
 //-------------------Uint16---------------------------------------------------
 
@@ -162,23 +162,23 @@ typedef struct
 ////    typename CountType::type_t count;
 ////    Serializer<WriteType> serializer;
 
-    uint16_t count;
-    Serializer_for_AnalogOutputStatus serializer;
+  uint16_t count;
+  Serializer_for_AnalogOutputStatus serializer;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } CountWriteIterator_for_UInt16_AnalogOutputStatus;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_CountWriteIterator_for_UInt16_AnalogOutputStatus(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus);
-    boolean Write_in_CountWriteIterator_for_UInt16_AnalogOutputStatus(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus, AnalogOutputStatus *value);////const WriteType& value)
-    void CountWriteIterator_for_UInt16_AnalogOutputStatus_destr_CountWriteIterator_for_UInt16_AnalogOutputStatus(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus);
-    void CountWriteIterator_for_UInt16_AnalogOutputStatus_in_CountWriteIterator_for_UInt16_AnalogOutputStatusOver2(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus,
-                                            Serializer_for_AnalogOutputStatus *serializer, WSeq_for_Uint16_t *position);
-    void CountWriteIterator_for_UInt16_AnalogOutputStatus_in_CountWriteIterator_for_UInt16_AnalogOutputStatusOver1(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus);
-    CountWriteIterator_for_UInt16_AnalogOutputStatus Null_in_CountWriteIterator_for_UInt16_AnalogOutputStatus_static(void);
+boolean IsValid_in_CountWriteIterator_for_UInt16_AnalogOutputStatus(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus);
+boolean Write_in_CountWriteIterator_for_UInt16_AnalogOutputStatus(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus, AnalogOutputStatus *value);////const WriteType& value)
+void CountWriteIterator_for_UInt16_AnalogOutputStatus_destr_CountWriteIterator_for_UInt16_AnalogOutputStatus(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus);
+void CountWriteIterator_for_UInt16_AnalogOutputStatus_in_CountWriteIterator_for_UInt16_AnalogOutputStatusOver2(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus,
+    Serializer_for_AnalogOutputStatus *serializer, WSeq_for_Uint16_t *position);
+void CountWriteIterator_for_UInt16_AnalogOutputStatus_in_CountWriteIterator_for_UInt16_AnalogOutputStatusOver1(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus);
+CountWriteIterator_for_UInt16_AnalogOutputStatus Null_in_CountWriteIterator_for_UInt16_AnalogOutputStatus_static(void);
 //-------------------Uint16---------------------------------------------------
 
 

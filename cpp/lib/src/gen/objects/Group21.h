@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -52,14 +52,14 @@
 ////  static GroupVariationID ID() { return GroupVariationID(21,0); }
 ////};
 
-  GroupVariationID ID_in_Group21Var0_static(void);
+GroupVariationID ID_in_Group21Var0_static(void);
 
-  GroupVariationID ID_in_Group21Var0_static(void)
+GroupVariationID ID_in_Group21Var0_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 0);
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 0);
 //// return GroupVariationID(21,0);
- return gGroupVariationID;
+  return gGroupVariationID;
 }
 
 // Frozen Counter - 32-bit With Flag
@@ -86,45 +86,45 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var1;
 } Group21Var1;
 
-  uint16_t Size_in_Group21Var1_static(void);
+uint16_t Size_in_Group21Var1_static(void);
 
- uint16_t Size_in_Group21Var1_static(void) 
+uint16_t Size_in_Group21Var1_static(void)
 {
- return 5; 
+  return 5;
 }
 
- void Group21Var1_in_Group21Var1(Group21Var1 *pGroup21Var1);
+void Group21Var1_in_Group21Var1(Group21Var1 *pGroup21Var1);
 
-  GroupVariationID ID_in_Group21Var1_static(void)
+GroupVariationID ID_in_Group21Var1_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 1);
-////  return GroupVariationID(21,1); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 1);
+////  return GroupVariationID(21,1);
+  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var1_static(RSeq_for_Uint16_t *, Group21Var1*);
- boolean Write_in_Group21Var1_static(Group21Var1*, WSeq_for_Uint16_t*);
+boolean Read_in_Group21Var1_static(RSeq_for_Uint16_t *, Group21Var1*);
+boolean Write_in_Group21Var1_static(Group21Var1*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group21Var1_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group21Var1_static(FrozenCounter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group21Var1_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group21Var1_static(FrozenCounter*, WSeq_for_Uint16_t*);
 
- DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var1_static(void)
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var1_static(void)
 {
-   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
-   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
-                   ID_in_Group21Var1_static(),
-                   Size_in_Group21Var1_static(),
+  DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+  DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+      ID_in_Group21Var1_static(),
+      Size_in_Group21Var1_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group21Var1_static,
+      &ReadTarget_in_Group21Var1_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group21Var1_static);
+      &WriteTarget_in_Group21Var1_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_FrozenCounter;
+  return dDNP3Serializer_for_FrozenCounter;
 }
 
-  const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var1 = StaticFrozenCounterVariation_Group21Var1;
+const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var1 = StaticFrozenCounterVariation_Group21Var1;
 
 // Frozen Counter - 16-bit With Flag
 ////struct Group21Var2
@@ -150,45 +150,45 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var2;
 } Group21Var2;
 
-  uint16_t Size_in_Group21Var2_static(void);
+uint16_t Size_in_Group21Var2_static(void);
 
- uint16_t Size_in_Group21Var2_static(void) 
+uint16_t Size_in_Group21Var2_static(void)
 {
- return 3; 
+  return 3;
 }
 
- void Group21Var2_in_Group21Var2(Group21Var2 *pGroup21Var2);
+void Group21Var2_in_Group21Var2(Group21Var2 *pGroup21Var2);
 
-  GroupVariationID ID_in_Group21Var2_static(void)
+GroupVariationID ID_in_Group21Var2_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 2);
-////  return GroupVariationID(21,2); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 2);
+////  return GroupVariationID(21,2);
+  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var2_static(RSeq_for_Uint16_t *, Group21Var2*);
- boolean Write_in_Group21Var2_static(Group21Var2*, WSeq_for_Uint16_t*);
+boolean Read_in_Group21Var2_static(RSeq_for_Uint16_t *, Group21Var2*);
+boolean Write_in_Group21Var2_static(Group21Var2*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group21Var2_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group21Var2_static(FrozenCounter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group21Var2_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group21Var2_static(FrozenCounter*, WSeq_for_Uint16_t*);
 
- DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var2_static(void)
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var2_static(void)
 {
-   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
-   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
-                   ID_in_Group21Var2_static(),
-                   Size_in_Group21Var2_static(),
+  DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+  DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+      ID_in_Group21Var2_static(),
+      Size_in_Group21Var2_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group21Var2_static,
+      &ReadTarget_in_Group21Var2_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group21Var2_static);
+      &WriteTarget_in_Group21Var2_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_FrozenCounter;
+  return dDNP3Serializer_for_FrozenCounter;
 }
 
-  const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var2 = StaticFrozenCounterVariation_Group21Var2;
+const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var2 = StaticFrozenCounterVariation_Group21Var2;
 
 // Frozen Counter - 32-bit With Flag and Time
 ////struct Group21Var5
@@ -215,45 +215,45 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var5;
 } Group21Var5;
 
-  uint16_t Size_in_Group21Var5_static(void);
+uint16_t Size_in_Group21Var5_static(void);
 
- uint16_t Size_in_Group21Var5_static(void) 
+uint16_t Size_in_Group21Var5_static(void)
 {
- return 11; 
+  return 11;
 }
 
- void Group21Var5_in_Group21Var5(Group21Var5 *pGroup21Var5);
+void Group21Var5_in_Group21Var5(Group21Var5 *pGroup21Var5);
 
-  GroupVariationID ID_in_Group21Var5_static(void)
+GroupVariationID ID_in_Group21Var5_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 5);
-////  return GroupVariationID(21,5); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 5);
+////  return GroupVariationID(21,5);
+  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var5_static(RSeq_for_Uint16_t *, Group21Var5*);
- boolean Write_in_Group21Var5_static(Group21Var5*, WSeq_for_Uint16_t*);
+boolean Read_in_Group21Var5_static(RSeq_for_Uint16_t *, Group21Var5*);
+boolean Write_in_Group21Var5_static(Group21Var5*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group21Var5_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group21Var5_static(FrozenCounter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group21Var5_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group21Var5_static(FrozenCounter*, WSeq_for_Uint16_t*);
 
- DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var5_static(void)
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var5_static(void)
 {
-   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
-   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
-                   ID_in_Group21Var5_static(),
-                   Size_in_Group21Var5_static(),
+  DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+  DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+      ID_in_Group21Var5_static(),
+      Size_in_Group21Var5_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group21Var5_static,
+      &ReadTarget_in_Group21Var5_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group21Var5_static);
+      &WriteTarget_in_Group21Var5_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_FrozenCounter;
+  return dDNP3Serializer_for_FrozenCounter;
 }
 
-  const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var5 = StaticFrozenCounterVariation_Group21Var5;
+const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var5 = StaticFrozenCounterVariation_Group21Var5;
 
 // Frozen Counter - 16-bit With Flag and Time
 ////struct Group21Var6
@@ -280,45 +280,45 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var6;
 } Group21Var6;
 
-  uint16_t Size_in_Group21Var6_static(void);
+uint16_t Size_in_Group21Var6_static(void);
 
- uint16_t Size_in_Group21Var6_static(void) 
+uint16_t Size_in_Group21Var6_static(void)
 {
- return 9; 
+  return 9;
 }
 
- void Group21Var6_in_Group21Var6(Group21Var6 *pGroup21Var6);
+void Group21Var6_in_Group21Var6(Group21Var6 *pGroup21Var6);
 
-  GroupVariationID ID_in_Group21Var6_static(void)
+GroupVariationID ID_in_Group21Var6_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 6);
-////  return GroupVariationID(21,6); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 6);
+////  return GroupVariationID(21,6);
+  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var6_static(RSeq_for_Uint16_t *, Group21Var6*);
- boolean Write_in_Group21Var6_static(Group21Var6*, WSeq_for_Uint16_t*);
+boolean Read_in_Group21Var6_static(RSeq_for_Uint16_t *, Group21Var6*);
+boolean Write_in_Group21Var6_static(Group21Var6*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group21Var6_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group21Var6_static(FrozenCounter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group21Var6_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group21Var6_static(FrozenCounter*, WSeq_for_Uint16_t*);
 
- DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var6_static(void)
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var6_static(void)
 {
-   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
-   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
-                   ID_in_Group21Var6_static(),
-                   Size_in_Group21Var6_static(),
+  DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+  DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+      ID_in_Group21Var6_static(),
+      Size_in_Group21Var6_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group21Var6_static,
+      &ReadTarget_in_Group21Var6_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group21Var6_static);
+      &WriteTarget_in_Group21Var6_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_FrozenCounter;
+  return dDNP3Serializer_for_FrozenCounter;
 }
 
-  const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var6 = StaticFrozenCounterVariation_Group21Var6;
+const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var6 = StaticFrozenCounterVariation_Group21Var6;
 
 // Frozen Counter - 32-bit Without Flag
 ////struct Group21Var9
@@ -343,45 +343,45 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var9;
 } Group21Var9;
 
-  uint16_t Size_in_Group21Var9_static(void);
+uint16_t Size_in_Group21Var9_static(void);
 
- uint16_t Size_in_Group21Var9_static(void) 
+uint16_t Size_in_Group21Var9_static(void)
 {
- return 4; 
+  return 4;
 }
 
- void Group21Var9_in_Group21Var9(Group21Var9 *pGroup21Var9);
+void Group21Var9_in_Group21Var9(Group21Var9 *pGroup21Var9);
 
-  GroupVariationID ID_in_Group21Var9_static(void)
+GroupVariationID ID_in_Group21Var9_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 9);
-////  return GroupVariationID(21,9); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 9);
+////  return GroupVariationID(21,9);
+  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var9_static(RSeq_for_Uint16_t *, Group21Var9*);
- boolean Write_in_Group21Var9_static(Group21Var9*, WSeq_for_Uint16_t*);
+boolean Read_in_Group21Var9_static(RSeq_for_Uint16_t *, Group21Var9*);
+boolean Write_in_Group21Var9_static(Group21Var9*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group21Var9_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group21Var9_static(FrozenCounter*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group21Var9_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group21Var9_static(FrozenCounter*, WSeq_for_Uint16_t*);
 
- DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var9_static(void)
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var9_static(void)
 {
-   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
-   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
-                   ID_in_Group21Var9_static(),
-                   Size_in_Group21Var9_static(),
+  DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+  DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+      ID_in_Group21Var9_static(),
+      Size_in_Group21Var9_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group21Var9_static,
+      &ReadTarget_in_Group21Var9_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group21Var9_static);
+      &WriteTarget_in_Group21Var9_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_FrozenCounter;
+  return dDNP3Serializer_for_FrozenCounter;
 }
 
-  const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var9 = StaticFrozenCounterVariation_Group21Var9;
+const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var9 = StaticFrozenCounterVariation_Group21Var9;
 
 // Frozen Counter - 16-bit Without Flag
 ////struct Group21Var10
@@ -406,45 +406,45 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var10;
 } Group21Var10;
 
-  uint16_t Size_in_Group21Var10_static(void);
+uint16_t Size_in_Group21Var10_static(void);
 
- uint16_t Size_in_Group21Var10_static(void) 
+uint16_t Size_in_Group21Var10_static(void)
 {
- return 2; 
+  return 2;
 }
 
- void Group21Var10_in_Group21Var10(Group21Var10 *pGroup21Var10);
+void Group21Var10_in_Group21Var10(Group21Var10 *pGroup21Var10);
 
-  GroupVariationID ID_in_Group21Var10_static(void)
+GroupVariationID ID_in_Group21Var10_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 10);
-////  return GroupVariationID(21,10); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 21, 10);
+////  return GroupVariationID(21,10);
+  return gGroupVariationID;
 }
 
- boolean Read_in_Group21Var10_static(RSeq_for_Uint16_t *, Group21Var10*);
- boolean Write_in_Group21Var10_static(Group21Var10*, WSeq_for_Uint16_t*);
+boolean Read_in_Group21Var10_static(RSeq_for_Uint16_t *, Group21Var10*);
+boolean Write_in_Group21Var10_static(Group21Var10*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group21Var10_static(RSeq_for_Uint16_t*, FrozenCounter*);
- boolean WriteTarget_in_Group21Var10_static(FrozenCounter*, WSeq_for_Uint16_t*);
-                                   
- DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var10_static(void)
+boolean ReadTarget_in_Group21Var10_static(RSeq_for_Uint16_t*, FrozenCounter*);
+boolean WriteTarget_in_Group21Var10_static(FrozenCounter*, WSeq_for_Uint16_t*);
+
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var10_static(void)
 {
-   DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
-   DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
-                   ID_in_Group21Var10_static(),
-                   Size_in_Group21Var10_static(),
+  DNP3Serializer_for_FrozenCounter dDNP3Serializer_for_FrozenCounter;
+  DNP3Serializer_for_FrozenCounter_in_DNP3Serializer_for_FrozenCounter(&dDNP3Serializer_for_FrozenCounter,
+      ID_in_Group21Var10_static(),
+      Size_in_Group21Var10_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   &ReadTarget_in_Group21Var10_static,
+      &ReadTarget_in_Group21Var10_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   &WriteTarget_in_Group21Var10_static);
+      &WriteTarget_in_Group21Var10_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_FrozenCounter;
+  return dDNP3Serializer_for_FrozenCounter;
 }
 
-  const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var10 = StaticFrozenCounterVariation_Group21Var10;
+const StaticFrozenCounterVariation_uint8_t svariation_in_Group21Var10 = StaticFrozenCounterVariation_Group21Var10;
 
 ////}
 

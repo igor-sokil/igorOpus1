@@ -26,7 +26,7 @@ boolean CalcTimeDifference_in_TimeSyncState(TimeSyncState *pTimeSyncState, AppSe
     return false;
 //boolean  operatorLT_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
 ////  if (now < pTimeSyncState->timeTimestamp)
- if(operatorLT_in_Timestamp(now, &(pTimeSyncState->timeTimestamp)))
+  if(operatorLT_in_Timestamp(now, &(pTimeSyncState->timeTimestamp)))
     return false;
 
 // void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, uint64_t value);

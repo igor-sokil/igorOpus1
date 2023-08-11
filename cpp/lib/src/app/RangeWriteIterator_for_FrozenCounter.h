@@ -86,33 +86,33 @@ typedef struct
 
 ////private:
 ////    typename IndexType::type_t start;
-    uint8_t start;
+  uint8_t start;
 //    Serializer<WriteType> serializer;
-    Serializer_for_FrozenCounter  serializer;
-    uint32_t count;
+  Serializer_for_FrozenCounter  serializer;
+  uint32_t count;
 
-    boolean isValid;
+  boolean isValid;
 
-    //ser4cpp::wseq_t range; // make a copy to record where we write the range
-    WSeq_for_Uint16_t range; // make a copy to record where we write the range
+  //ser4cpp::wseq_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
 
 //    ser4cpp::wseq_t* pPosition;
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t* pPosition;
 } RangeWriteIterator_for_UInt8_FrozenCounter;
 
-   boolean IsValid_in_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter);
-    boolean Write_in_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter,
-                                                         FrozenCounter* value);
-    void RangeWriteIterator_for_UInt8_FrozenCounter_destr_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter);
-    void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver2(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter,
+boolean IsValid_in_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter);
+boolean Write_in_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter,
+    FrozenCounter* value);
+void RangeWriteIterator_for_UInt8_FrozenCounter_destr_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter);
+void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver2(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter,
 //                   typename IndexType::type_t start_,
-                   uint8_t start_,
+    uint8_t start_,
 //                   const Serializer<WriteType>& serializer,
-                   Serializer_for_FrozenCounter*  serializer,
+    Serializer_for_FrozenCounter*  serializer,
 //                   ser4cpp::wseq_t& position)
-                   WSeq_for_Uint16_t* position);
-    void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver1(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter);
-     RangeWriteIterator_for_UInt8_FrozenCounter Null_in_RangeWriteIterator_for_UInt8_FrozenCounter_static(void);
+    WSeq_for_Uint16_t* position);
+void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver1(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter);
+RangeWriteIterator_for_UInt8_FrozenCounter Null_in_RangeWriteIterator_for_UInt8_FrozenCounter_static(void);
 //-------------------Uint8---------------------------------------------------
 
 

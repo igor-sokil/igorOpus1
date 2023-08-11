@@ -104,10 +104,10 @@ uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter
 //                               IEventWriteHandler* handler);// const = 0;
 ////    return value->type->WriteSome(iterator, lists, handler);
 //  return  ((IEventType*)(value->type))->pWriteSome(iteratorEv, lists, handler);
-return WriteSome_in_IEventType((IEventType*)(value->type), 
-                               iteratorEv,
-                               lists,
-                               handler);
+  return WriteSome_in_IEventType((IEventType*)(value->type),
+                                 iteratorEv,
+                                 lists,
+                                 handler);
 }
 
 ////} // namespace opendnp3

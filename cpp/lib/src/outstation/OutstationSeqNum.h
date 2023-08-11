@@ -37,8 +37,8 @@ typedef struct
 ////public:
 ////    OutstationSeqNum() {}
 
-    AppSeqNum num;
-    AppSeqNum confirmNum;
+  AppSeqNum num;
+  AppSeqNum confirmNum;
 } OutstationSeqNum;
 
 ////} // namespace opendnp3

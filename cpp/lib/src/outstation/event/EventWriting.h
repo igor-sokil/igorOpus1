@@ -43,11 +43,11 @@
 ////    static uint16_t WriteSome(event_iter_t& iterator, EventLists& lists, IEventWriteHandler& handler);
 ////};
 
-    uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler);
+uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler);
 
-    EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type);
+EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type);
 
-    uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler);
+uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler);
 ////} // namespace opendnp3
 
 #endif

@@ -31,7 +31,7 @@
  *  Strong typing for millisecond based time durations
  */
 ////class TimeDuration
-typedef struct 
+typedef struct
 {
 ////    friend class Timestamp;
 
@@ -46,7 +46,7 @@ typedef struct
 
 ////    static TimeDuration Seconds(int64_t seconds);
 
-////    static TimeDuration Minutes(int64_t minutes);    
+////    static TimeDuration Minutes(int64_t minutes);
 
 ////    TimeDuration();
 
@@ -63,7 +63,7 @@ typedef struct
 ////    bool operator>=(const TimeDuration& other) const;
 
 ////    std::chrono::steady_clock::duration value;
-    uint64_t duration_value;
+  uint64_t duration_value;
 
 ////private:
 ////    template<class T> static TimeDuration FromValue(int64_t value);
@@ -71,11 +71,11 @@ typedef struct
 ////    explicit TimeDuration(std::chrono::steady_clock::duration value);
 } TimeDuration;
 
- void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, uint64_t value);
-   TimeDuration Minutes_in_TimeDuration_static(int64_t minutes);
-   TimeDuration Seconds_in_TimeDuration_static(int64_t seconds);
-   TimeDuration FromValue_in_TimeDuration_static(int64_t value);
-   boolean operatorLT_in_TimeDuration(TimeDuration *pTimeDuration, TimeDuration* other);
+void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, uint64_t value);
+TimeDuration Minutes_in_TimeDuration_static(int64_t minutes);
+TimeDuration Seconds_in_TimeDuration_static(int64_t seconds);
+TimeDuration FromValue_in_TimeDuration_static(int64_t value);
+boolean operatorLT_in_TimeDuration(TimeDuration *pTimeDuration, TimeDuration* other);
 
 ////} // namespace opendnp3
 

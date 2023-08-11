@@ -72,35 +72,35 @@ typedef struct
 ////private:
   // sub-lists just act as type-specific storage
 ////    List<TypedEventRecord<BinarySpec>> binary;
-        List_TypedEventRecord_for_BinarySpec binary;
+  List_TypedEventRecord_for_BinarySpec binary;
 ////    List<TypedEventRecord<DoubleBitBinarySpec>> doubleBinary;
-        List_TypedEventRecord_for_DoubleBitBinarySpec doubleBinary;
+  List_TypedEventRecord_for_DoubleBitBinarySpec doubleBinary;
 ////    List<TypedEventRecord<AnalogSpec>> analog;
-        List_TypedEventRecord_for_AnalogSpec analog;
+  List_TypedEventRecord_for_AnalogSpec analog;
 ////    List<TypedEventRecord<CounterSpec>> counter;
-        List_TypedEventRecord_for_CounterSpec counter;
+  List_TypedEventRecord_for_CounterSpec counter;
 ////    List<TypedEventRecord<FrozenCounterSpec>> frozenCounter;
-        List_TypedEventRecord_for_FrozenCounterSpec frozenCounter;
+  List_TypedEventRecord_for_FrozenCounterSpec frozenCounter;
 ////    List<TypedEventRecord<BinaryOutputStatusSpec>> binaryOutputStatus;
-        List_TypedEventRecord_for_BinaryOutputStatusSpec binaryOutputStatus;
+  List_TypedEventRecord_for_BinaryOutputStatusSpec binaryOutputStatus;
 ////    List<TypedEventRecord<AnalogOutputStatusSpec>> analogOutputStatus;
-        List_TypedEventRecord_for_AnalogOutputStatusSpec analogOutputStatus;
+  List_TypedEventRecord_for_AnalogOutputStatusSpec analogOutputStatus;
 ////    List<TypedEventRecord<OctetStringSpec>> octetString;
-        List_TypedEventRecord_for_OctetStringSpec octetString;
+  List_TypedEventRecord_for_OctetStringSpec octetString;
 } EventLists;
 
-  void EventLists_in_EventLists(EventLists *pEventLists, EventBufferConfig* config);
+void EventLists_in_EventLists(EventLists *pEventLists, EventBufferConfig* config);
 
-  List_TypedEventRecord_for_BinarySpec*             GetList_for_BinarySpec_in_EventLists(EventLists *pEventLists);
-  List_TypedEventRecord_for_DoubleBitBinarySpec*    GetList_for_DoubleBitBinarySpec_in_EventLists(EventLists *pEventLists);
-  List_TypedEventRecord_for_AnalogSpec*             GetList_for_AnalogSpec_in_EventLists(EventLists *pEventLists);
-  List_TypedEventRecord_for_CounterSpec*            GetList_for_CounterSpec_in_EventLists(EventLists *pEventLists);
-  List_TypedEventRecord_for_FrozenCounterSpec*      GetList_for_FrozenCounterSpec_in_EventLists(EventLists *pEventLists);
-  List_TypedEventRecord_for_BinaryOutputStatusSpec* GetList_for_BinaryOutputStatusSpec_in_EventLists(EventLists *pEventLists);
-  List_TypedEventRecord_for_AnalogOutputStatusSpec* GetList_for_AnalogOutputStatusSpec_in_EventLists(EventLists *pEventLists);
-  List_TypedEventRecord_for_OctetStringSpec*        GetList_for_OctetStringSpec_in_EventLists(EventLists *pEventLists);
+List_TypedEventRecord_for_BinarySpec*             GetList_for_BinarySpec_in_EventLists(EventLists *pEventLists);
+List_TypedEventRecord_for_DoubleBitBinarySpec*    GetList_for_DoubleBitBinarySpec_in_EventLists(EventLists *pEventLists);
+List_TypedEventRecord_for_AnalogSpec*             GetList_for_AnalogSpec_in_EventLists(EventLists *pEventLists);
+List_TypedEventRecord_for_CounterSpec*            GetList_for_CounterSpec_in_EventLists(EventLists *pEventLists);
+List_TypedEventRecord_for_FrozenCounterSpec*      GetList_for_FrozenCounterSpec_in_EventLists(EventLists *pEventLists);
+List_TypedEventRecord_for_BinaryOutputStatusSpec* GetList_for_BinaryOutputStatusSpec_in_EventLists(EventLists *pEventLists);
+List_TypedEventRecord_for_AnalogOutputStatusSpec* GetList_for_AnalogOutputStatusSpec_in_EventLists(EventLists *pEventLists);
+List_TypedEventRecord_for_OctetStringSpec*        GetList_for_OctetStringSpec_in_EventLists(EventLists *pEventLists);
 
-  boolean IsAnyTypeFull_in_EventLists(EventLists *pEventLists);
+boolean IsAnyTypeFull_in_EventLists(EventLists *pEventLists);
 
 void  ForeachWhile_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
     EventLists* lists,

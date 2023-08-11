@@ -3,7 +3,7 @@
 
 boolean IsAllowed_in_IWhiteList(IWhiteList *pIWhiteList, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc)
 {
- return (pIWhiteList->pIsAllowed_in_IWhiteList)(pIWhiteList, headerCount, gv, qc);
+  return (pIWhiteList->pIsAllowed_in_IWhiteList)(pIWhiteList, headerCount, gv, qc);
 }
 
 void* getParentPointer_in_IWhiteList(IWhiteList* pIWhiteList)

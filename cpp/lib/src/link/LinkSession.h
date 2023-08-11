@@ -37,74 +37,74 @@ namespace opendnp3
 {
 
 class LinkSession final : public ILinkTx,
-                          public IChannelCallbacks,
-                          private IFrameSink,
-                          public std::enable_shared_from_this<LinkSession>,
-                          public IResource,
-                          private ISessionAcceptor,
-                          private Uncopyable
+    public IChannelCallbacks,
+    private IFrameSink,
+    public std::enable_shared_from_this<LinkSession>,
+    public IResource,
+    private ISessionAcceptor,
+    private Uncopyable
 {
 public:
-    static std::shared_ptr<LinkSession> Create(const Logger& logger,
-                                               uint64_t sessionid,
-                                               const std::shared_ptr<IResourceManager>& manager,
-                                               const std::shared_ptr<IListenCallbacks>& callbacks,
-                                               const std::shared_ptr<IAsyncChannel>& channel)
-    {
-        auto session = std::make_shared<LinkSession>(logger, sessionid, manager, callbacks, channel);
+  static std::shared_ptr<LinkSession> Create(const Logger& logger,
+      uint64_t sessionid,
+      const std::shared_ptr<IResourceManager>& manager,
+      const std::shared_ptr<IListenCallbacks>& callbacks,
+      const std::shared_ptr<IAsyncChannel>& channel)
+  {
+    auto session = std::make_shared<LinkSession>(logger, sessionid, manager, callbacks, channel);
 
-        session->Start();
+    session->Start();
 
-        return session;
-    }
+    return session;
+  }
 
-    LinkSession(const Logger& logger,
-                uint64_t sessionid,
-                std::shared_ptr<IResourceManager> manager,
-                std::shared_ptr<IListenCallbacks> callbacks,
-                const std::shared_ptr<IAsyncChannel>& channel);
+  LinkSession(const Logger& logger,
+              uint64_t sessionid,
+              std::shared_ptr<IResourceManager> manager,
+              std::shared_ptr<IListenCallbacks> callbacks,
+              const std::shared_ptr<IAsyncChannel>& channel);
 
-    // override IResource
-    void Shutdown() final;
+  // override IResource
+  void Shutdown() final;
 
-    void SetLogFilters(const opendnp3::LogLevels& filters);
+  void SetLogFilters(const opendnp3::LogLevels& filters);
 
 private:
-    void ShutdownImpl();
+  void ShutdownImpl();
 
-    // IChannelCallbacks
-    void OnReadComplete(const std::error_code& ec, size_t num) final;
+  // IChannelCallbacks
+  void OnReadComplete(const std::error_code& ec, size_t num) final;
 
-    void OnWriteComplete(const std::error_code& ec, size_t num) final;
+  void OnWriteComplete(const std::error_code& ec, size_t num) final;
 
-    // ILinkTx
-    void BeginTransmit(const ser4cpp::rseq_t& buffer, ILinkSession& session) final;
+  // ILinkTx
+  void BeginTransmit(const ser4cpp::rseq_t& buffer, ILinkSession& session) final;
 
-    // IFrameSink
-    bool OnFrame(const LinkHeaderFields& header, const ser4cpp::rseq_t& userdata) final;
+  // IFrameSink
+  bool OnFrame(const LinkHeaderFields& header, const ser4cpp::rseq_t& userdata) final;
 
-    // ISessionAcceptor
-    std::shared_ptr<IMasterSession> AcceptSession(const std::string& loggerid,
-                                                  std::shared_ptr<ISOEHandler> SOEHandler,
-                                                  std::shared_ptr<IMasterApplication> application,
-                                                  const MasterStackConfig& config) final;
+  // ISessionAcceptor
+  std::shared_ptr<IMasterSession> AcceptSession(const std::string& loggerid,
+      std::shared_ptr<ISOEHandler> SOEHandler,
+      std::shared_ptr<IMasterApplication> application,
+      const MasterStackConfig& config) final;
 
-    void Start();
+  void Start();
 
-    void BeginReceive();
+  void BeginReceive();
 
-    bool is_shutdown = false;
-    Logger logger;
-    const uint64_t session_id;
+  bool is_shutdown = false;
+  Logger logger;
+  const uint64_t session_id;
 
-    const std::shared_ptr<IResourceManager> manager;
-    const std::shared_ptr<IListenCallbacks> callbacks;
-    const std::shared_ptr<IAsyncChannel> channel;
+  const std::shared_ptr<IResourceManager> manager;
+  const std::shared_ptr<IListenCallbacks> callbacks;
+  const std::shared_ptr<IAsyncChannel> channel;
 
-    LinkLayerParser parser;
-    exe4cpp::Timer first_frame_timer;
+  LinkLayerParser parser;
+  exe4cpp::Timer first_frame_timer;
 
-    std::shared_ptr<MasterSessionStack> stack; // initialized to null
+  std::shared_ptr<MasterSessionStack> stack; // initialized to null
 };
 } // namespace opendnp3
 

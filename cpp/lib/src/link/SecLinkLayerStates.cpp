@@ -62,8 +62,8 @@ void* OnTxReady_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx)
 ////template<class NextState>
 void* OnResetLinkStates_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source)
 {
-UNUSED(ctx);
-UNUSED(source);
+  UNUSED(ctx);
+  UNUSED(source);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
@@ -75,8 +75,8 @@ UNUSED(source);
 ////template<class NextState>
 void* OnRequestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source)
 {
-UNUSED(ctx);
-UNUSED(source);
+  UNUSED(ctx);
+  UNUSED(source);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
@@ -88,9 +88,9 @@ UNUSED(source);
 ////template<class NextState>
 void* OnTestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
 {
-UNUSED(ctx);
-UNUSED(source);
-UNUSED(fcb);
+  UNUSED(ctx);
+  UNUSED(source);
+  UNUSED(fcb);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
@@ -103,11 +103,11 @@ UNUSED(fcb);
 void* OnConfirmedUserData_in_SecStateBase_override(void *pSecStateBase,
     LinkContext* ctx, uint16_t source, boolean fcb, boolean isBroadcast, Message* message)
 {
-UNUSED(ctx);
-UNUSED(source);
-UNUSED(fcb);
-UNUSED(isBroadcast);
-UNUSED(message);
+  UNUSED(ctx);
+  UNUSED(source);
+  UNUSED(fcb);
+  UNUSED(isBroadcast);
+  UNUSED(message);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
@@ -289,7 +289,7 @@ void SLLS_Reset_in_SLLS_Reset(SecStateBase *pSecStateBase)
 ////template<class NextState>
 SecStateBase* OnTxReady_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx)
 {
-UNUSED(ctx);
+  UNUSED(ctx);
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
   return &instance_SecStateBase;////SLLS_Reset::Instance();
 }
@@ -389,7 +389,7 @@ void SLLS_NotReset_in_SLLS_NotReset(SecStateBase *pSecStateBase)
 ////template<class NextState>
 SecStateBase* OnTxReady_in_SLLS_NotReset(SecStateBase *pSecStateBase, LinkContext* ctx)
 {
-UNUSED(ctx);
+  UNUSED(ctx);
   SLLS_NotReset_in_SLLS_NotReset(pSecStateBase);
   return &instance_SecStateBase;////SLLS_NotReset::Instance();
 }

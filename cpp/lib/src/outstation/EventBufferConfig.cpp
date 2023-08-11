@@ -28,10 +28,10 @@
 
 EventBufferConfig AllTypes_in_EventBufferConfig_static(uint16_t sizes)
 {
-    EventBufferConfig eEventBufferConfig;
-    EventBufferConfig_in_EventBufferConfigOver2(&eEventBufferConfig, sizes, sizes, sizes, sizes, sizes, sizes, sizes, sizes);
+  EventBufferConfig eEventBufferConfig;
+  EventBufferConfig_in_EventBufferConfigOver2(&eEventBufferConfig, sizes, sizes, sizes, sizes, sizes, sizes, sizes, sizes);
 ////    return EventBufferConfig(sizes, sizes, sizes, sizes, sizes, sizes, sizes, sizes);
-    return eEventBufferConfig;
+  return eEventBufferConfig;
 }
 
 void EventBufferConfig_in_EventBufferConfigOver1(EventBufferConfig *pEventBufferConfig)
@@ -40,40 +40,40 @@ void EventBufferConfig_in_EventBufferConfigOver1(EventBufferConfig *pEventBuffer
 }
 
 void EventBufferConfig_in_EventBufferConfigOver2(EventBufferConfig *pEventBufferConfig,
-                                     uint16_t maxBinaryEvents,
-                                     uint16_t maxDoubleBinaryEvents,
-                                     uint16_t maxAnalogEvents,
-                                     uint16_t maxCounterEvents,
-                                     uint16_t maxFrozenCounterEvents,
-                                     uint16_t maxBinaryOutputStatusEvents,
-                                     uint16_t maxAnalogOutputStatusEvents,
-                                     uint16_t maxOctetStringEvents)
+    uint16_t maxBinaryEvents,
+    uint16_t maxDoubleBinaryEvents,
+    uint16_t maxAnalogEvents,
+    uint16_t maxCounterEvents,
+    uint16_t maxFrozenCounterEvents,
+    uint16_t maxBinaryOutputStatusEvents,
+    uint16_t maxAnalogOutputStatusEvents,
+    uint16_t maxOctetStringEvents)
 {
-      pEventBufferConfig->maxBinaryEvents = maxBinaryEvents;
-      pEventBufferConfig->maxDoubleBinaryEvents = maxDoubleBinaryEvents;
-      pEventBufferConfig->maxAnalogEvents = maxAnalogEvents;
-      pEventBufferConfig->maxCounterEvents = maxCounterEvents;
-      pEventBufferConfig->maxFrozenCounterEvents = maxFrozenCounterEvents;
-      pEventBufferConfig->maxBinaryOutputStatusEvents = maxBinaryOutputStatusEvents;
-      pEventBufferConfig->maxAnalogOutputStatusEvents = maxAnalogOutputStatusEvents;
-      pEventBufferConfig->maxOctetStringEvents = maxOctetStringEvents;
+  pEventBufferConfig->maxBinaryEvents = maxBinaryEvents;
+  pEventBufferConfig->maxDoubleBinaryEvents = maxDoubleBinaryEvents;
+  pEventBufferConfig->maxAnalogEvents = maxAnalogEvents;
+  pEventBufferConfig->maxCounterEvents = maxCounterEvents;
+  pEventBufferConfig->maxFrozenCounterEvents = maxFrozenCounterEvents;
+  pEventBufferConfig->maxBinaryOutputStatusEvents = maxBinaryOutputStatusEvents;
+  pEventBufferConfig->maxAnalogOutputStatusEvents = maxAnalogOutputStatusEvents;
+  pEventBufferConfig->maxOctetStringEvents = maxOctetStringEvents;
 }
 
-uint32_t TotalEvents_in_EventBufferConfig(EventBufferConfig *pEventBufferConfig) 
+uint32_t TotalEvents_in_EventBufferConfig(EventBufferConfig *pEventBufferConfig)
 {
-qDebug()<<"pEventBufferConfig->maxBinaryEvents= "                    <<pEventBufferConfig->maxBinaryEvents;
-qDebug()<<";; pEventBufferConfig->maxDoubleBinaryEvents="            <<pEventBufferConfig->maxDoubleBinaryEvents;
-qDebug()<<";; pEventBufferConfig->maxAnalogEvents= "                 <<pEventBufferConfig->maxAnalogEvents;
-qDebug()<<";; pEventBufferConfig->maxCounterEvents= "                <<pEventBufferConfig->maxCounterEvents;
-qDebug()<<";; pEventBufferConfig->maxBinaryOutputStatusEvents= "     <<pEventBufferConfig->maxBinaryOutputStatusEvents;
-qDebug()<<";; pEventBufferConfig->maxAnalogOutputStatusEvents= "     <<pEventBufferConfig->maxAnalogOutputStatusEvents;
-qDebug()<<";; pEventBufferConfig->maxOctetStringEvents= "            <<pEventBufferConfig->maxOctetStringEvents;
+  qDebug()<<"pEventBufferConfig->maxBinaryEvents= "                    <<pEventBufferConfig->maxBinaryEvents;
+  qDebug()<<";; pEventBufferConfig->maxDoubleBinaryEvents="            <<pEventBufferConfig->maxDoubleBinaryEvents;
+  qDebug()<<";; pEventBufferConfig->maxAnalogEvents= "                 <<pEventBufferConfig->maxAnalogEvents;
+  qDebug()<<";; pEventBufferConfig->maxCounterEvents= "                <<pEventBufferConfig->maxCounterEvents;
+  qDebug()<<";; pEventBufferConfig->maxBinaryOutputStatusEvents= "     <<pEventBufferConfig->maxBinaryOutputStatusEvents;
+  qDebug()<<";; pEventBufferConfig->maxAnalogOutputStatusEvents= "     <<pEventBufferConfig->maxAnalogOutputStatusEvents;
+  qDebug()<<";; pEventBufferConfig->maxOctetStringEvents= "            <<pEventBufferConfig->maxOctetStringEvents;
 
-    return pEventBufferConfig->maxBinaryEvents + pEventBufferConfig->maxDoubleBinaryEvents +
-           pEventBufferConfig->maxAnalogEvents + pEventBufferConfig->maxCounterEvents + 
-           pEventBufferConfig->maxFrozenCounterEvents +
-           pEventBufferConfig->maxBinaryOutputStatusEvents + pEventBufferConfig->maxAnalogOutputStatusEvents +
-           pEventBufferConfig->maxOctetStringEvents;
+  return pEventBufferConfig->maxBinaryEvents + pEventBufferConfig->maxDoubleBinaryEvents +
+         pEventBufferConfig->maxAnalogEvents + pEventBufferConfig->maxCounterEvents +
+         pEventBufferConfig->maxFrozenCounterEvents +
+         pEventBufferConfig->maxBinaryOutputStatusEvents + pEventBufferConfig->maxAnalogOutputStatusEvents +
+         pEventBufferConfig->maxOctetStringEvents;
 }
 
 ////} // namespace opendnp3

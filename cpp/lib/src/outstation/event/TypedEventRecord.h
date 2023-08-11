@@ -56,21 +56,21 @@ typedef struct
 ////
 ////
 ////  typename T::meas_t value;
-      Binary value;
+  Binary value;
 ////  typename T::event_variation_t defaultVariation;
-                       event_variation_t_in_BinaryInfo  defaultVariation;
+  event_variation_t_in_BinaryInfo  defaultVariation;
 ////  typename T::event_variation_t selectedVariation;
-                       event_variation_t_in_BinaryInfo  selectedVariation;
+  event_variation_t_in_BinaryInfo  selectedVariation;
 ////  Node<EventRecord>* record = nullptr;
   Node_for_EventRecord* record;//// = nullptr;
 } TypedEventRecord_for_BinarySpec;
 
-  void TypedEventRecord_for_BinarySpec_in_TypedEventRecord_for_BinarySpec(TypedEventRecord_for_BinarySpec *pTypedEventRecord_for_BinarySpec,
+void TypedEventRecord_for_BinarySpec_in_TypedEventRecord_for_BinarySpec(TypedEventRecord_for_BinarySpec *pTypedEventRecord_for_BinarySpec,
 ////                   const typename T::meas_t& value,
-                       Binary *value,
+    Binary *value,
 ////                   typename T::event_variation_t defaultVariation,
-                       event_variation_t_in_BinaryInfo  defaultVariation,
-                   Node_for_EventRecord* record);
+    event_variation_t_in_BinaryInfo  defaultVariation,
+    Node_for_EventRecord* record);
 
 //----------------------------------BinarySpec-----------------------------------------------
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
@@ -81,21 +81,21 @@ typedef struct
 ////
 ////
 ////  typename T::meas_t value;
-      DoubleBitBinary value;
+  DoubleBitBinary value;
 ////  typename T::event_variation_t defaultVariation;
-                       event_variation_t_in_DoubleBitBinaryInfo  defaultVariation;
+  event_variation_t_in_DoubleBitBinaryInfo  defaultVariation;
 ////  typename T::event_variation_t selectedVariation;
-                       event_variation_t_in_DoubleBitBinaryInfo  selectedVariation;
+  event_variation_t_in_DoubleBitBinaryInfo  selectedVariation;
 ////  Node<EventRecord>* record = nullptr;
   Node_for_EventRecord* record;//// = nullptr;
 } TypedEventRecord_for_DoubleBitBinarySpec;
 
-  void TypedEventRecord_for_DoubleBitBinarySpec_in_TypedEventRecord_for_DoubleBitBinarySpec(TypedEventRecord_for_DoubleBitBinarySpec *pTypedEventRecord_for_DoubleBitBinarySpec,
+void TypedEventRecord_for_DoubleBitBinarySpec_in_TypedEventRecord_for_DoubleBitBinarySpec(TypedEventRecord_for_DoubleBitBinarySpec *pTypedEventRecord_for_DoubleBitBinarySpec,
 ////                   const typename T::meas_t& value,
-                       DoubleBitBinary *value,
+    DoubleBitBinary *value,
 ////                   typename T::event_variation_t defaultVariation,
-                       event_variation_t_in_DoubleBitBinaryInfo  defaultVariation,
-                   Node_for_EventRecord* record);
+    event_variation_t_in_DoubleBitBinaryInfo  defaultVariation,
+    Node_for_EventRecord* record);
 
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
 //----------------------------------AnalogSpec-----------------------------------------------
@@ -106,21 +106,21 @@ typedef struct
 ////
 ////
 ////  typename T::meas_t value;
-      Analog value;
+  Analog value;
 ////  typename T::event_variation_t defaultVariation;
-                       event_variation_t_in_AnalogInfo  defaultVariation;
+  event_variation_t_in_AnalogInfo  defaultVariation;
 ////  typename T::event_variation_t selectedVariation;
-                       event_variation_t_in_AnalogInfo  selectedVariation;
+  event_variation_t_in_AnalogInfo  selectedVariation;
 ////  Node<EventRecord>* record = nullptr;
   Node_for_EventRecord* record;//// = nullptr;
 } TypedEventRecord_for_AnalogSpec;
 
-  void TypedEventRecord_for_AnalogSpec_in_TypedEventRecord_for_AnalogSpec(TypedEventRecord_for_AnalogSpec *pTypedEventRecord_for_AnalogSpec,
+void TypedEventRecord_for_AnalogSpec_in_TypedEventRecord_for_AnalogSpec(TypedEventRecord_for_AnalogSpec *pTypedEventRecord_for_AnalogSpec,
 ////                   const typename T::meas_t& value,
-                       Analog *value,
+    Analog *value,
 ////                   typename T::event_variation_t defaultVariation,
-                       event_variation_t_in_AnalogInfo  defaultVariation,
-                   Node_for_EventRecord* record);
+    event_variation_t_in_AnalogInfo  defaultVariation,
+    Node_for_EventRecord* record);
 
 //----------------------------------AnalogSpec-----------------------------------------------
 //----------------------------------CounterSpec-----------------------------------------------
@@ -131,21 +131,21 @@ typedef struct
 ////
 ////
 ////  typename T::meas_t value;
-      Counter value;
+  Counter value;
 ////  typename T::event_variation_t defaultVariation;
-                       event_variation_t_in_CounterInfo  defaultVariation;
+  event_variation_t_in_CounterInfo  defaultVariation;
 ////  typename T::event_variation_t selectedVariation;
-                       event_variation_t_in_CounterInfo  selectedVariation;
+  event_variation_t_in_CounterInfo  selectedVariation;
 ////  Node<EventRecord>* record = nullptr;
   Node_for_EventRecord* record;//// = nullptr;
 } TypedEventRecord_for_CounterSpec;
 
-  void TypedEventRecord_for_CounterSpec_in_TypedEventRecord_for_CounterSpec(TypedEventRecord_for_CounterSpec *pTypedEventRecord_for_CounterSpec,
+void TypedEventRecord_for_CounterSpec_in_TypedEventRecord_for_CounterSpec(TypedEventRecord_for_CounterSpec *pTypedEventRecord_for_CounterSpec,
 ////                   const typename T::meas_t& value,
-                       Counter *value,
+    Counter *value,
 ////                   typename T::event_variation_t defaultVariation,
-                       event_variation_t_in_CounterInfo  defaultVariation,
-                   Node_for_EventRecord* record);
+    event_variation_t_in_CounterInfo  defaultVariation,
+    Node_for_EventRecord* record);
 
 //----------------------------------CounterSpec-----------------------------------------------
 //----------------------------------FrozenCounterSpec-----------------------------------------------
@@ -156,21 +156,21 @@ typedef struct
 ////
 ////
 ////  typename T::meas_t value;
-      FrozenCounter value;
+  FrozenCounter value;
 ////  typename T::event_variation_t defaultVariation;
-                       event_variation_t_in_FrozenCounterInfo  defaultVariation;
+  event_variation_t_in_FrozenCounterInfo  defaultVariation;
 ////  typename T::event_variation_t selectedVariation;
-                       event_variation_t_in_FrozenCounterInfo  selectedVariation;
+  event_variation_t_in_FrozenCounterInfo  selectedVariation;
 ////  Node<EventRecord>* record = nullptr;
   Node_for_EventRecord* record;//// = nullptr;
 } TypedEventRecord_for_FrozenCounterSpec;
 
-  void TypedEventRecord_for_FrozenCounterSpec_in_TypedEventRecord_for_FrozenCounterSpec(TypedEventRecord_for_FrozenCounterSpec *pTypedEventRecord_for_FrozenCounterSpec,
+void TypedEventRecord_for_FrozenCounterSpec_in_TypedEventRecord_for_FrozenCounterSpec(TypedEventRecord_for_FrozenCounterSpec *pTypedEventRecord_for_FrozenCounterSpec,
 ////                   const typename T::meas_t& value,
-                       FrozenCounter *value,
+    FrozenCounter *value,
 ////                   typename T::event_variation_t defaultVariation,
-                       event_variation_t_in_FrozenCounterInfo  defaultVariation,
-                   Node_for_EventRecord* record);
+    event_variation_t_in_FrozenCounterInfo  defaultVariation,
+    Node_for_EventRecord* record);
 
 //----------------------------------FrozenCounterSpec-----------------------------------------------
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
@@ -181,21 +181,21 @@ typedef struct
 ////
 ////
 ////  typename T::meas_t value;
-      BinaryOutputStatus value;
+  BinaryOutputStatus value;
 ////  typename T::event_variation_t defaultVariation;
-                       event_variation_t_in_BinaryOutputStatusInfo  defaultVariation;
+  event_variation_t_in_BinaryOutputStatusInfo  defaultVariation;
 ////  typename T::event_variation_t selectedVariation;
-                       event_variation_t_in_BinaryOutputStatusInfo  selectedVariation;
+  event_variation_t_in_BinaryOutputStatusInfo  selectedVariation;
 ////  Node<EventRecord>* record = nullptr;
   Node_for_EventRecord* record;//// = nullptr;
 } TypedEventRecord_for_BinaryOutputStatusSpec;
 
-  void TypedEventRecord_for_BinaryOutputStatusSpec_in_TypedEventRecord_for_BinaryOutputStatusSpec(TypedEventRecord_for_BinaryOutputStatusSpec *pTypedEventRecord_for_BinaryOutputStatusSpec,
+void TypedEventRecord_for_BinaryOutputStatusSpec_in_TypedEventRecord_for_BinaryOutputStatusSpec(TypedEventRecord_for_BinaryOutputStatusSpec *pTypedEventRecord_for_BinaryOutputStatusSpec,
 ////                   const typename T::meas_t& value,
-                       BinaryOutputStatus *value,
+    BinaryOutputStatus *value,
 ////                   typename T::event_variation_t defaultVariation,
-                       event_variation_t_in_BinaryOutputStatusInfo  defaultVariation,
-                   Node_for_EventRecord* record);
+    event_variation_t_in_BinaryOutputStatusInfo  defaultVariation,
+    Node_for_EventRecord* record);
 
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
@@ -206,21 +206,21 @@ typedef struct
 ////
 ////
 ////  typename T::meas_t value;
-      AnalogOutputStatus value;
+  AnalogOutputStatus value;
 ////  typename T::event_variation_t defaultVariation;
-                       event_variation_t_in_AnalogOutputStatusInfo  defaultVariation;
+  event_variation_t_in_AnalogOutputStatusInfo  defaultVariation;
 ////  typename T::event_variation_t selectedVariation;
-                       event_variation_t_in_AnalogOutputStatusInfo  selectedVariation;
+  event_variation_t_in_AnalogOutputStatusInfo  selectedVariation;
 ////  Node<EventRecord>* record = nullptr;
   Node_for_EventRecord* record;//// = nullptr;
 } TypedEventRecord_for_AnalogOutputStatusSpec;
 
-  void TypedEventRecord_for_AnalogOutputStatusSpec_in_TypedEventRecord_for_AnalogOutputStatusSpec(TypedEventRecord_for_AnalogOutputStatusSpec *pTypedEventRecord_for_AnalogOutputStatusSpec,
+void TypedEventRecord_for_AnalogOutputStatusSpec_in_TypedEventRecord_for_AnalogOutputStatusSpec(TypedEventRecord_for_AnalogOutputStatusSpec *pTypedEventRecord_for_AnalogOutputStatusSpec,
 ////                   const typename T::meas_t& value,
-                       AnalogOutputStatus *value,
+    AnalogOutputStatus *value,
 ////                   typename T::event_variation_t defaultVariation,
-                       event_variation_t_in_AnalogOutputStatusInfo  defaultVariation,
-                   Node_for_EventRecord* record);
+    event_variation_t_in_AnalogOutputStatusInfo  defaultVariation,
+    Node_for_EventRecord* record);
 
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
 //----------------------------------OctetStringSpec-----------------------------------------------
@@ -231,21 +231,21 @@ typedef struct
 ////
 ////
 ////  typename T::meas_t value;
-      OctetString value;
+  OctetString value;
 ////  typename T::event_variation_t defaultVariation;
-                       event_variation_t_in_OctetStringInfo  defaultVariation;
+  event_variation_t_in_OctetStringInfo  defaultVariation;
 ////  typename T::event_variation_t selectedVariation;
-                       event_variation_t_in_OctetStringInfo  selectedVariation;
+  event_variation_t_in_OctetStringInfo  selectedVariation;
 ////  Node<EventRecord>* record = nullptr;
   Node_for_EventRecord* record;//// = nullptr;
 } TypedEventRecord_for_OctetStringSpec;
 
-  void TypedEventRecord_for_OctetStringSpec_in_TypedEventRecord_for_OctetStringSpec(TypedEventRecord_for_OctetStringSpec *pTypedEventRecord_for_OctetStringSpec,
+void TypedEventRecord_for_OctetStringSpec_in_TypedEventRecord_for_OctetStringSpec(TypedEventRecord_for_OctetStringSpec *pTypedEventRecord_for_OctetStringSpec,
 ////                   const typename T::meas_t& value,
-                       OctetString *value,
+    OctetString *value,
 ////                   typename T::event_variation_t defaultVariation,
-                       event_variation_t_in_OctetStringInfo  defaultVariation,
-                   Node_for_EventRecord* record);
+    event_variation_t_in_OctetStringInfo  defaultVariation,
+    Node_for_EventRecord* record);
 
 //----------------------------------OctetStringSpec-----------------------------------------------
 

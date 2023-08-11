@@ -58,197 +58,197 @@ typedef struct
   ILinkListener  iILinkListener;
   IDnpTimeSource iIDnpTimeSource;
 ////public:
-    /// Queries whether the the outstation supports absolute time writes
-    /// If this function returns false, WriteAbsoluteTime will never be called
-    /// and the outstation will return IIN 2.1 (FUNC_NOT_SUPPORTED)
+  /// Queries whether the the outstation supports absolute time writes
+  /// If this function returns false, WriteAbsoluteTime will never be called
+  /// and the outstation will return IIN 2.1 (FUNC_NOT_SUPPORTED)
 
 /// Запрашивает, поддерживает ли удаленная станция запись абсолютного времени
-     /// Если эта функция возвращает false, WriteAbsoluteTime никогда не будет вызываться
-     /// и удаленная станция вернет ИИН 2.1 (FUNC_NOT_SUPPORTED)
-    boolean (*pSupportsWriteAbsoluteTime_in_IOutstationApplication)(void*);
+  /// Если эта функция возвращает false, WriteAbsoluteTime никогда не будет вызываться
+  /// и удаленная станция вернет ИИН 2.1 (FUNC_NOT_SUPPORTED)
+  boolean (*pSupportsWriteAbsoluteTime_in_IOutstationApplication)(void*);
 ////    virtual bool SupportsWriteAbsoluteTime()
 ////    {
 ////        return false;
 ////    }
 
-    /// Write the time to outstation, only called if SupportsWriteAbsoluteTime return true
-    /// @return boolean value indicating if the time value supplied was accepted. Returning
-    /// false will cause the outstation to set IIN 2.3 (PARAM_ERROR) in its response.
-    /// The outstation should clear its NEED_TIME field when handling this response
+  /// Write the time to outstation, only called if SupportsWriteAbsoluteTime return true
+  /// @return boolean value indicating if the time value supplied was accepted. Returning
+  /// false will cause the outstation to set IIN 2.3 (PARAM_ERROR) in its response.
+  /// The outstation should clear its NEED_TIME field when handling this response
 
 /// Запись времени на удаленную станцию, вызывается, только если SupportsWriteAbsoluteTime возвращает true
-     /// @return логическое значение, указывающее, было ли принято предоставленное значение времени. Возвращение
-     /// false приведет к тому, что удаленная станция установит в своем ответе IIN 2.3 (PARAM_ERROR).
-     /// Удаленная станция должна очистить свое поле NEED_TIME при обработке этого ответа
-    boolean (*pWriteAbsoluteTime_in_IOutstationApplication)(void*, UTCTimestamp* timestamp);
+  /// @return логическое значение, указывающее, было ли принято предоставленное значение времени. Возвращение
+  /// false приведет к тому, что удаленная станция установит в своем ответе IIN 2.3 (PARAM_ERROR).
+  /// Удаленная станция должна очистить свое поле NEED_TIME при обработке этого ответа
+  boolean (*pWriteAbsoluteTime_in_IOutstationApplication)(void*, UTCTimestamp* timestamp);
 ////    virtual bool WriteAbsoluteTime(const UTCTimestamp& timestamp)
 ////    {
 ////        return false;
 ////    }
 
-    /// Queries whether the outstation supports the writing of TimeAndInterval
-    /// If this function returns false, WriteTimeAndInterval will never be called
-    /// and the outstation will return IIN 2.1 (FUNC_NOT_SUPPORTED) when it receives this request
+  /// Queries whether the outstation supports the writing of TimeAndInterval
+  /// If this function returns false, WriteTimeAndInterval will never be called
+  /// and the outstation will return IIN 2.1 (FUNC_NOT_SUPPORTED) when it receives this request
 
 /// Запрашивает, поддерживает ли удаленная станция запись TimeAndInterval
-     /// Если эта функция возвращает false, WriteTimeAndInterval никогда не будет вызываться
-     /// и удаленная станция вернет ИИН 2.1 (FUNC_NOT_SUPPORTED), когда получит этот запрос
-    boolean (*pSupportsWriteTimeAndInterval_in_IOutstationApplication)(void*);
+  /// Если эта функция возвращает false, WriteTimeAndInterval никогда не будет вызываться
+  /// и удаленная станция вернет ИИН 2.1 (FUNC_NOT_SUPPORTED), когда получит этот запрос
+  boolean (*pSupportsWriteTimeAndInterval_in_IOutstationApplication)(void*);
 ////    virtual bool SupportsWriteTimeAndInterval()
 ////    {
 ////        return false;
 ////    }
 
-    /// Write one or more TimeAndInterval values. Only called if SupportsWriteTimeAndInterval returns true.
-    /// The outstation application code is reponsible for updating TimeAndInterval values in the database if this
-    /// behavior is desired
-    /// @return boolean value indicating if the values supplied were accepted. Returning
-    /// false will cause the outstation to set IIN 2.3 (PARAM_ERROR) in its response.
+  /// Write one or more TimeAndInterval values. Only called if SupportsWriteTimeAndInterval returns true.
+  /// The outstation application code is reponsible for updating TimeAndInterval values in the database if this
+  /// behavior is desired
+  /// @return boolean value indicating if the values supplied were accepted. Returning
+  /// false will cause the outstation to set IIN 2.3 (PARAM_ERROR) in its response.
 
 /// Запишите одно или несколько значений TimeAndInterval. Вызывается только в том случае,
 /// если SupportsWriteTimeAndInterval возвращает значение true.
-     /// Код внешнего приложения отвечает за обновление значений TimeAndInterval в базе данных, если это
-     /// поведение желательно
-     /// @return логическое значение, указывающее, были ли приняты предоставленные значения. Возвращение
-     /// false приведет к тому, что удаленная станция установит в своем ответе IIN 2.3 (PARAM_ERROR).
-    boolean (*pWriteTimeAndInterval_in_IOutstationApplication)(void*, ICollection_Indexed_for_TimeAndInterval* values);
+  /// Код внешнего приложения отвечает за обновление значений TimeAndInterval в базе данных, если это
+  /// поведение желательно
+  /// @return логическое значение, указывающее, были ли приняты предоставленные значения. Возвращение
+  /// false приведет к тому, что удаленная станция установит в своем ответе IIN 2.3 (PARAM_ERROR).
+  boolean (*pWriteTimeAndInterval_in_IOutstationApplication)(void*, ICollection_Indexed_for_TimeAndInterval* values);
 ////    virtual bool WriteTimeAndInterval(const ICollection<Indexed<TimeAndInterval>>& values)
 ////    {
 ////        return false;
 ////    }
 
-    /// True if the outstation supports the assign class function code
-    /// If this function returns false, the assign class callbacks will never be called
-    /// and the outstation will return IIN 2.1 (FUNC_NOT_SUPPORTED) when it receives this function code
+  /// True if the outstation supports the assign class function code
+  /// If this function returns false, the assign class callbacks will never be called
+  /// and the outstation will return IIN 2.1 (FUNC_NOT_SUPPORTED) when it receives this function code
 
 /// Истинно, если удаленная станция поддерживает код функции присвоения класса
-     /// Если эта функция возвращает false, обратные вызовы класса assign никогда не будут вызываться
-     /// и удаленная станция вернет IIN 2.1 (FUNC_NOT_SUPPORTED), когда получит этот код функции
-     boolean (*pSupportsAssignClass_in_IOutstationApplication)(void*);
+  /// Если эта функция возвращает false, обратные вызовы класса assign никогда не будут вызываться
+  /// и удаленная станция вернет IIN 2.1 (FUNC_NOT_SUPPORTED), когда получит этот код функции
+  boolean (*pSupportsAssignClass_in_IOutstationApplication)(void*);
 ////    virtual bool SupportsAssignClass()
 ////    {
 ////        return false;
 ////    }
 
-    /// Called if SupportsAssignClass returns true
-    /// The type and range are pre-validated against the outstation's database
-    /// and class assignments are automatically applied internally.
-    /// This callback allows user code to persist the changes to non-volatile memory
+  /// Called if SupportsAssignClass returns true
+  /// The type and range are pre-validated against the outstation's database
+  /// and class assignments are automatically applied internally.
+  /// This callback allows user code to persist the changes to non-volatile memory
 
 /// Вызывается, если SupportsAssignClass возвращает true
-     /// Тип и диапазон предварительно проверяются по базе данных удаленной станции
-     /// и назначения классов автоматически применяются внутри.
-     /// Этот обратный вызов позволяет коду пользователя сохранять изменения в энергонезависимой памяти
-    void (*pRecordClassAssignment_in_IOutstationApplication)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
+  /// Тип и диапазон предварительно проверяются по базе данных удаленной станции
+  /// и назначения классов автоматически применяются внутри.
+  /// Этот обратный вызов позволяет коду пользователя сохранять изменения в энергонезависимой памяти
+  void (*pRecordClassAssignment_in_IOutstationApplication)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
 ////    virtual void RecordClassAssignment(AssignClassType type, PointClass clazz, uint16_t start, uint16_t stop) {}
 
-    /// Returns the application-controlled IIN field
+  /// Returns the application-controlled IIN field
 /// Возвращает контролируемое приложением поле ИИН
-    ApplicationIIN (*pGetApplicationIIN_in_IOutstationApplication)(void*);
+  ApplicationIIN (*pGetApplicationIIN_in_IOutstationApplication)(void*);
 ////    virtual ApplicationIIN GetApplicationIIN() const
 ////    {
 ////        return ApplicationIIN();
 ////    }
 
-    /// Query the outstation for the cold restart mode it supports
+  /// Query the outstation for the cold restart mode it supports
 
 /// Запросить у удаленной станции режим холодного перезапуска, который она поддерживает
-    RestartMode_uint8_t (*pColdRestartSupport_in_IOutstationApplication)(void*);
+  RestartMode_uint8_t (*pColdRestartSupport_in_IOutstationApplication)(void*);
 ////    virtual RestartMode ColdRestartSupport() const
 ////    {
 ////        return RestartMode::UNSUPPORTED;
 ////    }
 
-    /// Query the outstation for the warm restart mode it supports
+  /// Query the outstation for the warm restart mode it supports
 /// Запросить у удаленной станции режим теплого перезапуска, который она поддерживает
-    RestartMode_uint8_t (*pWarmRestartSupport_in_IOutstationApplication)(void*);
+  RestartMode_uint8_t (*pWarmRestartSupport_in_IOutstationApplication)(void*);
 ////    virtual RestartMode WarmRestartSupport() const
 ////    {
 ////        return RestartMode::UNSUPPORTED;
 ////    }
 
-    /// The outstation should perform a complete restart.
-    /// See the DNP3 specification for a complete descripton of normal behavior
-    /// @return number of seconds or milliseconds until restart is complete. The value
-    /// is interpreted based on the Restart Mode returned from ColdRestartSupport()
+  /// The outstation should perform a complete restart.
+  /// See the DNP3 specification for a complete descripton of normal behavior
+  /// @return number of seconds or milliseconds until restart is complete. The value
+  /// is interpreted based on the Restart Mode returned from ColdRestartSupport()
 /// Удаленная станция должна выполнить полный перезапуск.
-     /// Полное описание нормального поведения см. в спецификации DNP3.
-     /// @return количество секунд или миллисекунд до завершения перезапуска. Значение
-     /// интерпретируется на основе режима перезапуска, возвращенного функцией ColdRestartSupport()
-    uint16_t (*pColdRestart_in_IOutstationApplication)(void*);
+  /// Полное описание нормального поведения см. в спецификации DNP3.
+  /// @return количество секунд или миллисекунд до завершения перезапуска. Значение
+  /// интерпретируется на основе режима перезапуска, возвращенного функцией ColdRestartSupport()
+  uint16_t (*pColdRestart_in_IOutstationApplication)(void*);
 ////    virtual uint16_t ColdRestart()
 ////    {
 ////        return 65535;
 ////    }
 
-    /// The outstation should perform a partial restart of only the DNP3 application.
-    /// See the DNP3 specification for a complete descripton of normal behavior
-    /// @return number of seconds or milliseconds until restart is complete. The value
-    /// is interpreted based on the Restart Mode returned from WarmRestartSupport()
+  /// The outstation should perform a partial restart of only the DNP3 application.
+  /// See the DNP3 specification for a complete descripton of normal behavior
+  /// @return number of seconds or milliseconds until restart is complete. The value
+  /// is interpreted based on the Restart Mode returned from WarmRestartSupport()
 /// Удаленная станция должна выполнить частичный перезапуск только приложения DNP3.
-     /// Полное описание нормального поведения см. в спецификации DNP3.
-     /// @return количество секунд или миллисекунд до завершения перезапуска. Значение
-     /// интерпретируется на основе режима перезапуска, возвращенного из WarmRestartSupport()
-    uint16_t (*pWarmRestart_in_IOutstationApplication)(void*);
+  /// Полное описание нормального поведения см. в спецификации DNP3.
+  /// @return количество секунд или миллисекунд до завершения перезапуска. Значение
+  /// интерпретируется на основе режима перезапуска, возвращенного из WarmRestartSupport()
+  uint16_t (*pWarmRestart_in_IOutstationApplication)(void*);
 ////    virtual uint16_t WarmRestart()
 ////    {
 ////        return 65535;
 ////    }
 
-    /// This method notifies that application code that an expected CONFIRM has been
-    /// received, and events may have cleared from the event buffer. It is informational
-    /// only.
-    ///
-    /// @param is_unsolicited true, if the confirm is for an unsolicited response, false for a solicited response
-    /// @param num_class1 number of Class 1 events remaining in the event buffer after processing the confirm
-    /// @param num_class2 number of Class 2 events remaining in the event buffer after processing the confirm
-    /// @param num_class3 number of Class 3 events remaining in the event buffer after processing the confirm
+  /// This method notifies that application code that an expected CONFIRM has been
+  /// received, and events may have cleared from the event buffer. It is informational
+  /// only.
+  ///
+  /// @param is_unsolicited true, if the confirm is for an unsolicited response, false for a solicited response
+  /// @param num_class1 number of Class 1 events remaining in the event buffer after processing the confirm
+  /// @param num_class2 number of Class 2 events remaining in the event buffer after processing the confirm
+  /// @param num_class3 number of Class 3 events remaining in the event buffer after processing the confirm
 /// Этот метод уведомляет этот код приложения о том, что ожидаемое сообщение CONFIRM было
-     /// получено, и события могли быть удалены из буфера событий. это информационный
-     /// только.
-     ///
-     /// @param is_unsolicited true, если подтверждение для незапрошенного ответа, false для запрошенного ответа
-     /// @param num_class1 количество событий класса 1, оставшихся в буфере событий после обработки подтверждения
-     /// @param num_class2 количество событий класса 2, оставшихся в буфере событий после обработки подтверждения
-     /// @param num_class3 количество событий класса 3, оставшихся в буфере событий после обработки подтверждения
-    void (*pOnConfirmProcessed_in_IOutstationApplication)(void*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
+  /// получено, и события могли быть удалены из буфера событий. это информационный
+  /// только.
+  ///
+  /// @param is_unsolicited true, если подтверждение для незапрошенного ответа, false для запрошенного ответа
+  /// @param num_class1 количество событий класса 1, оставшихся в буфере событий после обработки подтверждения
+  /// @param num_class2 количество событий класса 2, оставшихся в буфере событий после обработки подтверждения
+  /// @param num_class3 количество событий класса 3, оставшихся в буфере событий после обработки подтверждения
+  void (*pOnConfirmProcessed_in_IOutstationApplication)(void*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
 ////    virtual void OnConfirmProcessed(bool is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3) {}
 
-    void (*pIOutstationApplication_destr_IOutstationApplication)(void*);
+  void (*pIOutstationApplication_destr_IOutstationApplication)(void*);
 ////    virtual ~IOutstationApplication() = default;
 
   void* pParentPointer_in_IOutstationApplication;
 } IOutstationApplication;
 
-    boolean SupportsWriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*);
-    boolean WriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*, UTCTimestamp* timestamp);
-    boolean SupportsWriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*);
-    boolean WriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*, ICollection_Indexed_for_TimeAndInterval* values);
-     boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
-    void RecordClassAssignment_in_IOutstationApplication(IOutstationApplication*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
-    ApplicationIIN GetApplicationIIN_in_IOutstationApplication(IOutstationApplication*);
-    RestartMode_uint8_t ColdRestartSupport_in_IOutstationApplication(IOutstationApplication*);
-    RestartMode_uint8_t WarmRestartSupport_in_IOutstationApplication(IOutstationApplication*);
-    uint16_t ColdRestart_in_IOutstationApplication(IOutstationApplication*);
-    uint16_t WarmRestart_in_IOutstationApplication(IOutstationApplication*);
-    void OnConfirmProcessed_in_IOutstationApplication(IOutstationApplication*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
-    void IOutstationApplication_destr_IOutstationApplication(IOutstationApplication*);
+boolean SupportsWriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*);
+boolean WriteAbsoluteTime_in_IOutstationApplication(IOutstationApplication*, UTCTimestamp* timestamp);
+boolean SupportsWriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*);
+boolean WriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication*, ICollection_Indexed_for_TimeAndInterval* values);
+boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
+void RecordClassAssignment_in_IOutstationApplication(IOutstationApplication*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
+ApplicationIIN GetApplicationIIN_in_IOutstationApplication(IOutstationApplication*);
+RestartMode_uint8_t ColdRestartSupport_in_IOutstationApplication(IOutstationApplication*);
+RestartMode_uint8_t WarmRestartSupport_in_IOutstationApplication(IOutstationApplication*);
+uint16_t ColdRestart_in_IOutstationApplication(IOutstationApplication*);
+uint16_t WarmRestart_in_IOutstationApplication(IOutstationApplication*);
+void OnConfirmProcessed_in_IOutstationApplication(IOutstationApplication*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
+void IOutstationApplication_destr_IOutstationApplication(IOutstationApplication*);
 
-    boolean SupportsWriteAbsoluteTime_in_IOutstationApplication_override(void*);
-    boolean WriteAbsoluteTime_in_IOutstationApplication_override(void*, UTCTimestamp* timestamp);
-    boolean SupportsWriteTimeAndInterval_in_IOutstationApplication_override(void*);
+boolean SupportsWriteAbsoluteTime_in_IOutstationApplication_override(void*);
+boolean WriteAbsoluteTime_in_IOutstationApplication_override(void*, UTCTimestamp* timestamp);
+boolean SupportsWriteTimeAndInterval_in_IOutstationApplication_override(void*);
 //    boolean WriteTimeAndInterval_in_IOutstationApplication_override(void*, ICollection_Indexed_for_TimeAndInterval* values);
-     boolean SupportsAssignClass_in_IOutstationApplication_override(void*);
-    void RecordClassAssignment_in_IOutstationApplication_override(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
-    ApplicationIIN GetApplicationIIN_in_IOutstationApplication_override(void*);
-    RestartMode_uint8_t ColdRestartSupport_in_IOutstationApplication_override(void*);
-    RestartMode_uint8_t WarmRestartSupport_in_IOutstationApplication_override(void*);
-    uint16_t ColdRestart_in_IOutstationApplication_override(void*);
-    uint16_t WarmRestart_in_IOutstationApplication_override(void*);
-    void OnConfirmProcessed_in_IOutstationApplication_override(void*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
-    void IOutstationApplication_destr_IOutstationApplication_override(void*);
+boolean SupportsAssignClass_in_IOutstationApplication_override(void*);
+void RecordClassAssignment_in_IOutstationApplication_override(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
+ApplicationIIN GetApplicationIIN_in_IOutstationApplication_override(void*);
+RestartMode_uint8_t ColdRestartSupport_in_IOutstationApplication_override(void*);
+RestartMode_uint8_t WarmRestartSupport_in_IOutstationApplication_override(void*);
+uint16_t ColdRestart_in_IOutstationApplication_override(void*);
+uint16_t WarmRestart_in_IOutstationApplication_override(void*);
+void OnConfirmProcessed_in_IOutstationApplication_override(void*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
+void IOutstationApplication_destr_IOutstationApplication_override(void*);
 
-    void IOutstationApplication_in_IOutstationApplication(IOutstationApplication*);
+void IOutstationApplication_in_IOutstationApplication(IOutstationApplication*);
 void* getParentPointer_in_IOutstationApplication(IOutstationApplication*);
 void  setParentPointer_in_IOutstationApplication(IOutstationApplication*, void*);
 

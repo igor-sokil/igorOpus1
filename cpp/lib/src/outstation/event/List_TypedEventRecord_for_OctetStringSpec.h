@@ -184,31 +184,31 @@ typedef struct
 
 void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver1(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
 void List_TypedEventRecord_for_OctetStringSpec_in_List_TypedEventRecord_for_OctetStringSpecOver2(
-       List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec,
-       uint32_t maxSize);
+  List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec,
+  uint32_t maxSize);
 
-    Iterator_in_List_TypedEventRecord_for_OctetStringSpec Iterate_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
+Iterator_in_List_TypedEventRecord_for_OctetStringSpec Iterate_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
 
-  void Initialize_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
-//  uint32_t RemoveAll_in_List_TypedEventRecord_for_OctetStringSpec(EventStorage *pEventStorage, 
-//                            List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec, 
-//                            boolean (*match)(EventStorage *pEventStorage, 
+void Initialize_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_OctetStringSpec(EventStorage *pEventStorage,
+//                            List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec,
+//                            boolean (*match)(EventStorage *pEventStorage,
 //                            EventRecord* record));//const U& match);
 
-   void Remove_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec, Node_TypedEventRecord_for_OctetStringSpec* node);
-   void Link_in_List_TypedEventRecord_for_OctetStringSpec_static(Node_TypedEventRecord_for_OctetStringSpec* first, Node_TypedEventRecord_for_OctetStringSpec* second);
+void Remove_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec, Node_TypedEventRecord_for_OctetStringSpec* node);
+void Link_in_List_TypedEventRecord_for_OctetStringSpec_static(Node_TypedEventRecord_for_OctetStringSpec* first, Node_TypedEventRecord_for_OctetStringSpec* second);
 
-     uint32_t Capacity_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
+uint32_t Capacity_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
 boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
 Node_TypedEventRecord_for_OctetStringSpec* Head_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec);
 
 Node_TypedEventRecord_for_OctetStringSpec* Add_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec,
-                                      TypedEventRecord_for_OctetStringSpec* value);
+    TypedEventRecord_for_OctetStringSpec* value);
 Node_TypedEventRecord_for_OctetStringSpec* Insert_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec,
-                                                                TypedEventRecord_for_OctetStringSpec* value,
-                                                                Node_TypedEventRecord_for_OctetStringSpec* left,
-                                                                Node_TypedEventRecord_for_OctetStringSpec* right
-                                                                  );
+    TypedEventRecord_for_OctetStringSpec* value,
+    Node_TypedEventRecord_for_OctetStringSpec* left,
+    Node_TypedEventRecord_for_OctetStringSpec* right
+                                                                                              );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

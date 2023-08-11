@@ -10,7 +10,7 @@ boolean OnLowerLayerUp_in_IUpDown(IUpDown *pIUpDown)
 }
 boolean OnLowerLayerDown_in_IUpDown(IUpDown *pIUpDown)
 {
- return (pIUpDown->pOnLowerLayerDown_in_IUpDown)(pIUpDown);
+  return (pIUpDown->pOnLowerLayerDown_in_IUpDown)(pIUpDown);
 }
 
 void* getParentPointer_in_IUpDown(IUpDown* pIUpDown)
@@ -24,7 +24,7 @@ void  setParentPointer_in_IUpDown(IUpDown* pIUpDown, void* pParentPointer)
 
 boolean OnReceive_in_IUpperLayer(IUpperLayer *pIUpperLayer, Message* message)
 {
- return (pIUpperLayer->pOnReceive_in_IUpperLayer)(pIUpperLayer, message);
+  return (pIUpperLayer->pOnReceive_in_IUpperLayer)(pIUpperLayer, message);
 }
 boolean OnTxReady_in_IUpperLayer(IUpperLayer *pIUpperLayer)
 {
@@ -54,25 +54,25 @@ void  setParentPointer_in_ILowerLayer(ILowerLayer* pILowerLayer, void* pParentPo
   pILowerLayer->pParentPointer_in_ILowerLayer = pParentPointer;
 }
 
-  void HasLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer)
+void HasLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer)
 {
   pHasLowerLayer->pLowerLayer = NULL;
 }
 
-    void SetLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer, ILowerLayer* lowerLayer)
-    {
+void SetLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer, ILowerLayer* lowerLayer)
+{
 //qDebug()<<"pHasLowerLayer="<<pHasLowerLayer<<";   lowerLayer= "<<lowerLayer;
 ////        assert(!pLowerLayer);
-        pHasLowerLayer->pLowerLayer = lowerLayer;
-    }
+  pHasLowerLayer->pLowerLayer = lowerLayer;
+}
 
-   void HasUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer)
+void HasUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer)
 {
   pHasUpperLayer->pUpperLayer = NULL;
 }
 
-    void SetUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer, IUpperLayer* upperLayer)
-    {
+void SetUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer, IUpperLayer* upperLayer)
+{
 ////        assert(!pUpperLayer);
-        pHasUpperLayer->pUpperLayer = upperLayer;
-    }
+  pHasUpperLayer->pUpperLayer = upperLayer;
+}

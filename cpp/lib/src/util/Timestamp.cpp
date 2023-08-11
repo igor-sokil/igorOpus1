@@ -48,11 +48,11 @@
 
 void Timestamp_in_TimestampOver1(Timestamp *pTimestamp)
 {
- ////: value(exe4cpp::steady_time_t::min()) {}
+////: value(exe4cpp::steady_time_t::min()) {}
   pTimestamp->time_point_value = 0;
 }
 
- void Timestamp_in_TimestampOver2(Timestamp *pTimestamp, uint64_t value)
+void Timestamp_in_TimestampOver2(Timestamp *pTimestamp, uint64_t value)
 {
   pTimestamp->time_point_value = value;
 }
@@ -90,17 +90,17 @@ void Timestamp_in_TimestampOver1(Timestamp *pTimestamp)
 ////TimeDuration Timestamp::operator-(const Timestamp& timestamp) const
 TimeDuration operatorMINUS_in_Timestamp(Timestamp* pTimestamp, Timestamp* timestamp)
 {
-    TimeDuration tTimeDuration;
+  TimeDuration tTimeDuration;
 // void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, uint64_t value);
 ////    return TimeDuration(this->value - timestamp.value);
   TimeDuration_in_TimeDuration(&tTimeDuration, pTimestamp->time_point_value - timestamp->time_point_value);
-    return tTimeDuration;
+  return tTimeDuration;
 }
 
 ////bool Timestamp::operator==(const Timestamp& other) const
 boolean  operatorEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
 {
-    return pTimestamp->time_point_value == other->time_point_value;
+  return pTimestamp->time_point_value == other->time_point_value;
 }
 
 ////bool Timestamp::operator!=(const Timestamp& other) const
@@ -114,13 +114,13 @@ boolean  operatorEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
 ////}
 boolean  operatorLT_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
 {
-    return pTimestamp->time_point_value < other->time_point_value;
+  return pTimestamp->time_point_value < other->time_point_value;
 }
 
 ////bool Timestamp::operator<=(const Timestamp& other) const
 boolean  operatorLTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
 {
-    return pTimestamp->time_point_value <= other->time_point_value;
+  return pTimestamp->time_point_value <= other->time_point_value;
 }
 
 ////bool Timestamp::operator>(const Timestamp& other) const

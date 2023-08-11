@@ -25,9 +25,9 @@
 #ifndef SER4CPP_COMPARISONS_H
 #define SER4CPP_COMPARISONS_H
 
- uint16_t min_for_Uint16_t(uint16_t a, uint16_t b);
- uint16_t max_for_Uint16_t(uint16_t a, uint16_t b);
- uint16_t boundedTemplateUint16_t(uint16_t value, uint16_t minimum, uint16_t maximum);
+uint16_t min_for_Uint16_t(uint16_t a, uint16_t b);
+uint16_t max_for_Uint16_t(uint16_t a, uint16_t b);
+uint16_t boundedTemplateUint16_t(uint16_t value, uint16_t minimum, uint16_t maximum);
 boolean is_within_limitsTemplateUint16_t(uint16_t value, uint16_t min, uint16_t max);
 //----------------------------------------------------------------
 // int8_t minTemplateUint8_t(uint8_t a, uint8_t b);

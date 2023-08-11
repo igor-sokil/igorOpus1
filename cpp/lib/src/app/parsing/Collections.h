@@ -33,51 +33,53 @@ namespace opendnp3
 template<class T> class ArrayCollection : public ICollection<T>
 {
 public:
-    ArrayCollection(const T* pArray_, size_t count) : pArray(pArray_), COUNT(count) {}
+  ArrayCollection(const T* pArray_, size_t count) : pArray(pArray_), COUNT(count) {}
 
-    virtual size_t Count() const override final
-    {
-        return COUNT;
-    }
+  virtual size_t Count() const override final
+  {
+    return COUNT;
+  }
 
-    virtual void Foreach(IVisitor<T>& visitor) const override final
+  virtual void Foreach(IVisitor<T>& visitor) const override final
+  {
+    for (uint32_t i = 0; i < COUNT; ++i)
     {
-        for (uint32_t i = 0; i < COUNT; ++i)
-        {
-            visitor.OnValue(pArray[i]);
-        }
+      visitor.OnValue(pArray[i]);
     }
+  }
 
 private:
-    const T* pArray;
-    const size_t COUNT;
+  const T* pArray;
+  const size_t COUNT;
 };
 
 template<class T, class U, class Transform> class TransformedCollection : public ICollection<U>
 {
 public:
-    TransformedCollection(const ICollection<T>& input, Transform transform) : input(&input), transform(transform) {}
+  TransformedCollection(const ICollection<T>& input, Transform transform) : input(&input), transform(transform) {}
 
-    virtual size_t Count() const override final
-    {
-        return input->Count();
-    }
+  virtual size_t Count() const override final
+  {
+    return input->Count();
+  }
 
-    virtual void Foreach(IVisitor<U>& visitor) const override final
-    {
-        auto process = [this, &visitor](const T& elem) { visitor.OnValue(transform(elem)); };
-        input->ForeachItem(process);
-    }
+  virtual void Foreach(IVisitor<U>& visitor) const override final
+  {
+    auto process = [this, &visitor](const T& elem) {
+      visitor.OnValue(transform(elem));
+    };
+    input->ForeachItem(process);
+  }
 
 private:
-    const ICollection<T>* input;
-    Transform transform;
+  const ICollection<T>* input;
+  Transform transform;
 };
 
 template<class T, class U, class Transform>
 TransformedCollection<T, U, Transform> Map(const ICollection<T>& input, Transform transform)
 {
-    return TransformedCollection<T, U, Transform>(input, transform);
+  return TransformedCollection<T, U, Transform>(input, transform);
 }
 
 } // namespace opendnp3

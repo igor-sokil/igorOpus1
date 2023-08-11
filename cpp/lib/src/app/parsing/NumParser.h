@@ -39,13 +39,13 @@
 ////namespace opendnp3
 ////{
 
-    typedef uint16_t (*ReadFun_in_NumParser)(RSeq_for_Uint16_t *buffer);
+typedef uint16_t (*ReadFun_in_NumParser)(RSeq_for_Uint16_t *buffer);
 
 // A one or two byte unsigned integer parser
 ////class NumParser
 typedef struct
 {
-    // a function that consumes bytes from a buffer and returns a uint16_t count
+  // a function that consumes bytes from a buffer and returns a uint16_t count
 ////    typedef uint16_t (*ReadFun)(ser4cpp::rseq_t& buffer);
 
 ////public:
@@ -60,8 +60,8 @@ typedef struct
 ////    static NumParser TwoByte();
 
 ////private:
-    // read the number, consuming from the buffer
-    // return true if there is enough bytes, false otherwise
+  // read the number, consuming from the buffer
+  // return true if there is enough bytes, false otherwise
 ////    bool Read(uint16_t& num, ser4cpp::rseq_t& buffer) const;
 
 ////    static uint16_t ReadOneByte(ser4cpp::rseq_t& buffer);
@@ -69,28 +69,28 @@ typedef struct
 
 ////    NumParser(ReadFun pReadFun, uint8_t size);
 
-    ReadFun_in_NumParser pReadFun;
-    uint8_t size;
+  ReadFun_in_NumParser pReadFun;
+  uint8_t size;
 
 ////    NumParser() = delete;
 } NumParser;
 
-    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
 
-    ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, uint16_t *count);////, Logger* pLogger) const;
-    ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, Range *range);////, Logger* pLogger) const;
+ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, uint16_t *count);////, Logger* pLogger) const;
+ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, Range *range);////, Logger* pLogger) const;
 
-    uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
 
-    NumParser OneByte_in_NumParser_static(void);
-    NumParser TwoByte_in_NumParser_static(void);
+NumParser OneByte_in_NumParser_static(void);
+NumParser TwoByte_in_NumParser_static(void);
 
-    boolean Read_in_NumParser(NumParser *pNumParser, uint16_t *num, RSeq_for_Uint16_t *buffer);
+boolean Read_in_NumParser(NumParser *pNumParser, uint16_t *num, RSeq_for_Uint16_t *buffer);
 
-    uint16_t ReadOneByte_in_NumParser_static(RSeq_for_Uint16_t *buffer);
-    uint16_t ReadTwoBytes_in_NumParser_static(RSeq_for_Uint16_t *buffer);
+uint16_t ReadOneByte_in_NumParser_static(RSeq_for_Uint16_t *buffer);
+uint16_t ReadTwoBytes_in_NumParser_static(RSeq_for_Uint16_t *buffer);
 
-    void NumParser_in_NumParser(NumParser *pNumParser, ReadFun_in_NumParser pReadFun, uint8_t size);
+void NumParser_in_NumParser(NumParser *pNumParser, ReadFun_in_NumParser pReadFun, uint8_t size);
 
 //} // namespace opendnp3
 

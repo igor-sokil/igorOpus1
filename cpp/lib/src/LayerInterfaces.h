@@ -39,13 +39,13 @@ typedef struct
 ////public:
 ////    virtual ~IUpDown() {}
 
-    // Called by a lower Layer when it is available to this layer
-    // return false if the layer is already up
-    boolean (*pOnLowerLayerUp_in_IUpDown)(void*);// = 0;
+  // Called by a lower Layer when it is available to this layer
+  // return false if the layer is already up
+  boolean (*pOnLowerLayerUp_in_IUpDown)(void*);// = 0;
 
-    // Called by a lower layer when it is no longer available to this layer
-    // return false if the layer is already down
-    boolean (*pOnLowerLayerDown_in_IUpDown)(void*);// = 0;
+  // Called by a lower layer when it is no longer available to this layer
+  // return false if the layer is already down
+  boolean (*pOnLowerLayerDown_in_IUpDown)(void*);// = 0;
 
   void* pParentPointer_in_IUpDown;
 } IUpDown;
@@ -59,16 +59,16 @@ boolean OnLowerLayerDown_in_IUpDown(IUpDown *);
 ////class IUpperLayer : public IUpDown
 typedef struct
 {
-    IUpDown iIUpDown;
+  IUpDown iIUpDown;
 ////public:
 ////    virtual ~IUpperLayer() {}
 
-    // Called by the lower layer when data arrives
-    // return false if the layer is down
-    boolean (*pOnReceive_in_IUpperLayer)(void*, Message* message);// = 0;
+  // Called by the lower layer when data arrives
+  // return false if the layer is down
+  boolean (*pOnReceive_in_IUpperLayer)(void*, Message* message);// = 0;
 
-    // Called by the lower layer when it is ready to transmit more data
-    boolean (*pOnTxReady_in_IUpperLayer)(void*);// = 0;
+  // Called by the lower layer when it is ready to transmit more data
+  boolean (*pOnTxReady_in_IUpperLayer)(void*);// = 0;
 
   void* pParentPointer_in_IUpperLayer;
 } IUpperLayer;
@@ -86,7 +86,7 @@ typedef struct
 ////public:
 ////    virtual ~ILowerLayer() {}
 
-   boolean (*pBeginTransmit_in_ILowerLayer)(void*, Message* message);// = 0;
+  boolean (*pBeginTransmit_in_ILowerLayer)(void*, Message* message);// = 0;
 
   void* pParentPointer_in_ILowerLayer;
 } ILowerLayer;
@@ -103,7 +103,7 @@ typedef struct
 ////public:
 ////    HasLowerLayer() : pLowerLayer(nullptr) {}
 
-    // Called by the lower layer when data arrives
+  // Called by the lower layer when data arrives
 
 ////    void SetLowerLayer(ILowerLayer& lowerLayer)
 ////    {
@@ -112,11 +112,11 @@ typedef struct
 ////    }
 
 ////protected:
-    ILowerLayer* pLowerLayer;
+  ILowerLayer* pLowerLayer;
 } HasLowerLayer;
 
-  void HasLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer);
-  void SetLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer, ILowerLayer* lowerLayer);
+void HasLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer);
+void SetLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer, ILowerLayer* lowerLayer);
 
 
 ////class HasUpperLayer
@@ -126,7 +126,7 @@ typedef struct
 ////public:
 ////    HasUpperLayer() : pUpperLayer(nullptr) {}
 
-    // Called by the lower layer when data arrives
+  // Called by the lower layer when data arrives
 
 ////    void SetUpperLayer(IUpperLayer& upperLayer)
 ////    {
@@ -135,11 +135,11 @@ typedef struct
 ////    }
 
 ////protected:
-    IUpperLayer* pUpperLayer;
+  IUpperLayer* pUpperLayer;
 } HasUpperLayer;
 
-   void HasUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer);
-    void SetUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer, IUpperLayer* upperLayer);
+void HasUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer);
+void SetUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer, IUpperLayer* upperLayer);
 
 
 ///} // namespace opendnp3

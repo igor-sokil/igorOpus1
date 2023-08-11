@@ -184,30 +184,30 @@ typedef struct
 
 void List_TypedEventRecord_for_AnalogOutputStatusSpec_in_List_TypedEventRecord_for_AnalogOutputStatusSpecOver1(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
 void List_TypedEventRecord_for_AnalogOutputStatusSpec_in_List_TypedEventRecord_for_AnalogOutputStatusSpecOver2(
-       List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
-       uint32_t maxSize);
-    Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec Iterate_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+  List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
+  uint32_t maxSize);
+Iterator_in_List_TypedEventRecord_for_AnalogOutputStatusSpec Iterate_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
 
-  void Initialize_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
-//  uint32_t RemoveAll_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(EventStorage *pEventStorage, 
-//                            List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec, 
-//                            boolean (*match)(EventStorage *pEventStorage, 
+void Initialize_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(EventStorage *pEventStorage,
+//                            List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
+//                            boolean (*match)(EventStorage *pEventStorage,
 //                            EventRecord* record));//const U& match);
 
-   void Remove_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec, Node_TypedEventRecord_for_AnalogOutputStatusSpec* node);
-   void Link_in_List_TypedEventRecord_for_AnalogOutputStatusSpec_static(Node_TypedEventRecord_for_AnalogOutputStatusSpec* first, Node_TypedEventRecord_for_AnalogOutputStatusSpec* second);
+void Remove_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec, Node_TypedEventRecord_for_AnalogOutputStatusSpec* node);
+void Link_in_List_TypedEventRecord_for_AnalogOutputStatusSpec_static(Node_TypedEventRecord_for_AnalogOutputStatusSpec* first, Node_TypedEventRecord_for_AnalogOutputStatusSpec* second);
 
-     uint32_t Capacity_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
+uint32_t Capacity_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
 boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
 Node_TypedEventRecord_for_AnalogOutputStatusSpec* Head_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec);
 
 Node_TypedEventRecord_for_AnalogOutputStatusSpec* Add_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
-                                      TypedEventRecord_for_AnalogOutputStatusSpec* value);
+    TypedEventRecord_for_AnalogOutputStatusSpec* value);
 Node_TypedEventRecord_for_AnalogOutputStatusSpec* Insert_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec,
-                                                                TypedEventRecord_for_AnalogOutputStatusSpec* value,
-                                                                Node_TypedEventRecord_for_AnalogOutputStatusSpec* left,
-                                                                Node_TypedEventRecord_for_AnalogOutputStatusSpec* right
-                                                                  );
+    TypedEventRecord_for_AnalogOutputStatusSpec* value,
+    Node_TypedEventRecord_for_AnalogOutputStatusSpec* left,
+    Node_TypedEventRecord_for_AnalogOutputStatusSpec* right
+                                                                                                            );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

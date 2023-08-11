@@ -26,25 +26,25 @@
 
 ////namespace flags
 ////{
-    boolean GetBinaryValue_in_QualityFlagsOver1(Flags flags)
-    {
-        return (flags.value & ((BinaryQuality_uint8_t)BinaryQuality_STATE)) != 0;
-    }
+boolean GetBinaryValue_in_QualityFlagsOver1(Flags flags)
+{
+  return (flags.value & ((BinaryQuality_uint8_t)BinaryQuality_STATE)) != 0;
+}
 
-    Flags GetBinaryFlags_in_QualityFlagsOver2(Flags flags, boolean value)
-    {
-        Flags fFlags1;
-        Flags_In_FlagsOver2(&fFlags1, 
-                            flags.value | ((BinaryQuality_uint8_t)BinaryQuality_STATE)
-                            );
-        Flags fFlags2;
-        Flags_In_FlagsOver2(&fFlags2, 
-                            flags.value & ((BinaryQuality_uint8_t)BinaryQuality_STATE)
-                            );
+Flags GetBinaryFlags_in_QualityFlagsOver2(Flags flags, boolean value)
+{
+  Flags fFlags1;
+  Flags_In_FlagsOver2(&fFlags1,
+                      flags.value | ((BinaryQuality_uint8_t)BinaryQuality_STATE)
+                     );
+  Flags fFlags2;
+  Flags_In_FlagsOver2(&fFlags2,
+                      flags.value & ((BinaryQuality_uint8_t)BinaryQuality_STATE)
+                     );
 ////        return (value) ? Flags(flags.value | ((BinaryQuality_uint8_t)BinaryQuality_STATE))
 ////                       : Flags(flags.value & ((BinaryQuality_uint8_t)BinaryQuality_STATE));
-       return (value) ? fFlags1 : fFlags2;
-    }
+  return (value) ? fFlags1 : fFlags2;
+}
 
 ////} // namespace flags
 

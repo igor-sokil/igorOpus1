@@ -63,7 +63,7 @@ boolean Write_in_PrefixedWriteIterator_for_UInt16_DoubleBitBinary(PrefixedWriteI
     write_to_in_UInt16_static(pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->pPosition, index);
 ////        serializer.write(value, *pPosition);
     write_in_Serializer_for_DoubleBitBinary(&(pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->serializer), value,
-                                   pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->pPosition);
+                                            pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->pPosition);
     ++(pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->count);
     return true;
   }

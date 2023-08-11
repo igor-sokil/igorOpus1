@@ -184,31 +184,31 @@ typedef struct
 
 void List_TypedEventRecord_for_BinaryOutputStatusSpec_in_List_TypedEventRecord_for_BinaryOutputStatusSpecOver1(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
 void List_TypedEventRecord_for_BinaryOutputStatusSpec_in_List_TypedEventRecord_for_BinaryOutputStatusSpecOver2(
-       List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec,
-       uint32_t maxSize);
+  List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec,
+  uint32_t maxSize);
 
-    Iterator_in_List_TypedEventRecord_for_BinaryOutputStatusSpec Iterate_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
+Iterator_in_List_TypedEventRecord_for_BinaryOutputStatusSpec Iterate_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
 
-  void Initialize_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
-//  uint32_t RemoveAll_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(EventStorage *pEventStorage, 
-//                            List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec, 
-//                            boolean (*match)(EventStorage *pEventStorage, 
+void Initialize_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
+//  uint32_t RemoveAll_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(EventStorage *pEventStorage,
+//                            List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec,
+//                            boolean (*match)(EventStorage *pEventStorage,
 //                            EventRecord* record));//const U& match);
 
-   void Remove_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec, Node_TypedEventRecord_for_BinaryOutputStatusSpec* node);
-   void Link_in_List_TypedEventRecord_for_BinaryOutputStatusSpec_static(Node_TypedEventRecord_for_BinaryOutputStatusSpec* first, Node_TypedEventRecord_for_BinaryOutputStatusSpec* second);
+void Remove_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec, Node_TypedEventRecord_for_BinaryOutputStatusSpec* node);
+void Link_in_List_TypedEventRecord_for_BinaryOutputStatusSpec_static(Node_TypedEventRecord_for_BinaryOutputStatusSpec* first, Node_TypedEventRecord_for_BinaryOutputStatusSpec* second);
 
-     uint32_t Capacity_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
+uint32_t Capacity_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
 boolean IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
 Node_TypedEventRecord_for_BinaryOutputStatusSpec* Head_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec);
 
 Node_TypedEventRecord_for_BinaryOutputStatusSpec* Add_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec,
-                                      TypedEventRecord_for_BinaryOutputStatusSpec* value);
+    TypedEventRecord_for_BinaryOutputStatusSpec* value);
 Node_TypedEventRecord_for_BinaryOutputStatusSpec* Insert_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec,
-                                                                TypedEventRecord_for_BinaryOutputStatusSpec* value,
-                                                                Node_TypedEventRecord_for_BinaryOutputStatusSpec* left,
-                                                                Node_TypedEventRecord_for_BinaryOutputStatusSpec* right
-                                                                  );
+    TypedEventRecord_for_BinaryOutputStatusSpec* value,
+    Node_TypedEventRecord_for_BinaryOutputStatusSpec* left,
+    Node_TypedEventRecord_for_BinaryOutputStatusSpec* right
+                                                                                                            );
 
 ////template<class T> Node<T>* List<T>::Add(const T& value)
 ////{

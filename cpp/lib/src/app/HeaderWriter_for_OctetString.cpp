@@ -5,29 +5,29 @@
 
 //#include "HeaderWriter_for_uint16_OctetString.h"
 
-  PrefixedWriteIterator_for_UInt16_OctetString IterateOverCountWithPrefix_for_UInt16_OctetString_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+PrefixedWriteIterator_for_UInt16_OctetString IterateOverCountWithPrefix_for_UInt16_OctetString_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_OctetString* serializer)
 {
 ////    const auto reserve_size
-      uint16_t reserve_size =
+  uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
-            2*size_in_UInt16 +
-              get_size_in_Serializer_for_OctetString(&(serializer->sSerializer_for_OctetString));
+    2*size_in_UInt16 +
+    get_size_in_Serializer_for_OctetString(&(serializer->sSerializer_for_OctetString));
 ////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
- if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
-                     ID_in_DNP3Serializer_for_OctetString(serializer), qc, reserve_size))
-    {
-         PrefixedWriteIterator_for_UInt16_OctetString pPrefixedWriteIterator_for_UInt16_OctetString;
-         PrefixedWriteIterator_for_UInt16_OctetString_in_PrefixedWriteIterator_for_UInt16_OctetStringOver2(&pPrefixedWriteIterator_for_UInt16_OctetString,
-                                                 &(serializer->sSerializer_for_OctetString), pHeaderWriter->position);
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
+      ID_in_DNP3Serializer_for_OctetString(serializer), qc, reserve_size))
+  {
+    PrefixedWriteIterator_for_UInt16_OctetString pPrefixedWriteIterator_for_UInt16_OctetString;
+    PrefixedWriteIterator_for_UInt16_OctetString_in_PrefixedWriteIterator_for_UInt16_OctetStringOver2(&pPrefixedWriteIterator_for_UInt16_OctetString,
+        &(serializer->sSerializer_for_OctetString), pHeaderWriter->position);
 //        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
-         return pPrefixedWriteIterator_for_UInt16_OctetString;
-    }
-    else
-    {
+    return pPrefixedWriteIterator_for_UInt16_OctetString;
+  }
+  else
+  {
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
-         return Null_in_PrefixedWriteIterator_for_UInt16_OctetString_static();
-    }
+    return Null_in_PrefixedWriteIterator_for_UInt16_OctetString_static();
+  }
 }
 /*
   PrefixedWriteIterator_for_UInt16_OctetString IterateOverCountWithPrefix_for_UInt16_OctetString_in_HeaderWriter(HeaderWriter *pHeaderWriter,

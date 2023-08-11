@@ -34,5 +34,5 @@ typedef struct
 } Node_TypedEventRecord_for_OctetStringSpec;
 
 void Node_TypedEventRecord_for_OctetStringSpec_in_Node_TypedEventRecord_for_OctetStringSpec(
-                    Node_TypedEventRecord_for_OctetStringSpec *pNode_TypedEventRecord_for_OctetStringSpec);
+  Node_TypedEventRecord_for_OctetStringSpec *pNode_TypedEventRecord_for_OctetStringSpec);
 #endif

@@ -24,26 +24,26 @@
 ////{
 ////LinkHeaderFields::LinkHeaderFields()
 ////    : func(LinkFunction::INVALID), isFromMaster(false), fcb(false), fcvdfc(false), addresses(Addresses())
-  void LinkHeaderFields_in_LinkHeaderFieldsOver1(LinkHeaderFields *pLinkHeaderFields)
+void LinkHeaderFields_in_LinkHeaderFieldsOver1(LinkHeaderFields *pLinkHeaderFields)
 {
-   pLinkHeaderFields->func = LinkFunction_INVALID;
-   pLinkHeaderFields->isFromMaster = false;
-   pLinkHeaderFields->fcb = false;
-   pLinkHeaderFields->fcvdfc = false;
+  pLinkHeaderFields->func = LinkFunction_INVALID;
+  pLinkHeaderFields->isFromMaster = false;
+  pLinkHeaderFields->fcb = false;
+  pLinkHeaderFields->fcvdfc = false;
 //  void Addresses_in_AddressesOver1(Addresses *pAddresses);
 //// addresses(Addresses())
-   Addresses_in_AddressesOver1(&(pLinkHeaderFields->addresses));
+  Addresses_in_AddressesOver1(&(pLinkHeaderFields->addresses));
 }
 
 ////LinkHeaderFields::LinkHeaderFields(LinkFunction func_, bool isMaster_, bool fcb_, bool fcvdfc_, Addresses addresses_)
 ////    : func(func_), isFromMaster(isMaster_), fcb(fcb_), fcvdfc(fcvdfc_), addresses(addresses_)
-  void LinkHeaderFields_in_LinkHeaderFieldsOver2(LinkHeaderFields *pLinkHeaderFields, LinkFunction_uint8_t func_, boolean isMaster_, boolean fcb_, boolean fcvdfc_, Addresses addresses_)
+void LinkHeaderFields_in_LinkHeaderFieldsOver2(LinkHeaderFields *pLinkHeaderFields, LinkFunction_uint8_t func_, boolean isMaster_, boolean fcb_, boolean fcvdfc_, Addresses addresses_)
 {
-   pLinkHeaderFields->func = func_; 
-   pLinkHeaderFields->isFromMaster = isMaster_;
-   pLinkHeaderFields->fcb = fcb_;
-   pLinkHeaderFields->fcvdfc = fcvdfc_;
-   pLinkHeaderFields->addresses = addresses_;
+  pLinkHeaderFields->func = func_;
+  pLinkHeaderFields->isFromMaster = isMaster_;
+  pLinkHeaderFields->fcb = fcb_;
+  pLinkHeaderFields->fcvdfc = fcvdfc_;
+  pLinkHeaderFields->addresses = addresses_;
 }
 
 ////} // namespace opendnp3

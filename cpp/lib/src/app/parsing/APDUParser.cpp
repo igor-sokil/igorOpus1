@@ -58,8 +58,8 @@
 //}
 
 ParseResult_uint8_t Parse_in_APDUParser_static(
-                              RSeq_for_Uint16_t *buffer,
-                              IAPDUHandler *handler)
+  RSeq_for_Uint16_t *buffer,
+  IAPDUHandler *handler)
 //                              Logger* pLogger,
 //                              ParserSettings settings)
 {
@@ -69,108 +69,108 @@ ParseResult_uint8_t Parse_in_APDUParser_static(
 //                                       IAPDUHandler* pHandler,
 //                                       IWhiteList* pWhiteList);
 //                                       const ParserSettings& settings);
-    // do two state parsing process with logging and white-listing first but no handling on the first pass
+  // do two state parsing process with logging and white-listing first but no handling on the first pass
 ////    ParseResult_uint8_t result = ParseSinglePass(buffer, /*pLogger,*/ NULL, handler);//, settings);
 ////    auto result = ParseSinglePass(buffer, pLogger, nullptr, &handler, settings);
-    ParseResult_uint8_t result = ParseSinglePass_in_APDUParser_static(
-                             buffer,
+  ParseResult_uint8_t result = ParseSinglePass_in_APDUParser_static(
+                                 buffer,
 //                                       Logger* pLogger,
-                                       NULL,
-                                       &(handler->iIWhiteList));
+                                 NULL,
+                                 &(handler->iIWhiteList));
 //                                       const ParserSettings& settings);
 
-    // if the first pass was successful, do a 2nd pass with the handler but no logging or white-list
+  // if the first pass was successful, do a 2nd pass with the handler but no logging or white-list
 ////    return (result == ParseResult::OK) ? ParseSinglePass(buffer, nullptr, &handler, nullptr, settings) : result;
-    return (result == ParseResult_OK) ? ParseSinglePass_in_APDUParser_static(buffer, NULL, &(handler->iIWhiteList)) : result;
+  return (result == ParseResult_OK) ? ParseSinglePass_in_APDUParser_static(buffer, NULL, &(handler->iIWhiteList)) : result;
 }
 
 ParseResult_uint8_t ParseAndLogAll_in_APDUParser_static(RSeq_for_Uint16_t *buffer)//, Logger* pLogger, ParserSettings settings)
 {
 ////    return ParseSinglePass(buffer, pLogger, nullptr, nullptr, settings);
-    return ParseSinglePass_in_APDUParser_static(buffer, /*pLogger,*/ NULL, NULL);//, settings);
+  return ParseSinglePass_in_APDUParser_static(buffer, /*pLogger,*/ NULL, NULL);//, settings);
 }
 
 ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
-                                        RSeq_for_Uint16_t *buffer,
-                                        //Logger* pLogger,
-                                        IAPDUHandler* pHandler,
-                                        IWhiteList* pWhiteList)
-                                        //const ParserSettings& settings)
+  RSeq_for_Uint16_t *buffer,
+  //Logger* pLogger,
+  IAPDUHandler* pHandler,
+  IWhiteList* pWhiteList)
+//const ParserSettings& settings)
 {
-    uint32_t count = 0;
-    RSeq_for_Uint16_t copy = *buffer;
+  uint32_t count = 0;
+  RSeq_for_Uint16_t copy = *buffer;
 //    RSeq_for_Uint16_t copy(buffer);
 //    while (copy.length() > 0)
-    while (length_in_HasLength_for_Uint16_t(&(copy.hHasLength)) > 0)
+  while (length_in_HasLength_for_Uint16_t(&(copy.hHasLength)) > 0)
+  {
+    ParseResult_uint8_t result = ParseHeader_in_APDUParser_static(&copy, /*pLogger,*/ count, /*settings,*/ pHandler, pWhiteList);
+    ++count;
+    if (result != ParseResult_OK)
     {
-        ParseResult_uint8_t result = ParseHeader_in_APDUParser_static(&copy, /*pLogger,*/ count, /*settings,*/ pHandler, pWhiteList);
-        ++count;
-        if (result != ParseResult_OK)
-        {
-            return result;
-        }
+      return result;
     }
-    return ParseResult_OK;
+  }
+  return ParseResult_OK;
 }
 
 ParseResult_uint8_t ParseHeader_in_APDUParser_static(
-                                    RSeq_for_Uint16_t *buffer,
+  RSeq_for_Uint16_t *buffer,
 //                                    Logger* pLogger,
-                                    uint32_t count,
+  uint32_t count,
 //                                    const ParserSettings& settings,
-                                    IAPDUHandler* pHandler,
-                                    IWhiteList* pWhiteList)
+  IAPDUHandler* pHandler,
+  IWhiteList* pWhiteList)
 {
-    ObjectHeader header;
+  ObjectHeader header;
 //    ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader *header, RSeq_for_Uint16_t *buffer);////, Logger* pLogger);
-    ParseResult_uint8_t result = ParseObjectHeader_in_ObjectHeaderParser_static(&header, buffer);//, pLogger);
-    if (result != ParseResult_OK)
-    {
-        return result;
-    }
+  ParseResult_uint8_t result = ParseObjectHeader_in_ObjectHeaderParser_static(&header, buffer);//, pLogger);
+  if (result != ParseResult_OK)
+  {
+    return result;
+  }
 
-    GroupVariationRecord GV = GetRecord_in_GroupVariationRecord_static(header.group, header.variation);
+  GroupVariationRecord GV = GetRecord_in_GroupVariationRecord_static(header.group, header.variation);
 
-    if (GV.enumeration == GroupVariation_UNKNOWN)
-    {
+  if (GV.enumeration == GroupVariation_UNKNOWN)
+  {
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unknown object %i / %i", GV.group, GV.variation);
-        return ParseResult_UNKNOWN_OBJECT;
-    }
+    return ParseResult_UNKNOWN_OBJECT;
+  }
 
-    // if a white-list is defined and it doesn't validate, exit early
+  // if a white-list is defined and it doesn't validate, exit early
 ////    if (pWhiteList && !pWhiteList->IsAllowed(count, GV.enumeration, QualifierCodeSpec::from_type(header.qualifier)))
-     if(pWhiteList && !IsAllowed_in_IWhiteList(pWhiteList, count, GV.enumeration, header.qualifier))//from_type_in_QualifierCodeSpec(header.qualifier)))
-    {
+  if(pWhiteList && !IsAllowed_in_IWhiteList(pWhiteList, count, GV.enumeration, header.qualifier))//from_type_in_QualifierCodeSpec(header.qualifier)))
+  {
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Header (%i) w/ Object (%i,%i) and qualifier (%i) failed whitelist",
 ////                            count, header.group, header.variation, header.qualifier);
 
-        return ParseResult_NOT_ON_WHITELIST;
-    }
+    return ParseResult_NOT_ON_WHITELIST;
+  }
 
-    HeaderRecord hHeaderRecord;
-    HeaderRecord_in_HeaderRecordOver2(&hHeaderRecord, 
-                                      &GV,
-                                      header.qualifier, count);
-    return ParseQualifier_in_APDUParser_static(buffer, /*pLogger,*/ &hHeaderRecord/*HeaderRecord(GV, header.qualifier, count)*/, /*settings,*/ pHandler);
+  HeaderRecord hHeaderRecord;
+  HeaderRecord_in_HeaderRecordOver2(&hHeaderRecord,
+                                    &GV,
+                                    header.qualifier, count);
+  return ParseQualifier_in_APDUParser_static(buffer, /*pLogger,*/ &hHeaderRecord/*HeaderRecord(GV, header.qualifier, count)*/, /*settings,*/ pHandler);
 }
 
 ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
-                                    RSeq_for_Uint16_t *buffer,
+  RSeq_for_Uint16_t *buffer,
 //                                       Logger* pLogger,
-                                    HeaderRecord *record,
+  HeaderRecord *record,
 //                                       const ParserSettings& settings,
-                                    IAPDUHandler* pHandler)
+  IAPDUHandler* pHandler)
 {
-    switch (GetQualifierCode_in_HeaderRecord(record))////record.GetQualifierCode())
-    {
-    case (QualifierCode_ALL_OBJECTS):
-        return HandleAllObjectsHeader_in_APDUParser_static(/*pLogger,*/ record, /*settings,*/ pHandler);
+  switch (GetQualifierCode_in_HeaderRecord(record))////record.GetQualifierCode())
+  {
+  case (QualifierCode_ALL_OBJECTS):
+    return HandleAllObjectsHeader_in_APDUParser_static(/*pLogger,*/ record, /*settings,*/ pHandler);
 
 //     ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
 //                                   NumParser* numparser,
-                                   ////const ParserSettings& settings,
+  ////const ParserSettings& settings,
 //                                   HeaderRecord* record,
-                                   ////Logger* pLogger,
+  ////Logger* pLogger,
 //                                   IAPDUHandler* pHandler);
 ////    case (QualifierCode_UINT8_CNT):
 ////{
@@ -208,31 +208,31 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
 ////        return ParseHeader_in_CountIndexParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
 ////}
 
-    default:
+  default:
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unknown qualifier %x", record.qualifier);
-        return ParseResult_UNKNOWN_QUALIFIER;
-    }
+    return ParseResult_UNKNOWN_QUALIFIER;
+  }
 }
 
 ParseResult_uint8_t HandleAllObjectsHeader_in_APDUParser_static(//Logger* pLogger,
-                                               HeaderRecord *record,
+  HeaderRecord *record,
 //                                               const ParserSettings& settings,
-                                               IAPDUHandler* pHandler)
+  IAPDUHandler* pHandler)
 {
 ////    FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u - %s - %s", record.group, record.variation,
 ////                        GroupVariationSpec::to_human_string(record.enumeration),
 ////                        QualifierCodeSpec::to_human_string(QualifierCode::ALL_OBJECTS));
 
-    if (pHandler)
-    {
-        AllObjectsHeader aAllObjectsHeader;
-        AllObjectsHeader_in_AllObjectsHeader(&aAllObjectsHeader, record);
+  if (pHandler)
+  {
+    AllObjectsHeader aAllObjectsHeader;
+    AllObjectsHeader_in_AllObjectsHeader(&aAllObjectsHeader, record);
 ////        pHandler->OnHeader(AllObjectsHeader(record));
 ////        pHandler->OnHeader(&aAllObjectsHeader);//AllObjectsHeader(record));
-   OnHeader_AllObjectsHeader_in_IAPDUHandler(pHandler, &aAllObjectsHeader);
-    }
+    OnHeader_AllObjectsHeader_in_IAPDUHandler(pHandler, &aAllObjectsHeader);
+  }
 
-    return ParseResult_OK;
+  return ParseResult_OK;
 }
 
 ////} // namespace opendnp3

@@ -27,37 +27,37 @@
 
 void NumRetries_in_NumRetries(NumRetries *pNumRetries, uint16_t maxNumRetries, boolean isInfinite)
 {
-    pNumRetries->numRetries = 0;
-    pNumRetries->maxNumRetries = maxNumRetries;
-    pNumRetries->isInfinite = isInfinite;
+  pNumRetries->numRetries = 0;
+  pNumRetries->maxNumRetries = maxNumRetries;
+  pNumRetries->isInfinite = isInfinite;
 }
 
 NumRetries Fixed_in_NumRetries_static(uint16_t maxNumRetries)
 {
-    NumRetries nNumRetries;
-    NumRetries_in_NumRetries(&nNumRetries, maxNumRetries, false);
+  NumRetries nNumRetries;
+  NumRetries_in_NumRetries(&nNumRetries, maxNumRetries, false);
 ////    return NumRetries(maxNumRetries, false);
-    return nNumRetries;
+  return nNumRetries;
 }
 
 NumRetries Infinite_in_NumRetries_static(void)
 {
-    NumRetries nNumRetries;
-    NumRetries_in_NumRetries(&nNumRetries, 0, true);
+  NumRetries nNumRetries;
+  NumRetries_in_NumRetries(&nNumRetries, 0, true);
 ////    return NumRetries(0, true);
-    return nNumRetries;
+  return nNumRetries;
 }
 
 boolean Retry_in_NumRetries(NumRetries *pNumRetries)
 {
-    (pNumRetries->numRetries)++;
+  (pNumRetries->numRetries)++;
 
-    return pNumRetries->isInfinite || (pNumRetries->numRetries <= pNumRetries->maxNumRetries);
+  return pNumRetries->isInfinite || (pNumRetries->numRetries <= pNumRetries->maxNumRetries);
 }
 
 void Reset_in_NumRetries(NumRetries *pNumRetries)
 {
-    pNumRetries->numRetries = 0;
+  pNumRetries->numRetries = 0;
 }
 
 ////}; // namespace opendnp3

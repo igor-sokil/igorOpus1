@@ -30,7 +30,7 @@ void ResponseContext_in_ResponseContext(ResponseContext *pResponseContext, IResp
   pResponseContext->pEventLoader = eventLoader;
 }
 
-boolean HasSelection_in_ResponseContext(ResponseContext *pResponseContext) 
+boolean HasSelection_in_ResponseContext(ResponseContext *pResponseContext)
 {
 //boolean HasAnySelection_in_IResponseLoader(IResponseLoader *);
 ////    return pStaticLoader->HasAnySelection() || pEventLoader->HasAnySelection();
@@ -40,35 +40,35 @@ boolean HasSelection_in_ResponseContext(ResponseContext *pResponseContext)
 
 void Reset_in_ResponseContext(ResponseContext *pResponseContext)
 {
-    pResponseContext->fragmentCount = 0;
+  pResponseContext->fragmentCount = 0;
 }
 
 AppControlField LoadResponse_in_ResponseContext(ResponseContext *pResponseContext, HeaderWriter* writer)
 {
-    boolean fir = pResponseContext->fragmentCount == 0;
-    ++(pResponseContext->fragmentCount);
+  boolean fir = pResponseContext->fragmentCount == 0;
+  ++(pResponseContext->fragmentCount);
 
 //    uint16_t Remaining_in_HeaderWriter(HeaderWriter *pHeaderWriter);
 ////    auto startingSize = writer.Remaining();
-    uint16_t startingSize = Remaining_in_HeaderWriter(writer);
+  uint16_t startingSize = Remaining_in_HeaderWriter(writer);
 //boolean Load_in_IResponseLoader(IResponseLoader *, HeaderWriter* writer);
 ////    bool notFull = pEventLoader->Load(writer);
-boolean notFull = Load_in_IResponseLoader(pResponseContext->pEventLoader, writer);
+  boolean notFull = Load_in_IResponseLoader(pResponseContext->pEventLoader, writer);
 //    uint16_t Remaining_in_HeaderWriter(HeaderWriter *pHeaderWriter);
 ////    bool someEventsWritten = writer.Remaining() < startingSize;
-    boolean someEventsWritten = Remaining_in_HeaderWriter(writer) < startingSize;
+  boolean someEventsWritten = Remaining_in_HeaderWriter(writer) < startingSize;
 
-    if (notFull)
-    {
+  if (notFull)
+  {
 ////        auto fin = pStaticLoader->Load(writer);
-boolean fin = Load_in_IResponseLoader(pResponseContext->pStaticLoader, writer);
-        boolean con = !fin || someEventsWritten;
+    boolean fin = Load_in_IResponseLoader(pResponseContext->pStaticLoader, writer);
+    boolean con = !fin || someEventsWritten;
 //  void AppControlField_in_AppControlFieldOver3(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns);
 ////        return AppControlField(fir, fin, con, false);
-  AppControlField aAppControlField;
-  AppControlField_in_AppControlFieldOver3(&aAppControlField, fir, fin, con, false);
-  return aAppControlField;
-    }
+    AppControlField aAppControlField;
+    AppControlField_in_AppControlFieldOver3(&aAppControlField, fir, fin, con, false);
+    return aAppControlField;
+  }
 
 ////    return AppControlField(fir, false, true, false);
   AppControlField aAppControlField;

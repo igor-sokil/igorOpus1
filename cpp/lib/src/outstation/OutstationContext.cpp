@@ -192,9 +192,9 @@ boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
   pOContext->shouldCheckForUnsolicited = true;
 //    void CheckForTaskStart_in_OContext(OContext *pOContext);
 ////    this->CheckForTaskStart();
-qDebug()<<"OnLowerLayerUp_in_OContext!!";
+  qDebug()<<"OnLowerLayerUp_in_OContext!!";
   CheckForTaskStart_in_OContext(pOContext);
-qDebug()<<"OnLowerLayerUp_in_OContext!!";
+  qDebug()<<"OnLowerLayerUp_in_OContext!!";
   return true;
 }
 
@@ -537,20 +537,20 @@ void CheckForTaskStart_in_OContext(OContext *pOContext)
 // do these checks in order of priority
 //   void CheckForDeferredRequest_in_OContext(OContext *pOContext);
 ////    this->CheckForDeferredRequest();
-qDebug()<<"CheckForTaskStart_in_OContext1";
+  qDebug()<<"CheckForTaskStart_in_OContext1";
   CheckForDeferredRequest_in_OContext(pOContext);
 //   void CheckForUnsolicitedNull_in_OContext(OContext *pOContext);
 ////    this->CheckForUnsolicitedNull();
-qDebug()<<"CheckForTaskStart_in_OContext2";
+  qDebug()<<"CheckForTaskStart_in_OContext2";
   CheckForUnsolicitedNull_in_OContext(pOContext);
-qDebug()<<"CheckForTaskStart_in_OContext3";
+  qDebug()<<"CheckForTaskStart_in_OContext3";
   if (pOContext->shouldCheckForUnsolicited)
   {
 //   void CheckForUnsolicited_in_OContext(OContext *pOContext);
 ////        this->CheckForUnsolicited();
     CheckForUnsolicited_in_OContext(pOContext);
   }
-qDebug()<<"CheckForTaskStart_in_OContext4";
+  qDebug()<<"CheckForTaskStart_in_OContext4";
 }
 
 boolean HandlerBooleanParsedRequest_in_OContext(void* pOContext, ParsedRequest* pParsedRequest);
@@ -582,47 +582,47 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
 //   boolean CanTransmit_in_OContext(OContext *pOContext);
 //     boolean IsIdle_in_OutstationState(OutstationState *);
 ////    if (this->CanTransmit() && this->state->IsIdle() && this->params.allowUnsolicited)
-qDebug()<<"CheckForUnsolicitedNull_in_OContext1";
+  qDebug()<<"CheckForUnsolicitedNull_in_OContext1";
   if (CanTransmit_in_OContext(pOContext) && IsIdle_in_OutstationState(pOContext->state) && pOContext->params.allowUnsolicited)
   {
 ////        if (!this->unsol.completedNull)
-qDebug()<<"CheckForUnsolicitedNull_in_OContext2";
+    qDebug()<<"CheckForUnsolicitedNull_in_OContext2";
     if (!pOContext->unsol.completedNull)
     {
       // send a NULL unsolcited message
 //APDUResponse Start_in_TxBuffer(TxBuffer *pTxBuffer);
 ////            auto response = this->unsol.tx.Start();
-qDebug()<<"CheckForUnsolicitedNull_in_OContext3";
+      qDebug()<<"CheckForUnsolicitedNull_in_OContext3";
       APDUResponse response = Start_in_TxBuffer(&(pOContext->unsol.tx));
 //    void NullUnsolicited_in_APDUBuilders_static(APDUResponse* response, uint8_t seq, IINField* iin);
 //    IINField GetResponseIIN_in_OContext(OContext *pOContext);
 ////            build::NullUnsolicited(response, this->unsol.seq.num, this->GetResponseIIN());
-qDebug()<<"CheckForUnsolicitedNull_in_OContext4";
+      qDebug()<<"CheckForUnsolicitedNull_in_OContext4";
       IINField temp = GetResponseIIN_in_OContext(pOContext);
 
-qDebug()<<"CheckForUnsolicitedNull_in_OContext5";
+      qDebug()<<"CheckForUnsolicitedNull_in_OContext5";
       NullUnsolicited_in_APDUBuilders_static(&response, pOContext->unsol.seq.num.seq, &temp);
 //    void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext);
 ////            this->RestartUnsolConfirmTimer();
-qDebug()<<"CheckForUnsolicitedNull_in_OContext6";
+      qDebug()<<"CheckForUnsolicitedNull_in_OContext6";
       RestartUnsolConfirmTimer_in_OContext(pOContext);
 //     OutstationState* Inst_in_StateNullUnsolicitedConfirmWait_static(void);
 //     OutstationState* Inst_in_StateUnsolicitedConfirmWait_static(void);
 ////            this->state = this->params.noDefferedReadDuringUnsolicitedNullResponse
 ////                ? &StateNullUnsolicitedConfirmWait::Inst()
 ////                : &StateUnsolicitedConfirmWait::Inst();
-qDebug()<<"CheckForUnsolicitedNull_in_OContext7";
+      qDebug()<<"CheckForUnsolicitedNull_in_OContext7";
       pOContext->state = pOContext->params.noDefferedReadDuringUnsolicitedNullResponse
                          ? Inst_in_StateNullUnsolicitedConfirmWait_static()
                          : Inst_in_StateUnsolicitedConfirmWait_static();
 
 //   void BeginUnsolTx_in_OContext(OContext *pOContext, APDUResponse* response);
 ////            this->BeginUnsolTx(response);
-qDebug()<<"CheckForUnsolicitedNull_in_OContext8";
+      qDebug()<<"CheckForUnsolicitedNull_in_OContext8";
       BeginUnsolTx_in_OContext(pOContext, &response);
     }
   }
-qDebug()<<"CheckForUnsolicitedNull_in_OContext9";
+  qDebug()<<"CheckForUnsolicitedNull_in_OContext9";
 }
 
 ////void OContext::CheckForUnsolicited()

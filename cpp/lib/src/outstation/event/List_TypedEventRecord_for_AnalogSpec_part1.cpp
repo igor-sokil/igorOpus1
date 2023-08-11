@@ -12,7 +12,7 @@ void List_TypedEventRecord_for_AnalogSpec_in_List_TypedEventRecord_for_AnalogSpe
   pList_TypedEventRecord_for_AnalogSpec->free = NULL;
   for(int i=0; i<SIZE_TypedEventRecord_for_AnalogSpec; i++)
   {
-   Node_TypedEventRecord_for_AnalogSpec_in_Node_TypedEventRecord_for_AnalogSpec(&((pList_TypedEventRecord_for_AnalogSpec->underlying).buffer[i]));
+    Node_TypedEventRecord_for_AnalogSpec_in_Node_TypedEventRecord_for_AnalogSpec(&((pList_TypedEventRecord_for_AnalogSpec->underlying).buffer[i]));
   }
 }
 

@@ -86,23 +86,23 @@ typedef struct
 ////    typename CountType::type_t count;
 ////    Serializer<WriteType> serializer;
 
-    uint8_t count;
-    Serializer_for_BinaryOutputStatus serializer;
+  uint8_t count;
+  Serializer_for_BinaryOutputStatus serializer;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } CountWriteIterator_for_UInt8_BinaryOutputStatus;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_CountWriteIterator_for_UInt8_BinaryOutputStatus(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus);
-    boolean Write_in_CountWriteIterator_for_UInt8_BinaryOutputStatus(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus, BinaryOutputStatus *value);////const WriteType& value)
-    void CountWriteIterator_for_UInt8_BinaryOutputStatus_destr_CountWriteIterator_for_UInt8_BinaryOutputStatus(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus);
-    void CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_UInt8_BinaryOutputStatusOver2(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus,
-                                            Serializer_for_BinaryOutputStatus *serializer, WSeq_for_Uint16_t *position);
-    void CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_UInt8_BinaryOutputStatusOver1(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus);
-    CountWriteIterator_for_UInt8_BinaryOutputStatus Null_in_CountWriteIterator_for_UInt8_BinaryOutputStatus_static(void);
+boolean IsValid_in_CountWriteIterator_for_UInt8_BinaryOutputStatus(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus);
+boolean Write_in_CountWriteIterator_for_UInt8_BinaryOutputStatus(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus, BinaryOutputStatus *value);////const WriteType& value)
+void CountWriteIterator_for_UInt8_BinaryOutputStatus_destr_CountWriteIterator_for_UInt8_BinaryOutputStatus(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus);
+void CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_UInt8_BinaryOutputStatusOver2(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus,
+    Serializer_for_BinaryOutputStatus *serializer, WSeq_for_Uint16_t *position);
+void CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_UInt8_BinaryOutputStatusOver1(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus);
+CountWriteIterator_for_UInt8_BinaryOutputStatus Null_in_CountWriteIterator_for_UInt8_BinaryOutputStatus_static(void);
 
 //-------------------Uint8---------------------------------------------------
 

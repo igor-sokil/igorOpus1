@@ -35,61 +35,61 @@
 ////struct LinkConfig
 typedef struct
 {
-/*
-    LinkConfig() = delete;
+  /*
+      LinkConfig() = delete;
 
-    LinkConfig(
-        bool isMaster, uint16_t localAddr, uint16_t remoteAddr, TimeDuration timeout, TimeDuration keepAliveTimeout)
-        :
-          IsMaster(isMaster),
-          LocalAddr(localAddr),
-          RemoteAddr(remoteAddr),
-          Timeout(timeout),
-          KeepAliveTimeout(keepAliveTimeout)
-    {
-    }
+      LinkConfig(
+          bool isMaster, uint16_t localAddr, uint16_t remoteAddr, TimeDuration timeout, TimeDuration keepAliveTimeout)
+          :
+            IsMaster(isMaster),
+            LocalAddr(localAddr),
+            RemoteAddr(remoteAddr),
+            Timeout(timeout),
+            KeepAliveTimeout(keepAliveTimeout)
+      {
+      }
 
-    [[deprecated("Use LinkConfig(bool) instead.")]]
-    LinkConfig(bool isMaster, bool useConfirms)
-        :
-          IsMaster(isMaster),
-          LocalAddr(isMaster ? 1 : 1024),
-          RemoteAddr(isMaster ? 1024 : 1),
-          Timeout(TimeDuration::Seconds(1)),
-          KeepAliveTimeout(TimeDuration::Minutes(1))
-    {
-    }
+      [[deprecated("Use LinkConfig(bool) instead.")]]
+      LinkConfig(bool isMaster, bool useConfirms)
+          :
+            IsMaster(isMaster),
+            LocalAddr(isMaster ? 1 : 1024),
+            RemoteAddr(isMaster ? 1024 : 1),
+            Timeout(TimeDuration::Seconds(1)),
+            KeepAliveTimeout(TimeDuration::Minutes(1))
+      {
+      }
 
-    LinkConfig(bool isMaster)
-        :
-          IsMaster(isMaster),
-          LocalAddr(isMaster ? 1 : 1024),
-          RemoteAddr(isMaster ? 1024 : 1),
-          Timeout(TimeDuration::Seconds(1)),
-          KeepAliveTimeout(TimeDuration::Minutes(1))
-    {
-    }
+      LinkConfig(bool isMaster)
+          :
+            IsMaster(isMaster),
+            LocalAddr(isMaster ? 1 : 1024),
+            RemoteAddr(isMaster ? 1024 : 1),
+            Timeout(TimeDuration::Seconds(1)),
+            KeepAliveTimeout(TimeDuration::Minutes(1))
+      {
+      }
 
-    inline Addresses GetAddresses() const
-    {
-        return Addresses(this->LocalAddr, this->RemoteAddr);
-    }
-*/
-    /// The master/outstation bit set on all messages
-    boolean IsMaster;
+      inline Addresses GetAddresses() const
+      {
+          return Addresses(this->LocalAddr, this->RemoteAddr);
+      }
+  */
+  /// The master/outstation bit set on all messages
+  boolean IsMaster;
 
-    /// dnp3 address of the local device
-    uint16_t LocalAddr;
+  /// dnp3 address of the local device
+  uint16_t LocalAddr;
 
-    /// dnp3 address of the remote device
-    uint16_t RemoteAddr;
+  /// dnp3 address of the remote device
+  uint16_t RemoteAddr;
 
-    /// the response timeout in milliseconds for confirmed requests
-    TimeDuration Timeout;
+  /// the response timeout in milliseconds for confirmed requests
+  TimeDuration Timeout;
 
-    /// the interval for keep-alive messages (link status requests)
-    /// if set to TimeDuration::Max(), the keep-alive is disabled
-    TimeDuration KeepAliveTimeout;
+  /// the interval for keep-alive messages (link status requests)
+  /// if set to TimeDuration::Max(), the keep-alive is disabled
+  TimeDuration KeepAliveTimeout;
 } LinkConfig;
 
 void  LinkConfig_in_LinkConfig(LinkConfig *pLinkConfig, boolean isMaster);

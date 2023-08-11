@@ -137,25 +137,25 @@ typedef struct
 ////            return ret;
 ////        }
 ////    }
-    HasLength_for_Uint16_t hHasLength;
+  HasLength_for_Uint16_t hHasLength;
 
-    uint8_t* buffer_;//// = nullptr;
+  uint8_t* buffer_;//// = nullptr;
 } WSeq_for_Uint16_t;
 
-    WSeq_for_Uint16_t empty_in_WSeq_for_Uint16_t_static(void);
-    void WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver1(WSeq_for_Uint16_t *pWSeq_for_Uint16_t);
-    void WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t* buffer, uint16_t length);
-    void set_all_to_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t value);
-    void make_empty_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t);
-    uint16_t advance_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count);
-    boolean put_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t byte);
-    WSeq_for_Uint16_t skip_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count);
-    WSeq_for_Uint16_t take_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count);
-    RSeq_for_Uint16_t readonly_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t);
-    RSeq_for_Uint16_t copy_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
-    RSeq_for_Uint16_t move_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
-    RSeq_for_Uint16_t transfer_fromMemcpy_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
-    RSeq_for_Uint16_t transfer_fromMemmove_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
+WSeq_for_Uint16_t empty_in_WSeq_for_Uint16_t_static(void);
+void WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver1(WSeq_for_Uint16_t *pWSeq_for_Uint16_t);
+void WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t* buffer, uint16_t length);
+void set_all_to_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t value);
+void make_empty_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t);
+uint16_t advance_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count);
+boolean put_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t byte);
+WSeq_for_Uint16_t skip_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count);
+WSeq_for_Uint16_t take_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count);
+RSeq_for_Uint16_t readonly_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t);
+RSeq_for_Uint16_t copy_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
+RSeq_for_Uint16_t move_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
+RSeq_for_Uint16_t transfer_fromMemcpy_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
+RSeq_for_Uint16_t transfer_fromMemmove_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
 //-------------------------------------------------------------------------------------------------------------
 /*
 typedef struct

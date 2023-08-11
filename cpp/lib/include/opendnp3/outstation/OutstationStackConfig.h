@@ -44,17 +44,17 @@ typedef struct
 
 ////    OutstationStackConfig(const DatabaseConfig& database) : database(database), link(false) {}
 
-    // Configuration of the database
-    DatabaseConfig database;
+  // Configuration of the database
+  DatabaseConfig database;
 
-    /// Outstation config
-    OutstationConfig outstation;
+  /// Outstation config
+  OutstationConfig outstation;
 
-    /// Link layer config
-    LinkConfig link;
+  /// Link layer config
+  LinkConfig link;
 } OutstationStackConfig;
 
-  void  OutstationStackConfig_in_OutstationStackConfig(OutstationStackConfig *pOutstationStackConfig)
+void  OutstationStackConfig_in_OutstationStackConfig(OutstationStackConfig *pOutstationStackConfig)
 {
   pOutstationStackConfig->link = false) {}
 }

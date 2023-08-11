@@ -30,18 +30,18 @@
 typedef struct
 {
 ////public:
-    /**
-     * @ return True if there is any data selected for reporting
-     */
-     boolean (*pHasAnySelection_in_IResponseLoader)(void*);// const = 0;
+  /**
+   * @ return True if there is any data selected for reporting
+   */
+  boolean (*pHasAnySelection_in_IResponseLoader)(void*);// const = 0;
 
-    /**
-     * Loads static data into a response APDU
-     *
-     * @param writer The HeaderWriter instance used to place data in the APDU
-     * @return True if all data was loaded, false if there is no more space
-     */
-     boolean (*pLoad_in_IResponseLoader)(void*, HeaderWriter* writer);// = 0;
+  /**
+   * Loads static data into a response APDU
+   *
+   * @param writer The HeaderWriter instance used to place data in the APDU
+   * @return True if all data was loaded, false if there is no more space
+   */
+  boolean (*pLoad_in_IResponseLoader)(void*, HeaderWriter* writer);// = 0;
 
   void* pParentPointer_in_IResponseLoader;
 } IResponseLoader;

@@ -49,10 +49,10 @@
 ////namespace opendnp3
 ////{
 
-    typedef void (*HandleFun_in_RangeParser)( HeaderRecord* record,
-                               Range* range,
-                               RSeq_for_Uint16_t* buffer,
-                              IAPDUHandler* handler);
+typedef void (*HandleFun_in_RangeParser)( HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
 
 ////class RangeParser
 typedef struct
@@ -71,18 +71,18 @@ typedef struct
 ////                                   IAPDUHandler* pHandler);
 
 ////private:
-    // Process the range against the buffer
+  // Process the range against the buffer
 ////    ParseResult Process(const HeaderRecord& record,
 ////                        ser4cpp::rseq_t& buffer,
 ////                        IAPDUHandler* pHandler,
 ////                        Logger* pLogger) const;
 
-    // Create a range parser from a fixed size descriptor
+  // Create a range parser from a fixed size descriptor
 ////    template<class Descriptor> static RangeParser FromFixedSize(const Range& range);
 
 ////    template<class Type> static RangeParser FromFixedSizeType(const Range& range);
 
-    // Create a range parser from a bitfield and a function to map the bitfield to values
+  // Create a range parser from a bitfield and a function to map the bitfield to values
 ////    template<class Type> static RangeParser FromBitfieldType(const Range& range);
 
 ////    template<class Type> static RangeParser FromDoubleBitfieldType(const Range& range);
@@ -125,43 +125,43 @@ typedef struct
 
 ////    RangeParser(const Range& range, size_t requiredSize, HandleFun handler);
 
-    Range range;
-    uint16_t requiredSize;
+  Range range;
+  uint16_t requiredSize;
 //    HandleFun handler;
-    HandleFun_in_RangeParser  handler;
+  HandleFun_in_RangeParser  handler;
 
 ////    RangeParser() = delete;
 } RangeParser;
 
-   ParseResult ParseHeader_in_RangeParser_static(
-                                   RSeq_for_Uint16_t *buffer,
-                                   NumParser *numparser,
+ParseResult ParseHeader_in_RangeParser_static(
+  RSeq_for_Uint16_t *buffer,
+  NumParser *numparser,
 //                                   ParserSettings *settings,
-                                   HeaderRecord *record,
+  HeaderRecord *record,
 //                                   Logger* pLogger,
-                                   IAPDUHandler* pHandler);
+  IAPDUHandler* pHandler);
 
-    // Process the range against the buffer
-   ParseResult Process_in_RangeParser(RangeParser *pRangeParser,
-                       HeaderRecord *record,
-                       RSeq_for_Uint16_t *buffer,
-                       IAPDUHandler* pHandler);
+// Process the range against the buffer
+ParseResult Process_in_RangeParser(RangeParser *pRangeParser,
+                                   HeaderRecord *record,
+                                   RSeq_for_Uint16_t *buffer,
+                                   IAPDUHandler* pHandler);
 //                       Logger* pLogger) const;
 
 
-   ParseResult ParseRangeOfObjects_in_RangeParser_static(
-                       RSeq_for_Uint16_t *buffer,
-                       HeaderRecord *record,
-                       Range *range,
+ParseResult ParseRangeOfObjects_in_RangeParser_static(
+  RSeq_for_Uint16_t *buffer,
+  HeaderRecord *record,
+  Range *range,
 //                                          Logger* pLogger,
-                       IAPDUHandler* pHandler);
+  IAPDUHandler* pHandler);
 
-   ParseResult ParseRangeOfOctetData_in_RangeParser_static(
-                       RSeq_for_Uint16_t *buffer,
-                       HeaderRecord *record,
-                       Range *range,
+ParseResult ParseRangeOfOctetData_in_RangeParser_static(
+  RSeq_for_Uint16_t *buffer,
+  HeaderRecord *record,
+  Range *range,
 //                                            Logger* pLogger,
-                       IAPDUHandler* pHandler);
+  IAPDUHandler* pHandler);
 
 
 ////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)

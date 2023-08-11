@@ -87,7 +87,7 @@ boolean ReadTarget_in_Group12Var1_static(RSeq_for_Uint16_t* buff, ControlRelayOu
   {
 ////    output = ControlRelayOutputBlockFactory::From(value.code, value.count, value.onTime, value.offTime, value.status);
     ControlRelayOutputBlock temp = From_in_ControlRelayOutputBlock_static(
-      value.code, value.count, value.onTime, value.offTime, value.status);
+                                     value.code, value.count, value.onTime, value.offTime, value.status);
     *output = temp;
     return true;
   }

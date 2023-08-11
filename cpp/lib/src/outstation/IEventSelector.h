@@ -35,9 +35,9 @@
 typedef struct
 {
 ////public:
-     IINField (*pSelectAll_in_IEventSelector)(void*, GroupVariation_uint16_t gv);// = 0;
+  IINField (*pSelectAll_in_IEventSelector)(void*, GroupVariation_uint16_t gv);// = 0;
 
-     IINField (*pSelectCount_in_IEventSelector)(void*, GroupVariation_uint16_t gv, uint16_t count);// = 0;
+  IINField (*pSelectCount_in_IEventSelector)(void*, GroupVariation_uint16_t gv, uint16_t count);// = 0;
 
   void* pParentPointer_in_IEventSelector;
 } IEventSelector;

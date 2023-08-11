@@ -54,19 +54,19 @@ typedef struct
 
 ////    virtual ~IExecutor() {}
 
-    /// @return start a new timer based on a relative time duration
-    ///запустить новый таймер на основе относительной продолжительности времени
+  /// @return start a new timer based on a relative time duration
+  ///запустить новый таймер на основе относительной продолжительности времени
 ////    virtual Timer start(const duration_t& duration, const action_t& action) = 0;
-     TimerExe4cpp (*pStart_in_IExecutorExe4cpp)(void *, uint32_t duration, void (*pAction)(void));////const action_t& action) = 0;
+  TimerExe4cpp (*pStart_in_IExecutorExe4cpp)(void *, uint32_t duration, void (*pAction)(void));////const action_t& action) = 0;
 
-    /// @return start a new timer based on an absolute timestamp of the steady clock
-    ///запустить новый таймер на основе абсолютной временной метки постоянных часов
+  /// @return start a new timer based on an absolute timestamp of the steady clock
+  ///запустить новый таймер на основе абсолютной временной метки постоянных часов
 ////    virtual Timer start(const steady_time_t& expiration, const action_t& action) = 0;
 
-    /// @return Thread-safe way to post an event to be handled asynchronously
-    ///Поточно-безопасный способ публикации события для асинхронной обработки
+  /// @return Thread-safe way to post an event to be handled asynchronously
+  ///Поточно-безопасный способ публикации события для асинхронной обработки
 ////    virtual void post(const action_t& action) = 0;
-     void (*pPost_in_IExecutorExe4cpp)(void *, void (*pAction)(void));////const action_t& action);// = 0;
+  void (*pPost_in_IExecutorExe4cpp)(void *, void (*pAction)(void));////const action_t& action);// = 0;
 
   void* pParentPointer_in_IExecutorExe4cpp;
 } IExecutorExe4cpp;

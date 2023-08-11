@@ -37,9 +37,9 @@
 #define  Flags_ONLINE  0x01
 #define  Flags_RESTART 0x02
 
-    boolean GetBinaryValue_in_QualityFlagsOver1(Flags fFlags);
+boolean GetBinaryValue_in_QualityFlagsOver1(Flags fFlags);
 
-    Flags   GetBinaryFlags_in_QualityFlagsOver2(Flags fFlags, boolean value);
+Flags   GetBinaryFlags_in_QualityFlagsOver2(Flags fFlags, boolean value);
 
 ////} // namespace flags
 

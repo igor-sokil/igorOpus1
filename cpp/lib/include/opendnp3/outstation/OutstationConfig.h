@@ -43,13 +43,13 @@ object/variations to use by default when the master requests class data or varia
 ////struct OutstationConfig
 typedef struct
 {
-    /// Various parameters that govern outstation behavior
-    OutstationParams params;
+  /// Various parameters that govern outstation behavior
+  OutstationParams params;
 
-    /// Describes the sizes in the event buffer
-    EventBufferConfig eventBufferConfig;
+  /// Describes the sizes in the event buffer
+  EventBufferConfig eventBufferConfig;
 } OutstationConfig;
- void OutstationConfig_in_OutstationConfig(OutstationConfig *pOutstationConfig);
+void OutstationConfig_in_OutstationConfig(OutstationConfig *pOutstationConfig);
 
 ////} // namespace opendnp3
 

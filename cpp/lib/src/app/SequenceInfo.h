@@ -25,9 +25,9 @@
 
 enum  SequenceInfo
 {
-    SequenceInfo_OTHER,
-    SequenceInfo_PREVIOUS,
-    SequenceInfo_CORRECT
+  SequenceInfo_OTHER,
+  SequenceInfo_PREVIOUS,
+  SequenceInfo_CORRECT
 };
 
 ////} // namespace opendnp3

@@ -4,83 +4,83 @@
 #include "header.h"
 #include "WSeq.h"
 
-   WSeq_for_Uint16_t empty_in_WSeq_for_Uint16_t_static(void)
+WSeq_for_Uint16_t empty_in_WSeq_for_Uint16_t_static(void)
 {
-    WSeq_for_Uint16_t wWSeq_for_Uint16_t;
-    WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver1(&wWSeq_for_Uint16_t);
-    return wWSeq_for_Uint16_t;
+  WSeq_for_Uint16_t wWSeq_for_Uint16_t;
+  WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver1(&wWSeq_for_Uint16_t);
+  return wWSeq_for_Uint16_t;
 }
 
-    void WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver1(WSeq_for_Uint16_t *pWSeq_for_Uint16_t)
+void WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver1(WSeq_for_Uint16_t *pWSeq_for_Uint16_t)
 {
-   pWSeq_for_Uint16_t->buffer_ = NULL;
+  pWSeq_for_Uint16_t->buffer_ = NULL;
 }
 
-    void WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t* buffer, uint16_t length)
+void WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t* buffer, uint16_t length)
 {
-   HasLength_for_Uint16_t_in_HasLength_for_Uint16_tOver2(&(pWSeq_for_Uint16_t->hHasLength), length);
-   pWSeq_for_Uint16_t->buffer_ = buffer;
+  HasLength_for_Uint16_t_in_HasLength_for_Uint16_tOver2(&(pWSeq_for_Uint16_t->hHasLength), length);
+  pWSeq_for_Uint16_t->buffer_ = buffer;
 }
 
-    void set_all_to_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t value)
+void set_all_to_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t value)
 {
-    memset(pWSeq_for_Uint16_t->buffer_, value, length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)));
+  memset(pWSeq_for_Uint16_t->buffer_, value, length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)));
 }
 
-    void make_empty_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t)
+void make_empty_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t)
 {
-    pWSeq_for_Uint16_t->buffer_ = NULL;
-    (pWSeq_for_Uint16_t->hHasLength).m_length = 0;
+  pWSeq_for_Uint16_t->buffer_ = NULL;
+  (pWSeq_for_Uint16_t->hHasLength).m_length = 0;
 }
 
-    uint16_t advance_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count)
+uint16_t advance_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count)
 {
-    uint16_t num = min_for_Uint16_t(count, length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)));
-    pWSeq_for_Uint16_t->buffer_ += num;
-    (pWSeq_for_Uint16_t->hHasLength).m_length -= num;
-    return num;
+  uint16_t num = min_for_Uint16_t(count, length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)));
+  pWSeq_for_Uint16_t->buffer_ += num;
+  (pWSeq_for_Uint16_t->hHasLength).m_length -= num;
+  return num;
 }
 
-    boolean put_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t byte)
+boolean put_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint8_t byte)
 {
-    if (length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)) == 0) return false;
-    else
-    {
-        pWSeq_for_Uint16_t->buffer_[0] = byte;
-        ++pWSeq_for_Uint16_t->buffer_;
-        --(pWSeq_for_Uint16_t->hHasLength).m_length;
-        return true;
-    }
+  if (length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)) == 0) return false;
+  else
+  {
+    pWSeq_for_Uint16_t->buffer_[0] = byte;
+    ++pWSeq_for_Uint16_t->buffer_;
+    --(pWSeq_for_Uint16_t->hHasLength).m_length;
+    return true;
+  }
 }
 
-    WSeq_for_Uint16_t skip_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count)
+WSeq_for_Uint16_t skip_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count)
 {
-    uint16_t num = min_for_Uint16_t(count, length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)));
+  uint16_t num = min_for_Uint16_t(count, length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)));
 //    uint16_t num = ser4cpp::min(count, this->m_length);
 //    return WSeq(this->buffer_ + num, this->m_length - num);
-    WSeq_for_Uint16_t wWSeq_for_Uint16_t;
-    WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&wWSeq_for_Uint16_t, pWSeq_for_Uint16_t->buffer_ + num,
-                                                      (pWSeq_for_Uint16_t->hHasLength).m_length - num);
-    return wWSeq_for_Uint16_t;
+  WSeq_for_Uint16_t wWSeq_for_Uint16_t;
+  WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&wWSeq_for_Uint16_t, pWSeq_for_Uint16_t->buffer_ + num,
+      (pWSeq_for_Uint16_t->hHasLength).m_length - num);
+  return wWSeq_for_Uint16_t;
 }
 
-    WSeq_for_Uint16_t take_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count)
+WSeq_for_Uint16_t take_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count)
 {
 ////    return WSeq(this->buffer_, ser4cpp::min(this->m_length, count));
-    WSeq_for_Uint16_t wWSeq_for_Uint16_t;
-    WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&wWSeq_for_Uint16_t, pWSeq_for_Uint16_t->buffer_,
-                                                      min_for_Uint16_t((pWSeq_for_Uint16_t->hHasLength).m_length, count));
-    return wWSeq_for_Uint16_t;
+  WSeq_for_Uint16_t wWSeq_for_Uint16_t;
+  WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&wWSeq_for_Uint16_t, pWSeq_for_Uint16_t->buffer_,
+      min_for_Uint16_t((pWSeq_for_Uint16_t->hHasLength).m_length, count));
+  return wWSeq_for_Uint16_t;
 }
 
-    RSeq_for_Uint16_t readonly_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t)
+RSeq_for_Uint16_t readonly_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t)
 {
-    RSeq_for_Uint16_t rRSeq_for_Uint16_t;
-    RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&rRSeq_for_Uint16_t,
-                                                       pWSeq_for_Uint16_t->buffer_,
-                                                       length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)));
+  RSeq_for_Uint16_t rRSeq_for_Uint16_t;
+  RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&rRSeq_for_Uint16_t,
+      pWSeq_for_Uint16_t->buffer_,
+      length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)));
 ////    return RSeq<L>(this->buffer_, this->length());
-    return rRSeq_for_Uint16_t;
+  return rRSeq_for_Uint16_t;
 }
 
 ////    operator uint8_t* () const
@@ -88,14 +88,14 @@
 ////        return buffer_;
 ////    };
 
-    RSeq_for_Uint16_t copy_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
+RSeq_for_Uint16_t copy_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
 {
-    return transfer_fromMemcpy_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, src);
+  return transfer_fromMemcpy_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, src);
 }
 
-    RSeq_for_Uint16_t move_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
+RSeq_for_Uint16_t move_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
 {
-    return transfer_fromMemmove_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, src);
+  return transfer_fromMemmove_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, src);
 }
 
 ////private:
@@ -114,36 +114,36 @@
 ////            return ret;
 ////        }
 ////    }
-    RSeq_for_Uint16_t transfer_fromMemcpy_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
+RSeq_for_Uint16_t transfer_fromMemcpy_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
 {
-    if (length_in_HasLength_for_Uint16_t(&(src->hHasLength)) > length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)))
-    {
-        return empty_in_RSeq_for_Uint16_t_static();
-    }
-    else
-    {
-        RSeq_for_Uint16_t ret = readonly_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t);
-        ret = take_in_RSeq_for_Uint16_t(&ret, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
-        memcpy(pWSeq_for_Uint16_t->buffer_, src, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
-        advance_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
-        return ret;
-    }
+  if (length_in_HasLength_for_Uint16_t(&(src->hHasLength)) > length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)))
+  {
+    return empty_in_RSeq_for_Uint16_t_static();
+  }
+  else
+  {
+    RSeq_for_Uint16_t ret = readonly_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t);
+    ret = take_in_RSeq_for_Uint16_t(&ret, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
+    memcpy(pWSeq_for_Uint16_t->buffer_, src, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
+    advance_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
+    return ret;
+  }
 }
 
-    RSeq_for_Uint16_t transfer_fromMemmove_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
+RSeq_for_Uint16_t transfer_fromMemmove_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
 {
-    if (length_in_HasLength_for_Uint16_t(&(src->hHasLength)) > length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)))
-    {
-        return empty_in_RSeq_for_Uint16_t_static();
-    }
-    else
-    {
-        RSeq_for_Uint16_t ret = readonly_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t);
-        ret = take_in_RSeq_for_Uint16_t(&ret, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
-        memmove(pWSeq_for_Uint16_t->buffer_, src, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
-        advance_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
-        return ret;
-    }
+  if (length_in_HasLength_for_Uint16_t(&(src->hHasLength)) > length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)))
+  {
+    return empty_in_RSeq_for_Uint16_t_static();
+  }
+  else
+  {
+    RSeq_for_Uint16_t ret = readonly_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t);
+    ret = take_in_RSeq_for_Uint16_t(&ret, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
+    memmove(pWSeq_for_Uint16_t->buffer_, src, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
+    advance_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
+    return ret;
+  }
 }
 //--------------------------------------------------------------------------------------------------
 /*

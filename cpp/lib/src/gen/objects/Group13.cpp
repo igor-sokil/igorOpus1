@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -53,7 +53,7 @@ Group13Var2 Apply_in_ConvertGroup13Var2_static(BinaryCommandEvent* ev);
 
 void Group13Var1_in_Group13Var1(Group13Var1 *pGroup13Var1)
 {
- pGroup13Var1->flags = 0;
+  pGroup13Var1->flags = 0;
 }
 
 ////bool Group13Var1::Read(rseq_t& buffer, Group13Var1& output)
@@ -230,62 +230,62 @@ Group13Var2 Apply_in_ConvertGroup13Var2_static(BinaryCommandEvent* ev)
 
 ////}
 
- uint16_t Size_in_Group13Var1_static(void) 
+uint16_t Size_in_Group13Var1_static(void)
 {
- return 1; 
+  return 1;
 }
 
-  GroupVariationID ID_in_Group13Var1_static(void)
+GroupVariationID ID_in_Group13Var1_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 13, 1);
-////  return GroupVariationID(13,1); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 13, 1);
+////  return GroupVariationID(13,1);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_BinaryCommandEvent  Inst_in_Group13Var1_static(void)
+DNP3Serializer_for_BinaryCommandEvent  Inst_in_Group13Var1_static(void)
 {
-   DNP3Serializer_for_BinaryCommandEvent dDNP3Serializer_for_BinaryCommandEvent;
-   DNP3Serializer_for_BinaryCommandEvent_in_DNP3Serializer_for_BinaryCommandEvent(&dDNP3Serializer_for_BinaryCommandEvent,
-                   ID_in_Group13Var1_static(),
-                   Size_in_Group13Var1_static(),
+  DNP3Serializer_for_BinaryCommandEvent dDNP3Serializer_for_BinaryCommandEvent;
+  DNP3Serializer_for_BinaryCommandEvent_in_DNP3Serializer_for_BinaryCommandEvent(&dDNP3Serializer_for_BinaryCommandEvent,
+      ID_in_Group13Var1_static(),
+      Size_in_Group13Var1_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group13Var1_static,
+      //void *read_func,// read_func_t_in_Serializer_for_Binary,
+      &ReadTarget_in_Group13Var1_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group13Var1_static);
+      //void *write_func);//write_func_t_in_Serializer_for_Binary);
+      &WriteTarget_in_Group13Var1_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_BinaryCommandEvent;
+  return dDNP3Serializer_for_BinaryCommandEvent;
 }
 
- uint16_t Size_in_Group13Var2_static(void) 
+uint16_t Size_in_Group13Var2_static(void)
 {
- return 7; 
+  return 7;
 }
 
-  GroupVariationID ID_in_Group13Var2_static(void)
+GroupVariationID ID_in_Group13Var2_static(void)
 {
- GroupVariationID gGroupVariationID;
- GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 13, 2);
-////  return GroupVariationID(13,2); 
- return gGroupVariationID;
+  GroupVariationID gGroupVariationID;
+  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 13, 2);
+////  return GroupVariationID(13,2);
+  return gGroupVariationID;
 }
 
- DNP3Serializer_for_BinaryCommandEvent  Inst_in_Group13Var2_static(void)
+DNP3Serializer_for_BinaryCommandEvent  Inst_in_Group13Var2_static(void)
 {
-   DNP3Serializer_for_BinaryCommandEvent dDNP3Serializer_for_BinaryCommandEvent;
-   DNP3Serializer_for_BinaryCommandEvent_in_DNP3Serializer_for_BinaryCommandEvent(&dDNP3Serializer_for_BinaryCommandEvent,
-                   ID_in_Group13Var2_static(),
-                   Size_in_Group13Var2_static(),
+  DNP3Serializer_for_BinaryCommandEvent dDNP3Serializer_for_BinaryCommandEvent;
+  DNP3Serializer_for_BinaryCommandEvent_in_DNP3Serializer_for_BinaryCommandEvent(&dDNP3Serializer_for_BinaryCommandEvent,
+      ID_in_Group13Var2_static(),
+      Size_in_Group13Var2_static(),
 ////                   typename Serializer<T>::read_func_t read_func,
-                   //void *read_func,// read_func_t_in_Serializer_for_Binary,
-                   &ReadTarget_in_Group13Var2_static,
+      //void *read_func,// read_func_t_in_Serializer_for_Binary,
+      &ReadTarget_in_Group13Var2_static,
 ////                   typename Serializer<T>::write_func_t write_func)
-                   //void *write_func);//write_func_t_in_Serializer_for_Binary);
-                   &WriteTarget_in_Group13Var2_static);
+      //void *write_func);//write_func_t_in_Serializer_for_Binary);
+      &WriteTarget_in_Group13Var2_static);
 
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-   return dDNP3Serializer_for_BinaryCommandEvent;
+  return dDNP3Serializer_for_BinaryCommandEvent;
 }

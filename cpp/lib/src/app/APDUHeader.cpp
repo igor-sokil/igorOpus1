@@ -25,51 +25,51 @@
 ////namespace opendnp3
 ////{
 
-   APDUHeader SolicitedConfirm_in_APDUHeader(uint8_t seq)
+APDUHeader SolicitedConfirm_in_APDUHeader(uint8_t seq)
 {
-    return Confirm_in_APDUHeader(seq, false);
+  return Confirm_in_APDUHeader(seq, false);
 }
 
-   APDUHeader UnsolicitedConfirm_in_APDUHeader(uint8_t seq)
+APDUHeader UnsolicitedConfirm_in_APDUHeader(uint8_t seq)
 {
-    return Confirm_in_APDUHeader(seq, true);
+  return Confirm_in_APDUHeader(seq, true);
 }
 
-   APDUHeader Confirm_in_APDUHeader(uint8_t seq, boolean unsolicited)
+APDUHeader Confirm_in_APDUHeader(uint8_t seq, boolean unsolicited)
 {
-    APDUHeader header;
-    header.function = FunctionCode_CONFIRM;
-    AppControlField_in_AppControlFieldOver4(&header.control, true, true, false, unsolicited, seq);
-    return header;
+  APDUHeader header;
+  header.function = FunctionCode_CONFIRM;
+  AppControlField_in_AppControlFieldOver4(&header.control, true, true, false, unsolicited, seq);
+  return header;
 }
 
-   void APDUHeader_in_APDUHeaderOver1(APDUHeader *pAPDUHeader)
+void APDUHeader_in_APDUHeaderOver1(APDUHeader *pAPDUHeader)
 {
-   pAPDUHeader->function = FunctionCode_UNKNOWN;
+  pAPDUHeader->function = FunctionCode_UNKNOWN;
 }
 
-   void APDUHeader_in_APDUHeaderOver2(APDUHeader *pAPDUHeader, AppControlField *control, FunctionCode_uint8_t function)
+void APDUHeader_in_APDUHeaderOver2(APDUHeader *pAPDUHeader, AppControlField *control, FunctionCode_uint8_t function)
 {
-   pAPDUHeader->control    = *control;
-   pAPDUHeader->function   = function;
+  pAPDUHeader->control    = *control;
+  pAPDUHeader->function   = function;
 }
 
-    boolean Equals_in_APDUHeader(APDUHeader *pAPDUHeader, APDUHeader *header)
+boolean Equals_in_APDUHeader(APDUHeader *pAPDUHeader, APDUHeader *header)
 {
   return
-   (ToByte_in_AppControlField(&(header->control)) == ToByte_in_AppControlField(&(pAPDUHeader->control))) &&
-   (pAPDUHeader->function == header->function);
+    (ToByte_in_AppControlField(&(header->control)) == ToByte_in_AppControlField(&(pAPDUHeader->control))) &&
+    (pAPDUHeader->function == header->function);
 }
 
- void APDUResponseHeader_in_APDUResponseHeaderOver1(APDUResponseHeader *pAPDUResponseHeader)
+void APDUResponseHeader_in_APDUResponseHeaderOver1(APDUResponseHeader *pAPDUResponseHeader)
 {
   APDUHeader_in_APDUHeaderOver1(&(pAPDUResponseHeader -> aAPDUHeader));
 }
 
- void APDUResponseHeader_in_APDUResponseHeaderOver2(APDUResponseHeader *pAPDUResponseHeader,
-                                                    AppControlField *control,
-                                                    FunctionCode_uint8_t function,
-                                                    IINField *pIIN)
+void APDUResponseHeader_in_APDUResponseHeaderOver2(APDUResponseHeader *pAPDUResponseHeader,
+    AppControlField *control,
+    FunctionCode_uint8_t function,
+    IINField *pIIN)
 {
   APDUHeader_in_APDUHeaderOver2(&(pAPDUResponseHeader -> aAPDUHeader), control, function);
   pAPDUResponseHeader -> IIN = (*pIIN);

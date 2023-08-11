@@ -53,12 +53,12 @@ typedef struct
 
 void SecStateBase_in_SecStateBase(SecStateBase *pSecStateBase);
 
-     void* OnResetLinkStates_in_SecStateBase_override(void*, LinkContext*, uint16_t source);
-     void* OnRequestLinkStatus_in_SecStateBase_override(void*, LinkContext*, uint16_t source);
+void* OnResetLinkStates_in_SecStateBase_override(void*, LinkContext*, uint16_t source);
+void* OnRequestLinkStatus_in_SecStateBase_override(void*, LinkContext*, uint16_t source);
 
-     void* OnTestLinkStatus_in_SecStateBase_override(void*, LinkContext*, uint16_t source, boolean fcb);
-     void* OnConfirmedUserData_in_SecStateBase_override(void*,
-        LinkContext*, uint16_t source, boolean fcb, boolean isBroadcast, Message* message);
+void* OnTestLinkStatus_in_SecStateBase_override(void*, LinkContext*, uint16_t source, boolean fcb);
+void* OnConfirmedUserData_in_SecStateBase_override(void*,
+    LinkContext*, uint16_t source, boolean fcb, boolean isBroadcast, Message* message);
 
 void* OnTxReady_in_SecStateBase_override(void*, LinkContext* ctx);
 

@@ -44,13 +44,13 @@
 ///     uint16_t crcTable[256]; // Precomputed CRC lookup table
 ////} CRC;
 
- uint16_t CalcCrc_in_CRC_staticOver1(uint8_t* input, uint16_t length);
+uint16_t CalcCrc_in_CRC_staticOver1(uint8_t* input, uint16_t length);
 
- uint16_t CalcCrc_in_CRC_staticOver2(RSeq_for_Uint16_t* view);
+uint16_t CalcCrc_in_CRC_staticOver2(RSeq_for_Uint16_t* view);
 
- void AddCrc_in_CRC_static(uint8_t* input, uint16_t length);
+void AddCrc_in_CRC_static(uint8_t* input, uint16_t length);
 
- boolean IsCorrectCRC_in_CRC_static(uint8_t* input, uint16_t length);
+boolean IsCorrectCRC_in_CRC_static(uint8_t* input, uint16_t length);
 
 ////} // namespace opendnp3
 

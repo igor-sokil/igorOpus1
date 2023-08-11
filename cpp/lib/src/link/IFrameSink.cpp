@@ -1,9 +1,9 @@
 #include "header.h"
 #include "IFrameSink.h"
 
-    void OnFrame_in_IFrameSink(IFrameSink* pIFrameSink, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata)
+void OnFrame_in_IFrameSink(IFrameSink* pIFrameSink, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata)
 {
- (pIFrameSink->pOnFrame_in_IFrameSink)(pIFrameSink, header, userdata);
+  (pIFrameSink->pOnFrame_in_IFrameSink)(pIFrameSink, header, userdata);
 }
 
 void* getParentPointer_in_IFrameSink(IFrameSink* pIFrameSink)

@@ -45,7 +45,7 @@
 ////template<class Info> struct EventConfig : StaticConfig<Info>
 typedef struct
 {
-    PointClass_uint8_t clazz;// = PointClass_Class1;
+  PointClass_uint8_t clazz;// = PointClass_Class1;
 ////    typename Info::event_variation_t evariation = Info::DefaultEventVariation;
 } EventConfig;
 
@@ -55,22 +55,22 @@ typedef struct
 ////};
 typedef struct
 {
-    value_t_in_AnalogInfo deadband;// = 0;
+  value_t_in_AnalogInfo deadband;// = 0;
 } DeadbandConfig_for_AnalogInfo;
 
 typedef struct
 {
-    value_t_in_CounterInfo deadband;// = 0;
+  value_t_in_CounterInfo deadband;// = 0;
 } DeadbandConfig_for_CounterInfo;
 
 typedef struct
 {
-    value_t_in_FrozenCounterInfo deadband;// = 0;
+  value_t_in_FrozenCounterInfo deadband;// = 0;
 } DeadbandConfig_for_FrozenCounterInfo;
 
 typedef struct
 {
-    value_t_in_AnalogOutputStatusInfo deadband;// = 0;
+  value_t_in_AnalogOutputStatusInfo deadband;// = 0;
 } DeadbandConfig_for_AnalogOutputStatusInfo;
 
 

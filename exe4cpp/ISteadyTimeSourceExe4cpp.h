@@ -36,9 +36,9 @@ typedef struct
 ////public:
 ////    virtual ~ISteadyTimeSource() = default;
 
-    /// @return a non-absolute timestamp for the monotonic time source
+  /// @return a non-absolute timestamp for the monotonic time source
 ////    virtual steady_time_t get_time() = 0;
-    uint64_t (*pGet_time_in_ISteadyTimeSourceExe4cpp)(void*);// = 0;
+  uint64_t (*pGet_time_in_ISteadyTimeSourceExe4cpp)(void*);// = 0;
 
   void* pParentPointer_in_ISteadyTimeSourceExe4cpp;
 } ISteadyTimeSourceExe4cpp;

@@ -7,11 +7,11 @@
 // |_| \_|\___/  |______\__,_|_|\__|_|_| |_|\__, (_|_|_)
 //                                           __/ |
 //                                          |___/
-// 
+//
 // This file is auto-generated. Do not edit manually
-// 
+//
 // Copyright 2013-2022 Step Function I/O, LLC
-// 
+//
 // Licensed to Green Energy Corp (www.greenenergycorp.com) and Step Function I/O
 // LLC (https://stepfunc.io) under one or more contributor license agreements.
 // See the NOTICE file distributed with this work for additional information
@@ -19,9 +19,9 @@
 // this file to you under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License. You may obtain
 // a copy of the License at:
-// 
+//
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -55,7 +55,7 @@
 ////  static GroupVariationID ID() { return GroupVariationID(32,0); }
 ////};
 
-  GroupVariationID ID_in_Group32Var0_static(void);
+GroupVariationID ID_in_Group32Var0_static(void);
 
 
 // Analog Input Event - 32-bit With Flag
@@ -81,16 +81,16 @@ typedef struct
 ////  static DNP3Serializer<Analog> Inst() { return DNP3Serializer<Analog>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group32Var1;
 
-  uint16_t Size_in_Group32Var1_static(void);
- void Group32Var1_in_Group32Var1(Group32Var1 *pGroup32Var1);
-  GroupVariationID ID_in_Group32Var1_static(void);
- DNP3Serializer_for_Analog  Inst_in_Group32Var1_static(void);
+uint16_t Size_in_Group32Var1_static(void);
+void Group32Var1_in_Group32Var1(Group32Var1 *pGroup32Var1);
+GroupVariationID ID_in_Group32Var1_static(void);
+DNP3Serializer_for_Analog  Inst_in_Group32Var1_static(void);
 
- boolean Read_in_Group32Var1_static(RSeq_for_Uint16_t *, Group32Var1*);
- boolean Write_in_Group32Var1_static(Group32Var1*, WSeq_for_Uint16_t*);
+boolean Read_in_Group32Var1_static(RSeq_for_Uint16_t *, Group32Var1*);
+boolean Write_in_Group32Var1_static(Group32Var1*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group32Var1_static(RSeq_for_Uint16_t*, Analog*);
- boolean WriteTarget_in_Group32Var1_static(Analog*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group32Var1_static(RSeq_for_Uint16_t*, Analog*);
+boolean WriteTarget_in_Group32Var1_static(Analog*, WSeq_for_Uint16_t*);
 
 // Analog Input Event - 16-bit With Flag
 ////struct Group32Var2
@@ -115,16 +115,16 @@ typedef struct
 ////  static DNP3Serializer<Analog> Inst() { return DNP3Serializer<Analog>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group32Var2;
 
-  uint16_t Size_in_Group32Var2_static(void);
- void Group32Var2_in_Group32Var2(Group32Var2 *pGroup32Var2);
-  GroupVariationID ID_in_Group32Var2_static(void);
- DNP3Serializer_for_Analog  Inst_in_Group32Var2_static(void);
+uint16_t Size_in_Group32Var2_static(void);
+void Group32Var2_in_Group32Var2(Group32Var2 *pGroup32Var2);
+GroupVariationID ID_in_Group32Var2_static(void);
+DNP3Serializer_for_Analog  Inst_in_Group32Var2_static(void);
 
- boolean Read_in_Group32Var2_static(RSeq_for_Uint16_t *, Group32Var2*);
- boolean Write_in_Group32Var2_static(Group32Var2*, WSeq_for_Uint16_t*);
+boolean Read_in_Group32Var2_static(RSeq_for_Uint16_t *, Group32Var2*);
+boolean Write_in_Group32Var2_static(Group32Var2*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group32Var2_static(RSeq_for_Uint16_t*, Analog*);
- boolean WriteTarget_in_Group32Var2_static(Analog*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group32Var2_static(RSeq_for_Uint16_t*, Analog*);
+boolean WriteTarget_in_Group32Var2_static(Analog*, WSeq_for_Uint16_t*);
 
 // Analog Input Event - 32-bit With Flag and Time
 ////struct Group32Var3
@@ -150,16 +150,16 @@ typedef struct
 ////  static DNP3Serializer<Analog> Inst() { return DNP3Serializer<Analog>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group32Var3;
 
-  uint16_t Size_in_Group32Var3_static(void);
- void Group32Var3_in_Group32Var3(Group32Var3 *pGroup32Var3);
-  GroupVariationID ID_in_Group32Var3_static(void);
- DNP3Serializer_for_Analog  Inst_in_Group32Var3_static(void);
+uint16_t Size_in_Group32Var3_static(void);
+void Group32Var3_in_Group32Var3(Group32Var3 *pGroup32Var3);
+GroupVariationID ID_in_Group32Var3_static(void);
+DNP3Serializer_for_Analog  Inst_in_Group32Var3_static(void);
 
- boolean Read_in_Group32Var3_static(RSeq_for_Uint16_t *, Group32Var3*);
- boolean Write_in_Group32Var3_static(Group32Var3*, WSeq_for_Uint16_t*);
+boolean Read_in_Group32Var3_static(RSeq_for_Uint16_t *, Group32Var3*);
+boolean Write_in_Group32Var3_static(Group32Var3*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group32Var3_static(RSeq_for_Uint16_t*, Analog*);
- boolean WriteTarget_in_Group32Var3_static(Analog*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group32Var3_static(RSeq_for_Uint16_t*, Analog*);
+boolean WriteTarget_in_Group32Var3_static(Analog*, WSeq_for_Uint16_t*);
 
 // Analog Input Event - 16-bit With Flag and Time
 ////struct Group32Var4
@@ -185,16 +185,16 @@ typedef struct
 ////  static DNP3Serializer<Analog> Inst() { return DNP3Serializer<Analog>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group32Var4;
 
-  uint16_t Size_in_Group32Var4_static(void);
- void Group32Var4_in_Group32Var4(Group32Var4 *pGroup32Var4);
-  GroupVariationID ID_in_Group32Var4_static(void);
- DNP3Serializer_for_Analog  Inst_in_Group32Var4_static(void);
+uint16_t Size_in_Group32Var4_static(void);
+void Group32Var4_in_Group32Var4(Group32Var4 *pGroup32Var4);
+GroupVariationID ID_in_Group32Var4_static(void);
+DNP3Serializer_for_Analog  Inst_in_Group32Var4_static(void);
 
- boolean Read_in_Group32Var4_static(RSeq_for_Uint16_t *, Group32Var4*);
- boolean Write_in_Group32Var4_static(Group32Var4*, WSeq_for_Uint16_t*);
+boolean Read_in_Group32Var4_static(RSeq_for_Uint16_t *, Group32Var4*);
+boolean Write_in_Group32Var4_static(Group32Var4*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group32Var4_static(RSeq_for_Uint16_t*, Analog*);
- boolean WriteTarget_in_Group32Var4_static(Analog*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group32Var4_static(RSeq_for_Uint16_t*, Analog*);
+boolean WriteTarget_in_Group32Var4_static(Analog*, WSeq_for_Uint16_t*);
 
 // Analog Input Event - Single-precision With Flag
 ////struct Group32Var5
@@ -219,16 +219,16 @@ typedef struct
 ////  static DNP3Serializer<Analog> Inst() { return DNP3Serializer<Analog>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group32Var5;
 
-  uint16_t Size_in_Group32Var5_static(void);
- void Group32Var5_in_Group32Var5(Group32Var5 *pGroup32Var5);
-  GroupVariationID ID_in_Group32Var5_static(void);
- DNP3Serializer_for_Analog  Inst_in_Group32Var5_static(void);
+uint16_t Size_in_Group32Var5_static(void);
+void Group32Var5_in_Group32Var5(Group32Var5 *pGroup32Var5);
+GroupVariationID ID_in_Group32Var5_static(void);
+DNP3Serializer_for_Analog  Inst_in_Group32Var5_static(void);
 
- boolean Read_in_Group32Var5_static(RSeq_for_Uint16_t *, Group32Var5*);
- boolean Write_in_Group32Var5_static(Group32Var5*, WSeq_for_Uint16_t*);
+boolean Read_in_Group32Var5_static(RSeq_for_Uint16_t *, Group32Var5*);
+boolean Write_in_Group32Var5_static(Group32Var5*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group32Var5_static(RSeq_for_Uint16_t*, Analog*);
- boolean WriteTarget_in_Group32Var5_static(Analog*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group32Var5_static(RSeq_for_Uint16_t*, Analog*);
+boolean WriteTarget_in_Group32Var5_static(Analog*, WSeq_for_Uint16_t*);
 /*
 // Analog Input Event - Double-precision With Flag
 ////struct Group32Var6
@@ -288,16 +288,16 @@ typedef struct
 ////  static DNP3Serializer<Analog> Inst() { return DNP3Serializer<Analog>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group32Var7;
 
-  uint16_t Size_in_Group32Var7_static(void);
- void Group32Var7_in_Group32Var7(Group32Var7 *pGroup32Var7);
-  GroupVariationID ID_in_Group32Var7_static(void);
- DNP3Serializer_for_Analog  Inst_in_Group32Var7_static(void);
+uint16_t Size_in_Group32Var7_static(void);
+void Group32Var7_in_Group32Var7(Group32Var7 *pGroup32Var7);
+GroupVariationID ID_in_Group32Var7_static(void);
+DNP3Serializer_for_Analog  Inst_in_Group32Var7_static(void);
 
- boolean Read_in_Group32Var7_static(RSeq_for_Uint16_t *, Group32Var7*);
- boolean Write_in_Group32Var7_static(Group32Var7*, WSeq_for_Uint16_t*);
+boolean Read_in_Group32Var7_static(RSeq_for_Uint16_t *, Group32Var7*);
+boolean Write_in_Group32Var7_static(Group32Var7*, WSeq_for_Uint16_t*);
 
- boolean ReadTarget_in_Group32Var7_static(RSeq_for_Uint16_t*, Analog*);
- boolean WriteTarget_in_Group32Var7_static(Analog*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group32Var7_static(RSeq_for_Uint16_t*, Analog*);
+boolean WriteTarget_in_Group32Var7_static(Analog*, WSeq_for_Uint16_t*);
 /*
 // Analog Input Event - Double-precision With Flag and Time
 ////struct Group32Var8

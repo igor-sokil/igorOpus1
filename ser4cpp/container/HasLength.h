@@ -55,13 +55,13 @@ typedef struct
 ////    explicit HasLength(L length) : m_length(length)
 ////    {}
 
-    uint16_t m_length;//// = 0;
+  uint16_t m_length;//// = 0;
 } HasLength_for_Uint16_t;
-    uint16_t length_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
-    boolean is_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
-    boolean is_not_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
-    void HasLength_for_Uint16_t_in_HasLength_for_Uint16_tOver1(HasLength_for_Uint16_t *pHasLength);
-    void HasLength_for_Uint16_t_in_HasLength_for_Uint16_tOver2(HasLength_for_Uint16_t *pHasLength, uint16_t length);
+uint16_t length_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
+boolean is_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
+boolean is_not_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
+void HasLength_for_Uint16_t_in_HasLength_for_Uint16_tOver1(HasLength_for_Uint16_t *pHasLength);
+void HasLength_for_Uint16_t_in_HasLength_for_Uint16_tOver2(HasLength_for_Uint16_t *pHasLength, uint16_t length);
 //--------------------------------------HasLength_for_Uint16_t------------------------------------------------
 //--------------------------------------HasLength_for_Uint32_t------------------------------------------------
 typedef struct
@@ -88,13 +88,13 @@ typedef struct
 ////    explicit HasLength(L length) : m_length(length)
 ////    {}
 
-    uint32_t m_length;//// = 0;
+  uint32_t m_length;//// = 0;
 } HasLength_for_Uint32_t;
-    uint32_t length_in_HasLength_for_Uint32_t(HasLength_for_Uint32_t *pHasLength);
-    boolean is_empty_in_HasLength_for_Uint32_t(HasLength_for_Uint32_t *pHasLength);
-    boolean is_not_empty_in_HasLength_for_Uint32_t(HasLength_for_Uint32_t *pHasLength);
-    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver1(HasLength_for_Uint32_t *pHasLength);
-    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
+uint32_t length_in_HasLength_for_Uint32_t(HasLength_for_Uint32_t *pHasLength);
+boolean is_empty_in_HasLength_for_Uint32_t(HasLength_for_Uint32_t *pHasLength);
+boolean is_not_empty_in_HasLength_for_Uint32_t(HasLength_for_Uint32_t *pHasLength);
+void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver1(HasLength_for_Uint32_t *pHasLength);
+void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
 //--------------------------------------HasLength_for_Uint32_t------------------------------------------------
 
 ////}

@@ -76,7 +76,7 @@ typedef struct
   ITimer* timerExe4cpp;
 } TimerExe4cpp;
 
-   void TimerExe4cpp_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp, ITimer* tim);
+void TimerExe4cpp_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp, ITimer* tim);
 
 uint32_t expires_at_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp);
 boolean cancel_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp);

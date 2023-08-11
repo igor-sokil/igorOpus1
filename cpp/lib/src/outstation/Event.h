@@ -33,11 +33,11 @@ typedef struct////struct Evented
 
 ////    Evented() : clazz(EventClass::EC1) {}
 
-    uint16_t index;//// = 0;
-    EventClass_uint8_t clazz; // class of the event (CLASS<1-3>)
+  uint16_t index;//// = 0;
+  EventClass_uint8_t clazz; // class of the event (CLASS<1-3>)
 } Evented;
-   void Evented_in_EventedOver2(Evented *pEvented, uint16_t index, EventClass_uint8_t clazz);
-   void Evented_in_EventedOver1(Evented *pEvented);
+void Evented_in_EventedOver2(Evented *pEvented, uint16_t index, EventClass_uint8_t clazz);
+void Evented_in_EventedOver1(Evented *pEvented);
 
 
 
@@ -62,8 +62,8 @@ typedef struct////struct Evented
 ////template<typename Spec> struct Event : public Evented
 typedef struct
 {
-    Evented eEvented;
-//#define meas_type_t_in_EventBinarySpec  meas_t_in_BinarySpec 
+  Evented eEvented;
+//#define meas_type_t_in_EventBinarySpec  meas_t_in_BinarySpec
 ////    typedef typename Spec::meas_t meas_type_t;
 
 //#define event_variation_t_in_BinaryInfo  EventBinaryVariation_uint8_t
@@ -71,162 +71,162 @@ typedef struct
 ////    Event() : Evented(), value(), variation() {}
 ////
 ////    meas_type_t value;
-        Binary value;
+  Binary value;
 ////    typename Spec::event_variation_t variation;
-        event_variation_t_in_BinaryInfo variation;
+  event_variation_t_in_BinaryInfo variation;
 } Event_for_BinarySpec;
-   void Event_for_BinarySpec_in_Event_for_BinarySpecOver1(Event_for_BinarySpec *pEvent_for_BinarySpec);
-   void Event_for_BinarySpec_in_Event_for_BinarySpecOver2(Event_for_BinarySpec *pEvent_for_BinarySpec,
-                                                  Binary* value, uint16_t index,
-                                                  EventClass_uint8_t clazz,
-                                                  event_variation_t_in_BinaryInfo variation);
+void Event_for_BinarySpec_in_Event_for_BinarySpecOver1(Event_for_BinarySpec *pEvent_for_BinarySpec);
+void Event_for_BinarySpec_in_Event_for_BinarySpecOver2(Event_for_BinarySpec *pEvent_for_BinarySpec,
+    Binary* value, uint16_t index,
+    EventClass_uint8_t clazz,
+    event_variation_t_in_BinaryInfo variation);
 
 //--------------------------------BinarySpec-------------------------
 //--------------------------------DoubleBitBinarySpec-------------------------
 ////template<typename Spec> struct Event : public Evented
 typedef struct
 {
-    Evented eEvented;
+  Evented eEvented;
 ////    typedef typename Spec::meas_t meas_type_t;
 
 ////    Event() : Evented(), value(), variation() {}
 ////
 ////    meas_type_t value;
-        DoubleBitBinary value;
+  DoubleBitBinary value;
 ////    typename Spec::event_variation_t variation;
-        event_variation_t_in_DoubleBitBinaryInfo variation;
+  event_variation_t_in_DoubleBitBinaryInfo variation;
 } Event_for_DoubleBitBinarySpec;
-   void Event_for_DoubleBitBinarySpec_in_Event_for_DoubleBitBinarySpecOver1(Event_for_DoubleBitBinarySpec *pEvent_for_DoubleBitBinarySpec);
-   void Event_for_DoubleBitBinarySpec_in_Event_for_DoubleBitBinarySpecOver2(Event_for_DoubleBitBinarySpec *pEvent_for_DoubleBitBinarySpec,
-                                                  DoubleBitBinary* value, uint16_t index,
-                                                  EventClass_uint8_t clazz,
-                                                  event_variation_t_in_DoubleBitBinaryInfo variation);
+void Event_for_DoubleBitBinarySpec_in_Event_for_DoubleBitBinarySpecOver1(Event_for_DoubleBitBinarySpec *pEvent_for_DoubleBitBinarySpec);
+void Event_for_DoubleBitBinarySpec_in_Event_for_DoubleBitBinarySpecOver2(Event_for_DoubleBitBinarySpec *pEvent_for_DoubleBitBinarySpec,
+    DoubleBitBinary* value, uint16_t index,
+    EventClass_uint8_t clazz,
+    event_variation_t_in_DoubleBitBinaryInfo variation);
 
 //--------------------------------DoubleBitBinarySpec-------------------------
 //--------------------------------AnalogSpec-------------------------
 ////template<typename Spec> struct Event : public Evented
 typedef struct
 {
-    Evented eEvented;
+  Evented eEvented;
 ////    typedef typename Spec::meas_t meas_type_t;
 
 ////    Event() : Evented(), value(), variation() {}
 ////
 ////    meas_type_t value;
-        Analog value;
+  Analog value;
 ////    typename Spec::event_variation_t variation;
-        event_variation_t_in_AnalogInfo variation;
+  event_variation_t_in_AnalogInfo variation;
 } Event_for_AnalogSpec;
-   void Event_for_AnalogSpec_in_Event_for_AnalogSpecOver1(Event_for_AnalogSpec *pEvent_for_AnalogSpec);
-   void Event_for_AnalogSpec_in_Event_for_AnalogSpecOver2(Event_for_AnalogSpec *pEvent_for_AnalogSpec,
-                                                  Analog* value, uint16_t index,
-                                                  EventClass_uint8_t clazz,
-                                                  event_variation_t_in_AnalogInfo variation);
+void Event_for_AnalogSpec_in_Event_for_AnalogSpecOver1(Event_for_AnalogSpec *pEvent_for_AnalogSpec);
+void Event_for_AnalogSpec_in_Event_for_AnalogSpecOver2(Event_for_AnalogSpec *pEvent_for_AnalogSpec,
+    Analog* value, uint16_t index,
+    EventClass_uint8_t clazz,
+    event_variation_t_in_AnalogInfo variation);
 
 //--------------------------------AnalogSpec-------------------------
 //--------------------------------CounterSpec-------------------------
 ////template<typename Spec> struct Event : public Evented
 typedef struct
 {
-    Evented eEvented;
+  Evented eEvented;
 ////    typedef typename Spec::meas_t meas_type_t;
 
 ////    Event() : Evented(), value(), variation() {}
 ////
 ////    meas_type_t value;
-        Counter value;
+  Counter value;
 ////    typename Spec::event_variation_t variation;
-        event_variation_t_in_CounterInfo variation;
+  event_variation_t_in_CounterInfo variation;
 } Event_for_CounterSpec;
-   void Event_for_CounterSpec_in_Event_for_CounterSpecOver1(Event_for_CounterSpec *pEvent_for_CounterSpec);
-   void Event_for_CounterSpec_in_Event_for_CounterSpecOver2(Event_for_CounterSpec *pEvent_for_CounterSpec,
-                                                  Counter* value, uint16_t index,
-                                                  EventClass_uint8_t clazz,
-                                                  event_variation_t_in_CounterInfo variation);
+void Event_for_CounterSpec_in_Event_for_CounterSpecOver1(Event_for_CounterSpec *pEvent_for_CounterSpec);
+void Event_for_CounterSpec_in_Event_for_CounterSpecOver2(Event_for_CounterSpec *pEvent_for_CounterSpec,
+    Counter* value, uint16_t index,
+    EventClass_uint8_t clazz,
+    event_variation_t_in_CounterInfo variation);
 
 //--------------------------------CounterSpec-------------------------
 //--------------------------------FrozenCounterSpec-------------------------
 ////template<typename Spec> struct Event : public Evented
 typedef struct
 {
-    Evented eEvented;
+  Evented eEvented;
 ////    typedef typename Spec::meas_t meas_type_t;
 
 ////    Event() : Evented(), value(), variation() {}
 ////
 ////    meas_type_t value;
-        FrozenCounter value;
+  FrozenCounter value;
 ////    typename Spec::event_variation_t variation;
-        event_variation_t_in_FrozenCounterInfo variation;
+  event_variation_t_in_FrozenCounterInfo variation;
 } Event_for_FrozenCounterSpec;
-   void Event_for_FrozenCounterSpec_in_Event_for_FrozenCounterSpecOver1(Event_for_FrozenCounterSpec *pEvent_for_FrozenCounterSpec);
-   void Event_for_FrozenCounterSpec_in_Event_for_FrozenCounterSpecOver2(Event_for_FrozenCounterSpec *pEvent_for_FrozenCounterSpec,
-                                                  FrozenCounter* value, uint16_t index,
-                                                  EventClass_uint8_t clazz,
-                                                  event_variation_t_in_FrozenCounterInfo variation);
+void Event_for_FrozenCounterSpec_in_Event_for_FrozenCounterSpecOver1(Event_for_FrozenCounterSpec *pEvent_for_FrozenCounterSpec);
+void Event_for_FrozenCounterSpec_in_Event_for_FrozenCounterSpecOver2(Event_for_FrozenCounterSpec *pEvent_for_FrozenCounterSpec,
+    FrozenCounter* value, uint16_t index,
+    EventClass_uint8_t clazz,
+    event_variation_t_in_FrozenCounterInfo variation);
 
 //--------------------------------FrozenCounterSpec-------------------------
 //--------------------------------BinaryOutputStatusSpec-------------------------
 ////template<typename Spec> struct Event : public Evented
 typedef struct
 {
-    Evented eEvented;
+  Evented eEvented;
 ////    typedef typename Spec::meas_t meas_type_t;
 
 ////    Event() : Evented(), value(), variation() {}
 ////
 ////    meas_type_t value;
-        BinaryOutputStatus value;
+  BinaryOutputStatus value;
 ////    typename Spec::event_variation_t variation;
-        event_variation_t_in_BinaryOutputStatusInfo variation;
+  event_variation_t_in_BinaryOutputStatusInfo variation;
 } Event_for_BinaryOutputStatusSpec;
-   void Event_for_BinaryOutputStatusSpec_in_Event_for_BinaryOutputStatusSpecOver1(Event_for_BinaryOutputStatusSpec *pEvent_for_BinaryOutputStatusSpec);
-   void Event_for_BinaryOutputStatusSpec_in_Event_for_BinaryOutputStatusSpecOver2(Event_for_BinaryOutputStatusSpec *pEvent_for_BinaryOutputStatusSpec,
-                                                  BinaryOutputStatus* value, uint16_t index,
-                                                  EventClass_uint8_t clazz,
-                                                  event_variation_t_in_BinaryOutputStatusInfo variation);
+void Event_for_BinaryOutputStatusSpec_in_Event_for_BinaryOutputStatusSpecOver1(Event_for_BinaryOutputStatusSpec *pEvent_for_BinaryOutputStatusSpec);
+void Event_for_BinaryOutputStatusSpec_in_Event_for_BinaryOutputStatusSpecOver2(Event_for_BinaryOutputStatusSpec *pEvent_for_BinaryOutputStatusSpec,
+    BinaryOutputStatus* value, uint16_t index,
+    EventClass_uint8_t clazz,
+    event_variation_t_in_BinaryOutputStatusInfo variation);
 
 //--------------------------------BinaryOutputStatusSpec-------------------------
 //--------------------------------AnalogOutputStatusSpec-------------------------
 ////template<typename Spec> struct Event : public Evented
 typedef struct
 {
-    Evented eEvented;
+  Evented eEvented;
 ////    typedef typename Spec::meas_t meas_type_t;
 
 ////    Event() : Evented(), value(), variation() {}
 ////
 ////    meas_type_t value;
-        AnalogOutputStatus value;
+  AnalogOutputStatus value;
 ////    typename Spec::event_variation_t variation;
-        event_variation_t_in_AnalogOutputStatusInfo variation;
+  event_variation_t_in_AnalogOutputStatusInfo variation;
 } Event_for_AnalogOutputStatusSpec;
-   void Event_for_AnalogOutputStatusSpec_in_Event_for_AnalogOutputStatusSpecOver1(Event_for_AnalogOutputStatusSpec *pEvent_for_AnalogOutputStatusSpec);
-   void Event_for_AnalogOutputStatusSpec_in_Event_for_AnalogOutputStatusSpecOver2(Event_for_AnalogOutputStatusSpec *pEvent_for_AnalogOutputStatusSpec,
-                                                  AnalogOutputStatus* value, uint16_t index,
-                                                  EventClass_uint8_t clazz,
-                                                  event_variation_t_in_AnalogOutputStatusInfo variation);
+void Event_for_AnalogOutputStatusSpec_in_Event_for_AnalogOutputStatusSpecOver1(Event_for_AnalogOutputStatusSpec *pEvent_for_AnalogOutputStatusSpec);
+void Event_for_AnalogOutputStatusSpec_in_Event_for_AnalogOutputStatusSpecOver2(Event_for_AnalogOutputStatusSpec *pEvent_for_AnalogOutputStatusSpec,
+    AnalogOutputStatus* value, uint16_t index,
+    EventClass_uint8_t clazz,
+    event_variation_t_in_AnalogOutputStatusInfo variation);
 
 //--------------------------------AnalogOutputStatusSpec-------------------------
 //--------------------------------OctetStringSpec-------------------------
 ////template<typename Spec> struct Event : public Evented
 typedef struct
 {
-    Evented eEvented;
+  Evented eEvented;
 ////    typedef typename Spec::meas_t meas_type_t;
 
 ////    Event() : Evented(), value(), variation() {}
 ////
 ////    meas_type_t value;
-        OctetString value;
+  OctetString value;
 ////    typename Spec::event_variation_t variation;
-        event_variation_t_in_OctetStringInfo variation;
+  event_variation_t_in_OctetStringInfo variation;
 } Event_for_OctetStringSpec;
-   void Event_for_OctetStringSpec_in_Event_for_OctetStringSpecOver1(Event_for_OctetStringSpec *pEvent_for_OctetStringSpec);
-   void Event_for_OctetStringSpec_in_Event_for_OctetStringSpecOver2(Event_for_OctetStringSpec *pEvent_for_OctetStringSpec,
-                                                  OctetString* value, uint16_t index,
-                                                  EventClass_uint8_t clazz,
-                                                  event_variation_t_in_OctetStringInfo variation);
+void Event_for_OctetStringSpec_in_Event_for_OctetStringSpecOver1(Event_for_OctetStringSpec *pEvent_for_OctetStringSpec);
+void Event_for_OctetStringSpec_in_Event_for_OctetStringSpecOver2(Event_for_OctetStringSpec *pEvent_for_OctetStringSpec,
+    OctetString* value, uint16_t index,
+    EventClass_uint8_t clazz,
+    event_variation_t_in_OctetStringInfo variation);
 
 //--------------------------------OctetStringSpec-------------------------
 

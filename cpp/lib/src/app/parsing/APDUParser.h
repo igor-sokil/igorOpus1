@@ -45,9 +45,9 @@
 ////typedef struct
 ////{
 ////public:
-    ParseResult_uint8_t Parse_in_APDUParser_static(
-                             RSeq_for_Uint16_t *buffer,
-                             IAPDUHandler *handler);
+ParseResult_uint8_t Parse_in_APDUParser_static(
+  RSeq_for_Uint16_t *buffer,
+  IAPDUHandler *handler);
 ////                             Logger& logger,
 ////                             ParserSettings settings = ParserSettings::Default());
 
@@ -57,16 +57,16 @@
 ////                             Logger* pLogger,
 ////                             ParserSettings settings = ParserSettings::Default());
 
-    ParseResult_uint8_t ParseAndLogAll_in_APDUParser_static(
-                             RSeq_for_Uint16_t *buffer);
+ParseResult_uint8_t ParseAndLogAll_in_APDUParser_static(
+  RSeq_for_Uint16_t *buffer);
 ////                                      Logger* pLogger,
 ////                                      ParserSettings settings = ParserSettings::Default());
 
-    ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
-                             RSeq_for_Uint16_t *buffer,
+ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
+  RSeq_for_Uint16_t *buffer,
 //                                       Logger* pLogger,
-                                       IAPDUHandler* pHandler,
-                                       IWhiteList* pWhiteList);
+  IAPDUHandler* pHandler,
+  IWhiteList* pWhiteList);
 //                                       const ParserSettings& settings);
 
 ////private:
@@ -75,39 +75,39 @@
 ////        return true;
 ////    }
 
-    ParseResult_uint8_t ParseHeaders_in_APDUParser_static(
-                             RSeq_for_Uint16_t *buffer,
+ParseResult_uint8_t ParseHeaders_in_APDUParser_static(
+  RSeq_for_Uint16_t *buffer,
 //                                    Logger* pLogger,
 //                                    const ParserSettings& settings,
-                             IAPDUHandler* pHandler);
+  IAPDUHandler* pHandler);
 
-    ParseResult_uint8_t ParseHeader_in_APDUParser_static(
-                             RSeq_for_Uint16_t *buffer,
+ParseResult_uint8_t ParseHeader_in_APDUParser_static(
+  RSeq_for_Uint16_t *buffer,
 //                                   Logger* pLogger,
-                             uint32_t count,
+  uint32_t count,
 //                                   const ParserSettings& settings,
-                             IAPDUHandler* pHandler,
-                             IWhiteList* pWhiteList);
+  IAPDUHandler* pHandler,
+  IWhiteList* pWhiteList);
 
-    ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
-                             RSeq_for_Uint16_t *buffer,
+ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
+  RSeq_for_Uint16_t *buffer,
 //                                      Logger* pLogger,
-                             HeaderRecord *record,
+  HeaderRecord *record,
 //                                      const ParserSettings& settings,
-                             IAPDUHandler* pHandler);
+  IAPDUHandler* pHandler);
 
-    ParseResult_uint8_t HandleAllObjectsHeader_in_APDUParser_static(//Logger* pLogger,
-                             HeaderRecord *record,
+ParseResult_uint8_t HandleAllObjectsHeader_in_APDUParser_static(//Logger* pLogger,
+  HeaderRecord *record,
 //                                              const ParserSettings& settings,
-                             IAPDUHandler* pHandler);
+  IAPDUHandler* pHandler);
 
-    ParseResult_uint8_t ParseCountOfIndices_in_APDUParser_static(
-                             RSeq_for_Uint16_t *buffer,
-                             HeaderRecord *record,
-                             NumParser *numparser,
-                             uint16_t count,
+ParseResult_uint8_t ParseCountOfIndices_in_APDUParser_static(
+  RSeq_for_Uint16_t *buffer,
+  HeaderRecord *record,
+  NumParser *numparser,
+  uint16_t count,
 //                                           Logger* pLogger,
-                             IAPDUHandler* pHandler);
+  IAPDUHandler* pHandler);
 ////} APDUParser;
 
 ////} // namespace opendnp3

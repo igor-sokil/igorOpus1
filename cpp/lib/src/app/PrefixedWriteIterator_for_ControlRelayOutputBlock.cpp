@@ -62,7 +62,7 @@ boolean Write_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(Prefix
     write_to_in_UInt16_static(pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->pPosition, index);
 ////        serializer.write(value, *pPosition);
     write_in_Serializer_for_ControlRelayOutputBlock(&(pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->serializer), value,
-                                   pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->pPosition);
+        pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->pPosition);
     ++(pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->count);
     return true;
   }

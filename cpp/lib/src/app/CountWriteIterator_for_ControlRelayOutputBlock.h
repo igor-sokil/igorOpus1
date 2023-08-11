@@ -86,23 +86,23 @@ typedef struct
 ////    typename CountType::type_t count;
 ////    Serializer<WriteType> serializer;
 
-    uint8_t count;
-    Serializer_for_ControlRelayOutputBlock serializer;
+  uint8_t count;
+  Serializer_for_ControlRelayOutputBlock serializer;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } CountWriteIterator_for_UInt8_ControlRelayOutputBlock;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlock(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock);
-    boolean Write_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlock(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock, ControlRelayOutputBlock *value);////const WriteType& value)
-    void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_destr_CountWriteIterator_for_UInt8_ControlRelayOutputBlock(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock);
-    void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver2(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock,
-                                            Serializer_for_ControlRelayOutputBlock *serializer, WSeq_for_Uint16_t *position);
-    void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver1(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock);
-    CountWriteIterator_for_UInt8_ControlRelayOutputBlock Null_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlock_static(void);
+boolean IsValid_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlock(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock);
+boolean Write_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlock(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock, ControlRelayOutputBlock *value);////const WriteType& value)
+void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_destr_CountWriteIterator_for_UInt8_ControlRelayOutputBlock(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock);
+void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver2(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock,
+    Serializer_for_ControlRelayOutputBlock *serializer, WSeq_for_Uint16_t *position);
+void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver1(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock);
+CountWriteIterator_for_UInt8_ControlRelayOutputBlock Null_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlock_static(void);
 //-------------------Uint8---------------------------------------------------
 //-------------------Uint16---------------------------------------------------
 
@@ -162,23 +162,23 @@ typedef struct
 ////    typename CountType::type_t count;
 ////    Serializer<WriteType> serializer;
 
-    uint16_t count;
-    Serializer_for_ControlRelayOutputBlock serializer;
+  uint16_t count;
+  Serializer_for_ControlRelayOutputBlock serializer;
 
-    boolean isValid;
+  boolean isValid;
 
-    WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
-    WSeq_for_Uint16_t* pPosition;
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
 } CountWriteIterator_for_UInt16_ControlRelayOutputBlock;
 
 ////} // namespace opendnp3
-    boolean IsValid_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlock(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock);
-    boolean Write_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlock(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock, ControlRelayOutputBlock *value);////const WriteType& value)
-    void CountWriteIterator_for_UInt16_ControlRelayOutputBlock_destr_CountWriteIterator_for_UInt16_ControlRelayOutputBlock(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock);
-    void CountWriteIterator_for_UInt16_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlockOver2(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock,
-                                            Serializer_for_ControlRelayOutputBlock *serializer, WSeq_for_Uint16_t *position);
-    void CountWriteIterator_for_UInt16_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlockOver1(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock);
-    CountWriteIterator_for_UInt16_ControlRelayOutputBlock Null_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlock_static(void);
+boolean IsValid_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlock(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock);
+boolean Write_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlock(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock, ControlRelayOutputBlock *value);////const WriteType& value)
+void CountWriteIterator_for_UInt16_ControlRelayOutputBlock_destr_CountWriteIterator_for_UInt16_ControlRelayOutputBlock(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock);
+void CountWriteIterator_for_UInt16_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlockOver2(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock,
+    Serializer_for_ControlRelayOutputBlock *serializer, WSeq_for_Uint16_t *position);
+void CountWriteIterator_for_UInt16_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlockOver1(CountWriteIterator_for_UInt16_ControlRelayOutputBlock *pCountWriteIterator_for_UInt16_ControlRelayOutputBlock);
+CountWriteIterator_for_UInt16_ControlRelayOutputBlock Null_in_CountWriteIterator_for_UInt16_ControlRelayOutputBlock_static(void);
 //-------------------Uint16---------------------------------------------------
 
 

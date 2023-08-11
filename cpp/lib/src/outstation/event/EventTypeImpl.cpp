@@ -24,7 +24,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static(voi
 
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(void *pIEventType, EventRecord* record)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_BinarySpec* Retrieve_in_TypedStorage_for_BinarySpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_BinarySpec* node = Retrieve_in_TypedStorage_for_BinarySpec_static(record);
@@ -34,12 +34,12 @@ void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_ove
 ////    virtual uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec(List<EventRecord>::Iterator& iterator,
 ////                               EventLists& lists,
 ////                               IEventWriteHandler& handler) const override
-uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(void *pIEventType, 
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(void *pIEventType,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventLists* lists,
     IEventWriteHandler* handler)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
@@ -63,7 +63,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(voi
 ////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
 //  return handler->pWrite_EventBinary_in_IEventWriteHandler((type->value).selectedVariation,
 //uint16_t Write_for_Binary_in_IEventWriteHandler(IEventWriteHandler *pIEventWriteHandler, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items)
-    return Write_for_Binary_in_IEventWriteHandler(handler,
+  return Write_for_Binary_in_IEventWriteHandler(handler,
          (type->value).selectedVariation,
          &((type->value).value),
          &(collection.iIEventCollection_for_Binary));
@@ -72,7 +72,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(voi
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(void *pIEventType, EventRecord* record, EventLists* lists)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_BinarySpec* Retrieve_in_TypedStorage_for_BinarySpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_BinarySpec* node = Retrieve_in_TypedStorage_for_BinarySpec_static(record);
@@ -98,7 +98,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_s
 
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_override(void *pIEventType, EventRecord* record)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_DoubleBitBinarySpec* Retrieve_in_TypedStorage_for_DoubleBitBinarySpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_DoubleBitBinarySpec* node = Retrieve_in_TypedStorage_for_DoubleBitBinarySpec_static(record);
@@ -112,7 +112,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_ove
     EventLists* lists,
     IEventWriteHandler* handler)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
@@ -146,7 +146,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_ove
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_override(void *pIEventType, EventRecord* record, EventLists* lists)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_DoubleBitBinarySpec* Retrieve_in_TypedStorage_for_DoubleBitBinarySpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_DoubleBitBinarySpec* node = Retrieve_in_TypedStorage_for_DoubleBitBinarySpec_static(record);
@@ -172,7 +172,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static(voi
 
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(void *pIEventType, EventRecord* record)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_AnalogSpec* Retrieve_in_TypedStorage_for_AnalogSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_AnalogSpec* node = Retrieve_in_TypedStorage_for_AnalogSpec_static(record);
@@ -186,7 +186,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(voi
     EventLists* lists,
     IEventWriteHandler* handler)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
@@ -218,7 +218,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(voi
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(void *pIEventType, EventRecord* record, EventLists* lists)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_AnalogSpec* Retrieve_in_TypedStorage_for_AnalogSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_AnalogSpec* node = Retrieve_in_TypedStorage_for_AnalogSpec_static(record);
@@ -244,7 +244,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_static(vo
 
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_override(void *pIEventType, EventRecord* record)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_CounterSpec* Retrieve_in_TypedStorage_for_CounterSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_CounterSpec* node = Retrieve_in_TypedStorage_for_CounterSpec_static(record);
@@ -258,7 +258,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_override(vo
     EventLists* lists,
     IEventWriteHandler* handler)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
@@ -282,7 +282,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_override(vo
 ////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
 //  return handler->pWrite_in_IEventWriteHandlerOver3(
   return Write_for_Counter_in_IEventWriteHandler(handler,
-        (type->value).selectedVariation,
+         (type->value).selectedVariation,
          &((type->value).value),
          &(collection.iIEventCollection_for_Counter));
 }
@@ -290,7 +290,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_override(vo
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_override(void *pIEventType, EventRecord* record, EventLists* lists)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_CounterSpec* Retrieve_in_TypedStorage_for_CounterSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_CounterSpec* node = Retrieve_in_TypedStorage_for_CounterSpec_static(record);
@@ -316,7 +316,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_sta
 
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_override(void *pIEventType, EventRecord* record)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_FrozenCounterSpec* Retrieve_in_TypedStorage_for_FrozenCounterSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_FrozenCounterSpec* node = Retrieve_in_TypedStorage_for_FrozenCounterSpec_static(record);
@@ -330,7 +330,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_overr
     EventLists* lists,
     IEventWriteHandler* handler)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
@@ -362,7 +362,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_overr
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_override(void *pIEventType, EventRecord* record, EventLists* lists)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_FrozenCounterSpec* Retrieve_in_TypedStorage_for_FrozenCounterSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_FrozenCounterSpec* node = Retrieve_in_TypedStorage_for_FrozenCounterSpec_static(record);
@@ -388,7 +388,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpe
 
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_override(void *pIEventType, EventRecord* record)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_BinaryOutputStatusSpec* Retrieve_in_TypedStorage_for_BinaryOutputStatusSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_BinaryOutputStatusSpec* node = Retrieve_in_TypedStorage_for_BinaryOutputStatusSpec_static(record);
@@ -402,7 +402,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_
     EventLists* lists,
     IEventWriteHandler* handler)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
@@ -434,7 +434,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_override(void *pIEventType, EventRecord* record, EventLists* lists)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_BinaryOutputStatusSpec* Retrieve_in_TypedStorage_for_BinaryOutputStatusSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_BinaryOutputStatusSpec* node = Retrieve_in_TypedStorage_for_BinaryOutputStatusSpec_static(record);
@@ -460,7 +460,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpe
 
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_override(void *pIEventType, EventRecord* record)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_AnalogOutputStatusSpec* Retrieve_in_TypedStorage_for_AnalogOutputStatusSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_AnalogOutputStatusSpec* node = Retrieve_in_TypedStorage_for_AnalogOutputStatusSpec_static(record);
@@ -474,7 +474,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_
     EventLists* lists,
     IEventWriteHandler* handler)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
@@ -506,7 +506,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_override(void *pIEventType, EventRecord* record, EventLists* lists)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_AnalogOutputStatusSpec* Retrieve_in_TypedStorage_for_AnalogOutputStatusSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_AnalogOutputStatusSpec* node = Retrieve_in_TypedStorage_for_AnalogOutputStatusSpec_static(record);
@@ -532,7 +532,7 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_stati
 
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_override(void *pIEventType, EventRecord* record)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_OctetStringSpec* Retrieve_in_TypedStorage_for_OctetStringSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_OctetStringSpec* node = Retrieve_in_TypedStorage_for_OctetStringSpec_static(record);
@@ -546,7 +546,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_overrid
     EventLists* lists,
     IEventWriteHandler* handler)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
@@ -578,7 +578,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_overrid
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
 void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_override(void *pIEventType, EventRecord* record, EventLists* lists)
 {
- UNUSED(pIEventType);
+  UNUSED(pIEventType);
 //    Node_TypedEventRecord_for_OctetStringSpec* Retrieve_in_TypedStorage_for_OctetStringSpec_static(EventRecord* record);
 ////        auto node = TypedStorage<T>::Retrieve(record);
   Node_TypedEventRecord_for_OctetStringSpec* node = Retrieve_in_TypedStorage_for_OctetStringSpec_static(record);

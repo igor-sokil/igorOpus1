@@ -63,7 +63,7 @@ boolean Write_in_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(PrefixedWri
     write_to_in_UInt16_static(pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus->pPosition, index);
 ////        serializer.write(value, *pPosition);
     write_in_Serializer_for_BinaryOutputStatus(&(pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus->serializer), value,
-                                   pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus->pPosition);
+        pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus->pPosition);
     ++(pPrefixedWriteIterator_for_UInt16_BinaryOutputStatus->count);
     return true;
   }

@@ -82,7 +82,7 @@ typedef struct
 //EventTypeImpl_TypedEventRecord_for_BinarySpec instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec;
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static(void);
 void SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(void *pIEventType, EventRecord* record);
-uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(void *pIEventType, 
+uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(void *pIEventType,
     Iterator_in_List_for_EventRecord* iteratorEv,
     EventLists* lists,
     IEventWriteHandler* handler);
