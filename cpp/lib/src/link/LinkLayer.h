@@ -17,49 +17,80 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-MYTODO
+
 #ifndef OPENDNP3_LINKLAYER_H
 #define OPENDNP3_LINKLAYER_H
 
 #include "LinkContext.h"
 #include "LinkLayerConfig.h"
 
-#include <memory>
+////#include <memory>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 //	@section desc Implements the contextual state of DNP3 Data Link Layer
-class LinkLayer final : public ILinkLayer, public ILinkSession
+////class LinkLayer final : public ILinkLayer, public ILinkSession
+typedef struct
 {
+  ILinkLayer   iILinkLayer;
+  ILinkSession iILinkSession;
 
-public:
-    LinkLayer(const Logger& logger,
-              const std::shared_ptr<exe4cpp::IExecutor>&,
-              const std::shared_ptr<IUpperLayer>& upper,
-              const std::shared_ptr<ILinkListener>&,
-              const LinkLayerConfig&);
+////public:
+////    LinkLayer(const Logger& logger,
+////              const std::shared_ptr<exe4cpp::IExecutor>&,
+////              const std::shared_ptr<IUpperLayer>& upper,
+////              const std::shared_ptr<ILinkListener>&,
+////              const LinkLayerConfig&);
 
-    void SetRouter(ILinkTx&);
+////    void SetRouter(ILinkTx&);
 
     // ---- Events from below: ILinkSession / IFrameSink  ----
 
-    virtual bool OnLowerLayerUp() override;
-    virtual bool OnLowerLayerDown() override;
-    virtual bool OnTxReady() override;
-    virtual bool OnFrame(const LinkHeaderFields& header, const ser4cpp::rseq_t& userdata) override;
+////    virtual bool OnLowerLayerUp() override;
+////    virtual bool OnLowerLayerDown() override;
+////    virtual bool OnTxReady() override;
+////    virtual bool OnFrame(const LinkHeaderFields& header, const ser4cpp::rseq_t& userdata) override;
 
     // ---- Events from above: ILinkLayer ----
 
-    virtual bool Send(ITransportSegment& segments) override;
+////    virtual bool Send(ITransportSegment& segments) override;
 
-    const StackStatistics::Link& GetStatistics() const;
+////    const StackStatistics::Link& GetStatistics() const;
 
-private:
+////private:
     // The full state
-    std::shared_ptr<LinkContext> ctx;
-};
+////    std::shared_ptr<LinkContext> ctx;
+    LinkContext* ctx;
+} LinkLayer;
 
-} // namespace opendnp3
+   void LinkLayer_in_LinkLayer(LinkLayer *pLinkLayer, ////const Logger& logger,
+              IExecutorExe4cpp*,
+              IUpperLayer* upper,
+              ILinkListener*,
+              LinkLayerConfig*);
+
+  void SetRouter_in_LinkLayer(LinkLayer *pLinkLayer, ILinkTx*);
+
+  Link_StackStatistics* GetStatistics_in_LinkLayer(LinkLayer *pLinkLayer);
+
+    // ---- Events from below: ILinkSession / IFrameSink  ----
+
+   boolean OnLowerLayerUp_in_LinkLayer(LinkLayer *pLinkLayer);
+   boolean OnLowerLayerDown_in_LinkLayer(LinkLayer *pLinkLayer);
+   boolean OnTxReady_in_LinkLayer(LinkLayer *pLinkLayer);
+   boolean OnFrame_in_LinkLayer(LinkLayer *pLinkLayer, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
+
+   boolean OnLowerLayerUp_in_LinkLayer_override(void *pILinkSession);
+   boolean OnLowerLayerDown_in_LinkLayer_override(void *pILinkSession);
+   boolean OnTxReady_in_LinkLayer_override(void *pILinkSession);
+   boolean OnFrame_in_LinkLayer_override(void *pIFrameSink, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
+    // ---- Events from above: ILinkLayer ----
+
+   boolean Send_in_LinkLayer(LinkLayer *pLinkLayer, ITransportSegment* segments);
+
+   boolean Send_in_LinkLayer_override(void *pILinkLayer, ITransportSegment* segments);
+
+////} // namespace opendnp3
 
 #endif

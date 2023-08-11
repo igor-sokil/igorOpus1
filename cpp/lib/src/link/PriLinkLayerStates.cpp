@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <QtWidgets>
 #include "header.h"
 #include "PriLinkLayerStates.h"
 
@@ -31,12 +32,17 @@
 ////////////////////////////////////////
 // PriStateBase
 ////////////////////////////////////////
-PriStateBase instance_PriStateBase;
+static PriStateBase instance_PriStateBase;
 
 void PriStateBase_in_PriStateBase(PriStateBase *pPriStateBase)
 {
+qDebug()<<"PriStateBase_in_PriStateBase1";
+qDebug()<<"OnTxReady_in_PriStateBase_override= "<<(uint32_t)OnTxReady_in_PriStateBase_override;
+qDebug()<<"OnTxReady_in_PLLS_SendUnconfirmedTransmitWait_override= "<<(uint32_t)OnTxReady_in_PLLS_SendUnconfirmedTransmitWait_override;
+qDebug()<<"OnTxReady_in_PLLS_RequestLinkStatusWait_override= "<<(uint32_t)OnTxReady_in_PLLS_RequestLinkStatusWait_override;
+
   pPriStateBase->pOnAck_in_PriStateBase = OnAck_in_PriStateBase_override;
-  pPriStateBase->pOnNack_in_PriStateBase = OnNack_in_PriStateBase
+  pPriStateBase->pOnNack_in_PriStateBase = OnNack_in_PriStateBase_override;
       pPriStateBase->pOnLinkStatus_in_PriStateBase = OnLinkStatus_in_PriStateBase_override;
   pPriStateBase->pOnNotSupported_in_PriStateBase = OnNotSupported_in_PriStateBase_override;
 
@@ -70,6 +76,9 @@ PriStateBase* OnNotSupported_in_PriStateBase(PriStateBase* pPriStateBase, LinkCo
 
 PriStateBase* OnTxReady_in_PriStateBase(PriStateBase* pPriStateBase, LinkContext* pLinkContext)
 {
+qDebug()<<"OnTxReady_in_PriStateBase1";
+qDebug()<<"pPriStateBase= "<<pPriStateBase;
+qDebug()<<"pPriStateBase->pOnTxReady_in_PriStateBase= "<<(uint32_t)pPriStateBase->pOnTxReady_in_PriStateBase;
   return (PriStateBase*)(pPriStateBase->pOnTxReady_in_PriStateBase)(pPriStateBase, pLinkContext);
 }
 
@@ -80,6 +89,7 @@ PriStateBase* OnTimeout_in_PriStateBase(PriStateBase* pPriStateBase, LinkContext
 
 PriStateBase* TrySendUnconfirmed_in_PriStateBase(PriStateBase* pPriStateBase, LinkContext* pLinkContext, ITransportSegment* segments)
 {
+qDebug()<<"TrySendUnconfirmed_in_PriStateBase1";
   return (PriStateBase*)(pPriStateBase->pTrySendUnconfirmed_in_PriStateBase)(pPriStateBase, pLinkContext, segments);
 }
 PriStateBase* TrySendRequestLinkStatus_in_PriStateBase(PriStateBase* pPriStateBase, LinkContext* pLinkContext)
@@ -130,6 +140,7 @@ void* OnNotSupported_in_PriStateBase_override(void* pPriStateBase, LinkContext* 
 
 void* OnTxReady_in_PriStateBase_override(void* pPriStateBase, LinkContext* ctx)
 {
+qDebug()<<"OnTxReady_in_PriStateBase_override1";
   UNUSED(ctx);
 ////    FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, "Invalid action for state: %s", this->Name());
   return pPriStateBase;
@@ -144,6 +155,7 @@ void* OnTimeout_in_PriStateBase_override(void* pPriStateBase, LinkContext* ctx)
 
 void* TrySendUnconfirmed_in_PriStateBase_override(void* pPriStateBase, LinkContext* ctx, ITransportSegment* v/*unused*/)
 {
+qDebug()<<"TrySendUnconfirmed_in_PriStateBase_override1";
   UNUSED(ctx);
   UNUSED(v);
   return pPriStateBase;
@@ -162,8 +174,15 @@ void* TrySendRequestLinkStatus_in_PriStateBase_override(void* pPriStateBase, Lin
 //PLLS_SendUnconfirmedTransmitWait instance_in_PLLS_SendUnconfirmedTransmitWait;
 //PLLS_RequestLinkStatusWait instance_in_PLLS_RequestLinkStatusWait;
 
+PriStateBase* Instance_in_PLLS_Idle_static(void)
+{
+  PLLS_Idle_in_PLLS_Idle(&instance_PriStateBase);
+  return  &instance_PriStateBase;
+}
+
 void PLLS_Idle_in_PLLS_Idle(PriStateBase *pPriStateBase)
 {
+qDebug()<<"PLLS_Idle_in_PLLS_Idle1";
   PriStateBase_in_PriStateBase(pPriStateBase);
 
   pPriStateBase->pTrySendUnconfirmed_in_PriStateBase = TrySendUnconfirmed_in_PLLS_Idle_override;
@@ -179,45 +198,58 @@ void* TrySendRequestLinkStatus_in_PLLS_Idle_override(void *pPriStateBase, LinkCo
 }
 void* TrySendUnconfirmed_in_PLLS_Idle_override(void *pPriStateBase, LinkContext* ctx, ITransportSegment* segments)
 {
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle_override1";
   PriStateBase* parent = (PriStateBase*) getParentPointer_in_PriStateBase((PriStateBase*) pPriStateBase);
   return TrySendUnconfirmed_in_PLLS_Idle(parent, ctx, segments);
 }
 
 PriStateBase* TrySendUnconfirmed_in_PLLS_Idle(PriStateBase *pPriStateBase, LinkContext* ctx, ITransportSegment* segments)
 {
+UNUSED(pPriStateBase);
 //RSeq_for_Uint16_t GetSegment_in_ITransportSegment(ITransportSegment*);
 ////    auto first = segments.GetSegment();
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle1";
   RSeq_for_Uint16_t first = GetSegment_in_ITransportSegment(segments);
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle2";
 
 //Addresses* GetAddresses_in_ITransportSegment(ITransportSegment*);
 //    ser4cpp::rseq_t FormatPrimaryBufferWithUnconfirmed(const Addresses& addr, const ser4cpp::rseq_t& tpdu);
 ////    auto output = ctx.FormatPrimaryBufferWithUnconfirmed(segments.GetAddresses(), first);
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle3";
+Addresses* temp = GetAddresses_in_ITransportSegment(segments);
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle3.1";
+
   RSeq_for_Uint16_t output = FormatPrimaryBufferWithUnconfirmed_in_LinkContext(ctx,
-                             GetAddresses_in_ITransportSegment(segments), &first);
+                             temp, &first);
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle4";
 
 //    void QueueTransmit(const ser4cpp::rseq_t& buffer, bool primary);
 ////    ctx.QueueTransmit(output, true);
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle5";
   QueueTransmit_in_LinkContext(ctx, &output, true);
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle6";
 ////    return PLLS_SendUnconfirmedTransmitWait::Instance();
   PLLS_SendUnconfirmedTransmitWait_in_PLLS_SendUnconfirmedTransmitWait(&instance_PriStateBase);//&(instance_in_PLLS_SendUnconfirmedTransmitWait.pPriStateBase));
+qDebug()<<"TrySendUnconfirmed_in_PLLS_Idle7";
   return &instance_PriStateBase;//&(instance_in_PLLS_SendUnconfirmedTransmitWait.pPriStateBase);
 }
 
 PriStateBase* TrySendRequestLinkStatus_in_PLLS_Idle(PriStateBase *pPriStateBase, LinkContext* ctx)
 {
+UNUSED(pPriStateBase);
   ctx->keepAliveTimeout = false;
 //    void QueueRequestLinkStatus(uint16_t destination);
 ////    ctx.QueueRequestLinkStatus(ctx.config.RemoteAddr);
-  QueueRequestLinkStatus_in_LinkContext(ctx, ctx->config.RemoteAddr);
+  QueueRequestLinkStatus_in_LinkContext(ctx, ctx->config.lLinkConfig.RemoteAddr);
 //    void OnKeepAliveInitiated_in_ILinkListener(ILinkListener*);
 ////    ctx.listener.OnKeepAliveInitiated();
-  OnKeepAliveInitiated_in_ILinkListener(&(ctx->listener));
+  OnKeepAliveInitiated_in_ILinkListener(ctx->listener);
 //    void StartResponseTimer();
 ////    ctx.StartResponseTimer();
   StartResponseTimer_in_LinkContext(ctx);
 ////    return PLLS_RequestLinkStatusWait::Instance();
   PLLS_RequestLinkStatusWait_in_PLLS_RequestLinkStatusWait(&instance_PriStateBase);//&(instance_in_PLLS_RequestLinkStatusWait.pPriStateBase));
-  return &&instance_PriStateBase;//&(instance_in_PLLS_RequestLinkStatusWait.pPriStateBase);
+  return &instance_PriStateBase;//&(instance_in_PLLS_RequestLinkStatusWait.pPriStateBase);
 }
 
 ////////////////////////////////////////////////////////
@@ -226,6 +258,7 @@ PriStateBase* TrySendRequestLinkStatus_in_PLLS_Idle(PriStateBase *pPriStateBase,
 
 void PLLS_SendUnconfirmedTransmitWait_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriStateBase)
 {
+qDebug()<<"PLLS_SendUnconfirmedTransmitWait_in_PLLS_SendUnconfirmedTransmitWait1";
   PriStateBase_in_PriStateBase(pPriStateBase);
 
   pPriStateBase->pOnTxReady_in_PriStateBase = OnTxReady_in_PLLS_SendUnconfirmedTransmitWait_override;
@@ -241,10 +274,13 @@ void* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait_override(void *pPriStateBase
 
 ////PriStateBase& PLLS_SendUnconfirmedTransmitWait::OnTxReady(LinkContext& ctx)
 PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriStateBase,
-    LinkContext* ctx);
+    LinkContext* ctx)
 {
+UNUSED(pPriStateBase);
 //boolean Advance_in_ITransportSegment(ITransportSegment*);
 ////    if (ctx.pSegments->Advance())
+qDebug()<<"OnTxReady_in_PLLS_SendUnconfirmedTransmitWait1";
+
   if (Advance_in_ITransportSegment(ctx->pSegments))
   {
 //    ser4cpp::rseq_t FormatPrimaryBufferWithUnconfirmed(const Addresses& addr, const ser4cpp::rseq_t& tpdu);
@@ -253,21 +289,25 @@ PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriSt
 ////            = ctx.FormatPrimaryBufferWithUnconfirmed(ctx.pSegments->GetAddresses(), ctx.pSegments->GetSegment());
     RSeq_for_Uint16_t temp = GetSegment_in_ITransportSegment(ctx->pSegments);
     RSeq_for_Uint16_t output
-      = FormatPrimaryBufferWithUnconfirmed(ctx, ////const Addresses& addr, const ser4cpp::rseq_t& tpdu);
+      = FormatPrimaryBufferWithUnconfirmed_in_LinkContext(ctx, ////const Addresses& addr, const ser4cpp::rseq_t& tpdu);
                                            GetAddresses_in_ITransportSegment(ctx->pSegments),
                                            &temp);
 
+qDebug()<<"OnTxReady_in_PLLS_SendUnconfirmedTransmitWait2";
 ////        ctx.QueueTransmit(output, true);
     QueueTransmit_in_LinkContext(ctx, &output, true);
 ////        return *this;
+qDebug()<<"OnTxReady_in_PLLS_SendUnconfirmedTransmitWait3";
     PLLS_SendUnconfirmedTransmitWait_in_PLLS_SendUnconfirmedTransmitWait(&instance_PriStateBase);//&(instance_in_PLLS_SendUnconfirmedTransmitWait.pPriStateBase));
     return &instance_PriStateBase;//&(instance_in_PLLS_SendUnconfirmedTransmitWait.pPriStateBase);
   }
   // we're done
 
+qDebug()<<"OnTxReady_in_PLLS_SendUnconfirmedTransmitWait4";
 //    void CompleteSendOperation();
 ////    ctx.CompleteSendOperation();
   CompleteSendOperation_in_LinkContext(ctx);
+qDebug()<<"OnTxReady_in_PLLS_SendUnconfirmedTransmitWait5";
 ////    return PLLS_Idle::Instance();
   PLLS_Idle_in_PLLS_Idle(&instance_PriStateBase);//&(instance_in_PLLS_Idle.pPriStateBase));
   return &instance_PriStateBase;//&(instance_in_PLLS_Idle.pPriStateBase);
@@ -279,6 +319,7 @@ PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriSt
 
 void PLLS_RequestLinkStatusWait_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase)
 {
+qDebug()<<"PLLS_RequestLinkStatusWait_in_PLLS_RequestLinkStatusWait1";
   PriStateBase_in_PriStateBase(pPriStateBase);
 
   pPriStateBase->pOnAck_in_PriStateBase = OnAck_in_PLLS_RequestLinkStatusWait_override;
@@ -292,22 +333,22 @@ void PLLS_RequestLinkStatusWait_in_PLLS_RequestLinkStatusWait(PriStateBase *pPri
   setParentPointer_in_PriStateBase(pPriStateBase, pPriStateBase);
 }
 
-void* OnAck_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, LinkContext* ctx, booleav v)
+void* OnAck_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, LinkContext* ctx, boolean v)
 {
   PriStateBase* parent = (PriStateBase*) getParentPointer_in_PriStateBase((PriStateBase*) pPriStateBase);
   return OnAck_in_PLLS_RequestLinkStatusWait(parent, ctx, v);
 }
-void* OnNack_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, LinkContext* ctx, booleav v)
+void* OnNack_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, LinkContext* ctx, boolean v)
 {
   PriStateBase* parent = (PriStateBase*) getParentPointer_in_PriStateBase((PriStateBase*) pPriStateBase);
   return OnNack_in_PLLS_RequestLinkStatusWait(parent, ctx, v);
 }
-void* OnLinkStatus_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, LinkContext* ctx, booleav v)
+void* OnLinkStatus_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, LinkContext* ctx, boolean v)
 {
   PriStateBase* parent = (PriStateBase*) getParentPointer_in_PriStateBase((PriStateBase*) pPriStateBase);
   return OnLinkStatus_in_PLLS_RequestLinkStatusWait(parent, ctx, v);
 }
-void* OnNotSupported_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, LinkContext* ctx, booleav v)
+void* OnNotSupported_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, LinkContext* ctx, boolean v)
 {
   PriStateBase* parent = (PriStateBase*) getParentPointer_in_PriStateBase((PriStateBase*) pPriStateBase);
   return OnNotSupported_in_PLLS_RequestLinkStatusWait(parent, ctx, v);
@@ -323,9 +364,10 @@ void* OnTimeout_in_PLLS_RequestLinkStatusWait_override(void *pPriStateBase, Link
   return OnTimeout_in_PLLS_RequestLinkStatusWait(parent, ctx);
 }
 
-PriStateBase* OnAck_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, booleav v/*receiveBuffFull*/)
+PriStateBase* OnAck_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, boolean v/*receiveBuffFull*/)
 {
   UNUSED(v);
+  UNUSED(pPriStateBase);
 //    void CancelTimer();
 ////    ctx.CancelTimer();
   CancelTimer_in_LinkContext(ctx);
@@ -342,6 +384,7 @@ PriStateBase* OnAck_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, L
 PriStateBase* OnNack_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, boolean v /*receiveBuffFull*/)
 {
   UNUSED(v);
+  UNUSED(pPriStateBase);
 ////    ctx.CancelTimer();
   CancelTimer_in_LinkContext(ctx);
 
@@ -356,6 +399,7 @@ PriStateBase* OnNack_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, 
 PriStateBase* OnLinkStatus_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, boolean v /*receiveBuffFull*/)
 {
   UNUSED(v);
+  UNUSED(pPriStateBase);
 ////    ctx.CancelTimer();
   CancelTimer_in_LinkContext(ctx);
 
@@ -371,6 +415,7 @@ PriStateBase* OnLinkStatus_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriState
 PriStateBase* OnNotSupported_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx, boolean v/*receiveBuffFull*/)
 {
   UNUSED(v);
+  UNUSED(pPriStateBase);
 ////    ctx.CancelTimer();
   CancelTimer_in_LinkContext(ctx);
 
@@ -394,6 +439,7 @@ PriStateBase* OnTxReady_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBas
 
 PriStateBase* OnTimeout_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBase, LinkContext* ctx)
 {
+  UNUSED(pPriStateBase);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Link status request - response timeout");
 ////    ctx.FailKeepAlive(true);
   FailKeepAlive_in_LinkContext(ctx, true);

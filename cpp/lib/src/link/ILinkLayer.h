@@ -43,7 +43,8 @@ typedef struct
 
 } ILinkLayer;
 
-boolean Send_in_ILinkLayer(ILinkLayer*);
+//boolean Send_in_ILinkLayer(ILinkLayer*);
+boolean Send_in_ILinkLayer(ILinkLayer* pILinkLayer, ITransportSegment* segment);
 
 void* getParentPointer_in_ILinkLayer(ILinkLayer*);
 void  setParentPointer_in_ILinkLayer(ILinkLayer*, void*);

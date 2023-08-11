@@ -31,6 +31,8 @@
 #include "TimerExe4cpp.h"
 #include "ISteadyTimeSourceExe4cpp.h"
 
+//typedef std::function<void()> action_t;
+
 /**
 * @brief exe4cpp header-only library namespace
 */
@@ -71,6 +73,7 @@ typedef struct
 
 TimerExe4cpp Start_in_IExecutorExe4cpp(IExecutorExe4cpp *, uint32_t duration, void (*pAction)(void));
 void Post_in_IExecutorExe4cpp(IExecutorExe4cpp *, void (*pAction)(void));
+uint64_t get_time_in_IExecutorExe4cpp(IExecutorExe4cpp *);
 
 void* getParentPointer_in_IExecutorExe4cpp(IExecutorExe4cpp*);
 void  setParentPointer_in_IExecutorExe4cpp(IExecutorExe4cpp*, void*);

@@ -244,7 +244,7 @@ void WriteUserData_in_LinkFrame_static(uint8_t* pSrc, uint8_t* pDest, uint16_t l
     while (length > 0)
     {
         uint8_t max = LPDU_DATA_BLOCK_SIZE;
-        size_t num = length > max ? max : length;
+        uint16_t num = length > max ? max : length;
         memcpy(pDest, pSrc, num);
         AddCrc_in_CRC_static(pDest, num);
         pSrc += num;

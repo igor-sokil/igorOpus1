@@ -95,6 +95,7 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                  ..\..\..\exe4cpp\TimerExe4cpp.cpp \
                  ..\..\..\exe4cpp\ISteadyTimeSourceExe4cpp.cpp \
                  ..\..\..\exe4cpp\IExecutorExe4cpp.cpp \
+                 ..\..\..\exe4cpp\ITimer.cpp \
                  ..\..\..\exe4cpp\MockExecutorExe4cpp.cpp \
                 \
                 ..\..\..\cpp\lib\include\opendnp3\util\Buffer.cpp \

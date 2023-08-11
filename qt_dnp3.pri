@@ -65,6 +65,7 @@ HEADERS       = qtsrc\loghandler.h \
                 cpp\lib\src\app\Serializer.h 
 
 SOURCES       =  ser4cpp\util\Comparisons.cpp \
+                 ser4cpp\util\HexConversions.cpp \
                  ser4cpp\container\HasLength.cpp \
                  ser4cpp\container\RSeq.cpp \
                  ser4cpp\container\WSeq.cpp \
@@ -98,6 +99,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                  exe4cpp\TimerExe4cpp.cpp \
                  exe4cpp\ISteadyTimeSourceExe4cpp.cpp \
                  exe4cpp\IExecutorExe4cpp.cpp \
+                 exe4cpp\ITimer.cpp \
                  exe4cpp\MockExecutorExe4cpp.cpp \
                 \
                 cpp\lib\include\opendnp3\util\Buffer.cpp \
@@ -149,11 +151,15 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\link\ITransportSegment.cpp \
                 cpp\lib\src\link\ILinkLayer.cpp \
                 cpp\lib\src\link\ILinkTx.cpp \
+                cpp\lib\src\link\LinkContext.cpp \
                 cpp\lib\src\link\LinkHeader.cpp \
                 cpp\lib\src\link\LinkFrame.cpp \
                 cpp\lib\src\link\LinkHeaderFields.cpp \
                 cpp\lib\src\link\LinkLayerConfig.cpp \
                 cpp\lib\src\link\LinkLayerParser.cpp \
+                cpp\lib\src\link\LinkLayer.cpp \
+                cpp\lib\src\link\PriLinkLayerStates.cpp \
+                cpp\lib\src\link\SecLinkLayerStates.cpp \
                 cpp\lib\src\link\ShiftableBuffer.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
@@ -331,7 +337,12 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group60.cpp \
                 \
                 cpp\tests\unit\utils\APDUHelpers.cpp \
+                cpp\tests\unit\utils\BufferHelpers.cpp \
+                cpp\tests\unit\utils\CopyableBuffer.cpp \
+                cpp\tests\unit\utils\LinkHex.cpp \
                 cpp\tests\unit\utils\LinkParserTest.cpp \
+                cpp\tests\unit\utils\LinkLayerTest.cpp \
+                cpp\tests\unit\utils\MockTransportSegment.cpp \
                 cpp\tests\unit\utils\OutstationTestObject.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
@@ -340,6 +351,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockFrameSink.cpp \
+                cpp\tests\dnp3mocks\src\MockTransportLayer.cpp \
                 cpp\tests\dnp3mocks\src\DataSink.cpp
 
 

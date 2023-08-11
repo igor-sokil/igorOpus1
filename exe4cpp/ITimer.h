@@ -22,34 +22,35 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef EXE4CPP_ISTEADYTIMESOURCE_H
-#define EXE4CPP_ISTEADYTIMESOURCE_H
+#ifndef EXE4CPP_ITIMER_H
+#define EXE4CPP_ITIMER_H
 
 ////#include "exe4cpp/Typedefs.h"
 
 ////namespace exe4cpp
 ////{
 
-////class ISteadyTimeSource
+/**
+ * Timer are used to defer events for a later time on an executor.
+ */
+////class ITimer
 typedef struct
 {
 ////public:
-////    virtual ~ISteadyTimeSource() = default;
+////    virtual ~ITimer() = default;
 
-    /// @return a non-absolute timestamp for the monotonic time source
-////    virtual steady_time_t get_time() = 0;
-    uint64_t (*pGet_time_in_ISteadyTimeSourceExe4cpp)(void*);// = 0;
+    void (*pcancel_in_ITimer)(void*);// = 0;
+    uint32_t (*pexpires_at_in_ITimer)(void*);// = 0;
 
-  void* pParentPointer_in_ISteadyTimeSourceExe4cpp;
-} ISteadyTimeSourceExe4cpp;
+  void* pParentPointer_in_ITimer;
+} ITimer;
 
-void ISteadyTimeSourceExe4cpp_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *pISteadyTimeSourceExe4cpp);
+    void cancel_in_ITimer(ITimer*);
+    uint32_t expires_at_in_ITimer(ITimer*);
 
-uint64_t Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
-uint64_t Get_time_in_ISteadyTimeSourceExe4cpp_override(void *);
+void* getParentPointer_in_ITimer(ITimer*);
+void  setParentPointer_in_ITimer(ITimer*, void*);
 
-void* getParentPointer_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp*);
-void  setParentPointer_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp*, void*);
 
 ////}
 

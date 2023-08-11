@@ -96,6 +96,7 @@ void  setParentPointer_in_PriStateBase(PriStateBase*, void*);
 ////    PriStateBase& TrySendRequestLinkStatus(LinkContext&) override;
 //} PLLS_Idle;
 
+PriStateBase* Instance_in_PLLS_Idle_static(void);
 void PLLS_Idle_in_PLLS_Idle(PriStateBase *pPriStateBase);
 
 void* TrySendUnconfirmed_in_PLLS_Idle_override(void*, LinkContext*, ITransportSegment* segments);

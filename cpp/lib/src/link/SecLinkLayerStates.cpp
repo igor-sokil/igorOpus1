@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//#include <QtWidgets>
 #include "header.h"
 #include "SecLinkLayerStates.h"
 
@@ -32,19 +33,99 @@
 // SecStateBase
 ////////////////////////////////////////
 
-SecStateBase* OnTxReady_in_SecStateBase(SecStateBase *pSecStateBase, LinkContext* ctx)
+static SecStateBase  instance_SecStateBase;
+
+void SecStateBase_in_SecStateBase(SecStateBase *pSecStateBase)
+{
+  pSecStateBase->pOnResetLinkStates_in_SecStateBase = OnResetLinkStates_in_SecStateBase_override;
+  pSecStateBase->pOnRequestLinkStatus_in_SecStateBase = OnRequestLinkStatus_in_SecStateBase_override;
+
+  pSecStateBase->pOnTestLinkStatus_in_SecStateBase    = OnTestLinkStatus_in_SecStateBase_override;
+  pSecStateBase->pOnConfirmedUserData_in_SecStateBase = OnConfirmedUserData_in_SecStateBase_override;
+
+  pSecStateBase->pOnTxReady_in_SecStateBase           = OnTxReady_in_SecStateBase_override;
+
+  setParentPointer_in_SecStateBase(pSecStateBase, pSecStateBase);
+}
+
+void* OnTxReady_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx)
 {
   UNUSED(ctx);
 ////    FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, "Invalid event for state: %s", this->Name());
 ////    return *this;
-  SecStateBase_in_SecStateBase(pSecStateBase);
-  return &insatance_SecStateBase;
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  SecStateBase_in_SecStateBase(parent);
+  return &instance_SecStateBase;
 }
+
+///*
+////template<class NextState>
+void* OnResetLinkStates_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source)
+{
+UNUSED(ctx);
+UNUSED(source);
+////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
+////    return *this;
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  SecStateBase_in_SecStateBase(parent);
+  return &instance_SecStateBase;
+}
+//*/
+///*
+////template<class NextState>
+void* OnRequestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source)
+{
+UNUSED(ctx);
+UNUSED(source);
+////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
+////    return *this;
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  SecStateBase_in_SecStateBase(parent);
+  return &instance_SecStateBase;
+}
+//*/
+///*
+////template<class NextState>
+void* OnTestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
+{
+UNUSED(ctx);
+UNUSED(source);
+UNUSED(fcb);
+////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
+////    return *this;
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  SecStateBase_in_SecStateBase(parent);
+  return &instance_SecStateBase;
+}
+//*/
+///*
+////template<class NextState>
+void* OnConfirmedUserData_in_SecStateBase_override(void *pSecStateBase,
+    LinkContext* ctx, uint16_t source, boolean fcb, boolean isBroadcast, Message* message)
+{
+UNUSED(ctx);
+UNUSED(source);
+UNUSED(fcb);
+UNUSED(isBroadcast);
+UNUSED(message);
+////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
+////    return *this;
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  SecStateBase_in_SecStateBase(parent);
+  return &instance_SecStateBase;
+}
+//*/
 
 ////////////////////////////////////////////////////////
 //	Class SLLS_NotReset
 ////////////////////////////////////////////////////////
 ////SLLS_NotReset SLLS_NotReset::instance;
+
+SecStateBase* Instance_in_SLLS_NotReset_static(void)
+{
+  SLLS_NotReset_in_SLLS_NotReset(&instance_SecStateBase);
+  return &instance_SecStateBase;
+}
 
 SecStateBase* OnTestLinkStatus_in_SLLS_NotReset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
 {
@@ -54,7 +135,7 @@ SecStateBase* OnTestLinkStatus_in_SLLS_NotReset(SecStateBase *pSecStateBase, Lin
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "TestLinkStatus ignored");
 ////    return *this;
   SLLS_NotReset_in_SLLS_NotReset(pSecStateBase);
-  return &insatance_SecStateBase;
+  return &instance_SecStateBase;
 }
 
 SecStateBase* OnConfirmedUserData_in_SLLS_NotReset(SecStateBase *pSecStateBase,
@@ -68,7 +149,7 @@ SecStateBase* OnConfirmedUserData_in_SLLS_NotReset(SecStateBase *pSecStateBase,
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "ConfirmedUserData ignored: secondary not reset");
 ////    return *this;
   SLLS_NotReset_in_SLLS_NotReset(pSecStateBase);
-  return &insatance_SecStateBase;
+  return &instance_SecStateBase;
 }
 
 SecStateBase* OnResetLinkStates_in_SLLS_NotReset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source)
@@ -82,7 +163,7 @@ SecStateBase* OnResetLinkStates_in_SLLS_NotReset(SecStateBase *pSecStateBase, Li
 ////    return SLLS_TransmitWaitReset::Instance();
 //   SLLS_TransmitWaitReset_in_SLLS_TransmitWaitReset(pSecStateBase);
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
-  return &insatance_SecStateBase;
+  return &instance_SecStateBase;
 }
 
 SecStateBase* OnRequestLinkStatus_in_SLLS_NotReset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source)
@@ -93,13 +174,19 @@ SecStateBase* OnRequestLinkStatus_in_SLLS_NotReset(SecStateBase *pSecStateBase, 
 ////    return SLLS_TransmitWaitNotReset::Instance();
 //   SLLS_TransmitWaitNotReset_in_SLLS_TransmitWaitNotReset(pSecStateBase);
   SLLS_NotReset_in_SLLS_NotReset(pSecStateBase);
-  return &insatance_SecStateBase;
+  return &instance_SecStateBase;
 }
 
 ////////////////////////////////////////////////////////
 //	Class SLLS_Reset
 ////////////////////////////////////////////////////////
 ////SLLS_Reset SLLS_Reset::instance;
+
+SecStateBase* Instance_in_SLLS_Reset_static(void)
+{
+  SLLS_Reset_in_SLLS_Reset(&instance_SecStateBase);
+  return &instance_SecStateBase;
+}
 
 SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
 {
@@ -112,7 +199,7 @@ SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkCo
     ToggleReadFCB_in_LinkContext(ctx);
 ////        return SLLS_TransmitWaitReset::Instance();
     SLLS_Reset_in_SLLS_Reset(pSecStateBase);
-    return &insatance_SecStateBase;
+    return &instance_SecStateBase;
   }
 
   // "Re-transmit most recent response that contained function code 0 (ACK) or 1 (NACK)."
@@ -121,7 +208,7 @@ SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkCo
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Received TestLinkStatus with invalid FCB");
 ////    return *this;
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
-  return &insatance_SecStateBase;
+  return &instance_SecStateBase;
 }
 
 SecStateBase* OnConfirmedUserData_in_SLLS_Reset(SecStateBase *pSecStateBase,
@@ -148,7 +235,7 @@ SecStateBase* OnConfirmedUserData_in_SLLS_Reset(SecStateBase *pSecStateBase,
 
 ////    return SLLS_TransmitWaitReset::Instance();
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
-  return &insatance_SecStateBase;
+  return &instance_SecStateBase;
 }
 
 SecStateBase* OnResetLinkStates_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source)
@@ -160,7 +247,7 @@ SecStateBase* OnResetLinkStates_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkC
   ResetReadFCB_in_LinkContext(ctx);
 ////    return SLLS_TransmitWaitReset::Instance();
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
-  return &insatance_SecStateBase;
+  return &instance_SecStateBase;
 }
 
 SecStateBase* OnRequestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source)
@@ -170,7 +257,7 @@ SecStateBase* OnRequestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, Lin
   QueueLinkStatus_in_LinkContext(ctx, source);
 ////    return SLLS_TransmitWaitReset::Instance();
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
-  return &insatance_SecStateBase;
+  return &instance_SecStateBase;
 }
 
 ////////////////////////////////////////////////////////
@@ -202,10 +289,12 @@ void SLLS_Reset_in_SLLS_Reset(SecStateBase *pSecStateBase)
 ////template<class NextState>
 SecStateBase* OnTxReady_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx)
 {
+UNUSED(ctx);
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
   return &instance_SecStateBase;////SLLS_Reset::Instance();
 }
 
+/*
 ////template<class NextState>
 SecStateBase* OnResetLinkStates_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source)
 {
@@ -214,7 +303,8 @@ SecStateBase* OnResetLinkStates_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkC
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
   return &instance_SecStateBase;
 }
-
+*/
+/*
 ////template<class NextState>
 SecStateBase* OnRequestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source)
 {
@@ -223,7 +313,8 @@ SecStateBase* OnRequestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, Lin
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
   return &instance_SecStateBase;
 }
-
+*/
+/*
 ////template<class NextState>
 SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
 {
@@ -232,7 +323,8 @@ SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkCo
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
   return &instance_SecStateBase;
 }
-
+*/
+/*
 ////template<class NextState>
 SecStateBase* OnConfirmedUserData_in_SLLS_Reset(SecStateBase *pSecStateBase,
     LinkContext* ctx, uint16_t source, boolean fcb, boolean isBroadcast, Message* message)
@@ -242,7 +334,7 @@ SecStateBase* OnConfirmedUserData_in_SLLS_Reset(SecStateBase *pSecStateBase,
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
   return &instance_SecStateBase;
 }
-
+*/
 
 void* OnTxReady_in_SLLS_Reset_override(void *pSecStateBase, LinkContext* ctx)
 {
@@ -279,6 +371,65 @@ void* OnConfirmedUserData_in_SLLS_Reset_override(void *pSecStateBase,
   return OnConfirmedUserData_in_SLLS_Reset(parent, ctx, source, fcb, isBroadcast, message);
 }
 //-----------------------------------SLLS_Reset--------------------------------
+//-----------------------------------SLLS_NotReset--------------------------------
+
+void SLLS_NotReset_in_SLLS_NotReset(SecStateBase *pSecStateBase)
+{
+  SecStateBase_in_SecStateBase(pSecStateBase);
+
+  pSecStateBase->pOnConfirmedUserData_in_SecStateBase = OnConfirmedUserData_in_SLLS_NotReset_override;
+  pSecStateBase->pOnTestLinkStatus_in_SecStateBase    = OnTestLinkStatus_in_SLLS_NotReset_override;
+  pSecStateBase->pOnRequestLinkStatus_in_SecStateBase = OnRequestLinkStatus_in_SLLS_NotReset_override;
+  pSecStateBase->pOnResetLinkStates_in_SecStateBase   = OnResetLinkStates_in_SLLS_NotReset_override;
+  pSecStateBase->pOnTxReady_in_SecStateBase           = OnTxReady_in_SLLS_NotReset_override;
+
+  setParentPointer_in_SecStateBase(pSecStateBase, pSecStateBase);
+}
+
+////template<class NextState>
+SecStateBase* OnTxReady_in_SLLS_NotReset(SecStateBase *pSecStateBase, LinkContext* ctx)
+{
+UNUSED(ctx);
+  SLLS_NotReset_in_SLLS_NotReset(pSecStateBase);
+  return &instance_SecStateBase;////SLLS_NotReset::Instance();
+}
+
+void* OnTxReady_in_SLLS_NotReset_override(void *pSecStateBase, LinkContext* ctx)
+{
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  return OnTxReady_in_SLLS_NotReset(parent, ctx);
+}
+
+////template<class NextState>
+void* OnResetLinkStates_in_SLLS_NotReset_override(void *pSecStateBase, LinkContext* ctx, uint16_t source)
+{
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  return OnResetLinkStates_in_SLLS_NotReset(parent, ctx, source);
+}
+
+////template<class NextState>
+void* OnRequestLinkStatus_in_SLLS_NotReset_override(void *pSecStateBase, LinkContext* ctx, uint16_t source)
+{
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  return OnRequestLinkStatus_in_SLLS_NotReset(parent, ctx, source);
+}
+
+////template<class NextState>
+void* OnTestLinkStatus_in_SLLS_NotReset_override(void *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
+{
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  return OnTestLinkStatus_in_SLLS_NotReset(parent, ctx, source, fcb);
+}
+
+////template<class NextState>
+void* OnConfirmedUserData_in_SLLS_NotReset_override(void *pSecStateBase,
+    LinkContext* ctx, uint16_t source, boolean fcb, boolean isBroadcast, Message* message)
+{
+  SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
+  return OnConfirmedUserData_in_SLLS_NotReset(parent, ctx, source, fcb, isBroadcast, message);
+}
+//-----------------------------------SLLS_NotReset--------------------------------
+
 SecStateBase* OnResetLinkStates_in_SecStateBase(SecStateBase* pSecStateBase, LinkContext* pLinkContext, uint16_t source)
 {
   return (SecStateBase*)(pSecStateBase->pOnResetLinkStates_in_SecStateBase)(pSecStateBase, pLinkContext, source);
@@ -310,7 +461,7 @@ void* getParentPointer_in_SecStateBase(SecStateBase* pSecStateBase)
 {
   return pSecStateBase->pParentPointer_in_SecStateBase;
 }
-void  setParentPointer_in_SecStateBase(SecStateBase*, void* pParentPointer)
+void  setParentPointer_in_SecStateBase(SecStateBase* pSecStateBase, void* pParentPointer)
 {
   pSecStateBase->pParentPointer_in_SecStateBase = pParentPointer;
 }

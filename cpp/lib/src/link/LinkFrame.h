@@ -89,6 +89,11 @@
     @param apSrc Source buffer with crc checks. Must begin at data, not header
     @param apDest Destination buffer to which the data is extracted
     @param aLength Length of user data to read to the dest buffer. The source buffer must be larger b/c of crc bytes.
+
+ Считывает данные из src в dest, удаляя 2 байта CRC, проверяет каждые 16 байтов данных
+     @param apSrc Исходный буфер с проверкой crc. Должен начинаться с данных, а не с заголовка
+     @param apDest Целевой буфер, в который извлекаются данные
+     @param aLength Длина пользовательских данных для чтения в целевой буфер. Исходный буфер должен быть больше b/c байтов crc.
     */
 ////    static void ReadUserData(const uint8_t* apSrc, uint8_t* apDest, size_t len);
 
@@ -96,6 +101,10 @@
     @param apBody Beginning of the FT3 user data
     @param aLength Number of user bytes to verify, not user + crc.
     @return True if the body CRC is correct */
+/** Проверяет целостность пользовательских данных FT3
+     @param apBody Начало пользовательских данных FT3
+     @param aLength Количество пользовательских байтов для проверки, а не user + crc.
+     @return True, если CRC тела правильный */
 ////    static bool ValidateBodyCRC(const uint8_t* apBody, size_t aLength);
 
     // @return Total frame size based on user data length
@@ -109,6 +118,11 @@
         @param apDest Destination buffer where the data + CRC is written
         @param length Number of user data bytes
     */
+/** Записывает данные из src в dest с чередованием 2 байт CRC проверяет каждые 16 байтов данных
+         @param apSrc Исходный буфер заполнен пользовательскими данными
+         @param apDest Целевой буфер, куда записываются данные + CRC
+         @param length Количество байтов пользовательских данных
+     */
 ////    static void WriteUserData(const uint8_t* pSrc, uint8_t* pDest, size_t length);
 
     /** Write 10 header bytes to to buffer including 0x0564, all fields, and CRC */

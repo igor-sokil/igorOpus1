@@ -17,14 +17,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-MYTODO
+
 #ifndef OPENDNP3_UNITTESTS_LINKLAYERTEST_H
 #define OPENDNP3_UNITTESTS_LINKLAYERTEST_H
 
 ////#include <opendnp3/logging/LogLevels.h>
 
 ////#include <exe4cpp/MockExecutor.h>
-#include "MockExecutor.h"
+#include "MockExecutorExe4cpp.h"
 
 ////#include "dnp3mocks/MockLinkListener.h"
 #include "MockLinkListener.h"
@@ -73,17 +73,17 @@ typedef struct
     LinkLayer link;
 
 ////    std::string PopLastWriteAsHex();
-////    QString PopLastWriteAsHex();
 ////    uint32_t NumTotalWrites();
 
 ////private:
     uint32_t numTotalWrites;
 
 ////    std::deque<std::string> writeQueue;
-    std::deque<QString> writeQueue;
+    std::deque<std::string> writeQueue;
 } LinkLayerTest;
 
-  void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkConfig* config);
+  void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerConfig* config);
+  LinkLayerConfig DefaultConfig_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
 
 ////    LinkLayerTest(const opendnp3::LinkLayerConfig& config = DefaultConfig());
 
@@ -95,6 +95,10 @@ typedef struct
                  uint16_t dest,
                  uint16_t source,
                  RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
+
+    std::string PopLastWriteAsHex_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
+
+uint32_t NumTotalWrites_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
 
     // ILinkTx interface
    void BeginTransmit_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, RSeq_for_Uint16_t* buffer, ILinkSession* context);

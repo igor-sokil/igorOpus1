@@ -49,6 +49,8 @@
 #define SIZE_TxBuffer_in_OutstationUnsolState  MAX_BufferSer4
 #define SIZE_BufferSer4_in_DeferredRequest     MAX_BufferSer4
 
+#define SIZE_CopyableBuffer  10
+
 #include "memory_header.h"
 
 #define SIZE_for_EventRecord                             SIZE_TypedEventRecord_for_AnalogOutputStatusSpec + \

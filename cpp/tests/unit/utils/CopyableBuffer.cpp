@@ -17,72 +17,102 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "utils/CopyableBuffer.h"
+#include "header.h"
+#include "CopyableBuffer.h"
+#include <string.h>
 
-#include <ser4cpp/util/HexConversions.h>
+//#include "HexConversions.h"
 
-#include <memory>
+////#include <memory>
 
-std::ostream& operator<<(std::ostream& output, const CopyableBuffer& arBuff)
+////std::ostream& operator<<(std::ostream& output, const CopyableBuffer& arBuff)
+////{
+////    output << "[" << ser4cpp::HexConversions::to_hex(arBuff.ToRSeq(), true) << "]";
+////    return output;
+////}
+
+void CopyableBuffer_in_CopyableBufferOver1(CopyableBuffer *pCopyableBuffer)
 {
-    output << "[" << ser4cpp::HexConversions::to_hex(arBuff.ToRSeq(), true) << "]";
-    return output;
+//  pCopyableBuffer->buffer = NULL;
+  pCopyableBuffer->size = 0;
 }
 
-CopyableBuffer::CopyableBuffer() : buffer(nullptr), size(0) {}
-
-CopyableBuffer::CopyableBuffer(size_t size) : buffer(new uint8_t[size]), size(size)
+void CopyableBuffer_in_CopyableBufferOver2(CopyableBuffer *pCopyableBuffer, uint16_t size)
 {
-    this->Zero();
+//// : buffer(new uint8_t[size]), size(size)
+
+   pCopyableBuffer->size = size;
+    Zero_in_CopyableBuffer(pCopyableBuffer);
 }
 
-CopyableBuffer::CopyableBuffer(const ser4cpp::rseq_t& data) : CopyableBuffer(data, data.length()) {}
-
-CopyableBuffer::CopyableBuffer(const uint8_t* data, size_t size) : buffer(new uint8_t[size]), size(size)
+void CopyableBuffer_in_CopyableBufferOver3(CopyableBuffer *pCopyableBuffer, RSeq_for_Uint16_t* data) 
 {
-    memcpy(buffer, data, size);
+//  void CopyableBuffer_in_CopyableBufferOver4(CopyableBuffer *pCopyableBuffer, uint8_t* data, uint16_t size);
+////: CopyableBuffer(data, data.length()) {}
+   CopyableBuffer_in_CopyableBufferOver4(pCopyableBuffer, data->buffer_, length_in_HasLength_for_Uint16_t(&(data->hHasLength)));
 }
 
-CopyableBuffer::CopyableBuffer(const CopyableBuffer& other) : CopyableBuffer(other.buffer, other.size) {}
-
-void CopyableBuffer::Zero()
+void CopyableBuffer_in_CopyableBufferOver4(CopyableBuffer *pCopyableBuffer, uint8_t* data, uint16_t size)
 {
-    memset(this->buffer, 0, size);
+//// : buffer(new uint8_t[size]), size(size)
+   pCopyableBuffer->size = size;
+   memcpy(pCopyableBuffer->buffer, data, size);
 }
 
-CopyableBuffer& CopyableBuffer::operator=(const CopyableBuffer& other)
+////CopyableBuffer::CopyableBuffer(const CopyableBuffer& other) : CopyableBuffer(other.buffer, other.size) {}
+
+void Zero_in_CopyableBuffer(CopyableBuffer *pCopyableBuffer)
 {
+    memset(pCopyableBuffer->buffer, 0, pCopyableBuffer->size);
+}
+
+////CopyableBuffer& CopyableBuffer::operator=(const CopyableBuffer& other)
+////{
     // check for assignment to self
-    if (this == &other)
-        return *this;
+////    if (this == &other)
+////        return *this;
+////
+////    if (other.Size() != this->size)
+////    {
+////        this->size = other.Size();
+////        delete[] this->buffer;
+////        this->buffer = new uint8_t[this->size];
+////    }
+////
+////    memcpy(this->buffer, other.buffer, this->size);
+////
+////    return *this;
+////}
 
-    if (other.Size() != this->size)
+////CopyableBuffer::~CopyableBuffer()
+////{
+////    delete[] buffer;
+////}
+
+////bool CopyableBuffer::operator==(const CopyableBuffer& other) const
+////{
+////    if (other.Size() != this->Size())
+////        return false;
+
+////    for (size_t i = 0; i < this->Size(); ++i)
+////    {
+////        if (this->buffer[i] != other.buffer[i])
+////            return false;
+////    }
+////
+////    return true;
+////}
+
+RSeq_for_Uint16_t ToRSeq_in_CopyableBuffer(CopyableBuffer *pCopyableBuffer)
     {
-        this->size = other.Size();
-        delete[] this->buffer;
-        this->buffer = new uint8_t[this->size];
+        RSeq_for_Uint16_t rseq_t;
+//    void RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(RSeq_for_Uint16_t *pRSeq, uint8_t * buffer, uint16_t length);
+////        return ser4cpp::rseq_t(buffer, size);
+     RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&rseq_t, pCopyableBuffer->buffer, pCopyableBuffer->size);
+        return rseq_t;
     }
 
-    memcpy(this->buffer, other.buffer, this->size);
-
-    return *this;
-}
-
-CopyableBuffer::~CopyableBuffer()
-{
-    delete[] buffer;
-}
-
-bool CopyableBuffer::operator==(const CopyableBuffer& other) const
-{
-    if (other.Size() != this->Size())
-        return false;
-
-    for (size_t i = 0; i < this->Size(); ++i)
+  uint16_t Size_in_CopyableBuffer(CopyableBuffer *pCopyableBuffer)
     {
-        if (this->buffer[i] != other.buffer[i])
-            return false;
+        return pCopyableBuffer->size;
     }
-
-    return true;
-}

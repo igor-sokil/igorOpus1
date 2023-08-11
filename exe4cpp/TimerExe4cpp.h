@@ -26,6 +26,7 @@
 #define EXE4CPP_TIMER_H
 
 ////#include "exe4cpp/ITimer.h"
+#include "ITimer.h"
 
 ////#include <memory>
 
@@ -72,8 +73,10 @@ typedef struct
 ////
 ////private:
 ////    std::weak_ptr<ITimer> timer;
-  uint32_t timerExe4cpp;
+  ITimer* timerExe4cpp;
 } TimerExe4cpp;
+
+   void TimerExe4cpp_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp, ITimer* tim);
 
 uint32_t expires_at_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp);
 boolean cancel_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp);
