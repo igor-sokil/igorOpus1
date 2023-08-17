@@ -18,12 +18,74 @@
  * limitations under the License.
  */
 
-#include "opendnp3/outstation/DatabaseConfig.h"
+#include <QApplication>
+#include "header.h"
+#include "DatabaseConfig.h"
 
-namespace opendnp3
+////namespace opendnp3
+////{
+////template<class T>
+void initialize_BinaryConfig(std::map<uint16_t, BinaryConfig>& map, uint16_t count)
 {
-
-template<class T> void initialize(std::map<uint16_t, T>& map, uint16_t count)
+  for (uint16_t i = 0; i < count; ++i)
+  {
+    map[i] = {};
+  }
+}
+////template<class T>
+void initialize_DoubleBitBinaryConfig(std::map<uint16_t, DoubleBitBinaryConfig>& map, uint16_t count)
+{
+  for (uint16_t i = 0; i < count; ++i)
+  {
+    map[i] = {};
+  }
+}
+////template<class T>
+void initialize_AnalogConfig(std::map<uint16_t, AnalogConfig>& map, uint16_t count)
+{
+  for (uint16_t i = 0; i < count; ++i)
+  {
+    map[i] = {};
+  }
+}
+////template<class T>
+void initialize_CounterConfig(std::map<uint16_t, CounterConfig>& map, uint16_t count)
+{
+  for (uint16_t i = 0; i < count; ++i)
+  {
+    map[i] = {};
+  }
+}
+////template<class T>
+void initialize_FrozenCounterConfig(std::map<uint16_t, FrozenCounterConfig>& map, uint16_t count)
+{
+  for (uint16_t i = 0; i < count; ++i)
+  {
+    map[i] = {};
+  }
+}
+void initialize_BOStatusConfig(std::map<uint16_t, BOStatusConfig>& map, uint16_t count)
+{
+  for (uint16_t i = 0; i < count; ++i)
+  {
+    map[i] = {};
+  }
+}
+void initialize_AOStatusConfig(std::map<uint16_t, AOStatusConfig>& map, uint16_t count)
+{
+  for (uint16_t i = 0; i < count; ++i)
+  {
+    map[i] = {};
+  }
+}
+void initialize_TimeAndIntervalConfig(std::map<uint16_t, TimeAndIntervalConfig>& map, uint16_t count)
+{
+  for (uint16_t i = 0; i < count; ++i)
+  {
+    map[i] = {};
+  }
+}
+void initialize_OctetStringConfig(std::map<uint16_t, OctetStringConfig>& map, uint16_t count)
 {
   for (uint16_t i = 0; i < count; ++i)
   {
@@ -31,17 +93,34 @@ template<class T> void initialize(std::map<uint16_t, T>& map, uint16_t count)
   }
 }
 
-DatabaseConfig::DatabaseConfig(uint16_t all_types)
+void DatabaseConfig_in_DatabaseConfig(DatabaseConfig *pDatabaseConfig, uint16_t all_types)
 {
-  initialize(this->binary_input, all_types);
-  initialize(this->double_binary, all_types);
-  initialize(this->analog_input, all_types);
-  initialize(this->counter, all_types);
-  initialize(this->frozen_counter, all_types);
-  initialize(this->binary_output_status, all_types);
-  initialize(this->analog_output_status, all_types);
-  initialize(this->time_and_interval, all_types);
-  initialize(this->octet_string, all_types);
+////  initialize(this->binary_input, all_types);
+  initialize_BinaryConfig(pDatabaseConfig->binary_input, all_types);
+
+////  initialize(this->double_binary, all_types);
+  initialize_DoubleBitBinaryConfig(pDatabaseConfig->double_binary, all_types);
+
+////  initialize(this->analog_input, all_types);
+  initialize_AnalogConfig(pDatabaseConfig->analog_input, all_types);
+
+////  initialize(this->counter, all_types);
+  initialize_CounterConfig(pDatabaseConfig->counter, all_types);
+
+////  initialize(this->frozen_counter, all_types);
+  initialize_FrozenCounterConfig(pDatabaseConfig->frozen_counter, all_types);
+
+////  initialize(this->binary_output_status, all_types);
+  initialize_BOStatusConfig(pDatabaseConfig->binary_output_status, all_types);
+
+////  initialize(this->analog_output_status, all_types);
+  initialize_AOStatusConfig(pDatabaseConfig->analog_output_status, all_types);
+
+////  initialize(this->time_and_interval, all_types);
+  initialize_TimeAndIntervalConfig(pDatabaseConfig->time_and_interval, all_types);
+
+////  initialize(this->octet_string, all_types);
+  initialize_OctetStringConfig(pDatabaseConfig->octet_string, all_types);
 };
 
-} // namespace opendnp3
+////} // namespace opendnp3

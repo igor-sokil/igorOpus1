@@ -45,9 +45,12 @@
 ////template<class Info> struct EventConfig : StaticConfig<Info>
 typedef struct
 {
+  uint8_t svariation;
   PointClass_uint8_t clazz;// = PointClass_Class1;
 ////    typename Info::event_variation_t evariation = Info::DefaultEventVariation;
 } EventConfig;
+
+void EventConfig_in_EventConfig(EventConfig *pEventConfig);
 
 ////template<class Info> struct DeadbandConfig : EventConfig<Info>
 ////{
@@ -55,78 +58,94 @@ typedef struct
 ////};
 typedef struct
 {
+  EventConfig eEventConfig;
   value_t_in_AnalogInfo deadband;// = 0;
 } DeadbandConfig_for_AnalogInfo;
+void DeadbandConfig_for_AnalogInfo_in_DeadbandConfig_for_AnalogInfo(DeadbandConfig_for_AnalogInfo *pDeadbandConfig_for_AnalogInfo);
 
 typedef struct
 {
+  EventConfig eEventConfig;
   value_t_in_CounterInfo deadband;// = 0;
 } DeadbandConfig_for_CounterInfo;
+void DeadbandConfig_for_CounterInfo_in_DeadbandConfig_for_CounterInfo(DeadbandConfig_for_CounterInfo *pDeadbandConfig_for_CounterInfo);
 
 typedef struct
 {
+  EventConfig eEventConfig;
   value_t_in_FrozenCounterInfo deadband;// = 0;
 } DeadbandConfig_for_FrozenCounterInfo;
+void DeadbandConfig_for_FrozenCounterInfo_in_DeadbandConfig_for_FrozenCounterInfo(DeadbandConfig_for_FrozenCounterInfo *pDeadbandConfig_for_FrozenCounterInfo);
 
 typedef struct
 {
+  EventConfig eEventConfig;
   value_t_in_AnalogOutputStatusInfo deadband;// = 0;
 } DeadbandConfig_for_AnalogOutputStatusInfo;
-
+void DeadbandConfig_for_AnalogOutputStatusInfo_in_DeadbandConfig_for_AnalogOutputStatusInfo(DeadbandConfig_for_AnalogOutputStatusInfo *pDeadbandConfig_for_AnalogOutputStatusInfo);
 
 ////struct BinaryConfig : public EventConfig<BinaryInfo>
 typedef struct
 {
   EventConfig eEventConfig;
-} BinaryConfig_for_EventConfig_for_BinaryInfo;
+} BinaryConfig;
+void BinaryConfig_in_BinaryConfig(BinaryConfig *pBinaryConfig);
 
 ////struct DoubleBitBinaryConfig : public EventConfig<DoubleBitBinaryInfo>
 typedef struct
 {
   EventConfig eEventConfig;
-} DoubleBitBinaryConfig_for_EventConfig_for_DoubleBitBinaryInfo;
+} DoubleBitBinaryConfig;
+void DoubleBitBinaryConfig_in_DoubleBitBinaryConfig(DoubleBitBinaryConfig *pDoubleBitBinaryConfig);
 
 ////struct AnalogConfig : public DeadbandConfig<AnalogInfo>
 typedef struct
 {
   DeadbandConfig_for_AnalogInfo dDeadbandConfig_for_AnalogInfo;
-} AnalogConfig_for_DeadbandConfig_for_AnalogInfo;
+} AnalogConfig;
+void AnalogConfig_in_AnalogConfig(AnalogConfig *pAnalogConfig);
 
 ////struct CounterConfig : public DeadbandConfig<CounterInfo>
 typedef struct
 {
   DeadbandConfig_for_CounterInfo dDeadbandConfig_for_CounterInfo;
-} CounterConfig_for_DeadbandConfig_for_CounterInfo;
+} CounterConfig;
+void CounterConfig_in_CounterConfig(CounterConfig *pCounterConfig);
 
 ////struct FrozenCounterConfig : public DeadbandConfig<FrozenCounterInfo>
 typedef struct
 {
   DeadbandConfig_for_FrozenCounterInfo dDeadbandConfig_for_FrozenCounterInfo;
-} FrozenCounterConfig_for_DeadbandConfig_for_FrozenCounterInfo;
+} FrozenCounterConfig;
+void FrozenCounterConfig_in_FrozenCounterConfig(FrozenCounterConfig *pFrozenCounterConfig);
 
 ////struct BOStatusConfig : public EventConfig<BinaryOutputStatusInfo>
 typedef struct
 {
   EventConfig eEventConfig;
-} BOStatusConfig_for_EventConfig_for_BinaryOutputStatusInfo;
+} BOStatusConfig;
+void BOStatusConfig_in_BOStatusConfig(BOStatusConfig *pBOStatusConfig);
 
 ////struct AOStatusConfig : public DeadbandConfig<AnalogOutputStatusInfo>
 typedef struct
 {
   DeadbandConfig_for_AnalogOutputStatusInfo dDeadbandConfig_for_AnalogOutputStatusInfo;
-} AOStatusConfig_for_DeadbandConfig_for_AnalogOutputStatusInfo;
+} AOStatusConfig;
+void AOStatusConfig_in_AOStatusConfig(AOStatusConfig *pAOStatusConfig);
 
 ////struct OctetStringConfig : public EventConfig<OctetStringInfo>
 typedef struct
 {
   EventConfig eEventConfig;
-} OctetStringConfig_for_EventConfig_for_OctetStringInfo;
+} OctetStringConfig;
+void OctetStringConfig_in_OctetStringConfig(OctetStringConfig *pOctetStringConfig);
 
 ////struct TimeAndIntervalConfig : public StaticConfig<TimeAndIntervalInfo>
 typedef struct
 {
   static_variation_t_in_TimeAndIntervalInfo svariation;
-} TimeAndIntervalConfig_for_StaticConfig_for_TimeAndIntervalInfo;
+} TimeAndIntervalConfig;
+void TimeAndIntervalConfig_in_TimeAndIntervalConfig(TimeAndIntervalConfig *pTimeAndIntervalConfig);
 
 ////struct SecurityStatConfig
 //typedef struct

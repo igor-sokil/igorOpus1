@@ -20,12 +20,12 @@
 #ifndef OPENDNP3_COLLECTIONS_H
 #define OPENDNP3_COLLECTIONS_H
 
-#include "opendnp3/app/parsing/ICollection.h"
+#include "ICollection_old.h"
 
 #include <cstdint>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * A simple collection derived from an underlying array
@@ -82,6 +82,6 @@ TransformedCollection<T, U, Transform> Map(const ICollection<T>& input, Transfor
   return TransformedCollection<T, U, Transform>(input, transform);
 }
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

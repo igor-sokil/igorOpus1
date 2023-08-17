@@ -70,29 +70,35 @@ typedef struct
 
 ////    void Transaction(const std::function<void(opendnp3::IUpdateHandler&)>& apply)
 ////    {
-        // auto& handler = context.GetUpdateHandler();
+  // auto& handler = context.GetUpdateHandler();
 ////        apply(context.GetUpdateHandler());
 ////        context.HandleNewEvents();
 ////    }
 
 ////private:
 ////    const std::shared_ptr<exe4cpp::MockExecutor> exe;
-   MockExecutor  exe;
+  MockExecutor  exe;
 ////public:
 ////    const std::shared_ptr<MockLowerLayer> lower;
-   MockLowerLayer lower;
+  MockLowerLayer lower;
 ////    const std::shared_ptr<MockCommandHandler> cmdHandler;
-   MockCommandHandler cmdHandler;
+  MockCommandHandler cmdHandler;
 ////    const std::shared_ptr<MockOutstationApplication> application;
-    MockOutstationApplication application;
-    OContext context;
+  MockOutstationApplication application;
+  OContext context;
 } OutstationTestObject;
 
 //   void OutstationTestObject_in_OutstationTestObject(OutstationConfig* config,
 //                                                     DatabaseConfig* db_config);// = opendnp3::DatabaseConfig());
-   void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, OutstationConfig* config);
-//                                                     DatabaseConfig* db_config);// = opendnp3::DatabaseConfig());
+void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, OutstationConfig* config,
+    DatabaseConfig* db_config);// = opendnp3::DatabaseConfig());
 
-   uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
+uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
+
+uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, std::string& hex);
+
+void Transaction_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, void (*apply)(IUpdateHandler*));//std::function<void(opendnp3::IUpdateHandler&)>& apply)
+
+uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, LinkBroadcastAddress_uint16_t broadcast_address, const std::string& hex);
 
 #endif

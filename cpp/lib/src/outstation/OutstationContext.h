@@ -323,5 +323,8 @@ boolean CanTransmit_in_OContext(OContext *pOContext);
 boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_t destination);
 
+IUpdateHandler* GetUpdateHandler_in_OContext(OContext *pOContext);
+void HandleNewEvents_in_OContext(OContext *pOContext);
+
 ////} // namespace opendnp3
 #endif

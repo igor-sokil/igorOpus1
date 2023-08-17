@@ -60,6 +60,7 @@ release/IDnpTimeSource.o
 release/ICommandHandler.o
 release/IOutstationApplication.o
 release/IOutstation.o
+release/MeasurementConfig.o
 release/OutstationParams.o
 release/OutstationConfig.o
 release/StaticTypeBitfield.o
@@ -155,6 +156,7 @@ release/TxBuffer.o
 release/ApplicationIIN.o
 release/AssignClassHandler.o
 release/Database.o
+release/DatabaseConfig.o
 release/DeferredRequest.o
 release/DeferredRequest_part2.o
 release/ControlState.o
@@ -178,6 +180,15 @@ release/ResponseContext.o
 release/RequestHistory.o
 release/SimpleCommandHandler.o
 release/StaticDataCell.o
+release/StaticDataMap_for_DoubleBitBinary.o
+release/StaticDataMap_for_Binary.o
+release/StaticDataMap_for_BinaryOutputStatus.o
+release/StaticDataMap_for_Counter.o
+release/StaticDataMap_for_FrozenCounter.o
+release/StaticDataMap_for_Analog.o
+release/StaticDataMap_for_AnalogOutputStatus.o
+release/StaticDataMap_for_OctetString.o
+release/StaticDataMap_for_TimeAndInterval.o
 release/TimeSyncState.o
 release/NumRetries.o
 release/OctetStringSerializer.o
@@ -252,6 +263,7 @@ release/Group50.o
 release/Group51.o
 release/Group52.o
 release/Group60.o
+release/APDUHexBuilders.o
 release/APDUHelpers.o
 release/BufferHelpers.o
 release/CopyableBuffer.o
@@ -266,6 +278,7 @@ release/MockLinkListener.o
 release/MockLowerLayer.o
 release/MockFrameSink.o
 release/MockTransportLayer.o
+release/DatabaseHelpers.o
 release/DataSink.o
 release/MainWindow.o
 release/loghandler.o

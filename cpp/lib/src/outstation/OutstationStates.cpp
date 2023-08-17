@@ -47,7 +47,6 @@ void  setParentPointer_in_OutstationState(OutstationState* pOutstationState, voi
 
 void OutstationState_in_OutstationState(OutstationState *pOutstationState)
 {
-  qDebug()<<"OutstationState_in_OutstationState1";
   pOutstationState->pIsIdle_in_OutstationState = IsIdle_in_OutstationState_override;
 }
 
@@ -59,7 +58,6 @@ boolean IsIdle_in_OutstationState_override(void *pOutstationState)
 
 boolean IsIdle_in_OutstationState(OutstationState *pOutstationState)
 {
-  qDebug()<<"IsIdle_in_OutstationState1";
   return (pOutstationState->pIsIdle_in_OutstationState)(pOutstationState);
 }
 char* Name_in_OutstationState(OutstationState *pOutstationState)
@@ -102,7 +100,6 @@ static StateIdle instance_in_StateIdle;
 void StateIdle_in_StateIdle(StateIdle *pStateIdle)
 {
   qDebug()<<"StateIdle_in_StateIdle1";
-
   OutstationState_in_OutstationState(&(pStateIdle->oOutstationState));
 
   (pStateIdle->oOutstationState).pIsIdle_in_OutstationState = IsIdle_in_StateIdle_override;
@@ -110,9 +107,9 @@ void StateIdle_in_StateIdle(StateIdle *pStateIdle)
 
   (pStateIdle->oOutstationState).pOnConfirm_in_OutstationState = OnConfirm_in_StateIdle_override;
   (pStateIdle->oOutstationState).pOnConfirmTimeout_in_OutstationState = OnConfirmTimeout_in_StateIdle_override;
-  /*
-   (pStateIdle->oOutstationState).pOnNewReadRequest_in_OutstationState = OnNewReadRequest_in_StateIdle_override;
-  */
+//  /*
+  (pStateIdle->oOutstationState).pOnNewReadRequest_in_OutstationState = OnNewReadRequest_in_StateIdle_override;
+//  */
   (pStateIdle->oOutstationState).pOnNewNonReadRequest_in_OutstationState = OnNewNonReadRequest_in_StateIdle_override;
   (pStateIdle->oOutstationState).pOnRepeatNonReadRequest_in_OutstationState = OnRepeatNonReadRequest_in_StateIdle_override;
   (pStateIdle->oOutstationState).pOnRepeatReadRequest_in_OutstationState = OnRepeatReadRequest_in_StateIdle_override;
@@ -140,18 +137,22 @@ void* OnConfirmTimeout_in_StateIdle_override(void* pOutstationState, void *pOCon
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "unexpected confirm timeout");
   return Inst_in_StateIdle_static();////StateIdle::Inst();
 }
-/*
+
+///*
 ////OutstationState& StateIdle::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
-    void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request)
+void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request)
 {
-UNUSED(pOutstationState);
-    return RespondToReadRequest_in_OContext((OContext *)pOContext, request);
+  UNUSED(pOutstationState);
+  return RespondToReadRequest_in_OContext((OContext *)pOContext, request);
 ////    return ctx.RespondToReadRequest(request);
 }
-*/
+//*/
+
 ////OutstationState& StateIdle::OnNewNonReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewNonReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request)
 {
+qDebug()<<"";
+qDebug()<<"OnNewNonReadRequest_in_StateIdle_override1";
   UNUSED(pOutstationState);
   return RespondToNonReadRequest_in_OContext((OContext *)pOContext, request);
 ////    return ctx.RespondToNonReadRequest(request);
@@ -207,9 +208,11 @@ void StateSolicitedConfirmWait_in_StateSolicitedConfirmWait(StateSolicitedConfir
 
   (pStateSolicitedConfirmWait->oOutstationState).pOnConfirm_in_OutstationState = OnConfirm_in_StateSolicitedConfirmWait_override;
   (pStateSolicitedConfirmWait->oOutstationState).pOnConfirmTimeout_in_OutstationState = OnConfirmTimeout_in_StateSolicitedConfirmWait_override;
-  /*
-   (pStateSolicitedConfirmWait->oOutstationState).pOnNewReadRequest_in_OutstationState = OnNewReadRequest_in_StateSolicitedConfirmWait_override;
-  */
+
+//  /*
+  (pStateSolicitedConfirmWait->oOutstationState).pOnNewReadRequest_in_OutstationState = OnNewReadRequest_in_StateSolicitedConfirmWait_override;
+//  */
+
   (pStateSolicitedConfirmWait->oOutstationState).pOnNewNonReadRequest_in_OutstationState = OnNewNonReadRequest_in_StateSolicitedConfirmWait_override;
   (pStateSolicitedConfirmWait->oOutstationState).pOnRepeatNonReadRequest_in_OutstationState = OnRepeatNonReadRequest_in_StateSolicitedConfirmWait_override;
   (pStateSolicitedConfirmWait->oOutstationState).pOnRepeatReadRequest_in_OutstationState = OnRepeatReadRequest_in_StateSolicitedConfirmWait_override;
@@ -297,17 +300,19 @@ void* OnConfirmTimeout_in_StateSolicitedConfirmWait_override(void* pOutstationSt
 ////    return StateIdle::Inst();
   return Inst_in_StateIdle_static();
 }
-/*
+
+///*
 ////OutstationState& StateSolicitedConfirmWait::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
-    void* OnNewReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
+void* OnNewReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
-UNUSED(pOutstationState);
+  UNUSED(pOutstationState);
 ////    ctx.confirmTimer.cancel();
- cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
+  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
 ////    return ctx.RespondToReadRequest(request);
-    return RespondToReadRequest_in_OContext((OContext *)ctx, request);
+  return RespondToReadRequest_in_OContext((OContext *)ctx, request);
 }
-*/
+//*/
+
 ////OutstationState& StateSolicitedConfirmWait::OnNewNonReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewNonReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
@@ -549,22 +554,26 @@ void StateNullUnsolicitedConfirmWait_in_StateNullUnsolicitedConfirmWait(StateNul
   OutstationState_in_OutstationState(&(pStateNullUnsolicitedConfirmWait->sStateUnsolicitedConfirmWait.oOutstationState));
 
   (pStateNullUnsolicitedConfirmWait->sStateUnsolicitedConfirmWait.oOutstationState).pName_in_OutstationState = Name_in_StateNullUnsolicitedConfirmWait_override;
-  /*
-   (pStateNullUnsolicitedConfirmWait->sStateUnsolicitedConfirmWait.oOutstationState).pOnNewReadRequest_in_OutstationState = OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override;
-  */
+
+//  /*
+  (pStateNullUnsolicitedConfirmWait->sStateUnsolicitedConfirmWait.oOutstationState).pOnNewReadRequest_in_OutstationState = OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override;
+//  */
+
   setParentPointer_in_OutstationState(&(pStateNullUnsolicitedConfirmWait->sStateUnsolicitedConfirmWait.oOutstationState), pStateNullUnsolicitedConfirmWait);
 }
-/*
+
+///*
 ////OutstationState& StateNullUnsolicitedConfirmWait::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
-    void* OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
+void* OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
-UNUSED(pOutstationState);
+  UNUSED(pOutstationState);
 ////    ctx.confirmTimer.cancel();
- cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
+  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
 ////    return ctx.RespondToReadRequest(request);
-    return RespondToReadRequest_in_OContext((OContext *)ctx, request);
+  return RespondToReadRequest_in_OContext((OContext *)ctx, request);
 }
-*/
+//*/
+
 ////} // namespace opendnp3
 
 boolean IsIdle_in_StateIdle_override(void* pOutstationState)

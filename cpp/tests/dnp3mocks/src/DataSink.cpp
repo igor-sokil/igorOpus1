@@ -66,12 +66,12 @@ boolean Equals_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
 ////    const ser4cpp::rseq_t temp(this->buffer.data(), this->buffer.size());
 ////    return HexConversions::to_hex(temp, spaced);
 ////}
-     boolean IsEmpty_in_DataSink(DataSink *pDataSink)
-    {
-        return pDataSink->buffer.size() == 0;
-    }
+boolean IsEmpty_in_DataSink(DataSink *pDataSink)
+{
+  return pDataSink->buffer.size() == 0;
+}
 
-   uint16_t Size_in_DataSink(DataSink *pDataSink)
-    {
-        return pDataSink->buffer.size();
-   }
+uint16_t Size_in_DataSink(DataSink *pDataSink)
+{
+  return pDataSink->buffer.size();
+}

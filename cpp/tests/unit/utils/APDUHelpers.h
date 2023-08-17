@@ -30,7 +30,7 @@
 #include "APDUResponse.h"
 
 
-     const uint32_t SIZE_in_APDUHelpers = 2048;
+const uint32_t SIZE_in_APDUHelpers = 2048;
 
 ////class APDUHelpers : private opendnp3::StaticOnly
 ////{
@@ -43,8 +43,8 @@
 
 ////    static opendnp3::APDUResponse Response(uint32_t size = SIZE);
 ////};
-    APDURequest  Request_in_APDUHelpers_static(FunctionCode_uint8_t code, uint32_t size);// = SIZE);
+APDURequest  Request_in_APDUHelpers_static(FunctionCode_uint8_t code, uint32_t size);// = SIZE);
 
-    APDUResponse Response_in_APDUHelpers_static(uint32_t size);// = SIZE);
+APDUResponse Response_in_APDUHelpers_static(uint32_t size);// = SIZE);
 
 #endif

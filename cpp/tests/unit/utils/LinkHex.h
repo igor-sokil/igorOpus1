@@ -37,20 +37,20 @@
 ////{
 
 ////public:
-    ////////////////////////////////////////////////
-    //	Functions for formatting outgoing Sec to Pri frames
-    ////////////////////////////////////////////////
+////////////////////////////////////////////////
+//	Functions for formatting outgoing Sec to Pri frames
+////////////////////////////////////////////////
 
 ////    static std::string Ack(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
-   std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
+std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
 
 ////    static std::string Nack(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
 ////    static std::string LinkStatus(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
 ////    static std::string NotSupported(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
 
-    ////////////////////////////////////////////////
-    //	Functions for formatting outgoing Pri to Sec frames
-    ////////////////////////////////////////////////
+////////////////////////////////////////////////
+//	Functions for formatting outgoing Pri to Sec frames
+////////////////////////////////////////////////
 
 ////    static std::string TestLinkStatus(bool master, bool fcb, uint16_t dest, uint16_t src);
 ////    static std::string ResetLinkStates(bool master, uint16_t dest, uint16_t src);

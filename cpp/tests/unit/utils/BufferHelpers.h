@@ -27,7 +27,7 @@
 ////class ByteStr : public CopyableBuffer
 typedef struct
 {
- CopyableBuffer cCopyableBuffer;
+  CopyableBuffer cCopyableBuffer;
 ////public:
 ////    ByteStr(size_t length, uint8_t seed = 0);
 ////    ByteStr(const uint8_t* data, size_t length);
@@ -35,10 +35,10 @@ typedef struct
 ////    std::string ToHex() const;
 } ByteStr;
 
-  void ByteStr_in_ByteStrOver1(ByteStr *pByteStr, uint16_t length, uint8_t seed);// = 0);
-  void ByteStr_in_ByteStrOver2(ByteStr *pByteStr, uint8_t* data, uint16_t length);
+void ByteStr_in_ByteStrOver1(ByteStr *pByteStr, uint16_t length, uint8_t seed);// = 0);
+void ByteStr_in_ByteStrOver2(ByteStr *pByteStr, uint8_t* data, uint16_t length);
 ////    bool operator==(const ByteStr& other) const;
-   std::string ToHex_in_ByteStr(ByteStr *pByteStr);
+std::string ToHex_in_ByteStr(ByteStr *pByteStr);
 
 /**
  * A sequence of hex values in the form "01 02 03 04" that are stored as a ByteStr.
@@ -46,7 +46,7 @@ typedef struct
 ////class HexSequence : public ByteStr
 typedef struct
 {
- ByteStr bByteStr;
+  ByteStr bByteStr;
 ////public:
 ////    HexSequence(const std::string& hex);
 
@@ -61,10 +61,10 @@ typedef struct
 ////    static size_t Validate(const std::string& s);
 } HexSequence;
 
-   void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
+void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
 
-  std::string RemoveSpaces_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
-  void RemoveSpacesInPlace_in_HexSequence(HexSequence *pHexSequence, std::string& s);
-  uint16_t Validate_in_HexSequence_static(std::string& s);
+std::string RemoveSpaces_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
+void RemoveSpacesInPlace_in_HexSequence(HexSequence *pHexSequence, std::string& s);
+uint16_t Validate_in_HexSequence_static(std::string& s);
 
 #endif

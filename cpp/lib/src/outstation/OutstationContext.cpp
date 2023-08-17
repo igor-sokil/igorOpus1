@@ -192,9 +192,7 @@ boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
   pOContext->shouldCheckForUnsolicited = true;
 //    void CheckForTaskStart_in_OContext(OContext *pOContext);
 ////    this->CheckForTaskStart();
-  qDebug()<<"OnLowerLayerUp_in_OContext!!";
   CheckForTaskStart_in_OContext(pOContext);
-  qDebug()<<"OnLowerLayerUp_in_OContext!!";
   return true;
 }
 
@@ -248,7 +246,6 @@ boolean OnTxReady_in_OContext(OContext* pOContext)
 
 boolean OnReceive_in_OContext(OContext* pOContext, Message* message)
 {
-
   if (!(pOContext->isOnline))
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "ignoring received data while offline");
@@ -305,17 +302,22 @@ boolean OnReceive_in_OContext_override(void* pIUpperLayer, Message* message)
 OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
   // analyze this request to see how it compares to the last request
+// анализируем этот запрос, чтобы увидеть, как он сравнивается с последним запросом
 //    boolean HasLastRequest_in_RequestHistory(RequestHistory *pRequestHistory);
 ////    if (this->history.HasLastRequest())
+qDebug()<<"";
+qDebug()<<"OnReceiveSolRequest_in_OContext1";
   if (HasLastRequest_in_RequestHistory(&(pOContext->history)))
   {
 //&(pOContext->sol.seq.num)
 //boolean Equals_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t other);
 ////        if (this->sol.seq.num.Equals(request.header.control.SEQ))
+qDebug()<<"OnReceiveSolRequest_in_OContext2";
     if (Equals_in_SequenceNum_for_uint8_Modulus16(&(pOContext->sol.seq.num), request->header.control.SEQ))
     {
 //   boolean FullyEqualsLastRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////            if (this->history.FullyEqualsLastRequest(request.header, request.objects))
+qDebug()<<"OnReceiveSolRequest_in_OContext3";
       if (FullyEqualsLastRequest_in_RequestHistory(&(pOContext->history), &(request->header), &(request->objects)))
       {
 ////                if (request.header.function == FunctionCode::READ)
@@ -323,29 +325,34 @@ OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequ
         {
 //    OutstationState* OnRepeatReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////                    return this->state->OnRepeatReadRequest(*this, request);
+qDebug()<<"OnReceiveSolRequest_in_OContext4";
           return OnRepeatReadRequest_in_OutstationState(pOContext->state, pOContext, request);
         }
 
 //    OutstationState* OnRepeatNonReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////                return this->state->OnRepeatNonReadRequest(*this, request);
+qDebug()<<"OnReceiveSolRequest_in_OContext5";
         return OnRepeatNonReadRequest_in_OutstationState(pOContext->state, pOContext, request);
       }
       else // new operation with same SEQ
       {
 //    OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////                return this->ProcessNewRequest(request);
+qDebug()<<"OnReceiveSolRequest_in_OContext6";
         return ProcessNewRequest_in_OContext(pOContext, request);
       }
     }
     else // completely new sequence #
     {
 ////            return this->ProcessNewRequest(request);
+qDebug()<<"OnReceiveSolRequest_in_OContext7";
       return ProcessNewRequest_in_OContext(pOContext, request);
     }
   }
   else
   {
 ////        return this->ProcessNewRequest(request);
+qDebug()<<"OnReceiveSolRequest_in_OContext8";
     return ProcessNewRequest_in_OContext(pOContext, request);
   }
 }
@@ -356,21 +363,27 @@ OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedReques
 ////    pOContext->sol.seq.num = request->header.control.SEQ;
   SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(&(pOContext->sol.seq.num), request->header.control.SEQ);
 
+qDebug()<<"";
+qDebug()<<"ProcessNewRequest_in_OContext1";
   if (request->header.function == FunctionCode_READ)
   {
 //    OutstationState* OnNewReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////        return this->state->OnNewReadRequest(*this, request);
+qDebug()<<"ProcessNewRequest_in_OContext2";
     return OnNewReadRequest_in_OutstationState(pOContext->state, pOContext, request);
   }
 
 //    OutstationState* OnNewNonReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////    return this->state->OnNewNonReadRequest(*this, request);
+qDebug()<<"ProcessNewRequest_in_OContext3";
   return OnNewNonReadRequest_in_OutstationState(pOContext->state, pOContext, request);
 }
 
 ////bool OContext::ProcessObjects(const ParsedRequest& request)
 boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
+qDebug()<<"";
+qDebug()<<"ProcessObjects_in_OContext1";
 //    boolean IsBroadcast_in_Addresses(Addresses *pAddresses);
 ////    if (request.addresses.IsBroadcast())
   if (IsBroadcast_in_Addresses(&(request->addresses)))
@@ -383,6 +396,7 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
 
 //    boolean IsNoAckFuncCode_in_Functions_static(FunctionCode_uint8_t code);
 ////    if (Functions::IsNoAckFuncCode(request.header.function))
+qDebug()<<"ProcessObjects_in_OContext2";
   if (IsNoAckFuncCode_in_Functions_static(request->header.function))
   {
     // this is the only request we process while we are transmitting
@@ -392,6 +406,7 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
     return ProcessRequestNoAck_in_OContext(pOContext, request);
   }
 
+qDebug()<<"ProcessObjects_in_OContext3";
   if (pOContext->isTransmitting)
   {
 //  void Set_in_DeferredRequest(DeferredRequest *pDeferredRequest, ParsedRequest* request);
@@ -400,6 +415,7 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
     return true;
   }
 
+qDebug()<<"ProcessObjects_in_OContext4";
   if (request->header.function == FunctionCode_CONFIRM)
   {
 //    boolean ProcessConfirm_in_OContext(OContext *pOContext, ParsedRequest* request);
@@ -409,12 +425,15 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
 
 //    boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////    return this->ProcessRequest(request);
+qDebug()<<"ProcessObjects_in_OContext5";
   return ProcessRequest_in_OContext(pOContext, request);
 }
 
 ////bool OContext::ProcessRequest(const ParsedRequest& request)
 boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
+qDebug()<<"";
+qDebug()<<"ProcessRequest_in_OContext1";
   if (request->header.control.UNS)
   {
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Ignoring unsol with invalid function code: %s",
@@ -424,6 +443,7 @@ boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 
 //   OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////    this->state = &this->OnReceiveSolRequest(request);
+qDebug()<<"ProcessRequest_in_OContext2";
   pOContext->state = OnReceiveSolRequest_in_OContext(pOContext, request);
   return true;
 }
@@ -440,6 +460,8 @@ boolean ProcessConfirm_in_OContext(OContext *pOContext, ParsedRequest* request)
 ////OutstationState& OContext::BeginResponseTx(uint16_t destination, APDUResponse& response)
 OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t destination, APDUResponse* response)
 {
+qDebug()<<"";
+qDebug()<<"BeginResponseTx_in_OContext1";
 //   void CheckForBroadcastConfirmation(OContext *pOContext, APDUResponse* response);
 ////    CheckForBroadcastConfirmation(response);
   CheckForBroadcastConfirmation_in_OContext(pOContext, response);
@@ -537,20 +559,16 @@ void CheckForTaskStart_in_OContext(OContext *pOContext)
 // do these checks in order of priority
 //   void CheckForDeferredRequest_in_OContext(OContext *pOContext);
 ////    this->CheckForDeferredRequest();
-  qDebug()<<"CheckForTaskStart_in_OContext1";
   CheckForDeferredRequest_in_OContext(pOContext);
 //   void CheckForUnsolicitedNull_in_OContext(OContext *pOContext);
 ////    this->CheckForUnsolicitedNull();
-  qDebug()<<"CheckForTaskStart_in_OContext2";
   CheckForUnsolicitedNull_in_OContext(pOContext);
-  qDebug()<<"CheckForTaskStart_in_OContext3";
   if (pOContext->shouldCheckForUnsolicited)
   {
 //   void CheckForUnsolicited_in_OContext(OContext *pOContext);
 ////        this->CheckForUnsolicited();
     CheckForUnsolicited_in_OContext(pOContext);
   }
-  qDebug()<<"CheckForTaskStart_in_OContext4";
 }
 
 boolean HandlerBooleanParsedRequest_in_OContext(void* pOContext, ParsedRequest* pParsedRequest);
@@ -582,47 +600,38 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
 //   boolean CanTransmit_in_OContext(OContext *pOContext);
 //     boolean IsIdle_in_OutstationState(OutstationState *);
 ////    if (this->CanTransmit() && this->state->IsIdle() && this->params.allowUnsolicited)
-  qDebug()<<"CheckForUnsolicitedNull_in_OContext1";
   if (CanTransmit_in_OContext(pOContext) && IsIdle_in_OutstationState(pOContext->state) && pOContext->params.allowUnsolicited)
   {
 ////        if (!this->unsol.completedNull)
-    qDebug()<<"CheckForUnsolicitedNull_in_OContext2";
     if (!pOContext->unsol.completedNull)
     {
       // send a NULL unsolcited message
 //APDUResponse Start_in_TxBuffer(TxBuffer *pTxBuffer);
 ////            auto response = this->unsol.tx.Start();
-      qDebug()<<"CheckForUnsolicitedNull_in_OContext3";
       APDUResponse response = Start_in_TxBuffer(&(pOContext->unsol.tx));
 //    void NullUnsolicited_in_APDUBuilders_static(APDUResponse* response, uint8_t seq, IINField* iin);
 //    IINField GetResponseIIN_in_OContext(OContext *pOContext);
 ////            build::NullUnsolicited(response, this->unsol.seq.num, this->GetResponseIIN());
-      qDebug()<<"CheckForUnsolicitedNull_in_OContext4";
       IINField temp = GetResponseIIN_in_OContext(pOContext);
 
-      qDebug()<<"CheckForUnsolicitedNull_in_OContext5";
       NullUnsolicited_in_APDUBuilders_static(&response, pOContext->unsol.seq.num.seq, &temp);
 //    void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext);
 ////            this->RestartUnsolConfirmTimer();
-      qDebug()<<"CheckForUnsolicitedNull_in_OContext6";
       RestartUnsolConfirmTimer_in_OContext(pOContext);
 //     OutstationState* Inst_in_StateNullUnsolicitedConfirmWait_static(void);
 //     OutstationState* Inst_in_StateUnsolicitedConfirmWait_static(void);
 ////            this->state = this->params.noDefferedReadDuringUnsolicitedNullResponse
 ////                ? &StateNullUnsolicitedConfirmWait::Inst()
 ////                : &StateUnsolicitedConfirmWait::Inst();
-      qDebug()<<"CheckForUnsolicitedNull_in_OContext7";
       pOContext->state = pOContext->params.noDefferedReadDuringUnsolicitedNullResponse
                          ? Inst_in_StateNullUnsolicitedConfirmWait_static()
                          : Inst_in_StateUnsolicitedConfirmWait_static();
 
 //   void BeginUnsolTx_in_OContext(OContext *pOContext, APDUResponse* response);
 ////            this->BeginUnsolTx(response);
-      qDebug()<<"CheckForUnsolicitedNull_in_OContext8";
       BeginUnsolTx_in_OContext(pOContext, &response);
     }
   }
-  qDebug()<<"CheckForUnsolicitedNull_in_OContext9";
 }
 
 ////void OContext::CheckForUnsolicited()
@@ -784,6 +793,8 @@ void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext)
 ////OutstationState& OContext::RespondToNonReadRequest(const ParsedRequest& request)
 OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
+qDebug()<<"";
+qDebug()<<"RespondToNonReadRequest_in_OContext1";
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////    this->history.RecordLastProcessedRequest(request.header, request.objects);
   RecordLastProcessedRequest_in_RequestHistory(&(pOContext->history), &(request->header), &(request->objects));
@@ -820,41 +831,44 @@ OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, Parsed
 
 //   OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t destination, APDUResponse* response);
 ////    return this->BeginResponseTx(request.addresses.source, response);
+qDebug()<<"RespondToNonReadRequest_in_OContext2";
   return BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
 }
-/*
+
+///*
 ////OutstationState& OContext::RespondToReadRequest(const ParsedRequest& request)
-    OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
+OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////    this->history.RecordLastProcessedRequest(request.header, request.objects);
-    RecordLastProcessedRequest_in_RequestHistory(&(pOContext->history), &(request->header), &(request->objects));
+  RecordLastProcessedRequest_in_RequestHistory(&(pOContext->history), &(request->header), &(request->objects));
 
 ////    auto response = this->sol.tx.Start();
-APDUResponse response = Start_in_TxBuffer(&(pOContext->sol.tx));
+  APDUResponse response = Start_in_TxBuffer(&(pOContext->sol.tx));
 
 ////    auto writer = response.GetWriter();
   HeaderWriter writer = GetWriter_in_APDUWrapper(&(response.aAPDUWrapper));
 ////    response.SetFunction(FunctionCode::RESPONSE);
-   SetFunction_in_APDUWrapper(&(response.aAPDUWrapper), FunctionCode_RESPONSE);
+  SetFunction_in_APDUWrapper(&(response.aAPDUWrapper), FunctionCode_RESPONSE);
 
 //   PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter writer)
 ////    auto result = this->HandleRead(request.objects, writer);
-   PairSer4cpp_for_IINField_AppControlField result = HandleRead_in_OContext(pOContext, &(request->objects), &writer);
+  PairSer4cpp_for_IINField_AppControlField result = HandleRead_in_OContext(pOContext, &(request->objects), &writer);
 
-    result.second.SEQ = request->header.control.SEQ;
+  result.second.SEQ = request->header.control.SEQ;
 //  void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
 ////    response.SetControl(result.second);
-   SetControl_in_APDUWrapper(&(response.aAPDUWrapper), result.second);
+  SetControl_in_APDUWrapper(&(response.aAPDUWrapper), result.second);
 ////    response.SetIIN(result.first | this->GetResponseIIN());
-   IINField temp = GetResponseIIN_in_OContext(pOContext);
-   IINField temp2 = operatorOR_in_IINField(&(result.first), &temp);
-     SetIIN_in_APDUResponse(&response, &temp2);
+  IINField temp = GetResponseIIN_in_OContext(pOContext);
+  IINField temp2 = operatorOR_in_IINField(&(result.first), &temp);
+  SetIIN_in_APDUResponse(&response, &temp2);
 
 ////    return this->BeginResponseTx(request.addresses.source, response);
-   return BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
+  return BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
 }
-*/
+//*/
+
 ////OutstationState& OContext::ContinueMultiFragResponse(const Addresses& addresses, const AppSeqNum& seq)
 OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addresses* addresses, AppSeqNum* seq)
 {
@@ -1007,6 +1021,7 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
 
 boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
 {
+qDebug()<<"ProcessMessage_in_OContext1";
   // is the message addressed to this outstation
 //    boolean IsBroadcast_in_Addresses(Addresses *pAddresses);
 ////    if (message.addresses.destination != this->addresses.source && !message.addresses.IsBroadcast())
@@ -1024,6 +1039,7 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
 ////    FORMAT_HEX_BLOCK(this->logger, flags::APP_HEX_RX, message.payload, 18, 18);
 
 ////    if (message.addresses.IsBroadcast())
+qDebug()<<"ProcessMessage_in_OContext2";
   if (IsBroadcast_in_Addresses(&(message->addresses)))
   {
 //   void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_t destination);
@@ -1043,6 +1059,7 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
 
 //  boolean IsFirAndFin_in_AppControlField(AppControlField *);
 ////    if (!result.header.control.IsFirAndFin())
+qDebug()<<"ProcessMessage_in_OContext3";
   if (!IsFirAndFin_in_AppControlField(&(result.header.control)))
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::WARN, "Ignoring fragment. Requests must have FIR/FIN == 1");
@@ -1060,6 +1077,7 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
 ////    return this->ProcessObjects(ParsedRequest(message.addresses, result.header, result.objects));
   ParsedRequest pParsedRequest;
   ParsedRequest_in_ParsedRequest(&pParsedRequest, &(message->addresses), &(result.header), &(result.objects));
+qDebug()<<"ProcessMessage_in_OContext4";
   return ProcessObjects_in_OContext(pOContext, &pParsedRequest);
 }
 
@@ -1286,19 +1304,20 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   }
   }
 }
-/*
+
+///*
 ////ser4cpp::Pair<IINField, AppControlField> OContext::HandleRead(const ser4cpp::rseq_t& objects, HeaderWriter& writer)
-   PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
+PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
 {
 // void Reset_in_ResponseContext(ResponseContext *pResponseContext);
 ////    this->rspContext.Reset();
   Reset_in_ResponseContext(&(pOContext->rspContext));
 //     void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
 ////    this->eventBuffer.Unselect(); // always un-select any previously selected points when we start a new read request
-      Unselect_in_EventBuffer(&(pOContext->eventBuffer));
+  Unselect_in_EventBuffer(&(pOContext->eventBuffer));
 //    void Unselect_in_Database(Database *pDatabase);
 ////    this->database.Unselect();
-     Unselect_in_Database(&(pOContext->database));
+  Unselect_in_Database(&(pOContext->database));
 
 //void  ReadHandler_in_ReadHandler(ReadHandler *pReadHandler, IStaticSelector* staticSelector, IEventSelector* eventSelector);
 ////    ReadHandler handler(this->database, this->eventBuffer);
@@ -1309,28 +1328,28 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
 //                             IAPDUHandler *handler);
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger,
 ////                                    ParserSettings::NoContents()); // don't expect range/count context on a READ
-    ParseResult_uint8_t result = Parse_in_APDUParser_static(
-                             objects,
-                             &(handler.iIAPDUHandler));
-    if (result == ParseResult_OK)
-    {
+  ParseResult_uint8_t result = Parse_in_APDUParser_static(
+                                 objects,
+                                 &(handler.iIAPDUHandler));
+  if (result == ParseResult_OK)
+  {
 ////        auto control = pOContext->rspContext.LoadResponse(writer);
- AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext), writer);
+    AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext), writer);
 //void PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(PairSer4cpp_for_IINField_AppControlField *pPairSer4cpp_for_IINField_AppControlField,
 //                                                                           IINField *first_,
 //                                                                           AppControlField *second_
 //                                                                           );
 //  IINField Errors_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler);
 ////        return ser4cpp::Pair<IINField, AppControlField>(handler.Errors(), control);
-IINField temp = Errors_in_IAPDUHandler(&(handler.iIAPDUHandler));
+    IINField temp = Errors_in_IAPDUHandler(&(handler.iIAPDUHandler));
 
-PairSer4cpp_for_IINField_AppControlField pPairSer4cpp_for_IINField_AppControlField;
- PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(&pPairSer4cpp_for_IINField_AppControlField,
-&temp,
-                                                                           &control
-                                                                           );
-return pPairSer4cpp_for_IINField_AppControlField;
-    }
+    PairSer4cpp_for_IINField_AppControlField pPairSer4cpp_for_IINField_AppControlField;
+    PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(&pPairSer4cpp_for_IINField_AppControlField,
+        &temp,
+        &control
+                                                                                        );
+    return pPairSer4cpp_for_IINField_AppControlField;
+  }
 
 // void Reset_in_ResponseContext(ResponseContext *pResponseContext);
 ////    this->rspContext.Reset();
@@ -1338,18 +1357,19 @@ return pPairSer4cpp_for_IINField_AppControlField;
 //  void AppControlField_in_AppControlFieldOver3(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns);
 ////    return ser4cpp::Pair<IINField, AppControlField>(IINFromParseResult(result),
 ////                                                    AppControlField(true, true, false, false));
-        IINField temp = IINFromParseResult(result);
-AppControlField aAppControlField;
- AppControlField_in_AppControlFieldOver3(&aAppControlField, true, true, false, false);
+  IINField temp = IINFromParseResult(result);
+  AppControlField aAppControlField;
+  AppControlField_in_AppControlFieldOver3(&aAppControlField, true, true, false, false);
 
-PairSer4cpp_for_IINField_AppControlField pPairSer4cpp_for_IINField_AppControlField;
- PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(&pPairSer4cpp_for_IINField_AppControlField,
-&temp,
-                                                                           &aAppControlField
-                                                                           );
-return pPairSer4cpp_for_IINField_AppControlField;
+  PairSer4cpp_for_IINField_AppControlField pPairSer4cpp_for_IINField_AppControlField;
+  PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(&pPairSer4cpp_for_IINField_AppControlField,
+      &temp,
+      &aAppControlField
+                                                                                      );
+  return pPairSer4cpp_for_IINField_AppControlField;
 }
-*/
+//*/
+
 ////IINField OContext::HandleWrite(const ser4cpp::rseq_t& objects)
 IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
 {

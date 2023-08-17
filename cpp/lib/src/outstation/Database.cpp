@@ -23,22 +23,54 @@
 
 ////#include "outstation/StaticWriters.h"
 
-//void Database_in_Database(void)
-//{
-//}
-
+////Database::Database(const DatabaseConfig& config,
+////                   IEventReceiver& event_receiver,
+////                   IDnpTimeSource& time_source,
+////                   StaticTypeBitField allowed_class_zero_types)
 void  Database_in_Database(Database *pDatabase,
                            DatabaseConfig* config,
                            IEventReceiver* event_receiver,
                            IDnpTimeSource* time_source,
                            StaticTypeBitField allowed_class_zero_types)
 {
+    pDatabase->event_receiver = event_receiver;
+    pDatabase->time_source    = time_source;
+    pDatabase->allowed_class_zero_types = allowed_class_zero_types;
+
+//  StaticDataMap_for_BinarySpec          binary_input;
+//  std::map<uint16_t, BinaryConfig> binary_input;
+//  void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap, std::map<uint16_t, BinaryConfig>& config)
+////      binary_input(config.binary_input),
+   StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(&(pDatabase->binary_input), config->binary_input);
+
+////      double_binary(config.double_binary),
+   StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpec(&(pDatabase->double_binary), config->double_binary);
+
+////      analog_input(config.analog_input),
+   StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpec(&(pDatabase->analog_input), config->analog_input);
+
+////      counter(config.counter),
+   StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpec(&(pDatabase->counter), config->counter);
+
+////      frozen_counter(config.frozen_counter),
+   StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpec(&(pDatabase->frozen_counter), config->frozen_counter);
+
+////      binary_output_status(config.binary_output_status),
+   StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpec(&(pDatabase->binary_output_status), config->binary_output_status);
+
+////      analog_output_status(config.analog_output_status),
+   StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpec(&(pDatabase->analog_output_status), config->analog_output_status);
+
+////      time_and_interval(config.time_and_interval),
+   StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpec(&(pDatabase->time_and_interval), config->time_and_interval);
+
+////      octet_string(config.octet_string)
+   StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpec(&(pDatabase->octet_string), config->octet_string);
 }
 
+////namespace opendnp3
+////{
 /*
-namespace opendnp3
-{
-
 template<class Spec>
 IINField select_indices(StaticDataMap<Spec>& map,
                         const ICollection<uint16_t>& indices,
@@ -589,6 +621,19 @@ IINField Database::select_range(StaticDataMap<Spec>& map,
     const auto count = map.select(range, variation);
     return (count != range.Count()) ? IINField(IINBit::PARAM_ERROR) : IINField::Empty();
 }
-
-} // namespace opendnp3
 */
+
+////} // namespace opendnp3
+void Unselect_in_Database(Database *pDatabase)
+{
+////    this->binary_input.clear_selection();
+////    this->double_binary.clear_selection();
+////    this->binary_output_status.clear_selection();
+////    this->counter.clear_selection();
+////    this->frozen_counter.clear_selection();
+////    this->analog_input.clear_selection();
+////    this->analog_output_status.clear_selection();
+////    this->time_and_interval.clear_selection();
+////    this->octet_string.clear_selection();
+}
+

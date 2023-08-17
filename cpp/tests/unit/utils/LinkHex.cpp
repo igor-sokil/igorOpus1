@@ -41,22 +41,22 @@
 ////using namespace ser4cpp;
 
 ////std::string LinkHex::Ack(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src)
-   std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src)
+std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src)
 {
 ////    StaticBuffer<292> buffer;
-    StaticBuffer_for_LPDU_MAX_FRAME_SIZE buffer;
+  StaticBuffer_for_LPDU_MAX_FRAME_SIZE buffer;
 
 //WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(StaticBuffer_for_LPDU_MAX_FRAME_SIZE *pStaticBuffer);
 ////    auto output = buffer.as_wseq();
-WSeq_for_Uint16_t  output = as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(&buffer);
+  WSeq_for_Uint16_t  output = as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(&buffer);
 
 //    RSeq_for_Uint16_t FormatAck_in_LinkFrame_static(
 //        WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
 //    std::string to_hex_in_HexConversionsOver2(RSeq_for_Uint16_t* buffer, bool spaced = true);
 ////    return HexConversions::to_hex(LinkFrame::FormatAck(output, master, isRxBuffFull, dest, src, nullptr));
-    RSeq_for_Uint16_t temp = FormatAck_in_LinkFrame_static(
-        &output, master, isRxBuffFull, dest, src);//, Logger* pLogger);
-    return to_hex_in_HexConversionsOver2(&temp, true);
+  RSeq_for_Uint16_t temp = FormatAck_in_LinkFrame_static(
+                             &output, master, isRxBuffFull, dest, src);//, Logger* pLogger);
+  return to_hex_in_HexConversionsOver2(&temp, true);
 }
 
 ////std::string LinkHex::Nack(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src)

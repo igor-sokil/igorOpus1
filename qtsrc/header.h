@@ -66,4 +66,7 @@ extern void* pPointerGlobal1;
 extern void* pPointerGlobal2;
 extern void* pPointerGlobal3;
 
+typedef void  (* pVoidVoidFunction(void));//указатель на ф-цию VoidVoid
+#define VOIDVOID_FUNCTION(function)  (*(pVoidVoidFunction *)function)
+
 #endif

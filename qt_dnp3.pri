@@ -1,5 +1,6 @@
 
 INCLUDEPATH  += qtsrc
+INCLUDEPATH  += cpp\lib\inspect
 INCLUDEPATH  += cpp\lib\include\opendnp3
 
 INCLUDEPATH  += cpp\lib\include\opendnp3\app
@@ -133,6 +134,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\outstation\ICommandHandler.cpp \
                 cpp\lib\include\opendnp3\outstation\IOutstationApplication.cpp \
                 cpp\lib\include\opendnp3\outstation\IOutstation.cpp \
+                cpp\lib\include\opendnp3\outstation\MeasurementConfig.cpp \
                 cpp\lib\include\opendnp3\outstation\OutstationParams.cpp \
                 cpp\lib\include\opendnp3\outstation\OutstationConfig.cpp \
                 cpp\lib\include\opendnp3\outstation\StaticTypeBitfield.cpp \
@@ -234,6 +236,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\ApplicationIIN.cpp \
                 cpp\lib\src\outstation\AssignClassHandler.cpp \
                 cpp\lib\src\outstation\Database.cpp \
+                cpp\lib\src\outstation\DatabaseConfig.cpp \
                 cpp\lib\src\outstation\DeferredRequest.cpp \
                 cpp\lib\src\outstation\DeferredRequest_part2.cpp \
                 cpp\lib\src\outstation\ControlState.cpp \
@@ -257,6 +260,15 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\RequestHistory.cpp \
                 cpp\lib\src\outstation\SimpleCommandHandler.cpp \
                 cpp\lib\src\outstation\StaticDataCell.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_DoubleBitBinary.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_Binary.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_BinaryOutputStatus.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_Counter.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_FrozenCounter.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_Analog.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_AnalogOutputStatus.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_OctetString.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_TimeAndInterval.cpp \
                 cpp\lib\src\outstation\TimeSyncState.cpp \
                 cpp\lib\src\outstation\NumRetries.cpp \
                 cpp\lib\src\outstation\OctetStringSerializer.cpp \
@@ -336,6 +348,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group52.cpp \
                 cpp\lib\src\gen\objects\Group60.cpp \
                 \
+                cpp\tests\unit\utils\APDUHexBuilders.cpp \
                 cpp\tests\unit\utils\APDUHelpers.cpp \
                 cpp\tests\unit\utils\BufferHelpers.cpp \
                 cpp\tests\unit\utils\CopyableBuffer.cpp \
@@ -352,6 +365,7 @@ SOURCES       =  ser4cpp\util\Comparisons.cpp \
                 cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockFrameSink.cpp \
                 cpp\tests\dnp3mocks\src\MockTransportLayer.cpp \
+                cpp\tests\dnp3mocks\src\DatabaseHelpers.cpp \
                 cpp\tests\dnp3mocks\src\DataSink.cpp
 
 

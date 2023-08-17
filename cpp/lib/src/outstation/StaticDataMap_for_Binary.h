@@ -17,8 +17,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_STATICDATAMAP_H
-#define OPENDNP3_STATICDATAMAP_H
+#ifndef OPENDNP3_STATICDATAMAP_Binary_H
+#define OPENDNP3_STATICDATAMAP_Binary_H
 
 ////#include "app/MeasurementTypeSpecs.h"
 ////#include "app/Range.h"
@@ -64,7 +64,7 @@ class StaticDataMap_for_BinarySpec
   using map_t = std::map<uint16_t, StaticDataCell_for_Binary>;
 ////    using map_iter_t = typename map_t::iterator;
 
-////public:
+public:
 ////    StaticDataMap() = default;
 ////    StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config);
 
@@ -199,13 +199,8 @@ class StaticDataMap_for_BinarySpec
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
-////{
-////    for (const auto& item : config)
-////    {
-////        this->map[item.first] = StaticDataCell<Spec>{item.second};
-////    }
-////}
+void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap, std::map<uint16_t, BinaryConfig>& config);
+
 
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::add(const typename Spec::meas_t& value, uint16_t index, typename Spec::config_t config)

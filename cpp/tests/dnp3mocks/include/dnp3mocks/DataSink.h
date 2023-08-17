@@ -53,15 +53,15 @@ typedef struct
 ////    }
 
 ////private:
-    std::vector<uint8_t> buffer;
+  std::vector<uint8_t> buffer;
 } DataSink;
 
-    void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data);
+void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data);
 
-    boolean Equals_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data);
-     boolean IsEmpty_in_DataSink(DataSink *pDataSink);
-   void Clear_in_DataSink(DataSink *pDataSink);
-   uint16_t Size_in_DataSink(DataSink *pDataSink);
+boolean Equals_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data);
+boolean IsEmpty_in_DataSink(DataSink *pDataSink);
+void Clear_in_DataSink(DataSink *pDataSink);
+uint16_t Size_in_DataSink(DataSink *pDataSink);
 
 ////    std::string AsHex(bool spaced = true) const;
 

@@ -8,7 +8,7 @@ boolean IsQualityOnlineOnly_in_BinarySpec_static(Binary *binary)
 
 boolean IsEvent_in_BinarySpec_static(Binary *old_value,
                                      Binary *new_value,
-                                     BinaryConfig_for_EventConfig_for_BinaryInfo *config)////const config_t& config)
+                                     BinaryConfig *config)////const config_t& config)
 {
   UNUSED(config);
   return (old_value->tTypedMeasurement_for_Boolean).mMeasurement.flags.value !=
@@ -17,7 +17,7 @@ boolean IsEvent_in_BinarySpec_static(Binary *old_value,
 
 boolean IsEvent_in_DoubleBitBinarySpec_static(DoubleBitBinary *old_value,
     DoubleBitBinary *new_value,
-    DoubleBitBinaryConfig_for_EventConfig_for_DoubleBitBinaryInfo  *config)////const config_t& config)
+    DoubleBitBinaryConfig  *config)////const config_t& config)
 {
   UNUSED(config);
   return (old_value->tTypedMeasurement_for_DoubleBit_uint8_t).mMeasurement.flags.value !=
@@ -26,7 +26,7 @@ boolean IsEvent_in_DoubleBitBinarySpec_static(DoubleBitBinary *old_value,
 
 boolean IsEvent_in_BinaryOutputStatusSpec_static(BinaryOutputStatus *old_value,
     BinaryOutputStatus *new_value,
-    BOStatusConfig_for_EventConfig_for_BinaryOutputStatusInfo *config)////const config_t& config)
+    BOStatusConfig *config)////const config_t& config)
 {
   UNUSED(config);
   return (old_value->tTypedMeasurement_for_Boolean).mMeasurement.flags.value !=
@@ -36,7 +36,7 @@ boolean IsEvent_in_BinaryOutputStatusSpec_static(BinaryOutputStatus *old_value,
 boolean IsEvent_in_AnalogSpec_for_AnalogInfo_static(
   Analog *old_value,
   Analog *new_value,
-  AnalogConfig_for_DeadbandConfig_for_AnalogInfo *config)////const config_t& config)
+  AnalogConfig *config)////const config_t& config)
 {
 ////    return measurements::IsEvent(new_value, old_value, config.deadband);
   return IsEvent_in_EventTriggers_for_TypedMeasurement_for_Double64(
@@ -49,7 +49,7 @@ boolean IsEvent_in_AnalogSpec_for_AnalogInfo_static(
 boolean IsEvent_in_CounterSpec_for_CounterInfo_static(
   Counter *old_value,
   Counter *new_value,
-  CounterConfig_for_DeadbandConfig_for_CounterInfo *config)////const config_t& config)
+  CounterConfig *config)////const config_t& config)
 {
   if ((old_value->tTypedMeasurement_for_Uint32).mMeasurement.flags.value !=
       (new_value->tTypedMeasurement_for_Uint32).mMeasurement.flags.value)
@@ -69,7 +69,7 @@ boolean IsEvent_in_CounterSpec_for_CounterInfo_static(
 boolean IsEvent_in_FrozenCounterSpec_for_FrozenCounterInfo_static(
   FrozenCounter *old_value,
   FrozenCounter *new_value,
-  FrozenCounterConfig_for_DeadbandConfig_for_FrozenCounterInfo *config)////const config_t& config)
+  FrozenCounterConfig *config)////const config_t& config)
 {
   if ((old_value->tTypedMeasurement_for_Uint32).mMeasurement.flags.value !=
       (new_value->tTypedMeasurement_for_Uint32).mMeasurement.flags.value)
@@ -89,7 +89,7 @@ boolean IsEvent_in_FrozenCounterSpec_for_FrozenCounterInfo_static(
 boolean IsEvent_in_AnalogOutputStatusSpec_for_AnalogOutputStatusInfo_static(
   AnalogOutputStatus *old_value,
   AnalogOutputStatus *new_value,
-  AOStatusConfig_for_DeadbandConfig_for_AnalogOutputStatusInfo *config)//const config_t& config)
+  AOStatusConfig *config)//const config_t& config)
 {
 ////        return measurements::IsEvent(new_value, old_value, config.deadband);
   return IsEvent_in_EventTriggers_for_TypedMeasurement_for_Double64(

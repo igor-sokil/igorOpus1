@@ -38,7 +38,15 @@
 #include "IEventReceiver.h"
 #include "IResponseLoader.h"
 #include "IStaticSelector.h"
+#include "StaticDataMap_for_AnalogOutputStatus.h"
+#include "StaticDataMap_for_Analog.h"
 #include "StaticDataMap_for_Binary.h"
+#include "StaticDataMap_for_BinaryOutputStatus.h"
+#include "StaticDataMap_for_Counter.h"
+#include "StaticDataMap_for_DoubleBitBinary.h"
+#include "StaticDataMap_for_FrozenCounter.h"
+#include "StaticDataMap_for_OctetString.h"
+#include "StaticDataMap_for_TimeAndInterval.h"
 
 #include "FlagsType.h"
 #include "DatabaseConfig.h"
@@ -97,15 +105,15 @@ typedef struct
   IDnpTimeSource* time_source;
   StaticTypeBitField allowed_class_zero_types;
 
-  StaticDataMap_for_BinarySpec binary_input;
-////    StaticDataMap<DoubleBitBinarySpec> double_binary;
-////    StaticDataMap<AnalogSpec> analog_input;
-////    StaticDataMap<CounterSpec> counter;
-////    StaticDataMap<FrozenCounterSpec> frozen_counter;
-////    StaticDataMap<BinaryOutputStatusSpec> binary_output_status;
-////    StaticDataMap<AnalogOutputStatusSpec> analog_output_status;
-////    StaticDataMap<TimeAndIntervalSpec> time_and_interval;
-////    StaticDataMap<OctetStringSpec> octet_string;
+  StaticDataMap_for_BinarySpec          binary_input;
+  StaticDataMap_for_DoubleBitBinarySpec double_binary;
+  StaticDataMap_for_AnalogSpec          analog_input;
+  StaticDataMap_for_CounterSpec         counter;
+  StaticDataMap_for_FrozenCounterSpec   frozen_counter;
+  StaticDataMap_for_BinaryOutputStatusSpec    binary_output_status;
+  StaticDataMap_for_AnalogOutputStatusSpec    analog_output_status;
+  StaticDataMap_for_TimeAndIntervalSpec       time_and_interval;
+  StaticDataMap_for_OctetStringSpec           octet_string;
 ////
   // ----- helper methods ------
 
@@ -178,7 +186,7 @@ boolean Update_in_Database_override(void *pIUpdateHandler, OctetString* meas, ui
 boolean Update_in_Database_override(void *pIUpdateHandler, TimeAndInterval* meas, uint16_t index);
 boolean Modify_in_Database_override(void *pIUpdateHandler, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);
 
-void Unselect_in_Database(Database *pDatabase);
+//void Unselect_in_Database(Database *pDatabase);
 boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, EventMode_uint8_t mode);// = EventMode::Detect);
 
 ////} // namespace opendnp3

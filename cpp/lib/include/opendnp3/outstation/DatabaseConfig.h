@@ -38,19 +38,19 @@ typedef struct
 
 ////    DatabaseConfig(uint16_t all_types);
 
-  std::map<uint16_t, BinaryConfig_for_EventConfig_for_BinaryInfo> binary_input;
-  std::map<uint16_t, DoubleBitBinaryConfig_for_EventConfig_for_DoubleBitBinaryInfo> double_binary;
-  std::map<uint16_t, AnalogConfig_for_DeadbandConfig_for_AnalogInfo> analog_input;
-  std::map<uint16_t, CounterConfig_for_DeadbandConfig_for_CounterInfo> counter;
-  std::map<uint16_t, FrozenCounterConfig_for_DeadbandConfig_for_FrozenCounterInfo> frozen_counter;
-  std::map<uint16_t, BOStatusConfig_for_EventConfig_for_BinaryOutputStatusInfo> binary_output_status;
-  std::map<uint16_t, AOStatusConfig_for_DeadbandConfig_for_AnalogOutputStatusInfo> analog_output_status;
-  std::map<uint16_t, TimeAndIntervalConfig_for_StaticConfig_for_TimeAndIntervalInfo> time_and_interval;
-  std::map<uint16_t, OctetStringConfig_for_EventConfig_for_OctetStringInfo> octet_string;
+  std::map<uint16_t, BinaryConfig> binary_input;
+  std::map<uint16_t, DoubleBitBinaryConfig> double_binary;
+  std::map<uint16_t, AnalogConfig> analog_input;
+  std::map<uint16_t, CounterConfig> counter;
+  std::map<uint16_t, FrozenCounterConfig> frozen_counter;
+  std::map<uint16_t, BOStatusConfig> binary_output_status;
+  std::map<uint16_t, AOStatusConfig> analog_output_status;
+  std::map<uint16_t, TimeAndIntervalConfig> time_and_interval;
+  std::map<uint16_t, OctetStringConfig> octet_string;
 
 } DatabaseConfig;
 
-void DatabaseConfig_in_DatabaseConfig(uint16_t all_types);
+void DatabaseConfig_in_DatabaseConfig(DatabaseConfig *pDatabaseConfig, uint16_t all_types);
 
 ////} // namespace opendnp3
 

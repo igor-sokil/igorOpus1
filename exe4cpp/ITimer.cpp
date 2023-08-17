@@ -1,3 +1,4 @@
+//#include <QtWidgets>
 #include "header.h"
 #include "ITimer.h"
 

@@ -20,62 +20,62 @@
 #ifndef OPENDNP3_UNITTESTS_APDU_HEX_BUILDERS_H
 #define OPENDNP3_UNITTESTS_APDU_HEX_BUILDERS_H
 
-#include <opendnp3/app/ClassField.h>
-#include <opendnp3/app/ControlRelayOutputBlock.h>
-#include <opendnp3/app/DNPTime.h>
-#include <opendnp3/app/IINField.h>
-#include <opendnp3/gen/FunctionCode.h>
-#include <opendnp3/gen/PointClass.h>
+#include "ClassField.h"
+#include "ControlRelayOutputBlock.h"
+#include "DNPTime.h"
+#include "IINField.h"
+#include "FunctionCode.h"
+#include "PointClass.h"
 
-#include <cstdint>
-#include <string>
+////#include <cstdint>
+////#include <string>
 
-namespace hex
-{
+////namespace hex
+////{
 // ----------- simple helpers --------
 
-std::string repeat(uint8_t value, uint16_t count);
+std::string repeat_in_APDUHexBuilders(uint8_t value, uint16_t count);
 
 // ----------- requests --------------
 
-std::string IntegrityPoll(uint8_t seq, const opendnp3::ClassField& field = opendnp3::ClassField::AllClasses());
+std::string IntegrityPoll_in_APDUHexBuilders(uint8_t seq, ClassField* field);// = opendnp3::ClassField::AllClasses());
 
-std::string ClassTask(opendnp3::FunctionCode fc,
-                      uint8_t seq,
-                      const opendnp3::ClassField& field = opendnp3::ClassField::AllClasses());
+std::string ClassTask_in_APDUHexBuilders(FunctionCode_uint8_t fc,
+    uint8_t seq,
+    ClassField* field);// = opendnp3::ClassField::AllClasses());
 
-std::string DisableUnsol(uint8_t seq, const opendnp3::ClassField& field = opendnp3::ClassField::AllEventClasses());
+std::string DisableUnsol_in_APDUHexBuilders(uint8_t seq, ClassField* field);// = opendnp3::ClassField::AllEventClasses());
 
-std::string ClassPoll(uint8_t seq, opendnp3::PointClass pc);
+std::string ClassPoll_in_APDUHexBuilders(uint8_t seq, PointClass_uint8_t pc);
 
-std::string EventPoll(uint8_t seq, const opendnp3::ClassField& field = opendnp3::ClassField::AllEventClasses());
+std::string EventPoll_in_APDUHexBuilders(uint8_t seq, ClassField* field);// = opendnp3::ClassField::AllEventClasses());
 
-std::string ClearRestartIIN(uint8_t seq);
+std::string ClearRestartIIN_in_APDUHexBuilders(uint8_t seq);
 
-std::string MeasureDelay(uint8_t seq);
+std::string MeasureDelay_in_APDUHexBuilders(uint8_t seq);
 
-std::string RecordCurrentTime(uint8_t seq);
+std::string RecordCurrentTime_in_APDUHexBuilders(uint8_t seq);
 
-std::string Control(opendnp3::FunctionCode code,
-                    uint8_t seq,
-                    const opendnp3::ControlRelayOutputBlock& crob,
-                    uint16_t index);
+std::string Control_in_APDUHexBuilders(FunctionCode_uint8_t code,
+                                       uint8_t seq,
+                                       ControlRelayOutputBlock* crob,
+                                       uint16_t index);
 
 // ----------- responses --------------
 
-std::string EmptyResponse(uint8_t seq, const opendnp3::IINField& iin = opendnp3::IINField::Empty());
+std::string EmptyResponse_in_APDUHexBuilders(uint8_t seq, IINField* iin);// = opendnp3::IINField::Empty());
 
-std::string NullUnsolicited(uint8_t seq,
-                            const opendnp3::IINField& iin = opendnp3::IINField(opendnp3::IINBit::DEVICE_RESTART));
+std::string NullUnsolicited_in_APDUHexBuilders(uint8_t seq,
+    IINField* iin);// = opendnp3::IINField(opendnp3::IINBit::DEVICE_RESTART));
 
 // ----------- confirms --------------
 
-std::string SolicitedConfirm(uint8_t seq);
+std::string SolicitedConfirm_in_APDUHexBuilders(uint8_t seq);
 
-std::string UnsolConfirm(uint8_t seq);
+std::string UnsolConfirm_in_APDUHexBuilders(uint8_t seq);
 
-std::string Confirm(uint8_t seq, bool unsol);
+std::string Confirm_in_APDUHexBuilders(uint8_t seq, boolean unsol);
 
-} // namespace hex
+////} // namespace hex
 
 #endif

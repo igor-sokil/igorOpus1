@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+//#include <QtWidgets>
 #include "header.h"
 #include "LinkContext.h"
 
@@ -91,7 +91,6 @@ LinkContext* Create_in_LinkContext_static(//const Logger& logger,
 
 boolean OnLowerLayerUp_in_LinkContext(LinkContext *pLinkContext)
 {
-  qDebug()<<"OnLowerLayerUp_in_LinkContext1";
   if (pLinkContext->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer already online");
@@ -100,21 +99,15 @@ boolean OnLowerLayerUp_in_LinkContext(LinkContext *pLinkContext)
 
   pLinkContext->isOnline = true;
 
-  qDebug()<<"OnLowerLayerUp_in_LinkContext2";
   RestartKeepAliveTimer_in_LinkContext(pLinkContext);
-  qDebug()<<"OnLowerLayerUp_in_LinkContext3";
 
 //    void OnStateChange_in_ILinkListener(ILinkListener*, LinkStatus_uint8_t value);
 ////    listener->OnStateChange(LinkStatus::UNRESET);
-  qDebug()<<"OnLowerLayerUp_in_LinkContext4";
   OnStateChange_in_ILinkListener(pLinkContext->listener, LinkStatus_UNRESET);
-  qDebug()<<"OnLowerLayerUp_in_LinkContext5";
 
 //boolean OnLowerLayerUp_in_IUpDown(IUpDown *);
 ////    upper->OnLowerLayerUp();
-  qDebug()<<"OnLowerLayerUp_in_LinkContext6";
   OnLowerLayerUp_in_IUpDown(&(pLinkContext->upper->iIUpDown));
-  qDebug()<<"OnLowerLayerUp_in_LinkContext7";
 
   return true;
 }
@@ -180,7 +173,6 @@ boolean SetTxSegment_in_LinkContext(LinkContext *pLinkContext, ITransportSegment
 ////bool LinkContext::OnTxReady()
 boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
 {
-  qDebug()<<"OnTxReady_in_LinkContext1";
   if (pLinkContext->txMode == LinkTransmitMode_Idle)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Unknown transmission callback");
@@ -197,7 +189,6 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
   TryPendingTx_in_LinkContext(pLinkContext, &(pLinkContext->pendingSecTx), false);
 ////    this->TryPendingTx(this->pendingPriTx, true);
   TryPendingTx_in_LinkContext(pLinkContext, &(pLinkContext->pendingSecTx), true);
-  qDebug()<<"OnTxReady_in_LinkContext2";
 
   // now dispatch the completion event to the correct state handler
 // теперь отправляем событие завершения правильному обработчику состояния
@@ -205,9 +196,7 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
   {
 //PriStateBase* OnTxReady_in_PriStateBase(PriStateBase*, LinkContext*);
 ////        this->pPriState = &this->pPriState->OnTxReady(*this);
-    qDebug()<<"OnTxReady_in_LinkContext3";
     pLinkContext->pPriState = OnTxReady_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext);
-    qDebug()<<"OnTxReady_in_LinkContext3.1";
   }
   else
   {
@@ -215,7 +204,6 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
 ////        this->pSecState = &this->pSecState->OnTxReady(*this);
     pLinkContext->pSecState = OnTxReady_in_SecStateBase((SecStateBase*)pLinkContext->pSecState, pLinkContext);
   }
-  qDebug()<<"OnTxReady_in_LinkContext4";
 
   return true;
 }
@@ -223,7 +211,6 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
 ////ser4cpp::rseq_t LinkContext::FormatPrimaryBufferWithUnconfirmed(const Addresses& addr, const ser4cpp::rseq_t& tpdu)
 RSeq_for_Uint16_t FormatPrimaryBufferWithUnconfirmed_in_LinkContext(LinkContext *pLinkContext, Addresses* addr, RSeq_for_Uint16_t* tpdu)
 {
-  qDebug()<<"FormatPrimaryBufferWithUnconfirmed_in_LinkContext1";
 //WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(StaticBuffer_for_LPDU_MAX_FRAME_SIZE *pStaticBuffer);
 ////    auto buffer = this->priTxBuffer.as_wseq();
   WSeq_for_Uint16_t  buffer = as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(&(pLinkContext->priTxBuffer));
@@ -232,7 +219,6 @@ RSeq_for_Uint16_t FormatPrimaryBufferWithUnconfirmed_in_LinkContext(LinkContext 
 //                                                     uint16_t aDest,
 //                                                     uint16_t aSrc,
 //                                                     RSeq_for_Uint16_t user_data);//,
-  qDebug()<<"FormatPrimaryBufferWithUnconfirmed_in_LinkContext2";
 ////    auto output
 ////        = LinkFrame::FormatUnconfirmedUserData(buffer, config.IsMaster, addr.destination, addr.source, tpdu, &logger);
   RSeq_for_Uint16_t output
@@ -347,31 +333,24 @@ void CompleteSendOperation_in_LinkContext(LinkContext *pLinkContext)
 
 //void Post_in_IExecutorExe4cpp(IExecutorExe4cpp *, void (*pAction)(void));
 ////    this->executor->post(callback);
-  qDebug()<<"CompleteSendOperation_in_LinkContext1";
   Post_in_IExecutorExe4cpp(pLinkContext->executor, callback_in_LinkContext);
-  qDebug()<<"CompleteSendOperation_in_LinkContext2";
 }
 
 void TryStartTransmission_in_LinkContext(LinkContext *pLinkContext)
 {
-  qDebug()<<"TryStartTransmission_in_LinkContext1";
   if (pLinkContext->keepAliveTimeout)
   {
 //PriStateBase* TrySendRequestLinkStatus_in_PriStateBase(PriStateBase*, LinkContext*);
 ////        this->pPriState = &pPriState->TrySendRequestLinkStatus(*this);
-    qDebug()<<"TryStartTransmission_in_LinkContext2";
     pLinkContext->pPriState = TrySendRequestLinkStatus_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext);
   }
 
-  qDebug()<<"TryStartTransmission_in_LinkContext3";
   if (pLinkContext->pSegments)
   {
 //PriStateBase* TrySendUnconfirmed_in_PriStateBase(PriStateBase*, LinkContext*, ITransportSegment* segments);
 ////        this->pPriState = &pPriState->TrySendUnconfirmed(*this, *pSegments);
-    qDebug()<<"TryStartTransmission_in_LinkContext4";
     pLinkContext->pPriState = TrySendUnconfirmed_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext, pLinkContext->pSegments);
   }
-  qDebug()<<"TryStartTransmission_in_LinkContext5";
 }
 
 void OnKeepAliveTimeout_in_LinkContext(LinkContext *pLinkContext)
@@ -455,9 +434,7 @@ void RestartKeepAliveTimer_in_LinkContext(LinkContext *pLinkContext)
 //    TimerExe4cpp keepAliveTimer;
 //boolean cancel_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp);
 ////    this->keepAliveTimer.cancel();
-  qDebug()<<"RestartKeepAliveTimer_in_LinkContext1";
   cancel_in_TimerExe4cpp(&(pLinkContext->keepAliveTimer));
-  qDebug()<<"RestartKeepAliveTimer_in_LinkContext1.1";
 
 //uint64_t Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
 ////    this->lastMessageTimestamp = Timestamp(this->executor->get_time());
@@ -479,11 +456,8 @@ void RestartKeepAliveTimer_in_LinkContext(LinkContext *pLinkContext)
 ////        }
 ////    });
   pPointerGlobal1 = pLinkContext;
-  qDebug()<<"RestartKeepAliveTimer_in_LinkContext2";
 ///*
-  qDebug()<<"RestartKeepAliveTimer_in_LinkContext1";
   pLinkContext->keepAliveTimer =  Start_in_IExecutorExe4cpp(pLinkContext->executor, expiration, callback3_in_LinkContext);
-  qDebug()<<"RestartKeepAliveTimer_in_LinkContext2";
 //*/
 //qDebug()<<"RestartKeepAliveTimer_in_LinkContext3";
 }

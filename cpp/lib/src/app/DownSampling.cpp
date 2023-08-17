@@ -3,13 +3,13 @@
 
 boolean Apply_in_DownSampling_for_uint32(double src, uint32_t *target)
 {
-  if (src > TARGET_MAX_for_double)
+  if (src > (uint32_t)TARGET_MAX_for_uint32)
   {
 ////            target = TARGET_MAX;
     *target = TARGET_MAX_for_uint32;
     return true;
   }
-  else if (src < TARGET_MIN_for_double)
+  else if (src < (uint32_t)TARGET_MIN_for_uint32)
   {
 ////            target = TARGET_MIN;
     *target = TARGET_MIN_for_uint32;
@@ -25,13 +25,13 @@ boolean Apply_in_DownSampling_for_uint32(double src, uint32_t *target)
 
 boolean Apply_in_DownSampling_for_uint16(double src, uint16_t *target)
 {
-  if (src > TARGET_MAX_for_double)
+  if (src > (uint16_t)TARGET_MAX_for_uint16)
   {
 ////            target = TARGET_MAX;
     *target = TARGET_MAX_for_uint16;
     return true;
   }
-  else if (src < TARGET_MIN_for_double)
+  else if (src < (uint16_t)TARGET_MIN_for_uint16)
   {
 ////            target = TARGET_MIN;
     *target = TARGET_MIN_for_uint16;
@@ -47,13 +47,13 @@ boolean Apply_in_DownSampling_for_uint16(double src, uint16_t *target)
 
 boolean Apply_in_DownSampling_for_Float32(double src, float *target)
 {
-  if (src > TARGET_MAX_for_double)
+  if (src > TARGET_MAX_for_float)
   {
 ////            target = TARGET_MAX;
     *target = TARGET_MAX_for_float;
     return true;
   }
-  else if (src < TARGET_MIN_for_double)
+  else if (src < TARGET_MIN_for_float)
   {
 ////            target = TARGET_MIN;
     *target = TARGET_MIN_for_float;

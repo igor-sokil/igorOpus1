@@ -18,127 +18,140 @@
  * limitations under the License.
  */
 
-#include "dnp3mocks/DatabaseHelpers.h"
+#include <QApplication>
+#include "header.h"
+#include "DatabaseHelpers.h"
 
-namespace configure
+////namespace configure
+////{
+
+////namespace by_count_of
+////{
+////    opendnp3::DatabaseConfig all_types(uint16_t num)
+DatabaseConfig all_types_in_DatabaseHelpers(uint16_t num)
 {
-
-namespace by_count_of
-{
-    opendnp3::DatabaseConfig all_types(uint16_t num)
-    {
-        return opendnp3::DatabaseConfig(num);
-    }
-
-    opendnp3::DatabaseConfig binary_input(uint16_t num)
-    {
-        return database_by_sizes(num, 0, 0, 0, 0, 0, 0, 0, 0);
-    }
-
-    opendnp3::DatabaseConfig counter(uint16_t num, bool with_frozen)
-    {
-        auto num_frozen = with_frozen ? num : 0;
-        return database_by_sizes(0, 0, 0, num, num_frozen, 0, 0, 0, 0);
-    }
-
-    opendnp3::DatabaseConfig binary_output_status(uint16_t num)
-    {
-        return database_by_sizes(0, 0, 0, 0, 0, num, 0, 0, 0);
-    }
-
-    opendnp3::DatabaseConfig analog_input(uint16_t num)
-    {
-        return database_by_sizes(0, 0, num, 0, 0, 0, 0, 0, 0);
-    }
-
-    opendnp3::DatabaseConfig analog_output_status(uint16_t num)
-    {
-        return database_by_sizes(0, 0, 0, 0, 0, 0, num, 0, 0);
-    }
-
-    opendnp3::DatabaseConfig time_and_interval(uint16_t num)
-    {
-        return database_by_sizes(0, 0, 0, 0, 0, 0, 0, num, 0);
-    }
-
-    opendnp3::DatabaseConfig octet_string(uint16_t num)
-    {
-        return database_by_sizes(0, 0, 0, 0, 0, 0, 0, 0, num);
-    }
-
-} // namespace by_count_of
-
-opendnp3::DatabaseConfig from(std::map<uint16_t, opendnp3::AnalogConfig> map)
-{
-    opendnp3::DatabaseConfig config;
-    config.analog_input = std::move(map);
-    return config;
+//void DatabaseConfig_in_DatabaseConfig(uint16_t all_types);
+////        return opendnp3::DatabaseConfig(num);
+  DatabaseConfig dDatabaseConfig;
+  DatabaseConfig_in_DatabaseConfig(&dDatabaseConfig, num);
+  return dDatabaseConfig;
 }
 
-opendnp3::DatabaseConfig from(std::map<uint16_t, opendnp3::BinaryConfig> map)
+DatabaseConfig binary_input_in_DatabaseHelpers(uint16_t num)
 {
-    opendnp3::DatabaseConfig config;
-    config.binary_input = std::move(map);
-    return config;
+  return database_by_sizes_in_DatabaseHelpers(num, 0, 0, 0, 0, 0, 0, 0, 0);
 }
 
-opendnp3::AnalogConfig analog(opendnp3::StaticAnalogVariation variation)
+DatabaseConfig counter_in_DatabaseHelpers(uint16_t num, boolean with_frozen)
 {
-    opendnp3::AnalogConfig config;
-    config.svariation = variation;
-    return config;
+  uint16_t num_frozen = with_frozen ? num : 0;
+  return database_by_sizes_in_DatabaseHelpers(0, 0, 0, num, num_frozen, 0, 0, 0, 0);
 }
 
-opendnp3::DatabaseConfig database_by_sizes(uint16_t num_binary,
-                                           uint16_t num_double_binary,
-                                           uint16_t num_analog,
-                                           uint16_t num_counter,
-                                           uint16_t num_frozen_counter,
-                                           uint16_t num_binary_output_status,
-                                           uint16_t num_analog_output_status,
-                                           uint16_t num_time_and_interval,
-                                           uint16_t num_octet_string)
+DatabaseConfig binary_output_status_in_DatabaseHelpers(uint16_t num)
 {
-    opendnp3::DatabaseConfig config;
-
-    for (uint16_t i = 0; i < num_binary; ++i)
-    {
-        config.binary_input[i] = {};
-    }
-    for (uint16_t i = 0; i < num_double_binary; ++i)
-    {
-        config.double_binary[i] = {};
-    }
-    for (uint16_t i = 0; i < num_analog; ++i)
-    {
-        config.analog_input[i] = {};
-    }
-    for (uint16_t i = 0; i < num_counter; ++i)
-    {
-        config.counter[i] = {};
-    }
-    for (uint16_t i = 0; i < num_frozen_counter; ++i)
-    {
-        config.frozen_counter[i] = {};
-    }
-    for (uint16_t i = 0; i < num_binary_output_status; ++i)
-    {
-        config.binary_output_status[i] = {};
-    }
-    for (uint16_t i = 0; i < num_analog_output_status; ++i)
-    {
-        config.analog_output_status[i] = {};
-    }
-    for (uint16_t i = 0; i < num_time_and_interval; ++i)
-    {
-        config.time_and_interval[i] = {};
-    }
-    for (uint16_t i = 0; i < num_octet_string; ++i)
-    {
-        config.octet_string[i] = {};
-    }
-
-    return config;
+  return database_by_sizes_in_DatabaseHelpers(0, 0, 0, 0, 0, num, 0, 0, 0);
 }
 
-} // namespace configure
+DatabaseConfig analog_input_in_DatabaseHelpers(uint16_t num)
+{
+  return database_by_sizes_in_DatabaseHelpers(0, 0, num, 0, 0, 0, 0, 0, 0);
+}
+
+DatabaseConfig analog_output_status_in_DatabaseHelpers(uint16_t num)
+{
+  return database_by_sizes_in_DatabaseHelpers(0, 0, 0, 0, 0, 0, num, 0, 0);
+}
+
+DatabaseConfig time_and_interval_in_DatabaseHelpers(uint16_t num)
+{
+  return database_by_sizes_in_DatabaseHelpers(0, 0, 0, 0, 0, 0, 0, num, 0);
+}
+
+DatabaseConfig octet_string_in_DatabaseHelpers(uint16_t num)
+{
+  return database_by_sizes_in_DatabaseHelpers(0, 0, 0, 0, 0, 0, 0, 0, num);
+}
+
+////} // namespace by_count_of
+
+////opendnp3::DatabaseConfig from(std::map<uint16_t, opendnp3::AnalogConfig> map)
+DatabaseConfig from_AnalogConfig_in_DatabaseHelpers(std::map<uint16_t, AnalogConfig> map)
+{
+  DatabaseConfig config;
+  config.analog_input = std::move(map);
+  return config;
+}
+
+////opendnp3::DatabaseConfig from(std::map<uint16_t, opendnp3::BinaryConfig> map)
+DatabaseConfig from_BinaryConfig_in_DatabaseHelpers(std::map<uint16_t, BinaryConfig> map)
+{
+  DatabaseConfig config;
+  config.binary_input = std::move(map);
+  return config;
+}
+
+AnalogConfig analog_in_DatabaseHelpers(StaticAnalogVariation_uint8_t variation)
+{
+////    opendnp3::AnalogConfig config;
+  AnalogConfig config;
+  AnalogConfig_in_AnalogConfig(&config);
+
+////    config.svariation = variation;
+  config.dDeadbandConfig_for_AnalogInfo.eEventConfig.svariation = variation;
+  return config;
+}
+
+DatabaseConfig database_by_sizes_in_DatabaseHelpers(uint16_t num_binary,
+    uint16_t num_double_binary,
+    uint16_t num_analog,
+    uint16_t num_counter,
+    uint16_t num_frozen_counter,
+    uint16_t num_binary_output_status,
+    uint16_t num_analog_output_status,
+    uint16_t num_time_and_interval,
+    uint16_t num_octet_string)
+{
+  DatabaseConfig config;
+
+  for (uint16_t i = 0; i < num_binary; ++i)
+  {
+    config.binary_input[i] = {};
+  }
+  for (uint16_t i = 0; i < num_double_binary; ++i)
+  {
+    config.double_binary[i] = {};
+  }
+  for (uint16_t i = 0; i < num_analog; ++i)
+  {
+    config.analog_input[i] = {};
+  }
+  for (uint16_t i = 0; i < num_counter; ++i)
+  {
+    config.counter[i] = {};
+  }
+  for (uint16_t i = 0; i < num_frozen_counter; ++i)
+  {
+    config.frozen_counter[i] = {};
+  }
+  for (uint16_t i = 0; i < num_binary_output_status; ++i)
+  {
+    config.binary_output_status[i] = {};
+  }
+  for (uint16_t i = 0; i < num_analog_output_status; ++i)
+  {
+    config.analog_output_status[i] = {};
+  }
+  for (uint16_t i = 0; i < num_time_and_interval; ++i)
+  {
+    config.time_and_interval[i] = {};
+  }
+  for (uint16_t i = 0; i < num_octet_string; ++i)
+  {
+    config.octet_string[i] = {};
+  }
+
+  return config;
+}
+
+////} // namespace configure

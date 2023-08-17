@@ -5,7 +5,7 @@
 
 void  LinkParserTest_in_LinkParserTest(LinkParserTest *pLinkParserTest, boolean aImmediate)// = false)
 {
-UNUSED(aImmediate);
+  UNUSED(aImmediate);
 //// : log(), sink(), parser(log.logger) {}
   MockFrameSink_in_MockFrameSink(&(pLinkParserTest->sink));
   LinkLayerParser_in_LinkLayerParser(&(pLinkParserTest->parser));//const Logger& logger);

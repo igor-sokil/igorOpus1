@@ -60,6 +60,7 @@ debug/IDnpTimeSource.o
 debug/ICommandHandler.o
 debug/IOutstationApplication.o
 debug/IOutstation.o
+debug/MeasurementConfig.o
 debug/OutstationParams.o
 debug/OutstationConfig.o
 debug/StaticTypeBitfield.o
@@ -155,6 +156,7 @@ debug/TxBuffer.o
 debug/ApplicationIIN.o
 debug/AssignClassHandler.o
 debug/Database.o
+debug/DatabaseConfig.o
 debug/DeferredRequest.o
 debug/DeferredRequest_part2.o
 debug/ControlState.o
@@ -178,6 +180,15 @@ debug/ResponseContext.o
 debug/RequestHistory.o
 debug/SimpleCommandHandler.o
 debug/StaticDataCell.o
+debug/StaticDataMap_for_DoubleBitBinary.o
+debug/StaticDataMap_for_Binary.o
+debug/StaticDataMap_for_BinaryOutputStatus.o
+debug/StaticDataMap_for_Counter.o
+debug/StaticDataMap_for_FrozenCounter.o
+debug/StaticDataMap_for_Analog.o
+debug/StaticDataMap_for_AnalogOutputStatus.o
+debug/StaticDataMap_for_OctetString.o
+debug/StaticDataMap_for_TimeAndInterval.o
 debug/TimeSyncState.o
 debug/NumRetries.o
 debug/OctetStringSerializer.o
@@ -252,6 +263,7 @@ debug/Group50.o
 debug/Group51.o
 debug/Group52.o
 debug/Group60.o
+debug/APDUHexBuilders.o
 debug/APDUHelpers.o
 debug/BufferHelpers.o
 debug/CopyableBuffer.o
@@ -266,6 +278,7 @@ debug/MockLinkListener.o
 debug/MockLowerLayer.o
 debug/MockFrameSink.o
 debug/MockTransportLayer.o
+debug/DatabaseHelpers.o
 debug/DataSink.o
 debug/MainWindow.o
 debug/loghandler.o

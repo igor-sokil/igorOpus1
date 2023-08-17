@@ -22,7 +22,7 @@
 #include "APDUHelpers.h"
 
 ////uint8_t APDUHelpers::fixedBuffer[SIZE];
-    static uint8_t fixedBuffer_in_APDUHelpers[SIZE_in_APDUHelpers];
+static uint8_t fixedBuffer_in_APDUHelpers[SIZE_in_APDUHelpers];
 /*
     APDURequest  Request_in_APDUHelpers_static(FunctionCode_uint8_t code, uint32_t size);// = SIZE);
 
@@ -32,45 +32,45 @@ APDURequest Request_in_APDUHelpers_static(FunctionCode_uint8_t code, uint32_t si
 {
 ////    assert(size <= SIZE);
 ////    ser4cpp::wseq_t buffer(fixedBuffer, size);
-    WSeq_for_Uint16_t buffer;
-    WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&buffer, fixedBuffer_in_APDUHelpers, size);
+  WSeq_for_Uint16_t buffer;
+  WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&buffer, fixedBuffer_in_APDUHelpers, size);
 ////    opendnp3::APDURequest request(buffer);
-    APDURequest request;
-    APDURequest_in_APDURequestOver2(&request, &buffer);
+  APDURequest request;
+  APDURequest_in_APDURequestOver2(&request, &buffer);
 
 ////    request.SetFunction(code);
-    SetFunction_in_APDUWrapper(&request.aAPDUWrapper, code);
+  SetFunction_in_APDUWrapper(&request.aAPDUWrapper, code);
 
 ////    request.SetControl(opendnp3::AppControlField(true, true, false, false, 0));
-    AppControlField aAppControlField;
-    AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, false, false, 0);
-    SetControl_in_APDUWrapper(&request.aAPDUWrapper, aAppControlField);
+  AppControlField aAppControlField;
+  AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, false, false, 0);
+  SetControl_in_APDUWrapper(&request.aAPDUWrapper, aAppControlField);
 
-    return request;
+  return request;
 }
 
 APDUResponse Response_in_APDUHelpers_static(uint32_t size)
 {
 ////    assert(size <= SIZE);
 ////    ser4cpp::wseq_t buffer(fixedBuffer, size);
-    WSeq_for_Uint16_t buffer;
-    WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&buffer, fixedBuffer_in_APDUHelpers, size);
+  WSeq_for_Uint16_t buffer;
+  WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&buffer, fixedBuffer_in_APDUHelpers, size);
 
 ////    opendnp3::APDUResponse response(buffer);
-    APDUResponse response;
-    APDUResponse_in_APDUResponse(&response, &buffer);
+  APDUResponse response;
+  APDUResponse_in_APDUResponse(&response, &buffer);
 
 ////    response.SetFunction(opendnp3::FunctionCode::RESPONSE);
-    SetFunction_in_APDUWrapper(&response.aAPDUWrapper, FunctionCode_RESPONSE);
+  SetFunction_in_APDUWrapper(&response.aAPDUWrapper, FunctionCode_RESPONSE);
 
 ////    response.SetControl(opendnp3::AppControlField(true, true, false, false, 0));
-    AppControlField aAppControlField;
-    AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, false, false, 0);
-    SetControl_in_APDUWrapper(&response.aAPDUWrapper, aAppControlField);
+  AppControlField aAppControlField;
+  AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, false, false, 0);
+  SetControl_in_APDUWrapper(&response.aAPDUWrapper, aAppControlField);
 
 ////    response.SetIIN(opendnp3::IINField::Empty());
-    IINField iIINField = Empty_in_IINField_static();
-    SetIIN_in_APDUResponse(&response, &iIINField);
+  IINField iIINField = Empty_in_IINField_static();
+  SetIIN_in_APDUResponse(&response, &iIINField);
 
-    return response;
+  return response;
 }

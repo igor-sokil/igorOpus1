@@ -69,6 +69,13 @@
 ////{
 
 //================================================ControlRelayOutputBlock=================================================================
+////template<class CountType, class ValueType>
+boolean WriteSingleIndexedValue_for_UInt16_ControlRelayOutputBlock_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_ControlRelayOutputBlock* serializer,
+    ControlRelayOutputBlock* value,
+    uint16_t index);
+
 //--------------------------------IterateOverCount_for_UInt16_Ananlog_in_HeaderWriter--------------------------------------------------------
 ////    template<class CountType, class WriteType>
 ////    CountWriteIterator<CountType, WriteType> IterateOverCount(QualifierCode qc,

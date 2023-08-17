@@ -1,7 +1,38 @@
 #include "header.h"
 #include "HeaderWriter_for_ControlRelayOutputBlock.h"
 
-//#include "SerializationTemplates.h"
+////template<class CountType, class ValueType>
+////bool HeaderWriter::WriteSingleIndexedValue(QualifierCode qc,
+////                                           const DNP3Serializer<ValueType>& serializer,
+////                                           const ValueType& value,
+////                                           typename CountType::type_t index)
+boolean WriteSingleIndexedValue_for_UInt16_ControlRelayOutputBlock_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_ControlRelayOutputBlock* serializer,
+    ControlRelayOutputBlock* value,
+    uint16_t index)
+{
+////    const auto reserve_size = 2 * CountType::size + serializer.get_size();
+  uint16_t reserve_size = size_in_UInt16 +
+                          get_size_in_Serializer_for_ControlRelayOutputBlock(&(serializer->sSerializer_for_ControlRelayOutputBlock));
+
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter, ID_in_DNP3Serializer_for_ControlRelayOutputBlock(serializer), qc, reserve_size))
+  {
+//boolean write_to_in_UInt16_static(WSeq_for_Uint16_t *dest, uint16_t value);
+////        CountType::write_to(*position, 1);     // write the count
+    write_to_in_UInt16_static(pHeaderWriter->position, 1);     // write the count
+////        CountType::write_to(*position, index); // write the index
+    write_to_in_UInt16_static(pHeaderWriter->position, index); // write the index
+
+//boolean write_in_Serializer_for_ControlRelayOutputBlock(Serializer_for_ControlRelayOutputBlock *pSerializer_for_ControlRelayOutputBlock, ControlRelayOutputBlock *value, WSeq_for_Uint16_t *buffer);
+////        serializer.write(value, *position);
+    write_in_Serializer_for_ControlRelayOutputBlock(&(serializer->sSerializer_for_ControlRelayOutputBlock), value, pHeaderWriter->position);
+    return true;
+  }
+  else
+    return false;
+}
 
 //---------------------------------------------IterateOverCount_for_UInt16_ControlRelayOutputBlock_in_HeaderWriter--------------------------------------------
 

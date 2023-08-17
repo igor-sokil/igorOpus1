@@ -43,7 +43,7 @@
 ////class LinkLayerTest : public opendnp3::ILinkTx
 typedef struct
 {
- ILinkTx iILinkTx;
+  ILinkTx iILinkTx;
 ////public:
 ////    LinkLayerTest(const opendnp3::LinkConfig& config);
 
@@ -57,7 +57,7 @@ typedef struct
 ////                 uint16_t source,
 ////                 const ser4cpp::rseq_t& userdata = ser4cpp::rseq_t::empty());
 
-    // ILinkTx interface
+  // ILinkTx interface
 ////    void BeginTransmit(const ser4cpp::rseq_t& buffer, opendnp3::ILinkSession& context) final;
 
 ////    static opendnp3::LinkLayerConfig DefaultConfig();
@@ -66,43 +66,43 @@ typedef struct
 ////    std::shared_ptr<exe4cpp::MockExecutor> exe;
 ////    std::shared_ptr<MockLinkListener> listener;
 ////    std::shared_ptr<MockTransportLayer> upper;
-    MockExecutor exe;
-    MockLinkListener listener;
-    MockTransportLayer upper;
+  MockExecutor exe;
+  MockLinkListener listener;
+  MockTransportLayer upper;
 
-    LinkLayer link;
+  LinkLayer link;
 
 ////    std::string PopLastWriteAsHex();
 ////    uint32_t NumTotalWrites();
 
 ////private:
-    uint32_t numTotalWrites;
+  uint32_t numTotalWrites;
 
 ////    std::deque<std::string> writeQueue;
-    std::deque<std::string> writeQueue;
+  std::deque<std::string> writeQueue;
 } LinkLayerTest;
 
-  void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerConfig* config);
-  LinkLayerConfig DefaultConfig_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
+void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerConfig* config);
+LinkLayerConfig DefaultConfig_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
 
 ////    LinkLayerTest(const opendnp3::LinkLayerConfig& config = DefaultConfig());
 
-  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
-                 LinkFunction_uint8_t func,
-                 boolean isMaster,
-                 boolean fcb,
-                 boolean fcvdfc,
-                 uint16_t dest,
-                 uint16_t source,
-                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
+boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
+                                 LinkFunction_uint8_t func,
+                                 boolean isMaster,
+                                 boolean fcb,
+                                 boolean fcvdfc,
+                                 uint16_t dest,
+                                 uint16_t source,
+                                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
 
-    std::string PopLastWriteAsHex_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
+std::string PopLastWriteAsHex_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
 
 uint32_t NumTotalWrites_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
 
-    // ILinkTx interface
-   void BeginTransmit_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, RSeq_for_Uint16_t* buffer, ILinkSession* context);
-   void BeginTransmit_in_LinkLayerTest_override(void *pILinkTx, RSeq_for_Uint16_t* buffer, ILinkSession* context);
+// ILinkTx interface
+void BeginTransmit_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, RSeq_for_Uint16_t* buffer, ILinkSession* context);
+void BeginTransmit_in_LinkLayerTest_override(void *pILinkTx, RSeq_for_Uint16_t* buffer, ILinkSession* context);
 
 
 #endif

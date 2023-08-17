@@ -44,6 +44,7 @@ enum LinkBroadcastAddress//// : uint16_t
 };
 
 /// Indices for use with buffers containing link headers
+/// Индексы для использования с буферами, содержащими заголовки ссылок
 #define LinkHeaderIndex_uint8_t  uint8_t
 enum LinkHeaderIndex //: uint8_t
 {
@@ -57,6 +58,7 @@ enum LinkHeaderIndex //: uint8_t
 };
 
 /// Masks for use with the CONTROL byte
+/// Маски для использования с байтом CONTROL
 #define ControlMask_uint8_t  uint8_t
 enum ControlMask //: uint8_t
 {
