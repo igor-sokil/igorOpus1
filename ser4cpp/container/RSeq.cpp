@@ -1,3 +1,4 @@
+//#include <QtWidgets>
 #include "header.h"
 #include "RSeq.h"
 #include <string.h>
@@ -52,6 +53,7 @@ RSeq_for_Uint16_t skip_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t c
   RSeq_for_Uint16_t rRSeq;
 ////    auto num = ser4cpp::min(this->length(), count);
   uint16_t num = min_for_Uint16_t(length_in_HasLength_for_Uint16_t(&(pRSeq->hHasLength)), count);
+
   RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&rRSeq, pRSeq->buffer_ + num, length_in_HasLength_for_Uint16_t(&(pRSeq->hHasLength)) - num);
 ////    return RSeq(this->buffer_ + num, this->length() - num);
   return rRSeq;

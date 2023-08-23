@@ -28,22 +28,22 @@
 #define IINBit_uint8_t uint8_t
 enum IINBit
 {
-  IINBit_BROADCAST = 0,
-  IINBit_CLASS1_EVENTS,
-  IINBit_CLASS2_EVENTS,
-  IINBit_CLASS3_EVENTS,
-  IINBit_NEED_TIME,
-  IINBit_LOCAL_CONTROL,
-  IINBit_DEVICE_TROUBLE,
-  IINBit_DEVICE_RESTART,
-  IINBit_FUNC_NOT_SUPPORTED,
-  IINBit_OBJECT_UNKNOWN,
-  IINBit_PARAM_ERROR,
-  IINBit_EVENT_BUFFER_OVERFLOW,
-  IINBit_ALREADY_EXECUTING,
-  IINBit_CONFIG_CORRUPT,
-  IINBit_RESERVED1,
-  IINBit_RESERVED2 = 15
+  IINBit_BROADCAST = 0,              //0
+  IINBit_CLASS1_EVENTS,              //1
+  IINBit_CLASS2_EVENTS,              //2
+  IINBit_CLASS3_EVENTS,              //3
+  IINBit_NEED_TIME,                  //4
+  IINBit_LOCAL_CONTROL,              //5
+  IINBit_DEVICE_TROUBLE,             //6
+  IINBit_DEVICE_RESTART,             //7
+  IINBit_FUNC_NOT_SUPPORTED,         //8
+  IINBit_OBJECT_UNKNOWN,             //9
+  IINBit_PARAM_ERROR,                //10
+  IINBit_EVENT_BUFFER_OVERFLOW,      //11
+  IINBit_ALREADY_EXECUTING,          //12
+  IINBit_CONFIG_CORRUPT,             //13
+  IINBit_RESERVED1,                  //14
+  IINBit_RESERVED2 = 15              //15
 };
 
 /** DNP3 two-byte IIN field.

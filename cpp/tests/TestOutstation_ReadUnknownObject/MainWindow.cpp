@@ -3,7 +3,7 @@
 #include <QtWidgets>
 #include "key_filter.h"
 
-//#include "header.h"
+#include "header.h"
 
 #include "MainWindow.h"
 #include "loghandler.h"
@@ -14,7 +14,9 @@ LogHandler loghandler;//логирование
 
 MainWindow::MainWindow(QWidget *parent): QWidget(parent)
 {
-  setWindowTitle(QString::fromLocal8Bit("FatFS"));
+  setWindowTitle(QString::fromLocal8Bit("qt_dnp3"));
+//  setWindowFlag(QtCore.Qt.WindowStaysOnTopHint)
+  setWindowFlags(Qt::WindowStaysOnTopHint);
 
   QFont tabFont = QFont("Times", 14, QFont::Normal);
 
@@ -168,7 +170,7 @@ void MiniButtonWidget::freeClicked()
 //  func20ConfigDiskretRegistrator();//комтрейд config дикр регистратора
 }//freeClicked()
 
-void loghandler_List_for_EventRecord();
+//void loghandler_List_for_EventRecord();
 void MiniButtonWidget::downClicked()
 {
   qDebug()<<"BIT_KEY_DOWN";
@@ -177,15 +179,23 @@ void MiniButtonWidget::downClicked()
 //  periodical_operations();//один оборот
 }//downClicked()
 
-#include "Message.h"
-void inspect_Message(const char * title, Message *pMessage);
-extern Message mMessage1_global_in_MockLowerLayer;
 
-void loghandler_EvenLists();
+void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField);
+void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest);
+void inspect_Message(Memory_Message* pMemory_Message);
+void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser);
 void MiniButtonWidget::upClicked()
 {
   qDebug()<<"BIT_KEY_UP";
-  inspect_Message("Moc", &mMessage1_global_in_MockLowerLayer);
+ if(pMemory_Message_1) inspect_Message(pMemory_Message_1);
+ if(pMemory_Message_2) inspect_Message(pMemory_Message_2);
+ if(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1)inspect_Result_for_APDUHeader_in_APDUHeaderParser(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1);
+ if(pMemory_ParsedRequest_1)inspect_ParsedRequest(pMemory_ParsedRequest_1);
+ if(pMemory_PairSer4cpp_for_IINField_AppControlField_1)inspect_PairSer4cpp_for_IINField_AppControlField(pMemory_PairSer4cpp_for_IINField_AppControlField_1);
+
+//  inspect_Message(titleGlobal_1, memoryGlobal_1);
+//  inspect_Message(titleGlobal_2, memoryGlobal_2);
+//  inspect_Message("Moc", &mMessage1_global_in_MockLowerLayer);
 // loghandler_EvenLists();
 //  new_state_keyboard |= (1<<BIT_KEY_UP);
 //  periodical_operations();//один оборот

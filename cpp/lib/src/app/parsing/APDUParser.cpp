@@ -29,8 +29,7 @@
 
 ////#include "opendnp3/gen/QualifierCode.h"
 ////#include "opendnp3/logging/LogLevels.h"
-
-#include <string.h>
+#include <QtWidgets>
 #include "header.h"
 #include "APDUParser.h"
 
@@ -44,6 +43,7 @@
 
 #include "QualifierCode.h"
 //#include "opendnp3/logging/LogLevels.h"
+#include <string.h>
 
 ////namespace opendnp3
 ////{
@@ -63,6 +63,8 @@ ParseResult_uint8_t Parse_in_APDUParser_static(
 //                              Logger* pLogger,
 //                              ParserSettings settings)
 {
+qDebug()<<"";
+qDebug()<<"Parse_in_APDUParser_static1";
 //    ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
 //                             RSeq_for_Uint16_t *buffer,
 //                                       Logger* pLogger,
@@ -121,14 +123,19 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
   IAPDUHandler* pHandler,
   IWhiteList* pWhiteList)
 {
+qDebug()<<"";
+qDebug()<<"ParseHeader_in_APDUParser_static1";
   ObjectHeader header;
 //    ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader *header, RSeq_for_Uint16_t *buffer);////, Logger* pLogger);
   ParseResult_uint8_t result = ParseObjectHeader_in_ObjectHeaderParser_static(&header, buffer);//, pLogger);
+qDebug()<<"ParseResult_uint8_t result ="<<result;
+
   if (result != ParseResult_OK)
   {
     return result;
   }
 
+qDebug()<<"ParseHeader_in_APDUParser_static2";
   GroupVariationRecord GV = GetRecord_in_GroupVariationRecord_static(header.group, header.variation);
 
   if (GV.enumeration == GroupVariation_UNKNOWN)
@@ -139,6 +146,7 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
 
   // if a white-list is defined and it doesn't validate, exit early
 ////    if (pWhiteList && !pWhiteList->IsAllowed(count, GV.enumeration, QualifierCodeSpec::from_type(header.qualifier)))
+qDebug()<<"ParseHeader_in_APDUParser_static3";
   if(pWhiteList && !IsAllowed_in_IWhiteList(pWhiteList, count, GV.enumeration, header.qualifier))//from_type_in_QualifierCodeSpec(header.qualifier)))
   {
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Header (%i) w/ Object (%i,%i) and qualifier (%i) failed whitelist",
@@ -151,6 +159,7 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
   HeaderRecord_in_HeaderRecordOver2(&hHeaderRecord,
                                     &GV,
                                     header.qualifier, count);
+qDebug()<<"ParseHeader_in_APDUParser_static4";
   return ParseQualifier_in_APDUParser_static(buffer, /*pLogger,*/ &hHeaderRecord/*HeaderRecord(GV, header.qualifier, count)*/, /*settings,*/ pHandler);
 }
 

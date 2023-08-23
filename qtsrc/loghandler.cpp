@@ -55,6 +55,15 @@ void LogHandler::logHandlerStampInteger(const char * title, int data)
   LogEntry(QString(str_response.toUpper()));
 //  LogEntry("");
 }//logHandlerStampInteger(const char * title, int data)
+void LogHandler::logHandlerStampInteger32(const char * title, int data)
+{
+  LogEntryShort(QString::fromLocal8Bit(title));
+  QString str_response = "";//"====";
+  QString insertStr = ((QString("0000000%1").arg(QString::number(data, 10))).right(8));
+  str_response.append(insertStr);
+  LogEntry(QString(str_response.toUpper()));
+//  LogEntry("");
+}//logHandlerStampInteger32(const char * title, int data)
 
 void LogHandler::logHandlerStampArray(const char * title, unsigned int *data, int rang_count)
 {
@@ -69,3 +78,17 @@ void LogHandler::logHandlerStampArray(const char * title, unsigned int *data, in
   LogEntry("");
   LogEntry("");
 }//logHandlerStampArray(const char * title, unsigned int *data, int rang_count)
+
+void LogHandler::logHandlerStampCharArray(unsigned char *data, int rang_count)
+{
+//  LogEntry(appendTimeStamp(QString::fromLocal8Bit(title)));
+//  LogEntryShort("====");
+  for(int i=0; i<rang_count; i++)
+  {
+     QString insertStr = ((QString("0%1").arg(QString::number(data[i], 16))).right(2));
+     loghandler.LogEntryShort(QString(insertStr.toUpper()));
+     loghandler.LogEntryShort(" ");
+  }//for
+  LogEntry("");
+//  LogEntry("");
+}//logHandlerStampCharArray(unsigned char *data, int rang_count)

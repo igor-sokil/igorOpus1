@@ -1,6 +1,6 @@
 
-INCLUDEPATH  += ..\..\..\qtsrc
-INCLUDEPATH  += ..\..\..\cpp\lib\inspect
+INCLUDEPATH  += ..\..\..\cpp\inspect
+
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\app
 INCLUDEPATH  += ..\..\..\cpp\lib\include\opendnp3\app\parsing
@@ -28,7 +28,7 @@ INCLUDEPATH  += ..\..\..\ser4cpp\serialization
 
 INCLUDEPATH  += ..\..\..\exe4cpp
 INCLUDEPATH  += ..\..\..\cpp\tests\unit\utils
-INCLUDEPATH  += cpp\tests\dnp3mocks\include\dnp3mocks
+INCLUDEPATH  += ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks
 
 HEADERS       = ..\..\..\qtsrc\loghandler.h \
 		..\..\..\qtsrc\key_filter.h \
@@ -61,7 +61,10 @@ HEADERS       = ..\..\..\qtsrc\loghandler.h \
                 ..\..\..\cpp\lib\src\app\APDUHeader.h \
                 ..\..\..\cpp\lib\src\app\Serializer.h 
 
-SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
+SOURCES       =  ..\..\..\cpp\inspect\MemoryInspect.cpp \
+                ..\..\..\cpp\inspect\Inspect_display.cpp
+
+SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                  ..\..\..\ser4cpp\util\HexConversions.cpp \
                  ..\..\..\ser4cpp\container\HasLength.cpp \
                  ..\..\..\ser4cpp\container\RSeq.cpp \
@@ -362,8 +365,9 @@ SOURCES       =  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\tests\dnp3mocks\src\MockFrameSink.cpp \
                 ..\..\..\cpp\tests\dnp3mocks\src\MockTransportLayer.cpp \
                 ..\..\..\cpp\tests\dnp3mocks\src\DatabaseHelpers.cpp \
-                ..\..\..\cpp\tests\dnp3mocks\src\DataSink.cpp \
-                \
-                ..\..\..\cpp\inspect\Inspect_Message.cpp
+                ..\..\..\cpp\tests\dnp3mocks\src\DataSink.cpp 
+#                \
+#                ..\..\..\cpp\inspect\MemoryInspect.cpp \
+#                ..\..\..\cpp\inspect\Inspect_Message.cpp
 
 #                cpp\lib\src\gen\objects\Group43.cpp \

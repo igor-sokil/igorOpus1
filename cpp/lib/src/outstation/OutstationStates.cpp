@@ -142,6 +142,8 @@ void* OnConfirmTimeout_in_StateIdle_override(void* pOutstationState, void *pOCon
 ////OutstationState& StateIdle::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request)
 {
+qDebug()<<"";
+qDebug()<<"OnNewReadRequest_in_StateIdle_override1";
   UNUSED(pOutstationState);
   return RespondToReadRequest_in_OContext((OContext *)pOContext, request);
 ////    return ctx.RespondToReadRequest(request);

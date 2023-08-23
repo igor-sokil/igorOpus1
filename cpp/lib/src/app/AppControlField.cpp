@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//#include <QtWidgets>
 #include "header.h"
 #include "AppControlField.h"
 
@@ -37,9 +38,13 @@ void AppControlField_in_AppControlFieldOver1(AppControlField *pAppControlField)
 void AppControlField_in_AppControlFieldOver2(AppControlField *pAppControlField, uint8_t byte)
 {
   pAppControlField->FIR = ((byte & AppControlField_FIR_MASK) != 0);
+
   pAppControlField->FIN = ((byte & AppControlField_FIN_MASK) != 0);
+
   pAppControlField->CON = ((byte & AppControlField_CON_MASK) != 0);
+
   pAppControlField->UNS = ((byte & AppControlField_UNS_MASK) != 0);
+
   pAppControlField->SEQ = (byte &  AppControlField_SEQ_MASK);
 }
 

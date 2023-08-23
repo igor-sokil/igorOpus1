@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//#include "QtWidgets"
 #include "header.h"
 #include "CopyableBuffer.h"
 #include <string.h>
@@ -109,6 +110,14 @@ RSeq_for_Uint16_t ToRSeq_in_CopyableBuffer(CopyableBuffer *pCopyableBuffer)
 //    void RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(RSeq_for_Uint16_t *pRSeq, uint8_t * buffer, uint16_t length);
 ////        return ser4cpp::rseq_t(buffer, size);
   RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&rseq_t, pCopyableBuffer->buffer, pCopyableBuffer->size);
+
+//qDebug()<<"pCopyableBuffer->size= "<<pCopyableBuffer->size;
+//qDebug()<<"pCopyableBuffer->buffer[0]= "<<pCopyableBuffer->buffer[0];
+//qDebug()<<"pCopyableBuffer->buffer[1]= "<<pCopyableBuffer->buffer[1];
+//qDebug()<<"pCopyableBuffer->buffer[2]= "<<pCopyableBuffer->buffer[2];
+//qDebug()<<"pCopyableBuffer->buffer[3]= "<<pCopyableBuffer->buffer[3];
+//qDebug()<<"pCopyableBuffer->buffer[4]= "<<pCopyableBuffer->buffer[4];
+//qDebug()<<"pCopyableBuffer->buffer[5]= "<<pCopyableBuffer->buffer[5];
   return rseq_t;
 }
 

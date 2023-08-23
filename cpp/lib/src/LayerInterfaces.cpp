@@ -1,5 +1,5 @@
 
-//#include <QtWidgets>
+#include <QtWidgets>
 #include "header.h"
 #include "LayerInterfaces.h"
 #include <string.h>
@@ -42,6 +42,8 @@ void  setParentPointer_in_IUpperLayer(IUpperLayer* pIUpperLayer, void* pParentPo
 
 boolean BeginTransmit_in_ILowerLayer(ILowerLayer *pILowerLayer, Message* message)
 {
+qDebug()<<"";
+qDebug()<<"BeginTransmit_in_ILowerLayer1";
   return (pILowerLayer->pBeginTransmit_in_ILowerLayer)(pILowerLayer, message);
 }
 

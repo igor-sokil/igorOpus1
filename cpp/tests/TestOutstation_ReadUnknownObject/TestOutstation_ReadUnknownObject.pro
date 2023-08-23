@@ -7,13 +7,15 @@ TARGET = TestOutstation_ReadUnknownObject
 
 QT += widgets
 
-INCLUDEPATH  += .
-INCLUDEPATH  += ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks
+#INCLUDEPATH  += .
+#INCLUDEPATH  += ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks
+
+INCLUDEPATH  += ..\..\..\qtsrc
 
 include(TestOutstation_ReadUnknownObject.pri)
 
 SOURCES      += MainWindow.cpp \
-                loghandler.cpp \
+                ..\..\..\qtsrc\loghandler.cpp \
                 main.cpp 
 
 #SOURCES      += __ICollection.cpp 

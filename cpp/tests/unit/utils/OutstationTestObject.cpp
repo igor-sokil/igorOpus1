@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include <QtWidgets>
 #include <QApplication>
 #include "header.h"
 #include "BufferHelpers.h"
@@ -101,7 +101,7 @@ uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationT
 ////    return exe->run_many();
 ////}
 
-Message mMessage1_global_in_OutstationTestObject;
+//Message mMessage1_global_in_OutstationTestObject;
 ////size_t OutstationTestObject::SendToOutstation(const std::string& hex)
 uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, std::string& hex)
 {
@@ -116,13 +116,31 @@ uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstat
 //void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
 ////    context.OnReceive(Message(Addresses(), hs.ToRSeq()));
   RSeq_for_Uint16_t temp = ToRSeq_in_CopyableBuffer(&(hs.bByteStr.cCopyableBuffer));
+
+//qDebug()<<"temp.buffer_[0]="<<temp.buffer_[0];
+//qDebug()<<"temp.buffer_[1]="<<temp.buffer_[1];
+//qDebug()<<"temp.buffer_[2]="<<temp.buffer_[2];
+//qDebug()<<"temp.buffer_[3]="<<temp.buffer_[3];
+//qDebug()<<"temp.buffer_[4]="<<temp.buffer_[4];
+
   Addresses aAddresses;
   Addresses_in_AddressesOver1(&aAddresses);
   Message mMessage;
   Message_in_Message(&mMessage, &aAddresses, &temp);
+
+//  Message ttt = mMessage;
+//qDebug()<<"ttt.payload.buffer_[0]"<<ttt.payload.buffer_[0];
+//qDebug()<<"ttt.payload.buffer_[1]"<<ttt.payload.buffer_[1];
+//qDebug()<<"ttt.payload.buffer_[2]"<<ttt.payload.buffer_[2];
+//qDebug()<<"ttt.payload.buffer_[3]"<<ttt.payload.buffer_[3];
+//qDebug()<<"ttt.payload.buffer_[4]"<<ttt.payload.buffer_[4];
+//qDebug()<<"&ttt"<<(uint32_t)&ttt;
+// MEMORY_INSPECT_1("Message", &ttt);
+
   /*boolean tmp =*/ OnReceive_in_OContext(&(pOutstationTestObject->context), &mMessage);
 
-mMessage1_global_in_OutstationTestObject = mMessage;
+//mMessage1_global_in_OutstationTestObject = mMessage;
+// MEMORY_INSPECT_2("Message", &mMessage);
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
 }

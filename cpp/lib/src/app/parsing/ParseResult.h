@@ -28,18 +28,18 @@
 ////enum class ParseResult : uint8_t
 enum ParseResult
 {
-  ParseResult_OK,
-  ParseResult_NOT_ON_WHITELIST,
-  ParseResult_NOT_ENOUGH_DATA_FOR_HEADER,
-  ParseResult_NOT_ENOUGH_DATA_FOR_RANGE,
-  ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS,
-  ParseResult_UNREASONABLE_OBJECT_COUNT,
-  ParseResult_UNKNOWN_OBJECT,
-  ParseResult_UNKNOWN_QUALIFIER,
-  ParseResult_INVALID_OBJECT_QUALIFIER,
-  ParseResult_INVALID_OBJECT,
-  ParseResult_BAD_START_STOP,
-  ParseResult_COUNT_OF_ZERO
+  ParseResult_OK,                         //0
+  ParseResult_NOT_ON_WHITELIST,           //1
+  ParseResult_NOT_ENOUGH_DATA_FOR_HEADER, //2
+  ParseResult_NOT_ENOUGH_DATA_FOR_RANGE,  //3
+  ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS,//4
+  ParseResult_UNREASONABLE_OBJECT_COUNT,  //5
+  ParseResult_UNKNOWN_OBJECT,             //6
+  ParseResult_UNKNOWN_QUALIFIER,          //7
+  ParseResult_INVALID_OBJECT_QUALIFIER,   //8
+  ParseResult_INVALID_OBJECT,             //9
+  ParseResult_BAD_START_STOP,             //10
+  ParseResult_COUNT_OF_ZERO               //11
 };
 
 boolean IsSuccess_in_ParseResult(ParseResult_uint8_t result);

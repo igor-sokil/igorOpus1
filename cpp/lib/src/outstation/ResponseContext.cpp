@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <QtWidgets>
 #include "header.h"
 #include "ResponseContext.h"
 
@@ -45,32 +46,41 @@ void Reset_in_ResponseContext(ResponseContext *pResponseContext)
 
 AppControlField LoadResponse_in_ResponseContext(ResponseContext *pResponseContext, HeaderWriter* writer)
 {
+qDebug()<<"";
+qDebug()<<"LoadResponse_in_ResponseContext1";
   boolean fir = pResponseContext->fragmentCount == 0;
   ++(pResponseContext->fragmentCount);
 
 //    uint16_t Remaining_in_HeaderWriter(HeaderWriter *pHeaderWriter);
 ////    auto startingSize = writer.Remaining();
+qDebug()<<"LoadResponse_in_ResponseContext2";
   uint16_t startingSize = Remaining_in_HeaderWriter(writer);
 //boolean Load_in_IResponseLoader(IResponseLoader *, HeaderWriter* writer);
 ////    bool notFull = pEventLoader->Load(writer);
+qDebug()<<"LoadResponse_in_ResponseContext3";
   boolean notFull = Load_in_IResponseLoader(pResponseContext->pEventLoader, writer);
 //    uint16_t Remaining_in_HeaderWriter(HeaderWriter *pHeaderWriter);
 ////    bool someEventsWritten = writer.Remaining() < startingSize;
+qDebug()<<"LoadResponse_in_ResponseContext4";
   boolean someEventsWritten = Remaining_in_HeaderWriter(writer) < startingSize;
 
   if (notFull)
   {
 ////        auto fin = pStaticLoader->Load(writer);
+qDebug()<<"LoadResponse_in_ResponseContext5";
     boolean fin = Load_in_IResponseLoader(pResponseContext->pStaticLoader, writer);
+qDebug()<<"LoadResponse_in_ResponseContext5.1";
     boolean con = !fin || someEventsWritten;
 //  void AppControlField_in_AppControlFieldOver3(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns);
 ////        return AppControlField(fir, fin, con, false);
     AppControlField aAppControlField;
     AppControlField_in_AppControlFieldOver3(&aAppControlField, fir, fin, con, false);
+qDebug()<<"LoadResponse_in_ResponseContext5.2";
     return aAppControlField;
   }
 
 ////    return AppControlField(fir, false, true, false);
+qDebug()<<"LoadResponse_in_ResponseContext6";
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver3(&aAppControlField, fir, false, true, false);
   return aAppControlField;

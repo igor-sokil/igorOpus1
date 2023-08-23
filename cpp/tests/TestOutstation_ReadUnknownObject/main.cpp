@@ -104,9 +104,32 @@ TEST_CASE(SUITE("ReadUnknownObject"))
     t.LowerLayerUp();
 
     // from the conformance tests, respond with IIN 2-1
+// из тестов на соответствие ответим ИИН 2-1
     t.SendToOutstation("C0 01 00 00 06");
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 02"); // IIN = device restart + unknown object
 }
+"C0 81 80 02" 80-IINBit_DEVICE_RESTART //7
+              02-IINBit_PARAM_ERROR //10
+enum IINBit
+{
+  IINBit_BROADCAST = 0,              //0
+  IINBit_CLASS1_EVENTS,              //1
+  IINBit_CLASS2_EVENTS,              //2
+  IINBit_CLASS3_EVENTS,              //3
+  IINBit_NEED_TIME,                  //4
+  IINBit_LOCAL_CONTROL,              //5
+  IINBit_DEVICE_TROUBLE,             //6
+  IINBit_DEVICE_RESTART,             //7
+  IINBit_FUNC_NOT_SUPPORTED,         //8
+  IINBit_OBJECT_UNKNOWN,             //9
+  IINBit_PARAM_ERROR,                //10
+  IINBit_EVENT_BUFFER_OVERFLOW,      //11
+  IINBit_ALREADY_EXECUTING,          //12
+  IINBit_CONFIG_CORRUPT,             //13
+  IINBit_RESERVED1,                  //14
+  IINBit_RESERVED2 = 15              //15
+};
+
 */
 
   MainWindow mainWindowObj;

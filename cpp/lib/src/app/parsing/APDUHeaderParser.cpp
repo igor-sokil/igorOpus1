@@ -26,6 +26,7 @@
 ////#include "opendnp3/util/Uncopyable.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>
+#include <QtWidgets>
 #include "header.h"
 #include "APDUHeaderParser.h"
 
@@ -44,18 +45,25 @@
 ////APDUHeaderParser::Result<APDUHeader> APDUHeaderParser::ParseRequest(const ser4cpp::rseq_t& apdu, Logger* logger)
 Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
 {
+qDebug()<<"";
+qDebug()<<"ParseRequest_in_APDUHeaderParser_static1";
   if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_REQUEST_SIZE)
   {
 ////        FORMAT_LOGGER_BLOCK(logger, flags::WARN, "Request fragment  with insufficient size of %zu bytes",
 ////                            apdu.length());
+qDebug()<<"ParseRequest_in_APDUHeaderParser_static2";
     return Error_in_Result_for_APDUHeader_static();
 ////Result<APDUHeader>::Error();
   }
+qDebug()<<"ParseRequest_in_APDUHeaderParser_static3";
+
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver2(&aAppControlField, (apdu->buffer_)[0]);
   APDUHeader aAPDUHeader;
   APDUHeader_in_APDUHeaderOver2(&aAPDUHeader, &aAppControlField, from_type_in_FunctionCodeSpec((apdu->buffer_)[1]));
   RSeq_for_Uint16_t rRSeq = skip_in_RSeq_for_Uint16_t(apdu, APDUHeader_REQUEST_SIZE);
+
+//Result_for_APDUHeader_in_APDUHeaderParser Ok_in_Result_for_APDUHeader_static(APDUHeader *header, RSeq_for_Uint16_t *objects);
   return Ok_in_Result_for_APDUHeader_static(&aAPDUHeader, &rRSeq);
 ////Result<APDUHeader>::Ok(APDUHeader(AppControlField(apdu[0]), FunctionCodeSpec::from_type(apdu[1])),
 ////                                  apdu.skip(APDUHeader::REQUEST_SIZE));

@@ -17,12 +17,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+//#include <QtWidgets>
 #include <QApplication>
 #include "header.h"
 #include "BufferHelpers.h"
 
 #include "HexConversions.h"
+#include <iostream>
 
 ////#include <algorithm>
 ////#include <cassert>
@@ -34,6 +35,7 @@
 ////ByteStr::ByteStr(size_t length, uint8_t seed) : CopyableBuffer(length)
 void ByteStr_in_ByteStrOver1(ByteStr *pByteStr, uint16_t length, uint8_t seed)// = 0);
 {
+  CopyableBuffer_in_CopyableBufferOver2(&(pByteStr->cCopyableBuffer), length);
   for (uint16_t i = 0; i < length; ++i)
     pByteStr->cCopyableBuffer.buffer[i] = (uint8_t)((i + seed) % 256);
 }
@@ -74,17 +76,28 @@ void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex)
 //  std::string RemoveSpaces_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
 //  void ByteStr_in_ByteStrOver1(ByteStr *pByteStr, uint16_t length, uint8_t seed);// = 0);
   std::string tmp = RemoveSpaces_in_HexSequence(pHexSequence, hex);
+//std::cout << "tmp= " << tmp;
+//  qDebug()<<"";
+
+
   uint16_t temp = Validate_in_HexSequence_static(tmp);
+//qDebug()<<"temptemp= "<<temp;
+
   ByteStr_in_ByteStrOver1(&(pHexSequence->bByteStr), temp, 0);
 ////   ByteStr_in_ByteStrOver1(&(pHexSequence->bByteStr), Validate_in_HexSequence_static(RemoveSpaces_in_HexSequence(pHexSequence, hex)), 0);// = 0);
 
+//  qDebug()<<"pHexSequence->bByteStr.cCopyableBuffer.size= "<<pHexSequence->bByteStr.cCopyableBuffer.size;
+
   std::string s = RemoveSpaces_in_HexSequence(pHexSequence, hex);
 
-  qDebug()<<"sizeof(cCopyableBuffer.buffer)= "<< sizeof(pHexSequence->bByteStr.cCopyableBuffer.buffer);
+//  qDebug()<<"sizeof(cCopyableBuffer.buffer)= "<< sizeof(pHexSequence->bByteStr.cCopyableBuffer.buffer);
 
   uint16_t size = s.size();
 
-  qDebug()<<"size= "<<size;
+//  qDebug()<<"size= "<<size;
+
+//std::cout << "s= " << s;
+//  qDebug()<<"";
 
   for (uint16_t index = 0, pos = 0; pos < size; ++index, pos += 2)
   {
@@ -96,7 +109,12 @@ void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex)
 ////            throw std::invalid_argument(hex);
     }
     pHexSequence->bByteStr.cCopyableBuffer.buffer[index] = static_cast<uint8_t>(val);
+
+//  qDebug()<<"val="<<val;
+
   }
+
+//  qDebug()<<"pHexSequence->bByteStr.cCopyableBuffer.size= "<<pHexSequence->bByteStr.cCopyableBuffer.size;
 }
 
 std::string RemoveSpaces_in_HexSequence(HexSequence *pHexSequence, std::string& hex)

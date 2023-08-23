@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include <QtWidgets>
 #include "header.h"
 #include "EventBuffer.h"
 
@@ -356,11 +356,13 @@ boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer)
 {
 //void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer);
 ////    ASDUEventWriteHandler handler(writer);
+
   ASDUEventWriteHandler handler;
   ASDUEventWriteHandler_in_ASDUEventWriteHandler(&handler, writer);
 //    uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler);
 ////    this->storage.Write(handler);
   Write_in_EventStorage(&(pEventBuffer->storage), &(handler.iIEventWriteHandler));
+
   // all selected events were written?
 //    uint32_t NumSelected_in_EventStorage(EventStorage *pEventStorage);
 //    return this->storage.NumSelected() == 0;
@@ -417,6 +419,8 @@ uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t 
 ////} // namespace opendnp3
 void EventBuffer_in_EventBufferOver1(EventBuffer *pEventBuffer)
 {
+qDebug()<<"";
+qDebug()<<"EventBuffer_in_EventBufferOver11";
   pEventBuffer->overflow = false;
 
   // ------- IEventReceiver ------
@@ -447,7 +451,6 @@ void EventBuffer_in_EventBufferOver1(EventBuffer *pEventBuffer)
   (pEventBuffer->iIResponseLoader).pLoad_in_IResponseLoader = Load_in_EventBuffer_override;
 
   setParentPointer_in_IResponseLoader(&(pEventBuffer->iIResponseLoader), pEventBuffer);
-
 }
 
 void Update_BinarySpec_in_EventBuffer_override(void *pIEventReceiver, Event_for_BinarySpec *evt)
@@ -542,6 +545,8 @@ boolean HasAnySelection_in_EventBuffer_override(void *pIResponseLoader)
 }
 boolean Load_in_EventBuffer_override(void *pIResponseLoader, HeaderWriter* writer)
 {
+qDebug()<<"";
+qDebug()<<"Load_in_EventBuffer_override1";
   EventBuffer *parent =
     (EventBuffer*)getParentPointer_in_IResponseLoader((IResponseLoader*)pIResponseLoader);
 

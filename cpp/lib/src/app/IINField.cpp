@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 ////#include "opendnp3/app/IINField.h"
+#include <QtWidgets>
 #include "header.h"
 #include "IINField.h"
 
@@ -26,6 +27,8 @@
 
 boolean IsSet_in_IINField(IINField *pIINField, IINBit_uint8_t bit)
 {
+qDebug()<<"";
+qDebug()<<"IsSet_in_IINField1";
   switch (bit)
   {
   case (IINBit_BROADCAST):
@@ -79,6 +82,8 @@ void SetBitToValue_in_IINField(IINField *pIINField, IINBit_uint8_t bit, boolean 
 
 void SetBit_in_IINField(IINField *pIINField, IINBit_uint8_t bit)
 {
+qDebug()<<"";
+qDebug()<<"SetBit_in_IINField1  "<<bit;
   switch (bit)
   {
   case (IINBit_BROADCAST):

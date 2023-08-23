@@ -246,11 +246,15 @@ boolean OnTxReady_in_OContext(OContext* pOContext)
 
 boolean OnReceive_in_OContext(OContext* pOContext, Message* message)
 {
+qDebug()<<"";
+qDebug()<<"OnReceive_in_OContext1";
   if (!(pOContext->isOnline))
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "ignoring received data while offline");
     return false;
   }
+
+pMemory_Message_2=  MEMORY_Message_2(0, message);
 
 //    boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message);
 ////    this->ProcessMessage(message);
@@ -468,6 +472,7 @@ qDebug()<<"BeginResponseTx_in_OContext1";
 
 //  RSeq_for_Uint16_t ToRSeq_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 ////    const auto data = response.ToRSeq();
+qDebug()<<"BeginResponseTx_in_OContext2";
   RSeq_for_Uint16_t data = ToRSeq_in_APDUWrapper(&(response->aAPDUWrapper));
 
 //void Record_in_TxBuffer(TxBuffer *pTxBuffer, AppControlField* control, RSeq_for_Uint16_t* view);
@@ -839,6 +844,8 @@ qDebug()<<"RespondToNonReadRequest_in_OContext2";
 ////OutstationState& OContext::RespondToReadRequest(const ParsedRequest& request)
 OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
+qDebug()<<"";
+qDebug()<<"RespondToReadRequest_in_OContext1";
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////    this->history.RecordLastProcessedRequest(request.header, request.objects);
   RecordLastProcessedRequest_in_RequestHistory(&(pOContext->history), &(request->header), &(request->objects));
@@ -849,11 +856,13 @@ OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedReq
 ////    auto writer = response.GetWriter();
   HeaderWriter writer = GetWriter_in_APDUWrapper(&(response.aAPDUWrapper));
 ////    response.SetFunction(FunctionCode::RESPONSE);
-  SetFunction_in_APDUWrapper(&(response.aAPDUWrapper), FunctionCode_RESPONSE);
+  SetFunction_in_APDUWrapper(&(response.aAPDUWrapper), FunctionCode_RESPONSE);//FunctionCode_RESPONSE = 0x81,
 
 //   PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter writer)
 ////    auto result = this->HandleRead(request.objects, writer);
   PairSer4cpp_for_IINField_AppControlField result = HandleRead_in_OContext(pOContext, &(request->objects), &writer);
+
+pMemory_PairSer4cpp_for_IINField_AppControlField_1 = MEMORY_PairSer4cpp_for_IINField_AppControlField_1(0, &result);
 
   result.second.SEQ = request->header.control.SEQ;
 //  void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
@@ -1021,6 +1030,7 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
 
 boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
 {
+qDebug()<<"";
 qDebug()<<"ProcessMessage_in_OContext1";
   // is the message addressed to this outstation
 //    boolean IsBroadcast_in_Addresses(Addresses *pAddresses);
@@ -1050,6 +1060,9 @@ qDebug()<<"ProcessMessage_in_OContext2";
 //    Result_for_APDUHeader_in_APDUHeaderParser         ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu);////, Logger* logger = nullptr);
 ////    const auto result = APDUHeaderParser::ParseRequest(message.payload, &this->logger);
   Result_for_APDUHeader_in_APDUHeaderParser result = ParseRequest_in_APDUHeaderParser_static(&(message->payload));
+
+pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1 = MEMORY_Result_for_APDUHeader_in_APDUHeaderParser_1(0, &result);
+
   if (!result.success)
   {
     return false;
@@ -1077,6 +1090,9 @@ qDebug()<<"ProcessMessage_in_OContext3";
 ////    return this->ProcessObjects(ParsedRequest(message.addresses, result.header, result.objects));
   ParsedRequest pParsedRequest;
   ParsedRequest_in_ParsedRequest(&pParsedRequest, &(message->addresses), &(result.header), &(result.objects));
+
+pMemory_ParsedRequest_1 = MEMORY_ParsedRequest_1(0, &pParsedRequest);
+
 qDebug()<<"ProcessMessage_in_OContext4";
   return ProcessObjects_in_OContext(pOContext, &pParsedRequest);
 }
@@ -1090,6 +1106,8 @@ void HandleNewEvents_in_OContext(OContext *pOContext)
 
 void SetRestartIIN_in_OContext(OContext *pOContext)
 {
+qDebug()<<"";
+qDebug()<<"SetRestartIIN_in_OContext1";
 //    void SetBit_in_IINField(IINField *, IINBit_uint8_t bit);
 ////    this->staticIIN.SetBit(IINBit::DEVICE_RESTART);
   SetBit_in_IINField(&(pOContext->staticIIN), IINBit_DEVICE_RESTART);
@@ -1309,6 +1327,10 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
 ////ser4cpp::Pair<IINField, AppControlField> OContext::HandleRead(const ser4cpp::rseq_t& objects, HeaderWriter& writer)
 PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
 {
+qDebug()<<"";
+qDebug()<<"HandleRead_in_OContext1";
+
+
 // void Reset_in_ResponseContext(ResponseContext *pResponseContext);
 ////    this->rspContext.Reset();
   Reset_in_ResponseContext(&(pOContext->rspContext));
@@ -1328,12 +1350,24 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 //                             IAPDUHandler *handler);
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger,
 ////                                    ParserSettings::NoContents()); // don't expect range/count context on a READ
+//не ожидайте контекста диапазона/счета при ЧТЕНИИ
+
+qDebug()<<"objects.buffer_[0] ="<<objects->buffer_[0];
+qDebug()<<"objects.buffer_[1] ="<<objects->buffer_[1];
+qDebug()<<"objects.buffer_[2] ="<<objects->buffer_[2];
+qDebug()<<"objects.buffer_[3] ="<<objects->buffer_[3];
+qDebug()<<"objects.buffer_[4] ="<<objects->buffer_[4];
+qDebug()<<"objects.buffer_[5] ="<<objects->buffer_[5];
+
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
+qDebug()<<"ParseResult_uint8_t result ="<<result;
+qDebug()<<"HandleRead_in_OContext2";
   if (result == ParseResult_OK)
   {
 ////        auto control = pOContext->rspContext.LoadResponse(writer);
+qDebug()<<"HandleRead_in_OContext3";
     AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext), writer);
 //void PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(PairSer4cpp_for_IINField_AppControlField *pPairSer4cpp_for_IINField_AppControlField,
 //                                                                           IINField *first_,
@@ -1341,18 +1375,22 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 //                                                                           );
 //  IINField Errors_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler);
 ////        return ser4cpp::Pair<IINField, AppControlField>(handler.Errors(), control);
+qDebug()<<"HandleRead_in_OContext3.1";
     IINField temp = Errors_in_IAPDUHandler(&(handler.iIAPDUHandler));
 
+qDebug()<<"HandleRead_in_OContext3.2";
     PairSer4cpp_for_IINField_AppControlField pPairSer4cpp_for_IINField_AppControlField;
     PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(&pPairSer4cpp_for_IINField_AppControlField,
         &temp,
         &control
                                                                                         );
+qDebug()<<"HandleRead_in_OContext4";
     return pPairSer4cpp_for_IINField_AppControlField;
   }
 
 // void Reset_in_ResponseContext(ResponseContext *pResponseContext);
 ////    this->rspContext.Reset();
+qDebug()<<"HandleRead_in_OContext5";
   Reset_in_ResponseContext(&(pOContext->rspContext));
 //  void AppControlField_in_AppControlFieldOver3(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns);
 ////    return ser4cpp::Pair<IINField, AppControlField>(IINFromParseResult(result),
@@ -1373,6 +1411,8 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 ////IINField OContext::HandleWrite(const ser4cpp::rseq_t& objects)
 IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
 {
+qDebug()<<"";
+qDebug()<<"HandleWrite_in_OContext1";
 //Timestamp Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
 //void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
 //    IOutstationApplication* application, TimeSyncState* timeSyncState, AppSeqNum seq, Timestamp now, IINField* writeIIN)
@@ -1406,7 +1446,10 @@ IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects
 ////IINField OContext::HandleDirectOperate(const ser4cpp::rseq_t& objects, OperateType opType, HeaderWriter* pWriter)
 IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter)
 {
+qDebug()<<"";
+qDebug()<<"HandleDirectOperate_in_OContext1";
   // since we're echoing, make sure there's enough size before beginning
+// поскольку мы повторяем эхо, перед началом убедитесь, что размера достаточно
 //    uint16_t Remaining_in_HeaderWriter(HeaderWriter *pHeaderWriter);
 ////    if (pWriter && (objects.length() > pWriter->Remaining()))
   if (pWriter && (length_in_HasLength_for_Uint16_t(&(objects->hHasLength)) > Remaining_in_HeaderWriter(pWriter)))
@@ -1450,7 +1493,10 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
 ////IINField OContext::HandleSelect(const ser4cpp::rseq_t& objects, HeaderWriter& writer)
 IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
 {
+qDebug()<<"";
+qDebug()<<"HandleSelect_in_OContext1";
   // since we're echoing, make sure there's enough size before beginning
+// поскольку мы повторяем эхо, перед началом убедитесь, что размера достаточно
 ////    if (objects.length() > writer.Remaining())
   if (length_in_HasLength_for_Uint16_t(&(objects->hHasLength)) > Remaining_in_HeaderWriter(writer))
   {
@@ -1503,7 +1549,10 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 
 IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
 {
+qDebug()<<"";
+qDebug()<<"HandleOperate_in_OContext1";
 // since we're echoing, make sure there's enough size before beginning
+// поскольку мы повторяем эхо, перед началом убедитесь, что размера достаточно
 ////    if (objects.length() > writer.Remaining())
   if (length_in_HasLength_for_Uint16_t(&(objects->hHasLength)) > Remaining_in_HeaderWriter(writer))
   {
@@ -1688,6 +1737,8 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 ////IINField OContext::HandleAssignClass(const ser4cpp::rseq_t& objects)
 IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
 {
+qDebug()<<"";
+qDebug()<<"HandleAssignClass_in_OContext1";
 //     boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
 ////    if (this->application->SupportsAssignClass())
   if (SupportsAssignClass_in_IOutstationApplication(pOContext->application))
@@ -1724,6 +1775,8 @@ IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* o
 ////IINField OContext::HandleDisableUnsolicited(const ser4cpp::rseq_t& objects, HeaderWriter* /*writer*/)
 IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
 {
+qDebug()<<"";
+qDebug()<<"HandleDisableUnsolicited_in_OContext1";
   UNUSED(writer);
 
   ClassBasedRequestHandler handler;
@@ -1754,6 +1807,8 @@ IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint
 ////IINField OContext::HandleEnableUnsolicited(const ser4cpp::rseq_t& objects, HeaderWriter* /*writer*/)
 IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
 {
+qDebug()<<"";
+qDebug()<<"HandleEnableUnsolicited_in_OContext1";
   UNUSED(writer);
 
   ClassBasedRequestHandler handler;
@@ -1783,6 +1838,8 @@ IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint1
 ////IINField OContext::HandleCommandWithConstant(const ser4cpp::rseq_t& objects, HeaderWriter& writer, CommandStatus status)
 IINField HandleCommandWithConstant_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer, CommandStatus_uint8_t status)
 {
+qDebug()<<"";
+qDebug()<<"HandleCommandWithConstant_in_OContext1";
 //void ConstantCommandAction_in_ConstantCommandAction(ConstantCommandAction *pConstantCommandAction, CommandStatus status_);
 ////    ConstantCommandAction constant(status);
   ConstantCommandAction constant;
@@ -1818,6 +1875,8 @@ IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 ////IINField OContext::HandleFreezeAndClear(const ser4cpp::rseq_t& objects)
 IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
 {
+qDebug()<<"";
+qDebug()<<"HandleFreezeAndClear_in_OContext1";
 ////    FreezeRequestHandler handler(true, database);
   FreezeRequestHandler handler;
   FreezeRequestHandler_in_FreezeRequestHandler(&handler, true, &(pOContext->database));
