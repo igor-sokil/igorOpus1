@@ -93,7 +93,7 @@ boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter, Grou
   uint16_t temp1 = length_in_HasLength_for_Uint16_t(&(pHeaderWriter->position->hHasLength));
   return (temp1 < (3 + reserve)) ? false : WriteHeader_in_HeaderWriter(pHeaderWriter, id, qc);
 }
-
+/*
 ////template<class IndexType>
 ////BitfieldRangeWriteIterator<IndexType> HeaderWriter::IterateOverSingleBitfield(GroupVariationID id,
 ////                                                                              QualifierCode qc,
@@ -124,7 +124,7 @@ BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_Head
 ////        return BitfieldRangeWriteIterator<IndexType>::Null();
     return  Null_in_BitfieldRangeWriteIterator_for_UInt8_static();
 }
-
+*/
 //================================================WriteSingleValue=================================================================
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var1--------------------------------------------------------
 boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
@@ -262,6 +262,58 @@ boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHe
 }
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
 
+//--------------------------------IterateOverSingleBitfield_for_uint8--------------------------------------------------------
+
+BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    GroupVariationID id,
+    QualifierCode_uint8_t qc,
+    uint8_t start)
+{
+////    const auto reserve_size = 2 * IndexType::size + 1; // need at least 1 byte
+  uint16_t reserve_size = 2* size_in_UInt8 + 1;
+//boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+//    GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve);
+////    if (this->WriteHeaderWithReserve(id, qc, reserve_size))
+  if (WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter, id, qc, reserve_size))
+  {
+////        return BitfieldRangeWriteIterator<IndexType>(start, *position);
+    BitfieldRangeWriteIterator_for_UInt8 bBitfieldRangeWriteIterator_for_UInt8;
+    BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UInt8(&bBitfieldRangeWriteIterator_for_UInt8,
+        start, pHeaderWriter->position);
+    return bBitfieldRangeWriteIterator_for_UInt8;
+  }
+  else
+//    BitfieldRangeWriteIterator_for_UInt8 Null_in_BitfieldRangeWriteIterator_for_UInt8_static(void)
+////        return BitfieldRangeWriteIterator<IndexType>::Null();
+    return  Null_in_BitfieldRangeWriteIterator_for_UInt8_static();
+}
+//--------------------------------IterateOverSingleBitfield_for_uint8--------------------------------------------------------
+//--------------------------------IterateOverSingleBitfield_for_uint16--------------------------------------------------------
+
+BitfieldRangeWriteIterator_for_UInt16 IterateOverSingleBitfield_for_UInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    GroupVariationID id,
+    QualifierCode_uint8_t qc,
+    uint16_t start)
+{
+////    const auto reserve_size = 2 * IndexType::size + 1; // need at least 1 byte
+  uint16_t reserve_size = 2* size_in_UInt16 + 1;
+//boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+//    GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve);
+////    if (this->WriteHeaderWithReserve(id, qc, reserve_size))
+  if (WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter, id, qc, reserve_size))
+  {
+////        return BitfieldRangeWriteIterator<IndexType>(start, *position);
+    BitfieldRangeWriteIterator_for_UInt16 bBitfieldRangeWriteIterator_for_UInt16;
+    BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UInt16(&bBitfieldRangeWriteIterator_for_UInt16,
+        start, pHeaderWriter->position);
+    return bBitfieldRangeWriteIterator_for_UInt16;
+  }
+  else
+//    BitfieldRangeWriteIterator_for_UInt8 Null_in_BitfieldRangeWriteIterator_for_UInt8_static(void)
+////        return BitfieldRangeWriteIterator<IndexType>::Null();
+    return  Null_in_BitfieldRangeWriteIterator_for_UInt16_static();
+}
+//--------------------------------IterateOverSingleBitfield_for_uint16--------------------------------------------------------
 
 
 ////} // namespace opendnp3

@@ -37,6 +37,8 @@
 ////    : classHeader(-1), clazz(PointClass::Class0), pApplication(&application), pAssigner(&assigner)
 void AssignClassHandler_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, IOutstationApplication* application, IClassAssigner* assigner)
 {
+  IAPDUHandler_in_IAPDUHandler(&(pAssignClassHandler->iIAPDUHandler));
+
   pAssignClassHandler->classHeader = -1;
   pAssignClassHandler->clazz = PointClass_Class0;
   pAssignClassHandler->pApplication = application;

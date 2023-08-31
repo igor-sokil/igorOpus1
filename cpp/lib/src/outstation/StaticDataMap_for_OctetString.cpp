@@ -16,3 +16,8 @@ void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpec(Stat
     pStaticDataMap->map[item.first] = sStaticDataCell_for_OctetString;
   }
 }
+
+Range get_selected_range_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec)
+{
+  return pStaticDataMap_for_OctetStringSpec->selected;
+}

@@ -200,6 +200,7 @@ public:
 };
 
 void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap, std::map<uint16_t, DoubleBitBinaryConfig>& config);
+Range get_selected_range_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec);
 
 ////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
 ////{

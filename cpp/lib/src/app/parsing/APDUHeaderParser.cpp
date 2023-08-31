@@ -26,7 +26,7 @@
 ////#include "opendnp3/util/Uncopyable.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>
-#include <QtWidgets>
+#include <iostream>
 #include "header.h"
 #include "APDUHeaderParser.h"
 
@@ -45,17 +45,18 @@
 ////APDUHeaderParser::Result<APDUHeader> APDUHeaderParser::ParseRequest(const ser4cpp::rseq_t& apdu, Logger* logger)
 Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
 {
-qDebug()<<"";
-qDebug()<<"ParseRequest_in_APDUHeaderParser_static1";
+std::cout<<""<<std::endl;
+std::cout<<"ParseRequest_in_APDUHeaderParser_static1"<<std::endl;
   if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_REQUEST_SIZE)
   {
 ////        FORMAT_LOGGER_BLOCK(logger, flags::WARN, "Request fragment  with insufficient size of %zu bytes",
 ////                            apdu.length());
-qDebug()<<"ParseRequest_in_APDUHeaderParser_static2";
+    std::cout<<"***FORMAT_LOGGER_BLOCK(logger, flags::WARN, 'Request fragment  with insufficient size of %zu bytes', apdu.length())"
+                                 <<length_in_HasLength_for_Uint16_t(&(apdu->hHasLength))<<std::endl;
     return Error_in_Result_for_APDUHeader_static();
 ////Result<APDUHeader>::Error();
   }
-qDebug()<<"ParseRequest_in_APDUHeaderParser_static3";
+std::cout<<"ParseRequest_in_APDUHeaderParser_static3"<<std::endl;
 
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver2(&aAppControlField, (apdu->buffer_)[0]);
@@ -78,6 +79,8 @@ Result_for_APDUResponseHeader_in_APDUHeaderParser ParseResponse_in_APDUHeaderPar
   {
 ////        FORMAT_LOGGER_BLOCK(logger, flags::WARN, "Response fragment  with insufficient size of %zu bytes",
 ////                            apdu.length());
+   std::cout<<"***FORMAT_LOGGER_BLOCK(logger, flags::WARN, 'Response fragment  with insufficient size of %zu bytes',apdu.length()"
+                                     <<length_in_HasLength_for_Uint16_t(&(apdu->hHasLength))<<std::endl;
     return Error_in_Result_for_APDUResponseHeader_static();
   }
 

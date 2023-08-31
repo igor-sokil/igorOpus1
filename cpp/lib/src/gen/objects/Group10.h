@@ -54,14 +54,6 @@
 
 GroupVariationID ID_in_Group10Var0_static(void);
 
-GroupVariationID ID_in_Group10Var0_static(void)
-{
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 10, 0);
-//// return GroupVariationID(10,0);
-  return gGroupVariationID;
-}
-
 // Binary Output - Packed Format
 ////struct Group10Var1
 ////{
@@ -69,14 +61,6 @@ GroupVariationID ID_in_Group10Var0_static(void)
 ////};
 
 GroupVariationID ID_in_Group10Var1_static(void);
-
-GroupVariationID ID_in_Group10Var1_static(void)
-{
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 10, 1);
-//// return GroupVariationID(10,1);
-  return gGroupVariationID;
-}
 
 // Binary Output - Output Status With Flags
 ////struct Group10Var2
@@ -101,45 +85,13 @@ typedef struct
 } Group10Var2;
 
 uint16_t Size_in_Group10Var2_static(void);
-
-uint16_t Size_in_Group10Var2_static(void)
-{
-  return 1;
-}
-
 void Group10Var2_in_Group10Var2(Group10Var2 *pGroup10Var2);
-
-GroupVariationID ID_in_Group10Var2_static(void)
-{
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 10, 2);
-////  return GroupVariationID(10,2);
-  return gGroupVariationID;
-}
 
 boolean Read_in_Group10Var2_static(RSeq_for_Uint16_t *, Group10Var2*);
 boolean Write_in_Group10Var2_static(Group10Var2*, WSeq_for_Uint16_t*);
 
 boolean ReadTarget_in_Group10Var2_static(RSeq_for_Uint16_t*, BinaryOutputStatus*);
 boolean WriteTarget_in_Group10Var2_static(BinaryOutputStatus*, WSeq_for_Uint16_t*);
-
-
-DNP3Serializer_for_BinaryOutputStatus  Inst_in_Group10Var2_static(void)
-{
-  DNP3Serializer_for_BinaryOutputStatus dDNP3Serializer_for_BinaryOutputStatus;
-  DNP3Serializer_for_BinaryOutputStatus_in_DNP3Serializer_for_BinaryOutputStatus(&dDNP3Serializer_for_BinaryOutputStatus,
-      ID_in_Group10Var2_static(),
-      Size_in_Group10Var2_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-      //void *read_func,// read_func_t_in_Serializer_for_Binary,
-      &ReadTarget_in_Group10Var2_static,
-////                   typename Serializer<T>::write_func_t write_func)
-      //void *write_func);//write_func_t_in_Serializer_for_Binary);
-      &WriteTarget_in_Group10Var2_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-  return dDNP3Serializer_for_BinaryOutputStatus;
-}
 
 const StaticBinaryOutputStatusVariation_uint8_t svariation_in_Group10Var2 = StaticBinaryOutputStatusVariation_Group10Var2;
 

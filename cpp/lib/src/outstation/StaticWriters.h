@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-MYTODO
+
 #ifndef OPENDNP3_STATICWRITERS_H
 #define OPENDNP3_STATICWRITERS_H
 
@@ -37,6 +37,16 @@ MYTODO
 #include "MeasurementTypeSpecs.h"
 //#include "outstation/StaticDataMap.h"
 
+#include "StaticDataMap_for_AnalogOutputStatus.h"
+#include "StaticDataMap_for_Analog.h"
+#include "StaticDataMap_for_Binary.h"
+#include "StaticDataMap_for_BinaryOutputStatus.h"
+#include "StaticDataMap_for_Counter.h"
+#include "StaticDataMap_for_DoubleBitBinary.h"
+#include "StaticDataMap_for_FrozenCounter.h"
+#include "StaticDataMap_for_OctetString.h"
+#include "StaticDataMap_for_TimeAndInterval.h"
+
 #include "StaticAnalogOutputStatusVariation.h"
 #include "StaticAnalogVariation.h"
 #include "StaticBinaryOutputStatusVariation.h"
@@ -50,6 +60,15 @@ MYTODO
 ////{
 
 ////template<class Spec> using static_write_func_t = bool (*)(StaticDataMap<Spec>& map, HeaderWriter& writer);
+typedef boolean  (* static_write_func_t_for_BinarySpec)(StaticDataMap_for_BinarySpec& map, HeaderWriter* writer);//указатель на ф-цию
+typedef boolean  (* static_write_func_t_for_DoubleBitBinarySpec)(StaticDataMap_for_DoubleBitBinarySpec& map, HeaderWriter* writer);//указатель на ф-цию
+typedef boolean  (* static_write_func_t_for_CounterSpec)(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer);//указатель на ф-цию
+typedef boolean  (* static_write_func_t_for_FrozenCounterSpec)(StaticDataMap_for_FrozenCounterSpec& map, HeaderWriter* writer);//указатель на ф-цию
+typedef boolean  (* static_write_func_t_for_AnalogSpec)(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);//указатель на ф-цию
+typedef boolean  (* static_write_func_t_for_AnalogOutputStatusSpec)(StaticDataMap_for_AnalogOutputStatusSpec& map, HeaderWriter* writer);//указатель на ф-цию
+typedef boolean  (* static_write_func_t_for_BinaryOutputStatusSpec)(StaticDataMap_for_BinaryOutputStatusSpec& map, HeaderWriter* writer);//указатель на ф-цию
+typedef boolean  (* static_write_func_t_for_OctetStringSpec)(StaticDataMap_for_OctetStringSpec& map, HeaderWriter* writer);//указатель на ф-цию
+typedef boolean  (* static_write_func_t_for_TimeAndIntervalSpec)(StaticDataMap_for_TimeAndIntervalSpec& map, HeaderWriter* writer);//указатель на ф-цию
 
 ////struct StaticWriters : private StaticOnly
 ////{
@@ -63,6 +82,16 @@ MYTODO
 ////    static static_write_func_t<OctetStringSpec> get(StaticOctetStringVariation variation);
 ////    static static_write_func_t<TimeAndIntervalSpec> get(StaticTimeAndIntervalVariation variation);
 ////};
+
+static_write_func_t_for_BinarySpec                   get_for_BinarySpec_in_StaticWriters_static(StaticBinaryVariation_uint8_t variation);
+static_write_func_t_for_DoubleBitBinarySpec          get_for_DoubleBitBinarySpec_in_StaticWriters_static(StaticDoubleBinaryVariation_uint8_t variation);
+static_write_func_t_for_CounterSpec                  get_for_CounterSpec_in_StaticWriters_static(StaticCounterVariation_uint8_t variation);
+static_write_func_t_for_FrozenCounterSpec            get_for_FrozenCounterSpec_in_StaticWriters_static(StaticFrozenCounterVariation_uint8_t variation);
+static_write_func_t_for_AnalogSpec                   get_for_AnalogSpec_in_StaticWriters_static(StaticAnalogVariation_uint8_t variation);
+static_write_func_t_for_AnalogOutputStatusSpec       get_for_AnalogOutputStatusSpec_in_StaticWriters_static(StaticAnalogOutputStatusVariation_uint8_t variation);
+static_write_func_t_for_BinaryOutputStatusSpec       get_for_BinaryOutputStatusSpec_in_StaticWriters_static(StaticBinaryOutputStatusVariation_uint8_t variation);
+static_write_func_t_for_OctetStringSpec              get_for_OctetStringSpec_in_StaticWriters_static(StaticOctetStringVariation_uint8_t variation);
+static_write_func_t_for_TimeAndIntervalSpec          get_for_TimeAndIntervalSpec_in_StaticWriters_static(StaticTimeAndIntervalVariation_uint8_t variation);
 
 ////} // namespace opendnp3
 

@@ -222,7 +222,7 @@ Makefile: TestAPDUWriting_CountIterator_UInt8_boundary_condition.pro D:/QT_5.12/
 		D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/qt_config.prf \
 		D:/QT_5.12/5.12.3/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/spec_post.prf \
-		.qmake.stash \
+		../../../.qmake.stash \
 		D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/toolchain.prf \
 		D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/default_pre.prf \
@@ -409,7 +409,7 @@ D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/qt_functions.prf:
 D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/qt_config.prf:
 D:/QT_5.12/5.12.3/mingw73_32/mkspecs/win32-g++/qmake.conf:
 D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/spec_post.prf:
-.qmake.stash:
+../../../.qmake.stash:
 D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/exclusive_builds.prf:
 D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/toolchain.prf:
 D:/QT_5.12/5.12.3/mingw73_32/mkspecs/features/default_pre.prf:
@@ -446,7 +446,6 @@ all: release-all debug-all  FORCE
 clean: release-clean debug-clean  FORCE
 distclean: release-distclean debug-distclean  FORCE
 	-$(DEL_FILE) Makefile
-	-$(DEL_FILE) .qmake.stash
 
 release-mocclean:
 	$(MAKE) -f $(MAKEFILE).Release mocclean

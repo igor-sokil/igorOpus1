@@ -62,67 +62,71 @@
 class StaticDataMap_for_BinarySpec
 {
   using map_t = std::map<uint16_t, StaticDataCell_for_Binary>;
-////    using map_iter_t = typename map_t::iterator;
+  using map_iter_t = typename map_t::iterator;
 
 public:
 ////    StaticDataMap() = default;
 ////    StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config);
 
-////    class iterator
-////    {
-////        map_iter_t iter;
-////        map_iter_t end;
-////        Range& range;
-////
-////    public:
-////        explicit iterator(map_iter_t begin, map_iter_t end, Range& range) : iter(begin), end(end), range(range) {}
-////
+  class iterator
+  {
+    map_iter_t iter;
+    map_iter_t end;
+    Range& range;
+
+  public:
+    explicit iterator(map_iter_t begin, map_iter_t end, Range& range) : iter(begin), end(end), range(range) {}
+
 ////        using value_type = std::pair<uint16_t, SelectedValue<Spec>>;
-////        using difference_type = typename map_iter_t::difference_type;
-////        using pointer = typename map_iter_t::pointer;
+    using value_type = std::pair<uint16_t, SelectedValue_for_BinarySpec>;
+    using difference_type = typename map_iter_t::difference_type;
+    using pointer = typename map_iter_t::pointer;
 ////        using reference = std::pair<uint16_t, SelectedValue<Spec>&>;
-////        using iterator_category = std::input_iterator_tag;
-////
-////        bool operator==(const iterator& rhs)
-////        {
-////            return this->iter == rhs.iter;
-////        }
-////        bool operator!=(const iterator& rhs)
-////        {
-////            return this->iter != rhs.iter;
-////        }
-////
-////        void operator++()
-////        {
-////            // unselect the point
-////            this->iter->second.selection.selected = false;
-////
-////            while (true)
-////            {
-////                iter++;
-////
-////                if (iter == this->end)
-////                {
+    using reference = std::pair<uint16_t, SelectedValue_for_BinarySpec&>;
+    using iterator_category = std::input_iterator_tag;
+
+    boolean operator==(const iterator& rhs)
+    {
+      return this->iter == rhs.iter;
+    }
+    boolean operator!=(const iterator& rhs)
+    {
+      return this->iter != rhs.iter;
+    }
+
+    void operator++()
+    {
+      // unselect the point
+      this->iter->second.selection.selected = false;
+
+      while (true)
+      {
+        iter++;
+
+        if (iter == this->end)
+        {
+//Range Invalid_in_Range_static(void);
 ////                    this->range = Range::Invalid();
-////                    return;
-////                }
-////
-  // shorten the range
-////                this->range.start = iter->first;
-////
-////                if (iter->second.selection.selected)
-////                {
-////                    return;
-////                }
-////            }
-////        }
-////
-////        reference operator*()
-////        {
-////            return reference(iter->first, iter->second.selection);
-////        }
-////    };
-////
+          this->range = Invalid_in_Range_static();
+          return;
+        }
+
+        // shorten the range
+        this->range.start = iter->first;
+
+        if (iter->second.selection.selected)
+        {
+          return;
+        }
+      }
+    }
+
+    reference operator*()
+    {
+      return reference(iter->first, iter->second.selection);
+    }
+  };
+
 ////    bool add(const typename Spec::meas_t& value, uint16_t index, typename Spec::config_t config);
 ////
 ////    bool update(const typename Spec::meas_t& value, uint16_t index, EventMode mode, IEventReceiver& receiver);
@@ -175,9 +179,9 @@ public:
 ////
 ////    Range assign_class(PointClass clazz, const Range& range);
 
-////    iterator begin();
-////
-////    iterator end();
+  iterator begin();
+
+  iterator end();
 
 ////private:
   map_t map;
@@ -200,6 +204,7 @@ public:
 };
 
 void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap, std::map<uint16_t, BinaryConfig>& config);
+Range get_selected_range_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
 
 
 ////template<class Spec>
@@ -381,21 +386,6 @@ void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(StaticDataMap_
 ////}
 ////
 ////template<class Spec> typename StaticDataMap<Spec>::iterator StaticDataMap<Spec>::begin()
-////{
-////    if (!this->selected.IsValid())
-////    {
-////        return iterator(this->map.end(), this->map.end(), this->selected);
-////    }
-
-////    const auto begin = this->map.lower_bound(this->selected.start);
-////
-////    return iterator(begin, this->map.end(), this->selected);
-////}
-////
-////template<class Spec> typename StaticDataMap<Spec>::iterator StaticDataMap<Spec>::end()
-////{
-////    return iterator(this->map.end(), this->map.end(), this->selected);
-////}
 
 ////} // namespace opendnp3
 

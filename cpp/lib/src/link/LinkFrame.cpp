@@ -27,6 +27,7 @@
 
 ////#include <ser4cpp/serialization/LittleEndian.h>
 
+#include <iostream>
 #include "header.h"
 #include "LinkFrame.h"
 
@@ -227,6 +228,7 @@ RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
 
 ////    FORMAT_LOGGER_BLOCK(pLogger, flags::LINK_TX, "Function: %s Dest: %u Source: %u Length: %u",
 ////                        LinkFunctionSpec::to_human_string(aFuncCode), aDest, aSrc, aDataLength);
+    std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::LINK_TX, 'Function: %s Dest: %u Source: %u Length: %u')***"<<std::endl;
 
 //    void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
 ////    header.Write(buffer);

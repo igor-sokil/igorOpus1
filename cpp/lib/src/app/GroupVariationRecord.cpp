@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//#include <QtWidgets>
 #include "header.h"
 #include "GroupVariationRecord.h"
 
@@ -45,12 +46,14 @@ void HeaderRecord_in_HeaderRecordOver2(HeaderRecord *pHeaderRecord, GroupVariati
 QualifierCode_uint8_t GetQualifierCode_in_HeaderRecord(HeaderRecord *pHeaderRecord)
 {
 ////    return QualifierCodeSpec::from_type(qualifier);
-  return pHeaderRecord->qualifier;
+  return from_type_in_QualifierCodeSpec_static(pHeaderRecord->qualifier);
 }
 
 GroupVariationRecord GetRecord_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
   GroupVariationRecord gGroupVariationRecord;
+  GroupVariationRecord_in_GroupVariationRecordOver1(&gGroupVariationRecord);
+
   EnumAndType pair = GetEnumAndType_in_GroupVariationRecord_static(group, variation);
   GroupVariationRecord_in_GroupVariationRecordOver2(&gGroupVariationRecord, group, variation, pair.enumeration, pair.type);
   return gGroupVariationRecord;
@@ -64,7 +67,9 @@ uint16_t GetGroupVar_in_GroupVariationRecord_static(uint8_t group, uint8_t varia
 EnumAndType GetEnumAndType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
   GroupVariationType_int32_t type = GetType_in_GroupVariationRecord_static(group, variation);
-  GroupVariation_uint16_t enumeration = GetGroupVar_in_GroupVariationRecord_static(group, variation);
+
+////    auto enumeration = GroupVariationSpec::from_type(GetGroupVar(group, variation));
+  GroupVariation_uint16_t enumeration = from_type_in_GroupVariationSpec_static(GetGroupVar_in_GroupVariationRecord_static(group, variation));
 
   if (enumeration == GroupVariation_UNKNOWN)
   {
@@ -198,6 +203,7 @@ void GroupVariationRecord_in_GroupVariationRecordOver1(GroupVariationRecord *pGr
 
 void HeaderRecord_in_HeaderRecordOver1(HeaderRecord *pHeaderRecord)
 {
+  GroupVariationRecord_in_GroupVariationRecordOver1(&(pHeaderRecord->gGroupVariationRecord));
   pHeaderRecord->qualifier = 0;
   pHeaderRecord->headerIndex = 0;
 }

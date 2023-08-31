@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+#include <iostream>
 #include "header.h"
 #include "ObjectHeaderParser.h"
 
@@ -41,12 +41,13 @@ void ObjectHeader_in_ObjectHeader(ObjectHeader *pObjectHeader)
 
 ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader* header, RSeq_for_Uint16_t* buffer)////, Logger* pLogger)
 {
-qDebug()<<"";
-qDebug()<<"ParseObjectHeader_in_ObjectHeaderParser_static1";
+std::cout<<""<<std::endl;
+std::cout<<"ParseObjectHeader_in_ObjectHeaderParser_static1"<<std::endl;
 ////    if (buffer.length() < 3)
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < 3)
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for header");
+    std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for header')***"<<std::endl;
     return ParseResult_NOT_ENOUGH_DATA_FOR_HEADER;
   }
 
@@ -57,7 +58,7 @@ qDebug()<<"ParseObjectHeader_in_ObjectHeaderParser_static1";
   read_from_in_UInt8_static(buffer, &(header->group));
   read_from_in_UInt8_static(buffer, &(header->variation));
   read_from_in_UInt8_static(buffer, &(header->qualifier));
-qDebug()<<"ParseObjectHeader_in_ObjectHeaderParser_static2";
+
   return ParseResult_OK;
 }
 

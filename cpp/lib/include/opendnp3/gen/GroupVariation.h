@@ -167,6 +167,8 @@ enum GroupVariation
   GroupVariation_UNKNOWN = 0xFFFF
 };
 
+GroupVariation from_type_in_GroupVariationSpec_static(uint16_t arg);
+
 ////struct GroupVariationSpec
 ////{
 ////  using enum_type_t = GroupVariation;

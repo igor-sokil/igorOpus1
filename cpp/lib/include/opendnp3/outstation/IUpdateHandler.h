@@ -49,6 +49,11 @@ typedef struct
    * @param index index of the measurement
    * @param mode Describes how event generation is handled for this method
    * @return true if the value exists and it was updated
+* Обновление двоичного измерения.
+    * @param измеряет измерение, которое необходимо обработать
+    * @param index индекс измерения
+    * @param mode Описывает, как для этого метода обрабатывается генерация событий.
+    * @return true, если значение существует и оно было обновлено
    */
   boolean (*pUpdate_Binary_in_IUpdateHandler)(void*, Binary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 
@@ -58,6 +63,11 @@ typedef struct
    * @param index index of the measurement
    * @param mode Describes how event generation is handled for this method
    * @return true if the value exists and it was updated
+* Обновление измерения DoubleBitBinary.
+    * @param измеряет измерение, которое необходимо обработать
+    * @param index индекс измерения
+    * @param mode Описывает, как для этого метода обрабатывается генерация событий.
+    * @return true, если значение существует и оно было обновлено
    */
   boolean (*pUpdate_DoubleBitBinary_in_IUpdateHandler)(void*, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
 

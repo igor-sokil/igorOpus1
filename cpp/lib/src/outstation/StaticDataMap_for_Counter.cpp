@@ -16,3 +16,8 @@ void StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpec(StaticDataMa
     pStaticDataMap->map[item.first] = sStaticDataCell_for_Counter;
   }
 }
+
+Range get_selected_range_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec)
+{
+  return pStaticDataMap_for_CounterSpec->selected;
+}

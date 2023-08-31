@@ -25,6 +25,8 @@
 
 void ReadHandler_in_ReadHandler(ReadHandler *pReadHandler, IStaticSelector* staticSelector, IEventSelector* eventSelector)
 {
+  IAPDUHandler_in_IAPDUHandler(&(pReadHandler->iIAPDUHandler));
+
   pReadHandler->pStaticSelector = staticSelector;
   pReadHandler->pEventSelector  = eventSelector;
 

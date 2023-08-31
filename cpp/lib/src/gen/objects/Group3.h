@@ -54,28 +54,11 @@
 GroupVariationID ID_in_Group3Var0_static(void);
 GroupVariationID ID_in_Group3Var1_static(void);
 
-GroupVariationID ID_in_Group3Var0_static(void)
-{
-//// return GroupVariationID(3,0);
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 3, 0);
-////  return GroupVariationID(3,0);
-  return gGroupVariationID;
-}
-
 // Double-bit Binary Input - Packed Format
 ////struct Group3Var1
 ////{
 ////  static GroupVariationID ID() { return GroupVariationID(3,1); }
 ////};
-GroupVariationID ID_in_Group3Var1_static(void)
-{
-//// return GroupVariationID(3,1);
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 3, 1);
-////  return GroupVariationID(3,1);
-  return gGroupVariationID;
-}
 
 // Double-bit Binary Input - With Flags
 ////struct Group3Var2
@@ -99,43 +82,17 @@ typedef struct
 ////  static const StaticDoubleBinaryVariation svariation = StaticDoubleBinaryVariation::Group3Var2;
 } Group3Var2;
 GroupVariationID ID_in_Group3Var2_static(void);
-Group3Var2_in_Group3Var2(Group3Var2 *pGroup3Var2);
+void Group3Var2_in_Group3Var2(Group3Var2 *pGroup3Var2);
 uint16_t Size_in_Group3Var2_static(void);
 boolean Read_in_Group3Var2_static(RSeq_for_Uint16_t *, Group3Var2*);
 boolean Write_in_Group3Var2_static(Group3Var2*, WSeq_for_Uint16_t*);
 
 boolean ReadTarget_in_Group3Var2_static(RSeq_for_Uint16_t*, DoubleBitBinary*);
 boolean WriteTarget_in_Group3Var2_static(DoubleBitBinary*, WSeq_for_Uint16_t*);
-DNP3Serializer_for_Binary  Inst_in_Group3Var2_static(void);
+DNP3Serializer_for_DoubleBitBinary  Inst_in_Group3Var2_static(void);
 ////  static const StaticDoubleBinaryVariation svariation = StaticDoubleBinaryVariation::Group3Var2;
 const StaticDoubleBinaryVariation_uint8_t  svariation_in_Group3Var2 = StaticDoubleBinaryVariation_Group3Var2;
 
-GroupVariationID ID_in_Group3Var2_static(void)
-{
-//// return GroupVariationID(3,2);
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 3, 2);
-////  return GroupVariationID(3,2);
-  return gGroupVariationID;
-}
-
-uint16_t Size_in_Group3Var2_static(void)
-{
-  return 1;
-}
-
-DNP3Serializer_for_Binary  Inst_in_Group3Var2_static(void)
-{
-  DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
-  DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
-      ID_in_Group3Var2_static(),
-      Size_in_Group3Var2_static(),
-      &ReadTarget_in_Group3Var2_static,
-      &WriteTarget_in_Group3Var2_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-  return dDNP3Serializer_for_Binary;
-}
 
 ////}
 

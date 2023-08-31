@@ -12,6 +12,8 @@
 #include "APDUHelpers.h"
 #include "APDUHeader.h"
 #include "SerializationTemplates.h"
+#include "HeaderWriter_for_Binary.h"
+
 #include "Group1.h"
 
 DWORD get_fattime (void);
@@ -21,6 +23,10 @@ DWORD get_fattime (void);
 key_filter *pkf;
 
 MainWindow *mainWindow;
+
+void* pPointerGlobal1;
+void* pPointerGlobal2;
+void* pPointerGlobal3;
 
 int main(int argc, char *argv[])
 {

@@ -26,6 +26,7 @@
 #include "MeasurementTypes.h"
 #include "OctetString.h"
 #include "ControlRelayOutputBlock.h"
+#include "AnalogCommandEvent.h"
 #include "BinaryCommandEvent.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>

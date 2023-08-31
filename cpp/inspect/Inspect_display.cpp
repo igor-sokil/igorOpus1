@@ -313,3 +313,76 @@ void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IIN
  loghandler.LogEntry("");
 }
 //-------------------PairSer4cpp_for_IINField_AppControlField------------------------
+//-------------------ObjectHeader------------------------
+void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader);
+
+void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader)
+{
+ loghandler.LogEntry("");
+ loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
+
+ void** tt = (void**)pMemory_ObjectHeader->title;
+ char *title = (char*)tt[0];
+
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntryShort("=====");
+ loghandler.LogEntryShort("-ObjectHeader-");
+ loghandler.LogEntryShort("=====");
+
+ loghandler.LogEntry("");
+ loghandler.logHandlerStampInteger((" counter = "), pMemory_ObjectHeader->counter_inspect);
+ loghandler.logHandlerStampInteger32((" adr     = "), (uint32_t)pMemory_ObjectHeader->pObjectHeader);
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_ObjectHeader->
+                                                            mObjectHeader.group); 
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_ObjectHeader->
+                                                            mObjectHeader.variation); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t qualifier = "), pMemory_ObjectHeader->
+                                                            mObjectHeader.qualifier); 
+
+ loghandler.LogEntry("");
+}
+//-------------------ObjectHeader------------------------
+//-------------------GroupVariationRecord------------------------
+void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord);
+
+void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord)
+{
+ loghandler.LogEntry("");
+ loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
+
+ void** tt = (void**)pMemory_GroupVariationRecord->title;
+ char *title = (char*)tt[0];
+
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntryShort("=====");
+ loghandler.LogEntryShort("-GroupVariationRecord-");
+ loghandler.LogEntryShort("=====");
+
+ loghandler.LogEntry("");
+ loghandler.logHandlerStampInteger((" counter = "), pMemory_GroupVariationRecord->counter_inspect);
+ loghandler.logHandlerStampInteger32((" adr     = "), (uint32_t)pMemory_GroupVariationRecord->pGroupVariationRecord);
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    GroupVariation_uint16_t enumeration = "), pMemory_GroupVariationRecord->
+                                                            mGroupVariationRecord.enumeration); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    GroupVariationType_int32_t type = "), pMemory_GroupVariationRecord->
+                                                            mGroupVariationRecord.type); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_GroupVariationRecord->
+                                                            mGroupVariationRecord.group); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_GroupVariationRecord->
+                                                            mGroupVariationRecord.variation); 
+
+ loghandler.LogEntry("");
+}
+//-------------------GroupVariationRecord------------------------

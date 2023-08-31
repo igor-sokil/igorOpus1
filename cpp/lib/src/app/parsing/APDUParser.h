@@ -51,12 +51,6 @@ ParseResult_uint8_t Parse_in_APDUParser_static(
 ////                             Logger& logger,
 ////                             ParserSettings settings = ParserSettings::Default());
 
-//    ParseResult_uint8_t Parse_in_APDUParser_static(
-//                             RSeq_for_Uint16_t *buffer,
-//                             IAPDUHandler *handler);
-////                             Logger* pLogger,
-////                             ParserSettings settings = ParserSettings::Default());
-
 ParseResult_uint8_t ParseAndLogAll_in_APDUParser_static(
   RSeq_for_Uint16_t *buffer);
 ////                                      Logger* pLogger,

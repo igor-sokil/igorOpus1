@@ -16,3 +16,8 @@ void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalS
     pStaticDataMap->map[item.first] = sStaticDataCell_for_TimeAndInterval;
   }
 }
+
+Range get_selected_range_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec)
+{
+  return pStaticDataMap_for_TimeAndIntervalSpec->selected;
+}

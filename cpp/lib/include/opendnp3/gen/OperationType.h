@@ -40,6 +40,8 @@
 /**
   Used in conjunction with Trip Close Code in a CROB to describe what action to perform
   Refer to section A.8.1 of IEEE 1815-2012 for a full description
+Используется вместе с кодом закрытия отключения в CROB для описания того, какое действие необходимо выполнить.
+   Полное описание см. в разделе A.8.1 стандарта IEEE 1815-2012.
 */
 //enum class OperationType : uint8_t
 #define OperationType_uint8_t  uint8_t
@@ -59,6 +61,8 @@ enum OperationType
   OperationType_Undefined = 0xFF
 };
 
+OperationType_uint8_t from_type_in_OperationTypeSpec_static(uint8_t arg);
+                      
 ////struct OperationTypeSpec
 ////{
 ////  using enum_type_t = OperationType;

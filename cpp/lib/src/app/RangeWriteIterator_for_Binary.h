@@ -25,8 +25,7 @@
 
 ////namespace opendnp3
 ////{
-//-------------------Uint8---------------------------------------------------
-
+//-------------------RangeWriteIterator_for_UInt8_Binary---------------------------------------------------
 // A facade for writing APDUs to an external buffer
 ////template<class IndexType, class WriteType> class RangeWriteIterator
 typedef struct
@@ -114,7 +113,96 @@ void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryO
 void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver1(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary);
 RangeWriteIterator_for_UInt8_Binary Null_in_RangeWriteIterator_for_UInt8_Binary_static(void);
 
-//-------------------Uint8---------------------------------------------------
+//-------------------RangeWriteIterator_for_UInt8_Binary---------------------------------------------------
+
+//-------------------RangeWriteIterator_for_UInt16_Binary---------------------------------------------------
+// A facade for writing APDUs to an external buffer
+////template<class IndexType, class WriteType> class RangeWriteIterator
+typedef struct
+{
+////public:
+////    static RangeWriteIterator Null()
+////    {
+////        return RangeWriteIterator();
+////    }
+////
+////    RangeWriteIterator() : start(0), count(0), isValid(false), pPosition(nullptr) {}
+////
+////    RangeWriteIterator(typename IndexType::type_t start_,
+////                       const Serializer<WriteType>& serializer,
+////                       ser4cpp::wseq_t& position)
+////        : start(start_),
+////          serializer(serializer),
+////          count(0),
+////          isValid(position.length() >= 2 * IndexType::size),
+////          range(position),
+////          pPosition(&position)
+////    {
+////        if (isValid)
+////        {
+////            IndexType::write_to(range, start);
+////            pPosition->advance(2 * IndexType::size);
+////        }
+////    }
+////
+////    ~RangeWriteIterator()
+////    {
+////        if (isValid && count > 0)
+////        {
+////            auto stop = start + count - 1;
+////            IndexType::write_to(range, static_cast<typename IndexType::type_t>(stop));
+////        }
+////    }
+////
+////    bool Write(const WriteType& value)
+////    {
+////        if (isValid && (pPosition->length() >= serializer.get_size()) && (count <= IndexType::max_value))
+////        {
+////            serializer.write(value, *pPosition);
+////            ++count;
+////            return true;
+////        }
+////        else
+////        {
+////            return false;
+////        }
+////    }
+////
+////    bool IsValid() const
+////    {
+////        return isValid;
+////    }
+
+////private:
+////    typename IndexType::type_t start;
+  uint16_t start;
+//    Serializer<WriteType> serializer;
+  Serializer_for_Binary  serializer;
+  uint32_t count;
+
+  boolean isValid;
+
+  //ser4cpp::wseq_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
+
+//    ser4cpp::wseq_t* pPosition;
+  WSeq_for_Uint16_t* pPosition;
+} RangeWriteIterator_for_UInt16_Binary;
+
+boolean IsValid_in_RangeWriteIterator_for_UInt16_Binary(RangeWriteIterator_for_UInt16_Binary *pRangeWriteIterator_for_UInt16_Binary);
+boolean Write_in_RangeWriteIterator_for_UInt16_Binary(RangeWriteIterator_for_UInt16_Binary *pRangeWriteIterator_for_UInt16_Binary,
+    Binary* value);
+void RangeWriteIterator_for_UInt16_Binary_destr_RangeWriteIterator_for_UInt16_Binary(RangeWriteIterator_for_UInt16_Binary *pRangeWriteIterator_for_UInt16_Binary);
+void RangeWriteIterator_for_UInt16_Binary_in_RangeWriteIterator_for_UInt16_BinaryOver2(RangeWriteIterator_for_UInt16_Binary *pRangeWriteIterator_for_UInt16_Binary,
+//                   typename IndexType::type_t start_,
+    uint16_t start_,
+//                   const Serializer<WriteType>& serializer,
+    Serializer_for_Binary*  serializer,
+//                   ser4cpp::wseq_t& position)
+    WSeq_for_Uint16_t* position);
+void RangeWriteIterator_for_UInt16_Binary_in_RangeWriteIterator_for_UInt16_BinaryOver1(RangeWriteIterator_for_UInt16_Binary *pRangeWriteIterator_for_UInt16_Binary);
+RangeWriteIterator_for_UInt16_Binary Null_in_RangeWriteIterator_for_UInt16_Binary_static(void);
+//-------------------RangeWriteIterator_for_UInt16_Binary---------------------------------------------------
 
 ////} // namespace opendnp3
 

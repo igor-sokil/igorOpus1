@@ -16,3 +16,8 @@ void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputS
     pStaticDataMap->map[item.first] = sStaticDataCell_for_AnalogOutputStatus;
   }
 }
+
+Range get_selected_range_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec)
+{
+  return pStaticDataMap_for_AnalogOutputStatusSpec->selected;
+}

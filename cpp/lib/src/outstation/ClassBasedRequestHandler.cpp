@@ -62,6 +62,8 @@ IINField ProcessHeader_AllObjectsHeader_in_ClassBasedRequestHandler_override(voi
 
 void ClassBasedRequestHandler_in_ClassBasedRequestHandler(ClassBasedRequestHandler *pClassBasedRequestHandler)
 {
+  IAPDUHandler_in_IAPDUHandler(&(pClassBasedRequestHandler->iIAPDUHandler));
+
 //     boolean (*pIsAllowed_in_IWhiteList)(void*, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
   (pClassBasedRequestHandler->iIAPDUHandler).iIWhiteList.pIsAllowed_in_IWhiteList = IsAllowed_in_ClassBasedRequestHandler_override;
 //    IINField (*pProcessHeader_AllObjectsHeader_in_IAPDUHandler)(void*, AllObjectsHeader* record);

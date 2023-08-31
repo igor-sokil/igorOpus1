@@ -6,6 +6,8 @@
 #include "APDUHeaderParser.h"
 #include "ParsedRequest.h"
 #include "Pair_for_IINField_AppControlField.h"
+#include "ObjectHeaderParser.h"
+#include "GroupVariationRecord.h"
 //-------------------RSeq------------------------
 typedef struct
 {
@@ -151,5 +153,45 @@ Memory_IINField*  MEMORY_IINField_1(uint16_t titleSpace, IINField* pIINField);
 Memory_IINField*  MEMORY_IINField_2(uint16_t titleSpace, IINField* pIINField);
 Memory_IINField*  MEMORY_IINField_3(uint16_t titleSpace, IINField* pIINField);
 //-------------------IINField------------------------
+
+//-------------------ObjectHeader------------------------
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ ObjectHeader* pObjectHeader;
+ void* title;
+
+ ObjectHeader mObjectHeader;
+} Memory_ObjectHeader;
+
+extern Memory_ObjectHeader* pMemory_ObjectHeader_1;
+extern Memory_ObjectHeader* pMemory_ObjectHeader_2;
+extern Memory_ObjectHeader* pMemory_ObjectHeader_3;
+
+Memory_ObjectHeader*  MEMORY_ObjectHeader_1(uint16_t titleSpace, ObjectHeader* pObjectHeader);
+Memory_ObjectHeader*  MEMORY_ObjectHeader_2(uint16_t titleSpace, ObjectHeader* pObjectHeader);
+Memory_ObjectHeader*  MEMORY_ObjectHeader_3(uint16_t titleSpace, ObjectHeader* pObjectHeader);
+//-------------------ObjectHeader------------------------
+
+//-------------------GroupVariationRecord------------------------
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ GroupVariationRecord* pGroupVariationRecord;
+ void* title;
+
+ GroupVariationRecord mGroupVariationRecord;
+} Memory_GroupVariationRecord;
+
+extern Memory_GroupVariationRecord* pMemory_GroupVariationRecord_1;
+extern Memory_GroupVariationRecord* pMemory_GroupVariationRecord_2;
+extern Memory_GroupVariationRecord* pMemory_GroupVariationRecord_3;
+
+Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_1(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord);
+Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_2(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord);
+Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_3(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord);
+//-------------------GroupVariationRecord------------------------
 
 #endif

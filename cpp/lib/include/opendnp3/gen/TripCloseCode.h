@@ -40,6 +40,8 @@
 /**
   Used in conjunction with Operation Type in a CROB to describe which output to operate for complementary two-output model
   Refer to section A.8.1 of IEEE 1815-2012 for a full description
+Используется вместе с типом операции в CROB для описания того, какой выход использовать для дополнительной модели с двумя выходами.
+   Полное описание см. в разделе A.8.1 стандарта IEEE 1815-2012.
 */
 //enum class TripCloseCode : uint8_t
 #define TripCloseCode_uint8_t  uint8_t
@@ -54,6 +56,8 @@ enum TripCloseCode
   /// Reserved for future use.
   TripCloseCode_RESERVED = 0x3
 };
+
+TripCloseCode_uint8_t from_type_in_TripCloseCodeSpec_static(uint8_t arg);
 
 ///struct TripCloseCodeSpec
 ////{

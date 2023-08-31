@@ -16,3 +16,8 @@ void StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpec(
     pStaticDataMap->map[item.first] = sStaticDataCell_for_FrozenCounter;
   }
 }
+
+Range get_selected_range_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec)
+{
+  return pStaticDataMap_for_FrozenCounterSpec->selected;
+}

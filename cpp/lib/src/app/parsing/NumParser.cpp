@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <iostream>
 #include "header.h"
 #include "NumParser.h"
 #include "RSeq.h"
@@ -49,6 +50,7 @@ ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
     if (count == 0)
     {
 ////            SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "count of 0");
+      std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'count of 0')***"<<std::endl;
       return ParseResult_COUNT_OF_ZERO;
     }
 
@@ -57,6 +59,7 @@ ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
   else
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for count");
+    std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for count')***"<<std::endl;
     return ParseResult_NOT_ENOUGH_DATA_FOR_RANGE;
   }
 }
@@ -67,6 +70,7 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < (2 * (uint16_t)(pNumParser->size)))
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for start / stop");
+    std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for start / stop')***"<<std::endl;
     return ParseResult_NOT_ENOUGH_DATA_FOR_RANGE;
   }
 
@@ -82,6 +86,7 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
   }
 
 ////    FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "start (%u) > stop (%u)", range.start, range.stop);
+    std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'start (%u) > stop (%u)', range.start, range.stop)***"<<std::endl;
   return ParseResult_BAD_START_STOP;
 }
 

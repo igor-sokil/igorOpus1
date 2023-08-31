@@ -200,6 +200,7 @@ public:
 };
 
 void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap, std::map<uint16_t, TimeAndIntervalConfig>& config);
+Range get_selected_range_in_StaticDataMap_for_TimeAndIntervalpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec);
 
 ////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
 ////{

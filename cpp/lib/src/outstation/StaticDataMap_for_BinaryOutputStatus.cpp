@@ -16,3 +16,8 @@ void StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputS
     pStaticDataMap->map[item.first] = sStaticDataCell_for_BinaryOutputStatus;
   }
 }
+
+Range get_selected_range_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec)
+{
+  return pStaticDataMap_for_BinaryOutputStatusSpec->selected;
+}

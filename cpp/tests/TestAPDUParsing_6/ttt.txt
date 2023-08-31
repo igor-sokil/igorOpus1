@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("TestUnknownQualifier"))
+{
+    // (2,2) unknown qualifier 0xAB
+    TestSimple("02 02 AB", ParseResult::UNKNOWN_QUALIFIER, 0);
+}

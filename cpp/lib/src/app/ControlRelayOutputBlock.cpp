@@ -47,8 +47,8 @@ void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1(ControlRelayOutputB
 void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2(ControlRelayOutputBlock *pControlRelayOutputBlock,
     uint8_t rawCode_, uint8_t count_, uint32_t onTime_, uint32_t offTime_, CommandStatus_uint8_t status_)
 {
-  pControlRelayOutputBlock->opType = (rawCode_ & 0x0F);
-  pControlRelayOutputBlock->tcc = (rawCode_ >> 6) & 0x3;
+  pControlRelayOutputBlock->opType = from_type_in_OperationTypeSpec_static((rawCode_ & 0x0F));
+  pControlRelayOutputBlock->tcc = from_type_in_TripCloseCodeSpec_static((rawCode_ >> 6) & 0x3);
   pControlRelayOutputBlock->clear = (rawCode_ & 0x20);
   pControlRelayOutputBlock->count = count_;
   pControlRelayOutputBlock->onTimeMS = onTime_;

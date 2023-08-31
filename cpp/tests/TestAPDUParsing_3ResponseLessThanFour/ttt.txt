@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("ResponseLessThanFour"))
+{
+    HexSequence buffer("C0 02 01");
+    REQUIRE(!APDUHeaderParser::ParseResponse(buffer.ToRSeq()).success);
+}

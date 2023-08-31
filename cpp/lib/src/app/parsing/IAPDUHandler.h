@@ -52,7 +52,7 @@
 #include "BinaryCommandEvent.h"
 #include "ControlRelayOutputBlock.h"
 #include "IINField.h"
-//#include "Indexed.h"
+#include "Indexed.h"
 #include "MeasurementTypes.h"
 #include "OctetString.h"
 #include "ICollection.h"

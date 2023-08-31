@@ -28,6 +28,8 @@
 void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
                                   IOutstationApplication* application, TimeSyncState* timeSyncState, AppSeqNum seq, Timestamp now, IINField* writeIIN)
 {
+  IAPDUHandler_in_IAPDUHandler(&(pWriteHandler->iIAPDUHandler));
+
   pWriteHandler->application = application;
   pWriteHandler->timeSyncState = timeSyncState;
   pWriteHandler->seq = seq;

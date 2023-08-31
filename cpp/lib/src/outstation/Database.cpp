@@ -21,8 +21,6 @@
 #include "header.h"
 #include "Database.h"
 
-////#include "outstation/StaticWriters.h"
-
 ////Database::Database(const DatabaseConfig& config,
 ////                   IEventReceiver& event_receiver,
 ////                   IDnpTimeSource& time_source,
@@ -66,6 +64,63 @@ void  Database_in_Database(Database *pDatabase,
 
 ////      octet_string(config.octet_string)
    StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpec(&(pDatabase->octet_string), config->octet_string);
+
+  setParentPointer_in_IStaticSelector(&(pDatabase->iIStaticSelector), pDatabase);
+  setParentPointer_in_IClassAssigner(&(pDatabase->iIClassAssigner), pDatabase);
+  setParentPointer_in_IResponseLoader(&(pDatabase->iIResponseLoader), pDatabase);
+  setParentPointer_in_IUpdateHandler(&(pDatabase->iIUpdateHandler), pDatabase);
+
+pDatabase->iIResponseLoader.pLoad_in_IResponseLoader = Load_in_Database_override;
+
+/*
+// ------- IStaticSelector -------------
+IINField SelectAll_in_Database(Database *pDatabase, GroupVariation_uint16_t gv);
+IINField SelectRange_in_Database(Database *pDatabase, GroupVariation_uint16_t gv, Range* range);
+IINField SelectIndices_in_Database(Database *pDatabase, GroupVariation_uint16_t gv, ICollection_for_uint16* indices);
+void Unselect_in_Database(Database *pDatabase);
+
+IINField SelectAll_in_Database_override(void *pIStaticSelector, GroupVariation_uint16_t gv);
+IINField SelectRange_in_Database_override(void *pIStaticSelector, GroupVariation_uint16_t gv, Range* range);
+IINField SelectIndices_in_Database_override(void *pIStaticSelector, GroupVariation_uint16_t gv, ICollection_for_uint16* indices);
+void Unselect_in_Database_override(void *pIStaticSelector);
+
+// ------- IClassAssigner -------------
+Range AssignClassToAll_in_Database(Database *pDatabase, AssignClassType_uint8_t type, PointClass_uint8_t clazz);
+Range AssignClassToRange_in_Database(Database *pDatabase, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
+
+Range AssignClassToAll_in_Database_override(void *pIClassAssigner, AssignClassType_uint8_t type, PointClass_uint8_t clazz);
+Range AssignClassToRange_in_Database_override(void *pIClassAssigner, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
+
+// ------- IResponseLoader -------------
+boolean HasAnySelection_in_Database(Database *pDatabase);
+boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer);
+
+boolean HasAnySelection_in_Database_override(void *pIResponseLoader);
+boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer);
+
+// ------- IUpdateHandler ---------------
+boolean Update_in_Database(Database *pDatabase, Binary* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database(Database *pDatabase, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database(Database *pDatabase, Analog* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database(Database *pDatabase, Counter* meas, uint16_t index, EventMode_uint8_t mode);
+boolean FreezeCounter_in_Database(Database *pDatabase, uint16_t index, boolean clear, EventMode_uint8_t mode);
+boolean Update_in_Database(Database *pDatabase, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database(Database *pDatabase, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database(Database *pDatabase, OctetString* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database(Database *pDatabase, TimeAndInterval* meas, uint16_t index);
+boolean Modify_in_Database(Database *pDatabase, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);
+
+boolean Update_in_Database_override(void *pIUpdateHandler, Binary* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database_override(void *pIUpdateHandler, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database_override(void *pIUpdateHandler, Analog* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database_override(void *pIUpdateHandler, Counter* meas, uint16_t index, EventMode_uint8_t mode);
+boolean FreezeCounter_in_Database_override(void *pIUpdateHandler, uint16_t index, boolean clear, EventMode_uint8_t mode);
+boolean Update_in_Database_override(void *pIUpdateHandler, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database_override(void *pIUpdateHandler, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database_override(void *pIUpdateHandler, OctetString* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_in_Database_override(void *pIUpdateHandler, TimeAndInterval* meas, uint16_t index);
+boolean Modify_in_Database_override(void *pIUpdateHandler, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);
+*/
 }
 
 ////namespace opendnp3
@@ -637,3 +692,22 @@ void Unselect_in_Database(Database *pDatabase)
 ////    this->octet_string.clear_selection();
 }
 
+////bool Database::Load(HeaderWriter& writer)
+boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
+{
+//boolean load_type_for_Binary_in_Database_static(StaticDataMap_for_BinarySpec& map, HeaderWriter* writer)
+////    return load_type(this->binary_input, writer) && load_type(this->double_binary, writer)
+////        && load_type(this->analog_input, writer) && load_type(this->counter, writer)
+////        && load_type(this->frozen_counter, writer) && load_type(this->binary_output_status, writer)
+////        && load_type(this->analog_output_status, writer) && load_type(this->time_and_interval, writer)
+////        && load_type(this->octet_string, writer);
+return load_type_for_Binary_in_Database_static(pDatabase->binary_input, writer);
+}
+
+
+boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IResponseLoader((IResponseLoader*)pIResponseLoader);
+ return Load_in_Database(parent, writer);
+}

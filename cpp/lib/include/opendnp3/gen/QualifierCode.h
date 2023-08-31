@@ -54,6 +54,8 @@ enum QualifierCode
   QualifierCode_UNDEFINED = 0xFF
 };
 
+QualifierCode_uint8_t from_type_in_QualifierCodeSpec_static(uint8_t arg);
+
 ////struct QualifierCodeSpec
 ////{
 ////  using enum_type_t = QualifierCode;

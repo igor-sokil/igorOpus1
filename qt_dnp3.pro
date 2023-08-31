@@ -7,7 +7,7 @@ TARGET = qt_dnp3
 
 QT += widgets
 
-INCLUDEPATH  += .
+INCLUDEPATH  += qtsrc
 
 include(qt_dnp3.pri)
 

@@ -60,6 +60,7 @@ Group22Var6 Apply_in_ConvertGroup22Var6_static(Counter* src);
 void Group22Var1_in_Group22Var1(Group22Var1 *pGroup22Var1)
 {
   pGroup22Var1->flags = 0;
+  pGroup22Var1->value = 0;
 }
 
 ////bool Group22Var1::Read(rseq_t& buffer, Group22Var1& output)
@@ -68,8 +69,9 @@ void Group22Var1_in_Group22Var1(Group22Var1 *pGroup22Var1)
 ////}
 boolean Read_in_Group22Var1_static(RSeq_for_Uint16_t* buffer, Group22Var1* output)
 {
-//  return LittleEndian::read(buffer, output.flags);
-  return read_from_in_UInt8_static(buffer, &(output->flags));
+//  return LittleEndian::read(buffer, output.flags, output.value);
+  return read_from_in_UInt8_static(buffer, &(output->flags)) &&
+         read_from_in_UInt32_static(buffer, &(output->value));
 }
 
 ////bool Group22Var1::Write(const Group22Var1& arg, ser4cpp::wseq_t& buffer)
@@ -78,8 +80,9 @@ boolean Read_in_Group22Var1_static(RSeq_for_Uint16_t* buffer, Group22Var1* outpu
 ////}
 boolean Write_in_Group22Var1_static(Group22Var1* arg, WSeq_for_Uint16_t* buffer)
 {
-////  return LittleEndian::write(buffer, arg.flags);
-  return write_to_in_UInt8_static(buffer, arg->flags);
+//  return LittleEndian::write(buffer, arg.flags, arg.value);
+  return write_to_in_UInt8_static(buffer, arg->flags) &&
+         write_to_in_UInt32_static(buffer, arg->value);
 }
 
 ////bool Group22Var1::ReadTarget(rseq_t& buff, Counter& output)

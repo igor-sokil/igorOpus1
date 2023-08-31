@@ -31,6 +31,8 @@
 
 void CommandResponseHandler_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, uint32_t maxCommands_, ICommandAction* pCommandAction_, HeaderWriter* pWriter_)
 {
+  IAPDUHandler_in_IAPDUHandler(&(pCommandResponseHandler->iIAPDUHandler));
+
   pCommandResponseHandler->pCommandAction = pCommandAction_;
   pCommandResponseHandler->numRequests = 0;
   pCommandResponseHandler->numSuccess = 0;

@@ -54,14 +54,6 @@
 
 GroupVariationID ID_in_Group40Var0_static(void);
 
-GroupVariationID ID_in_Group40Var0_static(void)
-{
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 40, 0);
-//// return GroupVariationID(40,0);
-  return gGroupVariationID;
-}
-
 // Analog Output Status - 32-bit With Flag
 ////struct Group40Var1
 typedef struct
@@ -87,42 +79,13 @@ typedef struct
 } Group40Var1;
 
 uint16_t Size_in_Group40Var1_static(void);
-
-uint16_t Size_in_Group40Var1_static(void)
-{
-  return 5;
-}
-
 void Group40Var1_in_Group40Var1(Group40Var1 *pGroup40Var1);
-
-GroupVariationID ID_in_Group40Var1_static(void)
-{
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 40, 1);
-////  return GroupVariationID(40,1);
-  return gGroupVariationID;
-}
 
 boolean Read_in_Group40Var1_static(RSeq_for_Uint16_t *, Group40Var1*);
 boolean Write_in_Group40Var1_static(Group40Var1*, WSeq_for_Uint16_t*);
 
 boolean ReadTarget_in_Group40Var1_static(RSeq_for_Uint16_t*, AnalogOutputStatus*);
 boolean WriteTarget_in_Group40Var1_static(AnalogOutputStatus*, WSeq_for_Uint16_t*);
-
-DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group40Var1_static(void)
-{
-  DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
-  DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
-      ID_in_Group40Var1_static(),
-      Size_in_Group40Var1_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-      &ReadTarget_in_Group40Var1_static,
-////                   typename Serializer<T>::write_func_t write_func)
-      &WriteTarget_in_Group40Var1_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-  return dDNP3Serializer_for_AnalogOutputStatus;
-}
 
 const StaticAnalogOutputStatusVariation_uint8_t svariation_in_Group40Var1 = StaticAnalogOutputStatusVariation_Group40Var1;
 
@@ -151,42 +114,13 @@ typedef struct
 } Group40Var2;
 
 uint16_t Size_in_Group40Var2_static(void);
-
-uint16_t Size_in_Group40Var2_static(void)
-{
-  return 3;
-}
-
 void Group40Var2_in_Group40Var2(Group40Var2 *pGroup40Var2);
-
-GroupVariationID ID_in_Group40Var2_static(void)
-{
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 40, 2);
-////  return GroupVariationID(40,2);
-  return gGroupVariationID;
-}
 
 boolean Read_in_Group40Var2_static(RSeq_for_Uint16_t *, Group40Var2*);
 boolean Write_in_Group40Var2_static(Group40Var2*, WSeq_for_Uint16_t*);
 
 boolean ReadTarget_in_Group40Var2_static(RSeq_for_Uint16_t*, AnalogOutputStatus*);
 boolean WriteTarget_in_Group40Var2_static(AnalogOutputStatus*, WSeq_for_Uint16_t*);
-
-DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group40Var2_static(void)
-{
-  DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
-  DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
-      ID_in_Group40Var2_static(),
-      Size_in_Group40Var2_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-      &ReadTarget_in_Group40Var2_static,
-////                   typename Serializer<T>::write_func_t write_func)
-      &WriteTarget_in_Group40Var2_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-  return dDNP3Serializer_for_AnalogOutputStatus;
-}
 
 const StaticAnalogOutputStatusVariation_uint8_t svariation_in_Group40Var2 = StaticAnalogOutputStatusVariation_Group40Var2;
 
@@ -215,42 +149,13 @@ typedef struct
 } Group40Var3;
 
 uint16_t Size_in_Group40Var3_static(void);
-
-uint16_t Size_in_Group40Var3_static(void)
-{
-  return 5;
-}
-
 void Group40Var3_in_Group40Var3(Group40Var3 *pGroup40Var3);
-
-GroupVariationID ID_in_Group40Var3_static(void)
-{
-  GroupVariationID gGroupVariationID;
-  GroupVariationID_in_GroupVariationIDOver2(&gGroupVariationID, 40, 3);
-////  return GroupVariationID(40,3);
-  return gGroupVariationID;
-}
 
 boolean Read_in_Group40Var3_static(RSeq_for_Uint16_t *, Group40Var3*);
 boolean Write_in_Group40Var3_static(Group40Var3*, WSeq_for_Uint16_t*);
 
 boolean ReadTarget_in_Group40Var3_static(RSeq_for_Uint16_t*, AnalogOutputStatus*);
 boolean WriteTarget_in_Group40Var3_static(AnalogOutputStatus*, WSeq_for_Uint16_t*);
-
-DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group40Var3_static(void)
-{
-  DNP3Serializer_for_AnalogOutputStatus dDNP3Serializer_for_AnalogOutputStatus;
-  DNP3Serializer_for_AnalogOutputStatus_in_DNP3Serializer_for_AnalogOutputStatus(&dDNP3Serializer_for_AnalogOutputStatus,
-      ID_in_Group40Var3_static(),
-      Size_in_Group40Var3_static(),
-////                   typename Serializer<T>::read_func_t read_func,
-      &ReadTarget_in_Group40Var3_static,
-////                   typename Serializer<T>::write_func_t write_func)
-      &WriteTarget_in_Group40Var3_static);
-
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
-  return dDNP3Serializer_for_AnalogOutputStatus;
-}
 
 const StaticAnalogOutputStatusVariation_uint8_t svariation_in_Group40Var3 = StaticAnalogOutputStatusVariation_Group40Var3;
 /*

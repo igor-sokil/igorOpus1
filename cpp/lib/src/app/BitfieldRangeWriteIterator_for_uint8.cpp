@@ -1,5 +1,5 @@
 #include "header.h"
-#include "BitfieldRangeWriteIterator_for_uint8.h"
+#include "BitfieldRangeWriteIterator_for_UInt8.h"
 #include "SerializationTemplates.h"
 
 BitfieldRangeWriteIterator_for_UInt8 Null_in_BitfieldRangeWriteIterator_for_UInt8_static(void)

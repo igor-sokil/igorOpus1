@@ -133,6 +133,7 @@ SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\outstation\ICommandHandler.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\outstation\IOutstationApplication.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\outstation\IOutstation.cpp \
+                ..\..\..\cpp\lib\include\opendnp3\outstation\IUpdateHandler.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\outstation\MeasurementConfig.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\outstation\OutstationParams.cpp \
                 ..\..\..\cpp\lib\include\opendnp3\outstation\OutstationConfig.cpp \
@@ -180,7 +181,8 @@ SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\app\APDUWrapper.cpp \
                 ..\..\..\cpp\lib\src\app\APDUResponse.cpp \
                 ..\..\..\cpp\lib\src\app\BinaryCommandEvent.cpp \
-                ..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_uint8.cpp \
+                ..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_UInt8.cpp \
+                ..\..\..\cpp\lib\src\app\BitfieldRangeWriteIterator_for_UInt16.cpp \
                 ..\..\..\cpp\lib\src\app\CountWriteIterator_for_Analog.cpp \
                 ..\..\..\cpp\lib\src\app\CountWriteIterator_for_AnalogOutputStatus.cpp \
                 ..\..\..\cpp\lib\src\app\CountWriteIterator_for_Binary.cpp \
@@ -235,6 +237,7 @@ SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\outstation\ApplicationIIN.cpp \
                 ..\..\..\cpp\lib\src\outstation\AssignClassHandler.cpp \
                 ..\..\..\cpp\lib\src\outstation\Database.cpp \
+                ..\..\..\cpp\lib\src\outstation\Database_for_Binary.cpp \
                 ..\..\..\cpp\lib\src\outstation\DatabaseConfig.cpp \
                 ..\..\..\cpp\lib\src\outstation\DeferredRequest.cpp \
                 ..\..\..\cpp\lib\src\outstation\DeferredRequest_part2.cpp \
@@ -253,6 +256,11 @@ SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\outstation\IINHelpers.cpp \
                 ..\..\..\cpp\lib\src\outstation\IResponseLoader.cpp \
                 ..\..\..\cpp\lib\src\outstation\IStaticSelector.cpp \
+                ..\..\..\cpp\lib\src\outstation\NumRetries.cpp \
+                ..\..\..\cpp\lib\src\outstation\OctetStringSerializer.cpp \
+                ..\..\..\cpp\lib\src\outstation\OutstationChannelStates.cpp \
+                ..\..\..\cpp\lib\src\outstation\OutstationContext.cpp \
+                ..\..\..\cpp\lib\src\outstation\OutstationStates.cpp \
                 ..\..\..\cpp\lib\src\outstation\ParsedRequest.cpp \
                 ..\..\..\cpp\lib\src\outstation\ReadHandler.cpp \
                 ..\..\..\cpp\lib\src\outstation\ResponseContext.cpp \
@@ -268,12 +276,8 @@ SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\outstation\StaticDataMap_for_AnalogOutputStatus.cpp \
                 ..\..\..\cpp\lib\src\outstation\StaticDataMap_for_OctetString.cpp \
                 ..\..\..\cpp\lib\src\outstation\StaticDataMap_for_TimeAndInterval.cpp \
+                ..\..\..\cpp\lib\src\outstation\StaticWriters_for_Binary.cpp \
                 ..\..\..\cpp\lib\src\outstation\TimeSyncState.cpp \
-                ..\..\..\cpp\lib\src\outstation\NumRetries.cpp \
-                ..\..\..\cpp\lib\src\outstation\OctetStringSerializer.cpp \
-                ..\..\..\cpp\lib\src\outstation\OutstationChannelStates.cpp \
-                ..\..\..\cpp\lib\src\outstation\OutstationContext.cpp \
-                ..\..\..\cpp\lib\src\outstation\OutstationStates.cpp \
                 ..\..\..\cpp\lib\src\outstation\WriteHandler.cpp \
                 \
                 ..\..\..\cpp\lib\src\util\TimeDuration.cpp \
@@ -300,7 +304,6 @@ SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\EventWriters_for_OctetString.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\IEventType.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\IEventWriteHandler.cpp \
-                ..\..\..\cpp\lib\src\outstation\event\TypedStorage.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogOutputStatusSpec_part1.cpp \
@@ -321,25 +324,34 @@ SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\List_TypedEventRecord_for_OctetStringSpec_part2.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\Nodes.cpp \
                 ..\..\..\cpp\lib\src\outstation\event\TypedEventRecord.cpp \
+                ..\..\..\cpp\lib\src\outstation\event\TypedStorage.cpp \
                 \
                 ..\..\..\cpp\lib\src\gen\Attributes.cpp \
                 ..\..\..\cpp\lib\src\gen\DoubleBit.cpp \
                 ..\..\..\cpp\lib\src\gen\CommandStatus.cpp \
                 ..\..\..\cpp\lib\src\gen\IntervalUnits.cpp \
                 ..\..\..\cpp\lib\src\gen\FunctionCode.cpp \
+                ..\..\..\cpp\lib\src\gen\GroupVariation.cpp \
+                ..\..\..\cpp\lib\src\gen\QualifierCode.cpp \
+                ..\..\..\cpp\lib\src\gen\OperationType.cpp \
+                ..\..\..\cpp\lib\src\gen\TripCloseCode.cpp \
                 ..\..\..\cpp\lib\src\gen\LinkFunction.cpp \
                 \
                 ..\..\..\cpp\lib\src\gen\objects\Group1.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group2.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group3.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group4.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group10.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group11.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group12.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group13.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group20.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group21.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group22.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group23.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group30.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group32.cpp \
+                ..\..\..\cpp\lib\src\gen\objects\Group40.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group41.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group42.cpp \
                 ..\..\..\cpp\lib\src\gen\objects\Group50.cpp \
@@ -366,8 +378,4 @@ SOURCES       +=  ..\..\..\ser4cpp\util\Comparisons.cpp \
                 ..\..\..\cpp\tests\dnp3mocks\src\MockTransportLayer.cpp \
                 ..\..\..\cpp\tests\dnp3mocks\src\DatabaseHelpers.cpp \
                 ..\..\..\cpp\tests\dnp3mocks\src\DataSink.cpp 
-#                \
-#                ..\..\..\cpp\inspect\MemoryInspect.cpp \
-#                ..\..\..\cpp\inspect\Inspect_Message.cpp
 
-#                cpp\lib\src\gen\objects\Group43.cpp \

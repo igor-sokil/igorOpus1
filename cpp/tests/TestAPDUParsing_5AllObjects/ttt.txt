@@ -1,0 +1,8 @@
+TEST_CASE(SUITE("AllObjects"))
+{
+    // (2,2) all, (2,0) all
+    TestComplex("02 02 06 02 00 06", ParseResult::OK, 2, [](MockApduHeaderHandler& mock) {
+        REQUIRE((GroupVariation::Group2Var2 == mock.records[0].enumeration));
+        REQUIRE((GroupVariation::Group2Var0 == mock.records[1].enumeration));
+    });
+}

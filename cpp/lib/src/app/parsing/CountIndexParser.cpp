@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 MYTODO
+#include <iostream>
 #include "header.h"
 #include "CountIndexParser.h"
 
@@ -87,6 +88,7 @@ ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexPar
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < pCountIndexParser->requiredSize)
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
+   std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified objects')***"<<std::endl;
     return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
   }
 

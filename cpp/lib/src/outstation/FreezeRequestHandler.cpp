@@ -37,6 +37,8 @@
 ////FreezeRequestHandler::FreezeRequestHandler(bool clear, Database& database) : clear(clear), database(database) {}
 void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeRequestHandler, boolean clear, Database* database)
 {
+  IAPDUHandler_in_IAPDUHandler(&(pFreezeRequestHandler->iIAPDUHandler));
+
   pFreezeRequestHandler->clear = clear;
   pFreezeRequestHandler->database = database;
   /*

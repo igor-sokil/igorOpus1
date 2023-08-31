@@ -5,7 +5,8 @@
 #include "GroupVariationRecord.h"
 #include "GroupVariationID.h"
 #include "QualifierCode.h"
-#include "BitfieldRangeWriteIterator_for_uint8.h"
+#include "BitfieldRangeWriteIterator_for_UInt8.h"
+#include "BitfieldRangeWriteIterator_for_UInt16.h"
 #include "Group50.h"
 #include "Group51.h"
 #include "Group52.h"
@@ -93,11 +94,12 @@ boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve);
 
 ////    template<class IndexType>
+/*
 BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     GroupVariationID id,
     QualifierCode_uint8_t qc,
     uint8_t start);
-
+*/
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var1--------------------------------------------------------
 boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, Group51Var1*);
@@ -125,5 +127,24 @@ boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHe
     QualifierCode_uint8_t qc, Group50Var1*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
+
+////    template<class IndexType>
+////    BitfieldRangeWriteIterator<IndexType> IterateOverSingleBitfield(GroupVariationID id,
+////                                                                    QualifierCode qc,
+////                                                                    typename IndexType::type_t start);
+//--------------------------------IterateOverSingleBitfield_for_uint8--------------------------------------------------------
+
+BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    GroupVariationID id,
+    QualifierCode_uint8_t qc,
+    uint8_t start);
+//--------------------------------IterateOverSingleBitfield_for_uint8--------------------------------------------------------
+//--------------------------------IterateOverSingleBitfield_for_uint16--------------------------------------------------------
+
+BitfieldRangeWriteIterator_for_UInt16 IterateOverSingleBitfield_for_UInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    GroupVariationID id,
+    QualifierCode_uint8_t qc,
+    uint16_t start);
+//--------------------------------IterateOverSingleBitfield_for_uint16--------------------------------------------------------
 
 #endif

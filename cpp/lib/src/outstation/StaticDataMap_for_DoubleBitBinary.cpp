@@ -16,3 +16,8 @@ void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinaryS
     pStaticDataMap->map[item.first] = sStaticDataCell_for_DoubleBitBinary;
   }
 }
+
+Range get_selected_range_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec)
+{
+  return pStaticDataMap_for_DoubleBitBinarySpec->selected;
+}

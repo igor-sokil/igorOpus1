@@ -55,6 +55,7 @@
 #include "StaticTypeBitfield.h"
 
 #include "DatabaseConfig.h"
+#include "StaticWriters.h"
 
 ////namespace opendnp3
 ////{
@@ -188,6 +189,8 @@ boolean Modify_in_Database_override(void *pIUpdateHandler, FlagsType_uint8_t typ
 
 //void Unselect_in_Database(Database *pDatabase);
 boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, EventMode_uint8_t mode);// = EventMode::Detect);
+
+boolean load_type_for_Binary_in_Database_static(StaticDataMap_for_BinarySpec& map, HeaderWriter* writer);
 
 ////} // namespace opendnp3
 #endif

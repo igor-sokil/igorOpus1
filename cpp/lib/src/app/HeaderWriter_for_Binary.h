@@ -194,10 +194,19 @@ typedef struct
 RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc,
     DNP3Serializer_for_Binary *serializer,
-    uint8_t start
-                                                                                     );
-
+    uint8_t start);
 //--------------------------------IterateOverRange_for_UInt8_Binary_in_HeaderWriter--------------------------------------------------------
+//--------------------------------IterateOverRange_for_UInt16_Binary_in_HeaderWriter--------------------------------------------------------
+////    template<class IndexType, class WriteType>
+////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,
+////                                                              const DNP3Serializer<WriteType>& serializer,
+////                                                              typename IndexType::type_t start);
+RangeWriteIterator_for_UInt16_Binary IterateOverRange_for_UInt16_Binary_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_Binary *serializer,
+    uint16_t start);
+//--------------------------------IterateOverRange_for_UInt16_Binary_in_HeaderWriter--------------------------------------------------------
+
 //--------------------------------IterateOverCount_for_UInt8_Binary_in_HeaderWriter--------------------------------------------------------
 ////    template<class CountType, class WriteType>
 ////    CountWriteIterator<CountType, WriteType> IterateOverCount(QualifierCode qc,
@@ -368,7 +377,7 @@ PrefixedWriteIterator_for_UInt16_Binary IterateOverCountWithPrefix_for_UInt16_Bi
 ////    else
 ////        return BitfieldRangeWriteIterator<IndexType>::Null();
 ////}
-////
+
 
 ////template<class PrefixType, class WriteType>
 ////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(

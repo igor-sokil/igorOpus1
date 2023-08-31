@@ -428,3 +428,119 @@ typedef struct
  return pMemory_IINField;
 }
 //-------------------IINField------------------------
+//-------------------ObjectHeader------------------------
+Memory_ObjectHeader*  MEMORY_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader, uint16_t titleSpace, ObjectHeader* pObjectHeader);
+
+static const 
+void *title_ObjectHeader[] =
+{
+  (void*)"ObjectHeader"
+};
+
+Memory_ObjectHeader* pMemory_ObjectHeader_1;
+Memory_ObjectHeader* pMemory_ObjectHeader_2;
+Memory_ObjectHeader* pMemory_ObjectHeader_3;
+
+static Memory_ObjectHeader mMemory_ObjectHeader_1;
+static Memory_ObjectHeader mMemory_ObjectHeader_2;
+static Memory_ObjectHeader mMemory_ObjectHeader_3;
+
+Memory_ObjectHeader*  MEMORY_ObjectHeader_1(uint16_t titleSpace, ObjectHeader* pObjectHeader)
+{
+qDebug()<<"            ---MEMORY_ObjectHeader_1---";
+ return  MEMORY_ObjectHeader(&mMemory_ObjectHeader_1, titleSpace, pObjectHeader);
+}
+Memory_ObjectHeader*  MEMORY_ObjectHeader_2(uint16_t titleSpace, ObjectHeader* pObjectHeader)
+{
+qDebug()<<"            ---MEMORY_ObjectHeader_2---";
+ return  MEMORY_ObjectHeader(&mMemory_ObjectHeader_2, titleSpace, pObjectHeader);
+}
+Memory_ObjectHeader*  MEMORY_ObjectHeader_3(uint16_t titleSpace, ObjectHeader* pObjectHeader)
+{
+qDebug()<<"            ---MEMORY_ObjectHeader_3---";
+ return  MEMORY_ObjectHeader(&mMemory_ObjectHeader_3, titleSpace, pObjectHeader);
+}
+
+Memory_ObjectHeader*  MEMORY_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader, uint16_t titleSpace, ObjectHeader* pObjectHeader)
+{
+/*
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ ObjectHeader* pObjectHeader;
+ void* title;
+
+ ObjectHeader mObjectHeader;
+ Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
+} Memory_ObjectHeader;
+*/
+
+ pMemory_ObjectHeader->counter_inspect++;
+ pMemory_ObjectHeader->titleSpace = titleSpace;
+ pMemory_ObjectHeader->pObjectHeader = pObjectHeader;
+ pMemory_ObjectHeader->title = (void*)title_ObjectHeader;
+
+ memcpy((void*)&(pMemory_ObjectHeader->mObjectHeader), (void*)pObjectHeader, sizeof(ObjectHeader));
+
+ return pMemory_ObjectHeader;
+}
+//-------------------ObjectHeader------------------------
+//-------------------GroupVariationRecord------------------------
+Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord, uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord);
+
+static const 
+void *title_GroupVariationRecord[] =
+{
+  (void*)"GroupVariationRecord"
+};
+
+Memory_GroupVariationRecord* pMemory_GroupVariationRecord_1;
+Memory_GroupVariationRecord* pMemory_GroupVariationRecord_2;
+Memory_GroupVariationRecord* pMemory_GroupVariationRecord_3;
+
+static Memory_GroupVariationRecord mMemory_GroupVariationRecord_1;
+static Memory_GroupVariationRecord mMemory_GroupVariationRecord_2;
+static Memory_GroupVariationRecord mMemory_GroupVariationRecord_3;
+
+Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_1(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord)
+{
+qDebug()<<"            ---MEMORY_GroupVariationRecord_1---";
+ return  MEMORY_GroupVariationRecord(&mMemory_GroupVariationRecord_1, titleSpace, pGroupVariationRecord);
+}
+Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_2(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord)
+{
+qDebug()<<"            ---MEMORY_GroupVariationRecord_2---";
+ return  MEMORY_GroupVariationRecord(&mMemory_GroupVariationRecord_2, titleSpace, pGroupVariationRecord);
+}
+Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_3(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord)
+{
+qDebug()<<"            ---MEMORY_GroupVariationRecord_3---";
+ return  MEMORY_GroupVariationRecord(&mMemory_GroupVariationRecord_3, titleSpace, pGroupVariationRecord);
+}
+
+Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord, uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord)
+{
+/*
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ GroupVariationRecord* pGroupVariationRecord;
+ void* title;
+
+ GroupVariationRecord mGroupVariationRecord;
+ Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
+} Memory_GroupVariationRecord;
+*/
+
+ pMemory_GroupVariationRecord->counter_inspect++;
+ pMemory_GroupVariationRecord->titleSpace = titleSpace;
+ pMemory_GroupVariationRecord->pGroupVariationRecord = pGroupVariationRecord;
+ pMemory_GroupVariationRecord->title = (void*)title_GroupVariationRecord;
+
+ memcpy((void*)&(pMemory_GroupVariationRecord->mGroupVariationRecord), (void*)pGroupVariationRecord, sizeof(GroupVariationRecord));
+
+ return pMemory_GroupVariationRecord;
+}
+//-------------------GroupVariationRecord------------------------

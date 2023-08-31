@@ -245,3 +245,283 @@ Indexed_for_Group2Var1 WithIndex_in_Indexed_for_Group2Var1(
   return iIndexed_for_Group2Var1;
 }
 //------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
+//------------------------------------Indexed_for_Binary---------------------------------------------------------
+void Indexed_for_Binary_in_Indexed_for_BinaryOver1(Indexed_for_Binary *pIndexed_for_Binary)
+{
+  Binary_in_BinaryOver1(&(pIndexed_for_Binary->value));
+  pIndexed_for_Binary->index = 0;
+}
+
+void Indexed_for_Binary_in_Indexed_for_BinaryOver2(Indexed_for_Binary *pIndexed_for_Binary,
+    Binary* value_, uint16_t index_)
+{
+//  Binary_in_BinaryOver2(value_, index_);
+  pIndexed_for_Binary->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_Binary->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_Binary WithIndex_in_Indexed_for_Binary(
+  Binary* value, uint16_t index)
+{
+  Indexed_for_Binary iIndexed_for_Binary;
+  Indexed_for_Binary_in_Indexed_for_BinaryOver2(&iIndexed_for_Binary,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_Binary;
+}
+//------------------------------------Indexed_for_Binary---------------------------------------------------------
+//------------------------------------Indexed_for_DoubleBitBinary---------------------------------------------------------
+void Indexed_for_DoubleBitBinary_in_Indexed_for_DoubleBitBinaryOver1(Indexed_for_DoubleBitBinary *pIndexed_for_DoubleBitBinary)
+{
+  DoubleBitBinary_in_DoubleBitBinaryOver1(&(pIndexed_for_DoubleBitBinary->value));
+  pIndexed_for_DoubleBitBinary->index = 0;
+}
+
+void Indexed_for_DoubleBitBinary_in_Indexed_for_DoubleBitBinaryOver2(Indexed_for_DoubleBitBinary *pIndexed_for_DoubleBitBinary,
+    DoubleBitBinary* value_, uint16_t index_)
+{
+//  DoubleBitBinary_in_DoubleBitBinaryOver2(value_, index_);
+  pIndexed_for_DoubleBitBinary->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_DoubleBitBinary->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_DoubleBitBinary WithIndex_in_Indexed_for_DoubleBitBinary(
+  DoubleBitBinary* value, uint16_t index)
+{
+  Indexed_for_DoubleBitBinary iIndexed_for_DoubleBitBinary;
+  Indexed_for_DoubleBitBinary_in_Indexed_for_DoubleBitBinaryOver2(&iIndexed_for_DoubleBitBinary,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_DoubleBitBinary;
+}
+//------------------------------------Indexed_for_DoubleBitBinary---------------------------------------------------------
+//------------------------------------Indexed_for_BinaryOutputStatus---------------------------------------------------------
+void Indexed_for_BinaryOutputStatus_in_Indexed_for_BinaryOutputStatusOver1(Indexed_for_BinaryOutputStatus *pIndexed_for_BinaryOutputStatus)
+{
+  BinaryOutputStatus_in_BinaryOutputStatusOver1(&(pIndexed_for_BinaryOutputStatus->value));
+  pIndexed_for_BinaryOutputStatus->index = 0;
+}
+
+void Indexed_for_BinaryOutputStatus_in_Indexed_for_BinaryOutputStatusOver2(Indexed_for_BinaryOutputStatus *pIndexed_for_BinaryOutputStatus,
+    BinaryOutputStatus* value_, uint16_t index_)
+{
+//  BinaryOutputStatus_in_BinaryOutputStatusOver2(value_, index_);
+  pIndexed_for_BinaryOutputStatus->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_BinaryOutputStatus->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_BinaryOutputStatus WithIndex_in_Indexed_for_BinaryOutputStatus(
+  BinaryOutputStatus* value, uint16_t index)
+{
+  Indexed_for_BinaryOutputStatus iIndexed_for_BinaryOutputStatus;
+  Indexed_for_BinaryOutputStatus_in_Indexed_for_BinaryOutputStatusOver2(&iIndexed_for_BinaryOutputStatus,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_BinaryOutputStatus;
+}
+//------------------------------------Indexed_for_BinaryOutputStatus---------------------------------------------------------
+//------------------------------------Indexed_for_Counter---------------------------------------------------------
+void Indexed_for_Counter_in_Indexed_for_CounterOver1(Indexed_for_Counter *pIndexed_for_Counter)
+{
+  Counter_in_CounterOver1(&(pIndexed_for_Counter->value));
+  pIndexed_for_Counter->index = 0;
+}
+
+void Indexed_for_Counter_in_Indexed_for_CounterOver2(Indexed_for_Counter *pIndexed_for_Counter,
+    Counter* value_, uint16_t index_)
+{
+//  Counter_in_CounterOver2(value_, index_);
+  pIndexed_for_Counter->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_Counter->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_Counter WithIndex_in_Indexed_for_Counter(
+  Counter* value, uint16_t index)
+{
+  Indexed_for_Counter iIndexed_for_Counter;
+  Indexed_for_Counter_in_Indexed_for_CounterOver2(&iIndexed_for_Counter,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_Counter;
+}
+//------------------------------------Indexed_for_Counter---------------------------------------------------------
+//------------------------------------Indexed_for_FrozenCounter---------------------------------------------------------
+void Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver1(Indexed_for_FrozenCounter *pIndexed_for_FrozenCounter)
+{
+  FrozenCounter_in_FrozenCounterOver1(&(pIndexed_for_FrozenCounter->value));
+  pIndexed_for_FrozenCounter->index = 0;
+}
+
+void Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver2(Indexed_for_FrozenCounter *pIndexed_for_FrozenCounter,
+    FrozenCounter* value_, uint16_t index_)
+{
+//  FrozenCounter_in_FrozenCounterOver2(value_, index_);
+  pIndexed_for_FrozenCounter->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_FrozenCounter->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_FrozenCounter WithIndex_in_Indexed_for_FrozenCounter(
+  FrozenCounter* value, uint16_t index)
+{
+  Indexed_for_FrozenCounter iIndexed_for_FrozenCounter;
+  Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver2(&iIndexed_for_FrozenCounter,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_FrozenCounter;
+}
+//------------------------------------Indexed_for_FrozenCounter---------------------------------------------------------
+//------------------------------------Indexed_for_Analog---------------------------------------------------------
+void Indexed_for_Analog_in_Indexed_for_AnalogOver1(Indexed_for_Analog *pIndexed_for_Analog)
+{
+  Analog_in_AnalogOver1(&(pIndexed_for_Analog->value));
+  pIndexed_for_Analog->index = 0;
+}
+
+void Indexed_for_Analog_in_Indexed_for_AnalogOver2(Indexed_for_Analog *pIndexed_for_Analog,
+    Analog* value_, uint16_t index_)
+{
+//  Analog_in_AnalogOver2(value_, index_);
+  pIndexed_for_Analog->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_Analog->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_Analog WithIndex_in_Indexed_for_Analog(
+  Analog* value, uint16_t index)
+{
+  Indexed_for_Analog iIndexed_for_Analog;
+  Indexed_for_Analog_in_Indexed_for_AnalogOver2(&iIndexed_for_Analog,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_Analog;
+}
+//------------------------------------Indexed_for_Analog---------------------------------------------------------
+//------------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------------
+void Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver1(Indexed_for_AnalogOutputStatus *pIndexed_for_AnalogOutputStatus)
+{
+  AnalogOutputStatus_in_AnalogOutputStatusOver1(&(pIndexed_for_AnalogOutputStatus->value));
+  pIndexed_for_AnalogOutputStatus->index = 0;
+}
+
+void Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver2(Indexed_for_AnalogOutputStatus *pIndexed_for_AnalogOutputStatus,
+    AnalogOutputStatus* value_, uint16_t index_)
+{
+//  AnalogOutputStatus_in_AnalogOutputStatusOver2(value_, index_);
+  pIndexed_for_AnalogOutputStatus->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_AnalogOutputStatus->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_AnalogOutputStatus WithIndex_in_Indexed_for_AnalogOutputStatus(
+  AnalogOutputStatus* value, uint16_t index)
+{
+  Indexed_for_AnalogOutputStatus iIndexed_for_AnalogOutputStatus;
+  Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver2(&iIndexed_for_AnalogOutputStatus,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_AnalogOutputStatus;
+}
+//------------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------------
+//------------------------------------Indexed_for_OctetString---------------------------------------------------------
+void Indexed_for_OctetString_in_Indexed_for_OctetStringOver1(Indexed_for_OctetString *pIndexed_for_OctetString)
+{
+  OctetString_in_OctetStringOver1(&(pIndexed_for_OctetString->value));
+  pIndexed_for_OctetString->index = 0;
+}
+
+void Indexed_for_OctetString_in_Indexed_for_OctetStringOver2(Indexed_for_OctetString *pIndexed_for_OctetString,
+    OctetString* value_, uint16_t index_)
+{
+//  OctetString_in_OctetStringOver2(value_, index_);
+  pIndexed_for_OctetString->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_OctetString->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_OctetString WithIndex_in_Indexed_for_OctetString(
+  OctetString* value, uint16_t index)
+{
+  Indexed_for_OctetString iIndexed_for_OctetString;
+  Indexed_for_OctetString_in_Indexed_for_OctetStringOver2(&iIndexed_for_OctetString,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_OctetString;
+}
+//------------------------------------Indexed_for_OctetString---------------------------------------------------------
+//------------------------------------Indexed_for_BinaryCommandEvent---------------------------------------------------------
+void Indexed_for_BinaryCommandEvent_in_Indexed_for_BinaryCommandEventOver1(Indexed_for_BinaryCommandEvent *pIndexed_for_BinaryCommandEvent)
+{
+  BinaryCommandEvent_In_BinaryCommandEventOver1(&(pIndexed_for_BinaryCommandEvent->value));
+  pIndexed_for_BinaryCommandEvent->index = 0;
+}
+
+void Indexed_for_BinaryCommandEvent_in_Indexed_for_BinaryCommandEventOver2(Indexed_for_BinaryCommandEvent *pIndexed_for_BinaryCommandEvent,
+    BinaryCommandEvent* value_, uint16_t index_)
+{
+//  BinaryCommandEvent_in_BinaryCommandEventOver2(value_, index_);
+  pIndexed_for_BinaryCommandEvent->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_BinaryCommandEvent->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_BinaryCommandEvent WithIndex_in_Indexed_for_BinaryCommandEvent(
+  BinaryCommandEvent* value, uint16_t index)
+{
+  Indexed_for_BinaryCommandEvent iIndexed_for_BinaryCommandEvent;
+  Indexed_for_BinaryCommandEvent_in_Indexed_for_BinaryCommandEventOver2(&iIndexed_for_BinaryCommandEvent,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_BinaryCommandEvent;
+}
+//------------------------------------Indexed_for_BinaryCommandEvent---------------------------------------------------------
+//------------------------------------Indexed_for_AnalogCommandEvent---------------------------------------------------------
+void Indexed_for_AnalogCommandEvent_in_Indexed_for_AnalogCommandEventOver1(Indexed_for_AnalogCommandEvent *pIndexed_for_AnalogCommandEvent)
+{
+  AnalogCommandEvent_in_AnalogCommandEventOver1(&(pIndexed_for_AnalogCommandEvent->value));
+  pIndexed_for_AnalogCommandEvent->index = 0;
+}
+
+void Indexed_for_AnalogCommandEvent_in_Indexed_for_AnalogCommandEventOver2(Indexed_for_AnalogCommandEvent *pIndexed_for_AnalogCommandEvent,
+    AnalogCommandEvent* value_, uint16_t index_)
+{
+//  AnalogCommandEvent_in_AnalogCommandEventOver2(value_, index_);
+  pIndexed_for_AnalogCommandEvent->value = *value_;
+
+//// : value(value_), index(index_) {}
+  pIndexed_for_AnalogCommandEvent->index = index_;
+}
+
+////template<class T> Indexed<T> WithIndex(const T& value, uint16_t index)
+Indexed_for_AnalogCommandEvent WithIndex_in_Indexed_for_AnalogCommandEvent(
+  AnalogCommandEvent* value, uint16_t index)
+{
+  Indexed_for_AnalogCommandEvent iIndexed_for_AnalogCommandEvent;
+  Indexed_for_AnalogCommandEvent_in_Indexed_for_AnalogCommandEventOver2(&iIndexed_for_AnalogCommandEvent,
+      value, index);
+////    return Indexed<T>(value, index);
+  return iIndexed_for_AnalogCommandEvent;
+}
+//------------------------------------Indexed_for_AnalogCommandEvent---------------------------------------------------------

@@ -16,3 +16,28 @@ void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(StaticDataMap_
     pStaticDataMap->map[item.first] = sStaticDataCell_for_Binary;
   }
 }
+
+Range get_selected_range_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec)
+{
+  return pStaticDataMap_for_BinarySpec->selected;
+}
+
+typename StaticDataMap_for_BinarySpec::iterator StaticDataMap_for_BinarySpec::begin()
+{
+//boolean IsValid_in_Range(Range *pRange);
+////    if (!this->selected.IsValid())
+  if (!IsValid_in_Range(&(this->selected)))
+  {
+    return iterator(this->map.end(), this->map.end(), this->selected);
+  }
+
+  const auto begin = this->map.lower_bound(this->selected.start);
+
+  return iterator(begin, this->map.end(), this->selected);
+}
+
+////template<class Spec> typename StaticDataMap<Spec>::iterator StaticDataMap<Spec>::end()
+typename StaticDataMap_for_BinarySpec::iterator StaticDataMap_for_BinarySpec::end()
+{
+  return iterator(this->map.end(), this->map.end(), this->selected);
+}

@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 ////#include "outstation/IINHelpers.h"
-#include <QtWidgets>
+//#include <QtWidgets>
 #include "header.h"
 #include "IINHelpers.h"
 
@@ -27,8 +27,6 @@
 
 IINField IINFromParseResult(ParseResult_uint8_t result)
 {
-qDebug()<<"";
-qDebug()<<"IINFromParseResult1  "<<result;
   switch (result)
   {
   case (ParseResult_OK):               //ParseResult_OK,  //0

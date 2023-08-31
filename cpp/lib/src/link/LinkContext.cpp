@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 //#include <QtWidgets>
+#include <iostream>
 #include "header.h"
 #include "LinkContext.h"
 
@@ -94,6 +95,7 @@ boolean OnLowerLayerUp_in_LinkContext(LinkContext *pLinkContext)
   if (pLinkContext->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer already online");
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer already online')***"<<std::endl;
     return false;
   }
 
@@ -116,6 +118,7 @@ boolean OnLowerLayerDown_in_LinkContext(LinkContext *pLinkContext)
 {
   if (!pLinkContext->isOnline)
   {
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer already online')***"<<std::endl;
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer is not online");
     return false;
   }
@@ -156,6 +159,7 @@ boolean SetTxSegment_in_LinkContext(LinkContext *pLinkContext, ITransportSegment
 {
   if (!pLinkContext->isOnline)
   {
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer is not online')***"<<std::endl;
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Layer is not online");
     return false;
   }
@@ -163,6 +167,7 @@ boolean SetTxSegment_in_LinkContext(LinkContext *pLinkContext, ITransportSegment
   if (pLinkContext->pSegments)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Already transmitting a segment");
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Already transmitting a segment')***"<<std::endl;
     return false;
   }
 
@@ -176,6 +181,7 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
   if (pLinkContext->txMode == LinkTransmitMode_Idle)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Unknown transmission callback");
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Unknown transmission callback')***"<<std::endl;
     return false;
   }
 
@@ -491,6 +497,7 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
   if (!pLinkContext->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer is not online");
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer is not online')***"<<std::endl;
     return false;
   }
 
@@ -500,6 +507,7 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
 ////        SIMPLE_LOG_BLOCK(
 ////            logger, flags::WARN,
 ////            (header.isFromMaster ? "Master frame received for master" : "Outstation frame received for outstation"));
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Outstation frame received for outstation')***"<<std::endl;
     return false;
   }
 
@@ -533,6 +541,7 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
   {
 ////        FORMAT_LOG_BLOCK(logger, flags::WARN, "Received invalid function (%s) with broadcast destination address",
 ////                            LinkFunctionSpec::to_string(header.func));
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Received invalid function (%s) with broadcast destination address')***"<<std::endl;
     ++(pLinkContext->statistics.numUnexpectedFrame);
 
     return false;
