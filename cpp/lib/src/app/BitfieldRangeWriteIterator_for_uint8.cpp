@@ -1,4 +1,4 @@
-//#include <QtWidgets>
+  //#include <QtWidgets>
 #include "header.h"
 #include "BitfieldRangeWriteIterator_for_UInt8.h"
 #include "SerializationTemplates.h"

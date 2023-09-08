@@ -1,3 +1,4 @@
+#include <iostream>
 #include "header.h"
 #include "EventTypeImpl.h"
 
@@ -13,6 +14,7 @@ EventTypeImpl_TypedEventRecord_for_BinarySpec instance_in_EventTypeImpl_TypedEve
 //----------------------------------Binary-------------------------------------------
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static(void)
 {
+  std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static1"<<'\n';
   instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec.iIEventType.pSelectDefaultVariation_in_IEventType =
     SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override;
   instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec.iIEventType.pWriteSome_in_IEventType =
@@ -39,6 +41,9 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(voi
     EventLists* lists,
     IEventWriteHandler* handler)
 {
+  std::cout<<""<<'\n';
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override1"<<'\n';
+
   UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
@@ -161,6 +166,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBina
 
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static(void)
 {
+  std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static1"<<'\n';
   instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec.iIEventType.pSelectDefaultVariation_in_IEventType =
     SelectDefaultVariation_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override;
   instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec.iIEventType.pWriteSome_in_IEventType =
@@ -186,6 +192,9 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(voi
     EventLists* lists,
     IEventWriteHandler* handler)
 {
+  std::cout<<""<<'\n';
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override1"<<'\n';
+
   UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();

@@ -292,6 +292,7 @@ release/OutstationTestObject.o
 release/TestAPDUParsing.o
 release/MockOutstationApplication.o
 release/MockCommandHandler.o
+release/MockEventWriteHandler.o
 release/MockLinkListener.o
 release/MockAPDUHeaderHandler.o
 release/MockLowerLayer.o

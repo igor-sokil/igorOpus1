@@ -600,3 +600,62 @@ typedef struct
  return pMemory_HeaderRecord;
 }
 //-------------------HeaderRecord------------------------
+//-------------------EventLists------------------------
+Memory_EventLists*  MEMORY_EventLists(Memory_EventLists* pMemory_EventLists, uint16_t titleSpace, EventLists* pEventLists);
+
+static const 
+void *title_EventLists[] =
+{
+  (void*)"EventLists"
+};
+
+Memory_EventLists* pMemory_EventLists_1;
+Memory_EventLists* pMemory_EventLists_2;
+Memory_EventLists* pMemory_EventLists_3;
+
+static Memory_EventLists mMemory_EventLists_1;
+static Memory_EventLists mMemory_EventLists_2;
+static Memory_EventLists mMemory_EventLists_3;
+
+Memory_EventLists*  MEMORY_EventLists_1(uint16_t titleSpace, EventLists* pEventLists)
+{
+qDebug()<<"            ---MEMORY_EventLists_1---";
+ return  MEMORY_EventLists(&mMemory_EventLists_1, titleSpace, pEventLists);
+}
+Memory_EventLists*  MEMORY_EventLists_2(uint16_t titleSpace, EventLists* pEventLists)
+{
+qDebug()<<"            ---MEMORY_EventLists_2---";
+ return  MEMORY_EventLists(&mMemory_EventLists_2, titleSpace, pEventLists);
+}
+Memory_EventLists*  MEMORY_EventLists_3(uint16_t titleSpace, EventLists* pEventLists)
+{
+qDebug()<<"            ---MEMORY_EventLists_3---";
+ return  MEMORY_EventLists(&mMemory_EventLists_3, titleSpace, pEventLists);
+}
+
+Memory_EventLists*  MEMORY_EventLists(Memory_EventLists* pMemory_EventLists, uint16_t titleSpace, EventLists* pEventLists)
+{
+/*
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ EventLists* pEventLists;
+ void* title;
+
+ EventLists mEventLists;
+} Memory_EventLists;
+*/
+
+ pMemory_EventLists->counter_inspect++;
+ pMemory_EventLists->titleSpace = titleSpace;
+ pMemory_EventLists->pEventLists = pEventLists;
+ pMemory_EventLists->title = (void*)title_EventLists;
+
+ int idx = pMemory_EventLists->counter_inspect;
+ if(idx > COUNT_EventLists) idx = COUNT_EventLists;
+ memcpy((void*)&(pMemory_EventLists->mEventLists[idx-1]), (void*)pEventLists, sizeof(EventLists));
+
+ return pMemory_EventLists;
+}
+//-------------------EventLists------------------------

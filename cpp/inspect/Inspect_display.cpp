@@ -439,3 +439,99 @@ void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord)
  loghandler.LogEntry("");
 }
 //-------------------HeaderRecord------------------------
+//-------------------EventLists------------------------
+void inspect_EventLists(Memory_EventLists* pMemory_EventLists, int maxCount);
+
+void inspect_EventLists(Memory_EventLists* pMemory_EventLists, int maxCount)
+{
+ loghandler.LogEntry("");
+ loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
+
+ void** tt = (void**)pMemory_EventLists->title;
+ char *title = (char*)tt[0];
+
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntryShort("=====");
+ loghandler.LogEntryShort("-EventLists-");
+ loghandler.LogEntryShort("=====");
+
+ loghandler.LogEntry("");
+ loghandler.logHandlerStampInteger((" counter = "), pMemory_EventLists->counter_inspect);
+ loghandler.logHandlerStampInteger32((" adr     = "), (uint32_t)pMemory_EventLists->pEventLists);
+
+ for(uint16_t i=0; i<pMemory_EventLists->counter_inspect; i++)
+{
+ if(i==maxCount) break;
+ loghandler.LogEntry("-----------------------------------------------------");
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntry("---List_for_EventRecord events---");
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    sizeof(events) = "), sizeof(pMemory_EventLists->mEventLists[i].events)); 
+
+ loghandler.LogEntry("");
+/*        */loghandler.LogEntryShort(title);
+/*        */loghandler.LogEntry("     -1-Array__for__Node_for_EventRecord  underlying-1-");
+/*        */loghandler.LogEntryShort(title);
+/*        */loghandler.logHandlerStampInteger(("         sizeof(underlying) = "), sizeof(pMemory_EventLists->mEventLists[i].events.underlying)); 
+
+ loghandler.LogEntry("");
+/*            */loghandler.LogEntryShort(title);
+/*            */loghandler.LogEntry("         -2-HasLength_for_Uint32_t hHasLength_for_Uint32_t-2-");
+/*            */loghandler.LogEntryShort(title);
+/*            */loghandler.logHandlerStampInteger(("             uint32_t m_length = "), pMemory_EventLists->mEventLists[i].
+                                                                 events.underlying.hHasLength_for_Uint32_t.m_length); 
+/*            */loghandler.LogEntryShort(title);
+/*            */loghandler.LogEntry("         -2-Node_for_EventRecord buffer[SIZE_for_EventRecord]-2-");
+/*            */loghandler.LogEntryShort(title);
+/*            */loghandler.logHandlerStampInteger(("             sizeof(buffer) = "), sizeof(pMemory_EventLists->mEventLists[i].events.underlying.buffer)); 
+
+ loghandler.LogEntry("");
+/*                */loghandler.LogEntryShort(title);
+/*                */loghandler.LogEntry("             -3-buffer[0].EventRecord value-3-");
+
+ loghandler.LogEntry("");
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntry("---EventClassCounters counters---");
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    sizeof(counters) = "), sizeof(pMemory_EventLists->mEventLists[i].counters)); 
+
+ loghandler.LogEntry("");
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntry("---List_TypedEventRecord_for_BinarySpec binary---");
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    sizeof(binary) = "), sizeof(pMemory_EventLists->mEventLists[i].binary)); 
+
+ loghandler.LogEntry("");
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntry("---List_TypedEventRecord_for_AnalogSpec analog---");
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    sizeof(analog) = "), sizeof(pMemory_EventLists->mEventLists[i].analog)); 
+
+/*
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampIntegerHex(("    GroupVariation_uint16_t enumeration = "), pMemory_HeaderRecord->
+                                                            mHeaderRecord.gGroupVariationRecord.enumeration); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    GroupVariationType_int32_t type = "), pMemory_HeaderRecord->
+                                                            mHeaderRecord.gGroupVariationRecord.type); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_HeaderRecord->
+                                                            mHeaderRecord.gGroupVariationRecord.group); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_HeaderRecord->
+                                                            mHeaderRecord.gGroupVariationRecord.variation); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("uint8_t qualifier = "), pMemory_HeaderRecord->mHeaderRecord.qualifier);
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("uint8_t headerIndex = "), pMemory_HeaderRecord->mHeaderRecord.headerIndex);
+*/
+
+ loghandler.LogEntry("-----------------------------------------------------");
+ loghandler.LogEntry("");
+ }//for
+}
+//-------------------EventLists------------------------

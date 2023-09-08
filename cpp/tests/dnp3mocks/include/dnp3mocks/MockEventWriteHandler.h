@@ -204,43 +204,16 @@ uint16_t Write_for_Analog_in_MockEventWriteHandler_override(void *pMockEventWrit
 uint16_t Write_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);
 uint16_t Write_for_Binary_in_MockEventWriteHandler_override(void *pMockEventWriteHandler, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);
 
-////template<class T>
-////uint16_t MockEventWriteHandler::WriteAny(typename T::event_variation_t variation,
-////                                         opendnp3::IEventCollection<typename T::meas_t>& items)
-////{
-////    if (this->expected.empty())
-////    {
-////        throw std::logic_error("no more write events expected");
-////    }
+uint16_t WriteAny_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventAnalogVariation_uint8_t variation, IEventCollection_for_Analog* items);
+uint16_t WriteAny_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventBinaryVariation_uint8_t variation, IEventCollection_for_Binary* items);
 
-////    const auto record = this->expected.front();
-////    this->expected.pop_front();
-////
-////    if (record.type != T::EventTypeEnum)
-////    {
-////        std::ostringstream oss;
-////        oss << "Unexpected event type: " << static_cast<int>(record.type);
-////        throw std::logic_error(oss.str());
-////    }
+void Expect_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventAnalogVariation_uint8_t variation, uint16_t count);
+void Expect_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventBinaryVariation_uint8_t variation, uint16_t count);
 
-////    if (record.variation != static_cast<uint8_t>(variation))
-////    {
-////        std::ostringstream oss;
-////        oss << "Unexpected variation: " << static_cast<int>(variation);
-////        throw std::logic_error(oss.str());
-////    }
-////
-////    EventWriterImpl<typename T::meas_t> writer;
-////    const uint16_t count = items.WriteSome(writer);
-////
-////    if (record.count != count)
-////    {
-////        std::ostringstream oss;
-////        oss << "Unexpected count: " << static_cast<int>(variation);
-////        throw std::logic_error(oss.str());
-////    }
+void ExpectType_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventAnalogVariation_uint8_t variation, uint16_t count);
+void ExpectType_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventBinaryVariation_uint8_t variation, uint16_t count);
 
-////    return count;
-////}
+void AssertEmpty_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler);
+
 
 #endif

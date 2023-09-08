@@ -377,6 +377,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockEventWriteHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockLinkListener.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockAPDUHeaderHandler.cpp \
                 \

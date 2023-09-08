@@ -292,6 +292,7 @@ debug/OutstationTestObject.o
 debug/TestAPDUParsing.o
 debug/MockOutstationApplication.o
 debug/MockCommandHandler.o
+debug/MockEventWriteHandler.o
 debug/MockLinkListener.o
 debug/MockAPDUHeaderHandler.o
 debug/MockLowerLayer.o

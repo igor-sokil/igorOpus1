@@ -5,6 +5,7 @@
 #include "Message.h"
 #include "APDUHeaderParser.h"
 #include "ParsedRequest.h"
+#include "EventLists.h"
 #include "Pair_for_IINField_AppControlField.h"
 #include "ObjectHeaderParser.h"
 #include "GroupVariationRecord.h"
@@ -213,5 +214,25 @@ Memory_HeaderRecord*  MEMORY_HeaderRecord_1(uint16_t titleSpace, HeaderRecord* p
 Memory_HeaderRecord*  MEMORY_HeaderRecord_2(uint16_t titleSpace, HeaderRecord* pHeaderRecord);
 Memory_HeaderRecord*  MEMORY_HeaderRecord_3(uint16_t titleSpace, HeaderRecord* pHeaderRecord);
 //-------------------HeaderRecord------------------------
+//-------------------EventLists------------------------
+#define COUNT_EventLists  5
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ EventLists* pEventLists;
+ void* title;
+
+ EventLists mEventLists[COUNT_EventLists];
+} Memory_EventLists;
+
+extern Memory_EventLists* pMemory_EventLists_1;
+extern Memory_EventLists* pMemory_EventLists_2;
+extern Memory_EventLists* pMemory_EventLists_3;
+
+Memory_EventLists*  MEMORY_EventLists_1(uint16_t titleSpace, EventLists* pEventLists);
+Memory_EventLists*  MEMORY_EventLists_2(uint16_t titleSpace, EventLists* pEventLists);
+Memory_EventLists*  MEMORY_EventLists_3(uint16_t titleSpace, EventLists* pEventLists);
+//-------------------EventLists------------------------
 
 #endif
