@@ -34,7 +34,7 @@
 
 #include "Range.h"
 //#include "BitReader.h"
-//#include "BufferedCollection.h"
+#include "BufferedCollection.h"
 #include "IAPDUHandler.h"
 #include "NumParser.h"
 #include "ParseResult.h"
@@ -49,10 +49,11 @@
 ////namespace opendnp3
 ////{
 
-typedef void (*HandleFun_in_RangeParser)( HeaderRecord* record,
-    Range* range,
-    RSeq_for_Uint16_t* buffer,
-    IAPDUHandler* handler);
+typedef void (*HandleFun_in_RangeParser)(
+  HeaderRecord* record,
+  Range* range,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
 
 ////class RangeParser
 typedef struct
@@ -133,7 +134,9 @@ typedef struct
 ////    RangeParser() = delete;
 } RangeParser;
 
-ParseResult ParseHeader_in_RangeParser_static(
+void RangeParser_in_RangeParser(RangeParser *pRangeParser, Range* range, uint16_t requiredSize, HandleFun_in_RangeParser handler);
+
+ParseResult_uint8_t ParseHeader_in_RangeParser_static(
   RSeq_for_Uint16_t *buffer,
   NumParser *numparser,
 //                                   ParserSettings *settings,
@@ -142,21 +145,21 @@ ParseResult ParseHeader_in_RangeParser_static(
   IAPDUHandler* pHandler);
 
 // Process the range against the buffer
-ParseResult Process_in_RangeParser(RangeParser *pRangeParser,
-                                   HeaderRecord *record,
-                                   RSeq_for_Uint16_t *buffer,
-                                   IAPDUHandler* pHandler);
+ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
+    HeaderRecord *record,
+    RSeq_for_Uint16_t *buffer,
+    IAPDUHandler* pHandler);
 //                       Logger* pLogger) const;
 
 
-ParseResult ParseRangeOfObjects_in_RangeParser_static(
+ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
   RSeq_for_Uint16_t *buffer,
   HeaderRecord *record,
   Range *range,
 //                                          Logger* pLogger,
   IAPDUHandler* pHandler);
 
-ParseResult ParseRangeOfOctetData_in_RangeParser_static(
+ParseResult_uint8_t ParseRangeOfOctetData_in_RangeParser_static(
   RSeq_for_Uint16_t *buffer,
   HeaderRecord *record,
   Range *range,
@@ -164,11 +167,22 @@ ParseResult ParseRangeOfOctetData_in_RangeParser_static(
   IAPDUHandler* pHandler);
 
 
+ParseResult_uint8_t ParseHeader_in_RangeParser_static(
+  RSeq_for_Uint16_t *buffer,
+  NumParser* numparser,
+//                                   const ParserSettings& settings,
+  HeaderRecord* record,
+//                                   Logger* pLogger,
+  IAPDUHandler* pHandler);
+
 ////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
 ////{
 ////    const auto size = range.Count() * Descriptor::Size();
 ////    return RangeParser(range, size, &InvokeRangeOf<Descriptor>);
 ////}
+
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group1Var2_in_RangeParser_static(Range* range);
 
 ////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
 ////{
@@ -187,20 +201,13 @@ ParseResult ParseRangeOfOctetData_in_RangeParser_static(
 ////                                const Range& range,
 ////                                const ser4cpp::rseq_t& buffer,
 ////                                IAPDUHandler& handler)
-////{
-////    const auto COUNT = range.Count();
-////
-////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
-////        typename Descriptor::Target target;
-////        Descriptor::ReadTarget(buffer, target);
-////        return WithIndex(target, range.start + pos);
-////    };
-////
-////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-////
-////    handler.OnHeader(RangeHeader(record, range), collection);
-////}
-////
+
+void InvokeRangeOf_for_Group1Var2_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+
+
 ////template<class Type>
 ////void RangeParser::InvokeRangeOfType(const HeaderRecord& record,
 ////                                    const Range& range,

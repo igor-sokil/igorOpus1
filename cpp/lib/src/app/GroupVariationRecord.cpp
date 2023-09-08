@@ -17,7 +17,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include <QtWidgets>
+#include <iostream>
 #include "header.h"
 #include "GroupVariationRecord.h"
 
@@ -51,6 +52,8 @@ QualifierCode_uint8_t GetQualifierCode_in_HeaderRecord(HeaderRecord *pHeaderReco
 
 GroupVariationRecord GetRecord_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
+ std::cout<<""<<std::endl;
+ std::cout<<"GetRecord_in_GroupVariationRecord_static1"<<std::endl;
   GroupVariationRecord gGroupVariationRecord;
   GroupVariationRecord_in_GroupVariationRecordOver1(&gGroupVariationRecord);
 
@@ -66,6 +69,11 @@ uint16_t GetGroupVar_in_GroupVariationRecord_static(uint8_t group, uint8_t varia
 
 EnumAndType GetEnumAndType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
+std::cout<<""<<std::endl;
+std::cout<<"GetEnumAndType_in_GroupVariationRecord_static1"<<std::endl;
+qDebug()<<"group="<<group;
+qDebug()<<"variation="<<variation;
+
   GroupVariationType_int32_t type = GetType_in_GroupVariationRecord_static(group, variation);
 
 ////    auto enumeration = GroupVariationSpec::from_type(GetGroupVar(group, variation));

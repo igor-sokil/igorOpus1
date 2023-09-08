@@ -34,7 +34,18 @@ void validate(MockApduHeaderHandler* mock)
 //qDebug()<<"mock.records[0].enumeration="<<mock->records[0].enumeration;
 HeaderRecord temp = mock->records[0];
 uint16_t tt = temp.gGroupVariationRecord.enumeration;
-qDebug()<<"mock.records[0].enumeration="<<tt;
+qDebug()<<"REQUIRE((GroupVariation::Group2Var2 == mock.records[0].enumeration))";
+qDebug()<<"REQUIRE((GroupVariation::Group2Var0 == mock.records[1].enumeration))";
+
+qDebug()<<"mock.records[0].enumeration="<<hex<<tt;
+
+ temp = mock->records[1];
+ tt = temp.gGroupVariationRecord.enumeration;
+qDebug()<<"mock.records[0].enumeration="<<hex<<tt;
+
+qDebug()<<"GroupVariation::Group2Var2="<<hex<<GroupVariation_Group2Var2;
+qDebug()<<"GroupVariation::Group2Var0="<<hex<<GroupVariation_Group2Var0;
+
 }
 
 int main(int argc, char *argv[])
@@ -47,7 +58,7 @@ qDebug()<<"********SUITE('AllObjects')********";
   std::string name("02 02 06 02 00 06");       
 
 ParseResult_uint8_t temp = TestComplex(name, validate);
-qDebug()<<"temp= "<<temp;
+qDebug()<<"ParseResult_uint8_t result= "<<temp;
 
 /*
 TEST_CASE(SUITE("AllObjects"))

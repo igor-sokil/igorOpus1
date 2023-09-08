@@ -1,0 +1,6 @@
+TEST_CASE(SUITE("15FlippedRange"))
+{
+    // 1 byte start/stop w/ start > stop
+    TestSimple("01 02 00 05 03", ParseResult::BAD_START_STOP, 0);
+    TestSimple("01 02 00 FF 00", ParseResult::BAD_START_STOP, 0);
+}

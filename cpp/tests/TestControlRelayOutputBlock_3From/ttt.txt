@@ -1,0 +1,7 @@
+TEST_CASE(SUITE("3From raw code preserves undefined Op Type"))
+{
+    ControlRelayOutputBlock crob(0xAA, 10, 100, 100, CommandStatus::SUCCESS);
+
+    REQUIRE(crob.rawCode == 0xAA);
+    REQUIRE(crob.opType == OperationType::Undefined);
+}

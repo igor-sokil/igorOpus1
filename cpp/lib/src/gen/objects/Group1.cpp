@@ -150,10 +150,10 @@ uint16_t Size_in_Group1Var2_static(void)
 
 DNP3Serializer_for_Binary Inst_in_Group1Var2_static(void)
 {
-////    return DNP3Serializer<Binary>(ID_in_Group1Var0_static(), Size_in_Group1Var2_static(), &ReadTarget, &WriteTarget);
+////    return DNP3Serializer<Binary>(ID_in_Group1Var2_static(), Size_in_Group1Var2_static(), &ReadTarget, &WriteTarget);
   DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
   DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
-      ID_in_Group1Var0_static(),
+      ID_in_Group1Var2_static(),
       Size_in_Group1Var2_static(),
       &ReadTarget_in_Group1Var2_static, &WriteTarget_in_Group1Var2_static);
 //    void DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(DNP3Serializer_for_Binary *pDNP3Serializer_for_Binary,

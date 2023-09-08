@@ -1,0 +1,12 @@
+TEST_CASE(SUITE("5Check QU flag"))
+{
+    {
+        ControlRelayOutputBlock crob(0x51, 10, 100, 100, CommandStatus::SUCCESS);
+        REQUIRE(crob.IsQUFlagSet() == true);
+    }
+
+    {
+        ControlRelayOutputBlock crob(0xA1, 10, 100, 100, CommandStatus::SUCCESS);
+        REQUIRE(crob.IsQUFlagSet() == false);
+    }
+}

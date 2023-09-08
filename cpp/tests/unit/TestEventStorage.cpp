@@ -26,12 +26,12 @@ using namespace opendnp3;
 
 #define SUITE(name) "EventStorageTestSuite - " name
 
-TEST_CASE(SUITE("can construct"))
+TEST_CASE(SUITE("1can construct"))
 {
     EventStorage storage(EventBufferConfig::AllTypes(10));
 }
 
-TEST_CASE(SUITE("calls write multiple times for different variations"))
+TEST_CASE(SUITE("2calls write multiple times for different variations"))
 {
     EventStorage storage(EventBufferConfig::AllTypes(10));
 
@@ -58,7 +58,7 @@ TEST_CASE(SUITE("calls write multiple times for different variations"))
     handler.AssertEmpty();
 }
 
-TEST_CASE(SUITE("calls write one time for same variation"))
+TEST_CASE(SUITE("3calls write one time for same variation"))
 {
     EventStorage storage(EventBufferConfig::AllTypes(10));
 
@@ -83,7 +83,7 @@ TEST_CASE(SUITE("calls write one time for same variation"))
     handler.AssertEmpty();
 }
 
-TEST_CASE(SUITE("calls write multiple times for different types"))
+TEST_CASE(SUITE("4calls write multiple times for different types"))
 {
     EventStorage storage(EventBufferConfig::AllTypes(10));
 
@@ -108,7 +108,7 @@ TEST_CASE(SUITE("calls write multiple times for different types"))
     handler.AssertEmpty();
 }
 
-TEST_CASE(SUITE("zero-size doesn't overflow"))
+TEST_CASE(SUITE("5zero-size doesn't overflow"))
 {
     EventStorage storage(EventBufferConfig::AllTypes(0));
 
@@ -120,7 +120,7 @@ TEST_CASE(SUITE("zero-size doesn't overflow"))
     REQUIRE(storage.NumSelected() == 0);
 }
 
-TEST_CASE(SUITE("overflows as expected"))
+TEST_CASE(SUITE("6overflows as expected"))
 {
     EventStorage storage(EventBufferConfig::AllTypes(1));
 
@@ -139,7 +139,7 @@ TEST_CASE(SUITE("overflows as expected"))
     REQUIRE(storage.NumUnwritten(EventClass::EC1) == 1);
 }
 
-TEST_CASE(SUITE("selected events discarded on overflow"))
+TEST_CASE(SUITE("7selected events discarded on overflow"))
 {
     EventStorage storage(EventBufferConfig::AllTypes(1));
 

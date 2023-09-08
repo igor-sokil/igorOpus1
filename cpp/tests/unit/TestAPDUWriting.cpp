@@ -41,7 +41,7 @@ using namespace ser4cpp;
 
 #define SUITE(name) "APDUWritingTestSuite - " name
 
-TEST_CASE(SUITE("AllObjectsAndRollback"))
+TEST_CASE(SUITE("1AllObjectsAndRollback"))
 {
     APDURequest request(APDUHelpers::Request(FunctionCode::READ));
     auto writer = request.GetWriter();
@@ -58,7 +58,7 @@ TEST_CASE(SUITE("AllObjectsAndRollback"))
     REQUIRE("C0 01 3C 01 06 3C 02 06" == HexConversions::to_hex(request.ToRSeq()));
 }
 
-TEST_CASE(SUITE("AllObjectsReturnsFalseWhenFull"))
+TEST_CASE(SUITE("2AllObjectsReturnsFalseWhenFull"))
 {
     APDURequest request(APDUHelpers::Request(FunctionCode::READ, 6));
     auto writer = request.GetWriter();
@@ -69,7 +69,7 @@ TEST_CASE(SUITE("AllObjectsReturnsFalseWhenFull"))
     REQUIRE("C0 01 3C 01 06" == HexConversions::to_hex(request.ToRSeq()));
 }
 
-TEST_CASE(SUITE("RangeWriteIteratorStartStop"))
+TEST_CASE(SUITE("3RangeWriteIteratorStartStop"))
 {
     APDUResponse response(APDUHelpers::Response());
     auto writer = response.GetWriter();
@@ -84,7 +84,7 @@ TEST_CASE(SUITE("RangeWriteIteratorStartStop"))
     REQUIRE("C0 81 00 00 14 06 00 02 03 09 00 07 00" == HexConversions::to_hex(response.ToRSeq()));
 }
 
-TEST_CASE(SUITE("RangeIterator UInt8 boundary condition"))
+TEST_CASE(SUITE("4RangeIterator UInt8 boundary condition"))
 {
     APDUResponse response(APDUHelpers::Response());
     auto writer = response.GetWriter();
@@ -106,7 +106,7 @@ TEST_CASE(SUITE("RangeIterator UInt8 boundary condition"))
     REQUIRE(beginsWith == truncated);
 }
 
-TEST_CASE(SUITE("CountIterator UInt8 boundary condition"))
+TEST_CASE(SUITE("5CountIterator UInt8 boundary condition"))
 {
     APDUResponse response(APDUHelpers::Response());
     auto writer = response.GetWriter();
@@ -128,7 +128,7 @@ TEST_CASE(SUITE("CountIterator UInt8 boundary condition"))
     REQUIRE(beginsWith == truncated);
 }
 
-TEST_CASE(SUITE("EmptyHeadersWhenNotEnoughSpaceForSingleValue"))
+TEST_CASE(SUITE("6EmptyHeadersWhenNotEnoughSpaceForSingleValue"))
 {
     APDUResponse response(APDUHelpers::Response(8));
     auto writer = response.GetWriter();
@@ -140,7 +140,7 @@ TEST_CASE(SUITE("EmptyHeadersWhenNotEnoughSpaceForSingleValue"))
     REQUIRE("C0 81 00 00" == HexConversions::to_hex(response.ToRSeq()));
 }
 
-TEST_CASE(SUITE("CountWriteIteratorAllowsCountOfZero"))
+TEST_CASE(SUITE("7CountWriteIteratorAllowsCountOfZero"))
 {
     APDUResponse response(APDUHelpers::Response());
     auto writer = response.GetWriter();
@@ -150,7 +150,7 @@ TEST_CASE(SUITE("CountWriteIteratorAllowsCountOfZero"))
     REQUIRE("C0 81 00 00 1E 01 08 00 00" == HexConversions::to_hex(response.ToRSeq()));
 }
 
-TEST_CASE(SUITE("CountWriteIteratorFillsUpCorrectly"))
+TEST_CASE(SUITE("8CountWriteIteratorFillsUpCorrectly"))
 {
     APDUResponse response(APDUHelpers::Response(15));
     auto writer = response.GetWriter();
@@ -166,7 +166,7 @@ TEST_CASE(SUITE("CountWriteIteratorFillsUpCorrectly"))
     REQUIRE("C0 81 00 00 1E 02 07 02 FF 09 00 FF 07 00" == HexConversions::to_hex(response.ToRSeq()));
 }
 
-TEST_CASE(SUITE("PrefixWriteIteratorWithSingleCROB"))
+TEST_CASE(SUITE("9PrefixWriteIteratorWithSingleCROB"))
 {
     APDUResponse response(APDUHelpers::Response());
     auto writer = response.GetWriter();
@@ -183,7 +183,7 @@ TEST_CASE(SUITE("PrefixWriteIteratorWithSingleCROB"))
     REQUIRE("C0 81 00 00 0C 01 17 01 21 03 1F 10 00 00 00 AA 00 00 00 07" == HexConversions::to_hex(response.ToRSeq()));
 }
 
-TEST_CASE(SUITE("PrefixWriteIteratorCTO"))
+TEST_CASE(SUITE("10PrefixWriteIteratorCTO"))
 {
     APDUResponse response(APDUHelpers::Response());
     auto writer = response.GetWriter();
@@ -204,7 +204,7 @@ TEST_CASE(SUITE("PrefixWriteIteratorCTO"))
             == HexConversions::to_hex(response.ToRSeq()));
 }
 
-TEST_CASE(SUITE("PrefixWriteIteratorCTOSpaceForOnly1Value"))
+TEST_CASE(SUITE("11PrefixWriteIteratorCTOSpaceForOnly1Value"))
 {
     APDUResponse response(APDUHelpers::Response(26));
     auto writer = response.GetWriter();
@@ -224,7 +224,7 @@ TEST_CASE(SUITE("PrefixWriteIteratorCTOSpaceForOnly1Value"))
             == HexConversions::to_hex(response.ToRSeq()));
 }
 
-TEST_CASE(SUITE("PrefixWriteIteratorNotEnoughSpaceForAValue"))
+TEST_CASE(SUITE("12PrefixWriteIteratorNotEnoughSpaceForAValue"))
 {
     APDUResponse response(APDUHelpers::Response(23));
     auto writer = response.GetWriter();
@@ -241,7 +241,7 @@ TEST_CASE(SUITE("PrefixWriteIteratorNotEnoughSpaceForAValue"))
     REQUIRE("C0 81 00 00" == HexConversions::to_hex(response.ToRSeq()));
 }
 
-TEST_CASE(SUITE("SingleValueWithIndexCROBLatchOn"))
+TEST_CASE(SUITE("13SingleValueWithIndexCROBLatchOn"))
 {
     APDURequest request(APDUHelpers::Request(FunctionCode::SELECT));
     auto writer = request.GetWriter();
@@ -254,7 +254,7 @@ TEST_CASE(SUITE("SingleValueWithIndexCROBLatchOn"))
     REQUIRE("C0 03 0C 01 08 01 00 21 00 03 1F 10 00 00 00 AA 00 00 00 07" == HexConversions::to_hex(request.ToRSeq()));
 }
 
-TEST_CASE(SUITE("SingleValueWithIndexCROBLatchOff"))
+TEST_CASE(SUITE("14SingleValueWithIndexCROBLatchOff"))
 {
     APDURequest request(APDUHelpers::Request(FunctionCode::SELECT));
     auto writer = request.GetWriter();
@@ -267,7 +267,7 @@ TEST_CASE(SUITE("SingleValueWithIndexCROBLatchOff"))
     REQUIRE("C0 03 0C 01 08 01 00 21 00 04 1F 10 00 00 00 AA 00 00 00 07" == HexConversions::to_hex(request.ToRSeq()));
 }
 
-TEST_CASE(SUITE("WriteSingleValue"))
+TEST_CASE(SUITE("15WriteSingleValue"))
 {
     APDURequest request(APDUHelpers::Request(FunctionCode::WRITE));
     auto writer = request.GetWriter();
@@ -279,7 +279,7 @@ TEST_CASE(SUITE("WriteSingleValue"))
     REQUIRE("C0 02 32 01 07 01 34 12 00 00 00 00" == HexConversions::to_hex(request.ToRSeq()));
 }
 
-TEST_CASE(SUITE("WriteIINRestart"))
+TEST_CASE(SUITE("16WriteIINRestart"))
 {
     APDURequest request(APDUHelpers::Request(FunctionCode::WRITE));
     auto writer = request.GetWriter();

@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <QtWidgets>
 #include <iostream>
 #include "header.h"
 #include "NumParser.h"
@@ -66,6 +67,14 @@ ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
 
 ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t* buffer, Range* range)////, Logger* pLogger) const
 {
+  std::cout<<""<<std::endl;
+  std::cout<<"ParseRange_in_NumParser1"<<std::endl;
+
+  qDebug()<<"(2 * (uint16_t)(pNumParser->size))= "<<(2 * (uint16_t)(pNumParser->size));
+  qDebug()<<"length_in_HasLength_for_Uint16_t(&(buffer->hHasLength))= "<<length_in_HasLength_for_Uint16_t(&(buffer->hHasLength));
+  qDebug()<<"buffer->buffer_[0]= "<<hex<<buffer->buffer_[0];
+  qDebug()<<"buffer->buffer_[1]= "<<hex<<buffer->buffer_[1];
+
 ////    if (buffer.length() < (2 * static_cast<size_t>(size)))
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < (2 * (uint16_t)(pNumParser->size)))
   {
@@ -77,6 +86,8 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
 //    uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
   range->start = ReadNum_in_NumParser(pNumParser, buffer);////this->ReadNum(buffer);
   range->stop = ReadNum_in_NumParser(pNumParser, buffer);////this->ReadNum(buffer);
+  qDebug()<<"range->start= "<<hex<<range->start;
+  qDebug()<<"range->stop= "<<hex<<range->stop;
 
 //    boolean IsValid_in_Range(Range *pRange);
 ////    if (range.IsValid())

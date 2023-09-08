@@ -414,7 +414,6 @@ typedef struct
  void* title;
 
  IINField mIINField;
- Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
 } Memory_IINField;
 */
 
@@ -472,7 +471,6 @@ typedef struct
  void* title;
 
  ObjectHeader mObjectHeader;
- Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
 } Memory_ObjectHeader;
 */
 
@@ -481,7 +479,9 @@ typedef struct
  pMemory_ObjectHeader->pObjectHeader = pObjectHeader;
  pMemory_ObjectHeader->title = (void*)title_ObjectHeader;
 
- memcpy((void*)&(pMemory_ObjectHeader->mObjectHeader), (void*)pObjectHeader, sizeof(ObjectHeader));
+ int idx = pMemory_ObjectHeader->counter_inspect;
+ if(idx > COUNT_ObjectHeader) idx = COUNT_ObjectHeader;
+ memcpy((void*)&(pMemory_ObjectHeader->mObjectHeader[idx-1]), (void*)pObjectHeader, sizeof(ObjectHeader));
 
  return pMemory_ObjectHeader;
 }
@@ -530,7 +530,6 @@ typedef struct
  void* title;
 
  GroupVariationRecord mGroupVariationRecord;
- Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
 } Memory_GroupVariationRecord;
 */
 
@@ -544,3 +543,60 @@ typedef struct
  return pMemory_GroupVariationRecord;
 }
 //-------------------GroupVariationRecord------------------------
+//-------------------HeaderRecord------------------------
+Memory_HeaderRecord*  MEMORY_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord, uint16_t titleSpace, HeaderRecord* pHeaderRecord);
+
+static const 
+void *title_HeaderRecord[] =
+{
+  (void*)"HeaderRecord"
+};
+
+Memory_HeaderRecord* pMemory_HeaderRecord_1;
+Memory_HeaderRecord* pMemory_HeaderRecord_2;
+Memory_HeaderRecord* pMemory_HeaderRecord_3;
+
+static Memory_HeaderRecord mMemory_HeaderRecord_1;
+static Memory_HeaderRecord mMemory_HeaderRecord_2;
+static Memory_HeaderRecord mMemory_HeaderRecord_3;
+
+Memory_HeaderRecord*  MEMORY_HeaderRecord_1(uint16_t titleSpace, HeaderRecord* pHeaderRecord)
+{
+qDebug()<<"            ---MEMORY_HeaderRecord_1---";
+ return  MEMORY_HeaderRecord(&mMemory_HeaderRecord_1, titleSpace, pHeaderRecord);
+}
+Memory_HeaderRecord*  MEMORY_HeaderRecord_2(uint16_t titleSpace, HeaderRecord* pHeaderRecord)
+{
+qDebug()<<"            ---MEMORY_HeaderRecord_2---";
+ return  MEMORY_HeaderRecord(&mMemory_HeaderRecord_2, titleSpace, pHeaderRecord);
+}
+Memory_HeaderRecord*  MEMORY_HeaderRecord_3(uint16_t titleSpace, HeaderRecord* pHeaderRecord)
+{
+qDebug()<<"            ---MEMORY_HeaderRecord_3---";
+ return  MEMORY_HeaderRecord(&mMemory_HeaderRecord_3, titleSpace, pHeaderRecord);
+}
+
+Memory_HeaderRecord*  MEMORY_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord, uint16_t titleSpace, HeaderRecord* pHeaderRecord)
+{
+/*
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ HeaderRecord* pHeaderRecord;
+ void* title;
+
+ HeaderRecord mHeaderRecord;
+} Memory_HeaderRecord;
+*/
+
+ pMemory_HeaderRecord->counter_inspect++;
+ pMemory_HeaderRecord->titleSpace = titleSpace;
+ pMemory_HeaderRecord->pHeaderRecord = pHeaderRecord;
+ pMemory_HeaderRecord->title = (void*)title_HeaderRecord;
+
+ memcpy((void*)&(pMemory_HeaderRecord->mHeaderRecord), (void*)pHeaderRecord, sizeof(HeaderRecord));
+
+ return pMemory_HeaderRecord;
+}
+//-------------------HeaderRecord------------------------

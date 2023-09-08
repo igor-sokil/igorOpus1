@@ -55,6 +55,16 @@ void LogHandler::logHandlerStampInteger(const char * title, int data)
   LogEntry(QString(str_response.toUpper()));
 //  LogEntry("");
 }//logHandlerStampInteger(const char * title, int data)
+void LogHandler::logHandlerStampIntegerHex(const char * title, int data)
+{
+  LogEntryShort(QString::fromLocal8Bit(title));
+  QString str_response = "";//"====";
+  QString insertStr = (QString("0x")+(QString("000%1").arg(QString::number(data, 16))).right(4));
+  str_response.append(insertStr);
+  LogEntry(QString(str_response.toUpper()));
+//  LogEntry("");
+}//logHandlerStampIntegerHex(const char * title, int data)
+
 void LogHandler::logHandlerStampInteger32(const char * title, int data)
 {
   LogEntryShort(QString::fromLocal8Bit(title));
@@ -64,6 +74,15 @@ void LogHandler::logHandlerStampInteger32(const char * title, int data)
   LogEntry(QString(str_response.toUpper()));
 //  LogEntry("");
 }//logHandlerStampInteger32(const char * title, int data)
+void LogHandler::logHandlerStampInteger32Hex(const char * title, int data)
+{
+  LogEntryShort(QString::fromLocal8Bit(title));
+  QString str_response = "";//"====";
+  QString insertStr = (QString("0x")+(QString("0000000%1").arg(QString::number(data, 16))).right(8));
+  str_response.append(insertStr);
+  LogEntry(QString(str_response.toUpper()));
+//  LogEntry("");
+}//logHandlerStampInteger32Hex(const char * title, int data)
 
 void LogHandler::logHandlerStampArray(const char * title, unsigned int *data, int rang_count)
 {

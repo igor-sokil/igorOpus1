@@ -23,18 +23,24 @@
 ////#include "opendnp3/app/parsing/ICollection.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>
+
 #include "ICollection.h"
-#include "NumParser.h"
-#include "Indexed.h"
+//#include "NumParser.h"
+//#include "Indexed.h"
 #include "RSeq.h"
 
 ////namespace opendnp3
-////{
-//-----------------------------------BufferedCollection_for_Int16----------------------------------
+///{
+
+//-----------------------------------Indexed_for_Group1Var2---------------------------------------------------
+typedef Indexed_for_Group1Var2 (*ReadFunc_Indexed_for_Group1Var2)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
 ////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
 typedef struct
 {
-  ICollection_Indexed_Group2Var1  iICollection_Indexed_Group2Var1;
+  ICollection_Indexed_for_Group1Var2 iICollection_Indexed_for_Group1Var2;
 ////public:
 ////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
 ////        : buffer(buffer), COUNT(count), readFunc(readFunc)
@@ -49,7 +55,7 @@ typedef struct
 ////    virtual void Foreach(IVisitor<T>& visitor) const final
 ////    {
 ////        ser4cpp::rseq_t copy(buffer);
-////
+
 ////        for (uint32_t pos = 0; pos < COUNT; ++pos)
 ////        {
 ////            visitor.OnValue(readFunc(copy, pos));
@@ -59,94 +65,35 @@ typedef struct
 ////private:
   RSeq_for_Uint16_t buffer;
   uint16_t COUNT;
-  ReadFunc_in_BufferedCollection_for_UInt16 readFunc;
-  /* NumParser* numparser;*/
-} BufferedCollection_for_UInt16;
 
-////template<class T, class ReadFunc>
-////BufferedCollection<T, ReadFunc> CreateBufferedCollection(const ser4cpp::rseq_t& buffer,
-////                                                         size_t count,
-////                                                         const ReadFunc& readFunc)
-////{
-////    return BufferedCollection<T, ReadFunc>(buffer, count, readFunc);
-////}
+//Indexed_for_Group1Var2 WithIndex_in_Indexed_for_Group1Var2(
+//  Group1Var2* value, uint16_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Indexed_for_Group1Var2 readFunc;
+} BufferedCollection_Indexed_for_Group1Var2;
 
-//-----------------------------------BufferedCollection_for_Int16----------------------------------
+void  BufferedCollection_Indexed_for_Group1Var2_in_BufferedCollection_Indexed_for_Group1Var2(
+  BufferedCollection_Indexed_for_Group1Var2 *pBufferedCollection_Indexed_for_Group1Var2,
+  RSeq_for_Uint16_t* buffer,
+  uint16_t count,
+  ReadFunc_Indexed_for_Group1Var2 readFunc);
+BufferedCollection_Indexed_for_Group1Var2 CreateBufferedCollection_Indexed_for_Group1Var2_static(
+  RSeq_for_Uint16_t* buffer,
+  uint16_t count,
+  ReadFunc_Indexed_for_Group1Var2 readFunc);
 
-//-----------------------------------Indexed_Group2Var1_in_CountIndexParser----------------------------------
-typedef Indexed_for_Group2Var1 (*ReadFunc_in_BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser)
-(/*NumParser* numparser,*/ RSeq_for_Uint16_t* buffer, uint32_t c);
-
-////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
-typedef struct
-{
-  ICollection_Indexed_Group2Var1  iICollection_Indexed_Group2Var1;
-////public:
-////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
-////        : buffer(buffer), COUNT(count), readFunc(readFunc)
-////    {
-////    }
-
-////    virtual size_t Count() const override final
-////    {
-////        return COUNT;
-////    }
-
-////    virtual void Foreach(IVisitor<T>& visitor) const final
-////    {
-////        ser4cpp::rseq_t copy(buffer);
-////
-////        for (uint32_t pos = 0; pos < COUNT; ++pos)
-////        {
-////            visitor.OnValue(readFunc(copy, pos));
-////        }
-////    }
-
-////private:
-  RSeq_for_Uint16_t buffer;
-  uint16_t COUNT;
-  ReadFunc_in_BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser readFunc;
-  /* NumParser* numparser;*/
-} BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser;
-
-//    uint16_t Count_in_BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser_override(void* pICollection_Indexed_Group2Var1);
-
-//costructor BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser
-void BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser_in_BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser(
-  BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser *pBufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser,
-  NumParser* pNumParser, RSeq_for_Uint16_t* buffer, uint16_t count,
-  Indexed_for_Group2Var1 (*read)(/*NumParser* numparser,*/ RSeq_for_Uint16_t* buffer, uint32_t c));
-
-////template<class T, class ReadFunc>
-////BufferedCollection<T, ReadFunc> CreateBufferedCollection(const ser4cpp::rseq_t& buffer,
-////                                                         size_t count,
-////                                                         const ReadFunc& readFunc)
-////{
-////    return BufferedCollection<T, ReadFunc>(buffer, count, readFunc);
-////}
-//function CreateBufferedCollection_Indexed_Group2Var1
-BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser
-CreateBufferedCollection_Indexed_Group2Var1(
-  /*NumParser*,*/ RSeq_for_Uint16_t*, uint16_t c,
-  Indexed_for_Group2Var1 (*read)((/*NumParser* numparser,*/ RSeq_for_Uint16_t* buffer, uint32_t c)));
-
-void Foreach_in_BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser_override(void* pICollection_Indexed_Group2Var1,
-    IVisitor_Indexed_for_Group2Var1* visitor);
-uint16_t Count_in_BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser_override(void* pICollection_Indexed_Group2Var1);
+uint16_t Count_in_BufferedCollection_Indexed_for_Group1Var2(BufferedCollection_Indexed_for_Group1Var2 *pBufferedCollection_Indexed_for_Group1Var2);
+void Foreach_in_BufferedCollection_Indexed_for_Group1Var2(BufferedCollection_Indexed_for_Group1Var2 *pBufferedCollection_Indexed_for_Group1Var2,
+    IVisitor__for__Indexed_for_Group1Var2* visitor);
 
 
-////    virtual void Foreach(IVisitor<T>& visitor) const final
-////    {
-////        ser4cpp::rseq_t copy(buffer);
-////
-////        for (uint32_t pos = 0; pos < COUNT; ++pos)
-////        {
-////            visitor.OnValue(readFunc(copy, pos));
-////        }
-////    }
+uint16_t Count_in_BufferedCollection_Indexed_for_Group1Var2_override(void *pICollection_Indexed_for_Group1Var2);
+void Foreach_in_BufferedCollection_Indexed_for_Group1Var2_override(void *pICollection_Indexed_for_Group1Var2,
+    IVisitor__for__Indexed_for_Group1Var2* visitor);
 
-//-----------------------------------Indexed_Group2Var1_in_CountIndexParser----------------------------------
 
+//-----------------------------------Indexed_for_Group1Var2---------------------------------------------------
 ////} // namespace opendnp3
 
 #endif

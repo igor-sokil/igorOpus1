@@ -1,3 +1,4 @@
+#include <QtWidgets>
 #include <iostream>
 #include <QApplication>
 #include "header.h"
@@ -36,10 +37,10 @@ ParseResult_uint8_t TestComplex(std::string& hx, void (*validate)(MockApduHeader
   HexSequence buffer;
   HexSequence_in_HexSequence(&buffer, hx);
 
-std::cout<<"TestComplex1"<<std::endl;
+//qDebug()<<"TestComplex1";
   MockApduHeaderHandler mock;
   MockApduHeaderHandler_in_MockApduHeaderHandler(&mock);
-std::cout<<"TestComplex2"<<std::endl;
+//qDebug()<<"TestComplex2";
 
 ////    MockLogHandler log;
 //ParseResult_uint8_t Parse_in_APDUParser_static(
@@ -47,19 +48,31 @@ std::cout<<"TestComplex2"<<std::endl;
 //  IAPDUHandler *handler);
 //RSeq_for_Uint16_t ToRSeq_in_CopyableBuffer(CopyableBuffer *pCopyableBuffer);
 
-std::cout<<"TestComplex3"<<std::endl;
+//qDebug()<<"TestComplex3";
   RSeq_for_Uint16_t temp = ToRSeq_in_CopyableBuffer(&(buffer.bByteStr.cCopyableBuffer));
 ////    auto result = APDUParser::Parse(buffer.ToRSeq(), mock, &log.logger, settings);
-std::cout<<"TestComplex4"<<std::endl;
+//qDebug()<<"TestComplex4";
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  &temp,
                                  &(mock.iIAPDUHandler));
-std::cout<<"TestComplex5"<<std::endl;
+qDebug()<<"TestComplex5";
 ////    REQUIRE((result == expected));
 ////    REQUIRE(numCalls == mock.records.size());
+//std::cout<<"ParseResult_uint8_t result ="<<result<<std::endl;
+std::cout<<"mock.records.size()="<<mock.records.size()<<std::endl;
 
 ////    validate(mock);
-//  validate(&mock);
+  if(validate) validate(&mock);
+
+//qDebug()<<"mock.records[0].enumeration="<<hex<<mock.records[0].enumeration;
+//HeaderRecord hHeaderRecord = mock.records[0];
+//uint16_t tt = hHeaderRecord.gGroupVariationRecord.enumeration;
+//qDebug()<<"mock.records[0].enumeration="<<hex<<tt;
+
+// hHeaderRecord = mock.records[1];
+// tt = hHeaderRecord.gGroupVariationRecord.enumeration;
+//qDebug()<<"mock.records[1].enumeration="<<hex<<tt;
+
   return result;
 }
 

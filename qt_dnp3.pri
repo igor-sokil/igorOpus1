@@ -130,6 +130,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_IINValue.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_TimeAndInterval.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_Group1Var2.cpp \
                 \
                 cpp\lib\include\opendnp3\outstation\IDnpTimeSource.cpp \
                 cpp\lib\include\opendnp3\outstation\ICommandHandler.cpp \
@@ -168,8 +169,10 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\APDUParser.cpp \
+                cpp\lib\src\app\parsing\BufferedCollection.cpp \
                 cpp\lib\src\app\parsing\ObjectHeaderParser.cpp \
                 cpp\lib\src\app\parsing\ParseResult.cpp \
+                cpp\lib\src\app\parsing\RangeParser.cpp \
                 cpp\lib\src\app\parsing\IWhiteList.cpp \
                 cpp\lib\src\app\parsing\IAPDUHandler.cpp \
                 cpp\lib\src\app\parsing\NumParser.cpp \

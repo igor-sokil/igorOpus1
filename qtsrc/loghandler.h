@@ -19,6 +19,8 @@ class LogHandler
    void logHandlerStampCharArray(unsigned char *data, int rang_count);
    void logHandlerStampInteger(const char * title, int data);
    void logHandlerStampInteger32(const char * title, int data);
+   void logHandlerStampIntegerHex(const char * title, int data);
+   void logHandlerStampInteger32Hex(const char * title, int data);
    QString appendTimeStamp(QString str_response);
 
  private:

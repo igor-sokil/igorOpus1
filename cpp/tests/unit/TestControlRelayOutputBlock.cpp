@@ -25,7 +25,7 @@ using namespace opendnp3;
 
 #define SUITE(name) "ControlRelayOutputBlock - " name
 
-TEST_CASE(SUITE("Get raw code from components"))
+TEST_CASE(SUITE("1Get raw code from components"))
 {
     ControlRelayOutputBlock crob(OperationType::PULSE_ON, TripCloseCode::TRIP, true, 10, 100, 100,
                                  CommandStatus::SUCCESS);
@@ -33,14 +33,14 @@ TEST_CASE(SUITE("Get raw code from components"))
     REQUIRE(crob.rawCode == 0xA1);
 }
 
-TEST_CASE(SUITE("From raw code preserves the QU bit"))
+TEST_CASE(SUITE("2From raw code preserves the QU bit"))
 {
     ControlRelayOutputBlock crob(0x91, 10, 100, 100, CommandStatus::SUCCESS);
 
     REQUIRE(crob.rawCode == 0x91);
 }
 
-TEST_CASE(SUITE("From raw code preserves undefined Op Type"))
+TEST_CASE(SUITE("3From raw code preserves undefined Op Type"))
 {
     ControlRelayOutputBlock crob(0xAA, 10, 100, 100, CommandStatus::SUCCESS);
 
@@ -48,7 +48,7 @@ TEST_CASE(SUITE("From raw code preserves undefined Op Type"))
     REQUIRE(crob.opType == OperationType::Undefined);
 }
 
-TEST_CASE(SUITE("From raw code properly parses the enums"))
+TEST_CASE(SUITE("4From raw code properly parses the enums"))
 {
     ControlRelayOutputBlock crob(0xA2, 10, 100, 100, CommandStatus::SUCCESS);
 
@@ -57,7 +57,7 @@ TEST_CASE(SUITE("From raw code properly parses the enums"))
     REQUIRE(crob.clear == true);
 }
 
-TEST_CASE(SUITE("Check QU flag"))
+TEST_CASE(SUITE("5Check QU flag"))
 {
     {
         ControlRelayOutputBlock crob(0x51, 10, 100, 100, CommandStatus::SUCCESS);

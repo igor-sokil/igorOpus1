@@ -49,7 +49,7 @@ void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2(ControlRelayOutputB
 {
   pControlRelayOutputBlock->opType = from_type_in_OperationTypeSpec_static((rawCode_ & 0x0F));
   pControlRelayOutputBlock->tcc = from_type_in_TripCloseCodeSpec_static((rawCode_ >> 6) & 0x3);
-  pControlRelayOutputBlock->clear = (rawCode_ & 0x20);
+  pControlRelayOutputBlock->clear = (rawCode_ & 0x20) != 0;
   pControlRelayOutputBlock->count = count_;
   pControlRelayOutputBlock->onTimeMS = onTime_;
   pControlRelayOutputBlock->offTimeMS = offTime_;

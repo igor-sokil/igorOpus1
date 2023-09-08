@@ -22,7 +22,8 @@
 #include "APDUHelpers.h"
 
 ////uint8_t APDUHelpers::fixedBuffer[SIZE];
-static uint8_t fixedBuffer_in_APDUHelpers[SIZE_in_APDUHelpers];
+//static 
+uint8_t fixedBuffer_in_APDUHelpers[SIZE_in_APDUHelpers];
 /*
     APDURequest  Request_in_APDUHelpers_static(FunctionCode_uint8_t code, uint32_t size);// = SIZE);
 

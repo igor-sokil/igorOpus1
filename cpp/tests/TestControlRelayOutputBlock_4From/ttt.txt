@@ -1,0 +1,8 @@
+TEST_CASE(SUITE("4From raw code properly parses the enums"))
+{
+    ControlRelayOutputBlock crob(0xA2, 10, 100, 100, CommandStatus::SUCCESS);
+
+    REQUIRE(crob.opType == OperationType::PULSE_OFF);
+    REQUIRE(crob.tcc == TripCloseCode::TRIP);
+    REQUIRE(crob.clear == true);
+}

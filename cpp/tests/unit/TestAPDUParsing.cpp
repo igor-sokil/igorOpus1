@@ -134,13 +134,13 @@ TEST_CASE(SUITE("TestUnknownQualifier"))
     TestSimple("02 02 AB", ParseResult::UNKNOWN_QUALIFIER, 0);
 }
 
-TEST_CASE(SUITE("NotEnoughDataForObjects"))
+TEST_CASE(SUITE("7NotEnoughDataForObjects"))
 {
     // 1 byte start/stop  1->4, 3 octests data
     TestSimple("01 02 00 01 04 FF FF FF", ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS, 0);
 }
 
-TEST_CASE(SUITE("Group1Var2Range"))
+TEST_CASE(SUITE("8Group1Var2Range"))
 {
     // 1 byte start/stop  3->5, 3 octests data
     TestComplex("01 02 00 03 05 81 01 81", ParseResult::OK, 1, [](MockApduHeaderHandler& mock) {
@@ -160,7 +160,7 @@ TEST_CASE(SUITE("Group1Var2Range"))
     });
 }
 
-TEST_CASE(SUITE("Group1Var2RangeAsReadRange"))
+TEST_CASE(SUITE("9Group1Var2RangeAsReadRange"))
 {
     HexSequence buffer("01 02 00 03 05");
     MockApduHeaderHandler mock;
@@ -168,20 +168,20 @@ TEST_CASE(SUITE("Group1Var2RangeAsReadRange"))
     REQUIRE((result == ParseResult::OK));
 }
 
-TEST_CASE(SUITE("Group1Var2CountOfZero"))
+TEST_CASE(SUITE("10Group1Var2CountOfZero"))
 {
     // 1 byte count == 0, 0 octets data
     TestSimple("01 02 07 00", ParseResult::COUNT_OF_ZERO, 0);
 }
 
-TEST_CASE(SUITE("Group1Var2With2Headers"))
+TEST_CASE(SUITE("11Group1Var2With2Headers"))
 {
     // 1 -> 1 & 2 -> 3
     TestComplex("01 02 00 01 01 81 01 02 00 02 03 81 81", ParseResult::OK, 2,
                 [](MockApduHeaderHandler& mock) { REQUIRE(2 == mock.records.size()); });
 }
 
-TEST_CASE(SUITE("Group1Var2Range1to3"))
+TEST_CASE(SUITE("12Group1Var2Range1to3"))
 {
     // 1 byte start / stop, 1 -> 3, 3 octets data
     TestComplex("01 02 00 01 03 81 01 81", ParseResult::OK, 1, [](MockApduHeaderHandler& mock) {
@@ -201,7 +201,7 @@ TEST_CASE(SUITE("Group1Var2Range1to3"))
     });
 }
 
-TEST_CASE(SUITE("Group1Var2Range16"))
+TEST_CASE(SUITE("13Group1Var2Range16"))
 {
     // 2 byte count == 1, 1 octet data
     TestComplex("01 02 01 03 00 03 00 81", ParseResult::OK, 1, [](MockApduHeaderHandler& mock) {
@@ -211,7 +211,7 @@ TEST_CASE(SUITE("Group1Var2Range16"))
     });
 }
 
-TEST_CASE(SUITE("Group1Var2AllCountQualifiers"))
+TEST_CASE(SUITE("14Group1Var2AllCountQualifiers"))
 {
     auto validator = [](MockApduHeaderHandler& mock) {
         REQUIRE(2 == mock.staticBinaries.size());
@@ -230,20 +230,20 @@ TEST_CASE(SUITE("Group1Var2AllCountQualifiers"))
     TestSimple("01 02 09 02 00 00 00 81 01", ParseResult::UNKNOWN_QUALIFIER, 0);
 }
 
-TEST_CASE(SUITE("FlippedRange"))
+TEST_CASE(SUITE("15FlippedRange"))
 {
     // 1 byte start/stop w/ start > stop
     TestSimple("01 02 00 05 03", ParseResult::BAD_START_STOP, 0);
     TestSimple("01 02 00 FF 00", ParseResult::BAD_START_STOP, 0);
 }
 
-TEST_CASE(SUITE("TestUnreasonableRanges"))
+TEST_CASE(SUITE("16TestUnreasonableRanges"))
 {
     // 2 byte start/stop 0->65535, no data - the default max objects is very low (32768)
     TestSimple("01 02 01 00 00 FF FF", ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS, 0);
 }
 
-TEST_CASE(SUITE("ParserDoesNotAllowEmptyOctetStrings"))
+TEST_CASE(SUITE("17ParserDoesNotAllowEmptyOctetStrings"))
 {
     HexSequence buffer("6E 00 00 00 FF"); // 255 + 256
     MockApduHeaderHandler mock;

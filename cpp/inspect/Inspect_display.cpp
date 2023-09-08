@@ -294,6 +294,7 @@ void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IIN
 //- - - - - - - - - - - - - - - - - - - - AppControlField second- - - - - - - - - - -  - - 
  loghandler.LogEntryShort(title);
  loghandler.LogEntry("---AppControlField second---");
+
  loghandler.LogEntryShort(title);
  loghandler.logHandlerStampInteger(("    boolean FIR = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
                                                             mPairSer4cpp_for_IINField_AppControlField.second.FIR); 
@@ -333,16 +334,21 @@ void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader)
  loghandler.logHandlerStampInteger((" counter = "), pMemory_ObjectHeader->counter_inspect);
  loghandler.logHandlerStampInteger32((" adr     = "), (uint32_t)pMemory_ObjectHeader->pObjectHeader);
 
+ for(uint16_t i=0; i<pMemory_ObjectHeader->counter_inspect; i++)
+{
+ loghandler.LogEntry("-----------------------------------------------------");
  loghandler.LogEntryShort(title);
  loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_ObjectHeader->
-                                                            mObjectHeader.group); 
+                                                            mObjectHeader[i].group); 
  loghandler.LogEntryShort(title);
  loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_ObjectHeader->
-                                                            mObjectHeader.variation); 
+                                                            mObjectHeader[i].variation); 
 
  loghandler.LogEntryShort(title);
  loghandler.logHandlerStampInteger(("    uint8_t qualifier = "), pMemory_ObjectHeader->
-                                                            mObjectHeader.qualifier); 
+                                                            mObjectHeader[i].qualifier); 
+ loghandler.LogEntry("-----------------------------------------------------");
+}
 
  loghandler.LogEntry("");
 }
@@ -386,3 +392,50 @@ void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVari
  loghandler.LogEntry("");
 }
 //-------------------GroupVariationRecord------------------------
+//-------------------HeaderRecord------------------------
+void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord);
+
+void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord)
+{
+ loghandler.LogEntry("");
+ loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
+
+ void** tt = (void**)pMemory_HeaderRecord->title;
+ char *title = (char*)tt[0];
+
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntryShort("=====");
+ loghandler.LogEntryShort("-HeaderRecord-");
+ loghandler.LogEntryShort("=====");
+
+ loghandler.LogEntry("");
+ loghandler.logHandlerStampInteger((" counter = "), pMemory_HeaderRecord->counter_inspect);
+ loghandler.logHandlerStampInteger32((" adr     = "), (uint32_t)pMemory_HeaderRecord->pHeaderRecord);
+
+ loghandler.LogEntryShort(title);
+ loghandler.LogEntry("---GroupVariationRecord gGroupVariationRecord---");
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampIntegerHex(("    GroupVariation_uint16_t enumeration = "), pMemory_HeaderRecord->
+                                                            mHeaderRecord.gGroupVariationRecord.enumeration); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    GroupVariationType_int32_t type = "), pMemory_HeaderRecord->
+                                                            mHeaderRecord.gGroupVariationRecord.type); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_HeaderRecord->
+                                                            mHeaderRecord.gGroupVariationRecord.group); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_HeaderRecord->
+                                                            mHeaderRecord.gGroupVariationRecord.variation); 
+
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("uint8_t qualifier = "), pMemory_HeaderRecord->mHeaderRecord.qualifier);
+ loghandler.LogEntryShort(title);
+ loghandler.logHandlerStampInteger(("uint8_t headerIndex = "), pMemory_HeaderRecord->mHeaderRecord.headerIndex);
+
+ loghandler.LogEntry("");
+}
+//-------------------HeaderRecord------------------------

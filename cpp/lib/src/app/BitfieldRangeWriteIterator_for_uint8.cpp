@@ -1,3 +1,4 @@
+//#include <QtWidgets>
 #include "header.h"
 #include "BitfieldRangeWriteIterator_for_UInt8.h"
 #include "SerializationTemplates.h"
@@ -37,6 +38,7 @@ void  BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UIn
 ////    ~BitfieldRangeWriteIterator()
 void BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8)
 {
+////        if (isValid && count > 0)
   if (pBitfieldRangeWriteIterator_for_UInt8->isValid && pBitfieldRangeWriteIterator_for_UInt8->count > 0)
   {
 ////        typename IndexType::type_t stop = start + count - 1;
@@ -45,6 +47,7 @@ void BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_U
     write_to_in_UInt8_static(&(pBitfieldRangeWriteIterator_for_UInt8->range), stop);
     uint8_t num = pBitfieldRangeWriteIterator_for_UInt8->count / 8;
 
+////            if ((count % 8) > 0)
     if ((pBitfieldRangeWriteIterator_for_UInt8->count % 8) > 0)
     {
       ++num;

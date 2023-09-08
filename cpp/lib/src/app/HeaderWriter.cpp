@@ -17,6 +17,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <QtWidgets>
+//#include <iostream>
 #include "header.h"
 #include "HeaderWriter.h"
 
@@ -77,11 +79,15 @@ boolean WriteHeader_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationI
     return false;
   }
 
+qDebug()<<"-WriteHeader_in_HeaderWriter-";
+qDebug()<<"id.group= "<<id.group;
 ////    ser4cpp::UInt8::write_to(*position, id.group);
   write_to_in_UInt8_static((pHeaderWriter->position), id.group);
 ////    ser4cpp::UInt8::write_to(*position, id.variation);
+qDebug()<<"id.variation= "<<id.variation;
   write_to_in_UInt8_static((pHeaderWriter->position), id.variation);
 ////    ser4cpp::UInt8::write_to(*position, QualifierCodeSpec::to_type(qc));
+qDebug()<<"qc= "<<qc;
   write_to_in_UInt8_static((pHeaderWriter->position), qc);
   return true;
 }

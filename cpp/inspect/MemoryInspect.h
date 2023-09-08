@@ -155,6 +155,7 @@ Memory_IINField*  MEMORY_IINField_3(uint16_t titleSpace, IINField* pIINField);
 //-------------------IINField------------------------
 
 //-------------------ObjectHeader------------------------
+#define COUNT_ObjectHeader  3
 typedef struct
 {
  uint32_t counter_inspect;
@@ -162,7 +163,7 @@ typedef struct
  ObjectHeader* pObjectHeader;
  void* title;
 
- ObjectHeader mObjectHeader;
+ ObjectHeader mObjectHeader[COUNT_ObjectHeader];
 } Memory_ObjectHeader;
 
 extern Memory_ObjectHeader* pMemory_ObjectHeader_1;
@@ -193,5 +194,24 @@ Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_1(uint16_t titleSpace,
 Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_2(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord);
 Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_3(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord);
 //-------------------GroupVariationRecord------------------------
+//-------------------HeaderRecord------------------------
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ HeaderRecord* pHeaderRecord;
+ void* title;
+
+ HeaderRecord mHeaderRecord;
+} Memory_HeaderRecord;
+
+extern Memory_HeaderRecord* pMemory_HeaderRecord_1;
+extern Memory_HeaderRecord* pMemory_HeaderRecord_2;
+extern Memory_HeaderRecord* pMemory_HeaderRecord_3;
+
+Memory_HeaderRecord*  MEMORY_HeaderRecord_1(uint16_t titleSpace, HeaderRecord* pHeaderRecord);
+Memory_HeaderRecord*  MEMORY_HeaderRecord_2(uint16_t titleSpace, HeaderRecord* pHeaderRecord);
+Memory_HeaderRecord*  MEMORY_HeaderRecord_3(uint16_t titleSpace, HeaderRecord* pHeaderRecord);
+//-------------------HeaderRecord------------------------
 
 #endif

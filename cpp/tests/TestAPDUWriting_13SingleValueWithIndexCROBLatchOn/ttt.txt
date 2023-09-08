@@ -1,0 +1,12 @@
+TEST_CASE(SUITE("13SingleValueWithIndexCROBLatchOn"))
+{
+    APDURequest request(APDUHelpers::Request(FunctionCode::SELECT));
+    auto writer = request.GetWriter();
+
+    ControlRelayOutputBlock crob(OperationType::LATCH_ON, TripCloseCode::NUL, false, 0x1F, 0x10, 0xAA,
+                                 CommandStatus::LOCAL);
+
+    REQUIRE(writer.WriteSingleIndexedValue<UInt16>(QualifierCode::UINT16_CNT, Group12Var1::Inst(), crob, 0x21));
+
+    REQUIRE("C0 03 0C 01 08 01 00 21 00 03 1F 10 00 00 00 AA 00 00 00 07" == HexConversions::to_hex(request.ToRSeq()));
+}

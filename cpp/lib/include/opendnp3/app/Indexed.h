@@ -25,6 +25,7 @@
 #include "ControlRelayOutputBlock.h"
 #include "OperationType.h"
 #include "MeasurementTypes.h"
+#include "Group1.h"
 #include "Group2.h"
 ////#include <cstdint>
 
@@ -185,29 +186,6 @@ void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockO
 Indexed_for_ControlRelayOutputBlock WithIndex_in_Indexed_for_ControlRelayOutputBlock(
   ControlRelayOutputBlock* value, uint16_t index);
 //------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
-//------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
-/**
- * A simple tuple for pairing Values with an index
- */
-////template<class T> class Indexed
-typedef struct
-{
-////public:
-////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
-
-////    Indexed() : value(), index(0) {}
-
-  Group2Var1 value;
-  uint16_t index;
-} Indexed_for_Group2Var1;
-
-void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over1(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1);
-void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over2(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1,
-    Group2Var1* value_, uint16_t index_);
-Indexed_for_Group2Var1 WithIndex_in_Indexed_for_Group2Var1(
-  Group2Var1* value, uint16_t index);
-//------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
-
 //------------------------------------Indexed_for_Binary---------------------------------------------------------
 /**
  * A simple tuple for pairing Values with an index
@@ -428,6 +406,50 @@ void Indexed_for_AnalogCommandEvent_in_Indexed_for_AnalogCommandEventOver2(Index
 Indexed_for_AnalogCommandEvent WithIndex_in_Indexed_for_AnalogCommandEvent(
   AnalogCommandEvent* value, uint16_t index);
 //------------------------------------Indexed_for_AnalogCommandEvent---------------------------------------------------------
+//------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+  Group2Var1 value;
+  uint16_t index;
+} Indexed_for_Group2Var1;
+
+void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over1(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1);
+void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over2(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1,
+    Group2Var1* value_, uint16_t index_);
+Indexed_for_Group2Var1 WithIndex_in_Indexed_for_Group2Var1(
+  Group2Var1* value, uint16_t index);
+//------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
+//------------------------------------Indexed_for_Group1Var2---------------------------------------------------------
+/**
+ * A simple tuple for pairing Values with an index
+ */
+////template<class T> class Indexed
+typedef struct
+{
+////public:
+////    Indexed(const T& value_, uint16_t index_) : value(value_), index(index_) {}
+
+////    Indexed() : value(), index(0) {}
+
+  Group1Var2 value;
+  uint16_t index;
+} Indexed_for_Group1Var2;
+
+void Indexed_for_Group1Var2_in_Indexed_for_Group1Var2Over1(Indexed_for_Group1Var2 *pIndexed_for_Group1Var2);
+void Indexed_for_Group1Var2_in_Indexed_for_Group1Var2Over2(Indexed_for_Group1Var2 *pIndexed_for_Group1Var2,
+    Group1Var2* value_, uint16_t index_);
+Indexed_for_Group1Var2 WithIndex_in_Indexed_for_Group1Var2(
+  Group1Var2* value, uint16_t index);
+//------------------------------------Indexed_for_Group1Var2---------------------------------------------------------
 
 ////} // namespace opendnp3
 
