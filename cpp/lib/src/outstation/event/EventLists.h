@@ -60,6 +60,7 @@ typedef struct
 ////    EventLists(const EventBufferConfig& config);
 
   // master list keeps the aggregate order and generic data
+// главный список сохраняет совокупный порядок и общие данные
 ////    List<EventRecord> events;
   List_for_EventRecord events;
 
@@ -71,6 +72,7 @@ typedef struct
 
 ////private:
   // sub-lists just act as type-specific storage
+// подсписки просто действуют как хранилище для конкретного типа
 ////    List<TypedEventRecord<BinarySpec>> binary;
   List_TypedEventRecord_for_BinarySpec binary;
 ////    List<TypedEventRecord<DoubleBitBinarySpec>> doubleBinary;

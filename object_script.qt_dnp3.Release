@@ -284,6 +284,7 @@ release/APDUHexBuilders.o
 release/APDUHelpers.o
 release/BufferHelpers.o
 release/CopyableBuffer.o
+release/DNPHelpers.o
 release/LinkHex.o
 release/LinkParserTest.o
 release/LinkLayerTest.o

@@ -3,7 +3,7 @@
 #include <QtWidgets>
 #include "key_filter.h"
 
-//#include "header.h"
+#include "header.h"
 
 #include "MainWindow.h"
 #include "loghandler.h"
@@ -14,7 +14,9 @@ LogHandler loghandler;//логирование
 
 MainWindow::MainWindow(QWidget *parent): QWidget(parent)
 {
-  setWindowTitle(QString::fromLocal8Bit("FatFS"));
+  setWindowTitle(QString::fromLocal8Bit("qt_dnp3"));
+//  setWindowFlag(QtCore.Qt.WindowStaysOnTopHint)
+  setWindowFlags(Qt::WindowStaysOnTopHint);
 
   QFont tabFont = QFont("Times", 14, QFont::Normal);
 
@@ -68,7 +70,7 @@ MiniButtonWidget::MiniButtonWidget(QWidget *parent)
 
   QGridLayout *miniButtonLayout = new QGridLayout;
 
-  virtualMenuUpButton = createButton(" EvenList ", SLOT(upClicked()));
+  virtualMenuUpButton = createButton(" Message_in_Moc ", SLOT(upClicked()));
   virtualMenuDownButton = createButton("List_for_EventRecord", SLOT(downClicked()));
   virtualMenuUpButton->setFont(boldFont);
   virtualMenuDownButton->setFont(boldFont);
@@ -88,7 +90,7 @@ MiniButtonWidget::MiniButtonWidget(QWidget *parent)
   virtualMenuHomeButton->setFont(boldFont);
   virtualMenuEndButton->setFont(boldFont);
 
-  virtualMenuEnterButton = createButton(" step1 ", SLOT(enterClicked()));
+  virtualMenuEnterButton = createButton(" Enter ", SLOT(enterClicked()));
   virtualMenuEscButton = createButton(" Esc ", SLOT(escClicked()));
   virtualMenuEnterButton->setFont(boldFont);
   virtualMenuEscButton->setFont(boldFont);
@@ -168,32 +170,50 @@ void MiniButtonWidget::freeClicked()
 //  func20ConfigDiskretRegistrator();//комтрейд config дикр регистратора
 }//freeClicked()
 
-void loghandler_List_for_EventRecord();
-void loghandler_List_TypedEventRecord_for_AnalogSpec();
+//void loghandler_List_for_EventRecord();
 void MiniButtonWidget::downClicked()
 {
   qDebug()<<"BIT_KEY_DOWN";
 // loghandler_List_for_EventRecord();
-//   loghandler_List_TypedEventRecord_for_AnalogSpec();
-
 //  new_state_keyboard |= (1<<BIT_KEY_DOWN);
 //  periodical_operations();//один оборот
 }//downClicked()
 
-void loghandler_EvenLists();
+
+void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord);
+void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader);
+void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord);
+void inspect_EventLists(Memory_EventLists* pMemory_EventLists, int maxCount);
+void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField);
+void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest);
+void inspect_Message(Memory_Message* pMemory_Message);
+void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser);
+void inspect_EventRecord(Memory_EventRecord* pMemory_EventRecord, int maxCount);
 void MiniButtonWidget::upClicked()
 {
   qDebug()<<"BIT_KEY_UP";
+// if(pMemory_Message_1) inspect_Message(pMemory_Message_1);
+// if(pMemory_Message_2) inspect_Message(pMemory_Message_2);
+// if(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1)inspect_Result_for_APDUHeader_in_APDUHeaderParser(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1);
+// if(pMemory_ParsedRequest_1)inspect_ParsedRequest(pMemory_ParsedRequest_1);
+// if(pMemory_PairSer4cpp_for_IINField_AppControlField_1)inspect_PairSer4cpp_for_IINField_AppControlField(pMemory_PairSer4cpp_for_IINField_AppControlField_1);
+// if(pMemory_ObjectHeader_1)inspect_ObjectHeader(pMemory_ObjectHeader_1);
+// if(pMemory_HeaderRecord_1)inspect_HeaderRecord(pMemory_HeaderRecord_1);
+// if(pMemory_EventRecord_1)inspect_EventRecord(pMemory_EventRecord_1, 10);
+// if(pMemory_EventLists_1)inspect_EventLists(pMemory_EventLists_1, 10);
+// if(pMemory_GroupVariationRecord_1)inspect_GroupVariationRecord(pMemory_GroupVariationRecord_1);
+
+//  inspect_Message(titleGlobal_1, memoryGlobal_1);
+//  inspect_Message(titleGlobal_2, memoryGlobal_2);
+//  inspect_Message("Moc", &mMessage1_global_in_MockLowerLayer);
 // loghandler_EvenLists();
 //  new_state_keyboard |= (1<<BIT_KEY_UP);
 //  periodical_operations();//один оборот
 }//upClicked()
 
-void  step1_TestEventStorage_overflows_as_expected();
 void MiniButtonWidget::enterClicked()
 {
   qDebug()<<"BIT_KEY_ENTER";
-//  step1_TestEventStorage_overflows_as_expected();
 //  new_state_keyboard |= (1<<BIT_KEY_ENTER);
 //  periodical_operations();//один оборот
 //  periodical_operations();//один оборот

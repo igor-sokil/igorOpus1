@@ -1,3 +1,4 @@
+//#include <QtWidgets>
 #include "header.h"
 #include "IEventType.h"
 
@@ -8,6 +9,9 @@ void IEventType_in_IEventType(IEventType *pIEventType, EventType_uint16_t value)
 
 boolean IsEqual_in_IEventType(IEventType* pIEventType, EventType_uint16_t type)
 {
+//qDebug()<<"";
+//qDebug()<<"IsEqual_in_IEventType1";
+//qDebug()<<"type == pIEventType->value "<<(type == pIEventType->value);
   return type == pIEventType->value;
 }
 

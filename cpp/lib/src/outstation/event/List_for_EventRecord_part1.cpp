@@ -5,6 +5,7 @@
 
 void List_for_EventRecord_in_List_for_EventRecordOver1(List_for_EventRecord *pList_for_EventRecord)
 {
+  Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver1(&(pList_for_EventRecord->underlying));
   (pList_for_EventRecord->iIterator_in_List_for_EventRecord).current = NULL;
 
   pList_for_EventRecord->head = NULL;

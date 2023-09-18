@@ -1,5 +1,5 @@
 
-#include <QtWidgets>
+#include <iostream>
 #include "header.h"
 #include "LayerInterfaces.h"
 #include <string.h>
@@ -42,8 +42,8 @@ void  setParentPointer_in_IUpperLayer(IUpperLayer* pIUpperLayer, void* pParentPo
 
 boolean BeginTransmit_in_ILowerLayer(ILowerLayer *pILowerLayer, Message* message)
 {
-qDebug()<<"";
-qDebug()<<"BeginTransmit_in_ILowerLayer1";
+std::cout<<""<<'\n';
+std::cout<<"BeginTransmit_in_ILowerLayer1"<<'\n';
   return (pILowerLayer->pBeginTransmit_in_ILowerLayer)(pILowerLayer, message);
 }
 
@@ -65,6 +65,7 @@ void SetLowerLayer_in_HasLowerLayer(HasLowerLayer *pHasLowerLayer, ILowerLayer* 
 {
 //qDebug()<<"pHasLowerLayer="<<pHasLowerLayer<<";   lowerLayer= "<<lowerLayer;
 ////        assert(!pLowerLayer);
+  if(!pHasLowerLayer->pLowerLayer) std::cout<<"assert(!pLowerLayer)"<<'\n';
   pHasLowerLayer->pLowerLayer = lowerLayer;
 }
 
@@ -76,5 +77,6 @@ void HasUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer)
 void SetUpperLayer_in_HasUpperLayer(HasUpperLayer *pHasUpperLayer, IUpperLayer* upperLayer)
 {
 ////        assert(!pUpperLayer);
+  if(!pHasUpperLayer->pUpperLayer) std::cout<<"assert(!pUpperLayer)"<<'\n';
   pHasUpperLayer->pUpperLayer = upperLayer;
 }

@@ -4,6 +4,7 @@
 
 void MockLinkListener_in_MockLinkListener(MockLinkListener *pMockLinkListener)
 {
+  ILinkListener_in_ILinkListener(&(pMockLinkListener->iILinkListener));
   pMockLinkListener->iILinkListener.pOnStateChange_in_ILinkListener = OnStateChange_in_MockLinkListener_override;
   pMockLinkListener->iILinkListener.pOnKeepAliveInitiated_in_ILinkListener = OnKeepAliveInitiated_in_MockLinkListener_override;
   pMockLinkListener->iILinkListener.pOnKeepAliveFailure_in_ILinkListener = OnKeepAliveFailure_in_MockLinkListener_override;

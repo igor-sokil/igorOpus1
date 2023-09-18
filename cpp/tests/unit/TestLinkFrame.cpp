@@ -51,7 +51,7 @@ std::string FormatUserData(
 
 #define SUITE(name) "DNPLinkFrame - " name
 
-TEST_CASE(SUITE("LinkHeaderChangeFCB"))
+TEST_CASE(SUITE("1LinkHeaderChangeFCB"))
 {
     LinkHeader hdr(5, 1, 1024, true, true, true, LinkFunction::PRI_CONFIRMED_USER_DATA);
 
@@ -62,7 +62,7 @@ TEST_CASE(SUITE("LinkHeaderChangeFCB"))
     REQUIRE(hdr.ControlByte(true, false, true, LinkFunction::PRI_CONFIRMED_USER_DATA) == hdr.GetControl());
 }
 
-TEST_CASE(SUITE("ResetLinks"))
+TEST_CASE(SUITE("2ResetLinks"))
 {
     Buffer buffer(292);
 
@@ -72,7 +72,7 @@ TEST_CASE(SUITE("ResetLinks"))
     REQUIRE(HexConversions::to_hex(wrapper) == "05 64 05 C0 01 00 00 04 E9 21");
 }
 
-TEST_CASE(SUITE("RequestLinkStates"))
+TEST_CASE(SUITE("3RequestLinkStates"))
 {
     Buffer buffer(292);
 
@@ -82,7 +82,7 @@ TEST_CASE(SUITE("RequestLinkStates"))
     REQUIRE(HexConversions::to_hex(wrapper) == "05 64 05 49 01 00 00 04 D2 36");
 }
 
-TEST_CASE(SUITE("ACK"))
+TEST_CASE(SUITE("4ACK"))
 {
     Buffer buffer(292);
 
@@ -115,7 +115,7 @@ TEST_CASE(SUITE("ACK"))
     }
 }
 
-TEST_CASE(SUITE("ConfirmedUserData"))
+TEST_CASE(SUITE("5ConfirmedUserData"))
 {
     Buffer buffer(292);
 
@@ -135,7 +135,7 @@ TEST_CASE(SUITE("ConfirmedUserData"))
                "01 00 01 00 00 01 01 01 00 00 03 00 2F AC 00 1E 02 01 00 00 01 00 01 00 00 01 00 00 16 ED");
 }
 
-TEST_CASE(SUITE("ResetLinkStates"))
+TEST_CASE(SUITE("6ResetLinkStates"))
 {
     Buffer buffer(292);
 
@@ -145,13 +145,14 @@ TEST_CASE(SUITE("ResetLinkStates"))
     REQUIRE(HexConversions::to_hex(wrapper) == "05 64 05 40 00 04 01 00 A3 96");
 }
 
-TEST_CASE(SUITE("UnconfirmedUserData"))
+TEST_CASE(SUITE("7UnconfirmedUserData"))
 {
     auto hex = FormatUserData(false, false, 1024, 1,
                               "C1 E3 81 96 00 02 01 28 01 00 00 00 01 02 01 28 01 00 01 00 01 02 01 28 01 00 02 00 01 "
                               "02 01 28 01 00 03 00 01 20 02 28 01 00 00 00 01 00 00 20 02 28 01 00 01 00 01 00 00 01 "
                               "01 01 00 00 03 00 00 1E 02 01 00 00 01 00 01 00 00 01 00 00");
     // take the packet from the test above, change the control byte to 44 , repair the crc
+// берем пакет из теста выше, меняем управляющий байт на 44, восстанавливаем crc
     REQUIRE(hex
             == RepairCRC(
                    "05 64 53 44 00 04 01 00 FF FF C1 E3 81 96 00 02 01 28 01 00 00 00 01 02 01 28 FF FF 01 00 01 00 01 "
@@ -159,7 +160,7 @@ TEST_CASE(SUITE("UnconfirmedUserData"))
                    "01 00 01 00 01 00 00 01 01 01 00 00 03 00 FF FF 00 1E 02 01 00 00 01 00 01 00 00 01 00 00 FF FF"));
 }
 
-TEST_CASE(SUITE("LinkStatus"))
+TEST_CASE(SUITE("8LinkStatus"))
 {
     Buffer buffer(292);
 
@@ -170,7 +171,7 @@ TEST_CASE(SUITE("LinkStatus"))
     REQUIRE(HexConversions::to_hex(wrapper) == RepairCRC("05 64 05 9B 01 00 00 04 E9 21"));
 }
 
-TEST_CASE(SUITE("NotSupported"))
+TEST_CASE(SUITE("9NotSupported"))
 {
     Buffer buffer(292);
 

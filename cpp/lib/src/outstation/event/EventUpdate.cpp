@@ -155,6 +155,7 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
   List_TypedEventRecord_for_AnalogSpec*  listEv = GetList_for_AnalogSpec_in_EventLists(lists);
 
   // lists with no capacity don't cause "buffer overflow"
+// списки без емкости не вызывают «переполнение буфера»
 //     uint32_t Capacity_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec)
 ////    if (list.Capacity() == 0)
   if(Capacity_in_List_TypedEventRecord_for_AnalogSpec(listEv) == 0)
@@ -167,7 +168,7 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
   if(IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_AnalogSpec(listEv))
   {
     // we must make space
-
+// мы должны освободить место
     overflow = true;
 ////        const auto first = list.Head();
     Node_TypedEventRecord_for_AnalogSpec* first = Head_in_List_TypedEventRecord_for_AnalogSpec(listEv);
@@ -175,6 +176,7 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
     Node_for_EventRecord* record_node = (first->value).record;
 
     // remove the generic record
+// удаляем общую запись
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
     OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
@@ -183,12 +185,14 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
     Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
 
     // remove the type specific record
+// удаляем запись определенного типа
 //void Remove_in_List_TypedEventRecord_for_AnalogSpec(List_TypedEventRecord_for_AnalogSpec *pList_TypedEventRecord_for_AnalogSpec, Node_TypedEventRecord_for_AnalogSpec* node);
 ////        list.Remove(first);
     Remove_in_List_TypedEventRecord_for_AnalogSpec(listEv, first);
   }
 
   // now that we know that space exists, create the generic record
+// теперь, когда мы знаем, что пространство существует, создаем общую запись
 //Node_for_EventRecord* Add_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, EventRecord* value);
 ////    const auto record_node = lists.events.Add(EventRecord(event.index, event.clazz));
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);

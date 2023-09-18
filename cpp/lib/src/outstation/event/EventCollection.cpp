@@ -1,3 +1,4 @@
+//#include <QtWidgets>
 #include "header.h"
 #include "EventCollection.h"
 
@@ -163,6 +164,9 @@ void  EventCollection_for_Analog_in_EventCollection_for_Analog(EventCollection_f
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
 uint16_t WriteSome_in_EventCollection_for_Analog_override(void *pIEventCollection_for_Analog, IEventWriter_for_Analog* writer)
 {
+//qDebug()<<"";
+//qDebug()<<"WriteSome_in_EventCollection_for_Analog_override1";
+
   uint16_t num_written = 0;
   EventCollection_for_Analog *parent =
     (EventCollection_for_Analog*)getParentPointer_in_IEventCollection_for_Analog((IEventCollection_for_Analog*)pIEventCollection_for_Analog);
@@ -177,10 +181,14 @@ uint16_t WriteSome_in_EventCollection_for_Analog_override(void *pIEventCollectio
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_Analog(EventCollection_for_Analog *pEventCollection_for_Analog, IEventWriter_for_Analog* writer)
 {
+//qDebug()<<"";
+//qDebug()<<"WriteOne_in_EventCollection_for_Analog1";
+//qDebug()<<"pEventCollection_for_Analog->counters->selected == "<<pEventCollection_for_Analog->counters->selected;
   // don't bother searching
   if (pEventCollection_for_Analog->counters->selected == 0)
     return false;
 
+//qDebug()<<"WriteOne_in_EventCollection_for_Analog2";
   // find the next event with the same type and variation
 //    EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type);
 ////    EventRecord* record = EventWriting::FindNextSelected(this->iterator, T::EventTypeEnum);
@@ -190,6 +198,7 @@ boolean WriteOne_in_EventCollection_for_Analog(EventCollection_for_Analog *pEven
   if (!record)
     return false;
 
+//qDebug()<<"WriteOne_in_EventCollection_for_Analog3";
 ////    const auto data = TypedStorage<T>::Retrieve(*record);
   Node_TypedEventRecord_for_AnalogSpec* data = Retrieve_in_TypedStorage_for_AnalogSpec_static(record);
 
@@ -197,6 +206,7 @@ boolean WriteOne_in_EventCollection_for_Analog(EventCollection_for_Analog *pEven
   if ((data->value).selectedVariation != pEventCollection_for_Analog->variation)
     return false;
 
+//qDebug()<<"WriteOne_in_EventCollection_for_Analog4";
   // unable to write
 // boolean (*pWrite_in_IEventWriter_for_Analog)(Analog* meas, uint16_t index);// = 0;
 ////    if (!writer.Write(data->value.value, record->index))
@@ -204,6 +214,7 @@ boolean WriteOne_in_EventCollection_for_Analog(EventCollection_for_Analog *pEven
   if (!Write_in_IEventWriter_for_Analog(writer, &((data->value).value), record->index))
     return false;
 
+//qDebug()<<"WriteOne_in_EventCollection_for_Analog5";
   // success!
 //void OnWrite_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    this->counters.OnWrite(record->clazz);

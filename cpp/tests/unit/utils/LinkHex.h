@@ -46,6 +46,7 @@ std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t
 
 ////    static std::string Nack(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
 ////    static std::string LinkStatus(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
+std::string LinkStatus_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
 ////    static std::string NotSupported(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
 
 ////////////////////////////////////////////////

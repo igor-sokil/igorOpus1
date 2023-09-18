@@ -67,11 +67,19 @@ std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t
 ////}
 
 ////std::string LinkHex::LinkStatus(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src)
-////{
+std::string LinkStatus_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src)
+{
 ////    StaticBuffer<292> buffer;
+  StaticBuffer_for_LPDU_MAX_FRAME_SIZE buffer;
 ////    auto output = buffer.as_wseq();
+  WSeq_for_Uint16_t  output = as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(&buffer);
+//RSeq_for_Uint16_t FormatLinkStatus_in_LinkFrame_static(
+//  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
 ////    return HexConversions::to_hex(LinkFrame::FormatLinkStatus(output, master, isRxBuffFull, dest, src, nullptr));
-////}
+  RSeq_for_Uint16_t rseq = FormatLinkStatus_in_LinkFrame_static(
+             &output, master, isRxBuffFull, dest, src);//, Logger* pLogger);
+  return to_hex_in_HexConversionsOver2(&rseq, true);
+}
 
 ////std::string LinkHex::NotSupported(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src)
 ////{

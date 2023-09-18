@@ -37,6 +37,8 @@
 /**
  * Generic event information with an opaque pointer to
  * the specific event details
+* Общая информация о событии с непрозрачным указателем на
+  * конкретная информация о мероприятии
  */
 ////class EventRecord
 typedef struct

@@ -19,6 +19,7 @@
  */
 #include "header.h"
 #include "EventRecord.h"
+#include <string.h>
 
 ////namespace opendnp3
 ////{
@@ -39,7 +40,6 @@ void EventRecord_in_EventRecordOver1(EventRecord *pEventRecord)
   pEventRecord->clazz = EventClass_EC1;
   pEventRecord->state = EventState_unselected;
 
-  // always set as a unit
-//    pEventRecord->type = NULL;
-//    pEventRecord->storage_node = NULL;
+  pEventRecord->type = NULL;
+  pEventRecord->storage_node = NULL;
 }

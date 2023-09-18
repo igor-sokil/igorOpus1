@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 #include <QApplication>
+#include <QtWidgets>
 #include "header.h"
 #include "MockTransportLayer.h"
 #include "HexConversions.h"
@@ -58,6 +59,8 @@ boolean SendDown_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer, 
 
 boolean OnReceive_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer, Message* message)
 {
+qDebug()<<"";
+qDebug()<<"OnReceive_in_MockTransportLayer1";
   pMockTransportLayer->receivedQueue.push_back(to_hex_in_HexConversionsOver2(&(message->payload)));
   return true;
 }

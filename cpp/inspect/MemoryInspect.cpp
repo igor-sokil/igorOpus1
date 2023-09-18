@@ -304,8 +304,12 @@ typedef struct
  pMemory_ParsedRequest->pParsedRequest = pParsedRequest;
  pMemory_ParsedRequest->title = (void*)title_ParsedRequest;
 
- memcpy((void*)&(pMemory_ParsedRequest->mParsedRequest), (void*)pParsedRequest, sizeof(ParsedRequest));
- MEMORY_RSeq_for_Uint16(&(pMemory_ParsedRequest->mMemory_RSeq_for_Uint16), 4, &(pMemory_ParsedRequest->mParsedRequest.objects));
+ if(pParsedRequest)
+   memcpy((void*)&(pMemory_ParsedRequest->mParsedRequest), (void*)pParsedRequest, sizeof(ParsedRequest));
+ else qDebug()<<"Error: pParsedRequest == NULL!";
+
+ if(pParsedRequest)
+   MEMORY_RSeq_for_Uint16(&(pMemory_ParsedRequest->mMemory_RSeq_for_Uint16), 4, &(pMemory_ParsedRequest->mParsedRequest.objects));
 
  pMemory_ParsedRequest->mParsedRequest.objects = pMemory_ParsedRequest->mMemory_RSeq_for_Uint16.rseq;
  pMemory_ParsedRequest->mParsedRequest.objects.buffer_ = pMemory_ParsedRequest->mMemory_RSeq_for_Uint16.buffer4rseq;
@@ -365,7 +369,9 @@ typedef struct
  pMemory_PairSer4cpp_for_IINField_AppControlField->pPairSer4cpp_for_IINField_AppControlField = pPairSer4cpp_for_IINField_AppControlField;
  pMemory_PairSer4cpp_for_IINField_AppControlField->title = (void*)title_PairSer4cpp_for_IINField_AppControlField;
 
- memcpy((void*)&(pMemory_PairSer4cpp_for_IINField_AppControlField->mPairSer4cpp_for_IINField_AppControlField), (void*)pPairSer4cpp_for_IINField_AppControlField, sizeof(PairSer4cpp_for_IINField_AppControlField));
+ if(pPairSer4cpp_for_IINField_AppControlField)
+   memcpy((void*)&(pMemory_PairSer4cpp_for_IINField_AppControlField->mPairSer4cpp_for_IINField_AppControlField), (void*)pPairSer4cpp_for_IINField_AppControlField, sizeof(PairSer4cpp_for_IINField_AppControlField));
+ else qDebug()<<"Error: pPairSer4cpp_for_IINField_AppControlField == NULL!";
 
  return pMemory_PairSer4cpp_for_IINField_AppControlField;
 }
@@ -422,7 +428,9 @@ typedef struct
  pMemory_IINField->pIINField = pIINField;
  pMemory_IINField->title = (void*)title_IINField;
 
- memcpy((void*)&(pMemory_IINField->mIINField), (void*)pIINField, sizeof(IINField));
+ if(pIINField)
+   memcpy((void*)&(pMemory_IINField->mIINField), (void*)pIINField, sizeof(IINField));
+ else qDebug()<<"Error: pIINField == NULL!";
 
  return pMemory_IINField;
 }
@@ -481,7 +489,10 @@ typedef struct
 
  int idx = pMemory_ObjectHeader->counter_inspect;
  if(idx > COUNT_ObjectHeader) idx = COUNT_ObjectHeader;
- memcpy((void*)&(pMemory_ObjectHeader->mObjectHeader[idx-1]), (void*)pObjectHeader, sizeof(ObjectHeader));
+
+ if(pObjectHeader)
+   memcpy((void*)&(pMemory_ObjectHeader->mObjectHeader[idx-1]), (void*)pObjectHeader, sizeof(ObjectHeader));
+ else qDebug()<<"Error: pObjectHeader == NULL!";
 
  return pMemory_ObjectHeader;
 }
@@ -538,7 +549,9 @@ typedef struct
  pMemory_GroupVariationRecord->pGroupVariationRecord = pGroupVariationRecord;
  pMemory_GroupVariationRecord->title = (void*)title_GroupVariationRecord;
 
- memcpy((void*)&(pMemory_GroupVariationRecord->mGroupVariationRecord), (void*)pGroupVariationRecord, sizeof(GroupVariationRecord));
+ if(pGroupVariationRecord)
+   memcpy((void*)&(pMemory_GroupVariationRecord->mGroupVariationRecord), (void*)pGroupVariationRecord, sizeof(GroupVariationRecord));
+ else qDebug()<<"Error: pGroupVariationRecord == NULL!";
 
  return pMemory_GroupVariationRecord;
 }
@@ -595,7 +608,9 @@ typedef struct
  pMemory_HeaderRecord->pHeaderRecord = pHeaderRecord;
  pMemory_HeaderRecord->title = (void*)title_HeaderRecord;
 
- memcpy((void*)&(pMemory_HeaderRecord->mHeaderRecord), (void*)pHeaderRecord, sizeof(HeaderRecord));
+ if(pHeaderRecord)
+   memcpy((void*)&(pMemory_HeaderRecord->mHeaderRecord), (void*)pHeaderRecord, sizeof(HeaderRecord));
+ else qDebug()<<"Error: pHeaderRecord == NULL!";
 
  return pMemory_HeaderRecord;
 }
@@ -654,8 +669,193 @@ typedef struct
 
  int idx = pMemory_EventLists->counter_inspect;
  if(idx > COUNT_EventLists) idx = COUNT_EventLists;
- memcpy((void*)&(pMemory_EventLists->mEventLists[idx-1]), (void*)pEventLists, sizeof(EventLists));
+ if(pEventLists)
+    memcpy((void*)&(pMemory_EventLists->mEventLists[idx-1]), (void*)pEventLists, sizeof(EventLists));
+ else qDebug()<<"Error: pEventLists == NULL!";
 
  return pMemory_EventLists;
 }
 //-------------------EventLists------------------------
+//-------------------EventRecord------------------------
+Memory_EventRecord*  MEMORY_EventRecord(Memory_EventRecord* pMemory_EventRecord, uint16_t titleSpace, EventRecord* pEventRecord);
+
+static const 
+void *title_EventRecord[] =
+{
+  (void*)"EventRecord"
+};
+
+Memory_EventRecord* pMemory_EventRecord_1;
+Memory_EventRecord* pMemory_EventRecord_2;
+Memory_EventRecord* pMemory_EventRecord_3;
+
+static Memory_EventRecord mMemory_EventRecord_1;
+static Memory_EventRecord mMemory_EventRecord_2;
+static Memory_EventRecord mMemory_EventRecord_3;
+
+Memory_EventRecord*  MEMORY_EventRecord_1(uint16_t titleSpace, EventRecord* pEventRecord)
+{
+qDebug()<<"            ---MEMORY_EventRecord_1---";
+ return  MEMORY_EventRecord(&mMemory_EventRecord_1, titleSpace, pEventRecord);
+}
+Memory_EventRecord*  MEMORY_EventRecord_2(uint16_t titleSpace, EventRecord* pEventRecord)
+{
+qDebug()<<"            ---MEMORY_EventRecord_2---";
+ return  MEMORY_EventRecord(&mMemory_EventRecord_2, titleSpace, pEventRecord);
+}
+Memory_EventRecord*  MEMORY_EventRecord_3(uint16_t titleSpace, EventRecord* pEventRecord)
+{
+qDebug()<<"            ---MEMORY_EventRecord_3---";
+ return  MEMORY_EventRecord(&mMemory_EventRecord_3, titleSpace, pEventRecord);
+}
+
+Memory_EventRecord*  MEMORY_EventRecord(Memory_EventRecord* pMemory_EventRecord, uint16_t titleSpace, EventRecord* pEventRecord)
+{
+/*
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ EventRecord* pEventRecord;
+ void* title;
+
+ EventRecord mEventRecord;
+} Memory_EventRecord;
+*/
+
+ pMemory_EventRecord->counter_inspect++;
+ pMemory_EventRecord->titleSpace = titleSpace;
+ pMemory_EventRecord->pEventRecord = pEventRecord;
+ pMemory_EventRecord->title = (void*)title_EventRecord;
+
+ int idx = pMemory_EventRecord->counter_inspect;
+ if(idx > COUNT_EventRecord) idx = COUNT_EventRecord;
+ if(pEventRecord)
+    memcpy((void*)&(pMemory_EventRecord->mEventRecord[idx-1]), (void*)pEventRecord, sizeof(EventRecord));
+ else qDebug()<<"Error: pEventRecord == NULL!";
+
+ return pMemory_EventRecord;
+}
+//-------------------EventRecord------------------------
+//-------------------LinkHeader------------------------
+Memory_LinkHeader*  MEMORY_LinkHeader(Memory_LinkHeader* pMemory_LinkHeader, uint16_t titleSpace, LinkHeader* pLinkHeader);
+
+static const 
+void *title_LinkHeader[] =
+{
+  (void*)"LinkHeader"
+};
+
+Memory_LinkHeader* pMemory_LinkHeader_1;
+Memory_LinkHeader* pMemory_LinkHeader_2;
+Memory_LinkHeader* pMemory_LinkHeader_3;
+
+static Memory_LinkHeader mMemory_LinkHeader_1;
+static Memory_LinkHeader mMemory_LinkHeader_2;
+static Memory_LinkHeader mMemory_LinkHeader_3;
+
+Memory_LinkHeader*  MEMORY_LinkHeader_1(uint16_t titleSpace, LinkHeader* pLinkHeader)
+{
+qDebug()<<"            ---MEMORY_LinkHeader_1---";
+ return  MEMORY_LinkHeader(&mMemory_LinkHeader_1, titleSpace, pLinkHeader);
+}
+Memory_LinkHeader*  MEMORY_LinkHeader_2(uint16_t titleSpace, LinkHeader* pLinkHeader)
+{
+qDebug()<<"            ---MEMORY_LinkHeader_2---";
+ return  MEMORY_LinkHeader(&mMemory_LinkHeader_2, titleSpace, pLinkHeader);
+}
+Memory_LinkHeader*  MEMORY_LinkHeader_3(uint16_t titleSpace, LinkHeader* pLinkHeader)
+{
+qDebug()<<"            ---MEMORY_LinkHeader_3---";
+ return  MEMORY_LinkHeader(&mMemory_LinkHeader_3, titleSpace, pLinkHeader);
+}
+
+Memory_LinkHeader*  MEMORY_LinkHeader(Memory_LinkHeader* pMemory_LinkHeader, uint16_t titleSpace, LinkHeader* pLinkHeader)
+{
+/*
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ LinkHeader* pLinkHeader;
+ void* title;
+
+ LinkHeader mLinkHeader;
+} Memory_LinkHeader;
+*/
+
+ pMemory_LinkHeader->counter_inspect++;
+ pMemory_LinkHeader->titleSpace = titleSpace;
+ pMemory_LinkHeader->pLinkHeader = pLinkHeader;
+ pMemory_LinkHeader->title = (void*)title_LinkHeader;
+
+ int idx = pMemory_LinkHeader->counter_inspect;
+ if(idx > COUNT_LinkHeader) idx = COUNT_LinkHeader;
+ if(pLinkHeader)
+    memcpy((void*)&(pMemory_LinkHeader->mLinkHeader[idx-1]), (void*)pLinkHeader, sizeof(LinkHeader));
+ else qDebug()<<"Error: pLinkHeader == NULL!";
+
+ return pMemory_LinkHeader;
+}
+//-------------------LinkHeader------------------------
+//-------------------LinkHeaderFields------------------------
+Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields(Memory_LinkHeaderFields* pMemory_LinkHeaderFields, uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields);
+
+static const 
+void *title_LinkHeaderFields[] =
+{
+  (void*)"LinkHeaderFields"
+};
+
+Memory_LinkHeaderFields* pMemory_LinkHeaderFields_1;
+Memory_LinkHeaderFields* pMemory_LinkHeaderFields_2;
+Memory_LinkHeaderFields* pMemory_LinkHeaderFields_3;
+
+static Memory_LinkHeaderFields mMemory_LinkHeaderFields_1;
+static Memory_LinkHeaderFields mMemory_LinkHeaderFields_2;
+static Memory_LinkHeaderFields mMemory_LinkHeaderFields_3;
+
+Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_1(uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields)
+{
+qDebug()<<"            ---MEMORY_LinkHeaderFields_1---";
+ return  MEMORY_LinkHeaderFields(&mMemory_LinkHeaderFields_1, titleSpace, pLinkHeaderFields);
+}
+Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_2(uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields)
+{
+qDebug()<<"            ---MEMORY_LinkHeaderFields_2---";
+ return  MEMORY_LinkHeaderFields(&mMemory_LinkHeaderFields_2, titleSpace, pLinkHeaderFields);
+}
+Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_3(uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields)
+{
+qDebug()<<"            ---MEMORY_LinkHeaderFields_3---";
+ return  MEMORY_LinkHeaderFields(&mMemory_LinkHeaderFields_3, titleSpace, pLinkHeaderFields);
+}
+
+Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields(Memory_LinkHeaderFields* pMemory_LinkHeaderFields, uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields)
+{
+/*
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ LinkHeaderFields* pLinkHeaderFields;
+ void* title;
+
+ LinkHeaderFields mLinkHeaderFields;
+} Memory_LinkHeaderFields;
+*/
+
+ pMemory_LinkHeaderFields->counter_inspect++;
+ pMemory_LinkHeaderFields->titleSpace = titleSpace;
+ pMemory_LinkHeaderFields->pLinkHeaderFields = pLinkHeaderFields;
+ pMemory_LinkHeaderFields->title = (void*)title_LinkHeaderFields;
+
+ int idx = pMemory_LinkHeaderFields->counter_inspect;
+ if(idx > COUNT_LinkHeaderFields) idx = COUNT_LinkHeaderFields;
+ if(pLinkHeaderFields)
+    memcpy((void*)&(pMemory_LinkHeaderFields->mLinkHeaderFields[idx-1]), (void*)pLinkHeaderFields, sizeof(LinkHeaderFields));
+ else qDebug()<<"Error: pLinkHeaderFields == NULL!";
+
+ return pMemory_LinkHeaderFields;
+}
+//-------------------LinkHeaderFields------------------------

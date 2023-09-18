@@ -6,6 +6,8 @@
 #include "APDUHeaderParser.h"
 #include "ParsedRequest.h"
 #include "EventLists.h"
+#include "LinkHeader.h"
+#include "LinkHeaderFields.h"
 #include "Pair_for_IINField_AppControlField.h"
 #include "ObjectHeaderParser.h"
 #include "GroupVariationRecord.h"
@@ -234,5 +236,65 @@ Memory_EventLists*  MEMORY_EventLists_1(uint16_t titleSpace, EventLists* pEventL
 Memory_EventLists*  MEMORY_EventLists_2(uint16_t titleSpace, EventLists* pEventLists);
 Memory_EventLists*  MEMORY_EventLists_3(uint16_t titleSpace, EventLists* pEventLists);
 //-------------------EventLists------------------------
+//-------------------EventRecord------------------------
+#define COUNT_EventRecord  5
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ EventRecord* pEventRecord;
+ void* title;
+
+ EventRecord mEventRecord[COUNT_EventRecord];
+} Memory_EventRecord;
+
+extern Memory_EventRecord* pMemory_EventRecord_1;
+extern Memory_EventRecord* pMemory_EventRecord_2;
+extern Memory_EventRecord* pMemory_EventRecord_3;
+
+Memory_EventRecord*  MEMORY_EventRecord_1(uint16_t titleSpace, EventRecord* pEventRecord);
+Memory_EventRecord*  MEMORY_EventRecord_2(uint16_t titleSpace, EventRecord* pEventRecord);
+Memory_EventRecord*  MEMORY_EventRecord_3(uint16_t titleSpace, EventRecord* pEventRecord);
+//-------------------EventRecord------------------------
+//-------------------LinkHeader------------------------
+#define COUNT_LinkHeader  5
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ LinkHeader* pLinkHeader;
+ void* title;
+
+ LinkHeader mLinkHeader[COUNT_LinkHeader];
+} Memory_LinkHeader;
+
+extern Memory_LinkHeader* pMemory_LinkHeader_1;
+extern Memory_LinkHeader* pMemory_LinkHeader_2;
+extern Memory_LinkHeader* pMemory_LinkHeader_3;
+
+Memory_LinkHeader*  MEMORY_LinkHeader_1(uint16_t titleSpace, LinkHeader* pLinkHeader);
+Memory_LinkHeader*  MEMORY_LinkHeader_2(uint16_t titleSpace, LinkHeader* pLinkHeader);
+Memory_LinkHeader*  MEMORY_LinkHeader_3(uint16_t titleSpace, LinkHeader* pLinkHeader);
+//-------------------LinkHeader------------------------
+//-------------------LinkHeaderFields------------------------
+#define COUNT_LinkHeaderFields  5
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ LinkHeaderFields* pLinkHeaderFields;
+ void* title;
+
+ LinkHeaderFields mLinkHeaderFields[COUNT_LinkHeaderFields];
+} Memory_LinkHeaderFields;
+
+extern Memory_LinkHeaderFields* pMemory_LinkHeaderFields_1;
+extern Memory_LinkHeaderFields* pMemory_LinkHeaderFields_2;
+extern Memory_LinkHeaderFields* pMemory_LinkHeaderFields_3;
+
+Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_1(uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields);
+Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_2(uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields);
+Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_3(uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields);
+//-------------------LinkHeaderFields------------------------
 
 #endif

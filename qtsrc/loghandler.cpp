@@ -111,3 +111,31 @@ void LogHandler::logHandlerStampCharArray(unsigned char *data, int rang_count)
   LogEntry("");
 //  LogEntry("");
 }//logHandlerStampCharArray(unsigned char *data, int rang_count)
+
+void LogHandler::logHandlerStampShortArray(unsigned short *data, int rang_count)
+{
+//  LogEntry(appendTimeStamp(QString::fromLocal8Bit(title)));
+//  LogEntryShort("====");
+  for(int i=0; i<rang_count; i++)
+  {
+     QString insertStr = ((QString("000%1").arg(QString::number(data[i], 16))).right(4));
+     loghandler.LogEntryShort(QString(insertStr.toUpper()));
+     loghandler.LogEntryShort(" ");
+  }//for
+//  LogEntry("");
+//  LogEntry("");
+}//logHandlerStampShortArray(unsigned short *data, int rang_count)
+
+void LogHandler::logHandlerStampInt32Array(unsigned int *data, int rang_count)
+{
+//  LogEntry(appendTimeStamp(QString::fromLocal8Bit(title)));
+//  LogEntryShort("====");
+  for(int i=0; i<rang_count; i++)
+  {
+     QString insertStr = ((QString("0000000%1").arg(QString::number(data[i], 16))).right(7));
+     loghandler.LogEntryShort(QString(insertStr.toUpper()));
+     loghandler.LogEntryShort(" ");
+  }//for
+//  LogEntry("");
+//  LogEntry("");
+}//logHandlerStampInt32Array(unsigned short *data, int rang_count)

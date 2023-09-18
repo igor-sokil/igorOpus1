@@ -145,9 +145,11 @@ boolean IsAnyTypeFull_in_EventStorage(EventStorage *pEventStorage);
 uint32_t NumSelected_in_EventStorage(EventStorage *pEventStorage);
 
 // unselected/selected but not already written
+// не выбрано/выбрано, но еще не записано
 uint32_t NumUnwritten_in_EventStorage(EventStorage *pEventStorage, EventClass_uint8_t clazz);
 
 // all written and selected events are reverted to unselected state
+// все записанные и выбранные события возвращаются в невыбранное состояние
 void Unselect_in_EventStorage(EventStorage *pEventStorage);
 
 ////} // namespace opendnp3

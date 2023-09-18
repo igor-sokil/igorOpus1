@@ -48,9 +48,18 @@ qDebug()<<"********SUITE('4calls write multiple times for different types')*****
    EventBufferConfig temp = AllTypes_in_EventBufferConfig_static(MAX_EventRecord);
  EventStorage_in_EventStorage(&storage, &temp);
 
-  qDebug()<<"sizeof(storage)= "<<sizeof(storage);
+//  qDebug()<<"sizeof(storage)= "<<sizeof(storage);
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
 
-pMemory_EventLists_1 = MEMORY_EventLists_1(0, &(storage.state));
+//Node_for_EventRecord *pNode_for_EventRecordBuffer = pMemory_EventLists->mEventLists[idxInspect].events.underlying.buffer;
+//pNode_for_EventRecordBuffer[i].value.index; buffer_[1] = pNode_for_EventRecordBuffer[i].value.clazz; buffer_[2] = pNode_for_EventRecordBuffer[i].value.state;
+//qDebug()<<"storage.state.events.underlying.buffer[0].value.index= "<<storage.state.events.underlying.buffer[0].value.index;
+//qDebug()<<"storage.state.events.underlying.buffer[0].value.clazz= "<<storage.state.events.underlying.buffer[0].value.clazz;
+//qDebug()<<"storage.state.events.underlying.buffer[0].value.state= "<<storage.state.events.underlying.buffer[0].value.state;
+
+
+//pMemory_EventLists_1 = MEMORY_EventLists_1(0, &(storage.state));
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
 
 ////    REQUIRE_FALSE(
 ////        storage.Update(Event<AnalogSpec>(Analog(1.0), 0, EventClass::EC1, EventAnalogVariation::Group32Var1)));
@@ -67,6 +76,9 @@ pMemory_EventLists_1 = MEMORY_EventLists_1(0, &(storage.state));
   boolean tempBool = Update_AnalogSpec_in_EventStorage(&storage, &eEvent_for_AnalogSpec);
   qDebug()<<"REQUIRE_FALSE(storage.Update(Event<AnalogSpec>(Analog(1.0), 0, EventClass::EC1, EventAnalogVariation::Group32Var1)))";
   qDebug()<<"tempBool= "<<tempBool;
+
+//pMemory_EventLists_1 = MEMORY_EventLists_1(0, &(storage.state));
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
 
 ////    REQUIRE_FALSE(
 ////        storage.Update(Event<BinarySpec>(Binary(true), 0, EventClass::EC1, EventBinaryVariation::Group2Var1)));
@@ -88,6 +100,9 @@ pMemory_EventLists_1 = MEMORY_EventLists_1(0, &(storage.state));
   qDebug()<<"REQUIRE_FALSE(storage.Update(Event<BinarySpec>(Binary(true), 0, EventClass::EC1, EventBinaryVariation::Group2Var1)))";
   qDebug()<<"tempBool= "<<tempBool;
 
+//pMemory_EventLists_1 = MEMORY_EventLists_1(0, &(storage.state));
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
+
 ////    REQUIRE_FALSE(
 ////        storage.Update(Event<AnalogSpec>(Analog(1.0), 0, EventClass::EC1, EventAnalogVariation::Group32Var1)));
 
@@ -108,32 +123,40 @@ pMemory_EventLists_1 = MEMORY_EventLists_1(0, &(storage.state));
   qDebug()<<"REQUIRE_FALSE(storage.Update(Event<AnalogSpec>(Analog(1.0), 0, EventClass::EC1, EventAnalogVariation::Group32Var1)))";
   qDebug()<<"tempBool= "<<tempBool;
 
+//pMemory_EventLists_1 = MEMORY_EventLists_1(0, &(storage.state));
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
+
   // select events by class
 //    REQUIRE(storage.SelectByClass(EventClass::EC1) == 3);
 //    uint32_t SelectByClass_in_EventStorageOver1(EventStorage *pEventStorage, EventClass_uint8_t clazz);
   uint32_t  tempUint32 = SelectByClass_in_EventStorageOver1(&storage, EventClass_EC1);
   qDebug()<<"REQUIRE(storage.SelectByClass(EventClass::EC1) == 3)";
   qDebug()<<"tempUint32= "<<tempUint32;
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
 
     MockEventWriteHandler handler;
     MockEventWriteHandler_in_MockEventWriteHandler(&handler);
 
 ////    handler.Expect(EventAnalogVariation::Group32Var1, 1);
     Expect_for_Analog_in_MockEventWriteHandler(&handler, EventAnalogVariation_Group32Var1, 1);
-  qDebug()<<"Expect_for_Analog_in_MockEventWriteHandler(&handler, EventAnalogVariation_Group32Var1, 1)";
+//  qDebug()<<"Expect_for_Analog_in_MockEventWriteHandler(&handler, EventAnalogVariation_Group32Var1, 1)";
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
 
 ////    handler.Expect(EventBinaryVariation::Group2Var1, 1);
     Expect_for_Binary_in_MockEventWriteHandler(&handler, EventBinaryVariation_Group2Var1, 1);
-  qDebug()<<"Expect_for_Binary_in_MockEventWriteHandler(&handler, EventBinaryVariation_Group2Var1, 1)";
+//  qDebug()<<"Expect_for_Binary_in_MockEventWriteHandler(&handler, EventBinaryVariation_Group2Var1, 1)";
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
 
 ////    handler.Expect(EventAnalogVariation::Group32Var1, 1);
     Expect_for_Analog_in_MockEventWriteHandler(&handler, EventAnalogVariation_Group32Var1, 1);
-  qDebug()<<"Expect_for_Analog_in_MockEventWriteHandler(&handler, EventAnalogVariation_Group32Var1, 1)";
+//  qDebug()<<"Expect_for_Analog_in_MockEventWriteHandler(&handler, EventAnalogVariation_Group32Var1, 1)";
+//  qDebug()<<"storage.state.counters.selected= "<<storage.state.counters.selected;
 
 //uint32_t Write_in_EventStorage(EventStorage *pEventStorage, IEventWriteHandler* handler);
 ////    REQUIRE(storage.Write(handler) == 3);
 uint32_t sss = Write_in_EventStorage(&storage, &(handler.iIEventWriteHandler));
-  qDebug()<<"Write_in_EventStorage(&storage, &(handler.iIEventWriteHandler))";
+//  qDebug()<<"Write_in_EventStorage(&storage, &(handler.iIEventWriteHandler))";
+  qDebug()<<"REQUIRE(storage.Write(handler) == 3)";
   qDebug()<<"uint32_t sss ="<<sss;
 
  AssertEmpty_in_MockEventWriteHandler(&handler);

@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-#include <QtWidgets>
+//#include <QtWidgets>
 #include "header.h"
 #include "EventWriting.h"
 
@@ -32,8 +32,8 @@
 ////uint32_t EventWriting::Write(EventLists& lists, IEventWriteHandler& handler)
 uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler)
 {
-qDebug()<<"";
-qDebug()<<"Write_in_EventWriting_static1";
+//qDebug()<<"";
+//qDebug()<<"Write_in_EventWriting_static1";
 
   uint32_t total_num_written = 0;
 
@@ -44,9 +44,11 @@ qDebug()<<"Write_in_EventWriting_static1";
   while (true)
   {
     // continue calling WriteSome(..) until it fails to make progress
+// продолжаем вызывать WriteSome(..) до тех пор, пока не перестанем выполняться
 //    uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler);
 ////        auto num_written = WriteSome(iterator, lists, handler);
     uint16_t num_written = WriteSome_in_EventWriting_static(&iter, lists, handler);
+//qDebug()<<"num_written = WriteSome_in_EventWriting_static(&iter, lists, handler)= "<<num_written;
 
     if (num_written == 0)
     {
@@ -60,23 +62,34 @@ qDebug()<<"Write_in_EventWriting_static1";
 ////EventRecord* EventWriting::FindNextSelected(event_iter_t& iter, EventType type)
 EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type)
 {
+//qDebug()<<"";
+//qDebug()<<"FindNextSelected_in_EventWriting_static1";
+//qDebug()<<"EventType_uint16_t type = "<<type;
+
   while (true)
   {
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        auto current = iter.CurrentValue();
     EventRecord* current = CurrentValue__in__Iterator_in_List_for_EventRecord(iter);
+
     if (!current)
       return NULL;
 
+//qDebug()<<"FindNextSelected_in_EventWriting_static2";
+
     if (current->state == EventState_selected)
     {
+//qDebug()<<"FindNextSelected_in_EventWriting_static3";
+
       // we terminate here since the type has changed
+// здесь мы завершаем работу, так как тип изменился
 //   boolean IsEqual_in_IEventType(IEventType* pIEventType, EventType_uint16_t type);
 ////            return current->type->IsEqual(type) ? current : nullptr;
       return IsEqual_in_IEventType((IEventType*)(current->type), type) ? current : NULL;
 
     }
 
+//qDebug()<<"FindNextSelected_in_EventWriting_static4";
 ////        iter.Next();
     Next__in__Iterator_in_List_for_EventRecord(iter);
   }
@@ -91,14 +104,15 @@ boolean matches_in_EventWriting(EventRecord* record)
 ////uint16_t EventWriting::WriteSome(event_iter_t& iterator, EventLists& lists, IEventWriteHandler& handler)
 uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler)
 {
-qDebug()<<"";
-qDebug()<<"WriteSome_in_EventWriting_static1";
+//qDebug()<<"";
+//qDebug()<<"WriteSome_in_EventWriting_static1";
   // don't bother searching
+// не утруждайтесь поиском
 ////    if (lists.counters.selected == 0)
   if (lists->counters.selected == 0)
     return 0;
 
-qDebug()<<"WriteSome_in_EventWriting_static2";
+//qDebug()<<"WriteSome_in_EventWriting_static2";
 //EventRecord *Find__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord
 ////    const auto value = iterator.Find([](const EventRecord& record) { return record.state == EventState::selected; });
   EventRecord *value = Find__in__Iterator_in_List_for_EventRecord(iteratorEv, matches_in_EventWriting);
@@ -106,7 +120,7 @@ qDebug()<<"WriteSome_in_EventWriting_static2";
   if (!value)
     return 0; // no match
 
-qDebug()<<"WriteSome_in_EventWriting_static3";
+//qDebug()<<"WriteSome_in_EventWriting_static3";
 //     uint16_t (*pWriteSome)(Iterator_in_List_for_EventRecord* iterator,
 //                               EventLists* lists,
 //                               IEventWriteHandler* handler);// const = 0;

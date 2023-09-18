@@ -95,8 +95,8 @@ uint16_t Write_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMockE
 ////                                         opendnp3::IEventCollection<typename T::meas_t>& items)
 uint16_t WriteAny_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventAnalogVariation_uint8_t variation, IEventCollection_for_Analog* items)
 {
-  qDebug()<<"";
-  qDebug()<<"WriteAny_for_Analog_in_MockEventWriteHandler1";
+//  qDebug()<<"";
+//  qDebug()<<"WriteAny_for_Analog_in_MockEventWriteHandler1";
 
   UNUSED(pMockEventWriteHandler);
 ////    if (this->expected.empty())
@@ -139,8 +139,8 @@ uint16_t WriteAny_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMo
 ////    const uint16_t count = items.WriteSome(writer);
   uint16_t count = WriteSome_in_IEventCollection_for_Analog(items, &(writer.iIEventWriter_for_Analog));
 
-  qDebug()<<"WriteAny_for_Analog_in_MockEventWriteHandler count="<<count;
-  qDebug()<<"WriteAny_for_Analog_in_MockEventWriteHandler record.count="<<record.count;
+//  qDebug()<<"WriteAny_for_Analog_in_MockEventWriteHandler count="<<count;
+//  qDebug()<<"WriteAny_for_Analog_in_MockEventWriteHandler record.count="<<record.count;
   if (record.count != count)
   {
 ////        std::ostringstream oss;
@@ -201,8 +201,8 @@ uint16_t WriteAny_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMo
 //uint16_t WriteSome_in_IEventCollection_for_Binary(IEventCollection_for_Binary *, IEventWriter_for_Binary* handler);
 ////    const uint16_t count = items.WriteSome(writer);
   uint16_t count = WriteSome_in_IEventCollection_for_Binary(items, &(writer.iIEventWriter_for_Binary));
-  qDebug()<<"WriteAny_for_Binary_in_MockEventWriteHandler count="<<count;
-  qDebug()<<"WriteAny_for_Binary_in_MockEventWriteHandler record.count="<<record.count;
+//  qDebug()<<"WriteAny_for_Binary_in_MockEventWriteHandler count="<<count;
+//  qDebug()<<"WriteAny_for_Binary_in_MockEventWriteHandler record.count="<<record.count;
 
   if (record.count != count)
   {
@@ -223,6 +223,7 @@ void ExpectType_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMock
   Record_in_MockEventWriteHandler record = {EventType_Analog, variation, count};
 
   expected_in_MockEventWriteHandler.push_back(record);
+//qDebug()<<"expected_in_MockEventWriteHandler.size()= "<<expected_in_MockEventWriteHandler.size();
 }
 
 void ExpectType_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventBinaryVariation_uint8_t variation, uint16_t count)
@@ -232,6 +233,7 @@ void ExpectType_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMock
   Record_in_MockEventWriteHandler record = {EventType_Binary, variation, count};
 
   expected_in_MockEventWriteHandler.push_back(record);
+//qDebug()<<"expected_in_MockEventWriteHandler.size()= "<<expected_in_MockEventWriteHandler.size();
 }
 
 void Expect_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventAnalogVariation_uint8_t variation, uint16_t count)
@@ -250,8 +252,8 @@ void AssertEmpty_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWrite
 {
   UNUSED(pMockEventWriteHandler);
 
-  uint16_t size = expected_in_MockEventWriteHandler.size();
-qDebug()<<"uint16_t size = "<<size;
+//  uint16_t size = expected_in_MockEventWriteHandler.size();
+//qDebug()<<"uint16_t size = "<<size;
 ////        if (!this->expected.empty())
   if(!expected_in_MockEventWriteHandler.empty())
   {

@@ -368,6 +368,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\APDUHelpers.cpp \
                 cpp\tests\unit\utils\BufferHelpers.cpp \
                 cpp\tests\unit\utils\CopyableBuffer.cpp \
+                cpp\tests\unit\utils\DNPHelpers.cpp \
                 cpp\tests\unit\utils\LinkHex.cpp \
                 cpp\tests\unit\utils\LinkParserTest.cpp \
                 cpp\tests\unit\utils\LinkLayerTest.cpp \

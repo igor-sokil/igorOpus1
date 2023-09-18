@@ -284,6 +284,7 @@ debug/APDUHexBuilders.o
 debug/APDUHelpers.o
 debug/BufferHelpers.o
 debug/CopyableBuffer.o
+debug/DNPHelpers.o
 debug/LinkHex.o
 debug/LinkParserTest.o
 debug/LinkLayerTest.o

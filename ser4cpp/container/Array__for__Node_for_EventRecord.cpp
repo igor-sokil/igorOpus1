@@ -11,6 +11,10 @@ void Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(A
 ////    Array() : HasLength<W>(0), buffer(nullptr) {}
 void Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver1(Array__for__Node_for_EventRecord *pArray__for__Node_for_EventRecord)
 {
+  for(int i=0; i<SIZE_for_EventRecord; i++)
+  {
+   Node_for_EventRecord_in_Node_for_EventRecord(&(pArray__for__Node_for_EventRecord->buffer[i]));
+  }//for
 //    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
   HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pArray__for__Node_for_EventRecord->hHasLength_for_Uint32_t), 0);
 }

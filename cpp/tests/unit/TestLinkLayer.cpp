@@ -36,7 +36,7 @@ using namespace ser4cpp;
 // number of them
 // ¬се операции должны завершитьс€ неудачно, кроме OnLowerLayerUp, просто представител€
 // их количество
-TEST_CASE(SUITE("ClosedState"))
+TEST_CASE(SUITE("1ClosedState"))
 {
     LinkLayerTest t;
     MockTransportSegment segment(250, "00", Addresses());
@@ -47,7 +47,7 @@ TEST_CASE(SUITE("ClosedState"))
 
 // Prove that the upper layer is notified when the lower layer comes online
 // ƒоказать, что верхний уровень получает уведомление, когда нижний уровень подключаетс€ к сети
-TEST_CASE(SUITE("ForwardsOnLowerLayerUp"))
+TEST_CASE(SUITE("2ForwardsOnLowerLayerUp"))
 {
     LinkLayerTest t;
 
@@ -59,7 +59,7 @@ TEST_CASE(SUITE("ForwardsOnLowerLayerUp"))
 
 // Check that once the layer comes up, validation errors can occur
 // ѕровер€ем, что после по€влени€ сло€ могут возникнуть ошибки проверки
-TEST_CASE(SUITE("ValidatesMasterOutstationBit"))
+TEST_CASE(SUITE("3ValidatesMasterOutstationBit"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -69,7 +69,7 @@ TEST_CASE(SUITE("ValidatesMasterOutstationBit"))
 
 // Only process frames from your designated remote address
 // ќбрабатывать кадры только с указанного вами удаленного адреса
-TEST_CASE(SUITE("ValidatesSourceAddress"))
+TEST_CASE(SUITE("4ValidatesSourceAddress"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -79,7 +79,7 @@ TEST_CASE(SUITE("ValidatesSourceAddress"))
 
 // Only process frame addressed to you directly, or broadcast
 // ќбрабатывать только фреймы, адресованные вам напр€мую или широковещательно
-TEST_CASE(SUITE("ValidatesDestinationAddress"))
+TEST_CASE(SUITE("5ValidatesDestinationAddress"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -89,7 +89,7 @@ TEST_CASE(SUITE("ValidatesDestinationAddress"))
 
 // Show that the base state of idle logs SecToPri frames as errors
 // ѕоказать, что базовое состо€ние бездействи€ регистрирует кадры SecToPri как ошибки
-TEST_CASE(SUITE("SecToPriNoContext"))
+TEST_CASE(SUITE("6SecToPriNoContext"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -100,7 +100,7 @@ TEST_CASE(SUITE("SecToPriNoContext"))
 
 // Show that the base state of idle forwards unconfirmed user data
 // ѕоказать, что базовое состо€ние просто€ пересылает неподтвержденные пользовательские данные
-TEST_CASE(SUITE("UnconfirmedDataPassedUpFromIdleUnreset"))
+TEST_CASE(SUITE("7UnconfirmedDataPassedUpFromIdleUnreset"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -112,7 +112,7 @@ TEST_CASE(SUITE("UnconfirmedDataPassedUpFromIdleUnreset"))
 
 // Show that the base state of idle forwards unconfirmed user data with broadcast address
 // ѕоказать, что базовое состо€ние просто€ пересылает неподтвержденные пользовательские данные с широковещательным адресом
-TEST_CASE(SUITE("UnconfirmedBroadcastDataPassedUpFromIdleUnreset"))
+TEST_CASE(SUITE("8UnconfirmedBroadcastDataPassedUpFromIdleUnreset"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -125,7 +125,7 @@ TEST_CASE(SUITE("UnconfirmedBroadcastDataPassedUpFromIdleUnreset"))
 
 // Show that the base state of idle does not forward confirmed user data
 // ѕоказать, что базовое состо€ние бездействи€ не пересылает подтвержденные пользовательские данные
-TEST_CASE(SUITE("ConfirmedDataIgnoredFromIdleUnreset"))
+TEST_CASE(SUITE("9ConfirmedDataIgnoredFromIdleUnreset"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -137,7 +137,7 @@ TEST_CASE(SUITE("ConfirmedDataIgnoredFromIdleUnreset"))
 
 // Secondary Reset Links
 // ¬торичные ссылки сброса
-TEST_CASE(SUITE("SecondaryResetLink"))
+TEST_CASE(SUITE("10SecondaryResetLink"))
 {
     LinkLayerTest t(LinkLayerTest::DefaultConfig());
     t.link.OnLowerLayerUp();
@@ -149,7 +149,7 @@ TEST_CASE(SUITE("SecondaryResetLink"))
 
 // Secondary Reset Links with broadcast address
 // ¬торичные ссылки сброса с широковещательным адресом
-TEST_CASE(SUITE("BroadcastSecondaryResetLink"))
+TEST_CASE(SUITE("11BroadcastSecondaryResetLink"))
 {
     LinkLayerTest t(LinkLayerTest::DefaultConfig());
     t.link.OnLowerLayerUp();
@@ -163,7 +163,7 @@ TEST_CASE(SUITE("BroadcastSecondaryResetLink"))
 // ACK it and reset the link state
 //  огда мы получим еще одну ссылку сброса, когда мы уже сбросились,
 // ѕодтверждаем это и сбрасываем состо€ние ссылки
-TEST_CASE(SUITE("SecondaryResetResetLinkStates"))
+TEST_CASE(SUITE("12SecondaryResetResetLinkStates"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -179,7 +179,7 @@ TEST_CASE(SUITE("SecondaryResetResetLinkStates"))
     REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1));
 }
 
-TEST_CASE(SUITE("SecondaryResetConfirmedUserData"))
+TEST_CASE(SUITE("13SecondaryResetConfirmedUserData"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -201,7 +201,7 @@ TEST_CASE(SUITE("SecondaryResetConfirmedUserData"))
     REQUIRE(t.upper->receivedQueue.empty()); // but no data
 }
 
-TEST_CASE(SUITE("RequestStatusOfLink"))
+TEST_CASE(SUITE("14RequestStatusOfLink"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -222,7 +222,7 @@ TEST_CASE(SUITE("RequestStatusOfLink"))
     REQUIRE(t.PopLastWriteAsHex() == LinkHex::LinkStatus(true, false, 1024, 1));
 }
 
-TEST_CASE(SUITE("BroadcastRequestStatusOfLink"))
+TEST_CASE(SUITE("15BroadcastRequestStatusOfLink"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -231,7 +231,7 @@ TEST_CASE(SUITE("BroadcastRequestStatusOfLink"))
     REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1);
 }
 
-TEST_CASE(SUITE("TestLinkStates"))
+TEST_CASE(SUITE("16TestLinkStates"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -248,7 +248,7 @@ TEST_CASE(SUITE("TestLinkStates"))
     REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1));
 }
 
-TEST_CASE(SUITE("BroadcastTestLinkStates"))
+TEST_CASE(SUITE("17BroadcastTestLinkStates"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -257,7 +257,7 @@ TEST_CASE(SUITE("BroadcastTestLinkStates"))
     REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1);
 }
 
-TEST_CASE(SUITE("SendUnconfirmed"))
+TEST_CASE(SUITE("18SendUnconfirmed"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -273,7 +273,7 @@ TEST_CASE(SUITE("SendUnconfirmed"))
     REQUIRE(t.NumTotalWrites() == 1);
 }
 
-TEST_CASE(SUITE("CloseBehavior"))
+TEST_CASE(SUITE("19CloseBehavior"))
 {
     LinkLayerTest t;
     t.link.OnLowerLayerUp();
@@ -285,6 +285,7 @@ TEST_CASE(SUITE("CloseBehavior"))
     REQUIRE(t.exe->run_many() > 0);
 
     t.link.OnLowerLayerDown(); // take it down during the middle of a send
+//// удал€ем его в середине отправки
     REQUIRE_FALSE(t.upper->IsOnline());
 
     t.link.OnLowerLayerUp();

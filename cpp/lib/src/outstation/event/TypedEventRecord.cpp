@@ -1,8 +1,14 @@
 
 #include "header.h"
 #include "TypedEventRecord.h"
+#include <string.h>
 
 //----------------------------------BinarySpec-----------------------------------------------
+void TypedEventRecord_for_BinarySpec_in_TypedEventRecord_for_BinarySpecOver1(TypedEventRecord_for_BinarySpec *pTypedEventRecord_for_BinarySpec)
+{
+  pTypedEventRecord_for_BinarySpec->record = NULL;
+}
+
 void TypedEventRecord_for_BinarySpec_in_TypedEventRecord_for_BinarySpec(TypedEventRecord_for_BinarySpec *pTypedEventRecord_for_BinarySpec,
 ////                   const typename T::meas_t& value,
     Binary *value,
@@ -18,6 +24,11 @@ void TypedEventRecord_for_BinarySpec_in_TypedEventRecord_for_BinarySpec(TypedEve
 }
 //----------------------------------BinarySpec-----------------------------------------------
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
+void TypedEventRecord_for_DoubleBitBinarySpec_in_TypedEventRecord_for_DoubleBitBinarySpecOver1(TypedEventRecord_for_DoubleBitBinarySpec *pTypedEventRecord_for_DoubleBitBinarySpec)
+{
+  pTypedEventRecord_for_DoubleBitBinarySpec->record = NULL;
+}
+
 void TypedEventRecord_for_DoubleBitBinarySpec_in_TypedEventRecord_for_DoubleBitBinarySpec(TypedEventRecord_for_DoubleBitBinarySpec *pTypedEventRecord_for_DoubleBitBinarySpec,
 ////                   const typename T::meas_t& value,
     DoubleBitBinary *value,
@@ -33,6 +44,11 @@ void TypedEventRecord_for_DoubleBitBinarySpec_in_TypedEventRecord_for_DoubleBitB
 }
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
 //----------------------------------AnalogSpec-----------------------------------------------
+void TypedEventRecord_for_AnalogSpec_in_TypedEventRecord_for_AnalogSpecOver1(TypedEventRecord_for_AnalogSpec *pTypedEventRecord_for_AnalogSpec)
+{
+  pTypedEventRecord_for_AnalogSpec->record = NULL;
+}
+
 void TypedEventRecord_for_AnalogSpec_in_TypedEventRecord_for_AnalogSpec(TypedEventRecord_for_AnalogSpec *pTypedEventRecord_for_AnalogSpec,
 ////                   const typename T::meas_t& value,
     Analog *value,
@@ -48,6 +64,11 @@ void TypedEventRecord_for_AnalogSpec_in_TypedEventRecord_for_AnalogSpec(TypedEve
 }
 //----------------------------------AnalogSpec-----------------------------------------------
 //----------------------------------CounterSpec-----------------------------------------------
+void TypedEventRecord_for_CounterSpec_in_TypedEventRecord_for_CounterSpecOver1(TypedEventRecord_for_CounterSpec *pTypedEventRecord_for_CounterSpec)
+{
+  pTypedEventRecord_for_CounterSpec->record = NULL;
+}
+
 void TypedEventRecord_for_CounterSpec_in_TypedEventRecord_for_CounterSpec(TypedEventRecord_for_CounterSpec *pTypedEventRecord_for_CounterSpec,
 ////                   const typename T::meas_t& value,
     Counter *value,
@@ -63,6 +84,11 @@ void TypedEventRecord_for_CounterSpec_in_TypedEventRecord_for_CounterSpec(TypedE
 }
 //----------------------------------CounterSpec-----------------------------------------------
 //----------------------------------FrozenCounterSpec-----------------------------------------------
+void TypedEventRecord_for_FrozenCounterSpec_in_TypedEventRecord_for_FrozenCounterSpecOver1(TypedEventRecord_for_FrozenCounterSpec *pTypedEventRecord_for_FrozenCounterSpec)
+{
+  pTypedEventRecord_for_FrozenCounterSpec->record = NULL;
+}
+
 void TypedEventRecord_for_FrozenCounterSpec_in_TypedEventRecord_for_FrozenCounterSpec(TypedEventRecord_for_FrozenCounterSpec *pTypedEventRecord_for_FrozenCounterSpec,
 ////                   const typename T::meas_t& value,
     FrozenCounter *value,
@@ -78,6 +104,11 @@ void TypedEventRecord_for_FrozenCounterSpec_in_TypedEventRecord_for_FrozenCounte
 }
 //----------------------------------FrozenCounterSpec-----------------------------------------------
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
+void TypedEventRecord_for_BinaryOutputStatusSpec_in_TypedEventRecord_for_BinaryOutputStatusSpecOver1(TypedEventRecord_for_BinaryOutputStatusSpec *pTypedEventRecord_for_BinaryOutputStatusSpec)
+{
+  pTypedEventRecord_for_BinaryOutputStatusSpec->record = NULL;
+}
+
 void TypedEventRecord_for_BinaryOutputStatusSpec_in_TypedEventRecord_for_BinaryOutputStatusSpec(TypedEventRecord_for_BinaryOutputStatusSpec *pTypedEventRecord_for_BinaryOutputStatusSpec,
 ////                   const typename T::meas_t& value,
     BinaryOutputStatus *value,
@@ -93,6 +124,11 @@ void TypedEventRecord_for_BinaryOutputStatusSpec_in_TypedEventRecord_for_BinaryO
 }
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
+void TypedEventRecord_for_AnalogOutputStatusSpec_in_TypedEventRecord_for_AnalogOutputStatusSpecOver1(TypedEventRecord_for_AnalogOutputStatusSpec *pTypedEventRecord_for_AnalogOutputStatusSpec)
+{
+  pTypedEventRecord_for_AnalogOutputStatusSpec->record = NULL;
+}
+
 void TypedEventRecord_for_AnalogOutputStatusSpec_in_TypedEventRecord_for_AnalogOutputStatusSpec(TypedEventRecord_for_AnalogOutputStatusSpec *pTypedEventRecord_for_AnalogOutputStatusSpec,
 ////                   const typename T::meas_t& value,
     AnalogOutputStatus *value,
@@ -108,6 +144,11 @@ void TypedEventRecord_for_AnalogOutputStatusSpec_in_TypedEventRecord_for_AnalogO
 }
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
 //----------------------------------OctetStringSpec-----------------------------------------------
+void TypedEventRecord_for_OctetStringSpec_in_TypedEventRecord_for_OctetStringSpecOver1(TypedEventRecord_for_OctetStringSpec *pTypedEventRecord_for_OctetStringSpec)
+{
+  pTypedEventRecord_for_OctetStringSpec->record = NULL;
+}
+
 void TypedEventRecord_for_OctetStringSpec_in_TypedEventRecord_for_OctetStringSpec(TypedEventRecord_for_OctetStringSpec *pTypedEventRecord_for_OctetStringSpec,
 ////                   const typename T::meas_t& value,
     OctetString *value,

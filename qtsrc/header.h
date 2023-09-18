@@ -49,7 +49,7 @@
 #define SIZE_TxBuffer_in_OutstationUnsolState  MAX_BufferSer4
 #define SIZE_BufferSer4_in_DeferredRequest     MAX_BufferSer4
 
-#define SIZE_CopyableBuffer  10
+#define SIZE_CopyableBuffer  250
 
 #include "memory_header.h"
 

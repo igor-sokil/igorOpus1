@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 //#include <QtWidgets>
+#include <iostream>
 #include "header.h"
 #include "SecLinkLayerStates.h"
 
@@ -52,6 +53,7 @@ void* OnTxReady_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx)
 {
   UNUSED(ctx);
 ////    FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, "Invalid event for state: %s", this->Name());
+  std::cout<<"FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, 'Invalid event for state: %s', this->Name())"<<'\n';
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
   SecStateBase_in_SecStateBase(parent);
@@ -65,6 +67,7 @@ void* OnResetLinkStates_in_SecStateBase_override(void *pSecStateBase, LinkContex
   UNUSED(ctx);
   UNUSED(source);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Ignoring link frame, remote is flooding')"<<'\n';
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
   SecStateBase_in_SecStateBase(parent);
@@ -78,6 +81,7 @@ void* OnRequestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkCont
   UNUSED(ctx);
   UNUSED(source);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Ignoring link frame, remote is flooding')"<<'\n';
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
   SecStateBase_in_SecStateBase(parent);
@@ -92,6 +96,7 @@ void* OnTestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkContext
   UNUSED(source);
   UNUSED(fcb);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Ignoring link frame, remote is flooding')"<<'\n';
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
   SecStateBase_in_SecStateBase(parent);
@@ -109,6 +114,7 @@ void* OnConfirmedUserData_in_SecStateBase_override(void *pSecStateBase,
   UNUSED(isBroadcast);
   UNUSED(message);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Ignoring link frame, remote is flooding')"<<'\n';
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
   SecStateBase_in_SecStateBase(parent);
@@ -133,6 +139,7 @@ SecStateBase* OnTestLinkStatus_in_SLLS_NotReset(SecStateBase *pSecStateBase, Lin
   UNUSED(fcb);
   ++(ctx->statistics.numUnexpectedFrame);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "TestLinkStatus ignored");
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'TestLinkStatus ignored')"<<'\n';
 ////    return *this;
   SLLS_NotReset_in_SLLS_NotReset(pSecStateBase);
   return &instance_SecStateBase;
@@ -147,6 +154,7 @@ SecStateBase* OnConfirmedUserData_in_SLLS_NotReset(SecStateBase *pSecStateBase,
   UNUSED(message);
   ++(ctx->statistics.numUnexpectedFrame);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "ConfirmedUserData ignored: secondary not reset");
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'ConfirmedUserData ignored: secondary not reset')"<<'\n';
 ////    return *this;
   SLLS_NotReset_in_SLLS_NotReset(pSecStateBase);
   return &instance_SecStateBase;
@@ -206,6 +214,7 @@ SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkCo
   // This is a PITA implement
   // TODO - see if this function is deprecated or not
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Received TestLinkStatus with invalid FCB");
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Received TestLinkStatus with invalid FCB')"<<'\n';
 ////    return *this;
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
   return &instance_SecStateBase;
@@ -231,6 +240,7 @@ SecStateBase* OnConfirmedUserData_in_SLLS_Reset(SecStateBase *pSecStateBase,
   else
   {
 ////        SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "ConfirmedUserData ignored: unexpected frame count bit (FCB)");
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'ConfirmedUserData ignored: unexpected frame count bit (FCB)')"<<'\n';
   }
 
 ////    return SLLS_TransmitWaitReset::Instance();

@@ -29,6 +29,7 @@
 ////{
 
 // Class for dealing with all aspects of FT3 Frame headers
+//  ласс дл€ работы со всеми аспектами заголовков кадров FT3
 ////struct LinkHeader
 typedef struct
 {
@@ -102,6 +103,7 @@ typedef struct
 
 ////private:
   // Fields read directly from the header
+// ѕол€ считываютс€ непосредственно из заголовка
   uint8_t length; // Length of field, range [5,255] valid
   uint16_t src;   // Where the frame originated
   uint16_t dest;  // Where the frame is going
