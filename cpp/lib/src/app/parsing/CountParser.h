@@ -95,6 +95,18 @@ typedef struct
 ////    CountParser() = delete;
 } CountParser;
 
+void  CountParser_in_CountParser(CountParser *pCountParser, uint16_t count, uint16_t required_size, HandleFun_in_CountParser handler);
+
+ParseResult_uint8_t ParseCountOfObjects_in_CountParser_static(
+  RSeq_for_Uint16_t* buffer, HeaderRecord* record, uint16_t count, /*Logger* pLogger,*/ IAPDUHandler* pHandler);
+
+// Process the count handler against the buffer
+// Обработка обработчика счетчика в буфере
+ParseResult_uint8_t Process_in_CountParser(CountParser *pCountParser, HeaderRecord* record,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* pHandler);
+////                        Logger* pLogger) const;
+
 ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
     NumParser* numparser,
     ////const ParserSettings& settings,

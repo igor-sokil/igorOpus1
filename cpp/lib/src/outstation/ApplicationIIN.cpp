@@ -27,6 +27,7 @@
 IINField ToIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN)
 {
   IINField ret;
+  IINField_in_IINFieldOver1(&ret);
 //    void SetBitToValue_in_IINField(IINField *, IINBit_uint8_t bit, boolean value);
   SetBitToValue_in_IINField(&ret, IINBit_NEED_TIME, pApplicationIIN->needTime);
   SetBitToValue_in_IINField(&ret, IINBit_LOCAL_CONTROL, pApplicationIIN->localControl);

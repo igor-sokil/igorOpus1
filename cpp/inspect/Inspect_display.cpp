@@ -4,10 +4,20 @@
 #include "header.h"
 #include "IEventType.h"
 
-//-------------------Message------------------------
-void inspect_Message(Memory_Message* pMemory_Message);
+void inspect_RSeq(RSeq_for_Uint16_t *buffer);
 
-void inspect_Message(Memory_Message* pMemory_Message)
+void inspect_RSeq(RSeq_for_Uint16_t *buffer)
+{
+  for(int i=0; i<length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)); i++)
+ {
+  qDebug()<<"*buffer->buffer_[i]= "<<hex<<buffer->buffer_[i];
+ }//for
+}
+
+//-------------------Message------------------------
+void inspect_Message(Memory_Message* pMemory_Message, int maxCount);
+
+void inspect_Message(Memory_Message* pMemory_Message, int maxCount)
 {
   loghandler.LogEntry("");
   loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
@@ -26,35 +36,47 @@ void inspect_Message(Memory_Message* pMemory_Message)
 
   loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_Message->pMessage);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---Addresses addresses---");
+  for(uint16_t idxInspect=0; idxInspect<pMemory_Message->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_Message) break;
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint16_t source      = "), pMemory_Message->mMessage.addresses.source);
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---Addresses addresses---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint16_t destination = "), pMemory_Message->mMessage.addresses.destination);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint16_t source      = "), pMemory_Message->mMessage[idxInspect].addresses.source);
 
-  loghandler.LogEntry("");
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint16_t destination = "), pMemory_Message->mMessage[idxInspect].addresses.destination);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---RSeq_for_Uint16_t payload---");
+    loghandler.LogEntry("");
 
-  uint16_t len = length_in_HasLength_for_Uint16_t(&(pMemory_Message->mMessage.payload.hHasLength));
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint16_t   length = "), len);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---RSeq_for_Uint16_t payload---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntryShort("    uint8_t buffer_[] = ");
+    uint16_t len = length_in_HasLength_for_Uint16_t(&(pMemory_Message->mMessage[idxInspect].payload.hHasLength));
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint16_t   length = "), len);
 
-  loghandler.logHandlerStampCharArray(pMemory_Message->mMessage.payload.buffer_, len);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntryShort("    uint8_t buffer_[] = ");
+
+    loghandler.logHandlerStampCharArray(pMemory_Message->mMessage[idxInspect].payload.buffer_, len);
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
 }
 //-------------------Message------------------------
 //-------------------Result_for_APDUHeader_in_APDUHeaderParser------------------------
 
-void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser);
+void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser, int maxCount);
 
-void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser)
+void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser, int maxCount)
 {
   loghandler.LogEntry("");
   loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
@@ -71,57 +93,70 @@ void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHea
   loghandler.logHandlerStampInteger((" counter = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->counter_inspect);
   loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_Result_for_APDUHeader_in_APDUHeaderParser->pResult_for_APDUHeader_in_APDUHeaderParser);
 
+  for(uint16_t idxInspect=0; idxInspect<pMemory_Result_for_APDUHeader_in_APDUHeaderParser->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_Result_for_APDUHeader_in_APDUHeaderParser) break;
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+//  loghandler.LogEntry("");
 //- - - - - - - - - - - - - - - - - - - - APDUHeader header- - - - - - - - - - -  - -
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---APDUHeader header---");
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry(               "         ---AppControlField control---");
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean FIR = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUHeader_in_APDUHeaderParser.header.control.FIR);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean FIN = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUHeader_in_APDUHeaderParser.header.control.FIN);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean CON = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUHeader_in_APDUHeaderParser.header.control.CON);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean UNS = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUHeader_in_APDUHeaderParser.header.control.UNS);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t SEQ = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUHeader_in_APDUHeaderParser.header.control.SEQ);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---APDUHeader header---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry(               "         ---AppControlField control---");
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean FIR = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUHeader_in_APDUHeaderParser[idxInspect].header.control.FIR);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean FIN = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUHeader_in_APDUHeaderParser[idxInspect].header.control.FIN);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean CON = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUHeader_in_APDUHeaderParser[idxInspect].header.control.CON);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean UNS = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUHeader_in_APDUHeaderParser[idxInspect].header.control.UNS);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint8_t SEQ = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUHeader_in_APDUHeaderParser[idxInspect].header.control.SEQ);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry(               "         ---FunctionCode_uint8_t function---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry(               "         ---FunctionCode_uint8_t function---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("         uint16_t function = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUHeader_in_APDUHeaderParser.header.function);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("         uint16_t function = "), pMemory_Result_for_APDUHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUHeader_in_APDUHeaderParser[idxInspect].header.function);
 //- - - - - - - - - - - - - - - - - - - - APDUHeader header- - - - - - - - - - -  - -
 
-  loghandler.LogEntry("");
+    loghandler.LogEntry("");
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---RSeq_for_Uint16_t objects---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---RSeq_for_Uint16_t objects---");
 
-  uint16_t len = length_in_HasLength_for_Uint16_t(&(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser.objects.hHasLength));
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint16_t   length = "), len);
+    uint16_t len = length_in_HasLength_for_Uint16_t(&(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser[idxInspect].objects.hHasLength));
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint16_t   length = "), len);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntryShort("    uint8_t buffer_[] = ");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntryShort("    uint8_t buffer_[] = ");
 
-  loghandler.logHandlerStampCharArray(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser.objects.buffer_, len);
+    loghandler.logHandlerStampCharArray(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser[idxInspect].objects.buffer_, len);
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
 }
 
 //-------------------Result_for_APDUHeader_in_APDUHeaderParser------------------------
 
 //-------------------Result_for_APDUResponseHeader_in_APDUHeaderParser------------------------
 
-void inspect_Result_for_APDUResponseHeader_in_APDUHeaderParser(Memory_Result_for_APDUResponseHeader_in_APDUHeaderParser* pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser);
+void inspect_Result_for_APDUResponseHeader_in_APDUHeaderParser(Memory_Result_for_APDUResponseHeader_in_APDUHeaderParser* pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser, int maxCount);
 
-void inspect_Result_for_APDUResponseHeader_in_APDUHeaderParser(Memory_Result_for_APDUResponseHeader_in_APDUHeaderParser* pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser)
+void inspect_Result_for_APDUResponseHeader_in_APDUHeaderParser(Memory_Result_for_APDUResponseHeader_in_APDUHeaderParser* pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser, int maxCount)
 {
   loghandler.LogEntry("");
   loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
@@ -140,56 +175,68 @@ void inspect_Result_for_APDUResponseHeader_in_APDUHeaderParser(Memory_Result_for
 
   loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->pResult_for_APDUResponseHeader_in_APDUHeaderParser);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---APDUResponseHeader header---");
+  for(uint16_t idxInspect=0; idxInspect<pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_Result_for_APDUResponseHeader_in_APDUHeaderParser) break;
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry(               "         ---APDUHeader aAPDUHeader---");
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry(               "                 ---AppControlField control---");
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("           boolean FIR = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUResponseHeader_in_APDUHeaderParser.header.aAPDUHeader.control.FIR);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("           boolean FIN = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUResponseHeader_in_APDUHeaderParser.header.aAPDUHeader.control.FIN);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("           boolean CON = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUResponseHeader_in_APDUHeaderParser.header.aAPDUHeader.control.CON);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("           boolean UNS = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUResponseHeader_in_APDUHeaderParser.header.aAPDUHeader.control.UNS);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("           uint8_t SEQ = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUResponseHeader_in_APDUHeaderParser.header.aAPDUHeader.control.SEQ);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---APDUResponseHeader header---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry(               "                 ---FunctionCode_uint8_t function---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry(               "         ---APDUHeader aAPDUHeader---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry(               "                 ---AppControlField control---");
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("           boolean FIR = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUResponseHeader_in_APDUHeaderParser[idxInspect].header.aAPDUHeader.control.FIR);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("           boolean FIN = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUResponseHeader_in_APDUHeaderParser[idxInspect].header.aAPDUHeader.control.FIN);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("           boolean CON = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUResponseHeader_in_APDUHeaderParser[idxInspect].header.aAPDUHeader.control.CON);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("           boolean UNS = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUResponseHeader_in_APDUHeaderParser[idxInspect].header.aAPDUHeader.control.UNS);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("           uint8_t SEQ = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUResponseHeader_in_APDUHeaderParser[idxInspect].header.aAPDUHeader.control.SEQ);
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("                 uint16_t function = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
-                                    rResult_for_APDUResponseHeader_in_APDUHeaderParser.header.aAPDUHeader.function);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry(               "                 ---FunctionCode_uint8_t function---");
 
-  loghandler.LogEntry("");
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("                 uint16_t function = "), pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->
+                                      rResult_for_APDUResponseHeader_in_APDUHeaderParser[idxInspect].header.aAPDUHeader.function);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---RSeq_for_Uint16_t payload---");
+    loghandler.LogEntry("");
 
-  uint16_t len = length_in_HasLength_for_Uint16_t(&(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser.objects.hHasLength));
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint16_t   length = "), len);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---RSeq_for_Uint16_t payload---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntryShort("    uint8_t buffer_[] = ");
+    uint16_t len = length_in_HasLength_for_Uint16_t(&(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser[idxInspect].objects.hHasLength));
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint16_t   length = "), len);
 
-  loghandler.logHandlerStampCharArray(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser.objects.buffer_, len);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntryShort("    uint8_t buffer_[] = ");
+
+    loghandler.logHandlerStampCharArray(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser[idxInspect].objects.buffer_, len);
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
 }
 //-------------------Result_for_APDUResponseHeader_in_APDUHeaderParser------------------------
 //-------------------ParsedRequest------------------------
 
-void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest);
+void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest, int maxCount);
 
-void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest)
+void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest, int maxCount)
 {
   loghandler.LogEntry("");
   loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
@@ -208,64 +255,76 @@ void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest)
 
   loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_ParsedRequest->pParsedRequest);
 
+  for(uint16_t idxInspect=0; idxInspect<pMemory_ParsedRequest->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_ParsedRequest) break;
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+
 //- - - - - - - - - - - - - - - - - - - - Addresses addresses- - - - - - - - - - -  - -
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---Addresses addresses---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---Addresses addresses---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint16_t source      = "), pMemory_ParsedRequest->mParsedRequest.addresses.source);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint16_t source      = "), pMemory_ParsedRequest->mParsedRequest[idxInspect].addresses.source);
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint16_t destination = "), pMemory_ParsedRequest->mParsedRequest.addresses.destination);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint16_t destination = "), pMemory_ParsedRequest->mParsedRequest[idxInspect].addresses.destination);
 //- - - - - - - - - - - - - - - - - - - - Addresses addresses- - - - - - - - - - -  - -
 
 //- - - - - - - - - - - - - - - - - - - - APDUHeader header- - - - - - - - - - -  - -
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---APDUHeader header---");
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry(               "         ---AppControlField control---");
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean FIR = "), pMemory_ParsedRequest->
-                                    mParsedRequest.header.control.FIR);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean FIN = "), pMemory_ParsedRequest->
-                                    mParsedRequest.header.control.FIN);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean CON = "), pMemory_ParsedRequest->
-                                    mParsedRequest.header.control.CON);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean UNS = "), pMemory_ParsedRequest->
-                                    mParsedRequest.header.control.UNS);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t SEQ = "), pMemory_ParsedRequest->
-                                    mParsedRequest.header.control.SEQ);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---APDUHeader header---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry(               "         ---AppControlField control---");
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean FIR = "), pMemory_ParsedRequest->
+                                      mParsedRequest[idxInspect].header.control.FIR);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean FIN = "), pMemory_ParsedRequest->
+                                      mParsedRequest[idxInspect].header.control.FIN);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean CON = "), pMemory_ParsedRequest->
+                                      mParsedRequest[idxInspect].header.control.CON);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean UNS = "), pMemory_ParsedRequest->
+                                      mParsedRequest[idxInspect].header.control.UNS);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint8_t SEQ = "), pMemory_ParsedRequest->
+                                      mParsedRequest[idxInspect].header.control.SEQ);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry(               "         ---FunctionCode_uint8_t function---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry(               "         ---FunctionCode_uint8_t function---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("         uint16_t function = "), pMemory_ParsedRequest->
-                                    mParsedRequest.header.function);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("         uint16_t function = "), pMemory_ParsedRequest->
+                                      mParsedRequest[idxInspect].header.function);
 //- - - - - - - - - - - - - - - - - - - - APDUHeader header- - - - - - - - - - -  - -
 
-  loghandler.LogEntry("");
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---RSeq_for_Uint16_t objects---");
+    loghandler.LogEntry("");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---RSeq_for_Uint16_t objects---");
 
-  uint16_t len = length_in_HasLength_for_Uint16_t(&(pMemory_ParsedRequest->mParsedRequest.objects.hHasLength));
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint16_t   length = "), len);
+    uint16_t len = length_in_HasLength_for_Uint16_t(&(pMemory_ParsedRequest->mParsedRequest[idxInspect].objects.hHasLength));
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint16_t   length = "), len);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntryShort("    uint8_t buffer_[] = ");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntryShort("    uint8_t buffer_[] = ");
 
-  loghandler.logHandlerStampCharArray(pMemory_ParsedRequest->mParsedRequest.objects.buffer_, len);
+    loghandler.logHandlerStampCharArray(pMemory_ParsedRequest->mParsedRequest[idxInspect].objects.buffer_, len);
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
 }
 //-------------------ParsedRequest------------------------
 //-------------------PairSer4cpp_for_IINField_AppControlField------------------------
-void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField);
+void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField, int maxCount);
 
-void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField)
+void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField, int maxCount)
 {
   loghandler.LogEntry("");
   loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
@@ -282,43 +341,52 @@ void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IIN
   loghandler.logHandlerStampInteger((" counter = "), pMemory_PairSer4cpp_for_IINField_AppControlField->counter_inspect);
   loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_PairSer4cpp_for_IINField_AppControlField->pPairSer4cpp_for_IINField_AppControlField);
 
+  for(uint16_t idxInspect=0; idxInspect<pMemory_PairSer4cpp_for_IINField_AppControlField->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_PairSer4cpp_for_IINField_AppControlField) break;
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
 //- - - - - - - - - - - - - - - - - - - - IINField first- - - - - - - - - - -  - -
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---IINField first---");
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t LSB = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
-                                    mPairSer4cpp_for_IINField_AppControlField.first.LSB);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t MSB = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
-                                    mPairSer4cpp_for_IINField_AppControlField.first.MSB);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---IINField first---");
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger32Hex(("    uint8_t LSB = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
+                                           mPairSer4cpp_for_IINField_AppControlField[idxInspect].first.LSB);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger32Hex(("    uint8_t MSB = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
+                                           mPairSer4cpp_for_IINField_AppControlField[idxInspect].first.MSB);
 //- - - - - - - - - - - - - - - - - - - - IINField first- - - - - - - - - - -  - -
 //- - - - - - - - - - - - - - - - - - - - AppControlField second- - - - - - - - - - -  - -
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---AppControlField second---");
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---AppControlField second---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean FIR = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
-                                    mPairSer4cpp_for_IINField_AppControlField.second.FIR);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean FIN = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
-                                    mPairSer4cpp_for_IINField_AppControlField.second.FIN);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean CON = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
-                                    mPairSer4cpp_for_IINField_AppControlField.second.CON);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    boolean UNS = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
-                                    mPairSer4cpp_for_IINField_AppControlField.second.UNS);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t SEQ = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
-                                    mPairSer4cpp_for_IINField_AppControlField.second.SEQ);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean FIR = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
+                                      mPairSer4cpp_for_IINField_AppControlField[idxInspect].second.FIR);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean FIN = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
+                                      mPairSer4cpp_for_IINField_AppControlField[idxInspect].second.FIN);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean CON = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
+                                      mPairSer4cpp_for_IINField_AppControlField[idxInspect].second.CON);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    boolean UNS = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
+                                      mPairSer4cpp_for_IINField_AppControlField[idxInspect].second.UNS);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint8_t SEQ = "), pMemory_PairSer4cpp_for_IINField_AppControlField->
+                                      mPairSer4cpp_for_IINField_AppControlField[idxInspect].second.SEQ);
 //- - - - - - - - - - - - - - - - - - - - AppControlField second- - - - - - - - - - -  - -
-  loghandler.LogEntry("");
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
 }
 //-------------------PairSer4cpp_for_IINField_AppControlField------------------------
 //-------------------ObjectHeader------------------------
-void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader);
+void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader, int maxCount);
 
-void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader)
+void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader, int maxCount)
 {
   loghandler.LogEntry("");
   loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
@@ -335,29 +403,34 @@ void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader)
   loghandler.logHandlerStampInteger((" counter = "), pMemory_ObjectHeader->counter_inspect);
   loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_ObjectHeader->pObjectHeader);
 
-  for(uint16_t i=0; i<pMemory_ObjectHeader->counter_inspect; i++)
+  for(uint16_t idxInspect=0; idxInspect<pMemory_ObjectHeader->counter_inspect; idxInspect++)
   {
-    loghandler.LogEntry("-----------------------------------------------------");
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_ObjectHeader) break;
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+
     loghandler.LogEntryShort(title);
     loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_ObjectHeader->
-                                      mObjectHeader[i].group);
+                                      mObjectHeader[idxInspect].group);
     loghandler.LogEntryShort(title);
     loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_ObjectHeader->
-                                      mObjectHeader[i].variation);
+                                      mObjectHeader[idxInspect].variation);
 
     loghandler.LogEntryShort(title);
     loghandler.logHandlerStampInteger(("    uint8_t qualifier = "), pMemory_ObjectHeader->
-                                      mObjectHeader[i].qualifier);
-    loghandler.LogEntry("-----------------------------------------------------");
-  }
+                                      mObjectHeader[idxInspect].qualifier);
 
-  loghandler.LogEntry("");
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
 }
 //-------------------ObjectHeader------------------------
 //-------------------GroupVariationRecord------------------------
-void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord);
+void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord, int maxCount);
 
-void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord)
+void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord, int maxCount)
 {
   loghandler.LogEntry("");
   loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
@@ -374,29 +447,39 @@ void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVari
   loghandler.logHandlerStampInteger((" counter = "), pMemory_GroupVariationRecord->counter_inspect);
   loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_GroupVariationRecord->pGroupVariationRecord);
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    GroupVariation_uint16_t enumeration = "), pMemory_GroupVariationRecord->
-                                    mGroupVariationRecord.enumeration);
+  for(uint16_t idxInspect=0; idxInspect<pMemory_GroupVariationRecord->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_GroupVariationRecord) break;
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    GroupVariationType_int32_t type = "), pMemory_GroupVariationRecord->
-                                    mGroupVariationRecord.type);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    GroupVariation_uint16_t enumeration = "), pMemory_GroupVariationRecord->
+                                      mGroupVariationRecord[idxInspect].enumeration);
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_GroupVariationRecord->
-                                    mGroupVariationRecord.group);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    GroupVariationType_int32_t type = "), pMemory_GroupVariationRecord->
+                                      mGroupVariationRecord[idxInspect].type);
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_GroupVariationRecord->
-                                    mGroupVariationRecord.variation);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_GroupVariationRecord->
+                                      mGroupVariationRecord[idxInspect].group);
 
-  loghandler.LogEntry("");
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_GroupVariationRecord->
+                                      mGroupVariationRecord[idxInspect].variation);
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
 }
 //-------------------GroupVariationRecord------------------------
 //-------------------HeaderRecord------------------------
-void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord);
+void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord, int maxCount);
 
-void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord)
+void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord, int maxCount)
 {
   loghandler.LogEntry("");
   loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
@@ -413,31 +496,41 @@ void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord)
   loghandler.logHandlerStampInteger((" counter = "), pMemory_HeaderRecord->counter_inspect);
   loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_HeaderRecord->pHeaderRecord);
 
-  loghandler.LogEntryShort(title);
-  loghandler.LogEntry("---GroupVariationRecord gGroupVariationRecord---");
+  for(uint16_t idxInspect=0; idxInspect<pMemory_HeaderRecord->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_HeaderRecord) break;
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampIntegerHex(("    GroupVariation_uint16_t enumeration = "), pMemory_HeaderRecord->
-                                       mHeaderRecord.gGroupVariationRecord.enumeration);
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---GroupVariationRecord gGroupVariationRecord---");
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    GroupVariationType_int32_t type = "), pMemory_HeaderRecord->
-                                    mHeaderRecord.gGroupVariationRecord.type);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampIntegerHex(("    GroupVariation_uint16_t enumeration = "), pMemory_HeaderRecord->
+                                         mHeaderRecord[idxInspect].gGroupVariationRecord.enumeration);
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_HeaderRecord->
-                                    mHeaderRecord.gGroupVariationRecord.group);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    GroupVariationType_int32_t type = "), pMemory_HeaderRecord->
+                                      mHeaderRecord[idxInspect].gGroupVariationRecord.type);
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_HeaderRecord->
-                                    mHeaderRecord.gGroupVariationRecord.variation);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint8_t group = "), pMemory_HeaderRecord->
+                                      mHeaderRecord[idxInspect].gGroupVariationRecord.group);
 
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("uint8_t qualifier = "), pMemory_HeaderRecord->mHeaderRecord.qualifier);
-  loghandler.LogEntryShort(title);
-  loghandler.logHandlerStampInteger(("uint8_t headerIndex = "), pMemory_HeaderRecord->mHeaderRecord.headerIndex);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("    uint8_t variation = "), pMemory_HeaderRecord->
+                                      mHeaderRecord[idxInspect].gGroupVariationRecord.variation);
 
-  loghandler.LogEntry("");
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("uint8_t qualifier = "), pMemory_HeaderRecord->mHeaderRecord[idxInspect].qualifier);
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger(("uint8_t headerIndex = "), pMemory_HeaderRecord->mHeaderRecord[idxInspect].headerIndex);
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
 }
 //-------------------HeaderRecord------------------------
 //-------------------EventLists------------------------
@@ -466,6 +559,7 @@ void inspect_EventLists(Memory_EventLists* pMemory_EventLists, int maxCount)
     if(idxInspect==COUNT_EventLists) break;
     loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
     loghandler.LogEntry("|----------------------------------------------------");
+
     loghandler.LogEntryShort(title);
     loghandler.LogEntry("---List_for_EventRecord events---");
     loghandler.LogEntryShort(title);
@@ -858,3 +952,115 @@ void inspect_LinkHeaderFields(Memory_LinkHeaderFields* pMemory_LinkHeaderFields,
   }//for
 }
 //-------------------LinkHeaderFields------------------------
+//-------------------IINField------------------------
+void inspect_IINField(Memory_IINField* pMemory_IINField, int maxCount);
+
+void inspect_IINField(Memory_IINField* pMemory_IINField, int maxCount)
+{
+  loghandler.LogEntry("");
+  loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
+
+  void** tt = (void**)pMemory_IINField->title;
+  char *title = (char*)tt[0];
+
+  loghandler.LogEntryShort(title);
+  loghandler.LogEntryShort("=====");
+  loghandler.LogEntryShort("-IINField-");
+  loghandler.LogEntryShort("=====");
+
+  loghandler.LogEntry("");
+  loghandler.logHandlerStampInteger((" counter = "), pMemory_IINField->counter_inspect);
+  loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_IINField->pIINField);
+
+  for(uint16_t idxInspect=0; idxInspect<pMemory_IINField->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_IINField) break;
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger32Hex(("  uint8_t LSB = "), pMemory_IINField->mIINField[idxInspect].LSB);
+
+    loghandler.LogEntryShort(title);
+    loghandler.logHandlerStampInteger32Hex(("  uint8_t MSB = "), pMemory_IINField->mIINField[idxInspect].MSB);
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
+}
+//-------------------IINField------------------------
+//-------------------RangeHeader------------------------
+void inspect_RangeHeader(Memory_RangeHeader* pMemory_RangeHeader, int maxCount);
+
+void inspect_RangeHeader(Memory_RangeHeader* pMemory_RangeHeader, int maxCount)
+{
+  loghandler.LogEntry("");
+  loghandler.LogEntry(loghandler.appendTimeStamp(QString::fromLocal8Bit("")));
+
+  void** tt = (void**)pMemory_RangeHeader->title;
+  char *title = (char*)tt[0];
+
+  loghandler.LogEntryShort(title);
+  loghandler.LogEntryShort("=====");
+  loghandler.LogEntryShort("-RangeHeader-");
+  loghandler.LogEntryShort("=====");
+
+  loghandler.LogEntry("");
+  loghandler.logHandlerStampInteger((" counter = "), pMemory_RangeHeader->counter_inspect);
+  loghandler.logHandlerStampInteger32Hex((" adr     = "), (uint32_t)pMemory_RangeHeader->pRangeHeader);
+
+  for(uint16_t idxInspect=0; idxInspect<pMemory_RangeHeader->counter_inspect; idxInspect++)
+  {
+    if(idxInspect==maxCount) break;
+    if(idxInspect==COUNT_RangeHeader) break;
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("---HeaderRecord hHeaderRecord---");
+
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("    ------GroupVariationRecord gGroupVariationRecord------");
+
+    loghandler.LogEntryShort((char*)"*GroupVariationRecord");
+    loghandler.logHandlerStampIntegerHex(("       GroupVariation_uint16_t enumeration = "), pMemory_RangeHeader->
+                                         mRangeHeader[idxInspect].hHeaderRecord.gGroupVariationRecord.enumeration);
+
+    loghandler.LogEntryShort((char*)"*GroupVariationRecord");
+    loghandler.logHandlerStampInteger(("       GroupVariationType_int32_t type = "), pMemory_RangeHeader->
+                                      mRangeHeader[idxInspect].hHeaderRecord.gGroupVariationRecord.type);
+
+    loghandler.LogEntryShort((char*)"*GroupVariationRecord");
+    loghandler.logHandlerStampInteger(("       uint8_t group = "), pMemory_RangeHeader->
+                                      mRangeHeader[idxInspect].hHeaderRecord.gGroupVariationRecord.group);
+
+    loghandler.LogEntryShort((char*)"*GroupVariationRecord");
+    loghandler.logHandlerStampInteger(("       uint8_t variation = "), pMemory_RangeHeader->
+                                      mRangeHeader[idxInspect].hHeaderRecord.gGroupVariationRecord.variation);
+
+    loghandler.LogEntryShort((char*)"*GroupVariationRecord");
+    loghandler.logHandlerStampInteger(("  uint8_t qualifier = "), pMemory_RangeHeader->
+                                                 mRangeHeader[idxInspect].hHeaderRecord.qualifier);
+    loghandler.LogEntryShort((char*)"*GroupVariationRecord");
+    loghandler.logHandlerStampInteger(("  uint8_t headerIndex = "), pMemory_RangeHeader->
+                                                 mRangeHeader[idxInspect].hHeaderRecord.headerIndex);
+
+    loghandler.LogEntryShort(title);
+    loghandler.LogEntry("    ------Range range------");
+
+    loghandler.LogEntryShort((char*)"*Range");
+    loghandler.logHandlerStampInteger32Hex(("  uint16_t start = "), pMemory_RangeHeader->mRangeHeader[idxInspect].range.start);
+
+    loghandler.LogEntryShort((char*)"*Range");
+    loghandler.logHandlerStampInteger32Hex(("  uint16_t stop = "), pMemory_RangeHeader->mRangeHeader[idxInspect].range.stop);
+
+    loghandler.logHandlerStampInteger(("|-- "), idxInspect+1);
+    loghandler.LogEntry("|----------------------------------------------------");
+    loghandler.LogEntry("");
+  }//for
+}
+//-------------------RangeHeader------------------------

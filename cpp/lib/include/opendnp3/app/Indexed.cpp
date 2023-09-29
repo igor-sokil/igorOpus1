@@ -490,6 +490,7 @@ Indexed_for_AnalogCommandEvent WithIndex_in_Indexed_for_AnalogCommandEvent(
 }
 //------------------------------------Indexed_for_AnalogCommandEvent---------------------------------------------------------
 //------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
+/*
 void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over1(Indexed_for_Group2Var1 *pIndexed_for_Group2Var1)
 {
 //   Group2Var1_in_Group2Var1Over1(&(pIndexed_for_Group2Var1->value));
@@ -524,8 +525,10 @@ Indexed_for_Group2Var1 WithIndex_in_Indexed_for_Group2Var1(
 ////    return Indexed<T>(value, index);
   return iIndexed_for_Group2Var1;
 }
+*/
 //------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
 //------------------------------------Indexed_for_Group1Var2---------------------------------------------------------
+/*
 void Indexed_for_Group1Var2_in_Indexed_for_Group1Var2Over1(Indexed_for_Group1Var2 *pIndexed_for_Group1Var2)
 {
 //   Group1Var2_in_Group1Var2Over1(&(pIndexed_for_Group1Var2->value));
@@ -560,4 +563,5 @@ Indexed_for_Group1Var2 WithIndex_in_Indexed_for_Group1Var2(
 ////    return Indexed<T>(value, index);
   return iIndexed_for_Group1Var2;
 }
+*/
 //------------------------------------Indexed_for_Group1Var2---------------------------------------------------------

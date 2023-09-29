@@ -33,7 +33,7 @@
 ////#include <ser4cpp/container/SequenceTypes.h>
 
 #include "Range.h"
-//#include "BitReader.h"
+#include "BitReader.h"
 #include "BufferedCollection.h"
 #include "IAPDUHandler.h"
 #include "NumParser.h"
@@ -127,14 +127,14 @@ typedef struct
 ////    RangeParser(const Range& range, size_t requiredSize, HandleFun handler);
 
   Range range;
-  uint16_t requiredSize;
+  uint32_t requiredSize;
 //    HandleFun handler;
   HandleFun_in_RangeParser  handler;
 
 ////    RangeParser() = delete;
 } RangeParser;
 
-void RangeParser_in_RangeParser(RangeParser *pRangeParser, Range* range, uint16_t requiredSize, HandleFun_in_RangeParser handler);
+void RangeParser_in_RangeParser(RangeParser *pRangeParser, Range* range, uint32_t requiredSize, HandleFun_in_RangeParser handler);
 
 ParseResult_uint8_t ParseHeader_in_RangeParser_static(
   RSeq_for_Uint16_t *buffer,
@@ -184,12 +184,6 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
 ////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
 RangeParser FromFixedSize_for_Group1Var2_in_RangeParser_static(Range* range);
 
-////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
-////{
-////    const auto size = range.Count() * Descriptor::Size();
-////    return RangeParser(range, size, &InvokeRangeOf<Descriptor>);
-////}
-
 ////template<class Type> RangeParser RangeParser::FromFixedSizeType(const Range& range)
 ////{
 ////    const auto size = range.Count() * Type::Size();
@@ -228,29 +222,37 @@ void InvokeRangeOf_for_Group1Var2_in_RangeParser_static(HeaderRecord* record,
 ////}
 ////
 ////template<class Type> RangeParser RangeParser::FromBitfieldType(const Range& range)
-////{
-////    const auto SIZE = NumBytesInBits(range.Count());
-////    return RangeParser(range, SIZE, &InvokeRangeBitfieldType<Type>);
-////}
-////
+ RangeParser FromBitfieldType_Indexed_for_Binary_in_RangeParser_static(Range* range);
+ RangeParser FromBitfieldType_Indexed_for_IINValue_in_RangeParser_static(Range* range);
+ RangeParser FromBitfieldType_Indexed_for_BinaryOutputStatus_in_RangeParser_static(Range* range);
+
 ////template<class Type>
 ////void RangeParser::InvokeRangeBitfieldType(const HeaderRecord& record,
 ////                                          const Range& range,
 ////                                          const ser4cpp::rseq_t& buffer,
 ////                                          IAPDUHandler& handler)
-////{
-////    const auto COUNT = range.Count();
-////
-////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
-////        Type value(GetBit(buffer, pos));
-////        return WithIndex(value, range.start + pos);
-////    };
-////
-////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-////
-////    handler.OnHeader(RangeHeader(record, range), collection);
-////}
-////
+//------------------------------Binary---------------------------------------------
+void InvokeRangeBitfieldType_for_Binary_in_RangeParser_static(
+                                          HeaderRecord* record,
+                                          Range* range,
+                                          RSeq_for_Uint16_t* buffer,
+                                          IAPDUHandler* handler);
+//------------------------------Binary---------------------------------------------
+//------------------------------BinaryOutputStatus---------------------------------------------
+void InvokeRangeBitfieldType_for_BinaryOutputStatus_in_RangeParser_static(
+                                          HeaderRecord* record,
+                                          Range* range,
+                                          RSeq_for_Uint16_t* buffer,
+                                          IAPDUHandler* handler);
+//------------------------------BinaryOutputStatus---------------------------------------------
+//------------------------------IINValue---------------------------------------------
+void InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static(
+                                          HeaderRecord* record,
+                                          Range* range,
+                                          RSeq_for_Uint16_t* buffer,
+                                          IAPDUHandler* handler);
+//------------------------------IINValue---------------------------------------------
+
 ////template<class Type> RangeParser RangeParser::FromDoubleBitfieldType(const Range& range)
 ////{
 ////    const auto size = NumBytesInDoubleBits(range.Count());

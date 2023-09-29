@@ -101,4 +101,6 @@ void Transaction_in_OutstationTestObject(OutstationTestObject *pOutstationTestOb
 
 uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, LinkBroadcastAddress_uint16_t broadcast_address, const std::string& hex);
 
+uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
+
 #endif

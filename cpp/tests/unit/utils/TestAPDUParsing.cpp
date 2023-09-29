@@ -1,4 +1,4 @@
-#include <QtWidgets>
+//#include <QtWidgets>
 #include <iostream>
 #include <QApplication>
 #include "header.h"
@@ -55,7 +55,6 @@ ParseResult_uint8_t TestComplex(std::string& hx, void (*validate)(MockApduHeader
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  &temp,
                                  &(mock.iIAPDUHandler));
-qDebug()<<"TestComplex5";
 ////    REQUIRE((result == expected));
 ////    REQUIRE(numCalls == mock.records.size());
 //std::cout<<"ParseResult_uint8_t result ="<<result<<std::endl;
@@ -63,15 +62,6 @@ std::cout<<"mock.records.size()="<<mock.records.size()<<std::endl;
 
 ////    validate(mock);
   if(validate) validate(&mock);
-
-//qDebug()<<"mock.records[0].enumeration="<<hex<<mock.records[0].enumeration;
-//HeaderRecord hHeaderRecord = mock.records[0];
-//uint16_t tt = hHeaderRecord.gGroupVariationRecord.enumeration;
-//qDebug()<<"mock.records[0].enumeration="<<hex<<tt;
-
-// hHeaderRecord = mock.records[1];
-// tt = hHeaderRecord.gGroupVariationRecord.enumeration;
-//qDebug()<<"mock.records[1].enumeration="<<hex<<tt;
 
   return result;
 }

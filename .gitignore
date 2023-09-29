@@ -8,6 +8,8 @@
 my.bat
 *.ses
 # *.txt
+log.txt
+trassirovka.txt
 *.log
 *.o
 moc*.cpp

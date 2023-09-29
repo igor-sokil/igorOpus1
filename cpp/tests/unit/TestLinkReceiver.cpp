@@ -30,7 +30,7 @@ using namespace ser4cpp;
 
 #define SUITE(name) "LinkParserTestSuite - " name
 
-TEST_CASE(SUITE("InitializationState"))
+TEST_CASE(SUITE("1InitializationState"))
 {
     LinkParserTest t;
     REQUIRE(t.sink.m_num_frames == 0);
@@ -40,7 +40,7 @@ TEST_CASE(SUITE("InitializationState"))
 //  CRC Failures
 //////////////////////////////////////////
 
-TEST_CASE(SUITE("HeaderCRCError"))
+TEST_CASE(SUITE("2HeaderCRCError"))
 {
     LinkParserTest t;
     t.WriteData("05 64 05 C0 01 00 00 04 E9 20");
@@ -48,7 +48,7 @@ TEST_CASE(SUITE("HeaderCRCError"))
     REQUIRE(t.parser.Statistics().numHeaderCrcError == 1);
 }
 
-TEST_CASE(SUITE("BodyCRCError"))
+TEST_CASE(SUITE("3BodyCRCError"))
 {
     LinkParserTest t;
     t.WriteData("05 64 14 F3 01 00 00 04 0A 3B C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06 9A 11");
@@ -58,11 +58,14 @@ TEST_CASE(SUITE("BodyCRCError"))
 
 //////////////////////////////////////////
 //  Illegal packets of one form or another
+// Ќелегальные пакеты той или иной формы
 //////////////////////////////////////////
 
 // Change the length to something from 5 to something in [0,4] and recalc the crc
 // A valid reset link states packet would be: 05 64 05 C0 01 00 00 04 E9 21
-TEST_CASE(SUITE("BadLengthError"))
+// »змен€ем длину с 5 на что-нибудь из [0,4] и пересчитываем crc
+// ƒействительный пакет состо€ний канала сброса будет: 05 64 05 C0 01 00 00 04 E9 21
+TEST_CASE(SUITE("4BadLengthError"))
 {
     LinkParserTest t;
     t.WriteData(RepairCRC("05 64 01 C0 01 00 00 04 E9 21"));
@@ -71,7 +74,8 @@ TEST_CASE(SUITE("BadLengthError"))
 }
 
 // Test that the presence of user data disagrees with the function code
-TEST_CASE(SUITE("UnexpectedData"))
+// ѕровер€ем, что наличие пользовательских данных не соответствует коду функции
+TEST_CASE(SUITE("5UnexpectedData"))
 {
     LinkParserTest t;
     t.WriteData(RepairCRC("05 64 08 C0 01 00 00 04 E9 21"));
@@ -81,7 +85,9 @@ TEST_CASE(SUITE("UnexpectedData"))
 
 // Test that the absence of user data disagrees with the function code
 // This is the first 10 bytes of an unconfirmed user data packet w/ the length set to 5
-TEST_CASE(SUITE("AbsenceOfData"))
+// ѕровер€ем, что отсутствие пользовательских данных противоречит коду функции
+// Ёто первые 10 байт неподтвержденного пакета пользовательских данных с длиной, равной 5
+TEST_CASE(SUITE("6AbsenceOfData"))
 {
     LinkParserTest t;
     t.WriteData(RepairCRC("05 64 05 73 00 04 01 00 03 FC"));
@@ -91,7 +97,9 @@ TEST_CASE(SUITE("AbsenceOfData"))
 
 // Test that the parser can handle an unknown PriToSec function code
 // Reset Links w/ function code changed from 0 to 6
-TEST_CASE(SUITE("UnknownFunction"))
+// ѕроверка того, что синтаксический анализатор может обработать неизвестный код функции PriToSec
+// —брос ссылок с изменением кода функции с 0 на 6
+TEST_CASE(SUITE("7UnknownFunction"))
 {
     LinkParserTest t;
     t.WriteData(RepairCRC("05 64 05 C6 01 00 00 04 E9 21"));
@@ -101,7 +109,9 @@ TEST_CASE(SUITE("UnknownFunction"))
 
 // Test that the parser can handle an unexpected FCV bit
 // Reset Links w/ FCV toggled on
-TEST_CASE(SUITE("UnexpectedFCV"))
+// ѕровер€ем, что синтаксический анализатор может обработать неожиданный бит FCV
+// —брос ссылок с включенным FCV
+TEST_CASE(SUITE("8UnexpectedFCV"))
 {
     LinkParserTest t;
     t.WriteData(RepairCRC("05 64 05 D0 01 00 00 04 E9 21"));
@@ -111,7 +121,9 @@ TEST_CASE(SUITE("UnexpectedFCV"))
 
 // Test that the parser can handle an unexpected FCB bit for SecToPri
 // ACK w/ FCB toggled on
-TEST_CASE(SUITE("UnexpectedFCB"))
+// ѕровер€ем, что синтаксический анализатор может обработать неожиданный бит FCB дл€ SecToPri
+// ACK с включенным FCB
+TEST_CASE(SUITE("9UnexpectedFCB"))
 {
     LinkParserTest t;
     t.WriteData(RepairCRC("05 64 05 20 00 04 01 00 19 A6"));
@@ -121,7 +133,9 @@ TEST_CASE(SUITE("UnexpectedFCB"))
 
 // Write two bad packets back-to-back tests that this produces
 // back to back errors with a single write call
-TEST_CASE(SUITE("CombinedFailures"))
+// Ќаписание двух плохих пакетов подр€д, которые это производит
+// последовательные ошибки с одним вызовом записи
+TEST_CASE(SUITE("10CombinedFailures"))
 {
     LinkParserTest t;
     t.WriteData(RepairCRC("05 64 05 20 00 04 01 00 19 A6") + " " + RepairCRC("05 64 05 D0 01 00 00 04 E9 21"));
@@ -134,7 +148,7 @@ TEST_CASE(SUITE("CombinedFailures"))
 // Successful packets - Sec to Pri
 //////////////////////////////////////////
 
-TEST_CASE(SUITE("ReadACK"))
+TEST_CASE(SUITE("11ReadACK"))
 {
     Buffer buffer(292);
 
@@ -147,7 +161,7 @@ TEST_CASE(SUITE("ReadACK"))
     REQUIRE(t.sink.CheckLastWithDFC(LinkFunction::SEC_ACK, true, false, 1, 2));
 }
 
-TEST_CASE(SUITE("ReadNACK"))
+TEST_CASE(SUITE("12ReadNACK"))
 {
     Buffer buffer(292);
     auto writeTo = buffer.as_wslice();
@@ -159,7 +173,7 @@ TEST_CASE(SUITE("ReadNACK"))
     REQUIRE(t.sink.CheckLastWithDFC(LinkFunction::SEC_NACK, false, true, 1, 2));
 }
 
-TEST_CASE(SUITE("LinkStatus"))
+TEST_CASE(SUITE("13LinkStatus"))
 {
     Buffer buffer(292);
     auto writeTo = buffer.as_wslice();
@@ -171,7 +185,7 @@ TEST_CASE(SUITE("LinkStatus"))
     REQUIRE(t.sink.CheckLastWithDFC(LinkFunction::SEC_LINK_STATUS, true, true, 1, 2));
 }
 
-TEST_CASE(SUITE("NotSupported"))
+TEST_CASE(SUITE("14NotSupported"))
 {
     Buffer buffer(292);
     auto writeTo = buffer.as_wslice();
@@ -187,7 +201,7 @@ TEST_CASE(SUITE("NotSupported"))
 // Successful packets - Pri To Sec
 //////////////////////////////////////////
 
-TEST_CASE(SUITE("TestLinkStates"))
+TEST_CASE(SUITE("15TestLinkStates"))
 {
     Buffer buffer(292);
     auto writeTo = buffer.as_wslice();
@@ -199,7 +213,7 @@ TEST_CASE(SUITE("TestLinkStates"))
     REQUIRE(t.sink.CheckLastWithFCB(LinkFunction::PRI_TEST_LINK_STATES, false, true, 1, 2));
 }
 
-TEST_CASE(SUITE("ResetLinkStates"))
+TEST_CASE(SUITE("16ResetLinkStates"))
 {
     Buffer buffer(292);
     auto writeTo = buffer.as_wslice();
@@ -211,7 +225,7 @@ TEST_CASE(SUITE("ResetLinkStates"))
     REQUIRE(t.sink.CheckLast(LinkFunction::PRI_RESET_LINK_STATES, false, 1, 2));
 }
 
-TEST_CASE(SUITE("RequestLinkStatus"))
+TEST_CASE(SUITE("17RequestLinkStatus"))
 {
     Buffer buffer(292);
     auto writeTo = buffer.as_wslice();
@@ -223,7 +237,7 @@ TEST_CASE(SUITE("RequestLinkStatus"))
     REQUIRE(t.sink.CheckLast(LinkFunction::PRI_REQUEST_LINK_STATUS, true, 1, 2));
 }
 
-TEST_CASE(SUITE("UnconfirmedUserData"))
+TEST_CASE(SUITE("18UnconfirmedUserData"))
 {
     ByteStr data(250, 0); // initializes a buffer with increasing value
 
@@ -238,7 +252,7 @@ TEST_CASE(SUITE("UnconfirmedUserData"))
     REQUIRE(t.sink.received.Equals(data.ToRSeq()));
 }
 
-TEST_CASE(SUITE("ConfirmedUserData"))
+TEST_CASE(SUITE("19ConfirmedUserData"))
 {
     ByteStr data(250, 0); // initializes a buffer with increasing value
 
@@ -257,7 +271,7 @@ TEST_CASE(SUITE("ConfirmedUserData"))
 // multi packets
 //////////////////////////////////////////
 
-TEST_CASE(SUITE("TestTwoPackets"))
+TEST_CASE(SUITE("20TestTwoPackets"))
 {
     LinkParserTest t;
     // back to back reset link
@@ -272,7 +286,7 @@ TEST_CASE(SUITE("TestTwoPackets"))
 
 // Test that the parser is able to resync without discarding
 // ѕровер€ем, может ли парсер выполнить повторную синхронизацию без отбрасывани€
-TEST_CASE(SUITE("Resync0564"))
+TEST_CASE(SUITE("21Resync0564"))
 {
     LinkParserTest t;
     t.WriteData("05 64 05 64 05 C0 01 00 00 04 E9 21");
@@ -289,7 +303,7 @@ TEST_CASE(SUITE("Resync0564"))
 // doing something stupid like overflowing it's buffer
 // ѕровер€ем, может ли анализатор последовательно обрабатывать множество пакетов без
 // делаем глупости вроде переполнени€ буфера
-TEST_CASE(SUITE("ManyReceives"))
+TEST_CASE(SUITE("22ManyReceives"))
 {
 
     Buffer buffer(292);

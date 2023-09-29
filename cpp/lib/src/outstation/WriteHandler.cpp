@@ -40,13 +40,13 @@ void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
   pWriteHandler->wroteIIN = false;
 
   (pWriteHandler->iIAPDUHandler).iIWhiteList.pIsAllowed_in_IWhiteList = IsAllowed_in_WriteHandler_override;
-  (pWriteHandler->iIAPDUHandler).pProcessHeader_RangeHeader_for_IINValue_in_IAPDUHandler =
+  (pWriteHandler->iIAPDUHandler).pProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler =
     ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override;
   (pWriteHandler->iIAPDUHandler).pProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler =
     ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override;
   (pWriteHandler->iIAPDUHandler).pProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler =
     ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override;
-  (pWriteHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_for_TimeAndInterval_in_IAPDUHandler =
+  (pWriteHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_Indexed_for_TimeAndInterval_in_IAPDUHandler =
     ProcessHeader_PrefixHeader_for_TimeAndInterval_in_WriteHandler_override;
 
   setParentPointer_in_IWhiteList(&((pWriteHandler->iIAPDUHandler).iIWhiteList), pWriteHandler);

@@ -230,7 +230,7 @@ RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
 ////                        LinkFunctionSpec::to_human_string(aFuncCode), aDest, aSrc, aDataLength);
   std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::LINK_TX, 'Function: %s Dest: %u Source: %u Length: %u')***"<<std::endl;
 
-pMemory_LinkHeader_1=  MEMORY_LinkHeader_1(0, &header);
+//pMemory_LinkHeader_1=  MEMORY_LinkHeader_1(0, &header);
 
 //    void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
 ////    header.Write(buffer);

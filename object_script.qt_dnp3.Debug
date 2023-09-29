@@ -58,7 +58,9 @@ debug/ICollection_Indexed_for_AnalogOutputInt32.o
 debug/ICollection_Indexed_for_ControlRelayOutputBlock.o
 debug/ICollection_Indexed_for_IINValue.o
 debug/ICollection_Indexed_for_TimeAndInterval.o
-debug/ICollection_Indexed_for_Group1Var2.o
+debug/ICollection_Indexed_for_Binary.o
+debug/ICollection_Indexed_for_BinaryOutputStatus.o
+debug/ICollection_Indexed_for_OctetString.o
 debug/IDnpTimeSource.o
 debug/ICommandHandler.o
 debug/IOutstationApplication.o
@@ -93,6 +95,8 @@ debug/ShiftableBuffer.o
 debug/APDUHeaderParser.o
 debug/APDUParser.o
 debug/BufferedCollection.o
+debug/BitReader.o
+debug/CountParser.o
 debug/ObjectHeaderParser.o
 debug/ParseResult.o
 debug/RangeParser.o

@@ -121,7 +121,7 @@ typedef struct
 Range From_in_Range_static(uint16_t start, uint16_t stop);
 Range Invalid_in_Range_static(void);
 void Range_in_RangeOver1(Range *pRange);
-uint16_t Count_in_Range(Range *pRange);
+uint32_t Count_in_Range(Range *pRange);
 boolean Advance_in_Range(Range *pRange);
 boolean Contains_in_Range(Range *pRange, uint16_t index);
 uint16_t ser4cpp_max_uint16_t(uint16_t t1, uint16_t t2);

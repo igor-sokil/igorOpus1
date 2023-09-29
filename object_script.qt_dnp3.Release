@@ -58,7 +58,9 @@ release/ICollection_Indexed_for_AnalogOutputInt32.o
 release/ICollection_Indexed_for_ControlRelayOutputBlock.o
 release/ICollection_Indexed_for_IINValue.o
 release/ICollection_Indexed_for_TimeAndInterval.o
-release/ICollection_Indexed_for_Group1Var2.o
+release/ICollection_Indexed_for_Binary.o
+release/ICollection_Indexed_for_BinaryOutputStatus.o
+release/ICollection_Indexed_for_OctetString.o
 release/IDnpTimeSource.o
 release/ICommandHandler.o
 release/IOutstationApplication.o
@@ -93,6 +95,8 @@ release/ShiftableBuffer.o
 release/APDUHeaderParser.o
 release/APDUParser.o
 release/BufferedCollection.o
+release/BitReader.o
+release/CountParser.o
 release/ObjectHeaderParser.o
 release/ParseResult.o
 release/RangeParser.o

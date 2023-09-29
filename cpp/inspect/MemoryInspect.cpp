@@ -112,11 +112,14 @@ typedef struct
  pMemory_Message->pMessage = pMessage;
  pMemory_Message->title = (void*)title_Message;
 
- memcpy((void*)&(pMemory_Message->mMessage), (void*)pMessage, sizeof(Message));
- MEMORY_RSeq_for_Uint16(&(pMemory_Message->mMemory_RSeq_for_Uint16), 4, &(pMemory_Message->mMessage.payload));
+ int idx = pMemory_Message->counter_inspect;
+ if(idx > COUNT_Message) idx = COUNT_Message;
+ if(pMessage)
+  memcpy((void*)&(pMemory_Message->mMessage[idx-1]), (void*)pMessage, sizeof(Message));
+ MEMORY_RSeq_for_Uint16(&(pMemory_Message->mMemory_RSeq_for_Uint16[idx-1]), 4, &(pMemory_Message->mMessage[idx-1].payload));
 
- pMemory_Message->mMessage.payload = pMemory_Message->mMemory_RSeq_for_Uint16.rseq;
- pMemory_Message->mMessage.payload.buffer_ = pMemory_Message->mMemory_RSeq_for_Uint16.buffer4rseq;
+ pMemory_Message->mMessage[idx-1].payload = pMemory_Message->mMemory_RSeq_for_Uint16[idx-1].rseq;
+ pMemory_Message->mMessage[idx-1].payload.buffer_ = pMemory_Message->mMemory_RSeq_for_Uint16[idx-1].buffer4rseq;
 
  return pMemory_Message;
 }
@@ -174,13 +177,18 @@ typedef struct
  pMemory_Result_for_APDUHeader_in_APDUHeaderParser->pResult_for_APDUHeader_in_APDUHeaderParser = pResult_for_APDUHeader_in_APDUHeaderParser;
  pMemory_Result_for_APDUHeader_in_APDUHeaderParser->title = (void*)title_Result_for_APDUHeader_in_APDUHeaderParser;
 
- memcpy((void*)&(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser), (void*)pResult_for_APDUHeader_in_APDUHeaderParser, sizeof(Result_for_APDUHeader_in_APDUHeaderParser));
- MEMORY_RSeq_for_Uint16(&(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16), 4, &(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser.objects));
+ int idx = pMemory_Result_for_APDUHeader_in_APDUHeaderParser->counter_inspect;
+ if(idx > COUNT_Result_for_APDUHeader_in_APDUHeaderParser) idx = COUNT_Result_for_APDUHeader_in_APDUHeaderParser;
+ if(pResult_for_APDUHeader_in_APDUHeaderParser)
+    memcpy((void*)&(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser[idx-1]), (void*)pResult_for_APDUHeader_in_APDUHeaderParser, sizeof(Result_for_APDUHeader_in_APDUHeaderParser));
+ else qDebug()<<"Error: pResult_for_APDUHeader_in_APDUHeaderParser == NULL!";
 
- pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser.objects = 
-                          pMemory_Result_for_APDUHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16.rseq;
- pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser.objects.buffer_ =
-                          pMemory_Result_for_APDUHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16.buffer4rseq;
+ MEMORY_RSeq_for_Uint16(&(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16[idx-1]), 4, &(pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser[idx-1].objects));
+
+ pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser[idx-1].objects = 
+                          pMemory_Result_for_APDUHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16[idx-1].rseq;
+ pMemory_Result_for_APDUHeader_in_APDUHeaderParser->rResult_for_APDUHeader_in_APDUHeaderParser[idx-1].objects.buffer_ =
+                          pMemory_Result_for_APDUHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16[idx-1].buffer4rseq;
 
  return pMemory_Result_for_APDUHeader_in_APDUHeaderParser;
 }
@@ -240,13 +248,17 @@ typedef struct
  pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->pResult_for_APDUResponseHeader_in_APDUHeaderParser = pResult_for_APDUResponseHeader_in_APDUHeaderParser;
  pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->title = (void*)title_Result_for_APDUResponseHeader_in_APDUHeaderParser;
 
- memcpy((void*)&(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser), (void*)pResult_for_APDUResponseHeader_in_APDUHeaderParser, sizeof(Result_for_APDUResponseHeader_in_APDUHeaderParser));
- MEMORY_RSeq_for_Uint16(&(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16), 4, &(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser.objects));
+ int idx = pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->counter_inspect;
+ if(idx > COUNT_Result_for_APDUResponseHeader_in_APDUHeaderParser) idx = COUNT_Result_for_APDUResponseHeader_in_APDUHeaderParser;
+ if(pResult_for_APDUResponseHeader_in_APDUHeaderParser)
+    memcpy((void*)&(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser[idx-1]), (void*)pResult_for_APDUResponseHeader_in_APDUHeaderParser, sizeof(Result_for_APDUResponseHeader_in_APDUHeaderParser));
+ else qDebug()<<"Error: pResult_for_APDUResponseHeader_in_APDUHeaderParser == NULL!";
+ MEMORY_RSeq_for_Uint16(&(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16[idx-1]), 4, &(pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser[idx-1].objects));
 
- pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser.objects = 
-                          pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16.rseq;
- pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser.objects.buffer_ =
-                          pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16.buffer4rseq;
+ pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser[idx-1].objects = 
+                          pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16[idx-1].rseq;
+ pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->rResult_for_APDUResponseHeader_in_APDUHeaderParser[idx-1].objects.buffer_ =
+                          pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser->mMemory_RSeq_for_Uint16[idx-1].buffer4rseq;
 
  return pMemory_Result_for_APDUResponseHeader_in_APDUHeaderParser;
 }
@@ -304,15 +316,17 @@ typedef struct
  pMemory_ParsedRequest->pParsedRequest = pParsedRequest;
  pMemory_ParsedRequest->title = (void*)title_ParsedRequest;
 
+ int idx = pMemory_ParsedRequest->counter_inspect;
+ if(idx > COUNT_ParsedRequest) idx = COUNT_ParsedRequest;
  if(pParsedRequest)
-   memcpy((void*)&(pMemory_ParsedRequest->mParsedRequest), (void*)pParsedRequest, sizeof(ParsedRequest));
+   memcpy((void*)&(pMemory_ParsedRequest->mParsedRequest[idx-1]), (void*)pParsedRequest, sizeof(ParsedRequest));
  else qDebug()<<"Error: pParsedRequest == NULL!";
 
  if(pParsedRequest)
-   MEMORY_RSeq_for_Uint16(&(pMemory_ParsedRequest->mMemory_RSeq_for_Uint16), 4, &(pMemory_ParsedRequest->mParsedRequest.objects));
+   MEMORY_RSeq_for_Uint16(&(pMemory_ParsedRequest->mMemory_RSeq_for_Uint16[idx-1]), 4, &(pMemory_ParsedRequest->mParsedRequest[idx-1].objects));
 
- pMemory_ParsedRequest->mParsedRequest.objects = pMemory_ParsedRequest->mMemory_RSeq_for_Uint16.rseq;
- pMemory_ParsedRequest->mParsedRequest.objects.buffer_ = pMemory_ParsedRequest->mMemory_RSeq_for_Uint16.buffer4rseq;
+ pMemory_ParsedRequest->mParsedRequest[idx-1].objects = pMemory_ParsedRequest->mMemory_RSeq_for_Uint16[idx-1].rseq;
+ pMemory_ParsedRequest->mParsedRequest[idx-1].objects.buffer_ = pMemory_ParsedRequest->mMemory_RSeq_for_Uint16[idx-1].buffer4rseq;
 
  return pMemory_ParsedRequest;
 }
@@ -369,8 +383,10 @@ typedef struct
  pMemory_PairSer4cpp_for_IINField_AppControlField->pPairSer4cpp_for_IINField_AppControlField = pPairSer4cpp_for_IINField_AppControlField;
  pMemory_PairSer4cpp_for_IINField_AppControlField->title = (void*)title_PairSer4cpp_for_IINField_AppControlField;
 
+ int idx = pMemory_PairSer4cpp_for_IINField_AppControlField->counter_inspect;
+ if(idx > COUNT_PairSer4cpp_for_IINField_AppControlField) idx = COUNT_PairSer4cpp_for_IINField_AppControlField;
  if(pPairSer4cpp_for_IINField_AppControlField)
-   memcpy((void*)&(pMemory_PairSer4cpp_for_IINField_AppControlField->mPairSer4cpp_for_IINField_AppControlField), (void*)pPairSer4cpp_for_IINField_AppControlField, sizeof(PairSer4cpp_for_IINField_AppControlField));
+   memcpy((void*)&(pMemory_PairSer4cpp_for_IINField_AppControlField->mPairSer4cpp_for_IINField_AppControlField[idx-1]), (void*)pPairSer4cpp_for_IINField_AppControlField, sizeof(PairSer4cpp_for_IINField_AppControlField));
  else qDebug()<<"Error: pPairSer4cpp_for_IINField_AppControlField == NULL!";
 
  return pMemory_PairSer4cpp_for_IINField_AppControlField;
@@ -428,8 +444,10 @@ typedef struct
  pMemory_IINField->pIINField = pIINField;
  pMemory_IINField->title = (void*)title_IINField;
 
+ int idx = pMemory_IINField->counter_inspect;
+ if(idx > COUNT_IINField) idx = COUNT_IINField;
  if(pIINField)
-   memcpy((void*)&(pMemory_IINField->mIINField), (void*)pIINField, sizeof(IINField));
+   memcpy((void*)&(pMemory_IINField->mIINField[idx-1]), (void*)pIINField, sizeof(IINField));
  else qDebug()<<"Error: pIINField == NULL!";
 
  return pMemory_IINField;
@@ -549,8 +567,11 @@ typedef struct
  pMemory_GroupVariationRecord->pGroupVariationRecord = pGroupVariationRecord;
  pMemory_GroupVariationRecord->title = (void*)title_GroupVariationRecord;
 
+ int idx = pMemory_GroupVariationRecord->counter_inspect;
+ if(idx > COUNT_GroupVariationRecord) idx = COUNT_GroupVariationRecord;
+
  if(pGroupVariationRecord)
-   memcpy((void*)&(pMemory_GroupVariationRecord->mGroupVariationRecord), (void*)pGroupVariationRecord, sizeof(GroupVariationRecord));
+   memcpy((void*)&(pMemory_GroupVariationRecord->mGroupVariationRecord[idx-1]), (void*)pGroupVariationRecord, sizeof(GroupVariationRecord));
  else qDebug()<<"Error: pGroupVariationRecord == NULL!";
 
  return pMemory_GroupVariationRecord;
@@ -608,8 +629,11 @@ typedef struct
  pMemory_HeaderRecord->pHeaderRecord = pHeaderRecord;
  pMemory_HeaderRecord->title = (void*)title_HeaderRecord;
 
+ int idx = pMemory_HeaderRecord->counter_inspect;
+ if(idx > COUNT_HeaderRecord) idx = COUNT_HeaderRecord;
+
  if(pHeaderRecord)
-   memcpy((void*)&(pMemory_HeaderRecord->mHeaderRecord), (void*)pHeaderRecord, sizeof(HeaderRecord));
+   memcpy((void*)&(pMemory_HeaderRecord->mHeaderRecord[idx-1]), (void*)pHeaderRecord, sizeof(HeaderRecord));
  else qDebug()<<"Error: pHeaderRecord == NULL!";
 
  return pMemory_HeaderRecord;
@@ -859,3 +883,64 @@ typedef struct
  return pMemory_LinkHeaderFields;
 }
 //-------------------LinkHeaderFields------------------------
+//-------------------RangeHeader------------------------
+Memory_RangeHeader*  MEMORY_RangeHeader(Memory_RangeHeader* pMemory_RangeHeader, uint16_t titleSpace, RangeHeader* pRangeHeader);
+
+static const 
+void *title_RangeHeader[] =
+{
+  (void*)"RangeHeader"
+};
+
+Memory_RangeHeader* pMemory_RangeHeader_1;
+Memory_RangeHeader* pMemory_RangeHeader_2;
+Memory_RangeHeader* pMemory_RangeHeader_3;
+
+static Memory_RangeHeader mMemory_RangeHeader_1;
+static Memory_RangeHeader mMemory_RangeHeader_2;
+static Memory_RangeHeader mMemory_RangeHeader_3;
+
+Memory_RangeHeader*  MEMORY_RangeHeader_1(uint16_t titleSpace, RangeHeader* pRangeHeader)
+{
+qDebug()<<"            ---MEMORY_RangeHeader_1---";
+ return  MEMORY_RangeHeader(&mMemory_RangeHeader_1, titleSpace, pRangeHeader);
+}
+Memory_RangeHeader*  MEMORY_RangeHeader_2(uint16_t titleSpace, RangeHeader* pRangeHeader)
+{
+qDebug()<<"            ---MEMORY_RangeHeader_2---";
+ return  MEMORY_RangeHeader(&mMemory_RangeHeader_2, titleSpace, pRangeHeader);
+}
+Memory_RangeHeader*  MEMORY_RangeHeader_3(uint16_t titleSpace, RangeHeader* pRangeHeader)
+{
+qDebug()<<"            ---MEMORY_RangeHeader_3---";
+ return  MEMORY_RangeHeader(&mMemory_RangeHeader_3, titleSpace, pRangeHeader);
+}
+
+Memory_RangeHeader*  MEMORY_RangeHeader(Memory_RangeHeader* pMemory_RangeHeader, uint16_t titleSpace, RangeHeader* pRangeHeader)
+{
+/*
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ RangeHeader* pRangeHeader;
+ void* title;
+
+ RangeHeader mRangeHeader;
+} Memory_RangeHeader;
+*/
+
+ pMemory_RangeHeader->counter_inspect++;
+ pMemory_RangeHeader->titleSpace = titleSpace;
+ pMemory_RangeHeader->pRangeHeader = pRangeHeader;
+ pMemory_RangeHeader->title = (void*)title_RangeHeader;
+
+ int idx = pMemory_RangeHeader->counter_inspect;
+ if(idx > COUNT_RangeHeader) idx = COUNT_RangeHeader;
+ if(pRangeHeader)
+    memcpy((void*)&(pMemory_RangeHeader->mRangeHeader[idx-1]), (void*)pRangeHeader, sizeof(RangeHeader));
+ else qDebug()<<"Error: pRangeHeader == NULL!";
+
+ return pMemory_RangeHeader;
+}
+//-------------------RangeHeader------------------------

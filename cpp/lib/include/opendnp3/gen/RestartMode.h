@@ -45,10 +45,13 @@
 enum RestartMode 
 {
   /// Device does not support restart
+/// Устройство не поддерживает перезагрузку
   RestartMode_UNSUPPORTED = 0,
   /// Supports restart, and time returned is a fine time delay
+/// Поддерживает перезапуск, возвращаемое время представляет собой точную задержку
   RestartMode_SUPPORTED_DELAY_FINE = 1,
   /// Supports restart, and time returned is a coarse time delay
+/// Поддерживает перезапуск, возвращаемое время представляет собой грубую задержку
   RestartMode_SUPPORTED_DELAY_COARSE = 2
 };
 

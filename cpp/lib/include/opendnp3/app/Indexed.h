@@ -205,8 +205,7 @@ typedef struct
 void Indexed_for_Binary_in_Indexed_for_BinaryOver1(Indexed_for_Binary *pIndexed_for_Binary);
 void Indexed_for_Binary_in_Indexed_for_BinaryOver2(Indexed_for_Binary *pIndexed_for_Binary,
     Binary* value_, uint16_t index_);
-Indexed_for_Binary WithIndex_in_Indexed_for_Binary(
-  Binary* value, uint16_t index);
+Indexed_for_Binary WithIndex_in_Indexed_for_Binary(Binary* value, uint16_t index);
 //------------------------------------Indexed_for_Binary---------------------------------------------------------
 //------------------------------------Indexed_for_DoubleBitBinary---------------------------------------------------------
 /**
@@ -411,6 +410,7 @@ Indexed_for_AnalogCommandEvent WithIndex_in_Indexed_for_AnalogCommandEvent(
  * A simple tuple for pairing Values with an index
  */
 ////template<class T> class Indexed
+/*
 typedef struct
 {
 ////public:
@@ -427,12 +427,14 @@ void Indexed_for_Group2Var1_in_Indexed_for_Group2Var1Over2(Indexed_for_Group2Var
     Group2Var1* value_, uint16_t index_);
 Indexed_for_Group2Var1 WithIndex_in_Indexed_for_Group2Var1(
   Group2Var1* value, uint16_t index);
+*/
 //------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
 //------------------------------------Indexed_for_Group1Var2---------------------------------------------------------
 /**
  * A simple tuple for pairing Values with an index
  */
 ////template<class T> class Indexed
+/*
 typedef struct
 {
 ////public:
@@ -449,6 +451,7 @@ void Indexed_for_Group1Var2_in_Indexed_for_Group1Var2Over2(Indexed_for_Group1Var
     Group1Var2* value_, uint16_t index_);
 Indexed_for_Group1Var2 WithIndex_in_Indexed_for_Group1Var2(
   Group1Var2* value, uint16_t index);
+*/
 //------------------------------------Indexed_for_Group1Var2---------------------------------------------------------
 
 ////} // namespace opendnp3

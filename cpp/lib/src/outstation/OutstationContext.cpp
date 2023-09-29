@@ -102,12 +102,8 @@ void OContext_in_OContext(OContext *pOContext,
   pOContext->commandHandler = commandHandler;
   pOContext->application = application;
 
-//qDebug()<<"OContext_in_OContext1";
-
 ////      pOContext->eventBuffer(config->eventBufferConfig),
   EventBuffer_in_EventBufferOver2(&(pOContext->eventBuffer), &(config->eventBufferConfig));
-
-//qDebug()<<"OContext_in_OContext1.1";
 
 //  void  Database_in_Database(Database *pDatabase,
 //             DatabaseConfig* config,
@@ -120,7 +116,6 @@ void OContext_in_OContext(OContext *pOContext,
                        &(pOContext->eventBuffer.iIEventReceiver),
                        &(pOContext->application->iIDnpTimeSource),
                        config->params.typesAllowedInClass0);
-//qDebug()<<"OContext_in_OContext2";
 
 // void ResponseContext_in_ResponseContext(ResponseContext *pResponseContext, IResponseLoader* staticLoader, IResponseLoader* eventLoader);
 ////      pOContext->rspContext(database, eventBuffer),
@@ -142,8 +137,6 @@ void OContext_in_OContext(OContext *pOContext,
 ////      pOContext->sol(config->params.maxTxFragSize),
   OutstationSolState_in_OutstationSolState(&(pOContext->sol), config->params.maxTxFragSize);
 
-//qDebug()<<"OContext_in_OContext3";
-
 //  void  OutstationUnsolState_in_OutstationUnsolState(OutstationUnsolState *pOutstationUnsolState, uint32_t maxTxSize);
 ////      pOContext->unsol(config->params.maxTxFragSize),
   OutstationUnsolState_in_OutstationUnsolState(&(pOContext->unsol), config->params.maxTxFragSize);
@@ -154,31 +147,26 @@ void OContext_in_OContext(OContext *pOContext,
 
   pOContext->shouldCheckForUnsolicited = false;
 
-//qDebug()<<"OContext_in_OContext4";
-
   pPointerGlobal1 = pOContext;
 //     OutstationState* Inst_in_StateIdle_static(void);
   pOContext->state = Inst_in_StateIdle_static();//// = &StateIdle::Inst();
 
   EventBuffer_in_EventBufferOver1(&(pOContext->eventBuffer));
   OutstationParams_in_OutstationParams(&(pOContext->params));
-  IINField_in_IINFieldOver1(&(pOContext->staticIIN));
+
   RequestHistory_in_RequestHistory(&(pOContext->history));
   ControlState_in_ControlStateOver1(&(pOContext->control));
   TimeSyncState_in_TimeSyncState(&(pOContext->timeTimeSyncState));
-  OutstationSolState_in_OutstationSolState(&(pOContext->sol),       config->params.maxTxFragSize);
-  OutstationUnsolState_in_OutstationUnsolState(&(pOContext->unsol), config->params.maxTxFragSize);
+
+  Settable_for_LinkBroadcastAddress_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived));
 
   setParentPointer_in_IUpDown(&(pOContext->iIUpperLayer.iIUpDown), pOContext);
   setParentPointer_in_IUpperLayer(&(pOContext->iIUpperLayer), pOContext);
-
-//qDebug()<<"OContext_in_OContext5";
 
   pOContext->iIUpperLayer.iIUpDown.pOnLowerLayerUp_in_IUpDown = OnLowerLayerUp_in_OContext_override;
   pOContext->iIUpperLayer.iIUpDown.pOnLowerLayerDown_in_IUpDown = OnLowerLayerDown_in_OContext_override;
   pOContext->iIUpperLayer.pOnReceive_in_IUpperLayer = OnReceive_in_OContext_override;
   pOContext->iIUpperLayer.pOnTxReady_in_IUpperLayer = OnTxReady_in_OContext_override;
-
 }
 
 boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
@@ -186,6 +174,7 @@ boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
   if (pOContext->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "already online");
+    std::cout<<"SIMPLE_LOG_BLOCK(logger, flags::ERR, 'already online')"<<std::endl;
     return false;
   }
 
@@ -203,6 +192,7 @@ boolean OnLowerLayerDown_in_OContext(OContext* pOContext)
   if (!(pOContext->isOnline))
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "already offline");
+    std::cout<<"SIMPLE_LOG_BLOCK(logger, flags::ERR, 'already offline')"<<std::endl;
     return false;
   }
 
@@ -252,10 +242,11 @@ std::cout<<"OnReceive_in_OContext1"<<std::endl;
   if (!(pOContext->isOnline))
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "ignoring received data while offline");
+    std::cout<<"SIMPLE_LOG_BLOCK(this->logger, flags::ERR, 'ignoring received data while offline')"<<std::endl;
     return false;
   }
 
-//pMemory_Message_2=  MEMORY_Message_2(0, message);
+//pMemory_Message_1=  MEMORY_Message_1(0, message);
 
 //    boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message);
 ////    this->ProcessMessage(message);
@@ -406,6 +397,8 @@ std::cout<<"ProcessObjects_in_OContext2"<<std::endl;
   {
     // this is the only request we process while we are transmitting
     // because it doesn't require a response of any kind
+    // это единственный запрос, который мы обрабатываем во время передачи
+     // потому что это не требует никакого ответа
 //    boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////        return this->ProcessRequestNoAck(request);
     return ProcessRequestNoAck_in_OContext(pOContext, request);
@@ -443,6 +436,7 @@ std::cout<<"ProcessRequest_in_OContext1"<<std::endl;
   {
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Ignoring unsol with invalid function code: %s",
 ////                         FunctionCodeSpec::to_human_string(request.header.function));
+    std::cout<<"FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring unsol with invalid function code: %s'"<<std::endl;
     return false;
   }
 
@@ -490,9 +484,11 @@ std::cout<<"BeginResponseTx_in_OContext2"<<std::endl;
 ////    this->BeginTx(destination, data);
   BeginTx_in_OContext(pOContext, destination, &data);
 
+std::cout<<"BeginResponseTx_in_OContext3"<<std::endl;
 ////    if (response.GetControl().CON)
   if (GetControl_in_APDUWrapper(&(response->aAPDUWrapper)).CON)
   {
+std::cout<<"BeginResponseTx_in_OContext4"<<std::endl;
 //    void RestartSolConfirmTimer_in_OContext(OContext *pOContext);
 ////        this->RestartSolConfirmTimer();
     RestartSolConfirmTimer_in_OContext(pOContext);
@@ -827,12 +823,20 @@ std::cout<<"RespondToNonReadRequest_in_OContext1"<<std::endl;
 ////    auto iin = this->HandleNonReadResponse(request.header, request.objects, writer);
   IINField iin = HandleNonReadResponse_in_OContext(pOContext, &(request->header), &(request->objects), &writer);
 
+//pMemory_IINField_1 = MEMORY_IINField_1(0, &iin);
+
 //    void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications);
 //    IINField GetResponseIIN_in_OContext(OContext *pOContext);
 //    IINField operatorOR_in_IINField(IINField *pIINField, IINField* aIIN);
 ////    response.SetIIN(iin | this->GetResponseIIN());
   IINField temp = GetResponseIIN_in_OContext(pOContext);
+
+//pMemory_IINField_1 = MEMORY_IINField_1(0, &temp);
+
   IINField temp2 = operatorOR_in_IINField(&iin, &temp);
+
+//pMemory_IINField_1 = MEMORY_IINField_1(0, &temp2);
+
   SetIIN_in_APDUResponse(&response, &temp2);
 
 //   OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t destination, APDUResponse* response);
@@ -841,7 +845,6 @@ std::cout<<"RespondToNonReadRequest_in_OContext2"<<std::endl;
   return BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
 }
 
-///*
 ////OutstationState& OContext::RespondToReadRequest(const ParsedRequest& request)
 OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
@@ -871,13 +874,18 @@ std::cout<<"RespondToReadRequest_in_OContext1"<<std::endl;
   SetControl_in_APDUWrapper(&(response.aAPDUWrapper), result.second);
 ////    response.SetIIN(result.first | this->GetResponseIIN());
   IINField temp = GetResponseIIN_in_OContext(pOContext);
+
+//pMemory_IINField_1 = MEMORY_IINField_1(0, &temp);
+
   IINField temp2 = operatorOR_in_IINField(&(result.first), &temp);
+
+//pMemory_IINField_1 = MEMORY_IINField_1(0, &temp2);
+
   SetIIN_in_APDUResponse(&response, &temp2);
 
 ////    return this->BeginResponseTx(request.addresses.source, response);
   return BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
 }
-//*/
 
 ////OutstationState& OContext::ContinueMultiFragResponse(const Addresses& addresses, const AppSeqNum& seq)
 OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addresses* addresses, AppSeqNum* seq)
@@ -893,7 +901,7 @@ OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addr
   AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext), &writer);
 
 ////    control.SEQ = seq;
-  control.SEQ = seq->seq;//*seq;
+  control.SEQ = seq->seq;// *seq;
 ////    response.SetControl(control);
   SetControl_in_APDUWrapper(&(response.aAPDUWrapper), control);
 
@@ -916,15 +924,20 @@ boolean CanTransmit_in_OContext(OContext *pOContext)
 ////IINField OContext::GetResponseIIN()
 IINField GetResponseIIN_in_OContext(OContext *pOContext)
 {
+std::cout<<""<<std::endl;
+std::cout<<"GetResponseIIN_in_OContext1"<<std::endl;
 //    ApplicationIIN GetApplicationIIN_in_IOutstationApplication(IOutstationApplication*);
 //    IINField GetDynamicIIN_in_OContext(OContext *pOContext);
 // IINField ToIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN);
 ////    return this->staticIIN | this->GetDynamicIIN() | this->application->GetApplicationIIN().ToIIN();
   IINField temp1 = GetDynamicIIN_in_OContext(pOContext);
+
   IINField temp2 = operatorOR_in_IINField(&(pOContext->staticIIN), &temp1);
+
   ApplicationIIN temp = GetApplicationIIN_in_IOutstationApplication(pOContext->application);
   IINField temp3 = ToIIN_in_ApplicationIIN(&temp);
   IINField temp4 = operatorOR_in_IINField(&temp2, &temp3);
+
   return temp4;
 }
 
@@ -991,10 +1004,13 @@ void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_
 
 void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse* response)
 {
+std::cout<<""<<std::endl;
+std::cout<<"CheckForBroadcastConfirmation_in_OContext1"<<std::endl;
 //boolean is_set_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
 ////    if (lastBroadcastMessageReceived.is_set())
   if (is_set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived)))
   {
+std::cout<<"CheckForBroadcastConfirmation_in_OContext2"<<std::endl;
 //    void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications);
 //    IINField GetIIN_in_APDUResponse(APDUResponse *pAPDUResponse);
 //   void IINField_in_IINFieldOver2(IINField *pIINField, IINBit_uint8_t bit);
@@ -1048,6 +1064,7 @@ std::cout<<"ProcessMessage_in_OContext1"<<std::endl;
   }
 
 ////    FORMAT_HEX_BLOCK(this->logger, flags::APP_HEX_RX, message.payload, 18, 18);
+  std::cout<<"FORMAT_HEX_BLOCK(this->logger, flags::APP_HEX_RX, message.payload, 18, 18)"<<std::endl;
 
 ////    if (message.addresses.IsBroadcast())
 std::cout<<"ProcessMessage_in_OContext2"<<std::endl;
@@ -1077,12 +1094,14 @@ std::cout<<"ProcessMessage_in_OContext3"<<std::endl;
   if (!IsFirAndFin_in_AppControlField(&(result.header.control)))
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::WARN, "Ignoring fragment. Requests must have FIR/FIN == 1");
+    std::cout<<"SIMPLE_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring fragment. Requests must have FIR/FIN == 1')"<<std::endl;
     return false;
   }
 
   if (result.header.control.CON)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::WARN, "Ignoring fragment. Requests cannot request confirmation");
+    std::cout<<"SIMPLE_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring fragment. Requests cannot request confirmation')"<<std::endl;
     return false;
   }
 
@@ -1124,30 +1143,38 @@ IUpdateHandler* GetUpdateHandler_in_OContext(OContext *pOContext)
 ////bool OContext::ProcessBroadcastRequest(const ParsedRequest& request)
 boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
+std::cout<<""<<std::endl;
+std::cout<<"ProcessBroadcastRequest_in_OContext1"<<std::endl;
+
   switch (request->header.function)
   {
   case (FunctionCode_WRITE):
+  std::cout<<"FunctionCode_WRITE"<<std::endl;
 //   IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        this->HandleWrite(request.objects);
     HandleWrite_in_OContext(pOContext, &(request->objects));
     return true;
   case (FunctionCode_DIRECT_OPERATE_NR):
+  std::cout<<"FunctionCode_DIRECT_OPERATE_NR"<<std::endl;
 //   IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter);
 ////        this->HandleDirectOperate(request.objects, OperateType::DirectOperateNoAck, nullptr);
     HandleDirectOperate_in_OContext(pOContext, &(request->objects), OperateType_DirectOperateNoAck, NULL);
     return true;
   case (FunctionCode_IMMED_FREEZE_NR):
+  std::cout<<"FunctionCode_IMMED_FREEZE_NR"<<std::endl;
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        this->HandleFreeze(request.objects);
     HandleFreeze_in_OContext(pOContext, &(request->objects));
     return true;
   case (FunctionCode_FREEZE_CLEAR_NR):
+  std::cout<<"FunctionCode_FREEZE_CLEAR_NR"<<std::endl;
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        this->HandleFreezeAndClear(request.objects);
     HandleFreezeAndClear_in_OContext(pOContext, &(request->objects));
     return true;
   case (FunctionCode_ASSIGN_CLASS):
   {
+  std::cout<<"FunctionCode_ASSIGN_CLASS"<<std::endl;
 //     boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
 ////        if (this->application->SupportsAssignClass())
     if (SupportsAssignClass_in_IOutstationApplication(pOContext->application))
@@ -1164,6 +1191,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   }
   case (FunctionCode_RECORD_CURRENT_TIME):
   {
+  std::cout<<"FunctionCode_RECORD_CURRENT_TIME"<<std::endl;
 //    boolean is_not_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
 ////        if (request.objects.is_not_empty())
     if (is_not_empty_in_HasLength_for_Uint16_t(&((request->objects).hHasLength)))
@@ -1180,6 +1208,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   }
   case (FunctionCode_DISABLE_UNSOLICITED):
   {
+  std::cout<<"FunctionCode_DISABLE_UNSOLICITED"<<std::endl;
 ////        if (this->params.allowUnsolicited)
     if (pOContext->params.allowUnsolicited)
     {
@@ -1195,6 +1224,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   }
   case (FunctionCode_ENABLE_UNSOLICITED):
   {
+  std::cout<<"FunctionCode_ENABLE_UNSOLICITED"<<std::endl;
     if (pOContext->params.allowUnsolicited)
     {
 //   IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
@@ -1210,6 +1240,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   default:
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Ignoring broadcast on function code: %s",
 ////                         FunctionCodeSpec::to_string(request.header.function));
+    std::cout<<"FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring broadcast on function code: %s'"<<std::endl;
     return false;
   }
 }
@@ -1217,20 +1248,26 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 ////bool OContext::ProcessRequestNoAck(const ParsedRequest& request)
 boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
+std::cout<<""<<std::endl;
+std::cout<<"ProcessRequestNoAck_in_OContext1"<<std::endl;
+
   switch (request->header.function)
   {
   case (FunctionCode_DIRECT_OPERATE_NR):
+    std::cout<<"FunctionCode_DIRECT_OPERATE_NR"<<std::endl;
 //   IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter)
 ////        this->HandleDirectOperate(request.objects, OperateType::DirectOperateNoAck,
 ////                                  nullptr); // no object writer, this is a no ack code
     HandleDirectOperate_in_OContext(pOContext, &(request->objects), OperateType_DirectOperateNoAck, NULL);
     return true;
   case (FunctionCode_IMMED_FREEZE_NR):
+    std::cout<<"FunctionCode_IMMED_FREEZE_NR"<<std::endl;
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
 ////        this->HandleFreeze(request.objects);
     HandleFreeze_in_OContext(pOContext, &(request->objects));
     return true;
   case (FunctionCode_FREEZE_CLEAR_NR):
+    std::cout<<"FunctionCode_FREEZE_CLEAR_NR"<<std::endl;
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
 ////        this->HandleFreezeAndClear(request.objects);
     HandleFreezeAndClear_in_OContext(pOContext, &(request->objects));
@@ -1238,6 +1275,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
   default:
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Ignoring NR function code: %s",
 ////                         FunctionCodeSpec::to_human_string(request.header.function));
+    std::cout<<"FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring NR function code: %s'"<<std::endl;
     return false;
   }
 }
@@ -1245,41 +1283,52 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
 ////IINField OContext::HandleNonReadResponse(const APDUHeader& header, const ser4cpp::rseq_t& objects, HeaderWriter& writer)
 IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* header, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
 {
+  std::cout<<""<<std::endl;
+  std::cout<<"HandleNonReadResponse_in_OContext1"<<std::endl;
   switch (header->function)
   {
   case (FunctionCode_WRITE):
 //   IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        return this->HandleWrite(objects);
+    std::cout<<"FunctionCode_WRITE"<<std::endl;
     return HandleWrite_in_OContext(pOContext, objects);
   case (FunctionCode_SELECT):
 //   IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////        return this->HandleSelect(objects, writer);
+    std::cout<<"FunctionCode_SELECT"<<std::endl;
     return HandleSelect_in_OContext(pOContext, objects, writer);
   case (FunctionCode_OPERATE):
 //   IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////        return this->HandleOperate(objects, writer);
+    std::cout<<"FunctionCode_OPERATE"<<std::endl;
     return HandleOperate_in_OContext(pOContext, objects, writer);
   case (FunctionCode_DIRECT_OPERATE):
 //   IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter);
 ////        return this->HandleDirectOperate(objects, OperateType::DirectOperate, &writer);
+    std::cout<<"FunctionCode_DIRECT_OPERATE"<<std::endl;
     return HandleDirectOperate_in_OContext(pOContext, objects, OperateType_DirectOperate, writer);
   case (FunctionCode_COLD_RESTART):
 //   IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, boolean isWarmRestart, HeaderWriter* pWriter);
 ////        return this->HandleRestart(objects, false, &writer);
+    std::cout<<"FunctionCode_COLD_RESTART"<<std::endl;
     return HandleRestart_in_OContext(pOContext, objects, false, writer);
   case (FunctionCode_WARM_RESTART):
 ////        return this->HandleRestart(objects, true, &writer);
+    std::cout<<"FunctionCode_WARM_RESTART"<<std::endl;
     return HandleRestart_in_OContext(pOContext, objects, true, writer);
   case (FunctionCode_ASSIGN_CLASS):
 //   IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        return this->HandleAssignClass(objects);
+    std::cout<<"FunctionCode_ASSIGN_CLASS"<<std::endl;
     return HandleAssignClass_in_OContext(pOContext, objects);
   case (FunctionCode_DELAY_MEASURE):
 //   IINField HandleDelayMeasure_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////        return this->HandleDelayMeasure(objects, writer);
+    std::cout<<"FunctionCode_DELAY_MEASURE"<<std::endl;
     return HandleDelayMeasure_in_OContext(pOContext, objects, writer);
   case (FunctionCode_RECORD_CURRENT_TIME):
   {
+    std::cout<<"FunctionCode_RECORD_CURRENT_TIME"<<std::endl;
 //    boolean is_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
 //   IINField HandleRecordCurrentTime_in_OContext(OContext *pOContext);
 ////        return objects.is_empty() ? this->HandleRecordCurrentTime() : IINField(IINBit::PARAM_ERROR);
@@ -1290,6 +1339,8 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   }
   case (FunctionCode_DISABLE_UNSOLICITED):
   {
+    std::cout<<"FunctionCode_DISABLE_UNSOLICITED"<<std::endl;
+
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
 //   IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
@@ -1299,6 +1350,8 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   }
   case (FunctionCode_ENABLE_UNSOLICITED):
   {
+    std::cout<<"FunctionCode_ENABLE_UNSOLICITED"<<std::endl;
+
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
 //   IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
@@ -1307,15 +1360,18 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
            : iIINField;////IINField(IINBit::FUNC_NOT_SUPPORTED);
   }
   case (FunctionCode_IMMED_FREEZE):
+    std::cout<<"FunctionCode_IMMED_FREEZE"<<std::endl;
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        return this->HandleFreeze(objects);
     return HandleFreeze_in_OContext(pOContext, objects);
   case (FunctionCode_FREEZE_CLEAR):
+    std::cout<<"FunctionCode_FREEZE_CLEAR"<<std::endl;
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        return this->HandleFreezeAndClear(objects);
     return HandleFreezeAndClear_in_OContext(pOContext, objects);
   default:
   {
+    std::cout<<"header->function-IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
 ////       return IINField(IINBit::FUNC_NOT_SUPPORTED);
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
@@ -1324,7 +1380,6 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   }
 }
 
-///*
 ////ser4cpp::Pair<IINField, AppControlField> OContext::HandleRead(const ser4cpp::rseq_t& objects, HeaderWriter& writer)
 PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer)
 {
@@ -1374,8 +1429,8 @@ std::cout<<"HandleRead_in_OContext3.2"<<std::endl;
     PairSer4cpp_for_IINField_AppControlField pPairSer4cpp_for_IINField_AppControlField;
     PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(&pPairSer4cpp_for_IINField_AppControlField,
         &temp,
-        &control
-                                                                                        );
+        &control);
+
 std::cout<<"HandleRead_in_OContext4"<<std::endl;
     return pPairSer4cpp_for_IINField_AppControlField;
   }
@@ -1398,7 +1453,6 @@ std::cout<<"HandleRead_in_OContext5"<<std::endl;
                                                                                       );
   return pPairSer4cpp_for_IINField_AppControlField;
 }
-//*/
 
 ////IINField OContext::HandleWrite(const ser4cpp::rseq_t& objects)
 IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
@@ -1464,6 +1518,7 @@ std::cout<<"HandleDirectOperate_in_OContext1"<<std::endl;
   CommandResponseHandler handler;
   CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params.maxControlsPerRequest, &(adapter.iICommandAction), pWriter);
 
+std::cout<<"HandleDirectOperate_in_OContext2"<<std::endl;
 //    ParseResult_uint8_t Parse_in_APDUParser_static(
 //                             RSeq_for_Uint16_t *buffer,
 //                             IAPDUHandler *handler);
@@ -1472,7 +1527,10 @@ std::cout<<"HandleDirectOperate_in_OContext1"<<std::endl;
                                  objects,
                                  &(handler.iIAPDUHandler));
 
+std::cout<<"HandleDirectOperate_in_OContext3"<<std::endl;
+
   pOContext->shouldCheckForUnsolicited = true;
+
   return (result == ParseResult_OK) ?
 //  IINField Errors_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler);
          ////handler.Errors()
@@ -1494,6 +1552,7 @@ std::cout<<"HandleSelect_in_OContext1"<<std::endl;
   {
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Igonring command request due to oversized payload size of %zu",
 ////                         objects.length());
+    std::cout<<"FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Igonring command request due to oversized payload size of %zu'"<<std::endl;
 ////        return IINField(IINBit::PARAM_ERROR);
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -1550,6 +1609,7 @@ std::cout<<"HandleOperate_in_OContext1"<<std::endl;
   {
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Igonring command request due to oversized payload size of %zu",
 ////                         objects.length());
+    std::cout<<"FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Igonring command request due to oversized payload size of %zu'"<<std::endl;
 ////        return IINField(IINBit::PARAM_ERROR);
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -1656,10 +1716,13 @@ IINField HandleRecordCurrentTime_in_OContext(OContext *pOContext)
 ////IINField OContext::HandleRestart(const ser4cpp::rseq_t& objects, bool isWarmRestart, HeaderWriter* pWriter)
 IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, boolean isWarmRestart, HeaderWriter* pWriter)
 {
+std::cout<<""<<std::endl;
+std::cout<<"HandleRestart_in_OContext1"<<std::endl;
 //    boolean is_not_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
 ////    if (objects.is_not_empty())
   if (is_not_empty_in_HasLength_for_Uint16_t(&(objects->hHasLength)))
   {
+std::cout<<"HandleRestart_in_OContext2"<<std::endl;
 ////        return IINField(IINBit::PARAM_ERROR);
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -1673,10 +1736,12 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
                              WarmRestartSupport_in_IOutstationApplication(pOContext->application) :
                              ColdRestartSupport_in_IOutstationApplication(pOContext->application);
 
+std::cout<<"HandleRestart_in_OContext3"<<std::endl;
   switch (mode)
   {
   case (RestartMode_UNSUPPORTED):
   {
+std::cout<<"HandleRestart_in_OContext4"<<std::endl;
 ////        return IINField(IINBit::FUNC_NOT_SUPPORTED);
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
@@ -1684,6 +1749,7 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
   }
   case (RestartMode_SUPPORTED_DELAY_COARSE):
   {
+std::cout<<"HandleRestart_in_OContext5"<<std::endl;
 //    uint16_t WarmRestart_in_IOutstationApplication(IOutstationApplication*);
 //    uint16_t ColdRestart_in_IOutstationApplication(IOutstationApplication*);
 ////        auto delay = isWarmRestart ? this->application->WarmRestart() : this->application->ColdRestart();
@@ -1692,6 +1758,8 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
                      ColdRestart_in_IOutstationApplication(pOContext->application);
     if (pWriter)
     {
+std::cout<<"HandleRestart_in_OContext6"<<std::endl;
+
       Group52Var1 coarse;
       Group52Var1_in_Group52Var1(&coarse);
 
@@ -1707,12 +1775,15 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
   }
   default:
   {
+std::cout<<"HandleRestart_in_OContext7"<<std::endl;
 ////        auto delay = isWarmRestart ? this->application->WarmRestart() : this->application->ColdRestart();
     uint16_t delay = isWarmRestart ?
                      WarmRestart_in_IOutstationApplication(pOContext->application):
                      ColdRestart_in_IOutstationApplication(pOContext->application);
     if (pWriter)
     {
+std::cout<<"HandleRestart_in_OContext8"<<std::endl;
+
       Group52Var2 fine;
       Group52Var2_in_Group52Var2(&fine);
       fine.time_uint16_t = delay;

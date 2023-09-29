@@ -31,7 +31,7 @@ using namespace ser4cpp;
 
 #define SUITE(name) "OutstationTestSuite - " name
 
-TEST_CASE(SUITE("UnsupportedFunction"))
+TEST_CASE(SUITE("1UnsupportedFunction"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -41,7 +41,7 @@ TEST_CASE(SUITE("UnsupportedFunction"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 01"); // IIN = device restart + func not supported
 }
 
-TEST_CASE(SUITE("ApplicationIINBits"))
+TEST_CASE(SUITE("2ApplicationIINBits"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -57,7 +57,7 @@ TEST_CASE(SUITE("ApplicationIINBits"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 F0 20");
 }
 
-TEST_CASE(SUITE("ReadUnknownObject"))
+TEST_CASE(SUITE("3ReadUnknownObject"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -68,7 +68,7 @@ TEST_CASE(SUITE("ReadUnknownObject"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 02"); // IIN = device restart + unknown object
 }
 
-TEST_CASE(SUITE("ColdRestart"))
+TEST_CASE(SUITE("4ColdRestart"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -86,7 +86,7 @@ TEST_CASE(SUITE("ColdRestart"))
     REQUIRE(t.lower->PopWriteAsHex() == "C1 81 80 00 34 02 07 01 01 00");
 }
 
-TEST_CASE(SUITE("WarmRestart"))
+TEST_CASE(SUITE("5WarmRestart"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -104,7 +104,7 @@ TEST_CASE(SUITE("WarmRestart"))
     REQUIRE(t.lower->PopWriteAsHex() == "C1 81 80 00 34 01 07 01 FF FF");
 }
 
-TEST_CASE(SUITE("NoResponseToNoAckCodes"))
+TEST_CASE(SUITE("6NoResponseToNoAckCodes"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -134,7 +134,7 @@ TEST_CASE(SUITE("NoResponseToNoAckCodes"))
     }
 }
 
-TEST_CASE(SUITE("WriteIIN"))
+TEST_CASE(SUITE("7WriteIIN"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -144,7 +144,7 @@ TEST_CASE(SUITE("WriteIIN"))
     REQUIRE(t.lower->PopWriteAsHex() == hex::EmptyResponse(0));
 }
 
-TEST_CASE(SUITE("WriteIINEnabled"))
+TEST_CASE(SUITE("8WriteIINEnabled"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -154,7 +154,7 @@ TEST_CASE(SUITE("WriteIINEnabled"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 04");
 }
 
-TEST_CASE(SUITE("WriteIINWrongBit"))
+TEST_CASE(SUITE("9WriteIINWrongBit"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -164,7 +164,7 @@ TEST_CASE(SUITE("WriteIINWrongBit"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 04");
 }
 
-TEST_CASE(SUITE("WriteNonWriteObject"))
+TEST_CASE(SUITE("10WriteNonWriteObject"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -174,7 +174,7 @@ TEST_CASE(SUITE("WriteNonWriteObject"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 01");
 }
 
-TEST_CASE(SUITE("DelayMeasure"))
+TEST_CASE(SUITE("11DelayMeasure"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -185,7 +185,7 @@ TEST_CASE(SUITE("DelayMeasure"))
             == "C0 81 80 00 34 02 07 01 00 00"); // response, Grp51Var2, count 1, value == 00 00
 }
 
-TEST_CASE(SUITE("DelayMeasureExtraData"))
+TEST_CASE(SUITE("12DelayMeasureExtraData"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -195,7 +195,7 @@ TEST_CASE(SUITE("DelayMeasureExtraData"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 04"); // param error
 }
 
-TEST_CASE(SUITE("WriteTimeDate - NonLAN"))
+TEST_CASE(SUITE("13WriteTimeDate - NonLAN"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -207,7 +207,7 @@ TEST_CASE(SUITE("WriteTimeDate - NonLAN"))
     REQUIRE(t.application->timestamps.front().msSinceEpoch == 1234);
 }
 
-TEST_CASE(SUITE("WriteTimeDateLAN - Rejects write without prior record current time"))
+TEST_CASE(SUITE("14WriteTimeDateLAN - Rejects write without prior record current time"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -217,7 +217,7 @@ TEST_CASE(SUITE("WriteTimeDateLAN - Rejects write without prior record current t
     REQUIRE(t.lower->PopWriteAsHex() == "C1 81 80 04");        // param error
 }
 
-TEST_CASE(SUITE("WriteTimeDateLAN - Rejects write with bad sequence number"))
+TEST_CASE(SUITE("15WriteTimeDateLAN - Rejects write with bad sequence number"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -231,7 +231,7 @@ TEST_CASE(SUITE("WriteTimeDateLAN - Rejects write with bad sequence number"))
     REQUIRE(t.lower->PopWriteAsHex() == "C2 81 80 04");        // param error
 }
 
-TEST_CASE(SUITE("WriteTimeDateLAN - Accepts write with correct sequence number"))
+TEST_CASE(SUITE("16WriteTimeDateLAN - Accepts write with correct sequence number"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -249,7 +249,7 @@ TEST_CASE(SUITE("WriteTimeDateLAN - Accepts write with correct sequence number")
     REQUIRE(t.application->timestamps.front().msSinceEpoch == 1254); // 1234 + difference of 20
 }
 
-TEST_CASE(SUITE("WriteTimeDateNotAsking"))
+TEST_CASE(SUITE("17WriteTimeDateNotAsking"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -261,7 +261,7 @@ TEST_CASE(SUITE("WriteTimeDateNotAsking"))
     REQUIRE(t.application->timestamps.empty());
 }
 
-TEST_CASE(SUITE("WriteTimeDateMultipleObjects"))
+TEST_CASE(SUITE("18WriteTimeDateMultipleObjects"))
 {
     OutstationConfig cfg;
     OutstationTestObject t(cfg);
@@ -273,7 +273,7 @@ TEST_CASE(SUITE("WriteTimeDateMultipleObjects"))
     REQUIRE(t.application->timestamps.empty());
 }
 
-TEST_CASE(SUITE("BlankIntegrityPoll"))
+TEST_CASE(SUITE("19BlankIntegrityPoll"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -283,7 +283,7 @@ TEST_CASE(SUITE("BlankIntegrityPoll"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00");
 }
 
-TEST_CASE(SUITE("MixedVariationAssignments"))
+TEST_CASE(SUITE("20MixedVariationAssignments"))
 {
     OutstationTestObject t(OutstationConfig(),
                            configure::from({{0, configure::analog(StaticAnalogVariation::Group30Var1)},
@@ -297,7 +297,7 @@ TEST_CASE(SUITE("MixedVariationAssignments"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 1E 01 00 00 00 02 00 00 00 00 1E 02 00 01 01 02 00 00");
 }
 
-TEST_CASE(SUITE("TypesCanBeOmittedFromClass0ViaConfig"))
+TEST_CASE(SUITE("21TypesCanBeOmittedFromClass0ViaConfig"))
 {
     OutstationConfig config;
     config.params.typesAllowedInClass0 = StaticTypeBitField::AllTypes().Except(StaticTypeBitmask::DoubleBinaryInput);
@@ -309,7 +309,7 @@ TEST_CASE(SUITE("TypesCanBeOmittedFromClass0ViaConfig"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 01 02 00 00 00 02");
 }
 
-TEST_CASE(SUITE("octet strings can be returned as part of a class 0 scan"))
+TEST_CASE(SUITE("22octet strings can be returned as part of a class 0 scan"))
 {
     OutstationConfig config;
     config.params.typesAllowedInClass0 = StaticTypeBitField::AllTypes();
@@ -320,7 +320,7 @@ TEST_CASE(SUITE("octet strings can be returned as part of a class 0 scan"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 6E 01 00 00 02 00 00 00");
 }
 
-TEST_CASE(SUITE("static octet strings switch headers if length differs"))
+TEST_CASE(SUITE("23static octet strings switch headers if length differs"))
 {
     OutstationConfig config;
     config.params.typesAllowedInClass0 = StaticTypeBitField::AllTypes();
@@ -338,7 +338,7 @@ TEST_CASE(SUITE("static octet strings switch headers if length differs"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 6E 01 00 00 00 61 6E 02 00 01 01 62 62");
 }
 
-TEST_CASE(SUITE("octet strings can be returned by reading g110v0"))
+TEST_CASE(SUITE("24octet strings can be returned by reading g110v0"))
 {
     OutstationConfig config;
     config.params.typesAllowedInClass0 = StaticTypeBitField::AllTypes();
@@ -349,7 +349,7 @@ TEST_CASE(SUITE("octet strings can be returned by reading g110v0"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 6E 01 00 00 02 00 00 00");
 }
 
-TEST_CASE(SUITE("ReadClass0MultiFragAnalog"))
+TEST_CASE(SUITE("25ReadClass0MultiFragAnalog"))
 {
     OutstationConfig config;
     config.params.maxTxFragSize = 20; // override to use a fragment length of 20
@@ -383,7 +383,7 @@ TEST_CASE(SUITE("ReadClass0MultiFragAnalog"))
     REQUIRE(t.lower->PopWriteAsHex().empty());
 }
 
-TEST_CASE(SUITE("ReadFuncNotSupported"))
+TEST_CASE(SUITE("26ReadFuncNotSupported"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -417,22 +417,22 @@ void TestTimeAndIntervalRead(const std::string& request)
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 32 04 00 00 00 09 00 00 00 00 00 03 00 00 00 05");
 }
 
-TEST_CASE(SUITE("TimeAndIntervalViaIntegrity"))
+TEST_CASE(SUITE("27TimeAndIntervalViaIntegrity"))
 {
     TestTimeAndIntervalRead(hex::IntegrityPoll(0));
 }
 
-TEST_CASE(SUITE("TimeAndIntervalViaDirectRequest"))
+TEST_CASE(SUITE("28TimeAndIntervalViaDirectRequest"))
 {
     TestTimeAndIntervalRead("C0 01 32 04 06");
 }
 
-TEST_CASE(SUITE("TimeAndIntervalViaDirectRangeRequest"))
+TEST_CASE(SUITE("29TimeAndIntervalViaDirectRangeRequest"))
 {
     TestTimeAndIntervalRead("C0 01 32 04 00 00 00");
 }
 
-TEST_CASE(SUITE("TestTimeAndIntervalWrite"))
+TEST_CASE(SUITE("30TestTimeAndIntervalWrite"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, configure::by_count_of::time_and_interval(1));
@@ -451,34 +451,34 @@ TEST_CASE(SUITE("TestTimeAndIntervalWrite"))
 
 // ---- Static data reads ----- //
 
-TEST_CASE(SUITE("ReadGrp1Var0ViaIntegrity"))
+TEST_CASE(SUITE("31ReadGrp1Var0ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 01 00 06", "C0 81 80 00 01 02 00 00 00 02"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("ReadGrp1Var2ViaIntegrity"))
+TEST_CASE(SUITE("32ReadGrp1Var2ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 01 02 06", "C0 81 80 00 01 02 00 00 00 02"); // 1 byte start/stop, packed format
 }
 
-TEST_CASE(SUITE("ReadGrp10Var0ViaIntegrity"))
+TEST_CASE(SUITE("33ReadGrp10Var0ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 0A 00 06", "C0 81 80 00 0A 02 00 00 00 02"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("ReadGrp20Var0ViaIntegrity"))
+TEST_CASE(SUITE("34ReadGrp20Var0ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 14 00 06",
                       "C0 81 80 00 14 01 00 00 00 02 00 00 00 00"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("RreadGrp20Var1ViaIntegrity"))
+TEST_CASE(SUITE("35RreadGrp20Var1ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 14 01 06",
                       "C0 81 80 00 14 01 00 00 00 02 00 00 00 00"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("RreadGrp20Var5ViaIntegrity"))
+TEST_CASE(SUITE("36RreadGrp20Var5ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 14 05 06", "C0 81 80 00 14 05 00 00 00 00 00 00 00"); // 1 byte start/stop, RESTART quality
 }
@@ -489,24 +489,24 @@ TEST_CASE(SUITE("ReadGrp30Var0ViaIntegrity"))
                       "C0 81 80 00 1E 01 00 00 00 02 00 00 00 00"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("ReadGrp30Var1ViaIntegrity"))
+TEST_CASE(SUITE("37ReadGrp30Var1ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 1E 01 06",
                       "C0 81 80 00 1E 01 00 00 00 02 00 00 00 00"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("ReadGrp30Var3ViaIntegrity"))
+TEST_CASE(SUITE("38ReadGrp30Var3ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 1E 03 06", "C0 81 80 00 1E 03 00 00 00 00 00 00 00"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("ReadGrp40Var0ViaIntegrity"))
+TEST_CASE(SUITE("39ReadGrp40Var0ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 28 00 06",
                       "C0 81 80 00 28 01 00 00 00 02 00 00 00 00"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("ReadByRangeHeader"))
+TEST_CASE(SUITE("40ReadByRangeHeader"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, configure::by_count_of::analog_input(10));
@@ -545,7 +545,7 @@ template<class T> void TestStaticCounter(StaticCounterVariation variation, T val
     TestStaticType<Counter>(OutstationConfig(), std::move(database), Counter(value), response);
 }
 
-TEST_CASE(SUITE("ReadGrp1Var1"))
+TEST_CASE(SUITE("41ReadGrp1Var1"))
 {
     OutstationConfig cfg;
     DatabaseConfig database = configure::by_count_of::binary_input(10);
@@ -567,7 +567,7 @@ TEST_CASE(SUITE("ReadGrp1Var1"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 01 01 00 00 09 00 00");
 }
 
-TEST_CASE(SUITE("Group1Var1 is promoted to Group1Var2 if quality not online"))
+TEST_CASE(SUITE("42Group1Var1 is promoted to Group1Var2 if quality not online"))
 {
     DatabaseConfig database = configure::by_count_of::binary_input(2);
 
@@ -585,22 +585,22 @@ TEST_CASE(SUITE("Group1Var1 is promoted to Group1Var2 if quality not online"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 01 02 00 00 01 02 02");
 }
 
-TEST_CASE(SUITE("ReadGrp20Var1"))
+TEST_CASE(SUITE("43ReadGrp20Var1"))
 {
     TestStaticCounter(StaticCounterVariation::Group20Var1, 5, "C0 81 80 00 14 01 00 00 00 01 05 00 00 00");
 }
 
-TEST_CASE(SUITE("ReadGrp20Var2"))
+TEST_CASE(SUITE("44ReadGrp20Var2"))
 {
     TestStaticCounter(StaticCounterVariation::Group20Var2, 5, "C0 81 80 00 14 02 00 00 00 01 05 00");
 }
 
-TEST_CASE(SUITE("ReadGrp20Var5"))
+TEST_CASE(SUITE("45ReadGrp20Var5"))
 {
     TestStaticCounter(StaticCounterVariation::Group20Var5, 5, "C0 81 80 00 14 05 00 00 00 05 00 00 00");
 }
 
-TEST_CASE(SUITE("ReadGrp20Var6"))
+TEST_CASE(SUITE("46ReadGrp20Var6"))
 {
     TestStaticCounter(StaticCounterVariation::Group20Var6, 5, "C0 81 80 00 14 06 00 00 00 05 00");
 }
@@ -612,27 +612,27 @@ template<class T> void TestStaticAnalog(StaticAnalogVariation variation, T value
     TestStaticType<Analog>(OutstationConfig(), std::move(database), Analog(value), response);
 }
 
-TEST_CASE(SUITE("ReadGrp30Var2"))
+TEST_CASE(SUITE("47ReadGrp30Var2"))
 {
     TestStaticAnalog(StaticAnalogVariation::Group30Var2, 100, "C0 81 80 00 1E 02 00 00 00 01 64 00");
 }
 
-TEST_CASE(SUITE("ReadGrp30Var3"))
+TEST_CASE(SUITE("48ReadGrp30Var3"))
 {
     TestStaticAnalog(StaticAnalogVariation::Group30Var3, 65536, "C0 81 80 00 1E 03 00 00 00 00 00 01 00");
 }
 
-TEST_CASE(SUITE("ReadGrp30Var4"))
+TEST_CASE(SUITE("49ReadGrp30Var4"))
 {
     TestStaticAnalog(StaticAnalogVariation::Group30Var4, 100, "C0 81 80 00 1E 04 00 00 00 64 00");
 }
 
-TEST_CASE(SUITE("ReadGrp30Var5"))
+TEST_CASE(SUITE("50ReadGrp30Var5"))
 {
     TestStaticAnalog(StaticAnalogVariation::Group30Var5, 95.6, "C0 81 80 00 1E 05 00 00 00 01 33 33 BF 42");
 }
 
-TEST_CASE(SUITE("ReadGrp30Var6"))
+TEST_CASE(SUITE("51ReadGrp30Var6"))
 {
     TestStaticAnalog(StaticAnalogVariation::Group30Var6, -20, "C0 81 80 00 1E 06 00 00 00 01 00 00 00 00 00 00 34 C0");
 }
@@ -649,7 +649,7 @@ template<class T> void TestStaticBinaryOutputStatus(T value, const std::string& 
     REQUIRE((t.lower->PopWriteAsHex() == response));
 }
 
-TEST_CASE(SUITE("ReadGrp10Var2"))
+TEST_CASE(SUITE("52ReadGrp10Var2"))
 {
     TestStaticBinaryOutputStatus<bool>(true, "C0 81 80 00 0A 02 00 00 00 81");
 }
@@ -663,31 +663,31 @@ void TestStaticAnalogOutputStatus(StaticAnalogOutputStatusVariation variation, T
     TestStaticType<AnalogOutputStatus>(OutstationConfig(), std::move(database), AnalogOutputStatus(value), response);
 }
 
-TEST_CASE(SUITE("ReadGrp40Var1"))
+TEST_CASE(SUITE("53ReadGrp40Var1"))
 {
     TestStaticAnalogOutputStatus(StaticAnalogOutputStatusVariation::Group40Var1, 100,
                                  "C0 81 80 00 28 01 00 00 00 01 64 00 00 00");
 }
 
-TEST_CASE(SUITE("ReadGrp40Var2"))
+TEST_CASE(SUITE("54ReadGrp40Var2"))
 {
     TestStaticAnalogOutputStatus(StaticAnalogOutputStatusVariation::Group40Var2, 100,
                                  "C0 81 80 00 28 02 00 00 00 01 64 00");
 }
 
-TEST_CASE(SUITE("ReadGrp40Var3"))
+TEST_CASE(SUITE("55ReadGrp40Var3"))
 {
     TestStaticAnalogOutputStatus(StaticAnalogOutputStatusVariation::Group40Var3, 95.6,
                                  "C0 81 80 00 28 03 00 00 00 01 33 33 BF 42");
 }
 
-TEST_CASE(SUITE("ReadGrp40Var4"))
+TEST_CASE(SUITE("56ReadGrp40Var4"))
 {
     TestStaticAnalogOutputStatus(StaticAnalogOutputStatusVariation::Group40Var4, -20.0,
                                  "C0 81 80 00 28 04 00 00 00 01 00 00 00 00 00 00 34 C0");
 }
 
-TEST_CASE(SUITE("read g1v2 using qualifer 0x17"))
+TEST_CASE(SUITE("57read g1v2 using qualifer 0x17"))
 {
     OutstationConfig config;
     config.params.allowUnsolicited = false;
@@ -698,7 +698,7 @@ TEST_CASE(SUITE("read g1v2 using qualifer 0x17"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 01 02 00 00 00 02 01 02 00 02 02 02");
 }
 
-TEST_CASE(SUITE("read g1v2 using qualifer 0x28"))
+TEST_CASE(SUITE("58read g1v2 using qualifer 0x28"))
 {
     OutstationConfig config;
     config.params.allowUnsolicited = false;

@@ -17,6 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//#include <QtWidgets>
 #include "header.h"
 #include "APDUWrapper.h"
 
@@ -97,8 +98,8 @@ uint16_t Size_in_APDUWrapper(APDUWrapper *pAPDUWrapper)
 RSeq_for_Uint16_t  ToRSeq_in_APDUWrapper(APDUWrapper *pAPDUWrapper)
 {
 ////    return buffer.readonly().take(this->Size());
-
   RSeq_for_Uint16_t temp1 = readonly_in_WSeq_for_Uint16_t(&(pAPDUWrapper->buffer));
+
 //  RSeq_for_Uint16_t take_in_RSeq_for_Uint16_t(&temp1, uint16_t count);
   uint16_t temp3 = Size_in_APDUWrapper(pAPDUWrapper);
   //RSeq_for_Uint16_t temp2 =

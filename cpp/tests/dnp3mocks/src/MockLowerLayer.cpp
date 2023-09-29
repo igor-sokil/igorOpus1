@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+//#include <QtWidgets>
 #include <QApplication>
 #include "header.h"
 #include "MockLowerLayer.h"
@@ -56,8 +56,7 @@ std::string  PopWriteAsHex_in_MockLowerLayer(MockLowerLayer *pMockLowerLayer)
 {
   if (pMockLowerLayer->sendQueue.empty())
   {
-////        return "";
-    Message_in_MockLowerLayer[0] = 0;
+        return "";
   }
 
   Message ret = pMockLowerLayer->sendQueue.front();
@@ -79,8 +78,8 @@ boolean BeginTransmit_in_MockLowerLayer_override(void* pILowerLayer, Message* me
 
 boolean BeginTransmit_in_MockLowerLayer(MockLowerLayer* pMockLowerLayer, Message* message)
 {
-qDebug()<<"";
-qDebug()<<"BeginTransmit_in_MockLowerLayer1";
+//qDebug()<<"";
+//qDebug()<<"BeginTransmit_in_MockLowerLayer1";
 //qDebug()<<""<<;
   Message temp = *message;
   pMockLowerLayer->sendQueue.push(temp);////message);
@@ -90,12 +89,12 @@ qDebug()<<"BeginTransmit_in_MockLowerLayer1";
 ////void MockLowerLayer::SendUp(const rseq_t& data, const Addresses& addresses)
 void SendUp_in_MockLowerLayerOver1(MockLowerLayer *pMockLowerLayer, RSeq_for_Uint16_t* data, Addresses* addresses)//// = opendnp3::Addresses());
 {
-qDebug()<<"";
-qDebug()<<"SendUp_in_MockLowerLayerOver1";
+//qDebug()<<"";
+//qDebug()<<"SendUp_in_MockLowerLayerOver1";
 ////    if (pUpperLayer)
   if(pMockLowerLayer->hHasUpperLayer.pUpperLayer)
   {
-qDebug()<<"SendUp_in_MockLowerLayerOver2";
+//qDebug()<<"SendUp_in_MockLowerLayerOver2";
 //boolean OnReceive_in_IUpperLayer(IUpperLayer *, Message* message);
 //  void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
 ////        pUpperLayer->OnReceive(Message(addresses, data));

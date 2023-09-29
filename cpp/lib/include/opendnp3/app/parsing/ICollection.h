@@ -30,7 +30,9 @@
 #include "ICollection_Indexed_for_ControlRelayOutputBlock.h"
 #include "ICollection_Indexed_for_IINValue.h"
 #include "ICollection_Indexed_for_TimeAndInterval.h"
-#include "ICollection_Indexed_for_Group1Var2.h"
+#include "ICollection_Indexed_for_Binary.h"
+#include "ICollection_Indexed_for_BinaryOutputStatus.h"
+#include "ICollection_Indexed_for_OctetString.h"
 
 ////} // namespace opendnp3
 #endif

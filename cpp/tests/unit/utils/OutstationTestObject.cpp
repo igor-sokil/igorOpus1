@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include <QtWidgets>
 #include <QApplication>
 #include "header.h"
 #include "BufferHelpers.h"
@@ -96,15 +96,21 @@ uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationT
 ////}
 
 ////size_t OutstationTestObject::OnTxReady()
-////{
+uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
+{
+//boolean OnTxReady_in_OContext(OContext* pOContext)
 ////    context.OnTxReady();
+   OnTxReady_in_OContext(&(pOutstationTestObject->context));
 ////    return exe->run_many();
-////}
+  return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
+}
 
 //Message mMessage1_global_in_OutstationTestObject;
 ////size_t OutstationTestObject::SendToOutstation(const std::string& hex)
 uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, std::string& hex)
 {
+qDebug()<<"";
+qDebug()<<"SendToOutstation_in_OutstationTestObject1";
 //   void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
 ////    HexSequence hs(hex);
   HexSequence hs;
@@ -117,18 +123,14 @@ uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstat
 ////    context.OnReceive(Message(Addresses(), hs.ToRSeq()));
   RSeq_for_Uint16_t temp = ToRSeq_in_CopyableBuffer(&(hs.bByteStr.cCopyableBuffer));
 
-//qDebug()<<"temp.buffer_[0]="<<temp.buffer_[0];
-//qDebug()<<"temp.buffer_[1]="<<temp.buffer_[1];
-//qDebug()<<"temp.buffer_[2]="<<temp.buffer_[2];
-//qDebug()<<"temp.buffer_[3]="<<temp.buffer_[3];
-//qDebug()<<"temp.buffer_[4]="<<temp.buffer_[4];
-
   Addresses aAddresses;
   Addresses_in_AddressesOver1(&aAddresses);
   Message mMessage;
   Message_in_Message(&mMessage, &aAddresses, &temp);
 
+qDebug()<<"SendToOutstation_in_OutstationTestObject2";
   /*boolean tmp =*/ OnReceive_in_OContext(&(pOutstationTestObject->context), &mMessage);
+qDebug()<<"SendToOutstation_in_OutstationTestObject3";
 
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);

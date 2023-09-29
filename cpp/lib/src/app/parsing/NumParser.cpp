@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+//#include <QtWidgets>
 #include <iostream>
 #include "header.h"
 #include "NumParser.h"
@@ -33,6 +33,8 @@
 
 void NumParser_in_NumParser(NumParser *pNumParser, ReadFun_in_NumParser pReadFun, uint8_t size)
 {
+  std::cout<<""<<std::endl;
+  std::cout<<"NumParser_in_NumParser1"<<std::endl;
   pNumParser->pReadFun = pReadFun;
   pNumParser->size = size;
 }
@@ -44,11 +46,13 @@ uint8_t NumBytes_in_NumParser(NumParser *pNumParser)
 
 ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t* buffer, uint16_t *count)///, Logger* pLogger) const
 {
+  std::cout<<""<<std::endl;
+  std::cout<<"ParseCount_in_NumParser1"<<std::endl;
 //    boolean Read_in_NumParser(NumParser *pNumParser, uint16_t *num, RSeq_for_Uint16_t *buffer);
 ////    if (this->Read(count, buffer))
   if (Read_in_NumParser(pNumParser, count, buffer))
   {
-    if (count == 0)
+    if (*count == 0)
     {
 ////            SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "count of 0");
       std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'count of 0')***"<<std::endl;
@@ -70,11 +74,6 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
   std::cout<<""<<std::endl;
   std::cout<<"ParseRange_in_NumParser1"<<std::endl;
 
-  qDebug()<<"(2 * (uint16_t)(pNumParser->size))= "<<(2 * (uint16_t)(pNumParser->size));
-  qDebug()<<"length_in_HasLength_for_Uint16_t(&(buffer->hHasLength))= "<<length_in_HasLength_for_Uint16_t(&(buffer->hHasLength));
-  qDebug()<<"buffer->buffer_[0]= "<<hex<<buffer->buffer_[0];
-  qDebug()<<"buffer->buffer_[1]= "<<hex<<buffer->buffer_[1];
-
 ////    if (buffer.length() < (2 * static_cast<size_t>(size)))
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < (2 * (uint16_t)(pNumParser->size)))
   {
@@ -86,8 +85,6 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
 //    uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
   range->start = ReadNum_in_NumParser(pNumParser, buffer);////this->ReadNum(buffer);
   range->stop = ReadNum_in_NumParser(pNumParser, buffer);////this->ReadNum(buffer);
-  qDebug()<<"range->start= "<<hex<<range->start;
-  qDebug()<<"range->stop= "<<hex<<range->stop;
 
 //    boolean IsValid_in_Range(Range *pRange);
 ////    if (range.IsValid())
@@ -151,7 +148,7 @@ NumParser TwoByte_in_NumParser_static(void)
 {
 ////    return NumParser(&ReadTwoBytes, 2);
   NumParser nNumParser;
-  NumParser_in_NumParser(&nNumParser, ReadTwoByte_in_NumParser_static, 1);
+  NumParser_in_NumParser(&nNumParser, ReadTwoByte_in_NumParser_static, 2);
   return nNumParser;
 }
 

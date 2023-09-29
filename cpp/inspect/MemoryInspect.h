@@ -34,6 +34,7 @@ Memory_RSeq_for_Uint16*  MEMORY_RSeq_for_Uint16_3(uint16_t titleSpace, RSeq_for_
 //-------------------RSeq------------------------
 
 //-------------------Message------------------------
+#define COUNT_Message  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -41,8 +42,8 @@ typedef struct
  Message* pMessage;
  void* title;
 
- Message mMessage;
- Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
+ Message mMessage[COUNT_Message];
+ Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16[COUNT_Message];
 } Memory_Message;
 
 extern Memory_Message* pMemory_Message_1;
@@ -55,6 +56,7 @@ Memory_Message*  MEMORY_Message_3(uint16_t titleSpace, Message* pMessage);
 //-------------------Message------------------------
 
 //-------------------Result_for_APDUHeader_in_APDUHeaderParser------------------------
+#define COUNT_Result_for_APDUHeader_in_APDUHeaderParser  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -62,8 +64,8 @@ typedef struct
  Result_for_APDUHeader_in_APDUHeaderParser* pResult_for_APDUHeader_in_APDUHeaderParser;
  void* title;
 
- Result_for_APDUHeader_in_APDUHeaderParser rResult_for_APDUHeader_in_APDUHeaderParser;
- Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
+ Result_for_APDUHeader_in_APDUHeaderParser rResult_for_APDUHeader_in_APDUHeaderParser[COUNT_Result_for_APDUHeader_in_APDUHeaderParser];
+ Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16[COUNT_Result_for_APDUHeader_in_APDUHeaderParser];
 } Memory_Result_for_APDUHeader_in_APDUHeaderParser;
 
 extern Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1;
@@ -76,6 +78,7 @@ Memory_Result_for_APDUHeader_in_APDUHeaderParser*  MEMORY_Result_for_APDUHeader_
 //-------------------Result_for_APDUHeader_in_APDUHeaderParser------------------------
 
 //-------------------Result_for_APDUResponseHeader_in_APDUHeaderParser------------------------
+#define COUNT_Result_for_APDUResponseHeader_in_APDUHeaderParser  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -83,8 +86,8 @@ typedef struct
  Result_for_APDUResponseHeader_in_APDUHeaderParser* pResult_for_APDUResponseHeader_in_APDUHeaderParser;
  void* title;
 
- Result_for_APDUResponseHeader_in_APDUHeaderParser rResult_for_APDUResponseHeader_in_APDUHeaderParser;
- Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
+ Result_for_APDUResponseHeader_in_APDUHeaderParser rResult_for_APDUResponseHeader_in_APDUHeaderParser[COUNT_Result_for_APDUResponseHeader_in_APDUHeaderParser];
+ Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16[COUNT_Result_for_APDUResponseHeader_in_APDUHeaderParser];
 } Memory_Result_for_APDUResponseHeader_in_APDUHeaderParser;
 
 extern Memory_Result_for_APDUResponseHeader_in_APDUHeaderParser* pResult_for_APDUResponseHeader_in_APDUHeaderParser_1;
@@ -97,6 +100,7 @@ Memory_Result_for_APDUResponseHeader_in_APDUHeaderParser*  MEMORY_Result_for_APD
 //-------------------Result_for_APDUResponseHeader_in_APDUHeaderParser------------------------
 
 //-------------------ParsedRequest------------------------
+#define COUNT_ParsedRequest  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -104,8 +108,8 @@ typedef struct
  ParsedRequest* pParsedRequest;
  void* title;
 
- ParsedRequest mParsedRequest;
- Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16;
+ ParsedRequest mParsedRequest[COUNT_ParsedRequest];
+ Memory_RSeq_for_Uint16 mMemory_RSeq_for_Uint16[COUNT_ParsedRequest];
 } Memory_ParsedRequest;
 
 extern Memory_ParsedRequest* pMemory_ParsedRequest_1;
@@ -118,6 +122,7 @@ Memory_ParsedRequest*  MEMORY_ParsedRequest_3(uint16_t titleSpace, ParsedRequest
 //-------------------ParsedRequest------------------------
 
 //-------------------PairSer4cpp_for_IINField_AppControlField------------------------
+#define COUNT_PairSer4cpp_for_IINField_AppControlField  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -125,7 +130,7 @@ typedef struct
  PairSer4cpp_for_IINField_AppControlField* pPairSer4cpp_for_IINField_AppControlField;
  void* title;
 
- PairSer4cpp_for_IINField_AppControlField mPairSer4cpp_for_IINField_AppControlField;
+ PairSer4cpp_for_IINField_AppControlField mPairSer4cpp_for_IINField_AppControlField[COUNT_PairSer4cpp_for_IINField_AppControlField];
 } Memory_PairSer4cpp_for_IINField_AppControlField;
 
 extern Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField_1;
@@ -138,6 +143,7 @@ Memory_PairSer4cpp_for_IINField_AppControlField*  MEMORY_PairSer4cpp_for_IINFiel
 //-------------------PairSer4cpp_for_IINField_AppControlField------------------------
 
 //-------------------IINField------------------------
+#define COUNT_IINField  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -145,7 +151,7 @@ typedef struct
  IINField* pIINField;
  void* title;
 
- IINField mIINField;
+ IINField mIINField[COUNT_IINField];
 } Memory_IINField;
 
 extern Memory_IINField* pMemory_IINField_1;
@@ -158,7 +164,7 @@ Memory_IINField*  MEMORY_IINField_3(uint16_t titleSpace, IINField* pIINField);
 //-------------------IINField------------------------
 
 //-------------------ObjectHeader------------------------
-#define COUNT_ObjectHeader  3
+#define COUNT_ObjectHeader  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -179,6 +185,7 @@ Memory_ObjectHeader*  MEMORY_ObjectHeader_3(uint16_t titleSpace, ObjectHeader* p
 //-------------------ObjectHeader------------------------
 
 //-------------------GroupVariationRecord------------------------
+#define COUNT_GroupVariationRecord  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -186,7 +193,7 @@ typedef struct
  GroupVariationRecord* pGroupVariationRecord;
  void* title;
 
- GroupVariationRecord mGroupVariationRecord;
+ GroupVariationRecord mGroupVariationRecord[COUNT_GroupVariationRecord];
 } Memory_GroupVariationRecord;
 
 extern Memory_GroupVariationRecord* pMemory_GroupVariationRecord_1;
@@ -198,6 +205,7 @@ Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_2(uint16_t titleSpace,
 Memory_GroupVariationRecord*  MEMORY_GroupVariationRecord_3(uint16_t titleSpace, GroupVariationRecord* pGroupVariationRecord);
 //-------------------GroupVariationRecord------------------------
 //-------------------HeaderRecord------------------------
+#define COUNT_HeaderRecord  5
 typedef struct
 {
  uint32_t counter_inspect;
@@ -205,7 +213,7 @@ typedef struct
  HeaderRecord* pHeaderRecord;
  void* title;
 
- HeaderRecord mHeaderRecord;
+ HeaderRecord mHeaderRecord[COUNT_HeaderRecord];
 } Memory_HeaderRecord;
 
 extern Memory_HeaderRecord* pMemory_HeaderRecord_1;
@@ -296,5 +304,25 @@ Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_1(uint16_t titleSpace, LinkHea
 Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_2(uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields);
 Memory_LinkHeaderFields*  MEMORY_LinkHeaderFields_3(uint16_t titleSpace, LinkHeaderFields* pLinkHeaderFields);
 //-------------------LinkHeaderFields------------------------
+//-------------------RangeHeader------------------------
+#define COUNT_RangeHeader  5
+typedef struct
+{
+ uint32_t counter_inspect;
+ uint16_t titleSpace;
+ RangeHeader* pRangeHeader;
+ void* title;
+
+ RangeHeader mRangeHeader[COUNT_RangeHeader];
+} Memory_RangeHeader;
+
+extern Memory_RangeHeader* pMemory_RangeHeader_1;
+extern Memory_RangeHeader* pMemory_RangeHeader_2;
+extern Memory_RangeHeader* pMemory_RangeHeader_3;
+
+Memory_RangeHeader*  MEMORY_RangeHeader_1(uint16_t titleSpace, RangeHeader* pRangeHeader);
+Memory_RangeHeader*  MEMORY_RangeHeader_2(uint16_t titleSpace, RangeHeader* pRangeHeader);
+Memory_RangeHeader*  MEMORY_RangeHeader_3(uint16_t titleSpace, RangeHeader* pRangeHeader);
+//-------------------RangeHeader------------------------
 
 #endif

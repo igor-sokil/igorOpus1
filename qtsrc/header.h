@@ -71,4 +71,6 @@ typedef void  (* pVoidVoidFunction)(void);//указатель на ф-цию VoidVoid
 
 #include "MemoryInspect.h"
 
+void inspect_RSeq(RSeq_for_Uint16_t *buffer);
+
 #endif

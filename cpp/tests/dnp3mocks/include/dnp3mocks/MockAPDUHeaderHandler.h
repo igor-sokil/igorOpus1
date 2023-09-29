@@ -256,13 +256,47 @@ IINField ProcessAny_for_uint16_in_MockApduHeaderHandler(MockApduHeaderHandler *p
     HeaderRecord* record,
     ICollection_for_uint16* meas,
     std::vector<uint16_t>* items);
+IINField ProcessAny_Indexed_for_IINValue_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_IINValue* meas,
+    std::vector<Indexed_for_IINValue>* items);
+IINField ProcessAny_Indexed_for_Binary_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_Binary* meas,
+    std::vector<Indexed_for_Binary>* items);
+IINField ProcessAny_Indexed_for_BinaryOutputStatus_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_BinaryOutputStatus* meas,
+    std::vector<Indexed_for_BinaryOutputStatus>* items);
+IINField ProcessAny_Indexed_for_OctetString_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_OctetString* meas,
+    std::vector<Indexed_for_OctetString>* items);
 
-  boolean IsAllowed_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
-  boolean IsAllowed_in_MockApduHeaderHandler_override(void *pIWhiteList, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+boolean IsAllowed_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
+boolean IsAllowed_in_MockApduHeaderHandler_override(void *pIWhiteList, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 
-  void OnHeaderResult_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, HeaderRecord* record, IINField* result);
-  void OnHeaderResult_in_MockApduHeaderHandler_override(void *pIAPDUHandler, HeaderRecord* record, IINField* result);
+void OnHeaderResult_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, HeaderRecord* record, IINField* result);
+void OnHeaderResult_in_MockApduHeaderHandler_override(void *pIAPDUHandler, HeaderRecord* record, IINField* result);
 
+IINField ProcessHeader_RangeHeader_Indexed_for_Binary_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, RangeHeader* header,
+                                          ICollection_Indexed_for_Binary* values);
+IINField ProcessHeader_RangeHeader_Indexed_for_Binary_in_MockApduHeaderHandler_override(void *pIAPDUHandler, RangeHeader* header,
+                                          ICollection_Indexed_for_Binary* values);
 
+IINField ProcessHeader_RangeHeader_Indexed_for_BinaryOutputStatus_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, RangeHeader* header,
+                                          ICollection_Indexed_for_BinaryOutputStatus* values);
+IINField ProcessHeader_RangeHeader_Indexed_for_BinaryOutputStatus_in_MockApduHeaderHandler_override(void *pIAPDUHandler, RangeHeader* header,
+                                          ICollection_Indexed_for_BinaryOutputStatus* values);
+
+IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, RangeHeader* header,
+                                          ICollection_Indexed_for_IINValue* values);
+IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_MockApduHeaderHandler_override(void *pIAPDUHandler, RangeHeader* header,
+                                          ICollection_Indexed_for_IINValue* values);
+
+IINField ProcessHeader_RangeHeader_Indexed_for_OctetString_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, RangeHeader* header,
+                                          ICollection_Indexed_for_OctetString* values);
+IINField ProcessHeader_RangeHeader_Indexed_for_OctetString_in_MockApduHeaderHandler_override(void *pIAPDUHandler, RangeHeader* header,
+                                          ICollection_Indexed_for_OctetString* values);
 
 #endif

@@ -130,7 +130,9 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_IINValue.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_TimeAndInterval.cpp \
-                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_Group1Var2.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_Binary.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_BinaryOutputStatus.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_OctetString.cpp \
                 \
                 cpp\lib\include\opendnp3\outstation\IDnpTimeSource.cpp \
                 cpp\lib\include\opendnp3\outstation\ICommandHandler.cpp \
@@ -170,6 +172,8 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\APDUParser.cpp \
                 cpp\lib\src\app\parsing\BufferedCollection.cpp \
+                cpp\lib\src\app\parsing\BitReader.cpp \
+                cpp\lib\src\app\parsing\CountParser.cpp \
                 cpp\lib\src\app\parsing\ObjectHeaderParser.cpp \
                 cpp\lib\src\app\parsing\ParseResult.cpp \
                 cpp\lib\src\app\parsing\RangeParser.cpp \

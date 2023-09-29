@@ -20,19 +20,20 @@
 #ifndef OPENDNP3_BITREADER_H
 #define OPENDNP3_BITREADER_H
 
-#include "opendnp3/gen/DoubleBit.h"
+#include "DoubleBit.h"
 
-#include <ser4cpp/container/SequenceTypes.h>
+////#include <ser4cpp/container/SequenceTypes.h>
+#include "RSeq.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
-size_t NumBytesInBits(size_t numBits);
-bool GetBit(const ser4cpp::rseq_t& buffer, size_t position);
+uint32_t NumBytesInBits_in_DoubleBit_static(uint32_t numBits);
+boolean GetBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t position);
 
-size_t NumBytesInDoubleBits(size_t numBits);
-DoubleBit GetDoubleBit(const ser4cpp::rseq_t& buffer, size_t index);
+uint32_t NumBytesInDoubleBits_in_DoubleBit_static(uint32_t numBits);
+DoubleBit_uint8_t GetDoubleBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t index);
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif
