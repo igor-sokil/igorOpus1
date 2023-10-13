@@ -26,7 +26,10 @@
 ////#include "opendnp3/util/Uncopyable.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "APDUHeaderParser.h"
 
@@ -45,18 +48,31 @@
 ////APDUHeaderParser::Result<APDUHeader> APDUHeaderParser::ParseRequest(const ser4cpp::rseq_t& apdu, Logger* logger)
 Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
 {
-std::cout<<""<<std::endl;
-std::cout<<"ParseRequest_in_APDUHeaderParser_static1"<<std::endl;
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseRequest_in_APDUHeaderParser_static1"<<std::endl;
+  inspect_RSeq(apdu);
+#endif
   if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_REQUEST_SIZE)
   {
 ////        FORMAT_LOGGER_BLOCK(logger, flags::WARN, "Request fragment  with insufficient size of %zu bytes",
 ////                            apdu.length());
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
     std::cout<<"***FORMAT_LOGGER_BLOCK(logger, flags::WARN, 'Request fragment  with insufficient size of %zu bytes', apdu.length())"
-                                 <<length_in_HasLength_for_Uint16_t(&(apdu->hHasLength))<<std::endl;
+             <<length_in_HasLength_for_Uint16_t(&(apdu->hHasLength))<<std::endl;
+    decrement_stack_info();
+#endif
     return Error_in_Result_for_APDUHeader_static();
 ////Result<APDUHeader>::Error();
   }
-std::cout<<"ParseRequest_in_APDUHeaderParser_static3"<<std::endl;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseRequest_in_APDUHeaderParser_static3"<<std::endl;
+  decrement_stack_info();
+#endif
 
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver2(&aAppControlField, (apdu->buffer_)[0]);
@@ -75,12 +91,23 @@ std::cout<<"ParseRequest_in_APDUHeaderParser_static3"<<std::endl;
 ////    Result_for_APDUResponseHeader ParseResponse_in_APDUHeaderParser_static(RSeqSer4cpp *apdu)////, Logger* logger = nullptr);
 Result_for_APDUResponseHeader_in_APDUHeaderParser ParseResponse_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseResponse_in_APDUHeaderParser_static1"<<std::endl;
+  inspect_RSeq(apdu);
+#endif
   if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_RESPONSE_SIZE)
   {
 ////        FORMAT_LOGGER_BLOCK(logger, flags::WARN, "Response fragment  with insufficient size of %zu bytes",
 ////                            apdu.length());
-   std::cout<<"***FORMAT_LOGGER_BLOCK(logger, flags::WARN, 'Response fragment  with insufficient size of %zu bytes',apdu.length()"
-                                     <<length_in_HasLength_for_Uint16_t(&(apdu->hHasLength))<<std::endl;
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"***FORMAT_LOGGER_BLOCK(logger, flags::WARN, 'Response fragment  with insufficient size of %zu bytes',apdu.length()"
+             <<length_in_HasLength_for_Uint16_t(&(apdu->hHasLength))<<std::endl;
+    decrement_stack_info();
+#endif
     return Error_in_Result_for_APDUResponseHeader_static();
   }
 

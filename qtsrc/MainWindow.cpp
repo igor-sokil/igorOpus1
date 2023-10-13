@@ -10,7 +10,7 @@
 
 extern key_filter *pkf;
 
-LogHandler loghandler;//логирование
+//LogHandler loghandler;//логирование
 
 MainWindow::MainWindow(QWidget *parent): QWidget(parent)
 {

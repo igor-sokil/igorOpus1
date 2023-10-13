@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "PrefixedWriteIterator_for_AnalogOutputStatus.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputStatus Null_in_PrefixedWriteIterato
 
 void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver1(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
 //// : sizeOfTypePlusIndex(0), count(0), isValid(false), pPosition(nullptr) {}
   pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->sizeOfTypePlusIndex = 0;
   pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->count = 0;
@@ -25,6 +36,13 @@ void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterato
 void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver2(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus,
     Serializer_for_AnalogOutputStatus* serializer, WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->sizeOfTypePlusIndex = get_size_in_Serializer_for_AnalogOutputStatus(serializer) +////serializer.get_size() + PrefixType::size;
       size_in_UInt16;
@@ -44,6 +62,13 @@ void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterato
 ////    ~PrefixedWriteIterator()
 void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(PrefixedWriteIterator_for_UInt16_AnalogOutputStatus *pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pPrefixedWriteIterator_for_UInt16_AnalogOutputStatus->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);

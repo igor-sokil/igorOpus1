@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "RangeWriteIterator_for_Counter.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ RangeWriteIterator_for_UInt8_Counter Null_in_RangeWriteIterator_for_UInt8_Counte
 ////    RangeWriteIterator() : start(0), count(0), isValid(false), pPosition(nullptr) {}
 void RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_CounterOver1(RangeWriteIterator_for_UInt8_Counter *pRangeWriteIterator_for_UInt8_Counter)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_CounterOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   pRangeWriteIterator_for_UInt8_Counter->start = 0;
   pRangeWriteIterator_for_UInt8_Counter->count = 0;
   pRangeWriteIterator_for_UInt8_Counter->isValid = false;
@@ -29,6 +40,13 @@ void RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_Counte
 //                   ser4cpp::wseq_t& position)
     WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_CounterOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pRangeWriteIterator_for_UInt8_Counter->start = start_;
   pRangeWriteIterator_for_UInt8_Counter->serializer = *serializer;
   pRangeWriteIterator_for_UInt8_Counter->count = 0;
@@ -50,6 +68,13 @@ void RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_Counte
 ////    ~RangeWriteIterator()
 void RangeWriteIterator_for_UInt8_Counter_destr_RangeWriteIterator_for_UInt8_Counter(RangeWriteIterator_for_UInt8_Counter *pRangeWriteIterator_for_UInt8_Counter)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_Counter_destr_RangeWriteIterator_for_UInt8_Counter1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pRangeWriteIterator_for_UInt8_Counter->isValid && pRangeWriteIterator_for_UInt8_Counter->count > 0)
   {
     uint32_t stop = pRangeWriteIterator_for_UInt8_Counter->start + pRangeWriteIterator_for_UInt8_Counter->count - 1;

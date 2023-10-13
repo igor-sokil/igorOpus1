@@ -18,7 +18,10 @@
  * limitations under the License.
  */
 //#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "RangeParser.h"
 
@@ -62,9 +65,13 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
 //                                   Logger* pLogger,
   IAPDUHandler* pHandler)
 {
+#ifdef  LOG_INFO
   std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"ParseHeader_in_RangeParser_static1"<<std::endl;
   inspect_RSeq(buffer);
+#endif
 
   Range range;
 
@@ -72,28 +79,43 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
 ////  auto res = numparser.ParseRange(buffer, range, pLogger);
   ParseResult_uint8_t res = ParseRange_in_NumParser(numparser, buffer, &range);////, Logger* pLogger) const;
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
   std::cout<<"ParseHeader_in_RangeParser_static1.1"<<std::endl;
-  inspect_RSeq(buffer);
-
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*ParseResult_uint8_t res = "<<(uint16_t)res<<std::endl;
+  inspect_RSeq(buffer);
+#endif
 
 //  pMemory_HeaderRecord_1=  MEMORY_HeaderRecord_1(0, record);
 
   if (res != ParseResult_OK)
   {
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return res;
   }
 
 ////  FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u %s, %s [%u, %u]", record.group, record.variation,
 ////                      GroupVariationSpec::to_human_string(record.enumeration),
 ////                      QualifierCodeSpec::to_human_string(record.GetQualifierCode()), range.start, range.stop);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), '%03u,%03u %s, %s [%u, %u]', record.group, record.variation,*"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*record.group= "<<(uint16_t)record->gGroupVariationRecord.group<<'\n';
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*record.variation= "<<(uint16_t)record->gGroupVariationRecord.variation<<'\n';
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*record.enumeration= "<<(uint16_t)record->gGroupVariationRecord.enumeration<<'\n';
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*record.GetQualifierCode()= "<<(uint16_t)GetQualifierCode_in_HeaderRecord(record)<<'\n';
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*range.start= "<<(uint16_t)range.start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*range.stop= "<<(uint16_t)range.stop<<'\n';
+#endif
 
 ////  if (settings.ExpectsContents())
   if(expectsContents_in_RangeParser)
@@ -105,6 +127,9 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
 //                                          Logger* pLogger,
 //  IAPDUHandler* pHandler);
 ////    return ParseRangeOfObjects(buffer, record, range, pLogger, pHandler);
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return ParseRangeOfObjects_in_RangeParser_static(
              buffer,
              record,
@@ -113,10 +138,16 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
              pHandler);
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
   std::cout<<"ParseHeader_in_RangeParser_static2"<<std::endl;
+#endif
   if (pHandler)
   {
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
     std::cout<<"ParseHeader_in_RangeParser_static3"<<std::endl;
+#endif
 //void RangeHeader_in_RangeHeader(RangeHeader *pRangeHeader, HeaderRecord *record, Range *range_);
 //void OnHeader_RangeHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header);
 ////    pHandler->OnHeader(RangeHeader(record, range));
@@ -127,6 +158,10 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
 
     OnHeader_RangeHeader_in_IAPDUHandler(pHandler, &rRangeHeader);
   }
+
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return ParseResult_OK;
 }
 
@@ -139,16 +174,26 @@ ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
     RSeq_for_Uint16_t *buffer,
     IAPDUHandler* pHandler)
 {
+#ifdef  LOG_INFO
   std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"Process_in_RangeParser1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*buffer->hHasLength= "<<(uint16_t)length_in_HasLength_for_Uint16_t(&(buffer->hHasLength))<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*pRangeParser->requiredSize= "<<(uint32_t)pRangeParser->requiredSize<<std::endl;
+#endif
 
 ////  if (buffer.length() < requiredSize)
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < pRangeParser->requiredSize)
   {
 ////    SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified objects')"<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
   }
 
@@ -163,6 +208,9 @@ ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
   }
 ////  buffer.advance(requiredSize);
   advance_in_RSeq_for_Uint16_t(buffer, pRangeParser->requiredSize);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return ParseResult_OK;
 }
 
@@ -179,25 +227,38 @@ ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
 //                                          Logger* pLogger,
   IAPDUHandler* pHandler)
 {
+#ifdef  LOG_INFO
   std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"ParseRangeOfObjects_in_RangeParser_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*record->gGroupVariationRecord.enumeration= "<<(uint32_t)record->gGroupVariationRecord.enumeration<<std::endl;
+#endif
 
   switch (record->gGroupVariationRecord.enumeration)
   {
   case (GroupVariation_Group1Var1):
   {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group1Var1"<<std::endl;
+    decrement_stack_info();
+#endif
 // RangeParser FromBitfieldType_Indexed_for_Binary_in_RangeParser_static(Range* range);
 ////    return RangeParser::FromBitfieldType<Binary>(range).Process(record, buffer, pHandler, pLogger);
-   RangeParser temp = FromBitfieldType_Indexed_for_Binary_in_RangeParser_static(range);
-   return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    RangeParser temp = FromBitfieldType_Indexed_for_Binary_in_RangeParser_static(range);
+    return Process_in_RangeParser(&temp, record, buffer, pHandler);
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group1Var2);
   case (GroupVariation_Group1Var2):
   {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group1Var2"<<std::endl;
+    decrement_stack_info();
+#endif
 //RangeParser FromFixedSize_for_Group1Var2_in_RangeParser_static(Range* range)
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
@@ -242,18 +303,35 @@ ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group50Var4);
 
-////  case (GroupVariation::Group80Var1):
+  case (GroupVariation_Group80Var1):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group80Var1"<<std::endl;
+    decrement_stack_info();
+#endif
 ////    return RangeParser::FromBitfieldType<IINValue>(range).Process(record, buffer, pHandler, pLogger);
+    RangeParser temp = FromBitfieldType_Indexed_for_IINValue_in_RangeParser_static(range);
+    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+  }
 
   case (GroupVariation_Group110Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group110Var0"<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseRangeOfOctetData_in_RangeParser_static(buffer, record, range, /*pLogger,*/ pHandler);
 
   default:
 ////    FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unsupported qualifier/object - %s - %i / %i",
 ////                        QualifierCodeSpec::to_human_string(record.GetQualifierCode()), record.group,
 ////                        record.variation);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Unsupported qualifier/object - %s - %i / %i'"<<std::endl;
+    decrement_stack_info();
+#endif
 
     return ParseResult_INVALID_OBJECT_QUALIFIER;
   }
@@ -284,6 +362,8 @@ Indexed_for_OctetString read_for_OctetString_in_RangeParser(RSeq_for_Uint16_t* b
   OctetString_in_OctetStringOver3(&octets, &bBuffer);
 
 ////        buffer.advance(record.variation);
+  advance_in_RSeq_for_Uint16_t(buffer, record->gGroupVariationRecord.variation);
+
 ///        return WithIndex(octets, range.start + pos);
   return WithIndex_in_Indexed_for_OctetString(&octets, range->start + pos);
 }
@@ -307,7 +387,12 @@ ParseResult_uint8_t ParseRangeOfOctetData_in_RangeParser_static(
     if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < size)
     {
 ////      SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified octet objects");
+#ifdef  LOG_INFO
+      increment_stack_info();
+      std::cout<<"*"<<getString_stack_info();
       std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified octet objects')"<<std::endl;
+      decrement_stack_info();
+#endif
       return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
     }
 
@@ -341,7 +426,12 @@ ParseResult_uint8_t ParseRangeOfOctetData_in_RangeParser_static(
   else
   {
 ////    SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Octet string variation 0 may only be used in requests");
+#ifdef  LOG_INFO
+    increment_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Octet string variation 0 may only be used in requests')"<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseResult_INVALID_OBJECT;
   }
 }
@@ -403,10 +493,17 @@ void InvokeRangeOf_for_Group1Var2_in_RangeParser_static(HeaderRecord* record,
 
 RangeParser FromFixedSize_for_Group1Var2_in_RangeParser_static(Range* range)
 {
+#ifdef  LOG_INFO
   std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"FromFixedSize_for_Group1Var2_in_RangeParser_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*Count_in_Range(range)= "<<Count_in_Range(range)<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*Size_in_Group1Var2_static()= "<<Size_in_Group1Var2_static()<<std::endl;
+  decrement_stack_info();
+#endif
 //uint32_t Count_in_Range(Range *pRange);
 //uint16_t Size_in_Group1Var2_static(void);
 //void RangeParser_in_RangeParser(RangeParser *pRangeParser, Range* range, uint16_t requiredSize, HandleFun_in_RangeParser handler);
@@ -434,13 +531,13 @@ Indexed_for_Binary readInvokeRangeBitfieldType_for_Binary_in_RangeParser(RSeq_fo
 }
 
 void InvokeRangeBitfieldType_for_Binary_in_RangeParser_static(
-                                          HeaderRecord* record,
-                                          Range* range,
-                                          RSeq_for_Uint16_t* buffer,
-                                          IAPDUHandler* handler)
+  HeaderRecord* record,
+  Range* range,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
 {
 ////    const auto COUNT = range.Count();
-uint32_t COUNT = Count_in_Range(range);
+  uint32_t COUNT = Count_in_Range(range);
 
 ////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
 ////        Type value(GetBit(buffer, pos));
@@ -460,16 +557,16 @@ uint32_t COUNT = Count_in_Range(range);
   OnHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler(handler, &rRangeHeader, &(collection.iICollection_Indexed_for_Binary));
 }
 
- RangeParser FromBitfieldType_Indexed_for_Binary_in_RangeParser_static(Range* range)
+RangeParser FromBitfieldType_Indexed_for_Binary_in_RangeParser_static(Range* range)
 {
 //uint32_t NumBytesInBits_in_DoubleBit_static(uint32_t numBits);
 //void RangeParser_in_RangeParser(RangeParser *pRangeParser, Range* range, uint32_t requiredSize, HandleFun_in_RangeParser handler);
 ////    const auto SIZE = NumBytesInBits(range.Count());
-uint32_t SIZE = NumBytesInBits_in_DoubleBit_static(Count_in_Range(range));
+  uint32_t SIZE = NumBytesInBits_in_DoubleBit_static(Count_in_Range(range));
 ////    return RangeParser(range, SIZE, &InvokeRangeBitfieldType<Type>);
- RangeParser rRangeParser;
- RangeParser_in_RangeParser(&rRangeParser, range, SIZE, InvokeRangeBitfieldType_for_Binary_in_RangeParser_static);
- return rRangeParser;
+  RangeParser rRangeParser;
+  RangeParser_in_RangeParser(&rRangeParser, range, SIZE, InvokeRangeBitfieldType_for_Binary_in_RangeParser_static);
+  return rRangeParser;
 }
 //------------------------------Binary---------------------------------------------
 //------------------------------BinaryOutputStatus---------------------------------------------
@@ -488,13 +585,13 @@ Indexed_for_BinaryOutputStatus readInvokeRangeBitfieldType_for_BinaryOutputStatu
 }
 
 void InvokeRangeBitfieldType_for_BinaryOutputStatus_in_RangeParser_static(
-                                          HeaderRecord* record,
-                                          Range* range,
-                                          RSeq_for_Uint16_t* buffer,
-                                          IAPDUHandler* handler)
+  HeaderRecord* record,
+  Range* range,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
 {
 ////    const auto COUNT = range.Count();
-uint32_t COUNT = Count_in_Range(range);
+  uint32_t COUNT = Count_in_Range(range);
 
 ////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
 ////        Type value(GetBit(buffer, pos));
@@ -514,16 +611,16 @@ uint32_t COUNT = Count_in_Range(range);
   OnHeader_RangeHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler(handler, &rRangeHeader, &(collection.iICollection_Indexed_for_BinaryOutputStatus));
 }
 
- RangeParser FromBitfieldType_Indexed_for_BinaryOutputStatus_in_RangeParser_static(Range* range)
+RangeParser FromBitfieldType_Indexed_for_BinaryOutputStatus_in_RangeParser_static(Range* range)
 {
 //uint32_t NumBytesInBits_in_DoubleBit_static(uint32_t numBits);
 //void RangeParser_in_RangeParser(RangeParser *pRangeParser, Range* range, uint32_t requiredSize, HandleFun_in_RangeParser handler);
 ////    const auto SIZE = NumBytesInBits(range.Count());
-uint32_t SIZE = NumBytesInBits_in_DoubleBit_static(Count_in_Range(range));
+  uint32_t SIZE = NumBytesInBits_in_DoubleBit_static(Count_in_Range(range));
 ////    return RangeParser(range, SIZE, &InvokeRangeBitfieldType<Type>);
- RangeParser rRangeParser;
- RangeParser_in_RangeParser(&rRangeParser, range, SIZE, InvokeRangeBitfieldType_for_BinaryOutputStatus_in_RangeParser_static);
- return rRangeParser;
+  RangeParser rRangeParser;
+  RangeParser_in_RangeParser(&rRangeParser, range, SIZE, InvokeRangeBitfieldType_for_BinaryOutputStatus_in_RangeParser_static);
+  return rRangeParser;
 }
 //------------------------------BinaryOutputStatus---------------------------------------------
 //------------------------------IINValue---------------------------------------------
@@ -542,13 +639,13 @@ Indexed_for_IINValue readInvokeRangeBitfieldType_for_IINValue_in_RangeParser(RSe
 }
 
 void InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static(
-                                          HeaderRecord* record,
-                                          Range* range,
-                                          RSeq_for_Uint16_t* buffer,
-                                          IAPDUHandler* handler)
+  HeaderRecord* record,
+  Range* range,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
 {
 ////    const auto COUNT = range.Count();
-uint32_t COUNT = Count_in_Range(range);
+  uint32_t COUNT = Count_in_Range(range);
 
 ////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
 ////        Type value(GetBit(buffer, pos));
@@ -568,15 +665,15 @@ uint32_t COUNT = Count_in_Range(range);
   OnHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(handler, &rRangeHeader, &(collection.iICollection_Indexed_for_IINValue));
 }
 
- RangeParser FromBitfieldType_Indexed_for_IINValue_in_RangeParser_static(Range* range)
+RangeParser FromBitfieldType_Indexed_for_IINValue_in_RangeParser_static(Range* range)
 {
 //uint32_t NumBytesInBits_in_DoubleBit_static(uint32_t numBits);
 //void RangeParser_in_RangeParser(RangeParser *pRangeParser, Range* range, uint32_t requiredSize, HandleFun_in_RangeParser handler);
 ////    const auto SIZE = NumBytesInBits(range.Count());
-uint32_t SIZE = NumBytesInBits_in_DoubleBit_static(Count_in_Range(range));
+  uint32_t SIZE = NumBytesInBits_in_DoubleBit_static(Count_in_Range(range));
 ////    return RangeParser(range, SIZE, &InvokeRangeBitfieldType<Type>);
- RangeParser rRangeParser;
- RangeParser_in_RangeParser(&rRangeParser, range, SIZE, InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static);
- return rRangeParser;
+  RangeParser rRangeParser;
+  RangeParser_in_RangeParser(&rRangeParser, range, SIZE, InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static);
+  return rRangeParser;
 }
 //------------------------------IINValue---------------------------------------------

@@ -2,6 +2,11 @@
 #include <QtWidgets>
 #include "loghandler.h"
 
+void* pPointerGlobal1;
+void* pPointerGlobal2;
+void* pPointerGlobal3;
+LogHandler loghandler;//логирование
+
 LogHandler::LogHandler()
 {
   file.setFileName("log.txt");

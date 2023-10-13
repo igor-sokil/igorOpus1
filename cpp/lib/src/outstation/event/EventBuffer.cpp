@@ -17,7 +17,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EventBuffer.h"
 
@@ -28,13 +32,10 @@
 
 void EventBuffer_in_EventBufferOver2(EventBuffer *pEventBuffer, EventBufferConfig* config)
 {
-//qDebug()<<"EventBuffer_in_EventBufferOver2 1";
   EventBuffer_in_EventBufferOver1(pEventBuffer);
 //void EventStorage_in_EventStorage(EventStorage *pEventStorage, EventBufferConfig* config);
 //// : storage(config) {}
-//qDebug()<<"EventBuffer_in_EventBufferOver2 2";
   EventStorage_in_EventStorage(&(pEventBuffer->storage), config);
-//qDebug()<<"EventBuffer_in_EventBufferOver2 3";
 }
 
 ////void EventBuffer::Update(const Event<BinarySpec>& evt)
@@ -191,150 +192,376 @@ IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_ui
 
 IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint32_t maximum)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectMaxCount_in_EventBuffer1"<<'\n';
+#endif
   switch (gv)
   {
   case (GroupVariation_Group2Var0):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group2Var0"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_BinarySpec_in_EventBuffer(pEventBuffer, maximum, EventType_Binary);
 ////        return this->SelectByType(maximum, EventType::Binary);
   case (GroupVariation_Group2Var1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group2Var1"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_BinarySpec_in_EventBuffer(pEventBuffer, maximum, EventBinaryVariation_Group2Var1);
 ////        return this->SelectByType(maximum, EventBinaryVariation::Group2Var1);
   case (GroupVariation_Group2Var2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group2Var1"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_BinarySpec_in_EventBuffer(pEventBuffer, maximum, EventBinaryVariation_Group2Var2);
 ////        return this->SelectByType(maximum, EventBinaryVariation::Group2Var2);
   case (GroupVariation_Group2Var3):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group2Var3"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_BinarySpec_in_EventBuffer(pEventBuffer, maximum, EventBinaryVariation_Group2Var3);
 ////        return this->SelectByType(maximum, EventBinaryVariation::Group2Var3);
 
 // IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBinaryVariation_uint8_t type);
   case (GroupVariation_Group4Var0):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group4Var0"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_DoubleBitBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventType_DoubleBitBinary);
 ////        return this->SelectByType(maximum, EventType::DoubleBitBinary);
   case (GroupVariation_Group4Var1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group4Var1"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_DoubleBitBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var1);
 ////        return this->SelectByType(maximum, EventDoubleBinaryVariation::Group4Var1);
   case (GroupVariation_Group4Var2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group4Var2"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_DoubleBitBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var2);
 ////        return this->SelectByType(maximum, EventDoubleBinaryVariation::Group4Var2);
   case (GroupVariation_Group4Var3):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group4Var3"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_DoubleBitBinarySpec_in_EventBuffer(pEventBuffer, maximum, EventDoubleBinaryVariation_Group4Var3);
 ////        return this->SelectByType(maximum, EventDoubleBinaryVariation::Group4Var3);
 
   case (GroupVariation_Group11Var0):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group11Var0"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_BinaryOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventType_BinaryOutputStatus);
 ////        return this->SelectByType(maximum, EventType::BinaryOutputStatus);
   case (GroupVariation_Group11Var1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group11Var1"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_BinaryOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventBinaryOutputStatusVariation_Group11Var1);
 ////        return this->SelectByType(maximum, EventBinaryOutputStatusVariation::Group11Var1);
   case (GroupVariation_Group11Var2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group11Var2"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_BinaryOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventBinaryOutputStatusVariation_Group11Var2);
 ////        return this->SelectByType(maximum, EventBinaryOutputStatusVariation::Group11Var2);
 
   case (GroupVariation_Group22Var0):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group22Var0"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_CounterSpec_in_EventBuffer(pEventBuffer, maximum, EventType_Counter);
 ////        return this->SelectByType(maximum, EventType::Counter);
   case (GroupVariation_Group22Var1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group22Var1"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_CounterSpec_in_EventBuffer(pEventBuffer, maximum, EventCounterVariation_Group22Var1);
 ////        return this->SelectByType(maximum, EventCounterVariation::Group22Var1);
   case (GroupVariation_Group22Var2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group22Var2"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_CounterSpec_in_EventBuffer(pEventBuffer, maximum, EventCounterVariation_Group22Var2);
 ////        return this->SelectByType(maximum, EventCounterVariation::Group22Var2);
   case (GroupVariation_Group22Var5):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group22Var5"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_CounterSpec_in_EventBuffer(pEventBuffer, maximum, EventCounterVariation_Group22Var5);
 ////        return this->SelectByType(maximum, EventCounterVariation::Group22Var5);
   case (GroupVariation_Group22Var6):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group22Var6"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_CounterSpec_in_EventBuffer(pEventBuffer, maximum, EventCounterVariation_Group22Var6);
 ////        return this->SelectByType(maximum, EventCounterVariation::Group22Var6);
 
   case (GroupVariation_Group23Var0):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group23Var0"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_FrozenCounterSpec_in_EventBuffer(pEventBuffer, maximum, EventType_FrozenCounter);
 ////        return this->SelectByType(maximum, EventType::FrozenCounter);
   case (GroupVariation_Group23Var1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group23Var1"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_FrozenCounterSpec_in_EventBuffer(pEventBuffer, maximum, EventFrozenCounterVariation_Group23Var1);
 ////        return this->SelectByType(maximum, EventFrozenCounterVariation::Group23Var1);
   case (GroupVariation_Group23Var2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group23Var2"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_FrozenCounterSpec_in_EventBuffer(pEventBuffer, maximum, EventFrozenCounterVariation_Group23Var2);
 ////        return this->SelectByType(maximum, EventFrozenCounterVariation::Group23Var2);
   case (GroupVariation_Group23Var5):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group23Var5"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_FrozenCounterSpec_in_EventBuffer(pEventBuffer, maximum, EventFrozenCounterVariation_Group23Var5);
 ////        return this->SelectByType(maximum, EventFrozenCounterVariation::Group23Var5);
   case (GroupVariation_Group23Var6):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group23Var6"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_FrozenCounterSpec_in_EventBuffer(pEventBuffer, maximum, EventFrozenCounterVariation_Group23Var6);
 ////        return this->SelectByType(maximum, EventFrozenCounterVariation::Group23Var6);
 
   case (GroupVariation_Group32Var0):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var0"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventType_Analog);
 ////        return this->SelectByType(maximum, EventType::Analog);
   case (GroupVariation_Group32Var1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var1"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogVariation_Group32Var1);
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var1);
   case (GroupVariation_Group32Var2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var2"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogVariation_Group32Var2);
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var2);
   case (GroupVariation_Group32Var3):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var3"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogVariation_Group32Var3);
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var3);
   case (GroupVariation_Group32Var4):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var4"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogVariation_Group32Var4);
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var4);
   case (GroupVariation_Group32Var5):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var5"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogVariation_Group32Var5);
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var5);
   case (GroupVariation_Group32Var6):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var6"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogVariation_Group32Var6);
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var6);
   case (GroupVariation_Group32Var7):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var7"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogVariation_Group32Var7);
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var7);
   case (GroupVariation_Group32Var8):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group32Var8"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogVariation_Group32Var8);
 ////        return this->SelectByType(maximum, EventAnalogVariation::Group32Var8);
 
   case (GroupVariation_Group42Var0):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////        return this->SelectByType(maximum, EventType::AnalogOutputStatus);
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventType_AnalogOutputStatus);
   case (GroupVariation_Group42Var1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var1"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var1);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var1);
   case (GroupVariation_Group42Var2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var2"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var2);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var2);
   case (GroupVariation_Group42Var3):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var3"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var3);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var3);
   case (GroupVariation_Group42Var4):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var4"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var4);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var4);
   case (GroupVariation_Group42Var5):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var5"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var5);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var5);
   case (GroupVariation_Group42Var6):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var6"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var6);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var6);
   case (GroupVariation_Group42Var7):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var7"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var7);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var7);
   case (GroupVariation_Group42Var8):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group42Var8"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_AnalogOutputStatusSpec_in_EventBuffer(pEventBuffer, maximum, EventAnalogOutputStatusVariation_Group42Var8);
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var8);
 
   case (GroupVariation_Group60Var2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var2"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByClass_EventClass_in_EventBuffer(pEventBuffer, maximum, EventClass_EC1);
 ////        return this->SelectByClass(maximum, EventClass::EC1);
   case (GroupVariation_Group60Var3):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var3"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByClass_EventClass_in_EventBuffer(pEventBuffer, maximum, EventClass_EC2);
 ////        return this->SelectByClass(maximum, EventClass::EC2);
   case (GroupVariation_Group60Var4):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var4"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByClass_EventClass_in_EventBuffer(pEventBuffer, maximum, EventClass_EC3);
 ////        return this->SelectByClass(maximum, EventClass::EC3);
 //    IINField SelectByClass_EventClass_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventClass clazz)
 
   case (GroupVariation_Group111Var0):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group111Var0"<<'\n';
+  decrement_stack_info();
+#endif
     return SelectByType_OctetStringSpec_in_EventBuffer(pEventBuffer, maximum, EventOctetStringVariation_Group111Var0);
 ////        return this->SelectByType(maximum, EventOctetStringVariation::Group111Var0);
 
   default:
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<'\n';
+  decrement_stack_info();
+#endif
 //   void IINField_in_IINFieldOver2(IINField *pIINField, IINBit_uint8_t bit);
 //        return IINBit_FUNC_NOT_SUPPORTED;
     IINField iIINField;
@@ -419,8 +646,6 @@ uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t 
 ////} // namespace opendnp3
 void EventBuffer_in_EventBufferOver1(EventBuffer *pEventBuffer)
 {
-qDebug()<<"";
-qDebug()<<"EventBuffer_in_EventBufferOver11";
   pEventBuffer->overflow = false;
 
   // ------- IEventReceiver ------
@@ -545,8 +770,6 @@ boolean HasAnySelection_in_EventBuffer_override(void *pIResponseLoader)
 }
 boolean Load_in_EventBuffer_override(void *pIResponseLoader, HeaderWriter* writer)
 {
-qDebug()<<"";
-qDebug()<<"Load_in_EventBuffer_override1";
   EventBuffer *parent =
     (EventBuffer*)getParentPointer_in_IResponseLoader((IResponseLoader*)pIResponseLoader);
 

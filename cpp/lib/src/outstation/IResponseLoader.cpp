@@ -1,4 +1,3 @@
-#include <QtWidgets>
 #include "header.h"
 #include "IResponseLoader.h"
 
@@ -8,8 +7,6 @@ boolean HasAnySelection_in_IResponseLoader(IResponseLoader *pIResponseLoader)
 }
 boolean Load_in_IResponseLoader(IResponseLoader *pIResponseLoader, HeaderWriter* writer)
 {
-qDebug()<<"pIResponseLoader  "<<(uint32_t)pIResponseLoader;
-qDebug()<<"Load_in_IResponseLoader  "<<(uint32_t)pIResponseLoader->pLoad_in_IResponseLoader;
   return (pIResponseLoader->pLoad_in_IResponseLoader)(pIResponseLoader, writer);
 }
 

@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "CountWriteIterator_for_Binary.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ CountWriteIterator_for_UInt8_Binary Null_in_CountWriteIterator_for_UInt8_Binary_
 ////    CountWriteIterator() : count(0), isValid(false), pPosition(nullptr) {}
 void CountWriteIterator_for_UInt8_Binary_in_CountWriteIterator_for_UInt8_BinaryOver1(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_Binary_in_CountWriteIterator_for_UInt8_BinaryOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   pCountWriteIterator_for_UInt8_Binary->count = 0;
   pCountWriteIterator_for_UInt8_Binary->isValid = false;
   pCountWriteIterator_for_UInt8_Binary->pPosition = NULL;
@@ -24,6 +35,13 @@ void CountWriteIterator_for_UInt8_Binary_in_CountWriteIterator_for_UInt8_BinaryO
 void CountWriteIterator_for_UInt8_Binary_in_CountWriteIterator_for_UInt8_BinaryOver2(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary,
     Serializer_for_Binary *serializer, WSeq_for_Uint16_t *position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_Binary_in_CountWriteIterator_for_UInt8_BinaryOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
 
   pCountWriteIterator_for_UInt8_Binary->count = 0;
   pCountWriteIterator_for_UInt8_Binary->serializer = *serializer;
@@ -42,6 +60,13 @@ void CountWriteIterator_for_UInt8_Binary_in_CountWriteIterator_for_UInt8_BinaryO
 ////    ~CountWriteIterator()
 void CountWriteIterator_for_UInt8_Binary_destr_CountWriteIterator_for_UInt8_Binary(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_Binary_destr_CountWriteIterator_for_UInt8_Binary1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pCountWriteIterator_for_UInt8_Binary->isValid)
   {
 ////        CountType::write_to(countPosition, count);

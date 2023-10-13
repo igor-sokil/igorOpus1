@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "CountWriteIterator_for_ControlRelayOutputBlock.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ CountWriteIterator_for_UInt8_ControlRelayOutputBlock Null_in_CountWriteIterator_
 ////    CountWriteIterator() : count(0), isValid(false), pPosition(nullptr) {}
 void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver1(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   pCountWriteIterator_for_UInt8_ControlRelayOutputBlock->count = 0;
   pCountWriteIterator_for_UInt8_ControlRelayOutputBlock->isValid = false;
   pCountWriteIterator_for_UInt8_ControlRelayOutputBlock->pPosition = NULL;
@@ -24,6 +35,13 @@ void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_
 void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver2(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock,
     Serializer_for_ControlRelayOutputBlock *serializer, WSeq_for_Uint16_t *position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver2_2"<<'\n';
+  decrement_stack_info();
+#endif
 
   pCountWriteIterator_for_UInt8_ControlRelayOutputBlock->count = 0;
   pCountWriteIterator_for_UInt8_ControlRelayOutputBlock->serializer = *serializer;
@@ -42,6 +60,13 @@ void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_
 ////    ~CountWriteIterator()
 void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_destr_CountWriteIterator_for_UInt8_ControlRelayOutputBlock(CountWriteIterator_for_UInt8_ControlRelayOutputBlock *pCountWriteIterator_for_UInt8_ControlRelayOutputBlock)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_ControlRelayOutputBlock_destr_CountWriteIterator_for_UInt8_ControlRelayOutputBlock1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pCountWriteIterator_for_UInt8_ControlRelayOutputBlock->isValid)
   {
 ////        CountType::write_to(countPosition, count);

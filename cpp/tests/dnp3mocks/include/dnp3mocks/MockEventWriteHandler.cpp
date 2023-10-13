@@ -1,6 +1,9 @@
 #include <QApplication>
-#include <QtWidgets>
+//#include <QtWidgets>
+#include "log_info.h"
+//#ifndef  LOG_INFO_INC
 #include <iostream>
+//#endif
 #include "header.h"
 #include "MockEventWriteHandler.h"
 
@@ -158,15 +161,15 @@ uint16_t WriteAny_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMo
 ////                                         opendnp3::IEventCollection<typename T::meas_t>& items)
 uint16_t WriteAny_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventBinaryVariation_uint8_t variation, IEventCollection_for_Binary* items)
 {
-  qDebug()<<"";
-  qDebug()<<"WriteAny_for_Binary_in_MockEventWriteHandler1";
+   std::cout<<""<<'\n';
+   std::cout<<"WriteAny_for_Binary_in_MockEventWriteHandler1"<<'\n';
 
   UNUSED(pMockEventWriteHandler);
 ////    if (this->expected.empty())
   if(expected_in_MockEventWriteHandler.empty())
   {
 ////        throw std::logic_error("no more write events expected");
-    std::cout<<"throw std::logic_error('no more write events expected')"<<'\n';
+     std::cout<<"throw std::logic_error('no more write events expected')"<<'\n';
     return 0;
   }
 
@@ -191,7 +194,7 @@ uint16_t WriteAny_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMo
 ////        std::ostringstream oss;
 ////        oss << "Unexpected variation: " << static_cast<int>(variation);
 ////        throw std::logic_error(oss.str());
-    std::cout<<"oss << 'Unexpected variation: ' << static_cast<int>(variation)";
+     std::cout<<"oss << 'Unexpected variation: ' << static_cast<int>(variation)";
     return 0;
   }
 

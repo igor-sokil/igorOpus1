@@ -56,7 +56,7 @@ void  StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOv
 }
 //-------------------------------DoubleBitBinary-------------------------------------------------
 //-------------------------------Analog-------------------------------------------------
-void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpec(SelectedValue_for_AnalogSpec *pSelectedValue_for_AnalogSpec)
+void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver1(SelectedValue_for_AnalogSpec *pSelectedValue_for_AnalogSpec)
 {
   Analog_in_AnalogOver1(&(pSelectedValue_for_AnalogSpec->value));
 
@@ -64,10 +64,19 @@ void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpec(SelectedValue_
   pSelectedValue_for_AnalogSpec->variation = 0;
 }
 
+void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2(SelectedValue_for_AnalogSpec *pSelectedValue_for_AnalogSpec,
+                                          boolean selected, Analog* value, StaticAnalogVariation_uint8_t variation)
+{
+////        : selected(selected), value(value), variation(variation)
+   pSelectedValue_for_AnalogSpec->selected = selected;
+   pSelectedValue_for_AnalogSpec->value = *value;
+   pSelectedValue_for_AnalogSpec->variation = variation;
+}
+
 void StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver1(StaticDataCell_for_Analog *pStaticDataCell_for_Analog,
     AnalogConfig* config)
 {
-  SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpec(&(pStaticDataCell_for_Analog->selection));
+  SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver1(&(pStaticDataCell_for_Analog->selection));
 
   Analog_in_AnalogOver1(&(pStaticDataCell_for_Analog->value));
   pStaticDataCell_for_Analog->config = *config;
@@ -77,7 +86,7 @@ void  StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver2(StaticDataCell
     Analog* value,
     AnalogConfig* config)
 {
-  SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpec(&(pStaticDataCell_for_Analog->selection));
+  SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver1(&(pStaticDataCell_for_Analog->selection));
   pStaticDataCell_for_Analog->value = *value;
   pStaticDataCell_for_Analog->config = *config;
 }

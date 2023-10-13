@@ -74,6 +74,7 @@ typedef struct
 void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, uint64_t value);
 TimeDuration Minutes_in_TimeDuration_static(int64_t minutes);
 TimeDuration Seconds_in_TimeDuration_static(int64_t seconds);
+TimeDuration Milliseconds_in_TimeDuration_static(int64_t milliseconds);
 TimeDuration FromValue_in_TimeDuration_static(int64_t value);
 boolean operatorLT_in_TimeDuration(TimeDuration *pTimeDuration, TimeDuration* other);
 

@@ -30,7 +30,7 @@
 ////#include "opendnp3/logging/Logger.h"
 
 ////#include <ser4cpp/container/SequenceTypes.h>
-//#include "BufferedCollection.h"
+#include "BufferedCollection.h"
 #include "Functions.h"
 #include "IAPDUHandler.h"
 #include "NumParser.h"
@@ -49,7 +49,7 @@
 typedef void (*HandleFun_in_CountParser)( HeaderRecord* record,
     uint16_t count,
     RSeq_for_Uint16_t* buffer,
-    IAPDUHandler handler);
+    IAPDUHandler* handler);
 
 ////class CountParser
 typedef struct
@@ -114,27 +114,25 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
     ////Logger* pLogger,
     IAPDUHandler* pHandler);
 
+//-------------------Group50Var1-----------------------------
 ////template<class Descriptor> CountParser CountParser::From(uint16_t count)
-////{
-////    const auto size = static_cast<size_t>(count) * Descriptor::Size();
-////    return CountParser(count, size, &InvokeCountOf<Descriptor>);
-////}
+CountParser From_for_Group50Var1_in_CountParser_static(uint16_t count);
+void InvokeCountOf_for_Group50Var1_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//-------------------Group50Var1-----------------------------
+//-------------------Group50Var3-----------------------------
+////template<class Descriptor> CountParser CountParser::From(uint16_t count)
+CountParser From_for_Group50Var3_in_CountParser_static(uint16_t count);
+void InvokeCountOf_for_Group50Var3_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//-------------------Group50Var3-----------------------------
 
-////template<class T>
-////void CountParser::InvokeCountOf(const HeaderRecord& record,
-////                                uint16_t count,
-////                                const ser4cpp::rseq_t& buffer,
-////                                IAPDUHandler& handler)
-////{
-////    auto read = [](ser4cpp::rseq_t& buffer, uint32_t) -> T {
-////        T value;
-////        T::Read(buffer, value);
-////        return value;
-////    };
-////
-////    auto collection = CreateBufferedCollection<T>(buffer, count, read);
-////    handler.OnHeader(CountHeader(record, count), collection);
-////}
 
 ////} // namespace opendnp3
 

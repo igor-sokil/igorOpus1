@@ -103,4 +103,6 @@ uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOu
 
 uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
 
+uint16_t AdvanceTime_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, TimeDuration* td);
+
 #endif

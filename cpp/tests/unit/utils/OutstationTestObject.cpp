@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+//#include <QtWidgets>
 #include <QApplication>
 #include "header.h"
 #include "BufferHelpers.h"
@@ -109,8 +109,6 @@ uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTest
 ////size_t OutstationTestObject::SendToOutstation(const std::string& hex)
 uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, std::string& hex)
 {
-qDebug()<<"";
-qDebug()<<"SendToOutstation_in_OutstationTestObject1";
 //   void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
 ////    HexSequence hs(hex);
   HexSequence hs;
@@ -128,9 +126,7 @@ qDebug()<<"SendToOutstation_in_OutstationTestObject1";
   Message mMessage;
   Message_in_Message(&mMessage, &aAddresses, &temp);
 
-qDebug()<<"SendToOutstation_in_OutstationTestObject2";
   /*boolean tmp =*/ OnReceive_in_OContext(&(pOutstationTestObject->context), &mMessage);
-qDebug()<<"SendToOutstation_in_OutstationTestObject3";
 
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
@@ -184,8 +180,11 @@ uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOu
 ////    return false;
 ////}
 
-////size_t OutstationTestObject::AdvanceTime(const TimeDuration& td)
-////{
+uint16_t AdvanceTime_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, TimeDuration* td)
+{
+//uint16_t advance_time_in_MockExecutor(MockExecutor *pMockExecutor, uint32_t duration);
 ////    exe->advance_time(td.value);
+  advance_time_in_MockExecutor(&(pOutstationTestObject->exe), td->duration_value);
 ////    return exe->run_many();
-////}
+  return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
+}

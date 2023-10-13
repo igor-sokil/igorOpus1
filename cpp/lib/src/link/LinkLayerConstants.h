@@ -25,14 +25,15 @@
 ////namespace opendnp3
 ////{
 
-const uint8_t LPDU_MIN_LENGTH = 5;
-const uint8_t LPDU_MAX_LENGTH = 255;
-const uint8_t LPDU_HEADER_SIZE = 10;
-const uint8_t LPDU_DATA_BLOCK_SIZE = 16;
-const uint8_t LPDU_CRC_SIZE = 2;
-const uint8_t LPDU_DATA_PLUS_CRC_SIZE = 18;
-const uint8_t LPDU_MAX_USER_DATA_SIZE = 250;
-const uint16_t LPDU_MAX_FRAME_SIZE = 292; // 10(header) + 250 (user data) + 32 (block CRC's) = 292 frame bytes
+#define LPDU_MIN_LENGTH  5
+#define LPDU_MAX_LENGTH  255
+#define LPDU_HEADER_SIZE  10
+#define LPDU_DATA_BLOCK_SIZE  16
+#define LPDU_CRC_SIZE  2
+#define LPDU_DATA_PLUS_CRC_SIZE  18
+#define LPDU_MAX_USER_DATA_SIZE  250
+#define LPDU_MAX_FRAME_SIZE  292
+ // 10(header) + 250 (user data) + 32 (block CRC's) = 292 frame bytes
 
 // Broadcast addresses
 #define LinkBroadcastAddress_uint16_t  uint16_t

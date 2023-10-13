@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "PrefixedWriteIterator_for_FrozenCounter.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ PrefixedWriteIterator_for_UInt16_FrozenCounter Null_in_PrefixedWriteIterator_for
 
 void PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for_UInt16_FrozenCounterOver1(PrefixedWriteIterator_for_UInt16_FrozenCounter *pPrefixedWriteIterator_for_UInt16_FrozenCounter)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for_UInt16_FrozenCounterOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
 //// : sizeOfTypePlusIndex(0), count(0), isValid(false), pPosition(nullptr) {}
   pPrefixedWriteIterator_for_UInt16_FrozenCounter->sizeOfTypePlusIndex = 0;
   pPrefixedWriteIterator_for_UInt16_FrozenCounter->count = 0;
@@ -25,6 +36,13 @@ void PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for
 void PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for_UInt16_FrozenCounterOver2(PrefixedWriteIterator_for_UInt16_FrozenCounter *pPrefixedWriteIterator_for_UInt16_FrozenCounter,
     Serializer_for_FrozenCounter* serializer, WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for_UInt16_FrozenCounterOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pPrefixedWriteIterator_for_UInt16_FrozenCounter->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_FrozenCounter->sizeOfTypePlusIndex = get_size_in_Serializer_for_FrozenCounter(serializer) +////serializer.get_size() + PrefixType::size;
       size_in_UInt16;
@@ -44,6 +62,13 @@ void PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for
 ////    ~PrefixedWriteIterator()
 void PrefixedWriteIterator_for_UInt16_FrozenCounter_destr_PrefixedWriteIterator_for_UInt16_FrozenCounter(PrefixedWriteIterator_for_UInt16_FrozenCounter *pPrefixedWriteIterator_for_UInt16_FrozenCounter)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_FrozenCounter_destr_PrefixedWriteIterator_for_UInt16_FrozenCounter1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pPrefixedWriteIterator_for_UInt16_FrozenCounter->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);

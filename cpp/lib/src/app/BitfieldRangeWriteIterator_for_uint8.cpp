@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
   //#include <QtWidgets>
 #include "header.h"
 #include "BitfieldRangeWriteIterator_for_UInt8.h"
@@ -16,6 +20,14 @@ BitfieldRangeWriteIterator_for_UInt8 Null_in_BitfieldRangeWriteIterator_for_UInt
 void  BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8,
     uint8_t start_, WSeq_for_Uint16_t* position_)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UInt8_1"<<'\n';
+  decrement_stack_info();
+#endif
+
   pBitfieldRangeWriteIterator_for_UInt8->start = start_;
   pBitfieldRangeWriteIterator_for_UInt8->count = 0;
   pBitfieldRangeWriteIterator_for_UInt8->maxCount = 0;
@@ -38,6 +50,13 @@ void  BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UIn
 ////    ~BitfieldRangeWriteIterator()
 void BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8_1"<<'\n';
+  decrement_stack_info();
+#endif
 ////        if (isValid && count > 0)
   if (pBitfieldRangeWriteIterator_for_UInt8->isValid && pBitfieldRangeWriteIterator_for_UInt8->count > 0)
   {

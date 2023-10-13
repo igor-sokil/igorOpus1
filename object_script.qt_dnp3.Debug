@@ -59,6 +59,9 @@ debug/ICollection_Indexed_for_ControlRelayOutputBlock.o
 debug/ICollection_Indexed_for_IINValue.o
 debug/ICollection_Indexed_for_TimeAndInterval.o
 debug/ICollection_Indexed_for_Binary.o
+debug/ICollection_Indexed_for_BinaryCommandEvent.o
+debug/ICollection_Indexed_for_AnalogCommandEvent.o
+debug/ICollection_Indexed_for_DoubleBitBinary.o
 debug/ICollection_Indexed_for_BinaryOutputStatus.o
 debug/ICollection_Indexed_for_OctetString.o
 debug/IDnpTimeSource.o
@@ -97,6 +100,7 @@ debug/APDUParser.o
 debug/BufferedCollection.o
 debug/BitReader.o
 debug/CountParser.o
+debug/CountIndexParser.o
 debug/ObjectHeaderParser.o
 debug/ParseResult.o
 debug/RangeParser.o
@@ -157,6 +161,7 @@ debug/PrefixedWriteIterator_for_FrozenCounter.o
 debug/PrefixedWriteIterator_for_OctetString.o
 debug/PrefixedWriteIterator_for_ControlRelayOutputBlock.o
 debug/Serializer.o
+debug/RangeWriteIterator_for_Analog.o
 debug/RangeWriteIterator_for_Binary.o
 debug/RangeWriteIterator_for_BinaryOutputStatus.o
 debug/RangeWriteIterator_for_DoubleBitBinary.o
@@ -167,6 +172,7 @@ debug/TxBuffer.o
 debug/ApplicationIIN.o
 debug/AssignClassHandler.o
 debug/Database.o
+debug/Database_for_Analog.o
 debug/Database_for_Binary.o
 debug/DatabaseConfig.o
 debug/DeferredRequest.o
@@ -206,6 +212,7 @@ debug/StaticDataMap_for_Analog.o
 debug/StaticDataMap_for_AnalogOutputStatus.o
 debug/StaticDataMap_for_OctetString.o
 debug/StaticDataMap_for_TimeAndInterval.o
+debug/StaticWriters_for_Analog.o
 debug/StaticWriters_for_Binary.o
 debug/TimeSyncState.o
 debug/WriteHandler.o
@@ -280,6 +287,7 @@ debug/Group32.o
 debug/Group40.o
 debug/Group41.o
 debug/Group42.o
+debug/Group43.o
 debug/Group50.o
 debug/Group51.o
 debug/Group52.o
@@ -295,6 +303,7 @@ debug/LinkLayerTest.o
 debug/MockTransportSegment.o
 debug/OutstationTestObject.o
 debug/TestAPDUParsing.o
+debug/TestOutstation.o
 debug/MockOutstationApplication.o
 debug/MockCommandHandler.o
 debug/MockEventWriteHandler.o
@@ -305,8 +314,4 @@ debug/MockFrameSink.o
 debug/MockTransportLayer.o
 debug/DatabaseHelpers.o
 debug/DataSink.o
-debug/MainWindow.o
 debug/loghandler.o
-debug/main.o
-debug/moc_key_filter.o
-debug/moc_MainWindow.o

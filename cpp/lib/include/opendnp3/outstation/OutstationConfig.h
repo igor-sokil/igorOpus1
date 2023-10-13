@@ -28,6 +28,10 @@
 #include "OutstationParams.h"
 //#include "TimeDuration.h"
 
+extern boolean expectsContents_in_RangeParser;
+extern boolean expectsContents_in_CountIndexParser;
+extern boolean expectsContents_in_CountParser;
+
 ////namespace opendnp3
 ////{
 
@@ -38,6 +42,11 @@ properties (i.e. unsolicited responses).
 
 Major feature areas are unsolicited responses, time synchronization requests, event buffer limits, and the DNP3
 object/variations to use by default when the master requests class data or variation 0.
+»спользуетс€ как вход, описывающий конфигурацию запуска удаленной станции, так и как состо€ние конфигурации измен€емого
+свойства (т. е. нежелательные ответы).
+
+ќсновными област€ми функций €вл€ютс€ незапрошенные ответы, запросы синхронизации времени, ограничени€ буфера событий и протокол DNP3.
+объект/вариации, которые будут использоватьс€ по умолчанию, когда мастер запрашивает данные класса или вариант 0.
 
 */
 ////struct OutstationConfig

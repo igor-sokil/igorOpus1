@@ -46,56 +46,56 @@ std::string QueryDiscontiguousBinary(const std::string& request)
     return t.lower->PopWriteAsHex();
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousClass0"))
+TEST_CASE(SUITE("1ReadDiscontiguousClass0"))
 {
     REQUIRE(QueryDiscontiguousBinary("C0 01 3C 01 06") == "C0 81 80 00 01 02 00 02 02 81 01 02 00 04 05 01 02");
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousBadRangeBelow"))
+TEST_CASE(SUITE("2ReadDiscontiguousBadRangeBelow"))
 {
     // read 01 var 2, [00 : 01]
     REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 00 01") == "C0 81 80 04");
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousBadRangeAbove"))
+TEST_CASE(SUITE("3ReadDiscontiguousBadRangeAbove"))
 {
     // read 01 var 2, [06 : 09]
     REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 06 09") == "C0 81 80 04");
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousSingleRange"))
+TEST_CASE(SUITE("4ReadDiscontiguousSingleRange"))
 {
     // read 01 var 2, [02 : 02]
     REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 02 02") == "C0 81 80 00 01 02 00 02 02 81");
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousDoubleRange"))
+TEST_CASE(SUITE("5ReadDiscontiguousDoubleRange"))
 {
     // read 01 var 2, [04 : 05]
     REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 04 05") == "C0 81 80 00 01 02 00 04 05 01 02");
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousPastUpperBound"))
+TEST_CASE(SUITE("6ReadDiscontiguousPastUpperBound"))
 {
     // read 01 var 2, [05 : 06]
     REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 05 06") == "C0 81 80 04 01 02 00 05 05 02");
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousAllDataWithMultipleRanges"))
+TEST_CASE(SUITE("7ReadDiscontiguousAllDataWithMultipleRanges"))
 {
     // read 01 var 2, [02 : 02]; read 01 var 2, [04 : 05]
     REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 02 02 01 02 00 04 05")
             == "C0 81 80 00 01 02 00 02 02 81 01 02 00 04 05 01 02");
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousAllDataWithMultipleRangesAndRangeError"))
+TEST_CASE(SUITE("8ReadDiscontiguousAllDataWithMultipleRangesAndRangeError"))
 {
     // read 01 var 2, [02 : 03]; read 01 var 2, [04 : 05]
     REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 02 03 01 02 00 04 05")
             == "C0 81 80 04 01 02 00 02 02 81 01 02 00 04 05 01 02");
 }
 
-TEST_CASE(SUITE("ReadDiscontiguousAllDataWithRangeError"))
+TEST_CASE(SUITE("9ReadDiscontiguousAllDataWithRangeError"))
 {
     // read 01 var 2, [02 : 05]
     REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 02 05") == "C0 81 80 04 01 02 00 02 02 81 01 02 00 04 05 01 02");

@@ -264,10 +264,27 @@ IINField ProcessAny_Indexed_for_Binary_in_MockApduHeaderHandler(MockApduHeaderHa
     HeaderRecord* record,
     ICollection_Indexed_for_Binary* meas,
     std::vector<Indexed_for_Binary>* items);
+IINField ProcessAny_Indexed_for_AnalogCommandEvent_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_AnalogCommandEvent* meas,
+    std::vector<Indexed_for_AnalogCommandEvent>* items);
+IINField ProcessAny_Indexed_for_BinaryCommandEvent_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_BinaryCommandEvent* meas,
+    std::vector<Indexed_for_BinaryCommandEvent>* items);
+IINField ProcessAny_Indexed_for_DoubleBitBinary_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_DoubleBitBinary* meas,
+    std::vector<Indexed_for_DoubleBitBinary>* items);
 IINField ProcessAny_Indexed_for_BinaryOutputStatus_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
     HeaderRecord* record,
     ICollection_Indexed_for_BinaryOutputStatus* meas,
     std::vector<Indexed_for_BinaryOutputStatus>* items);
+IINField ProcessAny_Indexed_for_ControlRelayOutputBlock_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
+    HeaderRecord* record,
+    ICollection_Indexed_for_ControlRelayOutputBlock* meas,
+    std::vector<Indexed_for_ControlRelayOutputBlock>* items);
+
 IINField ProcessAny_Indexed_for_OctetString_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
     HeaderRecord* record,
     ICollection_Indexed_for_OctetString* meas,
@@ -279,6 +296,39 @@ boolean IsAllowed_in_MockApduHeaderHandler_override(void *pIWhiteList, uint32_t 
 void OnHeaderResult_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, HeaderRecord* record, IINField* result);
 void OnHeaderResult_in_MockApduHeaderHandler_override(void *pIAPDUHandler, HeaderRecord* record, IINField* result);
 
+//----------------------ProcessHeader_PrefixHeader--------------------------------------
+IINField ProcessHeader_PrefixHeader_for_uint16_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, PrefixHeader* header,
+                                          ICollection_for_uint16* values);
+IINField ProcessHeader_PrefixHeader_for_uint16_in_MockApduHeaderHandler_override(void *pIAPDUHandler, PrefixHeader* header,
+                                          ICollection_for_uint16* values);
+
+IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_Binary* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_MockApduHeaderHandler_override(void *pIAPDUHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_Binary* values);
+
+IINField ProcessHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_BinaryCommandEvent* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_MockApduHeaderHandler_override(void *pIAPDUHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_BinaryCommandEvent* values);
+
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_AnalogCommandEvent* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_MockApduHeaderHandler_override(void *pIAPDUHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_AnalogCommandEvent* values);
+
+IINField ProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_DoubleBitBinary* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_MockApduHeaderHandler_override(void *pIAPDUHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_DoubleBitBinary* values);
+
+IINField ProcessHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_ControlRelayOutputBlock* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_MockApduHeaderHandler_override(void *pIAPDUHandler, PrefixHeader* header,
+                                          ICollection_Indexed_for_ControlRelayOutputBlock* values);
+//----------------------ProcessHeader_PrefixHeader--------------------------------------
+
+//----------------------ProcessHeader_RangeHeader--------------------------------------
 IINField ProcessHeader_RangeHeader_Indexed_for_Binary_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, RangeHeader* header,
                                           ICollection_Indexed_for_Binary* values);
 IINField ProcessHeader_RangeHeader_Indexed_for_Binary_in_MockApduHeaderHandler_override(void *pIAPDUHandler, RangeHeader* header,
@@ -298,5 +348,6 @@ IINField ProcessHeader_RangeHeader_Indexed_for_OctetString_in_MockApduHeaderHand
                                           ICollection_Indexed_for_OctetString* values);
 IINField ProcessHeader_RangeHeader_Indexed_for_OctetString_in_MockApduHeaderHandler_override(void *pIAPDUHandler, RangeHeader* header,
                                           ICollection_Indexed_for_OctetString* values);
+//----------------------ProcessHeader_RangeHeader--------------------------------------
 
 #endif

@@ -18,7 +18,10 @@
  * limitations under the License.
  */
 //#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "PriLinkLayerStates.h"
 
@@ -103,7 +106,12 @@ void* OnAck_in_PriStateBase_override(void* pPriStateBase, LinkContext* ctx, bool
   UNUSED(v);
   ++(ctx->statistics.numUnexpectedFrame);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Frame context not understood");
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Frame context not understood')***"<<std::endl;
+  decrement_stack_info();
+#endif
   return pPriStateBase;
 }
 
@@ -112,7 +120,12 @@ void* OnNack_in_PriStateBase_override(void* pPriStateBase, LinkContext* ctx, boo
   UNUSED(v);
   ++(ctx->statistics.numUnexpectedFrame);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Frame context not understood");
-    std::cout<<"***SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Frame context not understood')***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Frame context not understood')***"<<std::endl;
+  decrement_stack_info();
+#endif
   return pPriStateBase;
 }
 
@@ -121,7 +134,12 @@ void* OnLinkStatus_in_PriStateBase_override(void* pPriStateBase, LinkContext* ct
   UNUSED(v);
   ++(ctx->statistics.numUnexpectedFrame);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Frame context not understood");
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Frame context not understood')***"<<std::endl;
+  decrement_stack_info();
+#endif
   return pPriStateBase;
 }
 
@@ -137,7 +155,12 @@ void* OnTxReady_in_PriStateBase_override(void* pPriStateBase, LinkContext* ctx)
 {
   UNUSED(ctx);
 ////    FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, "Invalid action for state: %s", this->Name());
-  std::cout<<"***FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, 'Invalid action for state: %s'***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+    std::cout<<"***FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, 'Invalid action for state: %s'***"<<std::endl;
+  decrement_stack_info();
+#endif
   return pPriStateBase;
 }
 
@@ -145,7 +168,12 @@ void* OnTimeout_in_PriStateBase_override(void* pPriStateBase, LinkContext* ctx)
 {
   UNUSED(ctx);
 ////    FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, "Invalid action for state: %s", this->Name());
-  std::cout<<"***FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, 'Invalid action for state: %s'***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+    std::cout<<"***FORMAT_LOG_BLOCK(ctx.logger, flags::ERR, 'Invalid action for state: %s'***"<<std::endl;
+  decrement_stack_info();
+#endif
   return pPriStateBase;
 }
 
@@ -420,7 +448,12 @@ PriStateBase* OnTimeout_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBas
   UNUSED(pPriStateBase);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Link status request - response timeout");
 ////    ctx.FailKeepAlive(true);
-  std::cout<<"***SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Link status request - response timeout'***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+   std::cout<<"***SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Link status request - response timeout'***"<<std::endl;
+  decrement_stack_info();
+#endif
   FailKeepAlive_in_LinkContext(ctx, true);
 
 ////    return PLLS_Idle::Instance();

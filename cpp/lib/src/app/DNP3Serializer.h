@@ -28,6 +28,38 @@
 
 ////namespace opendnp3
 ////{
+//-----------------------------DNP3Serializer_for_AnalogCommandEvent-------------------------------------------
+////template<class T> class DNP3Serializer : public Serializer<T>
+typedef struct
+{
+  Serializer_for_AnalogCommandEvent sSerializer_for_AnalogCommandEvent;
+////public:
+////    DNP3Serializer(GroupVariationID id,
+////                   size_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+////        : Serializer<T>(size, read_func, write_func), id(id)
+////    {
+////    }
+
+////    GroupVariationID ID() const
+////    {
+////        return id;
+////    }
+
+////private:
+  GroupVariationID id;
+} DNP3Serializer_for_AnalogCommandEvent;
+GroupVariationID ID_in_DNP3Serializer_for_AnalogCommandEvent(DNP3Serializer_for_AnalogCommandEvent *pDNP3Serializer_for_AnalogCommandEvent);
+
+void DNP3Serializer_for_AnalogCommandEvent_in_DNP3Serializer_for_AnalogCommandEvent(DNP3Serializer_for_AnalogCommandEvent *pDNP3Serializer_for_AnalogCommandEvent,
+    GroupVariationID id,
+    uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+    read_func_t_in_Serializer_for_AnalogCommandEvent read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+    write_func_t_in_Serializer_for_AnalogCommandEvent write_func);
+//-----------------------------DNP3Serializer_for_AnalogCommandEvent-------------------------------------------
 //-----------------------------DNP3Serializer_for_BinaryCommandEvent-------------------------------------------
 ////template<class T> class DNP3Serializer : public Serializer<T>
 typedef struct
@@ -59,8 +91,6 @@ void DNP3Serializer_for_BinaryCommandEvent_in_DNP3Serializer_for_BinaryCommandEv
     read_func_t_in_Serializer_for_BinaryCommandEvent read_func,
 ////                   typename Serializer<T>::write_func_t write_func)
     write_func_t_in_Serializer_for_BinaryCommandEvent write_func);
-
-
 //-----------------------------DNP3Serializer_for_BinaryCommandEvent-------------------------------------------
 //-----------------------------DNP3Serializer_for_FrozenCounter-------------------------------------------
 ////template<class T> class DNP3Serializer : public Serializer<T>

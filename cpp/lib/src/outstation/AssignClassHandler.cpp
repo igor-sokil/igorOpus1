@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "AssignClassHandler.h"
 
@@ -56,6 +60,12 @@ void AssignClassHandler_in_AssignClassHandler(AssignClassHandler *pAssignClassHa
 ////IINField AssignClassHandler::ProcessHeader(const AllObjectsHeader& header)
 IINField ProcessHeader_AllObjectsHeader_in_AssignClassHandler_override(void *pIAPDUHandler, AllObjectsHeader* header)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_AllObjectsHeader_in_AssignClassHandler_override1"<<'\n';
+#endif
   AssignClassHandler *parent =
     (AssignClassHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 
@@ -67,29 +77,69 @@ IINField ProcessHeader_AllObjectsHeader_in_AssignClassHandler_override(void *pIA
     switch((header->hHeaderRecord).gGroupVariationRecord.enumeration)
     {
     case (GroupVariation_Group1Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group1Var0"<<'\n';
+  decrement_stack_info();
+#endif
 //  IINField ProcessAssignAll_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, AssignClassType_uint8_t type, PointClass_uint8_t clazz)
 ////            return this->ProcessAssignAll(AssignClassType::BinaryInput, clazz);
       return ProcessAssignAll_in_AssignClassHandler(parent, AssignClassType_BinaryInput, parent->clazz);
     case (GroupVariation_Group3Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group3Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return this->ProcessAssignAll(AssignClassType::DoubleBinaryInput, clazz);
       return ProcessAssignAll_in_AssignClassHandler(parent, AssignClassType_DoubleBinaryInput, parent->clazz);
     case (GroupVariation_Group10Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group10Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return this->ProcessAssignAll(AssignClassType::BinaryOutputStatus, clazz);
       return ProcessAssignAll_in_AssignClassHandler(parent, AssignClassType_BinaryOutputStatus, parent->clazz);
     case (GroupVariation_Group20Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group20Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return this->ProcessAssignAll(AssignClassType::Counter, clazz);
       return ProcessAssignAll_in_AssignClassHandler(parent, AssignClassType_Counter, parent->clazz);
     case (GroupVariation_Group21Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group21Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return this->ProcessAssignAll(AssignClassType::FrozenCounter, clazz);
       return ProcessAssignAll_in_AssignClassHandler(parent, AssignClassType_FrozenCounter, parent->clazz);
     case (GroupVariation_Group30Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group30Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return this->ProcessAssignAll(AssignClassType::AnalogInput, clazz);
       return ProcessAssignAll_in_AssignClassHandler(parent, AssignClassType_AnalogInput, parent->clazz);
     case (GroupVariation_Group40Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group40Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return this->ProcessAssignAll(AssignClassType::AnalogOutputStatus, clazz);
       return ProcessAssignAll_in_AssignClassHandler(parent, AssignClassType_AnalogOutputStatus, parent->clazz);
     default:
     {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FUNC_NOT_SUPPORTED"<<'\n';
+  decrement_stack_info();
+#endif
 ////           return IINBit::FUNC_NOT_SUPPORTED;
       IINField iIINField;
       IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
@@ -101,12 +151,21 @@ IINField ProcessHeader_AllObjectsHeader_in_AssignClassHandler_override(void *pIA
   {
 //IINField RecordClass_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, GroupVariation_uint16_t gv)
 ////        return this->RecordClass(header.enumeration);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return RecordClass_in_AssignClassHandler(parent, (header->hHeaderRecord).gGroupVariationRecord.enumeration);
   }
 }
 
 IINField ProcessHeader_RangeHeader_in_AssignClassHandler_override(void *pIAPDUHandler, RangeHeader* header)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_RangeHeader_in_AssignClassHandler_override1"<<'\n';
+#endif
   AssignClassHandler *parent =
     (AssignClassHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 
@@ -118,30 +177,70 @@ IINField ProcessHeader_RangeHeader_in_AssignClassHandler_override(void *pIAPDUHa
     {
 
     case (GroupVariation_Group1Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group1Var0"<<'\n';
+  decrement_stack_info();
+#endif
 //   IINField ProcessAssignRange_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range)
 ////            return ProcessAssignRange(AssignClassType::BinaryInput, clazz, header.range);
       return ProcessAssignRange_in_AssignClassHandler(parent, AssignClassType_BinaryInput, parent->clazz, &(header->range));
     case (GroupVariation_Group3Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group3Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return ProcessAssignRange(AssignClassType::DoubleBinaryInput, clazz, header.range);
       return ProcessAssignRange_in_AssignClassHandler(parent, AssignClassType_DoubleBinaryInput, parent->clazz, &(header->range));
     case (GroupVariation_Group10Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group10Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return ProcessAssignRange(AssignClassType::BinaryOutputStatus, clazz, header.range);
       return ProcessAssignRange_in_AssignClassHandler(parent, AssignClassType_BinaryOutputStatus, parent->clazz, &(header->range));
     case (GroupVariation_Group20Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group20Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return ProcessAssignRange(AssignClassType::Counter, clazz, header.range);
       return ProcessAssignRange_in_AssignClassHandler(parent, AssignClassType_Counter, parent->clazz, &(header->range));
     case (GroupVariation_Group21Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group21Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return ProcessAssignRange(AssignClassType::FrozenCounter, clazz, header.range);
       return ProcessAssignRange_in_AssignClassHandler(parent, AssignClassType_FrozenCounter, parent->clazz, &(header->range));
     case (GroupVariation_Group30Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group30Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return ProcessAssignRange(AssignClassType::AnalogInput, clazz, header.range);
       return ProcessAssignRange_in_AssignClassHandler(parent, AssignClassType_AnalogInput, parent->clazz, &(header->range));
     case (GroupVariation_Group40Var0):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group40Var0"<<'\n';
+  decrement_stack_info();
+#endif
 ////            return ProcessAssignRange(AssignClassType::AnalogOutputStatus, clazz, header.range);
       return ProcessAssignRange_in_AssignClassHandler(parent, AssignClassType_AnalogOutputStatus, parent->clazz, &(header->range));
     default:
     {
 ////           return IINBit::FUNC_NOT_SUPPORTED;
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FUNC_NOT_SUPPORTED"<<'\n';
+  decrement_stack_info();
+#endif
       IINField iIINField;
       IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
       return iIINField;
@@ -151,6 +250,11 @@ IINField ProcessHeader_RangeHeader_in_AssignClassHandler_override(void *pIAPDUHa
   else
   {
 ////        return IINBit::PARAM_ERROR;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*PARAM_ERROR"<<'\n';
+  decrement_stack_info();
+#endif
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
     return iIINField;
@@ -224,6 +328,12 @@ void NotifyApplicationOfAssignment_in_AssignClassHandler(AssignClassHandler *pAs
 
 IINField RecordClass_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, GroupVariation_uint16_t gv)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"RecordClass_in_AssignClassHandler1"<<'\n';
+#endif
 //    uint32_t GetCurrentHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler);
 ////    classHeader = this->GetCurrentHeader();
   pAssignClassHandler->classHeader = GetCurrentHeader_in_IAPDUHandler(&(pAssignClassHandler->iIAPDUHandler));
@@ -236,18 +346,43 @@ IINField RecordClass_in_AssignClassHandler(AssignClassHandler *pAssignClassHandl
   switch (gv)
   {
   case (GroupVariation_Group60Var1):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var1"<<'\n';
+  decrement_stack_info();
+#endif
     pAssignClassHandler->clazz = PointClass_Class0;
     return iIINField1;////IINField();
   case (GroupVariation_Group60Var2):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var2"<<'\n';
+  decrement_stack_info();
+#endif
     pAssignClassHandler->clazz = PointClass_Class1;
     return iIINField1;////IINField();
   case (GroupVariation_Group60Var3):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var3"<<'\n';
+  decrement_stack_info();
+#endif
     pAssignClassHandler->clazz = PointClass_Class2;
     return iIINField1;////IINField();
   case (GroupVariation_Group60Var4):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var4"<<'\n';
+  decrement_stack_info();
+#endif
     pAssignClassHandler->clazz = PointClass_Class3;
     return iIINField1;////IINField();
   default:
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*IINBit::PARAM_ERROR"<<'\n';
+  decrement_stack_info();
+#endif
     pAssignClassHandler->classHeader = -1;
     return iIINField2;////IINBit::PARAM_ERROR;
   }

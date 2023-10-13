@@ -33,8 +33,69 @@
 
 ////namespace opendnp3
 ////{
-//------------------------Serializer_for_BinaryCommandEvent----------------------------------------------------
+//------------------------Serializer_for_AnalogCommandEvent----------------------------------------------------
+typedef boolean (*read_func_t_in_Serializer_for_AnalogCommandEvent) (RSeq_for_Uint16_t *buffer, AnalogCommandEvent *output);
+typedef boolean (*write_func_t_in_Serializer_for_AnalogCommandEvent)(AnalogCommandEvent *value, WSeq_for_Uint16_t *buffer);
 
+////template<class T> class Serializer
+typedef struct
+{
+////public:
+////    using read_func_t = bool (*)(ser4cpp::rseq_t& buffer, T& output);
+////    using write_func_t = bool (*)(const T& value, ser4cpp::wseq_t& buffer);
+
+////    Serializer() = default;
+
+////    Serializer(size_t size, read_func_t read_func, write_func_t write_func)
+////        : size(size), read_func(read_func), write_func(write_func)
+////    {
+////    }
+
+  /**
+   * @return The size (in bytes) required for every call to read/write
+   */
+////    size_t get_size() const
+////    {
+////        return size;
+////    }
+
+  /**
+   * reads the value and advances the read buffer
+   */
+////    bool read(ser4cpp::rseq_t& buffer, T& output) const
+////    {
+////        return (*read_func)(buffer, output);
+////    }
+
+  /**
+   * writes the value and advances the write buffer
+   */
+////    bool write(const T& value, ser4cpp::wseq_t& buffer) const
+////    {
+////        return (*write_func)(value, buffer);
+////    }
+
+////private:
+  ////size_t size = 0;
+////    read_func_t read_func = nullptr;
+////    write_func_t write_func = nullptr;
+  uint16_t size;
+  read_func_t_in_Serializer_for_AnalogCommandEvent  read_func;
+  write_func_t_in_Serializer_for_AnalogCommandEvent write_func;
+
+} Serializer_for_AnalogCommandEvent;
+////} // namespace opendnp3
+
+uint16_t get_size_in_Serializer_for_AnalogCommandEvent(Serializer_for_AnalogCommandEvent *pSerializer_for_AnalogCommandEvent);
+boolean read_in_Serializer_for_AnalogCommandEvent(Serializer_for_AnalogCommandEvent *pSerializer_for_AnalogCommandEvent, RSeq_for_Uint16_t *buffer, AnalogCommandEvent *output);
+boolean write_in_Serializer_for_AnalogCommandEvent(Serializer_for_AnalogCommandEvent *pSerializer_for_AnalogCommandEvent, AnalogCommandEvent *value, WSeq_for_Uint16_t *buffer);
+
+void Serializer_for_AnalogCommandEvent_in_Serializer_for_AnalogCommandEvent(Serializer_for_AnalogCommandEvent *pSerializer_for_AnalogCommandEvent,
+    uint16_t size,
+    read_func_t_in_Serializer_for_AnalogCommandEvent read_func,
+    write_func_t_in_Serializer_for_AnalogCommandEvent write_func);
+//------------------------Serializer_for_AnalogCommandEvent----------------------------------------------------
+//------------------------Serializer_for_BinaryCommandEvent----------------------------------------------------
 typedef boolean (*read_func_t_in_Serializer_for_BinaryCommandEvent) (RSeq_for_Uint16_t *buffer, BinaryCommandEvent *output);
 typedef boolean (*write_func_t_in_Serializer_for_BinaryCommandEvent)(BinaryCommandEvent *value, WSeq_for_Uint16_t *buffer);
 
@@ -96,8 +157,6 @@ void Serializer_for_BinaryCommandEvent_in_Serializer_for_BinaryCommandEvent(Seri
     uint16_t size,
     read_func_t_in_Serializer_for_BinaryCommandEvent read_func,
     write_func_t_in_Serializer_for_BinaryCommandEvent write_func);
-
-
 //------------------------Serializer_for_BinaryCommandEvent----------------------------------------------------
 //------------------------Serializer_for_FrozenCounter----------------------------------------------------
 

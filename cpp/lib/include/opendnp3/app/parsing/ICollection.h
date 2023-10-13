@@ -31,6 +31,9 @@
 #include "ICollection_Indexed_for_IINValue.h"
 #include "ICollection_Indexed_for_TimeAndInterval.h"
 #include "ICollection_Indexed_for_Binary.h"
+#include "ICollection_Indexed_for_BinaryCommandEvent.h"
+#include "ICollection_Indexed_for_AnalogCommandEvent.h"
+#include "ICollection_Indexed_for_DoubleBitBinary.h"
 #include "ICollection_Indexed_for_BinaryOutputStatus.h"
 #include "ICollection_Indexed_for_OctetString.h"
 

@@ -30,6 +30,7 @@ boolean contains_in_ArrayView__for__Node_for_EventRecordOver1(ArrayView__for__No
 ////    inline bool contains(W start, W stop) const
 boolean contains_in_ArrayView__for__Node_for_EventRecordOver2(ArrayView__for__Node_for_EventRecord *pArrayView__for__Node_for_EventRecord, uint32_t start, uint32_t stop)
 {
+  UNUSED(pArrayView__for__Node_for_EventRecord);
 ////        return (start < stop) && Contains(stop);
   return (start < stop);
 }

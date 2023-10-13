@@ -17,7 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "ObjectHeaderParser.h"
 
@@ -41,13 +44,21 @@ void ObjectHeader_in_ObjectHeader(ObjectHeader *pObjectHeader)
 
 ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader* header, RSeq_for_Uint16_t* buffer)////, Logger* pLogger)
 {
-std::cout<<""<<std::endl;
-std::cout<<"ParseObjectHeader_in_ObjectHeaderParser_static1"<<std::endl;
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseObjectHeader_in_ObjectHeaderParser_static1"<<std::endl;
+#endif
 ////    if (buffer.length() < 3)
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < 3)
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for header");
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for header')***"<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_HEADER;
   }
 
@@ -59,6 +70,9 @@ std::cout<<"ParseObjectHeader_in_ObjectHeaderParser_static1"<<std::endl;
   read_from_in_UInt8_static(buffer, &(header->variation));
   read_from_in_UInt8_static(buffer, &(header->qualifier));
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return ParseResult_OK;
 }
 

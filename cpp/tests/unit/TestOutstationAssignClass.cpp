@@ -28,7 +28,7 @@ using namespace opendnp3;
 
 #define SUITE(name) "OutstationAssignClassTestSuite - " name
 
-TEST_CASE(SUITE("rejects with FuncNotSupported if assign class not supported"))
+TEST_CASE(SUITE("1rejects with FuncNotSupported if assign class not supported"))
 //отклоняет с FuncNotSupported, если назначение класса не поддерживается
 {
     OutstationConfig config;
@@ -42,7 +42,7 @@ TEST_CASE(SUITE("rejects with FuncNotSupported if assign class not supported"))
     REQUIRE(t.application->classAssignments.empty());
 }
 
-TEST_CASE(SUITE("rejects with ParamError if type doesn't exist"))
+TEST_CASE(SUITE("2rejects with ParamError if type doesn't exist"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -55,7 +55,7 @@ TEST_CASE(SUITE("rejects with ParamError if type doesn't exist"))
     REQUIRE(t.application->classAssignments.empty());
 }
 
-TEST_CASE(SUITE("accepts assign class via all objects header"))
+TEST_CASE(SUITE("3accepts assign class via all objects header"))
 {
     OutstationTestObject t(OutstationConfig(), configure::by_count_of::binary_input(5));
     t.application->supportsAssignClass = true;
@@ -70,7 +70,7 @@ TEST_CASE(SUITE("accepts assign class via all objects header"))
     REQUIRE(assignment == std::make_tuple(AssignClassType::BinaryInput, PointClass::Class2, 0, 4));
 }
 
-TEST_CASE(SUITE("RejectsAssignClassWithParamErrorIfRangeIsInvalid"))
+TEST_CASE(SUITE("4RejectsAssignClassWithParamErrorIfRangeIsInvalid"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, configure::by_count_of::binary_input(5));
@@ -84,7 +84,7 @@ TEST_CASE(SUITE("RejectsAssignClassWithParamErrorIfRangeIsInvalid"))
     REQUIRE(t.application->classAssignments.size() == 1);
 }
 
-TEST_CASE(SUITE("AcceptsAssignClassViaStartStop"))
+TEST_CASE(SUITE("5AcceptsAssignClassViaStartStop"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, configure::by_count_of::binary_input(5));
@@ -100,7 +100,7 @@ TEST_CASE(SUITE("AcceptsAssignClassViaStartStop"))
     REQUIRE(assignment == std::make_tuple(AssignClassType::BinaryInput, PointClass::Class2, 2, 3));
 }
 
-TEST_CASE(SUITE("AcceptsMultipleAssignsmentPerMessage"))
+TEST_CASE(SUITE("6AcceptsMultipleAssignsmentPerMessage"))
 {
     const uint16_t NUM_BINARY = 5;
     const uint16_t NUM_ANALOG = 10;

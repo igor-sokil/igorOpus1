@@ -47,7 +47,7 @@
 //#include "PrefixedWriteIterator_for_UInt16_OctetString.h"
 //#include "PrefixedWriteIterator.h"
 
-//#include "RangeWriteIterator_for_UInt8_Binary.h"
+#include "RangeWriteIterator_for_Analog.h"
 //#include "RangeWriteIterator_for_UInt8_Counter.h"
 //#include "RangeWriteIterator_for_UInt16_OctetString.h"
 
@@ -113,6 +113,32 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
     DNP3Serializer_for_Analog* serializer,
     Group51Var2* cto);
 //--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_Analog_Group51Var2_in_HeaderWriter--------------------------------------------------------
+
+//--------------------------------IterateOverRange_for_UInt8_Analog_in_HeaderWriter--------------------------------------------------------
+////    template<class IndexType, class WriteType>
+////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,
+////                                                              const DNP3Serializer<WriteType>& serializer,
+////                                                              typename IndexType::type_t start);
+    RangeWriteIterator_for_UInt8_Analog IterateOverRange_for_UInt8_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+                                                   QualifierCode_uint8_t qc,
+                                                   DNP3Serializer_for_Analog *serializer,
+                                                   uint8_t start
+                                                  );
+
+//--------------------------------IterateOverRange_for_UInt8_Analog_in_HeaderWriter--------------------------------------------------------
+//--------------------------------IterateOverRange_for_UInt16_Analog_in_HeaderWriter--------------------------------------------------------
+////    template<class IndexType, class WriteType>
+////    RangeWriteIterator<IndexType, WriteType> IterateOverRange(QualifierCode qc,
+////                                                              const DNP3Serializer<WriteType>& serializer,
+////                                                              typename IndexType::type_t start);
+    RangeWriteIterator_for_UInt16_Analog IterateOverRange_for_UInt16_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+                                                   QualifierCode_uint8_t qc,
+                                                   DNP3Serializer_for_Analog *serializer,
+                                                   uint16_t start
+                                                  );
+
+//--------------------------------IterateOverRange_for_UInt16_Analog_in_HeaderWriter--------------------------------------------------------
+
 //================================================Analog=================================================================
 /*
 //================================================Binary=================================================================

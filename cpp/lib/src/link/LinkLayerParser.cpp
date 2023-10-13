@@ -17,7 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "LinkLayerParser.h"
 
@@ -138,7 +141,12 @@ State_LinkLayerParser_uint8_t ParseSync_in_LinkLayerParser(LinkLayerParser *pLin
     if (skipCount > 0)
     {
 ////            FORMAT_LOG_BLOCK(logger, flags::WARN, "Skipped %zu bytes seaching for start bytes", skipCount);
-    std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Skipped %zu bytes seaching for start bytes', skipCount)***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Skipped %zu bytes seaching for start bytes', skipCount)***"<<std::endl;
+  decrement_stack_info();
+#endif
     }
 
 ////        return synced ? State::ReadHeader : State::FindSync;
@@ -271,7 +279,12 @@ boolean ReadHeader_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 ////        ++statistics.numHeaderCrcError;
     ++(pLinkLayerParser->statistics.numHeaderCrcError);
 ////        SIMPLE_LOG_BLOCK(logger, flags::WARN, "CRC failure in header");
-    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::WARN, 'CRC failure in header')***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::WARN, 'CRC failure in header')***"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
 }
@@ -291,7 +304,12 @@ boolean ValidateBody_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 ////                         header.GetLength());
 
 ////        FORMAT_HEX_BLOCK(logger, flags::LINK_RX_HEX, buffer.ReadBuffer().take(frameSize), 10, 18);
-    std::cout<<"***FORMAT_HEX_BLOCK(logger, flags::LINK_RX_HEX, buffer.ReadBuffer().take(frameSize), 10, 18)***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***FORMAT_HEX_BLOCK(logger, flags::LINK_RX_HEX, buffer.ReadBuffer().take(frameSize), 10, 18)***"<<std::endl;
+  decrement_stack_info();
+#endif
 
     return true;
   }
@@ -347,7 +365,12 @@ boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerP
 
 ////        FORMAT_LOG_BLOCK(logger, flags::ERR, "User data with no payload. FUNCTION: %s",
 ////                         LinkFunctionSpec::to_human_string(func));
-    std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'User data with no payload. FUNCTION: %s',***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'User data with no payload. FUNCTION: %s',***"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -358,7 +381,12 @@ boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerP
 
 ////        FORMAT_LOG_BLOCK(logger, flags::ERR, "Unexpected LENGTH in frame: %i with FUNCTION: %s", user_data_length,
 ////                         LinkFunctionSpec::to_human_string(func));
-    std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'Unexpected LENGTH in frame: %i with FUNCTION: %s',***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'Unexpected LENGTH in frame: %i with FUNCTION: %s',***"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -406,7 +434,12 @@ boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParse
       ++(pLinkLayerParser->statistics.numBadFunctionCode);
 ////            FORMAT_LOG_BLOCK(logger, flags::WARN, "Unknown PriToSec FUNCTION: %s",
 ////                             LinkFunctionSpec::to_human_string(header.GetFuncEnum()));
-    std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Unknown PriToSec FUNCTION: %s',***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+      std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Unknown PriToSec FUNCTION: %s',***"<<std::endl;
+  decrement_stack_info();
+#endif
       return false;
     }
     }
@@ -420,7 +453,12 @@ boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParse
       ++(pLinkLayerParser->statistics.numBadFCV);
 ////            FORMAT_LOG_BLOCK(logger, flags::WARN, "Bad FCV for FUNCTION: %s",
 ////                             LinkFunctionSpec::to_human_string(header.GetFuncEnum()));
-    std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Bad FCV for FUNCTION: %s',***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Bad FCV for FUNCTION: %s',***"<<std::endl;
+  decrement_stack_info();
+#endif
       return false;
     }
 
@@ -444,7 +482,12 @@ boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParse
       ++(pLinkLayerParser->statistics.numBadFunctionCode);
 ////            FORMAT_LOG_BLOCK(logger, flags::ERR, "Unknown SecToPri FUNCTION: %s",
 ////                             LinkFunctionSpec::to_human_string(header.GetFuncEnum()));
-    std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'Unknown SecToPri FUNCTION: %s',***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+      std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'Unknown SecToPri FUNCTION: %s',***"<<std::endl;
+  decrement_stack_info();
+#endif
       return false;
     }
     }
@@ -459,7 +502,12 @@ boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParse
       ++(pLinkLayerParser->statistics.numBadFCB);
 ////            FORMAT_LOG_BLOCK(logger, flags::ERR, "FCB set for SecToPri FUNCTION: %s",
 ////                             LinkFunctionSpec::to_human_string(header.GetFuncEnum()));
-    std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'FCB set for SecToPri FUNCTION: %s',***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'FCB set for SecToPri FUNCTION: %s',***"<<std::endl;
+  decrement_stack_info();
+#endif
       return false;
     }
   }

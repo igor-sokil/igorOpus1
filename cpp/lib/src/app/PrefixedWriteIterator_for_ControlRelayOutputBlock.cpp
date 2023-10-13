@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "PrefixedWriteIterator_for_ControlRelayOutputBlock.h"
 #include "SerializationTemplates.h"
@@ -14,6 +18,13 @@ PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock Null_in_PrefixedWriteIt
 
 void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlockOver1(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlockOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
 //// : sizeOfTypePlusIndex(0), count(0), isValid(false), pPosition(nullptr) {}
   pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->sizeOfTypePlusIndex = 0;
   pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->count = 0;
@@ -24,6 +35,13 @@ void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIt
 void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlockOver2(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock,
     Serializer_for_ControlRelayOutputBlock* serializer, WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlockOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->sizeOfTypePlusIndex = get_size_in_Serializer_for_ControlRelayOutputBlock(serializer) +////serializer.get_size() + PrefixType::size;
       size_in_UInt16;
@@ -43,6 +61,13 @@ void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_in_PrefixedWriteIt
 ////    ~PrefixedWriteIterator()
 void PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_destr_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock *pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock_destr_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pPrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);

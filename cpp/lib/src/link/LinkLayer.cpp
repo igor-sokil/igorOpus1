@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+//#include <QtWidgets>
 #include "header.h"
 #include "LinkLayer.h"
 
@@ -35,8 +35,6 @@
               ILinkListener* listener,
               LinkLayerConfig* config)
 {
-//qDebug()<<"LinkLayer_in_LinkLayer1";
-
   setParentPointer_in_ILinkLayer(&(pLinkLayer->iILinkLayer), pLinkLayer);
   setParentPointer_in_ILinkSession(&(pLinkLayer->iILinkSession), pLinkLayer);
   setParentPointer_in_IFrameSink(&(pLinkLayer->iILinkSession.iIFrameSink), pLinkLayer);
@@ -143,15 +141,12 @@
 ////bool LinkLayer::OnFrame(const LinkHeaderFields& header, const ser4cpp::rseq_t& userdata)
    boolean OnFrame_in_LinkLayer(LinkLayer *pLinkLayer, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata)
 {
-qDebug()<<"";
-qDebug()<<"OnFrame_in_LinkLayer1";
 //    boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
 ////    auto ret = this->ctx->OnFrame(header, userdata);
     boolean  ret = OnFrame_in_LinkContext(pLinkLayer->ctx, header, userdata);
 
     if (ret)
     {
-qDebug()<<"OnFrame_in_LinkLayer2";
 ////        this->ctx->TryStartTransmission();
     TryStartTransmission_in_LinkContext(pLinkLayer->ctx);
     }

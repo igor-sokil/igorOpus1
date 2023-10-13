@@ -29,14 +29,17 @@
 
 ////#include "opendnp3/gen/QualifierCode.h"
 ////#include "opendnp3/logging/LogLevels.h"
-#include <QtWidgets>
+//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "APDUParser.h"
 
 #include "GroupVariationRecord.h"
 #include "MeasurementFactory.h"
-//#include "CountIndexParser.h"
+#include "CountIndexParser.h"
 #include "CountParser.h"
 #include "ObjectHeaderParser.h"
 #include "RangeParser.h"
@@ -64,10 +67,14 @@ ParseResult_uint8_t Parse_in_APDUParser_static(
 //                              Logger* pLogger,
 //                              ParserSettings settings)
 {
-std::cout<<""<<std::endl;
-std::cout<<"Parse_in_APDUParser_static1"<<std::endl;
-
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Parse_in_APDUParser_static1"<<std::endl;
   inspect_RSeq(buffer);
+#endif
+
 //ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
 //  RSeq_for_Uint16_t *buffer,
 //  IAPDUHandler* pHandler,
@@ -82,8 +89,13 @@ std::cout<<"Parse_in_APDUParser_static1"<<std::endl;
                                  &(handler->iIWhiteList));
 //                                       const ParserSettings& settings);
 
-std::cout<<"Parse_in_APDUParser_static2"<<std::endl;
-std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"Parse_in_APDUParser_static2"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
+  decrement_stack_info();
+#endif
 
   // if the first pass was successful, do a 2nd pass with the handler but no logging or white-list
 // если первый проход был успешным, делаем второй проход с обработчиком, но без ведения журнала или белого списка
@@ -104,37 +116,50 @@ ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
   IWhiteList* pWhiteList)
 //const ParserSettings& settings)
 {
-std::cout<<""<<std::endl;
-std::cout<<"ParseSinglePass_in_APDUParser_static1"<<std::endl;
-std::cout<<"*IAPDUHandler* pHandler="<<(uint32_t)pHandler<<std::endl;
-std::cout<<"*IWhiteList* pWhiteList="<<(uint32_t)pWhiteList<<std::endl;
-
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseSinglePass_in_APDUParser_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IAPDUHandler* pHandler="<<(uint32_t)pHandler<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IWhiteList* pWhiteList="<<(uint32_t)pWhiteList<<std::endl;
   inspect_RSeq(buffer);
+#endif
 
   uint32_t count = 0;
   RSeq_for_Uint16_t copy = *buffer;
 
-//    RSeq_for_Uint16_t copy(buffer);
-//    while (copy.length() > 0)
-
+////    RSeq_for_Uint16_t copy(buffer);
+////    while (copy.length() > 0)
   while (length_in_HasLength_for_Uint16_t(&(copy.hHasLength)) > 0)
   {
 
-std::cout<<"ParseSinglePass_in_APDUParser_static2"<<std::endl;
+#ifdef  LOG_INFO
     inspect_RSeq(&copy);
+#endif
 
     ParseResult_uint8_t result = ParseHeader_in_APDUParser_static(&copy, /*pLogger,*/ count, /*settings,*/ pHandler, pWhiteList);
 
-std::cout<<"ParseSinglePass_in_APDUParser_static3"<<std::endl;
-std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
+#endif
 
     ++count;
 
     if (result != ParseResult_OK)
     {
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return result;
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return ParseResult_OK;
 }
 
@@ -146,9 +171,13 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
   IAPDUHandler* pHandler,
   IWhiteList* pWhiteList)
 {
-std::cout<<""<<std::endl;
-std::cout<<"ParseHeader_in_APDUParser_static1"<<std::endl;
-inspect_RSeq(buffer);
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseHeader_in_APDUParser_static1"<<std::endl;
+  inspect_RSeq(buffer);
+#endif
 
   ObjectHeader header;
 //    ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader *header, RSeq_for_Uint16_t *buffer);////, Logger* pLogger);
@@ -161,7 +190,6 @@ inspect_RSeq(buffer);
     return result;
   }
 
-std::cout<<"ParseHeader_in_APDUParser_static2"<<std::endl;
   GroupVariationRecord GV = GetRecord_in_GroupVariationRecord_static(header.group, header.variation);
 
 //pMemory_GroupVariationRecord_1=  MEMORY_GroupVariationRecord_1(0, &GV);
@@ -169,20 +197,27 @@ std::cout<<"ParseHeader_in_APDUParser_static2"<<std::endl;
   if (GV.enumeration == GroupVariation_UNKNOWN)
   {
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unknown object %i / %i", GV.group, GV.variation);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Unknown object %i / %i', GV.group, GV.variation)***"<<(uint16_t)GV.group<<","<< (uint16_t)GV.variation<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseResult_UNKNOWN_OBJECT;
   }
 
   // if a white-list is defined and it doesn't validate, exit early
 // если белый список определен и не проходит проверку, выходим раньше
 ////    if (pWhiteList && !pWhiteList->IsAllowed(count, GV.enumeration, QualifierCodeSpec::from_type(header.qualifier)))
-std::cout<<"ParseHeader_in_APDUParser_static3"<<std::endl;
   if(pWhiteList && !IsAllowed_in_IWhiteList(pWhiteList, count, GV.enumeration, from_type_in_QualifierCodeSpec_static(header.qualifier)))//from_type_in_QualifierCodeSpec(header.qualifier)))
   {
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Header (%i) w/ Object (%i,%i) and qualifier (%i) failed whitelist",
 ////                            count, header.group, header.variation, header.qualifier);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Header (%i) w/ Object (%i,%i) and qualifier (%i) failed whitelist, count, header.group, header.variation, header.qualifier)'***"
-               <<count<< (uint16_t)header.group<<","<< (uint16_t)header.variation<<","<< (uint16_t)header.qualifier<<std::endl;
+             <<count<< (uint16_t)header.group<<","<< (uint16_t)header.variation<<","<< (uint16_t)header.qualifier<<std::endl;
+    decrement_stack_info();
+#endif
 
     return ParseResult_NOT_ON_WHITELIST;
   }
@@ -191,7 +226,9 @@ std::cout<<"ParseHeader_in_APDUParser_static3"<<std::endl;
   HeaderRecord_in_HeaderRecordOver2(&hHeaderRecord,
                                     &GV,
                                     header.qualifier, count);
-std::cout<<"ParseHeader_in_APDUParser_static4"<<std::endl;
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return  ParseQualifier_in_APDUParser_static(buffer, /*pLogger,*/ &hHeaderRecord/*HeaderRecord(GV, header.qualifier, count)*/, /*settings,*/ pHandler);
 }
 
@@ -202,19 +239,31 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
 //                                       const ParserSettings& settings,
   IAPDUHandler* pHandler)
 {
+#ifdef  LOG_INFO
   std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"ParseQualifier_in_APDUParser_static1"<<std::endl;
 
-  std::cout<<"IAPDUHandler* pHandler= "<<(uint32_t)pHandler<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IAPDUHandler* pHandler= "<<(uint32_t)pHandler<<std::endl;
+#endif
 
 //QualifierCode_uint8_t GetQualifierCode_in_HeaderRecord(HeaderRecord *pHeaderRecord);
-QualifierCode_uint8_t tmp = GetQualifierCode_in_HeaderRecord(record);
-  std::cout<<"QualifierCode_uint8_t tmp ="<<(uint16_t)tmp<<std::endl;
+  QualifierCode_uint8_t tmp = GetQualifierCode_in_HeaderRecord(record);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*QualifierCode_uint8_t tmp ="<<(uint16_t)tmp<<std::endl;
+#endif
 
   switch (tmp)//(GetQualifierCode_in_HeaderRecord(record))////record.GetQualifierCode())
   {
   case (QualifierCode_ALL_OBJECTS):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*QualifierCode_ALL_OBJECTS*"<<std::endl;
+    decrement_stack_info();
+#endif
     return HandleAllObjectsHeader_in_APDUParser_static(/*pLogger,*/ record, /*settings,*/ pHandler);
 
 //     ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
@@ -223,49 +272,79 @@ QualifierCode_uint8_t tmp = GetQualifierCode_in_HeaderRecord(record);
 //                                   HeaderRecord* record,
   ////Logger* pLogger,
 //                                   IAPDUHandler* pHandler);
-    case (QualifierCode_UINT8_CNT):
-{
+  case (QualifierCode_UINT8_CNT):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT8_CNT*"<<std::endl;
+    decrement_stack_info();
+#endif
     NumParser temp = OneByte_in_NumParser_static();
     return ParseHeader_in_CountParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
-}
+  }
 
-////    case (QualifierCode_UINT16_CNT):
-////{
-////NumParser temp = TwoByte_in_NumParser_static();
-////        return ParseHeader_in_CountParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
-////}
+  case (QualifierCode_UINT16_CNT):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*QualifierCode_UINT16_CNT*"<<std::endl;
+    decrement_stack_info();
+#endif
+    NumParser temp = TwoByte_in_NumParser_static();
+    return ParseHeader_in_CountParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
+  }
 
-    case (QualifierCode_UINT8_START_STOP):
-{
+  case (QualifierCode_UINT8_START_STOP):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT8_START_STOP*"<<std::endl;
+    decrement_stack_info();
+#endif
     NumParser temp = OneByte_in_NumParser_static();
     return ParseHeader_in_RangeParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
-}
+  }
 
-    case (QualifierCode_UINT16_START_STOP):
-{
+  case (QualifierCode_UINT16_START_STOP):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT16_START_STOP*"<<std::endl;
+    decrement_stack_info();
+#endif
     NumParser temp = TwoByte_in_NumParser_static();
     return ParseHeader_in_RangeParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
-}
+  }
 
-////   case (QualifierCode_UINT8_CNT_UINT8_INDEX):
-////{
-////NumParser temp = OneByte_in_NumParser_static();
-////      return ParseHeader_in_CountIndexParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
-////}
+  case (QualifierCode_UINT8_CNT_UINT8_INDEX):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*QualifierCode_UINT8_CNT_UINT8_INDEX*"<<std::endl;
+    decrement_stack_info();
+#endif
+    NumParser temp = OneByte_in_NumParser_static();
+    return ParseHeader_in_CountIndexParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
+  }
 
-////    case (QualifierCode_UINT16_CNT_UINT16_INDEX):
-////{
-////NumParser temp = TwoByte_in_NumParser_static();
-////        return ParseHeader_in_CountIndexParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
-////}
+  case (QualifierCode_UINT16_CNT_UINT16_INDEX):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*QualifierCode_UINT16_CNT_UINT16_INDEX*"<<std::endl;
+    decrement_stack_info();
+#endif
+    NumParser temp = TwoByte_in_NumParser_static();
+    return ParseHeader_in_CountIndexParser_static(buffer, &temp, /*settings,*/ record, /*pLogger,*/ pHandler);
+  }
 
   default:
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unknown qualifier %x", record.qualifier);
-    std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Unknown qualifier %x', record.qualifier)***"
-               <<std::endl;
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Unknown qualifier %x', record.qualifier)***"<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseResult_UNKNOWN_QUALIFIER;
   }
 }
@@ -275,15 +354,23 @@ ParseResult_uint8_t HandleAllObjectsHeader_in_APDUParser_static(//Logger* pLogge
 //                                               const ParserSettings& settings,
   IAPDUHandler* pHandler)
 {
-std::cout<<""<<std::endl;
-std::cout<<"HandleAllObjectsHeader_in_APDUParser_static1"<<std::endl;
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"HandleAllObjectsHeader_in_APDUParser_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), '%03u,%03u - %s - %s', record.group, record.variation***"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*record->gGroupVariationRecord.group="<<(uint16_t)record->gGroupVariationRecord.group<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*record->gGroupVariationRecord.variation="<<(uint16_t)record->gGroupVariationRecord.variation<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*record->gGroupVariationRecord.enumeration="<<(uint16_t)record->gGroupVariationRecord.enumeration<<std::endl;
 
-//pMemory_HeaderRecord_1=  MEMORY_HeaderRecord_1(0, record);
-
-std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), '%03u,%03u - %s - %s', record.group, record.variation***"<<std::endl;
-//qDebug()<<"record->gGroupVariationRecord.group="<<record->gGroupVariationRecord.group;
-//qDebug()<<"record->gGroupVariationRecord.variation="<<record->gGroupVariationRecord.variation;
-//qDebug()<<"record->gGroupVariationRecord.enumeration="<<record->gGroupVariationRecord.enumeration;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pHandler="<<(uint32_t)pHandler<<std::endl;
+#endif
 
 ////    FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u - %s - %s", record.group, record.variation,
 ////                        GroupVariationSpec::to_human_string(record.enumeration),
@@ -291,7 +378,10 @@ std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), '%03u,%03u 
 
   if (pHandler)
   {
-std::cout<<"HandleAllObjectsHeader_in_APDUParser_static2"<<std::endl;
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"HandleAllObjectsHeader_in_APDUParser_static2"<<std::endl;
+#endif
     AllObjectsHeader aAllObjectsHeader;
     AllObjectsHeader_in_AllObjectsHeader(&aAllObjectsHeader, record);
 ////        pHandler->OnHeader(AllObjectsHeader(record));
@@ -299,8 +389,10 @@ std::cout<<"HandleAllObjectsHeader_in_APDUParser_static2"<<std::endl;
     OnHeader_AllObjectsHeader_in_IAPDUHandler(pHandler, &aAllObjectsHeader);
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return ParseResult_OK;
 }
 
 ////} // namespace opendnp3
- 

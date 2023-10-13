@@ -1,5 +1,28 @@
 #include "header.h"
 #include "DNP3Serializer.h"
+//-----------------------------DNP3Serializer_for_AnalogCommandEvent-------------------------------------------
+
+GroupVariationID ID_in_DNP3Serializer_for_AnalogCommandEvent(DNP3Serializer_for_AnalogCommandEvent *pDNP3Serializer_for_AnalogCommandEvent)
+{
+  return pDNP3Serializer_for_AnalogCommandEvent->id;
+}
+void DNP3Serializer_for_AnalogCommandEvent_in_DNP3Serializer_for_AnalogCommandEvent(DNP3Serializer_for_AnalogCommandEvent *pDNP3Serializer_for_AnalogCommandEvent,
+    GroupVariationID id,
+    uint16_t size,
+////                   typename Serializer<T>::read_func_t read_func,
+    read_func_t_in_Serializer_for_AnalogCommandEvent read_func,
+////                   typename Serializer<T>::write_func_t write_func)
+    write_func_t_in_Serializer_for_AnalogCommandEvent write_func)
+{
+////        : Serializer<T>(size, read_func, write_func), id(id)
+  pDNP3Serializer_for_AnalogCommandEvent->id = id;
+  Serializer_for_AnalogCommandEvent_in_Serializer_for_AnalogCommandEvent(&(pDNP3Serializer_for_AnalogCommandEvent->sSerializer_for_AnalogCommandEvent),
+      size,
+      read_func,
+      write_func);
+
+}
+//-----------------------------DNP3Serializer_for_AnalogCommandEvent-------------------------------------------
 //-----------------------------DNP3Serializer_for_BinaryCommandEvent-------------------------------------------
 
 GroupVariationID ID_in_DNP3Serializer_for_BinaryCommandEvent(DNP3Serializer_for_BinaryCommandEvent *pDNP3Serializer_for_BinaryCommandEvent)

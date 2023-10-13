@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "PrefixedWriteIterator_for_Analog.h"
 #include "SerializationTemplates.h"
@@ -14,6 +18,13 @@ PrefixedWriteIterator_for_UInt16_Analog Null_in_PrefixedWriteIterator_for_UInt16
 
 void PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver1(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
 //// : sizeOfTypePlusIndex(0), count(0), isValid(false), pPosition(nullptr) {}
   pPrefixedWriteIterator_for_UInt16_Analog->sizeOfTypePlusIndex = 0;
   pPrefixedWriteIterator_for_UInt16_Analog->count = 0;
@@ -24,6 +35,13 @@ void PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16
 void PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver2(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog,
     Serializer_for_Analog* serializer, WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pPrefixedWriteIterator_for_UInt16_Analog->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_Analog->sizeOfTypePlusIndex = get_size_in_Serializer_for_Analog(serializer) +////serializer.get_size() + PrefixType::size;
       size_in_UInt16;
@@ -43,6 +61,13 @@ void PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16
 ////    ~PrefixedWriteIterator()
 void PrefixedWriteIterator_for_UInt16_Analog_destr_PrefixedWriteIterator_for_UInt16_Analog(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Analog_destr_PrefixedWriteIterator_for_UInt16_Analog1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pPrefixedWriteIterator_for_UInt16_Analog->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);

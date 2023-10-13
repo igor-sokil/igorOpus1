@@ -32,9 +32,6 @@
 ////uint32_t EventWriting::Write(EventLists& lists, IEventWriteHandler& handler)
 uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler)
 {
-//qDebug()<<"";
-//qDebug()<<"Write_in_EventWriting_static1";
-
   uint32_t total_num_written = 0;
 
 //    Iterator_in_List_for_EventRecord Iterate_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
@@ -48,7 +45,6 @@ uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* han
 //    uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler);
 ////        auto num_written = WriteSome(iterator, lists, handler);
     uint16_t num_written = WriteSome_in_EventWriting_static(&iter, lists, handler);
-//qDebug()<<"num_written = WriteSome_in_EventWriting_static(&iter, lists, handler)= "<<num_written;
 
     if (num_written == 0)
     {
@@ -62,10 +58,6 @@ uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* han
 ////EventRecord* EventWriting::FindNextSelected(event_iter_t& iter, EventType type)
 EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type)
 {
-//qDebug()<<"";
-//qDebug()<<"FindNextSelected_in_EventWriting_static1";
-//qDebug()<<"EventType_uint16_t type = "<<type;
-
   while (true)
   {
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
@@ -75,12 +67,8 @@ EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventR
     if (!current)
       return NULL;
 
-//qDebug()<<"FindNextSelected_in_EventWriting_static2";
-
     if (current->state == EventState_selected)
     {
-//qDebug()<<"FindNextSelected_in_EventWriting_static3";
-
       // we terminate here since the type has changed
 // здесь мы завершаем работу, так как тип изменился
 //   boolean IsEqual_in_IEventType(IEventType* pIEventType, EventType_uint16_t type);
@@ -89,7 +77,6 @@ EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventR
 
     }
 
-//qDebug()<<"FindNextSelected_in_EventWriting_static4";
 ////        iter.Next();
     Next__in__Iterator_in_List_for_EventRecord(iter);
   }
@@ -104,15 +91,12 @@ boolean matches_in_EventWriting(EventRecord* record)
 ////uint16_t EventWriting::WriteSome(event_iter_t& iterator, EventLists& lists, IEventWriteHandler& handler)
 uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler)
 {
-//qDebug()<<"";
-//qDebug()<<"WriteSome_in_EventWriting_static1";
   // don't bother searching
 // не утруждайтесь поиском
 ////    if (lists.counters.selected == 0)
   if (lists->counters.selected == 0)
     return 0;
 
-//qDebug()<<"WriteSome_in_EventWriting_static2";
 //EventRecord *Find__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord
 ////    const auto value = iterator.Find([](const EventRecord& record) { return record.state == EventState::selected; });
   EventRecord *value = Find__in__Iterator_in_List_for_EventRecord(iteratorEv, matches_in_EventWriting);
@@ -120,7 +104,6 @@ uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter
   if (!value)
     return 0; // no match
 
-//qDebug()<<"WriteSome_in_EventWriting_static3";
 //     uint16_t (*pWriteSome)(Iterator_in_List_for_EventRecord* iterator,
 //                               EventLists* lists,
 //                               IEventWriteHandler* handler);// const = 0;

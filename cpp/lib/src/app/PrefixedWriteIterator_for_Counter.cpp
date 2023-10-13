@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "PrefixedWriteIterator_for_Counter.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ PrefixedWriteIterator_for_UInt16_Counter Null_in_PrefixedWriteIterator_for_UInt1
 
 void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver1(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
 //// : sizeOfTypePlusIndex(0), count(0), isValid(false), pPosition(nullptr) {}
   pPrefixedWriteIterator_for_UInt16_Counter->sizeOfTypePlusIndex = 0;
   pPrefixedWriteIterator_for_UInt16_Counter->count = 0;
@@ -25,6 +36,13 @@ void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt1
 void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver2(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter,
     Serializer_for_Counter* serializer, WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pPrefixedWriteIterator_for_UInt16_Counter->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_Counter->sizeOfTypePlusIndex = get_size_in_Serializer_for_Counter(serializer) +////serializer.get_size() + PrefixType::size;
       size_in_UInt16;
@@ -44,6 +62,13 @@ void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt1
 ////    ~PrefixedWriteIterator()
 void PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UInt16_Counter(PrefixedWriteIterator_for_UInt16_Counter *pPrefixedWriteIterator_for_UInt16_Counter)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UInt16_Counter1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pPrefixedWriteIterator_for_UInt16_Counter->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);

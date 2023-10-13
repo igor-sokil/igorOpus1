@@ -17,8 +17,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
-//#include <iostream>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
+//#include <QtWidgets>
 #include "header.h"
 #include "HeaderWriter.h"
 
@@ -71,23 +74,30 @@ boolean Rollback_in_HeaderWriter(HeaderWriter *pHeaderWriter)
 
 boolean WriteHeader_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteHeader_in_HeaderWriter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*id.group= "<<(uint16_t)id.group<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*id.variation= "<<(uint16_t)id.variation<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*qc= "<<(uint16_t)qc<<'\n';
+  decrement_stack_info();
+#endif
 ////    if (position->length() < 3)
-//    uint16_t temp1 = length_in_HasLength_for_Uint16_t(&((pHeaderWriter->position).hHasLength));
-  uint16_t temp1 = length_in_HasLength_for_Uint16_t(&(pHeaderWriter->position->hHasLength));
-  if(temp1 < 3)
+  if(length_in_HasLength_for_Uint16_t(&(pHeaderWriter->position->hHasLength)) < 3)
   {
     return false;
   }
 
-qDebug()<<"-WriteHeader_in_HeaderWriter-";
-qDebug()<<"id.group= "<<id.group;
 ////    ser4cpp::UInt8::write_to(*position, id.group);
   write_to_in_UInt8_static((pHeaderWriter->position), id.group);
 ////    ser4cpp::UInt8::write_to(*position, id.variation);
-qDebug()<<"id.variation= "<<id.variation;
   write_to_in_UInt8_static((pHeaderWriter->position), id.variation);
 ////    ser4cpp::UInt8::write_to(*position, QualifierCodeSpec::to_type(qc));
-qDebug()<<"qc= "<<qc;
   write_to_in_UInt8_static((pHeaderWriter->position), qc);
   return true;
 }
@@ -95,9 +105,8 @@ qDebug()<<"qc= "<<qc;
 boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve)
 {
 ////    return (position->length() < (3 + reserve)) ? false : WriteHeader(id, qc);
-//    uint16_t temp1 = length_in_HasLength_for_Uint16_t(&((pHeaderWriter->position).hHasLength));
-  uint16_t temp1 = length_in_HasLength_for_Uint16_t(&(pHeaderWriter->position->hHasLength));
-  return (temp1 < (3 + reserve)) ? false : WriteHeader_in_HeaderWriter(pHeaderWriter, id, qc);
+  return (length_in_HasLength_for_Uint16_t(&(pHeaderWriter->position->hHasLength)) <
+          (3 + reserve)) ? false : WriteHeader_in_HeaderWriter(pHeaderWriter, id, qc);
 }
 /*
 ////template<class IndexType>

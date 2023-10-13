@@ -1,15 +1,41 @@
+
 #include <QtWidgets>
+#include <iostream>
+#include <string>
+#include "log_info.h"
 #include "loghandler.h"
 
 #include "header.h"
 #include "IEventType.h"
 
-void inspect_RSeq(RSeq_for_Uint16_t *buffer);
+
+static int16_t stack_info = -1;//рівень стеку для info
+
+void increment_stack_info(void)
+{
+  stack_info ++;
+}
+
+void decrement_stack_info(void)
+{
+  stack_info --;
+  if(stack_info < 0) stack_info = 0;
+}
+
+std::string getString_stack_info(void)
+{
+  std::string name("    ");       
+  std::string res("");       
+  for(int i=0; i<stack_info; i++) res = res + name;
+  return res;
+}
 
 void inspect_RSeq(RSeq_for_Uint16_t *buffer)
 {
+ if(!buffer) return;
   for(int i=0; i<length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)); i++)
  {
+  std::cout<<"*"<<getString_stack_info();
   qDebug()<<"*buffer->buffer_[i]= "<<hex<<buffer->buffer_[i];
  }//for
 }

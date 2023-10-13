@@ -1,5 +1,4 @@
 
-//#include <iostream>
 #include "header.h"
 #include "Range.h"
 
@@ -27,16 +26,7 @@ void Range_in_RangeOver1(Range *pRange)
 
 uint32_t Count_in_Range(Range *pRange)
 {
-//  std::cout<<""<<'\n';
-//  std::cout<<"Count_in_Range1"<<'\n';
-//  std::cout<<"*IsValid_in_Range(pRange)= "<<IsValid_in_Range(pRange)<<'\n';
-//  std::cout<<"*pRange->start= "<<pRange->start<<'\n';
-//  std::cout<<"*pRange->stop= "<<pRange->stop<<'\n';
   return IsValid_in_Range(pRange) ? (pRange->stop - pRange->start + 1) : 0;
-//  if(!IsValid_in_Range(pRange)) return 0;
-//  uint32_t count_r = (pRange->stop - pRange->start + 1);
-//  std::cout<<"*count_r= "<<count_r<<'\n';
-//  return count_r;
 }
 
 boolean Advance_in_Range(Range *pRange)

@@ -56,8 +56,8 @@
 ////    }
 ////};
 
-boolean Apply_in_DownSampling_for_uint32(double src, uint32_t *target);
-boolean Apply_in_DownSampling_for_uint16(double src, uint16_t *target);
+boolean Apply_in_DownSampling_for_uint32(uint32_t src, uint32_t *target);
+boolean Apply_in_DownSampling_for_uint16(uint16_t src, uint16_t *target);
 boolean Apply_in_DownSampling_for_Float32(double src, float *target);
 
 ////template<class Source, class Target>
@@ -71,8 +71,8 @@ const uint16_t TARGET_MAX_for_uint16 = (uint16_t) 0x7FFF;////(std::numeric_limit
 ////const Target DownSampling<Source, Target>::TARGET_MIN(std::numeric_limits<Target>::lowest());
 const double TARGET_MIN_for_double = -((double) 0xFFFFFFFFFFFFFFFF);////(std::numeric_limits<double>::lowest());
 const float TARGET_MIN_for_float  = -((float)  0xFFFFFFFF);////(std::numeric_limits<double>::lowest());
-const uint32_t TARGET_MIN_for_uint32 = 0x80000000;////(std::numeric_limits<uint32_t>::lowest());
-const uint16_t TARGET_MIN_for_uint16 = 0x8000;////(std::numeric_limits<uint16_t>::lowest());
+const uint32_t TARGET_MIN_for_uint32 = 0x00000000;////(std::numeric_limits<uint32_t>::lowest());
+const uint16_t TARGET_MIN_for_uint16 = 0x0000;////(std::numeric_limits<uint16_t>::lowest());
 
 ////} // namespace opendnp3
 

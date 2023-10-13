@@ -29,7 +29,10 @@
 // limitations under the License.
 //
 
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "TripCloseCode.h"
 ////#include <stdexcept>
@@ -55,7 +58,12 @@ TripCloseCode_uint8_t from_type_in_TripCloseCodeSpec_static(uint8_t arg)
       return TripCloseCode_RESERVED;
     default:
 //      throw new std::invalid_argument("Unknown value");
-    std::cout<<"***throw new std::invalid_argument('Unknown value')***";
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***throw new std::invalid_argument('Unknown value')***";
+  decrement_stack_info();
+#endif
       return TripCloseCode_NUL;
   }
 }

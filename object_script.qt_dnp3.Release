@@ -59,6 +59,9 @@ release/ICollection_Indexed_for_ControlRelayOutputBlock.o
 release/ICollection_Indexed_for_IINValue.o
 release/ICollection_Indexed_for_TimeAndInterval.o
 release/ICollection_Indexed_for_Binary.o
+release/ICollection_Indexed_for_BinaryCommandEvent.o
+release/ICollection_Indexed_for_AnalogCommandEvent.o
+release/ICollection_Indexed_for_DoubleBitBinary.o
 release/ICollection_Indexed_for_BinaryOutputStatus.o
 release/ICollection_Indexed_for_OctetString.o
 release/IDnpTimeSource.o
@@ -97,6 +100,7 @@ release/APDUParser.o
 release/BufferedCollection.o
 release/BitReader.o
 release/CountParser.o
+release/CountIndexParser.o
 release/ObjectHeaderParser.o
 release/ParseResult.o
 release/RangeParser.o
@@ -157,6 +161,7 @@ release/PrefixedWriteIterator_for_FrozenCounter.o
 release/PrefixedWriteIterator_for_OctetString.o
 release/PrefixedWriteIterator_for_ControlRelayOutputBlock.o
 release/Serializer.o
+release/RangeWriteIterator_for_Analog.o
 release/RangeWriteIterator_for_Binary.o
 release/RangeWriteIterator_for_BinaryOutputStatus.o
 release/RangeWriteIterator_for_DoubleBitBinary.o
@@ -167,6 +172,7 @@ release/TxBuffer.o
 release/ApplicationIIN.o
 release/AssignClassHandler.o
 release/Database.o
+release/Database_for_Analog.o
 release/Database_for_Binary.o
 release/DatabaseConfig.o
 release/DeferredRequest.o
@@ -206,6 +212,7 @@ release/StaticDataMap_for_Analog.o
 release/StaticDataMap_for_AnalogOutputStatus.o
 release/StaticDataMap_for_OctetString.o
 release/StaticDataMap_for_TimeAndInterval.o
+release/StaticWriters_for_Analog.o
 release/StaticWriters_for_Binary.o
 release/TimeSyncState.o
 release/WriteHandler.o
@@ -280,6 +287,7 @@ release/Group32.o
 release/Group40.o
 release/Group41.o
 release/Group42.o
+release/Group43.o
 release/Group50.o
 release/Group51.o
 release/Group52.o
@@ -295,6 +303,7 @@ release/LinkLayerTest.o
 release/MockTransportSegment.o
 release/OutstationTestObject.o
 release/TestAPDUParsing.o
+release/TestOutstation.o
 release/MockOutstationApplication.o
 release/MockCommandHandler.o
 release/MockEventWriteHandler.o
@@ -305,8 +314,4 @@ release/MockFrameSink.o
 release/MockTransportLayer.o
 release/DatabaseHelpers.o
 release/DataSink.o
-release/MainWindow.o
 release/loghandler.o
-release/main.o
-release/moc_key_filter.o
-release/moc_MainWindow.o

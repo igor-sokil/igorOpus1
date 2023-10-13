@@ -58,8 +58,6 @@
 #include "ICollection.h"
 #include "QualifierCode.h"
 
-extern boolean expectsContents_in_RangeParser;
-
 ////namespace opendnp3
 ////{
 
@@ -151,7 +149,7 @@ typedef struct
 //    IINField (*pProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group51Var2* values);
 //    IINField (*pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group52Var1* values);
 //    IINField (*pProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group52Var2* values);
- 
+
   IINField (*pProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
   IINField (*pProcessHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_Binary* values);
 //    IINField (*pProcessHeader_RangeHeader_for_DoubleBitBinary_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_DoubleBitBinary* values);
@@ -160,20 +158,20 @@ typedef struct
 //    IINField (*pProcessHeader_RangeHeader_for_FrozenCounter_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_FrozenCounter* values);
 //    IINField (*pProcessHeader_RangeHeader_for_Analog_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_Analog* values);
 //    IINField (*pProcessHeader_RangeHeader_for_AnalogOutputStatus_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_AnalogOutputStatus* values);
-    IINField (*pProcessHeader_RangeHeader_Indexed_for_OctetString_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_OctetString* values);
+  IINField (*pProcessHeader_RangeHeader_Indexed_for_OctetString_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_OctetString* values);
 //    IINField (*pProcessHeader_RangeHeader_for_TimeAndInterval_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_TimeAndInterval* values);
 
-//    IINField (*pProcessHeader_PrefixHeader_for_Binary_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_Binary* values);
+  IINField (*pProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_Binary* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_BinaryOutputStatus_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_BinaryOutputStatus* values);
-//    IINField (*pProcessHeader_PrefixHeader_for_DoubleBitBinary_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_DoubleBitBinary* values);
+  IINField (*pProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_DoubleBitBinary* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_Counter_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_Counter* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_FrozenCounter_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_FrozenCounter* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_Analog_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_Analog* values);
 //    IINField (*pProcessHeader_PrefixHeader_for_AnalogOutputStatus_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputStatus* values);
-//    IINField (*pProcessHeader_PrefixHeader_for_OctetString_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_OctetString* values);
+  IINField (*pProcessHeader_PrefixHeader_Indexed_for_OctetString_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_OctetString* values);
   IINField (*pProcessHeader_PrefixHeader_Indexed_for_TimeAndInterval_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_TimeAndInterval* values);
-//    IINField (*pProcessHeader_PrefixHeader_for_BinaryCommandEvent_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_BinaryCommandEvent* values);
-//    IINField (*pProcessHeader_PrefixHeader_for_AnalogCommandEvent_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogCommandEvent* values);
+  IINField (*pProcessHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_BinaryCommandEvent* values);
+  IINField (*pProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogCommandEvent* values);
 
   // adhoc read by index
   IINField (*pProcessHeader_PrefixHeader_for_uint16_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_for_uint16* values);
@@ -183,8 +181,7 @@ typedef struct
   IINField (*pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputInt16* values);
   IINField (*pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputInt32* values);
   IINField (*pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputFloat32* values);
-  IINField (*pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_IAPDUHandler)(void*, PrefixHeader* header,
-      ICollection_Indexed_for_AnalogOutputDouble64* values);
+  IINField (*pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_IAPDUHandler)(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputDouble64* values);
 
 ////protected:
   // overridable to receive post processing events for every header
@@ -227,15 +224,17 @@ IINField ProcessHeader_RangeHeader_in_IAPDUHandler_override(void*, RangeHeader* 
 IINField ProcessHeader_CountHeader_in_IAPDUHandler_override(void*, CountHeader* header);
 void OnHeaderResult_in_IAPDUHandler_override(void*, HeaderRecord* record, IINField* result);// {}
 
-//    IINField ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group50Var1* values);
-//    IINField ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group50Var3* values);
+IINField ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group50Var1* values);
+IINField ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler_override(void*, CountHeader* header, ICollection_for_Group50Var1* values);
+IINField ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group50Var3* values);
+IINField ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler_override(void*, CountHeader* header, ICollection_for_Group50Var3* values);
 //    IINField ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group51Var1* values);
 //    IINField ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group51Var2* values);
 //    IINField ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group52Var1* values);
 //    IINField ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group52Var2* values);
 
-  IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(IAPDUHandler*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
-  IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler_override(void*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
+IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(IAPDUHandler*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
+IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler_override(void*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
 IINField ProcessHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler(IAPDUHandler*, RangeHeader* header, ICollection_Indexed_for_Binary* values);
 IINField ProcessHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler_override(void*, RangeHeader* header, ICollection_Indexed_for_Binary* values);
 //    IINField ProcessHeader_RangeHeader_for_DoubleBitBinary_in_IAPDUHandler(IAPDUHandler*, RangeHeader* header, ICollection_Indexed_for_DoubleBitBinary* values);
@@ -271,6 +270,18 @@ IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandle
 IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler(IAPDUHandler*, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputFloat32* values);
 IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_IAPDUHandler(IAPDUHandler*, PrefixHeader* header,
     ICollection_Indexed_for_AnalogOutputDouble64* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler(IAPDUHandler*, PrefixHeader* header,
+    ICollection_Indexed_for_Binary* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler(IAPDUHandler*, PrefixHeader* header,
+    ICollection_Indexed_for_AnalogCommandEvent* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler(IAPDUHandler*, PrefixHeader* header,
+    ICollection_Indexed_for_BinaryCommandEvent* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler(IAPDUHandler*, PrefixHeader* header,
+    ICollection_Indexed_for_DoubleBitBinary* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_OctetString_in_IAPDUHandler(IAPDUHandler*, PrefixHeader* header,
+    ICollection_Indexed_for_OctetString* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_TimeAndInterval_in_IAPDUHandler(IAPDUHandler*, PrefixHeader* header,
+    ICollection_Indexed_for_TimeAndInterval* values);
 
 IINField ProcessHeader_PrefixHeader_for_uint16_in_IAPDUHandler_override(void*, PrefixHeader* header, ICollection_for_uint16* values);
 
@@ -281,6 +292,18 @@ IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandle
 IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler_override(void*, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputFloat32* values);
 IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_IAPDUHandler_override(void*, PrefixHeader* header,
     ICollection_Indexed_for_AnalogOutputDouble64* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler_override(void*, PrefixHeader* header,
+    ICollection_Indexed_for_Binary* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler_override(void*, PrefixHeader* header,
+    ICollection_Indexed_for_AnalogCommandEvent* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler_override(void*, PrefixHeader* header,
+    ICollection_Indexed_for_BinaryCommandEvent* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler_override(void*, PrefixHeader* header,
+    ICollection_Indexed_for_DoubleBitBinary* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_OctetString_in_IAPDUHandler_override(void*, PrefixHeader* header,
+    ICollection_Indexed_for_OctetString* values);
+IINField ProcessHeader_PrefixHeader_Indexed_for_TimeAndInterval_in_IAPDUHandler_override(void*, PrefixHeader* header,
+    ICollection_Indexed_for_TimeAndInterval* values);
 
 // read any accumulated errors
 IINField Errors_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler);
@@ -289,45 +312,44 @@ void OnHeader_AllObjectsHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, AllO
 void OnHeader_RangeHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header);
 void OnHeader_CountHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header);
 
-//   void OnHeader_CountHeader_for_Group50Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var1* values);
-//   void OnHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var3* values);
+void OnHeader_CountHeader_for_Group50Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var1* values);
+void OnHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var3* values);
 //   void OnHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var1* values);
 //   void OnHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var2* values);
 //   void OnHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var1* values);
 //   void OnHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var2* values);
 
-  void OnHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
-  void OnHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_Binary* values);
+void OnHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
+void OnHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_Binary* values);
 //  void OnHeader_RangeHeader_for_DoubleBitBinary_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_DoubleBitBinary* values);
-  void OnHeader_RangeHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_BinaryOutputStatus* values);
+void OnHeader_RangeHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_BinaryOutputStatus* values);
 //  void OnHeader_RangeHeader_for_Counter_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_Counter* values);
 //  void OnHeader_RangeHeader_for_FrozenCounter_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_FrozenCounter* values);
 //  void OnHeader_RangeHeader_for_Analog_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_Analog* values);
 //  void OnHeader_RangeHeader_for_AnalogOutputStatus_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_AnalogOutputStatus* values);
-  void OnHeader_RangeHeader_Indexed_for_OctetString_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_OctetString* values);
+void OnHeader_RangeHeader_Indexed_for_OctetString_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_OctetString* values);
 //  void OnHeader_RangeHeader_for_TimeAndInterval_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_TimeAndInterval* values);
 
 // events
 
-//   void OnHeader_PrefixHeader_for_Binary_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Binary* values);
+void OnHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Binary* values);
 //   void OnHeader_PrefixHeader_for_BinaryOutputStatus_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryOutputStatus* values);
-//   void OnHeader_PrefixHeader_for_DoubleBitBinary_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_DoubleBitBinary* values);
+void OnHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_DoubleBitBinary* values);
 //   void OnHeader_PrefixHeader_for_Counter_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Counter* values);
 //   void OnHeader_PrefixHeader_for_FrozenCounter_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_FrozenCounter* values);
 //   void OnHeader_PrefixHeader_for_Analog_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Analog* values);
 //   void OnHeader_PrefixHeader_for_AnalogOutputStatus_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputStatus* values);
-//   void OnHeader_PrefixHeader_for_OctetString_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_OctetString* values);
-//   void OnHeader_PrefixHeader_for_TimeAndInterval_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, Collection_Indexed_for_TimeAndInterval* values);
-//   void OnHeader_PrefixHeader_for_BinaryCommandEvent_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryCommandEvent* values);
-//   void OnHeader_PrefixHeader_for_AnalogCommandEvent_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogCommandEvent* values);
-/*     void OnHeader_PrefixHeader_for_Indexed_Group2Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header,  ICollection_Indexed_Group2Var1* values);*/
+void OnHeader_PrefixHeader_Indexed_for_OctetString_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_OctetString* values);
+void OnHeader_PrefixHeader_Indexed_for_TimeAndInterval_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_TimeAndInterval* values);
+void OnHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryCommandEvent* values);
+void OnHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogCommandEvent* values);
 
 // adhoc read by index
-//   void OnHeader_PrefixHeader_for_uint16_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_for_uint16* values);
+void OnHeader_PrefixHeader_for_uint16_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_for_uint16* values);
 
 // commands
 
-//    void OnHeader_PrefixHeader_for_ControlRelayOutputBlock_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_ControlRelayOutputBlock* values);
+void OnHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_ControlRelayOutputBlock* values);
 //    void OnHeader_PrefixHeader_for_AnalogOutputInt16_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputInt16* values);
 //    void OnHeader_PrefixHeader_for_AnalogOutputInt32_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputInt32* values);
 //    void OnHeader_PrefixHeader_for_AnalogOutputFloat32_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputFloat32* values);

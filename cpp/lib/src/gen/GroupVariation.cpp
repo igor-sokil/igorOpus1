@@ -42,7 +42,7 @@
 ////}
 
 ////GroupVariationSpec::from_type
-GroupVariation from_type_in_GroupVariationSpec_static(uint16_t arg)
+GroupVariation_uint16_t from_type_in_GroupVariationSpec_static(uint16_t arg)
 {
   switch(arg)
   {

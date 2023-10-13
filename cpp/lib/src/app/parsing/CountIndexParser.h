@@ -45,11 +45,12 @@
 ////namespace opendnp3
 ////{
 
-typedef void (*HandleFun_in_CountIndexParser)(HeaderRecord *record,
-    uint16_t count,
-    NumParser *numparser,
-    RSeq_for_Uint16_t *buffer,
-    IAPDUHandler *handler);
+typedef void (*HandleFun_in_CountIndexParser)(
+  HeaderRecord *record,
+  uint16_t count,
+  NumParser *numparser,
+  RSeq_for_Uint16_t *buffer,
+  IAPDUHandler *handler);
 
 ////class CountIndexParser
 typedef struct
@@ -114,128 +115,242 @@ typedef struct
 ////    CountIndexParser(uint16_t count, size_t requiredSize, const NumParser& numparser, HandleFun handler);
 
   uint16_t count;
-  uint16_t requiredSize;
+  uint32_t requiredSize;
   NumParser numparser;
   HandleFun_in_CountIndexParser handler;
 
 ////    CountIndexParser() = delete;
 } CountIndexParser;
+
+void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint32_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+
 //------------------------------------------Group2Var1------------------------------------------------
-CountIndexParser From_for_Group2Var1_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, NumParser* numparser);
+
+CountIndexParser From_for_Group2Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
 
 ////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
-CountIndexParser From_for_Group2Var1_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, NumParser* numparser)
-{
-// uint16_t Size_in_Group2Var1_static(void);
-//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
-////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
-  uint16_t SIZE = count * (Size_in_Group2Var1_static() + NumBytes_in_NumParser(numparser));
-//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
-////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
-  CountIndexParser cCountIndexParser;
-  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, HandleFun_in_CountIndexParser handler);
-  return cCountIndexParser;
-}
 
-Indexed_for_Group2Var1   read_Indexed_Group2Var1_in_CountIndexParser(/*NumParser* numparser,*/ RSeq_for_Uint16_t* buffer, uint32_t);
-
-Indexed_for_Group2Var1   read_Indexed_Group2Var1_in_CountIndexParser(/*NumParser* numparser,*/ RSeq_for_Uint16_t* buffer, uint32_t)
-{
-  Indexed_for_Group2Var1 pair;
-//    uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
-////        pair.index = numparser.ReadNum(buffer);
-  pair.index = ReadNum_in_NumParser((NumParser*)pPointerGlobal1, buffer);
-// boolean Read_in_Group2Var1_static(RSeq_for_Uint16_t *, Group2Var1*);
-////        Type::Read(buffer, pair.value);
-  Read_in_Group2Var1_static(buffer, pair.value);
-  return pair;
-};
-
-////template<class Type>
-////void CountIndexParser::InvokeCountOfType(const HeaderRecord& record,
-////                                         uint16_t count,
-////                                         const NumParser& numparser,
-////                                         const ser4cpp::rseq_t& buffer,
-////                                         IAPDUHandler& handler)
-void InvokeCountOfType_for_Group2Var1_in_CountIndexParser(CountIndexParser *pCountIndexParser,
-    HeaderRecord* record,
-    uint16_t count,
-    NumParser* numparser,
-    RSeq_for_Uint16_t* buffer,
-    IAPDUHandler* handler)
-{
-////    auto read = [&numparser](ser4cpp::rseq_t& buffer, uint32_t) -> Indexed<Type> {
-////        Indexed<Type> pair;
-////        pair.index = numparser.ReadNum(buffer);
-////        Type::Read(buffer, pair.value);
-////        return pair;
-////    };
-////
-////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, count, read);
-
-  pPointerGlobal1 = numparser;
-
-//    BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser
-//   CreateBufferedCollection_Indexed_Group2Var1(
-//           /*NumParser*,*/ RSeq_for_Uint16_t*, uint16_t c,
-//           Indexed_for_Group2Var1 (*read)((/*NumParser* numparser,*/ RSeq_for_Uint16_t* buffer, uint32_t c)));
-  BufferedCollection_for_Indexed_Group2Var1_in_CountIndexParser
-  collection = CreateBufferedCollection_Indexed_Group2Var1(/*numparser,*/ buffer, count, read_for_Indexed_for_Group2Var1_in_CountIndexParser);
-
-//  void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
-////    handler.OnHeader(PrefixHeader(record, count), collection);
-  PrefixHeader pPrefixHeader;
-  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
-
-  OnHeader_PrefixHeader_for_Indexed_Group2Var1_in_IAPDUHandler(handler, &pPrefixHeader, collection);
-}
-
-//------------------------------------------Group2Var1------------------------------------------------
 ////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
 ////{
 ////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
 ////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
 ////}
-////
+
 ////template<class Descriptor>
 ////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
 ////                                     uint16_t count,
 ////                                     const NumParser& numparser,
 ////                                     const ser4cpp::rseq_t& buffer,
 ////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group2Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+
+//------------------------------------------Group2Var1------------------------------------------------
+//------------------------------------------Group12Var1------------------------------------------------
+
+CountIndexParser From_for_Group12Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
+
+////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
+
+////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
 ////{
-////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
-////    {
-////        Indexed<typename Descriptor::Target> pair;
-////        pair.index = numparser.ReadNum(buffer);
-////        Descriptor::ReadTarget(buffer, pair.value);
-////        return pair;
-////    };
-////
-////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-////    handler.OnHeader(PrefixHeader(record, count), collection);
-////}
-////
-////template<class Type>
-////void CountIndexParser::InvokeCountOfType(const HeaderRecord& record,
-////                                         uint16_t count,
-////                                         const NumParser& numparser,
-////                                         const ser4cpp::rseq_t& buffer,
-////                                         IAPDUHandler& handler)
-////{
-////    auto read = [&numparser](ser4cpp::rseq_t& buffer, uint32_t) -> Indexed<Type> {
-////        Indexed<Type> pair;
-////        pair.index = numparser.ReadNum(buffer);
-////        Type::Read(buffer, pair.value);
-////        return pair;
-////    };
-////
-////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, count, read);
-////    handler.OnHeader(PrefixHeader(record, count), collection);
+////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
 ////}
 
-void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////template<class Descriptor>
+////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
+////                                     uint16_t count,
+////                                     const NumParser& numparser,
+////                                     const ser4cpp::rseq_t& buffer,
+////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group12Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
 
+//------------------------------------------Group12Var1------------------------------------------------
+//------------------------------------------Group4Var1------------------------------------------------
+
+CountIndexParser From_for_Group4Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
+
+////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
+
+////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
+////{
+////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
+////}
+
+////template<class Descriptor>
+////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
+////                                     uint16_t count,
+////                                     const NumParser& numparser,
+////                                     const ser4cpp::rseq_t& buffer,
+////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group4Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//------------------------------------------Group4Var1------------------------------------------------
+//------------------------------------------Group4Var3------------------------------------------------
+
+CountIndexParser From_for_Group4Var3_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
+
+////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
+
+////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
+////{
+////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
+////}
+
+////template<class Descriptor>
+////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
+////                                     uint16_t count,
+////                                     const NumParser& numparser,
+////                                     const ser4cpp::rseq_t& buffer,
+////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group4Var3_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//------------------------------------------Group4Var3------------------------------------------------
+//------------------------------------------Group13Var1------------------------------------------------
+
+CountIndexParser From_for_Group13Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
+
+////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
+
+////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
+////{
+////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
+////}
+
+////template<class Descriptor>
+////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
+////                                     uint16_t count,
+////                                     const NumParser& numparser,
+////                                     const ser4cpp::rseq_t& buffer,
+////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group13Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//------------------------------------------Group13Var1------------------------------------------------
+//------------------------------------------Group13Var2------------------------------------------------
+
+CountIndexParser From_for_Group13Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
+
+////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
+
+////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
+////{
+////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
+////}
+
+////template<class Descriptor>
+////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
+////                                     uint16_t count,
+////                                     const NumParser& numparser,
+////                                     const ser4cpp::rseq_t& buffer,
+////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group13Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//------------------------------------------Group13Var2------------------------------------------------
+//------------------------------------------Group43Var1------------------------------------------------
+
+CountIndexParser From_for_Group43Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
+
+////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
+
+////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
+////{
+////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
+////}
+
+////template<class Descriptor>
+////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
+////                                     uint16_t count,
+////                                     const NumParser& numparser,
+////                                     const ser4cpp::rseq_t& buffer,
+////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group43Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//------------------------------------------Group43Var1------------------------------------------------
+//------------------------------------------Group43Var3------------------------------------------------
+
+CountIndexParser From_for_Group43Var3_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
+
+////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
+
+////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
+////{
+////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
+////}
+
+////template<class Descriptor>
+////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
+////                                     uint16_t count,
+////                                     const NumParser& numparser,
+////                                     const ser4cpp::rseq_t& buffer,
+////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group43Var3_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//------------------------------------------Group43Var3------------------------------------------------
+//------------------------------------------Group50Var4------------------------------------------------
+
+CountIndexParser From_for_Group50Var4_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
+
+////template<class Descriptor> CountIndexParser CountIndexParser::From(uint16_t count, const NumParser& numparser)
+
+////template<class Type> CountIndexParser CountIndexParser::FromType(uint16_t count, const NumParser& numparser)
+////{
+////    const size_t SIZE = static_cast<size_t>(count) * (Type::Size() + numparser.NumBytes());
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOfType<Type>);
+////}
+
+////template<class Descriptor>
+////void CountIndexParser::InvokeCountOf(const HeaderRecord& record,
+////                                     uint16_t count,
+////                                     const NumParser& numparser,
+////                                     const ser4cpp::rseq_t& buffer,
+////                                     IAPDUHandler& handler)
+void InvokeCountOf_for_Group50Var4_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//------------------------------------------Group50Var4------------------------------------------------
 
 ParseResult_uint8_t ParseHeader_in_CountIndexParser_static(
   RSeq_for_Uint16_t *buffer,

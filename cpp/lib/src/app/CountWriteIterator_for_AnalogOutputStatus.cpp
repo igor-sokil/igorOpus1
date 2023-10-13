@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "CountWriteIterator_for_AnalogOutputStatus.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ CountWriteIterator_for_UInt8_AnalogOutputStatus Null_in_CountWriteIterator_for_U
 ////    CountWriteIterator() : count(0), isValid(false), pPosition(nullptr) {}
 void CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver1(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   pCountWriteIterator_for_UInt8_AnalogOutputStatus->count = 0;
   pCountWriteIterator_for_UInt8_AnalogOutputStatus->isValid = false;
   pCountWriteIterator_for_UInt8_AnalogOutputStatus->pPosition = NULL;
@@ -24,6 +35,13 @@ void CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_U
 void CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver2(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus,
     Serializer_for_AnalogOutputStatus *serializer, WSeq_for_Uint16_t *position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
 
   pCountWriteIterator_for_UInt8_AnalogOutputStatus->count = 0;
   pCountWriteIterator_for_UInt8_AnalogOutputStatus->serializer = *serializer;
@@ -42,6 +60,13 @@ void CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_U
 ////    ~CountWriteIterator()
 void CountWriteIterator_for_UInt8_AnalogOutputStatus_destr_CountWriteIterator_for_UInt8_AnalogOutputStatus(CountWriteIterator_for_UInt8_AnalogOutputStatus *pCountWriteIterator_for_UInt8_AnalogOutputStatus)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt8_AnalogOutputStatus_destr_CountWriteIterator_for_UInt8_AnalogOutputStatus1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pCountWriteIterator_for_UInt8_AnalogOutputStatus->isValid)
   {
 ////        CountType::write_to(countPosition, count);
@@ -85,6 +110,13 @@ CountWriteIterator_for_UInt16_AnalogOutputStatus Null_in_CountWriteIterator_for_
 ////    CountWriteIterator() : count(0), isValid(false), pPosition(nullptr) {}
 void CountWriteIterator_for_UInt16_AnalogOutputStatus_in_CountWriteIterator_for_UInt16_AnalogOutputStatusOver1(CountWriteIterator_for_UInt16_AnalogOutputStatus *pCountWriteIterator_for_UInt16_AnalogOutputStatus)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"CountWriteIterator_for_UInt1_AnalogOutputStatus_in_CountWriteIterator_for_UInt16_AnalogOutputStatusOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   pCountWriteIterator_for_UInt16_AnalogOutputStatus->count = 0;
   pCountWriteIterator_for_UInt16_AnalogOutputStatus->isValid = false;
   pCountWriteIterator_for_UInt16_AnalogOutputStatus->pPosition = NULL;

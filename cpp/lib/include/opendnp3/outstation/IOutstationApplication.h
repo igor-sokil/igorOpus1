@@ -237,7 +237,7 @@ void IOutstationApplication_destr_IOutstationApplication(IOutstationApplication*
 boolean SupportsWriteAbsoluteTime_in_IOutstationApplication_override(void*);
 boolean WriteAbsoluteTime_in_IOutstationApplication_override(void*, UTCTimestamp* timestamp);
 boolean SupportsWriteTimeAndInterval_in_IOutstationApplication_override(void*);
-//    boolean WriteTimeAndInterval_in_IOutstationApplication_override(void*, ICollection_Indexed_for_TimeAndInterval* values);
+boolean WriteTimeAndInterval_in_IOutstationApplication_override(void*, ICollection_Indexed_for_TimeAndInterval* values);
 boolean SupportsAssignClass_in_IOutstationApplication_override(void*);
 void RecordClassAssignment_in_IOutstationApplication_override(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, uint16_t start, uint16_t stop);
 ApplicationIIN GetApplicationIIN_in_IOutstationApplication_override(void*);

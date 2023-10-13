@@ -11,6 +11,9 @@
 
 #include "header.h"
 
+/*
+#include "header.h"
+
 #include "OutstationConfig.h"
 #include "OutstationTestObject.h"
 #include "BufferHelpers.h"
@@ -20,44 +23,23 @@
 #include "APDUParser.h"
 
 #include "TestAPDUParsing.h"
-
+*/
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
+//void* pPointerGlobal1;
+//void* pPointerGlobal2;
+//void* pPointerGlobal3;
+
+#include "MockAPDUHeaderHandler.h"
+#include "HexConversions.h"
+#include "APDUParser.h"
+
+#include "TestAPDUParsing.h"
 
 key_filter *pkf;
 
 MainWindow *mainWindow;
-/*
-void validate(MockApduHeaderHandler*);
-void validate(MockApduHeaderHandler* mock)
-{
-qDebug()<<"REQUIRE(1 == mock.staticBinaries.size())";
- uint16_t size = mock->staticBinaries.size();
-qDebug()<<"uint16_t size ="<<size;
-  if(size!=2) return;
-{
-qDebug()<<"";
-qDebug()<<"Indexed<Binary> value(Binary(true), 0)";
-qDebug()<<"REQUIRE((value == mock.staticBinaries[0]))";
-Indexed_for_Binary value = mock->staticBinaries[0];
-qDebug()<<"value.index= "<<value.index;
-boolean src = value.value.tTypedMeasurement_for_Boolean.value;
-qDebug()<<"boolean src= "<<src;
-}
-{
-qDebug()<<"";
-qDebug()<<"Indexed<Binary> value(Binary(false), 1)";
-qDebug()<<"REQUIRE((value == mock.staticBinaries[1]))";
-Indexed_for_Binary value = mock->staticBinaries[1];
-qDebug()<<"value.index= "<<value.index;
-boolean src = value.value.tTypedMeasurement_for_Boolean.value;
-qDebug()<<"boolean src= "<<src;
-}
-}
-*/
+
 int main(int argc, char *argv[])
 {
   QApplication app(argc, argv);
@@ -82,15 +64,6 @@ TEST_CASE(SUITE("19ParserDoesNotAllowEmptyOctetStrings"))
 
     REQUIRE((result == ParseResult::INVALID_OBJECT));
     REQUIRE(mock.records.empty());
-}
-*/
-/*
-{
-  std::string name("01 02 01 00 00 FF FF");       
-ParseResult_uint8_t temp = TestComplex(name, NULL);
-qDebug()<<"TestComplex('01 02 01 00 00 FF FF', ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS, 0, [](MockApduHeaderHandler& mock)";
-qDebug()<<"ParseResult_uint8_t result= "<<temp;
-qDebug()<<"ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS= "<<ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
 }
 */
 

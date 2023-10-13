@@ -19,7 +19,11 @@
  */
 ////#include "opendnp3/outstation/EventBufferConfig.h"
 
-#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
+//#include <QtWidgets>
 #include "header.h"
 #include "EventBufferConfig.h"
 
@@ -61,13 +65,27 @@ void EventBufferConfig_in_EventBufferConfigOver2(EventBufferConfig *pEventBuffer
 
 uint32_t TotalEvents_in_EventBufferConfig(EventBufferConfig *pEventBufferConfig)
 {
-  qDebug()<<"pEventBufferConfig->maxBinaryEvents= "                    <<pEventBufferConfig->maxBinaryEvents;
-  qDebug()<<";; pEventBufferConfig->maxDoubleBinaryEvents="            <<pEventBufferConfig->maxDoubleBinaryEvents;
-  qDebug()<<";; pEventBufferConfig->maxAnalogEvents= "                 <<pEventBufferConfig->maxAnalogEvents;
-  qDebug()<<";; pEventBufferConfig->maxCounterEvents= "                <<pEventBufferConfig->maxCounterEvents;
-  qDebug()<<";; pEventBufferConfig->maxBinaryOutputStatusEvents= "     <<pEventBufferConfig->maxBinaryOutputStatusEvents;
-  qDebug()<<";; pEventBufferConfig->maxAnalogOutputStatusEvents= "     <<pEventBufferConfig->maxAnalogOutputStatusEvents;
-  qDebug()<<";; pEventBufferConfig->maxOctetStringEvents= "            <<pEventBufferConfig->maxOctetStringEvents;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"TotalEvents_in_EventBufferConfig1"<<std::endl;
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pEventBufferConfig->maxBinaryEvents= "<<(uint16_t)pEventBufferConfig->maxBinaryEvents<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pEventBufferConfig->maxDoubleBinaryEvents="<<(uint16_t)pEventBufferConfig->maxDoubleBinaryEvents<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pEventBufferConfig->maxAnalogEvents= "<<(uint16_t)pEventBufferConfig->maxAnalogEvents<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pEventBufferConfig->maxCounterEvents= "<<(uint16_t)pEventBufferConfig->maxCounterEvents<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pEventBufferConfig->maxBinaryOutputStatusEvents= "<<(uint16_t)pEventBufferConfig->maxBinaryOutputStatusEvents<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pEventBufferConfig->maxAnalogOutputStatusEvents= "<<(uint16_t)pEventBufferConfig->maxAnalogOutputStatusEvents<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pEventBufferConfig->maxOctetStringEvents= "<<(uint16_t)pEventBufferConfig->maxOctetStringEvents<<std::endl;
+  decrement_stack_info();
+#endif
 
   return pEventBufferConfig->maxBinaryEvents + pEventBufferConfig->maxDoubleBinaryEvents +
          pEventBufferConfig->maxAnalogEvents + pEventBufferConfig->maxCounterEvents +

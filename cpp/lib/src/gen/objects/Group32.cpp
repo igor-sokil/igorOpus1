@@ -120,7 +120,7 @@ Group32Var1 Apply_in_ConvertGroup32Var1_static(Analog* src, uint8_t Overrange)
   Group32Var1 target;
   Group32Var1_in_Group32Var1(&target);
 ////        auto overrange = DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  boolean overrange = Apply_in_DownSampling_for_uint32((src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
+  boolean overrange = Apply_in_DownSampling_for_uint32((uint32_t)(src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
 
 ////        t.flags = overrange ? Overrange : 0;
   target.flags = overrange ? Overrange : 0;
@@ -219,7 +219,7 @@ Group32Var2 Apply_in_ConvertGroup32Var2_static(Analog* src, uint8_t Overrange)
   Group32Var2 target;
   Group32Var2_in_Group32Var2(&target);
 ////        auto overrange = DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  boolean overrange = Apply_in_DownSampling_for_uint16((src->tTypedMeasurement_for_Double64).value, (uint16_t*)&target.value);
+  boolean overrange = Apply_in_DownSampling_for_uint16((uint16_t)(src->tTypedMeasurement_for_Double64).value, (uint16_t*)&target.value);
 
 ////        t.flags = overrange ? Overrange : 0;
   target.flags = overrange ? Overrange : 0;
@@ -318,7 +318,7 @@ Group32Var3 Apply_in_ConvertGroup32Var3_static(Analog* src, uint8_t Overrange)
   Group32Var3 target;
   Group32Var3_in_Group32Var3(&target);
 ////        auto overrange = DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  boolean overrange = Apply_in_DownSampling_for_uint32((src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
+  boolean overrange = Apply_in_DownSampling_for_uint32((uint32_t)(src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
 
 ////        t.flags = overrange ? Overrange : 0;
   target.flags = overrange ? Overrange : 0;
@@ -420,7 +420,7 @@ Group32Var4 Apply_in_ConvertGroup32Var4_static(Analog* src, uint8_t Overrange)
   Group32Var4 target;
   Group32Var4_in_Group32Var4(&target);
 ////        auto overrange = DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  boolean overrange = Apply_in_DownSampling_for_uint32((src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
+  boolean overrange = Apply_in_DownSampling_for_uint32((uint32_t)(src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
 
 ////        t.flags = overrange ? Overrange : 0;
   target.flags = overrange ? Overrange : 0;
@@ -716,7 +716,7 @@ Group32Var7 Apply_in_ConvertGroup32Var7_static(Analog* src, uint8_t Overrange)
   Group32Var7 target;
   Group32Var7_in_Group32Var7(&target);
 ////        auto overrange = DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  boolean overrange = Apply_in_DownSampling_for_uint32((src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
+  boolean overrange = Apply_in_DownSampling_for_uint32((uint32_t)(src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
 
 ////        t.flags = overrange ? Overrange : 0;
   target.flags = overrange ? Overrange : 0;

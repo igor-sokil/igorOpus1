@@ -139,8 +139,11 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_AnalogInfo variation;
 } SelectedValue_for_AnalogSpec;
-void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpec(SelectedValue_for_AnalogSpec *pSelectedValue_for_AnalogSpec);
-
+void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver1(SelectedValue_for_AnalogSpec *pSelectedValue_for_AnalogSpec);
+////    SelectedValue(bool selected, const typename Spec::meas_t& value, typename Spec::static_variation_t variation)
+////        : selected(selected), value(value), variation(variation)
+void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2(SelectedValue_for_AnalogSpec *pSelectedValue_for_AnalogSpec,
+                                          boolean selected, Analog* value, StaticAnalogVariation_uint8_t variation);
 /**
  * Holds particular measurement type in the database.
  */
@@ -163,7 +166,6 @@ typedef struct
 ////    }
 ////    StaticDataCell(const typename Spec::config_t& config) : config(config) {}
 } StaticDataCell_for_Analog;
-
 void StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver1(StaticDataCell_for_Analog *pStaticDataCell_for_Analog,
     AnalogConfig* config);
 void  StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver2(StaticDataCell_for_Analog *pStaticDataCell_for_Analog,

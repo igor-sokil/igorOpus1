@@ -28,6 +28,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "DownSampling.h"
 #include "Group30.h"
@@ -72,6 +76,18 @@ void Group30Var1_in_Group30Var1(Group30Var1 *pGroup30Var1)
 
 boolean Read_in_Group30Var1_static(RSeq_for_Uint16_t* buffer, Group30Var1* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Read_in_Group30Var1_static1"<<'\n';
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->flags= "<<(uint16_t)output->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->value= "<<(uint32_t)output->value<<'\n';
+  decrement_stack_info();
+#endif
 ////  return LittleEndian::read(buffer, output.flags, output.value);
   return read_from_in_UInt8_static(buffer, &(output->flags)) &&
          read_from_in_UInt32_static(buffer, (uint32_t*)&(output->value));
@@ -79,6 +95,18 @@ boolean Read_in_Group30Var1_static(RSeq_for_Uint16_t* buffer, Group30Var1* outpu
 
 boolean Write_in_Group30Var1_static(Group30Var1* arg, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_Group30Var1_static"<<'\n';
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*arg->flags= "<<std::hex<<(uint16_t)arg->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*arg->value= "<<std::hex<<(uint32_t)arg->value<<'\n';
+  decrement_stack_info();
+#endif
 ////  return LittleEndian::write(buffer, arg.flags, arg.value);
   return write_to_in_UInt8_static(buffer, arg->flags) &&
          write_to_in_UInt32_static(buffer, arg->value);
@@ -115,12 +143,24 @@ Group30Var1 Apply_in_ConvertGroup30Var1_static(Analog* src, uint8_t Overrange)
   Group30Var1 target;
   Group30Var1_in_Group30Var1(&target);
 ////        auto overrange = DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  boolean overrange = Apply_in_DownSampling_for_uint32((src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
+  boolean overrange = Apply_in_DownSampling_for_uint32((uint32_t)(src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
 
 ////        t.flags = overrange ? Overrange : 0;
   target.flags = overrange ? Overrange : 0;
 ////        t.flags |= src.flags.value;
   target.flags |= (src->tTypedMeasurement_for_Double64).mMeasurement.flags.value;
+
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Apply_in_ConvertGroup30Var1_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*src.value= "<<std::hex<<(double)(src->tTypedMeasurement_for_Double64).value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*target.value= "<<std::hex<<(uint32_t)(target.value)<<'\n';
+  decrement_stack_info();
+#endif
   return target;
 }
 ////template<class Target, class Source, uint8_t Overrange> struct ConvertQVRangeCheck : private StaticOnly
@@ -145,6 +185,18 @@ void Group30Var2_in_Group30Var2(Group30Var2 *pGroup30Var2)
 
 boolean Read_in_Group30Var2_static(RSeq_for_Uint16_t* buffer, Group30Var2* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Read_in_Group30Var2_static1"<<'\n';
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->flags= "<<(uint16_t)output->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->value= "<<(uint16_t)output->value<<'\n';
+  decrement_stack_info();
+#endif
 ////  return LittleEndian::read(buffer, output.flags, output.value);
   return read_from_in_UInt8_static(buffer, &(output->flags)) &&
          read_from_in_UInt16_static(buffer, (uint16_t*)&(output->value));
@@ -152,6 +204,18 @@ boolean Read_in_Group30Var2_static(RSeq_for_Uint16_t* buffer, Group30Var2* outpu
 
 boolean Write_in_Group30Var2_static(Group30Var2* arg, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_Group30Var2_static"<<'\n';
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*arg->flags= "<<std::hex<<(uint16_t)arg->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*arg->value= "<<std::hex<<(uint16_t)arg->value<<'\n';
+  decrement_stack_info();
+#endif
 ////  return LittleEndian::write(buffer, arg.flags, arg.value);
   return write_to_in_UInt8_static(buffer, arg->flags) &&
          write_to_in_UInt16_static(buffer, arg->value);
@@ -188,7 +252,7 @@ Group30Var2 Apply_in_ConvertGroup30Var2_static(Analog* src, uint8_t Overrange)
   Group30Var2 target;
   Group30Var2_in_Group30Var2(&target);
 ////        auto overrange = DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  boolean overrange = Apply_in_DownSampling_for_uint16((src->tTypedMeasurement_for_Double64).value, (uint16_t*)&(target.value));
+  boolean overrange = Apply_in_DownSampling_for_uint16((uint16_t)(src->tTypedMeasurement_for_Double64).value, (uint16_t*)&(target.value));
 
 ////        t.flags = overrange ? Overrange : 0;
   target.flags = overrange ? Overrange : 0;
@@ -247,7 +311,7 @@ Group30Var3 Apply_in_ConvertGroup30Var3_static(Analog* src)
   Group30Var3 target;
   Group30Var3_in_Group30Var3(&target);
 ////        DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  Apply_in_DownSampling_for_uint32((src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
+  Apply_in_DownSampling_for_uint32((uint32_t)(src->tTypedMeasurement_for_Double64).value, (uint32_t*)&target.value);
   return target;
 }
 ////template<class Target, class Source> struct ConvertVRangeCheck : private StaticOnly
@@ -310,7 +374,7 @@ Group30Var4 Apply_in_ConvertGroup30Var4_static(Analog* src)
   Group30Var4 target;
   Group30Var4_in_Group30Var4(&target);
 ////        DownSampling<typename Source::Type, typename Target::ValueType>::Apply(src.value, t.value);
-  Apply_in_DownSampling_for_uint16((src->tTypedMeasurement_for_Double64).value, (uint16_t*)&target.value);
+  Apply_in_DownSampling_for_uint16((uint16_t)(src->tTypedMeasurement_for_Double64).value, (uint16_t*)&target.value);
   return target;
 }
 
@@ -453,7 +517,6 @@ DNP3Serializer_for_Analog  Inst_in_Group30Var5_static(void)
 ////                   typename Serializer<T>::write_func_t write_func)
       &WriteTarget_in_Group30Var5_static);
 
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
   return dDNP3Serializer_for_Analog;
 }
 
@@ -481,7 +544,6 @@ DNP3Serializer_for_Analog  Inst_in_Group30Var4_static(void)
 ////                   typename Serializer<T>::write_func_t write_func)
       &WriteTarget_in_Group30Var4_static);
 
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
   return dDNP3Serializer_for_Analog;
 }
 
@@ -509,7 +571,6 @@ DNP3Serializer_for_Analog  Inst_in_Group30Var3_static(void)
 ////                   typename Serializer<T>::write_func_t write_func)
       &WriteTarget_in_Group30Var3_static);
 
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
   return dDNP3Serializer_for_Analog;
 }
 
@@ -537,7 +598,6 @@ DNP3Serializer_for_Analog  Inst_in_Group30Var2_static(void)
 ////                   typename Serializer<T>::write_func_t write_func)
       &WriteTarget_in_Group30Var2_static);
 
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
   return dDNP3Serializer_for_Analog;
 }
 
@@ -565,6 +625,5 @@ DNP3Serializer_for_Analog  Inst_in_Group30Var1_static(void)
 ////                   typename Serializer<T>::write_func_t write_func)
       &WriteTarget_in_Group30Var1_static);
 
-//  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
   return dDNP3Serializer_for_Analog;
 }

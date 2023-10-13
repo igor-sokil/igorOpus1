@@ -483,7 +483,7 @@ TEST_CASE(SUITE("36RreadGrp20Var5ViaIntegrity"))
     NewTestStaticRead("C0 01 14 05 06", "C0 81 80 00 14 05 00 00 00 00 00 00 00"); // 1 byte start/stop, RESTART quality
 }
 
-TEST_CASE(SUITE("ReadGrp30Var0ViaIntegrity"))
+TEST_CASE(SUITE("36_1ReadGrp30Var0ViaIntegrity"))
 {
     NewTestStaticRead("C0 01 1E 00 06",
                       "C0 81 80 00 1E 01 00 00 00 02 00 00 00 00"); // 1 byte start/stop, RESTART quality

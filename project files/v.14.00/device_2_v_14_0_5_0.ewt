@@ -2115,7 +2115,16 @@
                 <name>$PROJ_DIR$\..\..\ser4cpp\container\RSeq.cpp</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\ser4cpp\container\StaticBuffer.cpp</name>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\StaticBuffer_for_LPDU_HEADER_SIZE.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\StaticBuffer_for_LPDU_HEADER_SIZE.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\StaticBuffer_for_LPDU_MAX_FRAME_SIZE.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\ser4cpp\container\StaticBuffer_for_LPDU_MAX_FRAME_SIZE.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\ser4cpp\container\WSeq.cpp</name>

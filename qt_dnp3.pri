@@ -1,71 +1,8 @@
 
-INCLUDEPATH  += cpp\inspect
-INCLUDEPATH  += cpp\lib\include\opendnp3
-
-INCLUDEPATH  += cpp\lib\include\opendnp3\app
-INCLUDEPATH  += cpp\lib\include\opendnp3\app\parsing
-INCLUDEPATH  += cpp\lib\include\opendnp3\gen
-INCLUDEPATH  += cpp\lib\include\opendnp3\master
-INCLUDEPATH  += cpp\lib\include\opendnp3\outstation
-INCLUDEPATH  += cpp\lib\include\opendnp3\util
-INCLUDEPATH  += cpp\lib\include\opendnp3\link
-
-INCLUDEPATH  += cpp\lib\src
-
-INCLUDEPATH  += cpp\lib\src\app
-INCLUDEPATH  += cpp\lib\src\app\parsing
-INCLUDEPATH  += cpp\lib\src\link
-INCLUDEPATH  += cpp\lib\src\util
-
-INCLUDEPATH  += cpp\lib\src\outstation
-
-INCLUDEPATH  += cpp\lib\src\outstation\event
-
-INCLUDEPATH  += cpp\lib\src\gen
-INCLUDEPATH  += cpp\lib\src\gen\objects
-
-INCLUDEPATH  += ser4cpp\container
-INCLUDEPATH  += ser4cpp\util
-INCLUDEPATH  += ser4cpp\serialization
-
-INCLUDEPATH  += exe4cpp
-
-INCLUDEPATH  += cpp\tests\unit\utils
-INCLUDEPATH  += cpp\tests\dnp3mocks\include\dnp3mocks
-
-HEADERS       = qtsrc\loghandler.h \
-		qtsrc\key_filter.h \
-                qtsrc\MainWindow.h \
-                qtsrc\header.h \
-                \
-                 ser4cpp\util\Comparisons.h \
-                 ser4cpp\container\HasLength.h \
-                 ser4cpp\container\RSeq.h \
-                \
-                cpp\lib\include\opendnp3\app\BaseMeasurementTypes.h \
-                cpp\lib\include\opendnp3\app\MeasurementInfo.h \
-                cpp\lib\include\opendnp3\app\DNPTime.h \
-                cpp\lib\include\opendnp3\app\Flags.h \
-                cpp\lib\include\opendnp3\app\EventTriggers.h \
-                cpp\lib\include\opendnp3\app\AnalogOutput.h \
-                cpp\lib\include\opendnp3\app\IINField.h \
-                cpp\lib\include\opendnp3\app\ClassField.h \
-                cpp\lib\include\opendnp3\app\ControlRelayOutputBlock.h \
-                cpp\lib\include\opendnp3\app\BinaryCommandEvent.h \
-                \
-                cpp\lib\include\opendnp3\gen\CommandStatus.h \
-                \
-                cpp\lib\include\opendnp3\master\ResponseInfo.h \
-                \
-                cpp\lib\include\opendnp3\outstation\MeasurementConfig.h \
-                \
-                cpp\lib\src\app\Functions.h \
-                cpp\lib\src\app\AppControlField.h \
-                cpp\lib\src\app\APDUHeader.h \
-                cpp\lib\src\app\Serializer.h 
 
 SOURCES       = cpp\inspect\MemoryInspect.cpp \
                 cpp\inspect\Inspect_display.cpp
+
 SOURCES       += ser4cpp\util\Comparisons.cpp \
                  ser4cpp\util\HexConversions.cpp \
                  ser4cpp\container\HasLength.cpp \
@@ -131,6 +68,9 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_IINValue.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_TimeAndInterval.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_Binary.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_BinaryCommandEvent.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogCommandEvent.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_DoubleBitBinary.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_BinaryOutputStatus.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_OctetString.cpp \
                 \
@@ -174,6 +114,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\parsing\BufferedCollection.cpp \
                 cpp\lib\src\app\parsing\BitReader.cpp \
                 cpp\lib\src\app\parsing\CountParser.cpp \
+                cpp\lib\src\app\parsing\CountIndexParser.cpp \
                 cpp\lib\src\app\parsing\ObjectHeaderParser.cpp \
                 cpp\lib\src\app\parsing\ParseResult.cpp \
                 cpp\lib\src\app\parsing\RangeParser.cpp \
@@ -235,6 +176,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_OctetString.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\Serializer.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_Analog.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Binary.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_BinaryOutputStatus.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_DoubleBitBinary.cpp \
@@ -246,6 +188,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\ApplicationIIN.cpp \
                 cpp\lib\src\outstation\AssignClassHandler.cpp \
                 cpp\lib\src\outstation\Database.cpp \
+                cpp\lib\src\outstation\Database_for_Analog.cpp \
                 cpp\lib\src\outstation\Database_for_Binary.cpp \
                 cpp\lib\src\outstation\DatabaseConfig.cpp \
                 cpp\lib\src\outstation\DeferredRequest.cpp \
@@ -285,6 +228,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_OctetString.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_TimeAndInterval.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_Analog.cpp \
                 cpp\lib\src\outstation\StaticWriters_for_Binary.cpp \
                 cpp\lib\src\outstation\TimeSyncState.cpp \
                 cpp\lib\src\outstation\WriteHandler.cpp \
@@ -363,6 +307,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\gen\objects\Group40.cpp \
                 cpp\lib\src\gen\objects\Group41.cpp \
                 cpp\lib\src\gen\objects\Group42.cpp \
+                cpp\lib\src\gen\objects\Group43.cpp \
                 cpp\lib\src\gen\objects\Group50.cpp \
                 cpp\lib\src\gen\objects\Group51.cpp \
                 cpp\lib\src\gen\objects\Group52.cpp \
@@ -379,6 +324,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\MockTransportSegment.cpp \
                 cpp\tests\unit\utils\OutstationTestObject.cpp \
                 cpp\tests\unit\utils\TestAPDUParsing.cpp \
+                cpp\tests\unit\utils\TestOutstation.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \

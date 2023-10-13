@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "RangeWriteIterator_for_DoubleBitBinary.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ RangeWriteIterator_for_UInt8_DoubleBitBinary Null_in_RangeWriteIterator_for_UInt
 ////    RangeWriteIterator() : start(0), count(0), isValid(false), pPosition(nullptr) {}
 void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver1(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   pRangeWriteIterator_for_UInt8_DoubleBitBinary->start = 0;
   pRangeWriteIterator_for_UInt8_DoubleBitBinary->count = 0;
   pRangeWriteIterator_for_UInt8_DoubleBitBinary->isValid = false;
@@ -29,6 +40,13 @@ void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt
 //                   ser4cpp::wseq_t& position)
     WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pRangeWriteIterator_for_UInt8_DoubleBitBinary->start = start_;
   pRangeWriteIterator_for_UInt8_DoubleBitBinary->serializer = *serializer;
   pRangeWriteIterator_for_UInt8_DoubleBitBinary->count = 0;
@@ -50,6 +68,13 @@ void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt
 ////    ~RangeWriteIterator()
 void RangeWriteIterator_for_UInt8_DoubleBitBinary_destr_RangeWriteIterator_for_UInt8_DoubleBitBinary(RangeWriteIterator_for_UInt8_DoubleBitBinary *pRangeWriteIterator_for_UInt8_DoubleBitBinary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_DoubleBitBinary_destr_RangeWriteIterator_for_UInt8_DoubleBitBinary1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pRangeWriteIterator_for_UInt8_DoubleBitBinary->isValid && pRangeWriteIterator_for_UInt8_DoubleBitBinary->count > 0)
   {
     uint32_t stop = pRangeWriteIterator_for_UInt8_DoubleBitBinary->start + pRangeWriteIterator_for_UInt8_DoubleBitBinary->count - 1;
@@ -96,6 +121,13 @@ RangeWriteIterator_for_UInt16_DoubleBitBinary Null_in_RangeWriteIterator_for_UIn
 ////    RangeWriteIterator() : start(0), count(0), isValid(false), pPosition(nullptr) {}
 void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver1(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   pRangeWriteIterator_for_UInt16_DoubleBitBinary->start = 0;
   pRangeWriteIterator_for_UInt16_DoubleBitBinary->count = 0;
   pRangeWriteIterator_for_UInt16_DoubleBitBinary->isValid = false;
@@ -110,6 +142,13 @@ void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UIn
 //                   ser4cpp::wseq_t& position)
     WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pRangeWriteIterator_for_UInt16_DoubleBitBinary->start = start_;
   pRangeWriteIterator_for_UInt16_DoubleBitBinary->serializer = *serializer;
   pRangeWriteIterator_for_UInt16_DoubleBitBinary->count = 0;
@@ -131,6 +170,13 @@ void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UIn
 ////    ~RangeWriteIterator()
 void RangeWriteIterator_for_UInt16_DoubleBitBinary_destr_RangeWriteIterator_for_UInt16_DoubleBitBinary(RangeWriteIterator_for_UInt16_DoubleBitBinary *pRangeWriteIterator_for_UInt16_DoubleBitBinary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt16_DoubleBitBinary_destr_RangeWriteIterator_for_UInt16_DoubleBitBinary1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pRangeWriteIterator_for_UInt16_DoubleBitBinary->isValid && pRangeWriteIterator_for_UInt16_DoubleBitBinary->count > 0)
   {
     uint32_t stop = pRangeWriteIterator_for_UInt16_DoubleBitBinary->start + pRangeWriteIterator_for_UInt16_DoubleBitBinary->count - 1;

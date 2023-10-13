@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "CountWriteIterator_for_DoubleBitBinary.h"
 #include "SerializationTemplates.h"

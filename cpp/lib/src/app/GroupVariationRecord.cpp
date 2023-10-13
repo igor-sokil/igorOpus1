@@ -17,8 +17,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QtWidgets>
+//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "GroupVariationRecord.h"
 
@@ -52,8 +55,17 @@ QualifierCode_uint8_t GetQualifierCode_in_HeaderRecord(HeaderRecord *pHeaderReco
 
 GroupVariationRecord GetRecord_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
- std::cout<<""<<std::endl;
- std::cout<<"GetRecord_in_GroupVariationRecord_static1"<<std::endl;
+#ifdef  LOG_INFO
+   std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+   std::cout<<"GetRecord_in_GroupVariationRecord_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+   std::cout<<"*uint8_t group= "<<(uint16_t)group<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+   std::cout<<"*uint8_t variation= "<<(uint16_t)variation<<std::endl;
+  decrement_stack_info();
+#endif
   GroupVariationRecord gGroupVariationRecord;
   GroupVariationRecord_in_GroupVariationRecordOver1(&gGroupVariationRecord);
 
@@ -69,10 +81,17 @@ uint16_t GetGroupVar_in_GroupVariationRecord_static(uint8_t group, uint8_t varia
 
 EnumAndType GetEnumAndType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
-std::cout<<""<<std::endl;
-std::cout<<"GetEnumAndType_in_GroupVariationRecord_static1"<<std::endl;
-qDebug()<<"group="<<group;
-qDebug()<<"variation="<<variation;
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"GetEnumAndType_in_GroupVariationRecord_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t group= "<<(uint16_t)group<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t variation= "<<(uint16_t)variation<<std::endl;
+  decrement_stack_info();
+#endif
 
   GroupVariationType_int32_t type = GetType_in_GroupVariationRecord_static(group, variation);
 
@@ -107,65 +126,170 @@ qDebug()<<"variation="<<variation;
 
 GroupVariationType_int32_t GetType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"GetType_in_GroupVariationRecord_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t group= "<<(uint16_t)group<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t variation= "<<(uint16_t)variation<<std::endl;
+#endif
   switch (group)
   {
   case (1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
 
   case (2):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (3):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
 
   case (4):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (10):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
 
   case (11):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (13):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (20):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
 
   case (21):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
 
   case (22):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (23):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (30):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
 
   case (32):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (40):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
 
   case (41):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (42):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (43):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (50):
     switch (variation)
     {
     case (4):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
       return GroupVariationType_STATIC;
     default:
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_OTHER"<<std::endl;
+  decrement_stack_info();
+#endif
       return GroupVariationType_OTHER;
     }
 
@@ -173,23 +297,58 @@ GroupVariationType_int32_t GetType_in_GroupVariationRecord_static(uint8_t group,
     switch (variation)
     {
     case (1):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
       return GroupVariationType_STATIC;
     default:
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
       return GroupVariationType_EVENT;
     }
 
   case (110):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
 
   case (111):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   case (121):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_STATIC"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_STATIC;
   case (122):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_EVENT"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_EVENT;
 
   default:
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariationType_OTHER"<<std::endl;
+  decrement_stack_info();
+#endif
     return GroupVariationType_OTHER;
   }
 }

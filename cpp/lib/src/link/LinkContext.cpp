@@ -18,7 +18,10 @@
  * limitations under the License.
  */
 //#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "LinkContext.h"
 
@@ -39,8 +42,6 @@ void LinkContext_in_LinkContext(LinkContext *pLinkContext,
                                 ILinkSession* session,
                                 LinkLayerConfig* config)
 {
-//qDebug()<<"LinkContext_in_LinkContext1";
-
   pLinkContext->linktx = NULL;
 ////    : logger(logger),
   pLinkContext->config = *config;
@@ -95,7 +96,12 @@ boolean OnLowerLayerUp_in_LinkContext(LinkContext *pLinkContext)
   if (pLinkContext->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer already online");
-    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer already online')***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer already online')***"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -118,7 +124,12 @@ boolean OnLowerLayerDown_in_LinkContext(LinkContext *pLinkContext)
 {
   if (!pLinkContext->isOnline)
   {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer already online')***"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer is not online");
     return false;
   }
@@ -159,7 +170,12 @@ boolean SetTxSegment_in_LinkContext(LinkContext *pLinkContext, ITransportSegment
 {
   if (!pLinkContext->isOnline)
   {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer is not online')***"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Layer is not online");
     return false;
   }
@@ -167,7 +183,12 @@ boolean SetTxSegment_in_LinkContext(LinkContext *pLinkContext, ITransportSegment
   if (pLinkContext->pSegments)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Already transmitting a segment");
-    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Already transmitting a segment')***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+      std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Already transmitting a segment')***"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -181,7 +202,12 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
   if (pLinkContext->txMode == LinkTransmitMode_Idle)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Unknown transmission callback");
-    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Unknown transmission callback')***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Unknown transmission callback')***"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -445,9 +471,7 @@ void RestartKeepAliveTimer_in_LinkContext(LinkContext *pLinkContext)
 //uint64_t Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
 ////    this->lastMessageTimestamp = Timestamp(this->executor->get_time());
   uint64_t temp = get_time_in_IExecutorExe4cpp(pLinkContext->executor);//Get_time_in_ISteadyTimeSourceExe4cpp(&(pLinkContext->executor->iISteadyTimeSourceExe4cpp));
-//qDebug()<<"RestartKeepAliveTimer_in_LinkContext1.1.1";
   Timestamp_in_TimestampOver2(&(pLinkContext->lastMessageTimestamp), temp);
-//qDebug()<<"RestartKeepAliveTimer_in_LinkContext1.2";
 
 //истечение срока
 ////    const auto expiration = this->lastMessageTimestamp + this->config.KeepAliveTimeout;
@@ -462,10 +486,7 @@ void RestartKeepAliveTimer_in_LinkContext(LinkContext *pLinkContext)
 ////        }
 ////    });
   pPointerGlobal1 = pLinkContext;
-///*
   pLinkContext->keepAliveTimer =  Start_in_IExecutorExe4cpp(pLinkContext->executor, expiration, callback3_in_LinkContext);
-//*/
-//qDebug()<<"RestartKeepAliveTimer_in_LinkContext3";
 }
 
 void CancelTimer_in_LinkContext(LinkContext *pLinkContext)
@@ -497,7 +518,12 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
   if (!pLinkContext->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer is not online");
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer is not online')***"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -507,7 +533,12 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
 ////        SIMPLE_LOG_BLOCK(
 ////            logger, flags::WARN,
 ////            (header.isFromMaster ? "Master frame received for master" : "Outstation frame received for outstation"));
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Outstation frame received for outstation')***"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -541,7 +572,12 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
   {
 ////        FORMAT_LOG_BLOCK(logger, flags::WARN, "Received invalid function (%s) with broadcast destination address",
 ////                            LinkFunctionSpec::to_string(header.func));
-    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Received invalid function (%s) with broadcast destination address')***"<<std::endl;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Received invalid function (%s) with broadcast destination address')***"<<std::endl;
+  decrement_stack_info();
+#endif
     ++(pLinkContext->statistics.numUnexpectedFrame);
 
     return false;

@@ -30,6 +30,7 @@ boolean contains_in_ArrayView__for__Node_TypedEventRecord_for_AnalogSpecOver1(Ar
 ////    inline bool contains(W start, W stop) const
 boolean contains_in_ArrayView__for__Node_TypedEventRecord_for_AnalogSpecOver2(ArrayView__for__Node_TypedEventRecord_for_AnalogSpec *pArrayView__for__Node_TypedEventRecord_for_AnalogSpec, uint32_t start, uint32_t stop)
 {
+  UNUSED(pArrayView__for__Node_TypedEventRecord_for_AnalogSpec);
 ////        return (start < stop) && Contains(stop);
   return (start < stop);
 }

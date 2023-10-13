@@ -63,13 +63,14 @@ TimeDuration FromValue_in_TimeDuration_static(int64_t value)
   TimeDuration_in_TimeDuration(&tTimeDuration, value);
   return tTimeDuration;
 }
-////
+
 ////TimeDuration TimeDuration::Milliseconds(int64_t milliseconds)
-////{
+TimeDuration Milliseconds_in_TimeDuration_static(int64_t milliseconds)
+{
 ////    return FromValue<std::chrono::milliseconds>(milliseconds);
-////}
-////
-////
+  return FromValue_in_TimeDuration_static(milliseconds);
+}
+
 TimeDuration Seconds_in_TimeDuration_static(int64_t seconds)
 {
   return FromValue_in_TimeDuration_static(seconds*1000);

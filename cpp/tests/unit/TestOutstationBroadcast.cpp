@@ -30,7 +30,7 @@ using namespace opendnp3;
 
 #define SUITE(name) "OutstationBroadcastTestSuite - " name
 
-TEST_CASE(SUITE("ShallConfirm broadcast asks for confirmation and resets on confirm"))
+TEST_CASE(SUITE("1ShallConfirm broadcast asks for confirmation and resets on confirm"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, DatabaseConfig());
@@ -60,7 +60,7 @@ TEST_CASE(SUITE("ShallConfirm broadcast asks for confirmation and resets on conf
     REQUIRE(t.lower->PopWriteAsHex() == "C4 81 00 00");
 }
 
-TEST_CASE(SUITE("Confirmation sequence number is properly updated even if the response is not sequence related"))
+TEST_CASE(SUITE("2Confirmation sequence number is properly updated even if the response is not sequence related"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, DatabaseConfig());
@@ -85,7 +85,7 @@ TEST_CASE(SUITE("Confirmation sequence number is properly updated even if the re
     REQUIRE(t.lower->PopWriteAsHex() == "C3 81 00 00");
 }
 
-TEST_CASE(SUITE("DontConfirm broadcast does not ask for confirmation, but set the BROADCAST IIN bit once"))
+TEST_CASE(SUITE("3DontConfirm broadcast does not ask for confirmation, but set the BROADCAST IIN bit once"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, DatabaseConfig());
@@ -106,7 +106,7 @@ TEST_CASE(SUITE("DontConfirm broadcast does not ask for confirmation, but set th
     REQUIRE(t.lower->PopWriteAsHex() == "C3 81 00 00");
 }
 
-TEST_CASE(SUITE("Receiving a broadcast should assume confirmation failed"))
+TEST_CASE(SUITE("4Receiving a broadcast should assume confirmation failed"))
 {
     OutstationConfig config;
     config.eventBufferConfig = EventBufferConfig::AllTypes(10);
@@ -137,7 +137,7 @@ TEST_CASE(SUITE("Receiving a broadcast should assume confirmation failed"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("Broadcast with malformed request should still set the BROADCAST IIN"))
+TEST_CASE(SUITE("5Broadcast with malformed request should still set the BROADCAST IIN"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, DatabaseConfig());
@@ -154,7 +154,7 @@ TEST_CASE(SUITE("Broadcast with malformed request should still set the BROADCAST
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("Unsolicited responses should advertise BROADCAST IIN"))
+TEST_CASE(SUITE("6Unsolicited responses should advertise BROADCAST IIN"))
 {
     OutstationConfig config;
     config.params.unsolClassMask = ClassField::AllClasses();
@@ -192,7 +192,7 @@ TEST_CASE(SUITE("Unsolicited responses should advertise BROADCAST IIN"))
     t.context.OnTxReady();
 }
 
-TEST_CASE(SUITE("ShallConfirm: Unsolicited responses should clear BROADCAST when confirm is received"))
+TEST_CASE(SUITE("7ShallConfirm: Unsolicited responses should clear BROADCAST when confirm is received"))
 {
     OutstationConfig config;
     config.params.unsolClassMask = ClassField::AllClasses();

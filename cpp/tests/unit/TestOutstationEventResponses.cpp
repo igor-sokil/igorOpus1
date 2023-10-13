@@ -30,7 +30,8 @@ using namespace opendnp3;
 
 #define SUITE(name) "OutstationEventResponsesTestSuite - " name
 
-TEST_CASE(SUITE("empty response when to class 1 when no events available"))
+TEST_CASE(SUITE("1empty response when to class 1 when no events available"))
+//пустой ответ при переходе к классу 1, когда нет доступных событий
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -40,7 +41,7 @@ TEST_CASE(SUITE("empty response when to class 1 when no events available"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00");
 }
 
-TEST_CASE(SUITE("ReceiveNewRequestSolConfirmWait"))
+TEST_CASE(SUITE("2ReceiveNewRequestSolConfirmWait"))
 {
     OutstationConfig config;
     config.eventBufferConfig = EventBufferConfig::AllTypes(10);
@@ -57,7 +58,7 @@ TEST_CASE(SUITE("ReceiveNewRequestSolConfirmWait"))
     REQUIRE(t.lower->PopWriteAsHex() == "E1 81 80 00 02 01 28 01 00 00 00 81");
 }
 
-TEST_CASE(SUITE("ReadClass1WithSOE"))
+TEST_CASE(SUITE("3ReadClass1WithSOE"))
 {
     OutstationConfig config;
     config.eventBufferConfig = EventBufferConfig::AllTypes(10);
@@ -82,7 +83,7 @@ TEST_CASE(SUITE("ReadClass1WithSOE"))
     REQUIRE(t.lower->PopWriteAsHex() == "C1 81 80 00");        // Buffer should have been cleared
 }
 
-TEST_CASE(SUITE("ReadClass1WithSOEWithTimeoutInBetween"))
+TEST_CASE(SUITE("4ReadClass1WithSOEWithTimeoutInBetween"))
 {
     OutstationConfig config;
     config.eventBufferConfig = EventBufferConfig::AllTypes(10);
@@ -114,7 +115,7 @@ TEST_CASE(SUITE("ReadClass1WithSOEWithTimeoutInBetween"))
     REQUIRE(t.lower->PopWriteAsHex() == "E1 81 80 00 02 01 28 02 00 00 00 81 00 00 01");
 }
 
-TEST_CASE(SUITE("EventBufferOverflowAndClear"))
+TEST_CASE(SUITE("5EventBufferOverflowAndClear"))
 {
     OutstationConfig config;
     config.eventBufferConfig = EventBufferConfig::AllTypes(2);

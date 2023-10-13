@@ -25,7 +25,7 @@ using namespace opendnp3;
 
 #define SUITE(name) "OutstationCommandResponsesTestSuite - " name
 
-TEST_CASE(SUITE("SelectCROBNotSupported"))
+TEST_CASE(SUITE("1SelectCROBNotSupported"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -45,7 +45,7 @@ TEST_CASE(SUITE("SelectCROBNotSupported"))
     REQUIRE(t.cmdHandler->numEnd == 1);
 }
 
-TEST_CASE(SUITE("UnknownCodeIsEchoed"))
+TEST_CASE(SUITE("2UnknownCodeIsEchoed"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -62,7 +62,7 @@ TEST_CASE(SUITE("UnknownCodeIsEchoed"))
                                                                                // CommandStatus::NOT_SUPPORTED
 }
 
-TEST_CASE(SUITE("CROBWithQUSetReturnsNotSupported"))
+TEST_CASE(SUITE("3CROBWithQUSetReturnsNotSupported"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -79,7 +79,7 @@ TEST_CASE(SUITE("CROBWithQUSetReturnsNotSupported"))
     REQUIRE(t.cmdHandler->NumInvocations() == 0);
 }
 
-TEST_CASE(SUITE("SelectCROBTooMany"))
+TEST_CASE(SUITE("4SelectCROBTooMany"))
 {
     OutstationConfig config;
     config.params.maxControlsPerRequest = 1;
@@ -92,7 +92,7 @@ TEST_CASE(SUITE("SelectCROBTooMany"))
     REQUIRE(t.lower->PopWriteAsHex() == expected); // 0x08 status == CommandStatus::TOO_MANY_OBJS
 }
 
-TEST_CASE(SUITE("SelectOperateCROB"))
+TEST_CASE(SUITE("5SelectOperateCROB"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -110,7 +110,7 @@ TEST_CASE(SUITE("SelectOperateCROB"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectRetryAndOperateCROB"))
+TEST_CASE(SUITE("6SelectRetryAndOperateCROB"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -134,7 +134,7 @@ TEST_CASE(SUITE("SelectRetryAndOperateCROB"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectOperateTimeout"))
+TEST_CASE(SUITE("7SelectOperateTimeout"))
 {
     OutstationConfig config;
     config.params.selectTimeout = TimeDuration::Seconds(5);
@@ -155,7 +155,7 @@ TEST_CASE(SUITE("SelectOperateTimeout"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectOperateGapInSequenceNumber"))
+TEST_CASE(SUITE("8SelectOperateGapInSequenceNumber"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -183,7 +183,7 @@ TEST_CASE(SUITE("SelectOperateGapInSequenceNumber"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectOperateSameSequenceNumber"))
+TEST_CASE(SUITE("9SelectOperateSameSequenceNumber"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -202,7 +202,7 @@ TEST_CASE(SUITE("SelectOperateSameSequenceNumber"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectOperateNonMatchingRequests"))
+TEST_CASE(SUITE("10SelectOperateNonMatchingRequests"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -221,7 +221,7 @@ TEST_CASE(SUITE("SelectOperateNonMatchingRequests"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectOperateCROBSameSequenceNumber"))
+TEST_CASE(SUITE("11SelectOperateCROBSameSequenceNumber"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -249,7 +249,7 @@ TEST_CASE(SUITE("SelectOperateCROBSameSequenceNumber"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectGroup41Var1"))
+TEST_CASE(SUITE("12SelectGroup41Var1"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -260,7 +260,7 @@ TEST_CASE(SUITE("SelectGroup41Var1"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 29 01 17 01 03 00 00 00 00 00");
 }
 
-TEST_CASE(SUITE("SelectGroup41Var2"))
+TEST_CASE(SUITE("13SelectGroup41Var2"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -271,7 +271,7 @@ TEST_CASE(SUITE("SelectGroup41Var2"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 29 02 17 01 03 00 00 00");
 }
 
-TEST_CASE(SUITE("SelectGroup41Var3"))
+TEST_CASE(SUITE("14SelectGroup41Var3"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -282,7 +282,7 @@ TEST_CASE(SUITE("SelectGroup41Var3"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 29 03 17 01 01 00 00 C8 42 00");
 }
 
-TEST_CASE(SUITE("SelectGroup41Var4"))
+TEST_CASE(SUITE("15SelectGroup41Var4"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -293,7 +293,7 @@ TEST_CASE(SUITE("SelectGroup41Var4"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 29 04 17 01 01 00 00 00 00 00 00 59 40 00");
 }
 
-TEST_CASE(SUITE("SelectOperateGroup41Var1"))
+TEST_CASE(SUITE("16SelectOperateGroup41Var1"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -312,7 +312,7 @@ TEST_CASE(SUITE("SelectOperateGroup41Var1"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectOperateGroup41Var2"))
+TEST_CASE(SUITE("17SelectOperateGroup41Var2"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -329,7 +329,7 @@ TEST_CASE(SUITE("SelectOperateGroup41Var2"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectOperateGroup41Var3"))
+TEST_CASE(SUITE("18SelectOperateGroup41Var3"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -348,7 +348,7 @@ TEST_CASE(SUITE("SelectOperateGroup41Var3"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("SelectOperateGroup41Var4"))
+TEST_CASE(SUITE("19SelectOperateGroup41Var4"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -367,7 +367,7 @@ TEST_CASE(SUITE("SelectOperateGroup41Var4"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("DirectOperateNoResponseGroup12Var1"))
+TEST_CASE(SUITE("20DirectOperateNoResponseGroup12Var1"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -385,7 +385,7 @@ TEST_CASE(SUITE("DirectOperateNoResponseGroup12Var1"))
     }
 }
 
-TEST_CASE(SUITE("DirectOperateGroup41Var1"))
+TEST_CASE(SUITE("21DirectOperateGroup41Var1"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -397,7 +397,7 @@ TEST_CASE(SUITE("DirectOperateGroup41Var1"))
             == "C1 81 80 00 29 01 17 01 03 00 00 00 00 00"); // 0x00 status == CommandStatus::SUCCESS
 }
 
-TEST_CASE(SUITE("DirectOperateGroup41Var2"))
+TEST_CASE(SUITE("22DirectOperateGroup41Var2"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -408,7 +408,7 @@ TEST_CASE(SUITE("DirectOperateGroup41Var2"))
     REQUIRE(t.lower->PopWriteAsHex() == "C1 81 80 00 29 02 17 01 03 00 00 00"); // 0x00 status == CommandStatus::SUCCESS
 }
 
-TEST_CASE(SUITE("DirectOperateGroup41Var3"))
+TEST_CASE(SUITE("23DirectOperateGroup41Var3"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);
@@ -427,7 +427,7 @@ TEST_CASE(SUITE("DirectOperateGroup41Var3"))
     REQUIRE(op.opType == OperateType::DirectOperate);
 }
 
-TEST_CASE(SUITE("DirectOperateGroup41Var4"))
+TEST_CASE(SUITE("24DirectOperateGroup41Var4"))
 {
     OutstationConfig config;
     OutstationTestObject t(config);

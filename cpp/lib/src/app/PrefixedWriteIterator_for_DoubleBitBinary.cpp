@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "PrefixedWriteIterator_for_DoubleBitBinary.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ PrefixedWriteIterator_for_UInt16_DoubleBitBinary Null_in_PrefixedWriteIterator_f
 
 void PrefixedWriteIterator_for_UInt16_DoubleBitBinary_in_PrefixedWriteIterator_for_UInt16_DoubleBitBinaryOver1(PrefixedWriteIterator_for_UInt16_DoubleBitBinary *pPrefixedWriteIterator_for_UInt16_DoubleBitBinary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_DoubleBitBinary_in_PrefixedWriteIterator_for_UInt16_DoubleBitBinaryOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
 //// : sizeOfTypePlusIndex(0), count(0), isValid(false), pPosition(nullptr) {}
   pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->sizeOfTypePlusIndex = 0;
   pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->count = 0;
@@ -25,6 +36,13 @@ void PrefixedWriteIterator_for_UInt16_DoubleBitBinary_in_PrefixedWriteIterator_f
 void PrefixedWriteIterator_for_UInt16_DoubleBitBinary_in_PrefixedWriteIterator_for_UInt16_DoubleBitBinaryOver2(PrefixedWriteIterator_for_UInt16_DoubleBitBinary *pPrefixedWriteIterator_for_UInt16_DoubleBitBinary,
     Serializer_for_DoubleBitBinary* serializer, WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_DoubleBitBinary_in_PrefixedWriteIterator_for_UInt16_DoubleBitBinaryOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->sizeOfTypePlusIndex = get_size_in_Serializer_for_DoubleBitBinary(serializer) +////serializer.get_size() + PrefixType::size;
       size_in_UInt16;
@@ -44,6 +62,13 @@ void PrefixedWriteIterator_for_UInt16_DoubleBitBinary_in_PrefixedWriteIterator_f
 ////    ~PrefixedWriteIterator()
 void PrefixedWriteIterator_for_UInt16_DoubleBitBinary_destr_PrefixedWriteIterator_for_UInt16_DoubleBitBinary(PrefixedWriteIterator_for_UInt16_DoubleBitBinary *pPrefixedWriteIterator_for_UInt16_DoubleBitBinary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_DoubleBitBinary_destr_PrefixedWriteIterator_for_UInt16_DoubleBitBinary1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pPrefixedWriteIterator_for_UInt16_DoubleBitBinary->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);

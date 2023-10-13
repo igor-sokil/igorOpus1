@@ -18,7 +18,10 @@
  * limitations under the License.
  */
 //#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
+#endif
 #include "header.h"
 #include "NumParser.h"
 #include "RSeq.h"
@@ -33,8 +36,13 @@
 
 void NumParser_in_NumParser(NumParser *pNumParser, ReadFun_in_NumParser pReadFun, uint8_t size)
 {
-  std::cout<<""<<std::endl;
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"NumParser_in_NumParser1"<<std::endl;
+  decrement_stack_info();
+#endif
   pNumParser->pReadFun = pReadFun;
   pNumParser->size = size;
 }
@@ -46,8 +54,12 @@ uint8_t NumBytes_in_NumParser(NumParser *pNumParser)
 
 ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t* buffer, uint16_t *count)///, Logger* pLogger) const
 {
-  std::cout<<""<<std::endl;
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"ParseCount_in_NumParser1"<<std::endl;
+#endif
 //    boolean Read_in_NumParser(NumParser *pNumParser, uint16_t *num, RSeq_for_Uint16_t *buffer);
 ////    if (this->Read(count, buffer))
   if (Read_in_NumParser(pNumParser, count, buffer))
@@ -55,30 +67,49 @@ ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
     if (*count == 0)
     {
 ////            SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "count of 0");
+#ifdef  LOG_INFO
+      std::cout<<getString_stack_info();
       std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'count of 0')***"<<std::endl;
+      decrement_stack_info();
+#endif
       return ParseResult_COUNT_OF_ZERO;
     }
 
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return ParseResult_OK;
   }
   else
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for count");
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for count')***"<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_RANGE;
   }
 }
 
 ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t* buffer, Range* range)////, Logger* pLogger) const
 {
+#ifdef  LOG_INFO
   std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"ParseRange_in_NumParser1"<<std::endl;
+#endif
 
 ////    if (buffer.length() < (2 * static_cast<size_t>(size)))
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < (2 * (uint16_t)(pNumParser->size)))
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for start / stop");
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for start / stop')***"<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_RANGE;
   }
 
@@ -94,7 +125,11 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
   }
 
 ////    FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "start (%u) > stop (%u)", range.start, range.stop);
-    std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'start (%u) > stop (%u)', range.start, range.stop)***"<<std::endl;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'start (%u) > stop (%u)', range.start, range.stop)***"<<std::endl;
+  decrement_stack_info();
+#endif
   return ParseResult_BAD_START_STOP;
 }
 

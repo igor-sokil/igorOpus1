@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "PrefixedWriteIterator_for_Binary.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,13 @@ PrefixedWriteIterator_for_UInt16_Binary Null_in_PrefixedWriteIterator_for_UInt16
 
 void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver1(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
 //// : sizeOfTypePlusIndex(0), count(0), isValid(false), pPosition(nullptr) {}
   pPrefixedWriteIterator_for_UInt16_Binary->sizeOfTypePlusIndex = 0;
   pPrefixedWriteIterator_for_UInt16_Binary->count = 0;
@@ -25,6 +36,13 @@ void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16
 void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver2(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary,
     Serializer_for_Binary* serializer, WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pPrefixedWriteIterator_for_UInt16_Binary->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_Binary->sizeOfTypePlusIndex = get_size_in_Serializer_for_Binary(serializer) +////serializer.get_size() + PrefixType::size;
       size_in_UInt16;
@@ -44,6 +62,13 @@ void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16
 ////    ~PrefixedWriteIterator()
 void PrefixedWriteIterator_for_UInt16_Binary_destr_PrefixedWriteIterator_for_UInt16_Binary(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Binary_destr_PrefixedWriteIterator_for_UInt16_Binary1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pPrefixedWriteIterator_for_UInt16_Binary->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);

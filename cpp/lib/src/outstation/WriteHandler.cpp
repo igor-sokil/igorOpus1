@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "WriteHandler.h"
 
@@ -28,6 +32,13 @@
 void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
                                   IOutstationApplication* application, TimeSyncState* timeSyncState, AppSeqNum seq, Timestamp now, IINField* writeIIN)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteHandler_in_WriteHandler1"<<std::endl;
+  decrement_stack_info();
+#endif
   IAPDUHandler_in_IAPDUHandler(&(pWriteHandler->iIAPDUHandler));
 
   pWriteHandler->application = application;
@@ -55,6 +66,13 @@ void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
 
 IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override1"<<std::endl;
+#endif
+
   UNUSED(header);
   WriteHandler *parent =
     (WriteHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
@@ -65,6 +83,11 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
 ////    if (!values.ReadOnlyValue(pair))
   if (!ReadOnlyValue_in_ICollection_Indexed_for_IINValue(values, &pair))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -74,6 +97,11 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
   if (parent->wroteIIN)
   {
 ////        return IINBit::PARAM_ERROR;
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
     return iIINField;
@@ -82,6 +110,11 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
 ////    if (pair.index != static_cast<uint16_t>(IINBit::DEVICE_RESTART))
   if (pair.index != (uint16_t)(IINBit_DEVICE_RESTART))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -91,11 +124,21 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
   if (pair.value.value)
   {
 ////        return IINBit::PARAM_ERROR;
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
     return iIINField;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_DEVICE_RESTART"<<std::endl;
+  decrement_stack_info();
+#endif
   parent->wroteIIN = true;
 //    void ClearBit_in_IINField(IINField *, IINBit_uint8_t bit);
 ////    parent->writeIIN->ClearBit(IINBit::DEVICE_RESTART);
@@ -108,12 +151,23 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
 
 IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var1* values)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override1"<<std::endl;
+#endif
   UNUSED(header);
   WriteHandler *parent =
     (WriteHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 
   if (parent->wroteTime)
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -124,6 +178,11 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
 ////    if (!application->SupportsWriteAbsoluteTime())
   if (!SupportsWriteAbsoluteTime_in_IOutstationApplication(parent->application))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::FUNC_NOT_SUPPORTED;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
@@ -137,11 +196,22 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
 ////    if (!values.ReadOnlyValue(value))
   if (!ReadOnlyValue_in_ICollection_for_Group50Var1(values, &value))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
     return iIINField;
   }
+
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
 
   parent->wroteTime = true;
 //void UTCTimestamp_in_UTCTimestampOver2(UTCTimestamp *pUTCTimestamp, uint64_t msSinceEpoch);
@@ -159,12 +229,23 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
 
 IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var3* values)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override1"<<std::endl;
+#endif
   UNUSED(header);
   WriteHandler *parent =
     (WriteHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 
   if (parent->wroteTime)
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -175,6 +256,11 @@ IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void
 ////    if (!application->SupportsWriteAbsoluteTime())
   if (!SupportsWriteAbsoluteTime_in_IOutstationApplication(parent->application))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::FUNC_NOT_SUPPORTED;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
@@ -188,6 +274,11 @@ IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void
 ////        return IINBit::PARAM_ERROR;
   if (!ReadOnlyValue_in_ICollection_for_Group50Var3(values, &value))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -198,6 +289,11 @@ IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void
 ////    if (!this->timeSyncState->CalcTimeDifference(this->seq, this->now))
   if (!CalcTimeDifference_in_TimeSyncState(parent->timeSyncState, &(parent->seq), &(parent->now)))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
@@ -213,6 +309,12 @@ IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void
 //        + std::chrono::duration_cast<std::chrono::milliseconds>////(this->timeSyncState->GetDifference().value).count());
                                     + (GetDifference_in_TimeSyncState(parent->timeSyncState).duration_value));
 
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  decrement_stack_info();
+#endif
+
   parent->wroteTime = true;
 ////    return application->WriteAbsoluteTime(time) ? IINField::Empty() : IINBit::PARAM_ERROR;
   IINField iIINField1;
@@ -226,6 +328,12 @@ IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void
 IINField ProcessHeader_PrefixHeader_for_TimeAndInterval_in_WriteHandler_override(void* pIAPDUHandler, PrefixHeader* header,
     ICollection_Indexed_for_TimeAndInterval* values)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_PrefixHeader_for_TimeAndInterval_in_WriteHandler_override1"<<std::endl;
+#endif
   UNUSED(header);
   WriteHandler *parent =
     (WriteHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
@@ -234,6 +342,11 @@ IINField ProcessHeader_PrefixHeader_for_TimeAndInterval_in_WriteHandler_override
 ////    if (!application->SupportsWriteTimeAndInterval())
   if (!SupportsWriteTimeAndInterval_in_IOutstationApplication(parent->application))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return IINBit::FUNC_NOT_SUPPORTED;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);

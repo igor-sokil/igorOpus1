@@ -23,9 +23,9 @@
 
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
+//void* pPointerGlobal1;
+//void* pPointerGlobal2;
+//void* pPointerGlobal3;
 
 key_filter *pkf;
 
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-expectsContents_in_RangeParser = false;
+expectsContents_in_CountIndexParser = true;
 
 qDebug()<<"********SUITE('20Group1Var2CountWithIndexUInt8')********";
 void validate(MockApduHeaderHandler*);
@@ -57,6 +57,7 @@ void validate(MockApduHeaderHandler*);
 ParseResult_uint8_t temp = TestComplex(name, NULL);
 qDebug()<<"TestComplex('01 02 17 01 09 81', ParseResult::INVALID_OBJECT_QUALIFIER, 0, [](MockApduHeaderHandler& mock)";
 qDebug()<<"ParseResult_uint8_t result= "<<temp;
+qDebug()<<"ParseResult::INVALID_OBJECT_QUALIFIER= "<<ParseResult_INVALID_OBJECT_QUALIFIER;
 /*
 TEST_CASE(SUITE("20Group1Var2CountWithIndexUInt8"))
 {

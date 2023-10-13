@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "BitfieldRangeWriteIterator_for_UInt16.h"
 #include "SerializationTemplates.h"
@@ -15,6 +19,14 @@ BitfieldRangeWriteIterator_for_UInt16 Null_in_BitfieldRangeWriteIterator_for_UIn
 void  BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UInt16(BitfieldRangeWriteIterator_for_UInt16 *pBitfieldRangeWriteIterator_for_UInt16,
     uint16_t start_, WSeq_for_Uint16_t* position_)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UInt16_1"<<'\n';
+  decrement_stack_info();
+#endif
+
   pBitfieldRangeWriteIterator_for_UInt16->start = start_;
   pBitfieldRangeWriteIterator_for_UInt16->count = 0;
   pBitfieldRangeWriteIterator_for_UInt16->maxCount = 0;
@@ -37,6 +49,13 @@ void  BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UI
 ////    ~BitfieldRangeWriteIterator()
 void BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16(BitfieldRangeWriteIterator_for_UInt16 *pBitfieldRangeWriteIterator_for_UInt16)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16_1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pBitfieldRangeWriteIterator_for_UInt16->isValid && pBitfieldRangeWriteIterator_for_UInt16->count > 0)
   {
 ////        typename IndexType::type_t stop = start + count - 1;

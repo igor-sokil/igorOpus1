@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "RangeWriteIterator_for_BinaryOutputStatus.h"
 #include "SerializationTemplates.h"
@@ -14,6 +18,13 @@ RangeWriteIterator_for_UInt8_BinaryOutputStatus Null_in_RangeWriteIterator_for_U
 ////    RangeWriteIterator() : start(0), count(0), isValid(false), pPosition(nullptr) {}
 void RangeWriteIterator_for_UInt8_BinaryOutputStatus_in_RangeWriteIterator_for_UInt8_BinaryOutputStatusOver1(RangeWriteIterator_for_UInt8_BinaryOutputStatus *pRangeWriteIterator_for_UInt8_BinaryOutputStatus)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_BinaryOutputStatus_in_RangeWriteIterator_for_UInt8_BinaryOutputStatusOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   pRangeWriteIterator_for_UInt8_BinaryOutputStatus->start = 0;
   pRangeWriteIterator_for_UInt8_BinaryOutputStatus->count = 0;
   pRangeWriteIterator_for_UInt8_BinaryOutputStatus->isValid = false;
@@ -28,6 +39,13 @@ void RangeWriteIterator_for_UInt8_BinaryOutputStatus_in_RangeWriteIterator_for_U
 //                   ser4cpp::wseq_t& position)
     WSeq_for_Uint16_t* position)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_BinaryOutputStatus_in_RangeWriteIterator_for_UInt8_BinaryOutputStatusOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
   pRangeWriteIterator_for_UInt8_BinaryOutputStatus->start = start_;
   pRangeWriteIterator_for_UInt8_BinaryOutputStatus->serializer = *serializer;
   pRangeWriteIterator_for_UInt8_BinaryOutputStatus->count = 0;
@@ -49,6 +67,13 @@ void RangeWriteIterator_for_UInt8_BinaryOutputStatus_in_RangeWriteIterator_for_U
 ////    ~RangeWriteIterator()
 void RangeWriteIterator_for_UInt8_BinaryOutputStatus_destr_RangeWriteIterator_for_UInt8_BinaryOutputStatus(RangeWriteIterator_for_UInt8_BinaryOutputStatus *pRangeWriteIterator_for_UInt8_BinaryOutputStatus)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<"RangeWriteIterator_for_UInt8_BinaryOutputStatus_destr_RangeWriteIterator_for_UInt8_BinaryOutputStatus1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pRangeWriteIterator_for_UInt8_BinaryOutputStatus->isValid && pRangeWriteIterator_for_UInt8_BinaryOutputStatus->count > 0)
   {
     uint32_t stop = pRangeWriteIterator_for_UInt8_BinaryOutputStatus->start + pRangeWriteIterator_for_UInt8_BinaryOutputStatus->count - 1;

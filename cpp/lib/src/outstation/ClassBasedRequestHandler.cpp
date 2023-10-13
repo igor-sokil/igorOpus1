@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "ClassBasedRequestHandler.h"
 
@@ -26,12 +30,23 @@
 ////IINField ClassBasedRequestHandler::ProcessHeader(const AllObjectsHeader& header)
 IINField ProcessHeader_AllObjectsHeader_in_ClassBasedRequestHandler_override(void* pIAPDUHandler, AllObjectsHeader* record)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_AllObjectsHeader_in_ClassBasedRequestHandler_override1"<<'\n';
+#endif
   ClassBasedRequestHandler* parent = (ClassBasedRequestHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 
 ////    switch (header.enumeration)
   switch((record->hHeaderRecord).gGroupVariationRecord.enumeration)
   {
   case (GroupVariation_Group60Var2):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var2"<<'\n';
+  decrement_stack_info();
+#endif
 //  void Set_in_ClassFieldOver2(ClassField *pClassField, PointClass_uint8_t pc);
 ///        classField.Set(PointClass::Class1);
     Set_in_ClassFieldOver2(&(parent->classField), PointClass_Class1);
@@ -39,17 +54,32 @@ IINField ProcessHeader_AllObjectsHeader_in_ClassBasedRequestHandler_override(voi
 ////        return IINField::Empty();
     return Empty_in_IINField_static();
   case (GroupVariation_Group60Var3):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var3"<<'\n';
+  decrement_stack_info();
+#endif
 ////        classField.Set(PointClass::Class2);
     Set_in_ClassFieldOver2(&(parent->classField), PointClass_Class2);
 ////        return IINField::Empty();
     return Empty_in_IINField_static();
   case (GroupVariation_Group60Var4):
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*GroupVariation_Group60Var4"<<'\n';
+  decrement_stack_info();
+#endif
 ////        classField.Set(PointClass::Class3);
     Set_in_ClassFieldOver2(&(parent->classField), PointClass_Class3);
 ////        return IINField::Empty();
     return Empty_in_IINField_static();
   default:
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINBit::FUNC_NOT_SUPPORTED"<<'\n';
+  decrement_stack_info();
+#endif
 ////        return IINField(IINBit::FUNC_NOT_SUPPORTED);
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
