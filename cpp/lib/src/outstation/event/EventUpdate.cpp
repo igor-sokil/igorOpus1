@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EventUpdate.h"
 
@@ -525,14 +529,21 @@ boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
 
 boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_for_OctetStringSpec* event)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Update_OctetStringSpec_in_EventUpdate_static1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_OctetStringSpec*  listEv = GetList_for_OctetStringSpec_in_EventLists(lists);
 
   // lists with no capacity don't cause "buffer overflow"
+// списки без емкости не вызывают «переполнение буфера»
 //     uint32_t Capacity_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec)
 ////    if (list.Capacity() == 0)
-  if(Capacity_in_List_TypedEventRecord_for_OctetStringSpec(listEv) == 0)
-    return false;
+  if(Capacity_in_List_TypedEventRecord_for_OctetStringSpec(listEv) == 0)  return false;
 
   boolean overflow = false;
 
@@ -541,7 +552,7 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
   if(IsFullAndCapacityNotZero_in_List_TypedEventRecord_for_OctetStringSpec(listEv))
   {
     // we must make space
-
+// мы должны освободить место
     overflow = true;
 ////        const auto first = list.Head();
     Node_TypedEventRecord_for_OctetStringSpec* first = Head_in_List_TypedEventRecord_for_OctetStringSpec(listEv);
@@ -563,6 +574,7 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
   }
 
   // now that we know that space exists, create the generic record
+// теперь, когда мы знаем, что пространство существует, создаем общую запись
 //Node_for_EventRecord* Add_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, EventRecord* value);
 ////    const auto record_node = lists.events.Add(EventRecord(event.index, event.clazz));
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
@@ -581,6 +593,7 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
       &tTypedEventRecord_for_OctetStringSpec);
 
   // configure the typed storage
+// настраиваем типизированное хранилище
 //IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_static(void);
 ////    record_node->value.type = EventTypeImpl<T>::Instance();
   (record_node->value).type = Instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_static();

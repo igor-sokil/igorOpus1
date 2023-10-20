@@ -78,6 +78,7 @@ typedef struct
 ////  static const StaticAnalogOutputStatusVariation svariation = StaticAnalogOutputStatusVariation::Group40Var1;
 } Group40Var1;
 
+DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group40Var1_static(void);
 uint16_t Size_in_Group40Var1_static(void);
 void Group40Var1_in_Group40Var1(Group40Var1 *pGroup40Var1);
 
@@ -113,6 +114,7 @@ typedef struct
 ////  static const StaticAnalogOutputStatusVariation svariation = StaticAnalogOutputStatusVariation::Group40Var2;
 } Group40Var2;
 
+DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group40Var2_static(void);
 uint16_t Size_in_Group40Var2_static(void);
 void Group40Var2_in_Group40Var2(Group40Var2 *pGroup40Var2);
 
@@ -148,6 +150,7 @@ typedef struct
 ////  static const StaticAnalogOutputStatusVariation svariation = StaticAnalogOutputStatusVariation::Group40Var3;
 } Group40Var3;
 
+DNP3Serializer_for_AnalogOutputStatus  Inst_in_Group40Var3_static(void);
 uint16_t Size_in_Group40Var3_static(void);
 void Group40Var3_in_Group40Var3(Group40Var3 *pGroup40Var3);
 

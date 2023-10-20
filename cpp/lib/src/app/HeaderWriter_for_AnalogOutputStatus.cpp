@@ -1,8 +1,94 @@
 #include "header.h"
 #include "HeaderWriter_for_AnalogOutputStatus.h"
 
-//#include "SerializationTemplates.h"
+//---------------------------------------------IterateOverRange_for_UInt8_AnalogOutputStatus_in_HeaderWriter--------------------------------------------
+////template<class IndexType, class WriteType>
+////RangeWriteIterator<IndexType, WriteType> HeaderWriter::IterateOverRange(QualifierCode qc,
+////                                                                        const DNP3Serializer<WriteType>& serializer,
+////                                                                        typename IndexType::type_t start)
+RangeWriteIterator_for_UInt8_AnalogOutputStatus IterateOverRange_for_UInt8_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_AnalogOutputStatus *serializer,
+    uint8_t start
+                                                                                     )
+{
+//    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
+//     pRangeWriteIterator_for_UInt8_AnalogOutputStatus->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
+  uint16_t reserve_size = 2 * size_in_UInt8 +
+                          get_size_in_Serializer_for_AnalogOutputStatus(&(serializer->sSerializer_for_AnalogOutputStatus));
 
+//    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+//boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve)
+//    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputStatus(DNP3Serializer_for_AnalogOutputStatus *pDNP3Serializer_for_AnalogOutputStatus)
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter, ID_in_DNP3Serializer_for_AnalogOutputStatus(serializer), qc, reserve_size))
+  {
+//        return RangeWriteIterator<IndexType, WriteType>(start, serializer, *position);
+    RangeWriteIterator_for_UInt8_AnalogOutputStatus rRangeWriteIterator_for_UInt8_AnalogOutputStatus;
+////    void RangeWriteIterator_for_UInt8_AnalogOutputStatus_in_RangeWriteIterator_for_UInt8_AnalogOutputStatusOver2(RangeWriteIterator_for_UInt8_AnalogOutputStatus *pRangeWriteIterator_for_UInt8_AnalogOutputStatus,
+//                   typename IndexType::type_t start_,
+////                   uint8_t start_,
+//                   const Serializer<WriteType>& serializer,
+////                   Serializer_for_AnalogOutputStatus*  serializer,
+//                   ser4cpp::wseq_t& position)
+////                   WSeq_for_Uint16_t* position);
+    RangeWriteIterator_for_UInt8_AnalogOutputStatus_in_RangeWriteIterator_for_UInt8_AnalogOutputStatusOver2(&rRangeWriteIterator_for_UInt8_AnalogOutputStatus,
+        start,
+        &(serializer->sSerializer_for_AnalogOutputStatus),
+        pHeaderWriter->position
+                                                                                   );
+    return rRangeWriteIterator_for_UInt8_AnalogOutputStatus;
+  }
+  else
+  {
+//        return RangeWriteIterator<IndexType, WriteType>::Null();
+    return Null_in_RangeWriteIterator_for_UInt8_AnalogOutputStatus_static();
+  }
+}
+//---------------------------------------------IterateOverRange_for_UInt8_AnalogOutputStatus_in_HeaderWriter--------------------------------------------
+//---------------------------------------------IterateOverRange_for_UInt16_AnalogOutputStatus_in_HeaderWriter--------------------------------------------
+////template<class IndexType, class WriteType>
+////RangeWriteIterator<IndexType, WriteType> HeaderWriter::IterateOverRange(QualifierCode qc,
+////                                                                        const DNP3Serializer<WriteType>& serializer,
+////                                                                        typename IndexType::type_t start)
+RangeWriteIterator_for_UInt16_AnalogOutputStatus IterateOverRange_for_UInt16_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_AnalogOutputStatus *serializer,
+    uint16_t start
+                                                                                     )
+{
+//    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
+//     pRangeWriteIterator_for_UInt8_AnalogOutputStatus->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
+  uint16_t reserve_size = 2 * size_in_UInt16 +
+                          get_size_in_Serializer_for_AnalogOutputStatus(&(serializer->sSerializer_for_AnalogOutputStatus));
+
+//    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+//boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve)
+//    GroupVariationID ID_in_DNP3Serializer_for_AnalogOutputStatus(DNP3Serializer_for_AnalogOutputStatus *pDNP3Serializer_for_AnalogOutputStatus)
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter, ID_in_DNP3Serializer_for_AnalogOutputStatus(serializer), qc, reserve_size))
+  {
+//        return RangeWriteIterator<IndexType, WriteType>(start, serializer, *position);
+    RangeWriteIterator_for_UInt16_AnalogOutputStatus rRangeWriteIterator_for_UInt16_AnalogOutputStatus;
+////    void RangeWriteIterator_for_UInt8_AnalogOutputStatus_in_RangeWriteIterator_for_UInt8_AnalogOutputStatusOver2(RangeWriteIterator_for_UInt8_AnalogOutputStatus *pRangeWriteIterator_for_UInt8_AnalogOutputStatus,
+//                   typename IndexType::type_t start_,
+////                   uint8_t start_,
+//                   const Serializer<WriteType>& serializer,
+////                   Serializer_for_AnalogOutputStatus*  serializer,
+//                   ser4cpp::wseq_t& position)
+////                   WSeq_for_Uint16_t* position);
+    RangeWriteIterator_for_UInt16_AnalogOutputStatus_in_RangeWriteIterator_for_UInt16_AnalogOutputStatusOver2(&rRangeWriteIterator_for_UInt16_AnalogOutputStatus,
+        start,
+        &(serializer->sSerializer_for_AnalogOutputStatus),
+        pHeaderWriter->position
+                                                                                   );
+    return rRangeWriteIterator_for_UInt16_AnalogOutputStatus;
+  }
+  else
+  {
+//        return RangeWriteIterator<IndexType, WriteType>::Null();
+    return Null_in_RangeWriteIterator_for_UInt16_AnalogOutputStatus_static();
+  }
+}
+//---------------------------------------------IterateOverRange_for_UInt16_AnalogOutputStatus_in_HeaderWriter--------------------------------------------
 //---------------------------------------------IterateOverCount_for_UInt16_AnalogOutputStatus_in_HeaderWriter--------------------------------------------
 
 CountWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCount_for_UInt16_AnalogOutputStatus_in_HeaderWriter(HeaderWriter *pHeaderWriter,
@@ -24,7 +110,7 @@ CountWriteIterator_for_UInt16_AnalogOutputStatus IterateOverCount_for_UInt16_Ana
     CountWriteIterator_for_UInt16_AnalogOutputStatus_in_CountWriteIterator_for_UInt16_AnalogOutputStatusOver2(&cCountWriteIterator_for_UInt16_AnalogOutputStatus,
         &(serializer->sSerializer_for_AnalogOutputStatus),
         pHeaderWriter->position
-                                                                                                             );
+                                                                                     );
     return cCountWriteIterator_for_UInt16_AnalogOutputStatus;
   }
   else
@@ -56,7 +142,7 @@ CountWriteIterator_for_UInt8_AnalogOutputStatus IterateOverCount_for_UInt8_Analo
     CountWriteIterator_for_UInt8_AnalogOutputStatus_in_CountWriteIterator_for_UInt8_AnalogOutputStatusOver2(&cCountWriteIterator_for_UInt8_AnalogOutputStatus,
         &(serializer->sSerializer_for_AnalogOutputStatus),
         pHeaderWriter->position
-                                                                                                           );
+                                                                                   );
     return cCountWriteIterator_for_UInt8_AnalogOutputStatus;
   }
   else

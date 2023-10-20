@@ -29,25 +29,22 @@ int main(int argc, char *argv[])
   app.installEventFilter(pkf=&kf);
 
 expectsContents_in_CountParser = true;
-//expectsContents_in_CountIndexParser = false;
-//expectsContents_in_RangeParser = false;
+expectsContents_in_CountIndexParser = true;
+expectsContents_in_RangeParser = true;
 
-qDebug()<<"********SUITE('25ReadClass0MultiFragAnalog')********";
-////    OutstationTestObject t(OutstationConfig(),
-////                           configure::from({{0, configure::analog(StaticAnalogVariation::Group30Var1)},
-////                                            {1, configure::analog(StaticAnalogVariation::Group30Var2)}}));
+qDebug()<<"********SUITE('22octet')********";
+////    OutstationConfig config;
 
     OutstationConfig config;
     OutstationConfig_in_OutstationConfig(&config);
 
-//DatabaseConfig from_AnalogConfig_in_DatabaseHelpers(std::map<uint16_t, AnalogConfig> map);
-DatabaseConfig tmp = from_AnalogConfig_in_DatabaseHelpers(
-                                           {{0, analog_in_DatabaseHelpers(StaticAnalogVariation_Group30Var1)},
-                                            {1, analog_in_DatabaseHelpers(StaticAnalogVariation_Group30Var2)}}
-                                                          );
+//StaticTypeBitField AllTypes_in_StaticTypeBitField_static(void);
+////    config.params.typesAllowedInClass0 = StaticTypeBitField::AllTypes();
+    config.params.typesAllowedInClass0 = AllTypes_in_StaticTypeBitField_static();
 
-//    DatabaseConfig tmp;
-//    DatabaseConfig_in_DatabaseConfig(&tmp, 0);
+//DatabaseConfig octet_string_in_DatabaseHelpers(uint16_t num);
+////    OutstationTestObject t(config, configure::by_count_of::octet_string(3));
+DatabaseConfig tmp = octet_string_in_DatabaseHelpers(3);
 
     OutstationTestObject t;
     OutstationTestObject_in_OutstationTestObject(&t, &config, &tmp);
@@ -59,43 +56,19 @@ DatabaseConfig tmp = from_AnalogConfig_in_DatabaseHelpers(
 
     std::string temp = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
 
-    // check that the response uses both g30v1 & g30v2
-qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == 'C0 81 80 00 1E 01 00 00 00 02 00 00 00 00 1E 02 00 01 01 02 00 00')";
+qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == 'C0 81 80 00 6E 01 00 00 02 00 00 00')";
 std::cout << "temp= " << temp<<'\n';
 
 /*
-TEST_CASE(SUITE("25ReadClass0MultiFragAnalog"))
+TEST_CASE(SUITE("22octet strings can be returned as part of a class 0 scan"))
 {
     OutstationConfig config;
-    config.params.maxTxFragSize = 20; // override to use a fragment length of 20
-    OutstationTestObject t(config, configure::by_count_of::analog_input(8));
+    config.params.typesAllowedInClass0 = StaticTypeBitField::AllTypes();
+    OutstationTestObject t(config, configure::by_count_of::octet_string(3));
+
     t.LowerLayerUp();
-
-    t.Transaction([](IUpdateHandler& db) {
-        for (uint16_t i = 0; i < 8; i++)
-        {
-            db.Update(Analog(0, Flags(0x01)), i);
-        }
-    });
-
     t.SendToOutstation("C0 01 3C 01 06"); // Read class 0
-
-    // Response should be (30,1)x2 per fragment, quality ONLINE, value 0
-    // 4 fragment response, first 3 fragments should be confirmed, last one shouldn't be
-    REQUIRE(t.lower->PopWriteAsHex() == "A0 81 80 00 1E 01 00 00 01 01 00 00 00 00 01 00 00 00 00");
-    t.OnTxReady();
-    t.SendToOutstation("C0 00");
-    REQUIRE(t.lower->PopWriteAsHex() == "21 81 80 00 1E 01 00 02 03 01 00 00 00 00 01 00 00 00 00");
-    t.OnTxReady();
-    t.SendToOutstation("C1 00");
-    REQUIRE(t.lower->PopWriteAsHex() == "22 81 80 00 1E 01 00 04 05 01 00 00 00 00 01 00 00 00 00");
-    t.OnTxReady();
-    t.SendToOutstation("C2 00");
-    REQUIRE(t.lower->PopWriteAsHex() == "43 81 80 00 1E 01 00 06 07 01 00 00 00 00 01 00 00 00 00");
-    t.OnTxReady();
-    t.SendToOutstation("C3 00");
-
-    REQUIRE(t.lower->PopWriteAsHex().empty());
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 6E 01 00 00 02 00 00 00");
 }
 */
 

@@ -23,10 +23,9 @@
 ////#include "app/Serializer.h"
 #include "Serializer.h"
 
-//-------------------Uint8---------------------------------------------------
 ////namespace opendnp3
 ////{
-
+//-------------------RangeWriteIterator_for_UInt8_FrozenCounter---------------------------------------------------
 // A facade for writing APDUs to an external buffer
 ////template<class IndexType, class WriteType> class RangeWriteIterator
 typedef struct
@@ -113,8 +112,97 @@ void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_
     WSeq_for_Uint16_t* position);
 void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver1(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter);
 RangeWriteIterator_for_UInt8_FrozenCounter Null_in_RangeWriteIterator_for_UInt8_FrozenCounter_static(void);
-//-------------------Uint8---------------------------------------------------
 
+//-------------------RangeWriteIterator_for_UInt8_FrozenCounter---------------------------------------------------
+
+//-------------------RangeWriteIterator_for_UInt16_FrozenCounter---------------------------------------------------
+// A facade for writing APDUs to an external buffer
+////template<class IndexType, class WriteType> class RangeWriteIterator
+typedef struct
+{
+////public:
+////    static RangeWriteIterator Null()
+////    {
+////        return RangeWriteIterator();
+////    }
+////
+////    RangeWriteIterator() : start(0), count(0), isValid(false), pPosition(nullptr) {}
+////
+////    RangeWriteIterator(typename IndexType::type_t start_,
+////                       const Serializer<WriteType>& serializer,
+////                       ser4cpp::wseq_t& position)
+////        : start(start_),
+////          serializer(serializer),
+////          count(0),
+////          isValid(position.length() >= 2 * IndexType::size),
+////          range(position),
+////          pPosition(&position)
+////    {
+////        if (isValid)
+////        {
+////            IndexType::write_to(range, start);
+////            pPosition->advance(2 * IndexType::size);
+////        }
+////    }
+////
+////    ~RangeWriteIterator()
+////    {
+////        if (isValid && count > 0)
+////        {
+////            auto stop = start + count - 1;
+////            IndexType::write_to(range, static_cast<typename IndexType::type_t>(stop));
+////        }
+////    }
+////
+////    bool Write(const WriteType& value)
+////    {
+////        if (isValid && (pPosition->length() >= serializer.get_size()) && (count <= IndexType::max_value))
+////        {
+////            serializer.write(value, *pPosition);
+////            ++count;
+////            return true;
+////        }
+////        else
+////        {
+////            return false;
+////        }
+////    }
+////
+////    bool IsValid() const
+////    {
+////        return isValid;
+////    }
+
+////private:
+////    typename IndexType::type_t start;
+  uint16_t start;
+//    Serializer<WriteType> serializer;
+  Serializer_for_FrozenCounter  serializer;
+  uint32_t count;
+
+  boolean isValid;
+
+  //ser4cpp::wseq_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
+
+//    ser4cpp::wseq_t* pPosition;
+  WSeq_for_Uint16_t* pPosition;
+} RangeWriteIterator_for_UInt16_FrozenCounter;
+
+boolean IsValid_in_RangeWriteIterator_for_UInt16_FrozenCounter(RangeWriteIterator_for_UInt16_FrozenCounter *pRangeWriteIterator_for_UInt16_FrozenCounter);
+boolean Write_in_RangeWriteIterator_for_UInt16_FrozenCounter(RangeWriteIterator_for_UInt16_FrozenCounter *pRangeWriteIterator_for_UInt16_FrozenCounter,
+    FrozenCounter* value);
+void RangeWriteIterator_for_UInt16_FrozenCounter_destr_RangeWriteIterator_for_UInt16_FrozenCounter(RangeWriteIterator_for_UInt16_FrozenCounter *pRangeWriteIterator_for_UInt16_FrozenCounter);
+void RangeWriteIterator_for_UInt16_FrozenCounter_in_RangeWriteIterator_for_UInt16_FrozenCounterOver2(RangeWriteIterator_for_UInt16_FrozenCounter *pRangeWriteIterator_for_UInt16_FrozenCounter,
+//                   typename IndexType::type_t start_,
+    uint16_t start_,
+//                   const Serializer<WriteType>& serializer,
+    Serializer_for_FrozenCounter*  serializer,
+//                   ser4cpp::wseq_t& position)
+    WSeq_for_Uint16_t* position);
+void RangeWriteIterator_for_UInt16_FrozenCounter_in_RangeWriteIterator_for_UInt16_FrozenCounterOver1(RangeWriteIterator_for_UInt16_FrozenCounter *pRangeWriteIterator_for_UInt16_FrozenCounter);
+RangeWriteIterator_for_UInt16_FrozenCounter Null_in_RangeWriteIterator_for_UInt16_FrozenCounter_static(void);
+//-------------------RangeWriteIterator_for_UInt16_FrozenCounter---------------------------------------------------
 
 ////} // namespace opendnp3
 

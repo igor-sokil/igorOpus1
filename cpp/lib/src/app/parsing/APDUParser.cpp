@@ -92,8 +92,6 @@ ParseResult_uint8_t Parse_in_APDUParser_static(
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"Parse_in_APDUParser_static2"<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
   decrement_stack_info();
 #endif
 
@@ -141,11 +139,6 @@ ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
 #endif
 
     ParseResult_uint8_t result = ParseHeader_in_APDUParser_static(&copy, /*pLogger,*/ count, /*settings,*/ pHandler, pWhiteList);
-
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
-#endif
 
     ++count;
 

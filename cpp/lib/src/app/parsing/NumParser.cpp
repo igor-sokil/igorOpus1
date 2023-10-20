@@ -68,7 +68,7 @@ ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
     {
 ////            SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "count of 0");
 #ifdef  LOG_INFO
-      std::cout<<getString_stack_info();
+      std::cout<<"*"<<getString_stack_info();
       std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'count of 0')***"<<std::endl;
       decrement_stack_info();
 #endif
@@ -84,7 +84,7 @@ ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for count");
 #ifdef  LOG_INFO
-    std::cout<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for count')***"<<std::endl;
     decrement_stack_info();
 #endif
@@ -106,7 +106,7 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for start / stop");
 #ifdef  LOG_INFO
-    std::cout<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for start / stop')***"<<std::endl;
     decrement_stack_info();
 #endif
@@ -126,7 +126,7 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
 
 ////    FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "start (%u) > stop (%u)", range.start, range.stop);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'start (%u) > stop (%u)', range.start, range.stop)***"<<std::endl;
   decrement_stack_info();
 #endif

@@ -71,7 +71,7 @@ typedef struct
 
 ////private:
 ////    std::unique_ptr<uint8_t[]> bytes;
-  uint8_t bytes[MAX_BufferSer4];
+  uint8_t bytes[SIZE_BufferSer4];
 } BufferSer4;
 
 ////}

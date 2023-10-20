@@ -84,6 +84,7 @@ typedef struct
 ////  static const StaticBinaryOutputStatusVariation svariation = StaticBinaryOutputStatusVariation::Group10Var2;
 } Group10Var2;
 
+DNP3Serializer_for_BinaryOutputStatus  Inst_in_Group10Var2_static(void);
 uint16_t Size_in_Group10Var2_static(void);
 void Group10Var2_in_Group10Var2(Group10Var2 *pGroup10Var2);
 

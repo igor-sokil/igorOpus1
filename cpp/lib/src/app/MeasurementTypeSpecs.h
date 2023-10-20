@@ -105,7 +105,7 @@ boolean IsEvent_in_BinaryOutputStatusSpec_static(BinaryOutputStatus *old_value,
 ////        return measurements::IsEvent(new_value, old_value, config.deadband);
 ////    }
 ////};
-boolean IsEvent_in_AnalogSpec_for_AnalogInfo_static(
+boolean IsEvent_in_AnalogSpec_static(
   Analog *old_value,
   Analog *new_value,
   AnalogConfig *config);////const config_t& config)
@@ -127,7 +127,7 @@ boolean IsEvent_in_AnalogSpec_for_AnalogInfo_static(
 ////        }
 ////    }
 ////};
-boolean IsEvent_in_CounterSpec_for_CounterInfo_static(
+boolean IsEvent_in_CounterSpec_static(
   Counter *old_value,
   Counter *new_value,
   CounterConfig *config);////const config_t& config)
@@ -150,7 +150,7 @@ boolean IsEvent_in_CounterSpec_for_CounterInfo_static(
 ////        }
 ////    }
 ////};
-boolean IsEvent_in_FrozenCounterSpec_for_FrozenCounterInfo_static(
+boolean IsEvent_in_FrozenCounterSpec_static(
   FrozenCounter *old_value,
   FrozenCounter *new_value,
   FrozenCounterConfig *config);////const config_t& config)
@@ -167,7 +167,7 @@ boolean IsEvent_in_FrozenCounterSpec_for_FrozenCounterInfo_static(
 ////        return measurements::IsEvent(new_value, old_value, config.deadband);
 ////    }
 ////};
-boolean IsEvent_in_AnalogOutputStatusSpec_for_AnalogOutputStatusInfo_static(
+boolean IsEvent_in_AnalogOutputStatusSpec_static(
   AnalogOutputStatus *old_value,
   AnalogOutputStatus *new_value,
   AOStatusConfig *config);//const config_t& config)
@@ -188,7 +188,7 @@ boolean IsEvent_in_AnalogOutputStatusSpec_for_AnalogOutputStatusInfo_static(
 ////};
 
 ////    inline static bool IsEvent(const OctetString& old_value, const OctetString& new_value, const config_t& config)
-boolean IsEvent_in_OctetStringSpec_for_OctetStringInfo_static(
+boolean IsEvent_in_OctetStringSpec_static(
   OctetString *old_value,
   OctetString *new_value,
   void *config);//const config_t& config)
@@ -199,6 +199,11 @@ boolean IsEvent_in_OctetStringSpec_for_OctetStringInfo_static(
 ////    typedef TimeAndIntervalConfig config_t;
 ////    typedef EmptyEventCell event_cell_t;
 ////};
+
+boolean IsEvent_in_TimeAndIntervalSpec_static(
+  TimeAndInterval *old_value,
+  TimeAndInterval *new_value,
+  void *config);//const config_t& config)
 
 ////} // namespace opendnp3
 

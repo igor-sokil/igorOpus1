@@ -25,8 +25,97 @@
 
 ////namespace opendnp3
 ////{
+//-------------------RangeWriteIterator_for_UInt8_OctetString---------------------------------------------------
+// A facade for writing APDUs to an external buffer
+////template<class IndexType, class WriteType> class RangeWriteIterator
+typedef struct
+{
+////public:
+////    static RangeWriteIterator Null()
+////    {
+////        return RangeWriteIterator();
+////    }
+////
+////    RangeWriteIterator() : start(0), count(0), isValid(false), pPosition(nullptr) {}
+////
+////    RangeWriteIterator(typename IndexType::type_t start_,
+////                       const Serializer<WriteType>& serializer,
+////                       ser4cpp::wseq_t& position)
+////        : start(start_),
+////          serializer(serializer),
+////          count(0),
+////          isValid(position.length() >= 2 * IndexType::size),
+////          range(position),
+////          pPosition(&position)
+////    {
+////        if (isValid)
+////        {
+////            IndexType::write_to(range, start);
+////            pPosition->advance(2 * IndexType::size);
+////        }
+////    }
+////
+////    ~RangeWriteIterator()
+////    {
+////        if (isValid && count > 0)
+////        {
+////            auto stop = start + count - 1;
+////            IndexType::write_to(range, static_cast<typename IndexType::type_t>(stop));
+////        }
+////    }
+////
+////    bool Write(const WriteType& value)
+////    {
+////        if (isValid && (pPosition->length() >= serializer.get_size()) && (count <= IndexType::max_value))
+////        {
+////            serializer.write(value, *pPosition);
+////            ++count;
+////            return true;
+////        }
+////        else
+////        {
+////            return false;
+////        }
+////    }
+////
+////    bool IsValid() const
+////    {
+////        return isValid;
+////    }
 
-//-------------------Uint16---------------------------------------------------
+////private:
+////    typename IndexType::type_t start;
+  uint8_t start;
+//    Serializer<WriteType> serializer;
+  Serializer_for_OctetString  serializer;
+  uint32_t count;
+
+  boolean isValid;
+
+  //ser4cpp::wseq_t range; // make a copy to record where we write the range
+  WSeq_for_Uint16_t range; // make a copy to record where we write the range
+
+//    ser4cpp::wseq_t* pPosition;
+  WSeq_for_Uint16_t* pPosition;
+} RangeWriteIterator_for_UInt8_OctetString;
+
+boolean IsValid_in_RangeWriteIterator_for_UInt8_OctetString(RangeWriteIterator_for_UInt8_OctetString *pRangeWriteIterator_for_UInt8_OctetString);
+boolean Write_in_RangeWriteIterator_for_UInt8_OctetString(RangeWriteIterator_for_UInt8_OctetString *pRangeWriteIterator_for_UInt8_OctetString,
+    OctetString* value);
+void RangeWriteIterator_for_UInt8_OctetString_destr_RangeWriteIterator_for_UInt8_OctetString(RangeWriteIterator_for_UInt8_OctetString *pRangeWriteIterator_for_UInt8_OctetString);
+void RangeWriteIterator_for_UInt8_OctetString_in_RangeWriteIterator_for_UInt8_OctetStringOver2(RangeWriteIterator_for_UInt8_OctetString *pRangeWriteIterator_for_UInt8_OctetString,
+//                   typename IndexType::type_t start_,
+    uint8_t start_,
+//                   const Serializer<WriteType>& serializer,
+    Serializer_for_OctetString*  serializer,
+//                   ser4cpp::wseq_t& position)
+    WSeq_for_Uint16_t* position);
+void RangeWriteIterator_for_UInt8_OctetString_in_RangeWriteIterator_for_UInt8_OctetStringOver1(RangeWriteIterator_for_UInt8_OctetString *pRangeWriteIterator_for_UInt8_OctetString);
+RangeWriteIterator_for_UInt8_OctetString Null_in_RangeWriteIterator_for_UInt8_OctetString_static(void);
+
+//-------------------RangeWriteIterator_for_UInt8_OctetString---------------------------------------------------
+
+//-------------------RangeWriteIterator_for_UInt16_OctetString---------------------------------------------------
 // A facade for writing APDUs to an external buffer
 ////template<class IndexType, class WriteType> class RangeWriteIterator
 typedef struct
@@ -113,8 +202,7 @@ void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_
     WSeq_for_Uint16_t* position);
 void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_OctetStringOver1(RangeWriteIterator_for_UInt16_OctetString *pRangeWriteIterator_for_UInt16_OctetString);
 RangeWriteIterator_for_UInt16_OctetString Null_in_RangeWriteIterator_for_UInt16_OctetString_static(void);
-//-------------------Uint16---------------------------------------------------
-
+//-------------------RangeWriteIterator_for_UInt16_OctetString---------------------------------------------------
 
 ////} // namespace opendnp3
 

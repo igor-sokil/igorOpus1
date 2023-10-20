@@ -45,6 +45,7 @@
 #define SIZE_TypedEventRecord_for_OctetStringSpec        MAX_EventRecord
 
 #define MAX_BufferSer4  292
+#define SIZE_BufferSer4                        MAX_BufferSer4
 #define SIZE_TxBuffer_in_OutstationSolState    MAX_BufferSer4
 #define SIZE_TxBuffer_in_OutstationUnsolState  MAX_BufferSer4
 #define SIZE_BufferSer4_in_DeferredRequest     MAX_BufferSer4

@@ -270,6 +270,14 @@ RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_Heade
     uint8_t start
                                                                                        );
 //--------------------------------IterateOverRange_for_UInt8_Counter_in_HeaderWriter--------------------------------------------------------
+//--------------------------------IterateOverRange_for_UInt16_Counter_in_HeaderWriter--------------------------------------------------------
+    RangeWriteIterator_for_UInt16_Counter IterateOverRange_for_UInt16_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+                                                   QualifierCode_uint8_t qc,
+                                                   DNP3Serializer_for_Counter *serializer,
+                                                   uint16_t start
+                                                  );
+//--------------------------------IterateOverRange_for_UInt16_Counter_in_HeaderWriter--------------------------------------------------------
+
 //================================================Counter=================================================================
 
 ////template<class IndexType>

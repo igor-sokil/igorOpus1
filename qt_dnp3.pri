@@ -131,14 +131,15 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\APDUWrapper.cpp \
                 cpp\lib\src\app\APDUResponse.cpp \
                 cpp\lib\src\app\BinaryCommandEvent.cpp \
-                cpp\lib\src\app\BitfieldRangeWriteIterator_for_UInt8.cpp \
-                cpp\lib\src\app\BitfieldRangeWriteIterator_for_UInt16.cpp \
+                cpp\lib\src\app\BitfieldRangeWriteIterator.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_Analog.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_Binary.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_BinaryOutputStatus.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_DoubleBitBinary.cpp \
                 cpp\lib\src\app\CountWriteIterator_for_ControlRelayOutputBlock.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_FrozenCounter.cpp \
+                cpp\lib\src\app\CountWriteIterator_for_TimeAndInterval.cpp \
                 cpp\lib\src\app\ClassField.cpp \
                 cpp\lib\src\app\ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\DNP3Serializer.cpp \
@@ -156,6 +157,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\HeaderWriter_for_Counter.cpp \
                 cpp\lib\src\app\HeaderWriter_for_FrozenCounter.cpp \
                 cpp\lib\src\app\HeaderWriter_for_OctetString.cpp \
+                cpp\lib\src\app\HeaderWriter_for_TimeAndInterval.cpp \
                 cpp\lib\src\app\HeaderWriter_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\GroupVariationRecord.cpp \
                 cpp\lib\src\app\MeasurementInfo.cpp \
@@ -174,8 +176,10 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_Counter.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_FrozenCounter.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_OctetString.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_TimeAndInterval.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\src\app\Serializer.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Analog.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Binary.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_BinaryOutputStatus.cpp \
@@ -183,13 +187,21 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Counter.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_FrozenCounter.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_OctetString.cpp \
+                cpp\lib\src\app\RangeWriteIterator_for_TimeAndInterval.cpp \
                 cpp\lib\src\app\TxBuffer.cpp \
                 \
                 cpp\lib\src\outstation\ApplicationIIN.cpp \
                 cpp\lib\src\outstation\AssignClassHandler.cpp \
                 cpp\lib\src\outstation\Database.cpp \
                 cpp\lib\src\outstation\Database_for_Analog.cpp \
+                cpp\lib\src\outstation\Database_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\outstation\Database_for_Binary.cpp \
+                cpp\lib\src\outstation\Database_for_BinaryOutputStatus.cpp \
+                cpp\lib\src\outstation\Database_for_DoubleBitBinary.cpp \
+                cpp\lib\src\outstation\Database_for_Counter.cpp \
+                cpp\lib\src\outstation\Database_for_FrozenCounter.cpp \
+                cpp\lib\src\outstation\Database_for_OctetString.cpp \
+                cpp\lib\src\outstation\Database_for_TimeAndInterval.cpp \
                 cpp\lib\src\outstation\DatabaseConfig.cpp \
                 cpp\lib\src\outstation\DeferredRequest.cpp \
                 cpp\lib\src\outstation\DeferredRequest_part2.cpp \
@@ -219,6 +231,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\RequestHistory.cpp \
                 cpp\lib\src\outstation\SimpleCommandHandler.cpp \
                 cpp\lib\src\outstation\StaticDataCell.cpp \
+                cpp\lib\src\outstation\StaticDataMap.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_DoubleBitBinary.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_Binary.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_BinaryOutputStatus.cpp \
@@ -229,7 +242,14 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_OctetString.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_TimeAndInterval.cpp \
                 cpp\lib\src\outstation\StaticWriters_for_Analog.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\outstation\StaticWriters_for_Binary.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_BinaryOutputStatus.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_DoubleBitBinary.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_Counter.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_FrozenCounter.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_OctetString.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_TimeAndInterval.cpp \
                 cpp\lib\src\outstation\TimeSyncState.cpp \
                 cpp\lib\src\outstation\WriteHandler.cpp \
                 \

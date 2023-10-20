@@ -51,18 +51,52 @@ void  setParentPointer_in_OutstationState(OutstationState* pOutstationState, voi
 
 void OutstationState_in_OutstationState(OutstationState *pOutstationState)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OutstationState_in_OutstationState1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pOutstationState= "<<(uint32_t)pOutstationState<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IsIdle_in_OutstationState_override= "<<(uint32_t)IsIdle_in_OutstationState_override<<std::endl;
+  decrement_stack_info();
+#endif
   pOutstationState->pIsIdle_in_OutstationState = IsIdle_in_OutstationState_override;
 }
 
 boolean IsIdle_in_OutstationState_override(void *pOutstationState)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IsIdle_in_OutstationState_override1"<<std::endl;
+  decrement_stack_info();
+#endif
   UNUSED(pOutstationState);
   return false;
 }
 
 boolean IsIdle_in_OutstationState(OutstationState *pOutstationState)
 {
-  return (pOutstationState->pIsIdle_in_OutstationState)(pOutstationState);
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IsIdle_in_OutstationState1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pOutstationState= "<<(uint32_t)(pOutstationState)<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pIsIdle_in_OutstationState= "<<(uint32_t)(pOutstationState->pIsIdle_in_OutstationState)<<std::endl;
+#endif
+  boolean tmp = (pOutstationState->pIsIdle_in_OutstationState)(pOutstationState);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"IsIdle_in_OutstationState2"<<std::endl;
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 char* Name_in_OutstationState(OutstationState *pOutstationState)
 {
@@ -108,6 +142,8 @@ void StateIdle_in_StateIdle(StateIdle *pStateIdle)
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StateIdle_in_StateIdle1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IsIdle_in_StateIdle_override= "<<(uint32_t)IsIdle_in_StateIdle_override<<std::endl;
   decrement_stack_info();
 #endif
   OutstationState_in_OutstationState(&(pStateIdle->oOutstationState));
@@ -148,7 +184,6 @@ void* OnConfirmTimeout_in_StateIdle_override(void* pOutstationState, void *pOCon
   return Inst_in_StateIdle_static();////StateIdle::Inst();
 }
 
-///*
 ////OutstationState& StateIdle::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request)
 {
@@ -163,7 +198,6 @@ void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOCon
   return RespondToReadRequest_in_OContext((OContext *)pOContext, request);
 ////    return ctx.RespondToReadRequest(request);
 }
-//*/
 
 ////OutstationState& StateIdle::OnNewNonReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewNonReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request)
@@ -250,6 +284,12 @@ void StateSolicitedConfirmWait_in_StateSolicitedConfirmWait(StateSolicitedConfir
 ////OutstationState& StateSolicitedConfirmWait::OnConfirm(OContext& ctx, const ParsedRequest& request)
 void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override1"<<std::endl;
+#endif
   StateSolicitedConfirmWait *parent =
     (StateSolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 
@@ -260,8 +300,9 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////                         "received unsolicited confirm while waiting for solicited confirm (seq: %u)",
 ////                         request.header.control.SEQ);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"FORMAT_LOG_BLOCK(ctx.logger, flags::WARN,'received unsolicited confirm while waiting for solicited confirm (seq: %u)',"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FORMAT_LOG_BLOCK(ctx.logger, flags::WARN,'received unsolicited confirm while waiting for solicited confirm (seq: %u)',"<<std::endl;
+  decrement_stack_info();
 #endif
 ////        return *this;
     return &(parent->oOutstationState);
@@ -275,8 +316,9 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////                         request.header.control.SEQ, ctx.sol.seq.confirmNum.Get());
 ////        return *this;
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, 'solicited confirm with wrong seq: %u, expected: %u'"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, 'solicited confirm with wrong seq: %u, expected: %u'"<<std::endl;
+  decrement_stack_info();
 #endif
     return &(parent->oOutstationState);
   }
@@ -310,6 +352,9 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////    if (ctx.rspContext.HasSelection())
   if (HasSelection_in_ResponseContext(&(((OContext*)ctx)->rspContext)))
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //    OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addresses* addresses, AppSeqNum* seq);
 //void SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t value);
 //uint8_t Next_in_SequenceNum_for_uint8_Modulus16_staticOver2(uint8_t seq);
@@ -320,6 +365,9 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
     return ContinueMultiFragResponse_in_OContext((OContext*)ctx, &(request->addresses), &sSequenceNum_for_uint8_Modulus16);
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //     OutstationState* Inst_in_StateIdle_static(void);
 ////    return StateIdle::Inst();
   return Inst_in_StateIdle_static();
@@ -328,18 +376,24 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////OutstationState& StateSolicitedConfirmWait::OnConfirmTimeout(OContext& ctx)
 void* OnConfirmTimeout_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnConfirmTimeout_in_StateSolicitedConfirmWait_override1"<<std::endl;
+#endif
   UNUSED(pOutstationState);
   UNUSED(pOContext);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "solicited confirm timeout");
 ////    return StateIdle::Inst();
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'solicited confirm timeout')"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'solicited confirm timeout')"<<std::endl;
+  decrement_stack_info();
 #endif
   return Inst_in_StateIdle_static();
 }
 
-///*
 ////OutstationState& StateSolicitedConfirmWait::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
@@ -349,7 +403,6 @@ void* OnNewReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationSt
 ////    return ctx.RespondToReadRequest(request);
   return RespondToReadRequest_in_OContext((OContext *)ctx, request);
 }
-//*/
 
 ////OutstationState& StateSolicitedConfirmWait::OnNewNonReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewNonReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
@@ -432,6 +485,12 @@ void StateUnsolicitedConfirmWait_in_StateUnsolicitedConfirmWait(StateUnsolicited
 //OutstationState& StateUnsolicitedConfirmWait::OnConfirm(OContext& ctx, const ParsedRequest& request)
 void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnConfirm_in_StateUnsolicitedConfirmWait_override1"<<std::endl;
+#endif
   StateUnsolicitedConfirmWait *parent =
     (StateUnsolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 ////    if (!request.header.control.UNS)
@@ -442,8 +501,9 @@ void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, 
 ////                         request.header.control.SEQ);
 ////        return *this;
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"FORMAT_LOG_BLOCK(ctx.logger, flags::WARN,'received solicited confirm while waiting for unsolicited confirm (seq: %u)'"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FORMAT_LOG_BLOCK(ctx.logger, flags::WARN,'received solicited confirm while waiting for unsolicited confirm (seq: %u)'"<<std::endl;
+  decrement_stack_info();
 #endif
     return &(parent->oOutstationState);
   }
@@ -455,8 +515,9 @@ void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, 
 ////                         request.header.control.SEQ, ctx.unsol.seq.confirmNum.Get());
 ////        return *this;
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, 'unsolicited confirm with wrong seq: %u, expected: %u'"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, 'unsolicited confirm with wrong seq: %u, expected: %u'"<<std::endl;
+  decrement_stack_info();
 #endif
     return &(parent->oOutstationState);
   }
@@ -494,6 +555,9 @@ void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, 
 ////    ctx.shouldCheckForUnsolicited = true;
   ((OContext*)ctx)->shouldCheckForUnsolicited = true;
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////    return StateIdle::Inst();
   return Inst_in_StateIdle_static();
 }
@@ -501,12 +565,18 @@ void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, 
 ////OutstationState& StateUnsolicitedConfirmWait::OnConfirmTimeout(OContext& ctx)
 void* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *ctx)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override1"<<std::endl;
+#endif
   StateUnsolicitedConfirmWait *parent =
     (StateUnsolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "unsolicited confirm timeout");
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'unsolicited confirm timeout')"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'unsolicited confirm timeout')"<<std::endl;
 #endif
 
 ////    if (ctx.unsol.completedNull)
@@ -525,6 +595,9 @@ void* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstation
 ////            ctx.BeginRetransmitLastUnsolicitedResponse();
       BeginRetransmitLastUnsolicitedResponse_in_OContext((OContext *)ctx);
 ////            return *this;
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return &(parent->oOutstationState);
     }
     else
@@ -534,6 +607,9 @@ void* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstation
     }
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////    return StateIdle::Inst();
   return Inst_in_StateIdle_static();
 }
@@ -636,6 +712,15 @@ void* OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override(void* pOutsta
 
 boolean IsIdle_in_StateIdle_override(void* pOutstationState)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IsIdle_in_StateIdle_override1"<<std::endl;
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*IsIdle_in_StateIdle_override= "<<(uint32_t)IsIdle_in_StateIdle_override<<std::endl;
+  decrement_stack_info();
+#endif
   UNUSED(pOutstationState);
   return true;
 }

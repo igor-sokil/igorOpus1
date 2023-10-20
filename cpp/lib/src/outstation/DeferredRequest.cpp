@@ -17,8 +17,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
-//#include "OutstationContext.h"
 #include "DeferredRequest.h"
 
 ////namespace opendnp3
@@ -26,6 +29,15 @@
 
 void DeferredRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, uint32_t maxAPDUSize)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"DeferredRequest_in_DeferredRequest1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t maxAPDUSize ="<<maxAPDUSize<<'\n';
+  decrement_stack_info();
+#endif
 //// : isSet(false), buffer(maxAPDUSize) {}
   pDeferredRequest->isSet = false;
   BufferSer4_in_BufferSer4Over2(&(pDeferredRequest->buffer), maxAPDUSize);

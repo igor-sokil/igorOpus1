@@ -124,7 +124,7 @@ ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexPar
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
-    std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified objects')***"<<std::endl;
+  std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified objects')***"<<std::endl;
   decrement_stack_info();
 #endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;

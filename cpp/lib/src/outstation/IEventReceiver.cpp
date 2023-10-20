@@ -36,7 +36,7 @@ void Update_AnalogOutputStatusSpec_in_IEventReceiver(IEventReceiver *pIEventRece
   (pIEventReceiver->pUpdate_AnalogOutputStatusSpec_in_IEventReceiver)(pIEventReceiver, evt);
 }
 
-void UpdateOctetStringSpec_in_IEventReceiver(IEventReceiver *pIEventReceiver, Event_for_OctetStringSpec* evt)
+void Update_OctetStringSpec_in_IEventReceiver(IEventReceiver *pIEventReceiver, Event_for_OctetStringSpec* evt)
 {
   (pIEventReceiver->pUpdate_OctetStringSpec_in_IEventReceiver)(pIEventReceiver, evt);
 }

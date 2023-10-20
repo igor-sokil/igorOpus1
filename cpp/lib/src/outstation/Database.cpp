@@ -82,9 +82,21 @@ void  Database_in_Database(Database *pDatabase,
 
   setParentPointer_in_IStaticSelector(&(pDatabase->iIStaticSelector), pDatabase);
   // ------- IStaticSelector -------------
+
   setParentPointer_in_IClassAssigner(&(pDatabase->iIClassAssigner), pDatabase);
   setParentPointer_in_IResponseLoader(&(pDatabase->iIResponseLoader), pDatabase);
+
+  // ------- IUpdateHandler -------------
+  pDatabase->iIUpdateHandler.pUpdate_Binary_in_IUpdateHandler             = Update_for_Binary_in_Database_override;
+  pDatabase->iIUpdateHandler.pUpdate_DoubleBitBinary_in_IUpdateHandler    = Update_for_DoubleBitBinary_in_Database_override;
+  pDatabase->iIUpdateHandler.pUpdate_Analog_in_IUpdateHandler             = Update_for_Analog_in_Database_override;
+  pDatabase->iIUpdateHandler.pUpdate_Counter_in_IUpdateHandler            = Update_for_Counter_in_Database_override;
+  pDatabase->iIUpdateHandler.pUpdate_BinaryOutputStatus_in_IUpdateHandler = Update_for_BinaryOutputStatus_in_Database_override;
+  pDatabase->iIUpdateHandler.pUpdate_AnalogOutputStatus_in_IUpdateHandler = Update_for_AnalogOutputStatus_in_Database_override;
+  pDatabase->iIUpdateHandler.pUpdate_TimeAndInterval_in_IUpdateHandler    = Update_for_TimeAndInterval_in_Database_override;
+  pDatabase->iIUpdateHandler.pUpdate_OctetString_in_IUpdateHandler        = Update_for_OctetString_in_Database_override;
   setParentPointer_in_IUpdateHandler(&(pDatabase->iIUpdateHandler), pDatabase);
+  // ------- IUpdateHandler -------------
 
   pDatabase->iIResponseLoader.pLoad_in_IResponseLoader = Load_in_Database_override;
 
@@ -709,15 +721,23 @@ IINField SelectAll_in_Database( Database *pDatabase, GroupVariation_uint16_t gv)
     decrement_stack_info();
 #endif
 ////        this->select_all_class_zero<BinarySpec>(this->binary_input);
+    select_all_class_zero_StaticDataMap_for_BinarySpec(pDatabase, &(pDatabase->binary_input));
 ////        this->select_all_class_zero<DoubleBitBinarySpec>(this->double_binary);
+    select_all_class_zero_StaticDataMap_for_DoubleBitBinarySpec(pDatabase, &(pDatabase->double_binary));
 ////        this->select_all_class_zero<BinaryOutputStatusSpec>(this->binary_output_status);
+    select_all_class_zero_StaticDataMap_for_BinaryOutputStatusSpec(pDatabase, &(pDatabase->binary_output_status));
 ////        this->select_all_class_zero<CounterSpec>(this->counter);
+    select_all_class_zero_StaticDataMap_for_CounterSpec(pDatabase, &(pDatabase->counter));
 ////        this->select_all_class_zero<FrozenCounterSpec>(this->frozen_counter);
+    select_all_class_zero_StaticDataMap_for_FrozenCounterSpec(pDatabase, &(pDatabase->frozen_counter));
 ////        this->select_all_class_zero<AnalogSpec>(this->analog_input);
     select_all_class_zero_StaticDataMap_for_AnalogSpec(pDatabase, &(pDatabase->analog_input));
 ////        this->select_all_class_zero<AnalogOutputStatusSpec>(this->analog_output_status);
+    select_all_class_zero_StaticDataMap_for_AnalogOutputStatusSpec(pDatabase, &(pDatabase->analog_output_status));
 ////        this->select_all_class_zero<TimeAndIntervalSpec>(this->time_and_interval);
+    select_all_class_zero_StaticDataMap_for_TimeAndIntervalSpec(pDatabase, &(pDatabase->time_and_interval));
 ////        this->select_all_class_zero<OctetStringSpec>(this->octet_string);
+    select_all_class_zero_StaticDataMap_for_OctetStringSpec(pDatabase, &(pDatabase->octet_string));
 
 ////        return IINField::Empty();
     return Empty_in_IINField_static();
@@ -821,43 +841,27 @@ IINField SelectAll_in_Database( Database *pDatabase, GroupVariation_uint16_t gv)
   }
 }
 
-////template<class Spec> IINField Database::select_all(StaticDataMap<Spec>& map)
-IINField select_all_StaticDataMap_for_AnalogSpec_in_Database_static(StaticDataMap_for_AnalogSpec* map)
-{
-// uint16_t select_all_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, StaticAnalogVariation_uint8_t variation);/////F get_variation)
-////    map.select_all();
-  select_all_in_StaticDataMap_for_AnalogSpecOver1(map);//, StaticAnalogVariation_Group30Var1);//StaticAnalogVariation_uint8_t variation);/////F get_variation)
-////    return IINField::Empty();
-  return Empty_in_IINField_static();
-}
-
-////template<class Spec> void Database::select_all_class_zero(StaticDataMap<Spec>& map)
-void select_all_class_zero_StaticDataMap_for_AnalogSpec(Database *pDatabase, StaticDataMap_for_AnalogSpec* map)
-{
-//boolean IsSet_in_StaticTypeBitField(StaticTypeBitField *pStaticTypeBitField, StaticTypeBitmask_uint16_t type)
-////    if (this->allowed_class_zero_types.IsSet(Spec::StaticTypeEnum))
-  if (IsSet_in_StaticTypeBitField(&(pDatabase->allowed_class_zero_types), StaticTypeBitmask_AnalogInput))
-  {
-//IINField select_all_StaticDataMap_for_AnalogSpec_in_Database_static(StaticDataMap_for_AnalogSpec* map)
-////        select_all<Spec>(map);
-    select_all_StaticDataMap_for_AnalogSpec_in_Database_static(map);
-  }
-}
-
-
 ////} // namespace opendnp3
 void Unselect_in_Database(Database *pDatabase)
 {
 ////    this->binary_input.clear_selection();
+  clear_selection_in_StaticDataMap_for_BinarySpec(&(pDatabase->binary_input));
 ////    this->double_binary.clear_selection();
+  clear_selection_in_StaticDataMap_for_DoubleBitBinarySpec(&(pDatabase->double_binary));
 ////    this->binary_output_status.clear_selection();
+  clear_selection_in_StaticDataMap_for_BinaryOutputStatusSpec(&(pDatabase->binary_output_status));
 ////    this->counter.clear_selection();
+  clear_selection_in_StaticDataMap_for_CounterSpec(&(pDatabase->counter));
 ////    this->frozen_counter.clear_selection();
+  clear_selection_in_StaticDataMap_for_FrozenCounterSpec(&(pDatabase->frozen_counter));
 ////    this->analog_input.clear_selection();
   clear_selection_in_StaticDataMap_for_AnalogSpec(&(pDatabase->analog_input));
 ////    this->analog_output_status.clear_selection();
+  clear_selection_in_StaticDataMap_for_AnalogOutputStatusSpec(&(pDatabase->analog_output_status));
 ////    this->time_and_interval.clear_selection();
+  clear_selection_in_StaticDataMap_for_TimeAndIntervalSpec(&(pDatabase->time_and_interval));
 ////    this->octet_string.clear_selection();
+  clear_selection_in_StaticDataMap_for_OctetStringSpec(&(pDatabase->octet_string));
 }
 
 boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer)
@@ -876,6 +880,79 @@ boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
 ////        && load_type(this->analog_output_status, writer) && load_type(this->time_and_interval, writer)
 ////        && load_type(this->octet_string, writer);
   return load_type_for_Analog_in_Database_static(pDatabase->analog_input, writer) &&
-         load_type_for_Binary_in_Database_static(pDatabase->binary_input, writer);
+         load_type_for_Binary_in_Database_static(pDatabase->binary_input, writer) &&
+         load_type_for_BinaryOutputStatus_in_Database_static(pDatabase->binary_output_status, writer) &&
+         load_type_for_AnalogOutputStatus_in_Database_static(pDatabase->analog_output_status, writer) &&
+         load_type_for_DoubleBitBinary_in_Database_static(pDatabase->double_binary, writer) &&
+         load_type_for_Counter_in_Database_static(pDatabase->counter, writer) &&
+         load_type_for_FrozenCounter_in_Database_static(pDatabase->frozen_counter, writer) &&
+         load_type_for_OctetString_in_Database_static(pDatabase->octet_string, writer) &&
+         load_type_for_TimeAndInterval_in_Database_static(pDatabase->time_and_interval, writer);
+}
+
+/*
+bool Database::FreezeCounter(uint16_t index, bool clear, EventMode mode)
+{
+    auto num_selected = this->counter.select(Range::From(index, index));
+    this->FreezeSelectedCounters(clear, mode);
+
+    return num_selected > 0;
+}
+*/
+
+boolean Update_for_Binary_in_Database_override(void *pIUpdateHandler, Binary* meas, uint16_t index, EventMode_uint8_t mode)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Update_for_Binary_in_Database(parent, meas, index, mode);
+}
+
+boolean Update_for_DoubleBitBinary_in_Database_override(void *pIUpdateHandler, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Update_for_DoubleBitBinary_in_Database(parent, meas, index, mode);
+}
+
+boolean Update_for_Analog_in_Database_override(void *pIUpdateHandler, Analog* meas, uint16_t index, EventMode_uint8_t mode)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Update_for_Analog_in_Database(parent, meas, index, mode);
+}
+
+boolean Update_for_Counter_in_Database_override(void *pIUpdateHandler, Counter* meas, uint16_t index, EventMode_uint8_t mode)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Update_for_Counter_in_Database(parent, meas, index, mode);
+}
+
+boolean Update_for_BinaryOutputStatus_in_Database_override(void *pIUpdateHandler, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Update_for_BinaryOutputStatus_in_Database(parent, meas, index, mode);
+}
+
+boolean Update_for_AnalogOutputStatus_in_Database_override(void *pIUpdateHandler, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Update_for_AnalogOutputStatus_in_Database(parent, meas, index, mode);
+}
+
+boolean Update_for_TimeAndInterval_in_Database_override(void *pIUpdateHandler, TimeAndInterval* meas, uint16_t index)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Update_for_TimeAndInterval_in_Database(parent, meas, index);
+}
+
+boolean Update_for_OctetString_in_Database_override(void *pIUpdateHandler, OctetString* meas, uint16_t index, EventMode_uint8_t mode)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Update_for_OctetString_in_Database(parent, meas, index, mode);
 }
 

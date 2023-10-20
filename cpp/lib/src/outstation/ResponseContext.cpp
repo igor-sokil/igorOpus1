@@ -55,6 +55,7 @@ AppControlField LoadResponse_in_ResponseContext(ResponseContext *pResponseContex
 //boolean Load_in_IResponseLoader(IResponseLoader *, HeaderWriter* writer);
 ////    bool notFull = pEventLoader->Load(writer);
   boolean notFull = Load_in_IResponseLoader(pResponseContext->pEventLoader, writer);
+
 //    uint16_t Remaining_in_HeaderWriter(HeaderWriter *pHeaderWriter);
 ////    bool someEventsWritten = writer.Remaining() < startingSize;
   boolean someEventsWritten = Remaining_in_HeaderWriter(writer) < startingSize;

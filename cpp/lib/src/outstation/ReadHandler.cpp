@@ -31,6 +31,7 @@ void ReadHandler_in_ReadHandler(ReadHandler *pReadHandler, IStaticSelector* stat
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<""<<std::endl;
   std::cout<<getString_stack_info();
   std::cout<<"ReadHandler_in_ReadHandler1"<<std::endl;
 
@@ -60,8 +61,9 @@ IINField ProcessHeader_AllObjectsHeader_in_ReadHandler_override(void *pIAPDUHand
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<std::endl;
   std::cout<<getString_stack_info();
-    std::cout<<"ProcessHeader_AllObjectsHeader_in_ReadHandler_override1"<<std::endl;
+  std::cout<<"ProcessHeader_AllObjectsHeader_in_ReadHandler_override1"<<std::endl;
 #endif
 
   ReadHandler *parent =
@@ -71,18 +73,18 @@ IINField ProcessHeader_AllObjectsHeader_in_ReadHandler_override(void *pIAPDUHand
   {
   case (GroupVariationType_STATIC):
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariationType_STATIC"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 //IINField SelectAll_in_IStaticSelector(IStaticSelector *, GroupVariation_uint16_t gv);
 ////        return pStaticSelector->SelectAll(header.enumeration);
     return SelectAll_in_IStaticSelector(parent->pStaticSelector, (header->hHeaderRecord).gGroupVariationRecord.enumeration);
   case (GroupVariationType_EVENT):
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariationType_EVENT"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 //IINField SelectAll_in_IEventSelector(IEventSelector *, GroupVariation_uint16_t gv);
     ////    return pEventSelector->SelectAll(header.enumeration);
@@ -90,9 +92,9 @@ IINField ProcessHeader_AllObjectsHeader_in_ReadHandler_override(void *pIAPDUHand
   default:
   {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return IINField(IINBit::FUNC_NOT_SUPPORTED);
     IINField iIINField;

@@ -114,6 +114,7 @@ typedef struct
 ////  static const StaticTimeAndIntervalVariation svariation = StaticTimeAndIntervalVariation::Group50Var4;
 } Group50Var4;
 
+DNP3Serializer_for_TimeAndInterval  Inst_in_Group50Var4_static(void);
 uint16_t Size_in_Group50Var4_static(void);
 void Group50Var4_in_Group50Var4(Group50Var4 *pGroup50Var4);
 GroupVariationID ID_in_Group50Var4_static(void);

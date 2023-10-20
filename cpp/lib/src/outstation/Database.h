@@ -165,36 +165,65 @@ boolean HasAnySelection_in_Database_override(void *pIResponseLoader);
 boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer);
 
 // ------- IUpdateHandler ---------------
-boolean Update_in_Database(Database *pDatabase, Binary* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database(Database *pDatabase, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database(Database *pDatabase, Analog* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database(Database *pDatabase, Counter* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_Binary_in_Database(Database *pDatabase, Binary* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_DoubleBitBinary_in_Database(Database *pDatabase, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_Analog_in_Database(Database *pDatabase, Analog* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_Counter_in_Database(Database *pDatabase, Counter* meas, uint16_t index, EventMode_uint8_t mode);
 boolean FreezeCounter_in_Database(Database *pDatabase, uint16_t index, boolean clear, EventMode_uint8_t mode);
-boolean Update_in_Database(Database *pDatabase, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database(Database *pDatabase, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database(Database *pDatabase, OctetString* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database(Database *pDatabase, TimeAndInterval* meas, uint16_t index);
+boolean Update_for_BinaryOutputStatus_in_Database(Database *pDatabase, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_AnalogOutputStatus_in_Database(Database *pDatabase, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_OctetString_in_Database(Database *pDatabase, OctetString* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_TimeAndInterval_in_Database(Database *pDatabase, TimeAndInterval* meas, uint16_t index);
 boolean Modify_in_Database(Database *pDatabase, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);
 
-boolean Update_in_Database_override(void *pIUpdateHandler, Binary* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database_override(void *pIUpdateHandler, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database_override(void *pIUpdateHandler, Analog* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database_override(void *pIUpdateHandler, Counter* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_Binary_in_Database_override(void *pIUpdateHandler, Binary* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_DoubleBitBinary_in_Database_override(void *pIUpdateHandler, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_Analog_in_Database_override(void *pIUpdateHandler, Analog* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_Counter_in_Database_override(void *pIUpdateHandler, Counter* meas, uint16_t index, EventMode_uint8_t mode);
 boolean FreezeCounter_in_Database_override(void *pIUpdateHandler, uint16_t index, boolean clear, EventMode_uint8_t mode);
-boolean Update_in_Database_override(void *pIUpdateHandler, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database_override(void *pIUpdateHandler, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database_override(void *pIUpdateHandler, OctetString* meas, uint16_t index, EventMode_uint8_t mode);
-boolean Update_in_Database_override(void *pIUpdateHandler, TimeAndInterval* meas, uint16_t index);
+boolean Update_for_BinaryOutputStatus_in_Database_override(void *pIUpdateHandler, BinaryOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_AnalogOutputStatus_in_Database_override(void *pIUpdateHandler, AnalogOutputStatus* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_OctetString_in_Database_override(void *pIUpdateHandler, OctetString* meas, uint16_t index, EventMode_uint8_t mode);
+boolean Update_for_TimeAndInterval_in_Database_override(void *pIUpdateHandler, TimeAndInterval* meas, uint16_t index);
 boolean Modify_in_Database_override(void *pIUpdateHandler, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);
 
 boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, EventMode_uint8_t mode);// = EventMode::Detect);
 
 boolean load_type_for_Binary_in_Database_static(StaticDataMap_for_BinarySpec& map, HeaderWriter* writer);
-boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
+void select_all_class_zero_StaticDataMap_for_BinarySpec(Database *pDatabase, StaticDataMap_for_BinarySpec* map);
+IINField select_all_StaticDataMap_for_BinarySpec_in_Database_static(StaticDataMap_for_BinarySpec* map);
 
+boolean load_type_for_BinaryOutputStatus_in_Database_static(StaticDataMap_for_BinaryOutputStatusSpec& map, HeaderWriter* writer);
+void select_all_class_zero_StaticDataMap_for_BinaryOutputStatusSpec(Database *pDatabase, StaticDataMap_for_BinaryOutputStatusSpec* map);
+IINField select_all_StaticDataMap_for_BinaryOutputStatusSpec_in_Database_static(StaticDataMap_for_BinaryOutputStatusSpec* map);
+
+boolean load_type_for_DoubleBitBinary_in_Database_static(StaticDataMap_for_DoubleBitBinarySpec& map, HeaderWriter* writer);
+void select_all_class_zero_StaticDataMap_for_DoubleBitBinarySpec(Database *pDatabase, StaticDataMap_for_DoubleBitBinarySpec* map);
+IINField select_all_StaticDataMap_for_DoubleBitBinarySpec_in_Database_static(StaticDataMap_for_DoubleBitBinarySpec* map);
+
+boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_AnalogSpec(Database *pDatabase, StaticDataMap_for_AnalogSpec* map);
 IINField select_all_StaticDataMap_for_AnalogSpec_in_Database_static(StaticDataMap_for_AnalogSpec* map);
 
+boolean load_type_for_AnalogOutputStatus_in_Database_static(StaticDataMap_for_AnalogOutputStatusSpec& map, HeaderWriter* writer);
+void select_all_class_zero_StaticDataMap_for_AnalogOutputStatusSpec(Database *pDatabase, StaticDataMap_for_AnalogOutputStatusSpec* map);
+IINField select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_static(StaticDataMap_for_AnalogOutputStatusSpec* map);
+
+boolean load_type_for_Counter_in_Database_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer);
+void select_all_class_zero_StaticDataMap_for_CounterSpec(Database *pDatabase, StaticDataMap_for_CounterSpec* map);
+IINField select_all_StaticDataMap_for_CounterSpec_in_Database_static(StaticDataMap_for_CounterSpec* map);
+
+boolean load_type_for_FrozenCounter_in_Database_static(StaticDataMap_for_FrozenCounterSpec& map, HeaderWriter* writer);
+void select_all_class_zero_StaticDataMap_for_FrozenCounterSpec(Database *pDatabase, StaticDataMap_for_FrozenCounterSpec* map);
+IINField select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_static(StaticDataMap_for_FrozenCounterSpec* map);
+
+boolean load_type_for_OctetString_in_Database_static(StaticDataMap_for_OctetStringSpec& map, HeaderWriter* writer);
+void select_all_class_zero_StaticDataMap_for_OctetStringSpec(Database *pDatabase, StaticDataMap_for_OctetStringSpec* map);
+IINField select_all_StaticDataMap_for_OctetStringSpec_in_Database_static(StaticDataMap_for_OctetStringSpec* map);
+
+boolean load_type_for_TimeAndInterval_in_Database_static(StaticDataMap_for_TimeAndIntervalSpec& map, HeaderWriter* writer);
+void select_all_class_zero_StaticDataMap_for_TimeAndIntervalSpec(Database *pDatabase, StaticDataMap_for_TimeAndIntervalSpec* map);
+IINField select_all_StaticDataMap_for_TimeAndIntervalSpec_in_Database_static(StaticDataMap_for_TimeAndIntervalSpec* map);
 
 ////} // namespace opendnp3
 #endif

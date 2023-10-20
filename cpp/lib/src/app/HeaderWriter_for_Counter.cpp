@@ -45,6 +45,51 @@ RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_Heade
   }
 }
 //---------------------------------------------IterateOverRange_for_UInt8_Counter_in_HeaderWriter--------------------------------------------
+//---------------------------------------------IterateOverRange_for_UInt16_Counter_in_HeaderWriter--------------------------------------------
+////template<class IndexType, class WriteType>
+////RangeWriteIterator<IndexType, WriteType> HeaderWriter::IterateOverRange(QualifierCode qc,
+////                                                                        const DNP3Serializer<WriteType>& serializer,
+////                                                                        typename IndexType::type_t start)
+RangeWriteIterator_for_UInt16_Counter IterateOverRange_for_UInt16_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_Counter *serializer,
+    uint16_t start
+                                                                                     )
+{
+//    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
+//     pRangeWriteIterator_for_UInt8_Counter->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
+  uint16_t reserve_size = 2 * size_in_UInt16 +
+                          get_size_in_Serializer_for_Counter(&(serializer->sSerializer_for_Counter));
+
+//    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+//boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve)
+//    GroupVariationID ID_in_DNP3Serializer_for_Counter(DNP3Serializer_for_Counter *pDNP3Serializer_for_Counter)
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter, ID_in_DNP3Serializer_for_Counter(serializer), qc, reserve_size))
+  {
+//        return RangeWriteIterator<IndexType, WriteType>(start, serializer, *position);
+    RangeWriteIterator_for_UInt16_Counter rRangeWriteIterator_for_UInt16_Counter;
+////    void RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_CounterOver2(RangeWriteIterator_for_UInt8_Counter *pRangeWriteIterator_for_UInt8_Counter,
+//                   typename IndexType::type_t start_,
+////                   uint8_t start_,
+//                   const Serializer<WriteType>& serializer,
+////                   Serializer_for_Counter*  serializer,
+//                   ser4cpp::wseq_t& position)
+////                   WSeq_for_Uint16_t* position);
+    RangeWriteIterator_for_UInt16_Counter_in_RangeWriteIterator_for_UInt16_CounterOver2(&rRangeWriteIterator_for_UInt16_Counter,
+        start,
+        &(serializer->sSerializer_for_Counter),
+        pHeaderWriter->position
+                                                                                   );
+    return rRangeWriteIterator_for_UInt16_Counter;
+  }
+  else
+  {
+//        return RangeWriteIterator<IndexType, WriteType>::Null();
+    return Null_in_RangeWriteIterator_for_UInt16_Counter_static();
+  }
+}
+//---------------------------------------------IterateOverRange_for_UInt16_Counter_in_HeaderWriter--------------------------------------------
+
 /*
 //---------------------------------------------IterateOverCount_for_UInt8_Counter_in_HeaderWriter--------------------------------------------
 

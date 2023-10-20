@@ -25,12 +25,11 @@ boolean IsEvent_in_SimpleEventCell_for_Analog(SimpleEventCell_for_Analog *pSimpl
     Analog* newValue)
 {
   UNUSED(config):
-//    boolean IsEvent_in_AnalogSpec_for_AnalogInfo_static(
 //    boolean IsEvent_in_AnalogSpec_static(Analog *old_value,
 //                                         Analog *new_value,
 //                                         AnalogConfig_for_EventConfig_for_AnalogInfo *config);////const config_t& config)
 ////        return Spec::IsEvent(this->lastEvent, newValue);
-    return IsEvent_in_AnalogSpec_for_AnalogInfo_static(&((pSimpleEventCell_for_Analog->eEventCellBase_for_Analog).lastEvent),
+    return IsEvent_in_AnalogSpec_static(&((pSimpleEventCell_for_Analog->eEventCellBase_for_Analog).lastEvent),
            new_value,
            NULL);////const config_t& config)
   }
@@ -45,7 +44,7 @@ boolean IsEvent_in_DeadbandEventCell_for_Analog(DeadbandEventCell_for_Analog *pD
     Analog* newValue)
 {
 ////        return Spec::IsEvent(this->lastEvent, newValue, config.deadband);
-  return IsEvent_in_AnalogSpec_for_AnalogInfo_static(&((pSimpleEventCell_for_Analog->eEventCellBase_for_Analog).lastEvent),
+  return IsEvent_in_AnalogSpec_static(&((pSimpleEventCell_for_Analog->eEventCellBase_for_Analog).lastEvent),
          new_value,
          NULL);////const config_t& config)
 }

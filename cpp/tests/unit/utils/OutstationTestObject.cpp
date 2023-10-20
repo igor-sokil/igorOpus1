@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 //#include <QtWidgets>
 #include <QApplication>
 #include "header.h"
@@ -39,6 +43,15 @@
 
 void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, OutstationConfig* config, DatabaseConfig* db_config)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OutstationTestObject_in_OutstationTestObject1"<<'\n';
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*config->params.maxTxFragSize= "<<(uint16_t)config->params.maxTxFragSize<<'\n';
+  decrement_stack_info();
+#endif
 ////    : exe(std::make_shared<exe4cpp::MockExecutor>()),
   MockExecutor_in_MockExecutor(&(pOutstationTestObject->exe));
 
@@ -98,9 +111,21 @@ uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationT
 ////size_t OutstationTestObject::OnTxReady()
 uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnTxReady_in_OutstationTestObject1"<<'\n';
+//  decrement_stack_info();
+#endif
 //boolean OnTxReady_in_OContext(OContext* pOContext)
 ////    context.OnTxReady();
    OnTxReady_in_OContext(&(pOutstationTestObject->context));
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"OnTxReady_in_OutstationTestObject2"<<'\n';
+  decrement_stack_info();
+#endif
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
 }

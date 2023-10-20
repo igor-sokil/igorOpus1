@@ -43,7 +43,9 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_BinaryInfo variation;
 } SelectedValue_for_BinarySpec;
-void SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpec(SelectedValue_for_BinarySpec *pSelectedValue_for_BinarySpec);
+void SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver1(SelectedValue_for_BinarySpec *pSelectedValue_for_BinarySpec);
+void SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver2(SelectedValue_for_BinarySpec *pSelectedValue_for_BinarySpec,
+                                          boolean selected, Binary* value, StaticBinaryVariation_uint8_t variation);
 
 /**
  * Holds particular measurement type in the database.
@@ -91,7 +93,9 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_DoubleBitBinaryInfo variation;
 } SelectedValue_for_DoubleBitBinarySpec;
-void SelectedValue_for_DoubleBitBinarySpec_in_SelectedValue_for_DoubleBitBinarySpec(SelectedValue_for_DoubleBitBinarySpec *pSelectedValue_for_DoubleBitBinarySpec);
+void SelectedValue_for_DoubleBitBinarySpec_in_SelectedValue_for_DoubleBitBinarySpecOver1(SelectedValue_for_DoubleBitBinarySpec *pSelectedValue_for_DoubleBitBinarySpec);
+void SelectedValue_for_DoubleBitBinarySpec_in_SelectedValue_for_DoubleBitBinarySpecOver2(SelectedValue_for_DoubleBitBinarySpec *pSelectedValue_for_DoubleBitBinarySpec,
+                                          boolean selected, DoubleBitBinary* value, StaticDoubleBinaryVariation_uint8_t variation);
 
 /**
  * Holds particular measurement type in the database.
@@ -189,7 +193,9 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_CounterInfo variation;
 } SelectedValue_for_CounterSpec;
-void SelectedValue_for_CounterSpec_in_SelectedValue_for_CounterSpec(SelectedValue_for_CounterSpec *pSelectedValue_for_CounterSpec);
+void SelectedValue_for_CounterSpec_in_SelectedValue_for_CounterSpecOver1(SelectedValue_for_CounterSpec *pSelectedValue_for_CounterSpec);
+void SelectedValue_for_CounterSpec_in_SelectedValue_for_CounterSpecOver2(SelectedValue_for_CounterSpec *pSelectedValue_for_CounterSpec,
+                                          boolean selected, Counter* value, StaticCounterVariation_uint8_t variation);
 
 /**
  * Holds particular measurement type in the database.
@@ -237,7 +243,9 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_FrozenCounterInfo variation;
 } SelectedValue_for_FrozenCounterSpec;
-void SelectedValue_for_FrozenCounterSpec_in_SelectedValue_for_FrozenCounterSpec(SelectedValue_for_FrozenCounterSpec *pSelectedValue_for_FrozenCounterSpec);
+void SelectedValue_for_FrozenCounterSpec_in_SelectedValue_for_FrozenCounterSpecOver1(SelectedValue_for_FrozenCounterSpec *pSelectedValue_for_FrozenCounterSpec);
+void SelectedValue_for_FrozenCounterSpec_in_SelectedValue_for_FrozenCounterSpecOver2(SelectedValue_for_FrozenCounterSpec *pSelectedValue_for_FrozenCounterSpec,
+                                          boolean selected, FrozenCounter* value, StaticFrozenCounterVariation_uint8_t variation);
 
 /**
  * Holds particular measurement type in the database.
@@ -285,7 +293,9 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_BinaryOutputStatusInfo variation;
 } SelectedValue_for_BinaryOutputStatusSpec;
-void SelectedValue_for_BinaryOutputStatusSpec_in_SelectedValue_for_BinaryOutputStatusSpec(SelectedValue_for_BinaryOutputStatusSpec *pSelectedValue_for_BinaryOutputStatusSpec);
+void SelectedValue_for_BinaryOutputStatusSpec_in_SelectedValue_for_BinaryOutputStatusSpecOver1(SelectedValue_for_BinaryOutputStatusSpec *pSelectedValue_for_BinaryOutputStatusSpec);
+void SelectedValue_for_BinaryOutputStatusSpec_in_SelectedValue_for_BinaryOutputStatusSpecOver2(SelectedValue_for_BinaryOutputStatusSpec *pSelectedValue_for_BinaryOutputStatusSpec,
+                                          boolean selected, BinaryOutputStatus* value, StaticBinaryOutputStatusVariation_uint8_t variation);
 
 /**
  * Holds particular measurement type in the database.
@@ -333,7 +343,9 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_AnalogOutputStatusInfo variation;
 } SelectedValue_for_AnalogOutputStatusSpec;
-void SelectedValue_for_AnalogOutputStatusSpec_in_SelectedValue_for_AnalogOutputStatusSpec(SelectedValue_for_AnalogOutputStatusSpec *pSelectedValue_for_AnalogOutputStatusSpec);
+void SelectedValue_for_AnalogOutputStatusSpec_in_SelectedValue_for_AnalogOutputStatusSpecOver1(SelectedValue_for_AnalogOutputStatusSpec *pSelectedValue_for_AnalogOutputStatusSpec);
+void SelectedValue_for_AnalogOutputStatusSpec_in_SelectedValue_for_AnalogOutputStatusSpecOver2(SelectedValue_for_AnalogOutputStatusSpec *pSelectedValue_for_AnalogOutputStatusSpec,
+                                          boolean selected, AnalogOutputStatus* value, StaticAnalogOutputStatusVariation_uint8_t variation);
 
 /**
  * Holds particular measurement type in the database.
@@ -381,7 +393,9 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_OctetStringInfo variation;
 } SelectedValue_for_OctetStringSpec;
-void SelectedValue_for_OctetStringSpec_in_SelectedValue_for_OctetStringSpec(SelectedValue_for_OctetStringSpec *pSelectedValue_for_OctetStringSpec);
+void SelectedValue_for_OctetStringSpec_in_SelectedValue_for_OctetStringSpecOver1(SelectedValue_for_OctetStringSpec *pSelectedValue_for_OctetStringSpec);
+void SelectedValue_for_OctetStringSpec_in_SelectedValue_for_OctetStringSpecOver2(SelectedValue_for_OctetStringSpec *pSelectedValue_for_OctetStringSpec,
+                                          boolean selected, OctetString* value, StaticOctetStringVariation_uint8_t variation);
 
 /**
  * Holds particular measurement type in the database.
@@ -429,7 +443,9 @@ typedef struct
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_TimeAndIntervalInfo variation;
 } SelectedValue_for_TimeAndIntervalSpec;
-void SelectedValue_for_TimeAndIntervalSpec_in_SelectedValue_for_TimeAndIntervalSpec(SelectedValue_for_TimeAndIntervalSpec *pSelectedValue_for_TimeAndIntervalSpec);
+void SelectedValue_for_TimeAndIntervalSpec_in_SelectedValue_for_TimeAndIntervalSpecOver1(SelectedValue_for_TimeAndIntervalSpec *pSelectedValue_for_TimeAndIntervalSpec);
+void SelectedValue_for_TimeAndIntervalSpec_in_SelectedValue_for_TimeAndIntervalSpecOver2(SelectedValue_for_TimeAndIntervalSpec *pSelectedValue_for_TimeAndIntervalSpec,
+                                          boolean selected, TimeAndInterval* value, StaticTimeAndIntervalVariation_uint8_t variation);
 
 /**
  * Holds particular measurement type in the database.

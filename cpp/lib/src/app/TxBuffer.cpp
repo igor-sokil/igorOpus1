@@ -1,8 +1,21 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "TxBuffer.h"
 
 void TxBuffer_in_TxBuffer(TxBuffer *pTxBuffer, uint32_t maxTxSize)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"TxBuffer_in_TxBuffer1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t maxTxSize ="<<maxTxSize<<'\n';
+  decrement_stack_info();
+#endif
 //// : buffer(maxTxSize) {}
   BufferSer4_in_BufferSer4Over2(&(pTxBuffer->buffer), maxTxSize);
   AppControlField_in_AppControlFieldOver1(&(pTxBuffer->control));

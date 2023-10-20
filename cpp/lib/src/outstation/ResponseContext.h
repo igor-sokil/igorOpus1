@@ -39,6 +39,7 @@
 
 /**
  *  Coordinates the event & static response contexts to do multi-fragments responses
+* Координирует контексты событий и статических ответов для выполнения многофрагментных ответов.
  */
 ////class ResponseContext : private Uncopyable
 typedef struct

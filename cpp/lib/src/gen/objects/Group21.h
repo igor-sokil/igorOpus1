@@ -78,6 +78,7 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var1;
 } Group21Var1;
 
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var1_static(void);
 uint16_t Size_in_Group21Var1_static(void);
 
 void Group21Var1_in_Group21Var1(Group21Var1 *pGroup21Var1);
@@ -114,6 +115,7 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var2;
 } Group21Var2;
 
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var2_static(void);
 uint16_t Size_in_Group21Var2_static(void);
 
 void Group21Var2_in_Group21Var2(Group21Var2 *pGroup21Var2);
@@ -151,6 +153,7 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var5;
 } Group21Var5;
 
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var5_static(void);
 uint16_t Size_in_Group21Var5_static(void);
 
 void Group21Var5_in_Group21Var5(Group21Var5 *pGroup21Var5);
@@ -188,6 +191,7 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var6;
 } Group21Var6;
 
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var6_static(void);
 uint16_t Size_in_Group21Var6_static(void);
 
 void Group21Var6_in_Group21Var6(Group21Var6 *pGroup21Var6);
@@ -223,6 +227,7 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var9;
 } Group21Var9;
 
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var9_static(void);
 uint16_t Size_in_Group21Var9_static(void);
 
 void Group21Var9_in_Group21Var9(Group21Var9 *pGroup21Var9);
@@ -258,6 +263,7 @@ typedef struct
 ////  static const StaticFrozenCounterVariation svariation = StaticFrozenCounterVariation::Group21Var10;
 } Group21Var10;
 
+DNP3Serializer_for_FrozenCounter  Inst_in_Group21Var10_static(void);
 uint16_t Size_in_Group21Var10_static(void);
 
 void Group21Var10_in_Group21Var10(Group21Var10 *pGroup21Var10);

@@ -47,7 +47,7 @@ typedef struct
 {
   uint8_t svariation;
   PointClass_uint8_t clazz;// = PointClass_Class1;
-////    typename Info::event_variation_t evariation = Info::DefaultEventVariation;
+  EventAnalogVariation_uint8_t  evariation;// = Info::DefaultEventVariation;
 } EventConfig;
 
 void EventConfig_in_EventConfig(EventConfig *pEventConfig);

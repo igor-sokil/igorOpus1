@@ -55,7 +55,7 @@ ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader*
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for header");
 #ifdef  LOG_INFO
-    std::cout<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for header')***"<<std::endl;
     decrement_stack_info();
 #endif

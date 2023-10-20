@@ -31,6 +31,7 @@
 ////#include <iterator>
 ////#include <map>
 
+#include "StaticDataMap.h"
 #include "MeasurementTypeSpecs.h"
 #include "Range.h"
 #include "IEventReceiver.h"
@@ -57,72 +58,77 @@
 ////template<> StaticAnalogOutputStatusVariation check_for_promotion<AnalogOutputStatusSpec>(const AnalogOutputStatus& value, StaticAnalogOutputStatusVariation variation);
 
 
+  using map_t_StaticDataMap_for_AnalogOutputStatusSpec = std::map<uint16_t, StaticDataCell_for_AnalogOutputStatus>;
+  using map_iter_t_StaticDataMap_for_AnalogOutputStatusSpec = typename map_t_StaticDataMap_for_AnalogOutputStatusSpec::iterator;
+
 ////template<class Spec> class StaticDataMap : private Uncopyable
 //typedef struct
 class StaticDataMap_for_AnalogOutputStatusSpec
 {
-  using map_t = std::map<uint16_t, StaticDataCell_for_AnalogOutputStatus>;
-////    using map_iter_t = typename map_t::iterator;
 
 public:
 ////    StaticDataMap() = default;
 ////    StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config);
 
-////    class iterator
-////    {
-////        map_iter_t iter;
-////        map_iter_t end;
-////        Range& range;
-////
-////    public:
-////        explicit iterator(map_iter_t begin, map_iter_t end, Range& range) : iter(begin), end(end), range(range) {}
-////
+  class iterator
+  {
+    map_iter_t_StaticDataMap_for_AnalogOutputStatusSpec iter;
+    map_iter_t_StaticDataMap_for_AnalogOutputStatusSpec end;
+    Range& range;
+
+  public:
+    explicit iterator(map_iter_t_StaticDataMap_for_AnalogOutputStatusSpec begin,
+                      map_iter_t_StaticDataMap_for_AnalogOutputStatusSpec end, Range& range) : iter(begin), end(end), range(range) {}
+
 ////        using value_type = std::pair<uint16_t, SelectedValue<Spec>>;
-////        using difference_type = typename map_iter_t::difference_type;
-////        using pointer = typename map_iter_t::pointer;
+    using value_type = std::pair<uint16_t, SelectedValue_for_AnalogOutputStatusSpec>;
+    using difference_type = typename map_iter_t_StaticDataMap_for_AnalogOutputStatusSpec::difference_type;
+    using pointer = typename map_iter_t_StaticDataMap_for_AnalogOutputStatusSpec::pointer;
 ////        using reference = std::pair<uint16_t, SelectedValue<Spec>&>;
-////        using iterator_category = std::input_iterator_tag;
-////
-////        bool operator==(const iterator& rhs)
-////        {
-////            return this->iter == rhs.iter;
-////        }
-////        bool operator!=(const iterator& rhs)
-////        {
-////            return this->iter != rhs.iter;
-////        }
-////
-////        void operator++()
-////        {
-////            // unselect the point
-////            this->iter->second.selection.selected = false;
-////
-////            while (true)
-////            {
-////                iter++;
-////
-////                if (iter == this->end)
-////                {
+    using reference = std::pair<uint16_t, SelectedValue_for_AnalogOutputStatusSpec&>;
+    using iterator_category = std::input_iterator_tag;
+
+    boolean operator==(const iterator& rhs)
+    {
+      return this->iter == rhs.iter;
+    }
+    boolean operator!=(const iterator& rhs)
+    {
+      return this->iter != rhs.iter;
+    }
+
+    void operator++()
+    {
+      // unselect the point
+      this->iter->second.selection.selected = false;
+
+      while (true)
+      {
+        iter++;
+
+        if (iter == this->end)
+        {
 ////                    this->range = Range::Invalid();
-////                    return;
-////                }
-////
-  // shorten the range
-////                this->range.start = iter->first;
-////
-////                if (iter->second.selection.selected)
-////                {
-////                    return;
-////                }
-////            }
-////        }
-////
-////        reference operator*()
-////        {
-////            return reference(iter->first, iter->second.selection);
-////        }
-////    };
-////
+          this->range = Invalid_in_Range_static();
+          return;
+        }
+
+        // shorten the range
+        this->range.start = iter->first;
+
+        if (iter->second.selection.selected)
+        {
+          return;
+        }
+      }
+    }
+
+    reference operator*()
+    {
+      return reference(iter->first, iter->second.selection);
+    }
+  };
+
 ////    bool add(const typename Spec::meas_t& value, uint16_t index, typename Spec::config_t config);
 ////
 ////    bool update(const typename Spec::meas_t& value, uint16_t index, EventMode mode, IEventReceiver& receiver);
@@ -175,12 +181,12 @@ public:
 ////
 ////    Range assign_class(PointClass clazz, const Range& range);
 
-////    iterator begin();
-////
-////    iterator end();
+  iterator begin();
+
+  iterator end();
 
 ////private:
-  map_t map;
+  map_t_StaticDataMap_for_AnalogOutputStatusSpec map;
   Range selected;
 
 ////    Range get_full_range() const;
@@ -192,15 +198,68 @@ public:
 
   // generic implementation of select_all that accepts a function
   // that can use or override the default variation
+// общая реализация select_all, принимающая функцию
+  // который может использовать или переопределить вариант по умолчанию
 ////    template<class F> size_t select_all(F get_variation);
 
   // generic implementation of select that accepts a function
   // that can use or override the default variation
+// общая реализация select, принимающая функцию
+  // который может использовать или переопределить вариант по умолчанию
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
 void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap, std::map<uint16_t, AOStatusConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec);
+
+////template<> StaticAnalogOutputStatusVariation check_for_promotion<AnalogOutputStatusSpec>(const AnalogOutputStatus& value, StaticAnalogOutputStatusVariation variation);
+StaticAnalogOutputStatusVariation_uint8_t check_for_promotion_for_AnalogOutputStatusSpec_static(AnalogOutputStatus* value, StaticAnalogOutputStatusVariation_uint8_t variation);
+
+void clear_selection_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec);
+
+uint16_t select_all_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec);
+uint16_t select_all_in_StaticDataMap_for_AnalogSpecOutputStatusOver2(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, StaticAnalogOutputStatusVariation_uint8_t variation);
+template<class F> uint16_t select_all_for_AnalogOutputStatusSpec_staticOver3(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, F get_variation);
+
+////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
+template<class F> uint16_t select_all_in_StaticDataMap_for_AnalogOutputStatusSpecOver3(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, F get_variation)
+{
+//qDebug()<<"";
+//qDebug()<<"select_all_in_StaticDataMap_for_AnalogOutputStatusSpecOver3_1";
+
+  if (pStaticDataMap_for_AnalogOutputStatusSpec->map.empty())
+  {
+    return 0;
+  }
+  else
+  {
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+////        this->selected = Range::From(map.begin()->first, map.rbegin()->first);
+    pStaticDataMap_for_AnalogOutputStatusSpec->selected = From_in_Range_static(pStaticDataMap_for_AnalogOutputStatusSpec->map.begin()->first,
+        pStaticDataMap_for_AnalogOutputStatusSpec->map.rbegin()->first);
+
+    for (auto& iter : pStaticDataMap_for_AnalogOutputStatusSpec->map)
+    {
+//qDebug()<<"iter___";
+// StaticAnalogOutputStatusVariation_uint8_t check_for_promotion_for_AnalogOutputStatusSpec(Analog* value, StaticAnalogOutputStatusVariation_uint8_t variation);
+//void SelectedValue_for_AnalogOutputStatusSpec_in_SelectedValue_for_AnalogOutputStatusSpecOver2(SelectedValue_for_AnalogOutputStatusSpec *pSelectedValue_for_AnalogOutputStatusSpec,
+//                                          boolean selected, AnalogOutputStatus* value, StaticAnalogOutputStatusVariation_uint8_t variation);
+////            iter.second.selection = SelectedValue<Spec>{
+////                true, iter.second.value,
+////                check_for_promotion<Spec>(iter.second.value, get_variation(iter.second.config.svariation))};
+      SelectedValue_for_AnalogOutputStatusSpec sSelectedValue_for_AnalogOutputStatusSpec;
+      SelectedValue_for_AnalogOutputStatusSpec_in_SelectedValue_for_AnalogOutputStatusSpecOver2(&sSelectedValue_for_AnalogOutputStatusSpec,
+          true, &iter.second.value,
+          check_for_promotion_for_AnalogOutputStatusSpec_static(&iter.second.value, get_variation(iter.second.config.
+                                             dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.svariation)));
+
+      iter.second.selection = sSelectedValue_for_AnalogOutputStatusSpec;
+    }//for
+
+//qDebug()<<"map.size= "<<pStaticDataMap_for_AnalogOutputStatusSpec->map.size();
+    return pStaticDataMap_for_AnalogOutputStatusSpec->map.size();
+  }
+}
 
 ////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
 ////{
@@ -237,7 +296,12 @@ Range get_selected_range_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataM
 ////{
 ////    return update(this->map.find(index), value, mode, receiver);
 ////}
-////
+boolean update_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec,
+    AnalogOutputStatus* value,
+    uint16_t index,
+    EventMode_uint8_t mode,
+    IEventReceiver* receiver);
+
 ////template<class Spec> void StaticDataMap<Spec>::clear_selection()
 ////{
 ////    // the act of iterating clears the selection
@@ -250,6 +314,12 @@ Range get_selected_range_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataM
 ////{
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
 ////}
+
+boolean update_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec,
+    map_iter_t_StaticDataMap_for_AnalogOutputStatusSpec & iter,
+    AnalogOutputStatus* new_value,
+    EventMode_uint8_t mode,
+    IEventReceiver* receiver);
 
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::update(const map_iter_t& iter,

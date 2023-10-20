@@ -61,4 +61,5 @@ void EventConfig_in_EventConfig(EventConfig *pEventConfig)
 {
  pEventConfig->svariation = 0;
  pEventConfig->clazz = PointClass_Class1;
+ pEventConfig->evariation = 0;
 }

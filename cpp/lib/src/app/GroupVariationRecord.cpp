@@ -90,13 +90,17 @@ EnumAndType GetEnumAndType_in_GroupVariationRecord_static(uint8_t group, uint8_t
   std::cout<<"*uint8_t group= "<<(uint16_t)group<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*uint8_t variation= "<<(uint16_t)variation<<std::endl;
-  decrement_stack_info();
 #endif
 
   GroupVariationType_int32_t type = GetType_in_GroupVariationRecord_static(group, variation);
 
 ////    auto enumeration = GroupVariationSpec::from_type(GetGroupVar(group, variation));
   GroupVariation_uint16_t enumeration = from_type_in_GroupVariationSpec_static(GetGroupVar_in_GroupVariationRecord_static(group, variation));
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GroupVariation_uint16_t enumeration= "<<std::hex<<(uint16_t)enumeration<<std::dec<<std::endl;
+  decrement_stack_info();
+#endif
 
   if (enumeration == GroupVariation_UNKNOWN)
   {

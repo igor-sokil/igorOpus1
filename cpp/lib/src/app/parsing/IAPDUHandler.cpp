@@ -30,6 +30,7 @@ void IAPDUHandler_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<""<<std::endl;
   std::cout<<getString_stack_info();
   std::cout<<"IAPDUHandler_in_IAPDUHandler1"<<std::endl;
 

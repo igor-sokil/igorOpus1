@@ -31,6 +31,7 @@
 ////#include <iterator>
 ////#include <map>
 
+#include "StaticDataMap.h"
 #include "MeasurementTypeSpecs.h"
 #include "Range.h"
 #include "IEventReceiver.h"
@@ -57,72 +58,77 @@
 ////template<> StaticBinaryOutputStatusVariation check_for_promotion<BinaryOutputStatusSpec>(const BinaryOutputStatus& value, StaticBinaryOutputStatusVariation variation);
 
 
+  using map_t_StaticDataMap_for_BinaryOutputStatusSpec = std::map<uint16_t, StaticDataCell_for_BinaryOutputStatus>;
+  using map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec = typename map_t_StaticDataMap_for_BinaryOutputStatusSpec::iterator;
+
 ////template<class Spec> class StaticDataMap : private Uncopyable
 //typedef struct
 class StaticDataMap_for_BinaryOutputStatusSpec
 {
-  using map_t = std::map<uint16_t, StaticDataCell_for_BinaryOutputStatus>;
-////    using map_iter_t = typename map_t::iterator;
 
 public:
 ////    StaticDataMap() = default;
 ////    StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config);
 
-////    class iterator
-////    {
-////        map_iter_t iter;
-////        map_iter_t end;
-////        Range& range;
-////
-////    public:
-////        explicit iterator(map_iter_t begin, map_iter_t end, Range& range) : iter(begin), end(end), range(range) {}
-////
+  class iterator
+  {
+    map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec iter;
+    map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec end;
+    Range& range;
+
+  public:
+    explicit iterator(map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec begin,
+                      map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec end, Range& range) : iter(begin), end(end), range(range) {}
+
 ////        using value_type = std::pair<uint16_t, SelectedValue<Spec>>;
-////        using difference_type = typename map_iter_t::difference_type;
-////        using pointer = typename map_iter_t::pointer;
+    using value_type = std::pair<uint16_t, SelectedValue_for_BinaryOutputStatusSpec>;
+    using difference_type = typename map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec::difference_type;
+    using pointer = typename map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec::pointer;
 ////        using reference = std::pair<uint16_t, SelectedValue<Spec>&>;
-////        using iterator_category = std::input_iterator_tag;
-////
-////        bool operator==(const iterator& rhs)
-////        {
-////            return this->iter == rhs.iter;
-////        }
-////        bool operator!=(const iterator& rhs)
-////        {
-////            return this->iter != rhs.iter;
-////        }
-////
-////        void operator++()
-////        {
-////            // unselect the point
-////            this->iter->second.selection.selected = false;
-////
-////            while (true)
-////            {
-////                iter++;
-////
-////                if (iter == this->end)
-////                {
+    using reference = std::pair<uint16_t, SelectedValue_for_BinaryOutputStatusSpec&>;
+    using iterator_category = std::input_iterator_tag;
+
+    boolean operator==(const iterator& rhs)
+    {
+      return this->iter == rhs.iter;
+    }
+    boolean operator!=(const iterator& rhs)
+    {
+      return this->iter != rhs.iter;
+    }
+
+    void operator++()
+    {
+      // unselect the point
+      this->iter->second.selection.selected = false;
+
+      while (true)
+      {
+        iter++;
+
+        if (iter == this->end)
+        {
 ////                    this->range = Range::Invalid();
-////                    return;
-////                }
-////
-  // shorten the range
-////                this->range.start = iter->first;
-////
-////                if (iter->second.selection.selected)
-////                {
-////                    return;
-////                }
-////            }
-////        }
-////
-////        reference operator*()
-////        {
-////            return reference(iter->first, iter->second.selection);
-////        }
-////    };
-////
+          this->range = Invalid_in_Range_static();
+          return;
+        }
+
+        // shorten the range
+        this->range.start = iter->first;
+
+        if (iter->second.selection.selected)
+        {
+          return;
+        }
+      }
+    }
+
+    reference operator*()
+    {
+      return reference(iter->first, iter->second.selection);
+    }
+  };
+
 ////    bool add(const typename Spec::meas_t& value, uint16_t index, typename Spec::config_t config);
 ////
 ////    bool update(const typename Spec::meas_t& value, uint16_t index, EventMode mode, IEventReceiver& receiver);
@@ -175,12 +181,12 @@ public:
 ////
 ////    Range assign_class(PointClass clazz, const Range& range);
 
-////    iterator begin();
-////
-////    iterator end();
+  iterator begin();
+
+  iterator end();
 
 ////private:
-  map_t map;
+  map_t_StaticDataMap_for_BinaryOutputStatusSpec map;
   Range selected;
 
 ////    Range get_full_range() const;
@@ -192,15 +198,67 @@ public:
 
   // generic implementation of select_all that accepts a function
   // that can use or override the default variation
+// общая реализация select_all, принимающая функцию
+  // который может использовать или переопределить вариант по умолчанию
 ////    template<class F> size_t select_all(F get_variation);
 
   // generic implementation of select that accepts a function
   // that can use or override the default variation
+// общая реализация select, принимающая функцию
+  // который может использовать или переопределить вариант по умолчанию
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
 void StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap, std::map<uint16_t, BOStatusConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec);
+
+////template<> StaticBinaryOutputStatusVariation check_for_promotion<BinaryOutputStatusSpec>(const BinaryOutputStatus& value, StaticBinaryOutputStatusVariation variation);
+StaticBinaryOutputStatusVariation_uint8_t check_for_promotion_for_BinaryOutputStatusSpec_static(BinaryOutputStatus* value, StaticBinaryOutputStatusVariation_uint8_t variation);
+
+void clear_selection_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec);
+
+uint16_t select_all_in_StaticDataMap_for_BinaryOutputStatusSpecOver1(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec);
+uint16_t select_all_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec, StaticBinaryOutputStatusVariation_uint8_t variation);
+template<class F> uint16_t select_all_for_BinaryOutputStatusSpec_staticOver3(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec, F get_variation);
+
+////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
+template<class F> uint16_t select_all_in_StaticDataMap_for_BinaryOutputStatusSpecOver3(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec, F get_variation)
+{
+//qDebug()<<"";
+//qDebug()<<"select_all_in_StaticDataMap_for_BinaryOutputStatusSpecOver3_1";
+
+  if (pStaticDataMap_for_BinaryOutputStatusSpec->map.empty())
+  {
+    return 0;
+  }
+  else
+  {
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+////        this->selected = Range::From(map.begin()->first, map.rbegin()->first);
+    pStaticDataMap_for_BinaryOutputStatusSpec->selected = From_in_Range_static(pStaticDataMap_for_BinaryOutputStatusSpec->map.begin()->first,
+        pStaticDataMap_for_BinaryOutputStatusSpec->map.rbegin()->first);
+
+    for (auto& iter : pStaticDataMap_for_BinaryOutputStatusSpec->map)
+    {
+//qDebug()<<"iter___";
+// StaticBinaryOutputStatusVariation_uint8_t check_for_promotion_for_BinaryOutputStatusSpec(BinaryOutputStatus* value, StaticBinaryOutputStatusVariation_uint8_t variation);
+//void SelectedValue_for_BinaryOutputStatusSpec_in_SelectedValue_for_BinaryOutputStatusSpecOver2(SelectedValue_for_BinaryOutputStatusSpec *pSelectedValue_for_BinaryOutputStatusSpec,
+//                                          boolean selected, BinaryOutputStatus* value, StaticBinaryOutputStatusVariation_uint8_t variation);
+////            iter.second.selection = SelectedValue<Spec>{
+////                true, iter.second.value,
+////                check_for_promotion<Spec>(iter.second.value, get_variation(iter.second.config.svariation))};
+      SelectedValue_for_BinaryOutputStatusSpec sSelectedValue_for_BinaryOutputStatusSpec;
+      SelectedValue_for_BinaryOutputStatusSpec_in_SelectedValue_for_BinaryOutputStatusSpecOver2(&sSelectedValue_for_BinaryOutputStatusSpec,
+          true, &iter.second.value,
+          check_for_promotion_for_BinaryOutputStatusSpec_static(&iter.second.value, get_variation(iter.second.config.eEventConfig.svariation)));
+
+      iter.second.selection = sSelectedValue_for_BinaryOutputStatusSpec;
+    }//for
+
+//qDebug()<<"map.size= "<<pStaticDataMap_for_BinaryOutputStatusSpec->map.size();
+    return pStaticDataMap_for_BinaryOutputStatusSpec->map.size();
+  }
+}
 
 ////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
 ////{
@@ -223,12 +281,12 @@ Range get_selected_range_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataM
 ////    return true;
 ////}
 ////
-////template<>
-////bool StaticDataMap<TimeAndIntervalSpec>::update(const TimeAndInterval& value,
-////                                                uint16_t index,
-////                                                EventMode mode,
-////                                                IEventReceiver& receiver);
-////
+boolean update_in_StaticDataMap_for_BinaryOutputStatusSpecOver1(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec,
+    BinaryOutputStatus* value,
+    uint16_t index,
+    EventMode_uint8_t mode,
+    IEventReceiver* receiver);
+
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::update(const typename Spec::meas_t& value,
 ////                                 uint16_t index,
@@ -250,6 +308,12 @@ Range get_selected_range_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataM
 ////{
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
 ////}
+
+boolean update_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec,
+    map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec & iter,
+    BinaryOutputStatus* new_value,
+    EventMode_uint8_t mode,
+    IEventReceiver* receiver);
 
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::update(const map_iter_t& iter,

@@ -103,8 +103,84 @@ void CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_U
     Serializer_for_BinaryOutputStatus *serializer, WSeq_for_Uint16_t *position);
 void CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_UInt8_BinaryOutputStatusOver1(CountWriteIterator_for_UInt8_BinaryOutputStatus *pCountWriteIterator_for_UInt8_BinaryOutputStatus);
 CountWriteIterator_for_UInt8_BinaryOutputStatus Null_in_CountWriteIterator_for_UInt8_BinaryOutputStatus_static(void);
-
 //-------------------Uint8---------------------------------------------------
+//-------------------Uint16---------------------------------------------------
+
+// A facade for writing APDUs to an external buffer
+////template<class CountType, class WriteType> class CountWriteIterator
+typedef struct
+{
+////public:
+////    static CountWriteIterator Null()
+////    {
+////        return CountWriteIterator();
+////    }
+////
+////    CountWriteIterator() : count(0), isValid(false), pPosition(nullptr) {}
+////
+////    CountWriteIterator(const Serializer<WriteType>& serializer, ser4cpp::wseq_t& position)
+////        : count(0),
+////          serializer(serializer),
+////          isValid(position.length() >= CountType::size),
+////          countPosition(position),
+////          pPosition(&position)
+////    {
+////        if (isValid)
+////        {
+////            position.advance(CountType::size);
+////        }
+////    }
+////
+////    ~CountWriteIterator()
+////    {
+////        if (isValid)
+////        {
+////            CountType::write_to(countPosition, count);
+////        }
+////    }
+////
+////    bool Write(const WriteType& value)
+////    {
+////        if (isValid && (serializer.get_size() <= pPosition->length()) && (count < CountType::max_value))
+////        {
+////            serializer.write(value, *this->pPosition);
+////            ++count;
+////            return true;
+////        }
+////        else
+////        {
+////            return false;
+////        }
+////    }
+////
+////    bool IsValid() const
+////    {
+////        return isValid;
+////    }
+////
+////private:
+////    typename CountType::type_t count;
+////    Serializer<WriteType> serializer;
+
+  uint16_t count;
+  Serializer_for_BinaryOutputStatus serializer;
+
+  boolean isValid;
+
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
+} CountWriteIterator_for_UInt16_BinaryOutputStatus;
+
+////} // namespace opendnp3
+boolean IsValid_in_CountWriteIterator_for_UInt16_BinaryOutputStatus(CountWriteIterator_for_UInt16_BinaryOutputStatus *pCountWriteIterator_for_UInt16_BinaryOutputStatus);
+boolean Write_in_CountWriteIterator_for_UInt16_BinaryOutputStatus(CountWriteIterator_for_UInt16_BinaryOutputStatus *pCountWriteIterator_for_UInt16_BinaryOutputStatus, BinaryOutputStatus *value);////const WriteType& value)
+void CountWriteIterator_for_UInt16_BinaryOutputStatus_destr_CountWriteIterator_for_UInt16_BinaryOutputStatus(CountWriteIterator_for_UInt16_BinaryOutputStatus *pCountWriteIterator_for_UInt16_BinaryOutputStatus);
+void CountWriteIterator_for_UInt16_BinaryOutputStatus_in_CountWriteIterator_for_UInt16_BinaryOutputStatusOver2(CountWriteIterator_for_UInt16_BinaryOutputStatus *pCountWriteIterator_for_UInt16_BinaryOutputStatus,
+    Serializer_for_BinaryOutputStatus *serializer, WSeq_for_Uint16_t *position);
+void CountWriteIterator_for_UInt16_BinaryOutputStatus_in_CountWriteIterator_for_UInt16_BinaryOutputStatusOver1(CountWriteIterator_for_UInt16_BinaryOutputStatus *pCountWriteIterator_for_UInt16_BinaryOutputStatus);
+CountWriteIterator_for_UInt16_BinaryOutputStatus Null_in_CountWriteIterator_for_UInt16_BinaryOutputStatus_static(void);
+//-------------------Uint16---------------------------------------------------
+
 
 
 #endif

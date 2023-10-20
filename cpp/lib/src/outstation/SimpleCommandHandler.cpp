@@ -70,7 +70,6 @@ void SimpleCommandHandler_in_SimpleCommandHandler(SimpleCommandHandler *pSimpleC
   setParentPointer_in_ICommandHandler(&(pSimpleCommandHandler->iICommandHandler), pSimpleCommandHandler);
 }
 
-///*
 void Begin_in_SimpleCommandHandler_override(void* pICommandHandler)
 {
   SimpleCommandHandler *parent =
@@ -171,7 +170,6 @@ CommandStatus_uint8_t Operate_AnalogOutputDouble64_in_SimpleCommandHandler_overr
   return Operate_AnalogOutputDouble64_in_SimpleCommandHandler(parent, command, index, handler, opType);
 }
 
-//*/
 ////void SimpleCommandHandler::Begin()
 void Begin_in_SimpleCommandHandler(SimpleCommandHandler *pSimpleCommandHandler)
 {

@@ -18,10 +18,10 @@
  * limitations under the License.
  */
 //#include <QtWidgets>
-//#include "log_info.h"
-//#ifdef  LOG_INFO
-//#include <iostream>
-//#endif
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "APDUBuilders.h"
 
@@ -47,6 +47,19 @@ void ReadIntegrity_in_APDUBuilders_static(APDURequest* request, ClassField* clas
 
 void ReadAllObjects_in_APDUBuilders_static(APDURequest* request, GroupVariationID gvId, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ReadAllObjects_in_APDUBuilders_static1"<<'\n';
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*id.group= "<<(uint16_t)id.group<<'\n';
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*id.variation= "<<(uint16_t)id.variation<<'\n';
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*qc= "<<(uint16_t)qc<<'\n';
+  decrement_stack_info();
+#endif
 //  void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
 //  void AppControlField_in_AppControlFieldOver4(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq);
 ////        request.SetControl(AppControlField(true, true, false, false, seq));
@@ -81,11 +94,13 @@ void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint
 
 bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes)
 {
-//#ifdef  LOG_INFO
-//  increment_stack_info();
-//  std::cout<<getString_stack_info();
-//  std::cout<<"WriteClassHeaders_in_APDUBuilders_static1"<<'\n';
-//#endif
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteClassHeaders_in_APDUBuilders_static1"<<'\n';
+  decrement_stack_info();
+#endif
 //  boolean HasClass1_in_ClassField(ClassField *pClassField);
 ////        if (classes.HasClass1())
   if(HasClass1_in_ClassField(classes))

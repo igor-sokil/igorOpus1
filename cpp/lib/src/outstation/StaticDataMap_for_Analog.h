@@ -30,7 +30,7 @@
 
 ////#include <iterator>
 ////#include <map>
-
+#include "StaticDataMap.h"
 #include "MeasurementTypeSpecs.h"
 #include "Range.h"
 #include "IEventReceiver.h"
@@ -47,12 +47,13 @@
 
 ////bool convert_to_event_class(PointClass pc, EventClass& ec);
 
+  using map_t_StaticDataMap_for_AnalogSpec = std::map<uint16_t, StaticDataCell_for_Analog>;
+  using map_iter_t_StaticDataMap_for_AnalogSpec = typename map_t_StaticDataMap_for_AnalogSpec::iterator;
+
 ////template<class Spec> class StaticDataMap : private Uncopyable
 //typedef struct
 class StaticDataMap_for_AnalogSpec
 {
-  using map_t = std::map<uint16_t, StaticDataCell_for_Analog>;
-  using map_iter_t = typename map_t::iterator;
 
 public:
 ////    StaticDataMap() = default;
@@ -60,17 +61,18 @@ public:
 
   class iterator
   {
-    map_iter_t iter;
-    map_iter_t end;
+    map_iter_t_StaticDataMap_for_AnalogSpec iter;
+    map_iter_t_StaticDataMap_for_AnalogSpec end;
     Range& range;
 
   public:
-    explicit iterator(map_iter_t begin, map_iter_t end, Range& range) : iter(begin), end(end), range(range) {}
+    explicit iterator(map_iter_t_StaticDataMap_for_AnalogSpec begin,
+                      map_iter_t_StaticDataMap_for_AnalogSpec end, Range& range) : iter(begin), end(end), range(range) {}
 
 ////        using value_type = std::pair<uint16_t, SelectedValue<Spec>>;
     using value_type = std::pair<uint16_t, SelectedValue_for_AnalogSpec>;
-    using difference_type = typename map_iter_t::difference_type;
-    using pointer = typename map_iter_t::pointer;
+    using difference_type = typename map_iter_t_StaticDataMap_for_AnalogSpec::difference_type;
+    using pointer = typename map_iter_t_StaticDataMap_for_AnalogSpec::pointer;
 ////        using reference = std::pair<uint16_t, SelectedValue<Spec>&>;
     using reference = std::pair<uint16_t, SelectedValue_for_AnalogSpec&>;
     using iterator_category = std::input_iterator_tag;
@@ -173,7 +175,7 @@ public:
   iterator end();
 
 ////private:
-  map_t map;
+  map_t_StaticDataMap_for_AnalogSpec map;
   Range selected;
 
 ////    Range get_full_range() const;
@@ -200,28 +202,19 @@ void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpec(StaticDataMap_
 Range get_selected_range_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec);
 
 ////template<> StaticAnalogVariation check_for_promotion<AnalogSpec>(const Analog& value, StaticAnalogVariation variation);
-StaticAnalogVariation_uint8_t check_for_promotion_for_AnalogSpec(Analog* value, StaticAnalogVariation_uint8_t variation);
-
-////    size_t select_all(typename Spec::static_variation_t variation)
-////    {
-////        return this->select_all([variation](auto var) { return variation; }); // override default
-////    }
-
-template<class F> uint16_t select_all_for_AnalogSpec_staticOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, F get_variation);
+StaticAnalogVariation_uint8_t check_for_promotion_for_AnalogSpec_static(Analog* value, StaticAnalogVariation_uint8_t variation);
 
 void clear_selection_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec);
 
-// uint16_t select_all_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, StaticAnalogVariation_uint8_t variation);/////F get_variation)
 uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec);
 uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, StaticAnalogVariation_uint8_t variation);
+template<class F> uint16_t select_all_for_AnalogSpec_staticOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, F get_variation);
 
-// uint16_t select_all_for_AnalogSpec_staticOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, StaticAnalogVariation_uint8_t (*get_variation)(StaticAnalogVariation_uint8_t));
-// uint16_t select_all_for_AnalogSpec_staticOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, StaticAnalogVariation_uint8_t (*get_variation)(StaticAnalogVariation_uint8_t))
-//template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
+////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
 template<class F> uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, F get_variation)
 {
-qDebug()<<"";
-qDebug()<<"select_all_in_StaticDataMap_for_AnalogSpecOver3_1";
+//qDebug()<<"";
+//qDebug()<<"select_all_in_StaticDataMap_for_AnalogSpecOver3_1";
 
   if (pStaticDataMap_for_AnalogSpec->map.empty())
   {
@@ -236,7 +229,7 @@ qDebug()<<"select_all_in_StaticDataMap_for_AnalogSpecOver3_1";
 
     for (auto& iter : pStaticDataMap_for_AnalogSpec->map)
     {
-qDebug()<<"iter___";
+//qDebug()<<"iter___";
 // StaticAnalogVariation_uint8_t check_for_promotion_for_AnalogSpec(Analog* value, StaticAnalogVariation_uint8_t variation);
 //void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2(SelectedValue_for_AnalogSpec *pSelectedValue_for_AnalogSpec,
 //                                          boolean selected, Analog* value, StaticAnalogVariation_uint8_t variation);
@@ -246,17 +239,16 @@ qDebug()<<"iter___";
       SelectedValue_for_AnalogSpec sSelectedValue_for_AnalogSpec;
       SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2(&sSelectedValue_for_AnalogSpec,
           true, &iter.second.value,
-          check_for_promotion_for_AnalogSpec(&iter.second.value, get_variation(iter.second.config.
+          check_for_promotion_for_AnalogSpec_static(&iter.second.value, get_variation(iter.second.config.
                                              dDeadbandConfig_for_AnalogInfo.eEventConfig.svariation)));
 
       iter.second.selection = sSelectedValue_for_AnalogSpec;
     }//for
 
-qDebug()<<"map.size= "<<pStaticDataMap_for_AnalogSpec->map.size();
+//qDebug()<<"map.size= "<<pStaticDataMap_for_AnalogSpec->map.size();
     return pStaticDataMap_for_AnalogSpec->map.size();
   }
 }
-
 
 ////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
 
@@ -292,10 +284,12 @@ qDebug()<<"map.size= "<<pStaticDataMap_for_AnalogSpec->map.size();
 ////                                 uint16_t index,
 ////                                 EventMode mode,
 ////                                 IEventReceiver& receiver)
-////{
-////    return update(this->map.find(index), value, mode, receiver);
-////}
-////
+boolean update_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec,
+    Analog* value,
+    uint16_t index,
+    EventMode_uint8_t mode,
+    IEventReceiver* receiver);
+
 ////template<class Spec> void StaticDataMap<Spec>::clear_selection()
 ////{
 ////    // the act of iterating clears the selection
@@ -314,33 +308,13 @@ qDebug()<<"map.size= "<<pStaticDataMap_for_AnalogSpec->map.size();
 ////                                 const typename Spec::meas_t& new_value,
 ////                                 EventMode mode,
 ////                                 IEventReceiver& receiver)
-////{
-////    if (iter == this->map.end())
-////    {
-////        return false;
-////    }
-////
-////    if (mode != EventMode::EventOnly)
-////    {
-////        iter->second.value = new_value;
-////    }
+boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec,
+    map_iter_t_StaticDataMap_for_AnalogSpec & iter,
+    Analog* new_value,
+    EventMode_uint8_t mode,
+    IEventReceiver* receiver);
 
-////    if (mode == EventMode::Force || mode == EventMode::EventOnly || Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-////    {
-////        iter->second.event.lastEvent = new_value;
-////        if (mode != EventMode::Suppress)
-////        {
-////            EventClass ec;
-////            if (convert_to_event_class(iter->second.config.clazz, ec))
-////            {
-////                receiver.Update(Event<Spec>(new_value, iter->first, ec, iter->second.config.evariation));
-////            }
-////        }
-////    }
 
-////    return true;
-////}
-////
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
 ////{

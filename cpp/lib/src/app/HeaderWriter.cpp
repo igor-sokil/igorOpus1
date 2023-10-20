@@ -104,6 +104,17 @@ boolean WriteHeader_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationI
 
 boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteHeaderWithReserve_in_HeaderWriter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*qc= "<<(uint16_t)qc<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*reserve= "<<(uint16_t)reserve<<'\n';
+  decrement_stack_info();
+#endif
 ////    return (position->length() < (3 + reserve)) ? false : WriteHeader(id, qc);
   return (length_in_HasLength_for_Uint16_t(&(pHeaderWriter->position->hHasLength)) <
           (3 + reserve)) ? false : WriteHeader_in_HeaderWriter(pHeaderWriter, id, qc);

@@ -24,6 +24,10 @@
 
 ////#include <cstring>
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <string.h>
 
 #include "header.h"
@@ -70,11 +74,20 @@ void OctetData_in_OctetDataOver3(OctetData *pOctetData,  Buffer *input)
 
 boolean Set_in_OctetDataOver1(OctetData *pOctetData, Buffer *input)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Set_in_OctetDataOver1_1"<<'\n';
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*strlen(input)= "<<(uint16_t)strlen(input)<<'\n';
+  decrement_stack_info();
+#endif
 ////    ser4cpp::rseq_t input_slice(input.data, input.length);
   RSeq_for_Uint16_t  input_slice;
   RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&input_slice, input->data, input->length);
 ////    if (input_slice.is_empty())
-  if(is_not_empty_in_HasLength_for_Uint16_t(&(input_slice.hHasLength)))
+  if(is_empty_in_HasLength_for_Uint16_t(&(input_slice.hHasLength)))
   {
     pOctetData->size = 0;
     pOctetData->buffer[0] = 0x00;
@@ -99,6 +112,15 @@ boolean Set_in_OctetDataOver1(OctetData *pOctetData, Buffer *input)
 
 boolean Set_in_OctetDataOver2(OctetData *pOctetData, char* input)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<""<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Set_in_OctetDataOver2_1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*strlen(input)= "<<(uint16_t)strlen(input)<<'\n';
+  decrement_stack_info();
+#endif
   uint16_t length = strlen(input);
   Buffer bBuffer;
   Buffer_in_BufferOver2(&bBuffer, (uint8_t*)input, length > MAX_SIZE_in_OctetData ? MAX_SIZE_in_OctetData : length);
