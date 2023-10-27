@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 //#include <QtWidgets>
 #include "header.h"
 #include "EventLists.h"
@@ -39,6 +43,13 @@
 
 void EventLists_in_EventLists(EventLists *pEventLists, EventBufferConfig* config)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"EventLists_in_EventLists1"<<'\n';
+  decrement_stack_info();
+#endif
   EventClassCounters_in_EventClassCounters(&(pEventLists->counters));
 //   uint32_t TotalEvents_in_EventBufferConfig(EventBufferConfig *pEventBufferConfig);
 //    pEventLists->events = TotalEvents_in_EventBufferConfig(config);//(config.TotalEvents()),

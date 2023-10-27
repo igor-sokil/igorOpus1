@@ -20,7 +20,7 @@ void RangeWriteIterator_for_UInt8_OctetString_in_RangeWriteIterator_for_UInt8_Oc
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_OctetString_in_RangeWriteIterator_for_UInt8_OctetStringOver1_1"<<'\n';
   decrement_stack_info();
@@ -41,7 +41,7 @@ void RangeWriteIterator_for_UInt8_OctetString_in_RangeWriteIterator_for_UInt8_Oc
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_OctetString_in_RangeWriteIterator_for_UInt8_OctetStringOver2_1"<<'\n';
   decrement_stack_info();
@@ -69,7 +69,7 @@ void RangeWriteIterator_for_UInt8_OctetString_destr_RangeWriteIterator_for_UInt8
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_OctetString_destr_RangeWriteIterator_for_UInt8_OctetString1"<<'\n';
   decrement_stack_info();
@@ -122,7 +122,7 @@ void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_OctetStringOver1_1"<<'\n';
   decrement_stack_info();
@@ -143,7 +143,7 @@ void RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_OctetString_in_RangeWriteIterator_for_UInt16_OctetStringOver2_1"<<'\n';
   decrement_stack_info();
@@ -171,7 +171,7 @@ void RangeWriteIterator_for_UInt16_OctetString_destr_RangeWriteIterator_for_UInt
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_OctetString_destr_RangeWriteIterator_for_UInt16_OctetString1"<<'\n';
   decrement_stack_info();

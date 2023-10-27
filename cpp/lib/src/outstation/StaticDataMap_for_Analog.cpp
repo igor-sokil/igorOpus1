@@ -79,6 +79,42 @@ uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_Analo
   }); // override default
 }
 
+////    size_t select(Range range)
+uint16_t select_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range)
+{
+////        return this->select(range, [](auto var) { return var; }); // use the default
+  return select_in_StaticDataMap_for_AnalogSpecOver5(pStaticDataMap_for_AnalogSpec, range, [](auto var) {
+    return var;
+  }); // use the default
+}
+
+////    bool select(uint16_t index, typename Spec::static_variation_t variation)
+boolean select_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, uint16_t index, StaticAnalogVariation_uint8_t variation)
+{
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+//uint16_t select_in_StaticDataMap_for_AnalogSpecOver4(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range, StaticAnalogVariation_uint8_t variation)
+////        return this->select(Range::From(index, index), variation);
+  return select_in_StaticDataMap_for_AnalogSpecOver4(pStaticDataMap_for_AnalogSpec, From_in_Range_static(index, index), variation) == 1;
+}
+
+////    bool select(uint16_t index)
+boolean select_in_StaticDataMap_for_AnalogSpecOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, uint16_t index)
+{
+//uint16_t select_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range)
+////        return this->select(Range::From(index, index)) == 1;
+  return select_in_StaticDataMap_for_AnalogSpecOver1(pStaticDataMap_for_AnalogSpec, From_in_Range_static(index, index)) == 1;
+}
+
+////    size_t select(Range range, typename Spec::static_variation_t variation)
+uint16_t select_in_StaticDataMap_for_AnalogSpecOver4(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range, StaticAnalogVariation_uint8_t variation)
+{
+////        return this->select(range, [variation](auto var) { return variation; }); // override default
+  return select_in_StaticDataMap_for_AnalogSpecOver5(pStaticDataMap_for_AnalogSpec, range, [variation](auto var) {
+    return variation;
+  }); // override default
+}
+
+
 boolean update_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec,
     Analog* value,
     uint16_t index,
@@ -141,6 +177,32 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
       }
     }
   }
+
+  return true;
+}
+
+////    bool has_any_selection() const
+boolean has_any_selection_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////        return this->selected.IsValid();
+  return IsValid_in_Range(&(pStaticDataMap_for_AnalogSpec->selected));
+}
+
+boolean add_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Analog *value, uint16_t index, AnalogConfig *config)
+{
+  if (pStaticDataMap_for_AnalogSpec->map.find(index) != pStaticDataMap_for_AnalogSpec->map.end())
+  {
+    return false;
+  }
+
+//void  StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver2(StaticDataCell_for_Analog *pStaticDataCell_for_Analog,
+//    Analog* value,
+//    AnalogConfig* config);
+  StaticDataCell_for_Analog sStaticDataCell;
+  StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver2(&sStaticDataCell, value, config);
+
+  pStaticDataMap_for_AnalogSpec->map[index] = sStaticDataCell;////StaticDataCell_for_AnalogSpec{value, config};
 
   return true;
 }

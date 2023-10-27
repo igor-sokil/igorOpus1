@@ -11,6 +11,12 @@
 
 static int16_t stack_info = -1;//рівень стеку для info
 
+int16_t get_stack_info(void);
+int16_t get_stack_info(void)
+{
+  return stack_info;
+}
+
 void increment_stack_info(void)
 {
   stack_info ++;

@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "StaticDataMap_for_Binary.h"
@@ -65,12 +69,51 @@ uint16_t select_all_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_Binar
   }); // override default
 }
 
+////    size_t select(Range range)
+uint16_t select_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Range range)
+{
+////        return this->select(range, [](auto var) { return var; }); // use the default
+  return select_in_StaticDataMap_for_BinarySpecOver5(pStaticDataMap_for_BinarySpec, range, [](auto var) {
+    return var;
+  }); // use the default
+}
+
+////    bool select(uint16_t index, typename Spec::static_variation_t variation)
+boolean select_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, uint16_t index, StaticBinaryVariation_uint8_t variation)
+{
+////        return this->select(Range::From(index, index), variation);
+  return select_in_StaticDataMap_for_BinarySpecOver4(pStaticDataMap_for_BinarySpec, From_in_Range_static(index, index), variation) == 1;
+}
+
+////    bool select(uint16_t index)
+boolean select_in_StaticDataMap_for_BinarySpecOver3(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, uint16_t index)
+{
+////        return this->select(Range::From(index, index)) == 1;
+  return select_in_StaticDataMap_for_BinarySpecOver1(pStaticDataMap_for_BinarySpec, From_in_Range_static(index, index)) == 1;
+}
+
+////    size_t select(Range range, typename Spec::static_variation_t variation)
+uint16_t select_in_StaticDataMap_for_BinarySpecOver4(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Range range, StaticBinaryVariation_uint8_t variation)
+{
+////        return this->select(range, [variation](auto var) { return variation; }); // override default
+  return select_in_StaticDataMap_for_BinarySpecOver5(pStaticDataMap_for_BinarySpec, range, [variation](auto var) {
+    return variation;
+  }); // override default
+}
+
 boolean update_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec,
     Binary* value,
     uint16_t index,
     EventMode_uint8_t mode,
     IEventReceiver* receiver)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_BinarySpecOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
 //boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec,
 //    map_iter_t_StaticDataMap_for_BinarySpec & iter,
 //    Binary* new_value,
@@ -88,8 +131,18 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
     EventMode_uint8_t mode,
     IEventReceiver* receiver)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_BinarySpecOver2_1"<<'\n';
+//  decrement_stack_info();
+#endif
   if (iter == pStaticDataMap_for_BinarySpec->map.end())
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -98,20 +151,39 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
     iter->second.value = *new_value;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_BinarySpecOver2_2"<<'\n';
+#endif
+
   Binary old_value = iter->second.event.eEventCellBase_for_Binary.lastEvent;
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_BinarySpec_static(Binary *old_value, Binary *new_value, BinaryConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
       IsEvent_in_BinarySpec_static(&old_value, new_value, &(iter->second.config)))
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_BinarySpecOver2_3"<<'\n';
+#endif
+
     iter->second.event.eEventCellBase_for_Binary.lastEvent = *new_value;
     if (mode != EventMode_Suppress)
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_BinarySpecOver2_4"<<'\n';
+#endif
+
       EventClass_uint8_t ec;
 //boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
       if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.eEventConfig.clazz, &ec))
       {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_BinarySpecOver2_5"<<'\n';
+#endif
 //void Event_for_BinarySpec_in_Event_for_BinarySpecOver2(Event_for_BinarySpec *pEvent_for_BinarySpec,
 //    Binary* value, uint16_t index,
 //    EventClass_uint8_t clazz,
@@ -128,6 +200,35 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
       }
     }
   }
+
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return true;
+}
+
+////    bool has_any_selection() const
+boolean has_any_selection_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////        return this->selected.IsValid();
+  return IsValid_in_Range(&(pStaticDataMap_for_BinarySpec->selected));
+}
+
+boolean add_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Binary *value, uint16_t index, BinaryConfig *config)
+{
+  if (pStaticDataMap_for_BinarySpec->map.find(index) != pStaticDataMap_for_BinarySpec->map.end())
+  {
+    return false;
+  }
+
+//void  StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver2(StaticDataCell_for_Binary *pStaticDataCell_for_Binary,
+//    Binary* value,
+//    BinaryConfig* config);
+  StaticDataCell_for_Binary sStaticDataCell;
+  StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver2(&sStaticDataCell, value, config);
+
+  pStaticDataMap_for_BinarySpec->map[index] = sStaticDataCell;////StaticDataCell_for_BinarySpec{value, config};
 
   return true;
 }

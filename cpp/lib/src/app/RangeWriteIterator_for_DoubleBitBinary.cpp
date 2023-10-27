@@ -22,7 +22,7 @@ void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -43,7 +43,7 @@ void RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt8_DoubleBitBinary_in_RangeWriteIterator_for_UInt8_DoubleBitBinaryOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -71,7 +71,7 @@ void RangeWriteIterator_for_UInt8_DoubleBitBinary_destr_RangeWriteIterator_for_U
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt8_DoubleBitBinary_destr_RangeWriteIterator_for_UInt8_DoubleBitBinary1"<<'\n';
   decrement_stack_info();
 #endif
@@ -124,7 +124,7 @@ void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UIn
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -145,7 +145,7 @@ void RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UIn
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt16_DoubleBitBinary_in_RangeWriteIterator_for_UInt16_DoubleBitBinaryOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -173,7 +173,7 @@ void RangeWriteIterator_for_UInt16_DoubleBitBinary_destr_RangeWriteIterator_for_
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt16_DoubleBitBinary_destr_RangeWriteIterator_for_UInt16_DoubleBitBinary1"<<'\n';
   decrement_stack_info();
 #endif

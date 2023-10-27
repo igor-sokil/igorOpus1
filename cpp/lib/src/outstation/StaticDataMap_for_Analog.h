@@ -47,8 +47,8 @@
 
 ////bool convert_to_event_class(PointClass pc, EventClass& ec);
 
-  using map_t_StaticDataMap_for_AnalogSpec = std::map<uint16_t, StaticDataCell_for_Analog>;
-  using map_iter_t_StaticDataMap_for_AnalogSpec = typename map_t_StaticDataMap_for_AnalogSpec::iterator;
+using map_t_StaticDataMap_for_AnalogSpec = std::map<uint16_t, StaticDataCell_for_Analog>;
+using map_iter_t_StaticDataMap_for_AnalogSpec = typename map_t_StaticDataMap_for_AnalogSpec::iterator;
 
 ////template<class Spec> class StaticDataMap : private Uncopyable
 //typedef struct
@@ -208,14 +208,14 @@ void clear_selection_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpe
 
 uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec);
 uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, StaticAnalogVariation_uint8_t variation);
+
+boolean has_any_selection_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec);
+
 template<class F> uint16_t select_all_for_AnalogSpec_staticOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, F get_variation);
 
 ////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
 template<class F> uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, F get_variation)
 {
-//qDebug()<<"";
-//qDebug()<<"select_all_in_StaticDataMap_for_AnalogSpecOver3_1";
-
   if (pStaticDataMap_for_AnalogSpec->map.empty())
   {
     return 0;
@@ -240,7 +240,7 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver3(Stati
       SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2(&sSelectedValue_for_AnalogSpec,
           true, &iter.second.value,
           check_for_promotion_for_AnalogSpec_static(&iter.second.value, get_variation(iter.second.config.
-                                             dDeadbandConfig_for_AnalogInfo.eEventConfig.svariation)));
+              dDeadbandConfig_for_AnalogInfo.eEventConfig.svariation)));
 
       iter.second.selection = sSelectedValue_for_AnalogSpec;
     }//for
@@ -248,6 +248,69 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver3(Stati
 //qDebug()<<"map.size= "<<pStaticDataMap_for_AnalogSpec->map.size();
     return pStaticDataMap_for_AnalogSpec->map.size();
   }
+}
+
+uint16_t select_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range);
+boolean select_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, uint16_t index, StaticAnalogVariation_uint8_t variation);
+boolean select_in_StaticDataMap_for_AnalogSpecOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, uint16_t index);
+uint16_t select_in_StaticDataMap_for_AnalogSpecOver4(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range, StaticAnalogVariation_uint8_t variation);
+
+template<class F> uint16_t select_in_StaticDataMap_for_AnalogSpecOver5(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range, F get_variation);
+////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select(Range range, F get_variation)
+template<class F> uint16_t select_in_StaticDataMap_for_AnalogSpecOver5(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range, F get_variation)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////    if (!range.IsValid())
+  if (!IsValid_in_Range(&range))
+  {
+    return 0;
+  }
+
+  const auto start = pStaticDataMap_for_AnalogSpec->map.lower_bound(range.start);
+
+  if (start == pStaticDataMap_for_AnalogSpec->map.end())
+  {
+    return 0;
+  }
+
+//boolean Contains_in_Range(Range *pRange, uint16_t index);
+////    if (!range.Contains(start->first))
+  if (!Contains_in_Range(&range, start->first))
+  {
+    return 0;
+  }
+
+  uint16_t stop = 0;
+  uint16_t count = 0;
+
+  for (auto iter = start; iter != pStaticDataMap_for_AnalogSpec->map.end(); ++iter)
+  {
+////        if (!range.Contains(iter->first))
+    if (!Contains_in_Range(&range, iter->first))
+    {
+      break;
+    }
+
+    stop = iter->first;
+//StaticAnalogVariation_uint8_t check_for_promotion_for_AnalogSpec_static(Analog* value, StaticAnalogVariation_uint8_t variation);
+////        iter->second.selection = SelectedValue<Spec>{
+////            true, iter->second.value,
+////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
+    Analog aAnalog = iter->second.value;
+    SelectedValue_for_AnalogSpec sSelectedValue_for_AnalogSpec = {
+      true, aAnalog, check_for_promotion_for_AnalogSpec_static(&aAnalog, get_variation(iter->second.config.dDeadbandConfig_for_AnalogInfo.eEventConfig.svariation))
+    };
+    iter->second.selection = sSelectedValue_for_AnalogSpec;
+    ++count;
+  }
+
+//Range Union_in_Range(Range *pRange, Range* other);
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+////    this->selected = this->selected.Union(Range::From(start->first, stop));
+  Range rRange = From_in_Range_static(start->first, stop);
+  pStaticDataMap_for_AnalogSpec->selected = Union_in_Range(&(pStaticDataMap_for_AnalogSpec->selected), &rRange);
+
+  return count;
 }
 
 ////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
@@ -260,6 +323,7 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver3(Stati
 ////    }
 ////}
 
+boolean add_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Analog *value, uint16_t index, AnalogConfig *config);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::add(const typename Spec::meas_t& value, uint16_t index, typename Spec::config_t config)
 ////{

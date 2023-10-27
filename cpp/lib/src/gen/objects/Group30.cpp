@@ -104,7 +104,7 @@ boolean Write_in_Group30Var1_static(Group30Var1* arg, WSeq_for_Uint16_t* buffer)
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*arg->flags= "<<std::hex<<(uint16_t)arg->flags<<'\n';
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*arg->value= "<<std::hex<<(uint32_t)arg->value<<'\n';
+  std::cout<<"*arg->value= "<<std::hex<<(uint32_t)arg->value<<std::dec<<'\n';
   decrement_stack_info();
 #endif
 ////  return LittleEndian::write(buffer, arg.flags, arg.value);
@@ -158,7 +158,7 @@ Group30Var1 Apply_in_ConvertGroup30Var1_static(Analog* src, uint8_t Overrange)
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*src.value= "<<std::hex<<(double)(src->tTypedMeasurement_for_Double64).value<<'\n';
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*target.value= "<<std::hex<<(uint32_t)(target.value)<<'\n';
+  std::cout<<"*target.value= "<<std::hex<<(uint32_t)(target.value)<<std::dec<<'\n';
   decrement_stack_info();
 #endif
   return target;
@@ -213,7 +213,7 @@ boolean Write_in_Group30Var2_static(Group30Var2* arg, WSeq_for_Uint16_t* buffer)
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*arg->flags= "<<std::hex<<(uint16_t)arg->flags<<'\n';
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*arg->value= "<<std::hex<<(uint16_t)arg->value<<'\n';
+  std::cout<<"*arg->value= "<<std::hex<<(uint16_t)arg->value<<std::dec<<'\n';
   decrement_stack_info();
 #endif
 ////  return LittleEndian::write(buffer, arg.flags, arg.value);

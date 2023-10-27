@@ -44,7 +44,7 @@
 void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, OutstationConfig* config, DatabaseConfig* db_config)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OutstationTestObject_in_OutstationTestObject1"<<'\n';
@@ -112,7 +112,7 @@ uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationT
 uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnTxReady_in_OutstationTestObject1"<<'\n';
@@ -134,6 +134,13 @@ uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTest
 ////size_t OutstationTestObject::SendToOutstation(const std::string& hex)
 uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, std::string& hex)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SendToOutstation_in_OutstationTestObject1"<<'\n';
+  decrement_stack_info();
+#endif
 //   void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
 ////    HexSequence hs(hex);
   HexSequence hs;

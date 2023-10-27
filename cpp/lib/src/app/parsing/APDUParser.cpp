@@ -176,16 +176,12 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
 //    ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader *header, RSeq_for_Uint16_t *buffer);////, Logger* pLogger);
   ParseResult_uint8_t result = ParseObjectHeader_in_ObjectHeaderParser_static(&header, buffer);//, pLogger);
 
-//pMemory_ObjectHeader_1=  MEMORY_ObjectHeader_1(0, &header);
-
   if (result != ParseResult_OK)
   {
     return result;
   }
 
   GroupVariationRecord GV = GetRecord_in_GroupVariationRecord_static(header.group, header.variation);
-
-//pMemory_GroupVariationRecord_1=  MEMORY_GroupVariationRecord_1(0, &GV);
 
   if (GV.enumeration == GroupVariation_UNKNOWN)
   {

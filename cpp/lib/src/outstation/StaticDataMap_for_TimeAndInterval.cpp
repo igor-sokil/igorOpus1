@@ -74,54 +74,61 @@ uint16_t select_all_in_StaticDataMap_for_TimeAndIntervalSpecOver2(StaticDataMap_
     return variation;
   }); // override default
 }
-/*
-boolean update_in_StaticDataMap_for_TimeAndIntervalSpecOver2(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec,
-    map_iter_t_StaticDataMap_for_TimeAndIntervalSpec & iter,
-    TimeAndInterval* new_value,
-    EventMode_uint8_t mode,
-    IEventReceiver* receiver)
+
+////    size_t select(Range range)
+uint16_t select_in_StaticDataMap_for_TimeAndIntervalSpecOver1(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, Range range)
 {
-  if (iter == pStaticDataMap_for_TimeAndIntervalSpec->map.end())
+////        return this->select(range, [](auto var) { return var; }); // use the default
+  return select_in_StaticDataMap_for_TimeAndIntervalSpecOver5(pStaticDataMap_for_TimeAndIntervalSpec, range, [](auto var) {
+    return var;
+  }); // use the default
+}
+
+////    bool select(uint16_t index, typename Spec::static_variation_t variation)
+boolean select_in_StaticDataMap_for_TimeAndIntervalSpecOver2(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, uint16_t index, StaticTimeAndIntervalVariation_uint8_t variation)
+{
+////        return this->select(Range::From(index, index), variation);
+  return select_in_StaticDataMap_for_TimeAndIntervalSpecOver4(pStaticDataMap_for_TimeAndIntervalSpec, From_in_Range_static(index, index), variation) == 1;
+}
+
+////    bool select(uint16_t index)
+boolean select_in_StaticDataMap_for_TimeAndIntervalSpecOver3(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, uint16_t index)
+{
+////        return this->select(Range::From(index, index)) == 1;
+  return select_in_StaticDataMap_for_TimeAndIntervalSpecOver1(pStaticDataMap_for_TimeAndIntervalSpec, From_in_Range_static(index, index)) == 1;
+}
+
+////    size_t select(Range range, typename Spec::static_variation_t variation)
+uint16_t select_in_StaticDataMap_for_TimeAndIntervalSpecOver4(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, Range range, StaticTimeAndIntervalVariation_uint8_t variation)
+{
+////        return this->select(range, [variation](auto var) { return variation; }); // override default
+  return select_in_StaticDataMap_for_TimeAndIntervalSpecOver5(pStaticDataMap_for_TimeAndIntervalSpec, range, [variation](auto var) {
+    return variation;
+  }); // override default
+}
+
+////    bool has_any_selection() const
+boolean has_any_selection_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////        return this->selected.IsValid();
+ return IsValid_in_Range(&(pStaticDataMap_for_TimeAndIntervalSpec->selected));
+}
+
+boolean add_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, TimeAndInterval *value, uint16_t index, TimeAndIntervalConfig *config)
+{
+  if (pStaticDataMap_for_TimeAndIntervalSpec->map.find(index) != pStaticDataMap_for_TimeAndIntervalSpec->map.end())
   {
     return false;
   }
 
-  if (mode != EventMode_EventOnly)
-  {
-    iter->second.value = *new_value;
-  }
+//void  StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver2(StaticDataCell_for_TimeAndInterval *pStaticDataCell_for_TimeAndInterval,
+//    TimeAndInterval* value,
+//    TimeAndIntervalConfig* config);
+  StaticDataCell_for_TimeAndInterval sStaticDataCell;
+  StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver2(&sStaticDataCell, value, config);
 
-  TimeAndInterval old_value = iter->second.event.eEventCellBase_for_TimeAndInterval.lastEvent;
-  if (mode == EventMode_Force || mode == EventMode_EventOnly ||
-//boolean IsEvent_in_TimeAndIntervalSpec_static(TimeAndInterval *old_value, TimeAndInterval *new_value, TimeAndIntervalConfig *config);
-////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-      IsEvent_in_TimeAndIntervalSpec_static(&old_value, new_value, &(iter->second.config)))
-  {
-    iter->second.event.eEventCellBase_for_TimeAndInterval.lastEvent = *new_value;
-    if (mode != EventMode_Suppress)
-    {
-      EventClass_uint8_t ec;
-//boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
-////            if (convert_to_event_class(iter->second.config.clazz, ec))
-      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.eEventConfig.clazz, &ec))
-      {
-//void Event_for_TimeAndIntervalSpec_in_Event_for_TimeAndIntervalSpecOver2(Event_for_TimeAndIntervalSpec *pEvent_for_TimeAndIntervalSpec,
-//    TimeAndInterval* value, uint16_t index,
-//    EventClass_uint8_t clazz,
-//    event_variation_t_in_TimeAndIntervalInfo variation);
-//void Update_TimeAndIntervalSpec_in_IEventReceiver(IEventReceiver *, Event_for_TimeAndIntervalSpec* evt);
-////                receiver.Update(Event<Spec>(new_value, iter->first, ec, iter->second.config.evariation));
-        Event_for_TimeAndIntervalSpec eEvent_for_TimeAndIntervalSpec;
-        Event_for_TimeAndIntervalSpec_in_Event_for_TimeAndIntervalSpecOver2(&eEvent_for_TimeAndIntervalSpec,
-            new_value, iter->first,
-            ec,
-            iter->second.config.dDeadbandConfig_for_TimeAndIntervalInfo.eEventConfig.evariation);
-        Update_TimeAndIntervalSpec_in_IEventReceiver(receiver, &eEvent_for_TimeAndIntervalSpec);
-
-      }
-    }
-  }
+  pStaticDataMap_for_TimeAndIntervalSpec->map[index] = sStaticDataCell;////StaticDataCell_for_TimeAndIntervalSpec{value, config};
 
   return true;
 }
-*/

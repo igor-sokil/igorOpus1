@@ -74,6 +74,38 @@ uint16_t select_all_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_fo
   }); // override default
 }
 
+////    size_t select(Range range)
+uint16_t select_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, Range range)
+{
+////        return this->select(range, [](auto var) { return var; }); // use the default
+  return select_in_StaticDataMap_for_FrozenCounterSpecOver5(pStaticDataMap_for_FrozenCounterSpec, range, [](auto var) {
+    return var;
+  }); // use the default
+}
+
+////    bool select(uint16_t index, typename Spec::static_variation_t variation)
+boolean select_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, uint16_t index, StaticFrozenCounterVariation_uint8_t variation)
+{
+////        return this->select(Range::From(index, index), variation);
+  return select_in_StaticDataMap_for_FrozenCounterSpecOver4(pStaticDataMap_for_FrozenCounterSpec, From_in_Range_static(index, index), variation) == 1;
+}
+
+////    bool select(uint16_t index)
+boolean select_in_StaticDataMap_for_FrozenCounterSpecOver3(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, uint16_t index)
+{
+////        return this->select(Range::From(index, index)) == 1;
+  return select_in_StaticDataMap_for_FrozenCounterSpecOver1(pStaticDataMap_for_FrozenCounterSpec, From_in_Range_static(index, index)) == 1;
+}
+
+////    size_t select(Range range, typename Spec::static_variation_t variation)
+uint16_t select_in_StaticDataMap_for_FrozenCounterSpecOver4(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, Range range, StaticFrozenCounterVariation_uint8_t variation)
+{
+////        return this->select(range, [variation](auto var) { return variation; }); // override default
+  return select_in_StaticDataMap_for_FrozenCounterSpecOver5(pStaticDataMap_for_FrozenCounterSpec, range, [variation](auto var) {
+    return variation;
+  }); // override default
+}
+
 boolean update_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec,
     FrozenCounter* value,
     uint16_t index,
@@ -137,6 +169,32 @@ boolean update_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_Fro
       }
     }
   }
+
+  return true;
+}
+
+////    bool has_any_selection() const
+boolean has_any_selection_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////        return this->selected.IsValid();
+ return IsValid_in_Range(&(pStaticDataMap_for_FrozenCounterSpec->selected));
+}
+
+boolean add_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, FrozenCounter *value, uint16_t index, FrozenCounterConfig *config)
+{
+  if (pStaticDataMap_for_FrozenCounterSpec->map.find(index) != pStaticDataMap_for_FrozenCounterSpec->map.end())
+  {
+    return false;
+  }
+
+//void  StaticDataCell_for_FrozenCounter_in_StaticDataCell_for_FrozenCounterOver2(StaticDataCell_for_FrozenCounter *pStaticDataCell_for_FrozenCounter,
+//    FrozenCounter* value,
+//    FrozenCounterConfig* config);
+  StaticDataCell_for_FrozenCounter sStaticDataCell;
+  StaticDataCell_for_FrozenCounter_in_StaticDataCell_for_FrozenCounterOver2(&sStaticDataCell, value, config);
+
+  pStaticDataMap_for_FrozenCounterSpec->map[index] = sStaticDataCell;////StaticDataCell_for_FrozenCounterSpec{value, config};
 
   return true;
 }

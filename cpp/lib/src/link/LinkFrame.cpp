@@ -238,8 +238,6 @@ RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
   decrement_stack_info();
 #endif
 
-//pMemory_LinkHeader_1=  MEMORY_LinkHeader_1(0, &header);
-
 //    void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
 ////    header.Write(buffer);
   Write_in_LinkHeader(&header, buffer->buffer_);

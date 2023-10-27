@@ -74,6 +74,38 @@ uint16_t select_all_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_
   }); // override default
 }
 
+////    size_t select(Range range)
+uint16_t select_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, Range range)
+{
+////        return this->select(range, [](auto var) { return var; }); // use the default
+  return select_in_StaticDataMap_for_DoubleBitBinarySpecOver5(pStaticDataMap_for_DoubleBitBinarySpec, range, [](auto var) {
+    return var;
+  }); // use the default
+}
+
+////    bool select(uint16_t index, typename Spec::static_variation_t variation)
+boolean select_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, uint16_t index, StaticDoubleBinaryVariation_uint8_t variation)
+{
+////        return this->select(Range::From(index, index), variation);
+  return select_in_StaticDataMap_for_DoubleBitBinarySpecOver4(pStaticDataMap_for_DoubleBitBinarySpec, From_in_Range_static(index, index), variation) == 1;
+}
+
+////    bool select(uint16_t index)
+boolean select_in_StaticDataMap_for_DoubleBitBinarySpecOver3(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, uint16_t index)
+{
+////        return this->select(Range::From(index, index)) == 1;
+  return select_in_StaticDataMap_for_DoubleBitBinarySpecOver1(pStaticDataMap_for_DoubleBitBinarySpec, From_in_Range_static(index, index)) == 1;
+}
+
+////    size_t select(Range range, typename Spec::static_variation_t variation)
+uint16_t select_in_StaticDataMap_for_DoubleBitBinarySpecOver4(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, Range range, StaticDoubleBinaryVariation_uint8_t variation)
+{
+////        return this->select(range, [variation](auto var) { return variation; }); // override default
+  return select_in_StaticDataMap_for_DoubleBitBinarySpecOver5(pStaticDataMap_for_DoubleBitBinarySpec, range, [variation](auto var) {
+    return variation;
+  }); // override default
+}
+
 boolean update_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec,
     DoubleBitBinary* value,
     uint16_t index,
@@ -137,6 +169,32 @@ boolean update_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_D
       }
     }
   }
+
+  return true;
+}
+
+////    bool has_any_selection() const
+boolean has_any_selection_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////        return this->selected.IsValid();
+ return IsValid_in_Range(&(pStaticDataMap_for_DoubleBitBinarySpec->selected));
+}
+
+boolean add_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, DoubleBitBinary *value, uint16_t index, DoubleBitBinaryConfig *config)
+{
+  if (pStaticDataMap_for_DoubleBitBinarySpec->map.find(index) != pStaticDataMap_for_DoubleBitBinarySpec->map.end())
+  {
+    return false;
+  }
+
+//void  StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver2(StaticDataCell_for_DoubleBitBinary *pStaticDataCell_for_DoubleBitBinary,
+//    DoubleBitBinary* value,
+//    DoubleBitBinaryConfig* config);
+  StaticDataCell_for_DoubleBitBinary sStaticDataCell;
+  StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver2(&sStaticDataCell, value, config);
+
+  pStaticDataMap_for_DoubleBitBinarySpec->map[index] = sStaticDataCell;////StaticDataCell_for_DoubleBitBinarySpec{value, config};
 
   return true;
 }

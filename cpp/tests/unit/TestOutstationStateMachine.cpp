@@ -30,7 +30,7 @@ using namespace opendnp3;
 
 #define SUITE(name) "OutstationStateMachineTestSuite - " name
 
-TEST_CASE(SUITE("Responds to repeat READ request with same octets as last response"))
+TEST_CASE(SUITE("1Responds to repeat READ request with same octets as last response"))
 {
     OutstationConfig config;
     OutstationTestObject t(config, configure::by_count_of::analog_input(1));
@@ -48,7 +48,7 @@ TEST_CASE(SUITE("Responds to repeat READ request with same octets as last respon
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 1E 01 00 00 00 02 00 00 00 00");
 }
 
-TEST_CASE(SUITE("Responds to non-READ request while waiting for unsolicited confirm"))
+TEST_CASE(SUITE("2Responds to non-READ request while waiting for unsolicited confirm"))
 {
     OutstationConfig config;
     config.params.allowUnsolicited = true;

@@ -72,7 +72,7 @@ struct EventReceiver : public IEventReceiver
 
 #define SUITE(name) "StaticDataMap - " name
 
-TEST_CASE(SUITE("update returns false for values that don't exist"))
+TEST_CASE(SUITE("1update returns false for values that don't exist"))
 {
     StaticDataMap<BinarySpec> map;
 
@@ -81,13 +81,13 @@ TEST_CASE(SUITE("update returns false for values that don't exist"))
     REQUIRE(receiver.count == 0);
 }
 
-TEST_CASE(SUITE("can only add points that aren't already defined"))
+TEST_CASE(SUITE("2can only add points that aren't already defined"))
 {
     StaticDataMap<BinarySpec> map{{{0, {}}}};
     REQUIRE_FALSE(map.add(Binary(), 0, BinaryConfig()));
 }
 
-TEST_CASE(SUITE("can detect events on existing point"))
+TEST_CASE(SUITE("3can detect events on existing point"))
 {
     StaticDataMap<BinarySpec> map{{{0, {}}}};
     map.select_all();
@@ -100,7 +100,7 @@ TEST_CASE(SUITE("can detect events on existing point"))
     REQUIRE(receiver.count == 1);
 }
 
-TEST_CASE(SUITE("can force events on existing point"))
+TEST_CASE(SUITE("4can force events on existing point"))
 {
     StaticDataMap<BinarySpec> map{{{0, {}}}};
 
@@ -115,7 +115,7 @@ TEST_CASE(SUITE("can force events on existing point"))
     REQUIRE(receiver.count == 2);
 }
 
-TEST_CASE(SUITE("can ignore events on existing point"))
+TEST_CASE(SUITE("5can ignore events on existing point"))
 {
     StaticDataMap<BinarySpec> map{{{0, {}}}};
 
@@ -129,7 +129,7 @@ TEST_CASE(SUITE("can ignore events on existing point"))
     REQUIRE(receiver.count == 0);
 }
 
-TEST_CASE(SUITE("can generate events on existing point"))
+TEST_CASE(SUITE("6can generate events on existing point"))
 {
     StaticDataMap<BinarySpec> map{{{0, {}}}};
     map.select_all();
@@ -148,7 +148,7 @@ TEST_CASE(SUITE("can generate events on existing point"))
     REQUIRE(receiver.latestBinaryEvent.value.value == true);
 }
 
-TEST_CASE(SUITE("can select all points using default variation and iterate"))
+TEST_CASE(SUITE("7can select all points using default variation and iterate"))
 {
     StaticDataMap<BinarySpec> map{{
         {0, {}},
@@ -172,7 +172,7 @@ TEST_CASE(SUITE("can select all points using default variation and iterate"))
     }
 }
 
-TEST_CASE(SUITE("can select all points using specified variation and iterate"))
+TEST_CASE(SUITE("8can select all points using specified variation and iterate"))
 {
     const auto other_variation = StaticBinaryVariation::Group1Var1;
 
@@ -199,7 +199,7 @@ TEST_CASE(SUITE("can select all points using specified variation and iterate"))
     }
 }
 
-TEST_CASE(SUITE("can select a range and iterate"))
+TEST_CASE(SUITE("9can select a range and iterate"))
 {
     const auto other_variation = StaticBinaryVariation::Group1Var1;
 
@@ -225,7 +225,7 @@ TEST_CASE(SUITE("can select a range and iterate"))
     REQUIRE(items.size() == 3);
 }
 
-TEST_CASE(SUITE("can select beyond the first entry"))
+TEST_CASE(SUITE("10can select beyond the first entry"))
 {
     const auto other_variation = StaticBinaryVariation::Group1Var1;
 
@@ -250,7 +250,7 @@ TEST_CASE(SUITE("can select beyond the first entry"))
     REQUIRE(items[1].first == 7);
 }
 
-TEST_CASE(SUITE("iterating over part of the selection clears it"))
+TEST_CASE(SUITE("11iterating over part of the selection clears it"))
 {
     const auto other_variation = StaticBinaryVariation::Group1Var1;
 
@@ -283,7 +283,7 @@ TEST_CASE(SUITE("iterating over part of the selection clears it"))
     REQUIRE(items[0].first == 7);
 }
 
-TEST_CASE(SUITE("iterating over the entire selection clears it"))
+TEST_CASE(SUITE("12iterating over the entire selection clears it"))
 {
     const auto other_variation = StaticBinaryVariation::Group1Var1;
 
@@ -311,7 +311,7 @@ TEST_CASE(SUITE("iterating over the entire selection clears it"))
     REQUIRE(items.empty());
 }
 
-TEST_CASE(SUITE("selecting a range that doesn't match anything return Range::Invalid"))
+TEST_CASE(SUITE("13selecting a range that doesn't match anything return Range::Invalid"))
 {
     StaticDataMap<BinarySpec> map{{
         {1, {}},
@@ -322,7 +322,7 @@ TEST_CASE(SUITE("selecting a range that doesn't match anything return Range::Inv
     REQUIRE_FALSE(map.get_selected_range().IsValid());
 }
 
-TEST_CASE(SUITE("selecting the lower bound only returns a partial range"))
+TEST_CASE(SUITE("14selecting the lower bound only returns a partial range"))
 {
     StaticDataMap<BinarySpec> map{{
         {1, {}},
@@ -336,7 +336,7 @@ TEST_CASE(SUITE("selecting the lower bound only returns a partial range"))
     REQUIRE(selected.stop == 1);
 }
 
-TEST_CASE(SUITE("selecting the upper bound only returns a partial range"))
+TEST_CASE(SUITE("15selecting the upper bound only returns a partial range"))
 {
     StaticDataMap<BinarySpec> map{{
         {1, {}},
@@ -350,7 +350,7 @@ TEST_CASE(SUITE("selecting the upper bound only returns a partial range"))
     REQUIRE(selected.stop == 7);
 }
 
-TEST_CASE(SUITE("selecting the beyond the full range returns a partial range"))
+TEST_CASE(SUITE("16selecting the beyond the full range returns a partial range"))
 {
     StaticDataMap<BinarySpec> map{{
         {1, {}},
@@ -364,7 +364,7 @@ TEST_CASE(SUITE("selecting the beyond the full range returns a partial range"))
     REQUIRE(selected.stop == 7);
 }
 
-TEST_CASE(SUITE("can select disjoint ranges and iterate over them"))
+TEST_CASE(SUITE("17can select disjoint ranges and iterate over them"))
 {
     StaticDataMap<BinarySpec> map{{
         {1, {}},

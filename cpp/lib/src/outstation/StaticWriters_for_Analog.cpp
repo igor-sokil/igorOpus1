@@ -25,11 +25,26 @@
 boolean LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(StaticDataMap_for_AnalogSpec& map,
     RangeWriteIterator_for_UInt8_Analog *writer, StaticAnalogVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*map.size()= "<<map.map.size()<<'\n';
+  decrement_stack_info();
+#endif
 ////    auto next_index = map.get_selected_range().start;
   uint16_t  next_index = get_selected_range_in_StaticDataMap_for_AnalogSpec(&map).start;
 
   for (const auto& elem : map)
   {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*for_in_8"<<'\n';
+  decrement_stack_info();
+#endif
     if (elem.second.variation != variation)
     {
       // the variation has changed
@@ -39,6 +54,7 @@ boolean LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(StaticDataMa
     if (elem.first != next_index)
     {
       // we've loaded all we can with a contiguous range
+// мы загрузили все, что могли, в непрерывном диапазоне
       return true;
     }
 
@@ -64,11 +80,25 @@ boolean LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(StaticDataMa
 boolean LoadWithRangeIterator_AnalogSpec_for_UInt16_in_StaticWriters(StaticDataMap_for_AnalogSpec& map,
     RangeWriteIterator_for_UInt16_Analog *writer, StaticAnalogVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"LoadWithRangeIterator_AnalogSpec_for_UInt16_in_StaticWriters1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    auto next_index = map.get_selected_range().start;
   uint16_t  next_index = get_selected_range_in_StaticDataMap_for_AnalogSpec(&map).start;
 
   for (const auto& elem : map)
   {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*for_in_16"<<'\n';
+  decrement_stack_info();
+#endif
+
     if (elem.second.variation != variation)
     {
       // the variation has changed
@@ -116,8 +146,23 @@ boolean LoadWithRangeIterator_AnalogSpec_for_UInt16_in_StaticWriters(StaticDataM
 ////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean WriteWithSerializer_AnalogSpec_for_Group30Var1_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteWithSerializer_AnalogSpec_for_Group30Var1_in_StaticWriters_static1"<<'\n';
+#endif
+
 ////    const auto range = map.get_selected_range();
   Range  range = get_selected_range_in_StaticDataMap_for_AnalogSpec(&map);
+
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*range.start= "<<(uint16_t)range.start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*range.stop= "<<(uint16_t)range.stop<<'\n';
+  decrement_stack_info();
+#endif
 
 ////    if (range.IsOneByte())
   if (IsOneByte_in_Range(&range))
@@ -154,6 +199,7 @@ boolean WriteWithSerializer_AnalogSpec_for_Group30Var1_in_StaticWriters_static(S
 ////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
   boolean btmp = LoadWithRangeIterator_AnalogSpec_for_UInt16_in_StaticWriters(map, &iter, StaticAnalogVariation_Group30Var1);
   RangeWriteIterator_for_UInt16_Analog_destr_RangeWriteIterator_for_UInt16_Analog(&iter);
+
   return btmp;
 }
 //----------------------------------------------Group30Var1------------------------------------------
@@ -208,10 +254,12 @@ boolean WriteWithSerializer_AnalogSpec_for_Group30Var2_in_StaticWriters_static(S
 static_write_func_t_for_AnalogSpec get_for_AnalogSpec_in_StaticWriters_static(StaticAnalogVariation_uint8_t variation)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_AnalogSpec_in_StaticWriters_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticAnalogVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
 #endif
   switch (variation)
   {

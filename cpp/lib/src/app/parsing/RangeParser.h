@@ -181,9 +181,6 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
 ////    return RangeParser(range, size, &InvokeRangeOf<Descriptor>);
 ////}
 
-////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
-RangeParser FromFixedSize_for_Group1Var2_in_RangeParser_static(Range* range);
-
 ////template<class Type> RangeParser RangeParser::FromFixedSizeType(const Range& range)
 ////{
 ////    const auto size = range.Count() * Type::Size();
@@ -196,11 +193,207 @@ RangeParser FromFixedSize_for_Group1Var2_in_RangeParser_static(Range* range);
 ////                                const ser4cpp::rseq_t& buffer,
 ////                                IAPDUHandler& handler)
 
+
+//---------------------Group1Var2------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group1Var2_in_RangeParser_static(Range* range);
+
 void InvokeRangeOf_for_Group1Var2_in_RangeParser_static(HeaderRecord* record,
     Range* range,
     RSeq_for_Uint16_t* buffer,
     IAPDUHandler* handler);
+//---------------------Group1Var2------------------------------------------------------
+//---------------------Group3Var2------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group3Var2_in_RangeParser_static(Range* range);
 
+void InvokeRangeOf_for_Group3Var2_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group3Var2------------------------------------------------------
+//---------------------Group10Var2------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group10Var2_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group10Var2_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group10Var2------------------------------------------------------
+//---------------------Group20Var1------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group20Var1_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group20Var1_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group20Var1------------------------------------------------------
+//---------------------Group20Var2------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group20Var2_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group20Var2_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group20Var2------------------------------------------------------
+//---------------------Group20Var5------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group20Var5_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group20Var5_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group20Var5------------------------------------------------------
+//---------------------Group20Var6------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group20Var6_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group20Var6_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group20Var6------------------------------------------------------
+//---------------------Group21Var1------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group21Var1_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group21Var1_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group21Var1------------------------------------------------------
+//---------------------Group21Var2------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group21Var2_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group21Var2_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group21Var2------------------------------------------------------
+//---------------------Group21Var5------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group21Var5_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group21Var5_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group21Var5------------------------------------------------------
+//---------------------Group21Var6------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group21Var6_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group21Var6_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group21Var6------------------------------------------------------
+//---------------------Group21Var9------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group21Var9_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group21Var9_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group21Var9------------------------------------------------------
+//---------------------Group21Var10------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group21Var10_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group21Var10_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group21Var10------------------------------------------------------
+//---------------------Group30Var1------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group30Var1_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group30Var1_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group30Var1------------------------------------------------------
+//---------------------Group30Var2------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group30Var2_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group30Var2_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group30Var2------------------------------------------------------
+//---------------------Group30Var3------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group30Var3_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group30Var3_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group30Var3------------------------------------------------------
+//---------------------Group30Var4------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group30Var4_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group30Var4_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group30Var4------------------------------------------------------
+//---------------------Group30Var5------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group30Var5_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group30Var5_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group30Var5------------------------------------------------------
+
+//---------------------Group40Var1------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group40Var1_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group40Var1_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group40Var1------------------------------------------------------
+//---------------------Group40Var2------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group40Var2_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group40Var2_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group40Var2------------------------------------------------------
+//---------------------Group40Var3------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group40Var3_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group40Var3_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group40Var3------------------------------------------------------
+
+//---------------------Group50Var4------------------------------------------------------
+////template<class Descriptor> RangeParser RangeParser::FromFixedSize(const Range& range)
+RangeParser FromFixedSize_for_Group50Var4_in_RangeParser_static(Range* range);
+
+void InvokeRangeOf_for_Group50Var4_in_RangeParser_static(HeaderRecord* record,
+    Range* range,
+    RSeq_for_Uint16_t* buffer,
+    IAPDUHandler* handler);
+//---------------------Group50Var4------------------------------------------------------
 
 ////template<class Type>
 ////void RangeParser::InvokeRangeOfType(const HeaderRecord& record,
@@ -253,30 +446,20 @@ void InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static(
                                           IAPDUHandler* handler);
 //------------------------------IINValue---------------------------------------------
 
-////template<class Type> RangeParser RangeParser::FromDoubleBitfieldType(const Range& range)
-////{
-////    const auto size = NumBytesInDoubleBits(range.Count());
-////    return RangeParser(range, size, &InvokeRangeDoubleBitfieldType<Type>);
-////}
-////
+RangeParser FromDoubleBitfieldType_for_DoubleBitBinary_in_RangeParser_static(Range* range);
+
 ////template<class Type>
 ////void RangeParser::InvokeRangeDoubleBitfieldType(const HeaderRecord& record,
 ////                                                const Range& range,
 ////                                                const ser4cpp::rseq_t& buffer,
 ////                                                IAPDUHandler& handler)
-////{
-////    const auto COUNT = range.Count();
+void InvokeRangeDoubleBitfieldType_for_DoubleBitBinary_in_RangeParser_static(
+                                                HeaderRecord* record,
+                                                Range* range,
+                                                RSeq_for_Uint16_t* buffer,
+                                                IAPDUHandler* handler);
 
-////    auto read = [range](ser4cpp::rseq_t& buffer, size_t pos) -> Indexed<Type> {
-////        Type value(GetDoubleBit(buffer, pos));
-////        return WithIndex(value, static_cast<uint16_t>(range.start + pos));
-////    };
-////
-////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-////
-////    handler.OnHeader(RangeHeader(record, range), collection);
-////}
-////
+
 ////} // namespace opendnp3
 
 #endif

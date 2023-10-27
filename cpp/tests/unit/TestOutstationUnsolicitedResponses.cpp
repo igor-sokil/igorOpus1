@@ -29,7 +29,7 @@ using namespace opendnp3;
 
 #define SUITE(name) "OutstationUnsolicitedTestSuite - " name
 
-TEST_CASE(SUITE("sends null unsol on startup"))
+TEST_CASE(SUITE("1sends null unsol on startup"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -40,7 +40,7 @@ TEST_CASE(SUITE("sends null unsol on startup"))
     REQUIRE(t.NumPendingTimers() == 1);
 }
 
-TEST_CASE(SUITE("Non-read during null unsol without workaround"))
+TEST_CASE(SUITE("2Non-read during null unsol without workaround"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -64,7 +64,7 @@ TEST_CASE(SUITE("Non-read during null unsol without workaround"))
     REQUIRE(t.NumPendingTimers() == 1);
 }
 
-TEST_CASE(SUITE("Non-read during null unsol with workaround"))
+TEST_CASE(SUITE("3Non-read during null unsol with workaround"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -88,7 +88,7 @@ TEST_CASE(SUITE("Non-read during null unsol with workaround"))
     REQUIRE(t.NumPendingTimers() == 1);
 }
 
-TEST_CASE(SUITE("Read during null unsol without workaround"))
+TEST_CASE(SUITE("4Read during null unsol without workaround"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -118,7 +118,7 @@ TEST_CASE(SUITE("Read during null unsol without workaround"))
     REQUIRE(t.NumPendingTimers() == 1);
 }
 
-TEST_CASE(SUITE("Read during null unsol with workaround"))
+TEST_CASE(SUITE("5Read during null unsol with workaround"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -143,7 +143,7 @@ TEST_CASE(SUITE("Read during null unsol with workaround"))
     REQUIRE(t.NumPendingTimers() == 1);
 }
 
-TEST_CASE(SUITE("UnsolConfirmTimeout"))
+TEST_CASE(SUITE("6UnsolConfirmTimeout"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -163,7 +163,7 @@ TEST_CASE(SUITE("UnsolConfirmTimeout"))
     REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(1, IINField(IINBit::DEVICE_RESTART)));
 }
 
-TEST_CASE(SUITE("UnsolNumRetries"))
+TEST_CASE(SUITE("7UnsolNumRetries"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -214,7 +214,7 @@ TEST_CASE(SUITE("UnsolNumRetries"))
     REQUIRE(t.lower->PopWriteAsHex().empty());
 }
 
-TEST_CASE(SUITE("UnsolInfiniteRetries"))
+TEST_CASE(SUITE("8UnsolInfiniteRetries"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -257,7 +257,7 @@ TEST_CASE(SUITE("UnsolInfiniteRetries"))
     }
 }
 
-TEST_CASE(SUITE("UnsolData"))
+TEST_CASE(SUITE("9UnsolData"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -303,7 +303,7 @@ TEST_CASE(SUITE("UnsolData"))
     REQUIRE(t.application->confirms[1].num_class3 == 0);
 }
 
-TEST_CASE(SUITE("UnsolEventBufferOverflow"))
+TEST_CASE(SUITE("10UnsolEventBufferOverflow"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -340,7 +340,7 @@ TEST_CASE(SUITE("UnsolEventBufferOverflow"))
     REQUIRE(t.lower->PopWriteAsHex().empty());
 }
 
-TEST_CASE(SUITE("UnsolMultiFragments"))
+TEST_CASE(SUITE("11UnsolMultiFragments"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -427,17 +427,17 @@ void WriteDuringUnsol(bool beforeTx)
 
 // Test that non-read fragments are immediately responded to while
 // waiting for a response to unsolicited data
-TEST_CASE(SUITE("WriteDuringUnsolBeforeTx"))
+TEST_CASE(SUITE("12WriteDuringUnsolBeforeTx"))
 {
     WriteDuringUnsol(true);
 }
 
-TEST_CASE(SUITE("WriteDuringUnsolAfterTx"))
+TEST_CASE(SUITE("13WriteDuringUnsolAfterTx"))
 {
     WriteDuringUnsol(false);
 }
 
-TEST_CASE(SUITE("ReadDuringUnsolConfirm"))
+TEST_CASE(SUITE("14ReadDuringUnsolConfirm"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -463,7 +463,7 @@ TEST_CASE(SUITE("ReadDuringUnsolConfirm"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00");
 }
 
-TEST_CASE(SUITE("ReadDuringUnsolWithoutConfirm"))
+TEST_CASE(SUITE("15ReadDuringUnsolWithoutConfirm"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -496,7 +496,7 @@ TEST_CASE(SUITE("ReadDuringUnsolWithoutConfirm"))
     REQUIRE(t.lower->PopWriteAsHex() == "E0 81 80 00 02 01 28 01 00 00 00 81");
 }
 
-TEST_CASE(SUITE("ReadWriteDuringUnsol"))
+TEST_CASE(SUITE("16ReadWriteDuringUnsol"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -524,7 +524,7 @@ TEST_CASE(SUITE("ReadWriteDuringUnsol"))
     REQUIRE(t.lower->PopWriteAsHex() == "C0 81 00 00");
 }
 
-TEST_CASE(SUITE("RepeatRequestDuringUnsol"))
+TEST_CASE(SUITE("17RepeatRequestDuringUnsol"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -552,7 +552,7 @@ TEST_CASE(SUITE("RepeatRequestDuringUnsol"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("UnsolEnable"))
+TEST_CASE(SUITE("18UnsolEnable"))
 {
     OutstationConfig cfg;
     cfg.params.allowUnsolicited = true;
@@ -579,7 +579,7 @@ TEST_CASE(SUITE("UnsolEnable"))
     REQUIRE(t.lower->PopWriteAsHex() == "F1 82 80 00 02 01 28 01 00 00 00 01");
 }
 
-TEST_CASE(SUITE("UnsolEnableDisableFailure"))
+TEST_CASE(SUITE("19UnsolEnableDisableFailure"))
 {
     OutstationConfig cfg;
     cfg.eventBufferConfig = EventBufferConfig(5);

@@ -13,6 +13,7 @@
 
 #include "OutstationConfig.h"
 #include "OutstationTestObject.h"
+#include "DatabaseHelpers.h"
 
 #define UNUSED(x) (void)(x)
 
@@ -20,6 +21,25 @@
 key_filter *pkf;
 
 MainWindow *mainWindow;
+
+void apply_in_40ReadByRangeHeader(IUpdateHandler*);
+void apply_in_40ReadByRangeHeader(IUpdateHandler* db)
+{
+ Flags fFlags;
+ Flags_In_FlagsOver2(&fFlags, 1);
+
+//void Analog_in_AnalogOver3(Analog *pAnalog, double value, Flags flags);
+ Analog aAnalog42;
+ Analog_in_AnalogOver3(&aAnalog42, 42.0, fFlags);
+ Analog aAnalog41;
+ Analog_in_AnalogOver3(&aAnalog41, 41.0, fFlags);
+
+//boolean Update_Analog_in_IUpdateHandler(IUpdateHandler*, Analog* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+////            db.Update(Analog(42, Flags(0x01)), 5);
+         Update_Analog_in_IUpdateHandler(db, &aAnalog42, 5, EventMode_Detect);// = EventMode::Detect) = 0;
+////            db.Update(Analog(41, Flags(0x01)), 6);
+         Update_Analog_in_IUpdateHandler(db, &aAnalog41, 6, EventMode_Detect);// = EventMode::Detect) = 0;
+}
 
 int main(int argc, char *argv[])
 {
@@ -36,24 +56,24 @@ qDebug()<<"********SUITE('40ReadByRangeHeader')********";
     OutstationConfig_in_OutstationConfig(&config);
 //    OutstationTestObject t;
 //    OutstationTestObject_in_OutstationTestObject(&t, &config);
-    DatabaseConfig tmp;
-    DatabaseConfig_in_DatabaseConfig(&tmp, 0);
+//    DatabaseConfig tmp;
+//    DatabaseConfig_in_DatabaseConfig(&tmp, 0);
+DatabaseConfig tmp = analog_input_in_DatabaseHelpers(10);
 
     OutstationTestObject t;
     OutstationTestObject_in_OutstationTestObject(&t, &config, &tmp);
 
     LowerLayerUp_in_OutstationTestObject(&t);
 
-    std::string name("C0 02 32 01 07 02 D2 04 00 00 00 00 D2 04 00 00 00 00");       
+    Transaction_in_OutstationTestObject(&t, apply_in_40ReadByRangeHeader);//void (*apply)(IUpdateHandler*));
+
+    std::string name("C2 01 1E 02 00 05 06");       // read 30 var 2, [05 : 06]
     SendToOutstation_in_OutstationTestObject(&t, name);  
 
     std::string temp = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
 
-qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == 'C0 81 80 04')";
+qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == 'C2 81 80 00 1E 02 00 05 06 01 2A 00 01 29 00')";
 std::cout << "temp= " << temp<<'\n';
-
-qDebug()<<"REQUIRE(t.application->timestamps.empty())";
-std::cout << "timestamps.empty= " << t.application.timestamps.empty()<<'\n';
 
 /*
 TEST_CASE(SUITE("40ReadByRangeHeader"))

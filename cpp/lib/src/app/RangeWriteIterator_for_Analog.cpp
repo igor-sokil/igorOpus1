@@ -20,7 +20,7 @@ void RangeWriteIterator_for_UInt8_Analog_in_RangeWriteIterator_for_UInt8_AnalogO
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_Analog_in_RangeWriteIterator_for_UInt8_AnalogOver1_1"<<'\n';
   decrement_stack_info();
@@ -41,7 +41,7 @@ void RangeWriteIterator_for_UInt8_Analog_in_RangeWriteIterator_for_UInt8_AnalogO
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_Analog_in_RangeWriteIterator_for_UInt8_AnalogOver2_1"<<'\n';
   decrement_stack_info();
@@ -69,7 +69,7 @@ void RangeWriteIterator_for_UInt8_Analog_destr_RangeWriteIterator_for_UInt8_Anal
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_Analog_destr_RangeWriteIterator_for_UInt8_Analog1"<<'\n';
   decrement_stack_info();
@@ -86,13 +86,20 @@ void RangeWriteIterator_for_UInt8_Analog_destr_RangeWriteIterator_for_UInt8_Anal
 boolean Write_in_RangeWriteIterator_for_UInt8_Analog(RangeWriteIterator_for_UInt8_Analog *pRangeWriteIterator_for_UInt8_Analog,
     Analog* value)
 {
-//    if (isValid && (pPosition->length() >= serializer.get_size()) && (count <= IndexType::max_value))
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_RangeWriteIterator_for_UInt8_Analog1"<<'\n';
+  decrement_stack_info();
+#endif
+////    if (isValid && (pPosition->length() >= serializer.get_size()) && (count <= IndexType::max_value))
   if(pRangeWriteIterator_for_UInt8_Analog->isValid &&
       (length_in_HasLength_for_Uint16_t(&(pRangeWriteIterator_for_UInt8_Analog->pPosition->hHasLength)) >=
        get_size_in_Serializer_for_Analog(&(pRangeWriteIterator_for_UInt8_Analog->serializer)))  &&
       (pRangeWriteIterator_for_UInt8_Analog->count <= max_value_in_UInt8))
   {
-//        serializer.write(value, *pPosition);
+////        serializer.write(value, *pPosition);
     write_in_Serializer_for_Analog(&(pRangeWriteIterator_for_UInt8_Analog->serializer), value, pRangeWriteIterator_for_UInt8_Analog->pPosition);
     ++(pRangeWriteIterator_for_UInt8_Analog->count);
     return true;
@@ -122,7 +129,7 @@ void RangeWriteIterator_for_UInt16_Analog_in_RangeWriteIterator_for_UInt16_Analo
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_Analog_in_RangeWriteIterator_for_UInt16_AnalogOver1_1"<<'\n';
   decrement_stack_info();
@@ -143,7 +150,7 @@ void RangeWriteIterator_for_UInt16_Analog_in_RangeWriteIterator_for_UInt16_Analo
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_Analog_in_RangeWriteIterator_for_UInt16_AnalogOver2_1"<<'\n';
   decrement_stack_info();
@@ -171,7 +178,7 @@ void RangeWriteIterator_for_UInt16_Analog_destr_RangeWriteIterator_for_UInt16_An
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_Analog_destr_RangeWriteIterator_for_UInt16_Analog1"<<'\n';
   decrement_stack_info();

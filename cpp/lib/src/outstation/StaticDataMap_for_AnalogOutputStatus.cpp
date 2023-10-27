@@ -74,6 +74,38 @@ uint16_t select_all_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataM
   }); // override default
 }
 
+////    size_t select(Range range)
+uint16_t select_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, Range range)
+{
+////        return this->select(range, [](auto var) { return var; }); // use the default
+  return select_in_StaticDataMap_for_AnalogOutputStatusSpecOver5(pStaticDataMap_for_AnalogOutputStatusSpec, range, [](auto var) {
+    return var;
+  }); // use the default
+}
+
+////    bool select(uint16_t index, typename Spec::static_variation_t variation)
+boolean select_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, uint16_t index, StaticAnalogOutputStatusVariation_uint8_t variation)
+{
+////        return this->select(Range::From(index, index), variation);
+  return select_in_StaticDataMap_for_AnalogOutputStatusSpecOver4(pStaticDataMap_for_AnalogOutputStatusSpec, From_in_Range_static(index, index), variation) == 1;
+}
+
+////    bool select(uint16_t index)
+boolean select_in_StaticDataMap_for_AnalogOutputStatusSpecOver3(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, uint16_t index)
+{
+////        return this->select(Range::From(index, index)) == 1;
+  return select_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(pStaticDataMap_for_AnalogOutputStatusSpec, From_in_Range_static(index, index)) == 1;
+}
+
+////    size_t select(Range range, typename Spec::static_variation_t variation)
+uint16_t select_in_StaticDataMap_for_AnalogOutputStatusSpecOver4(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, Range range, StaticAnalogOutputStatusVariation_uint8_t variation)
+{
+////        return this->select(range, [variation](auto var) { return variation; }); // override default
+  return select_in_StaticDataMap_for_AnalogOutputStatusSpecOver5(pStaticDataMap_for_AnalogOutputStatusSpec, range, [variation](auto var) {
+    return variation;
+  }); // override default
+}
+
 boolean update_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec,
     AnalogOutputStatus* value,
     uint16_t index,
@@ -137,6 +169,32 @@ boolean update_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_fo
       }
     }
   }
+
+  return true;
+}
+
+////    bool has_any_selection() const
+boolean has_any_selection_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////        return this->selected.IsValid();
+  return IsValid_in_Range(&(pStaticDataMap_for_AnalogOutputStatusSpec->selected));
+}
+
+boolean add_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, AnalogOutputStatus *value, uint16_t index, AOStatusConfig *config)
+{
+  if (pStaticDataMap_for_AnalogOutputStatusSpec->map.find(index) != pStaticDataMap_for_AnalogOutputStatusSpec->map.end())
+  {
+    return false;
+  }
+
+//void  StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver2(StaticDataCell_for_AnalogOutputStatus *pStaticDataCell_for_AnalogOutputStatus,
+//    AnalogOutputStatus* value,
+//    AnalogOutputStatusConfig* config);
+  StaticDataCell_for_AnalogOutputStatus sStaticDataCell;
+  StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver2(&sStaticDataCell, value, config);
+
+  pStaticDataMap_for_AnalogOutputStatusSpec->map[index] = sStaticDataCell;////StaticDataCell_for_AnalogOutputStatusSpec{value, config};
 
   return true;
 }

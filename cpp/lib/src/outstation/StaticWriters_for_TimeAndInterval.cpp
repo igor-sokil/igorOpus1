@@ -161,6 +161,7 @@ boolean WriteWithSerializer_TimeAndIntervalSpec_for_Group50Var4_in_StaticWriters
 ////static_write_func_t<TimeAndIntervalSpec> StaticWriters::get(StaticTimeAndIntervalVariation variation)
 static_write_func_t_for_TimeAndIntervalSpec get_for_TimeAndIntervalSpec_in_StaticWriters_static(StaticTimeAndIntervalVariation_uint8_t variation)
 {
+  UNUSED(variation);
 #ifdef  LOG_INFO
   std::cout<<""<<'\n';
   increment_stack_info();

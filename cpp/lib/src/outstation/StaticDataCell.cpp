@@ -22,8 +22,10 @@ void StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1(StaticDataCell_
     BinaryConfig* config)
 {
   SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver1(&(pStaticDataCell_for_Binary->selection));
-
   Binary_in_BinaryOver1(&(pStaticDataCell_for_Binary->value));
+  SimpleEventCell_for_Binary_in_SimpleEventCell_for_Binary(&(pStaticDataCell_for_Binary->event));
+  BinaryConfig_in_BinaryConfig(&(pStaticDataCell_for_Binary->config));
+
   pStaticDataCell_for_Binary->config = *config;
 }
 
@@ -57,8 +59,10 @@ void StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOve
     DoubleBitBinaryConfig* config)
 {
   SelectedValue_for_DoubleBitBinarySpec_in_SelectedValue_for_DoubleBitBinarySpecOver1(&(pStaticDataCell_for_DoubleBitBinary->selection));
-
   DoubleBitBinary_in_DoubleBitBinaryOver1(&(pStaticDataCell_for_DoubleBitBinary->value));
+  SimpleEventCell_for_DoubleBitBinary_in_SimpleEventCell_for_DoubleBitBinary(&(pStaticDataCell_for_DoubleBitBinary->event));
+  DoubleBitBinaryConfig_in_DoubleBitBinaryConfig(&(pStaticDataCell_for_DoubleBitBinary->config));
+
   pStaticDataCell_for_DoubleBitBinary->config = *config;
 }
 
@@ -93,8 +97,10 @@ void StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver1(StaticDataCell_
     AnalogConfig* config)
 {
   SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver1(&(pStaticDataCell_for_Analog->selection));
-
   Analog_in_AnalogOver1(&(pStaticDataCell_for_Analog->value));
+  SimpleEventCell_for_Analog_in_SimpleEventCell_for_Analog(&(pStaticDataCell_for_Analog->event));
+  AnalogConfig_in_AnalogConfig(&(pStaticDataCell_for_Analog->config));
+
   pStaticDataCell_for_Analog->config = *config;
 }
 
@@ -128,8 +134,10 @@ void StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver1(StaticDataCel
     CounterConfig* config)
 {
   SelectedValue_for_CounterSpec_in_SelectedValue_for_CounterSpecOver1(&(pStaticDataCell_for_Counter->selection));
-
   Counter_in_CounterOver1(&(pStaticDataCell_for_Counter->value));
+  SimpleEventCell_for_Counter_in_SimpleEventCell_for_Counter(&(pStaticDataCell_for_Counter->event));
+  CounterConfig_in_CounterConfig(&(pStaticDataCell_for_Counter->config));
+
   pStaticDataCell_for_Counter->config = *config;
 }
 
@@ -163,8 +171,10 @@ void StaticDataCell_for_FrozenCounter_in_StaticDataCell_for_FrozenCounterOver1(S
     FrozenCounterConfig* config)
 {
   SelectedValue_for_FrozenCounterSpec_in_SelectedValue_for_FrozenCounterSpecOver1(&(pStaticDataCell_for_FrozenCounter->selection));
-
   FrozenCounter_in_FrozenCounterOver1(&(pStaticDataCell_for_FrozenCounter->value));
+  SimpleEventCell_for_FrozenCounter_in_SimpleEventCell_for_FrozenCounter(&(pStaticDataCell_for_FrozenCounter->event));
+  FrozenCounterConfig_in_FrozenCounterConfig(&(pStaticDataCell_for_FrozenCounter->config));
+
   pStaticDataCell_for_FrozenCounter->config = *config;
 }
 
@@ -198,8 +208,10 @@ void StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputSta
     BOStatusConfig* config)
 {
   SelectedValue_for_BinaryOutputStatusSpec_in_SelectedValue_for_BinaryOutputStatusSpecOver1(&(pStaticDataCell_for_BinaryOutputStatus->selection));
-
   BinaryOutputStatus_in_BinaryOutputStatusOver1(&(pStaticDataCell_for_BinaryOutputStatus->value));
+  SimpleEventCell_for_BinaryOutputStatus_in_SimpleEventCell_for_BinaryOutputStatus(&(pStaticDataCell_for_BinaryOutputStatus->event));
+  BOStatusConfig_in_BOStatusConfig(&(pStaticDataCell_for_BinaryOutputStatus->config));
+
   pStaticDataCell_for_BinaryOutputStatus->config = *config;
 }
 
@@ -234,8 +246,10 @@ void StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputSta
     AOStatusConfig* config)
 {
   SelectedValue_for_AnalogOutputStatusSpec_in_SelectedValue_for_AnalogOutputStatusSpecOver1(&(pStaticDataCell_for_AnalogOutputStatus->selection));
-
   AnalogOutputStatus_in_AnalogOutputStatusOver1(&(pStaticDataCell_for_AnalogOutputStatus->value));
+  SimpleEventCell_for_AnalogOutputStatus_in_SimpleEventCell_for_AnalogOutputStatus(&(pStaticDataCell_for_AnalogOutputStatus->event));
+  AOStatusConfig_in_AOStatusConfig(&(pStaticDataCell_for_AnalogOutputStatus->config));
+
   pStaticDataCell_for_AnalogOutputStatus->config = *config;
 }
 
@@ -252,7 +266,6 @@ void  StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputSt
 void SelectedValue_for_OctetStringSpec_in_SelectedValue_for_OctetStringSpecOver1(SelectedValue_for_OctetStringSpec *pSelectedValue_for_OctetStringSpec)
 {
   OctetString_in_OctetStringOver1(&(pSelectedValue_for_OctetStringSpec->value));
-
   pSelectedValue_for_OctetStringSpec->selected = false;
   pSelectedValue_for_OctetStringSpec->variation = 0;
 }
@@ -269,8 +282,10 @@ void StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver1(Stati
     OctetStringConfig* config)
 {
   SelectedValue_for_OctetStringSpec_in_SelectedValue_for_OctetStringSpecOver1(&(pStaticDataCell_for_OctetString->selection));
-
   OctetString_in_OctetStringOver1(&(pStaticDataCell_for_OctetString->value));
+  SimpleEventCell_for_OctetString_in_SimpleEventCell_for_OctetString(&(pStaticDataCell_for_OctetString->event));
+  OctetStringConfig_in_OctetStringConfig(&(pStaticDataCell_for_OctetString->config));
+
   pStaticDataCell_for_OctetString->config = *config;
 }
 
@@ -304,8 +319,10 @@ void StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOve
     TimeAndIntervalConfig* config)
 {
   SelectedValue_for_TimeAndIntervalSpec_in_SelectedValue_for_TimeAndIntervalSpecOver1(&(pStaticDataCell_for_TimeAndInterval->selection));
-
   TimeAndInterval_in_TimeAndIntervalOver1(&(pStaticDataCell_for_TimeAndInterval->value));
+  SimpleEventCell_for_TimeAndInterval_in_SimpleEventCell_for_TimeAndInterval(&(pStaticDataCell_for_TimeAndInterval->event));
+  TimeAndIntervalConfig_in_TimeAndIntervalConfig(&(pStaticDataCell_for_TimeAndInterval->config));
+
   pStaticDataCell_for_TimeAndInterval->config = *config;
 }
 

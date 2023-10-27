@@ -24,6 +24,7 @@
 ////#include "opendnp3/gen/PointClass.h"
 #include "EventType.h"
 #include "PointClass.h"
+#include "MeasurementConfig.h"
 
 ////namespace opendnp3
 ////{

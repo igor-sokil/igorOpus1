@@ -36,6 +36,14 @@
   Implementations should configure the buffers to store a reasonable number events
   given the polling frequency and memory restrictions of the target platform.
 
+Настройка максимального количества событий для каждого типа событий.
+
+   Базовая реализация использует *заранее выделенный* буфер кучи для хранения событий.
+   пока они не будут переданы мастеру. Размер этого буфера пропорционален
+   в метод TotalEvents(), т.е. сумму максимальных событий для каждого типа.
+
+   Реализации должны настроить буферы для хранения разумного количества событий.
+   с учетом частоты опроса и ограничений памяти целевой платформы.
 */
 ////struct EventBufferConfig
 typedef struct
@@ -43,6 +51,8 @@ typedef struct
   /**
       Construct the class using the same maximum for all types. This is mainly used for demo purposes.
       You probably don't want to use this method unless your implementation actually reports every type.
+Создайте класс, используя один и тот же максимум для всех типов. В основном это используется в демонстрационных целях.
+       Вероятно, вы не захотите использовать этот метод, если ваша реализация фактически не сообщает о каждом типе.
   */
 ////    static EventBufferConfig AllTypes(uint16_t sizes);
 
@@ -59,12 +69,15 @@ typedef struct
 ////                      uint16_t maxOctetStringEvents);// = 0);
 
   // Returns the sum of all event count maximums (number of elements in preallocated buffer)
+// Возвращает сумму всех максимумов счетчика событий (количество элементов в предварительно выделенном буфере)
 ////    uint32_t TotalEvents() const;
 
   // The number of binary events the outstation will buffer before overflowing
+// Количество двоичных событий, которые удаленная станция будет буферизовать перед переполнением
   uint16_t maxBinaryEvents;
 
   // The number of double bit binary events the outstation will buffer before overflowing
+// Количество двухбитовых двоичных событий, которые удаленная станция будет буферизовать перед переполнением
   uint16_t maxDoubleBinaryEvents;
 
   // The number of analog events the outstation will buffer before overflowing

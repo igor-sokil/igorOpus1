@@ -20,8 +20,8 @@ void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryO
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -41,8 +41,8 @@ void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryO
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -69,8 +69,8 @@ void RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Bina
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary1"<<'\n';
   decrement_stack_info();
 #endif
@@ -122,8 +122,8 @@ void RangeWriteIterator_for_UInt16_Binary_in_RangeWriteIterator_for_UInt16_Binar
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt16_Binary_in_RangeWriteIterator_for_UInt16_BinaryOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -143,8 +143,8 @@ void RangeWriteIterator_for_UInt16_Binary_in_RangeWriteIterator_for_UInt16_Binar
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt16_Binary_in_RangeWriteIterator_for_UInt16_BinaryOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -171,8 +171,8 @@ void RangeWriteIterator_for_UInt16_Binary_destr_RangeWriteIterator_for_UInt16_Bi
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"RangeWriteIterator_for_UInt16_Binary_destr_RangeWriteIterator_for_UInt16_Binary1"<<'\n';
   decrement_stack_info();
 #endif

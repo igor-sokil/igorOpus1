@@ -20,7 +20,7 @@ void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver1_1"<<'\n';
   decrement_stack_info();
@@ -41,7 +41,7 @@ void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver2_1"<<'\n';
   decrement_stack_info();
@@ -69,7 +69,7 @@ void RangeWriteIterator_for_UInt8_FrozenCounter_destr_RangeWriteIterator_for_UIn
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_FrozenCounter_destr_RangeWriteIterator_for_UInt8_FrozenCounter1"<<'\n';
   decrement_stack_info();
@@ -122,7 +122,7 @@ void RangeWriteIterator_for_UInt16_FrozenCounter_in_RangeWriteIterator_for_UInt1
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_FrozenCounter_in_RangeWriteIterator_for_UInt16_FrozenCounterOver1_1"<<'\n';
   decrement_stack_info();
@@ -143,7 +143,7 @@ void RangeWriteIterator_for_UInt16_FrozenCounter_in_RangeWriteIterator_for_UInt1
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_FrozenCounter_in_RangeWriteIterator_for_UInt16_FrozenCounterOver2_1"<<'\n';
   decrement_stack_info();
@@ -171,7 +171,7 @@ void RangeWriteIterator_for_UInt16_FrozenCounter_destr_RangeWriteIterator_for_UI
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_FrozenCounter_destr_RangeWriteIterator_for_UInt16_FrozenCounter1"<<'\n';
   decrement_stack_info();

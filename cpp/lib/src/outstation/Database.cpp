@@ -78,13 +78,21 @@ void  Database_in_Database(Database *pDatabase,
   StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpec(&(pDatabase->octet_string), config->octet_string);
 
   // ------- IStaticSelector -------------
-  pDatabase->iIStaticSelector.pSelectAll_in_IStaticSelector = SelectAll_in_Database_override;
+  pDatabase->iIStaticSelector.pSelectAll_in_IStaticSelector     = SelectAll_in_Database_override;
+  pDatabase->iIStaticSelector.pSelectRange_in_IStaticSelector   = SelectRange_in_Database_override;
+  pDatabase->iIStaticSelector.pSelectIndices_in_IStaticSelector = SelectIndices_in_Database_override;
+  pDatabase->iIStaticSelector.pUnselect_in_IStaticSelector      = Unselect_in_Database_override;
 
   setParentPointer_in_IStaticSelector(&(pDatabase->iIStaticSelector), pDatabase);
   // ------- IStaticSelector -------------
 
   setParentPointer_in_IClassAssigner(&(pDatabase->iIClassAssigner), pDatabase);
+
+  // ------- IResponseLoader -------------
+  pDatabase->iIResponseLoader.pHasAnySelection_in_IResponseLoader =  HasAnySelection_in_Database_override;
+  pDatabase->iIResponseLoader.pLoad_in_IResponseLoader            =  Load_in_Database_override;
   setParentPointer_in_IResponseLoader(&(pDatabase->iIResponseLoader), pDatabase);
+  // ------- IResponseLoader -------------
 
   // ------- IUpdateHandler -------------
   pDatabase->iIUpdateHandler.pUpdate_Binary_in_IUpdateHandler             = Update_for_Binary_in_Database_override;
@@ -97,8 +105,6 @@ void  Database_in_Database(Database *pDatabase,
   pDatabase->iIUpdateHandler.pUpdate_OctetString_in_IUpdateHandler        = Update_for_OctetString_in_Database_override;
   setParentPointer_in_IUpdateHandler(&(pDatabase->iIUpdateHandler), pDatabase);
   // ------- IUpdateHandler -------------
-
-  pDatabase->iIResponseLoader.pLoad_in_IResponseLoader = Load_in_Database_override;
 
   /*
   // ------- IStaticSelector -------------
@@ -702,7 +708,7 @@ IINField SelectAll_in_Database_override(void *pIStaticSelector, GroupVariation_u
 {
   Database *parent =
     (Database*)getParentPointer_in_IStaticSelector((IStaticSelector*)pIStaticSelector);
- return SelectAll_in_Database(parent, gv);
+  return SelectAll_in_Database(parent, gv);
 }
 
 IINField SelectAll_in_Database( Database *pDatabase, GroupVariation_uint16_t gv)
@@ -745,86 +751,309 @@ IINField SelectAll_in_Database( Database *pDatabase, GroupVariation_uint16_t gv)
 
   switch (gv)
   {
-////    case (GroupVariation::Group1Var0):
+  case (GroupVariation_Group1Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var0"<<'\n';
+    decrement_stack_info();
+#endif
+//IINField select_all_StaticDataMap_for_BinarySpec_in_Database_static(StaticDataMap_for_BinarySpec* map)
 ////        return select_all<BinarySpec>(this->binary_input);
-////    case (GroupVariation::Group1Var1):
+    return select_all_StaticDataMap_for_BinarySpec_in_Database_staticOver1(&(pDatabase->binary_input));
+
+  case (GroupVariation_Group1Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var1"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<BinarySpec>(this->binary_input, StaticBinaryVariation::Group1Var1);
-////    case (GroupVariation::Group1Var2):
+    return select_all_StaticDataMap_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), StaticBinaryVariation_Group1Var1);
+
+  case (GroupVariation_Group1Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var2"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<BinarySpec>(this->binary_input, StaticBinaryVariation::Group1Var2);
-////
-////    case (GroupVariation::Group3Var0):
+    return select_all_StaticDataMap_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), StaticBinaryVariation_Group1Var2);
+
+  case (GroupVariation_Group3Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var0"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<DoubleBitBinarySpec>(this->double_binary);
-////    case (GroupVariation::Group3Var2):
+    return select_all_StaticDataMap_for_DoubleBitBinarySpec_in_Database_staticOver1(&(pDatabase->double_binary));
+
+  case (GroupVariation_Group3Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var2"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<DoubleBitBinarySpec>(this->double_binary, StaticDoubleBinaryVariation::Group3Var2);
-////
-////    case (GroupVariation::Group10Var0):
+    return select_all_StaticDataMap_for_DoubleBitBinarySpec_in_Database_staticOver2(&(pDatabase->double_binary), StaticDoubleBinaryVariation_Group3Var2);
+
+  case (GroupVariation_Group10Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var2"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<BinaryOutputStatusSpec>(this->binary_output_status);
-////    case (GroupVariation::Group10Var2):
+    return select_all_StaticDataMap_for_BinaryOutputStatusSpec_in_Database_staticOver1(&(pDatabase->binary_output_status));
+
+  case (GroupVariation_Group10Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group10Var2"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<BinaryOutputStatusSpec>(this->binary_output_status,
 ////                                                  StaticBinaryOutputStatusVariation::Group10Var2);
+    return select_all_StaticDataMap_for_BinaryOutputStatusSpec_in_Database_staticOver2(&(pDatabase->binary_output_status), StaticBinaryOutputStatusVariation_Group10Var2);
 
-////    case (GroupVariation::Group20Var0):
+  case (GroupVariation_Group20Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var0"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<CounterSpec>(this->counter);
-////    case (GroupVariation::Group20Var1):
+    return select_all_StaticDataMap_for_CounterSpec_in_Database_staticOver1(&(pDatabase->counter));
+
+  case (GroupVariation_Group20Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var1"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<CounterSpec>(this->counter, StaticCounterVariation::Group20Var1);
-////    case (GroupVariation::Group20Var2):
+    return select_all_StaticDataMap_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), StaticCounterVariation_Group20Var1);
+
+  case (GroupVariation_Group20Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var2"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<CounterSpec>(this->counter, StaticCounterVariation::Group20Var2);
-////    case (GroupVariation::Group20Var5):
+    return select_all_StaticDataMap_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), StaticCounterVariation_Group20Var2);
+
+  case (GroupVariation_Group20Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var5"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<CounterSpec>(this->counter, StaticCounterVariation::Group20Var5);
-////    case (GroupVariation::Group20Var6):
+    return select_all_StaticDataMap_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), StaticCounterVariation_Group20Var5);
+
+  case (GroupVariation_Group20Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var6"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<CounterSpec>(this->counter, StaticCounterVariation::Group20Var6);
-////
-////    case (GroupVariation::Group21Var0):
+    return select_all_StaticDataMap_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), StaticCounterVariation_Group20Var6);
+
+  case (GroupVariation_Group21Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var0"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<FrozenCounterSpec>(this->frozen_counter);
-////    case (GroupVariation::Group21Var1):
+    return select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter));
+
+  case (GroupVariation_Group21Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var1"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<FrozenCounterSpec>(this->frozen_counter, StaticFrozenCounterVariation::Group21Var1);
-////    case (GroupVariation::Group21Var2):
+    return select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), StaticFrozenCounterVariation_Group21Var1);
+
+  case (GroupVariation_Group21Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var2"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<FrozenCounterSpec>(this->frozen_counter, StaticFrozenCounterVariation::Group21Var2);
-////    case (GroupVariation::Group21Var5):
+    return select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), StaticFrozenCounterVariation_Group21Var2);
+
+  case (GroupVariation_Group21Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var5"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<FrozenCounterSpec>(this->frozen_counter, StaticFrozenCounterVariation::Group21Var5);
-////    case (GroupVariation::Group21Var6):
+    return select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), StaticFrozenCounterVariation_Group21Var5);
+
+  case (GroupVariation_Group21Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var6"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<FrozenCounterSpec>(this->frozen_counter, StaticFrozenCounterVariation::Group21Var6);
-////    case (GroupVariation::Group21Var9):
+    return select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), StaticFrozenCounterVariation_Group21Var6);
+
+  case (GroupVariation_Group21Var9):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var9"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<FrozenCounterSpec>(this->frozen_counter, StaticFrozenCounterVariation::Group21Var9);
-////    case (GroupVariation::Group21Var10):
+    return select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), StaticFrozenCounterVariation_Group21Var9);
+
+  case (GroupVariation_Group21Var10):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var10"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<FrozenCounterSpec>(this->frozen_counter, StaticFrozenCounterVariation::Group21Var10);
-////
-////    case (GroupVariation::Group30Var0):
+    return select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), StaticFrozenCounterVariation_Group21Var10);
+
+  case (GroupVariation_Group30Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var0"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogSpec>(this->analog_input);
-////    case (GroupVariation::Group30Var1):
+    return select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input));
+
+  case (GroupVariation_Group30Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var1"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogSpec>(this->analog_input, StaticAnalogVariation::Group30Var1);
-////    case (GroupVariation::Group30Var2):
+    return select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), StaticAnalogVariation_Group30Var1);
+
+  case (GroupVariation_Group30Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var2"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogSpec>(this->analog_input, StaticAnalogVariation::Group30Var2);
-////    case (GroupVariation::Group30Var3):
+    return select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), StaticAnalogVariation_Group30Var2);
+
+  case (GroupVariation_Group30Var3):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var3"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogSpec>(this->analog_input, StaticAnalogVariation::Group30Var3);
-////    case (GroupVariation::Group30Var4):
+    return select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), StaticAnalogVariation_Group30Var3);
+
+  case (GroupVariation_Group30Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var4"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogSpec>(this->analog_input, StaticAnalogVariation::Group30Var4);
-////    case (GroupVariation::Group30Var5):
+    return select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), StaticAnalogVariation_Group30Var4);
+
+  case (GroupVariation_Group30Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var5"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogSpec>(this->analog_input, StaticAnalogVariation::Group30Var5);
-////    case (GroupVariation::Group30Var6):
+    return select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), StaticAnalogVariation_Group30Var5);
+
+  case (GroupVariation_Group30Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var6"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogSpec>(this->analog_input, StaticAnalogVariation::Group30Var6);
-////
-////    case (GroupVariation::Group40Var0):
+    return select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), StaticAnalogVariation_Group30Var6);
+
+  case (GroupVariation_Group40Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var0"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogOutputStatusSpec>(this->analog_output_status);
-////    case (GroupVariation::Group40Var1):
+    return select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDatabase->analog_output_status));
+
+  case (GroupVariation_Group40Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var1"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogOutputStatusSpec>(this->analog_output_status,
 ////                                                  StaticAnalogOutputStatusVariation::Group40Var1);
-////    case (GroupVariation::Group40Var2):
+    return select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), StaticAnalogOutputStatusVariation_Group40Var1);
+
+  case (GroupVariation_Group40Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var2"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogOutputStatusSpec>(this->analog_output_status,
 ////                                                  StaticAnalogOutputStatusVariation::Group40Var2);
-////    case (GroupVariation::Group40Var3):
+    return select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), StaticAnalogOutputStatusVariation_Group40Var2);
+
+  case (GroupVariation_Group40Var3):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var3"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogOutputStatusSpec>(this->analog_output_status,
 ////                                                  StaticAnalogOutputStatusVariation::Group40Var3);
-////    case (GroupVariation::Group40Var4):
+    return select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), StaticAnalogOutputStatusVariation_Group40Var3);
+
+  case (GroupVariation_Group40Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var4"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<AnalogOutputStatusSpec>(this->analog_output_status,
 ////                                                  StaticAnalogOutputStatusVariation::Group40Var4);
+    return select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), StaticAnalogOutputStatusVariation_Group40Var4);
 
-////    case (GroupVariation::Group50Var4):
+  case (GroupVariation_Group50Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group50Var4"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<TimeAndIntervalSpec>(this->time_and_interval, StaticTimeAndIntervalVariation::Group50Var4);
-////
-////    case (GroupVariation::Group110Var0):
+    return select_all_StaticDataMap_for_TimeAndIntervalSpec_in_Database_staticOver2(&(pDatabase->time_and_interval), StaticTimeAndIntervalVariation_Group50Var4);
+
+  case (GroupVariation_Group110Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group110Var0"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return select_all<OctetStringSpec>(this->octet_string);
-////
+    return select_all_StaticDataMap_for_OctetStringSpec_in_Database_staticOver1(&(pDatabase->octet_string));
+
   default:
 ////        return IINField(IINBit::FUNC_NOT_SUPPORTED);
   {
@@ -839,6 +1068,660 @@ IINField SelectAll_in_Database( Database *pDatabase, GroupVariation_uint16_t gv)
     return iIINField;
   }
   }
+}
+
+////IINField Database::SelectRange(GroupVariation gv, const Range& range)
+IINField SelectRange_in_Database(Database *pDatabase, GroupVariation_uint16_t gv, Range* range)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectRange_in_Database1"<<'\n';
+#endif
+    switch (gv)
+    {
+   case (GroupVariation_Group1Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<BinarySpec>(this->binary_input, range);
+return select_range_for_BinarySpec_in_Database_staticOver1(&(pDatabase->binary_input), range);
+
+    case (GroupVariation_Group1Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<BinarySpec>(this->binary_input, range, StaticBinaryVariation::Group1Var1);
+return select_range_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), range, StaticBinaryVariation_Group1Var1);
+
+    case (GroupVariation_Group1Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<BinarySpec>(this->binary_input, range, StaticBinaryVariation::Group1Var2);
+return select_range_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), range, StaticBinaryVariation_Group1Var2);
+
+    case (GroupVariation_Group3Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<DoubleBitBinarySpec>(this->double_binary, range);
+return select_range_for_DoubleBitBinarySpec_in_Database_staticOver1(&(pDatabase->double_binary), range);
+
+    case (GroupVariation_Group3Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<DoubleBitBinarySpec>(this->double_binary, range, StaticDoubleBinaryVariation::Group3Var2);
+return select_range_for_DoubleBitBinarySpec_in_Database_staticOver2(&(pDatabase->double_binary), range, StaticDoubleBinaryVariation_Group3Var2);
+
+    case (GroupVariation_Group10Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group10Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<BinaryOutputStatusSpec>(this->binary_output_status, range);
+return select_range_for_BinaryOutputStatusSpec_in_Database_staticOver1(&(pDatabase->binary_output_status), range);
+
+    case (GroupVariation_Group10Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group10Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<BinaryOutputStatusSpec>(this->binary_output_status, range,
+////                                                    StaticBinaryOutputStatusVariation::Group10Var2);
+return select_range_for_BinaryOutputStatusSpec_in_Database_staticOver2(&(pDatabase->binary_output_status), range, StaticBinaryOutputStatusVariation_Group10Var2);
+
+    case (GroupVariation_Group20Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<CounterSpec>(this->counter, range);
+return select_range_for_CounterSpec_in_Database_staticOver1(&(pDatabase->counter), range);
+
+    case (GroupVariation_Group20Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<CounterSpec>(this->counter, range, StaticCounterVariation::Group20Var1);
+return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var1);
+
+    case (GroupVariation_Group20Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<CounterSpec>(this->counter, range, StaticCounterVariation::Group20Var2);
+return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var2);
+
+    case (GroupVariation_Group20Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var5"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<CounterSpec>(this->counter, range, StaticCounterVariation::Group20Var5);
+return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var5);
+
+    case (GroupVariation_Group20Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var6"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<CounterSpec>(this->counter, range, StaticCounterVariation::Group20Var6);
+return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var6);
+
+    case (GroupVariation_Group21Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<FrozenCounterSpec>(this->frozen_counter, range);
+return select_range_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), range);
+
+    case (GroupVariation_Group21Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var1);
+return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var1);
+
+    case (GroupVariation_Group21Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var2);
+return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var2);
+
+    case (GroupVariation_Group21Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var5"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var5);
+return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var5);
+
+    case (GroupVariation_Group21Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var6"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var6);
+return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var6);
+
+    case (GroupVariation_Group21Var9):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var9"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var9);
+return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var9);
+
+    case (GroupVariation_Group21Var10):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var10"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var10);
+return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var10);
+
+    case (GroupVariation_Group30Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogSpec>(this->analog_input, range);
+return select_range_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), range);
+
+    case (GroupVariation_Group30Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var1);
+return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var1);
+
+    case (GroupVariation_Group30Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var2);
+return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var2);
+
+    case (GroupVariation_Group30Var3):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var3"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var3);
+return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var3);
+
+    case (GroupVariation_Group30Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var4"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var4);
+return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var4);
+
+    case (GroupVariation_Group30Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var5"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var5);
+return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var5);
+
+    case (GroupVariation_Group30Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var6"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var6);
+return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var6);
+
+    case (GroupVariation_Group40Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range);
+return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDatabase->analog_output_status), range);
+
+    case (GroupVariation_Group40Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range,
+////                                                    StaticAnalogOutputStatusVariation::Group40Var1);
+return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var1);
+
+    case (GroupVariation_Group40Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range,
+////                                                    StaticAnalogOutputStatusVariation::Group40Var2);
+return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var2);
+
+    case (GroupVariation_Group40Var3):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var3"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range,
+////                                                    StaticAnalogOutputStatusVariation::Group40Var3);
+return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var3);
+
+    case (GroupVariation_Group40Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var4"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range,
+////                                                    StaticAnalogOutputStatusVariation::Group40Var4);
+return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var4);
+
+    case (GroupVariation_Group50Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group50Var4"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_range<TimeAndIntervalSpec>(this->time_and_interval, range,
+////                                                 StaticTimeAndIntervalVariation::Group50Var4);
+return select_range_for_TimeAndIntervalSpec_in_Database_staticOver2(&(pDatabase->time_and_interval), range, StaticTimeAndIntervalVariation_Group50Var4);
+
+////    case (GroupVariation::Group110Var0):
+////        return select_range<OctetStringSpec>(this->octet_string, range, StaticOctetStringVariation::Group110Var0);
+
+    default:
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FUNC_NOT_SUPPORTED"<<'\n';
+    decrement_stack_info();
+#endif
+////           return IINBit::FUNC_NOT_SUPPORTED;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
+    return iIINField;
+  }
+   }
+}
+
+IINField SelectRange_in_Database_override(void *pIStaticSelector, GroupVariation_uint16_t gv, Range* range)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IStaticSelector((IStaticSelector*)pIStaticSelector);
+  return SelectRange_in_Database(parent, gv, range);
+}
+
+////IINField Database::SelectIndices(GroupVariation gv, const ICollection<uint16_t>& indices)
+IINField SelectIndices_in_Database(Database *pDatabase, GroupVariation_uint16_t gv, ICollection_for_uint16* indices)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectIndices_in_Database1"<<'\n';
+#endif
+  switch (gv)
+  {
+  case (GroupVariation_Group1Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->binary_input, indices);
+    return select_indices_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), indices);
+
+  case (GroupVariation_Group1Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->binary_input, indices, StaticBinaryVariation::Group1Var1);
+    return select_indices_for_BinarySpec_in_Database_staticOver1(&(pDatabase->binary_input), indices, StaticBinaryVariation_Group1Var1);
+
+  case (GroupVariation_Group1Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->binary_input, indices, StaticBinaryVariation::Group1Var2);
+    return select_indices_for_BinarySpec_in_Database_staticOver1(&(pDatabase->binary_input), indices, StaticBinaryVariation_Group1Var2);
+
+  case (GroupVariation_Group3Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->double_binary, indices);
+    return select_indices_for_DoubleBitBinarySpec_in_Database_staticOver2(&(pDatabase->double_binary), indices);
+
+  case (GroupVariation_Group3Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->double_binary, indices, StaticDoubleBinaryVariation::Group3Var2);
+    return select_indices_for_DoubleBitBinarySpec_in_Database_staticOver1(&(pDatabase->double_binary), indices, StaticDoubleBinaryVariation_Group3Var2);
+
+  case (GroupVariation_Group10Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group10Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->binary_output_status, indices);
+    return select_indices_for_BinaryOutputStatusSpec_in_Database_staticOver2(&(pDatabase->binary_output_status), indices);
+
+  case (GroupVariation_Group10Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group10Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->binary_output_status, indices, StaticBinaryOutputStatusVariation::Group10Var2);
+    return select_indices_for_BinaryOutputStatusSpec_in_Database_staticOver1(&(pDatabase->binary_output_status), indices, StaticBinaryOutputStatusVariation_Group10Var2);
+
+  case (GroupVariation_Group20Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->counter, indices);
+    return select_indices_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), indices);
+
+  case (GroupVariation_Group20Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->counter, indices, StaticCounterVariation::Group20Var1);
+    return select_indices_for_CounterSpec_in_Database_staticOver1(&(pDatabase->counter), indices, StaticCounterVariation_Group20Var1);
+
+  case (GroupVariation_Group20Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->counter, indices, StaticCounterVariation::Group20Var2);
+    return select_indices_for_CounterSpec_in_Database_staticOver1(&(pDatabase->counter), indices, StaticCounterVariation_Group20Var2);
+
+  case (GroupVariation_Group20Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var5"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->counter, indices, StaticCounterVariation::Group20Var5);
+    return select_indices_for_CounterSpec_in_Database_staticOver1(&(pDatabase->counter), indices, StaticCounterVariation_Group20Var5);
+
+  case (GroupVariation_Group20Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var6"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->counter, indices, StaticCounterVariation::Group20Var6);
+    return select_indices_for_CounterSpec_in_Database_staticOver1(&(pDatabase->counter), indices, StaticCounterVariation_Group20Var6);
+
+  case (GroupVariation_Group21Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->frozen_counter, indices);
+    return select_indices_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), indices);
+
+  case (GroupVariation_Group21Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->frozen_counter, indices, StaticFrozenCounterVariation::Group21Var1);
+    return select_indices_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), indices, StaticFrozenCounterVariation_Group21Var1);
+
+  case (GroupVariation_Group21Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->frozen_counter, indices, StaticFrozenCounterVariation::Group21Var2);
+    return select_indices_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), indices, StaticFrozenCounterVariation_Group21Var2);
+
+  case (GroupVariation_Group21Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var5"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->frozen_counter, indices, StaticFrozenCounterVariation::Group21Var5);
+    return select_indices_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), indices, StaticFrozenCounterVariation_Group21Var5);
+
+  case (GroupVariation_Group21Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var6"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->frozen_counter, indices, StaticFrozenCounterVariation::Group21Var6);
+    return select_indices_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), indices, StaticFrozenCounterVariation_Group21Var6);
+
+  case (GroupVariation_Group21Var9):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var9"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->frozen_counter, indices, StaticFrozenCounterVariation::Group21Var9);
+    return select_indices_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), indices, StaticFrozenCounterVariation_Group21Var9);
+
+  case (GroupVariation_Group21Var10):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var10"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->frozen_counter, indices, StaticFrozenCounterVariation::Group21Var10);
+    return select_indices_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), indices, StaticFrozenCounterVariation_Group21Var10);
+
+  case (GroupVariation_Group30Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices<AnalogSpec>(this->analog_input, indices);
+    return select_indices_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), indices);
+
+  case (GroupVariation_Group30Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_input, indices, StaticAnalogVariation::Group30Var1);
+    return select_indices_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), indices, StaticAnalogVariation_Group30Var1);
+
+  case (GroupVariation_Group30Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_input, indices, StaticAnalogVariation::Group30Var2);
+    return select_indices_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), indices, StaticAnalogVariation_Group30Var2);
+
+  case (GroupVariation_Group30Var3):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var3"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_input, indices, StaticAnalogVariation::Group30Var3);
+    return select_indices_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), indices, StaticAnalogVariation_Group30Var3);
+
+  case (GroupVariation_Group30Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var4"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_input, indices, StaticAnalogVariation::Group30Var4);
+    return select_indices_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), indices, StaticAnalogVariation_Group30Var4);
+
+  case (GroupVariation_Group30Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var5"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_input, indices, StaticAnalogVariation::Group30Var5);
+    return select_indices_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), indices, StaticAnalogVariation_Group30Var5);
+
+  case (GroupVariation_Group30Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group30Var6"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_input, indices, StaticAnalogVariation::Group30Var6);
+    return select_indices_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), indices, StaticAnalogVariation_Group30Var6);
+
+  case (GroupVariation_Group40Var0):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var0"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_output_status, indices);
+    return select_indices_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), indices);
+
+  case (GroupVariation_Group40Var1):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var1"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_output_status, indices, StaticAnalogOutputStatusVariation::Group40Var1);
+    return select_indices_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDatabase->analog_output_status), indices, StaticAnalogOutputStatusVariation_Group40Var1);
+
+  case (GroupVariation_Group40Var2):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var2"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_output_status, indices, StaticAnalogOutputStatusVariation::Group40Var2);
+    return select_indices_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDatabase->analog_output_status), indices, StaticAnalogOutputStatusVariation_Group40Var2);
+
+  case (GroupVariation_Group40Var3):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var3"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_output_status, indices, StaticAnalogOutputStatusVariation::Group40Var3);
+    return select_indices_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDatabase->analog_output_status), indices, StaticAnalogOutputStatusVariation_Group40Var3);
+
+  case (GroupVariation_Group40Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group40Var4"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->analog_output_status, indices, StaticAnalogOutputStatusVariation::Group40Var4);
+    return select_indices_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDatabase->analog_output_status), indices, StaticAnalogOutputStatusVariation_Group40Var4);
+
+  case (GroupVariation_Group50Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group50Var4"<<'\n';
+    decrement_stack_info();
+#endif
+////        return select_indices(this->time_and_interval, indices, StaticTimeAndIntervalVariation::Group50Var4);
+    return select_indices_for_TimeAndIntervalSpec_in_Database_staticOver1(&(pDatabase->time_and_interval), indices, StaticTimeAndIntervalVariation_Group50Var4);
+
+////    case (GroupVariation::Group110Var0):
+////        return select_indices(this->octet_string, indices, StaticOctetStringVariation::Group110Var0);
+
+  default:
+  {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FUNC_NOT_SUPPORTED"<<'\n';
+    decrement_stack_info();
+#endif
+////           return IINBit::FUNC_NOT_SUPPORTED;
+    IINField iIINField;
+    IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
+    return iIINField;
+  }
+  }
+}
+
+IINField SelectIndices_in_Database_override(void *pIStaticSelector, GroupVariation_uint16_t gv, ICollection_for_uint16* indices)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IStaticSelector((IStaticSelector*)pIStaticSelector);
+  return SelectIndices_in_Database(parent, gv, indices);
 }
 
 ////} // namespace opendnp3
@@ -864,6 +1747,45 @@ void Unselect_in_Database(Database *pDatabase)
   clear_selection_in_StaticDataMap_for_OctetStringSpec(&(pDatabase->octet_string));
 }
 
+void Unselect_in_Database_override(void *pIStaticSelector)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IStaticSelector((IStaticSelector*)pIStaticSelector);
+  Unselect_in_Database(parent);
+}
+
+////bool Database::HasAnySelection() const
+boolean HasAnySelection_in_Database(Database *pDatabase)
+{
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"HasAnySelection_in_Database1"<<'\n';
+  decrement_stack_info();
+#endif
+  return has_any_selection_in_StaticDataMap_for_AnalogSpec(&(pDatabase->analog_input)) ||
+         has_any_selection_in_StaticDataMap_for_BinarySpec(&(pDatabase->binary_input)) ||
+         has_any_selection_in_StaticDataMap_for_DoubleBitBinarySpec(&(pDatabase->double_binary)) ||
+////    return binary_input.has_any_selection() || double_binary.has_any_selection() || analog_input.has_any_selection()
+         has_any_selection_in_StaticDataMap_for_CounterSpec(&(pDatabase->counter)) ||
+         has_any_selection_in_StaticDataMap_for_FrozenCounterSpec(&(pDatabase->frozen_counter)) ||
+         has_any_selection_in_StaticDataMap_for_BinaryOutputStatusSpec(&(pDatabase->binary_output_status)) ||
+////        || counter.has_any_selection() || frozen_counter.has_any_selection() || binary_output_status.has_any_selection()
+         has_any_selection_in_StaticDataMap_for_AnalogOutputStatusSpec(&(pDatabase->analog_output_status)) ||
+         has_any_selection_in_StaticDataMap_for_TimeAndIntervalSpec(&(pDatabase->time_and_interval)) ||
+////        || analog_output_status.has_any_selection() || time_and_interval.has_any_selection()
+         has_any_selection_in_StaticDataMap_for_OctetStringSpec(&(pDatabase->octet_string));
+////        || octet_string.has_any_selection();
+}
+
+boolean HasAnySelection_in_Database_override(void *pIResponseLoader)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IResponseLoader((IResponseLoader*)pIResponseLoader);
+  return HasAnySelection_in_Database(parent);
+}
+
 boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer)
 {
   Database *parent =
@@ -873,12 +1795,20 @@ boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer)
 ////bool Database::Load(HeaderWriter& writer)
 boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Load_in_Database1"<<'\n';
+  decrement_stack_info();
+#endif
 //boolean load_type_for_Binary_in_Database_static(StaticDataMap_for_BinarySpec& map, HeaderWriter* writer)
 ////    return load_type(this->binary_input, writer) && load_type(this->double_binary, writer)
 ////        && load_type(this->analog_input, writer) && load_type(this->counter, writer)
 ////        && load_type(this->frozen_counter, writer) && load_type(this->binary_output_status, writer)
 ////        && load_type(this->analog_output_status, writer) && load_type(this->time_and_interval, writer)
 ////        && load_type(this->octet_string, writer);
+
   return load_type_for_Analog_in_Database_static(pDatabase->analog_input, writer) &&
          load_type_for_Binary_in_Database_static(pDatabase->binary_input, writer) &&
          load_type_for_BinaryOutputStatus_in_Database_static(pDatabase->binary_output_status, writer) &&
@@ -955,4 +1885,6 @@ boolean Update_for_OctetString_in_Database_override(void *pIUpdateHandler, Octet
     (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
   return Update_for_OctetString_in_Database(parent, meas, index, mode);
 }
+
+
 

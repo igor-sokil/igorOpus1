@@ -191,39 +191,96 @@ boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, E
 
 boolean load_type_for_Binary_in_Database_static(StaticDataMap_for_BinarySpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_BinarySpec(Database *pDatabase, StaticDataMap_for_BinarySpec* map);
-IINField select_all_StaticDataMap_for_BinarySpec_in_Database_static(StaticDataMap_for_BinarySpec* map);
+IINField select_all_StaticDataMap_for_BinarySpec_in_Database_staticOver1(StaticDataMap_for_BinarySpec* map);
+IINField select_all_StaticDataMap_for_BinarySpec_in_Database_staticOver2(StaticDataMap_for_BinarySpec* map, StaticBinaryVariation_uint8_t var);
+IINField select_indices_for_BinarySpec_in_Database_staticOver1(StaticDataMap_for_BinarySpec* map,
+                        ICollection_for_uint16* indices,
+                        StaticBinaryVariation_uint8_t variation);
+IINField select_indices_for_BinarySpec_in_Database_staticOver2(StaticDataMap_for_BinarySpec* map, ICollection_for_uint16* indices);
+IINField select_range_for_BinarySpec_in_Database_staticOver1(StaticDataMap_for_BinarySpec* map, Range* range);
+IINField select_range_for_BinarySpec_in_Database_staticOver2(StaticDataMap_for_BinarySpec* map, Range* range, StaticBinaryVariation_uint8_t variation);
 
 boolean load_type_for_BinaryOutputStatus_in_Database_static(StaticDataMap_for_BinaryOutputStatusSpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_BinaryOutputStatusSpec(Database *pDatabase, StaticDataMap_for_BinaryOutputStatusSpec* map);
-IINField select_all_StaticDataMap_for_BinaryOutputStatusSpec_in_Database_static(StaticDataMap_for_BinaryOutputStatusSpec* map);
+IINField select_all_StaticDataMap_for_BinaryOutputStatusSpec_in_Database_staticOver1(StaticDataMap_for_BinaryOutputStatusSpec* map);
+IINField select_all_StaticDataMap_for_BinaryOutputStatusSpec_in_Database_staticOver2(StaticDataMap_for_BinaryOutputStatusSpec* map, StaticBinaryOutputStatusVariation_uint8_t var);
+IINField select_indices_for_BinaryOutputStatusSpec_in_Database_staticOver1(StaticDataMap_for_BinaryOutputStatusSpec* map,
+                        ICollection_for_uint16* indices,
+                        StaticBinaryOutputStatusVariation_uint8_t variation);
+IINField select_indices_for_BinaryOutputStatusSpec_in_Database_staticOver2(StaticDataMap_for_BinaryOutputStatusSpec* map, ICollection_for_uint16* indices);
+IINField select_range_for_BinaryOutputStatusSpec_in_Database_staticOver1(StaticDataMap_for_BinaryOutputStatusSpec* map, Range* range);
+IINField select_range_for_BinaryOutputStatusSpec_in_Database_staticOver2(StaticDataMap_for_BinaryOutputStatusSpec* map, Range* range, StaticBinaryOutputStatusVariation_uint8_t variation);
 
 boolean load_type_for_DoubleBitBinary_in_Database_static(StaticDataMap_for_DoubleBitBinarySpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_DoubleBitBinarySpec(Database *pDatabase, StaticDataMap_for_DoubleBitBinarySpec* map);
-IINField select_all_StaticDataMap_for_DoubleBitBinarySpec_in_Database_static(StaticDataMap_for_DoubleBitBinarySpec* map);
+IINField select_all_StaticDataMap_for_DoubleBitBinarySpec_in_Database_staticOver1(StaticDataMap_for_DoubleBitBinarySpec* map);
+IINField select_all_StaticDataMap_for_DoubleBitBinarySpec_in_Database_staticOver2(StaticDataMap_for_DoubleBitBinarySpec* map, StaticDoubleBinaryVariation_uint8_t var);
+IINField select_indices_for_DoubleBitBinarySpec_in_Database_staticOver1(StaticDataMap_for_DoubleBitBinarySpec* map,
+                        ICollection_for_uint16* indices,
+                        StaticDoubleBinaryVariation_uint8_t variation);
+IINField select_indices_for_DoubleBitBinarySpec_in_Database_staticOver2(StaticDataMap_for_DoubleBitBinarySpec* map, ICollection_for_uint16* indices);
+IINField select_range_for_DoubleBitBinarySpec_in_Database_staticOver1(StaticDataMap_for_DoubleBitBinarySpec* map, Range* range);
+IINField select_range_for_DoubleBitBinarySpec_in_Database_staticOver2(StaticDataMap_for_DoubleBitBinarySpec* map, Range* range, StaticDoubleBinaryVariation_uint8_t variation);
 
 boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_AnalogSpec(Database *pDatabase, StaticDataMap_for_AnalogSpec* map);
-IINField select_all_StaticDataMap_for_AnalogSpec_in_Database_static(StaticDataMap_for_AnalogSpec* map);
+IINField select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver1(StaticDataMap_for_AnalogSpec* map);
+IINField select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver2(StaticDataMap_for_AnalogSpec* map, StaticAnalogVariation_uint8_t var);
+IINField select_indices_for_AnalogSpec_in_Database_staticOver1(StaticDataMap_for_AnalogSpec* map,
+                        ICollection_for_uint16* indices,
+                        StaticAnalogVariation_uint8_t variation);
+IINField select_indices_for_AnalogSpec_in_Database_staticOver2(StaticDataMap_for_AnalogSpec* map, ICollection_for_uint16* indices);
+IINField select_range_for_AnalogSpec_in_Database_staticOver1(StaticDataMap_for_AnalogSpec* map, Range* range);
+IINField select_range_for_AnalogSpec_in_Database_staticOver2(StaticDataMap_for_AnalogSpec* map, Range* range, StaticAnalogVariation_uint8_t variation);
 
 boolean load_type_for_AnalogOutputStatus_in_Database_static(StaticDataMap_for_AnalogOutputStatusSpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_AnalogOutputStatusSpec(Database *pDatabase, StaticDataMap_for_AnalogOutputStatusSpec* map);
-IINField select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_static(StaticDataMap_for_AnalogOutputStatusSpec* map);
+IINField select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_staticOver1(StaticDataMap_for_AnalogOutputStatusSpec* map);
+IINField select_all_StaticDataMap_for_AnalogOutputStatusSpec_in_Database_staticOver2(StaticDataMap_for_AnalogOutputStatusSpec* map, StaticAnalogOutputStatusVariation_uint8_t var);
+IINField select_indices_for_AnalogOutputStatusSpec_in_Database_staticOver1(StaticDataMap_for_AnalogOutputStatusSpec* map,
+                        ICollection_for_uint16* indices,
+                        StaticAnalogOutputStatusVariation_uint8_t variation);
+IINField select_indices_for_AnalogOutputStatusSpec_in_Database_staticOver2(StaticDataMap_for_AnalogOutputStatusSpec* map, ICollection_for_uint16* indices);
+IINField select_range_for_AnalogOutputStatusSpec_in_Database_staticOver1(StaticDataMap_for_AnalogOutputStatusSpec* map, Range* range);
+IINField select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(StaticDataMap_for_AnalogOutputStatusSpec* map, Range* range, StaticAnalogOutputStatusVariation_uint8_t variation);
 
 boolean load_type_for_Counter_in_Database_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_CounterSpec(Database *pDatabase, StaticDataMap_for_CounterSpec* map);
-IINField select_all_StaticDataMap_for_CounterSpec_in_Database_static(StaticDataMap_for_CounterSpec* map);
+IINField select_all_StaticDataMap_for_CounterSpec_in_Database_staticOver1(StaticDataMap_for_CounterSpec* map);
+IINField select_all_StaticDataMap_for_CounterSpec_in_Database_staticOver2(StaticDataMap_for_CounterSpec* map, StaticCounterVariation_uint8_t var);
+IINField select_indices_for_CounterSpec_in_Database_staticOver1(StaticDataMap_for_CounterSpec* map,
+                        ICollection_for_uint16* indices,
+                        StaticCounterVariation_uint8_t variation);
+IINField select_indices_for_CounterSpec_in_Database_staticOver2(StaticDataMap_for_CounterSpec* map, ICollection_for_uint16* indices);
+IINField select_range_for_CounterSpec_in_Database_staticOver1(StaticDataMap_for_CounterSpec* map, Range* range);
+IINField select_range_for_CounterSpec_in_Database_staticOver2(StaticDataMap_for_CounterSpec* map, Range* range, StaticCounterVariation_uint8_t variation);
 
 boolean load_type_for_FrozenCounter_in_Database_static(StaticDataMap_for_FrozenCounterSpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_FrozenCounterSpec(Database *pDatabase, StaticDataMap_for_FrozenCounterSpec* map);
-IINField select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_static(StaticDataMap_for_FrozenCounterSpec* map);
+IINField select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver1(StaticDataMap_for_FrozenCounterSpec* map);
+IINField select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver2(StaticDataMap_for_FrozenCounterSpec* map, StaticFrozenCounterVariation_uint8_t var);
+IINField select_indices_for_FrozenCounterSpec_in_Database_staticOver1(StaticDataMap_for_FrozenCounterSpec* map,
+                        ICollection_for_uint16* indices,
+                        StaticFrozenCounterVariation_uint8_t variation);
+IINField select_indices_for_FrozenCounterSpec_in_Database_staticOver2(StaticDataMap_for_FrozenCounterSpec* map, ICollection_for_uint16* indices);
+IINField select_range_for_FrozenCounterSpec_in_Database_staticOver1(StaticDataMap_for_FrozenCounterSpec* map, Range* range);
+IINField select_range_for_FrozenCounterSpec_in_Database_staticOver2(StaticDataMap_for_FrozenCounterSpec* map, Range* range, StaticFrozenCounterVariation_uint8_t variation);
 
 boolean load_type_for_OctetString_in_Database_static(StaticDataMap_for_OctetStringSpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_OctetStringSpec(Database *pDatabase, StaticDataMap_for_OctetStringSpec* map);
-IINField select_all_StaticDataMap_for_OctetStringSpec_in_Database_static(StaticDataMap_for_OctetStringSpec* map);
+IINField select_all_StaticDataMap_for_OctetStringSpec_in_Database_staticOver1(StaticDataMap_for_OctetStringSpec* map);
+IINField select_all_StaticDataMap_for_OctetStringSpec_in_Database_staticOver2(StaticDataMap_for_OctetStringSpec* map, StaticOctetStringVariation_uint8_t var);
 
 boolean load_type_for_TimeAndInterval_in_Database_static(StaticDataMap_for_TimeAndIntervalSpec& map, HeaderWriter* writer);
 void select_all_class_zero_StaticDataMap_for_TimeAndIntervalSpec(Database *pDatabase, StaticDataMap_for_TimeAndIntervalSpec* map);
-IINField select_all_StaticDataMap_for_TimeAndIntervalSpec_in_Database_static(StaticDataMap_for_TimeAndIntervalSpec* map);
+IINField select_all_StaticDataMap_for_TimeAndIntervalSpec_in_Database_staticOver1(StaticDataMap_for_TimeAndIntervalSpec* map);
+IINField select_all_StaticDataMap_for_TimeAndIntervalSpec_in_Database_staticOver2(StaticDataMap_for_TimeAndIntervalSpec* map, StaticTimeAndIntervalVariation_uint8_t var);
+IINField select_indices_for_TimeAndIntervalSpec_in_Database_staticOver1(StaticDataMap_for_TimeAndIntervalSpec* map,
+                        ICollection_for_uint16* indices,
+                        StaticTimeAndIntervalVariation_uint8_t variation);
+IINField select_indices_for_TimeAndIntervalSpec_in_Database_staticOver2(StaticDataMap_for_TimeAndIntervalSpec* map, ICollection_for_uint16* indices);
+IINField select_range_for_TimeAndIntervalSpec_in_Database_staticOver1(StaticDataMap_for_TimeAndIntervalSpec* map, Range* range);
+IINField select_range_for_TimeAndIntervalSpec_in_Database_staticOver2(StaticDataMap_for_TimeAndIntervalSpec* map, Range* range, StaticTimeAndIntervalVariation_uint8_t variation);
 
 ////} // namespace opendnp3
 #endif

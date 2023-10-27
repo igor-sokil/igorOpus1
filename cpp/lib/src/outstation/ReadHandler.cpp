@@ -106,6 +106,13 @@ IINField ProcessHeader_AllObjectsHeader_in_ReadHandler_override(void *pIAPDUHand
 
 IINField ProcessHeader_RangeHeader_in_ReadHandler_override(void* pIAPDUHandler, RangeHeader* header)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_RangeHeader_in_ReadHandler_override1"<<std::endl;
+  decrement_stack_info();
+#endif
   ReadHandler *parent =
     (ReadHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 //IINField SelectRange_in_IStaticSelector(IStaticSelector *, GroupVariation_uint16_t gv,  Range* range);

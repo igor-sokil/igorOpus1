@@ -74,6 +74,38 @@ uint16_t select_all_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_Coun
   }); // override default
 }
 
+////    size_t select(Range range)
+uint16_t select_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, Range range)
+{
+////        return this->select(range, [](auto var) { return var; }); // use the default
+  return select_in_StaticDataMap_for_CounterSpecOver5(pStaticDataMap_for_CounterSpec, range, [](auto var) {
+    return var;
+  }); // use the default
+}
+
+////    bool select(uint16_t index, typename Spec::static_variation_t variation)
+boolean select_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, uint16_t index, StaticCounterVariation_uint8_t variation)
+{
+////        return this->select(Range::From(index, index), variation);
+  return select_in_StaticDataMap_for_CounterSpecOver4(pStaticDataMap_for_CounterSpec, From_in_Range_static(index, index), variation) == 1;
+}
+
+////    bool select(uint16_t index)
+boolean select_in_StaticDataMap_for_CounterSpecOver3(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, uint16_t index)
+{
+////        return this->select(Range::From(index, index)) == 1;
+  return select_in_StaticDataMap_for_CounterSpecOver1(pStaticDataMap_for_CounterSpec, From_in_Range_static(index, index)) == 1;
+}
+
+////    size_t select(Range range, typename Spec::static_variation_t variation)
+uint16_t select_in_StaticDataMap_for_CounterSpecOver4(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, Range range, StaticCounterVariation_uint8_t variation)
+{
+////        return this->select(range, [variation](auto var) { return variation; }); // override default
+  return select_in_StaticDataMap_for_CounterSpecOver5(pStaticDataMap_for_CounterSpec, range, [variation](auto var) {
+    return variation;
+  }); // override default
+}
+
 boolean update_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec,
     Counter* value,
     uint16_t index,
@@ -137,6 +169,32 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
       }
     }
   }
+
+  return true;
+}
+
+////    bool has_any_selection() const
+boolean has_any_selection_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////        return this->selected.IsValid();
+ return IsValid_in_Range(&(pStaticDataMap_for_CounterSpec->selected));
+}
+
+boolean add_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, Counter *value, uint16_t index, CounterConfig *config)
+{
+  if (pStaticDataMap_for_CounterSpec->map.find(index) != pStaticDataMap_for_CounterSpec->map.end())
+  {
+    return false;
+  }
+
+//void  StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver2(StaticDataCell_for_Counter *pStaticDataCell_for_Counter,
+//    Counter* value,
+//    CounterConfig* config);
+  StaticDataCell_for_Counter sStaticDataCell;
+  StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver2(&sStaticDataCell, value, config);
+
+  pStaticDataMap_for_CounterSpec->map[index] = sStaticDataCell;////StaticDataCell_for_CounterSpec{value, config};
 
   return true;
 }

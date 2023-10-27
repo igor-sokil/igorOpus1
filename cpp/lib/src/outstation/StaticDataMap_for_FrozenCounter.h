@@ -219,9 +219,10 @@ void clear_selection_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_Fr
 
 uint16_t select_all_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec);
 uint16_t select_all_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, StaticFrozenCounterVariation_uint8_t variation);
-template<class F> uint16_t select_all_for_FrozenCounterSpec_staticOver3(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, F get_variation);
 
-////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
+boolean has_any_selection_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec);
+
+template<class F> uint16_t select_all_for_FrozenCounterSpec_staticOver3(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, F get_variation);
 template<class F> uint16_t select_all_in_StaticDataMap_for_FrozenCounterSpecOver3(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, F get_variation)
 {
 //qDebug()<<"";
@@ -261,6 +262,69 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_FrozenCounterSpecOver
   }
 }
 
+uint16_t select_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, Range range);
+boolean select_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, uint16_t index, StaticFrozenCounterVariation_uint8_t variation);
+boolean select_in_StaticDataMap_for_FrozenCounterSpecOver3(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, uint16_t index);
+uint16_t select_in_StaticDataMap_for_FrozenCounterSpecOver4(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, Range range, StaticFrozenCounterVariation_uint8_t variation);
+
+template<class F> uint16_t select_in_StaticDataMap_for_FrozenCounterSpecOver5(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, Range range, F get_variation);
+////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select(Range range, F get_variation)
+template<class F> uint16_t select_in_StaticDataMap_for_FrozenCounterSpecOver5(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, Range range, F get_variation)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////    if (!range.IsValid())
+  if (!IsValid_in_Range(&range))
+  {
+    return 0;
+  }
+
+  const auto start = pStaticDataMap_for_FrozenCounterSpec->map.lower_bound(range.start);
+
+  if (start == pStaticDataMap_for_FrozenCounterSpec->map.end())
+  {
+    return 0;
+  }
+
+//boolean Contains_in_Range(Range *pRange, uint16_t index);
+////    if (!range.Contains(start->first))
+  if (!Contains_in_Range(&range, start->first))
+  {
+    return 0;
+  }
+
+  uint16_t stop = 0;
+  uint16_t count = 0;
+
+  for (auto iter = start; iter != pStaticDataMap_for_FrozenCounterSpec->map.end(); ++iter)
+  {
+////        if (!range.Contains(iter->first))
+    if (!Contains_in_Range(&range, iter->first))
+    {
+      break;
+    }
+
+    stop = iter->first;
+//StaticBinaryVariation_uint8_t check_for_promotion_for_BinarySpec_static(Analog* value, StaticBinaryVariation_uint8_t variation);
+////        iter->second.selection = SelectedValue<Spec>{
+////            true, iter->second.value,
+////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
+    FrozenCounter fFrozenCounter = iter->second.value;
+    SelectedValue_for_FrozenCounterSpec sSelectedValue_for_FrozenCounterSpec = {
+      true, fFrozenCounter, check_for_promotion_for_FrozenCounterSpec_static(&fFrozenCounter, get_variation(iter->second.config.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.svariation))
+    };
+    iter->second.selection = sSelectedValue_for_FrozenCounterSpec;
+    ++count;
+  }
+
+//Range Union_in_Range(Range *pRange, Range* other);
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+////    this->selected = this->selected.Union(Range::From(start->first, stop));
+  Range rRange = From_in_Range_static(start->first, stop);
+  pStaticDataMap_for_FrozenCounterSpec->selected = Union_in_Range(&(pStaticDataMap_for_FrozenCounterSpec->selected), &rRange);
+
+  return count;
+}
+
 ////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
 ////{
 ////    for (const auto& item : config)
@@ -269,6 +333,7 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_FrozenCounterSpecOver
 ////    }
 ////}
 
+boolean add_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, FrozenCounter *value, uint16_t index, FrozenCounterConfig *config);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::add(const typename Spec::meas_t& value, uint16_t index, typename Spec::config_t config)
 ////{

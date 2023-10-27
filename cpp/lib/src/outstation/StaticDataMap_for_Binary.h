@@ -216,6 +216,9 @@ void clear_selection_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpe
 
 uint16_t select_all_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
 uint16_t select_all_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, StaticBinaryVariation_uint8_t variation);
+
+boolean has_any_selection_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
+
 template<class F> uint16_t select_all_for_BinarySpec_staticOver3(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, F get_variation);
 
 ////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
@@ -257,19 +260,73 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_BinarySpecOver3(Stati
   }
 }
 
+uint16_t select_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Range range);
+boolean select_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, uint16_t index, StaticBinaryVariation_uint8_t variation);
+boolean select_in_StaticDataMap_for_BinarySpecOver3(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, uint16_t index);
+uint16_t select_in_StaticDataMap_for_BinarySpecOver4(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Range range, StaticBinaryVariation_uint8_t variation);
+
+template<class F> uint16_t select_in_StaticDataMap_for_BinarySpecOver5(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Range range, F get_variation);
+////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select(Range range, F get_variation)
+template<class F> uint16_t select_in_StaticDataMap_for_BinarySpecOver5(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Range range, F get_variation)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////    if (!range.IsValid())
+  if (!IsValid_in_Range(&range))
+  {
+    return 0;
+  }
+
+  const auto start = pStaticDataMap_for_BinarySpec->map.lower_bound(range.start);
+
+  if (start == pStaticDataMap_for_BinarySpec->map.end())
+  {
+    return 0;
+  }
+
+//boolean Contains_in_Range(Range *pRange, uint16_t index);
+////    if (!range.Contains(start->first))
+  if (!Contains_in_Range(&range, start->first))
+  {
+    return 0;
+  }
+
+  uint16_t stop = 0;
+  uint16_t count = 0;
+
+  for (auto iter = start; iter != pStaticDataMap_for_BinarySpec->map.end(); ++iter)
+  {
+////        if (!range.Contains(iter->first))
+    if (!Contains_in_Range(&range, iter->first))
+    {
+      break;
+    }
+
+    stop = iter->first;
+//StaticBinaryVariation_uint8_t check_for_promotion_for_BinarySpec_static(Analog* value, StaticBinaryVariation_uint8_t variation);
+////        iter->second.selection = SelectedValue<Spec>{
+////            true, iter->second.value,
+////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
+    Binary bBinary = iter->second.value;
+    SelectedValue_for_BinarySpec sSelectedValue_for_BinarySpec = {
+      true, bBinary, check_for_promotion_for_BinarySpec_static(&bBinary, get_variation(iter->second.config.eEventConfig.svariation))
+    };
+    iter->second.selection = sSelectedValue_for_BinarySpec;
+    ++count;
+  }
+
+//Range Union_in_Range(Range *pRange, Range* other);
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+////    this->selected = this->selected.Union(Range::From(start->first, stop));
+  Range rRange = From_in_Range_static(start->first, stop);
+  pStaticDataMap_for_BinarySpec->selected = Union_in_Range(&(pStaticDataMap_for_BinarySpec->selected), &rRange);
+
+  return count;
+}
+
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::add(const typename Spec::meas_t& value, uint16_t index, typename Spec::config_t config)
-////{
-////    if (this->map.find(index) != this->map.end())
-////    {
-////        return false;
-////    }
-////
-////    this->map[index] = StaticDataCell<Spec>{value, config};
+boolean add_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Binary *value, uint16_t index, BinaryConfig *config);
 
-////    return true;
-////}
-////
 boolean update_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec,
     Binary* value,
     uint16_t index,

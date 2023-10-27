@@ -20,7 +20,7 @@ void RangeWriteIterator_for_UInt8_AnalogOutputStatus_in_RangeWriteIterator_for_U
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_AnalogOutputStatus_in_RangeWriteIterator_for_UInt8_AnalogOutputStatusOver1_1"<<'\n';
   decrement_stack_info();
@@ -41,7 +41,7 @@ void RangeWriteIterator_for_UInt8_AnalogOutputStatus_in_RangeWriteIterator_for_U
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_AnalogOutputStatus_in_RangeWriteIterator_for_UInt8_AnalogOutputStatusOver2_1"<<'\n';
   decrement_stack_info();
@@ -69,7 +69,7 @@ void RangeWriteIterator_for_UInt8_AnalogOutputStatus_destr_RangeWriteIterator_fo
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_AnalogOutputStatus_destr_RangeWriteIterator_for_UInt8_AnalogOutputStatus1"<<'\n';
   decrement_stack_info();
@@ -122,7 +122,7 @@ void RangeWriteIterator_for_UInt16_AnalogOutputStatus_in_RangeWriteIterator_for_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_AnalogOutputStatus_in_RangeWriteIterator_for_UInt16_AnalogOutputStatusOver1_1"<<'\n';
   decrement_stack_info();
@@ -143,7 +143,7 @@ void RangeWriteIterator_for_UInt16_AnalogOutputStatus_in_RangeWriteIterator_for_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_AnalogOutputStatus_in_RangeWriteIterator_for_UInt16_AnalogOutputStatusOver2_1"<<'\n';
   decrement_stack_info();
@@ -171,7 +171,7 @@ void RangeWriteIterator_for_UInt16_AnalogOutputStatus_destr_RangeWriteIterator_f
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_AnalogOutputStatus_destr_RangeWriteIterator_for_UInt16_AnalogOutputStatus1"<<'\n';
   decrement_stack_info();

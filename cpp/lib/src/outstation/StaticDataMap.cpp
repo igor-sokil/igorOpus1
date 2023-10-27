@@ -18,6 +18,10 @@
  * limitations under the License.
  */
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "StaticDataMap.h"
@@ -28,6 +32,22 @@
 ////bool convert_to_event_class(PointClass pc, EventClass& ec)
 boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"convert_to_event_class_in_StaticDataMap_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*PointClass_uint8_t pc= "<<(uint16_t)pc<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*PointClass_Class1= "<<(uint16_t)PointClass_Class1<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*PointClass_Class2= "<<(uint16_t)PointClass_Class2<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*PointClass_Class3= "<<(uint16_t)PointClass_Class3<<'\n';
+  decrement_stack_info();
+#endif
+
   switch (pc)
   {
   case (PointClass_Class1):

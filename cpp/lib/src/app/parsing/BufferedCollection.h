@@ -750,6 +750,246 @@ uint16_t Count_in_BufferedCollection_Indexed_for_TimeAndInterval_override(void *
 void Foreach_in_BufferedCollection_Indexed_for_TimeAndInterval_override(void *pICollection_Indexed_for_TimeAndInterval,
     IVisitor__for__Indexed_for_TimeAndInterval* visitor);
 //-----------------------------------Indexed_for_TimeAndInterval---------------------------------------------------
+//-----------------------------------Indexed_for_Counter---------------------------------------------------
+typedef Indexed_for_Counter (*ReadFunc_Indexed_for_Counter)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_Indexed_for_Counter iICollection_Indexed_for_Counter;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Indexed_for_Counter WithIndex_in_Indexed_for_Counter(
+//  Counter* value, uint16_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Indexed_for_Counter readFunc;
+} BufferedCollection_Indexed_for_Counter;
+
+void  BufferedCollection_Indexed_for_Counter_in_BufferedCollection_Indexed_for_Counter(
+  BufferedCollection_Indexed_for_Counter *pBufferedCollection_Indexed_for_Counter,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_Counter readFunc);
+BufferedCollection_Indexed_for_Counter CreateBufferedCollection_Indexed_for_Counter_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_Counter readFunc);
+
+uint16_t Count_in_BufferedCollection_Indexed_for_Counter(BufferedCollection_Indexed_for_Counter *pBufferedCollection_Indexed_for_Counter);
+void Foreach_in_BufferedCollection_Indexed_for_Counter(BufferedCollection_Indexed_for_Counter *pBufferedCollection_Indexed_for_Counter,
+    IVisitor__for__Indexed_for_Counter* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Indexed_for_Counter_override(void *pICollection_Indexed_for_Counter);
+void Foreach_in_BufferedCollection_Indexed_for_Counter_override(void *pICollection_Indexed_for_Counter,
+    IVisitor__for__Indexed_for_Counter* visitor);
+//-----------------------------------Indexed_for_Counter---------------------------------------------------
+//-----------------------------------Indexed_for_FrozenCounter---------------------------------------------------
+typedef Indexed_for_FrozenCounter (*ReadFunc_Indexed_for_FrozenCounter)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_Indexed_for_FrozenCounter iICollection_Indexed_for_FrozenCounter;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Indexed_for_FrozenCounter WithIndex_in_Indexed_for_FrozenCounter(
+//  FrozenCounter* value, uint16_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Indexed_for_FrozenCounter readFunc;
+} BufferedCollection_Indexed_for_FrozenCounter;
+
+void  BufferedCollection_Indexed_for_FrozenCounter_in_BufferedCollection_Indexed_for_FrozenCounter(
+  BufferedCollection_Indexed_for_FrozenCounter *pBufferedCollection_Indexed_for_FrozenCounter,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_FrozenCounter readFunc);
+BufferedCollection_Indexed_for_FrozenCounter CreateBufferedCollection_Indexed_for_FrozenCounter_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_FrozenCounter readFunc);
+
+uint16_t Count_in_BufferedCollection_Indexed_for_FrozenCounter(BufferedCollection_Indexed_for_FrozenCounter *pBufferedCollection_Indexed_for_FrozenCounter);
+void Foreach_in_BufferedCollection_Indexed_for_FrozenCounter(BufferedCollection_Indexed_for_FrozenCounter *pBufferedCollection_Indexed_for_FrozenCounter,
+    IVisitor__for__Indexed_for_FrozenCounter* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Indexed_for_FrozenCounter_override(void *pICollection_Indexed_for_FrozenCounter);
+void Foreach_in_BufferedCollection_Indexed_for_FrozenCounter_override(void *pICollection_Indexed_for_FrozenCounter,
+    IVisitor__for__Indexed_for_FrozenCounter* visitor);
+//-----------------------------------Indexed_for_FrozenCounter---------------------------------------------------
+//-----------------------------------Indexed_for_Analog---------------------------------------------------
+typedef Indexed_for_Analog (*ReadFunc_Indexed_for_Analog)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_Indexed_for_Analog iICollection_Indexed_for_Analog;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Indexed_for_Analog WithIndex_in_Indexed_for_Analog(
+//  Analog* value, uint16_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Indexed_for_Analog readFunc;
+} BufferedCollection_Indexed_for_Analog;
+
+void  BufferedCollection_Indexed_for_Analog_in_BufferedCollection_Indexed_for_Analog(
+  BufferedCollection_Indexed_for_Analog *pBufferedCollection_Indexed_for_Analog,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_Analog readFunc);
+BufferedCollection_Indexed_for_Analog CreateBufferedCollection_Indexed_for_Analog_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_Analog readFunc);
+
+uint16_t Count_in_BufferedCollection_Indexed_for_Analog(BufferedCollection_Indexed_for_Analog *pBufferedCollection_Indexed_for_Analog);
+void Foreach_in_BufferedCollection_Indexed_for_Analog(BufferedCollection_Indexed_for_Analog *pBufferedCollection_Indexed_for_Analog,
+    IVisitor__for__Indexed_for_Analog* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Indexed_for_Analog_override(void *pICollection_Indexed_for_Analog);
+void Foreach_in_BufferedCollection_Indexed_for_Analog_override(void *pICollection_Indexed_for_Analog,
+    IVisitor__for__Indexed_for_Analog* visitor);
+//-----------------------------------Indexed_for_Analog---------------------------------------------------
+//-----------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------
+typedef Indexed_for_AnalogOutputStatus (*ReadFunc_Indexed_for_AnalogOutputStatus)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_Indexed_for_AnalogOutputStatus iICollection_Indexed_for_AnalogOutputStatus;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Indexed_for_AnalogOutputStatus WithIndex_in_Indexed_for_AnalogOutputStatus(
+//  AnalogOutputStatus* value, uint16_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Indexed_for_AnalogOutputStatus readFunc;
+} BufferedCollection_Indexed_for_AnalogOutputStatus;
+
+void  BufferedCollection_Indexed_for_AnalogOutputStatus_in_BufferedCollection_Indexed_for_AnalogOutputStatus(
+  BufferedCollection_Indexed_for_AnalogOutputStatus *pBufferedCollection_Indexed_for_AnalogOutputStatus,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputStatus readFunc);
+BufferedCollection_Indexed_for_AnalogOutputStatus CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputStatus readFunc);
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputStatus(BufferedCollection_Indexed_for_AnalogOutputStatus *pBufferedCollection_Indexed_for_AnalogOutputStatus);
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus(BufferedCollection_Indexed_for_AnalogOutputStatus *pBufferedCollection_Indexed_for_AnalogOutputStatus,
+    IVisitor__for__Indexed_for_AnalogOutputStatus* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(void *pICollection_Indexed_for_AnalogOutputStatus);
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(void *pICollection_Indexed_for_AnalogOutputStatus,
+    IVisitor__for__Indexed_for_AnalogOutputStatus* visitor);
+//-----------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------
 
 ////} // namespace opendnp3
 

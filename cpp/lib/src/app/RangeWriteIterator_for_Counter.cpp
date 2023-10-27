@@ -20,7 +20,7 @@ void RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_Counte
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_CounterOver1_1"<<'\n';
   decrement_stack_info();
@@ -41,7 +41,7 @@ void RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_Counte
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_Counter_in_RangeWriteIterator_for_UInt8_CounterOver2_1"<<'\n';
   decrement_stack_info();
@@ -69,7 +69,7 @@ void RangeWriteIterator_for_UInt8_Counter_destr_RangeWriteIterator_for_UInt8_Cou
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt8_Counter_destr_RangeWriteIterator_for_UInt8_Counter1"<<'\n';
   decrement_stack_info();
@@ -122,7 +122,7 @@ void RangeWriteIterator_for_UInt16_Counter_in_RangeWriteIterator_for_UInt16_Coun
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_Counter_in_RangeWriteIterator_for_UInt16_CounterOver1_1"<<'\n';
   decrement_stack_info();
@@ -143,7 +143,7 @@ void RangeWriteIterator_for_UInt16_Counter_in_RangeWriteIterator_for_UInt16_Coun
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_Counter_in_RangeWriteIterator_for_UInt16_CounterOver2_1"<<'\n';
   decrement_stack_info();
@@ -171,7 +171,7 @@ void RangeWriteIterator_for_UInt16_Counter_destr_RangeWriteIterator_for_UInt16_C
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"RangeWriteIterator_for_UInt16_Counter_destr_RangeWriteIterator_for_UInt16_Counter1"<<'\n';
   decrement_stack_info();

@@ -105,27 +105,27 @@ std::string NoResponse(uint8_t seq)
     return "";
 }
 
-TEST_CASE(SUITE("Freeze 0x07"))
+TEST_CASE(SUITE("1Freeze 0x07"))
 {
     TestFreezeOperation("07", NullResponse, false);
 }
 
-TEST_CASE(SUITE("Freeze No Ack 0x08"))
+TEST_CASE(SUITE("2Freeze No Ack 0x08"))
 {
     TestFreezeOperation("08", NoResponse, false);
 }
 
-TEST_CASE(SUITE("Freeze And Clear 0x09"))
+TEST_CASE(SUITE("3Freeze And Clear 0x09"))
 {
     TestFreezeOperation("09", NullResponse, true);
 }
 
-TEST_CASE(SUITE("Freeze And Clear No Ack 0x0A"))
+TEST_CASE(SUITE("4Freeze And Clear No Ack 0x0A"))
 {
     TestFreezeOperation("0A", NoResponse, true);
 }
 
-TEST_CASE(SUITE("Broadcast Support"))
+TEST_CASE(SUITE("5Broadcast Support"))
 {
     OutstationConfig config;
     auto database = configure::by_count_of::counter(1, true);
@@ -177,7 +177,7 @@ TEST_CASE(SUITE("Broadcast Support"))
     t.OnTxReady();
 }
 
-TEST_CASE(SUITE("Range freeze"))
+TEST_CASE(SUITE("6Range freeze"))
 {
     const uint16_t num_counters = 10;
 

@@ -18,6 +18,8 @@
 #define UNUSED(x) (void)(x)
 
 
+int16_t get_stack_info(void);
+
 key_filter *pkf;
 
 MainWindow *mainWindow;
@@ -52,17 +54,24 @@ expectsContents_in_CountParser = true;
 
 qDebug()<<"********SUITE('25ReadClass0MultiFragAnalog')********";
     OutstationConfig config;
+qDebug()<<"1stack_info= "<<get_stack_info();
+
     OutstationConfig_in_OutstationConfig(&config);
+qDebug()<<"2stack_info= "<<get_stack_info();
+
     config.params.maxTxFragSize = 20; // override to use a fragment length of 20
 
 
 ////    OutstationTestObject t(config, configure::by_count_of::analog_input(8));
 DatabaseConfig tmp = analog_input_in_DatabaseHelpers(8);
+qDebug()<<"3stack_info= "<<get_stack_info();
 
     OutstationTestObject t;
     OutstationTestObject_in_OutstationTestObject(&t, &config, &tmp);
+qDebug()<<"4stack_info= "<<get_stack_info();
 
     LowerLayerUp_in_OutstationTestObject(&t);
+qDebug()<<"5stack_info= "<<get_stack_info();
 
 //void Transaction_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, void (*apply)(IUpdateHandler*));//std::function<void(opendnp3::IUpdateHandler&)>& apply)
 ////    t.Transaction([](IUpdateHandler& db) {
@@ -85,7 +94,7 @@ std::cout << "temp= " << temp<<'\n';
 //uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
 ////    t.OnTxReady();
  OnTxReady_in_OutstationTestObject(&t);
-/*
+
 ////    t.SendToOutstation("C0 00");
     std::string name1("C0 00");       
     SendToOutstation_in_OutstationTestObject(&t, name1);  
@@ -94,7 +103,40 @@ std::cout << "temp= " << temp<<'\n';
 
 qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == '21 81 80 00 1E 01 00 02 03 01 00 00 00 00 01 00 00 00 00')";
 std::cout << "temp1= " << temp1<<'\n';
-*/
+
+ OnTxReady_in_OutstationTestObject(&t);
+
+////    t.SendToOutstation("C1 00");
+    std::string name2("C1 00");       
+    SendToOutstation_in_OutstationTestObject(&t, name2);  
+
+    std::string temp2 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+
+qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == '22 81 80 00 1E 01 00 04 05 01 00 00 00 00 01 00 00 00 00')";
+std::cout << "temp2= " << temp2<<'\n';
+
+ OnTxReady_in_OutstationTestObject(&t);
+
+////    t.SendToOutstation("C2 00");
+    std::string name3("C2 00");       
+    SendToOutstation_in_OutstationTestObject(&t, name3);  
+
+    std::string temp3 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+
+qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == '43 81 80 00 1E 01 00 06 07 01 00 00 00 00 01 00 00 00 00')";
+std::cout << "temp3= " << temp3<<'\n';
+
+ OnTxReady_in_OutstationTestObject(&t);
+
+////    t.SendToOutstation("C3 00");
+    std::string name4("C3 00");       
+    SendToOutstation_in_OutstationTestObject(&t, name4);  
+
+    std::string temp4 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+
+qDebug()<<"REQUIRE(t.lower->PopWriteAsHex().empty())";
+std::cout << "temp4= " << temp4<<'\n';
+
 /*
 TEST_CASE(SUITE("25ReadClass0MultiFragAnalog"))
 {

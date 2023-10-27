@@ -78,6 +78,38 @@ uint16_t select_all_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_
   }); // override default
 }
 
+////    size_t select(Range range)
+uint16_t select_in_StaticDataMap_for_OctetStringSpecOver1(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec, Range range)
+{
+////        return this->select(range, [](auto var) { return var; }); // use the default
+  return select_in_StaticDataMap_for_OctetStringSpecOver5(pStaticDataMap_for_OctetStringSpec, range, [](auto var) {
+    return var;
+  }); // use the default
+}
+
+////    bool select(uint16_t index, typename Spec::static_variation_t variation)
+boolean select_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec, uint16_t index, StaticOctetStringVariation_uint8_t variation)
+{
+////        return this->select(Range::From(index, index), variation);
+  return select_in_StaticDataMap_for_OctetStringSpecOver4(pStaticDataMap_for_OctetStringSpec, From_in_Range_static(index, index), variation) == 1;
+}
+
+////    bool select(uint16_t index)
+boolean select_in_StaticDataMap_for_OctetStringSpecOver3(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec, uint16_t index)
+{
+////        return this->select(Range::From(index, index)) == 1;
+  return select_in_StaticDataMap_for_OctetStringSpecOver1(pStaticDataMap_for_OctetStringSpec, From_in_Range_static(index, index)) == 1;
+}
+
+////    size_t select(Range range, typename Spec::static_variation_t variation)
+uint16_t select_in_StaticDataMap_for_OctetStringSpecOver4(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec, Range range, StaticOctetStringVariation_uint8_t variation)
+{
+////        return this->select(range, [variation](auto var) { return variation; }); // override default
+  return select_in_StaticDataMap_for_OctetStringSpecOver5(pStaticDataMap_for_OctetStringSpec, range, [variation](auto var) {
+    return variation;
+  }); // override default
+}
+
 boolean update_in_StaticDataMap_for_OctetStringSpecOver1(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec,
     OctetString* value,
     uint16_t index,
@@ -146,6 +178,32 @@ boolean update_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_Octet
       }
     }
   }
+
+  return true;
+}
+
+////    bool has_any_selection() const
+boolean has_any_selection_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////        return this->selected.IsValid();
+ return IsValid_in_Range(&(pStaticDataMap_for_OctetStringSpec->selected));
+}
+
+boolean add_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec, OctetString *value, uint16_t index, OctetStringConfig *config)
+{
+  if (pStaticDataMap_for_OctetStringSpec->map.find(index) != pStaticDataMap_for_OctetStringSpec->map.end())
+  {
+    return false;
+  }
+
+//void  StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver2(StaticDataCell_for_OctetString *pStaticDataCell_for_OctetString,
+//    OctetString* value,
+//    OctetStringConfig* config);
+  StaticDataCell_for_OctetString sStaticDataCell;
+  StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver2(&sStaticDataCell, value, config);
+
+  pStaticDataMap_for_OctetStringSpec->map[index] = sStaticDataCell;////StaticDataCell_for_OctetStringSpec{value, config};
 
   return true;
 }

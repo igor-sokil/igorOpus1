@@ -153,9 +153,7 @@ void StateIdle_in_StateIdle(StateIdle *pStateIdle)
 
   (pStateIdle->oOutstationState).pOnConfirm_in_OutstationState = OnConfirm_in_StateIdle_override;
   (pStateIdle->oOutstationState).pOnConfirmTimeout_in_OutstationState = OnConfirmTimeout_in_StateIdle_override;
-//  /*
   (pStateIdle->oOutstationState).pOnNewReadRequest_in_OutstationState = OnNewReadRequest_in_StateIdle_override;
-//  */
   (pStateIdle->oOutstationState).pOnNewNonReadRequest_in_OutstationState = OnNewNonReadRequest_in_StateIdle_override;
   (pStateIdle->oOutstationState).pOnRepeatNonReadRequest_in_OutstationState = OnRepeatNonReadRequest_in_StateIdle_override;
   (pStateIdle->oOutstationState).pOnRepeatReadRequest_in_OutstationState = OnRepeatReadRequest_in_StateIdle_override;
@@ -293,6 +291,8 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
   StateSolicitedConfirmWait *parent =
     (StateSolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 
+  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override2"<<std::endl;
+
 ////    if (request.header.control.UNS)
   if ((request->header).control.UNS)
   {
@@ -307,6 +307,8 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////        return *this;
     return &(parent->oOutstationState);
   }
+
+  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override3"<<std::endl;
 
 //boolean Equals_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t other);
 ////    if (!((OContext*)ctx)->sol.seq.confirmNum.Equals(request.header.control.SEQ))
@@ -334,6 +336,8 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////    ctx.lastBroadcastMessageReceived.clear();
   clear_in_Settable_for_LinkBroadcastAddress(&(((OContext*)ctx)->lastBroadcastMessageReceived));
 
+  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override4"<<std::endl;
+
   // information the application about the confirm
 //    void OnConfirmProcessed_in_IOutstationApplication(IOutstationApplication*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
 //    uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t ec);
@@ -348,10 +352,13 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
       NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC2),
       NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC3));
 
+  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override5"<<std::endl;
+
 // boolean HasSelection_in_ResponseContext(ResponseContext *pResponseContext);
 ////    if (ctx.rspContext.HasSelection())
   if (HasSelection_in_ResponseContext(&(((OContext*)ctx)->rspContext)))
   {
+  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override6"<<std::endl;
 #ifdef  LOG_INFO
   decrement_stack_info();
 #endif
@@ -365,6 +372,7 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
     return ContinueMultiFragResponse_in_OContext((OContext*)ctx, &(request->addresses), &sSequenceNum_for_uint8_Modulus16);
   }
 
+  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override7"<<std::endl;
 #ifdef  LOG_INFO
   decrement_stack_info();
 #endif
@@ -745,6 +753,7 @@ char* Name_in_StateSolicitedConfirmWait_override(void* pOutstationState)
 
 OutstationState* Inst_in_StateSolicitedConfirmWait_static(void)
 {
+  StateSolicitedConfirmWait_in_StateSolicitedConfirmWait(&instance_in_StateSolicitedConfirmWait);
   return &(instance_in_StateSolicitedConfirmWait.oOutstationState);
 }
 
@@ -756,6 +765,7 @@ char* Name_in_StateUnsolicitedConfirmWait_override(void* pOutstationState)
 
 OutstationState* Inst_in_StateUnsolicitedConfirmWait_static(void)
 {
+  StateUnsolicitedConfirmWait_in_StateUnsolicitedConfirmWait(&instance_in_StateUnsolicitedConfirmWait);
   return &(instance_in_StateUnsolicitedConfirmWait.oOutstationState);
 }
 

@@ -219,6 +219,9 @@ void clear_selection_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_
 
 uint16_t select_all_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec);
 uint16_t select_all_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, StaticDoubleBinaryVariation_uint8_t variation);
+
+boolean has_any_selection_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec);
+
 template<class F> uint16_t select_all_for_DoubleBitBinarySpec_staticOver3(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, F get_variation);
 
 ////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
@@ -260,6 +263,69 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_DoubleBitBinarySpecOv
   }
 }
 
+uint16_t select_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, Range range);
+boolean select_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, uint16_t index, StaticDoubleBinaryVariation_uint8_t variation);
+boolean select_in_StaticDataMap_for_DoubleBitBinarySpecOver3(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, uint16_t index);
+uint16_t select_in_StaticDataMap_for_DoubleBitBinarySpecOver4(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, Range range, StaticDoubleBinaryVariation_uint8_t variation);
+
+template<class F> uint16_t select_in_StaticDataMap_for_DoubleBitBinarySpecOver5(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, Range range, F get_variation);
+////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select(Range range, F get_variation)
+template<class F> uint16_t select_in_StaticDataMap_for_DoubleBitBinarySpecOver5(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, Range range, F get_variation)
+{
+//boolean IsValid_in_Range(Range *pRange);
+////    if (!range.IsValid())
+  if (!IsValid_in_Range(&range))
+  {
+    return 0;
+  }
+
+  const auto start = pStaticDataMap_for_DoubleBitBinarySpec->map.lower_bound(range.start);
+
+  if (start == pStaticDataMap_for_DoubleBitBinarySpec->map.end())
+  {
+    return 0;
+  }
+
+//boolean Contains_in_Range(Range *pRange, uint16_t index);
+////    if (!range.Contains(start->first))
+  if (!Contains_in_Range(&range, start->first))
+  {
+    return 0;
+  }
+
+  uint16_t stop = 0;
+  uint16_t count = 0;
+
+  for (auto iter = start; iter != pStaticDataMap_for_DoubleBitBinarySpec->map.end(); ++iter)
+  {
+////        if (!range.Contains(iter->first))
+    if (!Contains_in_Range(&range, iter->first))
+    {
+      break;
+    }
+
+    stop = iter->first;
+//StaticBinaryVariation_uint8_t check_for_promotion_for_BinarySpec_static(Analog* value, StaticBinaryVariation_uint8_t variation);
+////        iter->second.selection = SelectedValue<Spec>{
+////            true, iter->second.value,
+////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
+    DoubleBitBinary dDoubleBitBinary = iter->second.value;
+    SelectedValue_for_DoubleBitBinarySpec sSelectedValue_for_DoubleBitBinarySpec = {
+      true, dDoubleBitBinary, check_for_promotion_for_DoubleBitBinarySpec_static(&dDoubleBitBinary, get_variation(iter->second.config.eEventConfig.svariation))
+    };
+    iter->second.selection = sSelectedValue_for_DoubleBitBinarySpec;
+    ++count;
+  }
+
+//Range Union_in_Range(Range *pRange, Range* other);
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+////    this->selected = this->selected.Union(Range::From(start->first, stop));
+  Range rRange = From_in_Range_static(start->first, stop);
+  pStaticDataMap_for_DoubleBitBinarySpec->selected = Union_in_Range(&(pStaticDataMap_for_DoubleBitBinarySpec->selected), &rRange);
+
+  return count;
+}
+
 ////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
 ////{
 ////    for (const auto& item : config)
@@ -268,6 +334,7 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_DoubleBitBinarySpecOv
 ////    }
 ////}
 
+boolean add_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, DoubleBitBinary *value, uint16_t index, DoubleBitBinaryConfig *config);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::add(const typename Spec::meas_t& value, uint16_t index, typename Spec::config_t config)
 ////{
