@@ -66,6 +66,8 @@ boolean WriteTimeAndInterval_in_IOutstationApplication(IOutstationApplication* p
 
 void IOutstationApplication_in_IOutstationApplication(IOutstationApplication* pIOutstationApplication)
 {
+  IDnpTimeSource_in_IDnpTimeSource(&(pIOutstationApplication->iIDnpTimeSource));
+
   pIOutstationApplication->pSupportsWriteAbsoluteTime_in_IOutstationApplication = SupportsWriteAbsoluteTime_in_IOutstationApplication_override;
   pIOutstationApplication->pWriteAbsoluteTime_in_IOutstationApplication = WriteAbsoluteTime_in_IOutstationApplication_override;
   pIOutstationApplication->pWriteTimeAndInterval_in_IOutstationApplication = WriteTimeAndInterval_in_IOutstationApplication_override;

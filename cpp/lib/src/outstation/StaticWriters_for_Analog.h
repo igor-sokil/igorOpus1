@@ -15,10 +15,12 @@ boolean LoadWithRangeIterator_AnalogSpec_for_UInt16_in_StaticWriters(StaticDataM
 
 //----------------------------------------LoadWithRangeIterator_AnalogSpec_for_UInt---------------------------------------------------------
 //----------------------------------------------Group30Var------------------------------------------
-
 ////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean WriteWithSerializer_AnalogSpec_for_Group30Var1_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
 boolean WriteWithSerializer_AnalogSpec_for_Group30Var2_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
+boolean WriteWithSerializer_AnalogSpec_for_Group30Var3_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
+boolean WriteWithSerializer_AnalogSpec_for_Group30Var4_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
+boolean WriteWithSerializer_AnalogSpec_for_Group30Var5_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
 //----------------------------------------------Group30Var------------------------------------------
 
 #endif

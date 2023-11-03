@@ -209,7 +209,8 @@ public:
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap, std::map<uint16_t, DoubleBitBinaryConfig>& config);
+void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap);
+void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap, std::map<uint16_t, DoubleBitBinaryConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec);
 
 ////template<> StaticDoubleBitBinaryVariation check_for_promotion<DoubleBitBinarySpec>(const DoubleBitBinary& value, StaticDoubleBitBinaryVariation variation);
@@ -371,6 +372,7 @@ boolean update_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_for_D
 ////    }
 ////}
 
+Range get_full_range_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec);
 ////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
 ////{
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
@@ -413,7 +415,10 @@ boolean update_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_D
 
 ////    return true;
 ////}
-////
+
+boolean modify_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
 ////{

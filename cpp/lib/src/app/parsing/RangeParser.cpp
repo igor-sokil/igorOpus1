@@ -37,7 +37,7 @@
 #include <string.h>
 //#include "logging/LogMacros.h"
 
-boolean expectsContents_in_RangeParser = false;
+//boolean expectsContents_in_RangeParser = false;
 
 ////namespace opendnp3
 ////{
@@ -114,7 +114,7 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
 #endif
 
 ////  if (settings.ExpectsContents())
-  if(expectsContents_in_RangeParser)
+  if(expectsContents)//_in_RangeParser)
   {
 //ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
 //  RSeq_for_Uint16_t *buffer,
@@ -672,11 +672,13 @@ ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
 ////        buffer.advance(record.variation);
 ///        return WithIndex(octets, range.start + pos);
 ////      };
+static void *pPointerGlobal1_in_readInvokeRangeOf;
+static void *pPointerGlobal2_in_readInvokeRangeOf;
 Indexed_for_OctetString read_for_OctetString_in_RangeParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_OctetString read_for_OctetString_in_RangeParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-  Range *range         = (Range *)pPointerGlobal1;
-  HeaderRecord *record = (HeaderRecord *)pPointerGlobal2;
+  Range *range         = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
+  HeaderRecord *record = (HeaderRecord *)pPointerGlobal2_in_readInvokeRangeOf;
 
 //RSeq_for_Uint16_t take_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
 ////        const auto octetData = buffer.take(record.variation);
@@ -735,8 +737,8 @@ ParseResult_uint8_t ParseRangeOfOctetData_in_RangeParser_static(
 ////      };
 
 ////      auto collection = CreateBufferedCollection<Indexed<OctetString>>(buffer, COUNT, read);
-      pPointerGlobal1 = range;
-      pPointerGlobal2 = record;
+      pPointerGlobal1_in_readInvokeRangeOf = range;
+      pPointerGlobal2_in_readInvokeRangeOf = record;
       BufferedCollection_Indexed_for_OctetString collection = CreateBufferedCollection_Indexed_for_OctetString_static(
             buffer,
             COUNT,
@@ -777,7 +779,7 @@ Indexed_for_Binary readInvokeRangeOf_for_BinaryGroup1Var2_in_RangeParser(RSeq_fo
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Binary bBinary;
   Binary_in_BinaryOver1(&bBinary);
@@ -808,7 +810,7 @@ void InvokeRangeOf_for_Group1Var2_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_Binary readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Binary collection = CreateBufferedCollection_Indexed_for_Binary_static(
         buffer,
         COUNT,
@@ -856,7 +858,7 @@ Indexed_for_DoubleBitBinary readInvokeRangeOf_for_DoubleBitBinaryGroup3Var2_in_R
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   DoubleBitBinary dDoubleBitBinary;
   DoubleBitBinary_in_DoubleBitBinaryOver1(&dDoubleBitBinary);
@@ -887,7 +889,7 @@ void InvokeRangeOf_for_Group3Var2_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_Binary readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_DoubleBitBinary collection = CreateBufferedCollection_Indexed_for_DoubleBitBinary_static(
         buffer,
         COUNT,
@@ -935,7 +937,7 @@ Indexed_for_BinaryOutputStatus readInvokeRangeOf_for_BinaryOutputStatusGroup10Va
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   BinaryOutputStatus bBinaryOutputStatus;
   BinaryOutputStatus_in_BinaryOutputStatusOver1(&bBinaryOutputStatus);
@@ -966,7 +968,7 @@ void InvokeRangeOf_for_Group10Var2_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_BinaryOutputStatus collection = CreateBufferedCollection_Indexed_for_BinaryOutputStatus_static(
         buffer,
         COUNT,
@@ -1014,7 +1016,7 @@ Indexed_for_Counter readInvokeRangeOf_for_CounterGroup20Var1_in_RangeParser(RSeq
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Counter cCounter;
   Counter_in_CounterOver1(&cCounter);
@@ -1043,7 +1045,7 @@ void InvokeRangeOf_for_Group20Var1_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Counter collection = CreateBufferedCollection_Indexed_for_Counter_static(
         buffer,
         COUNT,
@@ -1090,7 +1092,7 @@ Indexed_for_Counter readInvokeRangeOf_for_CounterGroup20Var2_in_RangeParser(RSeq
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Counter cCounter;
   Counter_in_CounterOver1(&cCounter);
@@ -1119,7 +1121,7 @@ void InvokeRangeOf_for_Group20Var2_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Counter collection = CreateBufferedCollection_Indexed_for_Counter_static(
         buffer,
         COUNT,
@@ -1165,7 +1167,7 @@ Indexed_for_Counter readInvokeRangeOf_for_CounterGroup20Var5_in_RangeParser(RSeq
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Counter cCounter;
   Counter_in_CounterOver1(&cCounter);
@@ -1194,7 +1196,7 @@ void InvokeRangeOf_for_Group20Var5_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Counter collection = CreateBufferedCollection_Indexed_for_Counter_static(
         buffer,
         COUNT,
@@ -1240,7 +1242,7 @@ Indexed_for_Counter readInvokeRangeOf_for_CounterGroup20Var6_in_RangeParser(RSeq
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Counter cCounter;
   Counter_in_CounterOver1(&cCounter);
@@ -1269,7 +1271,7 @@ void InvokeRangeOf_for_Group20Var6_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Counter collection = CreateBufferedCollection_Indexed_for_Counter_static(
         buffer,
         COUNT,
@@ -1315,7 +1317,7 @@ Indexed_for_FrozenCounter readInvokeRangeOf_for_FrozenCounterGroup21Var1_in_Rang
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   FrozenCounter fFrozenCounter;
   FrozenCounter_in_FrozenCounterOver1(&fFrozenCounter);
@@ -1344,7 +1346,7 @@ void InvokeRangeOf_for_Group21Var1_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
         buffer,
         COUNT,
@@ -1390,7 +1392,7 @@ Indexed_for_FrozenCounter readInvokeRangeOf_for_FrozenCounterGroup21Var2_in_Rang
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   FrozenCounter fFrozenCounter;
   FrozenCounter_in_FrozenCounterOver1(&fFrozenCounter);
@@ -1419,7 +1421,7 @@ void InvokeRangeOf_for_Group21Var2_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
         buffer,
         COUNT,
@@ -1465,7 +1467,7 @@ Indexed_for_FrozenCounter readInvokeRangeOf_for_FrozenCounterGroup21Var5_in_Rang
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   FrozenCounter fFrozenCounter;
   FrozenCounter_in_FrozenCounterOver1(&fFrozenCounter);
@@ -1494,7 +1496,7 @@ void InvokeRangeOf_for_Group21Var5_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
         buffer,
         COUNT,
@@ -1540,7 +1542,7 @@ Indexed_for_FrozenCounter readInvokeRangeOf_for_FrozenCounterGroup21Var6_in_Rang
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   FrozenCounter fFrozenCounter;
   FrozenCounter_in_FrozenCounterOver1(&fFrozenCounter);
@@ -1569,7 +1571,7 @@ void InvokeRangeOf_for_Group21Var6_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
         buffer,
         COUNT,
@@ -1615,7 +1617,7 @@ Indexed_for_FrozenCounter readInvokeRangeOf_for_FrozenCounterGroup21Var9_in_Rang
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   FrozenCounter fFrozenCounter;
   FrozenCounter_in_FrozenCounterOver1(&fFrozenCounter);
@@ -1644,7 +1646,7 @@ void InvokeRangeOf_for_Group21Var9_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
         buffer,
         COUNT,
@@ -1690,7 +1692,7 @@ Indexed_for_FrozenCounter readInvokeRangeOf_for_FrozenCounterGroup21Var10_in_Ran
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   FrozenCounter fFrozenCounter;
   FrozenCounter_in_FrozenCounterOver1(&fFrozenCounter);
@@ -1719,7 +1721,7 @@ void InvokeRangeOf_for_Group21Var10_in_RangeParser_static(HeaderRecord* record,
 //  uint16_t count,
 //  ReadFunc_Indexed_for_BinaryOutputStatus readFunc);
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
         buffer,
         COUNT,
@@ -1765,7 +1767,7 @@ Indexed_for_Analog readInvokeRangeOf_for_AnalogGroup30Var1_in_RangeParser(RSeq_f
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Analog aAnalog;
   Analog_in_AnalogOver1(&aAnalog);
@@ -1790,7 +1792,7 @@ void InvokeRangeOf_for_Group30Var1_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
         buffer,
         COUNT,
@@ -1836,7 +1838,7 @@ Indexed_for_Analog readInvokeRangeOf_for_AnalogGroup30Var2_in_RangeParser(RSeq_f
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Analog aAnalog;
   Analog_in_AnalogOver1(&aAnalog);
@@ -1861,7 +1863,7 @@ void InvokeRangeOf_for_Group30Var2_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
         buffer,
         COUNT,
@@ -1907,7 +1909,7 @@ Indexed_for_Analog readInvokeRangeOf_for_AnalogGroup30Var3_in_RangeParser(RSeq_f
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Analog aAnalog;
   Analog_in_AnalogOver1(&aAnalog);
@@ -1932,7 +1934,7 @@ void InvokeRangeOf_for_Group30Var3_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
         buffer,
         COUNT,
@@ -1978,7 +1980,7 @@ Indexed_for_Analog readInvokeRangeOf_for_AnalogGroup30Var4_in_RangeParser(RSeq_f
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Analog aAnalog;
   Analog_in_AnalogOver1(&aAnalog);
@@ -2003,7 +2005,7 @@ void InvokeRangeOf_for_Group30Var4_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
         buffer,
         COUNT,
@@ -2049,7 +2051,7 @@ Indexed_for_Analog readInvokeRangeOf_for_AnalogGroup30Var5_in_RangeParser(RSeq_f
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Analog aAnalog;
   Analog_in_AnalogOver1(&aAnalog);
@@ -2074,7 +2076,7 @@ void InvokeRangeOf_for_Group30Var5_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
         buffer,
         COUNT,
@@ -2120,7 +2122,7 @@ Indexed_for_AnalogOutputStatus readInvokeRangeOf_for_AnalogOutputStatusGroup40Va
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   AnalogOutputStatus aAnalogOutputStatus;
   AnalogOutputStatus_in_AnalogOutputStatusOver1(&aAnalogOutputStatus);
@@ -2145,7 +2147,7 @@ void InvokeRangeOf_for_Group40Var1_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
         buffer,
         COUNT,
@@ -2191,7 +2193,7 @@ Indexed_for_AnalogOutputStatus readInvokeRangeOf_for_AnalogOutputStatusGroup40Va
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   AnalogOutputStatus aAnalogOutputStatus;
   AnalogOutputStatus_in_AnalogOutputStatusOver1(&aAnalogOutputStatus);
@@ -2216,7 +2218,7 @@ void InvokeRangeOf_for_Group40Var2_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
         buffer,
         COUNT,
@@ -2262,7 +2264,7 @@ Indexed_for_AnalogOutputStatus readInvokeRangeOf_for_AnalogOutputStatusGroup40Va
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   AnalogOutputStatus aAnalogOutputStatus;
   AnalogOutputStatus_in_AnalogOutputStatusOver1(&aAnalogOutputStatus);
@@ -2287,7 +2289,7 @@ void InvokeRangeOf_for_Group40Var3_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
         buffer,
         COUNT,
@@ -2333,7 +2335,7 @@ Indexed_for_TimeAndInterval readInvokeRangeOf_for_TimeAndIntervalGroup50Var4_in_
 ////        typename Descriptor::Target target;
 ////        Descriptor::ReadTarget(buffer, target);
 ////        return WithIndex(target, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   TimeAndInterval tTimeAndInterval;
   TimeAndInterval_in_TimeAndIntervalOver1(&tTimeAndInterval);
@@ -2358,7 +2360,7 @@ void InvokeRangeOf_for_Group50Var4_in_RangeParser_static(HeaderRecord* record,
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_TimeAndInterval collection = CreateBufferedCollection_Indexed_for_TimeAndInterval_static(
         buffer,
         COUNT,
@@ -2401,7 +2403,7 @@ Indexed_for_Binary readInvokeRangeBitfieldType_for_Binary_in_RangeParser(RSeq_fo
 ////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
 ////        Type value(GetBit(buffer, pos));
 ////        return WithIndex(value, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   Binary value;
 //boolean GetBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t position);
@@ -2424,7 +2426,7 @@ void InvokeRangeBitfieldType_for_Binary_in_RangeParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_Binary collection = CreateBufferedCollection_Indexed_for_Binary_static(
         buffer,
         COUNT,
@@ -2455,7 +2457,7 @@ Indexed_for_BinaryOutputStatus readInvokeRangeBitfieldType_for_BinaryOutputStatu
 ////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
 ////        Type value(GetBit(buffer, pos));
 ////        return WithIndex(value, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   BinaryOutputStatus value;
 //boolean GetBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t position);
@@ -2478,7 +2480,7 @@ void InvokeRangeBitfieldType_for_BinaryOutputStatus_in_RangeParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_BinaryOutputStatus collection = CreateBufferedCollection_Indexed_for_BinaryOutputStatus_static(
         buffer,
         COUNT,
@@ -2509,7 +2511,7 @@ Indexed_for_IINValue readInvokeRangeBitfieldType_for_IINValue_in_RangeParser(RSe
 ////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
 ////        Type value(GetBit(buffer, pos));
 ////        return WithIndex(value, range.start + pos);
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   IINValue value;
 //boolean GetBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t position);
@@ -2532,7 +2534,7 @@ void InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_IINValue collection = CreateBufferedCollection_Indexed_for_IINValue_static(
         buffer,
         COUNT,
@@ -2578,7 +2580,7 @@ Indexed_for_DoubleBitBinary readInvokeRangeBitfieldType_for_DoubleBitBinary_in_R
 ////    auto read = [range](ser4cpp::rseq_t& buffer, size_t pos) -> Indexed<Type> {
 ////        Type value(GetDoubleBit(buffer, pos));
 ////        return WithIndex(value, static_cast<uint16_t>(range.start + pos));
-  Range *range = (Range *)pPointerGlobal1;
+  Range *range = (Range *)pPointerGlobal1_in_readInvokeRangeOf;
 
   DoubleBitBinary value;
 //DoubleBit_uint8_t GetDoubleBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t index);
@@ -2602,7 +2604,7 @@ uint32_t COUNT = Count_in_Range(range);
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<Type>>(buffer, COUNT, read);
-  pPointerGlobal1 = range;
+  pPointerGlobal1_in_readInvokeRangeOf = range;
   BufferedCollection_Indexed_for_DoubleBitBinary collection = CreateBufferedCollection_Indexed_for_DoubleBitBinary_static(
         buffer,
         COUNT,

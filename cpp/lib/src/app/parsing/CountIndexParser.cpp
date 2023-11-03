@@ -39,7 +39,7 @@
 #include "Group43.h"
 ////#include "logging/LogMacros.h"
 
-boolean expectsContents_in_CountIndexParser = false;
+//boolean expectsContents_in_CountIndexParser = false;
 
 ////namespace opendnp3
 ///{
@@ -93,7 +93,7 @@ ParseResult_uint8_t ParseHeader_in_CountIndexParser_static(
   decrement_stack_info();
 #endif
 
-    if (expectsContents_in_CountIndexParser)
+    if (expectsContents)//_in_CountIndexParser)
     {
       return ParseCountOfObjects_in_CountIndexParser_static(buffer, record, numparser, count, /*pLogger,*/ pHandler);
     }
@@ -161,7 +161,9 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
    std::cout<<""<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-   std::cout<<"ParseCountOfObjects_in_CountIndexParser_static1"<<std::endl;
+  std::cout<<"ParseCountOfObjects_in_CountIndexParser_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*temp= "<<record->gGroupVariationRecord.enumeration<<std::endl;
 #endif
 
   switch (record->gGroupVariationRecord.enumeration)
@@ -396,12 +398,14 @@ return ParseIndexPrefixedOctetData_in_CountIndexParser_static(buffer, record, nu
   }
 }
 
+static void *pPointerGlobal1_in_ParseCountOfIndices;
+static void *pPointerGlobal2_in_ParseCountOfIndices;
 uint16_t ReadFunc_uint16_in_CountIndexParser(RSeq_for_Uint16_t *buffer, uint32_t pos);
 ////    auto read = [&numparser, record](ser4cpp::rseq_t& buffer, uint32_t pos) -> uint16_t {
 uint16_t ReadFunc_uint16_in_CountIndexParser(RSeq_for_Uint16_t *buffer, uint32_t pos)
 {
   UNUSED(pos);
-  NumParser *numParser = (NumParser *)pPointerGlobal1;
+  NumParser *numParser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 //  HeaderRecord *record = (HeaderRecord *)pPointerGlobal2;
 ////      return numparser.ReadNum(buffer);
   return ReadNum_in_NumParser(numParser, buffer);
@@ -415,6 +419,12 @@ ParseResult_uint8_t ParseCountOfIndices_in_CountIndexParser_static(
   ////Logger* pLogger,
   IAPDUHandler* pHandler)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseCountOfIndices_in_CountIndexParser_static1"<<std::endl;
+#endif
 //    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
 ////    const auto SIZE = static_cast<size_t>(count) * static_cast<size_t>(numparser.NumBytes());
   const uint32_t SIZE = count * (uint32_t)(NumBytes_in_NumParser(numparser));
@@ -424,9 +434,8 @@ ParseResult_uint8_t ParseCountOfIndices_in_CountIndexParser_static(
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified sequence of indices");
 #ifdef  LOG_INFO
-  increment_stack_info();
   std::cout<<"*"<<getString_stack_info();
-     std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified sequence of indices')"<<std::endl;
+  std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified sequence of indices')"<<std::endl;
   decrement_stack_info();
 #endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
@@ -438,8 +447,8 @@ ParseResult_uint8_t ParseCountOfIndices_in_CountIndexParser_static(
 ////      return numparser.ReadNum(buffer);
 ////    };
 
-    pPointerGlobal1 = numparser;
-    pPointerGlobal2 = record;
+    pPointerGlobal1_in_ParseCountOfIndices = numparser;
+    pPointerGlobal2_in_ParseCountOfIndices = record;
 //BufferedCollection_uint16 CreateBufferedCollection_uint16_static(
 //  RSeq_for_Uint16_t* buffer,
 //  uint32_t count,
@@ -458,6 +467,10 @@ ParseResult_uint8_t ParseCountOfIndices_in_CountIndexParser_static(
 
 ////  buffer.advance(SIZE);
   advance_in_RSeq_for_Uint16_t(buffer, SIZE);
+
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return ParseResult_OK;
 }
 
@@ -467,8 +480,8 @@ Indexed_for_OctetString read_for_OctetString_in_CountIndexParser(RSeq_for_Uint16
 {
 UNUSED(pos);
 
-  NumParser *numParser = (NumParser *)pPointerGlobal1;
-  HeaderRecord *record = (HeaderRecord *)pPointerGlobal2;
+  NumParser *numParser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+  HeaderRecord *record = (HeaderRecord *)pPointerGlobal2_in_ParseCountOfIndices;
 //uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
 ////      auto index = numparser.ReadNum(buffer);
   uint16_t index = ReadNum_in_NumParser(numParser, buffer);
@@ -542,8 +555,8 @@ ParseResult_uint8_t ParseIndexPrefixedOctetData_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<OctetString>>(buffer, count, read);
-    pPointerGlobal1 = numparser;
-    pPointerGlobal2 = record;
+    pPointerGlobal1_in_ParseCountOfIndices = numparser;
+    pPointerGlobal2_in_ParseCountOfIndices = record;
     BufferedCollection_Indexed_for_OctetString collection = CreateBufferedCollection_Indexed_for_OctetString_static(
           buffer,
           count,
@@ -587,7 +600,7 @@ Indexed_for_Binary readInvokeCountOf_for_Binary_in_CountIndexParser(RSeq_for_Uin
 Indexed_for_Binary readInvokeCountOf_for_Binary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
 UNUSED(pos);
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_Binary pair;
@@ -618,7 +631,7 @@ void InvokeCountOf_for_Group2Var1_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_Binary collection = CreateBufferedCollection_Indexed_for_Binary_static(
         buffer,
         count,
@@ -659,7 +672,7 @@ Indexed_for_ControlRelayOutputBlock readInvokeCountOf_for_ControlRelayOutputBloc
 {
 UNUSED(pos);
 
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_ControlRelayOutputBlock pair;
@@ -690,7 +703,7 @@ void InvokeCountOf_for_Group12Var1_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_ControlRelayOutputBlock collection = CreateBufferedCollection_Indexed_for_ControlRelayOutputBlock_static(
         buffer,
         count,
@@ -731,7 +744,7 @@ Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var1_for_DoubleBitBinary_in_
 {
 UNUSED(pos);
 
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_DoubleBitBinary pair;
@@ -762,7 +775,7 @@ void InvokeCountOf_for_Group4Var1_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_DoubleBitBinary collection = CreateBufferedCollection_Indexed_for_DoubleBitBinary_static(
         buffer,
         count,
@@ -803,7 +816,7 @@ Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var3_for_DoubleBitBinary_in_
 {
 UNUSED(pos);
 
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_DoubleBitBinary pair;
@@ -834,7 +847,7 @@ void InvokeCountOf_for_Group4Var3_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_DoubleBitBinary collection = CreateBufferedCollection_Indexed_for_DoubleBitBinary_static(
         buffer,
         count,
@@ -875,7 +888,7 @@ Indexed_for_BinaryCommandEvent readInvokeCountOf_Group13Var1_for_BinaryCommandEv
 {
 UNUSED(pos);
 
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_BinaryCommandEvent pair;
@@ -906,7 +919,7 @@ void InvokeCountOf_for_Group13Var1_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_BinaryCommandEvent collection = CreateBufferedCollection_Indexed_for_BinaryCommandEvent_static(
         buffer,
         count,
@@ -947,7 +960,7 @@ Indexed_for_BinaryCommandEvent readInvokeCountOf_Group13Var2_for_BinaryCommandEv
 {
 UNUSED(pos);
 
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_BinaryCommandEvent pair;
@@ -978,7 +991,7 @@ void InvokeCountOf_for_Group13Var2_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_BinaryCommandEvent collection = CreateBufferedCollection_Indexed_for_BinaryCommandEvent_static(
         buffer,
         count,
@@ -1019,7 +1032,7 @@ Indexed_for_AnalogCommandEvent readInvokeCountOf_Group43Var1_for_AnalogCommandEv
 {
 UNUSED(pos);
 
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_AnalogCommandEvent pair;
@@ -1050,7 +1063,7 @@ void InvokeCountOf_for_Group43Var1_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_AnalogCommandEvent collection = CreateBufferedCollection_Indexed_for_AnalogCommandEvent_static(
         buffer,
         count,
@@ -1091,7 +1104,7 @@ Indexed_for_AnalogCommandEvent readInvokeCountOf_Group43Var3_for_AnalogCommandEv
 {
 UNUSED(pos);
 
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_AnalogCommandEvent pair;
@@ -1122,7 +1135,7 @@ void InvokeCountOf_for_Group43Var3_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_AnalogCommandEvent collection = CreateBufferedCollection_Indexed_for_AnalogCommandEvent_static(
         buffer,
         count,
@@ -1163,7 +1176,7 @@ Indexed_for_TimeAndInterval readInvokeCountOf_Group50Var4_for_TimeAndInterval_in
 {
 UNUSED(pos);
 
-  NumParser *numparser = (NumParser *)pPointerGlobal1;
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
   Indexed_for_TimeAndInterval pair;
@@ -1194,7 +1207,7 @@ void InvokeCountOf_for_Group50Var4_in_CountIndexParser_static(
 ////    };
 
 ////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
-  pPointerGlobal1 = numparser;
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
   BufferedCollection_Indexed_for_TimeAndInterval collection = CreateBufferedCollection_Indexed_for_TimeAndInterval_static(
         buffer,
         count,

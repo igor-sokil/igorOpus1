@@ -209,7 +209,8 @@ public:
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap, std::map<uint16_t, AOStatusConfig>& config);
+void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap);
+void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap, std::map<uint16_t, AOStatusConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec);
 
 ////template<> StaticAnalogOutputStatusVariation check_for_promotion<AnalogOutputStatusSpec>(const AnalogOutputStatus& value, StaticAnalogOutputStatusVariation variation);
@@ -377,6 +378,7 @@ boolean update_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_fo
 ////    }
 ////}
 
+Range get_full_range_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec);
 ////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
 ////{
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
@@ -419,7 +421,10 @@ boolean update_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_fo
 
 ////    return true;
 ////}
-////
+
+boolean modify_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
 ////{

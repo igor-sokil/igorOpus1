@@ -92,6 +92,17 @@ boolean update_in_StaticDataMap_for_TimeAndIntervalSpecOver1(StaticDataMap_for_T
 ////template<> StaticBinaryVariation check_for_promotion<BinarySpec>(const Binary& value, StaticBinaryVariation variation)
 StaticBinaryVariation_uint8_t check_for_promotion_for_BinarySpec_static(Binary* value, StaticBinaryVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"check_for_promotion_for_BinarySpec_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticBinaryVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticBinaryVariation_Group1Var1= "<<(uint16_t)StaticBinaryVariation_Group1Var1<<'\n';
+  decrement_stack_info();
+#endif
   if (variation == StaticBinaryVariation_Group1Var1)
   {
 //boolean IsQualityOnlineOnly_in_BinarySpec_static(Binary *binary);

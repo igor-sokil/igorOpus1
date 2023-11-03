@@ -158,7 +158,6 @@ boolean WriteWithSerializer_CounterSpec_for_Group20Var1_in_StaticWriters_static(
 }
 //----------------------------------------------Group20Var1------------------------------------------
 //----------------------------------------------Group20Var2------------------------------------------
-
 ////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean WriteWithSerializer_CounterSpec_for_Group20Var2_in_StaticWriters_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer)
 {
@@ -203,6 +202,96 @@ boolean WriteWithSerializer_CounterSpec_for_Group20Var2_in_StaticWriters_static(
   return btmp;
 }
 //----------------------------------------------Group20Var2------------------------------------------
+//----------------------------------------------Group20Var5------------------------------------------
+////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
+boolean WriteWithSerializer_CounterSpec_for_Group20Var5_in_StaticWriters_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer)
+{
+////    const auto range = map.get_selected_range();
+  Range  range = get_selected_range_in_StaticDataMap_for_CounterSpec(&map);
+
+////    if (range.IsOneByte())
+  if (IsOneByte_in_Range(&range))
+  {
+//RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+//    QualifierCode_uint8_t qc,
+//    DNP3Serializer_for_Counter *serializer,
+//    uint8_t start );
+//DNP3Serializer_for_Counter  Inst_in_Group20Var5_static(void);
+////        auto iter = writer.IterateOverRange<ser4cpp::UInt8, typename Serializer::Target>(
+////            QualifierCode::UINT8_START_STOP, Serializer::Inst(), static_cast<uint8_t>(range.start));
+    DNP3Serializer_for_Counter tmp = Inst_in_Group20Var5_static();
+    RangeWriteIterator_for_UInt8_Counter iter = IterateOverRange_for_UInt8_Counter_in_HeaderWriter(writer,
+        QualifierCode_UINT8_START_STOP,
+        &tmp,
+        (uint8_t) range.start );
+
+//boolean LoadWithRangeIterator_CounterSpec_for_UInt8_in_StaticWriters(StaticDataMap_for_CounterSpec& map,
+//    RangeWriteIterator_for_UInt8_Counter *writer, StaticCounterVariation_uint8_t variation)
+////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
+    boolean btmp = LoadWithRangeIterator_CounterSpec_for_UInt8_in_StaticWriters(map, &iter, StaticCounterVariation_Group20Var5);
+    RangeWriteIterator_for_UInt8_Counter_destr_RangeWriteIterator_for_UInt8_Counter(&iter);
+    return btmp;
+  }
+
+////    auto iter = writer.IterateOverRange<ser4cpp::UInt16, typename Serializer::Target>(QualifierCode::UINT16_START_STOP,
+////                                                                                      Serializer::Inst(), range.start);
+  DNP3Serializer_for_Counter tmp = Inst_in_Group20Var5_static();
+  RangeWriteIterator_for_UInt16_Counter iter = IterateOverRange_for_UInt16_Counter_in_HeaderWriter(writer,
+      QualifierCode_UINT16_START_STOP,
+      &tmp,
+      (uint16_t) range.start );
+
+////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
+  boolean btmp = LoadWithRangeIterator_CounterSpec_for_UInt16_in_StaticWriters(map, &iter, StaticCounterVariation_Group20Var5);
+  RangeWriteIterator_for_UInt16_Counter_destr_RangeWriteIterator_for_UInt16_Counter(&iter);
+  return btmp;
+}
+//----------------------------------------------Group20Var5------------------------------------------
+//----------------------------------------------Group20Var6------------------------------------------
+////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
+boolean WriteWithSerializer_CounterSpec_for_Group20Var6_in_StaticWriters_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer)
+{
+////    const auto range = map.get_selected_range();
+  Range  range = get_selected_range_in_StaticDataMap_for_CounterSpec(&map);
+
+////    if (range.IsOneByte())
+  if (IsOneByte_in_Range(&range))
+  {
+//RangeWriteIterator_for_UInt8_Counter IterateOverRange_for_UInt8_Counter_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+//    QualifierCode_uint8_t qc,
+//    DNP3Serializer_for_Counter *serializer,
+//    uint8_t start );
+//DNP3Serializer_for_Counter  Inst_in_Group20Var6_static(void);
+////        auto iter = writer.IterateOverRange<ser4cpp::UInt8, typename Serializer::Target>(
+////            QualifierCode::UINT8_START_STOP, Serializer::Inst(), static_cast<uint8_t>(range.start));
+    DNP3Serializer_for_Counter tmp = Inst_in_Group20Var6_static();
+    RangeWriteIterator_for_UInt8_Counter iter = IterateOverRange_for_UInt8_Counter_in_HeaderWriter(writer,
+        QualifierCode_UINT8_START_STOP,
+        &tmp,
+        (uint8_t) range.start );
+
+//boolean LoadWithRangeIterator_CounterSpec_for_UInt8_in_StaticWriters(StaticDataMap_for_CounterSpec& map,
+//    RangeWriteIterator_for_UInt8_Counter *writer, StaticCounterVariation_uint8_t variation)
+////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
+    boolean btmp = LoadWithRangeIterator_CounterSpec_for_UInt8_in_StaticWriters(map, &iter, StaticCounterVariation_Group20Var6);
+    RangeWriteIterator_for_UInt8_Counter_destr_RangeWriteIterator_for_UInt8_Counter(&iter);
+    return btmp;
+  }
+
+////    auto iter = writer.IterateOverRange<ser4cpp::UInt16, typename Serializer::Target>(QualifierCode::UINT16_START_STOP,
+////                                                                                      Serializer::Inst(), range.start);
+  DNP3Serializer_for_Counter tmp = Inst_in_Group20Var6_static();
+  RangeWriteIterator_for_UInt16_Counter iter = IterateOverRange_for_UInt16_Counter_in_HeaderWriter(writer,
+      QualifierCode_UINT16_START_STOP,
+      &tmp,
+      (uint16_t) range.start );
+
+////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
+  boolean btmp = LoadWithRangeIterator_CounterSpec_for_UInt16_in_StaticWriters(map, &iter, StaticCounterVariation_Group20Var6);
+  RangeWriteIterator_for_UInt16_Counter_destr_RangeWriteIterator_for_UInt16_Counter(&iter);
+  return btmp;
+}
+//----------------------------------------------Group20Var6------------------------------------------
 
 ////static_write_func_t<CounterSpec> StaticWriters::get(StaticCounterVariation variation)
 static_write_func_t_for_CounterSpec get_for_CounterSpec_in_StaticWriters_static(StaticCounterVariation_uint8_t variation)
@@ -234,13 +323,27 @@ static_write_func_t_for_CounterSpec get_for_CounterSpec_in_StaticWriters_static(
 ////        return &WriteWithSerializer<CounterSpec, Group20Var2>;
     return WriteWithSerializer_CounterSpec_for_Group20Var2_in_StaticWriters_static;
 
-////    case (StaticCounterVariation::Group20Var5):
-////        return &WriteWithSerializer<CounterSpec, Group20Var5>;
-////    case (StaticCounterVariation::Group20Var6):
-////        return &WriteWithSerializer<CounterSpec, Group20Var6>;
-    default:
+    case (StaticCounterVariation_Group20Var5):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*StaticCounterVariation_Group20Var5"<<'\n';
+    decrement_stack_info();
+#endif
+////        return &WriteWithSerializer<CounterSpec, Group20Var5>;
+    return WriteWithSerializer_CounterSpec_for_Group20Var5_in_StaticWriters_static;
+
+    case (StaticCounterVariation_Group20Var6):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*StaticCounterVariation_Group20Var6"<<'\n';
+    decrement_stack_info();
+#endif
+////        return &WriteWithSerializer<CounterSpec, Group20Var6>;
+    return WriteWithSerializer_CounterSpec_for_Group20Var6_in_StaticWriters_static;
+
+    default:
+#ifdef  LOG_INFO
+    std::cout<<"*error"<<getString_stack_info();
     std::cout<<"*WriteWithSerializer_CounterSpec_for_Group20Var1_in_StaticWriters_static"<<'\n';
     decrement_stack_info();
 #endif

@@ -23,8 +23,8 @@ void  BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UIn
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UInt8_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -53,8 +53,8 @@ void BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_U
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -127,8 +127,8 @@ void  BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UI
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UInt16_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -157,8 +157,8 @@ void BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16_1"<<'\n';
   decrement_stack_info();
 #endif

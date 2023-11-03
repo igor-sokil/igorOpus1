@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "BufferedCollection.h"
 
@@ -10,6 +14,14 @@ void  BufferedCollection_uint16_in_BufferedCollection_uint16(
   uint32_t count,
   ReadFunc_uint16 readFunc)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"BufferedCollection_uint16_in_BufferedCollection_uint16_1"<<std::endl;
+  decrement_stack_info();
+#endif
+
   pBufferedCollection_uint16->buffer = *buffer;
   pBufferedCollection_uint16->COUNT = count;
   pBufferedCollection_uint16->readFunc = readFunc;
@@ -47,6 +59,14 @@ uint16_t Count_in_BufferedCollection_uint16(BufferedCollection_uint16 *pBuffered
 void Foreach_in_BufferedCollection_uint16(BufferedCollection_uint16 *pBufferedCollection_uint16,
     IVisitor__for__uint16* visitor)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Foreach_in_BufferedCollection_uint16_1"<<std::endl;
+//  decrement_stack_info();
+#endif
+
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
   copy = pBufferedCollection_uint16->buffer;
@@ -56,8 +76,19 @@ void Foreach_in_BufferedCollection_uint16(BufferedCollection_uint16 *pBufferedCo
 //void OnValue_in_IVisitor__for__uint16(IVisitor__for__uint16 *, uint16* );
 ////            visitor.OnValue(readFunc(copy, pos));
     uint16_t temp = pBufferedCollection_uint16->readFunc(&copy, pos);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"Foreach_in_BufferedCollection_uint16_2"<<std::endl;
+#endif
     OnValue_in_IVisitor__for__uint16(visitor, &temp );
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"Foreach_in_BufferedCollection_uint16_3"<<std::endl;
+#endif
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 uint16_t Count_in_BufferedCollection_uint16_override(void *pICollection_for_uint16)

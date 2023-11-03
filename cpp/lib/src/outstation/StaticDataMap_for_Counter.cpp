@@ -1,10 +1,27 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "StaticDataMap_for_Counter.h"
 
-////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
-void StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap, std::map<uint16_t, CounterConfig>& config)
+void StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap)
 {
+  Range_in_RangeOver1(&(pStaticDataMap->selected));
+}
+////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
+void StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSpec *pStaticDataMap, std::map<uint16_t, CounterConfig>& config)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
+
+  StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver1(pStaticDataMap);
   for (const auto& item : config)
   {
 //void StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver1(StaticDataCell_for_Counter *pStaticDataCell_for_Counter,
@@ -12,7 +29,7 @@ void StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpec(StaticDataMa
 ////        pStaticDataMap->map[item.first] = StaticDataCell<Spec>{item.second};
     CounterConfig temp = item.second;
     StaticDataCell_for_Counter sStaticDataCell_for_Counter;
-    StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver1(&sStaticDataCell_for_Counter, &temp);
+    StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver2(&sStaticDataCell_for_Counter, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_Counter;
   }
 }
@@ -188,13 +205,72 @@ boolean add_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pSta
     return false;
   }
 
-//void  StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver2(StaticDataCell_for_Counter *pStaticDataCell_for_Counter,
+//void  StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver3(StaticDataCell_for_Counter *pStaticDataCell_for_Counter,
 //    Counter* value,
 //    CounterConfig* config);
   StaticDataCell_for_Counter sStaticDataCell;
-  StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver2(&sStaticDataCell, value, config);
+  StaticDataCell_for_Counter_in_StaticDataCell_for_CounterOver3(&sStaticDataCell, value, config);
 
   pStaticDataMap_for_CounterSpec->map[index] = sStaticDataCell;////StaticDataCell_for_CounterSpec{value, config};
 
   return true;
+}
+
+boolean modify_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver)
+{
+  if (stop < start)
+  {
+    return false;
+  }
+
+  for (auto iter = pStaticDataMap_for_CounterSpec->map.lower_bound(start); iter != pStaticDataMap_for_CounterSpec->map.end(); ++iter)
+  {
+    if (iter->first > stop)
+    {
+      return false;
+    }
+
+    Counter new_value = iter->second.value;
+////        new_value.flags = Flags(flags);
+    Flags fFlags;
+    Flags_In_FlagsOver2(&fFlags, flags);
+    new_value.tTypedMeasurement_for_Uint32.mMeasurement.flags = fFlags;
+//boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec,
+//    map_iter_t_StaticDataMap_for_CounterSpec & iter,
+//    Counter* new_value,
+//    EventMode_uint8_t mode,
+//    IEventReceiver* receiver);
+////        this->update(iter, new_value, EventMode::Detect, receiver);
+    update_in_StaticDataMap_for_CounterSpecOver2(pStaticDataMap_for_CounterSpec,
+        iter,
+        &new_value,
+        EventMode_Detect,
+        receiver);
+  }
+
+  return true;
+}
+
+////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
+Range get_full_range_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec)
+{
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+//Range Invalid_in_Range_static(void);
+////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
+  return pStaticDataMap_for_CounterSpec->map.empty() ? Invalid_in_Range_static() : 
+         From_in_Range_static(pStaticDataMap_for_CounterSpec->map.begin()->first, pStaticDataMap_for_CounterSpec->map.rbegin()->first);
+}
+
+////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
+Range assign_class_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, PointClass_uint8_t clazz)
+{
+  for (auto& elem : pStaticDataMap_for_CounterSpec->map)
+  {
+    elem.second.config.dDeadbandConfig_for_CounterInfo.eEventConfig.clazz = clazz;
+  }
+
+////    return this->get_full_range();
+  return get_full_range_in_StaticDataMap_for_CounterSpec(pStaticDataMap_for_CounterSpec);
 }

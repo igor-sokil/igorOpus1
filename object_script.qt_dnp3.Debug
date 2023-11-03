@@ -44,6 +44,7 @@ debug/IResource.o
 debug/StackStatistics.o
 debug/BaseMeasurementTypes.o
 debug/DNPTime.o
+debug/EventCells.o
 debug/Flags.o
 debug/GroupVariationID.o
 debug/OctetString.o
@@ -58,7 +59,11 @@ debug/ICollection_Indexed_for_AnalogOutputInt32.o
 debug/ICollection_Indexed_for_ControlRelayOutputBlock.o
 debug/ICollection_Indexed_for_IINValue.o
 debug/ICollection_Indexed_for_TimeAndInterval.o
+debug/ICollection_Indexed_for_Analog.o
+debug/ICollection_Indexed_for_AnalogOutputStatus.o
 debug/ICollection_Indexed_for_Binary.o
+debug/ICollection_Indexed_for_Counter.o
+debug/ICollection_Indexed_for_FrozenCounter.o
 debug/ICollection_Indexed_for_BinaryCommandEvent.o
 debug/ICollection_Indexed_for_AnalogCommandEvent.o
 debug/ICollection_Indexed_for_DoubleBitBinary.o
@@ -317,6 +322,7 @@ debug/APDUHelpers.o
 debug/BufferHelpers.o
 debug/CopyableBuffer.o
 debug/DNPHelpers.o
+debug/EventReceiver.o
 debug/LinkHex.o
 debug/LinkParserTest.o
 debug/LinkLayerTest.o

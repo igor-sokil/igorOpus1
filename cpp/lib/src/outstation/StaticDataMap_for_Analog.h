@@ -198,7 +198,8 @@ public:
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap, std::map<uint16_t, AnalogConfig>& config);
+void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap);
+void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap, std::map<uint16_t, AnalogConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec);
 
 ////template<> StaticAnalogVariation check_for_promotion<AnalogSpec>(const Analog& value, StaticAnalogVariation variation);
@@ -362,6 +363,7 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec
 ////    }
 ////}
 
+Range get_full_range_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec);
 ////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
 ////{
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
@@ -379,29 +381,12 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
     IEventReceiver* receiver);
 
 
+boolean modify_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
-////{
-////    if (stop < start)
-////    {
-////        return false;
-////    }
-////
-////    for (auto iter = this->map.lower_bound(start); iter != this->map.end(); ++iter)
-////    {
-////        if (iter->first > stop)
-////        {
-////            return false;
-////        }
-////
-////        auto new_value = iter->second.value;
-////        new_value.flags = Flags(flags);
-////        this->update(iter, new_value, EventMode::Detect, receiver);
-////    }
-////
-////    return true;
-////}
-////
+
 ////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
 ////{
 ////    if (map.empty())
@@ -464,6 +449,7 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
 ////    return count;
 ////}
 
+Range assign_class_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, PointClass_uint8_t clazz);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
 ////{
 ////    for (auto& elem : this->map)
@@ -473,7 +459,8 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
 
 ////    return this->get_full_range();
 ////}
-////
+
+Range assign_class_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range* range);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz, const Range& range)
 ////{
 ////    for (auto iter = this->map.lower_bound(range.start); iter != this->map.end() && range.Contains(iter->first); iter++)

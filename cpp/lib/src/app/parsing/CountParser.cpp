@@ -27,7 +27,7 @@
 ////#include "logging/LogMacros.h"
 
 ////#include "opendnp3/logging/LogLevels.h"
-boolean expectsContents_in_CountParser = false;
+//boolean expectsContents_in_CountParser = false;
 
 ////namespace opendnp3
 ////{
@@ -50,7 +50,7 @@ ParseResult_uint8_t Process_in_CountParser(CountParser *pCountParser, HeaderReco
     IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Process_in_CountParser1"<<std::endl;
@@ -96,7 +96,7 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
     IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseHeader_in_CountParser_static1"<<std::endl;
@@ -118,11 +118,13 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
     std::cout<<"*record.group= "<<(uint16_t)record->gGroupVariationRecord.group<<'\n';
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*record.variation= "<<(uint16_t)record->gGroupVariationRecord.variation<<'\n';
-    decrement_stack_info();
 #endif
 
-    if (expectsContents_in_CountParser)
+    if (expectsContents)//_in_CountParser)
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////      return ParseCountOfObjects(buffer, record, count, pLogger, pHandler);
       return ParseCountOfObjects_in_CountParser_static(buffer, record, count, pHandler);
     }
@@ -137,6 +139,9 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
       OnHeader_CountHeader_in_IAPDUHandler(pHandler, &cCountHeader);
     }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return ParseResult_OK;
   }
 #ifdef  LOG_INFO

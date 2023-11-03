@@ -14,6 +14,8 @@ boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& ma
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"load_type_for_Analog_in_Database_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*map.size()= "<<map.map.size()<<'\n';
 #endif
   while (true)
   {
@@ -22,6 +24,8 @@ boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& ma
     if (iter == map.end())
     {
 #ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*if (iter == map.end())"<<'\n';
     decrement_stack_info();
 #endif
       // there is no data left to write
@@ -32,7 +36,6 @@ boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& ma
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*StaticAnalogVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
-    decrement_stack_info();
 #endif
 
 //typedef boolean  (* static_write_func_t_for_AnalogSpec)(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);//указатель на ф-цию
@@ -41,6 +44,8 @@ boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& ma
     if (!get_for_AnalogSpec_in_StaticWriters_static(variation)(map, writer))
     {
 #ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*if (!get_for_AnalogSpec_in_StaticWriters_static(variation)(map, writer))"<<'\n';
     decrement_stack_info();
 #endif
       // the APDU is full
@@ -48,6 +53,8 @@ boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& ma
     }
   }
 #ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*return"<<'\n';
     decrement_stack_info();
 #endif
 }

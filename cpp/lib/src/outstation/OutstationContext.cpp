@@ -99,11 +99,10 @@ void OContext_in_OContext(OContext *pOContext,
                           IOutstationApplication* application)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OContext_in_OContext1"<<'\n';
-  decrement_stack_info();
 #endif
 
   pOContext->addresses = *addresses;
@@ -177,6 +176,9 @@ void OContext_in_OContext(OContext *pOContext,
   pOContext->iIUpperLayer.iIUpDown.pOnLowerLayerDown_in_IUpDown = OnLowerLayerDown_in_OContext_override;
   pOContext->iIUpperLayer.pOnReceive_in_IUpperLayer = OnReceive_in_OContext_override;
   pOContext->iIUpperLayer.pOnTxReady_in_IUpperLayer = OnTxReady_in_OContext_override;
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
@@ -245,7 +247,7 @@ boolean OnLowerLayerDown_in_OContext(OContext* pOContext)
 boolean OnTxReady_in_OContext(OContext* pOContext)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnTxReady_in_OContext1"<<std::endl;
@@ -253,6 +255,9 @@ boolean OnTxReady_in_OContext(OContext* pOContext)
 
   if (!(pOContext->isOnline) || !(pOContext->isTransmitting))
   {
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return false;
   }
 
@@ -434,7 +439,6 @@ OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedReques
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessNewRequest_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 
 ////    pOContext->sol.seq.num = request->header.control.SEQ;
@@ -442,11 +446,19 @@ OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedReques
 
   if (request->header.function == FunctionCode_READ)
   {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FunctionCode_READ"<<std::endl;
+    decrement_stack_info();
+#endif
 //    OutstationState* OnNewReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////        return this->state->OnNewReadRequest(*this, request);
     return OnNewReadRequest_in_OutstationState(pOContext->state, pOContext, request);
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //    OutstationState* OnNewNonReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////    return this->state->OnNewNonReadRequest(*this, request);
   return OnNewNonReadRequest_in_OutstationState(pOContext->state, pOContext, request);
@@ -507,13 +519,15 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
 //    boolean ProcessConfirm_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////        return this->ProcessConfirm(request);
 #ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FunctionCode_CONFIRM"<<std::endl;
     decrement_stack_info();
 #endif
     return ProcessConfirm_in_OContext(pOContext, request);
   }
 
 #ifdef  LOG_INFO
-    decrement_stack_info();
+  decrement_stack_info();
 #endif
 //    boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////    return this->ProcessRequest(request);
@@ -546,7 +560,7 @@ boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
   pOContext->state = OnReceiveSolRequest_in_OContext(pOContext, request);
 
 #ifdef  LOG_INFO
-    decrement_stack_info();
+  decrement_stack_info();
 #endif
   return true;
 }
@@ -606,7 +620,7 @@ OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t desti
 ////        return StateSolicitedConfirmWait::Inst();
 
 #ifdef  LOG_INFO
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
     return Inst_in_StateSolicitedConfirmWait_static();
   }
@@ -681,7 +695,6 @@ void CheckForTaskStart_in_OContext(OContext *pOContext)
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"CheckForTaskStart_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 // do these checks in order of priority
 // выполняем эти проверки в порядке приоритета
@@ -699,6 +712,9 @@ void CheckForTaskStart_in_OContext(OContext *pOContext)
 ////        this->CheckForUnsolicited();
     CheckForUnsolicited_in_OContext(pOContext);
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean HandlerBooleanParsedRequest_in_OContext(void* pOContext, ParsedRequest* pParsedRequest);
@@ -732,7 +748,6 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"CheckForUnsolicitedNull_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 //   boolean CanTransmit_in_OContext(OContext *pOContext);
 //     boolean IsIdle_in_OutstationState(OutstationState *);
@@ -772,6 +787,9 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
       BeginUnsolTx_in_OContext(pOContext, &response);
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 ////void OContext::CheckForUnsolicited()
@@ -848,6 +866,9 @@ void CheckForUnsolicited_in_OContext(OContext *pOContext)
       }
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 ////bool OContext::ProcessDeferredRequest(const ParsedRequest& request)
@@ -946,7 +967,6 @@ OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, Parsed
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"RespondToNonReadRequest_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////    this->history.RecordLastProcessedRequest(request.header, request.objects);
@@ -986,7 +1006,11 @@ OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, Parsed
 
 //   OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t destination, APDUResponse* response);
 ////    return this->BeginResponseTx(request.addresses.source, response);
-  return BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
+  OutstationState* tmp = BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////OutstationState& OContext::RespondToReadRequest(const ParsedRequest& request)
@@ -997,7 +1021,6 @@ OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedReq
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"RespondToReadRequest_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////    this->history.RecordLastProcessedRequest(request.header, request.objects);
@@ -1029,7 +1052,11 @@ OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedReq
   SetIIN_in_APDUResponse(&response, &temp2);
 
 ////    return this->BeginResponseTx(request.addresses.source, response);
-  return BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
+  OutstationState* tmp = BeginResponseTx_in_OContext(pOContext, request->addresses.source, &response);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////OutstationState& OContext::ContinueMultiFragResponse(const Addresses& addresses, const AppSeqNum& seq)
@@ -1040,7 +1067,6 @@ OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addr
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ContinueMultiFragResponse_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 ////    auto response = this->sol.tx.Start();
   APDUResponse response = Start_in_TxBuffer(&(pOContext->sol.tx));
@@ -1066,7 +1092,11 @@ OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addr
 
 //   OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t destination, APDUResponse* response);
 ////    return this->BeginResponseTx(addresses.source, response);
-  return BeginResponseTx_in_OContext(pOContext, addresses->source, &response);
+  OutstationState* tmp = BeginResponseTx_in_OContext(pOContext, addresses->source, &response);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 boolean CanTransmit_in_OContext(OContext *pOContext)
@@ -1082,7 +1112,6 @@ IINField GetResponseIIN_in_OContext(OContext *pOContext)
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"GetResponseIIN_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 //    ApplicationIIN GetApplicationIIN_in_IOutstationApplication(IOutstationApplication*);
 //    IINField GetDynamicIIN_in_OContext(OContext *pOContext);
@@ -1096,6 +1125,9 @@ IINField GetResponseIIN_in_OContext(OContext *pOContext)
   IINField temp3 = ToIIN_in_ApplicationIIN(&temp);
   IINField temp4 = operatorOR_in_IINField(&temp2, &temp3);
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return temp4;
 }
 
@@ -1167,7 +1199,6 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"CheckForBroadcastConfirmation_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 //boolean is_set_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
 ////    if (lastBroadcastMessageReceived.is_set())
@@ -1205,6 +1236,9 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
       SetControl_in_APDUWrapper(&(response->aAPDUWrapper), control);
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
@@ -1293,10 +1327,11 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
   ParsedRequest pParsedRequest;
   ParsedRequest_in_ParsedRequest(&pParsedRequest, &(message->addresses), &(result.header), &(result.objects));
 
+  boolean tmp = ProcessObjects_in_OContext(pOContext, &pParsedRequest);
 #ifdef  LOG_INFO
-    decrement_stack_info();
+  decrement_stack_info();
 #endif
-  return ProcessObjects_in_OContext(pOContext, &pParsedRequest);
+  return tmp;
 }
 
 void HandleNewEvents_in_OContext(OContext *pOContext)
@@ -1365,28 +1400,31 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_IMMED_FREEZE_NR"<<std::endl;
-    decrement_stack_info();
 #endif
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        this->HandleFreeze(request.objects);
     HandleFreeze_in_OContext(pOContext, &(request->objects));
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return true;
   case (FunctionCode_FREEZE_CLEAR_NR):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_FREEZE_CLEAR_NR"<<std::endl;
-    decrement_stack_info();
 #endif
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        this->HandleFreezeAndClear(request.objects);
     HandleFreezeAndClear_in_OContext(pOContext, &(request->objects));
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return true;
   case (FunctionCode_ASSIGN_CLASS):
   {
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_ASSIGN_CLASS"<<std::endl;
-    decrement_stack_info();
 #endif
 //     boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
 ////        if (this->application->SupportsAssignClass())
@@ -1395,10 +1433,16 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 //   IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////            this->HandleAssignClass(request.objects);
       HandleAssignClass_in_OContext(pOContext, &(request->objects));
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return false;
     }
   }
@@ -1407,7 +1451,6 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_RECORD_CURRENT_TIME"<<std::endl;
-    decrement_stack_info();
 #endif
 //    boolean is_not_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
 ////        if (request.objects.is_not_empty())
@@ -1416,10 +1459,16 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 //   IINField HandleRecordCurrentTime_in_OContext(OContext *pOContext);
 ////            this->HandleRecordCurrentTime();
       HandleRecordCurrentTime_in_OContext(pOContext);
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return false;
     }
   }
@@ -1428,7 +1477,6 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_DISABLE_UNSOLICITED"<<std::endl;
-    decrement_stack_info();
 #endif
 ////        if (this->params.allowUnsolicited)
     if (pOContext->params.allowUnsolicited)
@@ -1436,10 +1484,16 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 //   IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////            this->HandleDisableUnsolicited(request.objects, nullptr);
       HandleDisableUnsolicited_in_OContext(pOContext, &(request->objects), NULL);
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return false;
     }
   }
@@ -1448,17 +1502,22 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_ENABLE_UNSOLICITED"<<std::endl;
-    decrement_stack_info();
 #endif
     if (pOContext->params.allowUnsolicited)
     {
 //   IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////            this->HandleEnableUnsolicited(request.objects, nullptr);
       HandleEnableUnsolicited_in_OContext(pOContext, &(request->objects), NULL);
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return false;
     }
   }
@@ -1490,32 +1549,38 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_DIRECT_OPERATE_NR"<<std::endl;
-    decrement_stack_info();
 #endif
 //   IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter)
 ////        this->HandleDirectOperate(request.objects, OperateType::DirectOperateNoAck,
 ////                                  nullptr); // no object writer, this is a no ack code
     HandleDirectOperate_in_OContext(pOContext, &(request->objects), OperateType_DirectOperateNoAck, NULL);
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return true;
   case (FunctionCode_IMMED_FREEZE_NR):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_IMMED_FREEZE_NR"<<std::endl;
-    decrement_stack_info();
 #endif
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
 ////        this->HandleFreeze(request.objects);
     HandleFreeze_in_OContext(pOContext, &(request->objects));
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return true;
   case (FunctionCode_FREEZE_CLEAR_NR):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_FREEZE_CLEAR_NR"<<std::endl;
-    decrement_stack_info();
 #endif
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
 ////        this->HandleFreezeAndClear(request.objects);
     HandleFreezeAndClear_in_OContext(pOContext, &(request->objects));
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return true;
   default:
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Ignoring NR function code: %s",
@@ -1541,82 +1606,121 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   switch (header->function)
   {
   case (FunctionCode_WRITE):
+  {
 //   IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        return this->HandleWrite(objects);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_WRITE"<<std::endl;
+#endif
+    IINField tmp = HandleWrite_in_OContext(pOContext, objects);
+#ifdef  LOG_INFO
     decrement_stack_info();
 #endif
-    return HandleWrite_in_OContext(pOContext, objects);
+    return tmp;
+  }
   case (FunctionCode_SELECT):
+  {
 //   IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////        return this->HandleSelect(objects, writer);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_SELECT"<<std::endl;
+#endif
+    IINField tmp = HandleSelect_in_OContext(pOContext, objects, writer);
+#ifdef  LOG_INFO
     decrement_stack_info();
 #endif
-    return HandleSelect_in_OContext(pOContext, objects, writer);
+    return tmp;
+  }
   case (FunctionCode_OPERATE):
+  {
 //   IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////        return this->HandleOperate(objects, writer);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_OPERATE"<<std::endl;
+#endif
+    IINField tmp = HandleOperate_in_OContext(pOContext, objects, writer);
+#ifdef  LOG_INFO
     decrement_stack_info();
 #endif
-    return HandleOperate_in_OContext(pOContext, objects, writer);
+    return tmp;
+  }
   case (FunctionCode_DIRECT_OPERATE):
+  {
 //   IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter);
 ////        return this->HandleDirectOperate(objects, OperateType::DirectOperate, &writer);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_DIRECT_OPERATE"<<std::endl;
+#endif
+    IINField tmp = HandleDirectOperate_in_OContext(pOContext, objects, OperateType_DirectOperate, writer);
+#ifdef  LOG_INFO
     decrement_stack_info();
 #endif
-    return HandleDirectOperate_in_OContext(pOContext, objects, OperateType_DirectOperate, writer);
+    return tmp;
+  }
   case (FunctionCode_COLD_RESTART):
+  {
 //   IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, boolean isWarmRestart, HeaderWriter* pWriter);
 ////        return this->HandleRestart(objects, false, &writer);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_COLD_RESTART"<<std::endl;
+#endif
+    IINField tmp = HandleRestart_in_OContext(pOContext, objects, false, writer);
+#ifdef  LOG_INFO
     decrement_stack_info();
 #endif
-    return HandleRestart_in_OContext(pOContext, objects, false, writer);
+    return tmp;
+  }
   case (FunctionCode_WARM_RESTART):
+  {
 ////        return this->HandleRestart(objects, true, &writer);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_WARM_RESTART"<<std::endl;
+#endif
+    IINField tmp = HandleRestart_in_OContext(pOContext, objects, true, writer);
+#ifdef  LOG_INFO
     decrement_stack_info();
 #endif
-    return HandleRestart_in_OContext(pOContext, objects, true, writer);
+    return tmp;
+  }
   case (FunctionCode_ASSIGN_CLASS):
+  {
 //   IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        return this->HandleAssignClass(objects);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_ASSIGN_CLASS"<<std::endl;
+#endif
+    IINField tmp = HandleAssignClass_in_OContext(pOContext, objects);
+#ifdef  LOG_INFO
     decrement_stack_info();
 #endif
-    return HandleAssignClass_in_OContext(pOContext, objects);
+    return tmp;
+  }
   case (FunctionCode_DELAY_MEASURE):
+  {
 //   IINField HandleDelayMeasure_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////        return this->HandleDelayMeasure(objects, writer);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_DELAY_MEASURE"<<std::endl;
+#endif
+    IINField tmp = HandleDelayMeasure_in_OContext(pOContext, objects, writer);
+#ifdef  LOG_INFO
     decrement_stack_info();
 #endif
-    return HandleDelayMeasure_in_OContext(pOContext, objects, writer);
+    return tmp;
+  }
   case (FunctionCode_RECORD_CURRENT_TIME):
   {
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_RECORD_CURRENT_TIME"<<std::endl;
-    decrement_stack_info();
 #endif
 //    boolean is_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
 //   IINField HandleRecordCurrentTime_in_OContext(OContext *pOContext);
@@ -1624,7 +1728,11 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
     IINField temp1 = HandleRecordCurrentTime_in_OContext(pOContext);
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
-    return is_empty_in_HasLength_for_Uint16_t(&(objects->hHasLength)) ? temp1 : iIINField;
+    IINField tmp = is_empty_in_HasLength_for_Uint16_t(&(objects->hHasLength)) ? temp1 : iIINField;
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
+    return tmp;
   }
   case (FunctionCode_DISABLE_UNSOLICITED):
   {
@@ -1634,15 +1742,18 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
 
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
-    decrement_stack_info();
 #endif
 
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
 //   IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-    return pOContext->params.allowUnsolicited ? ////this->HandleDisableUnsolicited(objects, &writer)
-           HandleDisableUnsolicited_in_OContext(pOContext, objects, writer)
-           : iIINField;////IINField(IINBit::FUNC_NOT_SUPPORTED);
+    IINField tmp = pOContext->params.allowUnsolicited ? ////this->HandleDisableUnsolicited(objects, &writer)
+                   HandleDisableUnsolicited_in_OContext(pOContext, objects, writer)
+                   : iIINField;////IINField(IINBit::FUNC_NOT_SUPPORTED);
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
+    return tmp;
   }
   case (FunctionCode_ENABLE_UNSOLICITED):
   {
@@ -1652,34 +1763,47 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
 
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
-    decrement_stack_info();
 #endif
 
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
 //   IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-    return pOContext->params.allowUnsolicited ? ////this->HandleEnableUnsolicited(objects, &writer)
-           HandleEnableUnsolicited_in_OContext(pOContext, objects, writer)
-           : iIINField;////IINField(IINBit::FUNC_NOT_SUPPORTED);
+    IINField tmp = pOContext->params.allowUnsolicited ? ////this->HandleEnableUnsolicited(objects, &writer)
+                   HandleEnableUnsolicited_in_OContext(pOContext, objects, writer)
+                   : iIINField;////IINField(IINBit::FUNC_NOT_SUPPORTED);
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
+    return tmp;
   }
   case (FunctionCode_IMMED_FREEZE):
+  {
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_IMMED_FREEZE"<<std::endl;
-    decrement_stack_info();
 #endif
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        return this->HandleFreeze(objects);
-    return HandleFreeze_in_OContext(pOContext, objects);
+    IINField tmp = HandleFreeze_in_OContext(pOContext, objects);
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
+    return tmp;
+  }
   case (FunctionCode_FREEZE_CLEAR):
+  {
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FunctionCode_FREEZE_CLEAR"<<std::endl;
-    decrement_stack_info();
 #endif
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
 ////        return this->HandleFreezeAndClear(objects);
-    return HandleFreezeAndClear_in_OContext(pOContext, objects);
+    IINField tmp = HandleFreezeAndClear_in_OContext(pOContext, objects);
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
+    return tmp;
+  }
   default:
   {
 #ifdef  LOG_INFO
@@ -1712,6 +1836,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 //     void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
 ////    this->eventBuffer.Unselect(); // always un-select any previously selected points when we start a new read request
+                                     // всегда отменяем выбор ранее выбранных точек, когда начинаем новый запрос на чтение
   Unselect_in_EventBuffer(&(pOContext->eventBuffer));
 
 //    void Unselect_in_Database(Database *pDatabase);
@@ -1729,7 +1854,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger,
 ////                                    ParserSettings::NoContents()); // don't expect range/count context on a READ
 //не ожидайте контекста диапазона/счета при ЧТЕНИИ
-
+  expectsContents = false;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
@@ -1757,7 +1882,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
         &control);
 
 #ifdef  LOG_INFO
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
     return pPairSer4cpp_for_IINField_AppControlField;
   }
@@ -1792,7 +1917,6 @@ IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"HandleWrite_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 //Timestamp Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
 //void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
@@ -1811,18 +1935,23 @@ IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects
 //                             RSeq_for_Uint16_t *buffer,
 //                             IAPDUHandler *handler);
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger);
+  expectsContents = true;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
 
 ////    return (result == ParseResult::OK) ? handler.Errors() : IINFromParseResult(result);
-  return (result == ParseResult_OK) ?
+  IINField tmp = (result == ParseResult_OK) ?
 //  IINField Errors_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler);
-         ////handler.Errors()
-         Errors_in_IAPDUHandler(&(handler.iIAPDUHandler)) :
+                 ////handler.Errors()
+                 Errors_in_IAPDUHandler(&(handler.iIAPDUHandler)) :
 //IINField IINFromParseResult(ParseResult_uint8_t result);
 ////                  IINFromParseResult(result);
-         IINFromParseResult(result);
+                 IINFromParseResult(result);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////IINField OContext::HandleDirectOperate(const ser4cpp::rseq_t& objects, OperateType opType, HeaderWriter* pWriter)
@@ -1836,7 +1965,6 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*opType= "<<(uint16_t)opType<<std::endl;
   inspect_RSeq(objects);
-  decrement_stack_info();
 #endif
   // since we're echoing, make sure there's enough size before beginning
 // поскольку мы повторяем эхо, перед началом убедитесь, что размера достаточно
@@ -1849,6 +1977,10 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
 ////        return IINField(IINBit::PARAM_ERROR);
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return iIINField;
   }
 
@@ -1866,19 +1998,24 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
 //                             RSeq_for_Uint16_t *buffer,
 //                             IAPDUHandler *handler);
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger);
+  expectsContents = true;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
 
   pOContext->shouldCheckForUnsolicited = true;
 
-  return (result == ParseResult_OK) ?
+  IINField tmp = (result == ParseResult_OK) ?
 //  IINField Errors_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler);
-         ////handler.Errors()
-         Errors_in_IAPDUHandler(&(handler.iIAPDUHandler)) :
+                 ////handler.Errors()
+                 Errors_in_IAPDUHandler(&(handler.iIAPDUHandler)) :
 //IINField IINFromParseResult(ParseResult_uint8_t result);
 ////                  IINFromParseResult(result);
-         IINFromParseResult(result);
+                 IINFromParseResult(result);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////IINField OContext::HandleSelect(const ser4cpp::rseq_t& objects, HeaderWriter& writer)
@@ -1912,6 +2049,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
   }
 
   // the 'OperateType' is just ignored  since it's a select
+// OperateType просто игнорируется, поскольку это выбор
 // void  CommandActionAdapter_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ICommandHandler* handler, boolean is_select, IUpdateHandler* updates, OperateType_uint8_t op_type);
 ////    CommandActionAdapter adapter(*this->commandHandler, true, this->database, OperateType::DirectOperate);
   CommandActionAdapter adapter;
@@ -1922,6 +2060,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
   CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params.maxControlsPerRequest, &(adapter.iICommandAction), writer);
 
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger);
+  expectsContents = true;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
@@ -2014,6 +2153,7 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
     CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params.maxControlsPerRequest, &(adapter.iICommandAction), writer);
 
 ////        auto result = APDUParser::Parse(objects, handler, &this->logger);
+    expectsContents = true;
     ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                    objects,
                                    &(handler.iIAPDUHandler));
@@ -2040,12 +2180,13 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
     Unselect_in_ControlState(&(pOContext->control));
   }
 
-#ifdef  LOG_INFO
-    decrement_stack_info();
-#endif
 //   IINField HandleCommandWithConstant_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer, CommandStatus_uint16_t status);
 ////    return this->HandleCommandWithConstant(objects, writer, result);
-  return HandleCommandWithConstant_in_OContext(pOContext, objects, writer, result);
+  IINField tmp = HandleCommandWithConstant_in_OContext(pOContext, objects, writer, result);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////IINField OContext::HandleDelayMeasure(const ser4cpp::rseq_t& objects, HeaderWriter& writer)
@@ -2182,6 +2323,9 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
       WriteSingleValue_for_UInt8_Group52Var2_in_HeaderWriter(pWriter,
           QualifierCode_UINT8_CNT, &fine);
     }
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
 ////        return IINField::Empty();
     return Empty_in_IINField_static();
   }
@@ -2210,6 +2354,7 @@ IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* o
 //                             RSeq_for_Uint16_t *buffer,
 //                             IAPDUHandler *handler);
 ////        auto result = APDUParser::Parse(objects, handler, &this->logger, ParserSettings::NoContents());
+    expectsContents = false;
     ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                    objects,
                                    &(handler.iIAPDUHandler));
@@ -2249,7 +2394,6 @@ IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"HandleDisableUnsolicited_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
   UNUSED(writer);
 
@@ -2260,12 +2404,16 @@ IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint
 //                             RSeq_for_Uint16_t *buffer,
 //                             IAPDUHandler *handler);
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger);
+  expectsContents = true;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
 
   if (result == ParseResult_OK)
   {
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
 //  void Clear_in_ClassField(ClassField *pClassField, ClassField *field);
 //ClassField GetClassField_in_ClassBasedRequestHandler(ClassBasedRequestHandler *pClassBasedRequestHandler);
 ////        this->params.unsolClassMask.Clear(handler.GetClassField());
@@ -2275,6 +2423,9 @@ IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint
     return  Errors_in_IAPDUHandler(&(handler.iIAPDUHandler));
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return IINFromParseResult(result);
 }
 
@@ -2286,7 +2437,6 @@ IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint1
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"HandleEnableUnsolicited_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
   UNUSED(writer);
 
@@ -2294,6 +2444,7 @@ IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint1
   ClassBasedRequestHandler_in_ClassBasedRequestHandler(&handler);
 
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger);
+  expectsContents = true;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
@@ -2308,9 +2459,15 @@ IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint1
 
     pOContext->shouldCheckForUnsolicited = true;
 ////        return handler.Errors();
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return  Errors_in_IAPDUHandler(&(handler.iIAPDUHandler));
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return IINFromParseResult(result);
 }
 
@@ -2322,7 +2479,6 @@ IINField HandleCommandWithConstant_in_OContext(OContext *pOContext, RSeq_for_Uin
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"HandleCommandWithConstant_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 //void ConstantCommandAction_in_ConstantCommandAction(ConstantCommandAction *pConstantCommandAction, CommandStatus status_);
 ////    ConstantCommandAction constant(status);
@@ -2335,9 +2491,13 @@ IINField HandleCommandWithConstant_in_OContext(OContext *pOContext, RSeq_for_Uin
   CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params.maxControlsPerRequest, &(constant.iICommandAction), writer);
 
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger);
+  expectsContents = true;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return IINFromParseResult(result);
 }
 
@@ -2350,6 +2510,7 @@ IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
   FreezeRequestHandler_in_FreezeRequestHandler(&handler, false, &(pOContext->database));
 
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger, ParserSettings::NoContents());
+  expectsContents = false;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
@@ -2364,16 +2525,19 @@ IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"HandleFreezeAndClear_in_OContext1"<<std::endl;
-  decrement_stack_info();
 #endif
 ////    FreezeRequestHandler handler(true, database);
   FreezeRequestHandler handler;
   FreezeRequestHandler_in_FreezeRequestHandler(&handler, true, &(pOContext->database));
 
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger, ParserSettings::NoContents());
+  expectsContents = false;
   ParseResult_uint8_t result = Parse_in_APDUParser_static(
                                  objects,
                                  &(handler.iIAPDUHandler));
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return IINFromParseResult(result);
 }
 

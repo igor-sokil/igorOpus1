@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "Database.h"
@@ -5,12 +9,25 @@
 ////template<class Spec> bool load_type(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean load_type_for_Binary_in_Database_static(StaticDataMap_for_BinarySpec& map, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"load_type_for_Binary_in_Database_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*map.map.size()= "<<map.map.size()<<'\n';
+#endif
   while (true)
   {
     auto iter = map.begin();
 
     if (iter == map.end())
     {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*if (iter == map.end())"<<'\n';
+    decrement_stack_info();
+#endif
       // there is no data left to write
       return true;
     }
@@ -21,10 +38,20 @@ boolean load_type_for_Binary_in_Database_static(StaticDataMap_for_BinarySpec& ma
 ////        if (!StaticWriters::get((*iter).second.variation)(map, writer))
     if (!get_for_BinarySpec_in_StaticWriters_static(variation)(map, writer))
     {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*if (!get_for_BinarySpec_in_StaticWriters_static(variation)(map, writer))"<<'\n';
+    decrement_stack_info();
+#endif
       // the APDU is full
       return false;
     }
   }
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*return"<<'\n';
+    decrement_stack_info();
+#endif
 }
 
 ////template<class Spec> void Database::select_all_class_zero(StaticDataMap<Spec>& map)
@@ -73,6 +100,16 @@ boolean Update_for_Binary_in_Database(Database *pDatabase, Binary* meas, uint16_
 void select_for_BinarySpec_in_DatabaseOver1(uint16_t *index);
 void select_for_BinarySpec_in_DatabaseOver1(uint16_t *index)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"select_for_BinarySpec_in_DatabaseOver1"<<'\n';
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*map.map.size()= "<<map.map.size()<<'\n';
+  decrement_stack_info();
+#endif
+
   StaticDataMap_for_BinarySpec* map = (StaticDataMap_for_BinarySpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
   StaticBinaryVariation_uint8_t *variation = (StaticBinaryVariation_uint8_t *)pPointerGlobal3;
@@ -91,6 +128,16 @@ IINField select_indices_for_BinarySpec_in_Database_staticOver1(StaticDataMap_for
     ICollection_for_uint16* indices,
     StaticBinaryVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"select_indices_for_BinarySpec_in_Database_staticOver1_1"<<'\n';
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*map.map.size()= "<<map.map.size()<<'\n';
+  decrement_stack_info();
+#endif
+
   boolean missing_index = false;
 
   pPointerGlobal1 = map;

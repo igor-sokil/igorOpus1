@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "Database.h"
@@ -5,12 +9,25 @@
 ////template<class Spec> bool load_type(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean load_type_for_DoubleBitBinary_in_Database_static(StaticDataMap_for_DoubleBitBinarySpec& map, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"load_type_for_DoubleBitBinary_in_Database_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*map.map.size()= "<<map.map.size()<<'\n';
+#endif
   while (true)
   {
     auto iter = map.begin();
 
     if (iter == map.end())
     {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*if (iter == map.end())"<<'\n';
+    decrement_stack_info();
+#endif
       // there is no data left to write
       return true;
     }
@@ -21,10 +38,20 @@ boolean load_type_for_DoubleBitBinary_in_Database_static(StaticDataMap_for_Doubl
 ////        if (!StaticWriters::get((*iter).second.variation)(map, writer))
     if (!get_for_DoubleBitBinarySpec_in_StaticWriters_static(variation)(map, writer))
     {
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*if (!get_for_DoubleBitBinarySpec_in_StaticWriters_static(variation)(map, writer))"<<'\n';
+    decrement_stack_info();
+#endif
       // the APDU is full
       return false;
     }
   }
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*return"<<'\n';
+    decrement_stack_info();
+#endif
 }
 
 ////template<class Spec> void Database::select_all_class_zero(StaticDataMap<Spec>& map)

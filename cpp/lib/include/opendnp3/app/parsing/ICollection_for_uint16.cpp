@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "ICollection_for_uint16.h"
 
@@ -79,13 +83,30 @@ void ForeachItem_in_ICollection_for_uint16(
   ICollection_for_uint16 *pICollection_uint16,
   void (*fun)(uint16_t* item))
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ForeachItem_in_ICollection_for_uint16_1"<<'\n';
+//  decrement_stack_info();
+#endif
   FunctorVisitor__for__uint16 visitor;
 //void FunctorVisitor__for__uint16_in_FunctorVisitor__for__uint16(__FunctorVisitor__for__uint16 *pFunctorVisitor__for__uint16,
 //    void (*fun)(uint16* item));
   FunctorVisitor__for__uint16_in_FunctorVisitor__for__uint16(&visitor, fun);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ForeachItem_in_ICollection_for_uint16_2"<<'\n';
+//  decrement_stack_info();
+#endif
 //  (pICollection_uint16->pForeach_in_ICollection_uint16)
 //       (pICollection_uint16, &(visitor.iIVisitor__for__uint16));
   Foreach_in_ICollection_for_uint16(pICollection_uint16, &(visitor.iIVisitor__for__uint16));
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ForeachItem_in_ICollection_for_uint16_3"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 /**

@@ -39,14 +39,17 @@
 
 /**
   Enumeration for possible states of a double bit value
+Перечисление возможных состояний двухбитового значения
 */
 ////enum class DoubleBit : uint8_t
 #define DoubleBit_uint8_t  uint8_t
 enum DoubleBit
 {
   /// Transitioning between end conditions
+/// Переход между конечными условиями
   DoubleBit_INTERMEDIATE = 0x0,
   /// End condition, determined to be OFF
+/// Конечное условие, определенное как ВЫКЛ.
   DoubleBit_DETERMINED_OFF = 0x1,
   /// End condition, determined to be ON
   DoubleBit_DETERMINED_ON = 0x2,

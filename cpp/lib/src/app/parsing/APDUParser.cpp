@@ -135,6 +135,8 @@ ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
   {
 
 #ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*copy="<<(uint32_t)pWhiteList<<std::endl;
     inspect_RSeq(&copy);
 #endif
 

@@ -208,7 +208,8 @@ public:
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap, std::map<uint16_t, TimeAndIntervalConfig>& config);
+void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpecOver1(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap);
+void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpecOver2(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap, std::map<uint16_t, TimeAndIntervalConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec);
 
 ////template<> StaticTimeAndIntervalVariation check_for_promotion<TimeAndIntervalSpec>(const TimeAndInterval& value, StaticTimeAndIntervalVariation variation);
@@ -405,7 +406,7 @@ boolean update_in_StaticDataMap_for_TimeAndIntervalSpecOver2(StaticDataMap_for_T
 
 ////    return true;
 ////}
-////
+
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
 ////{

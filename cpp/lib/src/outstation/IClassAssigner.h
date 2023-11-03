@@ -37,6 +37,7 @@
 
 /**
  * An interface used to process assign class requests
+* Интерфейс, используемый для обработки запросов на назначение классов.
  */
 ////class IClassAssigner
 typedef struct
@@ -44,11 +45,13 @@ typedef struct
 ////public:
   /**
    *	@return the full range for the actual type, an invalid range if the type doesn't exist
+* @return полный диапазон фактического типа; недопустимый диапазон, если тип не существует.
    */
   Range (*pAssignClassToAll_in_IClassAssigner)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz);// = 0;
 
   /**
    *	@return the portion of the requested range that is valid, an invalid range if the type doesn't exist
+* @return действительная часть запрошенного диапазона; недопустимый диапазон, если тип не существует.
    */
   Range (*pAssignClassToRange_in_IClassAssigner)(void*, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);// = 0;
 

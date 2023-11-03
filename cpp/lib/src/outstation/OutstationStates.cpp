@@ -52,14 +52,10 @@ void  setParentPointer_in_OutstationState(OutstationState* pOutstationState, voi
 void OutstationState_in_OutstationState(OutstationState *pOutstationState)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OutstationState_in_OutstationState1"<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pOutstationState= "<<(uint32_t)pOutstationState<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*IsIdle_in_OutstationState_override= "<<(uint32_t)IsIdle_in_OutstationState_override<<std::endl;
   decrement_stack_info();
 #endif
   pOutstationState->pIsIdle_in_OutstationState = IsIdle_in_OutstationState_override;
@@ -68,7 +64,7 @@ void OutstationState_in_OutstationState(OutstationState *pOutstationState)
 boolean IsIdle_in_OutstationState_override(void *pOutstationState)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IsIdle_in_OutstationState_override1"<<std::endl;
@@ -81,22 +77,13 @@ boolean IsIdle_in_OutstationState_override(void *pOutstationState)
 boolean IsIdle_in_OutstationState(OutstationState *pOutstationState)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IsIdle_in_OutstationState1"<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pOutstationState= "<<(uint32_t)(pOutstationState)<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pIsIdle_in_OutstationState= "<<(uint32_t)(pOutstationState->pIsIdle_in_OutstationState)<<std::endl;
-#endif
-  boolean tmp = (pOutstationState->pIsIdle_in_OutstationState)(pOutstationState);
-#ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"IsIdle_in_OutstationState2"<<std::endl;
   decrement_stack_info();
 #endif
-  return tmp;
+  return (pOutstationState->pIsIdle_in_OutstationState)(pOutstationState);
 }
 char* Name_in_OutstationState(OutstationState *pOutstationState)
 {
@@ -138,12 +125,10 @@ static StateIdle instance_in_StateIdle;
 void StateIdle_in_StateIdle(StateIdle *pStateIdle)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StateIdle_in_StateIdle1"<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*IsIdle_in_StateIdle_override= "<<(uint32_t)IsIdle_in_StateIdle_override<<std::endl;
   decrement_stack_info();
 #endif
   OutstationState_in_OutstationState(&(pStateIdle->oOutstationState));
@@ -186,7 +171,7 @@ void* OnConfirmTimeout_in_StateIdle_override(void* pOutstationState, void *pOCon
 void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnNewReadRequest_in_StateIdle_override1"<<std::endl;
@@ -201,7 +186,7 @@ void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOCon
 void* OnNewNonReadRequest_in_StateIdle_override(void* pOutstationState, void *pOContext, ParsedRequest* request)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnNewNonReadRequest_in_StateIdle_override1"<<std::endl;
@@ -255,7 +240,7 @@ static StateSolicitedConfirmWait instance_in_StateSolicitedConfirmWait;
 void StateSolicitedConfirmWait_in_StateSolicitedConfirmWait(StateSolicitedConfirmWait *pStateSolicitedConfirmWait)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StateSolicitedConfirmWait_in_StateSolicitedConfirmWait1"<<std::endl;
@@ -283,15 +268,13 @@ void StateSolicitedConfirmWait_in_StateSolicitedConfirmWait(StateSolicitedConfir
 void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override1"<<std::endl;
 #endif
   StateSolicitedConfirmWait *parent =
     (StateSolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
-
-  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override2"<<std::endl;
 
 ////    if (request.header.control.UNS)
   if ((request->header).control.UNS)
@@ -307,8 +290,6 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////        return *this;
     return &(parent->oOutstationState);
   }
-
-  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override3"<<std::endl;
 
 //boolean Equals_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t other);
 ////    if (!((OContext*)ctx)->sol.seq.confirmNum.Equals(request.header.control.SEQ))
@@ -336,8 +317,6 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////    ctx.lastBroadcastMessageReceived.clear();
   clear_in_Settable_for_LinkBroadcastAddress(&(((OContext*)ctx)->lastBroadcastMessageReceived));
 
-  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override4"<<std::endl;
-
   // information the application about the confirm
 //    void OnConfirmProcessed_in_IOutstationApplication(IOutstationApplication*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
 //    uint32_t NumEvents_in_EventBuffer(EventBuffer *pEventBuffer, EventClass_uint8_t ec);
@@ -351,8 +330,6 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
       NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC1),
       NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC2),
       NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC3));
-
-  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override5"<<std::endl;
 
 // boolean HasSelection_in_ResponseContext(ResponseContext *pResponseContext);
 ////    if (ctx.rspContext.HasSelection())
@@ -385,7 +362,7 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 void* OnConfirmTimeout_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *pOContext)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnConfirmTimeout_in_StateSolicitedConfirmWait_override1"<<std::endl;
@@ -468,7 +445,7 @@ static StateUnsolicitedConfirmWait instance_in_StateUnsolicitedConfirmWait;
 void StateUnsolicitedConfirmWait_in_StateUnsolicitedConfirmWait(StateUnsolicitedConfirmWait *pStateUnsolicitedConfirmWait)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StateUnsolicitedConfirmWait_in_StateUnsolicitedConfirmWait1"<<std::endl;
@@ -494,7 +471,7 @@ void StateUnsolicitedConfirmWait_in_StateUnsolicitedConfirmWait(StateUnsolicited
 void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnConfirm_in_StateUnsolicitedConfirmWait_override1"<<std::endl;
@@ -574,7 +551,7 @@ void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, 
 void* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *ctx)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override1"<<std::endl;
@@ -690,7 +667,7 @@ static StateNullUnsolicitedConfirmWait instance_in_StateNullUnsolicitedConfirmWa
 void StateNullUnsolicitedConfirmWait_in_StateNullUnsolicitedConfirmWait(StateNullUnsolicitedConfirmWait *pStateNullUnsolicitedConfirmWait)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StateNullUnsolicitedConfirmWait_in_StateNullUnsolicitedConfirmWait1"<<std::endl;
@@ -721,12 +698,10 @@ void* OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override(void* pOutsta
 boolean IsIdle_in_StateIdle_override(void* pOutstationState)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IsIdle_in_StateIdle_override1"<<std::endl;
-//  std::cout<<"*"<<getString_stack_info();
-//  std::cout<<"*IsIdle_in_StateIdle_override= "<<(uint32_t)IsIdle_in_StateIdle_override<<std::endl;
   decrement_stack_info();
 #endif
   UNUSED(pOutstationState);

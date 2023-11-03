@@ -1,8 +1,21 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "MeasurementTypeSpecs.h"
 
 boolean IsQualityOnlineOnly_in_BinarySpec_static(Binary *binary)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IsQualityOnlineOnly_in_BinarySpec_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(binary->tTypedMeasurement_for_Boolean).mMeasurement.flags.value= "<<(uint16_t)(binary->tTypedMeasurement_for_Boolean).mMeasurement.flags.value<<'\n';
+  decrement_stack_info();
+#endif
   return ((binary->tTypedMeasurement_for_Boolean).mMeasurement.flags.value & /*0b01111111*/0x7F) == (uint8_t)(BinaryQuality_ONLINE);
 }
 

@@ -52,6 +52,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\include\opendnp3\app\BaseMeasurementTypes.cpp \
                 cpp\lib\include\opendnp3\app\DNPTime.cpp \
+                cpp\lib\include\opendnp3\app\EventCells.cpp \
                 cpp\lib\include\opendnp3\app\Flags.cpp \
                 cpp\lib\include\opendnp3\app\GroupVariationID.cpp \
                 cpp\lib\include\opendnp3\app\OctetString.cpp \
@@ -67,7 +68,11 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_ControlRelayOutputBlock.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_IINValue.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_TimeAndInterval.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_Analog.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputStatus.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_Binary.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_Counter.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_FrozenCounter.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_BinaryCommandEvent.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogCommandEvent.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_DoubleBitBinary.cpp \
@@ -338,6 +343,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\BufferHelpers.cpp \
                 cpp\tests\unit\utils\CopyableBuffer.cpp \
                 cpp\tests\unit\utils\DNPHelpers.cpp \
+                cpp\tests\unit\utils\EventReceiver.cpp \
                 cpp\tests\unit\utils\LinkHex.cpp \
                 cpp\tests\unit\utils\LinkParserTest.cpp \
                 cpp\tests\unit\utils\LinkLayerTest.cpp \

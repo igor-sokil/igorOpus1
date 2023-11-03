@@ -28,9 +28,9 @@
 #include "OutstationParams.h"
 //#include "TimeDuration.h"
 
-extern boolean expectsContents_in_RangeParser;
-extern boolean expectsContents_in_CountIndexParser;
-extern boolean expectsContents_in_CountParser;
+//extern boolean expectsContents;//_in_RangeParser;
+//extern boolean expectsContents_in_CountIndexParser;
+//extern boolean expectsContents_in_CountParser;
 
 ////namespace opendnp3
 ////{

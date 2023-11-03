@@ -209,7 +209,8 @@ public:
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-void StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap, std::map<uint16_t, CounterConfig>& config);
+void StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap);
+void StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSpec *pStaticDataMap, std::map<uint16_t, CounterConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec);
 
 ////template<> StaticCounterVariation check_for_promotion<CounterSpec>(const Counter& value, StaticCounterVariation variation);
@@ -372,6 +373,7 @@ boolean update_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSp
 ////    }
 ////}
 
+Range get_full_range_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec);
 ////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
 ////{
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
@@ -414,7 +416,10 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
 
 ////    return true;
 ////}
-////
+
+boolean modify_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
 ////{

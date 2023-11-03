@@ -21,8 +21,8 @@ void CountWriteIterator_for_UInt8_Analog_in_CountWriteIterator_for_UInt8_AnalogO
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_Analog_in_CountWriteIterator_for_UInt8_AnalogOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -37,8 +37,8 @@ void CountWriteIterator_for_UInt8_Analog_in_CountWriteIterator_for_UInt8_AnalogO
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_Analog_in_CountWriteIterator_for_UInt8_AnalogOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -62,8 +62,8 @@ void CountWriteIterator_for_UInt8_Analog_destr_CountWriteIterator_for_UInt8_Anal
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_Analog_destr_CountWriteIterator_for_UInt8_Analog1"<<'\n';
   decrement_stack_info();
 #endif
@@ -112,8 +112,8 @@ void CountWriteIterator_for_UInt16_Analog_in_CountWriteIterator_for_UInt16_Analo
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt16_Analog_in_CountWriteIterator_for_UInt16_AnalogOver1_1"<<'\n';
   decrement_stack_info();
 #endif

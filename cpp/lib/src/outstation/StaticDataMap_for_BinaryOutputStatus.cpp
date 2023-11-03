@@ -1,10 +1,27 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "StaticDataMap_for_BinaryOutputStatus.h"
 
-////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
-void StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap, std::map<uint16_t, BOStatusConfig>& config)
+void StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpecOver1(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap)
 {
+  Range_in_RangeOver1(&(pStaticDataMap->selected));
+}
+////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
+void StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap, std::map<uint16_t, BOStatusConfig>& config)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpecOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
+
+  StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpecOver1(pStaticDataMap);
   for (const auto& item : config)
   {
 //void StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputStatusOver1(StaticDataCell_for_BinaryOutputStatus *pStaticDataCell_for_BinaryOutputStatus,
@@ -12,7 +29,7 @@ void StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputS
 ////        pStaticDataMap->map[item.first] = StaticDataCell<Spec>{item.second};
     BOStatusConfig temp = item.second;
     StaticDataCell_for_BinaryOutputStatus sStaticDataCell_for_BinaryOutputStatus;
-    StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputStatusOver1(&sStaticDataCell_for_BinaryOutputStatus, &temp);
+    StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputStatusOver2(&sStaticDataCell_for_BinaryOutputStatus, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_BinaryOutputStatus;
   }
 }
@@ -188,13 +205,72 @@ boolean add_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_Binary
     return false;
   }
 
-//void  StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputStatusOver2(StaticDataCell_for_BinaryOutputStatus *pStaticDataCell_for_BinaryOutputStatus,
+//void  StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputStatusOver3(StaticDataCell_for_BinaryOutputStatus *pStaticDataCell_for_BinaryOutputStatus,
 //    BinaryOutputStatus* value,
 //    BinaryOutputStatusConfig* config);
   StaticDataCell_for_BinaryOutputStatus sStaticDataCell;
-  StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputStatusOver2(&sStaticDataCell, value, config);
+  StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputStatusOver3(&sStaticDataCell, value, config);
 
   pStaticDataMap_for_BinaryOutputStatusSpec->map[index] = sStaticDataCell;////StaticDataCell_for_BinaryOutputStatusSpec{value, config};
 
   return true;
+}
+
+boolean modify_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver)
+{
+  if (stop < start)
+  {
+    return false;
+  }
+
+  for (auto iter = pStaticDataMap_for_BinaryOutputStatusSpec->map.lower_bound(start); iter != pStaticDataMap_for_BinaryOutputStatusSpec->map.end(); ++iter)
+  {
+    if (iter->first > stop)
+    {
+      return false;
+    }
+
+    BinaryOutputStatus new_value = iter->second.value;
+////        new_value.flags = Flags(flags);
+    Flags fFlags;
+    Flags_In_FlagsOver2(&fFlags, flags);
+    new_value.tTypedMeasurement_for_Boolean.mMeasurement.flags = fFlags;
+//boolean update_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec,
+//    map_iter_t_StaticDataMap_for_BinaryOutputStatusSpec & iter,
+//    BinaryOutputStatus* new_value,
+//    EventMode_uint8_t mode,
+//    IEventReceiver* receiver);
+////        this->update(iter, new_value, EventMode::Detect, receiver);
+    update_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(pStaticDataMap_for_BinaryOutputStatusSpec,
+        iter,
+        &new_value,
+        EventMode_Detect,
+        receiver);
+  }
+
+  return true;
+}
+
+////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
+Range get_full_range_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec)
+{
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+//Range Invalid_in_Range_static(void);
+////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
+  return pStaticDataMap_for_BinaryOutputStatusSpec->map.empty() ? Invalid_in_Range_static() : 
+         From_in_Range_static(pStaticDataMap_for_BinaryOutputStatusSpec->map.begin()->first, pStaticDataMap_for_BinaryOutputStatusSpec->map.rbegin()->first);
+}
+
+////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
+Range assign_class_in_StaticDataMap_for_BinaryOutputStatusSpecOver1(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec, PointClass_uint8_t clazz)
+{
+  for (auto& elem : pStaticDataMap_for_BinaryOutputStatusSpec->map)
+  {
+    elem.second.config.eEventConfig.clazz = clazz;
+  }
+
+////    return this->get_full_range();
+  return get_full_range_in_StaticDataMap_for_BinaryOutputStatusSpec(pStaticDataMap_for_BinaryOutputStatusSpec);
 }

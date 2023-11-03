@@ -18,12 +18,14 @@
 #define UNUSED(x) (void)(x)
 
 
+
 key_filter *pkf;
 
 MainWindow *mainWindow;
 
 int main(int argc, char *argv[])
 {
+
   QApplication app(argc, argv);
   key_filter kf;
   app.installEventFilter(pkf=&kf);

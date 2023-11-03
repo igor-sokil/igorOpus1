@@ -209,7 +209,8 @@ public:
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-void StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap, std::map<uint16_t, FrozenCounterConfig>& config);
+void StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap);
+void StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap, std::map<uint16_t, FrozenCounterConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec);
 
 ////template<> StaticFrozenCounterVariation check_for_promotion<FrozenCounterSpec>(const FrozenCounter& value, StaticFrozenCounterVariation variation);
@@ -370,6 +371,7 @@ boolean update_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_Fro
 ////    }
 ////}
 
+Range get_full_range_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec);
 ////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
 ////{
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
@@ -412,7 +414,10 @@ boolean update_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_Fro
 
 ////    return true;
 ////}
-////
+
+boolean modify_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
 ////{

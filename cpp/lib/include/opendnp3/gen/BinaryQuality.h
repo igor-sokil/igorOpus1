@@ -39,22 +39,29 @@
 
 /**
   Quality field bitmask for binary values
+Битовая маска поля качества для двоичных значений
 */
 ////enum class BinaryQuality : uint8_t
 #define BinaryQuality_uint8_t uint8_t
 enum BinaryQuality
 {
   /// set when the data is "good", meaning that rest of the system can trust the value
+/// устанавливается, когда данные «хорошие», что означает, что остальная часть системы может доверять значению
   BinaryQuality_ONLINE = 0x1,
   /// the quality all points get before we have established communication (or populated) the point
+/// качество, которое получают все точки до того, как мы установим связь (или заполним) точку
   BinaryQuality_RESTART = 0x2,
   /// set if communication has been lost with the source of the data (after establishing contact)
+/// устанавливается, если потеряна связь с источником данных (после установления контакта)
   BinaryQuality_COMM_LOST = 0x4,
   /// set if the value is being forced to a "fake" value somewhere in the system
+/// устанавливается, если где-то в системе значение принудительно принудительно присваивается «поддельному» значению
   BinaryQuality_REMOTE_FORCED = 0x8,
   /// set if the value is being forced to a "fake" value on the original device
+/// устанавливается, если значение принудительно устанавливается на «поддельное» значение на исходном устройстве
   BinaryQuality_LOCAL_FORCED = 0x10,
   /// set if the value is oscillating very quickly and some events are being suppressed
+/// устанавливается, если значение колеблется очень быстро и некоторые события подавляются
   BinaryQuality_CHATTER_FILTER = 0x20,
   /// reserved bit
   BinaryQuality_RESERVED = 0x40,

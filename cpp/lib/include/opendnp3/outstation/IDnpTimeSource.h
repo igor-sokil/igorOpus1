@@ -47,7 +47,8 @@ typedef struct
   void* pParentPointer_in_IDnpTimeSource;
 } IDnpTimeSource;
 
-DNPTime Now_in_IDnpTimeSource_static(void*);
+DNPTime Now_in_IDnpTimeSource_static(IDnpTimeSource*);
+DNPTime Now_in_IDnpTimeSource_static_override(void*);
 void IDnpTimeSource_in_IDnpTimeSource(IDnpTimeSource *pIDnpTimeSource);
 
 void* getParentPointer_in_IDnpTimeSource(IDnpTimeSource*);

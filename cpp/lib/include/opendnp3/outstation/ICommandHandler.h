@@ -38,6 +38,10 @@
  * application code.
  *
  * The ITransactable sub-interface is used to determine the start and end of an ASDU containing commands.
+* Интерфейс, используемый для отправки SELECT / OPERATE / DIRECT OPERATE (двоичный/аналоговый выход) с удаленной станции на
+  * код приложения.
+  *
+  * Субинтерфейс ITransactable используется для определения начала и конца ASDU, содержащего команды.
  */
 ////class ICommandHandler
 typedef struct

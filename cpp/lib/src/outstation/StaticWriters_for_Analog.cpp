@@ -204,7 +204,6 @@ boolean WriteWithSerializer_AnalogSpec_for_Group30Var1_in_StaticWriters_static(S
 }
 //----------------------------------------------Group30Var1------------------------------------------
 //----------------------------------------------Group30Var2------------------------------------------
-
 ////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean WriteWithSerializer_AnalogSpec_for_Group30Var2_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer)
 {
@@ -249,6 +248,141 @@ boolean WriteWithSerializer_AnalogSpec_for_Group30Var2_in_StaticWriters_static(S
   return btmp;
 }
 //----------------------------------------------Group30Var2------------------------------------------
+//----------------------------------------------Group30Var3------------------------------------------
+////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
+boolean WriteWithSerializer_AnalogSpec_for_Group30Var3_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer)
+{
+////    const auto range = map.get_selected_range();
+  Range  range = get_selected_range_in_StaticDataMap_for_AnalogSpec(&map);
+
+////    if (range.IsOneByte())
+  if (IsOneByte_in_Range(&range))
+  {
+//RangeWriteIterator_for_UInt8_Analog IterateOverRange_for_UInt8_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+//    QualifierCode_uint8_t qc,
+//    DNP3Serializer_for_Analog *serializer,
+//    uint8_t start );
+//DNP3Serializer_for_Analog  Inst_in_Group30Var3_static(void);
+////        auto iter = writer.IterateOverRange<ser4cpp::UInt8, typename Serializer::Target>(
+////            QualifierCode::UINT8_START_STOP, Serializer::Inst(), static_cast<uint8_t>(range.start));
+    DNP3Serializer_for_Analog tmp = Inst_in_Group30Var3_static();
+    RangeWriteIterator_for_UInt8_Analog iter = IterateOverRange_for_UInt8_Analog_in_HeaderWriter(writer,
+        QualifierCode_UINT8_START_STOP,
+        &tmp,
+        (uint8_t) range.start );
+
+//boolean LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(StaticDataMap_for_AnalogSpec& map,
+//    RangeWriteIterator_for_UInt8_Analog *writer, StaticAnalogVariation_uint8_t variation)
+////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
+    boolean btmp = LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(map, &iter, StaticAnalogVariation_Group30Var3);
+    RangeWriteIterator_for_UInt8_Analog_destr_RangeWriteIterator_for_UInt8_Analog(&iter);
+    return btmp;
+  }
+
+////    auto iter = writer.IterateOverRange<ser4cpp::UInt16, typename Serializer::Target>(QualifierCode::UINT16_START_STOP,
+////                                                                                      Serializer::Inst(), range.start);
+  DNP3Serializer_for_Analog tmp = Inst_in_Group30Var3_static();
+  RangeWriteIterator_for_UInt16_Analog iter = IterateOverRange_for_UInt16_Analog_in_HeaderWriter(writer,
+      QualifierCode_UINT16_START_STOP,
+      &tmp,
+      (uint16_t) range.start );
+
+////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
+  boolean btmp = LoadWithRangeIterator_AnalogSpec_for_UInt16_in_StaticWriters(map, &iter, StaticAnalogVariation_Group30Var3);
+  RangeWriteIterator_for_UInt16_Analog_destr_RangeWriteIterator_for_UInt16_Analog(&iter);
+  return btmp;
+}
+//----------------------------------------------Group30Var3------------------------------------------
+//----------------------------------------------Group30Var4------------------------------------------
+////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
+boolean WriteWithSerializer_AnalogSpec_for_Group30Var4_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer)
+{
+////    const auto range = map.get_selected_range();
+  Range  range = get_selected_range_in_StaticDataMap_for_AnalogSpec(&map);
+
+////    if (range.IsOneByte())
+  if (IsOneByte_in_Range(&range))
+  {
+//RangeWriteIterator_for_UInt8_Analog IterateOverRange_for_UInt8_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+//    QualifierCode_uint8_t qc,
+//    DNP3Serializer_for_Analog *serializer,
+//    uint8_t start );
+//DNP3Serializer_for_Analog  Inst_in_Group30Var4_static(void);
+////        auto iter = writer.IterateOverRange<ser4cpp::UInt8, typename Serializer::Target>(
+////            QualifierCode::UINT8_START_STOP, Serializer::Inst(), static_cast<uint8_t>(range.start));
+    DNP3Serializer_for_Analog tmp = Inst_in_Group30Var4_static();
+    RangeWriteIterator_for_UInt8_Analog iter = IterateOverRange_for_UInt8_Analog_in_HeaderWriter(writer,
+        QualifierCode_UINT8_START_STOP,
+        &tmp,
+        (uint8_t) range.start );
+
+//boolean LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(StaticDataMap_for_AnalogSpec& map,
+//    RangeWriteIterator_for_UInt8_Analog *writer, StaticAnalogVariation_uint8_t variation)
+////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
+    boolean btmp = LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(map, &iter, StaticAnalogVariation_Group30Var4);
+    RangeWriteIterator_for_UInt8_Analog_destr_RangeWriteIterator_for_UInt8_Analog(&iter);
+    return btmp;
+  }
+
+////    auto iter = writer.IterateOverRange<ser4cpp::UInt16, typename Serializer::Target>(QualifierCode::UINT16_START_STOP,
+////                                                                                      Serializer::Inst(), range.start);
+  DNP3Serializer_for_Analog tmp = Inst_in_Group30Var4_static();
+  RangeWriteIterator_for_UInt16_Analog iter = IterateOverRange_for_UInt16_Analog_in_HeaderWriter(writer,
+      QualifierCode_UINT16_START_STOP,
+      &tmp,
+      (uint16_t) range.start );
+
+////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
+  boolean btmp = LoadWithRangeIterator_AnalogSpec_for_UInt16_in_StaticWriters(map, &iter, StaticAnalogVariation_Group30Var4);
+  RangeWriteIterator_for_UInt16_Analog_destr_RangeWriteIterator_for_UInt16_Analog(&iter);
+  return btmp;
+}
+//----------------------------------------------Group30Var4------------------------------------------
+//----------------------------------------------Group30Var5------------------------------------------
+////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
+boolean WriteWithSerializer_AnalogSpec_for_Group30Var5_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer)
+{
+////    const auto range = map.get_selected_range();
+  Range  range = get_selected_range_in_StaticDataMap_for_AnalogSpec(&map);
+
+////    if (range.IsOneByte())
+  if (IsOneByte_in_Range(&range))
+  {
+//RangeWriteIterator_for_UInt8_Analog IterateOverRange_for_UInt8_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+//    QualifierCode_uint8_t qc,
+//    DNP3Serializer_for_Analog *serializer,
+//    uint8_t start );
+//DNP3Serializer_for_Analog  Inst_in_Group30Var5_static(void);
+////        auto iter = writer.IterateOverRange<ser4cpp::UInt8, typename Serializer::Target>(
+////            QualifierCode::UINT8_START_STOP, Serializer::Inst(), static_cast<uint8_t>(range.start));
+    DNP3Serializer_for_Analog tmp = Inst_in_Group30Var5_static();
+    RangeWriteIterator_for_UInt8_Analog iter = IterateOverRange_for_UInt8_Analog_in_HeaderWriter(writer,
+        QualifierCode_UINT8_START_STOP,
+        &tmp,
+        (uint8_t) range.start );
+
+//boolean LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(StaticDataMap_for_AnalogSpec& map,
+//    RangeWriteIterator_for_UInt8_Analog *writer, StaticAnalogVariation_uint8_t variation)
+////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
+    boolean btmp = LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(map, &iter, StaticAnalogVariation_Group30Var5);
+    RangeWriteIterator_for_UInt8_Analog_destr_RangeWriteIterator_for_UInt8_Analog(&iter);
+    return btmp;
+  }
+
+////    auto iter = writer.IterateOverRange<ser4cpp::UInt16, typename Serializer::Target>(QualifierCode::UINT16_START_STOP,
+////                                                                                      Serializer::Inst(), range.start);
+  DNP3Serializer_for_Analog tmp = Inst_in_Group30Var5_static();
+  RangeWriteIterator_for_UInt16_Analog iter = IterateOverRange_for_UInt16_Analog_in_HeaderWriter(writer,
+      QualifierCode_UINT16_START_STOP,
+      &tmp,
+      (uint16_t) range.start );
+
+////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
+  boolean btmp = LoadWithRangeIterator_AnalogSpec_for_UInt16_in_StaticWriters(map, &iter, StaticAnalogVariation_Group30Var5);
+  RangeWriteIterator_for_UInt16_Analog_destr_RangeWriteIterator_for_UInt16_Analog(&iter);
+  return btmp;
+}
+//----------------------------------------------Group30Var5------------------------------------------
 
 ////static_write_func_t<AnalogSpec> StaticWriters::get(StaticAnalogVariation variation)
 static_write_func_t_for_AnalogSpec get_for_AnalogSpec_in_StaticWriters_static(StaticAnalogVariation_uint8_t variation)
@@ -281,13 +415,34 @@ static_write_func_t_for_AnalogSpec get_for_AnalogSpec_in_StaticWriters_static(St
 ////        return &WriteWithSerializer<AnalogSpec, Group30Var2>;
     return WriteWithSerializer_AnalogSpec_for_Group30Var2_in_StaticWriters_static;
 
-////    case (StaticAnalogVariation::Group30Var3):
+   case (StaticAnalogVariation_Group30Var3):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*StaticAnalogVariation_Group30Var3"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return &WriteWithSerializer<AnalogSpec, Group30Var3>;
-////    case (StaticAnalogVariation::Group30Var4):
+    return WriteWithSerializer_AnalogSpec_for_Group30Var3_in_StaticWriters_static;
+
+   case (StaticAnalogVariation_Group30Var4):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*StaticAnalogVariation_Group30Var4"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return &WriteWithSerializer<AnalogSpec, Group30Var4>;
-////    case (StaticAnalogVariation::Group30Var5):
+    return WriteWithSerializer_AnalogSpec_for_Group30Var4_in_StaticWriters_static;
+
+   case (StaticAnalogVariation_Group30Var5):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*StaticAnalogVariation_Group30Var5"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return &WriteWithSerializer<AnalogSpec, Group30Var5>;
-////    case (StaticAnalogVariation::Group30Var6):
+    return WriteWithSerializer_AnalogSpec_for_Group30Var5_in_StaticWriters_static;
+
+////   case (StaticAnalogVariation::Group30Var6):
 ////        return &WriteWithSerializer<AnalogSpec, Group30Var6>;
   default:
 #ifdef  LOG_INFO

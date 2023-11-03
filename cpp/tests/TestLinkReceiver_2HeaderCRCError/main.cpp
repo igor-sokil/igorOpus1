@@ -18,10 +18,6 @@ QString FormatUserData(
 
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
-
 key_filter *pkf;
 
 MainWindow *mainWindow;
@@ -35,6 +31,7 @@ int main(int argc, char *argv[])
     LinkParserTest t;
   LinkParserTest_in_LinkParserTest(&t, false);// = false)
 
+qDebug()<<"********SUITE('2HeaderCRCError')********";
 //void WriteData_in_LinkParserTestOver2(LinkParserTest *pLinkParserTest, uint8_t *hex, uint16_t size_hex);////const std::string& hex)
 ////    t.WriteData("05 64 05 C0 01 00 00 04 E9 20");
 uint8_t hex[] = {0x05, 0x64, 0x05, 0xC0, 0x01, 0x00, 0x00, 0x04, 0xE9, 0x20};
@@ -49,7 +46,7 @@ Parser_in_LinkStatistics* temp = Statistics_in_LinkLayerParser(&t.parser);
 qDebug()<<"t.parser.Statistics().numHeaderCrcError= "<<temp->numHeaderCrcError;
 
 /*
-TEST_CASE(SUITE("HeaderCRCError"))
+TEST_CASE(SUITE("2HeaderCRCError"))
 {
     LinkParserTest t;
     t.WriteData("05 64 05 C0 01 00 00 04 E9 20");

@@ -36,7 +36,7 @@ void  Database_in_Database(Database *pDatabase,
                            StaticTypeBitField allowed_class_zero_types)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Database_in_Database1"<<'\n';
@@ -51,31 +51,31 @@ void  Database_in_Database(Database *pDatabase,
 //  std::map<uint16_t, BinaryConfig> binary_input;
 //  void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap, std::map<uint16_t, BinaryConfig>& config)
 ////      binary_input(config.binary_input),
-  StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(&(pDatabase->binary_input), config->binary_input);
+  StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2(&(pDatabase->binary_input), config->binary_input);
 
 ////      double_binary(config.double_binary),
-  StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpec(&(pDatabase->double_binary), config->double_binary);
+  StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver2(&(pDatabase->double_binary), config->double_binary);
 
 ////      analog_input(config.analog_input),
-  StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpec(&(pDatabase->analog_input), config->analog_input);
+  StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2(&(pDatabase->analog_input), config->analog_input);
 
 ////      counter(config.counter),
-  StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpec(&(pDatabase->counter), config->counter);
+  StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver2(&(pDatabase->counter), config->counter);
 
 ////      frozen_counter(config.frozen_counter),
-  StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpec(&(pDatabase->frozen_counter), config->frozen_counter);
+  StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpecOver2(&(pDatabase->frozen_counter), config->frozen_counter);
 
 ////      binary_output_status(config.binary_output_status),
-  StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpec(&(pDatabase->binary_output_status), config->binary_output_status);
+  StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(&(pDatabase->binary_output_status), config->binary_output_status);
 
 ////      analog_output_status(config.analog_output_status),
-  StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpec(&(pDatabase->analog_output_status), config->analog_output_status);
+  StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(&(pDatabase->analog_output_status), config->analog_output_status);
 
 ////      time_and_interval(config.time_and_interval),
-  StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpec(&(pDatabase->time_and_interval), config->time_and_interval);
+  StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpecOver2(&(pDatabase->time_and_interval), config->time_and_interval);
 
 ////      octet_string(config.octet_string)
-  StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpec(&(pDatabase->octet_string), config->octet_string);
+  StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver2(&(pDatabase->octet_string), config->octet_string);
 
   // ------- IStaticSelector -------------
   pDatabase->iIStaticSelector.pSelectAll_in_IStaticSelector     = SelectAll_in_Database_override;
@@ -86,7 +86,9 @@ void  Database_in_Database(Database *pDatabase,
   setParentPointer_in_IStaticSelector(&(pDatabase->iIStaticSelector), pDatabase);
   // ------- IStaticSelector -------------
 
+  // ------- IClassAssigner -------------
   setParentPointer_in_IClassAssigner(&(pDatabase->iIClassAssigner), pDatabase);
+  // ------- IClassAssigner -------------
 
   // ------- IResponseLoader -------------
   pDatabase->iIResponseLoader.pHasAnySelection_in_IResponseLoader =  HasAnySelection_in_Database_override;
@@ -103,6 +105,8 @@ void  Database_in_Database(Database *pDatabase,
   pDatabase->iIUpdateHandler.pUpdate_AnalogOutputStatus_in_IUpdateHandler = Update_for_AnalogOutputStatus_in_Database_override;
   pDatabase->iIUpdateHandler.pUpdate_TimeAndInterval_in_IUpdateHandler    = Update_for_TimeAndInterval_in_Database_override;
   pDatabase->iIUpdateHandler.pUpdate_OctetString_in_IUpdateHandler        = Update_for_OctetString_in_Database_override;
+  pDatabase->iIUpdateHandler.pModify_in_IUpdateHandler                    = Modify_in_Database_override;
+  pDatabase->iIUpdateHandler.pFreezeCounter_in_IUpdateHandler             = FreezeCounter_in_Database_override;
   setParentPointer_in_IUpdateHandler(&(pDatabase->iIUpdateHandler), pDatabase);
   // ------- IUpdateHandler -------------
 
@@ -714,7 +718,7 @@ IINField SelectAll_in_Database_override(void *pIStaticSelector, GroupVariation_u
 IINField SelectAll_in_Database( Database *pDatabase, GroupVariation_uint16_t gv)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"SelectAll_in_Database1"<<'\n';
@@ -1079,63 +1083,63 @@ IINField SelectRange_in_Database(Database *pDatabase, GroupVariation_uint16_t gv
   std::cout<<getString_stack_info();
   std::cout<<"SelectRange_in_Database1"<<'\n';
 #endif
-    switch (gv)
-    {
-   case (GroupVariation_Group1Var0):
+  switch (gv)
+  {
+  case (GroupVariation_Group1Var0):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group1Var0"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<BinarySpec>(this->binary_input, range);
-return select_range_for_BinarySpec_in_Database_staticOver1(&(pDatabase->binary_input), range);
+    return select_range_for_BinarySpec_in_Database_staticOver1(&(pDatabase->binary_input), range);
 
-    case (GroupVariation_Group1Var1):
+  case (GroupVariation_Group1Var1):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group1Var1"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<BinarySpec>(this->binary_input, range, StaticBinaryVariation::Group1Var1);
-return select_range_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), range, StaticBinaryVariation_Group1Var1);
+    return select_range_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), range, StaticBinaryVariation_Group1Var1);
 
-    case (GroupVariation_Group1Var2):
+  case (GroupVariation_Group1Var2):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group1Var2"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<BinarySpec>(this->binary_input, range, StaticBinaryVariation::Group1Var2);
-return select_range_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), range, StaticBinaryVariation_Group1Var2);
+    return select_range_for_BinarySpec_in_Database_staticOver2(&(pDatabase->binary_input), range, StaticBinaryVariation_Group1Var2);
 
-    case (GroupVariation_Group3Var0):
+  case (GroupVariation_Group3Var0):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group3Var0"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<DoubleBitBinarySpec>(this->double_binary, range);
-return select_range_for_DoubleBitBinarySpec_in_Database_staticOver1(&(pDatabase->double_binary), range);
+    return select_range_for_DoubleBitBinarySpec_in_Database_staticOver1(&(pDatabase->double_binary), range);
 
-    case (GroupVariation_Group3Var2):
+  case (GroupVariation_Group3Var2):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group3Var2"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<DoubleBitBinarySpec>(this->double_binary, range, StaticDoubleBinaryVariation::Group3Var2);
-return select_range_for_DoubleBitBinarySpec_in_Database_staticOver2(&(pDatabase->double_binary), range, StaticDoubleBinaryVariation_Group3Var2);
+    return select_range_for_DoubleBitBinarySpec_in_Database_staticOver2(&(pDatabase->double_binary), range, StaticDoubleBinaryVariation_Group3Var2);
 
-    case (GroupVariation_Group10Var0):
+  case (GroupVariation_Group10Var0):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group10Var0"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<BinaryOutputStatusSpec>(this->binary_output_status, range);
-return select_range_for_BinaryOutputStatusSpec_in_Database_staticOver1(&(pDatabase->binary_output_status), range);
+    return select_range_for_BinaryOutputStatusSpec_in_Database_staticOver1(&(pDatabase->binary_output_status), range);
 
-    case (GroupVariation_Group10Var2):
+  case (GroupVariation_Group10Var2):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group10Var2"<<'\n';
@@ -1143,189 +1147,189 @@ return select_range_for_BinaryOutputStatusSpec_in_Database_staticOver1(&(pDataba
 #endif
 ////        return select_range<BinaryOutputStatusSpec>(this->binary_output_status, range,
 ////                                                    StaticBinaryOutputStatusVariation::Group10Var2);
-return select_range_for_BinaryOutputStatusSpec_in_Database_staticOver2(&(pDatabase->binary_output_status), range, StaticBinaryOutputStatusVariation_Group10Var2);
+    return select_range_for_BinaryOutputStatusSpec_in_Database_staticOver2(&(pDatabase->binary_output_status), range, StaticBinaryOutputStatusVariation_Group10Var2);
 
-    case (GroupVariation_Group20Var0):
+  case (GroupVariation_Group20Var0):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group20Var0"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<CounterSpec>(this->counter, range);
-return select_range_for_CounterSpec_in_Database_staticOver1(&(pDatabase->counter), range);
+    return select_range_for_CounterSpec_in_Database_staticOver1(&(pDatabase->counter), range);
 
-    case (GroupVariation_Group20Var1):
+  case (GroupVariation_Group20Var1):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group20Var1"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<CounterSpec>(this->counter, range, StaticCounterVariation::Group20Var1);
-return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var1);
+    return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var1);
 
-    case (GroupVariation_Group20Var2):
+  case (GroupVariation_Group20Var2):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group20Var2"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<CounterSpec>(this->counter, range, StaticCounterVariation::Group20Var2);
-return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var2);
+    return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var2);
 
-    case (GroupVariation_Group20Var5):
+  case (GroupVariation_Group20Var5):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group20Var5"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<CounterSpec>(this->counter, range, StaticCounterVariation::Group20Var5);
-return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var5);
+    return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var5);
 
-    case (GroupVariation_Group20Var6):
+  case (GroupVariation_Group20Var6):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group20Var6"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<CounterSpec>(this->counter, range, StaticCounterVariation::Group20Var6);
-return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var6);
+    return select_range_for_CounterSpec_in_Database_staticOver2(&(pDatabase->counter), range, StaticCounterVariation_Group20Var6);
 
-    case (GroupVariation_Group21Var0):
+  case (GroupVariation_Group21Var0):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group21Var0"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<FrozenCounterSpec>(this->frozen_counter, range);
-return select_range_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), range);
+    return select_range_for_FrozenCounterSpec_in_Database_staticOver1(&(pDatabase->frozen_counter), range);
 
-    case (GroupVariation_Group21Var1):
+  case (GroupVariation_Group21Var1):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group21Var1"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var1);
-return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var1);
+    return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var1);
 
-    case (GroupVariation_Group21Var2):
+  case (GroupVariation_Group21Var2):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group21Var2"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var2);
-return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var2);
+    return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var2);
 
-    case (GroupVariation_Group21Var5):
+  case (GroupVariation_Group21Var5):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group21Var5"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var5);
-return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var5);
+    return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var5);
 
-    case (GroupVariation_Group21Var6):
+  case (GroupVariation_Group21Var6):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group21Var6"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var6);
-return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var6);
+    return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var6);
 
-    case (GroupVariation_Group21Var9):
+  case (GroupVariation_Group21Var9):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group21Var9"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var9);
-return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var9);
+    return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var9);
 
-    case (GroupVariation_Group21Var10):
+  case (GroupVariation_Group21Var10):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group21Var10"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<FrozenCounterSpec>(this->frozen_counter, range, StaticFrozenCounterVariation::Group21Var10);
-return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var10);
+    return select_range_for_FrozenCounterSpec_in_Database_staticOver2(&(pDatabase->frozen_counter), range, StaticFrozenCounterVariation_Group21Var10);
 
-    case (GroupVariation_Group30Var0):
+  case (GroupVariation_Group30Var0):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group30Var0"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range);
-return select_range_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), range);
+    return select_range_for_AnalogSpec_in_Database_staticOver1(&(pDatabase->analog_input), range);
 
-    case (GroupVariation_Group30Var1):
+  case (GroupVariation_Group30Var1):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group30Var1"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var1);
-return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var1);
+    return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var1);
 
-    case (GroupVariation_Group30Var2):
+  case (GroupVariation_Group30Var2):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group30Var2"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var2);
-return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var2);
+    return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var2);
 
-    case (GroupVariation_Group30Var3):
+  case (GroupVariation_Group30Var3):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group30Var3"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var3);
-return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var3);
+    return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var3);
 
-    case (GroupVariation_Group30Var4):
+  case (GroupVariation_Group30Var4):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group30Var4"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var4);
-return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var4);
+    return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var4);
 
-    case (GroupVariation_Group30Var5):
+  case (GroupVariation_Group30Var5):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group30Var5"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var5);
-return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var5);
+    return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var5);
 
-    case (GroupVariation_Group30Var6):
+  case (GroupVariation_Group30Var6):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group30Var6"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var6);
-return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var6);
+    return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var6);
 
-    case (GroupVariation_Group40Var0):
+  case (GroupVariation_Group40Var0):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group40Var0"<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range);
-return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDatabase->analog_output_status), range);
+    return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDatabase->analog_output_status), range);
 
-    case (GroupVariation_Group40Var1):
+  case (GroupVariation_Group40Var1):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group40Var1"<<'\n';
@@ -1333,9 +1337,9 @@ return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver1(&(pDataba
 #endif
 ////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range,
 ////                                                    StaticAnalogOutputStatusVariation::Group40Var1);
-return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var1);
+    return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var1);
 
-    case (GroupVariation_Group40Var2):
+  case (GroupVariation_Group40Var2):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group40Var2"<<'\n';
@@ -1343,9 +1347,9 @@ return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDataba
 #endif
 ////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range,
 ////                                                    StaticAnalogOutputStatusVariation::Group40Var2);
-return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var2);
+    return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var2);
 
-    case (GroupVariation_Group40Var3):
+  case (GroupVariation_Group40Var3):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group40Var3"<<'\n';
@@ -1353,9 +1357,9 @@ return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDataba
 #endif
 ////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range,
 ////                                                    StaticAnalogOutputStatusVariation::Group40Var3);
-return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var3);
+    return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var3);
 
-    case (GroupVariation_Group40Var4):
+  case (GroupVariation_Group40Var4):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group40Var4"<<'\n';
@@ -1363,9 +1367,9 @@ return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDataba
 #endif
 ////        return select_range<AnalogOutputStatusSpec>(this->analog_output_status, range,
 ////                                                    StaticAnalogOutputStatusVariation::Group40Var4);
-return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var4);
+    return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDatabase->analog_output_status), range, StaticAnalogOutputStatusVariation_Group40Var4);
 
-    case (GroupVariation_Group50Var4):
+  case (GroupVariation_Group50Var4):
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group50Var4"<<'\n';
@@ -1373,12 +1377,12 @@ return select_range_for_AnalogOutputStatusSpec_in_Database_staticOver2(&(pDataba
 #endif
 ////        return select_range<TimeAndIntervalSpec>(this->time_and_interval, range,
 ////                                                 StaticTimeAndIntervalVariation::Group50Var4);
-return select_range_for_TimeAndIntervalSpec_in_Database_staticOver2(&(pDatabase->time_and_interval), range, StaticTimeAndIntervalVariation_Group50Var4);
+    return select_range_for_TimeAndIntervalSpec_in_Database_staticOver2(&(pDatabase->time_and_interval), range, StaticTimeAndIntervalVariation_Group50Var4);
 
 ////    case (GroupVariation::Group110Var0):
 ////        return select_range<OctetStringSpec>(this->octet_string, range, StaticOctetStringVariation::Group110Var0);
 
-    default:
+  default:
   {
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
@@ -1390,7 +1394,7 @@ return select_range_for_TimeAndIntervalSpec_in_Database_staticOver2(&(pDatabase-
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
     return iIINField;
   }
-   }
+  }
 }
 
 IINField SelectRange_in_Database_override(void *pIStaticSelector, GroupVariation_uint16_t gv, Range* range)
@@ -1758,7 +1762,7 @@ void Unselect_in_Database_override(void *pIStaticSelector)
 boolean HasAnySelection_in_Database(Database *pDatabase)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"HasAnySelection_in_Database1"<<'\n';
@@ -1796,7 +1800,7 @@ boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer)
 boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Load_in_Database1"<<'\n';
@@ -1819,16 +1823,6 @@ boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
          load_type_for_OctetString_in_Database_static(pDatabase->octet_string, writer) &&
          load_type_for_TimeAndInterval_in_Database_static(pDatabase->time_and_interval, writer);
 }
-
-/*
-bool Database::FreezeCounter(uint16_t index, bool clear, EventMode mode)
-{
-    auto num_selected = this->counter.select(Range::From(index, index));
-    this->FreezeSelectedCounters(clear, mode);
-
-    return num_selected > 0;
-}
-*/
 
 boolean Update_for_Binary_in_Database_override(void *pIUpdateHandler, Binary* meas, uint16_t index, EventMode_uint8_t mode)
 {
@@ -1886,5 +1880,199 @@ boolean Update_for_OctetString_in_Database_override(void *pIUpdateHandler, Octet
   return Update_for_OctetString_in_Database(parent, meas, index, mode);
 }
 
+boolean Modify_in_Database_override(void *pIUpdateHandler, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return Modify_in_Database(parent, type, start, stop, flags);
+}
 
+////boolean Database::Modify(FlagsType type, uint16_t start, uint16_t stop, uint8_t flags)
+boolean Modify_in_Database(Database *pDatabase, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Modify_in_Database1"<<'\n';
+  decrement_stack_info();
+#endif
+  switch (type)
+  {
+  case (FlagsType_BinaryInput):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FlagsType_BinaryInput"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->binary_input.modify(start, stop, flags, this->event_receiver);
+    return modify_in_StaticDataMap_for_BinarySpec(&(pDatabase->binary_input), start, stop, flags, pDatabase->event_receiver);
+  case (FlagsType_DoubleBinaryInput):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FlagsType_DoubleBinaryInput"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->double_binary.modify(start, stop, flags, this->event_receiver);
+    return modify_in_StaticDataMap_for_DoubleBitBinarySpec(&(pDatabase->double_binary), start, stop, flags, pDatabase->event_receiver);
+  case (FlagsType_AnalogInput):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FlagsType_AnalogInput"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->analog_input.modify(start, stop, flags, this->event_receiver);
+    return modify_in_StaticDataMap_for_AnalogSpec(&(pDatabase->analog_input), start, stop, flags, pDatabase->event_receiver);
+  case (FlagsType_Counter):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FlagsType_Counter"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->counter.modify(start, stop, flags, this->event_receiver);
+    return modify_in_StaticDataMap_for_CounterSpec(&(pDatabase->counter), start, stop, flags, pDatabase->event_receiver);
+  case (FlagsType_FrozenCounter):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FlagsType_FrozenCounter"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->frozen_counter.modify(start, stop, flags, this->event_receiver);
+    return modify_in_StaticDataMap_for_FrozenCounterSpec(&(pDatabase->frozen_counter), start, stop, flags, pDatabase->event_receiver);
+  case (FlagsType_BinaryOutputStatus):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FlagsType_BinaryOutputStatus"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->binary_output_status.modify(start, stop, flags, this->event_receiver);
+    return modify_in_StaticDataMap_for_BinaryOutputStatusSpec(&(pDatabase->binary_output_status), start, stop, flags, pDatabase->event_receiver);
+  case (FlagsType_AnalogOutputStatus):
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FlagsType_AnalogOutputStatus"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->analog_output_status.modify(start, stop, flags, this->event_receiver);
+    return modify_in_StaticDataMap_for_AnalogOutputStatusSpec(&(pDatabase->analog_output_status), start, stop, flags, pDatabase->event_receiver);
+  }
 
+  return false;
+}
+
+////bool Database::FreezeSelectedCounters(bool clear, EventMode mode)
+boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, EventMode_uint8_t mode)// = EventMode::Detect);
+{
+  for (auto c : pDatabase->counter)
+  {
+//DNPTime Now_in_IDnpTimeSource_static(IDnpTimeSource*);
+//void FrozenCounter_in_FrozenCounterOver4(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags, DNPTime timeDNPTime);
+////        FrozenCounter new_value(c.second.value.value, c.second.value.flags, time_source.Now());
+    FrozenCounter new_value;
+    FrozenCounter_in_FrozenCounterOver4(&new_value, c.second.value.tTypedMeasurement_for_Uint32.value, c.second.value.tTypedMeasurement_for_Uint32.mMeasurement.flags, Now_in_IDnpTimeSource_static(pDatabase->time_source));
+
+//boolean update_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec,
+//    FrozenCounter* value,
+//    uint16_t index,
+//    EventMode_uint8_t mode,
+//    IEventReceiver* receiver);
+////        this->frozen_counter.update(new_value, c.first, mode, this->event_receiver);
+    update_in_StaticDataMap_for_FrozenCounterSpecOver1(&(pDatabase->frozen_counter),
+        &new_value, c.first, mode, (pDatabase->event_receiver));
+
+    if (clear)
+    {
+      c.second.value.tTypedMeasurement_for_Uint32.value = 0;
+////            c.second.value.time = time_source.Now();
+      c.second.value.tTypedMeasurement_for_Uint32.mMeasurement.timeDNPTime = Now_in_IDnpTimeSource_static(pDatabase->time_source);
+
+//boolean update_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec,
+//    Counter* value,
+//    uint16_t index,
+//    EventMode_uint8_t mode,
+//    IEventReceiver* receiver);
+////            this->counter.update(c.second.value, c.first, mode, this->event_receiver);
+      Counter tmp = c.second.value;
+      update_in_StaticDataMap_for_CounterSpecOver1(&(pDatabase->counter),
+          &tmp, c.first, mode,  (pDatabase->event_receiver));
+    }
+  }
+
+//void clear_selection_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec);
+////    this->counter.clear_selection();
+  clear_selection_in_StaticDataMap_for_CounterSpec(&(pDatabase->counter));
+
+  return true;
+}
+
+////bool Database::FreezeCounter(uint16_t index, bool clear, EventMode mode)
+boolean FreezeCounter_in_Database(Database *pDatabase, uint16_t index, boolean clear, EventMode_uint8_t mode)
+{
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+//uint16_t select_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, Range range);
+////    auto num_selected = this->counter.select(Range::From(index, index));
+  uint16_t num_selected = select_in_StaticDataMap_for_CounterSpecOver1(&(pDatabase->counter), From_in_Range_static(index, index));
+
+//boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, EventMode_uint8_t mode)// = EventMode::Detect);
+////    this->FreezeSelectedCounters(clear, mode);
+  FreezeSelectedCounters_in_Database(pDatabase, clear, mode);
+
+  return num_selected > 0;
+}
+
+boolean FreezeCounter_in_Database_override(void *pIUpdateHandler, uint16_t index, boolean clear, EventMode_uint8_t mode)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
+  return FreezeCounter_in_Database(parent, index, clear, mode);
+}
+/*
+////Range Database::AssignClassToAll(AssignClassType type, PointClass clazz)
+Range AssignClassToAll_in_Database(Database *pDatabase, AssignClassType_uint8_t type, PointClass_uint8_t clazz)
+{
+    switch (type)
+    {
+    case (AssignClassType::BinaryInput):
+////        return this->binary_input.assign_class(clazz);
+    case (AssignClassType::DoubleBinaryInput):
+////        return this->double_binary.assign_class(clazz);
+    case (AssignClassType::Counter):
+////        return this->counter.assign_class(clazz);
+    case (AssignClassType::FrozenCounter):
+////        return this->frozen_counter.assign_class(clazz);
+    case (AssignClassType::AnalogInput):
+////        return this->analog_input.assign_class(clazz);
+    case (AssignClassType::BinaryOutputStatus):
+////        return this->binary_output_status.assign_class(clazz);
+    case (AssignClassType::AnalogOutputStatus):
+////        return this->analog_output_status.assign_class(clazz);
+    default:
+        return Range::Invalid();
+    }
+}
+
+////Range Database::AssignClassToRange(AssignClassType type, PointClass clazz, const Range& range)
+Range AssignClassToRange_in_Database(Database *pDatabase, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
+{
+    switch (type)
+    {
+    case (AssignClassType::BinaryInput):
+        return this->binary_input.assign_class(clazz, range);
+    case (AssignClassType::DoubleBinaryInput):
+        return this->double_binary.assign_class(clazz, range);
+    case (AssignClassType::Counter):
+        return this->counter.assign_class(clazz, range);
+    case (AssignClassType::FrozenCounter):
+        return this->frozen_counter.assign_class(clazz, range);
+    case (AssignClassType::AnalogInput):
+        return this->analog_input.assign_class(clazz, range);
+    case (AssignClassType::BinaryOutputStatus):
+        return this->binary_output_status.assign_class(clazz, range);
+    case (AssignClassType::AnalogOutputStatus):
+        return this->analog_output_status.assign_class(clazz, range);
+    default:
+        return Range::Invalid();
+    }
+}
+
+*/

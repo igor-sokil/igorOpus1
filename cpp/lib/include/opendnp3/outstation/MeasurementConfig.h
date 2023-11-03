@@ -50,7 +50,7 @@ typedef struct
   EventAnalogVariation_uint8_t  evariation;// = Info::DefaultEventVariation;
 } EventConfig;
 
-void EventConfig_in_EventConfig(EventConfig *pEventConfig);
+void EventConfig_in_EventConfig(EventConfig *pEventConfig, uint8_t svariation, uint8_t evariation);
 
 ////template<class Info> struct DeadbandConfig : EventConfig<Info>
 ////{

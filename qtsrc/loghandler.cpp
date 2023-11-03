@@ -5,6 +5,8 @@
 void* pPointerGlobal1;
 void* pPointerGlobal2;
 void* pPointerGlobal3;
+boolean expectsContents;
+
 LogHandler loghandler;//логирование
 
 LogHandler::LogHandler()

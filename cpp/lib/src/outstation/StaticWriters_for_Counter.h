@@ -19,6 +19,8 @@ boolean LoadWithRangeIterator_CounterSpec_for_UInt16_in_StaticWriters(StaticData
 ////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean WriteWithSerializer_CounterSpec_for_Group20Var1_in_StaticWriters_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer);
 boolean WriteWithSerializer_CounterSpec_for_Group20Var2_in_StaticWriters_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer);
+boolean WriteWithSerializer_CounterSpec_for_Group20Var5_in_StaticWriters_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer);
+boolean WriteWithSerializer_CounterSpec_for_Group20Var6_in_StaticWriters_static(StaticDataMap_for_CounterSpec& map, HeaderWriter* writer);
 //----------------------------------------------Group20Var------------------------------------------
 
 #endif

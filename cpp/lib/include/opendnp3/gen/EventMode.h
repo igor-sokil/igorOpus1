@@ -39,18 +39,23 @@
 
 /**
   Describes how a transaction behaves with respect to event generation
+Описывает, как транзакция ведет себя в отношении генерации событий.
 */
 //enum class EventMode : uint8_t
 #define EventMode_uint8_t uint8_t
 enum EventMode 
 {
   /// Detect events using the specific mechanism for that type
+/// Обнаружение событий, используя специальный механизм для этого типа
   EventMode_Detect = 0x0,
   /// Force the creation of an event bypassing detection mechanism
+/// Принудительно создать событие в обход механизма обнаружения
   EventMode_Force = 0x1,
   /// Never produce an event regardless of changes
+/// Никогда не создавать событие независимо от изменений
   EventMode_Suppress = 0x2,
   /// Force the creation of an event bypassing detection mechanism, but does not update the static value
+/// Принудительно создаём событие в обход механизма обнаружения, но не обновляем статическое значение
   EventMode_EventOnly = 0x3
 };
 

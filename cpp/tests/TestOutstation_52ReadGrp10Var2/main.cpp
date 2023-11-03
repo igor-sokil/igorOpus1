@@ -11,9 +11,10 @@
 
 #include "header.h"
 
-//#include "StaticDataMap_for_Binary.h"
-//#include "OutstationTestObject.h"
-#include "EventReceiver.h"
+#include "OutstationConfig.h"
+#include "OutstationTestObject.h"
+#include "DatabaseHelpers.h"
+#include "TestOutstation.h"
 
 #define UNUSED(x) (void)(x)
 
@@ -28,61 +29,21 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-//expectsContents_in_CountParser = true;
+expectsContents_in_CountParser = true;
 //expectsContents_in_CountIndexParser = false;
 //expectsContents_in_RangeParser = false;
 
-qDebug()<<"********SUITE('3can')********";
-    StaticDataMap_for_BinarySpec map{{{0, {}}}};
-
-//uint16_t select_all_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
-////    map.select_all();
- select_all_in_StaticDataMap_for_BinarySpecOver1(&map);
-
-
-////    EventReceiver receiver;
-    EventReceiver receiver;
-    EventReceiver_in_EventReceiver(&receiver);
-
-//boolean update_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec,
-//    Binary* value,
-//    uint16_t index,
-//    EventMode_uint8_t mode,
-//    IEventReceiver* receiver);
-//void Binary_in_BinaryOver2(Binary *pBinary, boolean value);
-////    REQUIRE_FALSE(map.update(Binary(true), 0, EventMode::Detect, receiver));
-     Binary bBinary;
-     Binary_in_BinaryOver2(&bBinary, true);
-
-boolean btemp = update_in_StaticDataMap_for_BinarySpecOver1(&map,
-    &bBinary,
-    0,
-    EventMode_Detect,
-    &receiver.iIEventReceiver);
-
-std::cout << "REQUIRE(map.update(Binary(true), 0, EventMode::Detect, receiver))"<<'\n';
-std::cout << "btemp= " << btemp<<'\n';
-
-////    REQUIRE(receiver.count == 1);
-std::cout << "REQUIRE(receiver.count == 1)"<<'\n';
-std::cout << "temp= " << (receiver.count == 1)<<'\n';
-
-////    REQUIRE(receiver.latestBinaryEvent.value.value == true);
-////    REQUIRE(map.update(Binary(true), 0, EventMode::Detect, receiver));
-////    REQUIRE(receiver.count == 1);
+qDebug()<<"********SUITE('52ReadGrp10Var2')********";
+//void TestStaticAnalog(StaticAnalogVariation_uint8_t variation, double value, std::string& response);
+////    TestStaticAnalog(StaticAnalogVariation::Group30Var3, 65536, "C0 81 80 00 1E 03 00 00 00 00 00 01 00");
+ std::string name("C0 81 80 00 0A 02 00 00 00 81");   
+ TestStaticBinaryOutputStatus_for_boolean(true, name);
 
 /*
-TEST_CASE(SUITE("3can detect events on existing point"))
+TEST_CASE(SUITE("52ReadGrp10Var2"))
 {
-    StaticDataMap<BinarySpec> map{{{0, {}}}};
-    map.select_all();
-
-    EventReceiver receiver;
-    REQUIRE(map.update(Binary(true), 0, EventMode::Detect, receiver));
-    REQUIRE(receiver.count == 1);
-    REQUIRE(receiver.latestBinaryEvent.value.value == true);
-    REQUIRE(map.update(Binary(true), 0, EventMode::Detect, receiver));
-    REQUIRE(receiver.count == 1);
+void TestStaticBinaryOutputStatus_for_boolean(boolean value, std::string& response)
+    TestStaticBinaryOutputStatus<bool>(true, "C0 81 80 00 0A 02 00 00 00 81");
 }
 */
 

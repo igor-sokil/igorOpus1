@@ -209,7 +209,8 @@ public:
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_OctetStringSpec *pStaticDataMap, std::map<uint16_t, OctetStringConfig>& config);
+void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver1(StaticDataMap_for_OctetStringSpec *pStaticDataMap);
+void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_OctetStringSpec *pStaticDataMap, std::map<uint16_t, OctetStringConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec);
 
 ////template<> StaticOctetStringVariation check_for_promotion<OctetStringSpec>(const OctetString& value, StaticOctetStringVariation variation);
@@ -412,7 +413,7 @@ boolean update_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_Octet
 
 ////    return true;
 ////}
-////
+
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
 ////{

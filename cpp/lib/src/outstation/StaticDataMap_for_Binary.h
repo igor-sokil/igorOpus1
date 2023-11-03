@@ -31,6 +31,10 @@
 ////#include <iterator>
 ////#include <map>
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "StaticDataMap.h"
 #include "MeasurementTypeSpecs.h"
 #include "Range.h"
@@ -209,7 +213,8 @@ public:
 ////    template<class F> size_t select(Range range, F get_variation);
 };
 
-void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap, std::map<uint16_t, BinaryConfig>& config);
+void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap);
+void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec *pStaticDataMap, std::map<uint16_t, BinaryConfig>& config);
 Range get_selected_range_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
 
 void clear_selection_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
@@ -224,11 +229,21 @@ template<class F> uint16_t select_all_for_BinarySpec_staticOver3(StaticDataMap_f
 ////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select_all(F get_variation)
 template<class F> uint16_t select_all_in_StaticDataMap_for_BinarySpecOver3(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, F get_variation)
 {
-//qDebug()<<"";
-//qDebug()<<"select_all_in_StaticDataMap_for_BinarySpecOver3_1";
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"select_all_in_StaticDataMap_for_BinarySpecOver3_1"<<'\n';
+//  decrement_stack_info();
+#endif
 
   if (pStaticDataMap_for_BinarySpec->map.empty())
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"select_all_in_StaticDataMap_for_BinarySpecOver3_2"<<'\n';
+  decrement_stack_info();
+#endif
     return 0;
   }
   else
@@ -240,7 +255,6 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_BinarySpecOver3(Stati
 
     for (auto& iter : pStaticDataMap_for_BinarySpec->map)
     {
-//qDebug()<<"iter___";
 // StaticBinaryVariation_uint8_t check_for_promotion_for_BinarySpec(Binary* value, StaticBinaryVariation_uint8_t variation);
 //void SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver2(SelectedValue_for_BinarySpec *pSelectedValue_for_BinarySpec,
 //                                          boolean selected, Binary* value, StaticBinaryVariation_uint8_t variation);
@@ -252,10 +266,24 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_BinarySpecOver3(Stati
           true, &iter.second.value,
           check_for_promotion_for_BinarySpec_static(&iter.second.value, get_variation(iter.second.config.eEventConfig.svariation)));
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"select_all_in_StaticDataMap_for_BinarySpecOver3_3"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*sSelectedValue_for_BinarySpec.variation= "<<(uint16_t)sSelectedValue_for_BinarySpec.variation<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*iter.second.config.eEventConfig.svariation= "<<(uint16_t)iter.second.config.eEventConfig.svariation<<'\n';
+#endif
       iter.second.selection = sSelectedValue_for_BinarySpec;
     }//for
 
-//qDebug()<<"map.size= "<<pStaticDataMap_for_BinarySpec->map.size();
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"select_all_in_StaticDataMap_for_BinarySpecOver3_4"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap_for_BinarySpec->map.size()= "<<pStaticDataMap_for_BinarySpec->map.size()<<'\n';
+  decrement_stack_info();
+#endif
     return pStaticDataMap_for_BinarySpec->map.size();
   }
 }
@@ -269,6 +297,13 @@ template<class F> uint16_t select_in_StaticDataMap_for_BinarySpecOver5(StaticDat
 ////template<class Spec> template<class F> size_t StaticDataMap<Spec>::select(Range range, F get_variation)
 template<class F> uint16_t select_in_StaticDataMap_for_BinarySpecOver5(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, Range range, F get_variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"select_in_StaticDataMap_for_BinarySpecOver5_1"<<'\n';
+//  decrement_stack_info();
+#endif
 //boolean IsValid_in_Range(Range *pRange);
 ////    if (!range.IsValid())
   if (!IsValid_in_Range(&range))
@@ -317,8 +352,36 @@ template<class F> uint16_t select_in_StaticDataMap_for_BinarySpecOver5(StaticDat
 //Range Union_in_Range(Range *pRange, Range* other);
 //Range From_in_Range_static(uint16_t start, uint16_t stop);
 ////    this->selected = this->selected.Union(Range::From(start->first, stop));
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*start->first= "<<(uint16_t)start->first<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*stop= "<<(uint16_t)stop<<'\n';
+//  decrement_stack_info();
+#endif
+
   Range rRange = From_in_Range_static(start->first, stop);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*rRange.start= "<<(uint16_t)rRange.start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*rRange.stop= "<<(uint16_t)rRange.stop<<'\n';
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap_for_BinarySpec->selected.start= "<<(uint16_t)pStaticDataMap_for_BinarySpec->selected.start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap_for_BinarySpec->selected.stop= "<<(uint16_t)pStaticDataMap_for_BinarySpec->selected.stop<<'\n';
+#endif
+
   pStaticDataMap_for_BinarySpec->selected = Union_in_Range(&(pStaticDataMap_for_BinarySpec->selected), &rRange);
+
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap_for_BinarySpec->selected.start= "<<(uint16_t)pStaticDataMap_for_BinarySpec->selected.start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap_for_BinarySpec->selected.stop= "<<(uint16_t)pStaticDataMap_for_BinarySpec->selected.stop<<'\n';
+  decrement_stack_info();
+#endif
 
   return count;
 }
@@ -349,6 +412,7 @@ boolean update_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec
 ////    }
 ////}
 
+Range get_full_range_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
 ////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
 ////{
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
@@ -391,7 +455,10 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
 
 ////    return true;
 ////}
-////
+
+boolean modify_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver);
 ////template<class Spec>
 ////bool StaticDataMap<Spec>::modify(uint16_t start, uint16_t stop, uint8_t flags, IEventReceiver& receiver)
 ////{

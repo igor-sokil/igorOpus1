@@ -1,10 +1,27 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "StaticDataMap_for_DoubleBitBinary.h"
 
-////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
-void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap, std::map<uint16_t, DoubleBitBinaryConfig>& config)
+void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap)
 {
+  Range_in_RangeOver1(&(pStaticDataMap->selected));
+}
+////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
+void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap, std::map<uint16_t, DoubleBitBinaryConfig>& config)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
+
+  StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver1(pStaticDataMap);
   for (const auto& item : config)
   {
 //void StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver1(StaticDataCell_for_DoubleBitBinary *pStaticDataCell_for_DoubleBitBinary,
@@ -12,7 +29,7 @@ void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinaryS
 ////        pStaticDataMap->map[item.first] = StaticDataCell<Spec>{item.second};
     DoubleBitBinaryConfig temp = item.second;
     StaticDataCell_for_DoubleBitBinary sStaticDataCell_for_DoubleBitBinary;
-    StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver1(&sStaticDataCell_for_DoubleBitBinary, &temp);
+    StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver2(&sStaticDataCell_for_DoubleBitBinary, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_DoubleBitBinary;
   }
 }
@@ -188,13 +205,72 @@ boolean add_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBit
     return false;
   }
 
-//void  StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver2(StaticDataCell_for_DoubleBitBinary *pStaticDataCell_for_DoubleBitBinary,
+//void  StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver3(StaticDataCell_for_DoubleBitBinary *pStaticDataCell_for_DoubleBitBinary,
 //    DoubleBitBinary* value,
 //    DoubleBitBinaryConfig* config);
   StaticDataCell_for_DoubleBitBinary sStaticDataCell;
-  StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver2(&sStaticDataCell, value, config);
+  StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver3(&sStaticDataCell, value, config);
 
   pStaticDataMap_for_DoubleBitBinarySpec->map[index] = sStaticDataCell;////StaticDataCell_for_DoubleBitBinarySpec{value, config};
 
   return true;
+}
+
+boolean modify_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver)
+{
+  if (stop < start)
+  {
+    return false;
+  }
+
+  for (auto iter = pStaticDataMap_for_DoubleBitBinarySpec->map.lower_bound(start); iter != pStaticDataMap_for_DoubleBitBinarySpec->map.end(); ++iter)
+  {
+    if (iter->first > stop)
+    {
+      return false;
+    }
+
+    DoubleBitBinary new_value = iter->second.value;
+////        new_value.flags = Flags(flags);
+    Flags fFlags;
+    Flags_In_FlagsOver2(&fFlags, flags);
+    new_value.tTypedMeasurement_for_DoubleBit_uint8_t.mMeasurement.flags = fFlags;
+//boolean update_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec,
+//    map_iter_t_StaticDataMap_for_DoubleBitBinarySpec & iter,
+//    DoubleBitBinary* new_value,
+//    EventMode_uint8_t mode,
+//    IEventReceiver* receiver);
+////        this->update(iter, new_value, EventMode::Detect, receiver);
+    update_in_StaticDataMap_for_DoubleBitBinarySpecOver2(pStaticDataMap_for_DoubleBitBinarySpec,
+        iter,
+        &new_value,
+        EventMode_Detect,
+        receiver);
+  }
+
+  return true;
+}
+
+////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
+Range get_full_range_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec)
+{
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+//Range Invalid_in_Range_static(void);
+////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
+  return pStaticDataMap_for_DoubleBitBinarySpec->map.empty() ? Invalid_in_Range_static() : 
+         From_in_Range_static(pStaticDataMap_for_DoubleBitBinarySpec->map.begin()->first, pStaticDataMap_for_DoubleBitBinarySpec->map.rbegin()->first);
+}
+
+////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
+Range assign_class_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, PointClass_uint8_t clazz)
+{
+  for (auto& elem : pStaticDataMap_for_DoubleBitBinarySpec->map)
+  {
+    elem.second.config.eEventConfig.clazz = clazz;
+  }
+
+////    return this->get_full_range();
+  return get_full_range_in_StaticDataMap_for_DoubleBitBinarySpec(pStaticDataMap_for_DoubleBitBinarySpec);
 }

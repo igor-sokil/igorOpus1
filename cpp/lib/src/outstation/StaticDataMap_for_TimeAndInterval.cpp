@@ -1,11 +1,28 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "StaticDataMap.h"
 #include "StaticDataMap_for_TimeAndInterval.h"
 
-////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
-void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap, std::map<uint16_t, TimeAndIntervalConfig>& config)
+void StaticDataMap_for_TimeAndInterval_in_StaticDataMap_for_TimeAndIntervalOver1(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap)
 {
+  Range_in_RangeOver1(&(pStaticDataMap->selected));
+}
+////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
+void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpecOver2(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap, std::map<uint16_t, TimeAndIntervalConfig>& config)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpecOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
+
+  StaticDataMap_for_TimeAndInterval_in_StaticDataMap_for_TimeAndIntervalOver1(pStaticDataMap);
   for (const auto& item : config)
   {
 //void StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver1(StaticDataCell_for_TimeAndInterval *pStaticDataCell_for_TimeAndInterval,
@@ -13,7 +30,7 @@ void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalS
 ////        pStaticDataMap->map[item.first] = StaticDataCell<Spec>{item.second};
     TimeAndIntervalConfig temp = item.second;
     StaticDataCell_for_TimeAndInterval sStaticDataCell_for_TimeAndInterval;
-    StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver1(&sStaticDataCell_for_TimeAndInterval, &temp);
+    StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver2(&sStaticDataCell_for_TimeAndInterval, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_TimeAndInterval;
   }
 }
@@ -122,13 +139,14 @@ boolean add_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIn
     return false;
   }
 
-//void  StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver2(StaticDataCell_for_TimeAndInterval *pStaticDataCell_for_TimeAndInterval,
+//void  StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver3(StaticDataCell_for_TimeAndInterval *pStaticDataCell_for_TimeAndInterval,
 //    TimeAndInterval* value,
 //    TimeAndIntervalConfig* config);
   StaticDataCell_for_TimeAndInterval sStaticDataCell;
-  StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver2(&sStaticDataCell, value, config);
+  StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver3(&sStaticDataCell, value, config);
 
   pStaticDataMap_for_TimeAndIntervalSpec->map[index] = sStaticDataCell;////StaticDataCell_for_TimeAndIntervalSpec{value, config};
 
   return true;
 }
+

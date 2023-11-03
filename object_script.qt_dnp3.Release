@@ -44,6 +44,7 @@ release/IResource.o
 release/StackStatistics.o
 release/BaseMeasurementTypes.o
 release/DNPTime.o
+release/EventCells.o
 release/Flags.o
 release/GroupVariationID.o
 release/OctetString.o
@@ -58,7 +59,11 @@ release/ICollection_Indexed_for_AnalogOutputInt32.o
 release/ICollection_Indexed_for_ControlRelayOutputBlock.o
 release/ICollection_Indexed_for_IINValue.o
 release/ICollection_Indexed_for_TimeAndInterval.o
+release/ICollection_Indexed_for_Analog.o
+release/ICollection_Indexed_for_AnalogOutputStatus.o
 release/ICollection_Indexed_for_Binary.o
+release/ICollection_Indexed_for_Counter.o
+release/ICollection_Indexed_for_FrozenCounter.o
 release/ICollection_Indexed_for_BinaryCommandEvent.o
 release/ICollection_Indexed_for_AnalogCommandEvent.o
 release/ICollection_Indexed_for_DoubleBitBinary.o
@@ -317,6 +322,7 @@ release/APDUHelpers.o
 release/BufferHelpers.o
 release/CopyableBuffer.o
 release/DNPHelpers.o
+release/EventReceiver.o
 release/LinkHex.o
 release/LinkParserTest.o
 release/LinkLayerTest.o

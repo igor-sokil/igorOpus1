@@ -78,7 +78,8 @@ uint16_t ser4cpp_min_uint16_t(uint16_t t1, uint16_t t2)
 
 Range Union_in_Range(Range *pRange, Range* other)
 {
-  if (IsValid_in_Range(pRange))
+////        if (!this->IsValid())
+  if (!IsValid_in_Range(pRange))
   {
     return (*other);
   }

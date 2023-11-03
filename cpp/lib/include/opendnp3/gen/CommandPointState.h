@@ -39,22 +39,29 @@
 
 /**
   List the various states that an individual command object can be in after an SBO or direct operate request
+ѕеречислите различные состо€ни€, в которых может находитьс€ отдельный командный объект после запроса SBO или пр€мого управлени€.
 */
 ////enum class CommandPointState : uint8_t
 #define CommandPointState_uint8_t  uint8_t
 enum CommandPointState
 {
   /// No corresponding response was ever received for this command point
+/// ƒл€ этой командной точки соответствующий ответ не был получен
   CommandPointState_INIT = 0,
   /// A response to a select request was received and matched, but the operate did not complete
+/// ќтвет на запрос выбора был получен и сопоставлен, но операци€ не завершена
   CommandPointState_SELECT_SUCCESS = 1,
   /// A response to a select operation did not contain the same value that was sent
+/// ќтвет на операцию выбора не содержал того же значени€, что было отправлено
   CommandPointState_SELECT_MISMATCH = 2,
   /// A response to a select operation contained a command status other than success
+/// ќтвет на операцию выбора содержал статус команды, отличный от успеха
   CommandPointState_SELECT_FAIL = 3,
   /// A response to an operate or direct operate did not match the request
+/// ќтвет на операцию или пр€мое действие не соответствует запросу
   CommandPointState_OPERATE_FAIL = 4,
   /// A matching response was received to the operate
+/// Ќа операцию получен соответствующий ответ
   CommandPointState_SUCCESS = 5
 };
 

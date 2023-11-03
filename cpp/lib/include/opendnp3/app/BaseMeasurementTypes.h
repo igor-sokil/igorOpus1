@@ -40,7 +40,9 @@ typedef struct
 {
 ////public:
     Flags flags;  //	bitfield that stores type specific quality information
+                  // Bitfield, который хранит тип конкретной информации о качестве
     DNPTime timeDNPTime; //	timestamp associated with the measurement
+                         // временная метка, связанная с измерением
 
 ////protected:
 ////    Measurement() {}

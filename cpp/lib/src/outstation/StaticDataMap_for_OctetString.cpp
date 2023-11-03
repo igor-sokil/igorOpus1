@@ -6,9 +6,22 @@
 #include "header.h"
 #include "StaticDataMap_for_OctetString.h"
 
-////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
-void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_OctetStringSpec *pStaticDataMap, std::map<uint16_t, OctetStringConfig>& config)
+void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver1(StaticDataMap_for_OctetStringSpec *pStaticDataMap)
 {
+  Range_in_RangeOver1(&(pStaticDataMap->selected));
+}
+////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
+void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_OctetStringSpec *pStaticDataMap, std::map<uint16_t, OctetStringConfig>& config)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
+
+  StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver1(pStaticDataMap);
   for (const auto& item : config)
   {
 //void StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver1(StaticDataCell_for_OctetString *pStaticDataCell_for_OctetString,
@@ -16,7 +29,7 @@ void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpec(Stat
 ////        pStaticDataMap->map[item.first] = StaticDataCell<Spec>{item.second};
     OctetStringConfig temp = item.second;
     StaticDataCell_for_OctetString sStaticDataCell_for_OctetString;
-    StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver1(&sStaticDataCell_for_OctetString, &temp);
+    StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver2(&sStaticDataCell_for_OctetString, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_OctetString;
   }
 }
@@ -197,11 +210,11 @@ boolean add_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_OctetStringSp
     return false;
   }
 
-//void  StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver2(StaticDataCell_for_OctetString *pStaticDataCell_for_OctetString,
+//void  StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver3(StaticDataCell_for_OctetString *pStaticDataCell_for_OctetString,
 //    OctetString* value,
 //    OctetStringConfig* config);
   StaticDataCell_for_OctetString sStaticDataCell;
-  StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver2(&sStaticDataCell, value, config);
+  StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver3(&sStaticDataCell, value, config);
 
   pStaticDataMap_for_OctetStringSpec->map[index] = sStaticDataCell;////StaticDataCell_for_OctetStringSpec{value, config};
 

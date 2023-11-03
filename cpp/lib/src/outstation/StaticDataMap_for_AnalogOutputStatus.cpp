@@ -1,10 +1,27 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "StaticDataMap_for_AnalogOutputStatus.h"
 
-////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
-void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap, std::map<uint16_t, AOStatusConfig>& config)
+void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap)
 {
+  Range_in_RangeOver1(&(pStaticDataMap->selected));
+}
+////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
+void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap, std::map<uint16_t, AOStatusConfig>& config)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
+
+  StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(pStaticDataMap);
   for (const auto& item : config)
   {
 //void StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver1(StaticDataCell_for_AnalogOutputStatus *pStaticDataCell_for_AnalogOutputStatus,
@@ -12,7 +29,7 @@ void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputS
 ////        pStaticDataMap->map[item.first] = StaticDataCell<Spec>{item.second};
     AOStatusConfig temp = item.second;
     StaticDataCell_for_AnalogOutputStatus sStaticDataCell_for_AnalogOutputStatus;
-    StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver1(&sStaticDataCell_for_AnalogOutputStatus, &temp);
+    StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver2(&sStaticDataCell_for_AnalogOutputStatus, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_AnalogOutputStatus;
   }
 }
@@ -188,13 +205,72 @@ boolean add_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_Analog
     return false;
   }
 
-//void  StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver2(StaticDataCell_for_AnalogOutputStatus *pStaticDataCell_for_AnalogOutputStatus,
+//void  StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver3(StaticDataCell_for_AnalogOutputStatus *pStaticDataCell_for_AnalogOutputStatus,
 //    AnalogOutputStatus* value,
 //    AnalogOutputStatusConfig* config);
   StaticDataCell_for_AnalogOutputStatus sStaticDataCell;
-  StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver2(&sStaticDataCell, value, config);
+  StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver3(&sStaticDataCell, value, config);
 
   pStaticDataMap_for_AnalogOutputStatusSpec->map[index] = sStaticDataCell;////StaticDataCell_for_AnalogOutputStatusSpec{value, config};
 
   return true;
+}
+
+boolean modify_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec,
+    uint16_t start, uint16_t stop, uint8_t flags,
+    IEventReceiver* receiver)
+{
+  if (stop < start)
+  {
+    return false;
+  }
+
+  for (auto iter = pStaticDataMap_for_AnalogOutputStatusSpec->map.lower_bound(start); iter != pStaticDataMap_for_AnalogOutputStatusSpec->map.end(); ++iter)
+  {
+    if (iter->first > stop)
+    {
+      return false;
+    }
+
+    AnalogOutputStatus new_value = iter->second.value;
+////        new_value.flags = Flags(flags);
+    Flags fFlags;
+    Flags_In_FlagsOver2(&fFlags, flags);
+    new_value.tTypedMeasurement_for_Double64.mMeasurement.flags = fFlags;
+//boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec,
+//    map_iter_t_StaticDataMap_for_AnalogSpec & iter,
+//    Analog* new_value,
+//    EventMode_uint8_t mode,
+//    IEventReceiver* receiver);
+////        this->update(iter, new_value, EventMode::Detect, receiver);
+    update_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(pStaticDataMap_for_AnalogOutputStatusSpec,
+        iter,
+        &new_value,
+        EventMode_Detect,
+        receiver);
+  }
+
+  return true;
+}
+
+////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
+Range get_full_range_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec)
+{
+//Range From_in_Range_static(uint16_t start, uint16_t stop);
+//Range Invalid_in_Range_static(void);
+////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
+  return pStaticDataMap_for_AnalogOutputStatusSpec->map.empty() ? Invalid_in_Range_static() : 
+         From_in_Range_static(pStaticDataMap_for_AnalogOutputStatusSpec->map.begin()->first, pStaticDataMap_for_AnalogOutputStatusSpec->map.rbegin()->first);
+}
+
+////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
+Range assign_class_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, PointClass_uint8_t clazz)
+{
+  for (auto& elem : pStaticDataMap_for_AnalogOutputStatusSpec->map)
+  {
+    elem.second.config.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.clazz = clazz;
+  }
+
+////    return this->get_full_range();
+  return get_full_range_in_StaticDataMap_for_AnalogOutputStatusSpec(pStaticDataMap_for_AnalogOutputStatusSpec);
 }

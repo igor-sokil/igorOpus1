@@ -11,8 +11,9 @@
 
 #include "header.h"
 
-#include "OutstationConfig.h"
-#include "OutstationTestObject.h"
+//#include "StaticDataMap_for_Binary.h"
+//#include "OutstationTestObject.h"
+#include "EventReceiver.h"
 
 #define UNUSED(x) (void)(x)
 
@@ -27,44 +28,84 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-expectsContents_in_CountParser = true;
+//expectsContents_in_CountParser = true;
 //expectsContents_in_CountIndexParser = false;
 //expectsContents_in_RangeParser = false;
 
-qDebug()<<"********SUITE('1rejects')********";
-    OutstationConfig config;
-    OutstationConfig_in_OutstationConfig(&config);
-//    OutstationTestObject t;
-//    OutstationTestObject_in_OutstationTestObject(&t, &config);
-    DatabaseConfig tmp;
-    DatabaseConfig_in_DatabaseConfig(&tmp, 0);
+qDebug()<<"********SUITE('7can select all points using default variation and iterate')********";
+    StaticDataMap_for_BinarySpec map{{
+        {0, {}},
+        {3, {}},
+        {7, {}},
+    }};
 
-    OutstationTestObject t;
-    OutstationTestObject_in_OutstationTestObject(&t, &config, &tmp);
+StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver1(&map);
+StaticDataCell_for_Binary sdc;
+   StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1(&sdc);
+   map.map[0] = sdc;
+   map.map[3] = sdc;
+   map.map[7] = sdc;
 
-    LowerLayerUp_in_OutstationTestObject(&t);
+std::cout << "map.size()= " << map.map.size()<<'\n';
 
-    std::string name("C0 16 3C 03 06 01 00 06");       
-    SendToOutstation_in_OutstationTestObject(&t, name);  
+//uint32_t Count_in_Range(Range *pRange);
+//Range get_selected_range_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
+////    REQUIRE(map.get_selected_range().Count() == 0);
+Range rtmp = get_selected_range_in_StaticDataMap_for_BinarySpec(&map);
+uint32_t ctmp = Count_in_Range(&rtmp);
 
-    std::string temp = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+std::cout << "REQUIRE(map.get_selected_range().Count() == 0)"<<'\n';
+std::cout << "ctmp= " << ctmp<<'\n';
+std::cout << "rtmp.start= " << (uint16_t)rtmp.start<<'\n';
+std::cout << "rtmp.stop= " << (uint16_t)rtmp.stop<<'\n';
 
-qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == 'C0 81 80 01')";
-std::cout << "temp= " << temp<<'\n';
+//uint16_t select_all_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);
+////    REQUIRE(map.select_all() == 3);
+ctmp = select_all_in_StaticDataMap_for_BinarySpecOver1(&map);
+std::cout << "REQUIRE(map.select_all() == 3)"<<'\n';
+std::cout << "ctmp= " << ctmp<<'\n';
+
+////    std::vector<StaticDataMap<BinarySpec>::iterator::value_type> items;
+    std::vector<std::pair<uint16_t, SelectedValue_for_BinarySpec>> items;
+    for (const auto& item : map)
+    {
+        items.push_back(item);
+    }
+
+////    REQUIRE(items.size() == 3);
+std::cout << "REQUIRE(items.size() == 3)"<<'\n';
+std::cout << "items.size()= " << items.size()<<'\n';
+
+    for (const auto& item : items)
+    {
+////        REQUIRE(item.second.variation == BinarySpec::DefaultStaticVariation);
+std::cout << "REQUIRE(item.second.variation == BinarySpec::DefaultStaticVariation)"<<'\n';
+std::cout << "item.second.variation= " << (uint16_t)item.second.variation<<'\n';
+    }
 
 /*
-TEST_CASE(SUITE("1rejects with FuncNotSupported if assign class not supported"))
-//отклоняет с FuncNotSupported, если назначение класса не поддерживается
+TEST_CASE(SUITE("7can select all points using default variation and iterate"))
 {
-    OutstationConfig config;
-    OutstationTestObject t(config);
-    t.LowerLayerUp();
+    StaticDataMap<BinarySpec> map{{
+        {0, {}},
+        {3, {}},
+        {7, {}},
+    }};
 
-    // assign binaries to class 2
-    t.SendToOutstation("C0 16 3C 03 06 01 00 06");
-    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 01");
+    REQUIRE(map.get_selected_range().Count() == 0);
+    REQUIRE(map.select_all() == 3);
 
-    REQUIRE(t.application->classAssignments.empty());
+    std::vector<StaticDataMap<BinarySpec>::iterator::value_type> items;
+    for (const auto& item : map)
+    {
+        items.push_back(item);
+    }
+
+    REQUIRE(items.size() == 3);
+    for (const auto& item : map)
+    {
+        REQUIRE(item.second.variation == BinarySpec::DefaultStaticVariation);
+    }
 }
 */
 

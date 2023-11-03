@@ -110,14 +110,12 @@ boolean LoadWithBitfieldIterator_BinarySpec_for_UInt8_in_StaticWriters(StaticDat
     if (elem.second.variation != variation)
     {
       // the variation has changed
-      BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(iter);
       return true;
     }
 
     if (elem.first != next_index)
     {
       // we've loaded all we can with a contiguous range
-      BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(iter);
       return true;
     }
 
@@ -125,14 +123,12 @@ boolean LoadWithBitfieldIterator_BinarySpec_for_UInt8_in_StaticWriters(StaticDat
 ////        if (!iter.Write(elem.second.value.value))
     if (!Write_in_BitfieldRangeWriteIterator_for_UInt8(iter, elem.second.value.tTypedMeasurement_for_Boolean.value))
     {
-      BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(iter);
       return false;
     }
 
     ++next_index;
   }
 
-  BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(iter);
   return true;
 }
 //-------------------------------------LoadWithBitfieldIterator_BinarySpec_for_UInt8---------------------------------------------------
@@ -153,14 +149,12 @@ boolean LoadWithBitfieldIterator_BinarySpec_for_UInt16_in_StaticWriters(StaticDa
     if (elem.second.variation != variation)
     {
       // the variation has changed
-      BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16(iter);
       return true;
     }
 
     if (elem.first != next_index)
     {
       // we've loaded all we can with a contiguous range
-      BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16(iter);
       return true;
     }
 
@@ -168,14 +162,12 @@ boolean LoadWithBitfieldIterator_BinarySpec_for_UInt16_in_StaticWriters(StaticDa
 ////        if (!iter.Write(elem.second.value.value))
     if (!Write_in_BitfieldRangeWriteIterator_for_UInt16(iter, elem.second.value.tTypedMeasurement_for_Boolean.value))
     {
-      BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16(iter);
       return false;
     }
 
     ++next_index;
   }
 
-  BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16(iter);
   return true;
 }
 //-------------------------------------LoadWithBitfieldIterator_BinarySpec_for_UInt16---------------------------------------------------
@@ -205,7 +197,9 @@ boolean WriteSingleBitfield_BinarySpec_for_Group1Var1_in_StaticWriters_static(St
         (uint8_t)range.start);
 
 ////        return LoadWithBitfieldIterator<Spec, ser4cpp::UInt8>(map, write_iter, GV::svariation);
-    return LoadWithBitfieldIterator_BinarySpec_for_UInt8_in_StaticWriters(map, &write_iter, svariation_in_Group1Var1);
+    boolean btmp = LoadWithBitfieldIterator_BinarySpec_for_UInt8_in_StaticWriters(map, &write_iter, svariation_in_Group1Var1);
+    BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_UInt8(&write_iter);
+    return btmp;
   }
 
 ////    auto write_iter
@@ -215,7 +209,9 @@ boolean WriteSingleBitfield_BinarySpec_for_Group1Var1_in_StaticWriters_static(St
       QualifierCode_UINT16_START_STOP,
       range.start);
 ////    return LoadWithBitfieldIterator<Spec, ser4cpp::UInt16>(map, write_iter, GV::svariation);
-  return LoadWithBitfieldIterator_BinarySpec_for_UInt16_in_StaticWriters(map, &write_iter, svariation_in_Group1Var1);
+  boolean btmp = LoadWithBitfieldIterator_BinarySpec_for_UInt16_in_StaticWriters(map, &write_iter, svariation_in_Group1Var1);
+  BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16(&write_iter);
+  return btmp;
 }
 //-------------------------------------WriteSingleBitfield_BinarySpec_for_Group1Var1_in_StaticWriters_static---------------------------------------------------
 
@@ -241,7 +237,9 @@ boolean WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static(St
         (uint8_t) range.start );
 
 ////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
-    return LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters(map, &iter, StaticBinaryVariation_Group1Var2);
+    boolean btmp = LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters(map, &iter, StaticBinaryVariation_Group1Var2);
+    RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary(&iter);
+    return btmp;
   }
 
 ////    auto iter = writer.IterateOverRange<ser4cpp::UInt16, typename Serializer::Target>(QualifierCode::UINT16_START_STOP,
@@ -253,7 +251,9 @@ boolean WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static(St
       (uint16_t) range.start );
 
 ////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
-  return LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters(map, &iter, StaticBinaryVariation_Group1Var2);
+  boolean btmp = LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters(map, &iter, StaticBinaryVariation_Group1Var2);
+  RangeWriteIterator_for_UInt16_Binary_destr_RangeWriteIterator_for_UInt16_Binary(&iter);
+  return btmp;
 }
 
 ////static_write_func_t<BinarySpec> StaticWriters::get(StaticBinaryVariation variation)

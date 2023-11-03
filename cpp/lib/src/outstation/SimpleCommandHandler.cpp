@@ -55,9 +55,9 @@ void SimpleCommandHandler_in_SimpleCommandHandler(SimpleCommandHandler *pSimpleC
   (pSimpleCommandHandler->iICommandHandler).pOperate_ControlRelayOutputBlock_in_ICommandHandler = Operate_ControlRelayOutputBlock_in_SimpleCommandHandler_override;
 
   (pSimpleCommandHandler->iICommandHandler).pSelect_AnalogOutputInt16_in_ICommandHandler = Select_AnalogOutputInt16_in_SimpleCommandHandler_override;
-  /*
-    (pSimpleCommandHandler->iICommandHandler).pOperate_AnalogOutputInt16_in_ICommandHandler = Operate_AnalogOutputInt16_in_SimpleCommandHandler_override;
-  */
+
+  (pSimpleCommandHandler->iICommandHandler).pOperate_AnalogOutputInt16_in_ICommandHandler = Operate_AnalogOutputInt16_in_SimpleCommandHandler_override;
+
   (pSimpleCommandHandler->iICommandHandler).pSelect_AnalogOutputInt32_in_ICommandHandler = Select_AnalogOutputInt32_in_SimpleCommandHandler_override;
   (pSimpleCommandHandler->iICommandHandler).pOperate_AnalogOutputInt32_in_ICommandHandler = Operate_AnalogOutputInt32_in_SimpleCommandHandler_override;
 
@@ -96,12 +96,11 @@ CommandStatus_uint8_t Operate_ControlRelayOutputBlock_in_SimpleCommandHandler_ov
 {
   SimpleCommandHandler *parent =
     (SimpleCommandHandler*)getParentPointer_in_ICommandHandler((ICommandHandler*)pICommandHandler);
-  /*
-      CommandStatus_uint8_t Operate_ControlRelayOutputBlock_in_SimpleCommandHandler(SimpleCommandHandler*, ControlRelayOutputBlock* command,
-                            uint16_t index,
-                            IUpdateHandler* handler,
-                            OperateType_uint8_t opType);//
-  */
+
+//      CommandStatus_uint8_t Operate_ControlRelayOutputBlock_in_SimpleCommandHandler(SimpleCommandHandler*, ControlRelayOutputBlock* command,
+//                            uint16_t index,
+//                            IUpdateHandler* handler,
+//                            OperateType_uint8_t opType);//
   return Operate_ControlRelayOutputBlock_in_SimpleCommandHandler(parent, command, index, handler, opType);
 }
 
@@ -111,17 +110,16 @@ CommandStatus_uint8_t Select_AnalogOutputInt16_in_SimpleCommandHandler_override(
     (SimpleCommandHandler*)getParentPointer_in_ICommandHandler((ICommandHandler*)pICommandHandler);
   return Select_AnalogOutputInt16_in_SimpleCommandHandler(parent, command, index);
 }
-/*
-    CommandStatus_uint8_t Operate_AnalogOutputInt16_in_SimpleCommandHandler_override(void* pICommandHandler, AnalogOutputInt16* command,
-                          uint16_t index,
-                          IUpdateHandler* handler,
-                          OperateType_uint8_t opType)
+CommandStatus_uint8_t Operate_AnalogOutputInt16_in_SimpleCommandHandler_override(void* pICommandHandler, AnalogOutputInt16* command,
+    uint16_t index,
+    IUpdateHandler* handler,
+    OperateType_uint8_t opType)
 {
   SimpleCommandHandler *parent =
-         (SimpleCommandHandler*)getParentPointer_in_ICommandHandler((ICommandHandler*)pICommandHandler);
+    (SimpleCommandHandler*)getParentPointer_in_ICommandHandler((ICommandHandler*)pICommandHandler);
   return Operate_AnalogOutputInt16_in_SimpleCommandHandler(parent, command, index, handler, opType);
 }
-*/
+
 CommandStatus_uint8_t Select_AnalogOutputInt32_in_SimpleCommandHandler_override(void* pICommandHandler, AnalogOutputInt32* command, uint16_t index)
 {
   SimpleCommandHandler *parent =
@@ -209,19 +207,18 @@ CommandStatus_uint8_t Select_AnalogOutputInt16_in_SimpleCommandHandler(SimpleCom
   ++(pSimpleCommandHandler->numSelect);
   return pSimpleCommandHandler->status;
 }
-/*
-CommandStatus_uint8_t Operate_AnalogOutputInt16_in_SimpleCommandHandler(SimpleCommandHandlerd* pSimpleCommandHandler, AnalogOutputInt16* command,
-                                            uint16_t index,
-                                            IUpdateHandler* handler,
-                                            OperateType_uint8_t opType)
+
+CommandStatus_uint8_t Operate_AnalogOutputInt16_in_SimpleCommandHandler(SimpleCommandHandler* pSimpleCommandHandler, AnalogOutputInt16* command,
+    uint16_t index,
+    IUpdateHandler* handler,
+    OperateType_uint8_t opType)
 {
-UNUSED(handler);
+  UNUSED(handler);
 ////    this->DoOperate(command, index, opType);
-    DoOperate_AnalogOutputInt16_in_SimpleCommandHandler(pSimpleCommandHandler, command, index, opType);
-    ++(pSimpleCommandHandler->numOperate);
-    return pSimpleCommandHandler->status;
+  DoOperate_AnalogOutputInt16_in_SimpleCommandHandler(pSimpleCommandHandler, command, index, opType);
+  ++(pSimpleCommandHandler->numOperate);
+  return pSimpleCommandHandler->status;
 }
-*/
 
 CommandStatus_uint8_t Select_AnalogOutputInt32_in_SimpleCommandHandler(SimpleCommandHandler* pSimpleCommandHandler, AnalogOutputInt32* command, uint16_t index)
 {
@@ -376,12 +373,6 @@ void DoOperate_AnalogOutputInt32_in_SimpleCommandHandler(SimpleCommandHandler* p
   (pSimpleCommandHandler->pDoOperate_AnalogOutputInt32_in_SimpleCommandHandler)(pSimpleCommandHandler, command, index, opType);
 }
 
-/*
-    void DoOperate_AnalogOutputInt32_in_SimpleCommandHandler(SimpleCommandHandler* pSimpleCommandHandler, AnalogOutputInt32* command, uint16_t index, OperateType_uint8_t opType)
-{
- (pSimpleCommandHandler->pDoSelect_AnalogOutputInt32_in_SimpleCommandHandler)(pSimpleCommandHandler, command, index, opType);
-}
-*/
 void DoSelect_AnalogOutputFloat32_in_SimpleCommandHandler(SimpleCommandHandler* pSimpleCommandHandler, AnalogOutputFloat32* command, uint16_t index)
 {
   (pSimpleCommandHandler->pDoSelect_AnalogOutputFloat32_in_SimpleCommandHandler)(pSimpleCommandHandler, command, index);
