@@ -102,6 +102,14 @@ PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock IterateOverCountWithPre
     QualifierCode_uint8_t qc, DNP3Serializer_for_ControlRelayOutputBlock* serializer);
 
 //--------------------------------IterateOverCountWithPrefix_for_UInt16_ControlRelayOutputBlock--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_ControlRelayOutputBlock--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock IterateOverCountWithPrefix_for_UInt8_ControlRelayOutputBlock_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_ControlRelayOutputBlock* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_ControlRelayOutputBlock--------------------------------------------------------
+
 //--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_ControlRelayOutputBlock_Group51Var1_in_HeaderWriter--------------------------------------------------------
 ////    template<class PrefixType, class WriteType, class CTOType>
 ////    PrefixedWriteIterator<PrefixType, WriteType> IterateOverCountWithPrefixAndCTO(

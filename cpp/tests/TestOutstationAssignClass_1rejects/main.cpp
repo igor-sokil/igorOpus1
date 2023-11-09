@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 //expectsContents_in_CountIndexParser = false;
 //expectsContents_in_RangeParser = false;
 
-qDebug()<<"********SUITE('1rejects')********";
+qDebug()<<"********SUITE('1rejects with FuncNotSupported if assign class not supported')********";
     OutstationConfig config;
     OutstationConfig_in_OutstationConfig(&config);
 //    OutstationTestObject t;

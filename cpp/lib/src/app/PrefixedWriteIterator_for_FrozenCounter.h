@@ -26,6 +26,85 @@
 
 ////namespace opendnp3
 ////{
+//-------------------Uint8---------------------------------------------------
+// A facade for writing APDUs to an external buffer
+////template<class PrefixType, class WriteType> class PrefixedWriteIterator
+typedef struct
+{
+////public:
+////    static PrefixedWriteIterator Null()
+////    {
+////        return PrefixedWriteIterator();
+////    }
+
+////    PrefixedWriteIterator() : sizeOfTypePlusIndex(0), count(0), isValid(false), pPosition(nullptr) {}
+////
+////    PrefixedWriteIterator(const Serializer<WriteType>& serializer, ser4cpp::wseq_t& position)
+////        : serializer(serializer),
+////          sizeOfTypePlusIndex(serializer.get_size() + PrefixType::size),
+////          count(0),
+////          isValid(position.length() >= PrefixType::size),
+////          countPosition(position),
+////          pPosition(&position)
+////    {
+////        if (isValid)
+////        {
+////            pPosition->advance(PrefixType::size);
+////        }
+////    }
+
+////    ~PrefixedWriteIterator()
+////    {
+////        if (isValid)
+////        {
+////            PrefixType::write_to(countPosition, count);
+////        }
+////    }
+////
+////    bool Write(const WriteType& value, typename PrefixType::type_t index)
+////    {
+////        if (isValid && (pPosition->length() >= sizeOfTypePlusIndex))
+////        {
+////            PrefixType::write_to(*pPosition, index);
+////            serializer.write(value, *pPosition);
+////            ++count;
+////            return true;
+////        }
+////        else
+////        {
+////            return false;
+////        }
+////    }
+////
+////    bool IsValid() const
+////    {
+////        return isValid;
+////    }
+////
+////private:
+
+  Serializer_for_FrozenCounter serializer;
+  uint16_t sizeOfTypePlusIndex;
+
+////    typename PrefixType::type_t count;
+  uint8_t count;
+
+  boolean isValid;
+
+  WSeq_for_Uint16_t countPosition; // make a copy to record where we write the count
+  WSeq_for_Uint16_t* pPosition;
+} PrefixedWriteIterator_for_UInt8_FrozenCounter;
+
+////} // namespace opendnp3
+boolean IsValid_in_PrefixedWriteIterator_for_UInt8_FrozenCounter(PrefixedWriteIterator_for_UInt8_FrozenCounter *pPrefixedWriteIterator_for_UInt8_FrozenCounter);
+boolean Write_in_PrefixedWriteIterator_for_UInt8_FrozenCounter(PrefixedWriteIterator_for_UInt8_FrozenCounter *pPrefixedWriteIterator_for_UInt8_FrozenCounter,
+    FrozenCounter* value, uint16_t index);
+void PrefixedWriteIterator_for_UInt8_FrozenCounter_destr_PrefixedWriteIterator_for_UInt8_FrozenCounter(PrefixedWriteIterator_for_UInt8_FrozenCounter *pPrefixedWriteIterator_for_UInt8_FrozenCounter);
+void PrefixedWriteIterator_for_UInt8_FrozenCounter_in_PrefixedWriteIterator_for_UInt8_FrozenCounterOver2(PrefixedWriteIterator_for_UInt8_FrozenCounter *pPrefixedWriteIterator_for_UInt8_FrozenCounter,
+    Serializer_for_FrozenCounter* serializer, WSeq_for_Uint16_t* position);
+void PrefixedWriteIterator_for_UInt8_FrozenCounter_in_PrefixedWriteIterator_for_UInt8_FrozenCounterOver1(PrefixedWriteIterator_for_UInt8_FrozenCounter *pPrefixedWriteIterator_for_UInt8_FrozenCounter);
+PrefixedWriteIterator_for_UInt8_FrozenCounter Null_in_PrefixedWriteIterator_for_UInt8_FrozenCounter_static(void);
+//-------------------Uint8---------------------------------------------------
 //-------------------Uint16---------------------------------------------------
 
 // A facade for writing APDUs to an external buffer
@@ -106,6 +185,5 @@ void PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for
 void PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for_UInt16_FrozenCounterOver1(PrefixedWriteIterator_for_UInt16_FrozenCounter *pPrefixedWriteIterator_for_UInt16_FrozenCounter);
 PrefixedWriteIterator_for_UInt16_FrozenCounter Null_in_PrefixedWriteIterator_for_UInt16_FrozenCounter_static(void);
 //-------------------Uint16---------------------------------------------------
-
 
 #endif

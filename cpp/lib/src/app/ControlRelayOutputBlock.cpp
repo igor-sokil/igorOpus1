@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 ////#include "opendnp3/app/ControlRelayOutputBlock.h"
 #include "header.h"
 #include "ControlRelayOutputBlock.h"
@@ -33,6 +37,14 @@ void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1(ControlRelayOutputB
     uint32_t offTime_,
     CommandStatus_uint8_t status_)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
+
   pControlRelayOutputBlock->opType = opType_;
   pControlRelayOutputBlock->tcc = tcc_;
   pControlRelayOutputBlock->clear = clear_;
@@ -42,11 +54,25 @@ void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1(ControlRelayOutputB
   pControlRelayOutputBlock->status = status_;
   pControlRelayOutputBlock->rawCode = ((pControlRelayOutputBlock->tcc << 6) & 0xC0) | ((((uint8_t) pControlRelayOutputBlock->clear) << 5) & 0x20)
                                       | (pControlRelayOutputBlock->opType & 0x0F);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pControlRelayOutputBlock->rawCode ="<<(uint16_t)pControlRelayOutputBlock->rawCode<<'\n';
+#endif
 }
 
 void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2(ControlRelayOutputBlock *pControlRelayOutputBlock,
     uint8_t rawCode_, uint8_t count_, uint32_t onTime_, uint32_t offTime_, CommandStatus_uint8_t status_)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2_1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pControlRelayOutputBlock->rawCode ="<<(uint16_t)rawCode_<<'\n';
+  decrement_stack_info();
+#endif
+
   pControlRelayOutputBlock->opType = from_type_in_OperationTypeSpec_static((rawCode_ & 0x0F));
   pControlRelayOutputBlock->tcc = from_type_in_TripCloseCodeSpec_static((rawCode_ >> 6) & 0x3);
   pControlRelayOutputBlock->clear = (rawCode_ & 0x20) != 0;

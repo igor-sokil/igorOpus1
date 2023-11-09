@@ -79,6 +79,7 @@ typedef struct
 uint16_t Size_in_Group41Var1_static(void);
 
 
+DNP3Serializer_for_AnalogOutputInt32  Inst_in_Group41Var1_static(void);
 void Group41Var1_in_Group41Var1(Group41Var1 *pGroup41Var1);
 
 boolean Read_in_Group41Var1_static(RSeq_for_Uint16_t *, Group41Var1*);
@@ -117,6 +118,7 @@ boolean Write_in_Group41Var2_static(Group41Var2*, WSeq_for_Uint16_t*);
 
 boolean ReadTarget_in_Group41Var2_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
 boolean WriteTarget_in_Group41Var2_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
+DNP3Serializer_for_AnalogOutputInt16  Inst_in_Group41Var2_static(void);
 
 // Analog Output - Single-precision
 ////struct Group41Var3
@@ -140,6 +142,7 @@ typedef struct
 ////  static DNP3Serializer<AnalogOutputFloat32> Inst() { return DNP3Serializer<AnalogOutputFloat32>(ID(), Size(), &ReadTarget, &WriteTarget); }
 } Group41Var3;
 
+DNP3Serializer_for_AnalogOutputFloat32  Inst_in_Group41Var3_static(void);
 uint16_t Size_in_Group41Var3_static(void);
 void Group41Var3_in_Group41Var3(Group41Var3 *pGroup41Var3);
 

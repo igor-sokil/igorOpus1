@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "HeaderWriter_for_ControlRelayOutputBlock.h"
 
@@ -33,7 +37,6 @@ boolean WriteSingleIndexedValue_for_UInt16_ControlRelayOutputBlock_in_HeaderWrit
   else
     return false;
 }
-
 //---------------------------------------------IterateOverCount_for_UInt16_ControlRelayOutputBlock_in_HeaderWriter--------------------------------------------
 
 CountWriteIterator_for_UInt16_ControlRelayOutputBlock IterateOverCount_for_UInt16_ControlRelayOutputBlock_in_HeaderWriter(HeaderWriter *pHeaderWriter,
@@ -98,6 +101,46 @@ CountWriteIterator_for_UInt8_ControlRelayOutputBlock IterateOverCount_for_UInt8_
 ////}
 }
 //---------------------------------------------IterateOverCount_for_UInt8_ControlRelayOutputBlock_in_HeaderWriter--------------------------------------------
+//------------------------------IterateOverCountWithPrefix_for_UInt8_ControlRelayOutputBlock_in_HeaderWriter--------------------------------------------------------
+PrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock IterateOverCountWithPrefix_for_UInt8_ControlRelayOutputBlock_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_ControlRelayOutputBlock* serializer)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt8_ControlRelayOutputBlock_in_HeaderWriter1"<<'\n';
+  decrement_stack_info();
+#endif
+
+////    const auto reserve_size
+  uint16_t reserve_size =
+////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
+    2*size_in_UInt8 +
+    get_size_in_Serializer_for_ControlRelayOutputBlock(&(serializer->sSerializer_for_ControlRelayOutputBlock));
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
+      ID_in_DNP3Serializer_for_ControlRelayOutputBlock(serializer), qc, reserve_size))
+  {
+    PrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock pPrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock;
+    PrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock_in_PrefixedWriteIterator_for_UInt8_ControlRelayOutputBlockOver2(&pPrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock,
+        &(serializer->sSerializer_for_ControlRelayOutputBlock), pHeaderWriter->position);
+//        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return pPrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock;
+  }
+  else
+  {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
+    return Null_in_PrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock_static();
+  }
+}
+//------------------------------IterateOverCountWithPrefix_for_UInt8_ControlRelayOutputBlock_in_HeaderWriter--------------------------------------------------------
 //------------------------------IterateOverCountWithPrefix_for_UInt16_ControlRelayOutputBlock_in_HeaderWriter--------------------------------------------------------
 PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock IterateOverCountWithPrefix_for_UInt16_ControlRelayOutputBlock_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_ControlRelayOutputBlock* serializer)

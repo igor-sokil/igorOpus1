@@ -39,6 +39,7 @@
 
 /**
   groups that can be used inconjunction with the ASSIGN_CLASS function code
+группы, которые можно использовать вместе с кодом функции ASSIGN CLASS
 */
 ////enum class AssignClassType : uint8_t
 #define AssignClassType_uint8_t uint8_t

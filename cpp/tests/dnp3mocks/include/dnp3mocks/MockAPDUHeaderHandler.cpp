@@ -37,7 +37,7 @@ void MockApduHeaderHandler_in_MockApduHeaderHandler(MockApduHeaderHandler *pMock
 IINField ProcessHeader_PrefixHeader_for_uint16_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, PrefixHeader* header,
                                           ICollection_for_uint16* values)
 {
-   std::cout<<""<<'\n';
+   std::cout<<'\n';
    std::cout<<"ProcessHeader_PrefixHeader_for_uint16_in_MockApduHeaderHandler1"<<'\n';
 //IINField ProcessAny_Indexed_for_Binary_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler,
 //    HeaderRecord* record,
@@ -283,7 +283,7 @@ void OnHeaderResult_in_MockApduHeaderHandler_override(void *pIAPDUHandler, Heade
 }
 void OnHeaderResult_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler, HeaderRecord* record, IINField* result)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"OnHeaderResult_in_MockApduHeaderHandler1"<<'\n';
   UNUSED(result);
   pMockApduHeaderHandler->records.push_back(*record);
@@ -293,7 +293,7 @@ void OnHeaderResult_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHea
 void add_for_uint16_in_MockApduHeaderHandler(uint16_t* v);
 void add_for_uint16_in_MockApduHeaderHandler(uint16_t* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_for_uint16_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<uint16_t>* items = (std::vector<uint16_t>*)pPointerGlobal1_in_MockApduHeaderHandler;
@@ -305,7 +305,7 @@ IINField ProcessAny_for_uint16_in_MockApduHeaderHandler(MockApduHeaderHandler *p
     ICollection_for_uint16* meas,
     std::vector<uint16_t>* items)
 {
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"ProcessAny_for_uint16_in_MockApduHeaderHandler1"<<'\n';
 
   UNUSED(pMockApduHeaderHandler);
@@ -324,7 +324,7 @@ IINField ProcessAny_for_uint16_in_MockApduHeaderHandler(MockApduHeaderHandler *p
 void add_Indexed_for_Binary_in_MockApduHeaderHandler(Indexed_for_Binary* v);
 void add_Indexed_for_Binary_in_MockApduHeaderHandler(Indexed_for_Binary* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_Indexed_for_Binary_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<Indexed_for_Binary>* items = (std::vector<Indexed_for_Binary>*)pPointerGlobal1_in_MockApduHeaderHandler;
@@ -352,7 +352,7 @@ IINField ProcessAny_Indexed_for_Binary_in_MockApduHeaderHandler(MockApduHeaderHa
 void add_Indexed_for_AnalogCommandEvent_in_MockApduHeaderHandler(Indexed_for_AnalogCommandEvent* v);
 void add_Indexed_for_AnalogCommandEvent_in_MockApduHeaderHandler(Indexed_for_AnalogCommandEvent* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_Indexed_for_AnalogCommandEvent_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<Indexed_for_AnalogCommandEvent>* items = (std::vector<Indexed_for_AnalogCommandEvent>*)pPointerGlobal1_in_MockApduHeaderHandler;
@@ -408,7 +408,7 @@ IINField ProcessAny_Indexed_for_BinaryCommandEvent_in_MockApduHeaderHandler(Mock
 void add_Indexed_for_DoubleBitBinary_in_MockApduHeaderHandler(Indexed_for_DoubleBitBinary* v);
 void add_Indexed_for_DoubleBitBinary_in_MockApduHeaderHandler(Indexed_for_DoubleBitBinary* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_Indexed_for_DoubleBitBinary_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<Indexed_for_DoubleBitBinary>* items = (std::vector<Indexed_for_DoubleBitBinary>*)pPointerGlobal1_in_MockApduHeaderHandler;
@@ -436,7 +436,7 @@ IINField ProcessAny_Indexed_for_DoubleBitBinary_in_MockApduHeaderHandler(MockApd
 void add_Indexed_for_IINValue_in_MockApduHeaderHandler(Indexed_for_IINValue* v);
 void add_Indexed_for_IINValue_in_MockApduHeaderHandler(Indexed_for_IINValue* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_Indexed_for_IINValue_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<Indexed_for_IINValue>* items = (std::vector<Indexed_for_IINValue>*)pPointerGlobal1_in_MockApduHeaderHandler;
@@ -464,7 +464,7 @@ IINField ProcessAny_Indexed_for_IINValue_in_MockApduHeaderHandler(MockApduHeader
 void add_Indexed_for_BinaryOutputStatus_in_MockApduHeaderHandler(Indexed_for_BinaryOutputStatus* v);
 void add_Indexed_for_BinaryOutputStatus_in_MockApduHeaderHandler(Indexed_for_BinaryOutputStatus* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_Indexed_for_BinaryOutputStatus_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<Indexed_for_BinaryOutputStatus>* items = (std::vector<Indexed_for_BinaryOutputStatus>*)pPointerGlobal1_in_MockApduHeaderHandler;
@@ -492,7 +492,7 @@ IINField ProcessAny_Indexed_for_BinaryOutputStatus_in_MockApduHeaderHandler(Mock
 void add_Indexed_for_OctetString_in_MockApduHeaderHandler(Indexed_for_OctetString* v);
 void add_Indexed_for_OctetString_in_MockApduHeaderHandler(Indexed_for_OctetString* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_Indexed_for_OctetString_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<Indexed_for_OctetString>* items = (std::vector<Indexed_for_OctetString>*)pPointerGlobal1_in_MockApduHeaderHandler;
@@ -520,7 +520,7 @@ IINField ProcessAny_Indexed_for_OctetString_in_MockApduHeaderHandler(MockApduHea
 void add_Indexed_for_ControlRelayOutputBlock_in_MockApduHeaderHandler(Indexed_for_ControlRelayOutputBlock* v);
 void add_Indexed_for_ControlRelayOutputBlock_in_MockApduHeaderHandler(Indexed_for_ControlRelayOutputBlock* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_Indexed_for_ControlRelayOutputBlock_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<Indexed_for_ControlRelayOutputBlock>* items = (std::vector<Indexed_for_ControlRelayOutputBlock>*)pPointerGlobal1_in_MockApduHeaderHandler;

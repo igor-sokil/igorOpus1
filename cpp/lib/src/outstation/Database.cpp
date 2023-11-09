@@ -87,6 +87,9 @@ void  Database_in_Database(Database *pDatabase,
   // ------- IStaticSelector -------------
 
   // ------- IClassAssigner -------------
+  pDatabase->iIClassAssigner.pAssignClassToRange_in_IClassAssigner = AssignClassToRange_in_Database_override;
+  pDatabase->iIClassAssigner.pAssignClassToAll_in_IClassAssigner   = AssignClassToAll_in_Database_override;
+
   setParentPointer_in_IClassAssigner(&(pDatabase->iIClassAssigner), pDatabase);
   // ------- IClassAssigner -------------
 
@@ -1994,7 +1997,7 @@ boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, E
 ////            this->counter.update(c.second.value, c.first, mode, this->event_receiver);
       Counter tmp = c.second.value;
       update_in_StaticDataMap_for_CounterSpecOver1(&(pDatabase->counter),
-          &tmp, c.first, mode,  (pDatabase->event_receiver));
+          &tmp, c.first, mode, (pDatabase->event_receiver));
     }
   }
 
@@ -2026,53 +2029,184 @@ boolean FreezeCounter_in_Database_override(void *pIUpdateHandler, uint16_t index
     (Database*)getParentPointer_in_IUpdateHandler((IUpdateHandler*)pIUpdateHandler);
   return FreezeCounter_in_Database(parent, index, clear, mode);
 }
-/*
+
 ////Range Database::AssignClassToAll(AssignClassType type, PointClass clazz)
 Range AssignClassToAll_in_Database(Database *pDatabase, AssignClassType_uint8_t type, PointClass_uint8_t clazz)
 {
-    switch (type)
-    {
-    case (AssignClassType::BinaryInput):
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<"+"<<getString_stack_info();
+  std::cout<<"AssignClassToAll_in_Database1"<<'\n';
+#endif
+  switch (type)
+  {
+  case (AssignClassType_BinaryInput):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_BinaryInput"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return this->binary_input.assign_class(clazz);
-    case (AssignClassType::DoubleBinaryInput):
+    return assign_class_in_StaticDataMap_for_BinarySpecOver1(&(pDatabase->binary_input), clazz);
+
+  case (AssignClassType_DoubleBinaryInput):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_DoubleBinaryInput"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return this->double_binary.assign_class(clazz);
-    case (AssignClassType::Counter):
+    return assign_class_in_StaticDataMap_for_DoubleBitBinarySpecOver1(&(pDatabase->double_binary), clazz);
+
+  case (AssignClassType_Counter):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_Counter"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return this->counter.assign_class(clazz);
-    case (AssignClassType::FrozenCounter):
+    return assign_class_in_StaticDataMap_for_CounterSpecOver1(&(pDatabase->counter), clazz);
+
+  case (AssignClassType_FrozenCounter):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_FrozenCounter"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return this->frozen_counter.assign_class(clazz);
-    case (AssignClassType::AnalogInput):
+    return assign_class_in_StaticDataMap_for_FrozenCounterSpecOver1(&(pDatabase->frozen_counter), clazz);
+
+  case (AssignClassType_AnalogInput):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_AnalogInput"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return this->analog_input.assign_class(clazz);
-    case (AssignClassType::BinaryOutputStatus):
+    return assign_class_in_StaticDataMap_for_AnalogSpecOver1(&(pDatabase->analog_input), clazz);
+
+  case (AssignClassType_BinaryOutputStatus):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_BinaryOutputStatus"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return this->binary_output_status.assign_class(clazz);
-    case (AssignClassType::AnalogOutputStatus):
+    return assign_class_in_StaticDataMap_for_BinaryOutputStatusSpecOver1(&(pDatabase->binary_output_status), clazz);
+
+  case (AssignClassType_AnalogOutputStatus):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_AnalogOutputStatus"<<'\n';
+    decrement_stack_info();
+#endif
 ////        return this->analog_output_status.assign_class(clazz);
-    default:
-        return Range::Invalid();
-    }
+    return assign_class_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(&(pDatabase->analog_output_status), clazz);
+
+  default:
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
+////        return Range::Invalid();
+    return Invalid_in_Range_static();
+  }
 }
 
 ////Range Database::AssignClassToRange(AssignClassType type, PointClass clazz, const Range& range)
-Range AssignClassToRange_in_Database(Database *pDatabase, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range);
+Range AssignClassToRange_in_Database(Database *pDatabase, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range)
 {
-    switch (type)
-    {
-    case (AssignClassType::BinaryInput):
-        return this->binary_input.assign_class(clazz, range);
-    case (AssignClassType::DoubleBinaryInput):
-        return this->double_binary.assign_class(clazz, range);
-    case (AssignClassType::Counter):
-        return this->counter.assign_class(clazz, range);
-    case (AssignClassType::FrozenCounter):
-        return this->frozen_counter.assign_class(clazz, range);
-    case (AssignClassType::AnalogInput):
-        return this->analog_input.assign_class(clazz, range);
-    case (AssignClassType::BinaryOutputStatus):
-        return this->binary_output_status.assign_class(clazz, range);
-    case (AssignClassType::AnalogOutputStatus):
-        return this->analog_output_status.assign_class(clazz, range);
-    default:
-        return Range::Invalid();
-    }
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"AssignClassToRange_in_Database1"<<'\n';
+#endif
+  switch (type)
+  {
+  case (AssignClassType_BinaryInput):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_BinaryInput"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->binary_input.assign_class(clazz, range);
+    return assign_class_in_StaticDataMap_for_BinarySpecOver2(&(pDatabase->binary_input), clazz, range);
+
+  case (AssignClassType_DoubleBinaryInput):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_DoubleBinaryInput"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->double_binary.assign_class(clazz, range);
+    return assign_class_in_StaticDataMap_for_DoubleBitBinarySpecOver2(&(pDatabase->double_binary), clazz, range);
+
+  case (AssignClassType_Counter):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_Counter"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->counter.assign_class(clazz, range);
+    return assign_class_in_StaticDataMap_for_CounterSpecOver2(&(pDatabase->counter), clazz, range);
+
+  case (AssignClassType_FrozenCounter):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_FrozenCounter"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->frozen_counter.assign_class(clazz, range);
+    return assign_class_in_StaticDataMap_for_FrozenCounterSpecOver2(&(pDatabase->frozen_counter), clazz, range);
+
+  case (AssignClassType_AnalogInput):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_AnalogInput"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->analog_input.assign_class(clazz, range);
+    return assign_class_in_StaticDataMap_for_AnalogSpecOver2(&(pDatabase->analog_input), clazz, range);
+
+  case (AssignClassType_BinaryOutputStatus):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_BinaryOutputStatus"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->binary_output_status.assign_class(clazz, range);
+    return assign_class_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(&(pDatabase->binary_output_status), clazz, range);
+
+  case (AssignClassType_AnalogOutputStatus):
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*AssignClassType_AnalogOutputStatus"<<'\n';
+    decrement_stack_info();
+#endif
+////        return this->analog_output_status.assign_class(clazz, range);
+    return assign_class_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(&(pDatabase->analog_output_status), clazz, range);
+
+  default:
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
+////        return Range::Invalid();
+    return Invalid_in_Range_static();
+  }
 }
 
-*/
+Range AssignClassToAll_in_Database_override(void *pIClassAssigner, AssignClassType_uint8_t type, PointClass_uint8_t clazz)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IClassAssigner((IClassAssigner*)pIClassAssigner);
+  return AssignClassToAll_in_Database(parent, type, clazz);
+}
+
+Range AssignClassToRange_in_Database_override(void *pIClassAssigner, AssignClassType_uint8_t type, PointClass_uint8_t clazz, Range* range)
+{
+  Database *parent =
+    (Database*)getParentPointer_in_IClassAssigner((IClassAssigner*)pIClassAssigner);
+  return AssignClassToRange_in_Database(parent, type, clazz, range);
+}
+

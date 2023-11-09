@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "MeasurementFactory.h"
 
@@ -149,6 +153,14 @@ TimeAndInterval From_in_TimeAndIntervalFactory_static(DNPTime timeDNPTime, uint3
 ControlRelayOutputBlock From_in_ControlRelayOutputBlock_static(
   uint8_t code, uint8_t count, uint32_t onTime, uint32_t offTime, uint8_t status)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"From_in_ControlRelayOutputBlock_static1"<<'\n';
+  decrement_stack_info();
+#endif
+  
   ControlRelayOutputBlock cControlRelayOutputBlock;
   ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2(&cControlRelayOutputBlock,
       code,

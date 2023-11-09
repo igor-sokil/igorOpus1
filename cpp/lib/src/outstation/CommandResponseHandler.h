@@ -30,7 +30,12 @@
 #include "APDUResponse.h"
 #include "IAPDUHandler.h"
 #include "ICommandAction.h"
+#include "HeaderWriter_for_Analog.h"
 #include "PrefixedWriteIterator_for_ControlRelayOutputBlock.h"
+#include "PrefixedWriteIterator_for_AnalogOutputInt16.h"
+#include "PrefixedWriteIterator_for_AnalogOutputInt32.h"
+#include "PrefixedWriteIterator_for_AnalogOutputFloat32.h"
+#include "PrefixedWriteIterator_for_AnalogOutputDouble64.h"
 #include "HeaderWriter_for_ControlRelayOutputBlock.h"
 
 ////namespace opendnp3
@@ -107,19 +112,19 @@ boolean AllCommandsSuccessful_in_CommandResponseHandler(CommandResponseHandler *
 
 boolean IsAllowed_in_CommandResponseHandler_override(void *, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc);
 
-IINField ProcessHeader_PrefixHeader_for_ControlRelayOutputBlock_in_CommandResponseHandler_override(void *,
+IINField ProcessHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_CommandResponseHandler_override(void *,
     PrefixHeader* header,
     ICollection_Indexed_for_ControlRelayOutputBlock* meas);
-IINField ProcessHeader_PrefixHeader_for_AnalogOutputInt16_in_CommandResponseHandler_override(void*,
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_CommandResponseHandler_override(void*,
     PrefixHeader* header,
     ICollection_Indexed_for_AnalogOutputInt16* meas);
-IINField ProcessHeader_PrefixHeader_for_AnalogOutputInt32_in_CommandResponseHandler_override(void *,
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_CommandResponseHandler_override(void *,
     PrefixHeader* header,
     ICollection_Indexed_for_AnalogOutputInt32* meas);
-IINField ProcessHeader_PrefixHeader_for_AnalogOutputFloat32_in_CommandResponseHandler_override(void*,
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_CommandResponseHandler_override(void*,
     PrefixHeader* header,
     ICollection_Indexed_for_AnalogOutputFloat32* meas);
-IINField ProcessHeader_PrefixHeader_for_AnalogOutputDouble64_in_CommandResponseHandler_override(void *,
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_CommandResponseHandler_override(void *,
     PrefixHeader* header,
     ICollection_Indexed_for_AnalogOutputDouble64* meas);
 
@@ -172,33 +177,167 @@ CommandStatus_uint8_t ProcessCommand_for_ControlRelayOutputBlock_in_CommandRespo
 ////                                                             const DNP3Serializer<Target>& serializer,
 ////                                                             const ICollection<Indexed<Target>>& values,
 ////                                                             PrefixedWriteIterator<IndexType, Target>* pIterator)
-IINField RespondToHeaderWithIterator_for_ControlRelayOutputBlock_uint16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+IINField RespondToHeaderWithIterator_for_ControlRelayOutputBlock_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
     QualifierCode_uint8_t qualifier,
     DNP3Serializer_for_ControlRelayOutputBlock* serializer,
     ICollection_Indexed_for_ControlRelayOutputBlock* values,
-    PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock* pIterator
-                                                                                                 );
-
-
-void process_for_ControlRelayOutputBlock_in_CommandResponseHandler(
-//                                           CommandResponseHandler *pCommandResponseHandler,
-//                                      ICollection_Indexed_for_ControlRelayOutputBlock *pICollection_Indexed_for_ControlRelayOutputBlock,
-//                                         PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock* pIterator,
-//                                           IINField* ret,
-  Indexed_for_ControlRelayOutputBlock* pair);
+    PrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock* pIterator);
+IINField RespondToHeaderWithIterator_for_ControlRelayOutputBlock_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_ControlRelayOutputBlock* serializer,
+    ICollection_Indexed_for_ControlRelayOutputBlock* values,
+    PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock* pIterator);
 
 ////template<class Target, class IndexType>
 ////IINField CommandResponseHandler::RespondToHeader(QualifierCode qualifier,
 ////                                                 const DNP3Serializer<Target>& serializer,
 ////                                                 const ICollection<Indexed<Target>>& values)
-IINField  RespondToHeader_for_ControlRelayOutputBlock_uint16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+IINField  RespondToHeader_for_ControlRelayOutputBlock_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
     QualifierCode_uint8_t qualifier,
     DNP3Serializer_for_ControlRelayOutputBlock* serializer,
-    ICollection_Indexed_for_ControlRelayOutputBlock* values
-                                                                                      );
-
+    ICollection_Indexed_for_ControlRelayOutputBlock* values);
+IINField  RespondToHeader_for_ControlRelayOutputBlock_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_ControlRelayOutputBlock* serializer,
+    ICollection_Indexed_for_ControlRelayOutputBlock* values);
 //---------------------------------------ControlRelayOutputBlock----------------------------------------------------------
-////
+//---------------------------------------AnalogOutputInt16----------------------------------------------------------
+////template<class Target> CommandStatus CommandResponseHandler::ProcessCommand(const Target& command, uint16_t index)
+CommandStatus_uint8_t ProcessCommand_for_AnalogOutputInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    AnalogOutputInt16* command, uint16_t index);
+
+////template<class Target, class IndexType>
+////IINField CommandResponseHandler::RespondToHeaderWithIterator(QualifierCode qualifier,
+////                                                             const DNP3Serializer<Target>& serializer,
+////                                                             const ICollection<Indexed<Target>>& values,
+////                                                             PrefixedWriteIterator<IndexType, Target>* pIterator)
+IINField RespondToHeaderWithIterator_for_AnalogOutputInt16_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputInt16* serializer,
+    ICollection_Indexed_for_AnalogOutputInt16* values,
+    PrefixedWriteIterator_for_UInt8_AnalogOutputInt16* pIterator);
+IINField RespondToHeaderWithIterator_for_AnalogOutputInt16_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputInt16* serializer,
+    ICollection_Indexed_for_AnalogOutputInt16* values,
+    PrefixedWriteIterator_for_UInt16_AnalogOutputInt16* pIterator);
+
+////template<class Target, class IndexType>
+////IINField CommandResponseHandler::RespondToHeader(QualifierCode qualifier,
+////                                                 const DNP3Serializer<Target>& serializer,
+////                                                 const ICollection<Indexed<Target>>& values)
+IINField  RespondToHeader_for_AnalogOutputInt16_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputInt16* serializer,
+    ICollection_Indexed_for_AnalogOutputInt16* values);
+IINField  RespondToHeader_for_AnalogOutputInt16_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputInt16* serializer,
+    ICollection_Indexed_for_AnalogOutputInt16* values);
+//---------------------------------------AnalogOutputInt16----------------------------------------------------------
+//---------------------------------------AnalogOutputInt32----------------------------------------------------------
+////template<class Target> CommandStatus CommandResponseHandler::ProcessCommand(const Target& command, uint16_t index)
+CommandStatus_uint8_t ProcessCommand_for_AnalogOutputInt32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    AnalogOutputInt32* command, uint16_t index);
+
+////template<class Target, class IndexType>
+////IINField CommandResponseHandler::RespondToHeaderWithIterator(QualifierCode qualifier,
+////                                                             const DNP3Serializer<Target>& serializer,
+////                                                             const ICollection<Indexed<Target>>& values,
+////                                                             PrefixedWriteIterator<IndexType, Target>* pIterator)
+IINField RespondToHeaderWithIterator_for_AnalogOutputInt32_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputInt32* serializer,
+    ICollection_Indexed_for_AnalogOutputInt32* values,
+    PrefixedWriteIterator_for_UInt8_AnalogOutputInt32* pIterator);
+IINField RespondToHeaderWithIterator_for_AnalogOutputInt32_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputInt32* serializer,
+    ICollection_Indexed_for_AnalogOutputInt32* values,
+    PrefixedWriteIterator_for_UInt16_AnalogOutputInt32* pIterator);
+
+////template<class Target, class IndexType>
+////IINField CommandResponseHandler::RespondToHeader(QualifierCode qualifier,
+////                                                 const DNP3Serializer<Target>& serializer,
+////                                                 const ICollection<Indexed<Target>>& values)
+IINField  RespondToHeader_for_AnalogOutputInt32_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputInt32* serializer,
+    ICollection_Indexed_for_AnalogOutputInt32* values);
+IINField  RespondToHeader_for_AnalogOutputInt32_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputInt32* serializer,
+    ICollection_Indexed_for_AnalogOutputInt32* values);
+//---------------------------------------AnalogOutputInt32----------------------------------------------------------
+//---------------------------------------AnalogOutputFloat32----------------------------------------------------------
+////template<class Target> CommandStatus CommandResponseHandler::ProcessCommand(const Target& command, uint16_t index)
+CommandStatus_uint8_t ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    AnalogOutputFloat32* command, uint16_t index);
+
+////template<class Target, class IndexType>
+////IINField CommandResponseHandler::RespondToHeaderWithIterator(QualifierCode qualifier,
+////                                                             const DNP3Serializer<Target>& serializer,
+////                                                             const ICollection<Indexed<Target>>& values,
+////                                                             PrefixedWriteIterator<IndexType, Target>* pIterator)
+IINField RespondToHeaderWithIterator_for_AnalogOutputFloat32_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputFloat32* serializer,
+    ICollection_Indexed_for_AnalogOutputFloat32* values,
+    PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32* pIterator);
+IINField RespondToHeaderWithIterator_for_AnalogOutputFloat32_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputFloat32* serializer,
+    ICollection_Indexed_for_AnalogOutputFloat32* values,
+    PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32* pIterator);
+
+////template<class Target, class IndexType>
+////IINField CommandResponseHandler::RespondToHeader(QualifierCode qualifier,
+////                                                 const DNP3Serializer<Target>& serializer,
+////                                                 const ICollection<Indexed<Target>>& values)
+IINField  RespondToHeader_for_AnalogOutputFloat32_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputFloat32* serializer,
+    ICollection_Indexed_for_AnalogOutputFloat32* values);
+IINField  RespondToHeader_for_AnalogOutputFloat32_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputFloat32* serializer,
+    ICollection_Indexed_for_AnalogOutputFloat32* values);
+//---------------------------------------AnalogOutputFloat32----------------------------------------------------------
+//---------------------------------------AnalogOutputDouble64----------------------------------------------------------
+////template<class Target> CommandStatus CommandResponseHandler::ProcessCommand(const Target& command, uint16_t index)
+CommandStatus_uint8_t ProcessCommand_for_AnalogOutputDouble64_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    AnalogOutputDouble64* command, uint16_t index);
+
+////template<class Target, class IndexType>
+////IINField CommandResponseHandler::RespondToHeaderWithIterator(QualifierCode qualifier,
+////                                                             const DNP3Serializer<Target>& serializer,
+////                                                             const ICollection<Indexed<Target>>& values,
+////                                                             PrefixedWriteIterator<IndexType, Target>* pIterator)
+IINField RespondToHeaderWithIterator_for_AnalogOutputDouble64_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputDouble64* serializer,
+    ICollection_Indexed_for_AnalogOutputDouble64* values,
+    PrefixedWriteIterator_for_UInt8_AnalogOutputDouble64* pIterator);
+IINField RespondToHeaderWithIterator_for_AnalogOutputDouble64_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputDouble64* serializer,
+    ICollection_Indexed_for_AnalogOutputDouble64* values,
+    PrefixedWriteIterator_for_UInt16_AnalogOutputDouble64* pIterator);
+
+////template<class Target, class IndexType>
+////IINField CommandResponseHandler::RespondToHeader(QualifierCode qualifier,
+////                                                 const DNP3Serializer<Target>& serializer,
+////                                                 const ICollection<Indexed<Target>>& values)
+IINField  RespondToHeader_for_AnalogOutputDouble64_UInt8_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputDouble64* serializer,
+    ICollection_Indexed_for_AnalogOutputDouble64* values);
+IINField  RespondToHeader_for_AnalogOutputDouble64_UInt16_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
+    QualifierCode_uint8_t qualifier,
+    DNP3Serializer_for_AnalogOutputDouble64* serializer,
+    ICollection_Indexed_for_AnalogOutputDouble64* values);
+//---------------------------------------AnalogOutputDouble64----------------------------------------------------------
+
 ////} // namespace opendnp3
 
 #endif

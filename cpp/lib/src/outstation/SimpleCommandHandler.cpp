@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 ////#include "opendnp3/outstation/SimpleCommandHandler.h"
 #include "header.h"
 #include "SimpleCommandHandler.h"
@@ -183,6 +187,13 @@ void End_in_SimpleCommandHandler(SimpleCommandHandler *pSimpleCommandHandler)
 ////CommandStatus SimpleCommandHandler::Select(const ControlRelayOutputBlock& command, uint16_t index)
 CommandStatus_uint8_t Select_ControlRelayOutputBlock_in_SimpleCommandHandler(SimpleCommandHandler* pSimpleCommandHandler, ControlRelayOutputBlock* command, uint16_t index)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Select_ControlRelayOutputBlock_in_SimpleCommandHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    this->DoSelect(command, index);
   DoSelect_ControlRelayOutputBlock_in_SimpleCommandHandler(pSimpleCommandHandler, command, index);
   ++(((SimpleCommandHandler*)pSimpleCommandHandler)->numSelect);
@@ -193,6 +204,14 @@ CommandStatus_uint8_t Operate_ControlRelayOutputBlock_in_SimpleCommandHandler(Si
     IUpdateHandler* handler,
     OperateType_uint8_t opType)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Operate_ControlRelayOutputBlock_in_SimpleCommandHandler1"<<'\n';
+  decrement_stack_info();
+#endif
+
   UNUSED(handler);
 ////    this->DoOperate(command, index, opType);
   DoOperate_ControlRelayOutputBlock_in_SimpleCommandHandler(pSimpleCommandHandler, command, index, opType);
@@ -287,7 +306,8 @@ void SuccessCommandHandler_in_SuccessCommandHandler(SuccessCommandHandler *pSucc
 }
 
 
-void DoSelect_ControlRelayOutputBlock_in_SimpleCommandHandler_override(void*ptr, ControlRelayOutputBlock* command, uint16_t index) {
+void DoSelect_ControlRelayOutputBlock_in_SimpleCommandHandler_override(void*ptr, ControlRelayOutputBlock* command, uint16_t index) 
+{
   UNUSED(ptr);
   UNUSED(command);
   UNUSED(index);

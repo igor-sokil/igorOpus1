@@ -68,7 +68,7 @@ ParseResult_uint8_t Parse_in_APDUParser_static(
 //                              ParserSettings settings)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Parse_in_APDUParser_static1"<<std::endl;
@@ -104,7 +104,7 @@ ParseResult_uint8_t Parse_in_APDUParser_static(
 ParseResult_uint8_t ParseAndLogAll_in_APDUParser_static(RSeq_for_Uint16_t *buffer)//, Logger* pLogger, ParserSettings settings)
 {
 ////    return ParseSinglePass(buffer, pLogger, nullptr, nullptr, settings);
-  return ParseSinglePass_in_APDUParser_static(buffer, /*pLogger,*/ NULL, NULL);//, settings);
+//  return ParseSinglePass_in_APDUParser_static(buffer, /*pLogger,*/ NULL, NULL);//, settings);
 }
 
 ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
@@ -115,7 +115,7 @@ ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
 //const ParserSettings& settings)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseSinglePass_in_APDUParser_static1"<<std::endl;
@@ -136,7 +136,7 @@ ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
 
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*copy="<<(uint32_t)pWhiteList<<std::endl;
+  std::cout<<"*copy"<<std::endl;
     inspect_RSeq(&copy);
 #endif
 
@@ -167,7 +167,7 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
   IWhiteList* pWhiteList)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseHeader_in_APDUParser_static1"<<std::endl;
@@ -183,6 +183,11 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
     return result;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseHeader_in_APDUParser_static2"<<std::endl;
+#endif
+
   GroupVariationRecord GV = GetRecord_in_GroupVariationRecord_static(header.group, header.variation);
 
   if (GV.enumeration == GroupVariation_UNKNOWN)
@@ -196,6 +201,10 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
     return ParseResult_UNKNOWN_OBJECT;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseHeader_in_APDUParser_static3"<<std::endl;
+#endif
   // if a white-list is defined and it doesn't validate, exit early
 // если белый список определен и не проходит проверку, выходим раньше
 ////    if (pWhiteList && !pWhiteList->IsAllowed(count, GV.enumeration, QualifierCodeSpec::from_type(header.qualifier)))
@@ -212,6 +221,11 @@ ParseResult_uint8_t ParseHeader_in_APDUParser_static(
 
     return ParseResult_NOT_ON_WHITELIST;
   }
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseHeader_in_APDUParser_static4"<<std::endl;
+#endif
 
   HeaderRecord hHeaderRecord;
   HeaderRecord_in_HeaderRecordOver2(&hHeaderRecord,
@@ -231,27 +245,24 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
   IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseQualifier_in_APDUParser_static1"<<std::endl;
-
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*IAPDUHandler* pHandler= "<<(uint32_t)pHandler<<std::endl;
 #endif
 
 //QualifierCode_uint8_t GetQualifierCode_in_HeaderRecord(HeaderRecord *pHeaderRecord);
-  QualifierCode_uint8_t tmp = GetQualifierCode_in_HeaderRecord(record);
+//  QualifierCode_uint8_t tmp = GetQualifierCode_in_HeaderRecord(record);
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*QualifierCode_uint8_t tmp ="<<(uint16_t)tmp<<std::endl;
+  std::cout<<"*QualifierCode_uint8_t tmp ="<<(uint16_t)GetQualifierCode_in_HeaderRecord(record)<<std::endl;
 #endif
 
-  switch (tmp)//(GetQualifierCode_in_HeaderRecord(record))////record.GetQualifierCode())
+  switch (GetQualifierCode_in_HeaderRecord(record))////record.GetQualifierCode())
   {
   case (QualifierCode_ALL_OBJECTS):
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*QualifierCode_ALL_OBJECTS*"<<std::endl;
     decrement_stack_info();
 #endif
@@ -266,7 +277,7 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
   case (QualifierCode_UINT8_CNT):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT8_CNT*"<<std::endl;
     decrement_stack_info();
 #endif
@@ -277,7 +288,7 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
   case (QualifierCode_UINT16_CNT):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT16_CNT*"<<std::endl;
     decrement_stack_info();
 #endif
@@ -288,7 +299,7 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
   case (QualifierCode_UINT8_START_STOP):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT8_START_STOP*"<<std::endl;
     decrement_stack_info();
 #endif
@@ -299,7 +310,7 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
   case (QualifierCode_UINT16_START_STOP):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT16_START_STOP*"<<std::endl;
     decrement_stack_info();
 #endif
@@ -310,7 +321,7 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
   case (QualifierCode_UINT8_CNT_UINT8_INDEX):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT8_CNT_UINT8_INDEX*"<<std::endl;
     decrement_stack_info();
 #endif
@@ -321,7 +332,7 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
   case (QualifierCode_UINT16_CNT_UINT16_INDEX):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*QualifierCode_UINT16_CNT_UINT16_INDEX*"<<std::endl;
     decrement_stack_info();
 #endif
@@ -332,7 +343,7 @@ ParseResult_uint8_t ParseQualifier_in_APDUParser_static(
   default:
 ////        FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unknown qualifier %x", record.qualifier);
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Unknown qualifier %x', record.qualifier)***"<<std::endl;
     decrement_stack_info();
 #endif
@@ -346,7 +357,7 @@ ParseResult_uint8_t HandleAllObjectsHeader_in_APDUParser_static(//Logger* pLogge
   IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"HandleAllObjectsHeader_in_APDUParser_static1"<<std::endl;
@@ -357,10 +368,7 @@ ParseResult_uint8_t HandleAllObjectsHeader_in_APDUParser_static(//Logger* pLogge
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*record->gGroupVariationRecord.variation="<<(uint16_t)record->gGroupVariationRecord.variation<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*record->gGroupVariationRecord.enumeration="<<(uint16_t)record->gGroupVariationRecord.enumeration<<std::endl;
-
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pHandler="<<(uint32_t)pHandler<<std::endl;
+  std::cout<<"*record->gGroupVariationRecord.enumeration="<<std::hex<<(uint16_t)record->gGroupVariationRecord.enumeration<<std::dec<<std::endl;
 #endif
 
 ////    FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u - %s - %s", record.group, record.variation,

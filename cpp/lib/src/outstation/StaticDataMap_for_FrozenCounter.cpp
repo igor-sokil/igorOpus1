@@ -274,3 +274,19 @@ Range assign_class_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for
 ////    return this->get_full_range();
   return get_full_range_in_StaticDataMap_for_FrozenCounterSpec(pStaticDataMap_for_FrozenCounterSpec);
 }
+
+Range assign_class_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, PointClass_uint8_t clazz, Range* range)
+{
+  for (auto iter = pStaticDataMap_for_FrozenCounterSpec->map.lower_bound(range->start); iter != pStaticDataMap_for_FrozenCounterSpec->map.end() &&
+////             range.Contains(iter->first);
+       Contains_in_Range(range, iter->first); iter++)
+  {
+    iter->second.config.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.clazz = clazz;
+  }
+
+//Range get_full_range_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec);
+//Range Intersection_in_Range(Range *pRange, Range* other);
+////    return range.Intersection(this->get_full_range());
+  Range temp = get_full_range_in_StaticDataMap_for_FrozenCounterSpec(pStaticDataMap_for_FrozenCounterSpec);
+  return Intersection_in_Range(range, &temp);
+}

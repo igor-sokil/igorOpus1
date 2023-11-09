@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "CommandActionAdapter.h"
 
@@ -25,6 +29,14 @@
 
 void  CommandActionAdapter_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ICommandHandler* handler, boolean is_select, IUpdateHandler* updates, OperateType_uint8_t op_type)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"CommandActionAdapter_in_CommandActionAdapter1"<<'\n';
+  decrement_stack_info();
+#endif
+
   pCommandActionAdapter->is_started = false;
 
   (pCommandActionAdapter->iICommandAction).pAction_ControlRelayOutputBlock_in_ICommandAction = Action_ControlRelayOutputBlock_in_CommandActionAdapter_override;
@@ -48,16 +60,47 @@ void  CommandActionAdapter_in_CommandActionAdapter(CommandActionAdapter *pComman
 
 void CommandActionAdapter_destr_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"CommandActionAdapter_destr_CommandActionAdapter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pCommandActionAdapter->is_started= "<<(uint16_t)pCommandActionAdapter->is_started<<'\n';
+#endif
   if (pCommandActionAdapter->is_started)
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"CommandActionAdapter_destr_CommandActionAdapter2"<<'\n';
+#endif
 //    void End_in_ICommandHandler(ICommandHandler*);// = 0;
 ////        handler.End();
     End_in_ICommandHandler(pCommandActionAdapter->handler);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"CommandActionAdapter_destr_CommandActionAdapter3"<<'\n';
+#endif
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"CommandActionAdapter_destr_CommandActionAdapter4"<<'\n';
+
+  decrement_stack_info();
+#endif
 }
 
 void CheckStart_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"CheckStart_in_CommandActionAdapter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pCommandActionAdapter->is_started= "<<(uint16_t)pCommandActionAdapter->is_started<<'\n';
+  decrement_stack_info();
+#endif
   if (!pCommandActionAdapter->is_started)
   {
     pCommandActionAdapter->is_started = true;
@@ -69,17 +112,35 @@ void CheckStart_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdap
 ////CommandStatus CommandActionAdapter::Action(const ControlRelayOutputBlock& command, uint16_t index)
 CommandStatus_uint8_t Action_ControlRelayOutputBlock_in_CommandActionAdapter_override(void *pICommandAction, ControlRelayOutputBlock* command, uint16_t index)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Action_ControlRelayOutputBlock_in_CommandActionAdapter_override1"<<'\n';
+#endif
+
   CommandActionAdapter* parent = (CommandActionAdapter*) getParentPointer_in_ICommandAction((ICommandAction*)pICommandAction);
 //  boolean IsQUFlagSet_in_ControlRelayOutputBlock(ControlRelayOutputBlock *pControlRelayOutputBlock);
 ////    if (command.IsQUFlagSet())
   if(IsQUFlagSet_in_ControlRelayOutputBlock(command))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*CommandStatus_NOT_SUPPORTED"<<'\n';
+  decrement_stack_info();
+#endif
     return CommandStatus_NOT_SUPPORTED;
   }
 
 // CommandStatus_uint8_t ActionT_ControlRelayOutputBlock_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ControlRelayOutputBlock* command, uint16_t index);
 ////    return this->ActionT(command, index);
-  return ActionT_ControlRelayOutputBlock_in_CommandActionAdapter(parent, command, index);
+  CommandStatus_uint8_t tmp = ActionT_ControlRelayOutputBlock_in_CommandActionAdapter(parent, command, index);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*CommandStatus_uint8_t tmp ="<<(uint16_t)tmp<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////CommandStatus_uint8_t CommandActionAdapter::Action(const AnalogOutputInt16& command, uint16_t index)
@@ -118,6 +179,16 @@ CommandStatus_uint8_t Action_AnalogOutputDouble64_in_CommandActionAdapter_overri
 
 CommandStatus_uint8_t ActionT_ControlRelayOutputBlock_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ControlRelayOutputBlock* command, uint16_t index)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ActionT_ControlRelayOutputBlock_in_CommandActionAdapter1"<<'\n';
+//  std::cout<<"*"<<getString_stack_info();
+//  std::cout<<"*pCommandActionAdapter->is_started= "<<(uint16_t)pCommandActionAdapter->is_started<<'\n';
+  decrement_stack_info();
+#endif
+
 // void CheckStart_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter);
 ////        this->CheckStart();
   CheckStart_in_CommandActionAdapter(pCommandActionAdapter);

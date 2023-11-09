@@ -219,7 +219,6 @@ typedef struct
   std::vector<Operation_for_AnalogOutputDouble64> aoDouble64Ops;
 } MockCommandHandler;
 
-///*
 void DoOperate_ControlRelayOutputBlock_in_MockCommandHandler_override(void*, ControlRelayOutputBlock* command, uint16_t index, OperateType_uint8_t opType);
 void DoOperate_AnalogOutputInt16_in_MockCommandHandler_override(void*, AnalogOutputInt16* command, uint16_t index, OperateType_uint8_t opType);
 void DoOperate_AnalogOutputInt32_in_MockCommandHandler_override(void*, AnalogOutputInt32* command, uint16_t index, OperateType_uint8_t opType);
@@ -231,7 +230,6 @@ void DoOperate_AnalogOutputInt16_in_MockCommandHandler(MockCommandHandler*, Anal
 void DoOperate_AnalogOutputInt32_in_MockCommandHandler(MockCommandHandler*, AnalogOutputInt32* command, uint16_t index, OperateType_uint8_t opType);
 void DoOperate_AnalogOutputFloat32_in_MockCommandHandler(MockCommandHandler*, AnalogOutputFloat32* command, uint16_t index, OperateType_uint8_t opType);
 void DoOperate_AnalogOutputDouble64_in_MockCommandHandler(MockCommandHandler*, AnalogOutputDouble64* command, uint16_t index, OperateType_uint8_t opType);
-//*/
 
 void  MockCommandHandler_in_MockCommandHandler(MockCommandHandler *pMockCommandHandler, CommandStatus_uint8_t status);/// = opendnp3::CommandStatus::SUCCESS)
 void SetResponse_in_MockCommandHandler(MockCommandHandler *pMockCommandHandler, CommandStatus status_);

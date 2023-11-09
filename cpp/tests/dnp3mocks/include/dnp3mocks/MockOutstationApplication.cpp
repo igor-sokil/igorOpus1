@@ -1,3 +1,7 @@
+#include "log_info.h"
+//#ifndef  LOG_INFO_INC
+#include <iostream>
+//#endif
 #include <QApplication>
 #include "header.h"
 #include "MockOutstationApplication.h"
@@ -238,6 +242,12 @@ void RecordClassAssignment_in_MockOutstationApplication(MockOutstationApplicatio
     uint16_t start,
     uint16_t stop)
 {
+   std::cout<<'\n';
+   std::cout<<"RecordClassAssignment_in_MockOutstationApplication1"<<'\n';
+   std::cout<<"*AssignClassType_uint8_t type= "<<(uint16_t)type<<'\n';
+   std::cout<<"*PointClass_uint8_t clazz= "<<(uint16_t)clazz<<'\n';
+   std::cout<<"*uint16_t start= "<<(uint16_t)start<<'\n';
+   std::cout<<"*uint16_t stop= "<<(uint16_t)stop<<'\n';
   pMockOutstationApplication->classAssignments.push_back(std::make_tuple(type, clazz, start, stop));
 }
 

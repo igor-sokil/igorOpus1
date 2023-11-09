@@ -279,3 +279,20 @@ Range assign_class_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_Analog
 ////    return this->get_full_range();
   return get_full_range_in_StaticDataMap_for_AnalogSpec(pStaticDataMap_for_AnalogSpec);
 }
+
+////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz, const Range& range)
+Range assign_class_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, PointClass_uint8_t clazz, Range* range)
+{
+  for (auto iter = pStaticDataMap_for_AnalogSpec->map.lower_bound(range->start); iter != pStaticDataMap_for_AnalogSpec->map.end() &&
+////             range.Contains(iter->first);
+       Contains_in_Range(range, iter->first); iter++)
+  {
+    iter->second.config.dDeadbandConfig_for_AnalogInfo.eEventConfig.clazz = clazz;
+  }
+
+//Range get_full_range_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec);
+//Range Intersection_in_Range(Range *pRange, Range* other);
+////    return range.Intersection(this->get_full_range());
+  Range temp = get_full_range_in_StaticDataMap_for_AnalogSpec(pStaticDataMap_for_AnalogSpec);
+  return Intersection_in_Range(range, &temp);
+}

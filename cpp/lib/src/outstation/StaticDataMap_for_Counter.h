@@ -505,6 +505,7 @@ boolean modify_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *p
 ////    return count;
 ////}
 
+Range assign_class_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, PointClass_uint8_t clazz);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
 ////{
 ////    for (auto& elem : this->map)
@@ -514,7 +515,8 @@ boolean modify_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *p
 
 ////    return this->get_full_range();
 ////}
-////
+
+Range assign_class_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, PointClass_uint8_t clazz, Range* range);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz, const Range& range)
 ////{
 ////    for (auto iter = this->map.lower_bound(range.start); iter != this->map.end() && range.Contains(iter->first); iter++)

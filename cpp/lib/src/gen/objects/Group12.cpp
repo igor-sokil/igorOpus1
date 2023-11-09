@@ -28,6 +28,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "Group12.h"
 
@@ -60,6 +64,23 @@ void Group12Var1_in_Group12Var1(Group12Var1 *pGroup12Var1)
 
 boolean Read_in_Group12Var1_static(RSeq_for_Uint16_t* buffer, Group12Var1* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Read_in_Group12Var1_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->rawCode= "<<(uint32_t)output->code<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->count= "<<(uint32_t)output->count<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->onTimeMS= "<<(uint32_t)output->onTime<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->offTimeMS= "<<(uint32_t)output->offTime<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->status= "<<(uint32_t)output->status<<'\n';
+  decrement_stack_info();
+#endif
 ////  return LittleEndian::read(buffer, output.code, output.count, output.onTime, output.offTime, output.status);
   return read_from_in_UInt8_static(buffer, &(output->code)) &&
          read_from_in_UInt8_static(buffer, &(output->count)) &&
@@ -70,6 +91,23 @@ boolean Read_in_Group12Var1_static(RSeq_for_Uint16_t* buffer, Group12Var1* outpu
 
 boolean Write_in_Group12Var1_static(Group12Var1* arg, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_Group12Var1_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->rawCode= "<<(uint32_t)arg->code<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->count= "<<(uint32_t)arg->count<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->onTimeMS= "<<(uint32_t)arg->onTime<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->offTimeMS= "<<(uint32_t)arg->offTime<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->status= "<<(uint32_t)arg->status<<'\n';
+  decrement_stack_info();
+#endif
 ////  return LittleEndian::write(buffer, arg.code, arg.count, arg.onTime, arg.offTime, arg.status);
   return write_to_in_UInt8_static(buffer, arg->code) &&
          write_to_in_UInt8_static(buffer, arg->count) &&
@@ -114,6 +152,24 @@ Group12Var1 Apply_in_ConvertGroup12Var1_static(ControlRelayOutputBlock* crob)
   ret.offTime = crob->offTimeMS;
 ////        ret.status = CommandStatusSpec::to_type(crob.status);
   ret.status = crob->status;
+
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Apply_in_ConvertGroup12Var1_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->rawCode= "<<(uint32_t)crob->rawCode<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->count= "<<(uint32_t)crob->count<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->onTimeMS= "<<(uint32_t)crob->onTimeMS<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->offTimeMS= "<<(uint32_t)crob->offTimeMS<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*crob->status= "<<(uint32_t)crob->status<<'\n';
+  decrement_stack_info();
+#endif
   return ret;
 }
 

@@ -38,6 +38,10 @@
 //#include "GroupVariationRecord.h"
 //#include "IVariableLength.h"
 #include "PrefixedWriteIterator_for_Analog.h"
+#include "PrefixedWriteIterator_for_AnalogOutputInt16.h"
+#include "PrefixedWriteIterator_for_AnalogOutputInt32.h"
+#include "PrefixedWriteIterator_for_AnalogOutputFloat32.h"
+#include "PrefixedWriteIterator_for_AnalogOutputDouble64.h"
 //#include "PrefixedWriteIterator_for_UInt16_AnalogOutputStatus.h"
 //#include "PrefixedWriteIterator_for_UInt16_Binary.h"
 //#include "PrefixedWriteIterator_for_UInt16_BinaryOutputStatus.h"
@@ -87,6 +91,67 @@ CountWriteIterator_for_UInt8_Analog IterateOverCount_for_UInt8_Analog_in_HeaderW
     DNP3Serializer_for_Analog* serializer);
 
 //--------------------------------IterateOverCount_for_UInt8_Analog_in_HeaderWriter--------------------------------------------------------
+
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt16* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt16* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16--------------------------------------------------------
+
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt16_AnalogOutputInt32 IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt32* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt32* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32--------------------------------------------------------
+
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputFloat32* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32 IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputFloat32* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32--------------------------------------------------------
+
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputDouble64--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt16_AnalogOutputDouble64 IterateOverCountWithPrefix_for_UInt16_AnalogOutputDouble64_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputDouble64* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputDouble64--------------------------------------------------------
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputDouble64--------------------------------------------------------
+////template<class PrefixType, class WriteType>
+////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
+////    QualifierCode qc, const DNP3Serializer<WriteType>& serializer)
+PrefixedWriteIterator_for_UInt8_AnalogOutputDouble64 IterateOverCountWithPrefix_for_UInt8_AnalogOutputDouble64_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputDouble64* serializer);
+//--------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputDouble64--------------------------------------------------------
+
 //--------------------------------IterateOverCountWithPrefix_for_UInt16_Analog--------------------------------------------------------
 ////template<class PrefixType, class WriteType>
 ////PrefixedWriteIterator<PrefixType, WriteType> HeaderWriter::IterateOverCountWithPrefix(
@@ -95,6 +160,7 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefix_for_UInt16_An
     QualifierCode_uint8_t qc, DNP3Serializer_for_Analog* serializer);
 
 //--------------------------------IterateOverCountWithPrefix_for_UInt16_Analog--------------------------------------------------------
+
 //--------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_Analog_Group51Var1_in_HeaderWriter--------------------------------------------------------
 ////    template<class PrefixType, class WriteType, class CTOType>
 ////    PrefixedWriteIterator<PrefixType, WriteType> IterateOverCountWithPrefixAndCTO(

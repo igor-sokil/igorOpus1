@@ -544,6 +544,7 @@ boolean modify_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pSt
 ////    return count;
 ////}
 
+Range assign_class_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, PointClass_uint8_t clazz);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
 ////{
 ////    for (auto& elem : this->map)
@@ -553,7 +554,8 @@ boolean modify_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pSt
 
 ////    return this->get_full_range();
 ////}
-////
+
+Range assign_class_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec, PointClass_uint8_t clazz, Range* range);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz, const Range& range)
 ////{
 ////    for (auto iter = this->map.lower_bound(range.start); iter != this->map.end() && range.Contains(iter->first); iter++)

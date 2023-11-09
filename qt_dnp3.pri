@@ -183,6 +183,9 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_OctetString.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_TimeAndInterval.cpp \
                 cpp\lib\src\app\PrefixedWriteIterator_for_ControlRelayOutputBlock.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_AnalogOutputInt16.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_AnalogOutputInt32.cpp \
+                cpp\lib\src\app\PrefixedWriteIterator_for_AnalogOutputFloat32.cpp \
                 cpp\lib\src\app\Serializer.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\app\RangeWriteIterator_for_Analog.cpp \
@@ -213,6 +216,10 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\ControlState.cpp \
                 cpp\lib\src\outstation\CommandActionAdapter.cpp \
                 cpp\lib\src\outstation\CommandResponseHandler.cpp \
+                cpp\lib\src\outstation\CommandResponseHandler_for_ControlRelayOutputBlock.cpp \
+                cpp\lib\src\outstation\CommandResponseHandler_for_AnalogOutputInt16.cpp \
+                cpp\lib\src\outstation\CommandResponseHandler_for_AnalogOutputInt32.cpp \
+                cpp\lib\src\outstation\CommandResponseHandler_for_AnalogOutputFloat32.cpp \
                 cpp\lib\src\outstation\ConstantCommandAction.cpp \
                 cpp\lib\src\outstation\ClassBasedRequestHandler.cpp \
                 cpp\lib\src\outstation\Event.cpp \

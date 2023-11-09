@@ -168,6 +168,9 @@ debug/PrefixedWriteIterator_for_FrozenCounter.o
 debug/PrefixedWriteIterator_for_OctetString.o
 debug/PrefixedWriteIterator_for_TimeAndInterval.o
 debug/PrefixedWriteIterator_for_ControlRelayOutputBlock.o
+debug/PrefixedWriteIterator_for_AnalogOutputInt16.o
+debug/PrefixedWriteIterator_for_AnalogOutputInt32.o
+debug/PrefixedWriteIterator_for_AnalogOutputFloat32.o
 debug/Serializer.o
 debug/RangeWriteIterator_for_AnalogOutputStatus.o
 debug/RangeWriteIterator_for_Analog.o
@@ -197,6 +200,10 @@ debug/DeferredRequest_part2.o
 debug/ControlState.o
 debug/CommandActionAdapter.o
 debug/CommandResponseHandler.o
+debug/CommandResponseHandler_for_ControlRelayOutputBlock.o
+debug/CommandResponseHandler_for_AnalogOutputInt16.o
+debug/CommandResponseHandler_for_AnalogOutputInt32.o
+debug/CommandResponseHandler_for_AnalogOutputFloat32.o
 debug/ConstantCommandAction.o
 debug/ClassBasedRequestHandler.o
 debug/Event.o

@@ -503,6 +503,7 @@ boolean modify_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCo
 ////    return count;
 ////}
 
+Range assign_class_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, PointClass_uint8_t clazz);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
 ////{
 ////    for (auto& elem : this->map)
@@ -512,7 +513,8 @@ boolean modify_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCo
 
 ////    return this->get_full_range();
 ////}
-////
+
+Range assign_class_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, PointClass_uint8_t clazz, Range* range);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz, const Range& range)
 ////{
 ////    for (auto iter = this->map.lower_bound(range.start); iter != this->map.end() && range.Contains(iter->first); iter++)

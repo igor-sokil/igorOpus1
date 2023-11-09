@@ -105,6 +105,12 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
 //ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, uint16_t *count);////, Logger* pLogger) const;
 ////  auto result = numParser.ParseCount(buffer, count, pLogger);
   ParseResult_uint8_t result = ParseCount_in_NumParser(numparser, buffer, &count);////, Logger* pLogger) const;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseHeader_in_CountParser_static2"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
+#endif
 
   if (result == ParseResult_OK)
   {
@@ -126,11 +132,25 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
   decrement_stack_info();
 #endif
 ////      return ParseCountOfObjects(buffer, record, count, pLogger, pHandler);
-      return ParseCountOfObjects_in_CountParser_static(buffer, record, count, pHandler);
+      ParseResult_uint8_t temp = ParseCountOfObjects_in_CountParser_static(buffer, record, count, pHandler);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseHeader_in_CountParser_static3"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ParseResult_uint8_t temp ="<<(uint16_t)temp<<std::endl;
+#endif
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+      return temp;
     }
 
     if (pHandler)
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"ParseHeader_in_CountParser_static4"<<std::endl;
+#endif
 //void OnHeader_CountHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header);
 //void CountHeader_in_CountHeader(CountHeader *pCountHeader, HeaderRecord *record, uint16_t count_);
 ////      pHandler->OnHeader(CountHeader(record, count));

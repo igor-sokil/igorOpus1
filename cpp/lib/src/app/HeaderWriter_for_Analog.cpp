@@ -245,3 +245,162 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
   }
 }
 //------------------------------IterateOverCountWithPrefixAndCTO_for_UInt16_Analog_Group51Var2_in_HeaderWriter--------------------------------------------------------
+
+//------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16_in_HeaderWriter--------------------------------------------------------
+PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt16* serializer)
+{
+////    const auto reserve_size
+  uint16_t reserve_size =
+////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
+    2*size_in_UInt16 +
+    get_size_in_Serializer_for_AnalogOutputInt16(&(serializer->sSerializer_for_AnalogOutputInt16));
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
+      ID_in_DNP3Serializer_for_AnalogOutputInt16(serializer), qc, reserve_size))
+  {
+    PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16;
+    PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16Over2(&pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16,
+        &(serializer->sSerializer_for_AnalogOutputInt16), pHeaderWriter->position);
+//        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
+    return pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16;
+  }
+  else
+  {
+////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
+    return Null_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_static();
+  }
+}
+//------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16_in_HeaderWriter--------------------------------------------------------
+//------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16_in_HeaderWriter--------------------------------------------------------
+PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt16* serializer)
+{
+////    const auto reserve_size
+  uint16_t reserve_size =
+////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
+    2*size_in_UInt8 +
+    get_size_in_Serializer_for_AnalogOutputInt16(&(serializer->sSerializer_for_AnalogOutputInt16));
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
+      ID_in_DNP3Serializer_for_AnalogOutputInt16(serializer), qc, reserve_size))
+  {
+    PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 pPrefixedWriteIterator_for_UInt8_AnalogOutputInt16;
+    PrefixedWriteIterator_for_UInt8_AnalogOutputInt16_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16Over2(&pPrefixedWriteIterator_for_UInt8_AnalogOutputInt16,
+        &(serializer->sSerializer_for_AnalogOutputInt16), pHeaderWriter->position);
+//        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
+    return pPrefixedWriteIterator_for_UInt8_AnalogOutputInt16;
+  }
+  else
+  {
+////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
+    return Null_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16_static();
+  }
+}
+//------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16_in_HeaderWriter--------------------------------------------------------
+
+//------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32_in_HeaderWriter--------------------------------------------------------
+PrefixedWriteIterator_for_UInt16_AnalogOutputInt32 IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt32* serializer)
+{
+////    const auto reserve_size
+  uint16_t reserve_size =
+////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
+    2*size_in_UInt16 +
+    get_size_in_Serializer_for_AnalogOutputInt32(&(serializer->sSerializer_for_AnalogOutputInt32));
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
+      ID_in_DNP3Serializer_for_AnalogOutputInt32(serializer), qc, reserve_size))
+  {
+    PrefixedWriteIterator_for_UInt16_AnalogOutputInt32 pPrefixedWriteIterator_for_UInt16_AnalogOutputInt32;
+    PrefixedWriteIterator_for_UInt16_AnalogOutputInt32_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt32Over2(&pPrefixedWriteIterator_for_UInt16_AnalogOutputInt32,
+        &(serializer->sSerializer_for_AnalogOutputInt32), pHeaderWriter->position);
+//        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
+    return pPrefixedWriteIterator_for_UInt16_AnalogOutputInt32;
+  }
+  else
+  {
+////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
+    return Null_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt32_static();
+  }
+}
+//------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32_in_HeaderWriter--------------------------------------------------------
+//------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32_in_HeaderWriter--------------------------------------------------------
+PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt32* serializer)
+{
+////    const auto reserve_size
+  uint16_t reserve_size =
+////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
+    2*size_in_UInt8 +
+    get_size_in_Serializer_for_AnalogOutputInt32(&(serializer->sSerializer_for_AnalogOutputInt32));
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
+      ID_in_DNP3Serializer_for_AnalogOutputInt32(serializer), qc, reserve_size))
+  {
+    PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 pPrefixedWriteIterator_for_UInt8_AnalogOutputInt32;
+    PrefixedWriteIterator_for_UInt8_AnalogOutputInt32_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt32Over2(&pPrefixedWriteIterator_for_UInt8_AnalogOutputInt32,
+        &(serializer->sSerializer_for_AnalogOutputInt32), pHeaderWriter->position);
+//        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
+    return pPrefixedWriteIterator_for_UInt8_AnalogOutputInt32;
+  }
+  else
+  {
+////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
+    return Null_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt32_static();
+  }
+}
+//------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32_in_HeaderWriter--------------------------------------------------------
+
+//------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32_in_HeaderWriter--------------------------------------------------------
+PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputFloat32* serializer)
+{
+////    const auto reserve_size
+  uint16_t reserve_size =
+////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
+    2*size_in_UInt16 +
+    get_size_in_Serializer_for_AnalogOutputFloat32(&(serializer->sSerializer_for_AnalogOutputFloat32));
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
+      ID_in_DNP3Serializer_for_AnalogOutputFloat32(serializer), qc, reserve_size))
+  {
+    PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 pPrefixedWriteIterator_for_UInt16_AnalogOutputFloat32;
+    PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32_in_PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32Over2(&pPrefixedWriteIterator_for_UInt16_AnalogOutputFloat32,
+        &(serializer->sSerializer_for_AnalogOutputFloat32), pHeaderWriter->position);
+//        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
+    return pPrefixedWriteIterator_for_UInt16_AnalogOutputFloat32;
+  }
+  else
+  {
+////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
+    return Null_in_PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32_static();
+  }
+}
+//------------------------------IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32_in_HeaderWriter--------------------------------------------------------
+//------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32_in_HeaderWriter--------------------------------------------------------
+PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32 IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputFloat32* serializer)
+{
+////    const auto reserve_size
+  uint16_t reserve_size =
+////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
+    2*size_in_UInt8 +
+    get_size_in_Serializer_for_AnalogOutputFloat32(&(serializer->sSerializer_for_AnalogOutputFloat32));
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter,
+      ID_in_DNP3Serializer_for_AnalogOutputFloat32(serializer), qc, reserve_size))
+  {
+    PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32 pPrefixedWriteIterator_for_UInt8_AnalogOutputFloat32;
+    PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32_in_PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32Over2(&pPrefixedWriteIterator_for_UInt8_AnalogOutputFloat32,
+        &(serializer->sSerializer_for_AnalogOutputFloat32), pHeaderWriter->position);
+//        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
+    return pPrefixedWriteIterator_for_UInt8_AnalogOutputFloat32;
+  }
+  else
+  {
+////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
+    return Null_in_PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32_static();
+  }
+}
+//------------------------------IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32_in_HeaderWriter--------------------------------------------------------

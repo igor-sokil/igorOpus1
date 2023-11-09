@@ -168,6 +168,9 @@ release/PrefixedWriteIterator_for_FrozenCounter.o
 release/PrefixedWriteIterator_for_OctetString.o
 release/PrefixedWriteIterator_for_TimeAndInterval.o
 release/PrefixedWriteIterator_for_ControlRelayOutputBlock.o
+release/PrefixedWriteIterator_for_AnalogOutputInt16.o
+release/PrefixedWriteIterator_for_AnalogOutputInt32.o
+release/PrefixedWriteIterator_for_AnalogOutputFloat32.o
 release/Serializer.o
 release/RangeWriteIterator_for_AnalogOutputStatus.o
 release/RangeWriteIterator_for_Analog.o
@@ -197,6 +200,10 @@ release/DeferredRequest_part2.o
 release/ControlState.o
 release/CommandActionAdapter.o
 release/CommandResponseHandler.o
+release/CommandResponseHandler_for_ControlRelayOutputBlock.o
+release/CommandResponseHandler_for_AnalogOutputInt16.o
+release/CommandResponseHandler_for_AnalogOutputInt32.o
+release/CommandResponseHandler_for_AnalogOutputFloat32.o
 release/ConstantCommandAction.o
 release/ClassBasedRequestHandler.o
 release/Event.o

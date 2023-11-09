@@ -64,13 +64,15 @@ GroupVariationRecord GetRecord_in_GroupVariationRecord_static(uint8_t group, uin
    std::cout<<"*uint8_t group= "<<(uint16_t)group<<std::endl;
   std::cout<<"*"<<getString_stack_info();
    std::cout<<"*uint8_t variation= "<<(uint16_t)variation<<std::endl;
-  decrement_stack_info();
 #endif
   GroupVariationRecord gGroupVariationRecord;
   GroupVariationRecord_in_GroupVariationRecordOver1(&gGroupVariationRecord);
 
   EnumAndType pair = GetEnumAndType_in_GroupVariationRecord_static(group, variation);
   GroupVariationRecord_in_GroupVariationRecordOver2(&gGroupVariationRecord, group, variation, pair.enumeration, pair.type);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return gGroupVariationRecord;
 }
 

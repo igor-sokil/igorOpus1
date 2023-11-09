@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "Indexed.h"
 
@@ -176,6 +180,14 @@ Indexed_for_TimeAndInterval WithIndex_in_Indexed_for_TimeAndInterval(
 //------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
 void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver1(Indexed_for_ControlRelayOutputBlock *pIndexed_for_ControlRelayOutputBlock)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
+
 //   ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1(&(pIndexed_for_ControlRelayOutputBlock->value));
   ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1(&(pIndexed_for_ControlRelayOutputBlock->value),
       OperationType_LATCH_ON,
@@ -191,6 +203,13 @@ void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockO
 void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver2(Indexed_for_ControlRelayOutputBlock *pIndexed_for_ControlRelayOutputBlock,
     ControlRelayOutputBlock* value_, uint16_t index_)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver2_1"<<'\n';
+  decrement_stack_info();
+#endif
 //  ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2(value_, index_);
   pIndexed_for_ControlRelayOutputBlock->value = *value_;
 

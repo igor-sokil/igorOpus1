@@ -460,7 +460,7 @@ Range assign_class_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_Analog
 ////    return this->get_full_range();
 ////}
 
-Range assign_class_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range* range);
+Range assign_class_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, PointClass_uint8_t clazz, Range* range);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz, const Range& range)
 ////{
 ////    for (auto iter = this->map.lower_bound(range.start); iter != this->map.end() && range.Contains(iter->first); iter++)
@@ -470,7 +470,7 @@ Range assign_class_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_Analog
 
 ////    return range.Intersection(this->get_full_range());
 ////}
-////
+
 ////template<class Spec> typename StaticDataMap<Spec>::iterator StaticDataMap<Spec>::begin()
 ////{
 ////    if (!this->selected.IsValid())

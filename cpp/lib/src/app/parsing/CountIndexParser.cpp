@@ -61,10 +61,10 @@ ParseResult_uint8_t ParseHeader_in_CountIndexParser_static(
   IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-   std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-   std::cout<<"ParseHeader_in_CountIndexParser_static1"<<std::endl;
+  std::cout<<"ParseHeader_in_CountIndexParser_static1"<<std::endl;
   inspect_RSeq(buffer);
 #endif
 
@@ -78,7 +78,7 @@ ParseResult_uint8_t ParseHeader_in_CountIndexParser_static(
 ////                            GroupVariationSpec::to_human_string(record.enumeration),
 ////                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), count);
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
       std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), '%03u,%03u %s, %s [%u, %u]', record.group, record.variation,*"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
       std::cout<<"*record.group= "<<(uint16_t)record->gGroupVariationRecord.group<<'\n';
@@ -113,7 +113,7 @@ ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexPar
 ////Logger* pLogger) const
 {
 #ifdef  LOG_INFO
-   std::cout<<""<<std::endl;
+   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
    std::cout<<"Process_in_CountIndexParser1"<<std::endl;
@@ -158,12 +158,12 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
   IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-   std::cout<<""<<std::endl;
+   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseCountOfObjects_in_CountIndexParser_static1"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*temp= "<<record->gGroupVariationRecord.enumeration<<std::endl;
+  std::cout<<"*record->gGroupVariationRecord.enumeration= "<<std::hex<<record->gGroupVariationRecord.enumeration<<std::dec<<std::endl;
 #endif
 
   switch (record->gGroupVariationRecord.enumeration)
@@ -670,7 +670,15 @@ CountIndexParser From_for_Group12Var1_in_CountIndexParser_static(uint16_t count,
 Indexed_for_ControlRelayOutputBlock readInvokeCountOf_for_ControlRelayOutputBlock_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_ControlRelayOutputBlock readInvokeCountOf_for_ControlRelayOutputBlock_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"readInvokeCountOf_for_ControlRelayOutputBlock_in_CountIndexParser1"<<std::endl;
+  inspect_RSeq(buffer);
+  decrement_stack_info();
+#endif
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -694,6 +702,13 @@ void InvokeCountOf_for_Group12Var1_in_CountIndexParser_static(
   RSeq_for_Uint16_t* buffer,
   IAPDUHandler* handler)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"InvokeCountOf_for_Group12Var1_in_CountIndexParser_static1"<<std::endl;
+  inspect_RSeq(buffer);
+#endif
 ////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
 ////    {
 ////        Indexed<typename Descriptor::Target> pair;
@@ -716,6 +731,9 @@ void InvokeCountOf_for_Group12Var1_in_CountIndexParser_static(
   PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
 
   OnHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_ControlRelayOutputBlock));
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 //------------------------------------------Group12Var1------------------------------------------------
 //------------------------------------------Group4Var1------------------------------------------------

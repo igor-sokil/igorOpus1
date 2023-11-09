@@ -510,6 +510,7 @@ boolean modify_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_Ana
 ////    return count;
 ////}
 
+Range assign_class_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, PointClass_uint8_t clazz);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)
 ////{
 ////    for (auto& elem : this->map)
@@ -519,7 +520,8 @@ boolean modify_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_Ana
 
 ////    return this->get_full_range();
 ////}
-////
+
+Range assign_class_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec, PointClass_uint8_t clazz, Range* range);
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz, const Range& range)
 ////{
 ////    for (auto iter = this->map.lower_bound(range.start); iter != this->map.end() && range.Contains(iter->first); iter++)

@@ -274,3 +274,19 @@ Range assign_class_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_f
 ////    return this->get_full_range();
   return get_full_range_in_StaticDataMap_for_DoubleBitBinarySpec(pStaticDataMap_for_DoubleBitBinarySpec);
 }
+
+Range assign_class_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, PointClass_uint8_t clazz, Range* range)
+{
+  for (auto iter = pStaticDataMap_for_DoubleBitBinarySpec->map.lower_bound(range->start); iter != pStaticDataMap_for_DoubleBitBinarySpec->map.end() &&
+////             range.Contains(iter->first);
+       Contains_in_Range(range, iter->first); iter++)
+  {
+    iter->second.config.eEventConfig.clazz = clazz;
+  }
+
+//Range get_full_range_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec);
+//Range Intersection_in_Range(Range *pRange, Range* other);
+////    return range.Intersection(this->get_full_range());
+  Range temp = get_full_range_in_StaticDataMap_for_DoubleBitBinarySpec(pStaticDataMap_for_DoubleBitBinarySpec);
+  return Intersection_in_Range(range, &temp);
+}

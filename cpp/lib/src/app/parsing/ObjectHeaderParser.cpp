@@ -45,17 +45,18 @@ void ObjectHeader_in_ObjectHeader(ObjectHeader *pObjectHeader)
 ParseResult_uint8_t ParseObjectHeader_in_ObjectHeaderParser_static(ObjectHeader* header, RSeq_for_Uint16_t* buffer)////, Logger* pLogger)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseObjectHeader_in_ObjectHeaderParser_static1"<<std::endl;
+  inspect_RSeq(buffer);
 #endif
 ////    if (buffer.length() < 3)
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < 3)
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for header");
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"+"<<getString_stack_info();
     std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for header')***"<<std::endl;
     decrement_stack_info();
 #endif
