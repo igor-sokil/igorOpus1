@@ -337,6 +337,7 @@ debug/MockTransportSegment.o
 debug/OutstationTestObject.o
 debug/TestAPDUParsing.o
 debug/TestOutstation.o
+debug/TestOutstationEventResponses.o
 debug/MockOutstationApplication.o
 debug/MockCommandHandler.o
 debug/MockEventWriteHandler.o

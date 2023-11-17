@@ -18,7 +18,8 @@ void StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputS
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
 
   StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputStatusSpecOver1(pStaticDataMap);
@@ -32,6 +33,9 @@ void StaticDataMap_for_BinaryOutputStatusSpec_in_StaticDataMap_for_BinaryOutputS
     StaticDataCell_for_BinaryOutputStatus_in_StaticDataCell_for_BinaryOutputStatusOver2(&sStaticDataCell_for_BinaryOutputStatus, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_BinaryOutputStatus;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 Range get_selected_range_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec)

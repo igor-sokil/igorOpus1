@@ -116,7 +116,7 @@ void Group41Var2_in_Group41Var2(Group41Var2 *pGroup41Var2);
 boolean Read_in_Group41Var2_static(RSeq_for_Uint16_t *, Group41Var2*);
 boolean Write_in_Group41Var2_static(Group41Var2*, WSeq_for_Uint16_t*);
 
-boolean ReadTarget_in_Group41Var2_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
+boolean ReadTarget_in_Group41Var2_static(RSeq_for_Uint16_t*, AnalogOutputInt16*);
 boolean WriteTarget_in_Group41Var2_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
 DNP3Serializer_for_AnalogOutputInt16  Inst_in_Group41Var2_static(void);
 
@@ -149,8 +149,8 @@ void Group41Var3_in_Group41Var3(Group41Var3 *pGroup41Var3);
 boolean Read_in_Group41Var3_static(RSeq_for_Uint16_t *, Group41Var3*);
 boolean Write_in_Group41Var3_static(Group41Var3*, WSeq_for_Uint16_t*);
 
-boolean ReadTarget_in_Group41Var3_static(RSeq_for_Uint16_t*, AnalogOutputInt32*);
-boolean WriteTarget_in_Group41Var3_static(AnalogOutputInt32*, WSeq_for_Uint16_t*);
+boolean ReadTarget_in_Group41Var3_static(RSeq_for_Uint16_t*, AnalogOutputFloat32*);
+boolean WriteTarget_in_Group41Var3_static(AnalogOutputFloat32*, WSeq_for_Uint16_t*);
 
 // Analog Output - Double-precision
 ////struct Group41Var4

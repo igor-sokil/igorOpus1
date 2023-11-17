@@ -19,7 +19,8 @@ void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalS
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalSpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
 
   StaticDataMap_for_TimeAndInterval_in_StaticDataMap_for_TimeAndIntervalOver1(pStaticDataMap);
@@ -33,6 +34,9 @@ void StaticDataMap_for_TimeAndIntervalSpec_in_StaticDataMap_for_TimeAndIntervalS
     StaticDataCell_for_TimeAndInterval_in_StaticDataCell_for_TimeAndIntervalOver2(&sStaticDataCell_for_TimeAndInterval, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_TimeAndInterval;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 Range get_selected_range_in_StaticDataMap_for_TimeAndIntervalSpec(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec)

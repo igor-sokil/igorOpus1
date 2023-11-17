@@ -44,13 +44,7 @@
 void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, OutstationConfig* config, DatabaseConfig* db_config)
 {
 #ifdef  LOG_INFO
-  std::cout<<'\n';
-  increment_stack_info();
-  std::cout<<getString_stack_info();
   std::cout<<"OutstationTestObject_in_OutstationTestObject1"<<'\n';
-//  std::cout<<"*"<<getString_stack_info();
-//  std::cout<<"*config->params.maxTxFragSize= "<<(uint16_t)config->params.maxTxFragSize<<'\n';
-  decrement_stack_info();
 #endif
 ////    : exe(std::make_shared<exe4cpp::MockExecutor>()),
   MockExecutor_in_MockExecutor(&(pOutstationTestObject->exe));
@@ -95,6 +89,9 @@ void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstat
 ////size_t OutstationTestObject::LowerLayerUp()
 uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
 {
+#ifdef  LOG_INFO
+  std::cout<<"LowerLayerUp_in_OutstationTestObject1"<<'\n';
+#endif
 //boolean OnLowerLayerUp_in_OContext(OContext*);
 ////    context.OnLowerLayerUp();
   OnLowerLayerUp_in_OContext(&(pOutstationTestObject->context));
@@ -112,19 +109,13 @@ uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationT
 uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
 {
 #ifdef  LOG_INFO
-  std::cout<<'\n';
-  increment_stack_info();
-  std::cout<<getString_stack_info();
   std::cout<<"OnTxReady_in_OutstationTestObject1"<<'\n';
-//  decrement_stack_info();
 #endif
 //boolean OnTxReady_in_OContext(OContext* pOContext)
 ////    context.OnTxReady();
    OnTxReady_in_OContext(&(pOutstationTestObject->context));
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
   std::cout<<"OnTxReady_in_OutstationTestObject2"<<'\n';
-  decrement_stack_info();
 #endif
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
@@ -135,11 +126,7 @@ uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTest
 uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, std::string& hex)
 {
 #ifdef  LOG_INFO
-  std::cout<<'\n';
-  increment_stack_info();
-  std::cout<<getString_stack_info();
   std::cout<<"SendToOutstation_in_OutstationTestObject1"<<'\n';
-  decrement_stack_info();
 #endif
 //   void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
 ////    HexSequence hs(hex);

@@ -72,7 +72,12 @@ void IAPDUHandler_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
   pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler = ProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler_override;
@@ -138,12 +143,14 @@ void OnHeader_CountHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHead
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_CountHeader_in_IAPDUHandler1"<<'\n';
-  decrement_stack_info();
 #endif
 //    IINField ProcessHeader_CountHeader_in_IAPDUHandler(IAPDUHandler*, CountHeader* header);
 ////    Record(header, this->ProcessHeader(header));
   IINField temp = ProcessHeader_CountHeader_in_IAPDUHandler(pIAPDUHandler, header);
   Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 ////void IAPDUHandler::OnHeader(const CountHeader& header, const ICollection<Group50Var1>& values)
@@ -366,9 +373,19 @@ void OnHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler(IAPDUHandler *pIAP
 }
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<BinaryOutputStatus>>& values)
-////{
+void OnHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryOutputStatus* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+}
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<DoubleBitBinary>>& values)
 void OnHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_DoubleBitBinary* values)
@@ -386,24 +403,64 @@ void OnHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler(IAPDUHand
 }
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<Counter>>& values)
-////{
+void OnHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Counter* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+}
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<FrozenCounter>>& values)
-////{
+void OnHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_FrozenCounter* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+}
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<Analog>>& values)
-////{
+void OnHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Analog* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+}
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<AnalogOutputStatus>>& values)
-////{
+void OnHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputStatus* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+}
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<OctetString>>& values)
 void OnHeader_PrefixHeader_Indexed_for_OctetString_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_OctetString* values)
@@ -498,19 +555,49 @@ void OnHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_IAPDUHandler(I
 }
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<AnalogOutputInt16>>& values)
-////{
+void OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputInt16* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+}
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<AnalogOutputInt32>>& values)
-////{
+void OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputInt32* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+}
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<AnalogOutputFloat32>>& values)
-////{
+void OnHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputFloat32* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler1"<<'\n';
+  decrement_stack_info();
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+}
 
 ////void IAPDUHandler::OnHeader(const PrefixHeader& header, const ICollection<Indexed<AnalogOutputDouble64>>& values)
 ////{
@@ -729,15 +816,25 @@ IINField ProcessHeader_RangeHeader_Indexed_for_TimeAndInterval_in_IAPDUHandler_o
 /// ---- index prefixes -----
 
 ////IINField IAPDUHandler::ProcessHeader(const PrefixHeader& /*header*/, const ICollection<Indexed<Counter>>& /*values*/)
-////{
+IINField ProcessHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler_override(void* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Counter* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 ////IINField IAPDUHandler::ProcessHeader(const PrefixHeader& /*header*/,
 ////                                     const ICollection<Indexed<FrozenCounter>>& /*values*/)
-////{
+IINField ProcessHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler_override(void* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_FrozenCounter* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 ////IINField IAPDUHandler::ProcessHeader(const PrefixHeader& /*header*/, const ICollection<Indexed<Binary>>& /*values*/)
 IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler_override(void* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Binary* values)
@@ -751,9 +848,14 @@ IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler_override(
 
 ////IINField IAPDUHandler::ProcessHeader(const PrefixHeader& /*header*/,
 ////                                     const ICollection<Indexed<BinaryOutputStatus>>& /*values*/)
-////{
+IINField ProcessHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler_override(void* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryOutputStatus* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 ////IINField IAPDUHandler::ProcessHeader(const PrefixHeader& /*header*/,
 ////                                     const ICollection<Indexed<DoubleBitBinary>>& /*values*/)
@@ -767,15 +869,25 @@ IINField ProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler_
 }
 
 ////IINField IAPDUHandler::ProcessHeader(const PrefixHeader& /*header*/, const ICollection<Indexed<Analog>>& /*values*/)
-////{
+IINField ProcessHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler_override(void* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Analog* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 ////IINField IAPDUHandler::ProcessHeader(const PrefixHeader& /*header*/,
 ////                                     const ICollection<Indexed<AnalogOutputStatus>>& /*values*/)
-////{
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler_override(void* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputStatus* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 ////IINField IAPDUHandler::ProcessHeader(const PrefixHeader& /*header*/,
 ////                                     const ICollection<Indexed<OctetString>>& /*values*/)
@@ -845,9 +957,29 @@ IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_IAPDUHan
 {
   return (pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_IAPDUHandler)(pIAPDUHandler, header, values);
 }
+IINField ProcessHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Analog* values)
+{
+  return (pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
+IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputStatus* values)
+{
+  return (pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
 IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Binary* values)
 {
   return (pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
+IINField ProcessHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryOutputStatus* values)
+{
+  return (pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
+IINField ProcessHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_Counter* values)
+{
+  return (pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
+IINField ProcessHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_FrozenCounter* values)
+{
+  return (pIAPDUHandler->pProcessHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler)(pIAPDUHandler, header, values);
 }
 IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogCommandEvent* values)
 {

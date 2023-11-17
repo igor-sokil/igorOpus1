@@ -24,6 +24,8 @@ boolean load_type_for_TimeAndInterval_in_Database_static(StaticDataMap_for_TimeA
     if (iter == map.end())
     {
 #ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"load_type_for_TimeAndInterval_in_Database_static2"<<'\n';
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*if (iter == map.end())"<<'\n';
     decrement_stack_info();
@@ -39,6 +41,8 @@ boolean load_type_for_TimeAndInterval_in_Database_static(StaticDataMap_for_TimeA
     if (!get_for_TimeAndIntervalSpec_in_StaticWriters_static(variation)(map, writer))
     {
 #ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"load_type_for_TimeAndInterval_in_Database_static3"<<'\n';
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*if (!get_for_TimeAndIntervalSpec_in_StaticWriters_static(variation)(map, writer))"<<'\n';
     decrement_stack_info();
@@ -48,6 +52,8 @@ boolean load_type_for_TimeAndInterval_in_Database_static(StaticDataMap_for_TimeA
     }
   }
 #ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"load_type_for_TimeAndInterval_in_Database_static4"<<'\n';
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*return"<<'\n';
     decrement_stack_info();

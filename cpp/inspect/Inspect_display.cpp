@@ -11,6 +11,46 @@
 
 static int16_t stack_info = -1;//рівень стеку для info
 
+void inspect_Analog(Analog *b)
+{
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_Analog**"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean value= "<<(uint16_t)b->tTypedMeasurement_for_Double64.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*Flags flags.value= "<<(uint16_t)b->tTypedMeasurement_for_Double64.mMeasurement.flags.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*DNPTime timeDNPTime.value= "<<(uint32_t)b->tTypedMeasurement_for_Double64.mMeasurement.timeDNPTime.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*DNPTime timeDNPTime.quality= "<<(uint32_t)b->tTypedMeasurement_for_Double64.mMeasurement.timeDNPTime.quality<<'\n';
+}
+void inspect_Binary(Binary *b)
+{
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_Binary**"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean value= "<<(uint16_t)b->tTypedMeasurement_for_Boolean.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*Flags flags.value= "<<(uint16_t)b->tTypedMeasurement_for_Boolean.mMeasurement.flags.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*DNPTime timeDNPTime.value= "<<(uint32_t)b->tTypedMeasurement_for_Boolean.mMeasurement.timeDNPTime.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*DNPTime timeDNPTime.quality= "<<(uint32_t)b->tTypedMeasurement_for_Boolean.mMeasurement.timeDNPTime.quality<<'\n';
+}
+void inspect_Counter(Counter *b)
+{
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_Counter**"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean value= "<<(uint16_t)b->tTypedMeasurement_for_Uint32.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*Flags flags.value= "<<(uint16_t)b->tTypedMeasurement_for_Uint32.mMeasurement.flags.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*DNPTime timeDNPTime.value= "<<(uint32_t)b->tTypedMeasurement_for_Uint32.mMeasurement.timeDNPTime.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*DNPTime timeDNPTime.quality= "<<(uint32_t)b->tTypedMeasurement_for_Uint32.mMeasurement.timeDNPTime.quality<<'\n';
+}
+
 int16_t get_stack_info(void);
 int16_t get_stack_info(void)
 {
@@ -37,6 +77,15 @@ std::string getString_stack_info(void)
 }
 
 void inspect_RSeq(RSeq_for_Uint16_t *buffer)
+{
+ if(!buffer) return;
+  for(int i=0; i<length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)); i++)
+ {
+  std::cout<<"*"<<getString_stack_info();
+  qDebug()<<"*buffer->buffer_[i]= "<<hex<<buffer->buffer_[i];
+ }//for
+}
+void inspect_WSeq(WSeq_for_Uint16_t *buffer)
 {
  if(!buffer) return;
   for(int i=0; i<length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)); i++)

@@ -2,6 +2,7 @@
 #define MEMORYINSPECT_H
 
 #include "RSeq.h"
+#include "WSeq.h"
 #include "Message.h"
 #include "APDUHeaderParser.h"
 #include "ParsedRequest.h"
@@ -11,6 +12,13 @@
 #include "Pair_for_IINField_AppControlField.h"
 #include "ObjectHeaderParser.h"
 #include "GroupVariationRecord.h"
+
+void inspect_Analog(Analog *b);
+void inspect_Binary(Binary *b);
+void inspect_Counter(Counter *b);
+void inspect_RSeq(RSeq_for_Uint16_t *buffer);
+void inspect_WSeq(WSeq_for_Uint16_t *buffer);
+
 //-------------------RSeq------------------------
 typedef struct
 {

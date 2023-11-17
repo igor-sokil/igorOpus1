@@ -17,7 +17,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
 #include "log_info.h"
 #ifdef  LOG_INFO
 #include <iostream>
@@ -101,7 +100,7 @@ void OContext_in_OContext(OContext *pOContext,
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"OContext_in_OContext1"<<'\n';
 #endif
 
@@ -183,6 +182,12 @@ void OContext_in_OContext(OContext *pOContext,
 
 boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<"+"<<getString_stack_info();
+  std::cout<<"OnLowerLayerUp_in_OContext1"<<'\n';
+#endif
   if (pOContext->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "already online");
@@ -201,6 +206,9 @@ boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
 ////    this->CheckForTaskStart();
   CheckForTaskStart_in_OContext(pOContext);
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -249,7 +257,7 @@ boolean OnTxReady_in_OContext(OContext* pOContext)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"OnTxReady_in_OContext1"<<std::endl;
 #endif
 
@@ -279,7 +287,7 @@ boolean OnReceive_in_OContext(OContext* pOContext, Message* message)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"OnReceive_in_OContext1"<<std::endl;
 #endif
   if (!(pOContext->isOnline))
@@ -352,7 +360,7 @@ OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequ
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"OnReceiveSolRequest_in_OContext1"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*analyze this request to see how it compares to the last request"<<std::endl;
@@ -399,9 +407,9 @@ OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequ
 #endif
         OutstationState* tmp = OnRepeatNonReadRequest_in_OutstationState(pOContext->state, pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+        decrement_stack_info();
 #endif
-          return tmp;
+        return tmp;
       }
       else // new operation with same SEQ
       {
@@ -415,9 +423,9 @@ OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequ
 #endif
         OutstationState* tmp = ProcessNewRequest_in_OContext(pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+        decrement_stack_info();
 #endif
-          return tmp;
+        return tmp;
       }
     }
     else // completely new sequence #
@@ -431,9 +439,9 @@ OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequ
 #endif
       OutstationState* tmp = ProcessNewRequest_in_OContext(pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+      decrement_stack_info();
 #endif
-          return tmp;
+      return tmp;
     }
   }
   else
@@ -445,9 +453,9 @@ OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequ
 #endif
     OutstationState* tmp = ProcessNewRequest_in_OContext(pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+    decrement_stack_info();
 #endif
-          return tmp;
+    return tmp;
   }
 }
 
@@ -457,7 +465,7 @@ OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedReques
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"ProcessNewRequest_in_OContext1"<<std::endl;
 #endif
 
@@ -467,25 +475,25 @@ OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedReques
   if (request->header.function == FunctionCode_READ)
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_READ"<<std::endl;
 #endif
 //    OutstationState* OnNewReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////        return this->state->OnNewReadRequest(*this, request);
     OutstationState* tmp = OnNewReadRequest_in_OutstationState(pOContext->state, pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+    decrement_stack_info();
 #endif
-          return tmp;
+    return tmp;
   }
 
 //    OutstationState* OnNewNonReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////    return this->state->OnNewNonReadRequest(*this, request);
   OutstationState* tmp = OnNewNonReadRequest_in_OutstationState(pOContext->state, pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+  decrement_stack_info();
 #endif
-          return tmp;
+  return tmp;
 }
 
 ////bool OContext::ProcessObjects(const ParsedRequest& request)
@@ -494,7 +502,7 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"ProcessObjects_in_OContext1"<<std::endl;
 #endif
 //    boolean IsBroadcast_in_Addresses(Addresses *pAddresses);
@@ -523,9 +531,9 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
 ////        return this->ProcessRequestNoAck(request);
     boolean tmp = ProcessRequestNoAck_in_OContext(pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+    decrement_stack_info();
 #endif
-          return tmp;
+    return tmp;
   }
 
   if (pOContext->isTransmitting)
@@ -549,18 +557,18 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
 #endif
     boolean tmp = ProcessConfirm_in_OContext(pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+    decrement_stack_info();
 #endif
-          return tmp;
+    return tmp;
   }
 
 //    boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////    return this->ProcessRequest(request);
   boolean tmp = ProcessRequest_in_OContext(pOContext, request);
 #ifdef  LOG_INFO
-          decrement_stack_info();
+  decrement_stack_info();
 #endif
-          return tmp;
+  return tmp;
 }
 
 ////bool OContext::ProcessRequest(const ParsedRequest& request)
@@ -569,7 +577,7 @@ boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"ProcessRequest_in_OContext1"<<std::endl;
 #endif
   if (request->header.control.UNS)
@@ -600,7 +608,7 @@ boolean ProcessConfirm_in_OContext(OContext *pOContext, ParsedRequest* request)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"ProcessConfirm_in_OContext1"<<std::endl;
 #endif
 //    OutstationState* OnConfirm_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
@@ -618,7 +626,7 @@ OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t desti
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"BeginResponseTx_in_OContext1"<<std::endl;
 #endif
 //   void CheckForBroadcastConfirmation(OContext *pOContext, APDUResponse* response);
@@ -725,7 +733,7 @@ void CheckForTaskStart_in_OContext(OContext *pOContext)
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"CheckForTaskStart_in_OContext1"<<std::endl;
 #endif
 // do these checks in order of priority
@@ -734,12 +742,20 @@ void CheckForTaskStart_in_OContext(OContext *pOContext)
 ////    this->CheckForDeferredRequest();
   CheckForDeferredRequest_in_OContext(pOContext);
 
+#ifdef  LOG_INFO
+  std::cout<<"+"<<getString_stack_info();
+  std::cout<<"CheckForTaskStart_in_OContext2"<<std::endl;
+#endif
 //   void CheckForUnsolicitedNull_in_OContext(OContext *pOContext);
 ////    this->CheckForUnsolicitedNull();
   CheckForUnsolicitedNull_in_OContext(pOContext);
 
   if (pOContext->shouldCheckForUnsolicited)
   {
+#ifdef  LOG_INFO
+  std::cout<<"+"<<getString_stack_info();
+  std::cout<<"CheckForTaskStart_in_OContext3"<<std::endl;
+#endif
 //   void CheckForUnsolicited_in_OContext(OContext *pOContext);
 ////        this->CheckForUnsolicited();
     CheckForUnsolicited_in_OContext(pOContext);
@@ -763,7 +779,7 @@ void CheckForDeferredRequest_in_OContext(OContext *pOContext)
 //   boolean CanTransmit_in_OContext(OContext *pOContext);
 //  boolean IsSet_in_DeferredRequest(DeferredRequest *pDeferredRequest);
 ////    if (this->CanTransmit() && this->deferred.IsSet())
-  if (CanTransmit_in_OContext(pOContext) && IsSet_in_DeferredRequest(&(pOContext->deferred)))
+  if (CanTransmit_in_OContext(pOContext) && IsSet_in_DeferredRequest(&(pOContext->deferred)))//Отложенный запрос
   {
 //   boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////        auto handler = [this](const ParsedRequest& request) { return this->ProcessDeferredRequest(request); };
@@ -778,7 +794,7 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"CheckForUnsolicitedNull_in_OContext1"<<std::endl;
 #endif
 //   boolean CanTransmit_in_OContext(OContext *pOContext);
@@ -830,7 +846,7 @@ void CheckForUnsolicited_in_OContext(OContext *pOContext)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"CheckForUnsolicited_in_OContext1"<<std::endl;
 #endif
 
@@ -997,7 +1013,7 @@ OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, Parsed
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"RespondToNonReadRequest_in_OContext1"<<std::endl;
 #endif
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
@@ -1051,7 +1067,7 @@ OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedReq
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"RespondToReadRequest_in_OContext1"<<std::endl;
 #endif
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
@@ -1097,7 +1113,7 @@ OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addr
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"ContinueMultiFragResponse_in_OContext1"<<std::endl;
 #endif
 ////    auto response = this->sol.tx.Start();
@@ -1142,20 +1158,82 @@ IINField GetResponseIIN_in_OContext(OContext *pOContext)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"GetResponseIIN_in_OContext1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LSBMask_BROADCAST = 0x01"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LSBMask_CLASS1_EVENTS = 0x02"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LSBMask_CLASS2_EVENTS = 0x04"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LSBMask_CLASS3_EVENTS = 0x08"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LSBMask_NEED_TIME = 0x10"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LSBMask_LOCAL_CONTROL = 0x20"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LSBMask_DEVICE_TROUBLE = 0x40"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LSBMask_DEVICE_RESTART = 0x80"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<""<<std::endl;
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*MSBMask_FUNC_NOT_SUPPORTED = 0x01"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*MSBMask_OBJECT_UNKNOWN = 0x02"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*MSBMask_PARAM_ERROR = 0x04"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*MSBMask_EVENT_BUFFER_OVERFLOW = 0x08"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*MSBMask_ALREADY_EXECUTING = 0x10"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*MSBMask_CONFIG_CORRUPT = 0x20"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*MSBMask_RESERVED1 = 0x40"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*MSBMask_RESERVED2 = 0x80"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<""<<std::endl;
 #endif
 //    ApplicationIIN GetApplicationIIN_in_IOutstationApplication(IOutstationApplication*);
 //    IINField GetDynamicIIN_in_OContext(OContext *pOContext);
 // IINField ToIIN_in_ApplicationIIN(ApplicationIIN *pApplicationIIN);
 ////    return this->staticIIN | this->GetDynamicIIN() | this->application->GetApplicationIIN().ToIIN();
   IINField temp1 = GetDynamicIIN_in_OContext(pOContext);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"IINField temp1 = GetDynamicIIN_in_OContext(pOContext)"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t LSB="<<std::hex<<(uint16_t)temp1.LSB<<std::dec<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t MSB="<<std::hex<<(uint16_t)temp1.MSB<<std::dec<<std::endl;
+#endif
 
   IINField temp2 = operatorOR_in_IINField(&(pOContext->staticIIN), &temp1);
 
   ApplicationIIN temp = GetApplicationIIN_in_IOutstationApplication(pOContext->application);
   IINField temp3 = ToIIN_in_ApplicationIIN(&temp);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"IINField temp3 = ToIIN_in_ApplicationIIN(&temp)"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t LSB="<<std::hex<<(uint16_t)temp3.LSB<<std::dec<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t MSB="<<std::hex<<(uint16_t)temp3.MSB<<std::dec<<std::endl;
+#endif
+
   IINField temp4 = operatorOR_in_IINField(&temp2, &temp3);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"IINField temp4 = operatorOR_in_IINField(&temp2, &temp3)"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t LSB="<<std::hex<<(uint16_t)temp4.LSB<<std::dec<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t MSB="<<std::hex<<(uint16_t)temp4.MSB<<std::dec<<std::endl;
+#endif
 
 #ifdef  LOG_INFO
   decrement_stack_info();
@@ -1229,7 +1307,7 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"CheckForBroadcastConfirmation_in_OContext1"<<std::endl;
 #endif
 //boolean is_set_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
@@ -1278,7 +1356,7 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"ProcessMessage_in_OContext1"<<std::endl;
 #endif
   // is the message addressed to this outstation
@@ -1368,9 +1446,18 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
 
 void HandleNewEvents_in_OContext(OContext *pOContext)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<"+"<<getString_stack_info();
+  std::cout<<"HandleNewEvents_in_OContext1"<<std::endl;
+#endif
   pOContext->shouldCheckForUnsolicited = true;
 ////    this->CheckForTaskStart();
   CheckForTaskStart_in_OContext(pOContext);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 void SetRestartIIN_in_OContext(OContext *pOContext)
@@ -1378,7 +1465,7 @@ void SetRestartIIN_in_OContext(OContext *pOContext)
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"SetRestartIIN_in_OContext1"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*IINBit_DEVICE_RESTART"<<std::endl;
@@ -1402,7 +1489,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"ProcessBroadcastRequest_in_OContext1"<<std::endl;
 #endif
 
@@ -1410,7 +1497,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   {
   case (FunctionCode_WRITE):
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_WRITE"<<std::endl;
     decrement_stack_info();
 #endif
@@ -1420,7 +1507,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     return true;
   case (FunctionCode_DIRECT_OPERATE_NR):
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_DIRECT_OPERATE_NR"<<std::endl;
     decrement_stack_info();
 #endif
@@ -1430,7 +1517,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     return true;
   case (FunctionCode_IMMED_FREEZE_NR):
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_IMMED_FREEZE_NR"<<std::endl;
 #endif
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
@@ -1442,7 +1529,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     return true;
   case (FunctionCode_FREEZE_CLEAR_NR):
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_FREEZE_CLEAR_NR"<<std::endl;
 #endif
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
@@ -1455,7 +1542,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   case (FunctionCode_ASSIGN_CLASS):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_ASSIGN_CLASS"<<std::endl;
 #endif
 //     boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
@@ -1481,7 +1568,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   case (FunctionCode_RECORD_CURRENT_TIME):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_RECORD_CURRENT_TIME"<<std::endl;
 #endif
 //    boolean is_not_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
@@ -1507,7 +1594,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   case (FunctionCode_DISABLE_UNSOLICITED):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_DISABLE_UNSOLICITED"<<std::endl;
 #endif
 ////        if (this->params.allowUnsolicited)
@@ -1532,7 +1619,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
   case (FunctionCode_ENABLE_UNSOLICITED):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_ENABLE_UNSOLICITED"<<std::endl;
 #endif
     if (pOContext->params.allowUnsolicited)
@@ -1571,7 +1658,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"ProcessRequestNoAck_in_OContext1"<<std::endl;
 #endif
 
@@ -1579,7 +1666,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
   {
   case (FunctionCode_DIRECT_OPERATE_NR):
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_DIRECT_OPERATE_NR"<<std::endl;
 #endif
 //   IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, OperateType_uint8_t opType, HeaderWriter* pWriter)
@@ -1592,7 +1679,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
     return true;
   case (FunctionCode_IMMED_FREEZE_NR):
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_IMMED_FREEZE_NR"<<std::endl;
 #endif
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
@@ -1604,7 +1691,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
     return true;
   case (FunctionCode_FREEZE_CLEAR_NR):
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_FREEZE_CLEAR_NR"<<std::endl;
 #endif
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects)
@@ -1635,7 +1722,7 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleNonReadResponse_in_OContext1"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*header->function= "<<(uint16_t)header->function<<std::endl;
+  std::cout<<"*FunctionCode_uint18_t function= "<<(uint16_t)header->function<<std::endl;
 #endif
   switch (header->function)
   {
@@ -1792,7 +1879,7 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   case (FunctionCode_ENABLE_UNSOLICITED):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_ENABLE_UNSOLICITED"<<std::endl;
 
     std::cout<<"*"<<getString_stack_info();
@@ -1813,7 +1900,7 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   case (FunctionCode_IMMED_FREEZE):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_IMMED_FREEZE"<<std::endl;
 #endif
 //   IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
@@ -1827,7 +1914,7 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
   case (FunctionCode_FREEZE_CLEAR):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_FREEZE_CLEAR"<<std::endl;
 #endif
 //   IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects);
@@ -1859,7 +1946,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleRead_in_OContext1"<<std::endl;
   inspect_RSeq(objects);
 #endif
@@ -1875,7 +1962,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 //     void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
 ////    this->eventBuffer.Unselect(); // always un-select any previously selected points when we start a new read request
-                                     // всегда отменяем выбор ранее выбранных точек, когда начинаем новый запрос на чтение
+  // всегда отменяем выбор ранее выбранных точек, когда начинаем новый запрос на чтение
   Unselect_in_EventBuffer(&(pOContext->eventBuffer));
 
 #ifdef  LOG_INFO
@@ -1971,7 +2058,7 @@ IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleWrite_in_OContext1"<<std::endl;
 #endif
 //Timestamp Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
@@ -2027,10 +2114,10 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleDirectOperate_in_OContext1"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*opType= "<<(uint16_t)opType<<std::endl;
+  std::cout<<"*OperateType_uint8_t opType= "<<(uint16_t)opType<<std::endl;
   inspect_RSeq(objects);
 #endif
   // since we're echoing, make sure there's enough size before beginning
@@ -2046,6 +2133,8 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
 
 #ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Igonring command request due to oversized payload size of %zu'"<<std::endl;
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
     decrement_stack_info();
@@ -2110,7 +2199,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleSelect_in_OContext1"<<std::endl;
   inspect_RSeq(objects);
 #endif
@@ -2122,7 +2211,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Igonring command request due to oversized payload size of %zu",
 ////                         objects.length());
 #ifdef  LOG_INFO
-    std::cout<<"+"<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Igonring command request due to oversized payload size of %zu'"<<std::endl;
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
@@ -2165,16 +2254,16 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
   if (result == ParseResult_OK)
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"HandleSelect_in_OContext4"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"HandleSelect_in_OContext4"<<std::endl;
 #endif
 //    boolean AllCommandsSuccessful_in_CommandResponseHandler(CommandResponseHandle *pCommandResponseHandle);
 ////        if (handler.AllCommandsSuccessful())
     if (AllCommandsSuccessful_in_CommandResponseHandler(&handler))
     {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"HandleSelect_in_OContext5"<<std::endl;
+      std::cout<<getString_stack_info();
+      std::cout<<"HandleSelect_in_OContext5"<<std::endl;
 #endif
 //void Select_in_ControlState(ControlState *pControlState,  AppSeqNum* currentSeqN, Timestamp* now, RSeq_for_Uint16_t* objects);
 //Timestamp Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
@@ -2188,8 +2277,8 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
     }
 
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"HandleSelect_in_OContext6"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"HandleSelect_in_OContext6"<<std::endl;
 #endif
 #ifdef  LOG_INFO
     decrement_stack_info();
@@ -2214,7 +2303,7 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleOperate_in_OContext1"<<std::endl;
 #endif
 // since we're echoing, make sure there's enough size before beginning
@@ -2225,7 +2314,7 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 ////        FORMAT_LOG_BLOCK(this->logger, flags::WARN, "Igonring command request due to oversized payload size of %zu",
 ////                         objects.length());
 #ifdef  LOG_INFO
-    std::cout<<"+"<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Igonring command request due to oversized payload size of %zu'"<<std::endl;
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
@@ -2265,13 +2354,15 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*CommandStatus_uint8_t result ="<<(uint16_t)result<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*CommandStatus_SUCCESS ="<<(uint16_t)CommandStatus_SUCCESS<<std::endl;
 #endif
 
   if (result == CommandStatus_SUCCESS)
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"HandleOperate_in_OContext4"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"HandleOperate_in_OContext4"<<std::endl;
 #endif
 ////        CommandActionAdapter adapter(*this->commandHandler, false, this->database, OperateType::SelectBeforeOperate);
     CommandActionAdapter adapter;
@@ -2291,8 +2382,8 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 
     CommandActionAdapter_destr_CommandActionAdapter(&adapter);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"HandleOperate_in_OContext5"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"HandleOperate_in_OContext5"<<std::endl;
 #endif
 #ifdef  LOG_INFO
     decrement_stack_info();
@@ -2310,8 +2401,8 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
   else
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"HandleOperate_in_OContext6"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"HandleOperate_in_OContext6"<<std::endl;
 #endif
 //void Unselect_in_ControlState(ControlState *pControlState);
 ////        this->control.Unselect();
@@ -2379,7 +2470,7 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleRestart_in_OContext1"<<std::endl;
 #endif
 //    boolean is_not_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
@@ -2404,10 +2495,19 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
                              WarmRestartSupport_in_IOutstationApplication(pOContext->application) :
                              ColdRestartSupport_in_IOutstationApplication(pOContext->application);
 
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*RestartMode_uint8_t mode ="<<(uint16_t)mode<<std::endl;
+  decrement_stack_info();
+#endif
   switch (mode)
   {
   case (RestartMode_UNSUPPORTED):
   {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*RestartMode_UNSUPPORTED"<<std::endl;
+#endif
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
@@ -2421,7 +2521,7 @@ IINField HandleRestart_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
   case (RestartMode_SUPPORTED_DELAY_COARSE):
   {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*RestartMode_SUPPORTED_DELAY_COARSE"<<std::endl;
 #endif
 //    uint16_t WarmRestart_in_IOutstationApplication(IOutstationApplication*);
@@ -2480,7 +2580,7 @@ IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* o
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleAssignClass_in_OContext1"<<std::endl;
 #endif
 //     boolean SupportsAssignClass_in_IOutstationApplication(IOutstationApplication*);
@@ -2534,7 +2634,7 @@ IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleDisableUnsolicited_in_OContext1"<<std::endl;
 #endif
   UNUSED(writer);
@@ -2577,7 +2677,7 @@ IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint1
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleEnableUnsolicited_in_OContext1"<<std::endl;
 #endif
   UNUSED(writer);
@@ -2619,7 +2719,7 @@ IINField HandleCommandWithConstant_in_OContext(OContext *pOContext, RSeq_for_Uin
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleCommandWithConstant_in_OContext1"<<std::endl;
 #endif
 //void ConstantCommandAction_in_ConstantCommandAction(ConstantCommandAction *pConstantCommandAction, CommandStatus status_);
@@ -2665,7 +2765,7 @@ IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
+  std::cout<<"+"<<getString_stack_info();
   std::cout<<"HandleFreezeAndClear_in_OContext1"<<std::endl;
 #endif
 ////    FreezeRequestHandler handler(true, database);

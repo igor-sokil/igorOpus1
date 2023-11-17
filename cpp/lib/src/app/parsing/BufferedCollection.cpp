@@ -1232,3 +1232,228 @@ void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(void 
   Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus(parent, visitor);
 }
 //-----------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------
+//-----------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+void  BufferedCollection_Indexed_for_AnalogOutputInt32_in_BufferedCollection_Indexed_for_AnalogOutputInt32(
+  BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputInt32 readFunc)
+{
+  pBufferedCollection_Indexed_for_AnalogOutputInt32->buffer = *buffer;
+  pBufferedCollection_Indexed_for_AnalogOutputInt32->COUNT = count;
+  pBufferedCollection_Indexed_for_AnalogOutputInt32->readFunc = readFunc;
+
+  pBufferedCollection_Indexed_for_AnalogOutputInt32->iICollection_Indexed_for_AnalogOutputInt32.pCount_in_ICollection_Indexed_for_AnalogOutputInt32 =
+    Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override;
+  pBufferedCollection_Indexed_for_AnalogOutputInt32->iICollection_Indexed_for_AnalogOutputInt32.pForeach_in_ICollection_Indexed_for_AnalogOutputInt32 =
+    Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override;
+
+  setParentPointer_in_ICollection_Indexed_for_AnalogOutputInt32(&(pBufferedCollection_Indexed_for_AnalogOutputInt32->iICollection_Indexed_for_AnalogOutputInt32), pBufferedCollection_Indexed_for_AnalogOutputInt32);
+}
+
+////template<class T, class ReadFunc>
+////BufferedCollection<T, ReadFunc> CreateBufferedCollection(const ser4cpp::rseq_t& buffer,
+////                                                         size_t count,
+////                                                         const ReadFunc& readFunc)
+BufferedCollection_Indexed_for_AnalogOutputInt32 CreateBufferedCollection_Indexed_for_AnalogOutputInt32_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputInt32 readFunc)
+{
+////    return BufferedCollection<T, ReadFunc>(buffer, count, readFunc);
+  BufferedCollection_Indexed_for_AnalogOutputInt32 bBufferedCollection_Indexed_for_AnalogOutputInt32;
+  BufferedCollection_Indexed_for_AnalogOutputInt32_in_BufferedCollection_Indexed_for_AnalogOutputInt32(&bBufferedCollection_Indexed_for_AnalogOutputInt32,
+      buffer,
+      count, readFunc);
+  return bBufferedCollection_Indexed_for_AnalogOutputInt32;
+}
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32)
+{
+  return pBufferedCollection_Indexed_for_AnalogOutputInt32->COUNT;
+}
+
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32,
+    IVisitor__for__Indexed_for_AnalogOutputInt32* visitor)
+{
+////        ser4cpp::rseq_t copy(buffer);
+  RSeq_for_Uint16_t copy;
+  copy = pBufferedCollection_Indexed_for_AnalogOutputInt32->buffer;
+
+  for (uint32_t pos = 0; pos < pBufferedCollection_Indexed_for_AnalogOutputInt32->COUNT; ++pos)
+  {
+//void OnValue_in_IVisitor__for__Indexed_for_AnalogOutputInt32(IVisitor__for__Indexed_for_AnalogOutputInt32 *, Indexed_for_AnalogOutputInt32* );
+////            visitor.OnValue(readFunc(copy, pos));
+    Indexed_for_AnalogOutputInt32 temp = pBufferedCollection_Indexed_for_AnalogOutputInt32->readFunc(&copy, pos);
+    OnValue_in_IVisitor__for__Indexed_for_AnalogOutputInt32(visitor, &temp );
+  }
+}
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override(void *pICollection_Indexed_for_AnalogOutputInt32)
+{
+  BufferedCollection_Indexed_for_AnalogOutputInt32* parent =
+    (BufferedCollection_Indexed_for_AnalogOutputInt32*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputInt32(
+      (ICollection_Indexed_for_AnalogOutputInt32*)pICollection_Indexed_for_AnalogOutputInt32);
+  return Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32(parent);
+}
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override(void *pICollection_Indexed_for_AnalogOutputInt32,
+    IVisitor__for__Indexed_for_AnalogOutputInt32* visitor)
+{
+  BufferedCollection_Indexed_for_AnalogOutputInt32* parent =
+    (BufferedCollection_Indexed_for_AnalogOutputInt32*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputInt32(
+      (ICollection_Indexed_for_AnalogOutputInt32*)pICollection_Indexed_for_AnalogOutputInt32);
+  Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32(parent, visitor);
+}
+//-----------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------
+//-----------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+void  BufferedCollection_Indexed_for_AnalogOutputInt16_in_BufferedCollection_Indexed_for_AnalogOutputInt16(
+  BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputInt16 readFunc)
+{
+  pBufferedCollection_Indexed_for_AnalogOutputInt16->buffer = *buffer;
+  pBufferedCollection_Indexed_for_AnalogOutputInt16->COUNT = count;
+  pBufferedCollection_Indexed_for_AnalogOutputInt16->readFunc = readFunc;
+
+  pBufferedCollection_Indexed_for_AnalogOutputInt16->iICollection_Indexed_for_AnalogOutputInt16.pCount_in_ICollection_Indexed_for_AnalogOutputInt16 =
+    Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override;
+  pBufferedCollection_Indexed_for_AnalogOutputInt16->iICollection_Indexed_for_AnalogOutputInt16.pForeach_in_ICollection_Indexed_for_AnalogOutputInt16 =
+    Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override;
+
+  setParentPointer_in_ICollection_Indexed_for_AnalogOutputInt16(&(pBufferedCollection_Indexed_for_AnalogOutputInt16->iICollection_Indexed_for_AnalogOutputInt16), pBufferedCollection_Indexed_for_AnalogOutputInt16);
+}
+
+////template<class T, class ReadFunc>
+////BufferedCollection<T, ReadFunc> CreateBufferedCollection(const ser4cpp::rseq_t& buffer,
+////                                                         size_t count,
+////                                                         const ReadFunc& readFunc)
+BufferedCollection_Indexed_for_AnalogOutputInt16 CreateBufferedCollection_Indexed_for_AnalogOutputInt16_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputInt16 readFunc)
+{
+////    return BufferedCollection<T, ReadFunc>(buffer, count, readFunc);
+  BufferedCollection_Indexed_for_AnalogOutputInt16 bBufferedCollection_Indexed_for_AnalogOutputInt16;
+  BufferedCollection_Indexed_for_AnalogOutputInt16_in_BufferedCollection_Indexed_for_AnalogOutputInt16(&bBufferedCollection_Indexed_for_AnalogOutputInt16,
+      buffer,
+      count, readFunc);
+  return bBufferedCollection_Indexed_for_AnalogOutputInt16;
+}
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16)
+{
+  return pBufferedCollection_Indexed_for_AnalogOutputInt16->COUNT;
+}
+
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16,
+    IVisitor__for__Indexed_for_AnalogOutputInt16* visitor)
+{
+////        ser4cpp::rseq_t copy(buffer);
+  RSeq_for_Uint16_t copy;
+  copy = pBufferedCollection_Indexed_for_AnalogOutputInt16->buffer;
+
+  for (uint32_t pos = 0; pos < pBufferedCollection_Indexed_for_AnalogOutputInt16->COUNT; ++pos)
+  {
+//void OnValue_in_IVisitor__for__Indexed_for_AnalogOutputInt16(IVisitor__for__Indexed_for_AnalogOutputInt16 *, Indexed_for_AnalogOutputInt16* );
+////            visitor.OnValue(readFunc(copy, pos));
+    Indexed_for_AnalogOutputInt16 temp = pBufferedCollection_Indexed_for_AnalogOutputInt16->readFunc(&copy, pos);
+    OnValue_in_IVisitor__for__Indexed_for_AnalogOutputInt16(visitor, &temp );
+  }
+}
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override(void *pICollection_Indexed_for_AnalogOutputInt16)
+{
+  BufferedCollection_Indexed_for_AnalogOutputInt16* parent =
+    (BufferedCollection_Indexed_for_AnalogOutputInt16*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputInt16(
+      (ICollection_Indexed_for_AnalogOutputInt16*)pICollection_Indexed_for_AnalogOutputInt16);
+  return Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16(parent);
+}
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override(void *pICollection_Indexed_for_AnalogOutputInt16,
+    IVisitor__for__Indexed_for_AnalogOutputInt16* visitor)
+{
+  BufferedCollection_Indexed_for_AnalogOutputInt16* parent =
+    (BufferedCollection_Indexed_for_AnalogOutputInt16*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputInt16(
+      (ICollection_Indexed_for_AnalogOutputInt16*)pICollection_Indexed_for_AnalogOutputInt16);
+  Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16(parent, visitor);
+}
+//-----------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------
+//-----------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+void  BufferedCollection_Indexed_for_AnalogOutputFloat32_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(
+  BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputFloat32 readFunc)
+{
+  pBufferedCollection_Indexed_for_AnalogOutputFloat32->buffer = *buffer;
+  pBufferedCollection_Indexed_for_AnalogOutputFloat32->COUNT = count;
+  pBufferedCollection_Indexed_for_AnalogOutputFloat32->readFunc = readFunc;
+
+  pBufferedCollection_Indexed_for_AnalogOutputFloat32->iICollection_Indexed_for_AnalogOutputFloat32.pCount_in_ICollection_Indexed_for_AnalogOutputFloat32 =
+    Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override;
+  pBufferedCollection_Indexed_for_AnalogOutputFloat32->iICollection_Indexed_for_AnalogOutputFloat32.pForeach_in_ICollection_Indexed_for_AnalogOutputFloat32 =
+    Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override;
+
+  setParentPointer_in_ICollection_Indexed_for_AnalogOutputFloat32(&(pBufferedCollection_Indexed_for_AnalogOutputFloat32->iICollection_Indexed_for_AnalogOutputFloat32), pBufferedCollection_Indexed_for_AnalogOutputFloat32);
+}
+
+////template<class T, class ReadFunc>
+////BufferedCollection<T, ReadFunc> CreateBufferedCollection(const ser4cpp::rseq_t& buffer,
+////                                                         size_t count,
+////                                                         const ReadFunc& readFunc)
+BufferedCollection_Indexed_for_AnalogOutputFloat32 CreateBufferedCollection_Indexed_for_AnalogOutputFloat32_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputFloat32 readFunc)
+{
+////    return BufferedCollection<T, ReadFunc>(buffer, count, readFunc);
+  BufferedCollection_Indexed_for_AnalogOutputFloat32 bBufferedCollection_Indexed_for_AnalogOutputFloat32;
+  BufferedCollection_Indexed_for_AnalogOutputFloat32_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(&bBufferedCollection_Indexed_for_AnalogOutputFloat32,
+      buffer,
+      count, readFunc);
+  return bBufferedCollection_Indexed_for_AnalogOutputFloat32;
+}
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32)
+{
+  return pBufferedCollection_Indexed_for_AnalogOutputFloat32->COUNT;
+}
+
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32,
+    IVisitor__for__Indexed_for_AnalogOutputFloat32* visitor)
+{
+////        ser4cpp::rseq_t copy(buffer);
+  RSeq_for_Uint16_t copy;
+  copy = pBufferedCollection_Indexed_for_AnalogOutputFloat32->buffer;
+
+  for (uint32_t pos = 0; pos < pBufferedCollection_Indexed_for_AnalogOutputFloat32->COUNT; ++pos)
+  {
+//void OnValue_in_IVisitor__for__Indexed_for_AnalogOutputFloat32(IVisitor__for__Indexed_for_AnalogOutputFloat32 *, Indexed_for_AnalogOutputFloat32* );
+////            visitor.OnValue(readFunc(copy, pos));
+    Indexed_for_AnalogOutputFloat32 temp = pBufferedCollection_Indexed_for_AnalogOutputFloat32->readFunc(&copy, pos);
+    OnValue_in_IVisitor__for__Indexed_for_AnalogOutputFloat32(visitor, &temp );
+  }
+}
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override(void *pICollection_Indexed_for_AnalogOutputFloat32)
+{
+  BufferedCollection_Indexed_for_AnalogOutputFloat32* parent =
+    (BufferedCollection_Indexed_for_AnalogOutputFloat32*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputFloat32(
+      (ICollection_Indexed_for_AnalogOutputFloat32*)pICollection_Indexed_for_AnalogOutputFloat32);
+  return Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(parent);
+}
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override(void *pICollection_Indexed_for_AnalogOutputFloat32,
+    IVisitor__for__Indexed_for_AnalogOutputFloat32* visitor)
+{
+  BufferedCollection_Indexed_for_AnalogOutputFloat32* parent =
+    (BufferedCollection_Indexed_for_AnalogOutputFloat32*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputFloat32(
+      (ICollection_Indexed_for_AnalogOutputFloat32*)pICollection_Indexed_for_AnalogOutputFloat32);
+  Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(parent, visitor);
+}
+//-----------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------

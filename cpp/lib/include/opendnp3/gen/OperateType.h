@@ -39,16 +39,20 @@
 
 /**
   Various ways that an outstation can receive a request to operate a BO or AO point
+Различные способы получения удаленной станцией запроса на работу точки BO или AO.
 */
 //enum class OperateType : uint8_t
 #define OperateType_uint8_t uint8_t
 enum OperateType 
 {
   /// The outstation received a valid prior SELECT followed by OPERATE
+/// Аутентичная станция получила действительный предыдущий запрос SELECT, за которым последовал OPERATE.
   OperateType_SelectBeforeOperate = 0x0,
   /// The outstation received a direct operate request
+/// Удаленная станция получила запрос на прямое управление
   OperateType_DirectOperate = 0x1,
   /// The outstation received a direct operate no ack request
+/// Удаленная станция получила прямой запрос на работу без подтверждения
   OperateType_DirectOperateNoAck = 0x2
 };
 

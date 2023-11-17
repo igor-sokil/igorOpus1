@@ -155,6 +155,10 @@ void* OnConfirm_in_StateIdle_override(void* pOutstationState, void *pOContext, P
   UNUSED(request);
 ////    FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, "unexpected confirm while IDLE with sequence: %u",
 ////                     request.header.control.SEQ);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, 'unexpected confirm while IDLE with sequence: %u'"<<std::endl;
+#endif
   return Inst_in_StateIdle_static();////StateIdle::Inst();
 }
 
@@ -164,6 +168,10 @@ void* OnConfirmTimeout_in_StateIdle_override(void* pOutstationState, void *pOCon
   UNUSED(pOutstationState);
   UNUSED(pOContext);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "unexpected confirm timeout");
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'unexpected confirm timeout')"<<std::endl;
+#endif
   return Inst_in_StateIdle_static();////StateIdle::Inst();
 }
 
@@ -178,8 +186,12 @@ void* OnNewReadRequest_in_StateIdle_override(void* pOutstationState, void *pOCon
   decrement_stack_info();
 #endif
   UNUSED(pOutstationState);
-  return RespondToReadRequest_in_OContext((OContext *)pOContext, request);
+  void* tmp = RespondToReadRequest_in_OContext((OContext *)pOContext, request);
 ////    return ctx.RespondToReadRequest(request);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////OutstationState& StateIdle::OnNewNonReadRequest(OContext& ctx, const ParsedRequest& request)
@@ -193,8 +205,12 @@ void* OnNewNonReadRequest_in_StateIdle_override(void* pOutstationState, void *pO
   decrement_stack_info();
 #endif
   UNUSED(pOutstationState);
-  return RespondToNonReadRequest_in_OContext((OContext *)pOContext, request);
+  void* tmp = RespondToNonReadRequest_in_OContext((OContext *)pOContext, request);
 ////    return ctx.RespondToNonReadRequest(request);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////OutstationState& StateIdle::OnRepeatNonReadRequest(OContext& ctx, const ParsedRequest& request)
@@ -335,7 +351,6 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////    if (ctx.rspContext.HasSelection())
   if (HasSelection_in_ResponseContext(&(((OContext*)ctx)->rspContext)))
   {
-  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override6"<<std::endl;
 #ifdef  LOG_INFO
   decrement_stack_info();
 #endif
@@ -349,7 +364,6 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
     return ContinueMultiFragResponse_in_OContext((OContext*)ctx, &(request->addresses), &sSequenceNum_for_uint8_Modulus16);
   }
 
-  std::cout<<"OnConfirm_in_StateSolicitedConfirmWait_override7"<<std::endl;
 #ifdef  LOG_INFO
   decrement_stack_info();
 #endif

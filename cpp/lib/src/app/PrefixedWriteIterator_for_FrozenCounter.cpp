@@ -20,8 +20,8 @@ void PrefixedWriteIterator_for_UInt8_FrozenCounter_in_PrefixedWriteIterator_for_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_FrozenCounter_in_PrefixedWriteIterator_for_UInt8_FrozenCounterOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -37,8 +37,8 @@ void PrefixedWriteIterator_for_UInt8_FrozenCounter_in_PrefixedWriteIterator_for_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_FrozenCounter_in_PrefixedWriteIterator_for_UInt8_FrozenCounterOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,8 +63,8 @@ void PrefixedWriteIterator_for_UInt8_FrozenCounter_destr_PrefixedWriteIterator_f
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_FrozenCounter_destr_PrefixedWriteIterator_for_UInt8_FrozenCounter1"<<'\n';
   decrement_stack_info();
 #endif
@@ -115,8 +115,8 @@ void PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for_UInt16_FrozenCounterOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -132,8 +132,8 @@ void PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_FrozenCounter_in_PrefixedWriteIterator_for_UInt16_FrozenCounterOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -158,8 +158,8 @@ void PrefixedWriteIterator_for_UInt16_FrozenCounter_destr_PrefixedWriteIterator_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_FrozenCounter_destr_PrefixedWriteIterator_for_UInt16_FrozenCounter1"<<'\n';
   decrement_stack_info();
 #endif

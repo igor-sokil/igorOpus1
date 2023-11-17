@@ -64,6 +64,8 @@ IINField ProcessHeader_AllObjectsHeader_in_ReadHandler_override(void *pIAPDUHand
   std::cout<<std::endl;
   std::cout<<getString_stack_info();
   std::cout<<"ProcessHeader_AllObjectsHeader_in_ReadHandler_override1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(header->hHeaderRecord).gGroupVariationRecord.type= "<<(uint16_t)(header->hHeaderRecord).gGroupVariationRecord.type<<std::endl;
 #endif
 
   ReadHandler *parent =
@@ -72,23 +74,35 @@ IINField ProcessHeader_AllObjectsHeader_in_ReadHandler_override(void *pIAPDUHand
   switch((header->hHeaderRecord).gGroupVariationRecord.type)
   {
   case (GroupVariationType_STATIC):
+{
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariationType_STATIC"<<std::endl;
-    decrement_stack_info();
 #endif
 //IINField SelectAll_in_IStaticSelector(IStaticSelector *, GroupVariation_uint16_t gv);
 ////        return pStaticSelector->SelectAll(header.enumeration);
-    return SelectAll_in_IStaticSelector(parent->pStaticSelector, (header->hHeaderRecord).gGroupVariationRecord.enumeration);
-  case (GroupVariationType_EVENT):
+    IINField tmp = SelectAll_in_IStaticSelector(parent->pStaticSelector, (header->hHeaderRecord).gGroupVariationRecord.enumeration);
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariationType_EVENT"<<std::endl;
     decrement_stack_info();
+#endif
+    return tmp;
+}
+
+  case (GroupVariationType_EVENT):
+{
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariationType_EVENT"<<std::endl;
 #endif
 //IINField SelectAll_in_IEventSelector(IEventSelector *, GroupVariation_uint16_t gv);
     ////    return pEventSelector->SelectAll(header.enumeration);
-    return SelectAll_in_IEventSelector(parent->pEventSelector, (header->hHeaderRecord).gGroupVariationRecord.enumeration);
+    IINField tmp = SelectAll_in_IEventSelector(parent->pEventSelector, (header->hHeaderRecord).gGroupVariationRecord.enumeration);
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
+    return tmp;
+}
+
   default:
   {
 #ifdef  LOG_INFO
@@ -122,11 +136,22 @@ IINField ProcessHeader_RangeHeader_in_ReadHandler_override(void* pIAPDUHandler, 
 
 IINField ProcessHeader_CountHeader_in_ReadHandler_override(void* pIAPDUHandler, CountHeader* header)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"ProcessHeader_CountHeader_in_ReadHandler_override1"<<std::endl;
+#endif
+
   ReadHandler *parent =
     (ReadHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 //IINField SelectCount_in_IEventSelector(IEventSelector *, GroupVariation_uint16_t gv, uint16_t count);
 ////    return pEventSelector->SelectCount(header.enumeration, header.count);
-  return SelectCount_in_IEventSelector(parent->pEventSelector, (header->hHeaderRecord).gGroupVariationRecord.enumeration, header->count);
+  IINField tmp = SelectCount_in_IEventSelector(parent->pEventSelector, (header->hHeaderRecord).gGroupVariationRecord.enumeration, header->count);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 IINField ProcessHeader_PrefixHeader_for_uint16_in_ReadHandler_override(void* pIAPDUHandler, PrefixHeader* header, ICollection_for_uint16* indices)

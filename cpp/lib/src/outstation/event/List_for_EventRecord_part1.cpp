@@ -1,10 +1,20 @@
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "List_for_EventRecord.h"
 #include <string.h>
 
 void List_for_EventRecord_in_List_for_EventRecordOver1(List_for_EventRecord *pList_for_EventRecord)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"List_for_EventRecord_in_List_for_EventRecordOver1_1"<<'\n';
+  decrement_stack_info();
+#endif
   Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver1(&(pList_for_EventRecord->underlying));
   (pList_for_EventRecord->iIterator_in_List_for_EventRecord).current = NULL;
 
@@ -13,8 +23,37 @@ void List_for_EventRecord_in_List_for_EventRecordOver1(List_for_EventRecord *pLi
   pList_for_EventRecord->free = NULL;
 }
 
+void List_for_EventRecord_in_List_for_EventRecordOver2(List_for_EventRecord *pList_for_EventRecord, uint32_t maxSize)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"List_for_EventRecord_in_List_for_EventRecordOver2_1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t maxSize= "<<maxSize<<'\n';
+  decrement_stack_info();
+#endif
+  List_for_EventRecord_in_List_for_EventRecordOver1(pList_for_EventRecord);
+// ser4cpp::HasLength<list_size_type_t>(0), underlying(maxSize)
+//    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
+  HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_for_EventRecord->hHasLength_for_Uint32_t), 0);
+//void Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(Array__for__Node_for_EventRecord *pArray__for__Node_for_EventRecord, uint32_t size);
+  Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(&(pList_for_EventRecord->underlying), maxSize);
+  Initialize_in_List_for_EventRecord(pList_for_EventRecord);
+}
+
 Iterator_in_List_for_EventRecord From__in__Iterator_in_List_for_EventRecord_static(Node_for_EventRecord* start)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"From__in__Iterator_in_List_for_EventRecord_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*Node_for_EventRecord* start= "<<(uint32_t)start<<'\n';
+  decrement_stack_info();
+#endif
 ////            return Iterator(start);
   Iterator_in_List_for_EventRecord iIterator_in_List_for_EventRecord;
   Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord(&iIterator_in_List_for_EventRecord, start);
@@ -48,16 +87,37 @@ EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List
 }
 
 ////        Iterator(Node<T>* start) : current(start) {}
-void   Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord,
+void Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord,
     Node_for_EventRecord* start)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*Node_for_EventRecord* start= "<<(uint32_t)start<<'\n';
+  decrement_stack_info();
+#endif
   pIterator_in_List_for_EventRecord->current = start;
 }
 
 Iterator_in_List_for_EventRecord Iterate_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Iterate_in_List_for_EventRecord1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pList_for_EventRecord->head= "<<(uint32_t)pList_for_EventRecord->head<<'\n';
+#endif
 //        return Iterator::From(pList_for_EventRecord->head);
-  return From__in__Iterator_in_List_for_EventRecord_static(pList_for_EventRecord->head);
+  Iterator_in_List_for_EventRecord tmp = From__in__Iterator_in_List_for_EventRecord_static(pList_for_EventRecord->head);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node)
@@ -99,17 +159,6 @@ void Link_in_List_for_EventRecord_static(Node_for_EventRecord* first, Node_for_E
     first->next = (void *)second;
   if (second)
     second->prev = (void *)first;
-}
-
-void List_for_EventRecord_in_List_for_EventRecordOver2(List_for_EventRecord *pList_for_EventRecord, uint32_t maxSize)
-{
-  List_for_EventRecord_in_List_for_EventRecordOver1(pList_for_EventRecord);
-// ser4cpp::HasLength<list_size_type_t>(0), underlying(maxSize)
-//    void HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(HasLength_for_Uint32_t *pHasLength, uint32_t length);
-  HasLength_for_Uint32_t_in_HasLength_for_Uint32_tOver2(&(pList_for_EventRecord->hHasLength_for_Uint32_t), 0);
-//void Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(Array__for__Node_for_EventRecord *pArray__for__Node_for_EventRecord, uint32_t size);
-  Array__for__Node_for_EventRecord_in_Array__for__Node_for_EventRecordOver2(&(pList_for_EventRecord->underlying), maxSize);
-  Initialize_in_List_for_EventRecord(pList_for_EventRecord);
 }
 
 void Initialize_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord)

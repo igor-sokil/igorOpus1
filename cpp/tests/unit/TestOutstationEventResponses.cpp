@@ -301,14 +301,14 @@ TEST_CASE(SUITE("14ReadGrp22Var0"))
     TestEventRead("C0 01 16 00 06", "E0 81 80 00 16 01 28 01 00 00 00 01 00 00 00 00", update);
 }
 
-TEST_CASE(SUITE("ReadGrp32Var0"))
+TEST_CASE(SUITE("15ReadGrp32Var0"))
 {
     auto update = [](IUpdateHandler& db) { db.Update(Analog(0.0, Flags(0x01)), 0); };
 
     TestEventRead("C0 01 20 00 06", "E0 81 80 00 20 01 28 01 00 00 00 01 00 00 00 00", update);
 }
 
-TEST_CASE(SUITE("15ReadGrp32Var7"))
+TEST_CASE(SUITE("16ReadGrp32Var7"))
 {
     auto update = [](IUpdateHandler& db) { db.Update(Analog(0.0, Flags(0x01), DNPTime(0x010203040506)), 0); };
 
@@ -323,7 +323,7 @@ TEST_CASE(SUITE("15ReadGrp32Var7"))
                   [](DatabaseConfig& db) { db.analog_input[0].evariation = EventAnalogVariation::Group32Var7; });
 }
 
-TEST_CASE(SUITE("16ReadGrp32Var5"))
+TEST_CASE(SUITE("17ReadGrp32Var5"))
 {
     auto update = [](IUpdateHandler& db) { db.Update(Analog(0.0, Flags(0x01), DNPTime(0x010203040506)), 0); };
 
@@ -338,14 +338,14 @@ TEST_CASE(SUITE("16ReadGrp32Var5"))
                   [](DatabaseConfig& db) { db.analog_input[0].evariation = EventAnalogVariation::Group32Var5; });
 }
 
-TEST_CASE(SUITE("17ReadGrp2Var1"))
+TEST_CASE(SUITE("18ReadGrp2Var1"))
 {
     auto update = [](IUpdateHandler& db) { db.Update(Binary(false, Flags(0x01)), 3); };
 
     TestEventRead("C0 01 02 01 06", "E0 81 80 00 02 01 28 01 00 03 00 01", update); // 1 byte count == 1, ONLINE quality
 }
 
-TEST_CASE(SUITE("18ReadGrp2Var1LimitedCount"))
+TEST_CASE(SUITE("19ReadGrp2Var1LimitedCount"))
 {
     auto update = [](IUpdateHandler& db) {
         db.Update(Binary(false, Flags(0x01)), 3);
@@ -358,7 +358,7 @@ TEST_CASE(SUITE("18ReadGrp2Var1LimitedCount"))
                   update); // 1 byte count == 1, ONLINE quality
 }
 
-TEST_CASE(SUITE("19ReadGrp2Var2"))
+TEST_CASE(SUITE("20ReadGrp2Var2"))
 {
     auto update = [](IUpdateHandler& db) { db.Update(Binary(false, Flags(0x01), DNPTime(0x4571)), 3); };
 
@@ -366,14 +366,14 @@ TEST_CASE(SUITE("19ReadGrp2Var2"))
                   update); // 1 byte count == 1, ONLINE quality
 }
 
-TEST_CASE(SUITE("20ReadGrp2Var3SingleValue"))
+TEST_CASE(SUITE("21ReadGrp2Var3SingleValue"))
 {
     auto update = [](IUpdateHandler& db) { db.Update(Binary(false, Flags(0x01), DNPTime(0x4571, TimestampQuality::UNSYNCHRONIZED)), 3); };
 
     TestEventRead("C0 01 02 03 06", "E0 81 80 00 33 02 07 01 71 45 00 00 00 00 02 03 28 01 00 03 00 01 00 00", update);
 }
 
-TEST_CASE(SUITE("21ReadGrp2Var3TwoValues"))
+TEST_CASE(SUITE("22ReadGrp2Var3TwoValues"))
 {
     auto update = [](IUpdateHandler& db) {
         db.Update(Binary(false, Flags(0x01), DNPTime(0x4571, TimestampQuality::SYNCHRONIZED)), 3);
@@ -385,7 +385,7 @@ TEST_CASE(SUITE("21ReadGrp2Var3TwoValues"))
     TestEventRead("C0 01 02 03 06", rsp, update);
 }
 
-TEST_CASE(SUITE("22ReadGrp2Var3TwoValuesNegativeDifference"))
+TEST_CASE(SUITE("23ReadGrp2Var3TwoValuesNegativeDifference"))
 {
     auto update = [](IUpdateHandler& db) {
         db.Update(Binary(false, Flags(0x01), DNPTime(0x4571, TimestampQuality::SYNCHRONIZED)), 3);
@@ -401,7 +401,7 @@ TEST_CASE(SUITE("22ReadGrp2Var3TwoValuesNegativeDifference"))
     TestEventRead("C0 01 02 03 06", rsp, update);
 }
 
-TEST_CASE(SUITE("23ReadGrp2Var3TwoValuesDifferenceTooBigForCTO"))
+TEST_CASE(SUITE("24ReadGrp2Var3TwoValuesDifferenceTooBigForCTO"))
 {
     auto update = [](IUpdateHandler& db) {
         db.Update(Binary(false, Flags(0x01), DNPTime(0x000000, TimestampQuality::SYNCHRONIZED)), 3);
@@ -417,7 +417,7 @@ TEST_CASE(SUITE("23ReadGrp2Var3TwoValuesDifferenceTooBigForCTO"))
     TestEventRead("C0 01 02 03 06", rsp, update);
 }
 
-TEST_CASE(SUITE("24ReadGrp2Var3TwoValuesWithDifferentTimeQuality"))
+TEST_CASE(SUITE("25ReadGrp2Var3TwoValuesWithDifferentTimeQuality"))
 {
     auto update = [](IUpdateHandler& db) {
         db.Update(Binary(false, Flags(0x01), DNPTime(0x4571, TimestampQuality::SYNCHRONIZED)), 3);
@@ -433,7 +433,7 @@ TEST_CASE(SUITE("24ReadGrp2Var3TwoValuesWithDifferentTimeQuality"))
     TestEventRead("C0 01 02 03 06", rsp, update);
 }
 
-TEST_CASE(SUITE("25ReadGrp2Var3TwoValuesWithDifferentInvalidOrUnsynchronizedAreReportedTogether"))
+TEST_CASE(SUITE("26ReadGrp2Var3TwoValuesWithDifferentInvalidOrUnsynchronizedAreReportedTogether"))
 {
     auto update = [](IUpdateHandler& db) {
         db.Update(Binary(false, Flags(0x01), DNPTime(0x4571, TimestampQuality::UNSYNCHRONIZED)), 3);
@@ -445,7 +445,7 @@ TEST_CASE(SUITE("25ReadGrp2Var3TwoValuesWithDifferentInvalidOrUnsynchronizedAreR
     TestEventRead("C0 01 02 03 06", rsp, update);
 }
 
-TEST_CASE(SUITE("26reports octet string events w/ same size in same header"))
+TEST_CASE(SUITE("27reports octet string events w/ same size in same header"))
 {
     OutstationConfig config;
     config.eventBufferConfig = EventBufferConfig::AllTypes(5);
@@ -466,7 +466,7 @@ TEST_CASE(SUITE("26reports octet string events w/ same size in same header"))
     REQUIRE(t.lower->PopWriteAsHex() == "E0 81 80 00 6F 02 28 02 00 02 00 CA FE 01 00 CA FE");
 }
 
-TEST_CASE(SUITE("27reports octet string events w/ different sizes in separate headers"))
+TEST_CASE(SUITE("28reports octet string events w/ different sizes in separate headers"))
 {
     OutstationConfig config;
     config.eventBufferConfig = EventBufferConfig::AllTypes(5);

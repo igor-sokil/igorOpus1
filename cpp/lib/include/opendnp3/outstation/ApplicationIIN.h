@@ -30,6 +30,9 @@
     Some IIN bits are necessarily controlled by the outstation application,
     not the underlying protocol stack. This structure describes the state of
     the bits controllable by the application.
+Некоторые биты IIN обязательно контролируются приложением удаленной станции.
+     а не базовый стек протоколов. Эта структура описывает состояние
+     биты, управляемые приложением.
 */
 ////class ApplicationIIN
 typedef struct
@@ -39,12 +42,14 @@ typedef struct
 ////    ApplicationIIN() = default;
 
   // flags normally controlled by the application, not the stack
+// флаги, которые обычно контролируются приложением, а не стеком
   boolean needTime;// = false;
   boolean localControl;// = false;
   boolean deviceTrouble;// = false;
   boolean configCorrupt;// = false;
 
   // this is only for appliactions that have an additional external event buffer that can overflow
+// это только для приложений, у которых есть дополнительный внешний буфер событий, который может переполниться
   boolean eventBufferOverflow;// = false;
 
 ////    IINField ToIIN() const;

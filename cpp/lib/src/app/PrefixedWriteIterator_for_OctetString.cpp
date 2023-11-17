@@ -20,8 +20,8 @@ void PrefixedWriteIterator_for_UInt8_OctetString_in_PrefixedWriteIterator_for_UI
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_OctetString_in_PrefixedWriteIterator_for_UInt8_OctetStringOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -37,8 +37,8 @@ void PrefixedWriteIterator_for_UInt8_OctetString_in_PrefixedWriteIterator_for_UI
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_OctetString_in_PrefixedWriteIterator_for_UInt8_OctetStringOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,8 +63,8 @@ void PrefixedWriteIterator_for_UInt8_OctetString_destr_PrefixedWriteIterator_for
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_OctetString_destr_PrefixedWriteIterator_for_UInt8_OctetString1"<<'\n';
   decrement_stack_info();
 #endif
@@ -115,8 +115,8 @@ void PrefixedWriteIterator_for_UInt16_OctetString_in_PrefixedWriteIterator_for_U
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_OctetString_in_PrefixedWriteIterator_for_UInt16_OctetStringOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -132,8 +132,8 @@ void PrefixedWriteIterator_for_UInt16_OctetString_in_PrefixedWriteIterator_for_U
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_OctetString_in_PrefixedWriteIterator_for_UInt16_OctetStringOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -158,8 +158,8 @@ void PrefixedWriteIterator_for_UInt16_OctetString_destr_PrefixedWriteIterator_fo
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_OctetString_destr_PrefixedWriteIterator_for_UInt16_OctetString1"<<'\n';
   decrement_stack_info();
 #endif

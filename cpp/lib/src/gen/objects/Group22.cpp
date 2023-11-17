@@ -29,6 +29,10 @@
 // limitations under the License.
 //
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "Group22.h"
 
@@ -257,6 +261,19 @@ void Group22Var5_in_Group22Var5(Group22Var5 *pGroup22Var5)
 ////}
 boolean Read_in_Group22Var5_static(RSeq_for_Uint16_t* buffer, Group22Var5* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Read_in_Group22Var5_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->flags= "<<(uint32_t)output->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->value= "<<(uint32_t)output->value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(output->timeDNPTime).value= "<<(uint32_t)(output->timeDNPTime).value<<'\n';
+  decrement_stack_info();
+#endif
   return read_from_in_UInt8_static(buffer, &(output->flags)) &&
          read_from_in_UInt32_static(buffer, &(output->value)) &&
          read_from_in_UInt48_static(buffer, &((output->timeDNPTime).value));
@@ -268,6 +285,19 @@ boolean Read_in_Group22Var5_static(RSeq_for_Uint16_t* buffer, Group22Var5* outpu
 ////}
 boolean Write_in_Group22Var5_static(Group22Var5* arg, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_Group22Var5_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->flags= "<<(uint32_t)arg->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->value= "<<(uint32_t)arg->value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(output->timeDNPTime).value= "<<(uint32_t)(arg->timeDNPTime).value<<'\n';
+  decrement_stack_info();
+#endif
   return write_to_in_UInt8_static(buffer, arg->flags) &&
          write_to_in_UInt32_static(buffer, arg->value) &&
          write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);
@@ -288,12 +318,20 @@ boolean Write_in_Group22Var5_static(Group22Var5* arg, WSeq_for_Uint16_t* buffer)
 ////}
 boolean ReadTarget_in_Group22Var5_static(RSeq_for_Uint16_t* buff, Counter* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ReadTarget_in_Group22Var5_static1"<<'\n';
+  inspect_RSeq(buff);
+  decrement_stack_info();
+#endif
   Group22Var5 value;
   Group22Var5_in_Group22Var5(&value);
-//  if(Read(buff, value))
+////  if(Read(buff, value))
   if(Read_in_Group22Var5_static(buff, &value))
   {
-//    output = CounterFactory::From(value.value);
+////    output = CounterFactory::From(value.value);
     Counter temp = From_in_CounterFactory_staticOver1(value.value);
     *output = temp;
     return true;
@@ -310,6 +348,13 @@ boolean ReadTarget_in_Group22Var5_static(RSeq_for_Uint16_t* buff, Counter* outpu
 ////}
 boolean WriteTarget_in_Group22Var5_static(Counter* value, WSeq_for_Uint16_t* buff)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteTarget_in_Group22Var5_static1"<<'\n';
+  decrement_stack_info();
+#endif
 //typedef ConvertQVT<Group22Var5, Counter> ConvertGroup22Var5;
   Group22Var5 temp = Apply_in_ConvertGroup22Var5_static(value);
   return Write_in_Group22Var5_static(&temp, buff);
@@ -353,6 +398,19 @@ void Group22Var6_in_Group22Var6(Group22Var6 *pGroup22Var6)
 ////}
 boolean Read_in_Group22Var6_static(RSeq_for_Uint16_t* buffer, Group22Var6* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Read_in_Group22Var6_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->flags= "<<(uint32_t)output->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->value= "<<(uint32_t)output->value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(output->timeDNPTime).value= "<<(uint32_t)(output->timeDNPTime).value<<'\n';
+  decrement_stack_info();
+#endif
   return read_from_in_UInt8_static(buffer, &(output->flags)) &&
          read_from_in_UInt16_static(buffer, &(output->value)) &&
          read_from_in_UInt48_static(buffer, &((output->timeDNPTime).value));
@@ -364,6 +422,19 @@ boolean Read_in_Group22Var6_static(RSeq_for_Uint16_t* buffer, Group22Var6* outpu
 ////}
 boolean Write_in_Group22Var6_static(Group22Var6* arg, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_Group22Var6_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->flags= "<<(uint32_t)arg->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->value= "<<(uint32_t)arg->value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(output->timeDNPTime).value= "<<(uint32_t)(arg->timeDNPTime).value<<'\n';
+  decrement_stack_info();
+#endif
   return write_to_in_UInt8_static(buffer, arg->flags) &&
          write_to_in_UInt16_static(buffer, arg->value) &&
          write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);
@@ -384,6 +455,14 @@ boolean Write_in_Group22Var6_static(Group22Var6* arg, WSeq_for_Uint16_t* buffer)
 ////}
 boolean ReadTarget_in_Group22Var6_static(RSeq_for_Uint16_t* buff, Counter* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ReadTarget_in_Group22Var6_static1"<<'\n';
+  inspect_RSeq(buff);
+  decrement_stack_info();
+#endif
   Group22Var6 value;
   Group22Var6_in_Group22Var6(&value);
 //  if(Read(buff, value))
@@ -406,6 +485,13 @@ boolean ReadTarget_in_Group22Var6_static(RSeq_for_Uint16_t* buff, Counter* outpu
 ////}
 boolean WriteTarget_in_Group22Var6_static(Counter* value, WSeq_for_Uint16_t* buff)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteTarget_in_Group22Var6_static1"<<'\n';
+  decrement_stack_info();
+#endif
 //typedef ConvertQVTandTruncate<Group22Var6, Counter> ConvertGroup22Var6;
   Group22Var6 temp = Apply_in_ConvertGroup22Var6_static(value);
   return Write_in_Group22Var6_static(&temp, buff);
@@ -417,15 +503,17 @@ Group22Var6 Apply_in_ConvertGroup22Var6_static(Counter* src)
   Group22Var6_in_Group22Var6(&target);
   target.flags = (src->tTypedMeasurement_for_Uint32).mMeasurement.flags.value;
   target.value = (uint16_t)((src->tTypedMeasurement_for_Uint32).value);
+  target.timeDNPTime.value = (src->tTypedMeasurement_for_Uint32).mMeasurement.timeDNPTime.value;
   return target;
 }
-////template<class Target, class Source> struct ConvertQVandTruncate : private StaticOnly
+////template<class Target, class Source> struct ConvertQVTandTruncate : private StaticOnly
 ////{
 ////    static Target Apply(const Source& src)
 ////    {
 ////        Target t;
 ////        t.flags = src.flags.value;
 ////        t.value = static_cast<typename Target::ValueType>(src.value);
+////        t.time = src.time;
 ////        return t;
 ////    }
 ////};

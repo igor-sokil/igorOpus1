@@ -20,8 +20,8 @@ void PrefixedWriteIterator_for_UInt8_TimeAndInterval_in_PrefixedWriteIterator_fo
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_TimeAndInterval_in_PrefixedWriteIterator_for_UInt8_TimeAndIntervalOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -37,8 +37,8 @@ void PrefixedWriteIterator_for_UInt8_TimeAndInterval_in_PrefixedWriteIterator_fo
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_TimeAndInterval_in_PrefixedWriteIterator_for_UInt8_TimeAndIntervalOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,8 +63,8 @@ void PrefixedWriteIterator_for_UInt8_TimeAndInterval_destr_PrefixedWriteIterator
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_TimeAndInterval_destr_PrefixedWriteIterator_for_UInt8_TimeAndInterval1"<<'\n';
   decrement_stack_info();
 #endif
@@ -115,8 +115,8 @@ void PrefixedWriteIterator_for_UInt16_TimeAndInterval_in_PrefixedWriteIterator_f
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_TimeAndInterval_in_PrefixedWriteIterator_for_UInt16_TimeAndIntervalOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -132,8 +132,8 @@ void PrefixedWriteIterator_for_UInt16_TimeAndInterval_in_PrefixedWriteIterator_f
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_TimeAndInterval_in_PrefixedWriteIterator_for_UInt16_TimeAndIntervalOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -158,8 +158,8 @@ void PrefixedWriteIterator_for_UInt16_TimeAndInterval_destr_PrefixedWriteIterato
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_TimeAndInterval_destr_PrefixedWriteIterator_for_UInt16_TimeAndInterval1"<<'\n';
   decrement_stack_info();
 #endif

@@ -8,6 +8,13 @@
 //----------------------------------BinarySpec-------------------------------------------
 boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_BinarySpec* event)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Update_BinarySpec_in_EventUpdate_static1"<<'\n';
+#endif
+
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_BinarySpec*  listEv = GetList_for_BinarySpec_in_EventLists(lists);
 
@@ -15,7 +22,12 @@ boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_Bin
 //     uint32_t Capacity_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec)
 ////    if (list.Capacity() == 0)
   if(Capacity_in_List_TypedEventRecord_for_BinarySpec(listEv) == 0)
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
+}
 
   boolean overflow = false;
 
@@ -74,6 +86,9 @@ boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_Bin
 ////    lists.counters.OnAdd(event.clazz);
   OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return overflow;
 }
 //----------------------------------BinarySpec-------------------------------------------
@@ -534,7 +549,6 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Update_OctetStringSpec_in_EventUpdate_static1"<<'\n';
-  decrement_stack_info();
 #endif
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_OctetStringSpec*  listEv = GetList_for_OctetStringSpec_in_EventLists(lists);
@@ -543,7 +557,13 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
 // списки без емкости не вызывают «переполнение буфера»
 //     uint32_t Capacity_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec)
 ////    if (list.Capacity() == 0)
-  if(Capacity_in_List_TypedEventRecord_for_OctetStringSpec(listEv) == 0)  return false;
+  if(Capacity_in_List_TypedEventRecord_for_OctetStringSpec(listEv) == 0)
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return false;
+}
 
   boolean overflow = false;
 
@@ -604,6 +624,9 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
 ////    lists.counters.OnAdd(event.clazz);
   OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return overflow;
 }
 

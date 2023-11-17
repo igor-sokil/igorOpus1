@@ -18,7 +18,8 @@ void StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpecO
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
 
   StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpecOver1(pStaticDataMap);
@@ -32,6 +33,9 @@ void StaticDataMap_for_FrozenCounterSpec_in_StaticDataMap_for_FrozenCounterSpecO
     StaticDataCell_for_FrozenCounter_in_StaticDataCell_for_FrozenCounterOver2(&sStaticDataCell_for_FrozenCounter, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_FrozenCounter;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 Range get_selected_range_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec)

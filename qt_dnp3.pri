@@ -358,6 +358,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\OutstationTestObject.cpp \
                 cpp\tests\unit\utils\TestAPDUParsing.cpp \
                 cpp\tests\unit\utils\TestOutstation.cpp \
+                cpp\tests\unit\utils\TestOutstationEventResponses.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \

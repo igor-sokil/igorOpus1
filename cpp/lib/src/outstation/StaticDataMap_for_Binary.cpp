@@ -18,7 +18,8 @@ void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2(StaticDat
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
 
   StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver1(pStaticDataMap);
@@ -32,6 +33,9 @@ void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2(StaticDat
     StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver2(&sStaticDataCell_for_Binary, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_Binary;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 Range get_selected_range_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec)
@@ -152,10 +156,16 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"update_in_StaticDataMap_for_BinarySpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*iter->second.config.eEventConfig.clazz= "<<(uint16_t)iter->second.config.eEventConfig.clazz<<'\n';
+  std::cout<<"+"<<getString_stack_info();
+  std::cout<<"++++++int16_t nnn = iter->first="<<(uint16_t)iter->first<<'\n';
 #endif
   if (iter == pStaticDataMap_for_BinarySpec->map.end())
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -178,6 +188,10 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
       if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.eEventConfig.clazz, &ec))
       {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_BinarySpecOver2_2"<<'\n';
+#endif
 //void Event_for_BinarySpec_in_Event_for_BinarySpecOver2(Event_for_BinarySpec *pEvent_for_BinarySpec,
 //    Binary* value, uint16_t index,
 //    EventClass_uint8_t clazz,
@@ -195,6 +209,9 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
     }
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return true;
 }
 

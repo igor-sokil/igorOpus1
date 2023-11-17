@@ -19,8 +19,8 @@ IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static(voi
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-    std::cout<<""<<'\n';
   std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static1"<<'\n';
   decrement_stack_info();
 #endif
@@ -53,11 +53,10 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(voi
     IEventWriteHandler* handler)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-    std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override1"<<'\n';
 #endif
 
   UNUSED(pIEventType);
@@ -75,19 +74,27 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(voi
 ////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
   EventCollection_for_Binary collection;
 
-  EventCollection_for_Binary_in_EventCollection_for_Binary(&collection,
-      iteratorEv,
-      &(lists->counters),
-      (type->value).selectedVariation);
+  EventCollection_for_Binary_in_EventCollection_for_Binary(&collection, iteratorEv, &(lists->counters), (type->value).selectedVariation);
 
 //uint16_t Write_for_Binary_in_IEventWriteHandler(IEventWriteHandler *, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);//// = 0;
 ////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
-//  return handler->pWrite_EventBinary_in_IEventWriteHandler((type->value).selectedVariation,
-//uint16_t Write_for_Binary_in_IEventWriteHandler(IEventWriteHandler *pIEventWriteHandler, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items)
-  return Write_for_Binary_in_IEventWriteHandler(handler,
+  uint16_t tmp = Write_for_Binary_in_IEventWriteHandler(handler,
          (type->value).selectedVariation,
          &((type->value).value),
          &(collection.iIEventCollection_for_Binary));
+#ifdef  LOG_INFO
+  Binary bBinary = ((type->value).value);
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(type->value).selectedVariation= "<<(uint16_t)(type->value).selectedVariation<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*bBinary.tTypedMeasurement_for_Boolean.value= "<<(uint16_t)bBinary.tTypedMeasurement_for_Boolean.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*bBinary.tTypedMeasurement_for_Boolean.mMeasurement.flags= "<<(uint16_t)bBinary.tTypedMeasurement_for_Boolean.mMeasurement.flags.value<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override2"<<'\n';
+  decrement_stack_info();
+#endif
+ return tmp;
 }
 
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override
@@ -109,10 +116,10 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_ov
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_static(void)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-   std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_static1"<<'\n';
+  std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_static1"<<'\n';
   decrement_stack_info();
   std::cout<<getString_stack_info();
 #endif
@@ -193,7 +200,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBina
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static(void)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static1"<<'\n';
@@ -227,10 +234,10 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(voi
     IEventWriteHandler* handler)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-    std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override1"<<'\n';
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override1"<<'\n';
   decrement_stack_info();
 #endif
 
@@ -282,7 +289,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_ov
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_static(void)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_static1"<<'\n';
@@ -363,7 +370,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_o
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_static(void)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_static1"<<'\n';
@@ -444,7 +451,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_FrozenCounter
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_static(void)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_static1"<<'\n';
@@ -525,7 +532,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputS
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_static(void)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_static1"<<'\n';
@@ -606,7 +613,7 @@ void   RemoveTypeFromStorage_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputS
 IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_static(void)
 {
 #ifdef  LOG_INFO
-    std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Instance_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_static1"<<'\n';

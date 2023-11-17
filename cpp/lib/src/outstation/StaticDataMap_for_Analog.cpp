@@ -20,7 +20,8 @@ void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2(StaticDat
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
 
   StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver1(pStaticDataMap);
@@ -34,6 +35,9 @@ void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2(StaticDat
     StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver2(&sStaticDataCell_for_Analog, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_Analog;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 Range get_selected_range_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec)
@@ -151,8 +155,28 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
     EventMode_uint8_t mode,
     IEventReceiver* receiver)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_AnalogSpecOver2_1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*inspect_Analog(new_value)"<<'\n';
+  inspect_Analog(new_value);
+  std::cout<<"*"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventMode_uint8_t mode= "<<(uint16_t)mode<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventMode_Force= "<<(uint16_t)EventMode_Force<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventMode_EventOnly= "<<(uint16_t)EventMode_EventOnly<<'\n';
+#endif
+
   if (iter == pStaticDataMap_for_AnalogSpec->map.end())
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -162,6 +186,14 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
   }
 
   Analog old_value = iter->second.event.eEventCellBase_for_Analog.lastEvent;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"update_in_StaticDataMap_for_AnalogSpecOver2_2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*inspect_Analog(&old_value)"<<'\n';
+  inspect_Analog(&old_value);
+#endif
+
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_AnalogSpec_static(Analog *old_value, Analog *new_value, AnalogConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
@@ -192,6 +224,9 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
     }
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return true;
 }
 

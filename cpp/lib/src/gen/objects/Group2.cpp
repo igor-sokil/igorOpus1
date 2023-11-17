@@ -29,6 +29,10 @@
 // limitations under the License.
 //
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "Group2.h"
 
@@ -61,18 +65,43 @@ void Group2Var1_in_Group2Var1(Group2Var1 *pGroup2Var1)
 
 boolean Read_in_Group2Var1_static(RSeq_for_Uint16_t* buffer, Group2Var1* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Read_in_Group2Var1_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*output->flags= "<<(uint32_t)output->flags<<'\n';
+  decrement_stack_info();
+#endif
 //  return LittleEndian::read(buffer, output.flags);
   return read_from_in_UInt8_static(buffer, &(output->flags));
 }
 
 boolean Write_in_Group2Var1_static(Group2Var1* arg, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_Group2Var1_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*arg->flags= "<<(uint32_t)arg->flags<<'\n';
+  decrement_stack_info();
+#endif
 ////  return LittleEndian::write(buffer, arg.flags);
   return write_to_in_UInt8_static(buffer, arg->flags);
 }
 
 boolean ReadTarget_in_Group2Var1_static(RSeq_for_Uint16_t* buff, Binary* output)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"ReadTarget_in_Group2Var1_static1"<<'\n';
+  decrement_stack_info();
+#endif
   Group2Var1 value;
 //  if(Read(buff, value))
   Group2Var1_in_Group2Var1(&value);
@@ -91,6 +120,13 @@ boolean ReadTarget_in_Group2Var1_static(RSeq_for_Uint16_t* buff, Binary* output)
 
 boolean WriteTarget_in_Group2Var1_static(Binary* value, WSeq_for_Uint16_t* buff)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteTarget_in_Group2Var1_static1"<<'\n';
+  decrement_stack_info();
+#endif
 ////  return Group2Var1::Write(ConvertGroup2Var1::Apply(value), buff);
 //typedef ConvertQ<Group2Var1, Binary> ConvertGroup2Var1;
   Group2Var1 temp = Apply_in_ConvertGroup2Var1_static(value);

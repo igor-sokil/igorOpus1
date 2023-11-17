@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EventSelection.h"
 
@@ -25,6 +29,15 @@
 
 uint32_t SelectByClass_in_EventSelection_static(EventLists* lists, ClassField* clazz, uint32_t max)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByClass_in_EventSelection_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t max= "<<(uint16_t)max<<'\n';
+#endif
+
   uint32_t num_selected = 0;
 //    auto iter = lists->events.Iterate();
   Iterator_in_List_for_EventRecord iter = Iterate_in_List_for_EventRecord(&(lists->events));//List_for_EventRecord *pList_for_EventRecord)
@@ -33,6 +46,10 @@ uint32_t SelectByClass_in_EventSelection_static(EventLists* lists, ClassField* c
 ////    while (iter.HasNext() && num_selected < max)
   while (HasNext__in__Iterator_in_List_for_EventRecord(&iter) && (num_selected < max))
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByClass_in_EventSelection_static2"<<'\n';
+#endif
 //        auto node = iter.Next();
     Node_for_EventRecord* node = Next__in__Iterator_in_List_for_EventRecord(&iter);//Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 //  boolean HasEventType_in_ClassField(ClassField *pClassField, EventClass_uint8_t ec);
@@ -50,6 +67,9 @@ uint32_t SelectByClass_in_EventSelection_static(EventLists* lists, ClassField* c
     }
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return num_selected;
 }
 

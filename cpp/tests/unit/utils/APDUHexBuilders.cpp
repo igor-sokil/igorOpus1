@@ -17,6 +17,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <iostream>
+
 #include <QApplication>
 #include "header.h"
 #include "APDUHexBuilders.h"
@@ -90,6 +92,11 @@ std::string IntegrityPoll_in_APDUHexBuilders(uint8_t seq, ClassField* field)
 
 std::string ClassPoll_in_APDUHexBuilders(uint8_t seq, PointClass_uint8_t pc)
 {
+#ifdef  LOG_INFO
+  std::cout<<"ClassPoll_in_APDUHexBuilders1"<<'\n';
+  std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
+  std::cout<<"*PointClass_uint8_t pc= "<<(uint16_t)pc<<'\n';
+#endif
 //void ClassField_in_ClassFieldOver2(ClassField *pClassField, PointClass_uint8_t pc);
   ClassField cClassField;
   ClassField_in_ClassFieldOver2(&cClassField, pc);

@@ -18,7 +18,8 @@ void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinaryS
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
 
   StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinarySpecOver1(pStaticDataMap);
@@ -32,6 +33,9 @@ void StaticDataMap_for_DoubleBitBinarySpec_in_StaticDataMap_for_DoubleBitBinaryS
     StaticDataCell_for_DoubleBitBinary_in_StaticDataCell_for_DoubleBitBinaryOver2(&sStaticDataCell_for_DoubleBitBinary, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_DoubleBitBinary;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 Range get_selected_range_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec)

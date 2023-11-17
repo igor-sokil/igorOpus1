@@ -88,13 +88,25 @@ IINField select_all_StaticDataMap_for_CounterSpec_in_Database_staticOver2(Static
 ////bool Database::Update(const Counter& meas, uint16_t index, EventMode mode)
 boolean Update_for_Counter_in_Database(Database *pDatabase, Counter* meas, uint16_t index, EventMode_uint8_t mode)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Update_for_Counter_in_Database1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventMode_uint8_t mode= "<<(uint16_t)mode<<'\n';
+#endif
 //boolean update_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec,
 //    Counter* value,
 //    uint16_t index,
 //    EventMode_uint8_t mode,
 //    IEventReceiver* receiver);
 ////    return this->counter.update(meas, index, mode, event_receiver);
-  return update_in_StaticDataMap_for_CounterSpecOver1(&(pDatabase->counter), meas, index, mode, pDatabase->event_receiver);
+  boolean tmp = update_in_StaticDataMap_for_CounterSpecOver1(&(pDatabase->counter), meas, index, mode, pDatabase->event_receiver);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 void select_for_CounterSpec_in_DatabaseOver1(uint16_t *index);

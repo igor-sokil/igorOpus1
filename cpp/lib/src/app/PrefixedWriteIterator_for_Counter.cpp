@@ -20,8 +20,8 @@ void PrefixedWriteIterator_for_UInt8_Counter_in_PrefixedWriteIterator_for_UInt8_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Counter_in_PrefixedWriteIterator_for_UInt8_CounterOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -37,8 +37,8 @@ void PrefixedWriteIterator_for_UInt8_Counter_in_PrefixedWriteIterator_for_UInt8_
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Counter_in_PrefixedWriteIterator_for_UInt8_CounterOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,8 +63,8 @@ void PrefixedWriteIterator_for_UInt8_Counter_destr_PrefixedWriteIterator_for_UIn
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Counter_destr_PrefixedWriteIterator_for_UInt8_Counter1"<<'\n';
   decrement_stack_info();
 #endif
@@ -115,8 +115,8 @@ void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt1
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -132,8 +132,8 @@ void PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt1
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Counter_in_PrefixedWriteIterator_for_UInt16_CounterOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -158,8 +158,8 @@ void PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UI
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UInt16_Counter1"<<'\n';
   decrement_stack_info();
 #endif

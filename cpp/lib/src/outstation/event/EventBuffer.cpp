@@ -97,12 +97,25 @@ void Update_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_
 ////    template<class T> void UpdateAny(const Event<T>& evt)
 void UpdateAny_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_BinarySpec *evt)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"UpdateAny_BinarySpec_in_EventBuffer1"<<'\n';
+#endif
 //boolean Update_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt);
 ////        if (this->storage.Update(evt))
   if(Update_BinarySpec_in_EventStorage(&(pEventBuffer->storage), evt))
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"UpdateAny_BinarySpec_in_EventBuffer2"<<'\n';
+#endif
     pEventBuffer->overflow = true;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 void UpdateAny_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_DoubleBitBinarySpec *evt)
 {
@@ -186,17 +199,31 @@ IINField SelectAll_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint
 
 IINField SelectCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint16_t count)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectCount_in_EventBuffer1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t count= "<<count<<'\n';
+#endif
 ////    return SelectMaxCount(gv, count);
-  return SelectMaxCount_in_EventBuffer(pEventBuffer, gv, count);
+  IINField tmp = SelectMaxCount_in_EventBuffer(pEventBuffer, gv, count);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation_uint16_t gv, uint32_t maximum)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"SelectMaxCount_in_EventBuffer1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t maximum= "<<maximum<<'\n';
 #endif
   switch (gv)
   {
@@ -521,13 +548,18 @@ IINField SelectMaxCount_in_EventBuffer(EventBuffer *pEventBuffer, GroupVariation
 ////        return this->SelectByType(maximum, EventAnalogOutputStatusVariation::Group42Var8);
 
   case (GroupVariation_Group60Var2):
+{
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@"<<getString_stack_info();
   std::cout<<"*GroupVariation_Group60Var2"<<'\n';
+#endif
+    IINField tmp = SelectByClass_EventClass_in_EventBuffer(pEventBuffer, maximum, EventClass_EC1);
+////        return this->SelectByClass(maximum, EventClass::EC1);
+#ifdef  LOG_INFO
   decrement_stack_info();
 #endif
-    return SelectByClass_EventClass_in_EventBuffer(pEventBuffer, maximum, EventClass_EC1);
-////        return this->SelectByClass(maximum, EventClass::EC1);
+    return tmp;
+}
   case (GroupVariation_Group60Var3):
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
@@ -581,6 +613,12 @@ boolean HasAnySelection_in_EventBuffer(EventBuffer *pEventBuffer)
 
 boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Load_in_EventBuffer1"<<'\n';
+#endif
 //void ASDUEventWriteHandler_in_ASDUEventWriteHandler(ASDUEventWriteHandler *pASDUEventWriteHandler, HeaderWriter* writer);
 ////    ASDUEventWriteHandler handler(writer);
 
@@ -593,7 +631,13 @@ boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer)
   // all selected events were written?
 //    uint32_t NumSelected_in_EventStorage(EventStorage *pEventStorage);
 //    return this->storage.NumSelected() == 0;
-  return NumSelected_in_EventStorage(&(pEventBuffer->storage)) == 0;
+  boolean tmp = NumSelected_in_EventStorage(&(pEventBuffer->storage)) == 0;
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean tmp= "<<tmp<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ClassField UnwrittenClassField_in_EventBuffer(EventBuffer *pEventBuffer)
@@ -612,6 +656,15 @@ ClassField UnwrittenClassField_in_EventBuffer(EventBuffer *pEventBuffer)
 
 boolean IsOverflown_in_EventBuffer(EventBuffer *pEventBuffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IsOverflown_in_EventBuffer1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pEventBuffer->overflow= "<<pEventBuffer->overflow<<'\n';
+  decrement_stack_info();
+#endif
 //    boolean IsAnyTypeFull_in_EventStorage(EventStorage *pEventStorage);
 ////    if (overflow && !this->storage.IsAnyTypeFull())
   if (pEventBuffer->overflow && !IsAnyTypeFull_in_EventStorage(&(pEventBuffer->storage)))
@@ -844,6 +897,17 @@ IINField  SelectByType_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer,
 
 IINField SelectByClass_EventClass_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventClass_uint8_t clazz)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByClass_EventClass_in_EventBuffer1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t max= "<<max<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventClass_uint8_t clazz= "<<(int16_t)clazz<<'\n';
+  decrement_stack_info();
+#endif
 //    uint32_t SelectByClass_in_EventStorageOver2(EventStorage *pEventStorage, EventClass_uint8_t clazz, uint32_t max);
 ////        this->storage.SelectByClass(clazz, max);
   SelectByClass_in_EventStorageOver2(&(pEventBuffer->storage), clazz, max);

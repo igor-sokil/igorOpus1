@@ -410,6 +410,7 @@ Group23Var6 Apply_in_ConvertGroup23Var6_static(FrozenCounter* src)
   Group23Var6_in_Group23Var6(&target);
   target.flags = (src->tTypedMeasurement_for_Uint32).mMeasurement.flags.value;
   target.value = (uint16_t)((src->tTypedMeasurement_for_Uint32).value);
+  target.timeDNPTime.value = (src->tTypedMeasurement_for_Uint32).mMeasurement.timeDNPTime.value;
   return target;
 }
 ////template<class Target, class Source> struct ConvertQVandTruncate : private StaticOnly

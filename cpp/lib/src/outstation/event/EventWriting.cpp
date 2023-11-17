@@ -18,7 +18,10 @@
  * limitations under the License.
  */
 
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EventWriting.h"
 
@@ -32,6 +35,13 @@
 ////uint32_t EventWriting::Write(EventLists& lists, IEventWriteHandler& handler)
 uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* handler)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_EventWriting_static1"<<'\n';
+#endif
+
   uint32_t total_num_written = 0;
 
 //    Iterator_in_List_for_EventRecord Iterate_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
@@ -45,6 +55,10 @@ uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* han
 //    uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler);
 ////        auto num_written = WriteSome(iterator, lists, handler);
     uint16_t num_written = WriteSome_in_EventWriting_static(&iter, lists, handler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*uint16_t num_written ="<<num_written<<'\n';
+#endif
 
     if (num_written == 0)
     {
@@ -53,11 +67,20 @@ uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* han
 
     total_num_written += num_written;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 ////EventRecord* EventWriting::FindNextSelected(event_iter_t& iter, EventType type)
 EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"FindNextSelected_in_EventWriting_static1"<<'\n';
+#endif
   while (true)
   {
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
@@ -65,7 +88,12 @@ EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventR
     EventRecord* current = CurrentValue__in__Iterator_in_List_for_EventRecord(iter);
 
     if (!current)
+    {
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
       return NULL;
+    }
 
     if (current->state == EventState_selected)
     {
@@ -73,13 +101,25 @@ EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventR
 // здесь мы завершаем работу, так как тип изменился
 //   boolean IsEqual_in_IEventType(IEventType* pIEventType, EventType_uint16_t type);
 ////            return current->type->IsEqual(type) ? current : nullptr;
-      return IsEqual_in_IEventType((IEventType*)(current->type), type) ? current : NULL;
-
+      if(IsEqual_in_IEventType((IEventType*)(current->type), type))
+      {
+#ifdef  LOG_INFO
+        decrement_stack_info();
+#endif
+        return current;
+      }
+#ifdef  LOG_INFO
+      decrement_stack_info();
+#endif
+      return NULL;
     }
 
 ////        iter.Next();
     Next__in__Iterator_in_List_for_EventRecord(iter);
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean matches_in_EventWriting(EventRecord* pEventRecord);
@@ -91,28 +131,57 @@ boolean matches_in_EventWriting(EventRecord* record)
 ////uint16_t EventWriting::WriteSome(event_iter_t& iterator, EventLists& lists, IEventWriteHandler& handler)
 uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iteratorEv, EventLists* lists, IEventWriteHandler* handler)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventWriting_static1"<<'\n';
+#endif
   // don't bother searching
 // не утруждайтесь поиском
 ////    if (lists.counters.selected == 0)
   if (lists->counters.selected == 0)
+  {
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return 0;
+  }
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventWriting_static2"<<'\n';
+#endif
 
 //EventRecord *Find__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord
 ////    const auto value = iterator.Find([](const EventRecord& record) { return record.state == EventState::selected; });
   EventRecord *value = Find__in__Iterator_in_List_for_EventRecord(iteratorEv, matches_in_EventWriting);
 
   if (!value)
+  {
+#ifdef  LOG_INFO
+    decrement_stack_info();
+#endif
     return 0; // no match
+  }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventWriting_static3"<<'\n';
+#endif
 //     uint16_t (*pWriteSome)(Iterator_in_List_for_EventRecord* iterator,
 //                               EventLists* lists,
 //                               IEventWriteHandler* handler);// const = 0;
 ////    return value->type->WriteSome(iterator, lists, handler);
 //  return  ((IEventType*)(value->type))->pWriteSome(iteratorEv, lists, handler);
-  return WriteSome_in_IEventType((IEventType*)(value->type),
-                                 iteratorEv,
-                                 lists,
-                                 handler);
+  uint16_t tmp = WriteSome_in_IEventType((IEventType*)(value->type),
+                                         iteratorEv,
+                                         lists,
+                                         handler);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////} // namespace opendnp3

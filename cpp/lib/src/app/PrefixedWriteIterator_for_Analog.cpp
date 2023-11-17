@@ -20,8 +20,8 @@ void PrefixedWriteIterator_for_UInt8_Analog_in_PrefixedWriteIterator_for_UInt8_A
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Analog_in_PrefixedWriteIterator_for_UInt8_AnalogOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -37,8 +37,8 @@ void PrefixedWriteIterator_for_UInt8_Analog_in_PrefixedWriteIterator_for_UInt8_A
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Analog_in_PrefixedWriteIterator_for_UInt8_AnalogOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,8 +63,8 @@ void PrefixedWriteIterator_for_UInt8_Analog_destr_PrefixedWriteIterator_for_UInt
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Analog_destr_PrefixedWriteIterator_for_UInt8_Analog1"<<'\n';
   decrement_stack_info();
 #endif
@@ -115,8 +115,8 @@ void PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -132,8 +132,8 @@ void PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -158,8 +158,8 @@ void PrefixedWriteIterator_for_UInt16_Analog_destr_PrefixedWriteIterator_for_UIn
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Analog_destr_PrefixedWriteIterator_for_UInt16_Analog1"<<'\n';
   decrement_stack_info();
 #endif

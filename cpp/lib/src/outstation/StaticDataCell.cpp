@@ -24,14 +24,6 @@ void SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver2(SelectedV
 
 void StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1(StaticDataCell_for_Binary *pStaticDataCell_for_Binary)
 {
-#ifdef  LOG_INFO
-  std::cout<<'\n';
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-  std::cout<<"StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1_1"<<'\n';
-  decrement_stack_info();
-#endif
-
   SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver1(&(pStaticDataCell_for_Binary->selection));
   Binary_in_BinaryOver1(&(pStaticDataCell_for_Binary->value));
   SimpleEventCell_for_Binary_in_SimpleEventCell_for_Binary(&(pStaticDataCell_for_Binary->event));
@@ -41,14 +33,6 @@ void StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1(StaticDataCell_
 void StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver2(StaticDataCell_for_Binary *pStaticDataCell_for_Binary,
     BinaryConfig* config)
 {
-#ifdef  LOG_INFO
-  std::cout<<'\n';
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-  std::cout<<"StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver2_1"<<'\n';
-  decrement_stack_info();
-#endif
-
   StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1(pStaticDataCell_for_Binary);
 
   pStaticDataCell_for_Binary->config = *config;

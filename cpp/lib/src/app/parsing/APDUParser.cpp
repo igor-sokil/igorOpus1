@@ -101,11 +101,11 @@ ParseResult_uint8_t Parse_in_APDUParser_static(
   return (result == ParseResult_OK) ? ParseSinglePass_in_APDUParser_static(buffer, handler, NULL) : result;
 }
 
-ParseResult_uint8_t ParseAndLogAll_in_APDUParser_static(RSeq_for_Uint16_t *buffer)//, Logger* pLogger, ParserSettings settings)
-{
+//ParseResult_uint8_t ParseAndLogAll_in_APDUParser_static(RSeq_for_Uint16_t *buffer)//, Logger* pLogger, ParserSettings settings)
+//{
 ////    return ParseSinglePass(buffer, pLogger, nullptr, nullptr, settings);
 //  return ParseSinglePass_in_APDUParser_static(buffer, /*pLogger,*/ NULL, NULL);//, settings);
-}
+//}
 
 ParseResult_uint8_t ParseSinglePass_in_APDUParser_static(
   RSeq_for_Uint16_t *buffer,
@@ -369,6 +369,8 @@ ParseResult_uint8_t HandleAllObjectsHeader_in_APDUParser_static(//Logger* pLogge
   std::cout<<"*record->gGroupVariationRecord.variation="<<(uint16_t)record->gGroupVariationRecord.variation<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*record->gGroupVariationRecord.enumeration="<<std::hex<<(uint16_t)record->gGroupVariationRecord.enumeration<<std::dec<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IAPDUHandler* pHandler="<<(uint32_t)pHandler<<std::endl;
 #endif
 
 ////    FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), "%03u,%03u - %s - %s", record.group, record.variation,

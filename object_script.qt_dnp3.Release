@@ -337,6 +337,7 @@ release/MockTransportSegment.o
 release/OutstationTestObject.o
 release/TestAPDUParsing.o
 release/TestOutstation.o
+release/TestOutstationEventResponses.o
 release/MockOutstationApplication.o
 release/MockCommandHandler.o
 release/MockEventWriteHandler.o

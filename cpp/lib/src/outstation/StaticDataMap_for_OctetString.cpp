@@ -18,7 +18,8 @@ void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver2
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
 
   StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver1(pStaticDataMap);
@@ -32,6 +33,9 @@ void StaticDataMap_for_OctetStringSpec_in_StaticDataMap_for_OctetStringSpecOver2
     StaticDataCell_for_OctetString_in_StaticDataCell_for_OctetStringOver2(&sStaticDataCell_for_OctetString, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_OctetString;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 Range get_selected_range_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_OctetStringSpec *pStaticDataMap_for_OctetStringSpec)

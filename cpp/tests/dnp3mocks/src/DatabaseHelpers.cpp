@@ -114,41 +114,67 @@ DatabaseConfig database_by_sizes_in_DatabaseHelpers(uint16_t num_binary,
 {
   DatabaseConfig config;
 
+  BinaryConfig bBinaryConfig;
+  BinaryConfig_in_BinaryConfig(&bBinaryConfig);
   for (uint16_t i = 0; i < num_binary; ++i)
   {
-    config.binary_input[i] = {};
+    config.binary_input[i] = bBinaryConfig;//{};
   }
+
+  DoubleBitBinaryConfig dDoubleBitBinaryConfig;
+  DoubleBitBinaryConfig_in_DoubleBitBinaryConfig(&dDoubleBitBinaryConfig);
   for (uint16_t i = 0; i < num_double_binary; ++i)
   {
-    config.double_binary[i] = {};
+    config.double_binary[i] = dDoubleBitBinaryConfig;//{};
   }
+
+  AnalogConfig aAnalogConfig;
+  AnalogConfig_in_AnalogConfig(&aAnalogConfig);
   for (uint16_t i = 0; i < num_analog; ++i)
   {
-    config.analog_input[i] = {};
+    config.analog_input[i] = aAnalogConfig;//{};
   }
+
+  CounterConfig cCounterConfig;
+  CounterConfig_in_CounterConfig(&cCounterConfig);
   for (uint16_t i = 0; i < num_counter; ++i)
   {
-    config.counter[i] = {};
+    config.counter[i] = cCounterConfig;//{};
   }
+
+  FrozenCounterConfig fFrozenCounterConfig;
+  FrozenCounterConfig_in_FrozenCounterConfig(&fFrozenCounterConfig);
   for (uint16_t i = 0; i < num_frozen_counter; ++i)
   {
-    config.frozen_counter[i] = {};
+    config.frozen_counter[i] = fFrozenCounterConfig;//{};
   }
+
+  BOStatusConfig bBOStatusConfig;
+  BOStatusConfig_in_BOStatusConfig(&bBOStatusConfig);
   for (uint16_t i = 0; i < num_binary_output_status; ++i)
   {
-    config.binary_output_status[i] = {};
+    config.binary_output_status[i] = bBOStatusConfig;//{};
   }
+
+  AOStatusConfig aAOStatusConfig;
+  AOStatusConfig_in_AOStatusConfig(&aAOStatusConfig);
   for (uint16_t i = 0; i < num_analog_output_status; ++i)
   {
-    config.analog_output_status[i] = {};
+    config.analog_output_status[i] = aAOStatusConfig;//{};
   }
+
+  TimeAndIntervalConfig tTimeAndIntervalConfig;
+  TimeAndIntervalConfig_in_TimeAndIntervalConfig(&tTimeAndIntervalConfig);
   for (uint16_t i = 0; i < num_time_and_interval; ++i)
   {
-    config.time_and_interval[i] = {};
+    config.time_and_interval[i] = tTimeAndIntervalConfig;//{};
   }
+
+  OctetStringConfig oOctetStringConfig;
+  OctetStringConfig_in_OctetStringConfig(&oOctetStringConfig);
   for (uint16_t i = 0; i < num_octet_string; ++i)
   {
-    config.octet_string[i] = {};
+    config.octet_string[i] = oOctetStringConfig;//{};
   }
 
   return config;

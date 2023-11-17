@@ -18,7 +18,8 @@ void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputS
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
 
   StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(pStaticDataMap);
@@ -32,6 +33,9 @@ void StaticDataMap_for_AnalogOutputStatusSpec_in_StaticDataMap_for_AnalogOutputS
     StaticDataCell_for_AnalogOutputStatus_in_StaticDataCell_for_AnalogOutputStatusOver2(&sStaticDataCell_for_AnalogOutputStatus, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_AnalogOutputStatus;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 Range get_selected_range_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec)

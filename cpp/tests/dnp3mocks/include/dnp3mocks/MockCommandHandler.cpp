@@ -1,3 +1,6 @@
+#include "log_info.h"
+#include <iostream>
+
 #include <QApplication>
 #include "header.h"
 #include "MockCommandHandler.h"
@@ -45,6 +48,8 @@ void DoOperate_AnalogOutputDouble64_in_MockCommandHandler_override(void* pSimple
 
 void DoOperate_ControlRelayOutputBlock_in_MockCommandHandler(MockCommandHandler* pMockCommandHandler, ControlRelayOutputBlock* command, uint16_t index, OperateType_uint8_t opType)
 {
+   std::cout<<'\n';
+   std::cout<<"DoOperate_ControlRelayOutputBlock_in_MockCommandHandler1"<<'\n';
 // void Operation_for_ControlRelayOutputBlock_in_Operation_for_ControlRelayOutputBlock(Operation_for_ControlRelayOutputBlock *pOperation_for_ControlRelayOutputBlock,
 //                                           ControlRelayOutputBlock value,
 //                                           uint16_t index,
@@ -61,6 +66,8 @@ void DoOperate_ControlRelayOutputBlock_in_MockCommandHandler(MockCommandHandler*
 }
 void DoOperate_AnalogOutputInt16_in_MockCommandHandler(MockCommandHandler* pMockCommandHandler, AnalogOutputInt16* command, uint16_t index, OperateType_uint8_t opType)
 {
+   std::cout<<'\n';
+   std::cout<<"DoOperate_AnalogOutputInt16_in_MockCommandHandler1"<<'\n';
 // void Operation_for_AnalogOutputInt16_in_Operation_for_AnalogOutputInt16(Operation_for_AnalogOutputInt16 *pOperation_for_AnalogOutputInt16,
 //                                           AnalogOutputInt16 value,
 //                                           uint16_t index,
@@ -77,6 +84,8 @@ void DoOperate_AnalogOutputInt16_in_MockCommandHandler(MockCommandHandler* pMock
 }
 void DoOperate_AnalogOutputInt32_in_MockCommandHandler(MockCommandHandler* pMockCommandHandler, AnalogOutputInt32* command, uint16_t index, OperateType_uint8_t opType)
 {
+   std::cout<<'\n';
+   std::cout<<"DoOperate_AnalogOutputInt32_in_MockCommandHandler1"<<'\n';
 // void Operation_for_AnalogOutputInt32_in_Operation_for_AnalogOutputInt32(Operation_for_AnalogOutputInt32 *pOperation_for_AnalogOutputInt32,
 //                                           AnalogOutputInt32 value,
 //                                           uint16_t index,
@@ -93,6 +102,8 @@ void DoOperate_AnalogOutputInt32_in_MockCommandHandler(MockCommandHandler* pMock
 }
 void DoOperate_AnalogOutputFloat32_in_MockCommandHandler(MockCommandHandler* pMockCommandHandler, AnalogOutputFloat32* command, uint16_t index, OperateType_uint8_t opType)
 {
+   std::cout<<'\n';
+   std::cout<<"DoOperate_AnalogOutputFloat32_in_MockCommandHandler1"<<'\n';
 // void Operation_for_AnalogOutputFloat32_in_Operation_for_AnalogOutputFloat32(Operation_for_AnalogOutputFloat32 *pOperation_for_AnalogOutputFloat32,
 //                                           AnalogOutputFloat32 value,
 //                                           uint16_t index,
@@ -109,6 +120,8 @@ void DoOperate_AnalogOutputFloat32_in_MockCommandHandler(MockCommandHandler* pMo
 }
 void DoOperate_AnalogOutputDouble64_in_MockCommandHandler(MockCommandHandler* pMockCommandHandler, AnalogOutputDouble64* command, uint16_t index, OperateType_uint8_t opType)
 {
+   std::cout<<'\n';
+   std::cout<<"DoOperate_AnalogOutputDouble64_in_MockCommandHandler1"<<'\n';
 // void Operation_for_AnalogOutputDouble64_in_Operation_for_AnalogOutputDouble64(Operation_for_AnalogOutputDouble64 *pOperation_for_AnalogOutputDouble64,
 //                                           AnalogOutputDouble64 value,
 //                                           uint16_t index,

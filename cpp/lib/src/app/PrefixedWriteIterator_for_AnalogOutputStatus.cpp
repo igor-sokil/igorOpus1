@@ -20,8 +20,8 @@ void PrefixedWriteIterator_for_UInt8_AnalogOutputStatus_in_PrefixedWriteIterator
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt8_AnalogOutputStatusOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,8 +63,8 @@ void PrefixedWriteIterator_for_UInt8_AnalogOutputStatus_destr_PrefixedWriteItera
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_AnalogOutputStatus_destr_PrefixedWriteIterator_for_UInt8_AnalogOutputStatus1"<<'\n';
   decrement_stack_info();
 #endif
@@ -115,8 +115,8 @@ void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterato
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -132,8 +132,8 @@ void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterato
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt16_AnalogOutputStatusOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -158,8 +158,8 @@ void PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_destr_PrefixedWriteIter
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus1"<<'\n';
   decrement_stack_info();
 #endif

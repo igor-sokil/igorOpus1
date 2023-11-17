@@ -78,7 +78,7 @@ ParseResult_uint8_t ParseHeader_in_CountIndexParser_static(
 ////                            GroupVariationSpec::to_human_string(record.enumeration),
 ////                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), count);
 #ifdef  LOG_INFO
-  std::cout<<"+"<<getString_stack_info();
+  std::cout<<"*"<<getString_stack_info();
       std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), '%03u,%03u %s, %s [%u, %u]', record.group, record.variation,*"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
       std::cout<<"*record.group= "<<(uint16_t)record->gGroupVariationRecord.group<<'\n';
@@ -171,7 +171,7 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
   case (GroupVariation_Group2Var1):
   {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@"<<getString_stack_info();
      std::cout<<"*GroupVariation_Group2Var1"<<std::endl;
   decrement_stack_info();
 #endif
@@ -185,15 +185,34 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
   }
 
-////    case (GroupVariation::Group2Var2):
+  case (GroupVariation_Group2Var2):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+     std::cout<<"*GroupVariation_Group2Var2"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group2Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group2Var3):
+    CountIndexParser temp = From_for_Group2Var2_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group2Var3):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+     std::cout<<"*GroupVariation_Group2Var3"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group2Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group2Var3_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
 
     case (GroupVariation_Group4Var1):
     {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@"<<getString_stack_info();
      std::cout<<"*GroupVariation_Group4Var1"<<std::endl;
   decrement_stack_info();
 #endif
@@ -202,13 +221,22 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
     }
 
-////    case (GroupVariation::Group4Var2):
+    case (GroupVariation_Group4Var2):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+     std::cout<<"*GroupVariation_Group4Var2"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group4Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group4Var2_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
 
     case (GroupVariation_Group4Var3):
     {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@"<<getString_stack_info();
      std::cout<<"*GroupVariation_Group4Var3"<<std::endl;
   decrement_stack_info();
 #endif
@@ -217,15 +245,34 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
     }
 
-////    case (GroupVariation::Group11Var1):
+    case (GroupVariation_Group11Var1):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+     std::cout<<"*GroupVariation_Group11Var1"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group11Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group11Var2):
+    CountIndexParser temp = From_for_Group11Var1_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group11Var2):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+     std::cout<<"*GroupVariation_Group11Var2"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group11Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////
+    CountIndexParser temp = From_for_Group11Var2_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
     case (GroupVariation_Group12Var1):
 {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group12Var1"<<std::endl;
   decrement_stack_info();
 #endif
@@ -237,7 +284,7 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
    case (GroupVariation_Group13Var1):
 {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group13Var1"<<std::endl;
   decrement_stack_info();
 #endif
@@ -248,7 +295,7 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
    case (GroupVariation_Group13Var2):
 {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group13Var2"<<std::endl;
   decrement_stack_info();
 #endif
@@ -257,64 +304,293 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
 }
 
-////    case (GroupVariation::Group22Var1):
+   case (GroupVariation_Group22Var1):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group22Var1"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group22Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group22Var2):
+    CountIndexParser temp = From_for_Group22Var1_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group22Var2):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group22Var2"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group22Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group22Var5):
+    CountIndexParser temp = From_for_Group22Var2_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group22Var5):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group22Var5"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group22Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group22Var6):
+    CountIndexParser temp = From_for_Group22Var5_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+   case (GroupVariation_Group22Var6):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group22Var6"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group22Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group22Var6_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
 
-////    case (GroupVariation::Group23Var1):
+    case (GroupVariation_Group23Var1):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group23Var1"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group23Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group23Var2):
-////        return CountIndexParser::From<Group23Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group23Var5):
-////        return CountIndexParser::From<Group23Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group23Var6):
-////        return CountIndexParser::From<Group23Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group23Var1_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
 
-////    case (GroupVariation::Group32Var1):
+    case (GroupVariation_Group23Var2):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group23Var2"<<std::endl;
+  decrement_stack_info();
+#endif
+////        return CountIndexParser::From<Group23Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group23Var2_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group23Var5):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group23Var5"<<std::endl;
+  decrement_stack_info();
+#endif
+////        return CountIndexParser::From<Group23Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group23Var5_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group23Var6):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group23Var6"<<std::endl;
+  decrement_stack_info();
+#endif
+////        return CountIndexParser::From<Group23Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group23Var6_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group32Var1):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group32Var1"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group32Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group32Var2):
+    CountIndexParser temp = From_for_Group32Var1_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group32Var2):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group32Var2"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group32Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group32Var3):
+    CountIndexParser temp = From_for_Group32Var2_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group32Var3):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group32Var3"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group32Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group32Var4):
+    CountIndexParser temp = From_for_Group32Var3_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group32Var4):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group32Var4"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group32Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group32Var5):
+    CountIndexParser temp = From_for_Group32Var4_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group32Var5):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group32Var5"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group32Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group32Var5_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
 ////    case (GroupVariation::Group32Var6):
 ////        return CountIndexParser::From<Group32Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group32Var7):
+    case (GroupVariation_Group32Var7):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group32Var7"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group32Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group32Var7_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
 ////    case (GroupVariation::Group32Var8):
 ////        return CountIndexParser::From<Group32Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
-////    case (GroupVariation::Group41Var1):
+    case (GroupVariation_Group41Var1):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group41Var1"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group41Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group41Var2):
+    CountIndexParser temp = From_for_Group41Var1_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group41Var2):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group41Var2"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group41Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group41Var3):
+    CountIndexParser temp = From_for_Group41Var2_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group41Var3):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group41Var3"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group41Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group41Var3_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
 ////    case (GroupVariation::Group41Var4):
 ////        return CountIndexParser::From<Group41Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
-////    case (GroupVariation::Group42Var1):
+    case (GroupVariation_Group42Var1):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group42Var1"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group42Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group42Var2):
+    CountIndexParser temp = From_for_Group42Var1_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group42Var2):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group42Var2"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group42Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group42Var3):
+    CountIndexParser temp = From_for_Group42Var2_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group42Var3):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group42Var3"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group42Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group42Var4):
+    CountIndexParser temp = From_for_Group42Var3_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group42Var4):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group42Var4"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group42Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group42Var5):
+    CountIndexParser temp = From_for_Group42Var4_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
+    case (GroupVariation_Group42Var5):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group42Var5"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group42Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group42Var5_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
 ////    case (GroupVariation::Group42Var6):
 ////        return CountIndexParser::From<Group42Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
-////    case (GroupVariation::Group42Var7):
+
+   case (GroupVariation_Group42Var7):
+{
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group42Var7"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        return CountIndexParser::From<Group42Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
+    CountIndexParser temp = From_for_Group42Var7_in_CountIndexParser_static(count, numparser);
+    return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
+}
+
 ////    case (GroupVariation::Group42Var8):
 ////        return CountIndexParser::From<Group42Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
@@ -354,6 +630,7 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
 ////        return CountIndexParser::From<Group43Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
 ////    case (GroupVariation::Group43Var8):
 ////        return CountIndexParser::From<Group43Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
+
     case (GroupVariation_Group50Var4):
 {
 #ifdef  LOG_INFO
@@ -596,8 +873,8 @@ CountIndexParser From_for_Group2Var1_in_CountIndexParser_static(uint16_t count, 
 ////        Descriptor::ReadTarget(buffer, pair.value);
 ////        return pair;
 ////    };
-Indexed_for_Binary readInvokeCountOf_for_Binary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
-Indexed_for_Binary readInvokeCountOf_for_Binary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var1_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var1_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
 UNUSED(pos);
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
@@ -635,7 +912,7 @@ void InvokeCountOf_for_Group2Var1_in_CountIndexParser_static(
   BufferedCollection_Indexed_for_Binary collection = CreateBufferedCollection_Indexed_for_Binary_static(
         buffer,
         count,
-        readInvokeCountOf_for_Binary_in_CountIndexParser);
+        readInvokeCountOf_for_Binary_Group2Var1_in_CountIndexParser);
 
 //void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
 ////    handler.OnHeader(PrefixHeader(record, count), collection);
@@ -646,6 +923,328 @@ void InvokeCountOf_for_Group2Var1_in_CountIndexParser_static(
   OnHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Binary));
 }
 //------------------------------------------Group2Var1------------------------------------------------
+//------------------------------------------Group2Var2------------------------------------------------
+CountIndexParser From_for_Group2Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group2Var2_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group2Var2_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group2Var2_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var2_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var2_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Binary pair;
+  Indexed_for_Binary_in_Indexed_for_BinaryOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group1Var2_static(RSeq_for_Uint16_t *, Binary*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group2Var2_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group2Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Binary collection = CreateBufferedCollection_Indexed_for_Binary_static(
+        buffer,
+        count,
+        readInvokeCountOf_for_Binary_Group2Var2_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Binary));
+}
+//------------------------------------------Group2Var2------------------------------------------------
+//------------------------------------------Group2Var3------------------------------------------------
+CountIndexParser From_for_Group2Var3_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group2Var3_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group2Var3_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group2Var3_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var3_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var3_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Binary pair;
+  Indexed_for_Binary_in_Indexed_for_BinaryOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group2Var3_static(RSeq_for_Uint16_t *, Binary*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group2Var3_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group2Var3_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Binary collection = CreateBufferedCollection_Indexed_for_Binary_static(
+        buffer,
+        count,
+        readInvokeCountOf_for_Binary_Group2Var3_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Binary_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Binary));
+}
+//------------------------------------------Group2Var3------------------------------------------------
+//------------------------------------------Group11Var1------------------------------------------------
+CountIndexParser From_for_Group11Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group11Var1_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group11Var1_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group11Var1_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_BinaryOutputStatus readInvokeCountOf_for_BinaryOutputStatus_Group11Var1_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_BinaryOutputStatus readInvokeCountOf_for_BinaryOutputStatus_Group11Var1_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"readInvokeCountOf_for_BinaryOutputStatus_Group11Var1_in_CountIndexParser1"<<std::endl;
+  inspect_RSeq(buffer);
+  decrement_stack_info();
+#endif
+  UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_BinaryOutputStatus pair;
+  Indexed_for_BinaryOutputStatus_in_Indexed_for_BinaryOutputStatusOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group1Var2_static(RSeq_for_Uint16_t *, ControlRelayOutputBlock*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group11Var1_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group11Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"InvokeCountOf_for_BinaryOutputStatus_Group11Var1_in_CountIndexParser_static1"<<std::endl;
+  inspect_RSeq(buffer);
+#endif
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_BinaryOutputStatus collection = CreateBufferedCollection_Indexed_for_BinaryOutputStatus_static(
+        buffer,
+        count,
+        readInvokeCountOf_for_BinaryOutputStatus_Group11Var1_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_BinaryOutputStatus));
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+}
+//------------------------------------------Group11Var1------------------------------------------------
+//------------------------------------------Group11Var2------------------------------------------------
+CountIndexParser From_for_Group11Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group11Var2_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group11Var2_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group11Var2_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_BinaryOutputStatus readInvokeCountOf_for_BinaryOutputStatus_Group11Var2_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_BinaryOutputStatus readInvokeCountOf_for_BinaryOutputStatus_Group11Var2_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"readInvokeCountOf_for_BinaryOutputStatus_Group11Var2_in_CountIndexParser1"<<std::endl;
+  inspect_RSeq(buffer);
+  decrement_stack_info();
+#endif
+  UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_BinaryOutputStatus pair;
+  Indexed_for_BinaryOutputStatus_in_Indexed_for_BinaryOutputStatusOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group1Var2_static(RSeq_for_Uint16_t *, ControlRelayOutputBlock*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group11Var2_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group11Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"InvokeCountOf_for_BinaryOutputStatus_Group11Var2_in_CountIndexParser_static1"<<std::endl;
+  inspect_RSeq(buffer);
+#endif
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_BinaryOutputStatus collection = CreateBufferedCollection_Indexed_for_BinaryOutputStatus_static(
+        buffer,
+        count,
+        readInvokeCountOf_for_BinaryOutputStatus_Group11Var2_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_BinaryOutputStatus));
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+}
+//------------------------------------------Group11Var2------------------------------------------------
 //------------------------------------------Group12Var1------------------------------------------------
 CountIndexParser From_for_Group12Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
 {
@@ -808,6 +1407,78 @@ void InvokeCountOf_for_Group4Var1_in_CountIndexParser_static(
   OnHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_DoubleBitBinary));
 }
 //------------------------------------------Group4Var1------------------------------------------------
+//------------------------------------------Group4Var2------------------------------------------------
+CountIndexParser From_for_Group4Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group4Var2_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group4Var2_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group4Var2_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var2_for_DoubleBitBinary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var2_for_DoubleBitBinary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_DoubleBitBinary pair;
+  Indexed_for_DoubleBitBinary_in_Indexed_for_DoubleBitBinaryOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group4Var2_static(RSeq_for_Uint16_t *, DoubleBitBinary*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group4Var2_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group4Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_DoubleBitBinary collection = CreateBufferedCollection_Indexed_for_DoubleBitBinary_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group4Var2_for_DoubleBitBinary_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_DoubleBitBinary));
+}
+//------------------------------------------Group4Var2------------------------------------------------
 //------------------------------------------Group4Var3------------------------------------------------
 CountIndexParser From_for_Group4Var3_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
 {
@@ -1240,3 +1911,1659 @@ void InvokeCountOf_for_Group50Var4_in_CountIndexParser_static(
   OnHeader_PrefixHeader_Indexed_for_TimeAndInterval_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_TimeAndInterval));
 }
 //------------------------------------------Group50Var4------------------------------------------------
+//------------------------------------------Group22Var1------------------------------------------------
+CountIndexParser From_for_Group22Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group22Var1_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group22Var1_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group22Var1_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Counter readInvokeCountOf_Group22Var1_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Counter readInvokeCountOf_Group22Var1_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Counter pair;
+  Indexed_for_Counter_in_Indexed_for_CounterOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group22Var1_static(RSeq_for_Uint16_t *, Counter*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group22Var1_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group22Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Counter collection = CreateBufferedCollection_Indexed_for_Counter_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group22Var1_for_Counter_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Counter));
+}
+//------------------------------------------Group22Var1------------------------------------------------
+//------------------------------------------Group22Var2------------------------------------------------
+CountIndexParser From_for_Group22Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group22Var2_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group22Var2_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group22Var2_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Counter readInvokeCountOf_Group22Var2_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Counter readInvokeCountOf_Group22Var2_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Counter pair;
+  Indexed_for_Counter_in_Indexed_for_CounterOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group22Var2_static(RSeq_for_Uint16_t *, Counter*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group22Var2_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group22Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Counter collection = CreateBufferedCollection_Indexed_for_Counter_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group22Var2_for_Counter_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Counter));
+}
+//------------------------------------------Group22Var2------------------------------------------------
+//------------------------------------------Group22Var5------------------------------------------------
+CountIndexParser From_for_Group22Var5_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group22Var5_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group22Var5_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group22Var5_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Counter readInvokeCountOf_Group22Var5_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Counter readInvokeCountOf_Group22Var5_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Counter pair;
+  Indexed_for_Counter_in_Indexed_for_CounterOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group22Var5_static(RSeq_for_Uint16_t *, Counter*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group22Var5_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group22Var5_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Counter collection = CreateBufferedCollection_Indexed_for_Counter_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group22Var5_for_Counter_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Counter));
+}
+//------------------------------------------Group22Var5------------------------------------------------
+//------------------------------------------Group22Var6------------------------------------------------
+CountIndexParser From_for_Group22Var6_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group22Var6_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group22Var6_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group22Var6_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Counter readInvokeCountOf_Group22Var6_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Counter readInvokeCountOf_Group22Var6_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Counter pair;
+  Indexed_for_Counter_in_Indexed_for_CounterOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group22Var6_static(RSeq_for_Uint16_t *, Counter*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group22Var6_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group22Var6_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Counter collection = CreateBufferedCollection_Indexed_for_Counter_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group22Var6_for_Counter_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Counter_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Counter));
+}
+//------------------------------------------Group22Var6------------------------------------------------
+//------------------------------------------Group23Var1------------------------------------------------
+CountIndexParser From_for_Group23Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group23Var1_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group23Var1_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group23Var1_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_FrozenCounter readInvokeCountOf_Group23Var1_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_FrozenCounter readInvokeCountOf_Group23Var1_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_FrozenCounter pair;
+  Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group23Var1_static(RSeq_for_Uint16_t *, FrozenCounter*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group23Var1_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group23Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group23Var1_for_FrozenCounter_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_FrozenCounter));
+}
+//------------------------------------------Group23Var1------------------------------------------------
+//------------------------------------------Group23Var2------------------------------------------------
+CountIndexParser From_for_Group23Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group23Var2_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group23Var2_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group23Var2_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_FrozenCounter readInvokeCountOf_Group23Var2_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_FrozenCounter readInvokeCountOf_Group23Var2_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_FrozenCounter pair;
+  Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group23Var2_static(RSeq_for_Uint16_t *, FrozenCounter*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group23Var2_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group23Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group23Var2_for_FrozenCounter_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_FrozenCounter));
+}
+//------------------------------------------Group23Var2------------------------------------------------
+//------------------------------------------Group23Var5------------------------------------------------
+CountIndexParser From_for_Group23Var5_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group23Var5_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group23Var5_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group23Var5_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_FrozenCounter readInvokeCountOf_Group23Var5_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_FrozenCounter readInvokeCountOf_Group23Var5_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_FrozenCounter pair;
+  Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group23Var5_static(RSeq_for_Uint16_t *, FrozenCounter*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group23Var5_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group23Var5_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group23Var5_for_FrozenCounter_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_FrozenCounter));
+}
+//------------------------------------------Group23Var5------------------------------------------------
+//------------------------------------------Group23Var6------------------------------------------------
+CountIndexParser From_for_Group23Var6_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group23Var6_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group23Var6_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group23Var6_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_FrozenCounter readInvokeCountOf_Group23Var6_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_FrozenCounter readInvokeCountOf_Group23Var6_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_FrozenCounter pair;
+  Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group23Var6_static(RSeq_for_Uint16_t *, FrozenCounter*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group23Var6_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group23Var6_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_FrozenCounter collection = CreateBufferedCollection_Indexed_for_FrozenCounter_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group23Var6_for_FrozenCounter_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_FrozenCounter_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_FrozenCounter));
+}
+//------------------------------------------Group23Var6------------------------------------------------
+//------------------------------------------Group32Var1------------------------------------------------
+CountIndexParser From_for_Group32Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group32Var1_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group32Var1_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group32Var1_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Analog readInvokeCountOf_Group32Var1_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Analog readInvokeCountOf_Group32Var1_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Analog pair;
+  Indexed_for_Analog_in_Indexed_for_AnalogOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group32Var1_static(RSeq_for_Uint16_t *, Analog*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group32Var1_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group32Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group32Var1_for_Analog_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Analog));
+}
+//------------------------------------------Group32Var1------------------------------------------------
+//------------------------------------------Group32Var2------------------------------------------------
+CountIndexParser From_for_Group32Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group32Var2_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group32Var2_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group32Var2_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Analog readInvokeCountOf_Group32Var2_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Analog readInvokeCountOf_Group32Var2_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Analog pair;
+  Indexed_for_Analog_in_Indexed_for_AnalogOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group32Var2_static(RSeq_for_Uint16_t *, Analog*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group32Var2_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group32Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group32Var2_for_Analog_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Analog));
+}
+//------------------------------------------Group32Var2------------------------------------------------
+//------------------------------------------Group32Var3------------------------------------------------
+CountIndexParser From_for_Group32Var3_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group32Var3_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group32Var3_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group32Var3_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Analog readInvokeCountOf_Group32Var3_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Analog readInvokeCountOf_Group32Var3_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Analog pair;
+  Indexed_for_Analog_in_Indexed_for_AnalogOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group32Var3_static(RSeq_for_Uint16_t *, Analog*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group32Var3_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group32Var3_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group32Var3_for_Analog_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Analog));
+}
+//------------------------------------------Group32Var3------------------------------------------------
+//------------------------------------------Group32Var4------------------------------------------------
+CountIndexParser From_for_Group32Var4_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group32Var4_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group32Var4_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group32Var4_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Analog readInvokeCountOf_Group32Var4_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Analog readInvokeCountOf_Group32Var4_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Analog pair;
+  Indexed_for_Analog_in_Indexed_for_AnalogOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group32Var4_static(RSeq_for_Uint16_t *, Analog*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group32Var4_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group32Var4_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group32Var4_for_Analog_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Analog));
+}
+//------------------------------------------Group32Var4------------------------------------------------
+//------------------------------------------Group32Var5------------------------------------------------
+CountIndexParser From_for_Group32Var5_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group32Var5_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group32Var5_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group32Var5_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Analog readInvokeCountOf_Group32Var5_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Analog readInvokeCountOf_Group32Var5_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Analog pair;
+  Indexed_for_Analog_in_Indexed_for_AnalogOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group32Var5_static(RSeq_for_Uint16_t *, Analog*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group32Var5_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group32Var5_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group32Var5_for_Analog_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Analog));
+}
+//------------------------------------------Group32Var5------------------------------------------------
+//------------------------------------------Group32Var7------------------------------------------------
+CountIndexParser From_for_Group32Var7_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group32Var7_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group32Var7_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group32Var7_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_Analog readInvokeCountOf_Group32Var7_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_Analog readInvokeCountOf_Group32Var7_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_Analog pair;
+  Indexed_for_Analog_in_Indexed_for_AnalogOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group32Var7_static(RSeq_for_Uint16_t *, Analog*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group32Var7_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group32Var7_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_Analog collection = CreateBufferedCollection_Indexed_for_Analog_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group32Var7_for_Analog_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_Analog_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_Analog));
+}
+//------------------------------------------Group32Var7------------------------------------------------
+//------------------------------------------Group41Var1------------------------------------------------
+CountIndexParser From_for_Group41Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group41Var1_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group41Var1_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group41Var1_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputInt32 readInvokeCountOf_Group41Var1_for_AnalogOutputInt32_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputInt32 readInvokeCountOf_Group41Var1_for_AnalogOutputInt32_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputInt32 pair;
+  Indexed_for_AnalogOutputInt32_in_Indexed_for_AnalogOutputInt32Over1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group41Var1_static(RSeq_for_Uint16_t *, AnalogOutputInt32*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group41Var1_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group41Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputInt32 collection = CreateBufferedCollection_Indexed_for_AnalogOutputInt32_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group41Var1_for_AnalogOutputInt32_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputInt32));
+}
+//------------------------------------------Group41Var1------------------------------------------------
+//------------------------------------------Group41Var2------------------------------------------------
+CountIndexParser From_for_Group41Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group41Var2_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group41Var2_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group41Var2_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputInt16 readInvokeCountOf_Group41Var2_for_AnalogOutputInt16_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputInt16 readInvokeCountOf_Group41Var2_for_AnalogOutputInt16_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputInt16 pair;
+  Indexed_for_AnalogOutputInt16_in_Indexed_for_AnalogOutputInt16Over1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group41Var2_static(RSeq_for_Uint16_t *, AnalogOutputInt16*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group41Var2_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group41Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputInt16 collection = CreateBufferedCollection_Indexed_for_AnalogOutputInt16_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group41Var2_for_AnalogOutputInt16_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputInt16));
+}
+//------------------------------------------Group41Var2------------------------------------------------
+//------------------------------------------Group41Var3------------------------------------------------
+CountIndexParser From_for_Group41Var3_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group41Var3_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group41Var3_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group41Var3_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputFloat32 readInvokeCountOf_Group41Var3_for_AnalogOutputFloat32_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputFloat32 readInvokeCountOf_Group41Var3_for_AnalogOutputFloat32_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputFloat32 pair;
+  Indexed_for_AnalogOutputFloat32_in_Indexed_for_AnalogOutputFloat32Over1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group41Var3_static(RSeq_for_Uint16_t *, AnalogOutputFloat32*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group41Var3_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group41Var3_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputFloat32 collection = CreateBufferedCollection_Indexed_for_AnalogOutputFloat32_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group41Var3_for_AnalogOutputFloat32_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputFloat32));
+}
+//------------------------------------------Group41Var3------------------------------------------------
+//------------------------------------------Group42Var1------------------------------------------------
+CountIndexParser From_for_Group42Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group42Var1_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group42Var1_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group42Var1_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var1_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var1_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputStatus pair;
+  Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group42Var1_static(RSeq_for_Uint16_t *, AnalogOutputFloat32*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group42Var1_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group42Var1_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group42Var1_for_AnalogOutputStatus_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputStatus));
+}
+//------------------------------------------Group42Var1------------------------------------------------
+//------------------------------------------Group42Var2------------------------------------------------
+CountIndexParser From_for_Group42Var2_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group42Var2_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group42Var2_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group42Var2_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var2_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var2_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputStatus pair;
+  Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group42Var2_static(RSeq_for_Uint16_t *, AnalogOutputFloat32*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group42Var2_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group42Var2_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group42Var2_for_AnalogOutputStatus_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputStatus));
+}
+//------------------------------------------Group42Var2------------------------------------------------
+//------------------------------------------Group42Var3------------------------------------------------
+CountIndexParser From_for_Group42Var3_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group42Var3_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group42Var3_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group42Var3_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var3_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var3_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputStatus pair;
+  Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group42Var3_static(RSeq_for_Uint16_t *, AnalogOutputFloat32*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group42Var3_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group42Var3_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group42Var3_for_AnalogOutputStatus_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputStatus));
+}
+//------------------------------------------Group42Var3------------------------------------------------
+//------------------------------------------Group42Var4------------------------------------------------
+CountIndexParser From_for_Group42Var4_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group42Var4_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group42Var4_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group42Var4_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var4_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var4_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputStatus pair;
+  Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group42Var4_static(RSeq_for_Uint16_t *, AnalogOutputFloat32*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group42Var4_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group42Var4_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group42Var4_for_AnalogOutputStatus_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputStatus));
+}
+//------------------------------------------Group42Var4------------------------------------------------
+//------------------------------------------Group42Var5------------------------------------------------
+CountIndexParser From_for_Group42Var5_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group42Var5_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group42Var5_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group42Var5_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var5_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var5_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputStatus pair;
+  Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group42Var5_static(RSeq_for_Uint16_t *, AnalogOutputFloat32*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group42Var5_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group42Var5_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group42Var5_for_AnalogOutputStatus_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputStatus));
+}
+//------------------------------------------Group42Var5------------------------------------------------
+//------------------------------------------Group42Var7------------------------------------------------
+CountIndexParser From_for_Group42Var7_in_CountIndexParser_static(uint16_t count, NumParser* numparser)
+{
+// uint16_t Size_in_Group42Var7_static(void);
+//    uint8_t NumBytes_in_NumParser(NumParser *pNumParser);
+////    const size_t SIZE = static_cast<size_t>(count) * (Descriptor::Size() + numparser.NumBytes());
+  uint32_t SIZE = count * (Size_in_Group42Var7_static() + NumBytes_in_NumParser(numparser));
+//    void CountIndexParser_in_CountIndexParser(CountIndexParser *pCountIndexParser, uint16_t count, uint16_t requiredSize, NumParser *numparser, HandleFun_in_CountIndexParser handler);
+////    return CountIndexParser(count, SIZE, numparser, &InvokeCountOf<Descriptor>);
+  CountIndexParser cCountIndexParser;
+  CountIndexParser_in_CountIndexParser(&cCountIndexParser, count, SIZE, numparser, InvokeCountOf_for_Group42Var7_in_CountIndexParser_static);
+  return cCountIndexParser;
+}
+
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var7_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var7_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+UNUSED(pos);
+
+  NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
+
+////        Indexed<typename Descriptor::Target> pair;
+  Indexed_for_AnalogOutputStatus pair;
+  Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver1(&pair);
+
+//uint16_t ReadNum_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer);
+////        pair.index = numparser.ReadNum(buffer);
+  pair.index = ReadNum_in_NumParser(numparser, buffer);
+//boolean ReadTarget_in_Group42Var7_static(RSeq_for_Uint16_t *, AnalogOutputFloat32*);
+////        Descriptor::ReadTarget(buffer, pair.value);
+  ReadTarget_in_Group42Var7_static(buffer, &pair.value);
+  return pair;
+}
+
+void InvokeCountOf_for_Group42Var7_in_CountIndexParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  NumParser* numparser,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [&numparser](ser4cpp::rseq_t & buffer, uint32_t) -> Indexed<typename Descriptor::Target>
+////    {
+////        Indexed<typename Descriptor::Target> pair;
+////        pair.index = numparser.ReadNum(buffer);
+////        Descriptor::ReadTarget(buffer, pair.value);
+////        return pair;
+////    };
+
+////    auto collection = CreateBufferedCollection<Indexed<typename Descriptor::Target>>(buffer, count, read);
+  pPointerGlobal1_in_ParseCountOfIndices = numparser;
+  BufferedCollection_Indexed_for_AnalogOutputStatus collection = CreateBufferedCollection_Indexed_for_AnalogOutputStatus_static(
+        buffer,
+        count,
+        readInvokeCountOf_Group42Var7_for_AnalogOutputStatus_in_CountIndexParser);
+
+//void PrefixHeader_in_PrefixHeader(PrefixHeader *pPrefixHeader, HeaderRecord *record, uint16_t count_);
+////    handler.OnHeader(PrefixHeader(record, count), collection);
+  PrefixHeader pPrefixHeader;
+//  RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
+  PrefixHeader_in_PrefixHeader(&pPrefixHeader, record, count);
+
+  OnHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_IAPDUHandler(handler, &pPrefixHeader, &(collection.iICollection_Indexed_for_AnalogOutputStatus));
+}
+//------------------------------------------Group42Var7------------------------------------------------

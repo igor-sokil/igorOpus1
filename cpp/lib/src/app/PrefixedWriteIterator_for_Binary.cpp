@@ -20,8 +20,8 @@ void PrefixedWriteIterator_for_UInt8_Binary_in_PrefixedWriteIterator_for_UInt8_B
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Binary_in_PrefixedWriteIterator_for_UInt8_BinaryOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -37,8 +37,8 @@ void PrefixedWriteIterator_for_UInt8_Binary_in_PrefixedWriteIterator_for_UInt8_B
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Binary_in_PrefixedWriteIterator_for_UInt8_BinaryOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,8 +63,8 @@ void PrefixedWriteIterator_for_UInt8_Binary_destr_PrefixedWriteIterator_for_UInt
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_Binary_destr_PrefixedWriteIterator_for_UInt8_Binary1"<<'\n';
   decrement_stack_info();
 #endif
@@ -115,8 +115,8 @@ void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -132,10 +132,9 @@ void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver2_1"<<'\n';
-  decrement_stack_info();
 #endif
   pPrefixedWriteIterator_for_UInt16_Binary->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_Binary->sizeOfTypePlusIndex = get_size_in_Serializer_for_Binary(serializer) +////serializer.get_size() + PrefixType::size;
@@ -151,6 +150,11 @@ void PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16
 ////        pPosition->advance(PrefixType::size);
     advance_in_WSeq_for_Uint16_t(position, size_in_UInt16);
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver2_2"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////    ~PrefixedWriteIterator()
@@ -158,16 +162,18 @@ void PrefixedWriteIterator_for_UInt16_Binary_destr_PrefixedWriteIterator_for_UIn
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt16_Binary_destr_PrefixedWriteIterator_for_UInt16_Binary1"<<'\n';
-  decrement_stack_info();
 #endif
   if (pPrefixedWriteIterator_for_UInt16_Binary->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);
     write_to_in_UInt16_static(&(pPrefixedWriteIterator_for_UInt16_Binary->countPosition), pPrefixedWriteIterator_for_UInt16_Binary->count);
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean Write_in_PrefixedWriteIterator_for_UInt16_Binary(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary,

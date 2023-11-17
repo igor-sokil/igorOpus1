@@ -990,6 +990,186 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(voi
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(void *pICollection_Indexed_for_AnalogOutputStatus,
     IVisitor__for__Indexed_for_AnalogOutputStatus* visitor);
 //-----------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------
+//-----------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------
+typedef Indexed_for_AnalogOutputInt32 (*ReadFunc_Indexed_for_AnalogOutputInt32)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_Indexed_for_AnalogOutputInt32 iICollection_Indexed_for_AnalogOutputInt32;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Indexed_for_AnalogOutputInt32 WithIndex_in_Indexed_for_AnalogOutputInt32(
+//  AnalogOutputInt32* value, uint16_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Indexed_for_AnalogOutputInt32 readFunc;
+} BufferedCollection_Indexed_for_AnalogOutputInt32;
+
+void  BufferedCollection_Indexed_for_AnalogOutputInt32_in_BufferedCollection_Indexed_for_AnalogOutputInt32(
+  BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputInt32 readFunc);
+BufferedCollection_Indexed_for_AnalogOutputInt32 CreateBufferedCollection_Indexed_for_AnalogOutputInt32_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputInt32 readFunc);
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32);
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32,
+    IVisitor__for__Indexed_for_AnalogOutputInt32* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override(void *pICollection_Indexed_for_AnalogOutputInt32);
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override(void *pICollection_Indexed_for_AnalogOutputInt32,
+    IVisitor__for__Indexed_for_AnalogOutputInt32* visitor);
+//-----------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------
+//-----------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------
+typedef Indexed_for_AnalogOutputInt16 (*ReadFunc_Indexed_for_AnalogOutputInt16)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_Indexed_for_AnalogOutputInt16 iICollection_Indexed_for_AnalogOutputInt16;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Indexed_for_AnalogOutputInt16 WithIndex_in_Indexed_for_AnalogOutputInt16(
+//  AnalogOutputInt32* value, uint16_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Indexed_for_AnalogOutputInt16 readFunc;
+} BufferedCollection_Indexed_for_AnalogOutputInt16;
+
+void  BufferedCollection_Indexed_for_AnalogOutputInt16_in_BufferedCollection_Indexed_for_AnalogOutputInt16(
+  BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputInt16 readFunc);
+BufferedCollection_Indexed_for_AnalogOutputInt16 CreateBufferedCollection_Indexed_for_AnalogOutputInt16_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputInt16 readFunc);
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16);
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16,
+    IVisitor__for__Indexed_for_AnalogOutputInt16* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override(void *pICollection_Indexed_for_AnalogOutputInt16);
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override(void *pICollection_Indexed_for_AnalogOutputInt16,
+    IVisitor__for__Indexed_for_AnalogOutputInt16* visitor);
+//-----------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------
+//-----------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------
+typedef Indexed_for_AnalogOutputFloat32 (*ReadFunc_Indexed_for_AnalogOutputFloat32)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_Indexed_for_AnalogOutputFloat32 iICollection_Indexed_for_AnalogOutputFloat32;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Indexed_for_AnalogOutputFloat32 WithIndex_in_Indexed_for_AnalogOutputFloat32(
+//  AnalogOutputInt32* value, uint16_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Indexed_for_AnalogOutputFloat32 readFunc;
+} BufferedCollection_Indexed_for_AnalogOutputFloat32;
+
+void  BufferedCollection_Indexed_for_AnalogOutputFloat32_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(
+  BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputFloat32 readFunc);
+BufferedCollection_Indexed_for_AnalogOutputFloat32 CreateBufferedCollection_Indexed_for_AnalogOutputFloat32_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Indexed_for_AnalogOutputFloat32 readFunc);
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32);
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32,
+    IVisitor__for__Indexed_for_AnalogOutputFloat32* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override(void *pICollection_Indexed_for_AnalogOutputFloat32);
+void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override(void *pICollection_Indexed_for_AnalogOutputFloat32,
+    IVisitor__for__Indexed_for_AnalogOutputFloat32* visitor);
+//-----------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------
 
 ////} // namespace opendnp3
 

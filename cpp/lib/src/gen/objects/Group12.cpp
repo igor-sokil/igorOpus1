@@ -144,15 +144,6 @@ boolean WriteTarget_in_Group12Var1_static(ControlRelayOutputBlock* value, WSeq_f
 
 Group12Var1 Apply_in_ConvertGroup12Var1_static(ControlRelayOutputBlock* crob)
 {
-  Group12Var1 ret;
-  Group12Var1_in_Group12Var1(&ret);
-  ret.code = crob->rawCode;
-  ret.count = crob->count;
-  ret.onTime = crob->onTimeMS;
-  ret.offTime = crob->offTimeMS;
-////        ret.status = CommandStatusSpec::to_type(crob.status);
-  ret.status = crob->status;
-
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
@@ -170,6 +161,15 @@ Group12Var1 Apply_in_ConvertGroup12Var1_static(ControlRelayOutputBlock* crob)
   std::cout<<"*crob->status= "<<(uint32_t)crob->status<<'\n';
   decrement_stack_info();
 #endif
+  Group12Var1 ret;
+  Group12Var1_in_Group12Var1(&ret);
+  ret.code = crob->rawCode;
+  ret.count = crob->count;
+  ret.onTime = crob->onTimeMS;
+  ret.offTime = crob->offTimeMS;
+////        ret.status = CommandStatusSpec::to_type(crob.status);
+  ret.status = crob->status;
+
   return ret;
 }
 

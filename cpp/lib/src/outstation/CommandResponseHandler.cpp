@@ -38,7 +38,7 @@ void CommandResponseHandler_in_CommandResponseHandler(CommandResponseHandler *pC
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
-  std::cout<<"+"<<getString_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"CommandResponseHandler_in_CommandResponseHandler1"<<'\n';
   decrement_stack_info();
 #endif
@@ -56,16 +56,15 @@ void CommandResponseHandler_in_CommandResponseHandler(CommandResponseHandler *pC
   (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_IAPDUHandler =
     ProcessHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_CommandResponseHandler_override;
 
-  /*
-      (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_for_AnalogOutputInt16_in_IAPDUHandler =
-                                     ProcessHeader_PrefixHeader_for_AnalogOutputInt16_in_CommandResponseHandler_override;
-      (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_for_AnalogOutputInt32_in_IAPDUHandler =
-                                     ProcessHeader_PrefixHeader_for_AnalogOutputInt32_in_CommandResponseHandler_override;
-      (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_for_AnalogOutputFloat32_in_IAPDUHandler =
-                                     ProcessHeader_PrefixHeader_for_AnalogOutputFloat32_in_CommandResponseHandler_override;
-      (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_for_AnalogOutputDouble64_in_IAPDUHandler =
-                                     ProcessHeader_PrefixHeader_for_AnalogOutputDouble64_in_CommandResponseHandler_override;
-    */
+  (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler =
+    ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_CommandResponseHandler_override;
+  (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler =
+    ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_CommandResponseHandler_override;
+  (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler =
+    ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_CommandResponseHandler_override;
+//      (pCommandResponseHandler->iIAPDUHandler).pProcessHeader_PrefixHeader_for_Indexed_AnalogOutputDouble64_in_IAPDUHandler =
+//                                     ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputDouble64_in_CommandResponseHandler_override;
+
   setParentPointer_in_IWhiteList(&((pCommandResponseHandler->iIAPDUHandler).iIWhiteList), pCommandResponseHandler);
   setParentPointer_in_IAPDUHandler(&(pCommandResponseHandler->iIAPDUHandler), pCommandResponseHandler);
 }
@@ -111,28 +110,28 @@ CommandStatus_uint8_t ProcessCommand_for_ControlRelayOutputBlock_in_CommandRespo
   if (pCommandResponseHandler->numRequests < pCommandResponseHandler->maxCommands)
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler2"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler2"<<'\n';
 #endif
     ++(pCommandResponseHandler->numRequests);
 //CommandStatus_uint8_t Action_ControlRelayOutputBlock_in_ICommandAction(ICommandAction *, ControlRelayOutputBlock* arCommand, uint16_t aIndex);
 ////        return pCommandAction->Action(command, index);
     CommandStatus_uint8_t tmp = Action_ControlRelayOutputBlock_in_ICommandAction(pCommandResponseHandler->pCommandAction, command, index);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler3"<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*CommandStatus_uint8_t tmp = "<<(uint16_t)tmp<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler3"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*CommandStatus_uint8_t tmp = "<<(uint16_t)tmp<<'\n';
+    decrement_stack_info();
 #endif
     return tmp;
   }
   else
   {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*CommandStatus_TOO_MANY_OPS"<<'\n';
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*CommandStatus_TOO_MANY_OPS"<<'\n';
+    decrement_stack_info();
 #endif
     return CommandStatus_TOO_MANY_OPS;
   }
@@ -152,28 +151,28 @@ CommandStatus_uint8_t ProcessCommand_for_AnalogOutputInt16_in_CommandResponseHan
   if (pCommandResponseHandler->numRequests < pCommandResponseHandler->maxCommands)
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ProcessCommand_for_AnalogOutputInt16_in_CommandResponseHandler2"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"ProcessCommand_for_AnalogOutputInt16_in_CommandResponseHandler2"<<'\n';
 #endif
     ++(pCommandResponseHandler->numRequests);
 //CommandStatus_uint8_t Action_AnalogOutputInt16_in_ICommandAction(ICommandAction *, AnalogOutputInt16* arCommand, uint16_t aIndex);
 ////        return pCommandAction->Action(command, index);
     CommandStatus_uint8_t tmp = Action_AnalogOutputInt16_in_ICommandAction(pCommandResponseHandler->pCommandAction, command, index);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ProcessCommand_for_AnalogOutputInt16_in_CommandResponseHandler3"<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*CommandStatus_uint8_t tmp = "<<(uint16_t)tmp<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"ProcessCommand_for_AnalogOutputInt16_in_CommandResponseHandler3"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*CommandStatus_uint8_t tmp = "<<(uint16_t)tmp<<'\n';
+    decrement_stack_info();
 #endif
     return tmp;
   }
   else
   {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*CommandStatus_TOO_MANY_OPS"<<'\n';
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*CommandStatus_TOO_MANY_OPS"<<'\n';
+    decrement_stack_info();
 #endif
     return CommandStatus_TOO_MANY_OPS;
   }
@@ -193,28 +192,28 @@ CommandStatus_uint8_t ProcessCommand_for_AnalogOutputInt32_in_CommandResponseHan
   if (pCommandResponseHandler->numRequests < pCommandResponseHandler->maxCommands)
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ProcessCommand_for_AnalogOutputInt32_in_CommandResponseHandler2"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"ProcessCommand_for_AnalogOutputInt32_in_CommandResponseHandler2"<<'\n';
 #endif
     ++(pCommandResponseHandler->numRequests);
 //CommandStatus_uint8_t Action_AnalogOutputInt32_in_ICommandAction(ICommandAction *, AnalogOutputInt32* arCommand, uint16_t aIndex);
 ////        return pCommandAction->Action(command, index);
     CommandStatus_uint8_t tmp = Action_AnalogOutputInt32_in_ICommandAction(pCommandResponseHandler->pCommandAction, command, index);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ProcessCommand_for_AnalogOutputInt32_in_CommandResponseHandler3"<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*CommandStatus_uint8_t tmp = "<<(uint16_t)tmp<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"ProcessCommand_for_AnalogOutputInt32_in_CommandResponseHandler3"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*CommandStatus_uint8_t tmp = "<<(uint16_t)tmp<<'\n';
+    decrement_stack_info();
 #endif
     return tmp;
   }
   else
   {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*CommandStatus_TOO_MANY_OPS"<<'\n';
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*CommandStatus_TOO_MANY_OPS"<<'\n';
+    decrement_stack_info();
 #endif
     return CommandStatus_TOO_MANY_OPS;
   }
@@ -234,28 +233,28 @@ CommandStatus_uint8_t ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseH
   if (pCommandResponseHandler->numRequests < pCommandResponseHandler->maxCommands)
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler2"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler2"<<'\n';
 #endif
     ++(pCommandResponseHandler->numRequests);
 //CommandStatus_uint8_t Action_AnalogOutputFloat32_in_ICommandAction(ICommandAction *, AnalogOutputFloat32* arCommand, uint16_t aIndex);
 ////        return pCommandAction->Action(command, index);
     CommandStatus_uint8_t tmp = Action_AnalogOutputFloat32_in_ICommandAction(pCommandResponseHandler->pCommandAction, command, index);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler3"<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*CommandStatus_uint8_t tmp = "<<(uint16_t)tmp<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler3"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*CommandStatus_uint8_t tmp = "<<(uint16_t)tmp<<'\n';
+    decrement_stack_info();
 #endif
     return tmp;
   }
   else
   {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*CommandStatus_TOO_MANY_OPS"<<'\n';
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*CommandStatus_TOO_MANY_OPS"<<'\n';
+    decrement_stack_info();
 #endif
     return CommandStatus_TOO_MANY_OPS;
   }

@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EventStorage.h"
 
@@ -43,6 +47,15 @@ boolean IsAnyTypeFull_in_EventStorage(EventStorage *pEventStorage)
 
 uint32_t NumSelected_in_EventStorage(EventStorage *pEventStorage)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"NumSelected_in_EventStorage1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(pEventStorage->state).counters.selected= "<<(uint16_t)(pEventStorage->state).counters.selected<<'\n';
+  decrement_stack_info();
+#endif
 ////  return this->state.counters.selected;
   return (pEventStorage->state).counters.selected;
 }
@@ -179,10 +192,26 @@ uint32_t SelectByClass_in_EventStorageOver1(EventStorage *pEventStorage, EventCl
 ////uint32_t EventStorage::SelectByClass(EventClass_uint8_t* clazz, uint32_t max)
 uint32_t SelectByClass_in_EventStorageOver2(EventStorage *pEventStorage, EventClass_uint8_t clazz, uint32_t max)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByClass_in_EventStorageOver2_1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventClass_uint8_t clazz= "<<(uint16_t)clazz<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t max= "<<(uint16_t)max<<'\n';
+#endif
   ClassField cClassField;
   ClassField_in_ClassFieldOver3(&cClassField, clazz);
 ////  return EventSelection::SelectByClass(this->state, ClassField(clazz), max);
-  return SelectByClass_in_EventSelection_static(&(pEventStorage->state), &cClassField, max);
+  uint32_t tmp = SelectByClass_in_EventSelection_static(&(pEventStorage->state), &cClassField, max);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t tmp= "<<(uint16_t)tmp<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 //uint32_t EventStorage::SelectByClass(ClassField* clazz)
@@ -256,9 +285,12 @@ void clear_in_EventStorage(EventRecord* record)
 
 void Unselect_in_EventStorage(EventStorage *pEventStorage)
 {
-//  EventLists state;
-//  List_for_EventRecord events;
-//  EventClassCounters counters;
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Unselect_in_EventStorage1"<<'\n';
+#endif
 //void ResetOnFail_in_EventClassCounters(EventClassCounters *pEventClassCounters);
 ////  auto clear = [](EventRecord& record) -> void { record.state = EventState::unselected; };
 
@@ -268,6 +300,9 @@ void Unselect_in_EventStorage(EventStorage *pEventStorage)
   // keep the total, but clear the selected/written
 ////  this->state.counters.ResetOnFail();
   ResetOnFail_in_EventClassCounters(&((pEventStorage->state).counters));
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 /*
 ////template<class T> template<class U> void List<T>::Foreach(const U& action)

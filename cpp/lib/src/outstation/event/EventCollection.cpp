@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 //#include <QtWidgets>
 #include "header.h"
 #include "EventCollection.h"
@@ -20,6 +24,12 @@ void  EventCollection_for_Binary_in_EventCollection_for_Binary(EventCollection_f
 ////template<class T> uint16_t EventCollection<T>::WriteSome(IEventWriter<typename T::meas_t>& writer)
 uint16_t WriteSome_in_EventCollection_for_Binary_override(void *pIEventCollection_for_Binary, IEventWriter_for_Binary* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventCollection_for_Binary_override1"<<'\n';
+#endif
   uint16_t num_written = 0;
 
   EventCollection_for_Binary *parent =
@@ -29,15 +39,30 @@ uint16_t WriteSome_in_EventCollection_for_Binary_override(void *pIEventCollectio
   {
     ++num_written;
   }
+
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return num_written;
 }
 
 ////template<class T> bool EventCollection<T>::WriteOne(IEventWriter<typename T::meas_t>& writer)
 boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEventCollection_for_Binary, IEventWriter_for_Binary* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteOne_in_EventCollection_for_Binary1"<<'\n';
+#endif
   // don't bother searching
   if (pEventCollection_for_Binary->counters->selected == 0)
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
+}
 
   // find the next event with the same type and variation
 //    EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter, EventType_uint16_t type);
@@ -46,21 +71,42 @@ boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEven
 
   // nothing left to write
   if (!record)
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
+}
 
+//Node_TypedEventRecord_for_BinarySpec* Retrieve_in_TypedStorage_for_BinarySpec_static(EventRecord* record);
 ////    const auto data = TypedStorage<T>::Retrieve(*record);
   Node_TypedEventRecord_for_BinarySpec* data = Retrieve_in_TypedStorage_for_BinarySpec_static(record);
 
   // wrong variation
   if ((data->value).selectedVariation != pEventCollection_for_Binary->variation)
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
+}
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteOne_in_EventCollection_for_Binary2"<<'\n';
+  inspect_Binary(&((data->value).value));
+#endif
 
   // unable to write
 //  boolean Write_in_IEventWriter_for_Binary(IEventWriter_for_Binary*, Binary* meas, uint16_t index);
 ////    if (!writer.Write(data->value.value, record->index))
-//  if (!writer->pWrite_in_IEventWriter_for_Binary(pEventCollection_for_Binary, &((data->value).value), record->index))
   if (!Write_in_IEventWriter_for_Binary(writer, &((data->value).value), record->index))
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
+}
 
   // success!
 //void OnWrite_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
@@ -70,6 +116,11 @@ boolean WriteOne_in_EventCollection_for_Binary(EventCollection_for_Binary *pEven
 //Node_for_EventRecord* Next__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////    this->iterator.Next();
   Next__in__Iterator_in_List_for_EventRecord(pEventCollection_for_Binary->iteratorEv);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteOne_in_EventCollection_for_Binary3"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 //---------------------------------Binary------------------------------------------

@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EventWriters_for_Binary.h"
 #include "HeaderWriter_for_Binary.h"
@@ -10,6 +14,12 @@ void BasicEventWriter_for_Binary_destr_BasicEventWriter_for_Binary(BasicEventWri
 ////    template<class T>
 uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_for_Binary_in_EventWriters_static1"<<'\n';
+#endif
 //void BasicEventWriter_for_Binary_in_BasicEventWriter_for_Binary(BasicEventWriter_for_Binary *pBasicEventWriter_for_Binary,
 //    HeaderWriter* writer, DNP3Serializer_for_Binary* serializer);
 ////  BasicEventWriter_for_Binary handler(writer, serializer);
@@ -18,7 +28,16 @@ uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCol
 //  uint16_t WriteSome_in_IEventCollection_for_Binary(IEventCollection_for_Binary *, IEventWriter_for_Binary* handler);
 ///        return items.WriteSome(handler);
   uint16_t temp = WriteSome_in_IEventCollection_for_Binary(items, &(handler.iIEventWriter_for_Binary));
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_for_Binary_in_EventWriters_static2"<<'\n';
+#endif
+
   BasicEventWriter_for_Binary_destr_BasicEventWriter_for_Binary(&handler);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return temp;
 }
 

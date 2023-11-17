@@ -100,6 +100,7 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseHeader_in_CountParser_static1"<<std::endl;
+  inspect_RSeq(buffer);
 #endif
   uint16_t count;
 //ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t *buffer, uint16_t *count);////, Logger* pLogger) const;
@@ -110,6 +111,8 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
   std::cout<<"ParseHeader_in_CountParser_static2"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t count ="<<(uint16_t)count<<std::endl;
 #endif
 
   if (result == ParseResult_OK)
@@ -124,6 +127,8 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
     std::cout<<"*record.group= "<<(uint16_t)record->gGroupVariationRecord.group<<'\n';
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*record.variation= "<<(uint16_t)record->gGroupVariationRecord.variation<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*IAPDUHandler* pHandler ="<<(uint32_t)pHandler<<std::endl;
 #endif
 
     if (expectsContents)//_in_CountParser)
@@ -150,6 +155,8 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"ParseHeader_in_CountParser_static4"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t count ="<<(uint16_t)count<<std::endl;
 #endif
 //void OnHeader_CountHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header);
 //void CountHeader_in_CountHeader(CountHeader *pCountHeader, HeaderRecord *record, uint16_t count_);
