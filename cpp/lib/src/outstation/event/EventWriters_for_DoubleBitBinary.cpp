@@ -141,7 +141,9 @@ uint16_t WriteWithCTO_for_DoubleBitBinary_in_EventWriters_static(DNPTime* cto,
         serializer);
 //  uint16_t WriteSome_in_IEventCollection_for_DoubleBitBinary(IEventCollection_for_DoubleBitBinary *, IEventWriter_for_DoubleBitBinary* handler);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_DoubleBitBinary(items, &(handler.iIEventWriter_for_DoubleBitBinary));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_DoubleBitBinary(items, &(handler.iIEventWriter_for_DoubleBitBinary));
+    PrefixedWriteIterator_for_UInt16_DoubleBitBinary_destr_PrefixedWriteIterator_for_UInt16_DoubleBitBinary(&handler.iterator);
+    return tmp;
   }
   else
   {
@@ -155,7 +157,9 @@ uint16_t WriteWithCTO_for_DoubleBitBinary_in_EventWriters_static(DNPTime* cto,
         writer,
         serializer);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_DoubleBitBinary(items, &(handler.iIEventWriter_for_DoubleBitBinary));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_DoubleBitBinary(items, &(handler.iIEventWriter_for_DoubleBitBinary));
+    PrefixedWriteIterator_for_UInt16_DoubleBitBinary_destr_PrefixedWriteIterator_for_UInt16_DoubleBitBinary(&handler.iterator);
+    return tmp;
   }
 }
 

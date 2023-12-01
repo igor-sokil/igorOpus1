@@ -50,6 +50,7 @@ typedef struct
 
 } DatabaseConfig;
 
+void DatabaseConfig_in_DatabaseConfig_default(DatabaseConfig *pDatabaseConfig);
 void DatabaseConfig_in_DatabaseConfig(DatabaseConfig *pDatabaseConfig, uint16_t all_types);
 
 ////} // namespace opendnp3

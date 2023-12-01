@@ -17,10 +17,6 @@
 
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
-
 key_filter *pkf;
 
 MainWindow *mainWindow;
@@ -67,6 +63,7 @@ qDebug()<<"uint32_t temp32 ="<<temp32;
 
 //std::string PopLastWriteAsHex_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
 ////    REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1));
+qDebug()<<"REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1))";
 std::string tmpStr = PopLastWriteAsHex_in_LinkLayerTest(&t);
 std::cout<<"std::string tmpStr ="<<tmpStr;
 
@@ -86,40 +83,6 @@ TEST_CASE(SUITE("10SecondaryResetLink"))
     REQUIRE(t.NumTotalWrites() == 1);
     REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1));
 }
-*/
-/*
-    LinkLayerTest t;
-  LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
-  LinkLayerTest_in_LinkLayerTest(&t, &temp);
-
-////    t.link.OnLowerLayerUp();
-   OnLowerLayerUp_in_LinkLayer(&(t.link));
-
-//  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
-//                 LinkFunction_uint8_t func,
-//                 boolean isMaster,
-//                 boolean fcb,
-//                 boolean fcvdfc,
-//                 uint16_t dest,
-//                 uint16_t source,
-//                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
-////    t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 2, 1024);
-
-     RSeq_for_Uint16_t temp2 = empty_in_RSeq_for_Uint16_t_static();
-     OnFrame_in_LinkLayerTest(&t,
-                 LinkFunction_SEC_ACK,
-                 false,
-                 false,
-                 false,
-                 1,
-                 1024,
-                 &temp2);//// = ser4cpp::rseq_t::empty());
-
-//  Link_StackStatistics* GetStatistics_in_LinkLayer(LinkLayer *pLinkLayer)
-////    REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1);
-  Link_StackStatistics* lss = GetStatistics_in_LinkLayer(&(t.link));
-qDebug()<<"REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1)";
-qDebug()<<"t.link.GetStatistics().numUnexpectedFrame ="<<lss->numUnexpectedFrame;
 */
 
   MainWindow mainWindowObj;

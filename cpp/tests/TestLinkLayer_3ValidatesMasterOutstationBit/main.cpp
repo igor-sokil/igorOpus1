@@ -17,10 +17,6 @@
 
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
-
 key_filter *pkf;
 
 MainWindow *mainWindow;
@@ -76,54 +72,6 @@ TEST_CASE(SUITE("3ValidatesMasterOutstationBit"))
 }
 */
 
-/*
-    LinkLayerTest t;
-  LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
-  LinkLayerTest_in_LinkLayerTest(&t, &temp);
-
-   Addresses aAddresses;
-   Addresses_in_AddressesOver1(&aAddresses);
-//  void Addresses_in_AddressesOver1(Addresses *pAddresses);
-//    std::string increment_hex_in_HexConversions(uint8_t start, uint16_t count, bool spaced = true);
-//  void MockTransportSegment_in_MockTransportSegment(MockTransportSegment *pMockTransportSegment, uint16_t segmentSize, std::string& hex, Addresses* addresses);
-////    MockTransportSegment segment(250, "00", Addresses());
-       std::string hex = "00";
-   MockTransportSegment segments;
-   MockTransportSegment_in_MockTransportSegment(&segments, SIZE_CopyableBuffer, hex, &aAddresses);
-
-//boolean SendDown_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer, ITransportSegment* segments);
-////    REQUIRE_FALSE(t.upper->SendDown(segment));
-boolean tempBool = SendDown_in_MockTransportLayer(&(t.upper), &(segments.iITransportSegment));
-qDebug()<<"REQUIRE_FALSE(t.upper->SendDown(segment))";
-qDebug()<<"boolean tempBool= "<<tempBool;
-
-//boolean OnLowerLayerDown_in_LinkLayer(LinkLayer *pLinkLayer);
-////    REQUIRE_FALSE(t.link.OnLowerLayerDown());
-tempBool = OnLowerLayerDown_in_LinkLayer(&(t.link));
-qDebug()<<"REQUIRE_FALSE(t.link.OnLowerLayerDown())";
-qDebug()<<"boolean tempBool= "<<tempBool;
-
-//  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
-//                 LinkFunction_uint8_t func,
-//                 boolean isMaster,
-//                 boolean fcb,
-//                 boolean fcvdfc,
-//                 uint16_t dest,
-//                 uint16_t source,
-//                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
-////    REQUIRE_FALSE(t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 1, 2));
-     RSeq_for_Uint16_t temp2 = empty_in_RSeq_for_Uint16_t_static();
-tempBool = OnFrame_in_LinkLayerTest(&t,
-                 LinkFunction_SEC_ACK,
-                 false,
-                 false,
-                 false,
-                 1,
-                 2,
-                 &temp2);//// = ser4cpp::rseq_t::empty());
-qDebug()<<"REQUIRE_FALSE(t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 1, 2))";
-qDebug()<<"boolean tempBool= "<<tempBool;
-*/
   MainWindow mainWindowObj;
   mainWindow = &mainWindowObj;
 

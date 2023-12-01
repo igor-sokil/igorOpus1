@@ -1,4 +1,3 @@
-debug/MemoryInspect.o
 debug/Inspect_display.o
 debug/Comparisons.o
 debug/HexConversions.o
@@ -338,6 +337,8 @@ debug/OutstationTestObject.o
 debug/TestAPDUParsing.o
 debug/TestOutstation.o
 debug/TestOutstationEventResponses.o
+debug/TestOutstationFrozenCounters.o
+debug/TestOutstationDiscontiguousIndices.o
 debug/MockOutstationApplication.o
 debug/MockCommandHandler.o
 debug/MockEventWriteHandler.o

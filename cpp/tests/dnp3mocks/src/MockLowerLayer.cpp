@@ -17,12 +17,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "MockLowerLayer.h"
 
-uint8_t Message_in_MockLowerLayer[100];
+//uint8_t Message_in_MockLowerLayer[100];
 ////#include <ser4cpp/util/HexConversions.h>
 
 ////#include <cassert>
@@ -41,6 +44,12 @@ void MockLowerLayer_in_MockLowerLayer(MockLowerLayer *pMockLowerLayer)
 ////bool MockLowerLayer::HasNoData() const
 boolean HasNoData_in_MockLowerLayer(MockLowerLayer *pMockLowerLayer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{HasNoData_in_MockLowerLayer1"<<'\n';
+
+  std::cout<<"}HasNoData_in_MockLowerLayer_"<<'\n';
+#endif
   return pMockLowerLayer->sendQueue.empty();
 }
 
@@ -54,16 +63,27 @@ uint16_t NumWrites_in_MockLowerLayer(MockLowerLayer *pMockLowerLayer)
 ////std::string MockLowerLayer::PopWriteAsHex()
 std::string  PopWriteAsHex_in_MockLowerLayer(MockLowerLayer *pMockLowerLayer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{PopWriteAsHex_in_MockLowerLayer1"<<'\n';
+#endif
+
   if (pMockLowerLayer->sendQueue.empty())
   {
+#ifdef  LOG_INFO
+  std::cout<<"}PopWriteAsHex_in_MockLowerLayer1_"<<'\n';
+#endif
         return "";
   }
 
   Message ret = pMockLowerLayer->sendQueue.front();
-
-//pMemory_Message_1=  MEMORY_Message_1(0, &ret);
+//inspect_RSeq(&(ret.payload));
 
   pMockLowerLayer->sendQueue.pop();
+
+#ifdef  LOG_INFO
+  std::cout<<"}PopWriteAsHex_in_MockLowerLayer2_"<<'\n';
+#endif
 //std::string to_hex_in_HexConversionsOver2(RSeq_for_Uint16_t* buffer, bool spaced = true);
 ////    return HexConversions::to_hex(ret.payload);
   return to_hex_in_HexConversionsOver2(&(ret.payload), true);
@@ -78,11 +98,18 @@ boolean BeginTransmit_in_MockLowerLayer_override(void* pILowerLayer, Message* me
 
 boolean BeginTransmit_in_MockLowerLayer(MockLowerLayer* pMockLowerLayer, Message* message)
 {
-//qDebug()<<"";
-//qDebug()<<"BeginTransmit_in_MockLowerLayer1";
-//qDebug()<<""<<;
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{BeginTransmit_in_MockLowerLayer1"<<'\n';
+#endif
+
   Message temp = *message;
+inspect_RSeq(&(temp.payload));
+
   pMockLowerLayer->sendQueue.push(temp);////message);
+#ifdef  LOG_INFO
+  std::cout<<"}BeginTransmit_in_MockLowerLayer_"<<'\n';
+#endif
   return true;
 }
 

@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "HeaderWriter_for_Analog.h"
 
@@ -12,6 +16,12 @@ RangeWriteIterator_for_UInt8_Analog IterateOverRange_for_UInt8_Analog_in_HeaderW
     uint8_t start
                                                                                      )
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverRange_for_UInt8_Analog_in_HeaderWriter1"<<'\n';
+#endif
 //    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
 //     pRangeWriteIterator_for_UInt8_Analog->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
   uint16_t reserve_size = 2 * size_in_UInt8 +
@@ -36,10 +46,16 @@ RangeWriteIterator_for_UInt8_Analog IterateOverRange_for_UInt8_Analog_in_HeaderW
         &(serializer->sSerializer_for_Analog),
         pHeaderWriter->position
                                                                                    );
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return rRangeWriteIterator_for_UInt8_Analog;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return RangeWriteIterator<IndexType, WriteType>::Null();
     return Null_in_RangeWriteIterator_for_UInt8_Analog_static();
   }
@@ -56,6 +72,12 @@ RangeWriteIterator_for_UInt16_Analog IterateOverRange_for_UInt16_Analog_in_Heade
     uint16_t start
                                                                                      )
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverRange_for_UInt16_Analog_in_HeaderWriter1"<<'\n';
+#endif
 //    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
 //     pRangeWriteIterator_for_UInt8_Analog->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
   uint16_t reserve_size = 2 * size_in_UInt16 +
@@ -80,10 +102,16 @@ RangeWriteIterator_for_UInt16_Analog IterateOverRange_for_UInt16_Analog_in_Heade
         &(serializer->sSerializer_for_Analog),
         pHeaderWriter->position
                                                                                    );
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return rRangeWriteIterator_for_UInt16_Analog;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return RangeWriteIterator<IndexType, WriteType>::Null();
     return Null_in_RangeWriteIterator_for_UInt16_Analog_static();
   }
@@ -95,6 +123,12 @@ CountWriteIterator_for_UInt16_Analog IterateOverCount_for_UInt16_Analog_in_Heade
     QualifierCode_uint8_t qc,
     DNP3Serializer_for_Analog* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCount_for_UInt16_Analog_in_HeaderWriter1"<<'\n';
+#endif
 ////template<class CountType, class WriteType>
 ////CountWriteIterator<CountType, WriteType> HeaderWriter::IterateOverCount(QualifierCode qc,
 ////                                                                        const DNP3Serializer<WriteType>& serializer)
@@ -111,10 +145,16 @@ CountWriteIterator_for_UInt16_Analog IterateOverCount_for_UInt16_Analog_in_Heade
         &(serializer->sSerializer_for_Analog),
         pHeaderWriter->position
                                                                                      );
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return cCountWriteIterator_for_UInt16_Analog;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return CountWriteIterator<CountType, WriteType>::Null();
     return Null_in_CountWriteIterator_for_UInt16_Analog_static();
   }
@@ -127,6 +167,12 @@ CountWriteIterator_for_UInt8_Analog IterateOverCount_for_UInt8_Analog_in_HeaderW
     QualifierCode_uint8_t qc,
     DNP3Serializer_for_Analog* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCount_for_UInt8_Analog_in_HeaderWriter1"<<'\n';
+#endif
 ////template<class CountType, class WriteType>
 ////CountWriteIterator<CountType, WriteType> HeaderWriter::IterateOverCount(QualifierCode qc,
 ////                                                                        const DNP3Serializer<WriteType>& serializer)
@@ -143,10 +189,16 @@ CountWriteIterator_for_UInt8_Analog IterateOverCount_for_UInt8_Analog_in_HeaderW
         &(serializer->sSerializer_for_Analog),
         pHeaderWriter->position
                                                                                    );
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return cCountWriteIterator_for_UInt8_Analog;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return CountWriteIterator<CountType, WriteType>::Null();
     return Null_in_CountWriteIterator_for_UInt8_Analog_static();
   }
@@ -157,6 +209,12 @@ CountWriteIterator_for_UInt8_Analog IterateOverCount_for_UInt8_Analog_in_HeaderW
 PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefix_for_UInt16_Analog_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_Analog* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt16_Analog_in_HeaderWriter1"<<'\n';
+#endif
 ////    const auto reserve_size
   uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
@@ -169,11 +227,17 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefix_for_UInt16_An
     PrefixedWriteIterator_for_UInt16_Analog pPrefixedWriteIterator_for_UInt16_Analog;
     PrefixedWriteIterator_for_UInt16_Analog_in_PrefixedWriteIterator_for_UInt16_AnalogOver2(&pPrefixedWriteIterator_for_UInt16_Analog,
         &(serializer->sSerializer_for_Analog), pHeaderWriter->position);
-//        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+////        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
     return pPrefixedWriteIterator_for_UInt16_Analog;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_Analog_static();
   }
@@ -188,6 +252,12 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
     DNP3Serializer_for_Analog* serializer,
     Group51Var1* cto)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefixAndCTO_for_UInt16_Analog_Group51Var1_in_HeaderWriter1"<<'\n';
+#endif
 ////    this->Mark();
   Mark_in_HeaderWriter(pHeaderWriter);
 ////    if (this->WriteSingleValue<ser4cpp::UInt8, CTOType>(QualifierCode::UINT8_CNT, cto))
@@ -203,10 +273,16 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
 ////            this->Rollback();
       Rollback_in_HeaderWriter(pHeaderWriter);
     }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return iter;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_Analog_static();
   }
@@ -221,6 +297,12 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
     DNP3Serializer_for_Analog* serializer,
     Group51Var2* cto)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefixAndCTO_for_UInt16_Analog_Group51Var2_in_HeaderWriter"<<'\n';
+#endif
 ////    this->Mark();
   Mark_in_HeaderWriter(pHeaderWriter);
 ////    if (this->WriteSingleValue<ser4cpp::UInt8, CTOType>(QualifierCode::UINT8_CNT, cto))
@@ -236,10 +318,16 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
 ////            this->Rollback();
       Rollback_in_HeaderWriter(pHeaderWriter);
     }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return iter;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_Analog_static();
   }
@@ -250,6 +338,12 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
 PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt16* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16_in_HeaderWriter1"<<'\n';
+#endif
 ////    const auto reserve_size
   uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
@@ -262,11 +356,17 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 IterateOverCountWithPrefix_fo
     PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16;
     PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16Over2(&pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16,
         &(serializer->sSerializer_for_AnalogOutputInt16), pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
     return pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_static();
   }
@@ -276,6 +376,13 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 IterateOverCountWithPrefix_fo
 PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt16* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16_in_HeaderWriter1"<<'\n';
+#endif
+
 ////    const auto reserve_size
   uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
@@ -288,11 +395,17 @@ PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 IterateOverCountWithPrefix_for
     PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 pPrefixedWriteIterator_for_UInt8_AnalogOutputInt16;
     PrefixedWriteIterator_for_UInt8_AnalogOutputInt16_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16Over2(&pPrefixedWriteIterator_for_UInt8_AnalogOutputInt16,
         &(serializer->sSerializer_for_AnalogOutputInt16), pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
     return pPrefixedWriteIterator_for_UInt8_AnalogOutputInt16;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16_static();
   }
@@ -303,6 +416,13 @@ PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 IterateOverCountWithPrefix_for
 PrefixedWriteIterator_for_UInt16_AnalogOutputInt32 IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt32* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32_in_HeaderWriter1"<<'\n';
+#endif
+
 ////    const auto reserve_size
   uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
@@ -315,11 +435,17 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputInt32 IterateOverCountWithPrefix_fo
     PrefixedWriteIterator_for_UInt16_AnalogOutputInt32 pPrefixedWriteIterator_for_UInt16_AnalogOutputInt32;
     PrefixedWriteIterator_for_UInt16_AnalogOutputInt32_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt32Over2(&pPrefixedWriteIterator_for_UInt16_AnalogOutputInt32,
         &(serializer->sSerializer_for_AnalogOutputInt32), pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
     return pPrefixedWriteIterator_for_UInt16_AnalogOutputInt32;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt32_static();
   }
@@ -329,6 +455,13 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputInt32 IterateOverCountWithPrefix_fo
 PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt32* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32_in_HeaderWriter1"<<'\n';
+#endif
+
 ////    const auto reserve_size
   uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
@@ -341,11 +474,17 @@ PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 IterateOverCountWithPrefix_for
     PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 pPrefixedWriteIterator_for_UInt8_AnalogOutputInt32;
     PrefixedWriteIterator_for_UInt8_AnalogOutputInt32_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt32Over2(&pPrefixedWriteIterator_for_UInt8_AnalogOutputInt32,
         &(serializer->sSerializer_for_AnalogOutputInt32), pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
     return pPrefixedWriteIterator_for_UInt8_AnalogOutputInt32;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt32_static();
   }
@@ -356,6 +495,12 @@ PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 IterateOverCountWithPrefix_for
 PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputFloat32* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32_in_HeaderWriter1"<<'\n';
+#endif
 ////    const auto reserve_size
   uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
@@ -368,11 +513,17 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 IterateOverCountWithPrefix_
     PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 pPrefixedWriteIterator_for_UInt16_AnalogOutputFloat32;
     PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32_in_PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32Over2(&pPrefixedWriteIterator_for_UInt16_AnalogOutputFloat32,
         &(serializer->sSerializer_for_AnalogOutputFloat32), pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
     return pPrefixedWriteIterator_for_UInt16_AnalogOutputFloat32;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32_static();
   }
@@ -382,6 +533,12 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 IterateOverCountWithPrefix_
 PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32 IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputFloat32* serializer)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32_in_HeaderWriter1"<<'\n';
+#endif
 ////    const auto reserve_size
   uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
@@ -394,11 +551,17 @@ PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32 IterateOverCountWithPrefix_f
     PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32 pPrefixedWriteIterator_for_UInt8_AnalogOutputFloat32;
     PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32_in_PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32Over2(&pPrefixedWriteIterator_for_UInt8_AnalogOutputFloat32,
         &(serializer->sSerializer_for_AnalogOutputFloat32), pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
     return pPrefixedWriteIterator_for_UInt8_AnalogOutputFloat32;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32_static();
   }

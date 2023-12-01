@@ -17,8 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
 #include <iostream>
-
+#endif
 #include <QApplication>
 #include "header.h"
 #include "APDUHexBuilders.h"
@@ -93,6 +95,7 @@ std::string IntegrityPoll_in_APDUHexBuilders(uint8_t seq, ClassField* field)
 std::string ClassPoll_in_APDUHexBuilders(uint8_t seq, PointClass_uint8_t pc)
 {
 #ifdef  LOG_INFO
+  std::cout<<'\n';
   std::cout<<"ClassPoll_in_APDUHexBuilders1"<<'\n';
   std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
   std::cout<<"*PointClass_uint8_t pc= "<<(uint16_t)pc<<'\n';
@@ -110,6 +113,11 @@ std::string EventPoll_in_APDUHexBuilders(uint8_t seq, ClassField field)
 
 std::string ClearRestartIIN_in_APDUHexBuilders(uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{ClearRestartIIN_in_APDUHexBuilders1"<<'\n';
+  std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
+#endif
   BufferSer4 buffer;//(DEFAULT_MAX_APDU_SIZE);
   BufferSer4_in_BufferSer4Over2(&buffer, DEFAULT_MAX_APDU_SIZE);
 
@@ -124,6 +132,11 @@ std::string ClearRestartIIN_in_APDUHexBuilders(uint8_t seq)
 
 ////    return HexConversions::to_hex(request.ToRSeq());
   RSeq_for_Uint16_t tmp = ToRSeq_in_APDUWrapper(&(request.aAPDUWrapper));
+
+#ifdef  LOG_INFO
+  std::cout<<"}ClearRestartIIN_in_APDUHexBuilders_"<<'\n';
+#endif
+
   return to_hex_in_HexConversionsOver2(&tmp, true);
 }
 
@@ -213,6 +226,12 @@ std::string Control_in_APDUHexBuilders(FunctionCode_uint8_t code,
 
 std::string EmptyResponse_in_APDUHexBuilders(uint8_t seq, IINField* iin)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{EmptyResponse_in_APDUHexBuilders1"<<'\n';
+  std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
+#endif
+
   BufferSer4 buffer;//(DEFAULT_MAX_APDU_SIZE);
   BufferSer4_in_BufferSer4Over2(&buffer, DEFAULT_MAX_APDU_SIZE);
 
@@ -237,11 +256,20 @@ std::string EmptyResponse_in_APDUHexBuilders(uint8_t seq, IINField* iin)
 
 ////    return HexConversions::to_hex(response.ToRSeq());
   RSeq_for_Uint16_t tmp = ToRSeq_in_APDUWrapper(&(response.aAPDUWrapper));
+
+#ifdef  LOG_INFO
+  std::cout<<"}EmptyResponse_in_APDUHexBuilders_"<<'\n';
+#endif
   return to_hex_in_HexConversionsOver2(&tmp, true);
 }
 
 std::string NullUnsolicited_in_APDUHexBuilders(uint8_t seq, IINField* iin)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{NullUnsolicited_in_APDUHexBuilders1"<<'\n';
+  std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
+#endif
   BufferSer4 buffer;//(DEFAULT_MAX_APDU_SIZE);
   BufferSer4_in_BufferSer4Over2(&buffer, DEFAULT_MAX_APDU_SIZE);
 
@@ -256,17 +284,42 @@ std::string NullUnsolicited_in_APDUHexBuilders(uint8_t seq, IINField* iin)
 
 ////    return HexConversions::to_hex(response.ToRSeq());
   RSeq_for_Uint16_t tmp = ToRSeq_in_APDUWrapper(&(response.aAPDUWrapper));
+
+#ifdef  LOG_INFO
+  std::cout<<"}NullUnsolicited_in_APDUHexBuilders_"<<'\n';
+#endif
+
   return to_hex_in_HexConversionsOver2(&tmp, true);
 }
 
 std::string SolicitedConfirm_in_APDUHexBuilders(uint8_t seq)
 {
-  return Confirm_in_APDUHexBuilders(seq, false);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{SolicitedConfirm_in_APDUHexBuilders1"<<'\n';
+  std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
+#endif
+  std::string temp = Confirm_in_APDUHexBuilders(seq, false);
+
+#ifdef  LOG_INFO
+  std::cout<<"}SolicitedConfirm_in_APDUHexBuilders_"<<'\n';
+#endif
+  return temp;
 }
 
 std::string UnsolConfirm_in_APDUHexBuilders(uint8_t seq)
 {
-  return Confirm_in_APDUHexBuilders(seq, true);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{UnsolConfirm_in_APDUHexBuilders1"<<'\n';
+  std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
+#endif
+  std::string temp = Confirm_in_APDUHexBuilders(seq, true);
+
+#ifdef  LOG_INFO
+  std::cout<<"}UnsolConfirm_in_APDUHexBuilders_"<<'\n';
+#endif
+  return temp;
 }
 
 std::string Confirm_in_APDUHexBuilders(uint8_t seq, boolean unsol)

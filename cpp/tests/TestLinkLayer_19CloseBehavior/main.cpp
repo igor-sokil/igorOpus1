@@ -17,15 +17,10 @@
 #include "HexConversions.h"
 #include "MockTransportSegment.h"
 //#include "OutstationTestObject.h"
-#include "loghandler.h"
 //QString FormatUserData(
 //    boolean aIsMaster, boolean aIsConfirmed, int aDest, int aSrc, /*const std::string& data,*/uint8_t* data, uint16_t size_data, boolean aFcb);/// = false)
 
 #define UNUSED(x) (void)(x)
-
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
 
 key_filter *pkf;
 
@@ -37,7 +32,7 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-qDebug()<<"********SUITE('CloseBehavior')********";
+qDebug()<<"********SUITE('19CloseBehavior')********";
     LinkLayerTest t;
   LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
   LinkLayerTest_in_LinkLayerTest(&t, &temp);

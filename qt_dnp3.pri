@@ -1,7 +1,7 @@
 
 
-SOURCES       = cpp\inspect\MemoryInspect.cpp \
-                cpp\inspect\Inspect_display.cpp
+#SOURCES       = cpp\inspect\MemoryInspect.cpp \
+SOURCES       = cpp\inspect\Inspect_display.cpp
 
 SOURCES       += ser4cpp\util\Comparisons.cpp \
                  ser4cpp\util\HexConversions.cpp \
@@ -359,6 +359,8 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\TestAPDUParsing.cpp \
                 cpp\tests\unit\utils\TestOutstation.cpp \
                 cpp\tests\unit\utils\TestOutstationEventResponses.cpp \
+                cpp\tests\unit\utils\TestOutstationFrozenCounters.cpp \
+                cpp\tests\unit\utils\TestOutstationDiscontiguousIndices.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \

@@ -6,11 +6,10 @@
 #include "header.h"
 
 #include "MainWindow.h"
-#include "loghandler.h"
+//#include "loghandler.h"
 
 extern key_filter *pkf;
 
-LogHandler loghandler;//логирование
 
 MainWindow::MainWindow(QWidget *parent): QWidget(parent)
 {
@@ -179,30 +178,35 @@ void MiniButtonWidget::downClicked()
 //  periodical_operations();//один оборот
 }//downClicked()
 
-
+/*
 void inspect_LinkHeader(Memory_LinkHeader* pMemory_LinkHeader, int maxCount);
-void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord);
-void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader);
-void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord);
+void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord, int maxCount);
+void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader, int maxCount);
+void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord, int maxCount);
+void inspect_IINField(Memory_IINField* pMemory_IINField, int maxCount);
 void inspect_EventLists(Memory_EventLists* pMemory_EventLists, int maxCount);
-void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField);
-void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest);
-void inspect_Message(Memory_Message* pMemory_Message);
-void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser);
+void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField, int maxCount);
+void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest, int maxCount);
+void inspect_Message(Memory_Message* pMemory_Message, int maxCount);
+void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser, int maxCount);
 void inspect_EventRecord(Memory_EventRecord* pMemory_EventRecord, int maxCount);
+void inspect_RangeHeader(Memory_RangeHeader* pMemory_RangeHeader, int maxCount);
+*/
 void MiniButtonWidget::upClicked()
 {
   qDebug()<<"BIT_KEY_UP";
-// if(pMemory_Message_1) inspect_Message(pMemory_Message_1);
+//if(pMemory_RangeHeader_1) inspect_RangeHeader(pMemory_RangeHeader_1, 10);
+// if(pMemory_Message_1) inspect_Message(pMemory_Message_1, 10);
 // if(pMemory_Message_2) inspect_Message(pMemory_Message_2);
-// if(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1)inspect_Result_for_APDUHeader_in_APDUHeaderParser(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1);
-// if(pMemory_ParsedRequest_1)inspect_ParsedRequest(pMemory_ParsedRequest_1);
-// if(pMemory_PairSer4cpp_for_IINField_AppControlField_1)inspect_PairSer4cpp_for_IINField_AppControlField(pMemory_PairSer4cpp_for_IINField_AppControlField_1);
+// if(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1)inspect_Result_for_APDUHeader_in_APDUHeaderParser(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1, 10);
+// if(pMemory_ParsedRequest_1)inspect_ParsedRequest(pMemory_ParsedRequest_1, 10);
+// if(pMemory_IINField_1)inspect_IINField(pMemory_IINField_1, 10);
+// if(pMemory_PairSer4cpp_for_IINField_AppControlField_1)inspect_PairSer4cpp_for_IINField_AppControlField(pMemory_PairSer4cpp_for_IINField_AppControlField_1, 10);
 // if(pMemory_ObjectHeader_1)inspect_ObjectHeader(pMemory_ObjectHeader_1);
 // if(pMemory_HeaderRecord_1)inspect_HeaderRecord(pMemory_HeaderRecord_1);
 // if(pMemory_EventRecord_1)inspect_EventRecord(pMemory_EventRecord_1, 10);
 // if(pMemory_EventLists_1)inspect_EventLists(pMemory_EventLists_1, 10);
- if(pMemory_LinkHeader_1)inspect_LinkHeader(pMemory_LinkHeader_1, 10);
+// if(pMemory_LinkHeader_1)inspect_LinkHeader(pMemory_LinkHeader_1, 10);
 // if(pMemory_GroupVariationRecord_1)inspect_GroupVariationRecord(pMemory_GroupVariationRecord_1);
 
 //  inspect_Message(titleGlobal_1, memoryGlobal_1);

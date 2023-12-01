@@ -26,7 +26,6 @@ void  BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UIn
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UInt8_1"<<'\n';
-  decrement_stack_info();
 #endif
 
   pBitfieldRangeWriteIterator_for_UInt8->start = start_;
@@ -46,6 +45,9 @@ void  BitfieldRangeWriteIterator_for_UInt8_in_BitfieldRangeWriteIterator_for_UIn
 ////        maxCount = pPosition->length() * 8;
     pBitfieldRangeWriteIterator_for_UInt8->maxCount = length_in_HasLength_for_Uint16_t(&(pBitfieldRangeWriteIterator_for_UInt8->pPosition->hHasLength)) * 8;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 ////    ~BitfieldRangeWriteIterator()
@@ -63,6 +65,7 @@ void BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_U
   {
 ////        typename IndexType::type_t stop = start + count - 1;
     uint8_t stop = pBitfieldRangeWriteIterator_for_UInt8->start + pBitfieldRangeWriteIterator_for_UInt8->count - 1;
+
 ////        IndexType::write_to(range, stop);
     write_to_in_UInt8_static(&(pBitfieldRangeWriteIterator_for_UInt8->range), stop);
     uint8_t num = pBitfieldRangeWriteIterator_for_UInt8->count / 8;
@@ -80,6 +83,13 @@ void BitfieldRangeWriteIterator_for_UInt8_destr_BitfieldRangeWriteIterator_for_U
 
 boolean Write_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8, boolean value)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_BitfieldRangeWriteIterator_for_UInt8_1"<<'\n';
+  decrement_stack_info();
+#endif
   if (pBitfieldRangeWriteIterator_for_UInt8->isValid && pBitfieldRangeWriteIterator_for_UInt8->count < pBitfieldRangeWriteIterator_for_UInt8->maxCount)
   {
     uint8_t byte = pBitfieldRangeWriteIterator_for_UInt8->count / 8;
@@ -89,19 +99,33 @@ boolean Write_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator
     {
 ////            (*pPosition)[byte] = 0; // initialize byte to 0
       pBitfieldRangeWriteIterator_for_UInt8->pPosition->buffer_[byte] = 0; // initialize byte to 0
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_uint8="<<(uint32_t)(pBitfieldRangeWriteIterator_for_UInt8->pPosition->buffer_+byte)<<"->"<<(uint16_t)0<<'\n';
+#endif
     }
 
     if (value)
     {
 ////            (*pPosition)[byte] = ((*pPosition)[byte] | (1 << bit));
       pBitfieldRangeWriteIterator_for_UInt8->pPosition->buffer_[byte] = (pBitfieldRangeWriteIterator_for_UInt8->pPosition->buffer_[byte] | (1 << bit));
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_uint8="<<(uint32_t)(pBitfieldRangeWriteIterator_for_UInt8->pPosition->buffer_+byte)<<"->"<<(uint16_t)pBitfieldRangeWriteIterator_for_UInt8->pPosition->buffer_[byte]<<'\n';
+#endif
     }
 
     ++(pBitfieldRangeWriteIterator_for_UInt8->count);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 }
@@ -130,7 +154,6 @@ void  BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UI
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UInt16_1"<<'\n';
-  decrement_stack_info();
 #endif
 
   pBitfieldRangeWriteIterator_for_UInt16->start = start_;
@@ -150,6 +173,9 @@ void  BitfieldRangeWriteIterator_for_UInt16_in_BitfieldRangeWriteIterator_for_UI
 ////        maxCount = pPosition->length() * 8;
     pBitfieldRangeWriteIterator_for_UInt16->maxCount = length_in_HasLength_for_Uint16_t(&(pBitfieldRangeWriteIterator_for_UInt16->pPosition->hHasLength)) * 8;
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 ////    ~BitfieldRangeWriteIterator()
@@ -160,12 +186,12 @@ void BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_UInt16_1"<<'\n';
-  decrement_stack_info();
 #endif
   if (pBitfieldRangeWriteIterator_for_UInt16->isValid && pBitfieldRangeWriteIterator_for_UInt16->count > 0)
   {
 ////        typename IndexType::type_t stop = start + count - 1;
     uint16_t stop = pBitfieldRangeWriteIterator_for_UInt16->start + pBitfieldRangeWriteIterator_for_UInt16->count - 1;
+
 ////        IndexType::write_to(range, stop);
     write_to_in_UInt16_static(&(pBitfieldRangeWriteIterator_for_UInt16->range), stop);
     uint16_t num = pBitfieldRangeWriteIterator_for_UInt16->count / 8;
@@ -178,10 +204,19 @@ void BitfieldRangeWriteIterator_for_UInt16_destr_BitfieldRangeWriteIterator_for_
 ////        pPosition->advance(num);
     advance_in_WSeq_for_Uint16_t(pBitfieldRangeWriteIterator_for_UInt16->pPosition, num);
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean Write_in_BitfieldRangeWriteIterator_for_UInt16(BitfieldRangeWriteIterator_for_UInt16 *pBitfieldRangeWriteIterator_for_UInt16, boolean value)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_BitfieldRangeWriteIterator_for_UInt16_1"<<'\n';
+#endif
   if (pBitfieldRangeWriteIterator_for_UInt16->isValid && pBitfieldRangeWriteIterator_for_UInt16->count < pBitfieldRangeWriteIterator_for_UInt16->maxCount)
   {
     uint8_t byte = pBitfieldRangeWriteIterator_for_UInt16->count / 8;
@@ -191,19 +226,33 @@ boolean Write_in_BitfieldRangeWriteIterator_for_UInt16(BitfieldRangeWriteIterato
     {
 ////            (*pPosition)[byte] = 0; // initialize byte to 0
       pBitfieldRangeWriteIterator_for_UInt16->pPosition->buffer_[byte] = 0; // initialize byte to 0
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_uint8="<<(uint32_t)(pBitfieldRangeWriteIterator_for_UInt16->pPosition->buffer_+byte)<<"->"<<(uint16_t)0<<'\n';
+#endif
     }
 
     if (value)
     {
 ////            (*pPosition)[byte] = ((*pPosition)[byte] | (1 << bit));
       pBitfieldRangeWriteIterator_for_UInt16->pPosition->buffer_[byte] = (pBitfieldRangeWriteIterator_for_UInt16->pPosition->buffer_[byte] | (1 << bit));
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_uint8="<<(uint32_t)(pBitfieldRangeWriteIterator_for_UInt16->pPosition->buffer_+byte)<<"->"<<(uint16_t)pBitfieldRangeWriteIterator_for_UInt16->pPosition->buffer_[byte]<<'\n';
+#endif
     }
 
     ++(pBitfieldRangeWriteIterator_for_UInt16->count);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 }

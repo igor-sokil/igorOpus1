@@ -17,8 +17,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
-#include <QtWidgets>
 #include "header.h"
 #include "MockTransportLayer.h"
 #include "HexConversions.h"
@@ -31,6 +34,10 @@
 ////MockTransportLayer::MockTransportLayer() : pLinkLayer(nullptr), isOnline(false) {}
 void MockTransportLayer_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{MockTransportLayer_in_MockTransportLayer1"<<'\n';
+#endif
   pMockTransportLayer->pLinkLayer = NULL;
   pMockTransportLayer->isOnline = false;
 
@@ -42,6 +49,9 @@ void MockTransportLayer_in_MockTransportLayer(MockTransportLayer *pMockTransport
 
   setParentPointer_in_IUpperLayer(&(pMockTransportLayer->iIUpperLayer), pMockTransportLayer);
   setParentPointer_in_IUpDown(&(pMockTransportLayer->iIUpperLayer.iIUpDown), pMockTransportLayer);
+#ifdef  LOG_INFO
+  std::cout<<"}MockTransportLayer_in_MockTransportLayer_"<<'\n';
+#endif
 }
 
 void SetLinkLayer_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer, ILinkLayer* linkLayer)
@@ -59,15 +69,27 @@ boolean SendDown_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer, 
 
 boolean OnReceive_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer, Message* message)
 {
-qDebug()<<"";
-qDebug()<<"OnReceive_in_MockTransportLayer1";
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{OnReceive_in_MockTransportLayer1"<<'\n';
+#endif
   pMockTransportLayer->receivedQueue.push_back(to_hex_in_HexConversionsOver2(&(message->payload)));
+#ifdef  LOG_INFO
+  std::cout<<"}OnReceive_in_MockTransportLayer_"<<'\n';
+#endif
   return true;
 }
 
 boolean OnTxReady_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{OnTxReady_in_MockTransportLayer1"<<'\n';
+#endif
   ++(pMockTransportLayer->counters.numTxReady);
+#ifdef  LOG_INFO
+  std::cout<<"}OnTxReady_in_MockTransportLayer_"<<'\n';
+#endif
   return true;
 }
 
@@ -117,8 +139,16 @@ boolean OnLowerLayerUp_in_MockTransportLayer_override(void *pIUpDown)
 
 boolean OnTxReady_in_MockTransportLayer_override(void *pIUpperLayer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{OnTxReady_in_MockTransportLayer_override1"<<'\n';
+#endif
   MockTransportLayer *parent = (MockTransportLayer*)getParentPointer_in_IUpperLayer((IUpperLayer*) pIUpperLayer);
-  return OnTxReady_in_MockTransportLayer(parent);
+  boolean tmp = OnTxReady_in_MockTransportLayer(parent);
+#ifdef  LOG_INFO
+  std::cout<<"}OnTxReady_in_MockTransportLayer_override_"<<'\n';
+#endif
+  return tmp;
 }
 
 boolean OnReceive_in_MockTransportLayer_override(void *pIUpperLayer, Message* message)

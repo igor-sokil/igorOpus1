@@ -141,7 +141,9 @@ uint16_t WriteWithCTO_for_AnalogOutputStatus_in_EventWriters_static(DNPTime* cto
         serializer);
 //  uint16_t WriteSome_in_IEventCollection_for_AnalogOutputStatus(IEventCollection_for_AnalogOutputStatus *, IEventWriter_for_AnalogOutputStatus* handler);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_AnalogOutputStatus(items, &(handler.iIEventWriter_for_AnalogOutputStatus));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_AnalogOutputStatus(items, &(handler.iIEventWriter_for_AnalogOutputStatus));
+    PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(&handler.iterator);
+    return tmp;
   }
   else
   {
@@ -155,7 +157,9 @@ uint16_t WriteWithCTO_for_AnalogOutputStatus_in_EventWriters_static(DNPTime* cto
         writer,
         serializer);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_AnalogOutputStatus(items, &(handler.iIEventWriter_for_AnalogOutputStatus));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_AnalogOutputStatus(items, &(handler.iIEventWriter_for_AnalogOutputStatus));
+    PrefixedWriteIterator_for_UInt16_AnalogOutputStatus_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputStatus(&handler.iterator);
+    return tmp;
   }
 }
 

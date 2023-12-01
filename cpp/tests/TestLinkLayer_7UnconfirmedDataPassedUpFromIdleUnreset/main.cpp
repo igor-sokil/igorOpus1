@@ -17,10 +17,6 @@
 
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
-
 key_filter *pkf;
 
 MainWindow *mainWindow;
@@ -36,11 +32,9 @@ qDebug()<<"********SUITE('7UnconfirmedDataPassedUpFromIdleUnreset')********";
   LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
   LinkLayerTest_in_LinkLayerTest(&t, &temp);
 
-qDebug()<<"7UnconfirmedDataPassedUpFromIdleUnreset1";
 ////    t.link.OnLowerLayerUp();
    OnLowerLayerUp_in_LinkLayer(&(t.link));
 
-qDebug()<<"7UnconfirmedDataPassedUpFromIdleUnreset2";
 //void ByteStr_in_ByteStrOver1(ByteStr *pByteStr, uint16_t length, uint8_t seed);// = 0);
 ////    ByteStr bs(250, 0);
  ByteStr bs;
@@ -56,7 +50,6 @@ qDebug()<<"7UnconfirmedDataPassedUpFromIdleUnreset2";
 //                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
 ////    t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 2, 1024);
 
-qDebug()<<"7UnconfirmedDataPassedUpFromIdleUnreset3";
 //     RSeq_for_Uint16_t temp2 = empty_in_RSeq_for_Uint16_t_static();
 //RSeq_for_Uint16_t ToRSeq_in_CopyableBuffer(CopyableBuffer *pCopyableBuffer);
 ////bs.ToRSeq()

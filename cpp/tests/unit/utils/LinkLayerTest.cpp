@@ -17,7 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "LinkLayerTest.h"
@@ -41,12 +44,17 @@
 
 void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerConfig* config)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{LinkLayerTest_in_LinkLayerTest1"<<'\n';
+#endif
   UNUSED(config);
+
   MockExecutor_in_MockExecutor(&(pLinkLayerTest->exe));
+
+
   MockLinkListener_in_MockLinkListener(&(pLinkLayerTest->listener));
   MockTransportLayer_in_MockTransportLayer(&(pLinkLayerTest->upper));
-
-  pLinkLayerTest->numTotalWrites = 0;
 
 //   void LinkLayer_in_LinkLayer(LinkLayer *pLinkLayer, ////const Logger& logger,
 //              IExecutorExe4cpp*,
@@ -60,6 +68,8 @@ void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerCon
                          &(pLinkLayerTest->listener.iILinkListener),
                          config);
 
+  pLinkLayerTest->numTotalWrites = 0;
+
 ////    upper->SetLinkLayer(link);
   SetLinkLayer_in_MockTransportLayer(&(pLinkLayerTest->upper), &(pLinkLayerTest->link.iILinkLayer));//ILinkLayer* linkLayer);
 
@@ -69,6 +79,9 @@ void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerCon
 
   pLinkLayerTest->iILinkTx.pBeginTransmit_in_ILinkTx = BeginTransmit_in_LinkLayerTest_override;
   setParentPointer_in_ILinkTx(&(pLinkLayerTest->iILinkTx), pLinkLayerTest);
+#ifdef  LOG_INFO
+  std::cout<<"}LinkLayerTest_in_LinkLayerTest_"<<'\n';
+#endif
 }
 
 boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
@@ -80,6 +93,10 @@ boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
                                  uint16_t source,
                                  RSeq_for_Uint16_t* userdata)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{OnFrame_in_LinkLayerTest1"<<'\n';
+#endif
 //  void LinkHeaderFields_in_LinkHeaderFieldsOver2(LinkHeaderFields *pLinkHeaderFields, LinkFunction_uint8_t func, boolean isMaster, boolean fcb, boolean fcvdfc, Addresses addresses);
 ////    LinkHeaderFields fields(func, isMaster, fcb, fcvdfc, Addresses(source, dest));
   Addresses aAddresses;
@@ -89,7 +106,11 @@ boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
 
 //   boolean OnFrame_in_LinkLayer(LinkLayer *pLinkLayer, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
 ////    return link.OnFrame(fields, userdata);
-  return OnFrame_in_LinkLayer(&(pLinkLayerTest->link), &fields, userdata);
+  boolean tmp = OnFrame_in_LinkLayer(&(pLinkLayerTest->link), &fields, userdata);
+#ifdef  LOG_INFO
+  std::cout<<"}OnFrame_in_LinkLayerTest_"<<'\n';
+#endif
+  return tmp;
 }
 
 ////std::string LinkLayerTest::PopLastWriteAsHex()
@@ -117,9 +138,17 @@ uint32_t NumTotalWrites_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest)
 
 void BeginTransmit_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, RSeq_for_Uint16_t* buffer, ILinkSession* context)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{BeginTransmit_in_LinkLayerTest1"<<'\n';
+#endif
   UNUSED(context);
   ++(pLinkLayerTest->numTotalWrites);
   pLinkLayerTest->writeQueue.push_back(to_hex_in_HexConversionsOver2(buffer));
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"}BeginTransmit_in_LinkLayerTest_"<<'\n';
+#endif
 }
 
 LinkLayerConfig DefaultConfig_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest)

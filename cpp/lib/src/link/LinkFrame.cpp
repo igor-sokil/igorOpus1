@@ -219,8 +219,19 @@ RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
     uint16_t aSrc)//,
 //Logger* pLogger)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{FormatHeader_in_LinkFrame_static1"<<std::endl;
+#endif
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < LPDU_HEADER_SIZE)
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FormatHeader_in_LinkFrame_static1_"<<std::endl;
+  decrement_stack_info();
+#endif
     return empty_in_RSeq_for_Uint16_t_static();////return ser4cpp::rseq_t::empty();
   }
 
@@ -232,10 +243,8 @@ RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
 ////    FORMAT_LOGGER_BLOCK(pLogger, flags::LINK_TX, "Function: %s Dest: %u Source: %u Length: %u",
 ////                        LinkFunctionSpec::to_human_string(aFuncCode), aDest, aSrc, aDataLength);
 #ifdef  LOG_INFO
-  increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::LINK_TX, 'Function: %s Dest: %u Source: %u Length: %u')***"<<std::endl;
-  decrement_stack_info();
 #endif
 
 //    void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
@@ -247,11 +256,24 @@ RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
   RSeq_for_Uint16_t ret = take_in_RSeq_for_Uint16_t(&tmp1, 10);
 ////    buffer.advance(10);
   advance_in_WSeq_for_Uint16_t(buffer, 10);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FormatHeader_in_LinkFrame_static2_"<<std::endl;
+  decrement_stack_info();
+#endif
   return ret;
 }
 
 void WriteUserData_in_LinkFrame_static(uint8_t* pSrc, uint8_t* pDest, uint16_t length)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{WriteUserData_in_LinkFrame_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t length= "<<length<<std::endl;
+#endif
   while (length > 0)
   {
     uint8_t max = LPDU_DATA_BLOCK_SIZE;
@@ -262,6 +284,11 @@ void WriteUserData_in_LinkFrame_static(uint8_t* pSrc, uint8_t* pDest, uint16_t l
     pDest += (num + 2);
     length -= num;
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}WriteUserData_in_LinkFrame_static_"<<std::endl;
+  decrement_stack_info();
+#endif
 }
 
 ////} // namespace opendnp3

@@ -17,7 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "AppControlField.h"
 
@@ -71,26 +74,50 @@ void AppControlField_in_AppControlFieldOver4(AppControlField *pAppControlField, 
 
 uint8_t ToByte_in_AppControlField(AppControlField *pAppControlField)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{ToByte_in_AppControlField1"<<'\n';
+#endif
   uint8_t ret = 0;
 
   if (pAppControlField->FIR)
   {
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*ret |= AppControlField_FIR_MASK"<<'\n';
     ret |= AppControlField_FIR_MASK;
   }
   if (pAppControlField->FIN)
   {
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*ret |= AppControlField_FIN_MASK"<<'\n';
     ret |= AppControlField_FIN_MASK;
   }
   if (pAppControlField->CON)
   {
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*ret |= AppControlField_CON_MASK"<<'\n';
     ret |= AppControlField_CON_MASK;
   }
   if (pAppControlField->UNS)
   {
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*ret |= AppControlField_UNS_MASK"<<'\n';
     ret |= AppControlField_UNS_MASK;
   }
 
   uint8_t seq = pAppControlField->SEQ % 16;
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ToByte_in_AppControlField_"<<'\n';
+  std::cout<<""<<getString_stack_info();
+  std::cout<<"*uint8_t ret ="<<(uint16_t)ret<<'\n';
+  std::cout<<""<<getString_stack_info();
+  std::cout<<"*uint8_t seq ="<<(uint16_t)seq<<'\n';
+  decrement_stack_info();
+#endif
 
   return ret | seq;
 }

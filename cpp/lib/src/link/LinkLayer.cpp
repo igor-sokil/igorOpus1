@@ -17,7 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "LinkLayer.h"
 
@@ -29,12 +32,19 @@
 ////                     const std::shared_ptr<IUpperLayer>& upper,
 ////                     const std::shared_ptr<ILinkListener>& listener,
 ////                     const LinkLayerConfig& config)
-   void LinkLayer_in_LinkLayer(LinkLayer *pLinkLayer, ////const Logger& logger,
-              IExecutorExe4cpp* executor,
-              IUpperLayer* upper,
-              ILinkListener* listener,
-              LinkLayerConfig* config)
+void LinkLayer_in_LinkLayer(LinkLayer *pLinkLayer, ////const Logger& logger,
+                            IExecutorExe4cpp* executor,
+                            IUpperLayer* upper,
+                            ILinkListener* listener,
+                            LinkLayerConfig* config)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{LinkLayer_in_LinkLayer1"<<'\n';
+#endif
+
   setParentPointer_in_ILinkLayer(&(pLinkLayer->iILinkLayer), pLinkLayer);
   setParentPointer_in_ILinkSession(&(pLinkLayer->iILinkSession), pLinkLayer);
   setParentPointer_in_IFrameSink(&(pLinkLayer->iILinkSession.iIFrameSink), pLinkLayer);
@@ -43,7 +53,7 @@
   pLinkLayer->iILinkSession.pOnLowerLayerDown_in_ILinkSession = OnLowerLayerDown_in_LinkLayer_override;
   pLinkLayer->iILinkSession.pOnTxReady_in_ILinkSession = OnTxReady_in_LinkLayer_override;
   pLinkLayer->iILinkSession.iIFrameSink.pOnFrame_in_IFrameSink = OnFrame_in_LinkLayer_override;
-    // ---- Events from above: ILinkLayer ----
+  // ---- Events from above: ILinkLayer ----
 
   pLinkLayer->iILinkLayer.pSend_in_ILinkLayer = Send_in_LinkLayer_override;
 
@@ -54,28 +64,33 @@
 //                                               ILinkSession* session,
 //                                               LinkLayerConfig*);
 ///    : ctx(LinkContext::Create(logger, executor, upper, listener, *this, config))
-    pLinkLayer->ctx = Create_in_LinkContext_static( // const Logger& logger,
-                                               executor,
-                                               upper,
-                                               listener,
-                                               &(pLinkLayer->iILinkSession),
-                                               config);
+  pLinkLayer->ctx = Create_in_LinkContext_static( // const Logger& logger,
+                      executor,
+                      upper,
+                      listener,
+                      &(pLinkLayer->iILinkSession),
+                      config);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}LinkLayer_in_LinkLayer_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////const StackStatistics::Link& LinkLayer::GetStatistics() const
-  Link_StackStatistics* GetStatistics_in_LinkLayer(LinkLayer *pLinkLayer)
+Link_StackStatistics* GetStatistics_in_LinkLayer(LinkLayer *pLinkLayer)
 {
 ////    return this->ctx->statistics;
- return &(pLinkLayer->ctx->statistics);
+  return &(pLinkLayer->ctx->statistics);
 }
 
 ////void LinkLayer::SetRouter(ILinkTx& router)
-  void SetRouter_in_LinkLayer(LinkLayer *pLinkLayer, ILinkTx* router)
+void SetRouter_in_LinkLayer(LinkLayer *pLinkLayer, ILinkTx* router)
 {
 ////    assert(!ctx->linktx);
 ////    ctx->linktx = &router;
-    pLinkLayer->ctx->linktx = router;
+  pLinkLayer->ctx->linktx = router;
 }
 
 ////////////////////////////////
@@ -83,21 +98,40 @@
 ////////////////////////////////
 
 ////bool LinkLayer::Send(ITransportSegment& segments)
-   boolean Send_in_LinkLayer(LinkLayer *pLinkLayer, ITransportSegment* segments)
+boolean Send_in_LinkLayer(LinkLayer *pLinkLayer, ITransportSegment* segments)
 {
-    if (!pLinkLayer->ctx->isOnline)
-        return false;
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{Send_in_LinkLayer1"<<'\n';
+#endif
+
+  if (!pLinkLayer->ctx->isOnline)
+  {
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}Send_in_LinkLayer1_"<<'\n';
+    decrement_stack_info();
+#endif
+    return false;
+  }
 
 //    boolean SetTxSegment_in_LinkContext(LinkContext *pLinkContext, ITransportSegment* segments);
 ////    if (ctx->SetTxSegment(segments))
-    if (SetTxSegment_in_LinkContext(pLinkLayer->ctx, segments))
-    {
+  if (SetTxSegment_in_LinkContext(pLinkLayer->ctx, segments))
+  {
 //    void TryStartTransmission_in_LinkContext(LinkContext *pLinkContext);
 ////        ctx->TryStartTransmission();
     TryStartTransmission_in_LinkContext(pLinkLayer->ctx);
-    }
+  }
 
-    return true;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Send_in_LinkLayer2_"<<'\n';
+  decrement_stack_info();
+#endif
+  return true;
 }
 
 ////////////////////////////////
@@ -105,33 +139,44 @@
 ////////////////////////////////
 
 ////bool LinkLayer::OnLowerLayerUp()
- boolean  OnLowerLayerUp_in_LinkLayer(LinkLayer *pLinkLayer)
+boolean  OnLowerLayerUp_in_LinkLayer(LinkLayer *pLinkLayer)
 {
 ////    return ctx->OnLowerLayerUp();
-   return OnLowerLayerUp_in_LinkContext(pLinkLayer->ctx);
+  return OnLowerLayerUp_in_LinkContext(pLinkLayer->ctx);
 }
 
 ////bool LinkLayer::OnLowerLayerDown()
-   boolean OnLowerLayerDown_in_LinkLayer(LinkLayer *pLinkLayer)
+boolean OnLowerLayerDown_in_LinkLayer(LinkLayer *pLinkLayer)
 {
 ////    return ctx->OnLowerLayerDown();
-   return OnLowerLayerDown_in_LinkContext(pLinkLayer->ctx);
+  return OnLowerLayerDown_in_LinkContext(pLinkLayer->ctx);
 }
 
 ////bool LinkLayer::OnTxReady()
-   boolean OnTxReady_in_LinkLayer(LinkLayer *pLinkLayer)
+boolean OnTxReady_in_LinkLayer(LinkLayer *pLinkLayer)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnTxReady_in_LinkLayer1"<<'\n';
+#endif
 //    boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext);
 ////    auto ret = ctx->OnTxReady();
-    boolean ret = OnTxReady_in_LinkContext(pLinkLayer->ctx);
+  boolean ret = OnTxReady_in_LinkContext(pLinkLayer->ctx);
 
-    if (ret)
-    {
+  if (ret)
+  {
 ////        ctx->TryStartTransmission();
     TryStartTransmission_in_LinkContext(pLinkLayer->ctx);
-    }
+  }
 
-    return true;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnTxReady_in_LinkLayer_"<<'\n';
+  decrement_stack_info();
+#endif
+  return true;
 }
 
 ////////////////////////////////
@@ -139,45 +184,69 @@
 ////////////////////////////////
 
 ////bool LinkLayer::OnFrame(const LinkHeaderFields& header, const ser4cpp::rseq_t& userdata)
-   boolean OnFrame_in_LinkLayer(LinkLayer *pLinkLayer, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata)
+boolean OnFrame_in_LinkLayer(LinkLayer *pLinkLayer, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnFrame_in_LinkLayer1"<<'\n';
+#endif
 //    boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata);
 ////    auto ret = this->ctx->OnFrame(header, userdata);
-    boolean  ret = OnFrame_in_LinkContext(pLinkLayer->ctx, header, userdata);
+  boolean  ret = OnFrame_in_LinkContext(pLinkLayer->ctx, header, userdata);
 
-    if (ret)
-    {
+  if (ret)
+  {
 ////        this->ctx->TryStartTransmission();
     TryStartTransmission_in_LinkContext(pLinkLayer->ctx);
-    }
+  }
 
-    return ret;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnFrame_in_LinkLayer_"<<'\n';
+  decrement_stack_info();
+#endif
+  return ret;
 }
 
 ////} // namespace opendnp3
 
-   boolean OnLowerLayerUp_in_LinkLayer_override(void *pILinkSession)
+boolean OnLowerLayerUp_in_LinkLayer_override(void *pILinkSession)
 {
   LinkLayer* parent = (LinkLayer*) getParentPointer_in_ILinkSession((ILinkSession*) pILinkSession);
   return OnLowerLayerUp_in_LinkLayer(parent);
 }
-   boolean OnLowerLayerDown_in_LinkLayer_override(void *pILinkSession)
+boolean OnLowerLayerDown_in_LinkLayer_override(void *pILinkSession)
 {
   LinkLayer* parent = (LinkLayer*) getParentPointer_in_ILinkSession((ILinkSession*) pILinkSession);
   return OnLowerLayerDown_in_LinkLayer(parent);
 }
-   boolean OnTxReady_in_LinkLayer_override(void *pILinkSession)
+boolean OnTxReady_in_LinkLayer_override(void *pILinkSession)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnTxReady_in_LinkLayer_override1"<<'\n';
+#endif
   LinkLayer* parent = (LinkLayer*) getParentPointer_in_ILinkSession((ILinkSession*) pILinkSession);
-  return OnTxReady_in_LinkLayer(parent);
+  boolean tmp = OnTxReady_in_LinkLayer(parent);
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnTxReady_in_LinkLayer_override_"<<'\n';
+#endif
+  return tmp;
 }
-   boolean OnFrame_in_LinkLayer_override(void *pIFrameSink, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata)
+boolean OnFrame_in_LinkLayer_override(void *pIFrameSink, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata)
 {
   LinkLayer* parent = (LinkLayer*) getParentPointer_in_IFrameSink((IFrameSink*) pIFrameSink);
   return OnFrame_in_LinkLayer(parent, header, userdata);
 }
-    // ---- Events from above: ILinkLayer ----
-   boolean Send_in_LinkLayer_override(void *pILinkLayer, ITransportSegment* segments)
+// ---- Events from above: ILinkLayer ----
+boolean Send_in_LinkLayer_override(void *pILinkLayer, ITransportSegment* segments)
 {
   LinkLayer* parent = (LinkLayer*) getParentPointer_in_ILinkLayer((ILinkLayer*) pILinkLayer);
   return Send_in_LinkLayer(parent, segments);

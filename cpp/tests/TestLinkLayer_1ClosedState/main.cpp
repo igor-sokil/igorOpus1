@@ -32,6 +32,10 @@ int main(int argc, char *argv[])
   app.installEventFilter(pkf=&kf);
 
 qDebug()<<"********SUITE('1ClosedState')********";
+//-------1
+////    LinkLayerTest t;
+////    MockTransportSegment segment(250, "00", Addresses());
+////    REQUIRE_FALSE(t.upper->SendDown(segment));
 
     LinkLayerTest t;
   LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
@@ -53,11 +57,14 @@ boolean tempBool = SendDown_in_MockTransportLayer(&(t.upper), &(segments.iITrans
 qDebug()<<"REQUIRE_FALSE(t.upper->SendDown(segment))";
 qDebug()<<"boolean tempBool= "<<tempBool;
 
+//------2
 //boolean OnLowerLayerDown_in_LinkLayer(LinkLayer *pLinkLayer);
 ////    REQUIRE_FALSE(t.link.OnLowerLayerDown());
 tempBool = OnLowerLayerDown_in_LinkLayer(&(t.link));
 qDebug()<<"REQUIRE_FALSE(t.link.OnLowerLayerDown())";
 qDebug()<<"boolean tempBool= "<<tempBool;
+
+//--------3
 
 //  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
 //                 LinkFunction_uint8_t func,
@@ -93,86 +100,6 @@ TEST_CASE(SUITE("1ClosedState"))
     REQUIRE_FALSE(t.link.OnLowerLayerDown());
     REQUIRE_FALSE(t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 1, 2));
 }
-*/
-/*
-    LinkLayerTest t;
-  LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
-  LinkLayerTest_in_LinkLayerTest(&t, &temp);
-
-////    t.link.OnLowerLayerUp();
-   OnLowerLayerUp_in_LinkLayer(&(t.link));
-
-//  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
-//                 LinkFunction_uint8_t func,
-//                 boolean isMaster,
-//                 boolean fcb,
-//                 boolean fcvdfc,
-//                 uint16_t dest,
-//                 uint16_t source,
-//                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
-
-////    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
-
-     RSeq_for_Uint16_t temp2 = empty_in_RSeq_for_Uint16_t_static();
-////    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
-   OnFrame_in_LinkLayerTest(&t,
-                 LinkFunction_PRI_RESET_LINK_STATES,
-                 false,//boolean isMaster,
-                 false,//boolean fcb,
-                 false,//boolean fcvdfc,
-                 1,//uint16_t dest,
-                 1024,//uint16_t source,
-                 &temp2);//RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
-
-//uint32_t NumTotalWrites_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest)
-////    REQUIRE(t.NumTotalWrites() == 1);
-uint32_t num = NumTotalWrites_in_LinkLayerTest(&t);
-
-qDebug()<<"REQUIRE(t.NumTotalWrites() == 1)";
-qDebug()<<"num= "<<num;
-
-//   boolean OnTxReady_in_LinkLayer(LinkLayer *pLinkLayer);
-////    t.link.OnTxReady();
-   OnTxReady_in_LinkLayer(&(t.link));
-
-////    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
-   OnFrame_in_LinkLayerTest(&t,
-                 LinkFunction_PRI_RESET_LINK_STATES,
-                 false,//boolean isMaster,
-                 false,//boolean fcb,
-                 false,//boolean fcvdfc,
-                 1,//uint16_t dest,
-                 1024,//uint16_t source,
-                 &temp2);//RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
-
-////    REQUIRE(t.NumTotalWrites() == 2);
- num = NumTotalWrites_in_LinkLayerTest(&t);
-
-qDebug()<<"REQUIRE(t.NumTotalWrites() == 2)";
-qDebug()<<"num= "<<num;
-
-////    t.link.OnTxReady();
-   OnTxReady_in_LinkLayer(&(t.link));
-
-////    REQUIRE(t.NumTotalWrites() == 2);
- num = NumTotalWrites_in_LinkLayerTest(&t);
-
-qDebug()<<"REQUIRE(t.NumTotalWrites() == 2)";
-qDebug()<<"num= "<<num;
-
-////    REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1));
-    std::string str = PopLastWriteAsHex_in_LinkLayerTest(&t);
-
-//   std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
-qDebug()<<"REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1))";
-//qDebug()<<"str= "<< str;
-//printf("str %s", str);
- std::cout << "str = " << str;
-
-qDebug()<<"";
-
-   std::string str2 = Ack_in_LinkHex_static(true, false, 1024, 1);
- std::cout << "str2= " << str2;
 */
 
   MainWindow mainWindowObj;

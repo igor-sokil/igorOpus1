@@ -3,6 +3,7 @@
 
 void ControlState_in_ControlStateOver1(ControlState *pControlState)
 {
+  SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over1(&(pControlState->expectedSeq));
   pControlState->selected = false;
   pControlState->digest = 0;
   pControlState->length = 0;

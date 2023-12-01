@@ -141,7 +141,9 @@ uint16_t WriteWithCTO_for_BinaryOutputStatus_in_EventWriters_static(DNPTime* cto
         serializer);
 //  uint16_t WriteSome_in_IEventCollection_for_BinaryOutputStatus(IEventCollection_for_BinaryOutputStatus *, IEventWriter_for_BinaryOutputStatus* handler);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_BinaryOutputStatus(items, &(handler.iIEventWriter_for_BinaryOutputStatus));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_BinaryOutputStatus(items, &(handler.iIEventWriter_for_BinaryOutputStatus));
+    PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_destr_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(&handler.iterator);
+    return tmp;
   }
   else
   {
@@ -155,7 +157,9 @@ uint16_t WriteWithCTO_for_BinaryOutputStatus_in_EventWriters_static(DNPTime* cto
         writer,
         serializer);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_BinaryOutputStatus(items, &(handler.iIEventWriter_for_BinaryOutputStatus));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_BinaryOutputStatus(items, &(handler.iIEventWriter_for_BinaryOutputStatus));
+    PrefixedWriteIterator_for_UInt16_BinaryOutputStatus_destr_PrefixedWriteIterator_for_UInt16_BinaryOutputStatus(&handler.iterator);
+    return tmp;
   }
 }
 

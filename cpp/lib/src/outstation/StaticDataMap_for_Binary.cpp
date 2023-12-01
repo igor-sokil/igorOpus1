@@ -155,15 +155,18 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"update_in_StaticDataMap_for_BinarySpecOver2_1"<<'\n';
+  std::cout<<"{update_in_StaticDataMap_for_BinarySpecOver2_1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*iter->second.config.eEventConfig.clazz= "<<(uint16_t)iter->second.config.eEventConfig.clazz<<'\n';
   std::cout<<"+"<<getString_stack_info();
   std::cout<<"++++++int16_t nnn = iter->first="<<(uint16_t)iter->first<<'\n';
+  inspect_Binary(new_value);
 #endif
   if (iter == pStaticDataMap_for_BinarySpec->map.end())
   {
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}update_in_StaticDataMap_for_BinarySpecOver2__"<<'\n';
   decrement_stack_info();
 #endif
     return false;
@@ -210,6 +213,8 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
   }
 
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}update_in_StaticDataMap_for_BinarySpecOver2__"<<'\n';
   decrement_stack_info();
 #endif
   return true;

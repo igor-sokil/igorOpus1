@@ -141,7 +141,9 @@ uint16_t WriteWithCTO_for_Counter_in_EventWriters_static(DNPTime* cto,
         serializer);
 //  uint16_t WriteSome_in_IEventCollection_for_Counter(IEventCollection_for_Counter *, IEventWriter_for_Counter* handler);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_Counter(items, &(handler.iIEventWriter_for_Counter));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_Counter(items, &(handler.iIEventWriter_for_Counter));
+    PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UInt16_Counter(&handler.iterator);
+    return tmp;
   }
   else
   {
@@ -155,7 +157,9 @@ uint16_t WriteWithCTO_for_Counter_in_EventWriters_static(DNPTime* cto,
         writer,
         serializer);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_Counter(items, &(handler.iIEventWriter_for_Counter));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_Counter(items, &(handler.iIEventWriter_for_Counter));
+    PrefixedWriteIterator_for_UInt16_Counter_destr_PrefixedWriteIterator_for_UInt16_Counter(&handler.iterator);
+    return tmp;
   }
 }
 

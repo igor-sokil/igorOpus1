@@ -101,7 +101,9 @@ uint16_t Write_for_OctetString_in_EventWriters_static(uint8_t firstSize, HeaderW
   OctetStringEventWriter_in_OctetStringEventWriter(&handler, writer, firstSize);
 //  uint16_t WriteSome_in_IEventCollection_for_OctetString(IEventCollection_for_OctetString *, IEventWriter_for_OctetString* handler);
 ////    return items.WriteSome(handler);
-  return WriteSome_in_IEventCollection_for_OctetString(items, &(handler.iIEventWriter_for_OctetString));
+  uint16_t tmp = WriteSome_in_IEventCollection_for_OctetString(items, &(handler.iIEventWriter_for_OctetString));
+  PrefixedWriteIterator_for_UInt16_OctetString_destr_PrefixedWriteIterator_for_UInt16_OctetString(&handler.iterator);
+  return tmp;
 }
 
 ////} // namespace opendnp3

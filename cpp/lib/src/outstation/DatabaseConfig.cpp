@@ -115,6 +115,11 @@ void initialize_OctetStringConfig(std::map<uint16_t, OctetStringConfig>& map, ui
   }
 }
 
+void DatabaseConfig_in_DatabaseConfig_default(DatabaseConfig *pDatabaseConfig)
+{
+ UNUSED(pDatabaseConfig);
+}
+
 void DatabaseConfig_in_DatabaseConfig(DatabaseConfig *pDatabaseConfig, uint16_t all_types)
 {
 #ifdef  LOG_INFO

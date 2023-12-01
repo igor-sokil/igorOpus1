@@ -25,6 +25,11 @@
 ////#include <ser4cpp/util/HexConversions.h>
 
 ////#include <link/LinkFrame.h>
+
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "LinkHex.h"
@@ -43,6 +48,10 @@
 ////std::string LinkHex::Ack(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src)
 std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{Ack_in_LinkHex_static1"<<'\n';
+#endif
 ////    StaticBuffer<292> buffer;
   StaticBuffer_for_LPDU_MAX_FRAME_SIZE buffer;
 
@@ -56,6 +65,11 @@ std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t
 ////    return HexConversions::to_hex(LinkFrame::FormatAck(output, master, isRxBuffFull, dest, src, nullptr));
   RSeq_for_Uint16_t temp = FormatAck_in_LinkFrame_static(
                              &output, master, isRxBuffFull, dest, src);//, Logger* pLogger);
+
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"}Ack_in_LinkHex_static_"<<'\n';
+#endif
   return to_hex_in_HexConversionsOver2(&temp, true);
 }
 

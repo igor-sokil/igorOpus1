@@ -65,13 +65,15 @@ void CountWriteIterator_for_UInt8_Analog_destr_CountWriteIterator_for_UInt8_Anal
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"CountWriteIterator_for_UInt8_Analog_destr_CountWriteIterator_for_UInt8_Analog1"<<'\n';
-  decrement_stack_info();
 #endif
   if (pCountWriteIterator_for_UInt8_Analog->isValid)
   {
 ////        CountType::write_to(countPosition, count);
     write_to_in_UInt8_static(&(pCountWriteIterator_for_UInt8_Analog->countPosition), pCountWriteIterator_for_UInt8_Analog->count);
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean Write_in_CountWriteIterator_for_UInt8_Analog(CountWriteIterator_for_UInt8_Analog *pCountWriteIterator_for_UInt8_Analog, Analog *value)////const WriteType& value)
@@ -144,11 +146,22 @@ void CountWriteIterator_for_UInt16_Analog_in_CountWriteIterator_for_UInt16_Analo
 ////    ~CountWriteIterator()
 void CountWriteIterator_for_UInt16_Analog_destr_CountWriteIterator_for_UInt16_Analog(CountWriteIterator_for_UInt16_Analog *pCountWriteIterator_for_UInt16_Analog)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"CountWriteIterator_for_UInt16_Analog_destr_CountWriteIterator_for_UInt16_Analog1"<<'\n';
+#endif
+
   if (pCountWriteIterator_for_UInt16_Analog->isValid)
   {
 ////        CountType::write_to(countPosition, count);
     write_to_in_UInt16_static(&(pCountWriteIterator_for_UInt16_Analog->countPosition), pCountWriteIterator_for_UInt16_Analog->count);
   }
+
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean Write_in_CountWriteIterator_for_UInt16_Analog(CountWriteIterator_for_UInt16_Analog *pCountWriteIterator_for_UInt16_Analog, Analog *value)////const WriteType& value)

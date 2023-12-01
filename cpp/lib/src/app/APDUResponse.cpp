@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "APDUResponse.h"
 
@@ -38,6 +42,19 @@ void APDUResponse_in_APDUResponse(APDUResponse *pAPDUResponse, WSeq_for_Uint16_t
 
 void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{SetIIN_in_APDUResponse1"<<'\n';
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_uint8="<<(uint32_t)((pAPDUResponse -> aAPDUWrapper).buffer.buffer_+2)<<"->"<<(uint16_t)indications->LSB<<'\n';
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_uint8="<<(uint32_t)((pAPDUResponse -> aAPDUWrapper).buffer.buffer_+3)<<"->"<<(uint16_t)indications->MSB<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}SetIIN_in_APDUResponse_"<<'\n';
+  decrement_stack_info();
+#endif
   (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[2] = indications->LSB;
   (pAPDUResponse -> aAPDUWrapper).buffer.buffer_[3] = indications->MSB;
 }

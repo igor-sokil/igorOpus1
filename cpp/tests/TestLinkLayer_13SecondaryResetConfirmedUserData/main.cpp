@@ -17,10 +17,6 @@
 
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
-
 key_filter *pkf;
 
 MainWindow *mainWindow;
@@ -32,6 +28,12 @@ int main(int argc, char *argv[])
   app.installEventFilter(pkf=&kf);
 
 qDebug()<<"********SUITE('13SecondaryResetConfirmedUserData')********";
+////    LinkLayerTest t;
+////    t.link.OnLowerLayerUp();
+////    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
+////    REQUIRE(t.NumTotalWrites() == 1);
+////    t.link.OnTxReady();
+//----------1
     LinkLayerTest t;
   LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
   LinkLayerTest_in_LinkLayerTest(&t, &temp);
@@ -67,6 +69,12 @@ qDebug()<<"uint32_t temp32 ="<<temp32;
 
    OnTxReady_in_LinkLayer(&(t.link));
 
+////    ByteStr bytes(250, 0);
+////    t.OnFrame(LinkFunction::PRI_CONFIRMED_USER_DATA, false, true, false, 1, 1024, bytes.ToRSeq());
+////    REQUIRE(t.NumTotalWrites() == 2);
+////    t.link.OnTxReady();
+//-----------2
+
  ByteStr bs;
  ByteStr_in_ByteStrOver1(&bs, 250, 0);// = 0);
 
@@ -89,6 +97,9 @@ qDebug()<<"uint32_t temp32 ="<<temp32;
 
    OnTxReady_in_LinkLayer(&(t.link));
 
+//-------------3
+////    REQUIRE(t.upper->receivedQueue.front() == bytes.ToHex());
+
 qDebug()<<"REQUIRE(t.upper->receivedQueue.front()";
 qDebug()<<"t.upper.receivedQueue.size()= "<<t.upper.receivedQueue.size();
  std::string tmpStr = t.upper.receivedQueue.front();
@@ -99,6 +110,9 @@ qDebug()<<"";
 //std::string ToHex_in_ByteStr(ByteStr *pByteStr);
 tmpStr = ToHex_in_ByteStr(&bs);
 std::cout<<"std::string tmpStr ="<<tmpStr;
+
+//-------------4
+
     t.upper.receivedQueue.clear();
 
      OnFrame_in_LinkLayerTest(&t,
@@ -139,45 +153,6 @@ TEST_CASE(SUITE("13SecondaryResetConfirmedUserData"))
     REQUIRE(t.NumTotalWrites() == 3);        // should still get an ACK  все равно должен получить ACK
     REQUIRE(t.upper->receivedQueue.empty()); // but no data
 }
-*/
-/*
-    LinkLayerTest t;
-  LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
-  LinkLayerTest_in_LinkLayerTest(&t, &temp);
-
-////    t.link.OnLowerLayerUp();
-   OnLowerLayerUp_in_LinkLayer(&(t.link));
-
-//  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
-//                 LinkFunction_uint8_t func,
-//                 boolean isMaster,
-//                 boolean fcb,
-//                 boolean fcvdfc,
-//                 uint16_t dest,
-//                 uint16_t source,
-//                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
-////    t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 2, 1024);
-
-     RSeq_for_Uint16_t temp2 = empty_in_RSeq_for_Uint16_t_static();
-     OnFrame_in_LinkLayerTest(&t,
-                 LinkFunction_PRI_RESET_LINK_STATES,
-                 false,
-                 false,
-                 false,
-                 LinkBroadcastAddress_ShallConfirm,
-                 1024,
-                 &temp2);//// = ser4cpp::rseq_t::empty());
-
-//uint32_t NumTotalWrites_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
-////    REQUIRE(t.NumTotalWrites() == 1);
-uint32_t temp32 = NumTotalWrites_in_LinkLayerTest(&t);
-qDebug()<<"REQUIRE(t.NumTotalWrites() == 0)";
-qDebug()<<"uint32_t temp32 ="<<temp32;
-
-  Link_StackStatistics* lss = GetStatistics_in_LinkLayer(&(t.link));
-qDebug()<<"REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1)";
-qDebug()<<"t.link.GetStatistics().numUnexpectedFrame ="<<lss->numUnexpectedFrame;
-
 */
   MainWindow mainWindowObj;
   mainWindow = &mainWindowObj;

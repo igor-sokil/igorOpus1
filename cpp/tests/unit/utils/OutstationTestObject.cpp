@@ -44,7 +44,8 @@
 void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, OutstationConfig* config, DatabaseConfig* db_config)
 {
 #ifdef  LOG_INFO
-  std::cout<<"OutstationTestObject_in_OutstationTestObject1"<<'\n';
+  std::cout<<'\n';
+  std::cout<<"{OutstationTestObject_in_OutstationTestObject1"<<'\n';
 #endif
 ////    : exe(std::make_shared<exe4cpp::MockExecutor>()),
   MockExecutor_in_MockExecutor(&(pOutstationTestObject->exe));
@@ -84,17 +85,25 @@ void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstat
 ////    lower->SetUpperLayer(context);
   SetUpperLayer_in_HasUpperLayer(&(pOutstationTestObject->lower.hHasUpperLayer), &(pOutstationTestObject->context.iIUpperLayer));
 
+#ifdef  LOG_INFO
+  std::cout<<"}OutstationTestObject_in_OutstationTestObject_"<<'\n';
+#endif
 }
 
 ////size_t OutstationTestObject::LowerLayerUp()
 uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
 {
 #ifdef  LOG_INFO
-  std::cout<<"LowerLayerUp_in_OutstationTestObject1"<<'\n';
+  std::cout<<'\n';
+  std::cout<<"{LowerLayerUp_in_OutstationTestObject1"<<'\n';
 #endif
 //boolean OnLowerLayerUp_in_OContext(OContext*);
 ////    context.OnLowerLayerUp();
   OnLowerLayerUp_in_OContext(&(pOutstationTestObject->context));
+
+#ifdef  LOG_INFO
+  std::cout<<"}LowerLayerUp_in_OutstationTestObject_"<<'\n';
+#endif
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
 }
@@ -109,13 +118,14 @@ uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationT
 uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
 {
 #ifdef  LOG_INFO
-  std::cout<<"OnTxReady_in_OutstationTestObject1"<<'\n';
+  std::cout<<'\n';
+  std::cout<<"{OnTxReady_in_OutstationTestObject1"<<'\n';
 #endif
 //boolean OnTxReady_in_OContext(OContext* pOContext)
 ////    context.OnTxReady();
    OnTxReady_in_OContext(&(pOutstationTestObject->context));
 #ifdef  LOG_INFO
-  std::cout<<"OnTxReady_in_OutstationTestObject2"<<'\n';
+  std::cout<<"}OnTxReady_in_OutstationTestObject_"<<'\n';
 #endif
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
@@ -126,7 +136,8 @@ uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTest
 uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, std::string& hex)
 {
 #ifdef  LOG_INFO
-  std::cout<<"SendToOutstation_in_OutstationTestObject1"<<'\n';
+  std::cout<<'\n';
+  std::cout<<"{SendToOutstation_in_OutstationTestObject1"<<'\n';
 #endif
 //   void HexSequence_in_HexSequence(HexSequence *pHexSequence, std::string& hex);
 ////    HexSequence hs(hex);
@@ -148,11 +159,18 @@ uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstat
   /*boolean tmp =*/ OnReceive_in_OContext(&(pOutstationTestObject->context), &mMessage);
 
 ////    return exe->run_many();
+#ifdef  LOG_INFO
+  std::cout<<"}SendToOutstation_in_OutstationTestObject_"<<'\n';
+#endif
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
 }
 
 void Transaction_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, void (*apply)(IUpdateHandler*))//std::function<void(opendnp3::IUpdateHandler&)>& apply)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{Transaction_in_OutstationTestObject1"<<'\n';
+#endif
   // auto& handler = context.GetUpdateHandler();
 //IUpdateHandler* GetUpdateHandler_in_OContext(OContext *pOContext);
 ////        apply(context.GetUpdateHandler());
@@ -161,11 +179,18 @@ void Transaction_in_OutstationTestObject(OutstationTestObject *pOutstationTestOb
 //void HandleNewEvents_in_OContext(OContext *pOContext);
 ////        context.HandleNewEvents();
   HandleNewEvents_in_OContext(&(pOutstationTestObject->context));
+#ifdef  LOG_INFO
+  std::cout<<"}Transaction_in_OutstationTestObject_"<<'\n';
+#endif
 }
 
 ////size_t OutstationTestObject::BroadcastToOutstation(LinkBroadcastAddress broadcast_address, const std::string& hex)
 uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, LinkBroadcastAddress_uint16_t broadcast_address, std::string& hex)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{BroadcastToOutstation_in_OutstationTestObject1"<<'\n';
+#endif
 ////    HexSequence hs(hex);
   HexSequence hs;
   HexSequence_in_HexSequence(&hs, hex);
@@ -180,6 +205,9 @@ uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOu
   Message_in_Message(&mMessage, &aAddresses, &temp);
   /*boolean tmp = */OnReceive_in_OContext(&(pOutstationTestObject->context), &mMessage);
 
+#ifdef  LOG_INFO
+  std::cout<<"}BroadcastToOutstation_in_OutstationTestObject_"<<'\n';
+#endif
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
 }
@@ -190,14 +218,16 @@ uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOu
 ////}
 
 ////bool OutstationTestObject::AdvanceToNextTimer()
-////{
+boolean AdvanceToNextTimer_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
+{
+UNUSED(pOutstationTestObject);
 ////    if (exe->advance_to_next_timer())
 ////    {
 ////        return exe->run_many() > 0;
 ////    }
 
-////    return false;
-////}
+   return true;//false;
+}
 
 uint16_t AdvanceTime_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, TimeDuration* td)
 {

@@ -29,6 +29,10 @@
 // limitations under the License.
 //
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "Group32.h"
 
@@ -854,7 +858,15 @@ GroupVariationID ID_in_Group32Var1_static(void)
 
 DNP3Serializer_for_Analog  Inst_in_Group32Var1_static(void)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Inst_in_Group32Var1_static1"<<'\n';
+#endif
+
   DNP3Serializer_for_Analog dDNP3Serializer_for_Analog;
+
   DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(&dDNP3Serializer_for_Analog,
       ID_in_Group32Var1_static(),
       Size_in_Group32Var1_static(),
@@ -863,6 +875,9 @@ DNP3Serializer_for_Analog  Inst_in_Group32Var1_static(void)
 ////                   typename Serializer<T>::write_func_t write_func)
       &WriteTarget_in_Group32Var1_static);
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
   return dDNP3Serializer_for_Analog;
 }

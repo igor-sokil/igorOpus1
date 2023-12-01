@@ -179,6 +179,13 @@ void PrefixedWriteIterator_for_UInt16_Binary_destr_PrefixedWriteIterator_for_UIn
 boolean Write_in_PrefixedWriteIterator_for_UInt16_Binary(PrefixedWriteIterator_for_UInt16_Binary *pPrefixedWriteIterator_for_UInt16_Binary,
     Binary* value, uint16_t index)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_PrefixedWriteIterator_for_UInt16_Binary1"<<'\n';
+  inspect_Binary(value);
+#endif
 ////    if (isValid && (pPosition->length() >= sizeOfTypePlusIndex))
   if(pPrefixedWriteIterator_for_UInt16_Binary->isValid &&
       length_in_HasLength_for_Uint16_t(&(pPrefixedWriteIterator_for_UInt16_Binary->pPosition->hHasLength))
@@ -190,10 +197,16 @@ boolean Write_in_PrefixedWriteIterator_for_UInt16_Binary(PrefixedWriteIterator_f
     write_in_Serializer_for_Binary(&(pPrefixedWriteIterator_for_UInt16_Binary->serializer), value,
                                    pPrefixedWriteIterator_for_UInt16_Binary->pPosition);
     ++(pPrefixedWriteIterator_for_UInt16_Binary->count);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 }

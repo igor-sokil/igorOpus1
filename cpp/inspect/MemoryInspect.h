@@ -2,23 +2,27 @@
 #define MEMORYINSPECT_H
 
 #include "RSeq.h"
-#include "WSeq.h"
-#include "Message.h"
-#include "APDUHeaderParser.h"
-#include "ParsedRequest.h"
-#include "EventLists.h"
-#include "LinkHeader.h"
-#include "LinkHeaderFields.h"
-#include "Pair_for_IINField_AppControlField.h"
-#include "ObjectHeaderParser.h"
-#include "GroupVariationRecord.h"
+#include "MeasurementTypes.h"
+#include "IINField.h"
+//#include "WSeq.h"
+//#include "Message.h"
+//#include "APDUHeaderParser.h"
+//#include "ParsedRequest.h"
+//#include "EventLists.h"
+//#include "LinkHeader.h"
+//#include "LinkHeaderFields.h"
+//#include "Pair_for_IINField_AppControlField.h"
+//#include "ObjectHeaderParser.h"
+//#include "GroupVariationRecord.h"
 
 void inspect_Analog(Analog *b);
 void inspect_Binary(Binary *b);
+void inspect_IINField(IINField *b);
+
 void inspect_Counter(Counter *b);
 void inspect_RSeq(RSeq_for_Uint16_t *buffer);
-void inspect_WSeq(WSeq_for_Uint16_t *buffer);
-
+//void inspect_WSeq(WSeq_for_Uint16_t *buffer);
+/*
 //-------------------RSeq------------------------
 typedef struct
 {
@@ -332,5 +336,5 @@ Memory_RangeHeader*  MEMORY_RangeHeader_1(uint16_t titleSpace, RangeHeader* pRan
 Memory_RangeHeader*  MEMORY_RangeHeader_2(uint16_t titleSpace, RangeHeader* pRangeHeader);
 Memory_RangeHeader*  MEMORY_RangeHeader_3(uint16_t titleSpace, RangeHeader* pRangeHeader);
 //-------------------RangeHeader------------------------
-
+*/
 #endif

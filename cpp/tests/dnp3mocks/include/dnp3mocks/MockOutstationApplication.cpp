@@ -286,3 +286,10 @@ void OnConfirmProcessed_in_MockOutstationApplication(MockOutstationApplication *
   confirm.num_class3 = num_class3;
   pMockOutstationApplication->confirms.push_back(confirm);
 }
+
+////    void SetTime(opendnp3::DNPTime time)
+void SetTime_in_MockOutstationApplication(MockOutstationApplication *pMockOutstationApplication, DNPTime timeDNPTime)
+{
+////        this->currentTime = time;
+   pMockOutstationApplication->currentTime = timeDNPTime;
+}

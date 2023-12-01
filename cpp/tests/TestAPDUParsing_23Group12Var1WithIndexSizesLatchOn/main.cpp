@@ -79,9 +79,6 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-expectsContents_in_CountIndexParser = true;
-expectsContents_in_RangeParser = true;
-
 qDebug()<<"********SUITE('23Group12Var1WithIndexSizesLatchOn')********";
 void validate(MockApduHeaderHandler*);
 {

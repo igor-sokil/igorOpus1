@@ -1,8 +1,4 @@
 
-#include "log_info.h"
-#ifdef  LOG_INFO
-#include <iostream>
-#endif
 #include "header.h"
 #include "MeasurementTypes.h"
 #include "Serializer.h"
@@ -344,19 +340,6 @@ boolean read_in_Serializer_for_Analog(Serializer_for_Analog *pSerializer_for_Ana
  */
 boolean write_in_Serializer_for_Analog(Serializer_for_Analog *pSerializer_for_Analog, Analog *value, WSeq_for_Uint16_t *buffer)
 {
-/*
-#ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<""<<'\n';
-  std::cout<<getString_stack_info();
-  std::cout<<"write_in_Serializer_for_Analog1"<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*buffer->buffer_= "<<std::dec<<(uint32_t)buffer->buffer_<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pSerializer_for_Analog->write_func= "<<std::dec<<(uint32_t)pSerializer_for_Analog->write_func<<'\n';
-  decrement_stack_info();
-#endif
-*/
   return //POINTER_write_func_t_in_Serializer_for_Binary_FUNCTION
     (pSerializer_for_Analog->write_func)(value, buffer);
 }
@@ -366,17 +349,6 @@ void Serializer_for_Analog_in_Serializer_for_Analog(Serializer_for_Analog *pSeri
     read_func_t_in_Serializer_for_Analog  read_func,
     write_func_t_in_Serializer_for_Analog write_func)
 {
-/*
-#ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<""<<'\n';
-  std::cout<<getString_stack_info();
-  std::cout<<"Serializer_for_Analog_in_Serializer_for_Analog"<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pSerializer_for_Analog->write_func= "<<std::dec<<(uint32_t)write_func<<'\n';
-  decrement_stack_info();
-#endif
-*/
 ////        : size(size), read_func(read_func), write_func(write_func)
   pSerializer_for_Analog->size = size;
   pSerializer_for_Analog->read_func = read_func;

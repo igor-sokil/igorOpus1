@@ -39,7 +39,7 @@ uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* han
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"Write_in_EventWriting_static1"<<'\n';
+  std::cout<<"{Write_in_EventWriting_static1"<<'\n';
 #endif
 
   uint32_t total_num_written = 0;
@@ -62,12 +62,19 @@ uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* han
 
     if (num_written == 0)
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_EventWriting_static1_"<<'\n';
+  decrement_stack_info();
+#endif
       return total_num_written;
     }
 
     total_num_written += num_written;
   }
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_EventWriting_static2_"<<'\n';
   decrement_stack_info();
 #endif
 }
@@ -90,6 +97,8 @@ EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventR
     if (!current)
     {
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"FindNextSelected_in_EventWriting_static2"<<'\n';
       decrement_stack_info();
 #endif
       return NULL;
@@ -104,20 +113,30 @@ EventRecord* FindNextSelected_in_EventWriting_static(Iterator_in_List_for_EventR
       if(IsEqual_in_IEventType((IEventType*)(current->type), type))
       {
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"FindNextSelected_in_EventWriting_static3"<<'\n';
         decrement_stack_info();
 #endif
         return current;
       }
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"FindNextSelected_in_EventWriting_static4"<<'\n';
       decrement_stack_info();
 #endif
       return NULL;
     }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"FindNextSelected_in_EventWriting_static5"<<'\n';
+#endif
 ////        iter.Next();
     Next__in__Iterator_in_List_for_EventRecord(iter);
   }
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"FindNextSelected_in_EventWriting_static6"<<'\n';
   decrement_stack_info();
 #endif
 }
@@ -136,6 +155,8 @@ uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"WriteSome_in_EventWriting_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*lists->counters.selected= "<<(uint16_t)lists->counters.selected<<'\n';
 #endif
   // don't bother searching
 // не утруждайтесь поиском

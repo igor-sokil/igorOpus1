@@ -52,7 +52,7 @@ Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_stati
   std::cout<<""<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"ParseRequest_in_APDUHeaderParser_static1"<<std::endl;
+  std::cout<<"{ParseRequest_in_APDUHeaderParser_static1"<<std::endl;
   inspect_RSeq(apdu);
 #endif
   if (length_in_HasLength_for_Uint16_t(&(apdu->hHasLength)) < APDUHeader_REQUEST_SIZE)
@@ -63,6 +63,8 @@ Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_stati
     std::cout<<getString_stack_info();
     std::cout<<"***FORMAT_LOGGER_BLOCK(logger, flags::WARN, 'Request fragment  with insufficient size of %zu bytes', apdu.length())"
              <<length_in_HasLength_for_Uint16_t(&(apdu->hHasLength))<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRequest_in_APDUHeaderParser_static1_"<<std::endl;
     decrement_stack_info();
 #endif
     return Error_in_Result_for_APDUHeader_static();
@@ -70,7 +72,7 @@ Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_stati
   }
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"ParseRequest_in_APDUHeaderParser_static3"<<std::endl;
+  std::cout<<"}ParseRequest_in_APDUHeaderParser_static2_"<<std::endl;
   decrement_stack_info();
 #endif
 

@@ -99,10 +99,12 @@ uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstat
 
 void Transaction_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, void (*apply)(IUpdateHandler*));//std::function<void(opendnp3::IUpdateHandler&)>& apply)
 
-uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, LinkBroadcastAddress_uint16_t broadcast_address, const std::string& hex);
+uint16_t BroadcastToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, LinkBroadcastAddress_uint16_t broadcast_address, std::string& hex);
 
 uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
 
 uint16_t AdvanceTime_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, TimeDuration* td);
+
+boolean AdvanceToNextTimer_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
 
 #endif

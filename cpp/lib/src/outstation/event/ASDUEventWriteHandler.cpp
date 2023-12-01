@@ -18,6 +18,10 @@
  * limitations under the License.
  */
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "ASDUEventWriteHandler.h"
 
@@ -44,33 +48,74 @@ uint16_t Write_for_Binary_in_ASDUEventWriteHandler_override(void *pIEventWriteHa
     Binary* first,
     IEventCollection_for_Binary* items)
 {
-  ASDUEventWriteHandler* parent = (ASDUEventWriteHandler*) getParentPointer_in_IEventWriteHandler((IEventWriteHandler*) pIEventWriteHandler);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_for_Binary_in_ASDUEventWriteHandler_override1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventBinaryVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
+#endif
 
+  ASDUEventWriteHandler* parent = (ASDUEventWriteHandler*) getParentPointer_in_IEventWriteHandler((IEventWriteHandler*) pIEventWriteHandler);
+  uint16_t tmp = 0;
   switch (variation)
   {
   case (EventBinaryVariation_Group2Var1):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventBinaryVariation_Group2Var1"<<'\n';
+#endif
 //uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
     DNP3Serializer_for_Binary temp = Inst_in_Group2Var1_static();
-    return Write_for_Binary_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Binary_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   case (EventBinaryVariation_Group2Var2):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventBinaryVariation_Group2Var2"<<'\n';
+#endif
 //uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
     DNP3Serializer_for_Binary temp = Inst_in_Group2Var2_static();
-    return Write_for_Binary_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Binary_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   case (EventBinaryVariation_Group2Var3):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventBinaryVariation_Group2Var3"<<'\n';
+#endif
 //uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
     DNP3Serializer_for_Binary temp = Inst_in_Group2Var3_static();
-    return WriteWithCTO_for_Binary_in_EventWriters_static(&((first->tTypedMeasurement_for_Boolean).mMeasurement.timeDNPTime), &(parent->writer), items, &temp);
+    tmp = WriteWithCTO_for_Binary_in_EventWriters_static(&((first->tTypedMeasurement_for_Boolean).mMeasurement.timeDNPTime), &(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   default:
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_for_Binary_in_ASDUEventWriteHandler_override2"<<'\n';
+#endif
 //uint16_t Write_for_Binary_in_EventWriters_static(HeaderWriter* writer, IEventCollection_for_Binary* items, DNP3Serializer_for_Binary* serializer);
     DNP3Serializer_for_Binary temp = Inst_in_Group2Var1_static();
-    return Write_for_Binary_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Binary_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   }
 }
@@ -186,48 +231,111 @@ uint16_t Write_for_Analog_in_ASDUEventWriteHandler_override(void *pIEventWriteHa
     Analog* first,
     IEventCollection_for_Analog* items)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_for_Analog_in_ASDUEventWriteHandler_override1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventAnalogVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
+#endif
+
   UNUSED(first);
   ASDUEventWriteHandler* parent = (ASDUEventWriteHandler*) getParentPointer_in_IEventWriteHandler((IEventWriteHandler*) pIEventWriteHandler);
+  uint16_t tmp = 0;
   switch (variation)
   {
   case (EventAnalogVariation_Group32Var1):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventAnalogVariation_Group32Var1"<<'\n';
+#endif
     DNP3Serializer_for_Analog temp = Inst_in_Group32Var1_static();
-    return Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   case (EventAnalogVariation_Group32Var2):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventAnalogVariation_Group32Var2"<<'\n';
+#endif
     DNP3Serializer_for_Analog temp = Inst_in_Group32Var2_static();
-    return Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   case (EventAnalogVariation_Group32Var3):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventAnalogVariation_Group32Var3"<<'\n';
+#endif
     DNP3Serializer_for_Analog temp = Inst_in_Group32Var3_static();
-    return Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   case (EventAnalogVariation_Group32Var4):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventAnalogVariation_Group32Var4"<<'\n';
+#endif
     DNP3Serializer_for_Analog temp = Inst_in_Group32Var4_static();
-    return Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   case (EventAnalogVariation_Group32Var5):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventAnalogVariation_Group32Var5"<<'\n';
+#endif
     DNP3Serializer_for_Analog temp = Inst_in_Group32Var5_static();
-    return Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
 //  case (EventAnalogVariation_Group32Var6):
 //    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, Inst_in_Group32Var6_static());
   case (EventAnalogVariation_Group32Var7):
   {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*EventAnalogVariation_Group32Var7"<<'\n';
+#endif
     DNP3Serializer_for_Analog temp = Inst_in_Group32Var7_static();
-    return Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+    return tmp;
   }
 //  case (EventAnalogVariation_Group32Var8):
 //    return Write_for_Analog_in_EventWriters_static(&(((ASDUEventWriteHandler*)pASDUEventWriteHandler)->writer), items, Inst_in_Group32Var8_static());
   default:
   {
     DNP3Serializer_for_Analog temp = Inst_in_Group32Var1_static();
-    return Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+    tmp = Write_for_Analog_in_EventWriters_static(&(parent->writer), items, &temp);
+#ifdef  LOG_INFO
+  std::cout<<"Write_for_Analog_in_ASDUEventWriteHandler_override2"<<'\n';
+  decrement_stack_info();
+#endif
+    return tmp;
   }
   }
 }

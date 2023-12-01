@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "SerializationTemplates.h"
 #include "LinkHeader.h"
@@ -94,6 +98,11 @@ void Read_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff)
 
 void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Write_in_LinkHeader1"<<std::endl;
+#endif
   apBuff[LinkHeaderIndex_LI_START_05] = 0x05;
   apBuff[LinkHeaderIndex_LI_START_64] = 0x64;
 
@@ -113,6 +122,11 @@ void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff)
 // void AddCrc_in_CRC_static(uint8_t* input, uint16_t length);
 ////    CRC::AddCrc(apBuff, LinkHeaderIndex_LI_CRC);
   AddCrc_in_CRC_static(apBuff, LinkHeaderIndex_LI_CRC);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_LinkHeader_"<<std::endl;
+  decrement_stack_info();
+#endif
 }
 
 ////} // namespace opendnp3

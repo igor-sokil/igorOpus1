@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-expectsContents_in_CountParser = true;
+//expectsContents_in_CountParser = true;
 //expectsContents_in_CountIndexParser = false;
 //expectsContents_in_RangeParser = false;
 

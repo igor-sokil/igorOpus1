@@ -1,9 +1,18 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "MockLinkListener.h"
 
 void MockLinkListener_in_MockLinkListener(MockLinkListener *pMockLinkListener)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{MockLinkListener_in_MockLinkListener1"<<'\n';
+#endif
+
   ILinkListener_in_ILinkListener(&(pMockLinkListener->iILinkListener));
   pMockLinkListener->iILinkListener.pOnStateChange_in_ILinkListener = OnStateChange_in_MockLinkListener_override;
   pMockLinkListener->iILinkListener.pOnKeepAliveInitiated_in_ILinkListener = OnKeepAliveInitiated_in_MockLinkListener_override;
@@ -15,6 +24,9 @@ void MockLinkListener_in_MockLinkListener(MockLinkListener *pMockLinkListener)
   pMockLinkListener->numKeepAliveTransmissions = 0;
   pMockLinkListener->numKeepAliveFailure = 0;
   pMockLinkListener->numKeepAliveReplys = 0;
+#ifdef  LOG_INFO
+  std::cout<<"}MockLinkListener_in_MockLinkListener_"<<'\n';
+#endif
 }
 
 void OnStateChange_in_MockLinkListener_override(void* pILinkListener, LinkStatus_uint8_t value)

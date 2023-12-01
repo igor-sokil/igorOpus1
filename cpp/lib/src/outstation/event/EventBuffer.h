@@ -135,6 +135,7 @@ void UpdateAny_BinaryOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, 
 void UpdateAny_AnalogOutputStatusSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_AnalogOutputStatusSpec *evt);
 void UpdateAny_OctetStringSpec_in_EventBuffer(EventBuffer *pEventBuffer, Event_for_OctetStringSpec *evt);
 
+IINField  SelectByType_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventType_uint16_t type);
 IINField  SelectByType_BinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventBinaryVariation_uint8_t type);
 IINField  SelectByType_DoubleBitBinarySpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventDoubleBinaryVariation_uint8_t type);
 IINField  SelectByType_AnalogSpec_in_EventBuffer(EventBuffer *pEventBuffer, uint32_t max, EventAnalogVariation_uint8_t type);

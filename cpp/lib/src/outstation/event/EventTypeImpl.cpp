@@ -238,13 +238,17 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(voi
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override1"<<'\n';
-  decrement_stack_info();
 #endif
 
   UNUSED(pIEventType);
 //EventRecord* CurrentValue__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////        const auto pos = iterator.CurrentValue();
   EventRecord* pos = CurrentValue__in__Iterator_in_List_for_EventRecord(iteratorEv);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override2"<<'\n';
+#endif
 //    Node_TypedEventRecord_for_AnalogSpec* Retrieve_in_TypedStorage_for_AnalogSpec_static(EventRecord* record);
 ////        const auto type = TypedStorage<T>::Retrieve(*pos);
   Node_TypedEventRecord_for_AnalogSpec* type = Retrieve_in_TypedStorage_for_AnalogSpec_static(pos);
@@ -256,18 +260,35 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(voi
 ////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
   EventCollection_for_Analog collection;
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override3"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(type->value).selectedVariation= "<<(uint16_t)(type->value).selectedVariation<<'\n';
+#endif
   EventCollection_for_Analog_in_EventCollection_for_Analog(&collection,
       iteratorEv,
       &(lists->counters),
       (type->value).selectedVariation);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override4"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(type->value).selectedVariation= "<<(uint16_t)(type->value).selectedVariation<<'\n';
+#endif
 //     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventAnalogVariation_uint8_t variation, Analog* first, IEventCollection_for_Analog* items);//// = 0;
 ////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
-//  return handler->pWrite_in_IEventWriteHandlerOver5((type->value).selectedVariation,
-  return Write_for_Analog_in_IEventWriteHandler(handler,
+  uint16_t tmp = Write_for_Analog_in_IEventWriteHandler(handler,
          (type->value).selectedVariation,
          &((type->value).value),
          &(collection.iIEventCollection_for_Analog));
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override5"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////    virtual void RemoveTypeFromStorage(EventRecord& record, EventLists& lists) const override

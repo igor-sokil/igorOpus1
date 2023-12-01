@@ -17,3 +17,9 @@ void TestStaticType_for_AnalogOutputStatus(OutstationConfig* config,
                     DatabaseConfig* database,
                     double value,
                     std::string& rsp);
+
+void TestStaticCounter(StaticCounterVariation variation, uint32_t value, std::string& response);
+void TestStaticType_for_Counter(OutstationConfig* config,
+                    DatabaseConfig* database,
+                    Counter value,
+                    std::string& rsp);

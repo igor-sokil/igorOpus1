@@ -141,7 +141,9 @@ uint16_t WriteWithCTO_for_FrozenCounter_in_EventWriters_static(DNPTime* cto,
         serializer);
 //  uint16_t WriteSome_in_IEventCollection_for_FrozenCounter(IEventCollection_for_FrozenCounter *, IEventWriter_for_FrozenCounter* handler);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_FrozenCounter(items, &(handler.iIEventWriter_for_FrozenCounter));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_FrozenCounter(items, &(handler.iIEventWriter_for_FrozenCounter));
+    PrefixedWriteIterator_for_UInt16_FrozenCounter_destr_PrefixedWriteIterator_for_UInt16_FrozenCounter(&handler.iterator);
+    return tmp;
   }
   else
   {
@@ -155,7 +157,9 @@ uint16_t WriteWithCTO_for_FrozenCounter_in_EventWriters_static(DNPTime* cto,
         writer,
         serializer);
 ////            return items.WriteSome(handler);
-    return WriteSome_in_IEventCollection_for_FrozenCounter(items, &(handler.iIEventWriter_for_FrozenCounter));
+    uint16_t tmp = WriteSome_in_IEventCollection_for_FrozenCounter(items, &(handler.iIEventWriter_for_FrozenCounter));
+    PrefixedWriteIterator_for_UInt16_FrozenCounter_destr_PrefixedWriteIterator_for_UInt16_FrozenCounter(&handler.iterator);
+    return tmp;
   }
 }
 

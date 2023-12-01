@@ -17,10 +17,6 @@
 
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
-
 key_filter *pkf;
 
 MainWindow *mainWindow;
@@ -135,49 +131,6 @@ TEST_CASE(SUITE("14RequestStatusOfLink"))
     REQUIRE(t.NumTotalWrites() == 3);
     REQUIRE(t.PopLastWriteAsHex() == LinkHex::LinkStatus(true, false, 1024, 1));
 }
-*/
-/*
-    LinkLayerTest t;
-  LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
-  LinkLayerTest_in_LinkLayerTest(&t, &temp);
-
-////    t.link.OnLowerLayerUp();
-   OnLowerLayerUp_in_LinkLayer(&(t.link));
-
-//  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
-//                 LinkFunction_uint8_t func,
-//                 boolean isMaster,
-//                 boolean fcb,
-//                 boolean fcvdfc,
-//                 uint16_t dest,
-//                 uint16_t source,
-//                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
-////    t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 2, 1024);
-
-     RSeq_for_Uint16_t temp2 = empty_in_RSeq_for_Uint16_t_static();
-     OnFrame_in_LinkLayerTest(&t,
-                 LinkFunction_PRI_RESET_LINK_STATES,
-                 false,
-                 false,
-                 false,
-                 1,
-                 1024,
-                 &temp2);//// = ser4cpp::rseq_t::empty());
-
-//uint32_t NumTotalWrites_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
-////    REQUIRE(t.NumTotalWrites() == 1);
-uint32_t temp32 = NumTotalWrites_in_LinkLayerTest(&t);
-qDebug()<<"REQUIRE(t.NumTotalWrites() == 1)";
-qDebug()<<"uint32_t temp32 ="<<temp32;
-
-//std::string PopLastWriteAsHex_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest);
-////    REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1));
-std::string tmpStr = PopLastWriteAsHex_in_LinkLayerTest(&t);
-std::cout<<"std::string tmpStr ="<<tmpStr;
-
-//std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
-tmpStr = Ack_in_LinkHex_static(true, false, 1024, 1);
-std::cout<<"std::string tmpStr ="<<tmpStr;
 */
 
   MainWindow mainWindowObj;

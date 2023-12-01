@@ -67,12 +67,11 @@ void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
 IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override1"<<std::endl;
 #endif
-
   UNUSED(header);
   WriteHandler *parent =
     (WriteHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
@@ -135,7 +134,7 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
   }
 
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*123"<<getString_stack_info();
   std::cout<<"*IINBit_DEVICE_RESTART"<<std::endl;
   decrement_stack_info();
 #endif

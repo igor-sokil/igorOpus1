@@ -33,6 +33,7 @@ ParseResult_uint8_t TestComplex(std::string& hx, void (*validate)(MockApduHeader
 //                 const std::function<void(MockApduHeaderHandler&)>& validate,
 //                 ParserSettings settings = ParserSettings::Default())
 {
+  expectsContents = true;
 ////    HexSequence buffer(hex);
   HexSequence buffer;
   HexSequence_in_HexSequence(&buffer, hx);

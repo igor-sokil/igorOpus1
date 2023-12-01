@@ -66,13 +66,15 @@ void PrefixedWriteIterator_for_UInt8_Analog_destr_PrefixedWriteIterator_for_UInt
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"PrefixedWriteIterator_for_UInt8_Analog_destr_PrefixedWriteIterator_for_UInt8_Analog1"<<'\n';
-  decrement_stack_info();
 #endif
   if (pPrefixedWriteIterator_for_UInt8_Analog->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);
     write_to_in_UInt8_static(&(pPrefixedWriteIterator_for_UInt8_Analog->countPosition), pPrefixedWriteIterator_for_UInt8_Analog->count);
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean Write_in_PrefixedWriteIterator_for_UInt8_Analog(PrefixedWriteIterator_for_UInt8_Analog *pPrefixedWriteIterator_for_UInt8_Analog,
@@ -161,18 +163,26 @@ void PrefixedWriteIterator_for_UInt16_Analog_destr_PrefixedWriteIterator_for_UIn
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"PrefixedWriteIterator_for_UInt16_Analog_destr_PrefixedWriteIterator_for_UInt16_Analog1"<<'\n';
-  decrement_stack_info();
 #endif
   if (pPrefixedWriteIterator_for_UInt16_Analog->isValid)
   {
 ////        PrefixType::write_to(countPosition, count);
     write_to_in_UInt16_static(&(pPrefixedWriteIterator_for_UInt16_Analog->countPosition), pPrefixedWriteIterator_for_UInt16_Analog->count);
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean Write_in_PrefixedWriteIterator_for_UInt16_Analog(PrefixedWriteIterator_for_UInt16_Analog *pPrefixedWriteIterator_for_UInt16_Analog,
     Analog* value, uint16_t index)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_PrefixedWriteIterator_for_UInt16_Analog1"<<'\n';
+#endif
 ////    if (isValid && (pPosition->length() >= sizeOfTypePlusIndex))
   if(pPrefixedWriteIterator_for_UInt16_Analog->isValid &&
       length_in_HasLength_for_Uint16_t(&(pPrefixedWriteIterator_for_UInt16_Analog->pPosition->hHasLength))
@@ -184,10 +194,16 @@ boolean Write_in_PrefixedWriteIterator_for_UInt16_Analog(PrefixedWriteIterator_f
     write_in_Serializer_for_Analog(&(pPrefixedWriteIterator_for_UInt16_Analog->serializer), value,
                                    pPrefixedWriteIterator_for_UInt16_Analog->pPosition);
     ++(pPrefixedWriteIterator_for_UInt16_Analog->count);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 }

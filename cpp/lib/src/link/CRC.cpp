@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "SerializationTemplates.h"
 #include "CRC.h"
@@ -70,6 +74,14 @@ uint16_t CalcCrc_in_CRC_staticOver2(RSeq_for_Uint16_t* view)
 
 void AddCrc_in_CRC_static(uint8_t* input, uint16_t length)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{AddCrc_in_CRC_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t length ="<<length<<'\n';
+#endif
   uint16_t crc = CalcCrc_in_CRC_staticOver1(input, length);
 
 ////    ser4cpp::wseq_t buffer(input + length, 2);
@@ -78,6 +90,11 @@ void AddCrc_in_CRC_static(uint8_t* input, uint16_t length)
   WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&buffer, input + length, 2);
 ////    ser4cpp::UInt16::write_to(buffer, crc);
   write_to_in_UInt16_static(&buffer, crc);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}AddCrc_in_CRC_static_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 boolean IsCorrectCRC_in_CRC_static(uint8_t* input, uint16_t length)

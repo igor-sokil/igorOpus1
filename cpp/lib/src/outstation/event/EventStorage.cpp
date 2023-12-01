@@ -158,25 +158,87 @@ uint32_t SelectByType_OctetStringSpec_in_EventStorage(EventStorage *pEventStorag
 
 uint32_t SelectByType_in_EventStorage(EventStorage *pEventStorage, EventType_uint16_t type, uint32_t max)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByType_in_EventStorage1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventType_uint16_t type= "<<(uint16_t)type<<'\n';
+#endif
+  uint32_t tmp = 0;
   switch (type)
   {
   case (EventType_Binary):
-    return SelectByType_for_BinarySpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"EventType_Binary"<<'\n';
+#endif
+    tmp = SelectByType_for_BinarySpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+    return tmp;
+
   case (EventType_DoubleBitBinary):
-    return SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"EventType_DoubleBitBinary"<<'\n';
+#endif
+    tmp = SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+    return tmp;
+
   case (EventType_Counter):
-    return SelectByType_for_CounterSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"EventType_Counter"<<'\n';
+#endif
+    tmp = SelectByType_for_CounterSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+    return tmp;
+
   case (EventType_FrozenCounter):
-    return SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"EventType_FrozenCounter"<<'\n';
+#endif
+    tmp = SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+    return tmp;
+
   case (EventType_Analog):
-    return SelectByType_for_AnalogSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"EventType_Analog"<<'\n';
+#endif
+    tmp = SelectByType_for_AnalogSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+    return tmp;
+
   case (EventType_BinaryOutputStatus):
-    return SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"EventType_BinaryOutputStatus"<<'\n';
+#endif
+    tmp = SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+    return tmp;
+
   case (EventType_AnalogOutputStatus):
-    return SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"EventType_AnalogOutputStatus"<<'\n';
+#endif
+    tmp = SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+    return tmp;
+
   case (EventType_OctetString):
-    return SelectByType_for_OctetStringSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"EventType_OctetString"<<'\n';
+#endif
+    tmp = SelectByType_for_OctetStringSpec_in_EventSelection_staticOver1(&(pEventStorage->state), max);
+    return tmp;
+
   default:
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByType_in_EventStorage2"<<'\n';
+  decrement_stack_info();
+#endif
     return 0;
   }
 }

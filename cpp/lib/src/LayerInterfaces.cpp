@@ -3,6 +3,10 @@
 //#ifdef  LOG_INFO
 //#include <iostream>
 //#endif
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "LayerInterfaces.h"
 #include <string.h>
@@ -31,7 +35,19 @@ boolean OnReceive_in_IUpperLayer(IUpperLayer *pIUpperLayer, Message* message)
 }
 boolean OnTxReady_in_IUpperLayer(IUpperLayer *pIUpperLayer)
 {
-  return (pIUpperLayer->pOnTxReady_in_IUpperLayer)(pIUpperLayer);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnTxReady_in_IUpperLayer1"<<'\n';
+#endif
+  boolean tmp = (pIUpperLayer->pOnTxReady_in_IUpperLayer)(pIUpperLayer);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnTxReady_in_IUpperLayer_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 void* getParentPointer_in_IUpperLayer(IUpperLayer* pIUpperLayer)

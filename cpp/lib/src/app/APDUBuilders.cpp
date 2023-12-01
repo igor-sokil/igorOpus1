@@ -17,7 +17,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
 #include "log_info.h"
 #ifdef  LOG_INFO
 #include <iostream>
@@ -48,17 +47,10 @@ void ReadIntegrity_in_APDUBuilders_static(APDURequest* request, ClassField* clas
 void ReadAllObjects_in_APDUBuilders_static(APDURequest* request, GroupVariationID gvId, uint8_t seq)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ReadAllObjects_in_APDUBuilders_static1"<<'\n';
-//  std::cout<<"*"<<getString_stack_info();
-//  std::cout<<"*id.group= "<<(uint16_t)id.group<<'\n';
-//  std::cout<<"*"<<getString_stack_info();
-//  std::cout<<"*id.variation= "<<(uint16_t)id.variation<<'\n';
-//  std::cout<<"*"<<getString_stack_info();
-//  std::cout<<"*qc= "<<(uint16_t)qc<<'\n';
-  decrement_stack_info();
 #endif
 //  void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField control);
 //  void AppControlField_in_AppControlFieldOver4(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq);
@@ -75,6 +67,9 @@ void ReadAllObjects_in_APDUBuilders_static(APDURequest* request, GroupVariationI
 //    boolean WriteHeader_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationID id, QualifierCode_uint8_t qc);
 ////        writer.WriteHeader(gvId, QualifierCode::ALL_OBJECTS);
   WriteHeader_in_HeaderWriter(&writer, gvId, QualifierCode_ALL_OBJECTS);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint8_t fc,  ClassField* classes, uint8_t seq)
@@ -95,11 +90,10 @@ void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint
 bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"WriteClassHeaders_in_APDUBuilders_static1"<<'\n';
-  decrement_stack_info();
 #endif
 //  boolean HasClass1_in_ClassField(ClassField *pClassField);
 ////        if (classes.HasClass1())
@@ -109,6 +103,9 @@ bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* 
 ////            if (!writer.WriteHeader(Group60Var2::ID(), QualifierCode::ALL_OBJECTS))
     if(!WriteHeader_in_HeaderWriter(writer, ID_in_Group60Var2_static(), QualifierCode_ALL_OBJECTS))
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
@@ -118,6 +115,9 @@ bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* 
 ////            if (!writer.WriteHeader(Group60Var3::ID(), QualifierCode::ALL_OBJECTS))
     if(!WriteHeader_in_HeaderWriter(writer, ID_in_Group60Var3_static(), QualifierCode_ALL_OBJECTS))
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
@@ -127,6 +127,9 @@ bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* 
 ////            if (!writer.WriteHeader(Group60Var4::ID(), QualifierCode::ALL_OBJECTS))
     if(!WriteHeader_in_HeaderWriter(writer, ID_in_Group60Var4_static(), QualifierCode_ALL_OBJECTS))
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
@@ -136,10 +139,16 @@ bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* 
 ////            if (!writer.WriteHeader(Group60Var1::ID(), QualifierCode::ALL_OBJECTS))
     if(!WriteHeader_in_HeaderWriter(writer, ID_in_Group60Var1_static(), QualifierCode_ALL_OBJECTS))
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -213,6 +222,14 @@ void RecordCurrentTime_in_APDUBuilders_static(APDURequest* request, uint8_t seq)
 
 void NullUnsolicited_in_APDUBuilders_static(APDUResponse* response, uint8_t seq, IINField* iin)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{NullUnsolicited_in_APDUBuilders_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
+#endif
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, true, true, seq);
 ////        response.SetControl(AppControlField(true, true, true, true, seq));
@@ -222,6 +239,12 @@ void NullUnsolicited_in_APDUBuilders_static(APDUResponse* response, uint8_t seq,
 //    void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications);
 ////        response.SetIIN(iin);
   SetIIN_in_APDUResponse(response, iin);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}NullUnsolicited_in_APDUBuilders_static_"<<'\n';
+  inspect_IINField(iin);
+  decrement_stack_info();
+#endif
 }
 
 ////} // namespace build

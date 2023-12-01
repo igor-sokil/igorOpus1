@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "IUpdateHandler.h"
 
@@ -12,7 +16,20 @@ void  setParentPointer_in_IUpdateHandler(IUpdateHandler* pIUpdateHandler, void* 
 
 boolean Update_Binary_in_IUpdateHandler(IUpdateHandler* pIUpdateHandler, Binary* meas, uint16_t index, EventMode_uint8_t mode)
 {
- return (pIUpdateHandler->pUpdate_Binary_in_IUpdateHandler)(pIUpdateHandler, meas, index, mode);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Update_Binary_in_IUpdateHandler1"<<'\n';
+#endif
+ boolean tmp = (pIUpdateHandler->pUpdate_Binary_in_IUpdateHandler)(pIUpdateHandler, meas, index, mode);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Update_Binary_in_IUpdateHandler_"<<'\n';
+  decrement_stack_info();
+#endif
+ return tmp;
 }
 
 boolean Update_DoubleBitBinary_in_IUpdateHandler(IUpdateHandler* pIUpdateHandler, DoubleBitBinary* meas, uint16_t index, EventMode_uint8_t mode)

@@ -3,6 +3,7 @@
 
 void TimeSyncState_in_TimeSyncState(TimeSyncState *pTimeSyncState)
 {
+  SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over1(&(pTimeSyncState->expectedSeqNum));
   pTimeSyncState->valid = false;
 }
 void RecordCurrentTime_in_TimeSyncState(TimeSyncState *pTimeSyncState, AppSeqNum* seq, Timestamp* now)

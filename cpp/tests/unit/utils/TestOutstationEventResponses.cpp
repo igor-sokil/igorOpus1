@@ -40,6 +40,7 @@ void TestEventRead(std::string& request,
 
 ////    REQUIRE(t.lower->PopWriteAsHex() == response);
     std::string temp = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
-    std::cout << "temp= " << temp<<'\n';
+    std::cout << "request= " << request<<'\n';
     std::cout << "response= " << response<<'\n';
+    std::cout << "temp= " << temp<<'\n';
 }

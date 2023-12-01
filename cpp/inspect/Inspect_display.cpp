@@ -11,6 +11,16 @@
 
 static int16_t stack_info = -1;//рівень стеку для info
 
+void inspect_IINField(IINField *b)
+{
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_IINField**"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t LSB= "<<(uint16_t)b->LSB<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t MSB= "<<(uint16_t)b->MSB<<'\n';
+}
+
 void inspect_Analog(Analog *b)
 {
   std::cout<<"*"<<getString_stack_info();
@@ -79,12 +89,16 @@ std::string getString_stack_info(void)
 void inspect_RSeq(RSeq_for_Uint16_t *buffer)
 {
  if(!buffer) return;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_RSeq**"<<'\n';
   for(int i=0; i<length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)); i++)
  {
   std::cout<<"*"<<getString_stack_info();
   qDebug()<<"*buffer->buffer_[i]= "<<hex<<buffer->buffer_[i];
  }//for
 }
+
+#ifdef TTTTT
 void inspect_WSeq(WSeq_for_Uint16_t *buffer)
 {
  if(!buffer) return;
@@ -1145,3 +1159,4 @@ void inspect_RangeHeader(Memory_RangeHeader* pMemory_RangeHeader, int maxCount)
   }//for
 }
 //-------------------RangeHeader------------------------
+#endif

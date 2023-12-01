@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "DNP3Serializer.h"
 //-----------------------------DNP3Serializer_for_AnalogCommandEvent-------------------------------------------
@@ -165,6 +169,17 @@ void DNP3Serializer_for_Counter_in_DNP3Serializer_for_Counter(DNP3Serializer_for
 
 GroupVariationID ID_in_DNP3Serializer_for_Analog(DNP3Serializer_for_Analog *pDNP3Serializer_for_Analog)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"ID_in_DNP3Serializer_for_Analog1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*id.group= "<<(uint16_t)pDNP3Serializer_for_Analog->id.group<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*id.variation= "<<(uint16_t)pDNP3Serializer_for_Analog->id.variation<<'\n';
+  decrement_stack_info();
+#endif
   return pDNP3Serializer_for_Analog->id;
 }
 void DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(DNP3Serializer_for_Analog *pDNP3Serializer_for_Analog,
@@ -175,6 +190,21 @@ void DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog(DNP3Serializer_for_A
 ////                   typename Serializer<T>::write_func_t write_func)
     write_func_t_in_Serializer_for_Analog write_func)//write_func_t_in_Serializer_for_Binary ww)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"DNP3Serializer_for_Analog_in_DNP3Serializer_for_Analog1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*id.group= "<<(uint16_t)id.group<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*id.variation= "<<(uint16_t)id.variation<<'\n';
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t size= "<<(uint16_t)size<<'\n';
+  decrement_stack_info();
+#endif
+
 ////        : Serializer<T>(size, read_func, write_func), id(id)
   pDNP3Serializer_for_Analog->id = id;
   Serializer_for_Analog_in_Serializer_for_Analog(&(pDNP3Serializer_for_Analog->sSerializer_for_Analog),

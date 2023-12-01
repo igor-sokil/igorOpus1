@@ -248,3 +248,63 @@ void TestStaticType_for_AnalogOutputStatus(OutstationConfig* config,
   std::cout << "temp= " << temp<<'\n';
   std::cout << "rsp= " << rsp<<'\n';
 }
+
+void TestStaticCounter(StaticCounterVariation variation, uint32_t value, std::string& response)
+{
+//DatabaseConfig counter_in_DatabaseHelpers(uint16_t num, boolean with_frozen);// = false);
+////    auto database = configure::by_count_of::counter(1);
+  DatabaseConfig database = counter_in_DatabaseHelpers(1, false);
+
+////    database.counter[0].svariation = variation;
+  database.counter[0].dDeadbandConfig_for_CounterInfo.eEventConfig.svariation = variation;
+
+////    TestStaticType<Counter>(OutstationConfig(), std::move(database), Counter(value), response);
+  OutstationConfig oOutstationConfig;
+  OutstationConfig_in_OutstationConfig(&oOutstationConfig);
+
+  Counter cCounter;
+  Counter_in_CounterOver2(&cCounter, value);
+  TestStaticType_for_Counter(&oOutstationConfig, &database, cCounter, response);
+}
+
+static void *pPointerGlobal_in_TestStaticType_for_Counter;
+void apply_in_TestStaticType_for_Counter(IUpdateHandler*);
+void apply_in_TestStaticType_for_Counter(IUpdateHandler* db)
+{
+//boolean Update_Analog_in_IUpdateHandler(IUpdateHandler*, Analog* meas, uint16_t index, EventMode_uint8_t mode);// = EventMode::Detect) = 0;
+////db.Update(PointType(value), 0);
+  Counter *value = (Counter*) pPointerGlobal_in_TestStaticType_for_Counter;
+  Update_Counter_in_IUpdateHandler(db, value, 0, EventMode_Detect);
+}
+////template<class PointType>
+////void TestStaticType(const OutstationConfig& config,
+////                    const DatabaseConfig& database,
+////                    PointType value,
+////                    const std::string& rsp)
+void TestStaticType_for_Counter(OutstationConfig* config,
+                    DatabaseConfig* database,
+                    Counter value,
+                    std::string& rsp)
+{
+////    OutstationTestObject t(config, database);
+  OutstationTestObject t;
+  OutstationTestObject_in_OutstationTestObject(&t, config, database);
+
+////    t.LowerLayerUp();
+  LowerLayerUp_in_OutstationTestObject(&t);
+
+  pPointerGlobal_in_TestStaticType_for_Counter = &value;
+////    t.Transaction([value](IUpdateHandler& db) { db.Update(PointType(value), 0); });
+  Transaction_in_OutstationTestObject(&t, apply_in_TestStaticType_for_Counter);//void (*apply)(IUpdateHandler*));
+
+////    t.SendToOutstation("C0 01 3C 01 06"); // Read class 0
+  std::string name("C0 01 3C 01 06");       // Read class 0
+  SendToOutstation_in_OutstationTestObject(&t, name);
+
+////    REQUIRE((t.lower->PopWriteAsHex() == rsp));
+  std::string temp = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+
+  std::cout<<"REQUIRE((t.lower->PopWriteAsHex() == rsp))"<<'\n';
+  std::cout << "temp= " << temp<<'\n';
+  std::cout << "rsp= " << rsp<<'\n';
+}

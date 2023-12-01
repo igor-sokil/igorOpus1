@@ -76,7 +76,7 @@ boolean Set_in_OctetDataOver1(OctetData *pOctetData, Buffer *input)
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"Set_in_OctetDataOver1_1"<<'\n';
 //  std::cout<<"*"<<getString_stack_info();

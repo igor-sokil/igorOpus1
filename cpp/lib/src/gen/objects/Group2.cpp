@@ -237,6 +237,13 @@ boolean Read_in_Group2Var3_static(RSeq_for_Uint16_t* buffer, Group2Var3* output)
 
 boolean Write_in_Group2Var3_static(Group2Var3* arg, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_Group2Var3_static1"<<'\n';
+  decrement_stack_info();
+#endif
 ////  return LittleEndian::write(buffer, arg.flags, arg.time);
   return write_to_in_UInt8_static(buffer, arg->flags) &&
          write_to_in_UInt16_static(buffer, arg->time_uint16_t);
@@ -370,6 +377,13 @@ uint16_t Size_in_Group2Var3_static(void)
 ////  static DNP3Serializer<Binary> Inst() { return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget); }
 DNP3Serializer_for_Binary  Inst_in_Group2Var3_static(void)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Inst_in_Group2Var3_static1"<<'\n';
+#endif
+
   DNP3Serializer_for_Binary dDNP3Serializer_for_Binary;
   DNP3Serializer_for_Binary_in_DNP3Serializer_for_Binary(&dDNP3Serializer_for_Binary,
       ID_in_Group2Var3_static(),
@@ -377,6 +391,9 @@ DNP3Serializer_for_Binary  Inst_in_Group2Var3_static(void)
       &ReadTarget_in_Group2Var3_static,
       &WriteTarget_in_Group2Var3_static);
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //  return DNP3Serializer<Binary>(ID(), Size(), &ReadTarget, &WriteTarget);
   return dDNP3Serializer_for_Binary;
 }

@@ -41,6 +41,12 @@ static SecStateBase  instance_SecStateBase;
 
 void SecStateBase_in_SecStateBase(SecStateBase *pSecStateBase)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{SecStateBase_in_SecStateBase1"<<'\n';
+#endif
   pSecStateBase->pOnResetLinkStates_in_SecStateBase = OnResetLinkStates_in_SecStateBase_override;
   pSecStateBase->pOnRequestLinkStatus_in_SecStateBase = OnRequestLinkStatus_in_SecStateBase_override;
 
@@ -50,6 +56,11 @@ void SecStateBase_in_SecStateBase(SecStateBase *pSecStateBase)
   pSecStateBase->pOnTxReady_in_SecStateBase           = OnTxReady_in_SecStateBase_override;
 
   setParentPointer_in_SecStateBase(pSecStateBase, pSecStateBase);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}SecStateBase_in_SecStateBase_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void* OnTxReady_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx)
@@ -68,26 +79,35 @@ void* OnTxReady_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx)
   return &instance_SecStateBase;
 }
 
-///*
 ////template<class NextState>
 void* OnResetLinkStates_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnResetLinkStates_in_SecStateBase_override1"<<'\n';
+#endif
+
   UNUSED(ctx);
   UNUSED(source);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
 #ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-   std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Ignoring link frame, remote is flooding')"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Ignoring link frame, remote is flooding')"<<'\n';
 #endif
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
   SecStateBase_in_SecStateBase(parent);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnResetLinkStates_in_SecStateBase_override_"<<'\n';
+  decrement_stack_info();
+#endif
   return &instance_SecStateBase;
 }
-//*/
-///*
+
 ////template<class NextState>
 void* OnRequestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source)
 {
@@ -105,8 +125,7 @@ void* OnRequestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkCont
   SecStateBase_in_SecStateBase(parent);
   return &instance_SecStateBase;
 }
-//*/
-///*
+
 ////template<class NextState>
 void* OnTestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
 {
@@ -125,12 +144,17 @@ void* OnTestLinkStatus_in_SecStateBase_override(void *pSecStateBase, LinkContext
   SecStateBase_in_SecStateBase(parent);
   return &instance_SecStateBase;
 }
-//*/
-///*
+
 ////template<class NextState>
 void* OnConfirmedUserData_in_SecStateBase_override(void *pSecStateBase,
     LinkContext* ctx, uint16_t source, boolean fcb, boolean isBroadcast, Message* message)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnConfirmedUserData_in_SecStateBase_override1"<<'\n';
+#endif
   UNUSED(ctx);
   UNUSED(source);
   UNUSED(fcb);
@@ -138,17 +162,20 @@ void* OnConfirmedUserData_in_SecStateBase_override(void *pSecStateBase,
   UNUSED(message);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Ignoring link frame, remote is flooding");
 #ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-   std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Ignoring link frame, remote is flooding')"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Ignoring link frame, remote is flooding')"<<'\n';
 #endif
 ////    return *this;
   SecStateBase* parent = (SecStateBase*) getParentPointer_in_SecStateBase((SecStateBase*) pSecStateBase);
   SecStateBase_in_SecStateBase(parent);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnConfirmedUserData_in_SecStateBase_override_"<<'\n';
+  decrement_stack_info();
+#endif
   return &instance_SecStateBase;
 }
-//*/
 
 ////////////////////////////////////////////////////////
 //	Class SLLS_NotReset
@@ -163,18 +190,28 @@ SecStateBase* Instance_in_SLLS_NotReset_static(void)
 
 SecStateBase* OnTestLinkStatus_in_SLLS_NotReset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnTestLinkStatus_in_SLLS_NotReset1"<<'\n';
+#endif
   UNUSED(source);
   UNUSED(fcb);
   ++(ctx->statistics.numUnexpectedFrame);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "TestLinkStatus ignored");
 #ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-   std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'TestLinkStatus ignored')"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'TestLinkStatus ignored')"<<'\n';
 #endif
 ////    return *this;
   SLLS_NotReset_in_SLLS_NotReset(pSecStateBase);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnTestLinkStatus_in_SLLS_NotReset_"<<'\n';
+  increment_stack_info();
+#endif
   return &instance_SecStateBase;
 }
 
@@ -200,6 +237,14 @@ SecStateBase* OnConfirmedUserData_in_SLLS_NotReset(SecStateBase *pSecStateBase,
 
 SecStateBase* OnResetLinkStates_in_SLLS_NotReset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnResetLinkStates_in_SLLS_NotReset1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t source= "<<source<<'\n';
+#endif
 //    void QueueAck(uint16_t destination);
 ////    ctx.QueueAck(source);
   QueueAck_in_LinkContext(ctx, source);
@@ -209,6 +254,12 @@ SecStateBase* OnResetLinkStates_in_SLLS_NotReset(SecStateBase *pSecStateBase, Li
 ////    return SLLS_TransmitWaitReset::Instance();
 //   SLLS_TransmitWaitReset_in_SLLS_TransmitWaitReset(pSecStateBase);
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnResetLinkStates_in_SLLS_NotReset_"<<'\n';
+  decrement_stack_info();
+#endif
   return &instance_SecStateBase;
 }
 
@@ -236,6 +287,19 @@ SecStateBase* Instance_in_SLLS_Reset_static(void)
 
 SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source, boolean fcb)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnTestLinkStatus_in_SLLS_Reset1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ctx->nextReadFCB= "<<(uint16_t)ctx->nextReadFCB<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean fcb= "<<(uint16_t)fcb<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t source= "<<(uint16_t)source<<'\n';
+#endif
+
   if (ctx->nextReadFCB == fcb)
   {
 ////        ctx.QueueAck(source);
@@ -245,27 +309,52 @@ SecStateBase* OnTestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkCo
     ToggleReadFCB_in_LinkContext(ctx);
 ////        return SLLS_TransmitWaitReset::Instance();
     SLLS_Reset_in_SLLS_Reset(pSecStateBase);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnTestLinkStatus_in_SLLS_Reset1_"<<'\n';
+  decrement_stack_info();
+#endif
     return &instance_SecStateBase;
   }
 
   // "Re-transmit most recent response that contained function code 0 (ACK) or 1 (NACK)."
   // This is a PITA implement
+// «Повторно передать последний ответ, содержащий код функции 0 (ACK) или 1 (NACK)».
+   // Это реализация PITA
   // TODO - see if this function is deprecated or not
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "Received TestLinkStatus with invalid FCB");
 #ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-   std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Received TestLinkStatus with invalid FCB')"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'Received TestLinkStatus with invalid FCB')"<<'\n';
 #endif
 ////    return *this;
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnTestLinkStatus_in_SLLS_Reset2_"<<'\n';
+  decrement_stack_info();
+#endif
   return &instance_SecStateBase;
 }
 
 SecStateBase* OnConfirmedUserData_in_SLLS_Reset(SecStateBase *pSecStateBase,
     LinkContext* ctx, uint16_t source, boolean fcb, boolean isBroadcast, Message* message)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnConfirmedUserData_in_SLLS_Reset1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean isBroadcast= "<<(uint16_t)isBroadcast<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean fcb= "<<(uint16_t)fcb<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t source= "<<source<<'\n';
+#endif
+
   if (!isBroadcast)
   {
 ////        ctx.QueueAck(source);
@@ -284,20 +373,32 @@ SecStateBase* OnConfirmedUserData_in_SLLS_Reset(SecStateBase *pSecStateBase,
   {
 ////        SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "ConfirmedUserData ignored: unexpected frame count bit (FCB)");
 #ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-    std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'ConfirmedUserData ignored: unexpected frame count bit (FCB)')"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'ConfirmedUserData ignored: unexpected frame count bit (FCB)')"<<'\n';
 #endif
   }
 
 ////    return SLLS_TransmitWaitReset::Instance();
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnConfirmedUserData_in_SLLS_Reset_"<<'\n';
+  decrement_stack_info();
+#endif
   return &instance_SecStateBase;
 }
 
 SecStateBase* OnResetLinkStates_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkContext* ctx, uint16_t source)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnResetLinkStates_in_SLLS_Reset1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t source= "<<source<<'\n';
+#endif
 ////    ctx.QueueAck(source);
   QueueAck_in_LinkContext(ctx, source);
 //    void ResetReadFCB()
@@ -305,6 +406,12 @@ SecStateBase* OnResetLinkStates_in_SLLS_Reset(SecStateBase *pSecStateBase, LinkC
   ResetReadFCB_in_LinkContext(ctx);
 ////    return SLLS_TransmitWaitReset::Instance();
   SLLS_Reset_in_SLLS_Reset(pSecStateBase);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnResetLinkStates_in_SLLS_Reset_"<<'\n';
+  decrement_stack_info();
+#endif
   return &instance_SecStateBase;
 }
 
@@ -333,6 +440,13 @@ SecStateBase* OnRequestLinkStatus_in_SLLS_Reset(SecStateBase *pSecStateBase, Lin
 
 void SLLS_Reset_in_SLLS_Reset(SecStateBase *pSecStateBase)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{SLLS_Reset_in_SLLS_Reset1"<<'\n';
+#endif
+
   SecStateBase_in_SecStateBase(pSecStateBase);
 
   pSecStateBase->pOnConfirmedUserData_in_SecStateBase = OnConfirmedUserData_in_SLLS_Reset_override;
@@ -342,6 +456,11 @@ void SLLS_Reset_in_SLLS_Reset(SecStateBase *pSecStateBase)
   pSecStateBase->pOnTxReady_in_SecStateBase           = OnTxReady_in_SLLS_Reset_override;
 
   setParentPointer_in_SecStateBase(pSecStateBase, pSecStateBase);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}SLLS_Reset_in_SLLS_Reset_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////template<class NextState>
@@ -433,6 +552,12 @@ void* OnConfirmedUserData_in_SLLS_Reset_override(void *pSecStateBase,
 
 void SLLS_NotReset_in_SLLS_NotReset(SecStateBase *pSecStateBase)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{SLLS_NotReset_in_SLLS_NotReset1"<<'\n';
+#endif
   SecStateBase_in_SecStateBase(pSecStateBase);
 
   pSecStateBase->pOnConfirmedUserData_in_SecStateBase = OnConfirmedUserData_in_SLLS_NotReset_override;
@@ -442,6 +567,11 @@ void SLLS_NotReset_in_SLLS_NotReset(SecStateBase *pSecStateBase)
   pSecStateBase->pOnTxReady_in_SecStateBase           = OnTxReady_in_SLLS_NotReset_override;
 
   setParentPointer_in_SecStateBase(pSecStateBase, pSecStateBase);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}SLLS_NotReset_in_SLLS_NotReset_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////template<class NextState>

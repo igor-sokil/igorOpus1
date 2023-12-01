@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "HeaderWriter_for_Binary.h"
 
@@ -12,6 +16,12 @@ RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderW
     uint8_t start
                                                                                      )
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverRange_for_UInt8_Binary_in_HeaderWriter1"<<'\n';
+#endif
 //    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
 //     pRangeWriteIterator_for_UInt8_Binary->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
   uint16_t reserve_size = 2 * size_in_UInt8 +
@@ -36,10 +46,16 @@ RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderW
         &(serializer->sSerializer_for_Binary),
         pHeaderWriter->position
                                                                                    );
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return rRangeWriteIterator_for_UInt8_Binary;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return RangeWriteIterator<IndexType, WriteType>::Null();
     return Null_in_RangeWriteIterator_for_UInt8_Binary_static();
   }
@@ -56,6 +72,12 @@ RangeWriteIterator_for_UInt16_Binary IterateOverRange_for_UInt16_Binary_in_Heade
     uint16_t start
                                                                                      )
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverRange_for_UInt16_Binary_in_HeaderWriter1"<<'\n';
+#endif
 //    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
 //     pRangeWriteIterator_for_UInt8_Binary->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
   uint16_t reserve_size = 2 * size_in_UInt16 +
@@ -80,10 +102,16 @@ RangeWriteIterator_for_UInt16_Binary IterateOverRange_for_UInt16_Binary_in_Heade
         &(serializer->sSerializer_for_Binary),
         pHeaderWriter->position
                                                                                    );
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return rRangeWriteIterator_for_UInt16_Binary;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 //        return RangeWriteIterator<IndexType, WriteType>::Null();
     return Null_in_RangeWriteIterator_for_UInt16_Binary_static();
   }
@@ -96,6 +124,12 @@ CountWriteIterator_for_UInt8_Binary IterateOverCount_for_UInt8_Binary_in_HeaderW
     QualifierCode_uint8_t qc,
     DNP3Serializer_for_Binary* serializer)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCount_for_UInt8_Binary_in_HeaderWriter1"<<'\n';
+#endif
 ////template<class CountType, class WriteType>
 ////CountWriteIterator<CountType, WriteType> HeaderWriter::IterateOverCount(QualifierCode qc,
 ////                                                                        const DNP3Serializer<WriteType>& serializer)
@@ -112,10 +146,16 @@ CountWriteIterator_for_UInt8_Binary IterateOverCount_for_UInt8_Binary_in_HeaderW
         &(serializer->sSerializer_for_Binary),
         pHeaderWriter->position
                                                                                    );
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return cCountWriteIterator_for_UInt8_Binary;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return CountWriteIterator<CountType, WriteType>::Null();
     return Null_in_CountWriteIterator_for_UInt8_Binary_static();
   }
@@ -131,6 +171,12 @@ PrefixedWriteIterator_for_UInt16_Binary IterateOverCountWithPrefixAndCTO_for_UIn
     DNP3Serializer_for_Binary* serializer,
     Group51Var1* cto)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefixAndCTO_for_UInt16_Binary_Group51Var1_in_HeaderWriter1"<<'\n';
+#endif
 ////    this->Mark();
   Mark_in_HeaderWriter(pHeaderWriter);
 ////    if (this->WriteSingleValue<ser4cpp::UInt8, CTOType>(QualifierCode::UINT8_CNT, cto))
@@ -146,10 +192,20 @@ PrefixedWriteIterator_for_UInt16_Binary IterateOverCountWithPrefixAndCTO_for_UIn
 ////            this->Rollback();
       Rollback_in_HeaderWriter(pHeaderWriter);
     }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefixAndCTO_for_UInt16_Binary_Group51Var1_in_HeaderWriter2"<<'\n';
+  decrement_stack_info();
+#endif
     return iter;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefixAndCTO_for_UInt16_Binary_Group51Var1_in_HeaderWriter3"<<'\n';
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_Binary_static();
   }
@@ -164,6 +220,12 @@ PrefixedWriteIterator_for_UInt16_Binary IterateOverCountWithPrefixAndCTO_for_UIn
     DNP3Serializer_for_Binary* serializer,
     Group51Var2* cto)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefixAndCTO_for_UInt16_Binary_Group51Var2_in_HeaderWriter1"<<'\n';
+#endif
 ////    this->Mark();
   Mark_in_HeaderWriter(pHeaderWriter);
 ////    if (this->WriteSingleValue<ser4cpp::UInt8, CTOType>(QualifierCode::UINT8_CNT, cto))
@@ -179,10 +241,16 @@ PrefixedWriteIterator_for_UInt16_Binary IterateOverCountWithPrefixAndCTO_for_UIn
 ////            this->Rollback();
       Rollback_in_HeaderWriter(pHeaderWriter);
     }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return iter;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_Binary_static();
   }
@@ -192,6 +260,12 @@ PrefixedWriteIterator_for_UInt16_Binary IterateOverCountWithPrefixAndCTO_for_UIn
 PrefixedWriteIterator_for_UInt16_Binary IterateOverCountWithPrefix_for_UInt16_Binary_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, DNP3Serializer_for_Binary* serializer)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt16_Binary_in_HeaderWriter1"<<'\n';
+#endif
 ////    const auto reserve_size
   uint16_t reserve_size =
 ////        = 2 * PrefixType::size + serializer.get_size(); // enough space for the count, 1 prefix + object
@@ -204,11 +278,22 @@ PrefixedWriteIterator_for_UInt16_Binary IterateOverCountWithPrefix_for_UInt16_Bi
     PrefixedWriteIterator_for_UInt16_Binary pPrefixedWriteIterator_for_UInt16_Binary;
     PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver2(&pPrefixedWriteIterator_for_UInt16_Binary,
         &(serializer->sSerializer_for_Binary), pHeaderWriter->position);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt16_Binary_in_HeaderWriter2"<<'\n';
+  decrement_stack_info();
+#endif
 //        return PrefixedWriteIterator<PrefixType, WriteType>(serializer, *position);
     return pPrefixedWriteIterator_for_UInt16_Binary;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"IterateOverCountWithPrefix_for_UInt16_Binary_in_HeaderWriter3"<<'\n';
+  decrement_stack_info();
+#endif
 ////        return PrefixedWriteIterator<PrefixType, WriteType>::Null();
     return Null_in_PrefixedWriteIterator_for_UInt16_Binary_static();
   }

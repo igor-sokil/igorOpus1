@@ -21,8 +21,8 @@ void CountWriteIterator_for_UInt8_TimeAndInterval_in_CountWriteIterator_for_UInt
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_TimeAndInterval_in_CountWriteIterator_for_UInt8_TimeAndIntervalOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -37,8 +37,8 @@ void CountWriteIterator_for_UInt8_TimeAndInterval_in_CountWriteIterator_for_UInt
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_TimeAndInterval_in_CountWriteIterator_for_UInt8_TimeAndIntervalOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -62,8 +62,8 @@ void CountWriteIterator_for_UInt8_TimeAndInterval_destr_CountWriteIterator_for_U
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_TimeAndInterval_destr_CountWriteIterator_for_UInt8_TimeAndInterval1"<<'\n';
   decrement_stack_info();
 #endif
@@ -112,8 +112,8 @@ void CountWriteIterator_for_UInt16_TimeAndInterval_in_CountWriteIterator_for_UIn
 {
 #ifdef  LOG_INFO
   increment_stack_info();
+  std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt16_TimeAndInterval_in_CountWriteIterator_for_UInt16_TimeAndIntervalOver1_1"<<'\n';
   decrement_stack_info();
 #endif

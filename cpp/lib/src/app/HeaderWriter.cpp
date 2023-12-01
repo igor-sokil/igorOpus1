@@ -85,20 +85,28 @@ boolean WriteHeader_in_HeaderWriter(HeaderWriter *pHeaderWriter, GroupVariationI
   std::cout<<"*id.variation= "<<(uint16_t)id.variation<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*qc= "<<(uint16_t)qc<<'\n';
-  decrement_stack_info();
 #endif
 ////    if (position->length() < 3)
   if(length_in_HasLength_for_Uint16_t(&(pHeaderWriter->position->hHasLength)) < 3)
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 
 ////    ser4cpp::UInt8::write_to(*position, id.group);
   write_to_in_UInt8_static((pHeaderWriter->position), id.group);
+
 ////    ser4cpp::UInt8::write_to(*position, id.variation);
   write_to_in_UInt8_static((pHeaderWriter->position), id.variation);
+
 ////    ser4cpp::UInt8::write_to(*position, QualifierCodeSpec::to_type(qc));
   write_to_in_UInt8_static((pHeaderWriter->position), qc);
+
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -156,6 +164,15 @@ BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_Head
 boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, Group51Var1* cto)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*QualifierCode_uint8_t qc= "<<(uint16_t)qc<<'\n';
+#endif
+
 ////template<class CountType, class WriteType> bool HeaderWriter::WriteSingleValue(QualifierCode qc, const WriteType& value)
   {
 //    const auto reserve_size = CountType::size + WriteType::Size();
@@ -170,19 +187,36 @@ boolean WriteSingleValue_for_UInt8_Group51Var1_in_HeaderWriter(HeaderWriter *pHe
       write_to_in_UInt8_static(pHeaderWriter->position, 1);
 //        WriteType::Write(value, *position);
       Write_in_Group51Var1_static(cto, pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var1--------------------------------------------------------
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var2--------------------------------------------------------
 boolean WriteSingleValue_for_UInt8_Group51Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, Group51Var2* cto)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSingleValue_for_UInt8_Group51Var2_in_HeaderWriter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*QualifierCode_uint8_t qc= "<<(uint16_t)qc<<'\n';
+#endif
 ////template<class CountType, class WriteType> bool HeaderWriter::WriteSingleValue(QualifierCode qc, const WriteType& value)
   {
 //    const auto reserve_size = CountType::size + WriteType::Size();
@@ -197,13 +231,22 @@ boolean WriteSingleValue_for_UInt8_Group51Var2_in_HeaderWriter(HeaderWriter *pHe
       write_to_in_UInt8_static(pHeaderWriter->position, 1);
 //        WriteType::Write(value, *position);
       Write_in_Group51Var2_static(cto, pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 //--------------------------------WriteSingleValue_for_UInt8_Group51Var2--------------------------------------------------------
 
@@ -213,6 +256,14 @@ boolean WriteSingleValue_for_UInt8_Group52Var1_in_HeaderWriter(HeaderWriter *pHe
 {
 ////template<class CountType, class WriteType> bool HeaderWriter::WriteSingleValue(QualifierCode qc, const WriteType& value)
   {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSingleValue_for_UInt8_Group52Var1_in_HeaderWriter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*QualifierCode_uint8_t qc= "<<(uint16_t)qc<<'\n';
+#endif
 //    const auto reserve_size = CountType::size + WriteType::Size();
 //  uint16_t Size_in_Group52Var1_static(void);
     uint16_t reserve_size = size_in_UInt8 + Size_in_Group52Var1_static();
@@ -225,19 +276,36 @@ boolean WriteSingleValue_for_UInt8_Group52Var1_in_HeaderWriter(HeaderWriter *pHe
       write_to_in_UInt8_static(pHeaderWriter->position, 1);
 //        WriteType::Write(value, *position);
       Write_in_Group52Var1_static(cto, pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 //--------------------------------WriteSingleValue_for_UInt8_Group52Var1--------------------------------------------------------
 //--------------------------------WriteSingleValue_for_UInt8_Group52Var2--------------------------------------------------------
 boolean WriteSingleValue_for_UInt8_Group52Var2_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, Group52Var2* cto)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSingleValue_for_UInt8_Group52Var2_in_HeaderWriter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*QualifierCode_uint8_t qc= "<<(uint16_t)qc<<'\n';
+#endif
 ////template<class CountType, class WriteType> bool HeaderWriter::WriteSingleValue(QualifierCode qc, const WriteType& value)
   {
 //    const auto reserve_size = CountType::size + WriteType::Size();
@@ -252,13 +320,22 @@ boolean WriteSingleValue_for_UInt8_Group52Var2_in_HeaderWriter(HeaderWriter *pHe
       write_to_in_UInt8_static(pHeaderWriter->position, 1);
 //        WriteType::Write(value, *position);
       Write_in_Group52Var2_static(cto, pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 //--------------------------------WriteSingleValue_for_UInt8_Group52Var2--------------------------------------------------------
 
@@ -266,6 +343,14 @@ boolean WriteSingleValue_for_UInt8_Group52Var2_in_HeaderWriter(HeaderWriter *pHe
 boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     QualifierCode_uint8_t qc, Group50Var1* cto)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*QualifierCode_uint8_t qc= "<<(uint16_t)qc<<'\n';
+#endif
 ////template<class CountType, class WriteType> bool HeaderWriter::WriteSingleValue(QualifierCode qc, const WriteType& value)
   {
 //    const auto reserve_size = CountType::size + WriteType::Size();
@@ -278,13 +363,22 @@ boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHe
       write_to_in_UInt8_static(pHeaderWriter->position, 1);
 //        WriteType::Write(value, *position);
       Write_in_Group50Var1_static(cto, pHeaderWriter->position);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return true;
     }
     else
     {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
       return false;
     }
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
 

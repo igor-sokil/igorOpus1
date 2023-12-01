@@ -65,13 +65,15 @@ void CountWriteIterator_for_UInt8_Binary_destr_CountWriteIterator_for_UInt8_Bina
   std::cout<<getString_stack_info();
   std::cout<<""<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_Binary_destr_CountWriteIterator_for_UInt8_Binary1"<<'\n';
-  decrement_stack_info();
 #endif
   if (pCountWriteIterator_for_UInt8_Binary->isValid)
   {
 ////        CountType::write_to(countPosition, count);
     write_to_in_UInt8_static(&(pCountWriteIterator_for_UInt8_Binary->countPosition), pCountWriteIterator_for_UInt8_Binary->count);
   }
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
 }
 
 boolean Write_in_CountWriteIterator_for_UInt8_Binary(CountWriteIterator_for_UInt8_Binary *pCountWriteIterator_for_UInt8_Binary, Binary *value)////const WriteType& value)

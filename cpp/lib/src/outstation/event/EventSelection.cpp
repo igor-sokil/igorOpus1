@@ -77,20 +77,38 @@ uint32_t SelectByClass_in_EventSelection_static(EventLists* lists, ClassField* c
 //----------------------------------BinarySpec-----------------------------------------------
 boolean select__for__TypedEventRecord_for_BinarySpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_BinarySpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    uint32_t maxEv,
     event_variation_t_in_BinaryInfo variation,
     boolean useDefaultVariation);
 
 //boolean (*select__for__TypedEventRecord_for_BinarySpec_in_EventSelection)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation)
 boolean select__for__TypedEventRecord_for_BinarySpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_BinarySpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    uint32_t maxEv,
     event_variation_t_in_BinaryInfo variation,
     boolean useDefaultVariation)
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 {
-  if (num_selected == maxEv)
+  uint32_t* pnum_selected = (uint32_t*)pPointerGlobal1;
+
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"select__for__TypedEventRecord_for_BinarySpec_in_EventSelection1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t num_selected= "<<*pnum_selected<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t maxEv= "<<maxEv<<'\n';
+#endif
+
+  if ((*pnum_selected) == maxEv)
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
+}
 
   if (node->record->value.state == EventState_unselected)
   {
@@ -98,9 +116,12 @@ boolean select__for__TypedEventRecord_for_BinarySpec_in_EventSelection(EventList
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
     OnSelect_in_EventClassCounters(&(lists->counters));
-    ++num_selected;
+    ++(*pnum_selected);
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -113,6 +134,9 @@ uint32_t SelectByTypeGeneric_for_BinarySpec_in_EventSelection_static(EventLists*
   List_TypedEventRecord_for_BinarySpec* listEv = GetList_for_BinarySpec_in_EventLists(lists);
 ////
   uint32_t num_selected = 0;
+
+  pPointerGlobal1 = &num_selected;
+
 ////
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 ////        if (num_selected == max)
@@ -132,7 +156,7 @@ uint32_t SelectByTypeGeneric_for_BinarySpec_in_EventSelection_static(EventLists*
 ////    list.ForeachWhile(select);
   ForeachWhile_in_List_TypedEventRecord_for_BinarySpec(listEv,
       lists,
-      num_selected,  maxEv,
+      /*num_selected,*/  maxEv,
       variation,
       useDefaultVariation,
       select__for__TypedEventRecord_for_BinarySpec_in_EventSelection);
@@ -154,7 +178,7 @@ uint32_t SelectByType_for_BinarySpec_in_EventSelection_staticOver1(EventLists* l
 uint32_t SelectByType_for_BinarySpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_BinaryInfo variation, uint32_t max)
 {
   return SelectByTypeGeneric_for_BinarySpec_in_EventSelection_static(lists,
-         true,
+         false,
 ////                                        typename T::event_variation_t variation,
          variation,
          max);
@@ -164,19 +188,21 @@ uint32_t SelectByType_for_BinarySpec_in_EventSelection_staticOver2(EventLists* l
 //----------------------------------DoubleBitBinarySpec-----------------------------------------------
 boolean select__for__TypedEventRecord_for_DoubleBitBinarySpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_DoubleBitBinarySpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_BinaryInfo variation,
     boolean useDefaultVariation);
 
 //boolean (*select__for__TypedEventRecord_for_BinarySpec_in_EventSelection)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation)
 boolean select__for__TypedEventRecord_for_DoubleBitBinarySpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_DoubleBitBinarySpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_DoubleBitBinaryInfo variation,
     boolean useDefaultVariation)
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 {
-  if (num_selected == maxEv)
+  uint32_t* pnum_selected = (uint32_t*)pPointerGlobal1;
+
+  if ((*pnum_selected) == maxEv)
     return false;
 
   if (node->record->value.state == EventState_unselected)
@@ -185,7 +211,7 @@ boolean select__for__TypedEventRecord_for_DoubleBitBinarySpec_in_EventSelection(
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
     OnSelect_in_EventClassCounters(&(lists->counters));
-    ++num_selected;
+    ++(*pnum_selected);
   }
 
   return true;
@@ -200,6 +226,9 @@ uint32_t SelectByTypeGeneric_for_DoubleBitBinarySpec_in_EventSelection_static(Ev
   List_TypedEventRecord_for_DoubleBitBinarySpec* listEv = GetList_for_DoubleBitBinarySpec_in_EventLists(lists);
 ////
   uint32_t num_selected = 0;
+
+  pPointerGlobal1 = &num_selected;
+
 ////
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 ////        if (num_selected == max)
@@ -219,7 +248,7 @@ uint32_t SelectByTypeGeneric_for_DoubleBitBinarySpec_in_EventSelection_static(Ev
 ////    list.ForeachWhile(select);
   ForeachWhile_in_List_TypedEventRecord_for_DoubleBitBinarySpec(listEv,
       lists,
-      num_selected,  maxEv,
+      /*num_selected,*/  maxEv,
       variation,
       useDefaultVariation,
       select__for__TypedEventRecord_for_DoubleBitBinarySpec_in_EventSelection);
@@ -240,7 +269,7 @@ uint32_t SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver1(Even
 uint32_t SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_DoubleBitBinaryInfo variation, uint32_t max)
 {
   return SelectByTypeGeneric_for_DoubleBitBinarySpec_in_EventSelection_static(lists,
-         true,
+         false,
 ////                                        typename T::event_variation_t variation,
          variation,
          max);
@@ -249,30 +278,72 @@ uint32_t SelectByType_for_DoubleBitBinarySpec_in_EventSelection_staticOver2(Even
 //----------------------------------AnalogSpec-----------------------------------------------
 boolean select__for__TypedEventRecord_for_AnalogSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_AnalogSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_AnalogInfo variation,
     boolean useDefaultVariation);
 
 //boolean (*select__for__TypedEventRecord_for_BinarySpec_in_EventSelection)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation)
 boolean select__for__TypedEventRecord_for_AnalogSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_AnalogSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_AnalogInfo variation,
     boolean useDefaultVariation)
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 {
-  if (num_selected == maxEv)
+  uint32_t* pnum_selected = (uint32_t*)pPointerGlobal1;
+
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"select__for__TypedEventRecord_for_AnalogSpec_in_EventSelection1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t num_selected= "<<(uint16_t)*pnum_selected<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t maxEv= "<<(uint16_t)maxEv<<'\n';
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean useDefaultVariation= "<<(uint16_t)useDefaultVariation<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*event_variation_t_in_AnalogInfo variation= "<<(uint16_t)variation<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*node->record->value.state= "<<(uint16_t)node->record->value.state<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*EventState_unselected= "<<(uint16_t)EventState_unselected<<'\n';
+#endif
+
+  if ((*pnum_selected) == maxEv)
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
+}
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"select__for__TypedEventRecord_for_AnalogSpec_in_EventSelection2"<<'\n';
+#endif
 
   if (node->record->value.state == EventState_unselected)
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*node->defaultVariation= "<<(uint16_t)node->defaultVariation<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"select__for__TypedEventRecord_for_AnalogSpec_in_EventSelection3"<<'\n';
+#endif
+
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
     OnSelect_in_EventClassCounters(&(lists->counters));
-    ++num_selected;
+    ++(*pnum_selected);
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -281,10 +352,23 @@ uint32_t SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(EventLists*
     event_variation_t_in_AnalogInfo variation,
     uint32_t maxEv)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean useDefaultVariation= "<<(uint16_t)useDefaultVariation<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*event_variation_t_in_AnalogInfo variation= "<<(uint16_t)variation<<'\n';
+#endif
+
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_AnalogSpec* listEv = GetList_for_AnalogSpec_in_EventLists(lists);
 ////
   uint32_t num_selected = 0;
+  pPointerGlobal1 = &num_selected;
+
 ////
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 ////        if (num_selected == max)
@@ -304,50 +388,98 @@ uint32_t SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(EventLists*
 ////    list.ForeachWhile(select);
   ForeachWhile_in_List_TypedEventRecord_for_AnalogSpec(listEv,
       lists,
-      num_selected,  maxEv,
+      /*num_selected,*/  maxEv,
       variation,
       useDefaultVariation,
       select__for__TypedEventRecord_for_AnalogSpec_in_EventSelection);
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return num_selected;
 }
 
 uint32_t SelectByType_for_AnalogSpec_in_EventSelection_staticOver1(EventLists* lists, uint32_t max)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByType_for_AnalogSpec_in_EventSelection_staticOver1_1"<<'\n';
+#endif
+//uint32_t SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(EventLists* lists,
+//    boolean useDefaultVariation,
+//    event_variation_t_in_AnalogInfo variation,
+//    uint32_t maxEv)
 ////        return SelectByTypeGeneric<T>(lists, true, static_cast<typename T::event_variation_t>(0), max);
-  return SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(lists,
+  uint32_t tmp = SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(
+         lists,
          true,
 ////                                        typename T::event_variation_t variation,
          0,
          max);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 uint32_t SelectByType_for_AnalogSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_AnalogInfo variation, uint32_t max)
 {
-  return SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(lists,
-         true,
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByType_for_AnalogSpec_in_EventSelection_staticOver2_1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*event_variation_t_in_AnalogInfo variation= "<<(uint16_t)variation<<'\n';
+#endif
+  uint32_t tmp = SelectByTypeGeneric_for_AnalogSpec_in_EventSelection_static(lists,
+         false,
 ////                                        typename T::event_variation_t variation,
          variation,
          max);
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 //----------------------------------AnalogSpec-----------------------------------------------
 //----------------------------------CounterSpec-----------------------------------------------
 boolean select__for__TypedEventRecord_for_CounterSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_CounterSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_CounterInfo variation,
     boolean useDefaultVariation);
 
 //boolean (*select__for__TypedEventRecord_for_BinarySpec_in_EventSelection)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation)
 boolean select__for__TypedEventRecord_for_CounterSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_CounterSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_CounterInfo variation,
     boolean useDefaultVariation)
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 {
-  if (num_selected == maxEv)
+  uint32_t* pnum_selected = (uint32_t*)pPointerGlobal1;
+
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"select__for__TypedEventRecord_for_CounterSpec_in_EventSelection1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t num_selected= "<<(uint16_t)*pnum_selected<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint32_t maxEv= "<<(uint16_t)maxEv<<'\n';
+#endif
+
+  if ((*pnum_selected) == maxEv)
+{
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
+}
 
   if (node->record->value.state == EventState_unselected)
   {
@@ -355,9 +487,12 @@ boolean select__for__TypedEventRecord_for_CounterSpec_in_EventSelection(EventLis
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
     OnSelect_in_EventClassCounters(&(lists->counters));
-    ++num_selected;
+    ++(*pnum_selected);
   }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -366,10 +501,19 @@ uint32_t SelectByTypeGeneric_for_CounterSpec_in_EventSelection_static(EventLists
     event_variation_t_in_CounterInfo variation,
     uint32_t maxEv)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"SelectByTypeGeneric_for_CounterSpec_in_EventSelection_static1"<<'\n';
+#endif
+
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_CounterSpec* listEv = GetList_for_CounterSpec_in_EventLists(lists);
 ////
   uint32_t num_selected = 0;
+  pPointerGlobal1 = &num_selected;
+
 ////
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 ////        if (num_selected == max)
@@ -389,11 +533,14 @@ uint32_t SelectByTypeGeneric_for_CounterSpec_in_EventSelection_static(EventLists
 ////    list.ForeachWhile(select);
   ForeachWhile_in_List_TypedEventRecord_for_CounterSpec(listEv,
       lists,
-      num_selected,  maxEv,
+      /*num_selected,*/  maxEv,
       variation,
       useDefaultVariation,
       select__for__TypedEventRecord_for_CounterSpec_in_EventSelection);
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
   return num_selected;
 }
 
@@ -410,7 +557,7 @@ uint32_t SelectByType_for_CounterSpec_in_EventSelection_staticOver1(EventLists* 
 uint32_t SelectByType_for_CounterSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_CounterInfo variation, uint32_t max)
 {
   return SelectByTypeGeneric_for_CounterSpec_in_EventSelection_static(lists,
-         true,
+         false,
 ////                                        typename T::event_variation_t variation,
          variation,
          max);
@@ -419,19 +566,21 @@ uint32_t SelectByType_for_CounterSpec_in_EventSelection_staticOver2(EventLists* 
 //----------------------------------FrozenCounterSpec-----------------------------------------------
 boolean select__for__TypedEventRecord_for_FrozenCounterSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_FrozenCounterSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_FrozenCounterInfo variation,
     boolean useDefaultVariation);
 
 //boolean (*select__for__TypedEventRecord_for_BinarySpec_in_EventSelection)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation)
 boolean select__for__TypedEventRecord_for_FrozenCounterSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_FrozenCounterSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_FrozenCounterInfo variation,
     boolean useDefaultVariation)
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 {
-  if (num_selected == maxEv)
+  uint32_t* pnum_selected = (uint32_t*)pPointerGlobal1;
+
+  if ((*pnum_selected) == maxEv)
     return false;
 
   if (node->record->value.state == EventState_unselected)
@@ -440,7 +589,7 @@ boolean select__for__TypedEventRecord_for_FrozenCounterSpec_in_EventSelection(Ev
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
     OnSelect_in_EventClassCounters(&(lists->counters));
-    ++num_selected;
+    ++(*pnum_selected);
   }
 
   return true;
@@ -455,6 +604,8 @@ uint32_t SelectByTypeGeneric_for_FrozenCounterSpec_in_EventSelection_static(Even
   List_TypedEventRecord_for_FrozenCounterSpec* listEv = GetList_for_FrozenCounterSpec_in_EventLists(lists);
 ////
   uint32_t num_selected = 0;
+  pPointerGlobal1 = &num_selected;
+
 ////
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 ////        if (num_selected == max)
@@ -474,7 +625,7 @@ uint32_t SelectByTypeGeneric_for_FrozenCounterSpec_in_EventSelection_static(Even
 ////    list.ForeachWhile(select);
   ForeachWhile_in_List_TypedEventRecord_for_FrozenCounterSpec(listEv,
       lists,
-      num_selected,  maxEv,
+      /*num_selected,*/  maxEv,
       variation,
       useDefaultVariation,
       select__for__TypedEventRecord_for_FrozenCounterSpec_in_EventSelection);
@@ -495,7 +646,7 @@ uint32_t SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver1(EventL
 uint32_t SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_FrozenCounterInfo variation, uint32_t max)
 {
   return SelectByTypeGeneric_for_FrozenCounterSpec_in_EventSelection_static(lists,
-         true,
+         false,
 ////                                        typename T::event_variation_t variation,
          variation,
          max);
@@ -504,19 +655,21 @@ uint32_t SelectByType_for_FrozenCounterSpec_in_EventSelection_staticOver2(EventL
 //----------------------------------BinaryOutputStatusSpec-----------------------------------------------
 boolean select__for__TypedEventRecord_for_BinaryOutputStatusSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_BinaryOutputStatusSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_BinaryOutputStatusInfo variation,
     boolean useDefaultVariation);
 
 //boolean (*select__for__TypedEventRecord_for_BinarySpec_in_EventSelection)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation)
 boolean select__for__TypedEventRecord_for_BinaryOutputStatusSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_BinaryOutputStatusSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_BinaryOutputStatusInfo variation,
     boolean useDefaultVariation)
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 {
-  if (num_selected == maxEv)
+  uint32_t* pnum_selected = (uint32_t*)pPointerGlobal1;
+
+  if ((*pnum_selected) == maxEv)
     return false;
 
   if (node->record->value.state == EventState_unselected)
@@ -525,7 +678,7 @@ boolean select__for__TypedEventRecord_for_BinaryOutputStatusSpec_in_EventSelecti
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
     OnSelect_in_EventClassCounters(&(lists->counters));
-    ++num_selected;
+    ++(*pnum_selected);
   }
 
   return true;
@@ -540,6 +693,8 @@ uint32_t SelectByTypeGeneric_for_BinaryOutputStatusSpec_in_EventSelection_static
   List_TypedEventRecord_for_BinaryOutputStatusSpec* listEv = GetList_for_BinaryOutputStatusSpec_in_EventLists(lists);
 ////
   uint32_t num_selected = 0;
+  pPointerGlobal1 = &num_selected;
+
 ////
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 ////        if (num_selected == max)
@@ -559,7 +714,7 @@ uint32_t SelectByTypeGeneric_for_BinaryOutputStatusSpec_in_EventSelection_static
 ////    list.ForeachWhile(select);
   ForeachWhile_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(listEv,
       lists,
-      num_selected,  maxEv,
+      /*num_selected,*/  maxEv,
       variation,
       useDefaultVariation,
       select__for__TypedEventRecord_for_BinaryOutputStatusSpec_in_EventSelection);
@@ -580,7 +735,7 @@ uint32_t SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver1(E
 uint32_t SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_BinaryOutputStatusInfo variation, uint32_t max)
 {
   return SelectByTypeGeneric_for_BinaryOutputStatusSpec_in_EventSelection_static(lists,
-         true,
+         false,
 ////                                        typename T::event_variation_t variation,
          variation,
          max);
@@ -589,19 +744,21 @@ uint32_t SelectByType_for_BinaryOutputStatusSpec_in_EventSelection_staticOver2(E
 //----------------------------------AnalogOutputStatusSpec-----------------------------------------------
 boolean select__for__TypedEventRecord_for_AnalogOutputStatusSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_AnalogOutputStatusSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_AnalogOutputStatusInfo variation,
     boolean useDefaultVariation);
 
 //boolean (*select__for__TypedEventRecord_for_BinarySpec_in_EventSelection)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation)
 boolean select__for__TypedEventRecord_for_AnalogOutputStatusSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_AnalogOutputStatusSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_AnalogOutputStatusInfo variation,
     boolean useDefaultVariation)
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 {
-  if (num_selected == maxEv)
+  uint32_t* pnum_selected = (uint32_t*)pPointerGlobal1;
+
+  if ((*pnum_selected) == maxEv)
     return false;
 
   if (node->record->value.state == EventState_unselected)
@@ -610,7 +767,7 @@ boolean select__for__TypedEventRecord_for_AnalogOutputStatusSpec_in_EventSelecti
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
     OnSelect_in_EventClassCounters(&(lists->counters));
-    ++num_selected;
+    ++(*pnum_selected);
   }
 
   return true;
@@ -625,6 +782,8 @@ uint32_t SelectByTypeGeneric_for_AnalogOutputStatusSpec_in_EventSelection_static
   List_TypedEventRecord_for_AnalogOutputStatusSpec* listEv = GetList_for_AnalogOutputStatusSpec_in_EventLists(lists);
 ////
   uint32_t num_selected = 0;
+  pPointerGlobal1 = &num_selected;
+
 ////
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 ////        if (num_selected == max)
@@ -644,7 +803,7 @@ uint32_t SelectByTypeGeneric_for_AnalogOutputStatusSpec_in_EventSelection_static
 ////    list.ForeachWhile(select);
   ForeachWhile_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(listEv,
       lists,
-      num_selected,  maxEv,
+      /*num_selected,*/  maxEv,
       variation,
       useDefaultVariation,
       select__for__TypedEventRecord_for_AnalogOutputStatusSpec_in_EventSelection);
@@ -665,7 +824,7 @@ uint32_t SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver1(E
 uint32_t SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_AnalogOutputStatusInfo variation, uint32_t max)
 {
   return SelectByTypeGeneric_for_AnalogOutputStatusSpec_in_EventSelection_static(lists,
-         true,
+         false,
 ////                                        typename T::event_variation_t variation,
          variation,
          max);
@@ -674,19 +833,21 @@ uint32_t SelectByType_for_AnalogOutputStatusSpec_in_EventSelection_staticOver2(E
 //----------------------------------OctetStringSpec-----------------------------------------------
 boolean select__for__TypedEventRecord_for_OctetStringSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_OctetStringSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_OctetStringInfo variation,
     boolean useDefaultVariation);
 
 //boolean (*select__for__TypedEventRecord_for_BinarySpec_in_EventSelection)(EventLists* lists, TypedEventRecord_for_BinarySpec* node, uint32_t num_selected, uint32_t maxEv, event_variation_t_in_BinaryInfo variation)
 boolean select__for__TypedEventRecord_for_OctetStringSpec_in_EventSelection(EventLists* lists,
     TypedEventRecord_for_OctetStringSpec* node,
-    uint32_t num_selected, uint32_t maxEv,
+    /*uint32_t num_selected,*/ uint32_t maxEv,
     event_variation_t_in_OctetStringInfo variation,
     boolean useDefaultVariation)
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 {
-  if (num_selected == maxEv)
+  uint32_t* pnum_selected = (uint32_t*)pPointerGlobal1;
+
+  if ((*pnum_selected) == maxEv)
     return false;
 
   if (node->record->value.state == EventState_unselected)
@@ -695,7 +856,7 @@ boolean select__for__TypedEventRecord_for_OctetStringSpec_in_EventSelection(Even
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
     OnSelect_in_EventClassCounters(&(lists->counters));
-    ++num_selected;
+    ++(*pnum_selected);
   }
 
   return true;
@@ -710,6 +871,8 @@ uint32_t SelectByTypeGeneric_for_OctetStringSpec_in_EventSelection_static(EventL
   List_TypedEventRecord_for_OctetStringSpec* listEv = GetList_for_OctetStringSpec_in_EventLists(lists);
 ////
   uint32_t num_selected = 0;
+  pPointerGlobal1 = &num_selected;
+
 ////
 ////    auto select = [&](TypedEventRecord<T>& node) -> bool {
 ////        if (num_selected == max)
@@ -729,7 +892,7 @@ uint32_t SelectByTypeGeneric_for_OctetStringSpec_in_EventSelection_static(EventL
 ////    list.ForeachWhile(select);
   ForeachWhile_in_List_TypedEventRecord_for_OctetStringSpec(listEv,
       lists,
-      num_selected,  maxEv,
+      /*num_selected,*/  maxEv,
       variation,
       useDefaultVariation,
       select__for__TypedEventRecord_for_OctetStringSpec_in_EventSelection);
@@ -750,7 +913,7 @@ uint32_t SelectByType_for_OctetStringSpec_in_EventSelection_staticOver1(EventLis
 uint32_t SelectByType_for_OctetStringSpec_in_EventSelection_staticOver2(EventLists* lists, event_variation_t_in_OctetStringInfo variation, uint32_t max)
 {
   return SelectByTypeGeneric_for_OctetStringSpec_in_EventSelection_static(lists,
-         true,
+         false,
 ////                                        typename T::event_variation_t variation,
          variation,
          max);

@@ -9,7 +9,7 @@
 boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_BinarySpec* event)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Update_BinarySpec_in_EventUpdate_static1"<<'\n';
@@ -167,9 +167,14 @@ boolean Update_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Even
 
 //----------------------------------DoubleBitBinarySpec-------------------------------------------
 //----------------------------------AnalogSpec-------------------------------------------
-
 boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_AnalogSpec* event)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Update_AnalogSpec_in_EventUpdate_static1"<<'\n';
+#endif
 ////    auto& list = lists.GetList<T>();
   List_TypedEventRecord_for_AnalogSpec*  listEv = GetList_for_AnalogSpec_in_EventLists(lists);
 
@@ -229,6 +234,13 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
   Node_TypedEventRecord_for_AnalogSpec* typed_node = Add_in_List_TypedEventRecord_for_AnalogSpec(listEv,
       &tTypedEventRecord_for_AnalogSpec);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"Update_AnalogSpec_in_EventUpdate_static2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(typed_node->value).selectedVariation= "<<(uint16_t)(typed_node->value).selectedVariation<<'\n';
+#endif
+
   // configure the typed storage
 //IEventType* Instance_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_static(void);
 ////    record_node->value.type = EventTypeImpl<T>::Instance();
@@ -242,7 +254,6 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
 
   return overflow;
 }
-
 //----------------------------------AnalogSpec-------------------------------------------
 //----------------------------------CounterSpec-------------------------------------------
 

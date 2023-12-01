@@ -226,5 +226,7 @@ void OnConfirmProcessed_in_MockOutstationApplication(MockOutstationApplication *
 void OnConfirmProcessed_in_MockOutstationApplication_override(void *pIOutstationApplication,
     boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
 
+void SetTime_in_MockOutstationApplication(MockOutstationApplication *pMockOutstationApplication, DNPTime timeDNPTime);
+
 
 #endif

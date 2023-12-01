@@ -36,7 +36,7 @@ void update_in_14ReadGrp22Var0(IUpdateHandler* db)
 ////    auto update = [](IUpdateHandler& db) { db.Update(Counter(0, Flags(0x01)), 0); };
 
  Flags fFlags;
- Flags_In_FlagsOver2(&fFlags, 2);
+ Flags_In_FlagsOver2(&fFlags, 1);
 
  Counter cCounter;
  Counter_in_CounterOver3(&cCounter, 0, fFlags);

@@ -1,4 +1,8 @@
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <math.h>
 #include "header.h"
 #include "SerializationTemplates.h"
@@ -42,6 +46,10 @@ uint8_t read_in_UInt8_static(uint8_t* start)
 
 void write_in_UInt8_static(uint8_t* start, uint8_t value)
 {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_in_UInt8_static = "<<(uint32_t)start<<"->"<<(uint16_t)value<<'\n';
+#endif
   *(start) = value;
 }
 ////};
@@ -92,6 +100,10 @@ uint16_t read_in_UInt16_static(uint8_t* data)
 
 void write_in_UInt16_static(uint8_t* data, uint16_t value)
 {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_in_UInt16_static = "<<(uint32_t)data<<"->"<<(uint16_t)value<<'\n';
+#endif
   data[0] = (uint8_t)(value & 0xFF);
   data[1] = (uint8_t)((value >> 8) & 0xFF);
 }
@@ -151,6 +163,10 @@ uint32_t read_in_UInt32_static(uint8_t* data)
 
 void write_in_UInt32_static(uint8_t* data, uint32_t value)
 {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_in_UInt32_static = "<<(uint32_t)data<<"->"<<value<<'\n';
+#endif
   data[0] = (uint8_t)(value & 0xFF);
   data[1] = (uint8_t)((value >> 8) & 0xFF);
   data[2] = (uint8_t)((value >> 16) & 0xFF);
@@ -192,6 +208,10 @@ uint64_t read_in_UInt48_static(uint8_t* data)
 
 void write_in_UInt48_static(uint8_t* data, uint64_t value)
 {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_in_UInt48_static = "<<(uint32_t)data<<"->"<<value<<'\n';
+#endif
   if (value > 281474976710655ULL)
   {
     value = 281474976710655ULL;////UInt48Type(max_value);

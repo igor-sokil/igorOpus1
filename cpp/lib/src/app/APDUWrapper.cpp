@@ -17,7 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "APDUWrapper.h"
 
@@ -60,6 +63,17 @@ uint16_t Remaining_in_APDUWrapper(APDUWrapper *pAPDUWrapper)
 
 void SetFunction_in_APDUWrapper(APDUWrapper *pAPDUWrapper, FunctionCode_uint8_t code)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{SetFunction_in_APDUWrapper1"<<'\n';
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_uint8="<<(uint32_t)((pAPDUWrapper->buffer).buffer_+1)<<"->"<<(uint16_t)code<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}SetFunction_in_APDUWrapper_"<<'\n';
+  decrement_stack_info();
+#endif
 //    assert(buffer.is_not_empty());
 //    pAPDUWrapper->buffer[1] = code;////FunctionCodeSpec::to_type(code);
   (pAPDUWrapper->buffer).buffer_[1] = code;////FunctionCodeSpec::to_type(code);
@@ -84,6 +98,17 @@ void SetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper, AppControlField contro
 {
 ////    buffer[0] = control.ToByte();
   (pAPDUWrapper->buffer).buffer_[0] = ToByte_in_AppControlField(&control);
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{SetControl_in_APDUWrapper1"<<'\n';
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_uint8="<<(uint32_t)((pAPDUWrapper->buffer).buffer_+0)<<"->"<<(uint16_t)(pAPDUWrapper->buffer).buffer_[0]<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}SetControl_in_APDUWrapper_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 uint16_t Size_in_APDUWrapper(APDUWrapper *pAPDUWrapper)

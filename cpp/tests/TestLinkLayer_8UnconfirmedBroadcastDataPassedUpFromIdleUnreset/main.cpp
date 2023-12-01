@@ -17,10 +17,6 @@
 
 #define UNUSED(x) (void)(x)
 
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
-
 key_filter *pkf;
 
 MainWindow *mainWindow;
@@ -95,58 +91,6 @@ TEST_CASE(SUITE("8UnconfirmedBroadcastDataPassedUpFromIdleUnreset"))
     REQUIRE(t.upper->receivedQueue.size() == 1);
     REQUIRE(t.upper->receivedQueue.front() == bs.ToHex());
 }
-*/
-/*
-    LinkLayerTest t;
-  LinkLayerConfig temp = DefaultConfig_in_LinkLayerTest(&t);
-  LinkLayerTest_in_LinkLayerTest(&t, &temp);
-
-////    t.link.OnLowerLayerUp();
-   OnLowerLayerUp_in_LinkLayer(&(t.link));
-
-//void ByteStr_in_ByteStrOver1(ByteStr *pByteStr, uint16_t length, uint8_t seed);// = 0);
-////    ByteStr bs(250, 0);
- ByteStr bs;
- ByteStr_in_ByteStrOver1(&bs, 250, 0);// = 0);
-
-//  boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
-//                 LinkFunction_uint8_t func,
-//                 boolean isMaster,
-//                 boolean fcb,
-//                 boolean fcvdfc,
-//                 uint16_t dest,
-//                 uint16_t source,
-//                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
-////    t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 2, 1024);
-
-//     RSeq_for_Uint16_t temp2 = empty_in_RSeq_for_Uint16_t_static();
-//RSeq_for_Uint16_t ToRSeq_in_CopyableBuffer(CopyableBuffer *pCopyableBuffer);
-////bs.ToRSeq()
-RSeq_for_Uint16_t temp2 = ToRSeq_in_CopyableBuffer(&(bs.cCopyableBuffer));
-
-     OnFrame_in_LinkLayerTest(&t,
-                 LinkFunction_PRI_UNCONFIRMED_USER_DATA,
-                 false,
-                 false,
-                 false,
-                 1,
-                 1024,
-                 &temp2);//// = ser4cpp::rseq_t::empty());
-
-////    REQUIRE(t.upper->receivedQueue.size() == 1);
-  uint16_t tmp16 =  t.upper.receivedQueue.size();// == 1);
-qDebug()<<"REQUIRE(t.upper->receivedQueue.size() == 1)";
-qDebug()<<"uint16_t tmp16 = "<<tmp16;
-
-qDebug()<<"REQUIRE(t.upper->receivedQueue.front()";
- std::string tmpStr = t.upper.receivedQueue.front();
-std::cout<<"std::string tmpStr ="<<tmpStr;
-
-qDebug()<<"";
-qDebug()<<"";
-//std::string ToHex_in_ByteStr(ByteStr *pByteStr);
-tmpStr = ToHex_in_ByteStr(&bs);
-std::cout<<"std::string tmpStr ="<<tmpStr;
 */
   MainWindow mainWindowObj;
   mainWindow = &mainWindowObj;

@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "ClazzCount.h"
 
@@ -81,6 +85,13 @@ void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventC
 
 void OnSelect_in_EventClassCounters(EventClassCounters *pEventClassCounters)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnSelect_in_EventClassCounters1"<<'\n';
+  decrement_stack_info();
+#endif
   ++(pEventClassCounters->selected);
 }
 
