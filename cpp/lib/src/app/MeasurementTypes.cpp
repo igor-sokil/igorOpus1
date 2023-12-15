@@ -22,6 +22,10 @@
 ////#include "app/QualityFlags.h"
 
 ////#include "opendnp3/gen/BinaryQuality.h"
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "MeasurementTypes.h"
 
@@ -295,39 +299,83 @@ void Counter_in_CounterOver4(Counter *pCounter, uint32_t value, Flags flags, DNP
 
 void FrozenCounter_in_FrozenCounterOver1(FrozenCounter *pFrozenCounter)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{FrozenCounter_in_FrozenCounterOver1_1"<<'\n';
+#endif
   Flags fFlags;
   Flags_In_FlagsOver2(&fFlags, Flags_RESTART);
   TypedMeasurement_for_Uint32_in_TypedMeasurement_for_Uint32Over3(&(pFrozenCounter->tTypedMeasurement_for_Uint32),
       0,
       fFlags);
 //// : TypedMeasurement(0, flags::RESTART) {}
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FrozenCounter_in_FrozenCounterOver1__"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void FrozenCounter_in_FrozenCounterOver2(FrozenCounter *pFrozenCounter, uint32_t value)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{FrozenCounter_in_FrozenCounterOver2_1"<<'\n';
+#endif
   Flags fFlags;
   Flags_In_FlagsOver2(&fFlags, Flags_ONLINE);
   TypedMeasurement_for_Uint32_in_TypedMeasurement_for_Uint32Over3(&(pFrozenCounter->tTypedMeasurement_for_Uint32),
       value,
       fFlags);
 //// : TypedMeasurement<uint32_t>(value, flags::ONLINE) {}
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FrozenCounter_in_FrozenCounterOver2__"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void FrozenCounter_in_FrozenCounterOver3(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{FrozenCounter_in_FrozenCounterOver3_1"<<'\n';
+#endif
   TypedMeasurement_for_Uint32_in_TypedMeasurement_for_Uint32Over3(&(pFrozenCounter->tTypedMeasurement_for_Uint32),
       value,
       flags);
 //// : TypedMeasurement<uint32_t>(value, flags) {}
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FrozenCounter_in_FrozenCounterOver3__"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void FrozenCounter_in_FrozenCounterOver4(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags, DNPTime timeDNPTime)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{FrozenCounter_in_FrozenCounterOver4_1"<<'\n';
+#endif
   TypedMeasurement_for_Uint32_in_TypedMeasurement_for_Uint32Over4(&(pFrozenCounter->tTypedMeasurement_for_Uint32),
       value,
       flags,
       timeDNPTime);
 //// : TypedMeasurement<uint32_t>(value, flags, time)
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FrozenCounter_in_FrozenCounterOver4__"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 // ------------ Analog Output Status ---------------

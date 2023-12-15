@@ -20,9 +20,9 @@
 #ifndef OPENDNP3_COLLECTIONS_H
 #define OPENDNP3_COLLECTIONS_H
 
-#include "ICollection_old.h"
+#include "ICollection.h"
 
-#include <cstdint>
+////#include <cstdint>
 
 ////namespace opendnp3
 ////{
@@ -30,57 +30,149 @@
 /**
  * A simple collection derived from an underlying array
  */
-template<class T> class ArrayCollection : public ICollection<T>
+////template<class T> class ArrayCollection : public ICollection<T>
+////{
+////public:
+////  ArrayCollection(const T* pArray_, size_t count) : pArray(pArray_), COUNT(count) {}
+
+////  virtual size_t Count() const override final
+////  {
+////    return COUNT;
+////  }
+
+////  virtual void Foreach(IVisitor<T>& visitor) const override final
+////  {
+////    for (uint32_t i = 0; i < COUNT; ++i)
+////    {
+////      visitor.OnValue(pArray[i]);
+////    }
+////  }
+
+////private:
+////  const T* pArray;
+////  const size_t COUNT;
+////};
+
+//------------------------------Group50Var1_for_DNPTime-----------------------------------
+typedef DNPTime (*Transform_Group50Var1_for_DNPTime)(Group50Var1*);
+//Map<Group50Var1, DNPTime>
+////template<class T, class U, class Transform> class TransformedCollection : public ICollection<U>
+typedef struct
 {
-public:
-  ArrayCollection(const T* pArray_, size_t count) : pArray(pArray_), COUNT(count) {}
+  ICollection_for_DNPTime iICollection_for_DNPTime;
+////public:
+////  TransformedCollection(const ICollection<T>& input, Transform transform) : input(&input), transform(transform) {}
 
-  virtual size_t Count() const override final
-  {
-    return COUNT;
-  }
+////  virtual size_t Count() const override final
+////  {
+////    return input->Count();
+////  }
 
-  virtual void Foreach(IVisitor<T>& visitor) const override final
-  {
-    for (uint32_t i = 0; i < COUNT; ++i)
-    {
-      visitor.OnValue(pArray[i]);
-    }
-  }
+////  virtual void Foreach(IVisitor<U>& visitor) const override final
+////  {
+////    auto process = [this, &visitor](const T& elem) {
+////      visitor.OnValue(transform(elem));
+////    };
+////    input->ForeachItem(process);
+////  }
 
-private:
-  const T* pArray;
-  const size_t COUNT;
-};
+////private:
+////  ICollection<T>* input;
+  ICollection_for_Group50Var1* input;
+////  Transform transform;
+  Transform_Group50Var1_for_DNPTime transform;
+} TransformedCollection_Group50Var1_for_DNPTime;
 
-template<class T, class U, class Transform> class TransformedCollection : public ICollection<U>
+void TransformedCollection_Group50Var1_for_DNPTime_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime,
+    ICollection_for_Group50Var1* input, Transform_Group50Var1_for_DNPTime transform);
+TransformedCollection_Group50Var1_for_DNPTime Map_in_TransformedCollection_Group50Var1_for_DNPTime(ICollection_for_Group50Var1* input, Transform_Group50Var1_for_DNPTime transform);
+
+uint16_t Count_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime);
+void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime, IVisitor__for__DNPTime* visitor);
+
+uint16_t Count_in_TransformedCollection_Group50Var1_for_DNPTime_override(void*);
+void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime_override(void*, IVisitor__for__DNPTime* visitor);
+//------------------------------Group50Var1_for_DNPTime-----------------------------------
+//------------------------------Indexed_for_Binary-----------------------------------
+typedef Indexed_for_Binary (*Transform_Indexed_for_Binary)(Indexed_for_Binary*);
+//Map<Group50Var1, DNPTime>
+////template<class T, class U, class Transform> class TransformedCollection : public ICollection<U>
+typedef struct
 {
-public:
-  TransformedCollection(const ICollection<T>& input, Transform transform) : input(&input), transform(transform) {}
+  ICollection_Indexed_for_Binary iICollection_Indexed_for_Binary;
+////public:
+////  TransformedCollection(const ICollection<T>& input, Transform transform) : input(&input), transform(transform) {}
 
-  virtual size_t Count() const override final
-  {
-    return input->Count();
-  }
+////  virtual size_t Count() const override final
+////  {
+////    return input->Count();
+////  }
 
-  virtual void Foreach(IVisitor<U>& visitor) const override final
-  {
-    auto process = [this, &visitor](const T& elem) {
-      visitor.OnValue(transform(elem));
-    };
-    input->ForeachItem(process);
-  }
+////  virtual void Foreach(IVisitor<U>& visitor) const override final
+////  {
+////    auto process = [this, &visitor](const T& elem) {
+////      visitor.OnValue(transform(elem));
+////    };
+////    input->ForeachItem(process);
+////  }
 
-private:
-  const ICollection<T>* input;
-  Transform transform;
-};
+////private:
+////  ICollection<T>* input;
+  ICollection_Indexed_for_Binary* input;
+////  Transform transform;
+  Transform_Indexed_for_Binary transform;
+} TransformedCollection_Indexed_for_Binary;
 
-template<class T, class U, class Transform>
-TransformedCollection<T, U, Transform> Map(const ICollection<T>& input, Transform transform)
+void TransformedCollection_Indexed_for_Binary_in_TransformedCollection_Indexed_for_Binary(TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary,
+    ICollection_Indexed_for_Binary* input, Transform_Indexed_for_Binary transform);
+TransformedCollection_Indexed_for_Binary Map_in_TransformedCollection_Indexed_for_Binary(ICollection_Indexed_for_Binary* input, Transform_Indexed_for_Binary transform);
+
+uint16_t Count_in_TransformedCollection_Indexed_for_Binary(TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary);
+void Foreach_in_TransformedCollection_Indexed_for_Binary(TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary, IVisitor__for__Indexed_for_Binary* visitor);
+
+uint16_t Count_in_TransformedCollection_Indexed_for_Binary_override(void*);
+void Foreach_in_TransformedCollection_Indexed_for_Binary_override(void*, IVisitor__for__Indexed_for_Binary* visitor);
+//------------------------------Indexed_for_Binary-----------------------------------
+//------------------------------Indexed_for_DoubleBitBinary-----------------------------------
+typedef Indexed_for_DoubleBitBinary (*Transform_Indexed_for_DoubleBitBinary)(Indexed_for_DoubleBitBinary*);
+//Map<Group50Var1, DNPTime>
+////template<class T, class U, class Transform> class TransformedCollection : public ICollection<U>
+typedef struct
 {
-  return TransformedCollection<T, U, Transform>(input, transform);
-}
+  ICollection_Indexed_for_DoubleBitBinary iICollection_Indexed_for_DoubleBitBinary;
+////public:
+////  TransformedCollection(const ICollection<T>& input, Transform transform) : input(&input), transform(transform) {}
+
+////  virtual size_t Count() const override final
+////  {
+////    return input->Count();
+////  }
+
+////  virtual void Foreach(IVisitor<U>& visitor) const override final
+////  {
+////    auto process = [this, &visitor](const T& elem) {
+////      visitor.OnValue(transform(elem));
+////    };
+////    input->ForeachItem(process);
+////  }
+
+////private:
+////  ICollection<T>* input;
+  ICollection_Indexed_for_DoubleBitBinary* input;
+////  Transform transform;
+  Transform_Indexed_for_DoubleBitBinary transform;
+} TransformedCollection_Indexed_for_DoubleBitBinary;
+
+void TransformedCollection_Indexed_for_DoubleBitBinary_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary,
+    ICollection_Indexed_for_DoubleBitBinary* input, Transform_Indexed_for_DoubleBitBinary transform);
+TransformedCollection_Indexed_for_DoubleBitBinary Map_in_TransformedCollection_Indexed_for_DoubleBitBinary(ICollection_Indexed_for_DoubleBitBinary* input, Transform_Indexed_for_DoubleBitBinary transform);
+
+uint16_t Count_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary);
+void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary, IVisitor__for__Indexed_for_DoubleBitBinary* visitor);
+
+uint16_t Count_in_TransformedCollection_Indexed_for_DoubleBitBinary_override(void*);
+void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary_override(void*, IVisitor__for__Indexed_for_DoubleBitBinary* visitor);
+//------------------------------Indexed_for_DoubleBitBinary-----------------------------------
 
 ////} // namespace opendnp3
 

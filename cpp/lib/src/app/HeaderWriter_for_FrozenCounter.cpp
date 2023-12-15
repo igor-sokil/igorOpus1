@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "HeaderWriter_for_FrozenCounter.h"
 
@@ -12,6 +16,16 @@ RangeWriteIterator_for_UInt8_FrozenCounter IterateOverRange_for_UInt8_FrozenCoun
     uint8_t start
                                                                                      )
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{IterateOverRange_for_UInt8_FrozenCounter_in_HeaderWriter1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*QualifierCode_uint8_t qc= "<<(uint16_t)qc<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t start= "<<(uint16_t)start<<'\n';
+#endif
 //    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
 //     pRangeWriteIterator_for_UInt8_FrozenCounter->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
   uint16_t reserve_size = 2 * size_in_UInt8 +
@@ -36,10 +50,20 @@ RangeWriteIterator_for_UInt8_FrozenCounter IterateOverRange_for_UInt8_FrozenCoun
         &(serializer->sSerializer_for_FrozenCounter),
         pHeaderWriter->position
                                                                                    );
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}IterateOverRange_for_UInt8_FrozenCounter_in_HeaderWriter1_"<<'\n';
+  decrement_stack_info();
+#endif
     return rRangeWriteIterator_for_UInt8_FrozenCounter;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}IterateOverRange_for_UInt8_FrozenCounter_in_HeaderWriter2_"<<'\n';
+  decrement_stack_info();
+#endif
 //        return RangeWriteIterator<IndexType, WriteType>::Null();
     return Null_in_RangeWriteIterator_for_UInt8_FrozenCounter_static();
   }

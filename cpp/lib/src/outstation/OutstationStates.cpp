@@ -159,7 +159,7 @@ void* OnConfirm_in_StateIdle_override(void* pOutstationState, void *pOContext, P
 ////                     request.header.control.SEQ);
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, 'unexpected confirm while IDLE with sequence: %u'"<<std::endl;
+  std::cout<<"*FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, 'unexpected confirm while IDLE with sequence: %u'"<<std::endl;
 #endif
   return Inst_in_StateIdle_static();////StateIdle::Inst();
 }
@@ -167,14 +167,27 @@ void* OnConfirm_in_StateIdle_override(void* pOutstationState, void *pOContext, P
 ////OutstationState& StateIdle::OnConfirmTimeout(OContext& ctx)
 void* OnConfirmTimeout_in_StateIdle_override(void* pOutstationState, void *pOContext)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnConfirmTimeout_in_StateIdle_override1"<<std::endl;
+#endif
   UNUSED(pOutstationState);
   UNUSED(pOContext);
 ////    SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, "unexpected confirm timeout");
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'unexpected confirm timeout')"<<std::endl;
+  std::cout<<"*SIMPLE_LOG_BLOCK(ctx.logger, flags::WARN, 'unexpected confirm timeout')"<<std::endl;
 #endif
-  return Inst_in_StateIdle_static();////StateIdle::Inst();
+  void* tmp = Inst_in_StateIdle_static();////StateIdle::Inst();
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnConfirmTimeout_in_StateIdle_override_"<<std::endl;
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////OutstationState& StateIdle::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
@@ -418,11 +431,24 @@ void* OnConfirmTimeout_in_StateSolicitedConfirmWait_override(void* pOutstationSt
 ////OutstationState& StateSolicitedConfirmWait::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnNewReadRequest_in_StateSolicitedConfirmWait_override1"<<std::endl;
+#endif
   UNUSED(pOutstationState);
 ////    ctx.confirmTimer.cancel();
   cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
 ////    return ctx.RespondToReadRequest(request);
-  return RespondToReadRequest_in_OContext((OContext *)ctx, request);
+  void* tmp = RespondToReadRequest_in_OContext((OContext *)ctx, request);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnNewReadRequest_in_StateSolicitedConfirmWait_override_"<<std::endl;
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////OutstationState& StateSolicitedConfirmWait::OnNewNonReadRequest(OContext& ctx, const ParsedRequest& request)
@@ -668,12 +694,24 @@ void* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstation
 ////OutstationState& StateUnsolicitedConfirmWait::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnNewReadRequest_in_StateUnsolicitedConfirmWait_override1"<<std::endl;
+#endif
   StateUnsolicitedConfirmWait *parent =
     (StateUnsolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 //  void Set_in_DeferredRequest(DeferredRequest *pDeferredRequest, ParsedRequest* request);
 ////    ctx.deferred.Set(request);
   Set_in_DeferredRequest(&(((OContext*)ctx)->deferred), request);
 ////    return *this;
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnNewReadRequest_in_StateUnsolicitedConfirmWait_override_"<<std::endl;
+  decrement_stack_info();
+#endif
   return &(parent->oOutstationState);
 }
 
@@ -756,11 +794,26 @@ void StateNullUnsolicitedConfirmWait_in_StateNullUnsolicitedConfirmWait(StateNul
 ////OutstationState& StateNullUnsolicitedConfirmWait::OnNewReadRequest(OContext& ctx, const ParsedRequest& request)
 void* OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override(void* pOutstationState, void *ctx, ParsedRequest* request)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override1"<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"*(OContext*)ctx= "<<(uint32_t)ctx<<std::endl;
+#endif
   UNUSED(pOutstationState);
 ////    ctx.confirmTimer.cancel();
   cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
 ////    return ctx.RespondToReadRequest(request);
-  return RespondToReadRequest_in_OContext((OContext *)ctx, request);
+  void* tmp = RespondToReadRequest_in_OContext((OContext *)ctx, request);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override_"<<std::endl;
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////} // namespace opendnp3

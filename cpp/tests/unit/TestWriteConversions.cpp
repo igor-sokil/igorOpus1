@@ -26,7 +26,7 @@ using namespace opendnp3;
 
 #define SUITE(name) "WriteConversionTestSuite - " name
 
-TEST_CASE(SUITE("Group30Var2ConvertsWithinRange"))
+TEST_CASE(SUITE("1Group30Var2ConvertsWithinRange"))
 {
     Analog a(12);
     auto gv = ConvertGroup30Var2::Apply(a);
@@ -35,7 +35,7 @@ TEST_CASE(SUITE("Group30Var2ConvertsWithinRange"))
     CHECK(gv.flags == AnalogQualitySpec::to_type(AnalogQuality::ONLINE));
 }
 
-TEST_CASE(SUITE("Group30Var2ConvertsOverrange"))
+TEST_CASE(SUITE("2Group30Var2ConvertsOverrange"))
 {
     Analog a(32768);
     auto gv = ConvertGroup30Var2::Apply(a);
@@ -46,7 +46,7 @@ TEST_CASE(SUITE("Group30Var2ConvertsOverrange"))
         == (AnalogQualitySpec::to_type(AnalogQuality::ONLINE) | AnalogQualitySpec::to_type(AnalogQuality::OVERRANGE)));
 }
 
-TEST_CASE(SUITE("Group30Var2ConvertsUnderrange"))
+TEST_CASE(SUITE("3Group30Var2ConvertsUnderrange"))
 {
     Analog a(-32769);
     auto gv = ConvertGroup30Var2::Apply(a);

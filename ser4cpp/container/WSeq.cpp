@@ -1,4 +1,8 @@
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <string.h>
 
 #include "header.h"
@@ -116,17 +120,43 @@ RSeq_for_Uint16_t move_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Ui
 ////    }
 RSeq_for_Uint16_t transfer_fromMemcpy_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{transfer_fromMemcpy_in_WSeq_for_Uint16_t1"<<std::endl;
+//  inspect_RSeq(src);
+#endif
   if (length_in_HasLength_for_Uint16_t(&(src->hHasLength)) > length_in_HasLength_for_Uint16_t(&(pWSeq_for_Uint16_t->hHasLength)))
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}transfer_fromMemcpy_in_WSeq_for_Uint16_t1_"<<std::endl;
+  decrement_stack_info();
+#endif
     return empty_in_RSeq_for_Uint16_t_static();
   }
   else
   {
-    RSeq_for_Uint16_t ret = readonly_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t);
-    ret = take_in_RSeq_for_Uint16_t(&ret, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
-    memcpy(pWSeq_for_Uint16_t->buffer_, src, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
+    RSeq_for_Uint16_t ret1 = readonly_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t);
+//#ifdef  LOG_INFO
+//  inspect_RSeq(&ret1);
+//#endif
+
+    RSeq_for_Uint16_t ret2 = take_in_RSeq_for_Uint16_t(&ret1, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
+//#ifdef  LOG_INFO
+//  inspect_RSeq(&ret2);
+//#endif
+
+    memcpy(pWSeq_for_Uint16_t->buffer_, src->buffer_, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
     advance_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t, length_in_HasLength_for_Uint16_t(&(src->hHasLength)));
-    return ret;
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}transfer_fromMemcpy_in_WSeq_for_Uint16_t2_"<<std::endl;
+  decrement_stack_info();
+#endif
+    return ret2;
   }
 }
 

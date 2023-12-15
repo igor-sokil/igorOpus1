@@ -20,17 +20,17 @@
 #ifndef OPENDNP3_ISOEHANDLER_H
 #define OPENDNP3_ISOEHANDLER_H
 
-#include "opendnp3/app/AnalogCommandEvent.h"
-#include "opendnp3/app/BinaryCommandEvent.h"
-#include "opendnp3/app/Indexed.h"
-#include "opendnp3/app/MeasurementTypes.h"
-#include "opendnp3/app/OctetString.h"
-#include "opendnp3/app/parsing/ICollection.h"
-#include "opendnp3/master/HeaderInfo.h"
-#include "opendnp3/master/ResponseInfo.h"
+#include "AnalogCommandEvent.h"
+#include "BinaryCommandEvent.h"
+#include "Indexed.h"
+#include "MeasurementTypes.h"
+#include "OctetString.h"
+#include "ICollection.h"
+#include "HeaderInfo.h"
+#include "ResponseInfo.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * An interface for Sequence-Of-Events (SOE) callbacks from a master stack to
@@ -38,31 +38,58 @@ namespace opendnp3
  *
  * A call is made to the appropriate member method for every measurement value in an ASDU.
  * The HeaderInfo class provides information about the object header associated with the value.
+* Интерфейс для обратных вызовов Sequence-Of-Events (SOE) из главного стека в
+  * прикладной уровень.
+  *
+  * Вызов соответствующего метода-члена выполняется для каждого значения измерения в ASDU.
+  * Класс HeaderInfo предоставляет информацию о заголовке объекта, связанном со значением.
  *
  */
-class ISOEHandler
+////class ISOEHandler
+typedef struct
 {
 
-public:
-    virtual ~ISOEHandler() = default;
+////public:
+////    virtual ~ISOEHandler() = default;
 
-    virtual void BeginFragment(const ResponseInfo& info) = 0;
-    virtual void EndFragment(const ResponseInfo& info) = 0;
+  void (*pBeginFragment_in_ISOEHandler)(void*, ResponseInfo* info);// = 0;
+  void (*pEndFragment_in_ISOEHandler)(void*, ResponseInfo* info);// = 0;
 
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<Binary>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<DoubleBitBinary>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<Analog>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<Counter>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<FrozenCounter>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<BinaryOutputStatus>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<AnalogOutputStatus>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<OctetString>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<TimeAndInterval>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<BinaryCommandEvent>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<AnalogCommandEvent>>& values) = 0;
-    virtual void Process(const HeaderInfo& info, const ICollection<DNPTime>& values) = 0;
-};
+  void (*pProcess_Indexed_for_Binary_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_Binary* values);// = 0;
+  void (*pProcess_Indexed_for_DoubleBitBinary_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_DoubleBitBinary* values);// = 0;
+  void (*pProcess_Indexed_for_Analog_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_Analog* values);// = 0;
+  void (*pProcess_Indexed_for_Counter_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_Counter* values);// = 0;
+  void (*pProcess_Indexed_for_FrozenCounter_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_FrozenCounter* values);// = 0;
+  void (*pProcess_Indexed_for_BinaryOutputStatus_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_BinaryOutputStatus* values);// = 0;
+  void (*pProcess_Indexed_for_AnalogOutputStatus_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_AnalogOutputStatus* values);// = 0;
+  void (*pProcess_Indexed_for_OctetString_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_OctetString* values);// = 0;
+  void (*pProcess_Indexed_for_TimeAndInterval_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_TimeAndInterval* values);// = 0;
+  void (*pProcess_Indexed_for_BinaryCommandEvent_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_BinaryCommandEvent* values);// = 0;
+  void (*pProcess_Indexed_for_AnalogCommandEvent_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_Indexed_for_AnalogCommandEvent* values);// = 0;
+  void (*pProcess_for_DNPTime_in_ISOEHandler)(void*, HeaderInfo* info, ICollection_for_DNPTime* values);// = 0;
 
-} // namespace opendnp3
+  void* pParentPointer_in_ISOEHandler;
+} ISOEHandler;
+
+void BeginFragment_in_ISOEHandler(ISOEHandler* pISOEHandler, ResponseInfo* info);
+void EndFragment_in_ISOEHandler(ISOEHandler* pISOEHandler, ResponseInfo* info);
+
+void Process_Indexed_for_Binary_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_Binary* values);
+void Process_Indexed_for_DoubleBitBinary_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_DoubleBitBinary* values);
+void Process_Indexed_for_Analog_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_Analog* values);
+void Process_Indexed_for_Counter_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_Counter* values);
+void Process_Indexed_for_FrozenCounter_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_FrozenCounter* values);
+void Process_Indexed_for_BinaryOutputStatus_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_BinaryOutputStatus* values);
+void Process_Indexed_for_AnalogOutputStatus_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_AnalogOutputStatus* values);
+void Process_Indexed_for_OctetString_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_OctetString* values);
+void Process_Indexed_for_TimeAndInterval_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_TimeAndInterval* values);
+void Process_Indexed_for_BinaryCommandEvent_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_BinaryCommandEvent* values);
+void Process_Indexed_for_AnalogCommandEvent_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_Indexed_for_AnalogCommandEvent* values);
+void Process_for_DNPTime_in_ISOEHandler(ISOEHandler* pISOEHandler, HeaderInfo* info, ICollection_for_DNPTime* values);
+
+void* getParentPointer_in_ISOEHandler(ISOEHandler*);
+void  setParentPointer_in_ISOEHandler(ISOEHandler*, void*);
+
+////} // namespace opendnp3
 
 #endif

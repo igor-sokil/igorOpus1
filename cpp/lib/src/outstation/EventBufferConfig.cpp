@@ -23,7 +23,6 @@
 #ifdef  LOG_INFO
 #include <iostream>
 #endif
-//#include <QtWidgets>
 #include "header.h"
 #include "EventBufferConfig.h"
 

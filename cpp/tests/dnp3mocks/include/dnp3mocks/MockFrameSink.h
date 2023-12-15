@@ -68,6 +68,8 @@ typedef struct
 
   // Add a function to execute the next time a frame is received
   // This allows us to test re-entrant behaviors
+// Добавляем функцию, которая будет выполняться при следующем получении кадра
+   // Это позволяет нам тестировать поведение повторного входа
 ////    void AddAction(const std::function<void()>& fun);
 
   DataSink received;

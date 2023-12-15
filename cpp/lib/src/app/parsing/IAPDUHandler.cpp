@@ -62,7 +62,11 @@ void IAPDUHandler_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
   pIAPDUHandler->pProcessHeader_CountHeader_in_IAPDUHandler = ProcessHeader_CountHeader_in_IAPDUHandler_override;
 
   pIAPDUHandler->pProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler_override;
-  pIAPDUHandler->pProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler_override;
 
   pIAPDUHandler->pOnHeaderResult_in_IAPDUHandler            =  OnHeaderResult_in_IAPDUHandler_override;
 
@@ -687,24 +691,44 @@ IINField ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler_override(void
 }
 
 ////IINField IAPDUHandler::ProcessHeader(const CountHeader& /*header*/, const ICollection<Group51Var1>& /*unused*/)
-////{
+IINField ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler_override(void* pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var1* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 ////IINField IAPDUHandler::ProcessHeader(const CountHeader& /*header*/, const ICollection<Group51Var2>& /*unused*/)
-////{
+IINField ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler_override(void* pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var2* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 ////IINField IAPDUHandler::ProcessHeader(const CountHeader& /*header*/, const ICollection<Group52Var1>& /*values*/)
-////{
+IINField ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler_override(void* pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var1* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 ////IINField IAPDUHandler::ProcessHeader(const CountHeader& /*header*/, const ICollection<Group52Var2>& /*unused*/)
-////{
+IINField ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler_override(void* pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var2* values)
+{
+  UNUSED(header);
+  UNUSED(values);
+  IAPDUHandler* parent = (IAPDUHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 ////    return ProcessUnsupportedHeader();
-////}
+  return ProcessUnsupportedHeader_in_IAPDUHandler(parent);
+}
 
 /// ---- ranges -----
 
@@ -1080,22 +1104,22 @@ IINField ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(IAPDUHandler*
 {
   return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler)(pIAPDUHandler, header, values);
 }
-//    IINField ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var1* values)
-//{
-// return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler)(pIAPDUHandler, header, values);
-//}
-//    IINField ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var2* values)
-//{
-// return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler)(pIAPDUHandler, header, values);
-//}
-//    IINField ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var1* values)
-//{
-// return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler)(pIAPDUHandler, header, values);
-//}
-//    IINField ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var2* values)
-//{
-// return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler)(pIAPDUHandler, header, values);
-//}
+IINField ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var1* values)
+{
+ return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
+IINField ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var2* values)
+{
+ return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
+IINField ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var1* values)
+{
+ return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
+IINField ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var2* values)
+{
+ return (pIAPDUHandler->pProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler)(pIAPDUHandler, header, values);
+}
 
 IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values)
 {

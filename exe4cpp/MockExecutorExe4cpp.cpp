@@ -1,10 +1,18 @@
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "MockExecutorExe4cpp.h"
 
 void MockExecutor_in_MockExecutor(MockExecutor *pMockExecutor)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{MockExecutor_in_MockExecutor1"<<'\n';
+  std::cout<<"*MockExecutor *pMockExecutor= "<<(uint32_t)pMockExecutor<<'\n';
+#endif
   ISteadyTimeSourceExe4cpp_in_ISteadyTimeSourceExe4cpp(&(pMockExecutor->iIExecutorExe4cpp.iISteadyTimeSourceExe4cpp));
 
   pMockExecutor->current_time = 333;
@@ -15,6 +23,9 @@ void MockExecutor_in_MockExecutor(MockExecutor *pMockExecutor)
 
   setParentPointer_in_IExecutorExe4cpp(&(pMockExecutor->iIExecutorExe4cpp), pMockExecutor);
   setParentPointer_in_ISteadyTimeSourceExe4cpp(&(pMockExecutor->iIExecutorExe4cpp.iISteadyTimeSourceExe4cpp), pMockExecutor);
+#ifdef  LOG_INFO
+  std::cout<<"}MockExecutor_in_MockExecutor_"<<'\n';
+#endif
 }
 
 /**	@return true if an action was run. */
@@ -70,7 +81,18 @@ uint64_t get_time_in_MockExecutor(MockExecutor *pMockExecutor)
 TimerExe4cpp Start_in_MockExecutor_override(void *pIExecutorExe4cpp, uint32_t duration, void (*pAction)(void))
 {
   MockExecutor* parent = (MockExecutor*) getParentPointer_in_IExecutorExe4cpp((IExecutorExe4cpp*) pIExecutorExe4cpp);
-  return Start_in_MockExecutor(parent, duration, pAction);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{Start_in_MockExecutor_override1"<<'\n';
+  std::cout<<"*MockExecutor *pMockExecutor= "<<(uint32_t)parent<<'\n';
+#endif
+
+  TimerExe4cpp tmp = Start_in_MockExecutor(parent, duration, pAction);
+
+#ifdef  LOG_INFO
+  std::cout<<"}Start_in_MockExecutor_override_"<<'\n';
+#endif
+  return tmp;
 }
 
 TimerExe4cpp Start_in_MockExecutor(MockExecutor *pMockExecutor, uint32_t delay, void (*pAction)(void))
@@ -87,6 +109,12 @@ TimerExe4cpp Start_in_MockExecutor(MockExecutor *pMockExecutor, uint32_t delay, 
 ////    virtual Timer start(const steady_time_t& time, const action_t& action) override
 TimerExe4cpp Start_in_MockExecutorOver2(MockExecutor *pMockExecutor, uint32_t duration, void (*pAction)(void))
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{Start_in_MockExecutorOver2_1"<<'\n';
+  std::cout<<"*uint32_t duration= "<<duration<<'\n';
+  std::cout<<"*MockExecutor *pMockExecutor= "<<(uint32_t)pMockExecutor<<'\n';
+#endif
 //    void MockTimer_in_MockTimer(MockTimer *pMockTimer, void* source, uint32_t timeMockTimer, void (*pAction)(void));
 ////        const auto timer = std::make_shared<MockTimer>(this, time, action);
   MockTimer timer;
@@ -96,12 +124,23 @@ TimerExe4cpp Start_in_MockExecutorOver2(MockExecutor *pMockExecutor, uint32_t du
 //   void TimerExe4cpp_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp, ITimer* tim)
 ////        return Timer{timer};
   TimerExe4cpp tTimerExe4cpp;
-  TimerExe4cpp_in_TimerExe4cpp(&tTimerExe4cpp, &(timer.iITimer));
+  TimerExe4cpp_in_TimerExe4cppOver2(&tTimerExe4cpp, &(timer.iITimer));
+
+#ifdef  LOG_INFO
+  std::cout<<"*tTimerExe4cpp.iITimer.psource_in_ITimer="<<(uint32_t)tTimerExe4cpp.timerExe4cpp.psource_in_ITimer<<'\n';
+  std::cout<<"}Start_in_MockExecutorOver2__"<<'\n';
+#endif
   return tTimerExe4cpp;
 }
 
-void cancel_in_MockExecutor(MockExecutor *pMockExecutor, ITimer* timer)
+void cancel_in_MockExecutor(/*MockExecutor *pMockExecutor,*/ ITimer* timer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{cancel_in_MockExecutor1"<<'\n';
+  std::cout<<"*MockExecutor *pMockExecutor= "<<(uint32_t)(timer->psource_in_ITimer)<<'\n';
+#endif
+  MockExecutor *pMockExecutor = (MockExecutor *)(timer->psource_in_ITimer);
 ////        const auto result = std::find_if(pMockExecutor->timers.begin(), pMockExecutor->timers.end(), [timer](const std::shared_ptr<MockTimer>& item)
 ////        {
 ////            return item.get() == timer;
@@ -109,34 +148,60 @@ void cancel_in_MockExecutor(MockExecutor *pMockExecutor, ITimer* timer)
 ////
 ////        if (result != this->timers.end())
 ////        {
-  ++(pMockExecutor->num_timer_cancel_);
+//  ++(pMockExecutor->num_timer_cancel_);
 ////            pMockExecutor->timers.erase(result);
 ////        }
+            pMockExecutor->timers.clear();//erase(result);
+#ifdef  LOG_INFO
+  std::cout<<"}cancel_in_MockExecutor_"<<'\n';
+#endif
 }
 
 //--------------------------------MockTimer--------------------------------------------
 void MockTimer_in_MockTimer(MockTimer *pMockTimer, void* source, uint32_t timeMockTimer, void (*pAction)(void))
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{MockTimer_in_MockTimer1"<<'\n';
+  std::cout<<"*cancel_in_MockTimer_override="<<(uint32_t)cancel_in_MockTimer_override<<'\n';
+#endif
   pMockTimer->timeMockTimer = timeMockTimer;
   pMockTimer->source = source;
   pMockTimer->action = (void*)pAction;
 
+  pMockTimer->iITimer.psource_in_ITimer     = source;
   pMockTimer->iITimer.pcancel_in_ITimer     = cancel_in_MockTimer_override;
   pMockTimer->iITimer.pexpires_at_in_ITimer = expires_at_in_MockTimer_override;
 
   setParentPointer_in_ITimer(&(pMockTimer->iITimer), pMockTimer);
+#ifdef  LOG_INFO
+  std::cout<<"}MockTimer_in_MockTimer_"<<'\n';
+#endif
 }
 
-void cancel_in_MockTimer(MockTimer *pMockTimer)
+void cancel_in_MockTimer(ITimer *pITimer)//MockTimer *pMockTimer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{cancel_in_MockTimer1"<<'\n';
+#endif
 ////            source->cancel(this);
-  cancel_in_MockExecutor((MockExecutor*)pMockTimer->source, &(pMockTimer->iITimer));
+  cancel_in_MockExecutor(/*(MockExecutor*)pMockTimer->source,*/ pITimer);//&(pMockTimer->iITimer));
+#ifdef  LOG_INFO
+  std::cout<<"}cancel_in_MockTimer_"<<'\n';
+#endif
 }
 void cancel_in_MockTimer_override(void *pITimer)
 {
-//qDebug()<<"cancel_in_MockTimer_override1";
-  MockTimer* parent = (MockTimer*) getParentPointer_in_ITimer((ITimer*) pITimer);
-  cancel_in_MockTimer(parent);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{cancel_in_MockTimer_override1"<<'\n';
+#endif
+  //MockTimer* parent = (MockTimer*) getParentPointer_in_ITimer((ITimer*) pITimer);
+  cancel_in_MockTimer((ITimer*)pITimer);//parent);
+#ifdef  LOG_INFO
+  std::cout<<"}cancel_in_MockTimer_override_"<<'\n';
+#endif
 }
 
 uint32_t expires_at_in_MockTimer(MockTimer *pMockTimer)
@@ -163,4 +228,10 @@ void add_time_in_MockExecutor(MockExecutor *pMockExecutor, uint32_t duration)
 {
 ////        this->current_time += duration;
   pMockExecutor->current_time += duration;
+}
+
+uint16_t num_pending_timers_in_MockExecutor(MockExecutor *pMockExecutor)
+{
+////        return this->timers.size();
+       return pMockExecutor->timers.size();
 }

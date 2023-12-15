@@ -39,6 +39,7 @@ debug/Buffer.o
 debug/UTCTimestamp.o
 debug/CommandPointResult.o
 debug/HeaderInfo.o
+debug/ResponseInfo.o
 debug/IResource.o
 debug/StackStatistics.o
 debug/BaseMeasurementTypes.o
@@ -48,8 +49,13 @@ debug/Flags.o
 debug/GroupVariationID.o
 debug/OctetString.o
 debug/Indexed.o
+debug/ICollection_for_DNPTime.o
 debug/ICollection_for_Group50Var1.o
 debug/ICollection_for_Group50Var3.o
+debug/ICollection_for_Group51Var1.o
+debug/ICollection_for_Group51Var2.o
+debug/ICollection_for_Group52Var1.o
+debug/ICollection_for_Group52Var2.o
 debug/ICollection_for_uint16.o
 debug/ICollection_Indexed_for_AnalogOutputDouble64.o
 debug/ICollection_Indexed_for_AnalogOutputFloat32.o
@@ -80,6 +86,7 @@ debug/StaticTypeBitfield.o
 debug/LinkConfig.o
 debug/LinkStatistics.o
 debug/ILinkListener.o
+debug/ISOEHandler.o
 debug/LayerInterfaces.o
 debug/SequenceNum.o
 debug/Addresses.o
@@ -99,10 +106,12 @@ debug/LinkLayer.o
 debug/PriLinkLayerStates.o
 debug/SecLinkLayerStates.o
 debug/ShiftableBuffer.o
+debug/MeasurementHandler.o
 debug/APDUHeaderParser.o
 debug/APDUParser.o
 debug/BufferedCollection.o
 debug/BitReader.o
+debug/Collections.o
 debug/CountParser.o
 debug/CountIndexParser.o
 debug/ObjectHeaderParser.o
@@ -339,11 +348,13 @@ debug/TestOutstation.o
 debug/TestOutstationEventResponses.o
 debug/TestOutstationFrozenCounters.o
 debug/TestOutstationDiscontiguousIndices.o
+debug/TestMeasurementHandler.o
 debug/MockOutstationApplication.o
 debug/MockCommandHandler.o
 debug/MockEventWriteHandler.o
 debug/MockLinkListener.o
 debug/MockAPDUHeaderHandler.o
+debug/MockSOEHandler.o
 debug/MockLowerLayer.o
 debug/MockFrameSink.o
 debug/MockTransportLayer.o

@@ -25,6 +25,7 @@
 
 /**
  * provides basic information about an APDU response
+* предоставляет основную информацию об ответе APDU
  */
 ////struct ResponseInfo
 typedef struct
@@ -32,10 +33,13 @@ typedef struct
 ////    ResponseInfo(bool unsolicited, bool fir, bool fin) : unsolicited(unsolicited), fir(fir), fin(fin) {}
 
     // true if the response is unsolicited
+// true, если ответ не запрошен
     boolean unsolicited;
     // true if this is the first fragment in a multi-fragment response
+// true, если это первый фрагмент в многофрагментном ответе
     boolean fir;
     // true if this is the final fragment in a multi-fragment response
+// true, если это последний фрагмент в многофрагментном ответе
     boolean fin;
 } ResponseInfo;
 

@@ -65,7 +65,8 @@ typedef struct
 } LinkParserTest;
 
 void LinkParserTest_in_LinkParserTest(LinkParserTest *pLinkParserTest, boolean aImmediate);// = false)
-void WriteData_in_LinkParserTestOver2(LinkParserTest *pLinkParserTest, uint8_t *hex, uint16_t size_hex);////const std::string& hex)
 void WriteData_in_LinkParserTestOver1(LinkParserTest *pLinkParserTest, RSeq_for_Uint16_t* input);
+void WriteData_in_LinkParserTestOver2(LinkParserTest *pLinkParserTest, uint8_t *hex, uint16_t size_hex);////const std::string& hex)
+void WriteData_in_LinkParserTestOver3(LinkParserTest *pLinkParserTest, std::string& hex);
 
 #endif

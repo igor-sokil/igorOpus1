@@ -1,8 +1,0 @@
-TEST_CASE(SUITE("Group30Var2ConvertsWithinRange"))
-{
-    Analog a(12);
-    auto gv = ConvertGroup30Var2::Apply(a);
-
-    CHECK(gv.value == 12);
-    CHECK(gv.flags == AnalogQualitySpec::to_type(AnalogQuality::ONLINE));
-}

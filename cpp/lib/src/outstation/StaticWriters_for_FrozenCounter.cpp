@@ -25,6 +25,14 @@
 boolean LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters(StaticDataMap_for_FrozenCounterSpec& map,
     RangeWriteIterator_for_UInt8_FrozenCounter *writer, StaticFrozenCounterVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticFrozenCounterVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
+#endif
 ////    auto next_index = map.get_selected_range().start;
   uint16_t  next_index = get_selected_range_in_StaticDataMap_for_FrozenCounterSpec(&map).start;
 
@@ -32,27 +40,48 @@ boolean LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters(Stati
   {
     if (elem.second.variation != variation)
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters1_"<<'\n';
+  decrement_stack_info();
+#endif
       // the variation has changed
       return true;
     }
 
     if (elem.first != next_index)
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters2_"<<'\n';
+  decrement_stack_info();
+#endif
       // we've loaded all we can with a contiguous range
+// мы загрузили все, что могли, в непрерывном диапазоне
       return true;
     }
 
 //boolean Write_in_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter,
 //    FrozenCounter* value);
 ////        if (!writer.Write(elem.second.value))
-    if (!Write_in_RangeWriteIterator_for_UInt8_FrozenCounter(writer, &elem.second.value))//.tTypedMeasurement_for_Double64.value))
+    if (!Write_in_RangeWriteIterator_for_UInt8_FrozenCounter(writer, &elem.second.value))
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters3_"<<'\n';
+  decrement_stack_info();
+#endif
       return false;
     }
 
     ++next_index;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters4_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 //----------------------------------------LoadWithRangeIterator_FrozenCounterSpec_for_UInt8---------------------------------------------------------
@@ -116,6 +145,13 @@ boolean LoadWithRangeIterator_FrozenCounterSpec_for_UInt16_in_StaticWriters(Stat
 ////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean WriteWithSerializer_FrozenCounterSpec_for_Group21Var1_in_StaticWriters_static(StaticDataMap_for_FrozenCounterSpec& map, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{WriteWithSerializer_FrozenCounterSpec_for_Group21Var1_in_StaticWriters_static1"<<'\n';
+#endif
+
 ////    const auto range = map.get_selected_range();
   Range  range = get_selected_range_in_StaticDataMap_for_FrozenCounterSpec(&map);
 
@@ -140,6 +176,12 @@ boolean WriteWithSerializer_FrozenCounterSpec_for_Group21Var1_in_StaticWriters_s
 ////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
     boolean btmp = LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters(map, &iter, StaticFrozenCounterVariation_Group21Var1);
     RangeWriteIterator_for_UInt8_FrozenCounter_destr_RangeWriteIterator_for_UInt8_FrozenCounter(&iter);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}WriteWithSerializer_FrozenCounterSpec_for_Group21Var1_in_StaticWriters_static1_"<<'\n';
+  decrement_stack_info();
+#endif
     return btmp;
   }
 
@@ -154,6 +196,12 @@ boolean WriteWithSerializer_FrozenCounterSpec_for_Group21Var1_in_StaticWriters_s
 ////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
   boolean btmp = LoadWithRangeIterator_FrozenCounterSpec_for_UInt16_in_StaticWriters(map, &iter, StaticFrozenCounterVariation_Group21Var1);
   RangeWriteIterator_for_UInt16_FrozenCounter_destr_RangeWriteIterator_for_UInt16_FrozenCounter(&iter);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}WriteWithSerializer_FrozenCounterSpec_for_Group21Var1_in_StaticWriters_static2_"<<'\n';
+  decrement_stack_info();
+#endif
   return btmp;
 }
 //----------------------------------------------Group21Var1------------------------------------------
@@ -206,6 +254,12 @@ boolean WriteWithSerializer_FrozenCounterSpec_for_Group21Var2_in_StaticWriters_s
 ////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean WriteWithSerializer_FrozenCounterSpec_for_Group21Var5_in_StaticWriters_static(StaticDataMap_for_FrozenCounterSpec& map, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{WriteWithSerializer_FrozenCounterSpec_for_Group21Var5_in_StaticWriters_static1"<<'\n';
+#endif
 ////    const auto range = map.get_selected_range();
   Range  range = get_selected_range_in_StaticDataMap_for_FrozenCounterSpec(&map);
 
@@ -230,6 +284,12 @@ boolean WriteWithSerializer_FrozenCounterSpec_for_Group21Var5_in_StaticWriters_s
 ////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
     boolean btmp = LoadWithRangeIterator_FrozenCounterSpec_for_UInt8_in_StaticWriters(map, &iter, StaticFrozenCounterVariation_Group21Var5);
     RangeWriteIterator_for_UInt8_FrozenCounter_destr_RangeWriteIterator_for_UInt8_FrozenCounter(&iter);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}WriteWithSerializer_FrozenCounterSpec_for_Group21Var5_in_StaticWriters_static1_"<<'\n';
+  decrement_stack_info();
+#endif
     return btmp;
   }
 
@@ -244,6 +304,12 @@ boolean WriteWithSerializer_FrozenCounterSpec_for_Group21Var5_in_StaticWriters_s
 ////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
   boolean btmp = LoadWithRangeIterator_FrozenCounterSpec_for_UInt16_in_StaticWriters(map, &iter, StaticFrozenCounterVariation_Group21Var5);
   RangeWriteIterator_for_UInt16_FrozenCounter_destr_RangeWriteIterator_for_UInt16_FrozenCounter(&iter);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}WriteWithSerializer_FrozenCounterSpec_for_Group21Var5_in_StaticWriters_static2_"<<'\n';
+  decrement_stack_info();
+#endif
   return btmp;
 }
 //----------------------------------------------Group21Var5------------------------------------------

@@ -60,6 +60,19 @@ void inspect_Counter(Counter *b)
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*DNPTime timeDNPTime.quality= "<<(uint32_t)b->tTypedMeasurement_for_Uint32.mMeasurement.timeDNPTime.quality<<'\n';
 }
+void inspect_FrozenCounter(FrozenCounter *b)
+{
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_FrozenCounter**"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean value= "<<(uint16_t)b->tTypedMeasurement_for_Uint32.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*Flags flags.value= "<<(uint16_t)b->tTypedMeasurement_for_Uint32.mMeasurement.flags.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*DNPTime timeDNPTime.value= "<<(uint32_t)b->tTypedMeasurement_for_Uint32.mMeasurement.timeDNPTime.value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*DNPTime timeDNPTime.quality= "<<(uint32_t)b->tTypedMeasurement_for_Uint32.mMeasurement.timeDNPTime.quality<<'\n';
+}
 
 int16_t get_stack_info(void);
 int16_t get_stack_info(void)

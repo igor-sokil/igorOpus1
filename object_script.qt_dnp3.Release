@@ -39,6 +39,7 @@ release/Buffer.o
 release/UTCTimestamp.o
 release/CommandPointResult.o
 release/HeaderInfo.o
+release/ResponseInfo.o
 release/IResource.o
 release/StackStatistics.o
 release/BaseMeasurementTypes.o
@@ -48,8 +49,13 @@ release/Flags.o
 release/GroupVariationID.o
 release/OctetString.o
 release/Indexed.o
+release/ICollection_for_DNPTime.o
 release/ICollection_for_Group50Var1.o
 release/ICollection_for_Group50Var3.o
+release/ICollection_for_Group51Var1.o
+release/ICollection_for_Group51Var2.o
+release/ICollection_for_Group52Var1.o
+release/ICollection_for_Group52Var2.o
 release/ICollection_for_uint16.o
 release/ICollection_Indexed_for_AnalogOutputDouble64.o
 release/ICollection_Indexed_for_AnalogOutputFloat32.o
@@ -80,6 +86,7 @@ release/StaticTypeBitfield.o
 release/LinkConfig.o
 release/LinkStatistics.o
 release/ILinkListener.o
+release/ISOEHandler.o
 release/LayerInterfaces.o
 release/SequenceNum.o
 release/Addresses.o
@@ -99,10 +106,12 @@ release/LinkLayer.o
 release/PriLinkLayerStates.o
 release/SecLinkLayerStates.o
 release/ShiftableBuffer.o
+release/MeasurementHandler.o
 release/APDUHeaderParser.o
 release/APDUParser.o
 release/BufferedCollection.o
 release/BitReader.o
+release/Collections.o
 release/CountParser.o
 release/CountIndexParser.o
 release/ObjectHeaderParser.o
@@ -339,11 +348,13 @@ release/TestOutstation.o
 release/TestOutstationEventResponses.o
 release/TestOutstationFrozenCounters.o
 release/TestOutstationDiscontiguousIndices.o
+release/TestMeasurementHandler.o
 release/MockOutstationApplication.o
 release/MockCommandHandler.o
 release/MockEventWriteHandler.o
 release/MockLinkListener.o
 release/MockAPDUHeaderHandler.o
+release/MockSOEHandler.o
 release/MockLowerLayer.o
 release/MockFrameSink.o
 release/MockTransportLayer.o

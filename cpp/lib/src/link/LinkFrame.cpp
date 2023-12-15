@@ -110,6 +110,7 @@ uint16_t CalcUserDataSize_in_LinkFrame_static(uint16_t dataLength)
 RSeq_for_Uint16_t FormatAck_in_LinkFrame_static(
   WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc)//, Logger* pLogger)
 {
+////    return FormatHeader(buffer, 0, aIsMaster, false, aIsRcvBuffFull, LinkFunction::SEC_ACK, aDest, aSrc, pLogger);
   return FormatHeader_in_LinkFrame_static(buffer, 0, aIsMaster, false, aIsRcvBuffFull, LinkFunction_SEC_ACK, aDest, aSrc);//, pLogger);
 }
 
@@ -240,10 +241,19 @@ RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
   LinkHeader header;
   LinkHeader_in_LinkHeaderOver2(&header, aDataLength + LPDU_MIN_LENGTH, aSrc, aDest, aIsMaster, aFcvDfc, aFcb, aFuncCode);
 
+#ifdef  LOG_INFO
+//  header.ctrl |= 0x40;
+
+  std::cout<<getString_stack_info();
+  std::cout<<"*FormatHeader_in_LinkFrame_static2"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LinkHeader header.ctrl= "<<(uint16_t)header.ctrl<<std::endl;
+#endif
+
 ////    FORMAT_LOGGER_BLOCK(pLogger, flags::LINK_TX, "Function: %s Dest: %u Source: %u Length: %u",
 ////                        LinkFunctionSpec::to_human_string(aFuncCode), aDest, aSrc, aDataLength);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::LINK_TX, 'Function: %s Dest: %u Source: %u Length: %u')***"<<std::endl;
 #endif
 

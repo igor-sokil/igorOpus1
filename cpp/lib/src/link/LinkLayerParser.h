@@ -125,6 +125,7 @@ typedef struct
   uint8_t rxBuffer[LPDU_MAX_FRAME_SIZE];
 
   // facade over the rxBuffer that provides ability to "shift" as data is read
+// фасад над rxBuffer, который обеспечивает возможность «сдвигаться» при чтении данных
   ShiftableBuffer buffer;
 } LinkLayerParser;
 

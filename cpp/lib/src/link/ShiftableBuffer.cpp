@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "ShiftableBuffer.h"
 #include <string.h>
@@ -65,12 +69,38 @@ void AdvanceRead_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t 
 
 void AdvanceWrite_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t aNumBytes)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{AdvanceWrite_in_ShiftableBuffer1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t aNumBytes= "<<aNumBytes<<std::endl;
+  if(!(aNumBytes <= NumWriteBytes_in_ShiftableBuffer(pShiftableBuffer)))
+  {
+     std::cout<<"*"<<getString_stack_info();
+     std::cout<<"*assert(aNumBytes <= this->NumWriteBytes())"<<std::endl;
+  }//if
+#endif
+//uint16_t NumWriteBytes_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer)
 ////    assert(aNumBytes <= this->NumWriteBytes());
   pShiftableBuffer->writePos += aNumBytes;
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}AdvanceWrite_in_ShiftableBuffer_"<<std::endl;
+  decrement_stack_info();
+#endif
 }
 
 boolean Sync_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t* skipCount)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Sync_in_ShiftableBuffer1"<<std::endl;
+#endif
 //  uint16_t NumBytesRead_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer);
 ////    while (this->NumBytesRead() > 1) // at least 2 bytes
   while (NumBytesRead_in_ShiftableBuffer(pShiftableBuffer) > 1) // at least 2 bytes
@@ -80,6 +110,11 @@ boolean Sync_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t* ski
     RSeq_for_Uint16_t temp = ReadBuffer_in_ShiftableBuffer(pShiftableBuffer);
     if (temp.buffer_[0] == 0x05 && temp.buffer_[1] == 0x64)
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Sync_in_ShiftableBuffer1_"<<std::endl;
+  decrement_stack_info();
+#endif
       return true;
     }
 
@@ -89,6 +124,11 @@ boolean Sync_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t* ski
     ++skipCount;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Sync_in_ShiftableBuffer2_"<<std::endl;
+  decrement_stack_info();
+#endif
   return false;
 }
 
@@ -105,6 +145,23 @@ uint16_t NumWriteBytes_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer)
 
 uint16_t NumBytesRead_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{NumBytesRead_in_ShiftableBuffer1"<<std::endl;
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pShiftableBuffer->writePos= "<<(uint16_t)pShiftableBuffer->writePos<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pShiftableBuffer->readPos= "<<(uint16_t)pShiftableBuffer->readPos<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*return pShiftableBuffer->writePos - pShiftableBuffer->readPos= "<<(uint16_t)(pShiftableBuffer->writePos - pShiftableBuffer->readPos)<<std::endl;
+
+  std::cout<<getString_stack_info();
+  std::cout<<"}NumBytesRead_in_ShiftableBuffer_"<<std::endl;
+  decrement_stack_info();
+#endif
   return pShiftableBuffer->writePos - pShiftableBuffer->readPos;
 }
 

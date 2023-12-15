@@ -3,11 +3,14 @@
 
 void Measurement_in_MeasurementOver1(Measurement *pMeasurement)
 {
-  UNUSED(pMeasurement);
+  DNPTime timeDNPTime;
+  DNPTime_in_DNPTimeOver1(&timeDNPTime);
+  pMeasurement->timeDNPTime = timeDNPTime;
 }
 
 void Measurement_in_MeasurementOver2(Measurement *pMeasurement, Flags flags)
 {
+  Measurement_in_MeasurementOver1(pMeasurement);
   pMeasurement->flags = flags;
 }
 

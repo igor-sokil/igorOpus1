@@ -237,3 +237,11 @@ uint16_t AdvanceTime_in_OutstationTestObject(OutstationTestObject *pOutstationTe
 ////    return exe->run_many();
   return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
 }
+
+////size_t OutstationTestObject::NumPendingTimers() const
+uint16_t NumPendingTimers_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
+{
+//uint16_t num_pending_timers_in_MockExecutor(MockExecutor *pMockExecutor)
+////    return exe->num_pending_timers();
+  return num_pending_timers_in_MockExecutor(&(pOutstationTestObject->exe));
+}

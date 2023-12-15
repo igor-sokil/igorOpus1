@@ -154,9 +154,7 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"update_in_StaticDataMap_for_CounterSpecOver2_1"<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*inspect_Counter(new_value)"<<'\n';
+  std::cout<<"{update_in_StaticDataMap_for_CounterSpecOver2_1"<<'\n';
   inspect_Counter(new_value);
   std::cout<<"*"<<'\n';
   std::cout<<"*"<<getString_stack_info();
@@ -170,6 +168,8 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
   if (iter == pStaticDataMap_for_CounterSpec->map.end())
   {
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}update_in_StaticDataMap_for_CounterSpecOver2_1_"<<'\n';
   decrement_stack_info();
 #endif
     return false;
@@ -231,6 +231,8 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
   }
 
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}update_in_StaticDataMap_for_CounterSpecOver2_2_"<<'\n';
   decrement_stack_info();
 #endif
   return true;
@@ -266,8 +268,26 @@ boolean modify_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *p
     uint16_t start, uint16_t stop, uint8_t flags,
     IEventReceiver* receiver)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{modify_in_StaticDataMap_for_CounterSpec1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t start= "<<start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t stop= "<<stop<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t flags= "<<(uint16_t)flags<<'\n';
+#endif
+
   if (stop < start)
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}modify_in_StaticDataMap_for_CounterSpec1_"<<'\n';
+  decrement_stack_info();
+#endif
     return false;
   }
 
@@ -275,10 +295,21 @@ boolean modify_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *p
   {
     if (iter->first > stop)
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}modify_in_StaticDataMap_for_CounterSpec2_"<<'\n';
+  decrement_stack_info();
+#endif
       return false;
     }
 
     Counter new_value = iter->second.value;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*modify_in_StaticDataMap_for_CounterSpec2"<<'\n';
+  inspect_Counter(&new_value);
+#endif
+
 ////        new_value.flags = Flags(flags);
     Flags fFlags;
     Flags_In_FlagsOver2(&fFlags, flags);
@@ -296,6 +327,11 @@ boolean modify_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *p
         receiver);
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}modify_in_StaticDataMap_for_CounterSpec3_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 

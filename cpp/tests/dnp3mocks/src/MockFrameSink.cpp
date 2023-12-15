@@ -17,7 +17,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <QApplication>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
+//#include <QApplication>
 #include "header.h"
 #include "MockFrameSink.h"
 
@@ -26,6 +30,10 @@
 
 void MockFrameSink_in_MockFrameSink(MockFrameSink *pMockFrameSink)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{MockFrameSink_in_MockFrameSink1"<<'\n';
+#endif
   LinkHeaderFields_in_LinkHeaderFieldsOver1(&(pMockFrameSink->m_last_header));
 
   pMockFrameSink->m_num_frames = 0;
@@ -39,6 +47,10 @@ void MockFrameSink_in_MockFrameSink(MockFrameSink *pMockFrameSink)
 
   setParentPointer_in_ILinkSession(&(pMockFrameSink->iILinkSession), pMockFrameSink);
   setParentPointer_in_IFrameSink(&(pMockFrameSink->iILinkSession.iIFrameSink), pMockFrameSink);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"}MockFrameSink_in_MockFrameSink_"<<'\n';
+#endif
 }
 
 boolean OnLowerLayerUp_in_MockFrameSink_override(void *pILinkSession)
@@ -112,6 +124,11 @@ boolean OnTxReady_in_MockFrameSink(MockFrameSink *pMockFrameSink)
 ////bool MockFrameSink::OnFrame(const LinkHeaderFields& header, const rseq_t& userdata)
 boolean OnFrame_in_MockFrameSink(MockFrameSink *pMockFrameSink, LinkHeaderFields* header, RSeq_for_Uint16_t* userdata)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{OnFrame_in_MockFrameSink1"<<'\n';
+  inspect_RSeq(userdata);
+#endif
   ++(pMockFrameSink->m_num_frames);
 
   pMockFrameSink->m_last_header = *header;
@@ -125,6 +142,10 @@ boolean OnFrame_in_MockFrameSink(MockFrameSink *pMockFrameSink, LinkHeaderFields
     Write_in_DataSink(&(pMockFrameSink->received), userdata);
   }
 
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"}OnFrame_in_MockFrameSink_"<<'\n';
+#endif
   return true;
 }
 

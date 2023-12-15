@@ -20,6 +20,7 @@ void inspect_Binary(Binary *b);
 void inspect_IINField(IINField *b);
 
 void inspect_Counter(Counter *b);
+void inspect_FrozenCounter(FrozenCounter *b);
 void inspect_RSeq(RSeq_for_Uint16_t *buffer);
 //void inspect_WSeq(WSeq_for_Uint16_t *buffer);
 /*

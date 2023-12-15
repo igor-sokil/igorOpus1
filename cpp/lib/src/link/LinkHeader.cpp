@@ -70,6 +70,20 @@ void ChangeFCB_in_LinkHeader(LinkHeader *pLinkHeader, boolean aFCB)
 
 uint8_t ControlByte_in_LinkHeader_static(boolean aIsMaster, boolean aFcb, boolean aFcvDfc, LinkFunction_uint8_t aFunc)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ControlByte_in_LinkHeader_static1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean aIsMaster= "<<(uint16_t)aIsMaster<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean aFcb= "<<(uint16_t)aFcb<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean aFcvDfc= "<<(uint16_t)aFcvDfc<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LinkFunction_uint8_t aFunc= "<<(uint16_t)aFunc<<std::endl;
+#endif
 ////    uint8_t ret = LinkFunctionSpec::to_type(aFunc);
   uint8_t ret = aFunc;
 
@@ -80,6 +94,13 @@ uint8_t ControlByte_in_LinkHeader_static(boolean aIsMaster, boolean aFcb, boolea
   if (aFcvDfc)
     ret |= ControlMask_MASK_FCV;
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ControlByte_in_LinkHeader_static_"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t ret= "<<(uint16_t)ret<<std::endl;
+  decrement_stack_info();
+#endif
   return ret;
 }
 
@@ -99,6 +120,7 @@ void Read_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff)
 void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff)
 {
 #ifdef  LOG_INFO
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{Write_in_LinkHeader1"<<std::endl;
@@ -106,7 +128,19 @@ void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff)
   apBuff[LinkHeaderIndex_LI_START_05] = 0x05;
   apBuff[LinkHeaderIndex_LI_START_64] = 0x64;
 
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_to "<<(uint32_t)apBuff+LinkHeaderIndex_LI_START_05<<"->"<<(uint16_t)apBuff[LinkHeaderIndex_LI_START_05]<<std::endl;
+  std::cout<<"@@@@"<<getString_stack_info();                                        
+  std::cout<<"*write_to "<<(uint32_t)apBuff+LinkHeaderIndex_LI_START_64<<"->"<<(uint16_t)apBuff[LinkHeaderIndex_LI_START_64]<<std::endl;
+#endif
+
   apBuff[LinkHeaderIndex_LI_LENGTH] = pLinkHeader->length;
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_to "<<(uint32_t)apBuff+LinkHeaderIndex_LI_LENGTH<<"->"<<(uint16_t)apBuff[LinkHeaderIndex_LI_LENGTH]<<std::endl;
+#endif
+
 ////    ser4cpp::wseq_t buffer(apBuff + LinkHeaderIndex_LI_DESTINATION, 4);
   WSeq_for_Uint16_t buffer;
   WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&buffer, apBuff + LinkHeaderIndex_LI_DESTINATION, 4);
@@ -118,6 +152,10 @@ void Write_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff)
   write_to_in_UInt16_static(&buffer, pLinkHeader->src);
 
   apBuff[LinkHeaderIndex_LI_CONTROL] = pLinkHeader->ctrl;
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*write_to "<<(uint32_t)apBuff+LinkHeaderIndex_LI_CONTROL<<"->"<<(uint16_t)apBuff[LinkHeaderIndex_LI_CONTROL]<<std::endl;
+#endif
 
 // void AddCrc_in_CRC_static(uint8_t* input, uint16_t length);
 ////    CRC::AddCrc(apBuff, LinkHeaderIndex_LI_CRC);

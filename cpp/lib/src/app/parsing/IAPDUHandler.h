@@ -145,10 +145,10 @@ typedef struct
 
   IINField (*pProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group50Var1* values);
   IINField (*pProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group50Var3* values);
-//    IINField (*pProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group51Var1* values);
-//    IINField (*pProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group51Var2* values);
-//    IINField (*pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group52Var1* values);
-//    IINField (*pProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group52Var2* values);
+  IINField (*pProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group51Var1* values);
+  IINField (*pProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group51Var2* values);
+  IINField (*pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group52Var1* values);
+  IINField (*pProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler)(void*, CountHeader* header, ICollection_for_Group52Var2* values);
 
   IINField (*pProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
   IINField (*pProcessHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler)(void*, RangeHeader* header, ICollection_Indexed_for_Binary* values);
@@ -228,10 +228,14 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler(IAPDUHandler*
 IINField ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler_override(void*, CountHeader* header, ICollection_for_Group50Var1* values);
 IINField ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group50Var3* values);
 IINField ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler_override(void*, CountHeader* header, ICollection_for_Group50Var3* values);
-//    IINField ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group51Var1* values);
-//    IINField ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group51Var2* values);
-//    IINField ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group52Var1* values);
-//    IINField ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group52Var2* values);
+IINField ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group51Var1* values);
+IINField ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler_override(void*, CountHeader* header, ICollection_for_Group51Var1* values);
+IINField ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group51Var2* values);
+IINField ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler_override(void*, CountHeader* header, ICollection_for_Group51Var2* values);
+IINField ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group52Var1* values);
+IINField ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler_override(void*, CountHeader* header, ICollection_for_Group52Var1* values);
+IINField ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(IAPDUHandler*, CountHeader* header, ICollection_for_Group52Var2* values);
+IINField ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler_override(void*, CountHeader* header, ICollection_for_Group52Var2* values);
 
 IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(IAPDUHandler*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);
 IINField ProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler_override(void*, RangeHeader* header, ICollection_Indexed_for_IINValue* values);

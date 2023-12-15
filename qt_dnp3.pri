@@ -46,6 +46,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\include\opendnp3\master\CommandPointResult.cpp \
                 cpp\lib\include\opendnp3\master\HeaderInfo.cpp \
+                cpp\lib\include\opendnp3\master\ResponseInfo.cpp \
                 \
                 cpp\lib\include\opendnp3\IResource.cpp \
                 cpp\lib\include\opendnp3\StackStatistics.cpp \
@@ -58,8 +59,13 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\OctetString.cpp \
                 cpp\lib\include\opendnp3\app\Indexed.cpp \
                 \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_for_DNPTime.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var1.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var3.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group51Var1.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group51Var2.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group52Var1.cpp \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group52Var2.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_uint16.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputDouble64.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_Indexed_for_AnalogOutputFloat32.cpp \
@@ -93,6 +99,8 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\link\LinkStatistics.cpp \
                 cpp\lib\include\opendnp3\link\ILinkListener.cpp \
                 \
+                cpp\lib\include\opendnp3\master\ISOEHandler.cpp \
+                \
                 cpp\lib\src\LayerInterfaces.cpp \
                 cpp\lib\src\SequenceNum.cpp \
                 \
@@ -114,10 +122,13 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\link\SecLinkLayerStates.cpp \
                 cpp\lib\src\link\ShiftableBuffer.cpp \
                 \
+                cpp\lib\src\master\MeasurementHandler.cpp \
+                \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\APDUParser.cpp \
                 cpp\lib\src\app\parsing\BufferedCollection.cpp \
                 cpp\lib\src\app\parsing\BitReader.cpp \
+                cpp\lib\src\app\parsing\Collections.cpp \
                 cpp\lib\src\app\parsing\CountParser.cpp \
                 cpp\lib\src\app\parsing\CountIndexParser.cpp \
                 cpp\lib\src\app\parsing\ObjectHeaderParser.cpp \
@@ -361,12 +372,14 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\TestOutstationEventResponses.cpp \
                 cpp\tests\unit\utils\TestOutstationFrozenCounters.cpp \
                 cpp\tests\unit\utils\TestOutstationDiscontiguousIndices.cpp \
+                cpp\tests\unit\utils\TestMeasurementHandler.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockEventWriteHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockLinkListener.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockAPDUHeaderHandler.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockSOEHandler.cpp \
                 \
                 cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockFrameSink.cpp \

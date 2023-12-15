@@ -107,4 +107,6 @@ uint16_t AdvanceTime_in_OutstationTestObject(OutstationTestObject *pOutstationTe
 
 boolean AdvanceToNextTimer_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
 
+uint16_t NumPendingTimers_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
+
 #endif

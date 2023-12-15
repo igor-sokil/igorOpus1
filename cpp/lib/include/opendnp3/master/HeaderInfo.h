@@ -77,9 +77,9 @@ typedef struct
 
 ////} // namespace opendnp3
 
+   void HeaderInfo_in_HeaderInfoOver1(HeaderInfo *pHeaderInfo);
    void HeaderInfo_in_HeaderInfoOver2(HeaderInfo *pHeaderInfo, GroupVariation_uint16_t gv_, QualifierCode_uint8_t qualifier_,
               TimestampQuality_uint8_t tsquality_, uint32_t headerIndex_);
-   void HeaderInfo_in_HeaderInfoOver1(HeaderInfo *pHeaderInfo);
 
 
 #endif

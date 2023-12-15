@@ -560,6 +560,12 @@ void callback2_in_LinkContext(void)
 }
 void StartResponseTimer_in_LinkContext(LinkContext *pLinkContext)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{StartResponseTimer_in_LinkContext1"<<'\n';
+#endif
 ////    this->rspTimeoutTimer = executor->start(config.Timeout.value, [self = shared_from_this()]() {
 ////        if (self->isOnline)
 ////        {
@@ -570,6 +576,12 @@ void StartResponseTimer_in_LinkContext(LinkContext *pLinkContext)
 //TimerExe4cpp Start_in_IExecutorExe4cpp(IExecutorExe4cpp *, uint32_t duration, void (*pAction)(void));
 //    TimeDuration Timeout;
   pLinkContext->rspTimeoutTimer =  Start_in_IExecutorExe4cpp(pLinkContext->executor, pLinkContext->config.lLinkConfig.Timeout.duration_value, callback2_in_LinkContext);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}StartResponseTimer_in_LinkContext_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void callback3_in_LinkContext(void);
@@ -585,6 +597,12 @@ void callback3_in_LinkContext(void)
 }
 void RestartKeepAliveTimer_in_LinkContext(LinkContext *pLinkContext)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{RestartKeepAliveTimer_in_LinkContext1"<<'\n';
+#endif
 //    TimerExe4cpp keepAliveTimer;
 //boolean cancel_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp);
 ////    this->keepAliveTimer.cancel();
@@ -609,6 +627,11 @@ void RestartKeepAliveTimer_in_LinkContext(LinkContext *pLinkContext)
 ////    });
   pPointerGlobal1 = pLinkContext;
   pLinkContext->keepAliveTimer =  Start_in_IExecutorExe4cpp(pLinkContext->executor, expiration, callback3_in_LinkContext);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}RestartKeepAliveTimer_in_LinkContext_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void CancelTimer_in_LinkContext(LinkContext *pLinkContext)

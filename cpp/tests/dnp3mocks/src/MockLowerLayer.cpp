@@ -116,12 +116,9 @@ inspect_RSeq(&(temp.payload));
 ////void MockLowerLayer::SendUp(const rseq_t& data, const Addresses& addresses)
 void SendUp_in_MockLowerLayerOver1(MockLowerLayer *pMockLowerLayer, RSeq_for_Uint16_t* data, Addresses* addresses)//// = opendnp3::Addresses());
 {
-//qDebug()<<"";
-//qDebug()<<"SendUp_in_MockLowerLayerOver1";
 ////    if (pUpperLayer)
   if(pMockLowerLayer->hHasUpperLayer.pUpperLayer)
   {
-//qDebug()<<"SendUp_in_MockLowerLayerOver2";
 //boolean OnReceive_in_IUpperLayer(IUpperLayer *, Message* message);
 //  void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
 ////        pUpperLayer->OnReceive(Message(addresses, data));

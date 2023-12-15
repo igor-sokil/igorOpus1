@@ -10,17 +10,11 @@
 #include "header.h"
 
 #include "LinkParserTest.h"
-//#include "OutstationTestObject.h"
-#include "loghandler.h"
-
-QString FormatUserData(
-    boolean aIsMaster, boolean aIsConfirmed, int aDest, int aSrc, /*const std::string& data,*/uint8_t* data, uint16_t size_data, boolean aFcb);/// = false)
+#include "DNPHelpers.h"
+#include "BufferSer4.h"
+#include "BufferHelpers.h"
 
 #define UNUSED(x) (void)(x)
-
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
 
 key_filter *pkf;
 
@@ -37,8 +31,10 @@ int main(int argc, char *argv[])
 
 //void WriteData_in_LinkParserTestOver2(LinkParserTest *pLinkParserTest, uint8_t *hex, uint16_t size_hex);////const std::string& hex)
 ////    t.WriteData("05 64 05 64 05 C0 01 00 00 04 E9 21");
-uint8_t hex[] = {0x05, 0x64, 0x05, 0x64, 0x05, 0xC0, 0x01, 0x00, 0x00, 0x04, 0xE9, 0x21};
- WriteData_in_LinkParserTestOver2(&t, hex, 12);////const std::string& hex)
+//uint8_t hex[] = {0x05, 0x64, 0x05, 0x64, 0x05, 0xC0, 0x01, 0x00, 0x00, 0x04, 0xE9, 0x21};
+// WriteData_in_LinkParserTestOver2(&t, hex, 12);////const std::string& hex)
+ std::string name1 = "05 64 05 64 05 C0 01 00 00 04 E9 21";
+ WriteData_in_LinkParserTestOver3(&t, name1);
 
 qDebug()<<"REQUIRE(t.sink.m_num_frames == 1)";
 qDebug()<<"t.sink.m_num_frames= "<<t.sink.m_num_frames;
@@ -57,7 +53,7 @@ qDebug()<<"";
 /*
 // Test that the parser is able to resync without discarding
 // Проверяем, может ли парсер выполнить повторную синхронизацию без отбрасывания
-TEST_CASE(SUITE("Resync0564"))
+TEST_CASE(SUITE("21Resync0564"))
 {
     LinkParserTest t;
     t.WriteData("05 64 05 64 05 C0 01 00 00 04 E9 21");

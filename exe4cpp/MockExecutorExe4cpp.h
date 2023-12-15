@@ -78,7 +78,7 @@ typedef struct
 typedef std::vector<MockTimer> timer_vector_t;
 
 void MockTimer_in_MockTimer(MockTimer *pMockTimer, void* source, uint32_t timeMockTimer, void (*pAction)(void));
-void cancel_in_MockTimer(MockTimer *pMockTimer);
+void cancel_in_MockTimer(ITimer *pITimer);//MockTimer *pMockTimer);
 void cancel_in_MockTimer_override(void *pITimer);
 uint32_t expires_at_in_MockTimer(MockTimer *pMockTimer);
 uint32_t expires_at_in_MockTimer_override(void *pITimer);
@@ -334,10 +334,12 @@ void post_in_MockExecutor_override(void *pIExecutorExe4cpp, void (*pAction)(void
 
 TimerExe4cpp Start_in_MockExecutorOver2(MockExecutor *pMockExecutor, uint32_t duration, void (*pAction)(void));
 
-void cancel_in_MockExecutor(MockExecutor *pMockExecutor, ITimer* timer);
+void cancel_in_MockExecutor(/*MockExecutor *pMockExecutor,*/ ITimer* timer);
 
 uint16_t advance_time_in_MockExecutor(MockExecutor *pMockExecutor, uint32_t duration);
 void add_time_in_MockExecutor(MockExecutor *pMockExecutor, uint32_t duration);
+
+uint16_t num_pending_timers_in_MockExecutor(MockExecutor *pMockExecutor);
 
 
 ////     steady_time_t get_time() override

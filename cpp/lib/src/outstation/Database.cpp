@@ -1966,6 +1966,12 @@ boolean Modify_in_Database(Database *pDatabase, FlagsType_uint8_t type, uint16_t
 ////bool Database::FreezeSelectedCounters(bool clear, EventMode mode)
 boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, EventMode_uint8_t mode)// = EventMode::Detect);
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{FreezeSelectedCounters_in_Database1"<<'\n';
+#endif
   for (auto c : pDatabase->counter)
   {
 //DNPTime Now_in_IDnpTimeSource_static(IDnpTimeSource*);
@@ -1973,6 +1979,12 @@ boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, E
 ////        FrozenCounter new_value(c.second.value.value, c.second.value.flags, time_source.Now());
     FrozenCounter new_value;
     FrozenCounter_in_FrozenCounterOver4(&new_value, c.second.value.tTypedMeasurement_for_Uint32.value, c.second.value.tTypedMeasurement_for_Uint32.mMeasurement.flags, Now_in_IDnpTimeSource_static(pDatabase->time_source));
+
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FreezeSelectedCounters_in_Database2"<<'\n';
+  inspect_FrozenCounter(&new_value);
+#endif
 
 //boolean update_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec,
 //    FrozenCounter* value,
@@ -2005,6 +2017,11 @@ boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, E
 ////    this->counter.clear_selection();
   clear_selection_in_StaticDataMap_for_CounterSpec(&(pDatabase->counter));
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FreezeSelectedCounters_in_Database_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 

@@ -92,9 +92,10 @@ boolean Update_for_Counter_in_Database(Database *pDatabase, Counter* meas, uint1
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"Update_for_Counter_in_Database1"<<'\n';
+  std::cout<<"{Update_for_Counter_in_Database1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*EventMode_uint8_t mode= "<<(uint16_t)mode<<'\n';
+  inspect_Counter(meas);
 #endif
 //boolean update_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec,
 //    Counter* value,
@@ -104,6 +105,8 @@ boolean Update_for_Counter_in_Database(Database *pDatabase, Counter* meas, uint1
 ////    return this->counter.update(meas, index, mode, event_receiver);
   boolean tmp = update_in_StaticDataMap_for_CounterSpecOver1(&(pDatabase->counter), meas, index, mode, pDatabase->event_receiver);
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Update_for_Counter_in_Database_"<<'\n';
   decrement_stack_info();
 #endif
   return tmp;

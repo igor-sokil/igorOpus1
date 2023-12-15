@@ -12,6 +12,7 @@
 void loadFun_in_TestFreezeOperation1(IUpdateHandler*);
 void loadFun_in_TestFreezeOperation1(IUpdateHandler* db)
 {
+std::cout << "{loadFun_in_TestFreezeOperation1"<<'\n';
 //boolean Modify_in_IUpdateHandler(IUpdateHandler*, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);// = 0;
 ////    t.Transaction([](IUpdateHandler& db) {
 ////        db.Modify(FlagsType::Counter, 0, 0, 0x01);
@@ -19,6 +20,7 @@ void loadFun_in_TestFreezeOperation1(IUpdateHandler* db)
 ////    });
  Modify_in_IUpdateHandler(db, FlagsType_Counter, 0, 0, 0x01);
  Modify_in_IUpdateHandler(db, FlagsType_FrozenCounter, 0, 0, 0x01);
+std::cout << "}loadFun_in_TestFreezeOperation_"<<'\n';
 }
 
 void loadFun_in_TestFreezeOperation2(IUpdateHandler*);
@@ -38,6 +40,21 @@ void TestFreezeOperation(std::string func,
                          std::string (*freezeResponse)(uint8_t v),
                          boolean clear)
 {
+std::cout << "{---------1"<<'\n';
+////    OutstationConfig config;
+////    auto database = configure::by_count_of::counter(1, true);
+////    database.frozen_counter[0].svariation = StaticFrozenCounterVariation::Group21Var5;
+////    OutstationTestObject t(config, database);
+////    t.Transaction([](IUpdateHandler& db) {
+////        db.Modify(FlagsType::Counter, 0, 0, 0x01);
+////        db.Modify(FlagsType::FrozenCounter, 0, 0, 0x01);
+////    });
+////    t.LowerLayerUp();
+////    // Freeze all counters
+////    t.SendToOutstation("C0 " + func + " 14 00 06");
+////    REQUIRE(t.lower->PopWriteAsHex() == freezeResponse(0));
+////    t.OnTxReady();
+
 ////    OutstationConfig config;
     OutstationConfig config;
     OutstationConfig_in_OutstationConfig(&config);
@@ -58,24 +75,36 @@ void TestFreezeOperation(std::string func,
 ////        db.Modify(FlagsType::FrozenCounter, 0, 0, 0x01);
 ////    });
 
+    Transaction_in_OutstationTestObject(&t, loadFun_in_TestFreezeOperation1);//void (*apply)(IUpdateHandler*));
+
 ////    t.LowerLayerUp();
     LowerLayerUp_in_OutstationTestObject(&t);
-
-    Transaction_in_OutstationTestObject(&t, loadFun_in_TestFreezeOperation1);//void (*apply)(IUpdateHandler*));
 
     // Freeze all counters
 ////    t.SendToOutstation("C0 " + func + " 14 00 06");
     std::string request = "C0 " + func + " 14 00 06";
+    std::string response= freezeResponse(0);
+
     SendToOutstation_in_OutstationTestObject(&t, request);  
 
 ////    REQUIRE(t.lower->PopWriteAsHex() == freezeResponse(0));
     std::string temp = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+std::cout << "}---------1"<<'\n';
+
+    std::cout << "REQUIRE(t.lower->PopWriteAsHex() == freezeResponse(0))"<<'\n';
     std::cout << "request= " << request<<'\n';
-    std::cout << "response= " << freezeResponse(0)<<'\n';
+    std::cout << "response= " <<response<<'\n';
     std::cout << "temp= " << temp<<'\n';
 
 ////    t.OnTxReady();
     OnTxReady_in_OutstationTestObject(&t);
+
+std::cout << "{---------2"<<'\n';
+////    // Read all frozen counters
+////    t.SendToOutstation("C1 01 15 00 06");
+////    REQUIRE(t.lower->PopWriteAsHex()
+////            == "C1 81 80 00 15 05 00 00 00 01 00 00 00 00 00 00 00 00 00 00"); // Frozen value at 0
+////    t.OnTxReady();
 
     // Read all frozen counters
 ////    t.SendToOutstation("C1 01 15 00 06");
@@ -85,12 +114,23 @@ void TestFreezeOperation(std::string func,
 ////    REQUIRE(t.lower->PopWriteAsHex()
 ////            == "C1 81 80 00 15 05 00 00 00 01 00 00 00 00 00 00 00 00 00 00"); // Frozen value at 0
     std::string temp2 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+std::cout << "}---------2"<<'\n';
+
     std::cout << "request2= " << request2<<'\n';
     std::cout << "REQUIRE(t.lower->PopWriteAsHex()== 'C1 81 80 00 15 05 00 00 00 01 00 00 00 00 00 00 00 00 00 00'"<<'\n';
     std::cout << "temp2= " << temp2<<'\n';
 
 ////    t.OnTxReady();
     OnTxReady_in_OutstationTestObject(&t);
+
+std::cout << "{---------3"<<'\n';
+////    // Update the counters
+////    t.Transaction([=](IUpdateHandler& db) { db.Update(Counter(counterValue), 0); });
+////    // Read all frozen counters
+////    t.SendToOutstation("C2 01 15 00 06");
+////    REQUIRE(t.lower->PopWriteAsHex()
+////            == "C2 81 80 00 15 05 00 00 00 01 00 00 00 00 00 00 00 00 00 00"); // Frozen value still at 0
+////    t.OnTxReady();
 
     // Update the counters
 ////    t.Transaction([=](IUpdateHandler& db) { db.Update(Counter(counterValue), 0); });
@@ -104,12 +144,22 @@ void TestFreezeOperation(std::string func,
 ////    REQUIRE(t.lower->PopWriteAsHex()
 ////            == "C2 81 80 00 15 05 00 00 00 01 00 00 00 00 00 00 00 00 00 00"); // Frozen value still at 0
     std::string temp3 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+std::cout << "}---------3"<<'\n';
+
     std::cout << "request3= " << request3<<'\n';
     std::cout << "REQUIRE(t.lower->PopWriteAsHex()== 'C2 81 80 00 15 05 00 00 00 01 00 00 00 00 00 00 00 00 00 00'"<<'\n';
     std::cout << "temp3= " << temp3<<'\n';
 
 ////    t.OnTxReady();
     OnTxReady_in_OutstationTestObject(&t);
+
+std::cout << "{---------4"<<'\n';
+////    // Change time of application
+////    t.application->SetTime(freezeTimestamp);
+////    // Freeze all counters
+////    t.SendToOutstation("C3 " + func + " 14 00 06");
+////    REQUIRE(t.lower->PopWriteAsHex() == freezeResponse(3));
+////    t.OnTxReady();
 
     // Change time of application
 ////const DNPTime freezeTimestamp(240607800000, TimestampQuality::SYNCHRONIZED);
@@ -122,16 +172,27 @@ void TestFreezeOperation(std::string func,
     // Freeze all counters
 ////    t.SendToOutstation("C3 " + func + " 14 00 06");
     std::string request4 = "C3 " + func + " 14 00 06";
-    SendToOutstation_in_OutstationTestObject(&t, request);  
+    SendToOutstation_in_OutstationTestObject(&t, request4);  
+
+    std::string response4= freezeResponse(3);
 
 ////    REQUIRE(t.lower->PopWriteAsHex() == freezeResponse(3));
     std::string temp4 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+std::cout << "}---------4"<<'\n';
+
     std::cout << "request4= " << request4<<'\n';
-    std::cout << "response= " << freezeResponse(3)<<'\n';
+    std::cout << "response4= " << response4<<'\n';
     std::cout << "temp4= " << temp4<<'\n';
 
 ////    t.OnTxReady();
     OnTxReady_in_OutstationTestObject(&t);
+
+std::cout << "{---------5"<<'\n';
+////    // Read all frozen counters
+////    t.SendToOutstation("C4 01 15 00 06");
+////    REQUIRE(t.lower->PopWriteAsHex()
+////            == "C4 81 80 00 15 05 00 00 00 01 29 00 00 00 " + freezeTimestampHex); // Frozen value now at 41
+////    t.OnTxReady();
 
     // Read all frozen counters
 ////    t.SendToOutstation("C4 01 15 00 06");
@@ -141,24 +202,37 @@ void TestFreezeOperation(std::string func,
 ////    REQUIRE(t.lower->PopWriteAsHex()
 ////            == "C4 81 80 00 15 05 00 00 00 01 29 00 00 00 " + freezeTimestampHex); // Frozen value now at 41
     std::string temp5 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+std::cout << "}---------5"<<'\n';
+
     std::cout << "request5= " << request5<<'\n';
     std::cout << "REQUIRE(t.lower->PopWriteAsHex()== 'C4 81 80 00 15 05 00 00 00 01 29 00 00 00 C0 AA 57 05 38 00'"<<'\n';
-    std::cout << "temp3= " << temp5<<'\n';
+    std::cout << "temp5= " << temp5<<'\n';
 
 ////    t.OnTxReady();
     OnTxReady_in_OutstationTestObject(&t);
+
+std::cout << "{---------6"<<'\n';
+////    std::string expectedCounterValue = clear ? "00" : counterValueHex;
+////    // Read all counters
+////    t.SendToOutstation("C5 01 14 00 06");
+////    REQUIRE(t.lower->PopWriteAsHex()
+////            == "C5 81 80 00 14 01 00 00 00 01 " + expectedCounterValue
+////                + " 00 00 00"); // Check if counter value is reset (if necessary)
+////    t.OnTxReady();
 
     std::string expectedCounterValue = clear ? "00" : "29";////counterValueHex;
 
     // Read all counters
 ////    t.SendToOutstation("C5 01 14 00 06");
-    std::string request6 = "C5 01 15 00 06";
+    std::string request6 = "C5 01 14 00 06";
     SendToOutstation_in_OutstationTestObject(&t, request6);  
 
 ////    REQUIRE(t.lower->PopWriteAsHex()
 ////            == "C5 81 80 00 14 01 00 00 00 01 " + expectedCounterValue
 ////                + " 00 00 00"); // Check if counter value is reset (if necessary)
     std::string temp6 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+std::cout << "}---------6"<<'\n';
+
     std::cout << "request6= " << request6<<'\n';
     std::cout << "REQUIRE(t.lower->PopWriteAsHex()== 'C5 81 80 00 14 01 00 00 00 01 + expectedCounterValue + 00 00 00'"<<'\n';
     std::cout << "expectedCounterValue= " << expectedCounterValue<<'\n';
@@ -166,4 +240,5 @@ void TestFreezeOperation(std::string func,
 
 ////    t.OnTxReady();
     OnTxReady_in_OutstationTestObject(&t);
+
 }

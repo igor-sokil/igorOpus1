@@ -28,6 +28,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "Group21.h"
 
@@ -264,6 +268,19 @@ boolean Read_in_Group21Var5_static(RSeq_for_Uint16_t* buffer, Group21Var5* outpu
 ////}
 boolean Write_in_Group21Var5_static(Group21Var5* arg, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"Write_in_Group21Var5_static"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*arg->flags= "<<(uint32_t)arg->flags<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*arg->value= "<<(uint32_t)arg->value<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*(arg->timeDNPTime).value= "<<(uint32_t)(arg->timeDNPTime).value<<'\n';
+  decrement_stack_info();
+#endif
   return write_to_in_UInt8_static(buffer, arg->flags) &&
          write_to_in_UInt32_static(buffer, arg->value) &&
          write_to_in_UInt48_static(buffer, (arg->timeDNPTime).value);

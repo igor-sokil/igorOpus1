@@ -23,13 +23,12 @@
 /////#include "gen/objects/Group41.h"
 
 ////#include <ser4cpp/serialization/LittleEndian.h>
-#include <QApplication>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "FreezeRequestHandler.h"
-
-#include "Group12.h"
-#include "Group41.h"
-
 
 ////namespace opendnp3
 ////{
@@ -41,10 +40,10 @@ void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeR
 
   pFreezeRequestHandler->clear = clear;
   pFreezeRequestHandler->database = database;
-  /*
-   (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_AllObjectsHeader_in_IAPDUHandler = ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override;
-   (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_RangeHeader_in_IAPDUHandler = ProcessHeader_RangeHeader_in_FreezeRequestHandler_override;
-  */
+  
+  (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_AllObjectsHeader_in_IAPDUHandler = ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override;
+  (pFreezeRequestHandler->iIAPDUHandler).pProcessHeader_RangeHeader_in_IAPDUHandler = ProcessHeader_RangeHeader_in_FreezeRequestHandler_override;
+  
   (pFreezeRequestHandler->iIAPDUHandler).iIWhiteList.pIsAllowed_in_IWhiteList = IsAllowed_in_FreezeRequestHandler_override;
 
   setParentPointer_in_IWhiteList(&((pFreezeRequestHandler->iIAPDUHandler).iIWhiteList), pFreezeRequestHandler);
@@ -70,32 +69,57 @@ boolean IsAllowed_in_FreezeRequestHandler_override(void* v, uint32_t headerCount
     return false;
   }
 }
-/*
+
 ////IINField FreezeRequestHandler::ProcessHeader(const AllObjectsHeader& record)
-    IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *pIAPDUHandler, AllObjectsHeader* record)
+IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *pIAPDUHandler, AllObjectsHeader* record)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override1"<<'\n';
+#endif
+
   FreezeRequestHandler* parent = (FreezeRequestHandler*) getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 //    IINField SelectAll_in_Database(Database *pDatabase, GroupVariation_uint16_t gv);
 ////    this->database.SelectAll(record.enumeration);
     SelectAll_in_Database(parent->database, record->hHeaderRecord.gGroupVariationRecord.enumeration);
 ////    this->database.FreezeSelectedCounters(clear);
     FreezeSelectedCounters_in_Database(parent->database, parent->clear, EventMode_Detect);// = EventMode::Detect);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override_"<<'\n';
+  decrement_stack_info();
+#endif
 ///    return IINField::Empty();
    return Empty_in_IINField_static();
 }
-*/
-/*
+
 ////IINField FreezeRequestHandler::ProcessHeader(const RangeHeader& header)
-    IINField ProcessHeader_RangeHeader_in_FreezeRequestHandler_override(void *pIAPDUHandler, RangeHeader* header)
+IINField ProcessHeader_RangeHeader_in_FreezeRequestHandler_override(void *pIAPDUHandler, RangeHeader* header)
 {
+#ifdef  LOG_INFO
+  std::cout<<""<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessHeader_RangeHeader_in_FreezeRequestHandler_override1"<<'\n';
+#endif
+
   FreezeRequestHandler* parent = (FreezeRequestHandler*) getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
 //    IINField SelectRange_in_Database(Database *pDatabase, GroupVariation_uint16_t gv, Range* range);
 ////    this->database.SelectRange(header.enumeration, header.range);
-    SelectRange_in_Database(parent->database, header->hHeaderRecord.gGroupVariationRecord.enumeration, &(header->range));
+  SelectRange_in_Database(parent->database, header->hHeaderRecord.gGroupVariationRecord.enumeration, &(header->range));
 ////    this->database.FreezeSelectedCounters(clear);
     FreezeSelectedCounters_in_Database(parent->database, parent->clear, EventMode_Detect);// = EventMode::Detect);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_RangeHeader_in_FreezeRequestHandler_override_"<<'\n';
+  decrement_stack_info();
+#endif
 ////    return IINField::Empty();
    return Empty_in_IINField_static();
 }
-*/
+
 ////} // namespace opendnp3

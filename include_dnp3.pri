@@ -16,6 +16,7 @@ INCLUDEPATH  += cpp\lib\src
 INCLUDEPATH  += cpp\lib\src\app
 INCLUDEPATH  += cpp\lib\src\app\parsing
 INCLUDEPATH  += cpp\lib\src\link
+INCLUDEPATH  += cpp\lib\src\master
 INCLUDEPATH  += cpp\lib\src\util
 
 INCLUDEPATH  += cpp\lib\src\outstation

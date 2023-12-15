@@ -20,8 +20,13 @@
 #ifndef OPENDNP3_ICOLLECTION_H
 #define OPENDNP3_ICOLLECTION_H
 
+#include "ICollection_for_DNPTime.h"
 #include "ICollection_for_Group50Var1.h"
 #include "ICollection_for_Group50Var3.h"
+#include "ICollection_for_Group51Var1.h"
+#include "ICollection_for_Group51Var2.h"
+#include "ICollection_for_Group52Var1.h"
+#include "ICollection_for_Group52Var2.h"
 #include "ICollection_for_uint16.h"
 #include "ICollection_Indexed_for_AnalogOutputDouble64.h"
 #include "ICollection_Indexed_for_AnalogOutputFloat32.h"

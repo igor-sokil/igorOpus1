@@ -43,8 +43,7 @@ void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_
   increment_stack_info();
   std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<"RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver2_1"<<'\n';
 #endif
   pRangeWriteIterator_for_UInt8_FrozenCounter->start = start_;
   pRangeWriteIterator_for_UInt8_FrozenCounter->serializer = *serializer;
@@ -62,6 +61,11 @@ void RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_
 //        pPosition->advance(2 * IndexType::size);
     advance_in_WSeq_for_Uint16_t(pRangeWriteIterator_for_UInt8_FrozenCounter->pPosition, 2 * size_in_UInt8);
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}RangeWriteIterator_for_UInt8_FrozenCounter_in_RangeWriteIterator_for_UInt8_FrozenCounterOver2__"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////    ~RangeWriteIterator()
@@ -86,6 +90,13 @@ void RangeWriteIterator_for_UInt8_FrozenCounter_destr_RangeWriteIterator_for_UIn
 boolean Write_in_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_for_UInt8_FrozenCounter *pRangeWriteIterator_for_UInt8_FrozenCounter,
     FrozenCounter* value)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{Write_in_RangeWriteIterator_for_UInt8_FrozenCounter1"<<'\n';
+  inspect_FrozenCounter(value);
+#endif
 //    if (isValid && (pPosition->length() >= serializer.get_size()) && (count <= IndexType::max_value))
   if(pRangeWriteIterator_for_UInt8_FrozenCounter->isValid &&
       (length_in_HasLength_for_Uint16_t(&(pRangeWriteIterator_for_UInt8_FrozenCounter->pPosition->hHasLength)) >=
@@ -95,10 +106,21 @@ boolean Write_in_RangeWriteIterator_for_UInt8_FrozenCounter(RangeWriteIterator_f
 //        serializer.write(value, *pPosition);
     write_in_Serializer_for_FrozenCounter(&(pRangeWriteIterator_for_UInt8_FrozenCounter->serializer), value, pRangeWriteIterator_for_UInt8_FrozenCounter->pPosition);
     ++(pRangeWriteIterator_for_UInt8_FrozenCounter->count);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_RangeWriteIterator_for_UInt8_FrozenCounter1_"<<'\n';
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_RangeWriteIterator_for_UInt8_FrozenCounter2_"<<'\n';
+  decrement_stack_info();
+#endif
     return false;
   }
 }

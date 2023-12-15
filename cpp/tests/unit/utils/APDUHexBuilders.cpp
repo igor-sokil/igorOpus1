@@ -96,14 +96,18 @@ std::string ClassPoll_in_APDUHexBuilders(uint8_t seq, PointClass_uint8_t pc)
 {
 #ifdef  LOG_INFO
   std::cout<<'\n';
-  std::cout<<"ClassPoll_in_APDUHexBuilders1"<<'\n';
+  std::cout<<"{ClassPoll_in_APDUHexBuilders1"<<'\n';
   std::cout<<"*uint8_t seq= "<<(uint16_t)seq<<'\n';
   std::cout<<"*PointClass_uint8_t pc= "<<(uint16_t)pc<<'\n';
 #endif
 //void ClassField_in_ClassFieldOver2(ClassField *pClassField, PointClass_uint8_t pc);
   ClassField cClassField;
   ClassField_in_ClassFieldOver2(&cClassField, pc);
-  return ClassTask_in_APDUHexBuilders(FunctionCode_READ, seq, &cClassField);
+  std::string tmp = ClassTask_in_APDUHexBuilders(FunctionCode_READ, seq, &cClassField);
+#ifdef  LOG_INFO
+  std::cout<<"}ClassPoll_in_APDUHexBuilders_"<<'\n';
+#endif
+  return tmp;
 }
 
 std::string EventPoll_in_APDUHexBuilders(uint8_t seq, ClassField field)
