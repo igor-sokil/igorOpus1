@@ -10,6 +10,8 @@ void *pPointerGlobal1_in_MockApduHeaderHandler;
 
 void MockApduHeaderHandler_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeaderHandler)
 {
+   std::cout<<'\n';
+   std::cout<<"MockApduHeaderHandler_in_MockApduHeaderHandler1"<<'\n';
   IAPDUHandler_in_IAPDUHandler(&(pMockApduHeaderHandler->iIAPDUHandler));
 
   pMockApduHeaderHandler->iIAPDUHandler.iIWhiteList.pIsAllowed_in_IWhiteList = IsAllowed_in_MockApduHeaderHandler_override;
@@ -278,6 +280,8 @@ boolean IsAllowed_in_MockApduHeaderHandler(MockApduHeaderHandler *pMockApduHeade
 
 void OnHeaderResult_in_MockApduHeaderHandler_override(void *pIAPDUHandler, HeaderRecord* record, IINField* result)
 {
+    std::cout<<'\n';
+    std::cout<<"OnHeaderResult_in_MockApduHeaderHandler_override1"<<'\n';
   MockApduHeaderHandler* parent = (MockApduHeaderHandler*)getParentPointer_in_IAPDUHandler((IAPDUHandler*)pIAPDUHandler);
   OnHeaderResult_in_MockApduHeaderHandler(parent, record, result);
 }

@@ -20,18 +20,32 @@
 #ifndef OPENDNP3_ICOMMAND_COLLECTION_H
 #define OPENDNP3_ICOMMAND_COLLECTION_H
 
-#include <cstdint>
+////#include <cstdint>
 
-namespace opendnp3
-{
+////namespace opendnp3
+/////{
 
 /// A collection type for command to which the user can add by type and index
-template<class T> class ICommandCollection
+/// Тип коллекции для команды, в которую пользователь может добавлять по типу и индексу
+////template<class T> class ICommandCollection
+//------------------------AnalogOutputInt16-------------------------
+typedef struct
 {
-public:
-    virtual ICommandCollection& Add(const T& command, uint16_t index) = 0;
-};
+////public:
+  void* (*pAdd_in_ICommandCollection_for_AnalogOutputInt16)(void *, AnalogOutputInt16* command, uint16_t index);// = 0;
 
-} // namespace opendnp3
+  void* pParentPointer_in_ICommandCollection_for_AnalogOutputInt16;
+
+} ICommandCollection_for_AnalogOutputInt16;
+
+void* Add_in_ICommandCollection_for_AnalogOutputInt16(ICommandCollection_for_AnalogOutputInt16* pICommandCollection_for_AnalogOutputInt16,
+    AnalogOutputInt16* command, uint16_t index);
+
+void* getParentPointer_in_ICommandCollection_for_AnalogOutputInt16(ICommandCollection_for_AnalogOutputInt16*);
+void  setParentPointer_in_ICommandCollection_for_AnalogOutputInt16(ICommandCollection_for_AnalogOutputInt16*, void*);
+//------------------------AnalogOutputInt16-------------------------
+
+
+////} // namespace opendnp3
 
 #endif

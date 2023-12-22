@@ -18,7 +18,6 @@
  * limitations under the License.
  */
 ////#include "opendnp3/app/IINField.h"
-//#include <QtWidgets>
 #include "header.h"
 #include "IINField.h"
 
@@ -220,8 +219,25 @@ void IINField_in_IINFieldOver1(IINField *pIINField)
 
 IINField operatorOREQ_in_IINField(IINField *pIINField, IINField* aIIN)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{operatorOREQ_in_IINField1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINField *pIINField= "<<(uint32_t)pIINField<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*IINField *aIIN= "<<(uint32_t)aIIN<<'\n';
+#endif
+
   pIINField->MSB |= aIIN->MSB;
   pIINField->LSB |= aIIN->LSB;
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}operatorOREQ_in_IINField_"<<'\n';
+  decrement_stack_info();
+#endif
   return *pIINField;
 }
 

@@ -35,57 +35,81 @@
 #include "IndexQualifierMode.h"
 #include "CommandPointResult.h"
 #include "HeaderInfo.h"
+#include "CommandState.h"
+#include "QualifierCode.h"
+#include "HeaderWriter.h"
 
+////namespace opendnp3
+////{
 
-namespace opendnp3
-{
-
-class HeaderWriter;
-
-struct CommandState
-{
-    CommandState(uint16_t index_) : state(CommandPointState::INIT), status(CommandStatus::UNDEFINED), index(index_) {}
-
-    CommandPointState state;
-    CommandStatus status;
-    uint16_t index;
-};
+////class HeaderWriter;
 
 /**
  * Represents an object header of command objects (CROB or AO)
+* Представляет заголовок объекта командных объектов (CROB или AO).
  */
-class ICommandHeader : public ICollection<CommandState>
+////class ICommandHeader : public ICollection<CommandState>
+typedef struct
 {
-public:
-    virtual ~ICommandHeader() {}
 
-    /// Write all of the headers to an ASDU
-    virtual bool Write(HeaderWriter&, IndexQualifierMode mode) = 0;
+  ICollection_for_CommandState iICollection_for_CommandState;
+////public:
+////    virtual ~ICommandHeader() {}
 
-    /// Ask if all of the individual commands have been selected
-    virtual bool AreAllSelected() const = 0;
+  /// Write all of the headers to an ASDU
+/// Записываем все заголовки в ASDU
+  boolean (*pWrite_in_ICommandHeader)(void *, HeaderWriter*, IndexQualifierMode_uint8_t mode);// = 0;
 
-    // --- each overriden classs will only override one of these ---
+  /// Ask if all of the individual commands have been selected
+/// Спросим, все ли отдельные команды выбраны
+  boolean (*pAreAllSelected_in_ICommandHeader)(void *);// const = 0;
 
-    virtual void ApplySelectResponse(QualifierCode code, const ICollection<Indexed<ControlRelayOutputBlock>>& commands)
-    {
-    }
-    virtual void ApplySelectResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputInt16>>& commands) {}
-    virtual void ApplySelectResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputInt32>>& commands) {}
-    virtual void ApplySelectResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputFloat32>>& commands) {}
-    virtual void ApplySelectResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputDouble64>>& commands) {}
+  // --- each overriden classs will only override one of these ---
+// --- каждый переопределенный класс переопределяет только один из них ---
 
-    // --- each overriden classs will only override one of these ---
+  void (*pApplySelectResponse_Indexed_for_ControlRelayOutputBlock_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_ControlRelayOutputBlock* commands);
+////    {
+////    }
+  void (*pApplySelectResponse_Indexed_for_AnalogOutputInt16_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands);// {}
+  void (*pApplySelectResponse_Indexed_for_AnalogOutputInt32_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt32* commands);// {}
+  void (*pApplySelectResponse_Indexed_for_AnalogOutputFloat32_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputFloat32* commands);// {}
+////    virtual void ApplySelectResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputDouble64>>& commands) {}
 
-    virtual void ApplyOperateResponse(QualifierCode code, const ICollection<Indexed<ControlRelayOutputBlock>>& commands)
-    {
-    }
-    virtual void ApplyOperateResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputInt16>>& commands) {}
-    virtual void ApplyOperateResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputInt32>>& commands) {}
-    virtual void ApplyOperateResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputFloat32>>& commands) {}
-    virtual void ApplyOperateResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputDouble64>>& commands) {}
-};
+  // --- each overriden classs will only override one of these ---
+// --- каждый переопределенный класс переопределяет только один из них ---
+  void (*pApplyOperateResponse_Indexed_for_ControlRelayOutputBlock_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_ControlRelayOutputBlock* commands);
+////    {
+////    }
+  void (*pApplyOperateResponse_Indexed_for_for_AnalogOutputInt16_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands);// {}
+  void (*pApplyOperateResponse_Indexed_for_AnalogOutputInt32_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt32* commands);// {}
+  void (*pApplyOperateResponse_Indexed_for_AnalogOutputFloat32_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputFloat32* commands);// {}
+////    virtual void ApplyOperateResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputDouble64>>& commands) {}
 
-} // namespace opendnp3
+  void* pParentPointer_in_ICommandHeader;
+} ICommandHeader;
+
+boolean Write_in_ICommandHeader(ICommandHeader *, HeaderWriter*, IndexQualifierMode_uint8_t mode);
+
+boolean AreAllSelected_in_ICommandHeader(ICommandHeader *);
+
+void ApplySelectResponse_Indexed_for_ControlRelayOutputBlock_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_ControlRelayOutputBlock* commands);
+////    {
+////    }
+void ApplySelectResponse_Indexed_for_AnalogOutputInt16_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands);
+void ApplySelectResponse_Indexed_for_AnalogOutputInt32_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt32* commands);
+void ApplySelectResponse_Indexed_for_AnalogOutputFloat32_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputFloat32* commands);
+
+void ApplyOperateResponse_Indexed_for_ControlRelayOutputBlock_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_ControlRelayOutputBlock* commands);
+////    {
+////    }
+void ApplyOperateResponse_Indexed_for_for_AnalogOutputInt16_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands);
+void ApplyOperateResponse_Indexed_for_AnalogOutputInt32_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt32* commands);
+void ApplyOperateResponse_Indexed_for_AnalogOutputFloat32_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputFloat32* commands);
+
+void* getParentPointer_in_ICommandHeader(ICommandHeader*);
+void  setParentPointer_in_ICommandHeader(ICommandHeader*, void*);
+
+
+////} // namespace opendnp3
 
 #endif

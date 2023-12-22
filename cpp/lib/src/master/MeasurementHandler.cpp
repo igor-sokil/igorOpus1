@@ -43,6 +43,7 @@ ParseResult_uint8_t ProcessMeasurements_in_MeasurementHandler_static(ResponseInf
   MeasurementHandler handler;
   MeasurementHandler_in_MeasurementHandler(&handler, info, pHandler);
 
+  expectsContents = true;
 //ParseResult_uint8_t Parse_in_APDUParser_static(RSeq_for_Uint16_t *buffer, IAPDUHandler *handler);
 ////    return APDUParser::Parse(objects, handler, &logger);
   return Parse_in_APDUParser_static(objects, &(handler.iIAPDUHandler));
@@ -58,6 +59,8 @@ ParseResult_uint8_t ProcessMeasurements_in_MeasurementHandler_static(ResponseInf
 ////}
 void MeasurementHandler_in_MeasurementHandler(MeasurementHandler *pMeasurementHandler, ResponseInfo info, ISOEHandler* pSOEHandler)
 {
+  IAPDUHandler_in_IAPDUHandler(&(pMeasurementHandler->iIAPDUHandler));
+
   pMeasurementHandler->info = info;
   pMeasurementHandler->txInitiated = false;
   pMeasurementHandler->pSOEHandler = pSOEHandler;
@@ -238,30 +241,7 @@ IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_Measuremen
   MeasurementHandler *parent = (MeasurementHandler*) getParentPointer_in_IAPDUHandler((IAPDUHandler*) pIAPDUHandler);
   return ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_MeasurementHandler(parent, header, values);
 }
-/*
-   IINField ProcessHeader_CountHeader_Indexed_for_Group51Var1_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, CountHeader* header, ICollection_for_Group51Var1* values);
-   IINField ProcessHeader_CountHeader_Indexed_for_Group51Var2_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, CountHeader* header, ICollection_for_Group51Var2* values);
 
-   IINField ProcessHeader_RangeHeader_Indexed_for_Binary_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_Binary* values);
-   IINField ProcessHeader_RangeHeader_Indexed_for_DoubleBitBinary_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_DoubleBitBinary * values);
-   IINField ProcessHeader_RangeHeader_Indexed_for_BinaryOutputStatus_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_BinaryOutputStatus * values);
-   IINField ProcessHeader_RangeHeader_Indexed_for_Counter_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_Counter * values);
-   IINField ProcessHeader_RangeHeader_Indexed_for_FrozenCounter_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_FrozenCounter * values);
-   IINField ProcessHeader_RangeHeader_Indexed_for_Analog_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_Analog * values);
-   IINField ProcessHeader_RangeHeader_Indexed_for_AnalogOutputStatus_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_AnalogOutputStatus * values);
-   IINField ProcessHeader_RangeHeader_Indexed_for_OctetString_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_OctetString * values);
-   IINField ProcessHeader_RangeHeader_Indexed_for_TimeAndInterval_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, RangeHeader* header, ICollection_Indexed_for_TimeAndInterval * values);
-
-   IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_Binary * values);
-   IINField ProcessHeader_PrefixHeader_Indexed_for_DoubleBitBinary_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_DoubleBitBinary * values);
-   IINField ProcessHeader_PrefixHeader_Indexed_for_BinaryOutputStatus_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryOutputStatus * values);
-   IINField ProcessHeader_PrefixHeader_Indexed_for_Counter_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_Counter * values);
-   IINField ProcessHeader_PrefixHeader_Indexed_for_FrozenCounter_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_FrozenCounter * values);
-   IINField ProcessHeader_PrefixHeader_Indexed_for_Analog_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_Analog * values);
-   IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogOutputStatus_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputStatus * values);
-   IINField ProcessHeader_PrefixHeader_Indexed_for_OctetString_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_OctetString * values);
-   IINField ProcessHeader_PrefixHeader_Indexed_for_TimeAndInterval_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_TimeAndInterval * values);
-*/
 ////MeasurementHandler::~MeasurementHandler()
 ////{
 ////    if (txInitiated && pSOEHandler)
@@ -300,6 +280,12 @@ DNPTime transform_for_Group50Var1_in_MeasurementHandler(Group50Var1* input)
 ////IINField MeasurementHandler::ProcessHeader(const CountHeader& header, const ICollection<Group50Var1>& values)
 IINField ProcessHeader_CountHeader_Indexed_for_Group50Var1_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, CountHeader* header, ICollection_for_Group50Var1* values)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessHeader_CountHeader_Indexed_for_Group50Var1_in_MeasurementHandler1"<<'\n';
+#endif
 ////    this->CheckForTxStart();
   CheckForTxStart_in_MeasurementHandler(pMeasurementHandler);
 
@@ -325,6 +311,12 @@ IINField ProcessHeader_CountHeader_Indexed_for_Group50Var1_in_MeasurementHandler
 ////    return IINField();
   IINField iIINField;
   IINField_in_IINFieldOver1(&iIINField);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_CountHeader_Indexed_for_Group50Var1_in_MeasurementHandler_"<<'\n';
+  decrement_stack_info();
+#endif
   return iIINField;
 }
 
@@ -449,16 +441,35 @@ IINField ProcessHeader_RangeHeader_Indexed_for_TimeAndInterval_in_MeasurementHan
 ////IINField MeasurementHandler::ProcessHeader(const PrefixHeader& header, const ICollection<Indexed<Binary>>& values)
 IINField ProcessHeader_PrefixHeader_Indexed_for_Binary_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, PrefixHeader* header, ICollection_Indexed_for_Binary * values)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessHeader_PrefixHeader_Indexed_for_Binary_in_MeasurementHandler1"<<'\n';
+#endif
   if (header->hHeaderRecord.gGroupVariationRecord.enumeration == GroupVariation_Group2Var3)
   {
 //IINField ProcessWithCTO_for_Binary_in_MeasurementHandler(MeasurementHandler *pMeasurementHandler, HeaderRecord* record, ICollection_Indexed_for_Binary* values)
 ////        return this->ProcessWithCTO(header, values);
-    return ProcessWithCTO_for_Binary_in_MeasurementHandler(pMeasurementHandler, &(header->hHeaderRecord), values);
+    IINField tmp = ProcessWithCTO_for_Binary_in_MeasurementHandler(pMeasurementHandler, &(header->hHeaderRecord), values);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_PrefixHeader_Indexed_for_Binary_in_MeasurementHandler1_"<<'\n';
+  decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    return this->LoadValues(header, ModeFromType(header.enumeration), values);
-  return LoadValues_for_Binary_in_MeasurementHandler(pMeasurementHandler, &(header->hHeaderRecord),
+  IINField tmp = LoadValues_for_Binary_in_MeasurementHandler(pMeasurementHandler, &(header->hHeaderRecord),
          ModeFromType_in_MeasurementHandler_static(header->hHeaderRecord.gGroupVariationRecord.enumeration), values);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_PrefixHeader_Indexed_for_Binary_in_MeasurementHandler2_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////IINField MeasurementHandler::ProcessHeader(const PrefixHeader& header,
@@ -548,12 +559,19 @@ IINField ProcessHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_Measuremen
 
 ////} // namespace opendnp3
 
+static void *pPointerGlobal1_in_MeasurementHandler;
 ////    template<class T>
 ////    IINField LoadValues(const HeaderRecord& record, TimestampQuality tsquality, const ICollection<Indexed<T>>& values)
 //--------------------------------Binary----------------------------
 IINField LoadValues_for_Binary_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler,
     HeaderRecord* record, TimestampQuality_uint8_t tsquality, ICollection_Indexed_for_Binary* values)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{LoadValues_for_Binary_in_MeasurementHandler1"<<'\n';
+#endif
 ////        this->CheckForTxStart();
   CheckForTxStart_in_MeasurementHandler(pMeasurementHandler);
 
@@ -570,6 +588,12 @@ IINField LoadValues_for_Binary_in_MeasurementHandler(MeasurementHandler* pMeasur
 ////        return IINField();
   IINField iIINField;
   IINField_in_IINFieldOver1(&iIINField);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadValues_for_Binary_in_MeasurementHandler_"<<'\n';
+  decrement_stack_info();
+#endif
   return iIINField;
 }
 //--------------------------------Binary----------------------------
@@ -807,7 +831,20 @@ IINField LoadValues_for_TimeAndInterval_in_MeasurementHandler(MeasurementHandler
 Indexed_for_Binary transform_Indexed_for_Binary_in_MeasurementHandler(Indexed_for_Binary *input);
 Indexed_for_Binary transform_Indexed_for_Binary_in_MeasurementHandler(Indexed_for_Binary *input)
 {
-  DNPTime* cto = (DNPTime*)pPointerGlobal1;
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{transform_Indexed_for_Binary_in_MeasurementHandler1"<<'\n';
+  inspect_Indexed_for_Binary(input);
+#endif
+  DNPTime* cto = (DNPTime*)pPointerGlobal1_in_MeasurementHandler;
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*transform_Indexed_for_Binary_in_MeasurementHandler2"<<'\n';
+  inspect_DNPTime(cto);
+#endif
 ////    auto transform = [cto](const Indexed<T>& input) -> Indexed<T> {
 ////        Indexed<T> copy(input);
 ////        copy.value.time = DNPTime(input.value.time.value + cto.value, cto.quality);
@@ -818,20 +855,34 @@ Indexed_for_Binary transform_Indexed_for_Binary_in_MeasurementHandler(Indexed_fo
   DNPTime dDNPTime;
   DNPTime_in_DNPTimeOver3(&dDNPTime, input->value.tTypedMeasurement_for_Boolean.mMeasurement.timeDNPTime.value + cto->value, cto->quality);
   copy.value.tTypedMeasurement_for_Boolean.mMeasurement.timeDNPTime = dDNPTime;
+
+#ifdef  LOG_INFO
+  inspect_Indexed_for_Binary(&copy);
+  std::cout<<getString_stack_info();
+  std::cout<<"}transform_Indexed_for_Binary_in_MeasurementHandler_"<<'\n';
+  decrement_stack_info();
+#endif
   return copy;
 }
 ////template<class T>
 ////IINField MeasurementHandler::ProcessWithCTO(const HeaderRecord& record, const ICollection<Indexed<T>>& values)
 IINField ProcessWithCTO_for_Binary_in_MeasurementHandler(MeasurementHandler *pMeasurementHandler, HeaderRecord* record, ICollection_Indexed_for_Binary* values)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessWithCTO_for_Binary_in_MeasurementHandler1"<<'\n';
+#endif
   if (pMeasurementHandler->commonTimeOccurence.quality == TimestampQuality_INVALID)
   {
 ////        FORMAT_LOG_BLOCK(logger, flags::WARN, "No prior CTO objects for %s",
 ////                         GroupVariationSpec::to_string(record.enumeration));
 #ifdef  LOG_INFO
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOG_BLOCK(logger, flags::WARN, 'No prior CTO objects for %s',"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}ProcessWithCTO_for_Binary_in_MeasurementHandler1_"<<'\n';
     decrement_stack_info();
 #endif
 ////        return IINField(IINBit::PARAM_ERROR);
@@ -842,6 +893,11 @@ IINField ProcessWithCTO_for_Binary_in_MeasurementHandler(MeasurementHandler *pMe
 
 ////    const auto cto = this->commonTimeOccurence;
   DNPTime cto = pMeasurementHandler->commonTimeOccurence;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*ProcessWithCTO_for_Binary_in_MeasurementHandler2"<<'\n';
+  inspect_DNPTime(&cto);
+#endif
 
 ////    auto transform = [cto](const Indexed<T>& input) -> Indexed<T> {
 ////        Indexed<T> copy(input);
@@ -849,21 +905,28 @@ IINField ProcessWithCTO_for_Binary_in_MeasurementHandler(MeasurementHandler *pMe
 ////        return copy;
 ////    };
 
-  pPointerGlobal1 = &cto;
+  pPointerGlobal1_in_MeasurementHandler = &cto;
 //TransformedCollection_Indexed_for_Binary Map_in_TransformedCollection_Indexed_for_Binary(ICollection_Indexed_for_Binary* input, Transform_Indexed_for_Binary transform);
 ////    auto adjusted = Map<Indexed<T>, Indexed<T>>(values, transform);
   TransformedCollection_Indexed_for_Binary adjusted = Map_in_TransformedCollection_Indexed_for_Binary(values, transform_Indexed_for_Binary_in_MeasurementHandler);
 
 //  IINField LoadValues_for_Binary_in_MeasurementHandler(MeasurementHandler* pMeasurementHandler, HeaderRecord* record, TimestampQuality_uint8_t tsquality, ICollection_Indexed_for_Binary* values);
 ////    return this->LoadValues(record, cto.quality, adjusted);
-  return LoadValues_for_Binary_in_MeasurementHandler(pMeasurementHandler, record, cto.quality, &(adjusted.iICollection_Indexed_for_Binary));
+  IINField tmp = LoadValues_for_Binary_in_MeasurementHandler(pMeasurementHandler, record, cto.quality, &(adjusted.iICollection_Indexed_for_Binary));
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessWithCTO_for_Binary_in_MeasurementHandler2_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 //--------------------------------Binary----------------------------
 //--------------------------------DoubleBitBinary----------------------------
 Indexed_for_DoubleBitBinary transform_Indexed_for_DoubleBitBinary_in_MeasurementHandler(Indexed_for_DoubleBitBinary *input);
 Indexed_for_DoubleBitBinary transform_Indexed_for_DoubleBitBinary_in_MeasurementHandler(Indexed_for_DoubleBitBinary *input)
 {
-  DNPTime* cto = (DNPTime*)pPointerGlobal1;
+  DNPTime* cto = (DNPTime*)pPointerGlobal1_in_MeasurementHandler;
 ////    auto transform = [cto](const Indexed<T>& input) -> Indexed<T> {
 ////        Indexed<T> copy(input);
 ////        copy.value.time = DNPTime(input.value.time.value + cto.value, cto.quality);
@@ -905,7 +968,7 @@ IINField ProcessWithCTO_for_DoubleBitBinary_in_MeasurementHandler(MeasurementHan
 ////        return copy;
 ////    };
 
-  pPointerGlobal1 = &cto;
+  pPointerGlobal1_in_MeasurementHandler = &cto;
 //TransformedCollection_Indexed_for_DoubleBitBinary Map_in_TransformedCollection_Indexed_for_DoubleBitBinary(ICollection_Indexed_for_DoubleBitBinary* input, Transform_Indexed_for_DoubleBitBinary transform);
 ////    auto adjusted = Map<Indexed<T>, Indexed<T>>(values, transform);
   TransformedCollection_Indexed_for_DoubleBitBinary adjusted = Map_in_TransformedCollection_Indexed_for_DoubleBitBinary(values, transform_Indexed_for_DoubleBitBinary_in_MeasurementHandler);

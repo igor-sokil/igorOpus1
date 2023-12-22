@@ -27,7 +27,6 @@
 ////#include "logging/LogMacros.h"
 
 ////#include "opendnp3/logging/LogLevels.h"
-//boolean expectsContents_in_CountParser = false;
 
 ////namespace opendnp3
 ////{
@@ -99,7 +98,7 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"ParseHeader_in_CountParser_static1"<<std::endl;
+  std::cout<<"{ParseHeader_in_CountParser_static1"<<std::endl;
   inspect_RSeq(buffer);
 #endif
   uint16_t count;
@@ -107,8 +106,8 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
 ////  auto result = numParser.ParseCount(buffer, count, pLogger);
   ParseResult_uint8_t result = ParseCount_in_NumParser(numparser, buffer, &count);////, Logger* pLogger) const;
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ParseHeader_in_CountParser_static2"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ParseHeader_in_CountParser_static2"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
   std::cout<<"*"<<getString_stack_info();
@@ -131,21 +130,19 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
     std::cout<<"*IAPDUHandler* pHandler ="<<(uint32_t)pHandler<<std::endl;
 #endif
 
-    if (expectsContents)//_in_CountParser)
+    if (expectsContents)
     {
-#ifdef  LOG_INFO
-  decrement_stack_info();
-#endif
 ////      return ParseCountOfObjects(buffer, record, count, pLogger, pHandler);
       ParseResult_uint8_t temp = ParseCountOfObjects_in_CountParser_static(buffer, record, count, pHandler);
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ParseHeader_in_CountParser_static3"<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*ParseResult_uint8_t temp ="<<(uint16_t)temp<<std::endl;
-#endif
-#ifdef  LOG_INFO
-  decrement_stack_info();
+      std::cout<<"*"<<getString_stack_info();
+      std::cout<<"*ParseHeader_in_CountParser_static3"<<std::endl;
+      std::cout<<"*"<<getString_stack_info();
+      std::cout<<"*ParseResult_uint8_t temp ="<<(uint16_t)temp<<std::endl;
+
+      std::cout<<getString_stack_info();
+      std::cout<<"}ParseHeader_in_CountParser_static1_"<<std::endl;
+      decrement_stack_info();
 #endif
       return temp;
     }
@@ -153,10 +150,10 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
     if (pHandler)
     {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"ParseHeader_in_CountParser_static4"<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*uint16_t count ="<<(uint16_t)count<<std::endl;
+      std::cout<<"*"<<getString_stack_info();
+      std::cout<<"*ParseHeader_in_CountParser_static4"<<std::endl;
+      std::cout<<"*"<<getString_stack_info();
+      std::cout<<"*uint16_t count ="<<(uint16_t)count<<std::endl;
 #endif
 //void OnHeader_CountHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header);
 //void CountHeader_in_CountHeader(CountHeader *pCountHeader, HeaderRecord *record, uint16_t count_);
@@ -167,11 +164,15 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
     }
 
 #ifdef  LOG_INFO
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseHeader_in_CountParser_static2_"<<std::endl;
+    decrement_stack_info();
 #endif
     return ParseResult_OK;
   }
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ParseHeader_in_CountParser_static3_"<<std::endl;
   decrement_stack_info();
 #endif
 //  else
@@ -185,55 +186,128 @@ ParseResult_uint8_t ParseHeader_in_CountParser_static(RSeq_for_Uint16_t* buffer,
 ParseResult_uint8_t ParseCountOfObjects_in_CountParser_static(
   RSeq_for_Uint16_t* buffer, HeaderRecord* record, uint16_t count, /*Logger* pLogger,*/ IAPDUHandler* pHandler)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ParseCountOfObjects_in_CountParser_static1"<<std::endl;
+#endif
+
   switch (record->gGroupVariationRecord.enumeration)
   {
   case (GroupVariation_Group50Var1):
   {
 #ifdef  LOG_INFO
-    increment_stack_info();
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group50Var1"<<'\n';
-    decrement_stack_info();
 #endif
 //ParseResult_uint8_t Process_in_CountParser(CountParser *pCountParser, HeaderRecord* record,
 //    RSeq_for_Uint16_t* buffer,
 //    IAPDUHandler* pHandler);
 ////    return CountParser::From<Group50Var1>(count).Process(record, buffer, pHandler, pLogger);
     CountParser temp = From_for_Group50Var1_in_CountParser_static(count);
-    return Process_in_CountParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_CountParser(&temp, record, buffer, pHandler);
+
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseCountOfObjects_in_CountParser_static1_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
   case (GroupVariation_Group50Var3):
   {
 #ifdef  LOG_INFO
-    increment_stack_info();
-    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group50Var3"<<'\n';
-    decrement_stack_info();
 #endif
 ////    return CountParser::From<Group50Var3>(count).Process(record, buffer, pHandler, pLogger);
     CountParser temp = From_for_Group50Var3_in_CountParser_static(count);
-    return Process_in_CountParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_CountParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseCountOfObjects_in_CountParser_static2_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
-////  case (GroupVariation::Group51Var1):
+  case (GroupVariation_Group51Var1):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group51Var1"<<'\n';
+#endif
 ////    return CountParser::From<Group51Var1>(count).Process(record, buffer, pHandler, pLogger);
+    CountParser temp = From_for_Group51Var1_in_CountParser_static(count);
+    ParseResult_uint8_t tmp = Process_in_CountParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseCountOfObjects_in_CountParser_static3_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
+  }
 
-////  case (GroupVariation::Group51Var2):
+  case (GroupVariation_Group51Var2):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group51Var2"<<'\n';
+#endif
 ////    return CountParser::From<Group51Var2>(count).Process(record, buffer, pHandler, pLogger);
+    CountParser temp = From_for_Group51Var2_in_CountParser_static(count);
+    ParseResult_uint8_t tmp = Process_in_CountParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseCountOfObjects_in_CountParser_static4_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
+  }
 
-////  case (GroupVariation::Group52Var1):
+  case (GroupVariation_Group52Var1):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group52Var1"<<'\n';
+#endif
 ////    return CountParser::From<Group52Var1>(count).Process(record, buffer, pHandler, pLogger);
+    CountParser temp = From_for_Group52Var1_in_CountParser_static(count);
+    ParseResult_uint8_t tmp = Process_in_CountParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseCountOfObjects_in_CountParser_static5_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
+  }
 
-////  case (GroupVariation::Group52Var2):
+  case (GroupVariation_Group52Var2):
+  {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group52Var2"<<'\n';
+#endif
 ////    return CountParser::From<Group52Var2>(count).Process(record, buffer, pHandler, pLogger);
+    CountParser temp = From_for_Group52Var2_in_CountParser_static(count);
+    ParseResult_uint8_t tmp = Process_in_CountParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseCountOfObjects_in_CountParser_static6_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
+  }
 
   default:
 ////    FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, "Unsupported qualifier/object - %s - %i / %i",
 ////                        QualifierCodeSpec::to_human_string(record.GetQualifierCode()), record.group,
 ///                        record.variation);
 #ifdef  LOG_INFO
-    increment_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseCountOfObjects_in_CountParser_static7_"<<std::endl;
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Unsupported qualifier/object - %s - %i / %i',"<<std::endl;
     std::cout<<"*"<<getString_stack_info();
@@ -251,6 +325,12 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountParser_static(
 //-------------------Group50Var1-----------------------------
 CountParser From_for_Group50Var1_in_CountParser_static(uint16_t count)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{From_for_Group50Var1_in_CountParser_static1"<<std::endl;
+#endif
 ////    const auto size = static_cast<size_t>(count) * Descriptor::Size();
 //uint16_t Size_in_Group50Var1_static(void);
   uint32_t size = count * Size_in_Group50Var1_static();
@@ -258,6 +338,12 @@ CountParser From_for_Group50Var1_in_CountParser_static(uint16_t count)
 ////    return CountParser(count, size, &InvokeCountOf<Descriptor>);
   CountParser cCountParser;
   CountParser_in_CountParser(&cCountParser, count, size, InvokeCountOf_for_Group50Var1_in_CountParser_static);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}From_for_Group50Var1_in_CountParser_static_"<<std::endl;
+  decrement_stack_info();
+#endif
   return cCountParser;
 }
 
@@ -284,6 +370,13 @@ void InvokeCountOf_for_Group50Var1_in_CountParser_static(
   RSeq_for_Uint16_t* buffer,
   IAPDUHandler* handler)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{InvokeCountOf_for_Group50Var1_in_CountParser_static1"<<std::endl;
+#endif
+
 ////    auto read = [](ser4cpp::rseq_t& buffer, uint32_t) -> T {
 ////        T value;
 ////        T::Read(buffer, value);
@@ -305,6 +398,11 @@ void InvokeCountOf_for_Group50Var1_in_CountParser_static(
   CountHeader cCountHeader;
   CountHeader_in_CountHeader(&cCountHeader, record, count);
   OnHeader_CountHeader_for_Group50Var1_in_IAPDUHandler(handler, &cCountHeader, &(collection.iICollection_for_Group50Var1));
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}InvokeCountOf_for_Group50Var1_in_CountParser_static_"<<std::endl;
+  decrement_stack_info();
+#endif
 }
 //-------------------Group50Var1-----------------------------
 //-------------------Group50Var3-----------------------------
@@ -366,3 +464,239 @@ void InvokeCountOf_for_Group50Var3_in_CountParser_static(
   OnHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(handler, &cCountHeader, &(collection.iICollection_for_Group50Var3));
 }
 //-------------------Group50Var3-----------------------------
+//-------------------Group51Var1-----------------------------
+CountParser From_for_Group51Var1_in_CountParser_static(uint16_t count)
+{
+////    const auto size = static_cast<size_t>(count) * Descriptor::Size();
+//uint16_t Size_in_Group51Var1_static(void);
+  uint32_t size = count * Size_in_Group51Var1_static();
+//void  CountParser_in_CountParser(CountParser *pCountParser, uint16_t count, uint16_t required_size, HandleFun_in_CountParser handler);
+////    return CountParser(count, size, &InvokeCountOf<Descriptor>);
+  CountParser cCountParser;
+  CountParser_in_CountParser(&cCountParser, count, size, InvokeCountOf_for_Group51Var1_in_CountParser_static);
+  return cCountParser;
+}
+
+Group51Var1 read_Group51Var1_in_CountParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Group51Var1 read_Group51Var1_in_CountParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+  UNUSED(pos);
+////        T value;
+  Group51Var1 value;
+  Group51Var1_in_Group51Var1(&value);
+//boolean Read_in_Group51Var1_static(RSeq_for_Uint16_t *, Group51Var1*);
+////        T::Read(buffer, value);
+  Read_in_Group51Var1_static(buffer, &value);
+  return value;
+}
+////template<class T>
+////void CountParser::InvokeCountOf(const HeaderRecord& record,
+////                                uint16_t count,
+////                                const ser4cpp::rseq_t& buffer,
+////                                IAPDUHandler& handler)
+void InvokeCountOf_for_Group51Var1_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [](ser4cpp::rseq_t& buffer, uint32_t) -> T {
+////        T value;
+////        T::Read(buffer, value);
+////        return value;
+////    };
+
+//BufferedCollection_Group51Var1 CreateBufferedCollection_Group51Var1_static(
+//  RSeq_for_Uint16_t* buffer,
+//  uint32_t count,
+//  ReadFunc_Group51Var1 readFunc);
+////    auto collection = CreateBufferedCollection<T>(buffer, count, read);
+  BufferedCollection_Group51Var1 collection = CreateBufferedCollection_Group51Var1_static(
+        buffer,
+        count,
+        read_Group51Var1_in_CountParser);
+
+//void OnHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var1* values);
+////    handler.OnHeader(CountHeader(record, count), collection);
+  CountHeader cCountHeader;
+  CountHeader_in_CountHeader(&cCountHeader, record, count);
+  OnHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(handler, &cCountHeader, &(collection.iICollection_for_Group51Var1));
+}
+//-------------------Group51Var1-----------------------------
+//-------------------Group51Var2-----------------------------
+CountParser From_for_Group51Var2_in_CountParser_static(uint16_t count)
+{
+////    const auto size = static_cast<size_t>(count) * Descriptor::Size();
+//uint16_t Size_in_Group51Var2_static(void);
+  uint32_t size = count * Size_in_Group51Var2_static();
+//void  CountParser_in_CountParser(CountParser *pCountParser, uint16_t count, uint16_t required_size, HandleFun_in_CountParser handler);
+////    return CountParser(count, size, &InvokeCountOf<Descriptor>);
+  CountParser cCountParser;
+  CountParser_in_CountParser(&cCountParser, count, size, InvokeCountOf_for_Group51Var2_in_CountParser_static);
+  return cCountParser;
+}
+
+Group51Var2 read_Group51Var2_in_CountParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Group51Var2 read_Group51Var2_in_CountParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+  UNUSED(pos);
+////        T value;
+  Group51Var2 value;
+  Group51Var2_in_Group51Var2(&value);
+//boolean Read_in_Group51Var2_static(RSeq_for_Uint16_t *, Group51Var2*);
+////        T::Read(buffer, value);
+  Read_in_Group51Var2_static(buffer, &value);
+  return value;
+}
+////template<class T>
+////void CountParser::InvokeCountOf(const HeaderRecord& record,
+////                                uint16_t count,
+////                                const ser4cpp::rseq_t& buffer,
+////                                IAPDUHandler& handler)
+void InvokeCountOf_for_Group51Var2_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [](ser4cpp::rseq_t& buffer, uint32_t) -> T {
+////        T value;
+////        T::Read(buffer, value);
+////        return value;
+////    };
+
+//BufferedCollection_Group51Var2 CreateBufferedCollection_Group51Var2_static(
+//  RSeq_for_Uint16_t* buffer,
+//  uint32_t count,
+//  ReadFunc_Group51Var2 readFunc);
+////    auto collection = CreateBufferedCollection<T>(buffer, count, read);
+  BufferedCollection_Group51Var2 collection = CreateBufferedCollection_Group51Var2_static(
+        buffer,
+        count,
+        read_Group51Var2_in_CountParser);
+
+//void OnHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var2* values);
+////    handler.OnHeader(CountHeader(record, count), collection);
+  CountHeader cCountHeader;
+  CountHeader_in_CountHeader(&cCountHeader, record, count);
+  OnHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(handler, &cCountHeader, &(collection.iICollection_for_Group51Var2));
+}
+//-------------------Group51Var2-----------------------------
+//-------------------Group52Var1-----------------------------
+CountParser From_for_Group52Var1_in_CountParser_static(uint16_t count)
+{
+////    const auto size = static_cast<size_t>(count) * Descriptor::Size();
+//uint16_t Size_in_Group52Var1_static(void);
+  uint32_t size = count * Size_in_Group52Var1_static();
+//void  CountParser_in_CountParser(CountParser *pCountParser, uint16_t count, uint16_t required_size, HandleFun_in_CountParser handler);
+////    return CountParser(count, size, &InvokeCountOf<Descriptor>);
+  CountParser cCountParser;
+  CountParser_in_CountParser(&cCountParser, count, size, InvokeCountOf_for_Group52Var1_in_CountParser_static);
+  return cCountParser;
+}
+
+Group52Var1 read_Group52Var1_in_CountParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Group52Var1 read_Group52Var1_in_CountParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+  UNUSED(pos);
+////        T value;
+  Group52Var1 value;
+  Group52Var1_in_Group52Var1(&value);
+//boolean Read_in_Group52Var1_static(RSeq_for_Uint16_t *, Group52Var1*);
+////        T::Read(buffer, value);
+  Read_in_Group52Var1_static(buffer, &value);
+  return value;
+}
+////template<class T>
+////void CountParser::InvokeCountOf(const HeaderRecord& record,
+////                                uint16_t count,
+////                                const ser4cpp::rseq_t& buffer,
+////                                IAPDUHandler& handler)
+void InvokeCountOf_for_Group52Var1_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [](ser4cpp::rseq_t& buffer, uint32_t) -> T {
+////        T value;
+////        T::Read(buffer, value);
+////        return value;
+////    };
+
+//BufferedCollection_Group52Var1 CreateBufferedCollection_Group52Var1_static(
+//  RSeq_for_Uint16_t* buffer,
+//  uint32_t count,
+//  ReadFunc_Group52Var1 readFunc);
+////    auto collection = CreateBufferedCollection<T>(buffer, count, read);
+  BufferedCollection_Group52Var1 collection = CreateBufferedCollection_Group52Var1_static(
+        buffer,
+        count,
+        read_Group52Var1_in_CountParser);
+
+//void OnHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var1* values);
+////    handler.OnHeader(CountHeader(record, count), collection);
+  CountHeader cCountHeader;
+  CountHeader_in_CountHeader(&cCountHeader, record, count);
+  OnHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(handler, &cCountHeader, &(collection.iICollection_for_Group52Var1));
+}
+//-------------------Group52Var1-----------------------------
+//-------------------Group52Var2-----------------------------
+CountParser From_for_Group52Var2_in_CountParser_static(uint16_t count)
+{
+////    const auto size = static_cast<size_t>(count) * Descriptor::Size();
+//uint16_t Size_in_Group52Var2_static(void);
+  uint32_t size = count * Size_in_Group52Var2_static();
+//void  CountParser_in_CountParser(CountParser *pCountParser, uint16_t count, uint16_t required_size, HandleFun_in_CountParser handler);
+////    return CountParser(count, size, &InvokeCountOf<Descriptor>);
+  CountParser cCountParser;
+  CountParser_in_CountParser(&cCountParser, count, size, InvokeCountOf_for_Group52Var2_in_CountParser_static);
+  return cCountParser;
+}
+
+Group52Var2 read_Group52Var2_in_CountParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
+Group52Var2 read_Group52Var2_in_CountParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
+{
+  UNUSED(pos);
+////        T value;
+  Group52Var2 value;
+  Group52Var2_in_Group52Var2(&value);
+//boolean Read_in_Group52Var2_static(RSeq_for_Uint16_t *, Group52Var2*);
+////        T::Read(buffer, value);
+  Read_in_Group52Var2_static(buffer, &value);
+  return value;
+}
+////template<class T>
+////void CountParser::InvokeCountOf(const HeaderRecord& record,
+////                                uint16_t count,
+////                                const ser4cpp::rseq_t& buffer,
+////                                IAPDUHandler& handler)
+void InvokeCountOf_for_Group52Var2_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler)
+{
+////    auto read = [](ser4cpp::rseq_t& buffer, uint32_t) -> T {
+////        T value;
+////        T::Read(buffer, value);
+////        return value;
+////    };
+
+//BufferedCollection_Group52Var2 CreateBufferedCollection_Group52Var2_static(
+//  RSeq_for_Uint16_t* buffer,
+//  uint32_t count,
+//  ReadFunc_Group52Var2 readFunc);
+////    auto collection = CreateBufferedCollection<T>(buffer, count, read);
+  BufferedCollection_Group52Var2 collection = CreateBufferedCollection_Group52Var2_static(
+        buffer,
+        count,
+        read_Group52Var2_in_CountParser);
+
+//void OnHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var2* values);
+////    handler.OnHeader(CountHeader(record, count), collection);
+  CountHeader cCountHeader;
+  CountHeader_in_CountHeader(&cCountHeader, record, count);
+  OnHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(handler, &cCountHeader, &(collection.iICollection_for_Group52Var2));
+}
+//-------------------Group52Var2-----------------------------

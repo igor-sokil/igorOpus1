@@ -34,12 +34,12 @@ std::string WriteToHex(const CommandSet& commands, IndexQualifierMode mode);
 
 #define SUITE(name) "TypedCommandHeaderTestSuite - " name
 
-TEST_CASE(SUITE("Can instantiate a CROB header"))
+TEST_CASE(SUITE("1Can instantiate a CROB header"))
 {
     TypedCommandHeader<ControlRelayOutputBlock> header(Group12Var1::Inst());
 }
 
-TEST_CASE(SUITE("Formats two-byte qualifier properly if enough space is available"))
+TEST_CASE(SUITE("2Formats two-byte qualifier properly if enough space is available"))
 {
     TypedCommandHeader<AnalogOutputInt16> header(Group41Var2::Inst());
     header.Add(AnalogOutputInt16(7), 10);
@@ -57,7 +57,7 @@ TEST_CASE(SUITE("Formats two-byte qualifier properly if enough space is availabl
     REQUIRE(hex == "29 02 28 02 00 0A 00 07 00 00 0B 00 08 00 00");
 }
 
-TEST_CASE(SUITE("Formats one-byte qualifier properly if enough space is available"))
+TEST_CASE(SUITE("3Formats one-byte qualifier properly if enough space is available"))
 {
     TypedCommandHeader<AnalogOutputInt16> header(Group41Var2::Inst());
     header.Add(AnalogOutputInt16(7), 10);
@@ -75,7 +75,7 @@ TEST_CASE(SUITE("Formats one-byte qualifier properly if enough space is availabl
     REQUIRE(hex == "29 02 17 02 0A 07 00 00 0B 08 00 00");
 }
 
-TEST_CASE(SUITE("Does not format if insufficient space"))
+TEST_CASE(SUITE("4Does not format if insufficient space"))
 {
     TypedCommandHeader<AnalogOutputInt16> header(Group41Var2::Inst());
     header.Add(AnalogOutputInt16(7), 10);
@@ -89,7 +89,7 @@ TEST_CASE(SUITE("Does not format if insufficient space"))
     REQUIRE_FALSE(header.Write(writer, IndexQualifierMode::always_two_bytes));
 }
 
-TEST_CASE(SUITE("Command set can be moved and written"))
+TEST_CASE(SUITE("5Command set can be moved and written"))
 {
     CommandSet commands;
 

@@ -30,7 +30,7 @@ void IAPDUHandler_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   std::cout<<getString_stack_info();
   std::cout<<"IAPDUHandler_in_IAPDUHandler1"<<std::endl;
 
@@ -62,7 +62,7 @@ void IAPDUHandler_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
   pIAPDUHandler->pProcessHeader_CountHeader_in_IAPDUHandler = ProcessHeader_CountHeader_in_IAPDUHandler_override;
 
   pIAPDUHandler->pProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler_override;
-  pIAPDUHandler->pProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler_override;
+  pIAPDUHandler->pProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group50Var3_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler_override;
   pIAPDUHandler->pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler = ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler_override;
@@ -110,7 +110,7 @@ IINField Errors_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
 void OnHeader_AllObjectsHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, AllObjectsHeader* header)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_AllObjectsHeader_in_IAPDUHandler1"<<'\n';
@@ -127,7 +127,7 @@ void OnHeader_AllObjectsHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, AllO
 void OnHeader_RangeHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_RangeHeader_in_IAPDUHandler1"<<'\n';
@@ -143,7 +143,7 @@ void OnHeader_RangeHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHead
 void OnHeader_CountHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_CountHeader_in_IAPDUHandler1"<<'\n';
@@ -161,22 +161,26 @@ void OnHeader_CountHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHead
 void OnHeader_CountHeader_for_Group50Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var1* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"OnHeader_CountHeader_for_Group50Var1_in_IAPDUHandler1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{OnHeader_CountHeader_for_Group50Var1_in_IAPDUHandler1"<<'\n';
 #endif
 ////    Record(header, this->ProcessHeader(header, values));
   IINField temp = ProcessHeader_CountHeader_for_Group50Var1_in_IAPDUHandler(pIAPDUHandler, header, values);
   Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnHeader_CountHeader_for_Group50Var1_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////void IAPDUHandler::OnHeader(const CountHeader& header, const ICollection<Group50Var3>& values)
 void OnHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var3* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_CountHeader_for_Group50Var3_in_IAPDUHandler1"<<'\n';
@@ -188,24 +192,80 @@ void OnHeader_CountHeader_for_Group50Var3_in_IAPDUHandler(IAPDUHandler *pIAPDUHa
 }
 
 ////void IAPDUHandler::OnHeader(const CountHeader& header, const ICollection<Group51Var1>& values)
-////{
+void OnHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var1* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_CountHeader_for_Group51Var1_in_IAPDUHandler1"<<'\n';
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_CountHeader_for_Group51Var1_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_CountHeader_for_Group51Var1_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
+}
 
 ////void IAPDUHandler::OnHeader(const CountHeader& header, const ICollection<Group51Var2>& values)
-////{
+void OnHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group51Var2* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_CountHeader_for_Group51Var2_in_IAPDUHandler1"<<'\n';
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_CountHeader_for_Group51Var2_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_CountHeader_for_Group51Var2_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
+}
 
 ////void IAPDUHandler::OnHeader(const CountHeader& header, const ICollection<Group52Var1>& values)
-////{
+void OnHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var1* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_CountHeader_for_Group52Var1_in_IAPDUHandler1"<<'\n';
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_CountHeader_for_Group52Var1_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
+}
 
 ////void IAPDUHandler::OnHeader(const CountHeader& header, const ICollection<Group52Var2>& values)
-////{
+void OnHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, CountHeader* header, ICollection_for_Group52Var2* values)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_CountHeader_for_Group52Var2_in_IAPDUHandler1"<<'\n';
+#endif
 ////    Record(header, this->ProcessHeader(header, values));
-////}
+  IINField temp = ProcessHeader_CountHeader_for_Group52Var2_in_IAPDUHandler(pIAPDUHandler, header, values);
+  Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"OnHeader_CountHeader_for_Group52Var2_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
+}
 
 ////void IAPDUHandler::OnHeader(const RangeHeader& header, const ICollection<Indexed<IINValue>>& values)
 void OnHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values)
@@ -500,7 +560,7 @@ void OnHeader_PrefixHeader_Indexed_for_TimeAndInterval_in_IAPDUHandler(IAPDUHand
 void OnHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_BinaryCommandEvent* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler1"<<'\n';
@@ -515,7 +575,7 @@ void OnHeader_PrefixHeader_Indexed_for_BinaryCommandEvent_in_IAPDUHandler(IAPDUH
 void OnHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogCommandEvent* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler1"<<'\n';
@@ -530,7 +590,7 @@ void OnHeader_PrefixHeader_Indexed_for_AnalogCommandEvent_in_IAPDUHandler(IAPDUH
 void OnHeader_PrefixHeader_for_uint16_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_for_uint16* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_PrefixHeader_for_uint16_in_IAPDUHandler1"<<'\n';
@@ -547,7 +607,7 @@ void OnHeader_PrefixHeader_for_uint16_in_IAPDUHandler(IAPDUHandler *pIAPDUHandle
 void OnHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_ControlRelayOutputBlock* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_IAPDUHandler1"<<'\n';
@@ -562,7 +622,7 @@ void OnHeader_PrefixHeader_Indexed_for_ControlRelayOutputBlock_in_IAPDUHandler(I
 void OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputInt16* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler1"<<'\n';
@@ -577,7 +637,7 @@ void OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt16_in_IAPDUHandler(IAPDUHa
 void OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputInt32* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler1"<<'\n';
@@ -592,7 +652,7 @@ void OnHeader_PrefixHeader_Indexed_for_AnalogOutputInt32_in_IAPDUHandler(IAPDUHa
 void OnHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, PrefixHeader* header, ICollection_Indexed_for_AnalogOutputFloat32* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"OnHeader_PrefixHeader_Indexed_for_AnalogOutputFloat32_in_IAPDUHandler1"<<'\n';
@@ -623,14 +683,25 @@ IINField ProcessHeader_CountHeader_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, 
 }
 void OnHeaderResult_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, HeaderRecord* record, IINField* result)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnHeaderResult_in_IAPDUHandler1"<<'\n';
+#endif
   (pIAPDUHandler->pOnHeaderResult_in_IAPDUHandler)(pIAPDUHandler, record, result);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnHeaderResult_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////IINField IAPDUHandler::ProcessHeader(const AllObjectsHeader& /*record*/)
 IINField ProcessHeader_AllObjectsHeader_in_IAPDUHandler_override(void* pIAPDUHandler, AllObjectsHeader* record)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessHeader_AllObjectsHeader_in_IAPDUHandler_override1"<<'\n';
@@ -1264,32 +1335,59 @@ boolean IsFirstHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
 void Record_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, HeaderRecord* record, IINField* result)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"Record_in_IAPDUHandler1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{Record_in_IAPDUHandler1"<<'\n';
 #endif
 //    IINField operatorOREQ_in_IINField(IINField *pIINField, IINField* aIIN);
 ////        pIAPDUHandler->errors |= result;
   pIAPDUHandler->errors = operatorOREQ_in_IINField(&(pIAPDUHandler->errors), result);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*Record_in_IAPDUHandler2"<<'\n';
+#endif
+
   ++(pIAPDUHandler->numTotalHeaders);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*Record_in_IAPDUHandler3"<<'\n';
+#endif
+
 //    void OnHeaderResult_in_IAPDUHandler(IAPDUHandler* pIAPDUHandler, HeaderRecord* record, IINField* result)// {}
 ////        this->OnHeaderResult(record, result);
   OnHeaderResult_in_IAPDUHandler(pIAPDUHandler, record, result);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Record_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void OnHeaderResult_in_IAPDUHandler(void* pIAPDUHandler, HeaderRecord* record, IINField* result)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnHeaderResult_in_IAPDUHandler1"<<'\n';
+#endif
   UNUSED(pIAPDUHandler);
   UNUSED(record);
   UNUSED(result);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnHeaderResult_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 IINField ProcessUnsupportedHeader_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessUnsupportedHeader_in_IAPDUHandler1"<<'\n';

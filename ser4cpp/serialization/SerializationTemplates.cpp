@@ -41,6 +41,10 @@ boolean write_to_in_UInt8_static(WSeq_for_Uint16_t *dest, uint8_t value)
 ////private:
 uint8_t read_in_UInt8_static(uint8_t* start)
 {
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*read_in_UInt8_static = "<<(uint32_t)start<<"<-"<<(uint16_t)(*start)<<'\n';
+#endif
   return (*start);
 }
 
@@ -78,8 +82,12 @@ boolean read_from_in_UInt16_static(RSeq_for_Uint16_t *input, uint16_t *out)
 {
 ////        if (input.length() < size) return false;
   if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt16) return false;
-
   *out = read_in_UInt16_static(input->buffer_);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*read_from_in_UInt16_static = "<<(uint32_t)input->buffer_<<"<-"<<(uint16_t)(*out)<<'\n';
+#endif
+
 ////        input.advance(size);
   advance_in_RSeq_for_Uint16_t(input, size_in_UInt16);
   return true;
@@ -141,6 +149,11 @@ boolean read_from_in_UInt32_static(RSeq_for_Uint16_t *input, uint32_t *out)
   if(length_in_HasLength_for_Uint16_t(&(input->hHasLength)) < size_in_UInt32) return false;
 
   *out = read_in_UInt32_static(input->buffer_);
+#ifdef  LOG_INFO
+  std::cout<<"@@@@"<<getString_stack_info();
+  std::cout<<"*read_from_in_UInt32_static = "<<(uint32_t)input->buffer_<<"<-"<<(uint32_t)(*out)<<'\n';
+#endif
+
 ////        input.advance(size);
   advance_in_RSeq_for_Uint16_t(input, size_in_UInt32);
   return true;
@@ -155,9 +168,9 @@ boolean read_from_in_UInt32_static(RSeq_for_Uint16_t *input, uint32_t *out)
 ////private:
 uint32_t read_in_UInt32_static(uint8_t* data)
 {
-  return	(((uint32_t)(data[0])) << 0) |
+  return  (((uint32_t)(data[0])) << 0) |
           (((uint32_t)(data[1])) << 8) |
-          (((uint32_t)(data[2])) << 16) |
+          (((uint32_t)(data[2])) << 16)|
           (((uint32_t)(data[3])) << 24);
 }
 

@@ -2460,7 +2460,7 @@ IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"HandleWrite_in_OContext2"<<std::endl;
+  std::cout<<"*HandleWrite_in_OContext2"<<std::endl;
 #endif
 
 //    ParseResult_uint8_t Parse_in_APDUParser_static(
@@ -2474,7 +2474,7 @@ IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"HandleWrite_in_OContext3"<<std::endl;
+  std::cout<<"*HandleWrite_in_OContext3"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
 #endif
@@ -2546,7 +2546,7 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"HandleDirectOperate_in_OContext3"<<std::endl;
+  std::cout<<"*HandleDirectOperate_in_OContext3"<<std::endl;
 #endif
 //    ParseResult_uint8_t Parse_in_APDUParser_static(
 //                             RSeq_for_Uint16_t *buffer,
@@ -2628,7 +2628,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"HandleSelect_in_OContext2"<<std::endl;
+  std::cout<<"*HandleSelect_in_OContext2"<<std::endl;
 #endif
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger);
   expectsContents = true;

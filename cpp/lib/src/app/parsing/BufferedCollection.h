@@ -210,6 +210,246 @@ uint16_t Count_in_BufferedCollection_Group50Var3_override(void *pICollection_for
 void Foreach_in_BufferedCollection_Group50Var3_override(void *pICollection_for_Group50Var3,
     IVisitor__for__Group50Var3* visitor);
 //-----------------------------------Group50Var3---------------------------------------------------
+//-----------------------------------Group51Var1---------------------------------------------------
+typedef Group51Var1 (*ReadFunc_Group51Var1)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_for_Group51Var1 iICollection_for_Group51Var1;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Group51Var1 WithIndex_in_Group51Var1(
+//  Binary* value, Group51Var1_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Group51Var1 readFunc;
+} BufferedCollection_Group51Var1;
+
+void  BufferedCollection_Group51Var1_in_BufferedCollection_Group51Var1(
+  BufferedCollection_Group51Var1 *pBufferedCollection_Group51Var1,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Group51Var1 readFunc);
+BufferedCollection_Group51Var1 CreateBufferedCollection_Group51Var1_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Group51Var1 readFunc);
+
+uint16_t Count_in_BufferedCollection_Group51Var1(BufferedCollection_Group51Var1 *pBufferedCollection_Group51Var1);
+void Foreach_in_BufferedCollection_Group51Var1(BufferedCollection_Group51Var1 *pBufferedCollection_Group51Var1,
+    IVisitor__for__Group51Var1* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Group51Var1_override(void *pICollection_for_Group51Var1);
+void Foreach_in_BufferedCollection_Group51Var1_override(void *pICollection_for_Group51Var1,
+    IVisitor__for__Group51Var1* visitor);
+//-----------------------------------Group51Var1---------------------------------------------------
+//-----------------------------------Group51Var2---------------------------------------------------
+typedef Group51Var2 (*ReadFunc_Group51Var2)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_for_Group51Var2 iICollection_for_Group51Var2;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Group51Var2 WithIndex_in_Group51Var2(
+//  Binary* value, Group51Var2_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Group51Var2 readFunc;
+} BufferedCollection_Group51Var2;
+
+void  BufferedCollection_Group51Var2_in_BufferedCollection_Group51Var2(
+  BufferedCollection_Group51Var2 *pBufferedCollection_Group51Var2,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Group51Var2 readFunc);
+BufferedCollection_Group51Var2 CreateBufferedCollection_Group51Var2_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Group51Var2 readFunc);
+
+uint16_t Count_in_BufferedCollection_Group51Var2(BufferedCollection_Group51Var2 *pBufferedCollection_Group51Var2);
+void Foreach_in_BufferedCollection_Group51Var2(BufferedCollection_Group51Var2 *pBufferedCollection_Group51Var2,
+    IVisitor__for__Group51Var2* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Group51Var2_override(void *pICollection_for_Group51Var2);
+void Foreach_in_BufferedCollection_Group51Var2_override(void *pICollection_for_Group51Var2,
+    IVisitor__for__Group51Var2* visitor);
+//-----------------------------------Group51Var2---------------------------------------------------
+//-----------------------------------Group52Var1---------------------------------------------------
+typedef Group52Var1 (*ReadFunc_Group52Var1)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_for_Group52Var1 iICollection_for_Group52Var1;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Group52Var1 WithIndex_in_Group52Var1(
+//  Binary* value, Group52Var1_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Group52Var1 readFunc;
+} BufferedCollection_Group52Var1;
+
+void  BufferedCollection_Group52Var1_in_BufferedCollection_Group52Var1(
+  BufferedCollection_Group52Var1 *pBufferedCollection_Group52Var1,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Group52Var1 readFunc);
+BufferedCollection_Group52Var1 CreateBufferedCollection_Group52Var1_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Group52Var1 readFunc);
+
+uint16_t Count_in_BufferedCollection_Group52Var1(BufferedCollection_Group52Var1 *pBufferedCollection_Group52Var1);
+void Foreach_in_BufferedCollection_Group52Var1(BufferedCollection_Group52Var1 *pBufferedCollection_Group52Var1,
+    IVisitor__for__Group52Var1* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Group52Var1_override(void *pICollection_for_Group52Var1);
+void Foreach_in_BufferedCollection_Group52Var1_override(void *pICollection_for_Group52Var1,
+    IVisitor__for__Group52Var1* visitor);
+//-----------------------------------Group52Var1---------------------------------------------------
+//-----------------------------------Group52Var2---------------------------------------------------
+typedef Group52Var2 (*ReadFunc_Group52Var2)(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t pos);
+
+////template<class T, class ReadFunc> class BufferedCollection : public ICollection<T>
+typedef struct
+{
+  ICollection_for_Group52Var2 iICollection_for_Group52Var2;
+////public:
+////    BufferedCollection(const ser4cpp::rseq_t& buffer, size_t count, const ReadFunc& readFunc)
+////        : buffer(buffer), COUNT(count), readFunc(readFunc)
+////    {
+////    }
+
+////    virtual size_t Count() const override final
+////    {
+////        return COUNT;
+////    }
+
+////    virtual void Foreach(IVisitor<T>& visitor) const final
+////    {
+////        ser4cpp::rseq_t copy(buffer);
+
+////        for (uint32_t pos = 0; pos < COUNT; ++pos)
+////        {
+////            visitor.OnValue(readFunc(copy, pos));
+////        }
+////    }
+
+////private:
+  RSeq_for_Uint16_t buffer;
+  uint32_t COUNT;
+
+//Group52Var2 WithIndex_in_Group52Var2(
+//  Binary* value, Group52Var2_t index);
+////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) {
+////    ReadFunc readFunc;
+  ReadFunc_Group52Var2 readFunc;
+} BufferedCollection_Group52Var2;
+
+void  BufferedCollection_Group52Var2_in_BufferedCollection_Group52Var2(
+  BufferedCollection_Group52Var2 *pBufferedCollection_Group52Var2,
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Group52Var2 readFunc);
+BufferedCollection_Group52Var2 CreateBufferedCollection_Group52Var2_static(
+  RSeq_for_Uint16_t* buffer,
+  uint32_t count,
+  ReadFunc_Group52Var2 readFunc);
+
+uint16_t Count_in_BufferedCollection_Group52Var2(BufferedCollection_Group52Var2 *pBufferedCollection_Group52Var2);
+void Foreach_in_BufferedCollection_Group52Var2(BufferedCollection_Group52Var2 *pBufferedCollection_Group52Var2,
+    IVisitor__for__Group52Var2* visitor);
+
+
+uint16_t Count_in_BufferedCollection_Group52Var2_override(void *pICollection_for_Group52Var2);
+void Foreach_in_BufferedCollection_Group52Var2_override(void *pICollection_for_Group52Var2,
+    IVisitor__for__Group52Var2* visitor);
+//-----------------------------------Group52Var2---------------------------------------------------
 //-----------------------------------Indexed_for_Binary---------------------------------------------------
 typedef Indexed_for_Binary (*ReadFunc_Indexed_for_Binary)(
   RSeq_for_Uint16_t* buffer,

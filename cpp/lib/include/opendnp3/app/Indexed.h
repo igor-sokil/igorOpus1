@@ -51,8 +51,7 @@ typedef struct
 void Indexed_for_AnalogOutputInt16_in_Indexed_for_AnalogOutputInt16Over1(Indexed_for_AnalogOutputInt16 *pIndexed_for_AnalogOutputInt16);
 void Indexed_for_AnalogOutputInt16_in_Indexed_for_AnalogOutputInt16Over2(Indexed_for_AnalogOutputInt16 *pIndexed_for_AnalogOutputInt16,
     AnalogOutputInt16* value_, uint16_t index_);
-Indexed_for_AnalogOutputInt16 WithIndex_in_Indexed_for_AnalogOutputInt16(//Indexed_for_AnalogOutputInt16 *pIndexed_for_AnalogOutputInt16,
-  AnalogOutputInt16* value, uint16_t index);
+Indexed_for_AnalogOutputInt16 WithIndex_in_Indexed_for_AnalogOutputInt16(AnalogOutputInt16* value, uint16_t index);
 //------------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------------
 //------------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------------
 /**
@@ -73,8 +72,7 @@ typedef struct
 void Indexed_for_AnalogOutputInt32_in_Indexed_for_AnalogOutputInt32Over1(Indexed_for_AnalogOutputInt32 *pIndexed_for_AnalogOutputInt32);
 void Indexed_for_AnalogOutputInt32_in_Indexed_for_AnalogOutputInt32Over2(Indexed_for_AnalogOutputInt32 *pIndexed_for_AnalogOutputInt32,
     AnalogOutputInt32* value_, uint16_t index_);
-Indexed_for_AnalogOutputInt32 WithIndex_in_Indexed_for_AnalogOutputInt32(//Indexed_for_AnalogOutputInt32 *pIndexed_for_AnalogOutputInt32,
-  AnalogOutputInt32* value, uint16_t index);
+Indexed_for_AnalogOutputInt32 WithIndex_in_Indexed_for_AnalogOutputInt32(AnalogOutputInt32* value, uint16_t index);
 //------------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------------
 //------------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------------
 /**
@@ -95,8 +93,7 @@ typedef struct
 void Indexed_for_AnalogOutputFloat32_in_Indexed_for_AnalogOutputFloat32Over1(Indexed_for_AnalogOutputFloat32 *pIndexed_for_AnalogOutputFloat32);
 void Indexed_for_AnalogOutputFloat32_in_Indexed_for_AnalogOutputFloat32Over2(Indexed_for_AnalogOutputFloat32 *pIndexed_for_AnalogOutputFloat32,
     AnalogOutputFloat32* value_, uint16_t index_);
-Indexed_for_AnalogOutputFloat32 WithIndex_in_Indexed_for_AnalogOutputFloat32(//Indexed_for_AnalogOutputFloat32 *pIndexed_for_AnalogOutputFloat32,
-  AnalogOutputFloat32* value, uint16_t index);
+Indexed_for_AnalogOutputFloat32 WithIndex_in_Indexed_for_AnalogOutputFloat32(AnalogOutputFloat32* value, uint16_t index);
 //------------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------------
 //------------------------------------Indexed_for_AnalogOutputDouble64---------------------------------------------------------
 /**
@@ -117,8 +114,7 @@ typedef struct
 void Indexed_for_AnalogOutputDouble64_in_Indexed_for_AnalogOutputDouble64Over1(Indexed_for_AnalogOutputDouble64 *pIndexed_for_AnalogOutputDouble64);
 void Indexed_for_AnalogOutputDouble64_in_Indexed_for_AnalogOutputDouble64Over2(Indexed_for_AnalogOutputDouble64 *pIndexed_for_AnalogOutputDouble64,
     AnalogOutputDouble64* value_, uint16_t index_);
-Indexed_for_AnalogOutputDouble64 WithIndex_in_Indexed_for_AnalogOutputDouble64(//Indexed_for_AnalogOutputDouble64 *pIndexed_for_AnalogOutputDouble64,
-  AnalogOutputDouble64* value, uint16_t index);
+Indexed_for_AnalogOutputDouble64 WithIndex_in_Indexed_for_AnalogOutputDouble64(AnalogOutputDouble64* value, uint16_t index);
 //------------------------------------Indexed_for_AnalogOutputDouble64---------------------------------------------------------
 //------------------------------------Indexed_for_IINValue---------------------------------------------------------
 /**
@@ -139,8 +135,7 @@ typedef struct
 void Indexed_for_IINValue_in_Indexed_for_IINValueOver1(Indexed_for_IINValue *pIndexed_for_IINValue);
 void Indexed_for_IINValue_in_Indexed_for_IINValueOver2(Indexed_for_IINValue *pIndexed_for_IINValue,
     IINValue* value_, uint16_t index_);
-Indexed_for_IINValue WithIndex_in_Indexed_for_IINValue(
-  IINValue* value, uint16_t index);
+Indexed_for_IINValue WithIndex_in_Indexed_for_IINValue(IINValue* value, uint16_t index);
 //------------------------------------Indexed_for_IINValue---------------------------------------------------------
 //------------------------------------Indexed_for_TimeAndInterval---------------------------------------------------------
 /**
@@ -161,8 +156,7 @@ typedef struct
 void Indexed_for_TimeAndInterval_in_Indexed_for_TimeAndIntervalOver1(Indexed_for_TimeAndInterval *pIndexed_for_TimeAndInterval);
 void Indexed_for_TimeAndInterval_in_Indexed_for_TimeAndIntervalOver2(Indexed_for_TimeAndInterval *pIndexed_for_TimeAndInterval,
     TimeAndInterval* value_, uint16_t index_);
-Indexed_for_TimeAndInterval WithIndex_in_Indexed_for_TimeAndInterval(
-  TimeAndInterval* value, uint16_t index);
+Indexed_for_TimeAndInterval WithIndex_in_Indexed_for_TimeAndInterval(TimeAndInterval* value, uint16_t index);
 //------------------------------------Indexed_for_TimeAndInterval---------------------------------------------------------
 //------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
 /**
@@ -183,8 +177,7 @@ typedef struct
 void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver1(Indexed_for_ControlRelayOutputBlock *pIndexed_for_ControlRelayOutputBlock);
 void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver2(Indexed_for_ControlRelayOutputBlock *pIndexed_for_ControlRelayOutputBlock,
     ControlRelayOutputBlock* value_, uint16_t index_);
-Indexed_for_ControlRelayOutputBlock WithIndex_in_Indexed_for_ControlRelayOutputBlock(
-  ControlRelayOutputBlock* value, uint16_t index);
+Indexed_for_ControlRelayOutputBlock WithIndex_in_Indexed_for_ControlRelayOutputBlock(ControlRelayOutputBlock* value, uint16_t index);
 //------------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------------
 //------------------------------------Indexed_for_Binary---------------------------------------------------------
 /**
@@ -248,8 +241,7 @@ typedef struct
 void Indexed_for_BinaryOutputStatus_in_Indexed_for_BinaryOutputStatusOver1(Indexed_for_BinaryOutputStatus *pIndexed_for_BinaryOutputStatus);
 void Indexed_for_BinaryOutputStatus_in_Indexed_for_BinaryOutputStatusOver2(Indexed_for_BinaryOutputStatus *pIndexed_for_BinaryOutputStatus,
     BinaryOutputStatus* value_, uint16_t index_);
-Indexed_for_BinaryOutputStatus WithIndex_in_Indexed_for_BinaryOutputStatus(
-  BinaryOutputStatus* value, uint16_t index);
+Indexed_for_BinaryOutputStatus WithIndex_in_Indexed_for_BinaryOutputStatus(BinaryOutputStatus* value, uint16_t index);
 //------------------------------------Indexed_for_BinaryOutputStatus---------------------------------------------------------
 //------------------------------------Indexed_for_Counter---------------------------------------------------------
 /**
@@ -270,8 +262,7 @@ typedef struct
 void Indexed_for_Counter_in_Indexed_for_CounterOver1(Indexed_for_Counter *pIndexed_for_Counter);
 void Indexed_for_Counter_in_Indexed_for_CounterOver2(Indexed_for_Counter *pIndexed_for_Counter,
     Counter* value_, uint16_t index_);
-Indexed_for_Counter WithIndex_in_Indexed_for_Counter(
-  Counter* value, uint16_t index);
+Indexed_for_Counter WithIndex_in_Indexed_for_Counter(Counter* value, uint16_t index);
 //------------------------------------Indexed_for_Counter---------------------------------------------------------
 //------------------------------------Indexed_for_FrozenCounter---------------------------------------------------------
 /**
@@ -292,8 +283,7 @@ typedef struct
 void Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver1(Indexed_for_FrozenCounter *pIndexed_for_FrozenCounter);
 void Indexed_for_FrozenCounter_in_Indexed_for_FrozenCounterOver2(Indexed_for_FrozenCounter *pIndexed_for_FrozenCounter,
     FrozenCounter* value_, uint16_t index_);
-Indexed_for_FrozenCounter WithIndex_in_Indexed_for_FrozenCounter(
-  FrozenCounter* value, uint16_t index);
+Indexed_for_FrozenCounter WithIndex_in_Indexed_for_FrozenCounter(FrozenCounter* value, uint16_t index);
 //------------------------------------Indexed_for_FrozenCounter---------------------------------------------------------
 //------------------------------------Indexed_for_Analog---------------------------------------------------------
 /**
@@ -314,8 +304,7 @@ typedef struct
 void Indexed_for_Analog_in_Indexed_for_AnalogOver1(Indexed_for_Analog *pIndexed_for_Analog);
 void Indexed_for_Analog_in_Indexed_for_AnalogOver2(Indexed_for_Analog *pIndexed_for_Analog,
     Analog* value_, uint16_t index_);
-Indexed_for_Analog WithIndex_in_Indexed_for_Analog(
-  Analog* value, uint16_t index);
+Indexed_for_Analog WithIndex_in_Indexed_for_Analog(Analog* value, uint16_t index);
 //------------------------------------Indexed_for_Analog---------------------------------------------------------
 //------------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------------
 /**
@@ -336,8 +325,7 @@ typedef struct
 void Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver1(Indexed_for_AnalogOutputStatus *pIndexed_for_AnalogOutputStatus);
 void Indexed_for_AnalogOutputStatus_in_Indexed_for_AnalogOutputStatusOver2(Indexed_for_AnalogOutputStatus *pIndexed_for_AnalogOutputStatus,
     AnalogOutputStatus* value_, uint16_t index_);
-Indexed_for_AnalogOutputStatus WithIndex_in_Indexed_for_AnalogOutputStatus(
-  AnalogOutputStatus* value, uint16_t index);
+Indexed_for_AnalogOutputStatus WithIndex_in_Indexed_for_AnalogOutputStatus(AnalogOutputStatus* value, uint16_t index);
 //------------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------------
 //------------------------------------Indexed_for_OctetString---------------------------------------------------------
 /**
@@ -358,8 +346,7 @@ typedef struct
 void Indexed_for_OctetString_in_Indexed_for_OctetStringOver1(Indexed_for_OctetString *pIndexed_for_OctetString);
 void Indexed_for_OctetString_in_Indexed_for_OctetStringOver2(Indexed_for_OctetString *pIndexed_for_OctetString,
     OctetString* value_, uint16_t index_);
-Indexed_for_OctetString WithIndex_in_Indexed_for_OctetString(
-  OctetString* value, uint16_t index);
+Indexed_for_OctetString WithIndex_in_Indexed_for_OctetString(OctetString* value, uint16_t index);
 //------------------------------------Indexed_for_OctetString---------------------------------------------------------
 //------------------------------------Indexed_for_BinaryCommandEvent---------------------------------------------------------
 /**
@@ -380,8 +367,7 @@ typedef struct
 void Indexed_for_BinaryCommandEvent_in_Indexed_for_BinaryCommandEventOver1(Indexed_for_BinaryCommandEvent *pIndexed_for_BinaryCommandEvent);
 void Indexed_for_BinaryCommandEvent_in_Indexed_for_BinaryCommandEventOver2(Indexed_for_BinaryCommandEvent *pIndexed_for_BinaryCommandEvent,
     BinaryCommandEvent* value_, uint16_t index_);
-Indexed_for_BinaryCommandEvent WithIndex_in_Indexed_for_BinaryCommandEvent(
-  BinaryCommandEvent* value, uint16_t index);
+Indexed_for_BinaryCommandEvent WithIndex_in_Indexed_for_BinaryCommandEvent(BinaryCommandEvent* value, uint16_t index);
 //------------------------------------Indexed_for_BinaryCommandEvent---------------------------------------------------------
 //------------------------------------Indexed_for_AnalogCommandEvent---------------------------------------------------------
 /**
@@ -402,8 +388,7 @@ typedef struct
 void Indexed_for_AnalogCommandEvent_in_Indexed_for_AnalogCommandEventOver1(Indexed_for_AnalogCommandEvent *pIndexed_for_AnalogCommandEvent);
 void Indexed_for_AnalogCommandEvent_in_Indexed_for_AnalogCommandEventOver2(Indexed_for_AnalogCommandEvent *pIndexed_for_AnalogCommandEvent,
     AnalogCommandEvent* value_, uint16_t index_);
-Indexed_for_AnalogCommandEvent WithIndex_in_Indexed_for_AnalogCommandEvent(
-  AnalogCommandEvent* value, uint16_t index);
+Indexed_for_AnalogCommandEvent WithIndex_in_Indexed_for_AnalogCommandEvent(AnalogCommandEvent* value, uint16_t index);
 //------------------------------------Indexed_for_AnalogCommandEvent---------------------------------------------------------
 //------------------------------------Indexed_for_Group2Var1---------------------------------------------------------
 /**

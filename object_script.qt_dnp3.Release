@@ -49,6 +49,7 @@ release/Flags.o
 release/GroupVariationID.o
 release/OctetString.o
 release/Indexed.o
+release/ICollection_for_CommandState.o
 release/ICollection_for_DNPTime.o
 release/ICollection_for_Group50Var1.o
 release/ICollection_for_Group50Var3.o
@@ -87,6 +88,7 @@ release/LinkConfig.o
 release/LinkStatistics.o
 release/ILinkListener.o
 release/ISOEHandler.o
+release/ICommandCollection.o
 release/LayerInterfaces.o
 release/SequenceNum.o
 release/Addresses.o
@@ -106,7 +108,11 @@ release/LinkLayer.o
 release/PriLinkLayerStates.o
 release/SecLinkLayerStates.o
 release/ShiftableBuffer.o
+release/CommandSet.o
+release/CommandSetOps.o
+release/ICommandHeader.o
 release/MeasurementHandler.o
+release/TypedCommandHeader.o
 release/APDUHeaderParser.o
 release/APDUParser.o
 release/BufferedCollection.o
@@ -349,6 +355,7 @@ release/TestOutstationEventResponses.o
 release/TestOutstationFrozenCounters.o
 release/TestOutstationDiscontiguousIndices.o
 release/TestMeasurementHandler.o
+release/TestTypedCommandHeader.o
 release/MockOutstationApplication.o
 release/MockCommandHandler.o
 release/MockEventWriteHandler.o

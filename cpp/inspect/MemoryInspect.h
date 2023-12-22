@@ -4,6 +4,7 @@
 #include "RSeq.h"
 #include "MeasurementTypes.h"
 #include "IINField.h"
+#include "Indexed.h"
 //#include "WSeq.h"
 //#include "Message.h"
 //#include "APDUHeaderParser.h"
@@ -17,12 +18,13 @@
 
 void inspect_Analog(Analog *b);
 void inspect_Binary(Binary *b);
-void inspect_IINField(IINField *b);
-
 void inspect_Counter(Counter *b);
 void inspect_FrozenCounter(FrozenCounter *b);
+
 void inspect_RSeq(RSeq_for_Uint16_t *buffer);
-//void inspect_WSeq(WSeq_for_Uint16_t *buffer);
+void inspect_IINField(IINField *b);
+void inspect_DNPTime(DNPTime *b);
+void inspect_Indexed_for_Binary(Indexed_for_Binary *b);
 /*
 //-------------------RSeq------------------------
 typedef struct

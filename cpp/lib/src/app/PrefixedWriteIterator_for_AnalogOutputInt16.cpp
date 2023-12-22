@@ -173,6 +173,12 @@ void PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_destr_PrefixedWriteItera
 boolean Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16(PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 *pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16,
     AnalogOutputInt16* value, uint16_t index)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_1"<<'\n';
+#endif
 ////    if (isValid && (pPosition->length() >= sizeOfTypePlusIndex))
   if(pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16->isValid &&
       length_in_HasLength_for_Uint16_t(&(pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16->pPosition->hHasLength))
@@ -184,10 +190,21 @@ boolean Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16(PrefixedWrit
     write_in_Serializer_for_AnalogOutputInt16(&(pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16->serializer), value,
                                    pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16->pPosition);
     ++(pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16->count);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_1_"<<'\n';
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_2_"<<'\n';
+  decrement_stack_info();
+#endif
     return false;
   }
 }

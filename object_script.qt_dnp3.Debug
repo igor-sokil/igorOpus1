@@ -49,6 +49,7 @@ debug/Flags.o
 debug/GroupVariationID.o
 debug/OctetString.o
 debug/Indexed.o
+debug/ICollection_for_CommandState.o
 debug/ICollection_for_DNPTime.o
 debug/ICollection_for_Group50Var1.o
 debug/ICollection_for_Group50Var3.o
@@ -87,6 +88,7 @@ debug/LinkConfig.o
 debug/LinkStatistics.o
 debug/ILinkListener.o
 debug/ISOEHandler.o
+debug/ICommandCollection.o
 debug/LayerInterfaces.o
 debug/SequenceNum.o
 debug/Addresses.o
@@ -106,7 +108,11 @@ debug/LinkLayer.o
 debug/PriLinkLayerStates.o
 debug/SecLinkLayerStates.o
 debug/ShiftableBuffer.o
+debug/CommandSet.o
+debug/CommandSetOps.o
+debug/ICommandHeader.o
 debug/MeasurementHandler.o
+debug/TypedCommandHeader.o
 debug/APDUHeaderParser.o
 debug/APDUParser.o
 debug/BufferedCollection.o
@@ -349,6 +355,7 @@ debug/TestOutstationEventResponses.o
 debug/TestOutstationFrozenCounters.o
 debug/TestOutstationDiscontiguousIndices.o
 debug/TestMeasurementHandler.o
+debug/TestTypedCommandHeader.o
 debug/MockOutstationApplication.o
 debug/MockCommandHandler.o
 debug/MockEventWriteHandler.o

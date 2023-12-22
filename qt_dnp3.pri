@@ -59,6 +59,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\OctetString.cpp \
                 cpp\lib\include\opendnp3\app\Indexed.cpp \
                 \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_for_CommandState.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_DNPTime.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var1.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var3.cpp \
@@ -100,6 +101,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\link\ILinkListener.cpp \
                 \
                 cpp\lib\include\opendnp3\master\ISOEHandler.cpp \
+                cpp\lib\include\opendnp3\master\ICommandCollection.cpp \
                 \
                 cpp\lib\src\LayerInterfaces.cpp \
                 cpp\lib\src\SequenceNum.cpp \
@@ -122,7 +124,11 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\link\SecLinkLayerStates.cpp \
                 cpp\lib\src\link\ShiftableBuffer.cpp \
                 \
+                cpp\lib\src\master\CommandSet.cpp \
+                cpp\lib\src\master\CommandSetOps.cpp \
+                cpp\lib\src\master\ICommandHeader.cpp \
                 cpp\lib\src\master\MeasurementHandler.cpp \
+                cpp\lib\src\master\TypedCommandHeader.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\APDUParser.cpp \
@@ -373,6 +379,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\TestOutstationFrozenCounters.cpp \
                 cpp\tests\unit\utils\TestOutstationDiscontiguousIndices.cpp \
                 cpp\tests\unit\utils\TestMeasurementHandler.cpp \
+                cpp\tests\unit\utils\TestTypedCommandHeader.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \

@@ -132,6 +132,42 @@ void InvokeCountOf_for_Group50Var3_in_CountParser_static(
   RSeq_for_Uint16_t* buffer,
   IAPDUHandler* handler);
 //-------------------Group50Var3-----------------------------
+//-------------------Group51Var1-----------------------------
+////template<class Descriptor> CountParser CountParser::From(uint16_t count)
+CountParser From_for_Group51Var1_in_CountParser_static(uint16_t count);
+void InvokeCountOf_for_Group51Var1_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//-------------------Group51Var1-----------------------------
+//-------------------Group51Var2-----------------------------
+////template<class Descriptor> CountParser CountParser::From(uint16_t count)
+CountParser From_for_Group51Var2_in_CountParser_static(uint16_t count);
+void InvokeCountOf_for_Group51Var2_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//-------------------Group51Var2-----------------------------
+//-------------------Group52Var1-----------------------------
+////template<class Descriptor> CountParser CountParser::From(uint16_t count)
+CountParser From_for_Group52Var1_in_CountParser_static(uint16_t count);
+void InvokeCountOf_for_Group52Var1_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//-------------------Group52Var1-----------------------------
+//-------------------Group52Var2-----------------------------
+////template<class Descriptor> CountParser CountParser::From(uint16_t count)
+CountParser From_for_Group52Var2_in_CountParser_static(uint16_t count);
+void InvokeCountOf_for_Group52Var2_in_CountParser_static(
+  HeaderRecord* record,
+  uint16_t count,
+  RSeq_for_Uint16_t* buffer,
+  IAPDUHandler* handler);
+//-------------------Group52Var2-----------------------------
 
 
 ////} // namespace opendnp3

@@ -39,14 +39,17 @@
 
 /**
   Specifies whether opendnp3 optimizes for 1-byte indexes when making requests
+Указывает, оптимизируется ли opendnp3 для 1-байтовых индексов при выполнении запросов.
 */
 //enum class IndexQualifierMode : uint8_t
 #define IndexQualifierMode_uint8_t uint8_t
 enum IndexQualifierMode 
 {
   /// Use a one byte qualifier if possible
+/// Если возможно, используйте однобайтовый квалификатор
   IndexQualifierMode_allow_one_byte = 0x0,
   /// Always use two byte qualifiers even if the index is less than or equal to 255
+/// Всегда используйте двухбайтовые квалификаторы, даже если индекс меньше или равен 255
   IndexQualifierMode_always_two_bytes = 0x1
 };
 

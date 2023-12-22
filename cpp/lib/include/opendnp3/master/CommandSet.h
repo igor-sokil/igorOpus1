@@ -20,125 +20,140 @@
 #ifndef OPENDNP3_COMMAND_SET_H
 #define OPENDNP3_COMMAND_SET_H
 
-#include "opendnp3/app/AnalogOutput.h"
-#include "opendnp3/app/ControlRelayOutputBlock.h"
-#include "opendnp3/app/Indexed.h"
-#include "opendnp3/master/ICommandCollection.h"
+#include "AnalogOutput.h"
+#include "ControlRelayOutputBlock.h"
+#include "Indexed.h"
+#include "ICommandCollection.h"
+#include "ICommandHeader.h"
 
 #include <initializer_list>
-#include <memory>
-#include <vector>
+////#include <memory>
+////#include <vector>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 // don't want this to be part of the public API
-class ICommandHeader;
+// не хотим, чтобы это было частью публичного API
+////class ICommandHeader;
 
 /**
  * Provides a mechanism for building a set of one or more command headers
+* Предоставляет механизм для создания набора из одного или нескольких заголовков команд.
  */
-class CommandSet final
+////class CommandSet final
+typedef struct
 {
-    // friend class used to hide some implementation details while keeping the headers private
-    friend class CommandSetOps;
+  // friend class used to hide some implementation details while keeping the headers private
+// дружественный класс, используемый для скрытия некоторых деталей реализации, сохраняя при этом заголовки конфиденциальными
+////    friend class CommandSetOps;
 
-public:
-    typedef std::vector<std::shared_ptr<ICommandHeader>> HeaderVector;
+////public:
+////    typedef std::vector<std::shared_ptr<ICommandHeader>> HeaderVector;
+  typedef std::vector<ICommandHeader> HeaderVector;
 
-    /// Contrsuct an empty command set
-    CommandSet() = default;
+  /// Contrsuct an empty command set
+////    CommandSet() = default;
 
-    // Put this in impl so we can hide details of ICommandHeader
-    ~CommandSet();
+  // Put this in impl so we can hide details of ICommandHeader
+// Поместите это в impl, чтобы мы могли скрыть детали ICommandHeader
+////    ~CommandSet();
 
-    /// Construct a new command set and take ownership of the headers in argument
-    CommandSet(CommandSet&& other);
+  /// Construct a new command set and take ownership of the headers in argument
+/// Создаем новый набор команд и становимся владельцем заголовков в аргументе
+////    CommandSet(CommandSet&& other);
 
-    /// Construct a command set from a list of CROB
-    CommandSet(std::initializer_list<Indexed<ControlRelayOutputBlock>> items);
+  /// Construct a command set from a list of CROB
+////    CommandSet(std::initializer_list<Indexed<ControlRelayOutputBlock>> items);
 
-    /// Construct a command set from a list of AOInt16
-    CommandSet(std::initializer_list<Indexed<AnalogOutputInt16>> items);
+  /// Construct a command set from a list of AOInt16
+////    CommandSet(std::initializer_list<Indexed<AnalogOutputInt16>> items);
 
-    /// Construct a command set from a list of AOInt32
-    CommandSet(std::initializer_list<Indexed<AnalogOutputInt32>> items);
+  /// Construct a command set from a list of AOInt32
+////    CommandSet(std::initializer_list<Indexed<AnalogOutputInt32>> items);
 
-    /// Construct a command set from a list of AOFloat32
-    CommandSet(std::initializer_list<Indexed<AnalogOutputFloat32>> items);
+  /// Construct a command set from a list of AOFloat32
+////    CommandSet(std::initializer_list<Indexed<AnalogOutputFloat32>> items);
 
-    /// Construct a command set from a list of AODouble64
-    CommandSet(std::initializer_list<Indexed<AnalogOutputDouble64>> items);
+  /// Construct a command set from a list of AODouble64
+////    CommandSet(std::initializer_list<Indexed<AnalogOutputDouble64>> items);
 
-    /// Convenience functions that can build an entire header in one call
-    template<class T> void Add(std::initializer_list<Indexed<T>> items)
-    {
-        if (items.size() != 0)
-        {
-            auto& header = this->StartHeader<T>();
-            for (auto& command : items)
-            {
-                header.Add(command.value, command.index);
-            }
-        }
-    }
+  /// Convenience functions that can build an entire header in one call
+/// Удобные функции, которые могут построить весь заголовок за один вызов
+////    template<class T> void Add(std::initializer_list<Indexed<T>> items)
+////    {
+////        if (items.size() != 0)
+////        {
+////            auto& header = this->StartHeader<T>();
+////            for (auto& command : items)
+////            {
+////                header.Add(command.value, command.index);
+////            }
+////        }
+////    }
 
-    /// Convenience functions that can build an entire header in one call
-    template<class T> void Add(std::vector<Indexed<T>> items)
-    {
-        if (!items.empty())
-        {
-            auto& header = this->StartHeader<T>();
-            for (auto& command : items)
-            {
-                header.Add(command.value, command.index);
-            }
-        }
-    }
+  /// Convenience functions that can build an entire header in one call
+/// Удобные функции, которые могут построить весь заголовок за один вызов
+////    template<class T> void Add(std::vector<Indexed<T>> items)
+////    {
+////        if (!items.empty())
+////        {
+////            auto& header = this->StartHeader<T>();
+////            for (auto& command : items)
+////            {
+////                header.Add(command.value, command.index);
+////            }
+////        }
+////    }
 
-    /// Begin a header of the parameterized type
-    template<class T> ICommandCollection<T>& StartHeader();
+  /// Begin a header of the parameterized type
+////    template<class T> ICommandCollection<T>& StartHeader();
 
-private:
-    template<class T> void AddAny(std::initializer_list<Indexed<T>> items);
+////private:
+////    template<class T> void AddAny(std::initializer_list<Indexed<T>> items);
 
-    ICommandCollection<ControlRelayOutputBlock>& StartHeaderCROB();
-    ICommandCollection<AnalogOutputInt32>& StartHeaderAOInt32();
-    ICommandCollection<AnalogOutputInt16>& StartHeaderAOInt16();
-    ICommandCollection<AnalogOutputFloat32>& StartHeaderAOFloat32();
-    ICommandCollection<AnalogOutputDouble64>& StartHeaderAODouble64();
+////    ICommandCollection<ControlRelayOutputBlock>& StartHeaderCROB();
+////    ICommandCollection<AnalogOutputInt32>& StartHeaderAOInt32();
+////    ICommandCollection<AnalogOutputInt16>& StartHeaderAOInt16();
+////    ICommandCollection<AnalogOutputFloat32>& StartHeaderAOFloat32();
+////    ICommandCollection<AnalogOutputDouble64>& StartHeaderAODouble64();
 
-    CommandSet(const CommandSet&) = delete;
-    CommandSet& operator=(const CommandSet& other) = delete;
+////    CommandSet(const CommandSet&) = delete;
+////    CommandSet& operator=(const CommandSet& other) = delete;
 
-    HeaderVector m_headers;
-};
+  HeaderVector m_headers;
+} CommandSet;
 
-template<> inline ICommandCollection<ControlRelayOutputBlock>& CommandSet::StartHeader()
-{
-    return this->StartHeaderCROB();
-}
+/// Construct a command set from a list of AOInt16
+void CommandSet_in_CommandSetOverIndexed_for_AnalogOutputInt16(CommandSet *pCommandSet, std::initializer_list<Indexed_for_AnalogOutputInt16> items);
 
-template<> inline ICommandCollection<AnalogOutputInt16>& CommandSet::StartHeader()
-{
-    return this->StartHeaderAOInt16();
-}
+////    template<class T> void Add(std::initializer_list<Indexed<T>> items)
+//void Add_Indexed_for_AnalogOutputInt16_in_CommandSet(CommandSet *pCommandSet, std::initializer_list<Indexed_for_AnalogOutputInt16> items);
+void Add_Indexed_for_AnalogOutputInt16_in_CommandSet(CommandSet *pCommandSet, Indexed_for_AnalogOutputInt16* command);
+ICommandCollection_for_AnalogOutputInt16 StartHeader_for_AnalogOutputInt16_in_CommandSet(CommandSet *pCommandSet);
+ICommandCollection_for_AnalogOutputInt16 StartHeaderAOInt16_in_CommandSet(CommandSet *pCommandSet);
 
-template<> inline ICommandCollection<AnalogOutputInt32>& CommandSet::StartHeader()
-{
-    return this->StartHeaderAOInt32();
-}
+////template<> inline ICommandCollection<ControlRelayOutputBlock>& CommandSet::StartHeader()
+////{
+////    return this->StartHeaderCROB();
+////}
 
-template<> inline ICommandCollection<AnalogOutputFloat32>& CommandSet::StartHeader()
-{
-    return this->StartHeaderAOFloat32();
-}
-
-template<> inline ICommandCollection<AnalogOutputDouble64>& CommandSet::StartHeader()
-{
-    return this->StartHeaderAODouble64();
-}
-
-} // namespace opendnp3
+////
+////template<> inline ICommandCollection<AnalogOutputInt32>& CommandSet::StartHeader()
+////{
+////    return this->StartHeaderAOInt32();
+////}
+////
+////template<> inline ICommandCollection<AnalogOutputFloat32>& CommandSet::StartHeader()
+////{
+////    return this->StartHeaderAOFloat32();
+////}
+////
+////template<> inline ICommandCollection<AnalogOutputDouble64>& CommandSet::StartHeader()
+////{
+////    return this->StartHeaderAODouble64();
+////}
+////
+////} // namespace opendnp3
 
 #endif
