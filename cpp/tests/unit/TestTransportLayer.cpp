@@ -32,7 +32,7 @@ using namespace ser4cpp;
 
 #define SUITE(name) "TransportLayerTestSuite - " name
 
-TEST_CASE(SUITE("RepeatSendsDoNotLogOrChangeStatistics"))
+TEST_CASE(SUITE("1RepeatSendsDoNotLogOrChangeStatistics"))
 {
     MockLogHandler log;
     TransportTx tx(log.logger);
@@ -51,7 +51,10 @@ TEST_CASE(SUITE("RepeatSendsDoNotLogOrChangeStatistics"))
 // make sure an invalid state exception gets thrown
 // for every event other than LowerLayerUp() since
 // the layer starts in the online state
-TEST_CASE(SUITE("StateOffline"))
+// убедитьс€, что генерируетс€ исключение недопустимого состо€ни€
+// дл€ каждого событи€, кроме LowerLayerUp(), поскольку
+// слой запускаетс€ в онлайн-состо€нии
+TEST_CASE(SUITE("2StateOffline"))
 {
     TransportTestObject test;
 
@@ -61,7 +64,7 @@ TEST_CASE(SUITE("StateOffline"))
     REQUIRE_FALSE(test.transport.OnLowerLayerDown());
 }
 
-TEST_CASE(SUITE("StateReady"))
+TEST_CASE(SUITE("3StateReady"))
 {
     TransportTestObject test(true); // makes an implicit call to 'test.link.ThisLayerUp()'
 
@@ -76,7 +79,7 @@ TEST_CASE(SUITE("StateReady"))
     REQUIRE_FALSE(test.transport.OnTxReady());
 }
 
-TEST_CASE(SUITE("allows header-only final frame"))
+TEST_CASE(SUITE("4allows header-only final frame"))
 {
     TransportTestObject test(true);
 
@@ -86,7 +89,7 @@ TEST_CASE(SUITE("allows header-only final frame"))
     REQUIRE(test.upper.received.AsHex() == "DE AD BE EF");
 }
 
-TEST_CASE(SUITE("ReceiveNoFIR"))
+TEST_CASE(SUITE("5ReceiveNoFIR"))
 {
     TransportTestObject test(true);
     // try sending a non-FIR w/ no prior packet
@@ -94,7 +97,7 @@ TEST_CASE(SUITE("ReceiveNoFIR"))
     REQUIRE(test.transport.GetStatistics().rx.numTransportIgnore == 1);
 }
 
-TEST_CASE(SUITE("ReceiveWrongSequence"))
+TEST_CASE(SUITE("6ReceiveWrongSequence"))
 {
     TransportTestObject test(true);
     // send a FIR, followed by a FIN w/ the wrong sequence
@@ -103,7 +106,7 @@ TEST_CASE(SUITE("ReceiveWrongSequence"))
     REQUIRE(test.transport.GetStatistics().rx.numTransportIgnore == 1);
 }
 
-TEST_CASE(SUITE("PacketsCanBeOfVaryingSize"))
+TEST_CASE(SUITE("7PacketsCanBeOfVaryingSize"))
 {
     TransportTestObject test(true);
     test.link.SendUp("40 0A 0B 0C"); // FIR/_/0
@@ -111,7 +114,7 @@ TEST_CASE(SUITE("PacketsCanBeOfVaryingSize"))
     REQUIRE(test.upper.received.AsHex() == "0A 0B 0C 0D 0E 0F");
 }
 
-TEST_CASE(SUITE("ReceiveSinglePacket"))
+TEST_CASE(SUITE("8ReceiveSinglePacket"))
 {
     TransportTestObject test(true);
     // now try receiving 1 a single FIR/FIN with a magic value
@@ -119,7 +122,7 @@ TEST_CASE(SUITE("ReceiveSinglePacket"))
     REQUIRE(test.upper.received.AsHex() == "77");
 }
 
-TEST_CASE(SUITE("ReceiveLargestPossibleAPDU"))
+TEST_CASE(SUITE("9ReceiveLargestPossibleAPDU"))
 {
     TransportTestObject test(true);
 
@@ -136,7 +139,7 @@ TEST_CASE(SUITE("ReceiveLargestPossibleAPDU"))
     REQUIRE(test.upper.received.AsHex() == apdu); // check that the correct data was written
 }
 
-TEST_CASE(SUITE("ReceiveBufferOverflow"))
+TEST_CASE(SUITE("10ReceiveBufferOverflow"))
 {
     TransportTestObject test(true, 4); // maximum ASDU size of 4
 
@@ -157,7 +160,7 @@ TEST_CASE(SUITE("ReceiveBufferOverflow"))
     }
 }
 
-TEST_CASE(SUITE("ReceiveNewFir"))
+TEST_CASE(SUITE("11ReceiveNewFir"))
 {
     TransportTestObject test(true);
 
@@ -169,7 +172,7 @@ TEST_CASE(SUITE("ReceiveNewFir"))
     REQUIRE(test.transport.GetStatistics().rx.numTransportDiscard == 1);
 }
 
-TEST_CASE(SUITE("StateSending"))
+TEST_CASE(SUITE("12StateSending"))
 {
     TransportTestObject test(true);
 
@@ -193,11 +196,12 @@ TEST_CASE(SUITE("StateSending"))
     REQUIRE_FALSE(test.transport.OnTxReady());
 }
 
-TEST_CASE(SUITE("SendSuccess"))
+TEST_CASE(SUITE("13SendSuccess"))
 {
     TransportTestObject test(true);
 
     // this puts the layer into the Sending state
+// это переводит слой в состо€ние отправки
     test.upper.SendDown("11");
     REQUIRE("C0 11" == test.link.PopWriteAsHex()); // FIR/FIN SEQ=0
     test.transport.OnTxReady();
@@ -210,16 +214,18 @@ TEST_CASE(SUITE("SendSuccess"))
 }
 
 // if we're in the middle of a send and the layer goes down
-TEST_CASE(SUITE("ClosedWhileSending"))
+// если мы находимс€ в середине отправки и слой отключаетс€
+TEST_CASE(SUITE("14ClosedWhileSending"))
 {
     TransportTestObject test(true);
     test.upper.SendDown("11"); // get the layer into the sending state
+// переводим слой в состо€ние отправки
 
     test.transport.OnLowerLayerDown();
     REQUIRE_FALSE(test.upper.IsOnline());
 }
 
-TEST_CASE(SUITE("SendFullAPDU"))
+TEST_CASE(SUITE("15SendFullAPDU"))
 {
     TransportTestObject test(true);
 

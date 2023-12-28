@@ -56,3 +56,16 @@ Addresses Reverse_in_Addresses(Addresses *pAddresses)
   Addresses_in_AddressesOver2(&aAddresses, pAddresses->destination, pAddresses->source);
   return aAddresses;
 }
+
+////    inline bool operator==(const Addresses& other) const
+boolean operatorEQ_in_Addresses(Addresses *pAddresses, Addresses* other)
+{
+////        return (this->source == other.source) && (this->destination == other.destination);
+  return (pAddresses->source == other->source) && (pAddresses->destination == other->destination);
+}
+
+boolean operatorNOTEQ_in_Addresses(Addresses *pAddresses, Addresses* other)
+{
+////        return !((*this) == other);
+  return !operatorEQ_in_Addresses(pAddresses, other);
+}

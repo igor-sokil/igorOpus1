@@ -57,17 +57,9 @@ boolean IsBroadcast_in_Addresses(Addresses *pAddresses);
 Addresses Reverse_in_Addresses(Addresses *pAddresses);
 void Addresses_in_AddressesOver2(Addresses *pAddresses, uint16_t source, uint16_t destination);
 void Addresses_in_AddressesOver1(Addresses *pAddresses);
+boolean operatorNOTEQ_in_Addresses(Addresses *pAddresses, Addresses* other);
+boolean operatorEQ_in_Addresses(Addresses *pAddresses, Addresses* other);
 
-
-////    inline bool operator==(const Addresses& other) const
-////    {
-////        return (this->source == other.source) && (this->destination == other.destination);
-////    }
-
-////    inline bool operator!=(const Addresses& other) const
-////    {
-////        return !((*this) == other);
-////    }
 
 
 ////} // namespace opendnp3

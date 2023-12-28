@@ -17,34 +17,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_MESSAGE_H
-#define OPENDNP3_MESSAGE_H
+#ifndef OPENDNP3_TRANSPORTCONSTANTS_H
+#define OPENDNP3_TRANSPORTCONSTANTS_H
 
-////#include "opendnp3/link/Addresses.h"
-
-////#include <ser4cpp/container/SequenceTypes.h>
-
-#include "Addresses.h"
-
-//#include <ser4cpp/container/SequenceTypes.h>
-#include "RSeq.h"
+////#include <cstdint>
 
 ////namespace opendnp3
 ////{
-
-////struct Message
-typedef struct
-{
-////    Message() = default;
-
-////    Message(const Addresses& addresses, const ser4cpp::rseq_t& payload) : addresses(addresses), payload(payload) {}
-
-  Addresses addresses;
-  RSeq_for_Uint16_t payload;
-} Message;
-
-void  Message_in_MessageOver1(Message *pMessage);
-void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
+/// Maximum TPDU length
+#define MAX_TPDU_LENGTH  250
+/// Maximum TPDU payload size
+#define MAX_TPDU_PAYLOAD  249
 
 ////} // namespace opendnp3
 

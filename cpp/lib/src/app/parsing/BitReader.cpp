@@ -43,7 +43,7 @@ boolean GetBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t position)
   uint32_t bit = position % 8;
 ////    assert(byte < buffer.length());
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   if(length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < byte) std::cout<<"*assert(byte < buffer.length())"<<'\n';
@@ -66,7 +66,7 @@ DoubleBit_uint8_t GetDoubleBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, ui
   uint32_t byteNumber = index / 4;
 ////    assert(byteNumber < buffer.length());
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   if(length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < byteNumber) std::cout<<"*assert(byteNumber < buffer.length())"<<'\n';

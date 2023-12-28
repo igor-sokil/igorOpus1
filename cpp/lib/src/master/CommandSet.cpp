@@ -57,6 +57,13 @@ ICommandCollection_for_AnalogOutputInt16 StartHeader_for_AnalogOutputInt16_in_Co
   return StartHeaderAOInt16_in_CommandSet(pCommandSet);
 }
 
+////template<> inline ICommandCollection<AnalogOutputInt32>& CommandSet::StartHeader()
+ICommandCollection_for_AnalogOutputInt32 StartHeader_for_AnalogOutputInt32_in_CommandSet(CommandSet *pCommandSet)
+{
+////    return this->StartHeaderAOInt32();
+  return StartHeaderAOInt32_in_CommandSet(pCommandSet);
+}
+
 ////CommandSet::CommandSet(std::initializer_list<Indexed<AnalogOutputInt32>> items)
 ////{
 ////    this->Add(items);
@@ -79,13 +86,32 @@ ICommandCollection_for_AnalogOutputInt16 StartHeader_for_AnalogOutputInt16_in_Co
 ////    return *header;
 ////}
 
+TypedCommandHeader_for_AnalogOutputInt32 headerGlobalInt32;
 ////ICommandCollection<AnalogOutputInt32>& CommandSet::StartHeaderAOInt32()
-////{
+ICommandCollection_for_AnalogOutputInt32 StartHeaderAOInt32_in_CommandSet(CommandSet *pCommandSet)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{StartHeaderAOInt32_in_CommandSet1"<<'\n';
+#endif
 ////    const auto header = std::make_shared<TypedCommandHeader<AnalogOutputInt32>>(Group41Var1::Inst());
+  DNP3Serializer_for_AnalogOutputInt32 tmp = Inst_in_Group41Var1_static();
+  TypedCommandHeader_for_AnalogOutputInt32_in_TypedCommandHeader_for_AnalogOutputInt32(&headerGlobalInt32, &tmp);
 ////    this->m_headers.push_back(header);
-////    return *header;
-////}
+  pCommandSet->m_headers.push_back(headerGlobalInt32.iICommandHeader);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}StartHeaderAOInt32_in_CommandSet_"<<'\n';
+  decrement_stack_info();
+#endif
+////    return *header;
+  return headerGlobalInt32.iICommandCollection_for_AnalogOutputInt32;
+}
+
+TypedCommandHeader_for_AnalogOutputInt16 headerGlobalInt16;
 ////ICommandCollection<AnalogOutputInt16>& CommandSet::StartHeaderAOInt16()
 ICommandCollection_for_AnalogOutputInt16 StartHeaderAOInt16_in_CommandSet(CommandSet *pCommandSet)
 {
@@ -99,12 +125,14 @@ ICommandCollection_for_AnalogOutputInt16 StartHeaderAOInt16_in_CommandSet(Comman
 //void TypedCommandHeader_for_AnalogOutputInt16_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16,
 //    DNP3Serializer_for_AnalogOutputInt16* serializer);
 ////    const auto header = std::make_shared<TypedCommandHeader<AnalogOutputInt16>>(Group41Var2::Inst());
+/*
+  TypedCommandHeader_for_AnalogOutputInt16 headerGlobal;
+*/
   DNP3Serializer_for_AnalogOutputInt16 tmp = Inst_in_Group41Var2_static();
-  TypedCommandHeader_for_AnalogOutputInt16 header;
-  TypedCommandHeader_for_AnalogOutputInt16_in_TypedCommandHeader_for_AnalogOutputInt16(&header, &tmp);
+  TypedCommandHeader_for_AnalogOutputInt16_in_TypedCommandHeader_for_AnalogOutputInt16(&headerGlobalInt16, &tmp);
 
 ////    this->m_headers.push_back(header);
-  pCommandSet->m_headers.push_back(header.iICommandHeader);
+  pCommandSet->m_headers.push_back(headerGlobalInt16.iICommandHeader);
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -112,7 +140,7 @@ ICommandCollection_for_AnalogOutputInt16 StartHeaderAOInt16_in_CommandSet(Comman
   decrement_stack_info();
 #endif
 ////    return *header;
-  return header.iICommandCollection_for_AnalogOutputInt16;
+  return headerGlobalInt16.iICommandCollection_for_AnalogOutputInt16;
 }
 
 ////ICommandCollection<AnalogOutputFloat32>& CommandSet::StartHeaderAOFloat32()
@@ -130,6 +158,7 @@ ICommandCollection_for_AnalogOutputInt16 StartHeaderAOInt16_in_CommandSet(Comman
 ////}
 
 ////} // namespace opendnp3
+////    template<class T> void Add(std::vector<Indexed<T>> items)
 void Add_Indexed_for_AnalogOutputInt16_in_CommandSet(CommandSet *pCommandSet, Indexed_for_AnalogOutputInt16* command)
 // std::initializer_list<Indexed_for_AnalogOutputInt16> items)
 {
@@ -156,6 +185,37 @@ void Add_Indexed_for_AnalogOutputInt16_in_CommandSet(CommandSet *pCommandSet, In
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}Add_Indexed_for_AnalogOutputInt16_in_CommandSet_"<<'\n';
+  decrement_stack_info();
+#endif
+}
+
+////    template<class T> void Add(std::vector<Indexed<T>> items)
+void Add_Indexed_for_AnalogOutputInt32_in_CommandSet(CommandSet *pCommandSet, Indexed_for_AnalogOutputInt32* command)
+// std::initializer_list<Indexed_for_AnalogOutputInt16> items)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Add_Indexed_for_AnalogOutputInt32_in_CommandSet1"<<'\n';
+#endif
+//  if (items.size() != 0)
+//  {
+//   ICommandCollection_for_AnalogOutputInt16* StartHeader_for_AnalogOutputInt16_in_CommandSet(CommandSet *pCommandSet);
+////            auto& header = this->StartHeader<T>();
+    ICommandCollection_for_AnalogOutputInt32 header = StartHeader_for_AnalogOutputInt32_in_CommandSet(pCommandSet);
+//    for (auto& command : items)
+//    {
+//void* Add_in_ICommandCollection_for_AnalogOutputInt16(ICommandCollection_for_AnalogOutputInt16* pICommandCollection_for_AnalogOutputInt16,
+//    AnalogOutputInt16* command, uint16_t index);
+////                header.Add(command.value, command.index);
+      AnalogOutputInt32 cmd = command->value;
+      Add_in_ICommandCollection_for_AnalogOutputInt32(&header, &cmd, command->index);
+//    }
+//  }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Add_Indexed_for_AnalogOutputInt32_in_CommandSet_"<<'\n';
   decrement_stack_info();
 #endif
 }

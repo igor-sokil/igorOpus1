@@ -133,6 +133,10 @@ void Add_Indexed_for_AnalogOutputInt16_in_CommandSet(CommandSet *pCommandSet, In
 ICommandCollection_for_AnalogOutputInt16 StartHeader_for_AnalogOutputInt16_in_CommandSet(CommandSet *pCommandSet);
 ICommandCollection_for_AnalogOutputInt16 StartHeaderAOInt16_in_CommandSet(CommandSet *pCommandSet);
 
+void Add_Indexed_for_AnalogOutputInt32_in_CommandSet(CommandSet *pCommandSet, Indexed_for_AnalogOutputInt32* command);
+ICommandCollection_for_AnalogOutputInt32 StartHeader_for_AnalogOutputInt32_in_CommandSet(CommandSet *pCommandSet);
+ICommandCollection_for_AnalogOutputInt32 StartHeaderAOInt32_in_CommandSet(CommandSet *pCommandSet);
+
 ////template<> inline ICommandCollection<ControlRelayOutputBlock>& CommandSet::StartHeader()
 ////{
 ////    return this->StartHeaderCROB();

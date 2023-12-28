@@ -44,6 +44,22 @@ void* Add_in_ICommandCollection_for_AnalogOutputInt16(ICommandCollection_for_Ana
 void* getParentPointer_in_ICommandCollection_for_AnalogOutputInt16(ICommandCollection_for_AnalogOutputInt16*);
 void  setParentPointer_in_ICommandCollection_for_AnalogOutputInt16(ICommandCollection_for_AnalogOutputInt16*, void*);
 //------------------------AnalogOutputInt16-------------------------
+//------------------------AnalogOutputInt32-------------------------
+typedef struct
+{
+////public:
+  void* (*pAdd_in_ICommandCollection_for_AnalogOutputInt32)(void *, AnalogOutputInt32* command, uint16_t index);// = 0;
+
+  void* pParentPointer_in_ICommandCollection_for_AnalogOutputInt32;
+
+} ICommandCollection_for_AnalogOutputInt32;
+
+void* Add_in_ICommandCollection_for_AnalogOutputInt32(ICommandCollection_for_AnalogOutputInt32* pICommandCollection_for_AnalogOutputInt32,
+    AnalogOutputInt32* command, uint16_t index);
+
+void* getParentPointer_in_ICommandCollection_for_AnalogOutputInt32(ICommandCollection_for_AnalogOutputInt32*);
+void  setParentPointer_in_ICommandCollection_for_AnalogOutputInt32(ICommandCollection_for_AnalogOutputInt32*, void*);
+//------------------------AnalogOutputInt32-------------------------
 
 
 ////} // namespace opendnp3

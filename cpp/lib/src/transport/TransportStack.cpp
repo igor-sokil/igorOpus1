@@ -17,35 +17,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_MESSAGE_H
-#define OPENDNP3_MESSAGE_H
+#include "TransportStack.h"
 
-////#include "opendnp3/link/Addresses.h"
-
-////#include <ser4cpp/container/SequenceTypes.h>
-
-#include "Addresses.h"
-
-//#include <ser4cpp/container/SequenceTypes.h>
-#include "RSeq.h"
-
-////namespace opendnp3
-////{
-
-////struct Message
-typedef struct
+namespace opendnp3
 {
-////    Message() = default;
 
-////    Message(const Addresses& addresses, const ser4cpp::rseq_t& payload) : addresses(addresses), payload(payload) {}
+TransportStack::TransportStack(const Logger& logger,
+                               const std::shared_ptr<exe4cpp::IExecutor>& executor,
+                               const std::shared_ptr<ILinkListener>& listener,
+                               uint32_t maxRxFragSize,
+                               const LinkLayerConfig& config)
+    : transport(std::make_shared<TransportLayer>(logger, maxRxFragSize)),
+      link(std::make_shared<LinkLayer>(logger, executor, transport, listener, config))
+{
+    transport->SetLinkLayer(*link);
+}
 
-  Addresses addresses;
-  RSeq_for_Uint16_t payload;
-} Message;
-
-void  Message_in_MessageOver1(Message *pMessage);
-void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
-
-////} // namespace opendnp3
-
-#endif
+} // namespace opendnp3

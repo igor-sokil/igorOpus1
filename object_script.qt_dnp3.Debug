@@ -10,6 +10,7 @@ debug/Settable_for_LinkBroadcastAddress.o
 debug/BufferSer4.o
 debug/StaticBuffer_for_LPDU_HEADER_SIZE.o
 debug/StaticBuffer_for_LPDU_MAX_FRAME_SIZE.o
+debug/StaticBuffer_for_MAX_TPDU_LENGTH.o
 debug/Pair_for_IINField_AppControlField.o
 debug/Array__for__Node_for_EventRecord.o
 debug/ArrayView__for__Node_for_EventRecord.o
@@ -264,6 +265,10 @@ debug/TimeSyncState.o
 debug/WriteHandler.o
 debug/TimeDuration.o
 debug/Timestamp.o
+debug/TransportHeader.o
+debug/TransportRx.o
+debug/TransportTx.o
+debug/TransportLayer.o
 debug/ASDUEventWriteHandler.o
 debug/ClazzCount.o
 debug/EventBuffer.o
@@ -362,6 +367,7 @@ debug/MockEventWriteHandler.o
 debug/MockLinkListener.o
 debug/MockAPDUHeaderHandler.o
 debug/MockSOEHandler.o
+debug/MockLinkLayer.o
 debug/MockLowerLayer.o
 debug/MockFrameSink.o
 debug/MockTransportLayer.o

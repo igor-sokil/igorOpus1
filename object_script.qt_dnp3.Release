@@ -10,6 +10,7 @@ release/Settable_for_LinkBroadcastAddress.o
 release/BufferSer4.o
 release/StaticBuffer_for_LPDU_HEADER_SIZE.o
 release/StaticBuffer_for_LPDU_MAX_FRAME_SIZE.o
+release/StaticBuffer_for_MAX_TPDU_LENGTH.o
 release/Pair_for_IINField_AppControlField.o
 release/Array__for__Node_for_EventRecord.o
 release/ArrayView__for__Node_for_EventRecord.o
@@ -264,6 +265,10 @@ release/TimeSyncState.o
 release/WriteHandler.o
 release/TimeDuration.o
 release/Timestamp.o
+release/TransportHeader.o
+release/TransportRx.o
+release/TransportTx.o
+release/TransportLayer.o
 release/ASDUEventWriteHandler.o
 release/ClazzCount.o
 release/EventBuffer.o
@@ -362,6 +367,7 @@ release/MockEventWriteHandler.o
 release/MockLinkListener.o
 release/MockAPDUHeaderHandler.o
 release/MockSOEHandler.o
+release/MockLinkLayer.o
 release/MockLowerLayer.o
 release/MockFrameSink.o
 release/MockTransportLayer.o

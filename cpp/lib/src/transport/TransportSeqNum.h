@@ -17,35 +17,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_MESSAGE_H
-#define OPENDNP3_MESSAGE_H
+#ifndef OPENDNP3_TRANSPORTSEQNUM_H
+#define OPENDNP3_TRANSPORTSEQNUM_H
 
-////#include "opendnp3/link/Addresses.h"
+#include "SequenceNum.h"
 
-////#include <ser4cpp/container/SequenceTypes.h>
-
-#include "Addresses.h"
-
-//#include <ser4cpp/container/SequenceTypes.h>
-#include "RSeq.h"
+////#include <cstdint>
 
 ////namespace opendnp3
 ////{
 
-////struct Message
-typedef struct
-{
-////    Message() = default;
+////typedef SequenceNum<uint8_t, 64> TransportSeqNum;
+#define TransportSeqNum SequenceNum_for_uint8_Modulus64
 
-////    Message(const Addresses& addresses, const ser4cpp::rseq_t& payload) : addresses(addresses), payload(payload) {}
-
-  Addresses addresses;
-  RSeq_for_Uint16_t payload;
-} Message;
-
-void  Message_in_MessageOver1(Message *pMessage);
-void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
-
-////} // namespace opendnp3
+////}
 
 #endif

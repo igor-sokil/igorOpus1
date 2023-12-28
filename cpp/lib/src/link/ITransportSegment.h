@@ -41,9 +41,11 @@ typedef struct
   boolean (*pHasValue_in_ITransportSegment)(void*);// const = 0;
 
   // Read the current segment with a specified max size
+// Читаем текущий сегмент указанного максимального размера
   RSeq_for_Uint16_t (*pGetSegment_in_ITransportSegment)(void*);// = 0;
 
   // move to the next segment, true if more segments available
+// переход к следующему сегменту, true, если доступно больше сегментов
   boolean (*pAdvance_in_ITransportSegment)(void*);// = 0;
 
   void* pParentPointer_in_ITransportSegment;

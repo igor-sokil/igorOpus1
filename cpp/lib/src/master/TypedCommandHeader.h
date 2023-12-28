@@ -99,8 +99,69 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for
               HeaderWriter*, IndexQualifierMode_uint8_t mode);
 boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16_override(void* pICommandHeader,
               HeaderWriter*, IndexQualifierMode_uint8_t mode);
-
 //------------------------AnalogOutputInt16----------------------------
+//------------------------AnalogOutputInt32----------------------------
+////template<class T> class TypedCommandHeader final : public ICommandHeader, public ICommandCollection<T>
+typedef struct
+{
+  ICommandHeader iICommandHeader;
+  ICommandCollection_for_AnalogOutputInt32 iICommandCollection_for_AnalogOutputInt32;
+////    struct Record : public CommandState
+////    {
+////        Record(const Indexed<T>& pair) : CommandState(pair.index), command(pair.value) {}
+
+////        T command;
+////    };
+
+////public:
+////    TypedCommandHeader(const DNP3Serializer<T>& serializer) : serializer(serializer) {}
+
+  // --- Implement ICommandCollection ---
+
+////    virtual ICommandCollection<T>& Add(const T& command, uint16_t index) override;
+
+  // --- Implement ICommandHeader ----
+
+////    virtual bool AreAllSelected() const override;
+
+////    virtual bool Write(HeaderWriter&, IndexQualifierMode mode) override;
+
+////    virtual void ApplySelectResponse(QualifierCode code, const ICollection<Indexed<T>>& commands) override;
+
+////    virtual void ApplyOperateResponse(QualifierCode code, const ICollection<Indexed<T>>& commands) override;
+
+  // --- Implement ICollection<Indexed<CommandResponse>> ----
+
+////    virtual size_t Count() const override;
+
+////    virtual void Foreach(IVisitor<CommandState>& visitor) const override;
+
+////private:
+////    QualifierCode ExpectedQualfier() const
+////    {
+////        return this->use_single_byte_index ? QualifierCode::UINT8_CNT_UINT8_INDEX
+////                                           : QualifierCode::UINT16_CNT_UINT16_INDEX;
+////    }
+
+  boolean use_single_byte_index;/// = true;
+  DNP3Serializer_for_AnalogOutputInt32 serializer;
+//  std::vector<Record_in_TypedCommandHeader_for_AnalogOutputInt32> records;
+  std::vector<Indexed_for_AnalogOutputInt32> records;
+} TypedCommandHeader_for_AnalogOutputInt32;
+
+void TypedCommandHeader_for_AnalogOutputInt32_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32,
+    DNP3Serializer_for_AnalogOutputInt32* serializer);
+
+void* Add_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32* pTypedCommandHeader_for_AnalogOutputInt32,
+    AnalogOutputInt32* command, uint16_t index);
+void* Add_in_TypedCommandHeader_for_AnalogOutputInt32_override(void* pICommandCollection_for_AnalogOutputInt32,
+    AnalogOutputInt32* command, uint16_t index);
+
+boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32* pTypedCommandHeader_for_AnalogOutputInt32,
+              HeaderWriter*, IndexQualifierMode_uint8_t mode);
+boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32_override(void* pICommandHeader,
+              HeaderWriter*, IndexQualifierMode_uint8_t mode);
+//------------------------AnalogOutputInt32----------------------------
 
 ////template<class T> bool TypedCommandHeader<T>::AreAllSelected() const
 ////{

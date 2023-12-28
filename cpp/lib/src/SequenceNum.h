@@ -23,6 +23,7 @@
 ////namespace opendnp3
 ////{
 
+//----------------------------------Modulus16---------------------------------------
 /** represents a sequence number
  */
 ////template<class T, T Modulus> class SequenceNum
@@ -80,7 +81,66 @@ void SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(Seq
 void Increment_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16);
 boolean Equals_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t other);
 SequenceNum_for_uint8_Modulus16 Next_in_SequenceNum_for_uint8_Modulus16Over1(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16);
+//----------------------------------Modulus16---------------------------------------
+//----------------------------------Modulus64---------------------------------------
+/** represents a sequence number
+ */
+////template<class T, T Modulus> class SequenceNum
+typedef struct
+{
+////    inline static T Next(T seq)
+////    {
+////        return (seq + 1) % Modulus;
+////    }
 
+////public:
+////    uint8_t Get() const
+////    {
+////        return this->seq;
+////    }
+////
+////    operator uint8_t() const
+////    {
+////        return this->seq;
+////    }
+////
+////    SequenceNum() : seq(0) {}
+
+////    SequenceNum(T value) : seq(value) {}
+////
+////    bool Equals(T other) const
+////    {
+////        return other == this->seq;
+////    }
+////
+////    void Increment()
+////    {
+////        this->seq = Next(this->seq);
+////    }
+////
+////    void Reset()
+////    {
+////        this->seq = 0;
+////    }
+
+////    SequenceNum Next() const
+////    {
+////        return SequenceNum(Next(seq));
+////    }
+
+////protected:
+  uint8_t seq;
+} SequenceNum_for_uint8_Modulus64;
+#define Modulus64 16
+
+uint8_t Next_in_SequenceNum_for_uint8_Modulus64_staticOver2(uint8_t seq);
+uint8_t Get_in_SequenceNum_for_uint8_Modulus64(SequenceNum_for_uint8_Modulus64 *pSequenceNum_for_uint8_Modulus64);
+void SequenceNum_for_uint8_Modulus64_in_SequenceNum_for_uint8_Modulus64Over1(SequenceNum_for_uint8_Modulus64 *pSequenceNum_for_uint8_Modulus64);
+void SequenceNum_for_uint8_Modulus64_in_SequenceNum_for_uint8_Modulus64Over2(SequenceNum_for_uint8_Modulus64 *pSequenceNum_for_uint8_Modulus64, uint8_t value);
+void Increment_in_SequenceNum_for_uint8_Modulus64(SequenceNum_for_uint8_Modulus64 *pSequenceNum_for_uint8_Modulus64);
+boolean Equals_in_SequenceNum_for_uint8_Modulus64(SequenceNum_for_uint8_Modulus64 *pSequenceNum_for_uint8_Modulus64, uint8_t other);
+SequenceNum_for_uint8_Modulus64 Next_in_SequenceNum_for_uint8_Modulus64Over1(SequenceNum_for_uint8_Modulus64 *pSequenceNum_for_uint8_Modulus64);
+//----------------------------------Modulus64---------------------------------------
 
 ////} // namespace opendnp3
 

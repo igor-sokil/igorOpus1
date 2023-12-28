@@ -134,8 +134,7 @@ void PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_in_PrefixedWriteIterator
   increment_stack_info();
   std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<"PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16Over2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16Over2_1"<<'\n';
 #endif
   pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16->serializer = *serializer;
   pPrefixedWriteIterator_for_UInt16_AnalogOutputInt16->sizeOfTypePlusIndex = get_size_in_Serializer_for_AnalogOutputInt16(serializer) +////serializer.get_size() + PrefixType::size;
@@ -151,6 +150,11 @@ void PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_in_PrefixedWriteIterator
 ////        pPosition->advance(PrefixType::size);
     advance_in_WSeq_for_Uint16_t(position, size_in_UInt16);
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16Over2__"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////    ~PrefixedWriteIterator()

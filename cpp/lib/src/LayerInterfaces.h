@@ -31,6 +31,8 @@
 /**
  * Describes a layer that can be opened or closed in response to the
  * availability of the layer below it.
+* ќписывает слой, который можно открыть или закрыть в ответ на
+  * наличие сло€ под ним.
  */
 ////class IUpDown
 typedef struct
@@ -41,10 +43,14 @@ typedef struct
 
   // Called by a lower Layer when it is available to this layer
   // return false if the layer is already up
+// ¬ызываетс€ более низким уровнем, когда он доступен этому уровню
+   // возвращаем false, если слой уже открыт
   boolean (*pOnLowerLayerUp_in_IUpDown)(void*);// = 0;
 
   // Called by a lower layer when it is no longer available to this layer
   // return false if the layer is already down
+// ¬ызываетс€ более низким уровнем, когда он больше не доступен этому уровню
+   // возвращаем false, если слой уже закрыт
   boolean (*pOnLowerLayerDown_in_IUpDown)(void*);// = 0;
 
   void* pParentPointer_in_IUpDown;
@@ -65,9 +71,12 @@ typedef struct
 
   // Called by the lower layer when data arrives
   // return false if the layer is down
+// ¬ызываетс€ нижним уровнем при поступлении данных
+   // возвращаем false, если слой не работает
   boolean (*pOnReceive_in_IUpperLayer)(void*, Message* message);// = 0;
 
   // Called by the lower layer when it is ready to transmit more data
+// ¬ызываетс€ нижним уровнем, когда он готов передать больше данных
   boolean (*pOnTxReady_in_IUpperLayer)(void*);// = 0;
 
   void* pParentPointer_in_IUpperLayer;
@@ -127,6 +136,7 @@ typedef struct
 ////    HasUpperLayer() : pUpperLayer(nullptr) {}
 
   // Called by the lower layer when data arrives
+// ¬ызываетс€ нижним уровнем при поступлении данных
 
 ////    void SetUpperLayer(IUpperLayer& upperLayer)
 ////    {

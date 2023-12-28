@@ -17,35 +17,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_MESSAGE_H
-#define OPENDNP3_MESSAGE_H
 
-////#include "opendnp3/link/Addresses.h"
-
-////#include <ser4cpp/container/SequenceTypes.h>
-
-#include "Addresses.h"
-
-//#include <ser4cpp/container/SequenceTypes.h>
-#include "RSeq.h"
+#include "header.h"
+#include "TransportHeader.h"
 
 ////namespace opendnp3
 ////{
 
-////struct Message
-typedef struct
+////TransportHeader::TransportHeader(uint8_t byte)
+////    : fir((byte & FIR_MASK) != 0), fin((byte & FIN_MASK) != 0), seq((byte & SEQ_MASK))
+void TransportHeader_in_TransportHeader(TransportHeader *pTransportHeader, uint8_t byte)
 {
-////    Message() = default;
+  pTransportHeader->fir = ((byte & TransportHeader_FIR_MASK) != 0);
+  pTransportHeader->fin = ((byte & TransportHeader_FIN_MASK) != 0);
+  pTransportHeader->seq = ((byte & TransportHeader_SEQ_MASK));
+}
 
-////    Message(const Addresses& addresses, const ser4cpp::rseq_t& payload) : addresses(addresses), payload(payload) {}
+////uint8_t TransportHeader::ToByte(bool fir, bool fin, uint8_t seq)
+uint8_t ToByte_in_TransportHeader_static(boolean fir, boolean fin, uint8_t seq)
+{
+  uint8_t hdr = 0;
 
-  Addresses addresses;
-  RSeq_for_Uint16_t payload;
-} Message;
+  if (fir)
+  {
+    hdr |= TransportHeader_FIR_MASK;
+  }
 
-void  Message_in_MessageOver1(Message *pMessage);
-void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
+  if (fin)
+  {
+    hdr |= TransportHeader_FIN_MASK;
+  }
+
+  // Only the lower 6 bits of the sequence number
+  hdr |= (TransportHeader_SEQ_MASK & seq);
+
+  return hdr;
+}
 
 ////} // namespace opendnp3
-
-#endif

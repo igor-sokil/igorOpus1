@@ -17,34 +17,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_MESSAGE_H
-#define OPENDNP3_MESSAGE_H
+#ifndef OPENDNP3_TRANSPORTHEADER_H
+#define OPENDNP3_TRANSPORTHEADER_H
 
-////#include "opendnp3/link/Addresses.h"
-
-////#include <ser4cpp/container/SequenceTypes.h>
-
-#include "Addresses.h"
-
-//#include <ser4cpp/container/SequenceTypes.h>
-#include "RSeq.h"
+////#include <cstdint>
 
 ////namespace opendnp3
 ////{
 
-////struct Message
+#define TransportHeader_FIN_MASK  0x80
+#define TransportHeader_FIR_MASK  0x40
+#define TransportHeader_SEQ_MASK  0x3F
+
+////class TransportHeader
 typedef struct
 {
-////    Message() = default;
 
-////    Message(const Addresses& addresses, const ser4cpp::rseq_t& payload) : addresses(addresses), payload(payload) {}
+////private:
+////    static const uint8_t FIN_MASK = 0x80;
+////    static const uint8_t FIR_MASK = 0x40;
+////    static const uint8_t SEQ_MASK = 0x3F;
 
-  Addresses addresses;
-  RSeq_for_Uint16_t payload;
-} Message;
+////public:
+////    static uint8_t ToByte(bool fir, bool fin, uint8_t seq);
 
-void  Message_in_MessageOver1(Message *pMessage);
-void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
+////    TransportHeader() = delete;
+////    TransportHeader(uint8_t byte);
+
+  boolean fir;
+  boolean fin;
+  uint8_t seq;
+} TransportHeader;
+
+void TransportHeader_in_TransportHeader(TransportHeader *pTransportHeader, uint8_t byte);
+uint8_t ToByte_in_TransportHeader_static(boolean fir, boolean fin, uint8_t seq);
 
 ////} // namespace opendnp3
 

@@ -88,6 +88,7 @@ void Transport_StackStatistics_in_Transport_StackStatisticsOver2(Transport_Stack
 
 /**
  * Statistics related to both a master or outstation session
+* Статистика, относящаяся как к главному, так и к внешнему сеансу.
  */
 ////struct StackStatistics
 typedef struct

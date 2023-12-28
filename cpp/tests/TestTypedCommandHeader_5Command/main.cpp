@@ -49,10 +49,11 @@ Indexed_for_AnalogOutputInt16 tmp = WithIndex_in_Indexed_for_AnalogOutputInt16(&
  Add_Indexed_for_AnalogOutputInt16_in_CommandSet(&commands, &tmp);
 
 ////    commands.Add<AnalogOutputInt32>({WithIndex(AnalogOutputInt32(8), 11)});
- AnalogOutputInt16_in_AnalogOutputInt16Over2(&aAnalogOutputInt16, 8);
+ AnalogOutputInt32 aAnalogOutputInt32;
+ AnalogOutputInt32_in_AnalogOutputInt32Over2(&aAnalogOutputInt32, 8);
 
- tmp = WithIndex_in_Indexed_for_AnalogOutputInt16(&aAnalogOutputInt16, 11);
- Add_Indexed_for_AnalogOutputInt16_in_CommandSet(&commands, &tmp);
+Indexed_for_AnalogOutputInt32 tmp2 = WithIndex_in_Indexed_for_AnalogOutputInt32(&aAnalogOutputInt32, 11);
+ Add_Indexed_for_AnalogOutputInt32_in_CommandSet(&commands, &tmp2);
 
 ////    REQUIRE(WriteToHex(commands2, IndexQualifierMode::always_two_bytes)
 ////            == "29 02 28 01 00 0A 00 07 00 00 29 01 28 01 00 0B 00 08 00 00 00 00");

@@ -14,6 +14,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                  ser4cpp\container\BufferSer4.cpp \
                  ser4cpp\container\StaticBuffer_for_LPDU_HEADER_SIZE.cpp \
                  ser4cpp\container\StaticBuffer_for_LPDU_MAX_FRAME_SIZE.cpp \
+                 ser4cpp\container\StaticBuffer_for_MAX_TPDU_LENGTH.cpp \
                  ser4cpp\container\Pair_for_IINField_AppControlField.cpp \
                  ser4cpp\container\Array__for__Node_for_EventRecord.cpp \
                  ser4cpp\container\ArrayView__for__Node_for_EventRecord.cpp \
@@ -285,6 +286,11 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\util\TimeDuration.cpp \
                 cpp\lib\src\util\Timestamp.cpp \
                 \
+                cpp\lib\src\transport\TransportHeader.cpp \
+                cpp\lib\src\transport\TransportRx.cpp \
+                cpp\lib\src\transport\TransportTx.cpp \
+                cpp\lib\src\transport\TransportLayer.cpp \
+                \
                 cpp\lib\src\outstation\event\ASDUEventWriteHandler.cpp \
                 cpp\lib\src\outstation\event\ClazzCount.cpp \
                 cpp\lib\src\outstation\event\EventBuffer.cpp \
@@ -387,6 +393,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockLinkListener.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockAPDUHeaderHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockSOEHandler.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockLinkLayer.cpp \
                 \
                 cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockFrameSink.cpp \
