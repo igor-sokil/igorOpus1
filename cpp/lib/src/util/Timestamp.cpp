@@ -27,14 +27,22 @@
 ////{
 
 ////Timestamp Timestamp::Max()
-////{
+Timestamp Max_in_Timestamp_static(void)
+{
 ////    return Timestamp(exe4cpp::steady_time_t::max());
-////}
+  Timestamp tTimestamp;
+  Timestamp_in_TimestampOver2(&tTimestamp, 0x7FFFFFFFFFFFFFFF);
+  return tTimestamp;
+}
 
 ////Timestamp Timestamp::Min()
-////{
+Timestamp Min_in_Timestamp_static(void)
+{
 ////    return Timestamp(exe4cpp::steady_time_t::min());
-////}
+  Timestamp tTimestamp;
+  Timestamp_in_TimestampOver2(&tTimestamp, 0);
+  return tTimestamp;
+}
 
 ////bool Timestamp::IsMax() const
 ////{
@@ -60,11 +68,19 @@ void Timestamp_in_TimestampOver2(Timestamp *pTimestamp, uint64_t value)
 ////Timestamp::Timestamp(exe4cpp::steady_time_t value) : value(value) {}
 
 ////Timestamp Timestamp::operator+(const TimeDuration& duration) const
-////{
+Timestamp operatorPLUS_in_Timestamp(Timestamp *pTimestamp, TimeDuration* duration)
+{
 ////    const auto maximum = exe4cpp::steady_time_t::max() - value;
+  Timestamp smax = Max_in_Timestamp_static();
+  Timestamp maximum;
+  Timestamp_in_TimestampOver2(&maximum, smax.time_point_value - pTimestamp->time_point_value);
+
+  Timestamp ret;
+  Timestamp_in_TimestampOver2(&ret, pTimestamp->time_point_value + duration->duration_value);
 
 ////    return duration.value >= maximum ? Timestamp::Max() : Timestamp(value + duration.value);
-////}
+  return (uint64_t)duration->duration_value >= maximum.time_point_value ? Max_in_Timestamp_static() : ret;
+}
 
 ////Timestamp& Timestamp::operator+=(const TimeDuration& duration)
 ////{

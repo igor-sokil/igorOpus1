@@ -16,12 +16,14 @@ void  BufferSer4_in_BufferSer4Over1(BufferSer4 *pBufferSer4)
 void BufferSer4_in_BufferSer4Over2(BufferSer4 *pBufferSer4, uint16_t length)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"BufferSer4_in_BufferSer4Over2_1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*uint16_t length="<<length<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint8_t bytes[SIZE_BufferSer4]="<<(uint32_t)pBufferSer4->bytes<<'\n';
   decrement_stack_info();
 #endif
 ////        HasLength(length),

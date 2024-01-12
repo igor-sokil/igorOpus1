@@ -1082,16 +1082,36 @@ void CheckForUnsolicited_in_OContext(OContext *pOContext)
 ////bool OContext::ProcessDeferredRequest(const ParsedRequest& request)
 boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessDeferredRequest_in_OContext1"<<std::endl;
+#endif
   if (request->header.function == FunctionCode_CONFIRM)
   {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*FunctionCode_CONFIRM"<<std::endl;
+#endif
 //    boolean ProcessConfirm_in_OContext(OContext *pOContext, ParsedRequest* request)
 ////        this->ProcessConfirm(request);
     ProcessConfirm_in_OContext(pOContext, request);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessDeferredRequest_in_OContext1_"<<std::endl;
+  decrement_stack_info();
+#endif
     return true;
   }
 
   if (request->header.function == FunctionCode_READ)
   {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*FunctionCode_READ"<<std::endl;
+#endif
 //     boolean IsIdle_in_OutstationState(OutstationState *);
 ////        if (this->state->IsIdle())
     if (IsIdle_in_OutstationState(pOContext->state))
@@ -1099,13 +1119,29 @@ boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* r
 //    boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 ////            this->ProcessRequest(request);
       ProcessRequest_in_OContext(pOContext, request);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessDeferredRequest_in_OContext2_"<<std::endl;
+  decrement_stack_info();
+#endif
       return true;
     }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessDeferredRequest_in_OContext3_"<<std::endl;
+  decrement_stack_info();
+#endif
     return false;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessDeferredRequest_in_OContext4_"<<std::endl;
+  decrement_stack_info();
+#endif
 ////        this->ProcessRequest(request);
     ProcessRequest_in_OContext(pOContext, request);
     return true;
@@ -1510,10 +1546,22 @@ IINField GetDynamicIIN_in_OContext(OContext *pOContext)
 
 void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_t destination)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{UpdateLastBroadcastMessageReceived_in_OContext1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t destination= "<<destination<<std::endl;
+#endif
   switch (destination)
   {
   case LinkBroadcastAddress_DontConfirm:
   {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*LinkBroadcastAddress_DontConfirm"<<std::endl;
+#endif
 //void set_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress, uint16_t *value_);
 ////        lastBroadcastMessageReceived.set(LinkBroadcastAddress::DontConfirm);
     uint16_t temp = LinkBroadcastAddress_DontConfirm;
@@ -1522,6 +1570,10 @@ void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_
   break;
   case LinkBroadcastAddress_ShallConfirm:
   {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*LinkBroadcastAddress_ShallConfirm"<<std::endl;
+#endif
 ////        lastBroadcastMessageReceived.set(LinkBroadcastAddress::ShallConfirm);
     uint16_t temp = LinkBroadcastAddress_ShallConfirm;
     set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived), &temp);
@@ -1529,6 +1581,10 @@ void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_
   break;
   case LinkBroadcastAddress_OptionalConfirm:
   {
+#ifdef  LOG_INFO
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*LinkBroadcastAddress_OptionalConfirm"<<std::endl;
+#endif
 ////        lastBroadcastMessageReceived.set(LinkBroadcastAddress::OptionalConfirm);
     uint16_t temp = LinkBroadcastAddress_OptionalConfirm;
     set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived), &temp);
@@ -1539,6 +1595,11 @@ void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_
 ////        lastBroadcastMessageReceived.clear();
     clear_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived));
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}UpdateLastBroadcastMessageReceived_in_OContext_"<<std::endl;
+  decrement_stack_info();
+#endif
 }
 
 void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse* response)
@@ -1690,7 +1751,7 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::WARN, "Ignoring fragment. Requests must have FIR/FIN == 1");
 #ifdef  LOG_INFO
-    std::cout<<"+"<<getString_stack_info();
+    std::cout<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring fragment. Requests must have FIR/FIN == 1')"<<std::endl;
     std::cout<<getString_stack_info();
     std::cout<<"}ProcessMessage_in_OContext4_"<<std::endl;
@@ -1703,7 +1764,7 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::WARN, "Ignoring fragment. Requests cannot request confirmation");
 #ifdef  LOG_INFO
-    std::cout<<"+"<<getString_stack_info();
+    std::cout<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring fragment. Requests cannot request confirmation')"<<std::endl;
     std::cout<<getString_stack_info();
     std::cout<<"}ProcessMessage_in_OContext5_"<<std::endl;
@@ -1794,7 +1855,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     HandleWrite_in_OContext(pOContext, &(request->objects));
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessBroadcastRequest_in_OContext1_"<<std::endl;
     decrement_stack_info();
 #endif
     return true;
@@ -1809,7 +1870,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     HandleDirectOperate_in_OContext(pOContext, &(request->objects), OperateType_DirectOperateNoAck, NULL);
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessBroadcastRequest_in_OContext2_"<<std::endl;
     decrement_stack_info();
 #endif
     return true;
@@ -1824,7 +1885,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     HandleFreeze_in_OContext(pOContext, &(request->objects));
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessBroadcastRequest_in_OContext3_"<<std::endl;
     decrement_stack_info();
 #endif
     return true;
@@ -1839,7 +1900,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     HandleFreezeAndClear_in_OContext(pOContext, &(request->objects));
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessBroadcastRequest_in_OContext4_"<<std::endl;
     decrement_stack_info();
 #endif
     return true;
@@ -1859,7 +1920,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
       HandleAssignClass_in_OContext(pOContext, &(request->objects));
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
-      std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+      std::cout<<"}ProcessBroadcastRequest_in_OContext5_"<<std::endl;
       decrement_stack_info();
 #endif
       return true;
@@ -1868,7 +1929,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     {
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
-      std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+      std::cout<<"}ProcessBroadcastRequest_in_OContext6_"<<std::endl;
       decrement_stack_info();
 #endif
       return false;
@@ -1890,7 +1951,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
       HandleRecordCurrentTime_in_OContext(pOContext);
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
-      std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+      std::cout<<"}ProcessBroadcastRequest_in_OContext7_"<<std::endl;
       decrement_stack_info();
 #endif
       return true;
@@ -1899,7 +1960,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     {
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
-      std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+      std::cout<<"}ProcessBroadcastRequest_in_OContext8_"<<std::endl;
       decrement_stack_info();
 #endif
       return false;
@@ -1919,7 +1980,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
       HandleDisableUnsolicited_in_OContext(pOContext, &(request->objects), NULL);
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
-      std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+      std::cout<<"}ProcessBroadcastRequest_in_OContext9_"<<std::endl;
       decrement_stack_info();
 #endif
       return true;
@@ -1928,7 +1989,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     {
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
-      std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+      std::cout<<"}ProcessBroadcastRequest_in_OContext10_"<<std::endl;
       decrement_stack_info();
 #endif
       return false;
@@ -1948,7 +2009,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
       HandleEnableUnsolicited_in_OContext(pOContext, &(request->objects), NULL);
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
-      std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+      std::cout<<"}ProcessBroadcastRequest_in_OContext11_"<<std::endl;
       decrement_stack_info();
 #endif
       return true;
@@ -1957,7 +2018,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     {
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
-      std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+      std::cout<<"}ProcessBroadcastRequest_in_OContext12_"<<std::endl;
       decrement_stack_info();
 #endif
       return false;
@@ -1971,7 +2032,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring broadcast on function code: %s'"<<std::endl;
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessBroadcastRequest_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessBroadcastRequest_in_OContext13_"<<std::endl;
     decrement_stack_info();
 #endif
     return false;
@@ -2003,7 +2064,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
     HandleDirectOperate_in_OContext(pOContext, &(request->objects), OperateType_DirectOperateNoAck, NULL);
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessRequestNoAck_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessRequestNoAck_in_OContext1_"<<std::endl;
     decrement_stack_info();
 #endif
     return true;
@@ -2018,7 +2079,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
     HandleFreeze_in_OContext(pOContext, &(request->objects));
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessRequestNoAck_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessRequestNoAck_in_OContext2_"<<std::endl;
     decrement_stack_info();
 #endif
     return true;
@@ -2033,7 +2094,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
     HandleFreezeAndClear_in_OContext(pOContext, &(request->objects));
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessRequestNoAck_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessRequestNoAck_in_OContext3_"<<std::endl;
     decrement_stack_info();
 #endif
     return true;
@@ -2045,7 +2106,7 @@ boolean ProcessRequestNoAck_in_OContext(OContext *pOContext, ParsedRequest* requ
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOG_BLOCK(this->logger, flags::WARN, 'Ignoring NR function code: %s'"<<std::endl;
     std::cout<<getString_stack_info();
-    std::cout<<"}ProcessRequestNoAck_in_OContext_"<<std::endl;
+    std::cout<<"}ProcessRequestNoAck_in_OContext4_"<<std::endl;
     decrement_stack_info();
 #endif
     return false;
@@ -2337,7 +2398,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"HandleRead_in_OContext2"<<std::endl;
+  std::cout<<"*HandleRead_in_OContext2"<<std::endl;
 #endif
 
 //     void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
@@ -2345,19 +2406,9 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
   // всегда отменяем выбор ранее выбранных точек, когда начинаем новый запрос на чтение
   Unselect_in_EventBuffer(&(pOContext->eventBuffer));
 
-#ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"HandleRead_in_OContext3"<<std::endl;
-#endif
-
 //    void Unselect_in_Database(Database *pDatabase);
 ////    this->database.Unselect();
   Unselect_in_Database(&(pOContext->database));
-
-#ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"HandleRead_in_OContext4"<<std::endl;
-#endif
 
 //void  ReadHandler_in_ReadHandler(ReadHandler *pReadHandler, IStaticSelector* staticSelector, IEventSelector* eventSelector);
 ////    ReadHandler handler(this->database, this->eventBuffer);
@@ -2377,7 +2428,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"HandleRead_in_OContext5"<<std::endl;
+  std::cout<<"*HandleRead_in_OContext5"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
 #endif
@@ -2406,7 +2457,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}HandleRead_in_OContext_"<<std::endl;
+    std::cout<<"}HandleRead_in_OContext1_"<<std::endl;
     decrement_stack_info();
 #endif
     return pPairSer4cpp_for_IINField_AppControlField;
@@ -2429,7 +2480,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"}HandleRead_in_OContext_"<<std::endl;
+  std::cout<<"}HandleRead_in_OContext2_"<<std::endl;
   decrement_stack_info();
 #endif
 
@@ -2524,7 +2575,7 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
     std::cout<<getString_stack_info();
-    std::cout<<"}HandleDirectOperate_in_OContext_"<<std::endl;
+    std::cout<<"}HandleDirectOperate_in_OContext1_"<<std::endl;
     decrement_stack_info();
 #endif
     return iIINField;
@@ -2577,7 +2628,7 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"}HandleDirectOperate_in_OContext_"<<std::endl;
+  std::cout<<"}HandleDirectOperate_in_OContext2_"<<std::endl;
   decrement_stack_info();
 #endif
   return tmp;
@@ -2606,7 +2657,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
     std::cout<<getString_stack_info();
-    std::cout<<"}HandleSelect_in_OContext_"<<std::endl;
+    std::cout<<"}HandleSelect_in_OContext1_"<<std::endl;
     decrement_stack_info();
 #endif
 ////        return IINField(IINBit::PARAM_ERROR);
@@ -2670,7 +2721,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}HandleSelect_in_OContext_"<<std::endl;
+    std::cout<<"}HandleSelect_in_OContext2_"<<std::endl;
     decrement_stack_info();
 #endif
 
@@ -2680,7 +2731,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"}HandleSelect_in_OContext_"<<std::endl;
+  std::cout<<"}HandleSelect_in_OContext3_"<<std::endl;
   decrement_stack_info();
 #endif
   return IINFromParseResult(result);

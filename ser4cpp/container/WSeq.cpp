@@ -138,6 +138,11 @@ RSeq_for_Uint16_t transfer_fromMemcpy_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pW
   }
   else
   {
+////            const auto ret = this->readonly().take(src.length());
+////            mem_func(buffer_, src, src.length());
+////            this->advance(src.length());
+////            return ret;
+
     RSeq_for_Uint16_t ret1 = readonly_in_WSeq_for_Uint16_t(pWSeq_for_Uint16_t);
 //#ifdef  LOG_INFO
 //  inspect_RSeq(&ret1);

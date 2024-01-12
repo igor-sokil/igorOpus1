@@ -72,14 +72,20 @@ void TransportLayer_in_TransportLayer(TransportLayer *pTransportLayer, uint32_t 
 ////bool TransportLayer::BeginTransmit(const Message& message)
 boolean BeginTransmit_in_TransportLayer(TransportLayer *pTransportLayer, Message* message)
 {
+#ifdef  LOG_INFO
+    std::cout<<std::endl;
+    increment_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"{BeginTransmit_in_TransportLayer1"<<'\n';
+#endif
   if (!pTransportLayer->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer offline");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer offline')"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}BeginTransmit_in_TransportLayer1_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -90,10 +96,10 @@ boolean BeginTransmit_in_TransportLayer(TransportLayer *pTransportLayer, Message
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "APDU cannot be empty");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'APDU cannot be empty')"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}BeginTransmit_in_TransportLayer2_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -103,10 +109,10 @@ boolean BeginTransmit_in_TransportLayer(TransportLayer *pTransportLayer, Message
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Invalid BeginTransmit call, already transmitting");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Invalid BeginTransmit call, already transmitting')"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}BeginTransmit_in_TransportLayer3_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -116,10 +122,10 @@ boolean BeginTransmit_in_TransportLayer(TransportLayer *pTransportLayer, Message
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Can't send without an attached link layer");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Can't send without an attached link layer')"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}BeginTransmit_in_TransportLayer4_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -135,6 +141,11 @@ boolean BeginTransmit_in_TransportLayer(TransportLayer *pTransportLayer, Message
 ////    lower->Send(transmitter);
   Send_in_ILinkLayer(pTransportLayer->lower, &(pTransportLayer->transmitter.iITransportSegment));
 
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}BeginTransmit_in_TransportLayer5_"<<'\n';
+    decrement_stack_info();
+#endif
   return true;
 }
 boolean BeginTransmit_in_TransportLayer_override(void *pILowerLayer, Message* message)
@@ -150,6 +161,12 @@ boolean BeginTransmit_in_TransportLayer_override(void *pILowerLayer, Message* me
 ////bool TransportLayer::OnReceive(const Message& message)
 boolean OnReceive_in_TransportLayer(TransportLayer *pTransportLayer, Message* message)
 {
+#ifdef  LOG_INFO
+    std::cout<<std::endl;
+    increment_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"{OnReceive_in_TransportLayer1"<<'\n';
+#endif
   if (pTransportLayer->isOnline)
   {
 //Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segment);
@@ -163,15 +180,21 @@ boolean OnReceive_in_TransportLayer(TransportLayer *pTransportLayer, Message* me
 ////            upper->OnReceive(asdu);
       OnReceive_in_IUpperLayer(pTransportLayer->upper, &asdu);
     }
+
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}OnReceive_in_TransportLayer1_"<<'\n';
+    decrement_stack_info();
+#endif
     return true;
   }
 
 ////    SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer offline");
 #ifdef  LOG_INFO
-  std::cout<<std::endl;
-  increment_stack_info();
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer offline')"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnReceive_in_TransportLayer2_"<<'\n';
   decrement_stack_info();
 #endif
   return false;
@@ -185,14 +208,20 @@ boolean OnReceive_in_TransportLayer_override(void *pIUpperLayer, Message* messag
 ////bool TransportLayer::OnTxReady()
 boolean OnTxReady_in_TransportLayer(TransportLayer *pTransportLayer)
 {
+#ifdef  LOG_INFO
+    std::cout<<std::endl;
+    increment_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"{OnTxReady_in_TransportLayer1"<<'\n';
+#endif
   if (!pTransportLayer->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer offline");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer offline')"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}OnTxReady_in_TransportLayer1_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -202,10 +231,10 @@ boolean OnTxReady_in_TransportLayer(TransportLayer *pTransportLayer)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Invalid send callback");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Invalid send callback')"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}OnTxReady_in_TransportLayer2_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -220,6 +249,11 @@ boolean OnTxReady_in_TransportLayer(TransportLayer *pTransportLayer)
     OnTxReady_in_IUpperLayer(pTransportLayer->upper);
   }
 
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}OnTxReady_in_TransportLayer3_"<<'\n';
+    decrement_stack_info();
+#endif
   return true;
 }
 boolean OnTxReady_in_TransportLayer_override(void *pIUpperLayer)
@@ -236,7 +270,7 @@ void SetAppLayer_in_TransportLayer(TransportLayer *pTransportLayer, IUpperLayer*
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  if(!pTransportLayer->upper) std::cout<<"*assert(!upper)"<<'\n';
+  if(pTransportLayer->upper) std::cout<<"*assert(!upper)"<<'\n';
   decrement_stack_info();
 #endif
 
@@ -251,7 +285,7 @@ void SetLinkLayer_in_TransportLayer(TransportLayer *pTransportLayer, ILinkLayer*
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  if(!pTransportLayer->lower) std::cout<<"*assert(!lower)"<<'\n';
+  if(pTransportLayer->lower) std::cout<<"*assert(!lower)"<<'\n';
   decrement_stack_info();
 #endif
 
@@ -274,15 +308,22 @@ Transport_StackStatistics GetStatistics_in_TransportLayer(TransportLayer *pTrans
 ////bool TransportLayer::OnLowerLayerUp()
 boolean OnLowerLayerUp_in_TransportLayer(TransportLayer *pTransportLayer)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnLowerLayerUp_in_TransportLayer1"<<'\n';
+#endif
+
   if (pTransportLayer->isOnline)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Layer already online");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer already online')"<<'\n';
-    decrement_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnLowerLayerUp_in_TransportLayer1_"<<'\n';
+  decrement_stack_info();
 #endif
 
     return false;
@@ -295,6 +336,12 @@ boolean OnLowerLayerUp_in_TransportLayer(TransportLayer *pTransportLayer)
 ////        upper->OnLowerLayerUp();
     OnLowerLayerUp_in_IUpDown(&(pTransportLayer->upper->iIUpDown));
   }
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnLowerLayerUp_in_TransportLayer2_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 

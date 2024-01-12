@@ -21,7 +21,7 @@
 #include <QApplication>
 #include "header.h"
 #include "DataSink.h"
-
+#include "HexConversions.h"
 ////#include <ser4cpp/util/HexConversions.h>
 
 ////#include <memory>
@@ -62,10 +62,15 @@ boolean Equals_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
 }
 
 ////std::string DataSink::AsHex(bool spaced) const
-////{
+std::string AsHex_in_DataSink(DataSink *pDataSink, boolean spaced)
+{
 ////    const ser4cpp::rseq_t temp(this->buffer.data(), this->buffer.size());
+  RSeq_for_Uint16_t temp;
+  RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&temp, pDataSink->buffer.data(), pDataSink->buffer.size());
 ////    return HexConversions::to_hex(temp, spaced);
-////}
+  return to_hex_in_HexConversionsOver2(&temp, spaced);
+}
+
 boolean IsEmpty_in_DataSink(DataSink *pDataSink)
 {
   return pDataSink->buffer.size() == 0;

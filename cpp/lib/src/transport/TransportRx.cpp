@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "TransportRx.h"
 
@@ -37,6 +41,9 @@
 ////    : logger(logger), rxBuffer(maxRxFragSize), numBytesRead(0)
 void TransportRx_in_TransportRx(TransportRx *pTransportRx, uint32_t maxRxFragSize)
 {
+  Rx_Transport_in_Rx_Transport(&(pTransportRx->statistics));
+  SequenceNum_for_uint8_Modulus64_in_SequenceNum_for_uint8_Modulus64Over1(&(pTransportRx->expectedSeq));
+  Addresses_in_AddressesOver1(&(pTransportRx->lastAddresses));
 //void BufferSer4_in_BufferSer4Over2(BufferSer4 *pBufferSer4, uint16_t length);
 //// rxBuffer(maxRxFragSize), numBytesRead(0)
   BufferSer4_in_BufferSer4Over2(&(pTransportRx->rxBuffer), maxRxFragSize);
@@ -60,15 +67,34 @@ void ClearRxBuffer_in_TransportRx(TransportRx *pTransportRx)
 ////ser4cpp::wseq_t TransportRx::GetAvailable()
 WSeq_for_Uint16_t GetAvailable_in_TransportRx(TransportRx *pTransportRx)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{GetAvailable_in_TransportRx1"<<'\n';
+#endif
 //WSeq_for_Uint16_t as_wslice_in_BufferSer4(BufferSer4 *pBufferSer4);
 ////    return rxBuffer.as_wslice().skip(numBytesRead);
   WSeq_for_Uint16_t wtemp = as_wslice_in_BufferSer4(&(pTransportRx->rxBuffer));
-  return skip_in_WSeq_for_Uint16_t(&wtemp, pTransportRx->numBytesRead);
+  WSeq_for_Uint16_t tmp = skip_in_WSeq_for_Uint16_t(&wtemp, pTransportRx->numBytesRead);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}GetAvailable_in_TransportRx_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////Message TransportRx::ProcessReceive(const Message& segment)
 Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segment)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessReceive_in_TransportRx1"<<'\n';
+#endif
   ++(pTransportRx->statistics.numTransportRx);
 
 ////    if (segment.payload.is_empty())
@@ -76,10 +102,10 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
   {
 ////        FORMAT_LOG_BLOCK(logger, flags::WARN, "Received tpdu with no header");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOG_BLOCK(logger, flags::WARN, 'Received tpdu with no header')"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}ProcessReceive_in_TransportRx1_"<<'\n';
     decrement_stack_info();
 #endif
 
@@ -105,11 +131,18 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
 ////    FORMAT_LOG_BLOCK(logger, flags::TRANSPORT_RX, "FIR: %d FIN: %d SEQ: %u LEN: %zu", header.fir, header.fin,
 ////                     header.seq, payload.length());
 #ifdef  LOG_INFO
-  std::cout<<std::endl;
-  increment_stack_info();
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*FORMAT_LOG_BLOCK(logger, flags::TRANSPORT_RX, 'FIR: %d FIN: %d SEQ: %u LEN: %zu', header.fir, header.fin"<<'\n';
-  decrement_stack_info();
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FIR: "<<(uint16_t)header.fir<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FIN: "<<(uint16_t)header.fin<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SEQ: "<<(uint16_t)header.seq<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LEN: "<<(uint16_t)length_in_HasLength_for_Uint16_t(&(payload.hHasLength))<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pTransportRx->numBytesRead= "<<(uint16_t)pTransportRx->numBytesRead<<'\n';
 #endif
 
   if (header.fir && (pTransportRx->numBytesRead > 0))
@@ -119,12 +152,9 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
 
 ////        SIMPLE_LOG_BLOCK(logger, flags::WARN, "FIR received mid-fragment, discarding previous bytes");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::WARN, 'FIR received mid-fragment, discarding previous bytes')"<<'\n';
 //FIR получил средний фрагмент, отбросив предыдущие байты.
-    decrement_stack_info();
 #endif
 
     pTransportRx->numBytesRead = 0;
@@ -141,10 +171,10 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
 
 ////            SIMPLE_LOG_BLOCK(logger, flags::WARN, "non-FIR packet with 0 prior bytes");
 #ifdef  LOG_INFO
-      std::cout<<std::endl;
-      increment_stack_info();
       std::cout<<"*"<<getString_stack_info();
       std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::WARN, 'non-FIR packet with 0 prior bytes')"<<'\n';
+      std::cout<<getString_stack_info();
+      std::cout<<"}ProcessReceive_in_TransportRx2_"<<'\n';
       decrement_stack_info();
 #endif
 
@@ -160,10 +190,10 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
 ////            FORMAT_LOG_BLOCK(logger, flags::WARN, "Received segment w/ seq: %u, expected: %u", header.seq,
 ///                             this->expectedSeq.Get());
 #ifdef  LOG_INFO
-      std::cout<<std::endl;
-      increment_stack_info();
       std::cout<<"*"<<getString_stack_info();
       std::cout<<"*FORMAT_LOG_BLOCK(logger, flags::WARN, 'Received segment w/ seq: %u, expected: %u', header.seq"<<'\n';
+      std::cout<<getString_stack_info();
+      std::cout<<"}ProcessReceive_in_TransportRx3_"<<'\n';
       decrement_stack_info();
 #endif
 
@@ -183,10 +213,10 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
 ////                             this->lastAddresses.source, this->lastAddresses.destination, segment.addresses.source,
 ////                             segment.addresses.destination);
 #ifdef  LOG_INFO
-      std::cout<<std::endl;
-      increment_stack_info();
       std::cout<<"*"<<getString_stack_info();
       std::cout<<"*FORMAT_LOG_BLOCK(logger, flags::WARN,'Bad addressing: last { src: %u, dest: %u } received { src: %u, dest: %u}'"<<'\n';
+      std::cout<<getString_stack_info();
+      std::cout<<"}ProcessReceive_in_TransportRx4_"<<'\n';
       decrement_stack_info();
 #endif
 
@@ -209,11 +239,11 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
 
 ////        SIMPLE_LOG_BLOCK(logger, flags::WARN, "Exceeded the buffer size before a complete fragment was read");
 #ifdef  LOG_INFO
-    std::cout<<std::endl;
-    increment_stack_info();
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::WARN, 'Exceeded the buffer size before a complete fragment was read')"<<'\n';
 //Превышен размер буфера до того, как был прочитан полный фрагмент.
+    std::cout<<getString_stack_info();
+    std::cout<<"}ProcessReceive_in_TransportRx5_"<<'\n';
     decrement_stack_info();
 #endif
 
@@ -238,8 +268,16 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
 
   if (header.fin)
   {
+//RSeq_for_Uint16_t take_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
 ////        const auto ret = rxBuffer.as_rslice().take(numBytesRead);
-    RSeq_for_Uint16_t ret = as_rslice_in_BufferSer4(&(pTransportRx->rxBuffer));
+    RSeq_for_Uint16_t tmp = as_rslice_in_BufferSer4(&(pTransportRx->rxBuffer));
+    RSeq_for_Uint16_t ret = take_in_RSeq_for_Uint16_t(&tmp, pTransportRx->numBytesRead);
+
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ProcessReceive_in_TransportRx6_"<<'\n';
+    decrement_stack_info();
+#endif
 
     pTransportRx->numBytesRead = 0;
 
@@ -250,6 +288,11 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
     return mMessage;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessReceive_in_TransportRx7_"<<'\n';
+  decrement_stack_info();
+#endif
 ////    return Message();
   Message mMessage;
   Message_in_MessageOver1(&mMessage);

@@ -1,4 +1,5 @@
 #include "header.h"
+#include "Node_for_int.h"
 #include "Node_for_EventRecord.h"
 #include "Node_TypedEventRecord_for_AnalogOutputStatusSpec.h"
 #include "Node_TypedEventRecord_for_AnalogSpec.h"
@@ -9,6 +10,14 @@
 #include "Node_TypedEventRecord_for_FrozenCounterSpec.h"
 #include "Node_TypedEventRecord_for_OctetStringSpec.h"
 #include <string.h>
+
+void Node_for_int_in_Node_for_int(Node_for_int *pNode_for_int)
+{
+//  EventRecord_in_intOver1(&(pNode_for_int->value));
+//  EventRecord_in_EventRecordOver1(&(pNode_for_int->value));
+  pNode_for_int->prev = NULL;
+  pNode_for_int->next = NULL;
+}
 
 void Node_for_EventRecord_in_Node_for_EventRecord(Node_for_EventRecord *pNode_for_EventRecord)
 {

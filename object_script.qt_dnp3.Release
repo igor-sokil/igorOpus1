@@ -12,7 +12,9 @@ release/StaticBuffer_for_LPDU_HEADER_SIZE.o
 release/StaticBuffer_for_LPDU_MAX_FRAME_SIZE.o
 release/StaticBuffer_for_MAX_TPDU_LENGTH.o
 release/Pair_for_IINField_AppControlField.o
+release/Array__for__Node_for_int.o
 release/Array__for__Node_for_EventRecord.o
+release/ArrayView__for__Node_for_int.o
 release/ArrayView__for__Node_for_EventRecord.o
 release/Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.o
 release/ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.o
@@ -41,6 +43,8 @@ release/UTCTimestamp.o
 release/CommandPointResult.o
 release/HeaderInfo.o
 release/ResponseInfo.o
+release/ISOEHandler.o
+release/ICommandCollection.o
 release/IResource.o
 release/StackStatistics.o
 release/BaseMeasurementTypes.o
@@ -88,8 +92,6 @@ release/StaticTypeBitfield.o
 release/LinkConfig.o
 release/LinkStatistics.o
 release/ILinkListener.o
-release/ISOEHandler.o
-release/ICommandCollection.o
 release/LayerInterfaces.o
 release/SequenceNum.o
 release/Addresses.o
@@ -111,9 +113,11 @@ release/SecLinkLayerStates.o
 release/ShiftableBuffer.o
 release/CommandSet.o
 release/CommandSetOps.o
+release/HeaderTypes.o
 release/ICommandHeader.o
 release/MeasurementHandler.o
 release/TypedCommandHeader.o
+release/TaskBehavior.o
 release/APDUHeaderParser.o
 release/APDUParser.o
 release/BufferedCollection.o
@@ -292,6 +296,8 @@ release/IEventType.o
 release/IEventWriteHandler.o
 release/List_for_EventRecord_part1.o
 release/List_for_EventRecord_part2.o
+release/List_for_int_part1.o
+release/List_for_int_part2.o
 release/List_TypedEventRecord_for_AnalogOutputStatusSpec_part1.o
 release/List_TypedEventRecord_for_AnalogOutputStatusSpec_part2.o
 release/List_TypedEventRecord_for_AnalogSpec_part1.o
@@ -354,6 +360,7 @@ release/LinkParserTest.o
 release/LinkLayerTest.o
 release/MockTransportSegment.o
 release/OutstationTestObject.o
+release/ProtocolUtil.o
 release/TestAPDUParsing.o
 release/TestOutstation.o
 release/TestOutstationEventResponses.o
@@ -361,6 +368,7 @@ release/TestOutstationFrozenCounters.o
 release/TestOutstationDiscontiguousIndices.o
 release/TestMeasurementHandler.o
 release/TestTypedCommandHeader.o
+release/TransportTestObject.o
 release/MockOutstationApplication.o
 release/MockCommandHandler.o
 release/MockEventWriteHandler.o
@@ -369,6 +377,7 @@ release/MockAPDUHeaderHandler.o
 release/MockSOEHandler.o
 release/MockLinkLayer.o
 release/MockLowerLayer.o
+release/MockUpperLayer.o
 release/MockFrameSink.o
 release/MockTransportLayer.o
 release/DatabaseHelpers.o

@@ -16,7 +16,9 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                  ser4cpp\container\StaticBuffer_for_LPDU_MAX_FRAME_SIZE.cpp \
                  ser4cpp\container\StaticBuffer_for_MAX_TPDU_LENGTH.cpp \
                  ser4cpp\container\Pair_for_IINField_AppControlField.cpp \
+                 ser4cpp\container\Array__for__Node_for_int.cpp \
                  ser4cpp\container\Array__for__Node_for_EventRecord.cpp \
+                 ser4cpp\container\ArrayView__for__Node_for_int.cpp \
                  ser4cpp\container\ArrayView__for__Node_for_EventRecord.cpp \
                  ser4cpp\container\Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.cpp \
                  ser4cpp\container\ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.cpp \
@@ -48,6 +50,8 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\master\CommandPointResult.cpp \
                 cpp\lib\include\opendnp3\master\HeaderInfo.cpp \
                 cpp\lib\include\opendnp3\master\ResponseInfo.cpp \
+                cpp\lib\include\opendnp3\master\ISOEHandler.cpp \
+                cpp\lib\include\opendnp3\master\ICommandCollection.cpp \
                 \
                 cpp\lib\include\opendnp3\IResource.cpp \
                 cpp\lib\include\opendnp3\StackStatistics.cpp \
@@ -101,9 +105,6 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\link\LinkStatistics.cpp \
                 cpp\lib\include\opendnp3\link\ILinkListener.cpp \
                 \
-                cpp\lib\include\opendnp3\master\ISOEHandler.cpp \
-                cpp\lib\include\opendnp3\master\ICommandCollection.cpp \
-                \
                 cpp\lib\src\LayerInterfaces.cpp \
                 cpp\lib\src\SequenceNum.cpp \
                 \
@@ -127,9 +128,11 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\src\master\CommandSet.cpp \
                 cpp\lib\src\master\CommandSetOps.cpp \
+                cpp\lib\src\master\HeaderTypes.cpp \
                 cpp\lib\src\master\ICommandHeader.cpp \
                 cpp\lib\src\master\MeasurementHandler.cpp \
                 cpp\lib\src\master\TypedCommandHeader.cpp \
+                cpp\lib\src\master\TaskBehavior.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\APDUParser.cpp \
@@ -314,6 +317,8 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\event\IEventWriteHandler.cpp \
                 cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
                 cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
+                cpp\lib\src\outstation\event\List_for_int_part1.cpp \
+                cpp\lib\src\outstation\event\List_for_int_part2.cpp \
                 cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogOutputStatusSpec_part1.cpp \
                 cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogOutputStatusSpec_part2.cpp \
                 cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogSpec_part1.cpp \
@@ -379,6 +384,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\LinkLayerTest.cpp \
                 cpp\tests\unit\utils\MockTransportSegment.cpp \
                 cpp\tests\unit\utils\OutstationTestObject.cpp \
+                cpp\tests\unit\utils\ProtocolUtil.cpp \
                 cpp\tests\unit\utils\TestAPDUParsing.cpp \
                 cpp\tests\unit\utils\TestOutstation.cpp \
                 cpp\tests\unit\utils\TestOutstationEventResponses.cpp \
@@ -386,6 +392,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\TestOutstationDiscontiguousIndices.cpp \
                 cpp\tests\unit\utils\TestMeasurementHandler.cpp \
                 cpp\tests\unit\utils\TestTypedCommandHeader.cpp \
+                cpp\tests\unit\utils\TransportTestObject.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \
@@ -396,6 +403,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockLinkLayer.cpp \
                 \
                 cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
+                cpp\tests\dnp3mocks\src\MockUpperLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockFrameSink.cpp \
                 cpp\tests\dnp3mocks\src\MockTransportLayer.cpp \
                 cpp\tests\dnp3mocks\src\DatabaseHelpers.cpp \

@@ -26,15 +26,21 @@
 ////namespace opendnp3
 ////{
 ////
-////TimeDuration TimeDuration::Min()
-////{
+TimeDuration Min_in_TimeDuration_static(void)
+{
 ////    return TimeDuration(exe4cpp::duration_t::min());
-////}
-////
-////TimeDuration TimeDuration::Max()
-////{
+  TimeDuration tTimeDuration;
+  TimeDuration_in_TimeDuration(&tTimeDuration, 0);
+  return tTimeDuration;
+}
+
+TimeDuration Max_in_TimeDuration_static(void)
+{
 ////    return TimeDuration(exe4cpp::duration_t::max());
-////}
+  TimeDuration tTimeDuration;
+  TimeDuration_in_TimeDuration(&tTimeDuration, 0x7FFFFFFFFFFFFFFF);
+  return tTimeDuration;
+}
 ////
 ////TimeDuration TimeDuration::Zero()
 ////{
@@ -87,18 +93,26 @@ TimeDuration Minutes_in_TimeDuration_static(int64_t minutes)
 ////
 ////
 ////TimeDuration::TimeDuration() : value(std::chrono::milliseconds(0)) {}
-////
+
 ////TimeDuration TimeDuration::Double() const
-////{
+TimeDuration Double_in_TimeDuration(TimeDuration *pTimeDuration)
+{
+  TimeDuration dmax = Max_in_TimeDuration_static();
 ////    const bool doubling_would_cause_mult_overflow = this->value >= exe4cpp::duration_t::max() / 2;
-////
+  boolean doubling_would_cause_mult_overflow = pTimeDuration->duration_value >= dmax.duration_value / 2;
+
 ////    return doubling_would_cause_mult_overflow ? TimeDuration::Max() : TimeDuration(this->value + this->value);
-////}
-////
+  TimeDuration ret;
+  TimeDuration_in_TimeDuration(&ret, pTimeDuration->duration_value + pTimeDuration->duration_value);
+  return doubling_would_cause_mult_overflow ? dmax : ret;
+}
+
 ////bool TimeDuration::IsNegative() const
-////{
+boolean IsNegative_in_TimeDuration(TimeDuration* pTimeDuration)
+{
 ////    return *this < TimeDuration::Zero();
-////}
+  return pTimeDuration->duration_value < 0;
+}
 ////
 ////std::string TimeDuration::ToString() const
 ////{
@@ -132,14 +146,10 @@ boolean operatorLT_in_TimeDuration(TimeDuration *pTimeDuration, TimeDuration* ot
 ////    return this->value >= other.value;
 ////}
 ////
-void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, uint64_t value)
+void TimeDuration_in_TimeDuration(TimeDuration *pTimeDuration, int64_t value)
 {
 ////exe4cpp::duration_t value) : value(value) {}
   pTimeDuration->duration_value = value;
 }
 ////
 ////} // namespace opendnp3
-////
-////
-////
-////

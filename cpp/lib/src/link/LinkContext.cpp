@@ -519,7 +519,7 @@ void OnKeepAliveTimeout_in_LinkContext(LinkContext *pLinkContext)
 //    Timestamp lastMessageTimestamp;
 ///    const auto elapsed = now - this->lastMessageTimestamp;
 //истекший
-  uint64_t elapsed = now.time_point_value - pLinkContext->lastMessageTimestamp.time_point_value;
+  int64_t elapsed = now.time_point_value - pLinkContext->lastMessageTimestamp.time_point_value;
 
 //    uint64_t duration_value;
 //    TimeDuration KeepAliveTimeout;

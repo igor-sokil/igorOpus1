@@ -60,8 +60,12 @@ void Configure_in_TransportTx(TransportTx *pTransportTx, Message* message)
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  if(!is_not_empty_in_HasLength_for_Uint16_t(&(message->payload.hHasLength))) std::cout<<"*assert(message.payload.is_not_empty())"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{Configure_in_TransportTx1"<<'\n';
+  if(!is_not_empty_in_HasLength_for_Uint16_t(&(message->payload.hHasLength)))
+  {
+  std::cout<<getString_stack_info();
+  std::cout<<"*assert(message.payload.is_not_empty())"<<'\n';
+  }
 #endif
 
 //void clear_in_Settable_for_RSeq_t(Settable_for_RSeq_t *pSettable_for_RSeq_t);
@@ -71,6 +75,11 @@ void Configure_in_TransportTx(TransportTx *pTransportTx, Message* message)
   pTransportTx->message = *message;
 
   pTransportTx->tpduCount = 0;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Configure_in_TransportTx_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////bool TransportTx::HasValue() const
@@ -84,6 +93,12 @@ boolean HasValue_in_TransportTx(TransportTx *pTransportTx)
 ////ser4cpp::rseq_t TransportTx::GetSegment()
 RSeq_for_Uint16_t GetSegment_in_TransportTx(TransportTx *pTransportTx)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{GetSegment_in_TransportTx1"<<'\n';
+#endif
 //boolean is_set_in_Settable_for_RSeq_t(Settable_for_RSeq_t *pSettable_for_RSeq_t);
 ////    if (txSegment.is_set())
   if (is_set_in_Settable_for_RSeq_t(&(pTransportTx->txSegment)))
@@ -98,6 +113,12 @@ RSeq_for_Uint16_t GetSegment_in_TransportTx(TransportTx *pTransportTx)
   uint16_t numToSend =
     (length_in_HasLength_for_Uint16_t(&(pTransportTx->message.payload.hHasLength)) < MAX_TPDU_PAYLOAD) ?
     length_in_HasLength_for_Uint16_t(&(pTransportTx->message.payload.hHasLength)) : MAX_TPDU_PAYLOAD;
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GetSegment_in_TransportTx2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t numToSend= "<<numToSend<<'\n';
+#endif
 
 //WSeq_for_Uint16_t skip_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, uint16_t count);
 ////    auto dest = tpduBuffer.as_wseq().skip(1);
@@ -108,6 +129,13 @@ RSeq_for_Uint16_t GetSegment_in_TransportTx(TransportTx *pTransportTx)
 //RSeq_for_Uint16_t copy_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
 ////    dest.copy_from(this->message.payload.take(numToSend));
   RSeq_for_Uint16_t rtemp = take_in_RSeq_for_Uint16_t(&(pTransportTx->message.payload), numToSend);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*GetSegment_in_TransportTx3"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  inspect_RSeq(&rtemp);
+#endif
+
   copy_from_in_WSeq_for_Uint16_t(&dest, &rtemp);
 
 ////    bool fir = (tpduCount == 0);
@@ -131,6 +159,14 @@ RSeq_for_Uint16_t GetSegment_in_TransportTx(TransportTx *pTransportTx)
   increment_stack_info();
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*FORMAT_LOG_BLOCK(logger, flags::TRANSPORT_TX, 'FIR: %d FIN: %d SEQ: %u LEN: %zu', fir, fin, sequence.Get()"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FIR: "<<(uint16_t)fir<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*FIN: "<<(uint16_t)fin<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*SEQ: "<<(uint16_t)Get_in_SequenceNum_for_uint8_Modulus64(&(pTransportTx->sequence))<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LEN: "<<(uint16_t)numToSend<<'\n';
   decrement_stack_info();
 #endif
 
@@ -146,12 +182,23 @@ RSeq_for_Uint16_t GetSegment_in_TransportTx(TransportTx *pTransportTx)
 ////    txSegment.set(segment);
   set_in_Settable_for_RSeq_t(&(pTransportTx->txSegment), &segment);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}GetSegment_in_TransportTx_"<<'\n';
+  decrement_stack_info();
+#endif
   return segment;
 }
 
 ////bool TransportTx::Advance()
 boolean Advance_in_TransportTx(TransportTx *pTransportTx)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Advance_in_TransportTx1"<<'\n';
+#endif
 //void clear_in_Settable_for_RSeq_t(Settable_for_RSeq_t *pSettable_for_RSeq_t);
 ////    txSegment.clear();
   clear_in_Settable_for_RSeq_t(&(pTransportTx->txSegment));
@@ -172,6 +219,11 @@ boolean Advance_in_TransportTx(TransportTx *pTransportTx)
 ////    sequence.Increment();
   Increment_in_SequenceNum_for_uint8_Modulus64(&(pTransportTx->sequence));
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Advance_in_TransportTx_"<<'\n';
+  decrement_stack_info();
+#endif
 //boolean is_not_empty_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
 ////    return this->message.payload.is_not_empty();
   return is_not_empty_in_HasLength_for_Uint16_t(&(pTransportTx->message.payload.hHasLength));

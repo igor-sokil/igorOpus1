@@ -30,6 +30,7 @@
 
 #include "ClazzCount.h"
 //#include "EventRecord.h"
+#include "List_for_int.h"
 #include "List_for_EventRecord.h"
 #include "TypedEventRecord.h"
 //#include "app/MeasurementTypeSpecs.h"

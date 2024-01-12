@@ -12,7 +12,9 @@ debug/StaticBuffer_for_LPDU_HEADER_SIZE.o
 debug/StaticBuffer_for_LPDU_MAX_FRAME_SIZE.o
 debug/StaticBuffer_for_MAX_TPDU_LENGTH.o
 debug/Pair_for_IINField_AppControlField.o
+debug/Array__for__Node_for_int.o
 debug/Array__for__Node_for_EventRecord.o
+debug/ArrayView__for__Node_for_int.o
 debug/ArrayView__for__Node_for_EventRecord.o
 debug/Array__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.o
 debug/ArrayView__for__Node_TypedEventRecord_for_AnalogOutputStatusSpec.o
@@ -41,6 +43,8 @@ debug/UTCTimestamp.o
 debug/CommandPointResult.o
 debug/HeaderInfo.o
 debug/ResponseInfo.o
+debug/ISOEHandler.o
+debug/ICommandCollection.o
 debug/IResource.o
 debug/StackStatistics.o
 debug/BaseMeasurementTypes.o
@@ -88,8 +92,6 @@ debug/StaticTypeBitfield.o
 debug/LinkConfig.o
 debug/LinkStatistics.o
 debug/ILinkListener.o
-debug/ISOEHandler.o
-debug/ICommandCollection.o
 debug/LayerInterfaces.o
 debug/SequenceNum.o
 debug/Addresses.o
@@ -111,9 +113,11 @@ debug/SecLinkLayerStates.o
 debug/ShiftableBuffer.o
 debug/CommandSet.o
 debug/CommandSetOps.o
+debug/HeaderTypes.o
 debug/ICommandHeader.o
 debug/MeasurementHandler.o
 debug/TypedCommandHeader.o
+debug/TaskBehavior.o
 debug/APDUHeaderParser.o
 debug/APDUParser.o
 debug/BufferedCollection.o
@@ -292,6 +296,8 @@ debug/IEventType.o
 debug/IEventWriteHandler.o
 debug/List_for_EventRecord_part1.o
 debug/List_for_EventRecord_part2.o
+debug/List_for_int_part1.o
+debug/List_for_int_part2.o
 debug/List_TypedEventRecord_for_AnalogOutputStatusSpec_part1.o
 debug/List_TypedEventRecord_for_AnalogOutputStatusSpec_part2.o
 debug/List_TypedEventRecord_for_AnalogSpec_part1.o
@@ -354,6 +360,7 @@ debug/LinkParserTest.o
 debug/LinkLayerTest.o
 debug/MockTransportSegment.o
 debug/OutstationTestObject.o
+debug/ProtocolUtil.o
 debug/TestAPDUParsing.o
 debug/TestOutstation.o
 debug/TestOutstationEventResponses.o
@@ -361,6 +368,7 @@ debug/TestOutstationFrozenCounters.o
 debug/TestOutstationDiscontiguousIndices.o
 debug/TestMeasurementHandler.o
 debug/TestTypedCommandHeader.o
+debug/TransportTestObject.o
 debug/MockOutstationApplication.o
 debug/MockCommandHandler.o
 debug/MockEventWriteHandler.o
@@ -369,6 +377,7 @@ debug/MockAPDUHeaderHandler.o
 debug/MockSOEHandler.o
 debug/MockLinkLayer.o
 debug/MockLowerLayer.o
+debug/MockUpperLayer.o
 debug/MockFrameSink.o
 debug/MockTransportLayer.o
 debug/DatabaseHelpers.o

@@ -92,6 +92,26 @@ void HeaderWriter_in_HeaderWriter(HeaderWriter *pHeaderWriter, WSeq_for_Uint16_t
 boolean WriteHeaderWithReserve_in_HeaderWriter(HeaderWriter *pHeaderWriter,
     GroupVariationID id, QualifierCode_uint8_t qc, uint16_t reserve);
 
+////template<class IndexType>
+////bool HeaderWriter::WriteRangeHeader(QualifierCode qc,
+////                                    GroupVariationID gvId,
+////                                    typename IndexType::type_t start,
+////                                    typename IndexType::type_t stop)
+boolean WriteRangeHeader_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter, QualifierCode_uint8_t qc,
+                                    GroupVariationID gvId,
+                                    int8_t start,
+                                    int8_t stop);
+boolean WriteRangeHeader_for_UInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter, QualifierCode_uint8_t qc,
+                                    GroupVariationID gvId,
+                                    int16_t start,
+                                    int16_t stop);
+
+////template<class IndexType>
+boolean WriteCountHeader_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter, QualifierCode_uint8_t qc,
+                                    GroupVariationID gvId, uint8_t count);
+boolean WriteCountHeader_for_UInt16_in_HeaderWriter(HeaderWriter *pHeaderWriter, QualifierCode_uint8_t qc,
+                                    GroupVariationID gvId, uint16_t count);
+
 ////    template<class IndexType>
 /*
 BitfieldRangeWriteIterator_for_UInt8 IterateOverSingleBitfield_for_UInt8_in_HeaderWriter(HeaderWriter *pHeaderWriter,

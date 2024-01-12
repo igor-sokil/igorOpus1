@@ -29,6 +29,7 @@
 ////#include "ser4cpp/container/Buffer.h"
 
 #include "RSeq.h"
+#include "BufferSer4.h"
 #include <memory>
 #include <sstream>
 #include <string>
@@ -42,6 +43,10 @@ std::string to_hex_in_HexConversions(const uint8_t* buffer, size_t length, bool 
 std::string to_hex_in_HexConversionsOver2(RSeq_for_Uint16_t* buffer, bool spaced = true);
 
 std::string increment_hex_in_HexConversions(uint8_t start, uint16_t count, bool spaced = true);
+
+BufferSer4* from_hex_in_HexConversions(std::string& hex);
+void remove_spaces_in_place_in_HexConversions(std::string& hex);
+std::string remove_spaces_in_HexConversions(std::string& hex);
 
 ////class HexConversions
 ////{

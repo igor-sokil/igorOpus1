@@ -29,6 +29,7 @@
 #include "GroupVariationID.h"
 #include "PointClass.h"
 #include "QualifierCode.h"
+#include "HeaderWriter.h"
 
 //#include <cstdint>
 
@@ -82,6 +83,7 @@ typedef struct
 
 /**
  * Union type that holds information for a single header type
+* Тип объединения, который содержит информацию для одного типа заголовка.
  */
 union HeaderUnion
 {
@@ -140,7 +142,7 @@ typedef struct
     GroupVariationID id;
 ////    HeaderType type = HeaderType::AllObjects;
     HeaderType_uint8_t type;
-    HeaderUnion_uint8_t value;
+    HeaderUnion value;
 
 ////    Header(uint8_t group, uint8_t var);
 
@@ -164,6 +166,17 @@ typedef struct
   void Header_in_HeaderOver5(Header *pHeader, uint8_t group, uint8_t var, uint8_t count);
 
   void Header_in_HeaderOver6(Header *pHeader, uint8_t group, uint8_t var, uint16_t count);
+
+  Header AllObjects_in_Header_static(uint8_t group, uint8_t variation);
+
+  Header From_in_Header_static(PointClass_uint8_t pc);
+
+  Header Count16_in_Header_static(uint8_t group, uint8_t variation, uint16_t count);
+  Header Count8_in_Header_static(uint8_t group, uint8_t variation, uint8_t count);
+  Header Range16_in_Header_static(uint8_t group, uint8_t variation, uint16_t start, uint16_t stop);
+  Header Range8_in_Header_static(uint8_t group, uint8_t variation, uint8_t start, uint8_t stop);
+
+  boolean WriteTo_in_Header(Header *pHeader, HeaderWriter* writer);
 
 ////} // namespace opendnp3
 

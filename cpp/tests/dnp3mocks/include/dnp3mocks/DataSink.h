@@ -64,6 +64,7 @@ void Clear_in_DataSink(DataSink *pDataSink);
 uint16_t Size_in_DataSink(DataSink *pDataSink);
 
 ////    std::string AsHex(bool spaced = true) const;
+std::string AsHex_in_DataSink(DataSink *pDataSink, boolean spaced);
 
 
 #endif
