@@ -31,7 +31,7 @@
 IINField ProcessHeader_AllObjectsHeader_in_ClassBasedRequestHandler_override(void* pIAPDUHandler, AllObjectsHeader* record)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessHeader_AllObjectsHeader_in_ClassBasedRequestHandler_override1"<<'\n';

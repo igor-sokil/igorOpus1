@@ -49,43 +49,43 @@ typedef struct
 
 ////    static TaskBehavior ReactsToIINOnly();
 
-    /**
-     * Called when the task succeeds. Resets the retry timeout to the minimum, and returns the new expiration time
-* ¬ызываетс€ при успешном выполнении задачи. —брасывает тайм-аут повтора до минимума и возвращает новое врем€ истечени€ срока действи€.
-     */
+  /**
+   * Called when the task succeeds. Resets the retry timeout to the minimum, and returns the new expiration time
+  * ¬ызываетс€ при успешном выполнении задачи. —брасывает тайм-аут повтора до минимума и возвращает новое врем€ истечени€ срока действи€.
+   */
 ////    void OnSuccess(const Timestamp& now);
 
-    /**
-     * Called when the task fails due to a response timeout
-* ¬ызываетс€, когда задача не выполн€етс€ из-за таймаута ответа.
-     */
+  /**
+   * Called when the task fails due to a response timeout
+  * ¬ызываетс€, когда задача не выполн€етс€ из-за таймаута ответа.
+   */
 ////    void OnResponseTimeout(const Timestamp& now);
 
-    /**
-     * return the current expiration time
-     */
+  /**
+   * return the current expiration time
+   */
 ////    Timestamp GetExpiration() const
 ////    {
 ////        return expiration;
 ////    }
 
-    /**
-     * return the time after which the task should fail if it hasn't start running
-* возвращает врем€, по истечении которого задача должна завершитьс€ неудачно, если она еще не запустилась
-     */
+  /**
+   * return the time after which the task should fail if it hasn't start running
+  * возвращает врем€, по истечении которого задача должна завершитьс€ неудачно, если она еще не запустилась
+   */
 ////    Timestamp GetStartExpiration() const
 ////    {
 ////        return startExpiration;
 ////    }
 
-    /**
-     * reset to the initial state
-     */
+  /**
+   * reset to the initial state
+   */
 ////    void Reset();
 
-    /**
-     * Disable the task
-     */
+  /**
+   * Disable the task
+   */
 ////    void Disable();
 
 ////private:
@@ -99,76 +99,77 @@ typedef struct
 ////                 const TimeDuration& maxRetryDelay,
 ////                 const Timestamp& startExpiration);
 
-     TimeDuration period;
-     TimeDuration minRetryDelay;
-     TimeDuration maxRetryDelay;
-     Timestamp startExpiration;//начало истечени€ срока действи€
+  TimeDuration period;
+  TimeDuration minRetryDelay;
+  TimeDuration maxRetryDelay;
+  Timestamp startExpiration;//начало истечени€ срока действи€
 
-    // permanently disable the task
-    boolean disabled;// = false;
+  // permanently disable the task
+  boolean disabled;// = false;
 
-    // The tasks current expiration time
-    Timestamp expiration;
+  // The tasks current expiration time
+  Timestamp expiration;
 
-    // The current retry delay
-    TimeDuration currentRetryDelay;
+  // The current retry delay
+  TimeDuration currentRetryDelay;
 } TaskBehavior;
 
-   void TaskBehavior_in_TaskBehavior(TaskBehavior *pTaskBehavior, 
-                  TimeDuration* period,
-                  Timestamp* expiration,
-                  TimeDuration* minRetryDelay,
-                  TimeDuration* maxRetryDelay,
-                  Timestamp* startExpiration);
+void TaskBehavior_in_TaskBehavior(TaskBehavior *pTaskBehavior,
+                                  TimeDuration* period,
+                                  Timestamp* expiration,
+                                  TimeDuration* minRetryDelay,
+                                  TimeDuration* maxRetryDelay,
+                                  Timestamp* startExpiration);
 
- TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(void);
+TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(void);
 
- TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(Timestamp* startExpiration);
+TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(Timestamp* startExpiration);
 
- TaskBehavior ImmediatePeriodic_in_TaskBehavior_static(TimeDuration* period,
-                                           TimeDuration* minRetryDelay,
-                                           TimeDuration* maxRetryDelay);
+TaskBehavior ImmediatePeriodic_in_TaskBehavior_static(TimeDuration* period,
+    TimeDuration* minRetryDelay,
+    TimeDuration* maxRetryDelay);
 
- TaskBehavior SingleImmediateExecutionWithRetry_in_TaskBehavior_static(TimeDuration* minRetryDelay,
-                                                          TimeDuration* maxRetryDelay);
+TaskBehavior SingleImmediateExecutionWithRetry_in_TaskBehavior_static(TimeDuration* minRetryDelay,
+    TimeDuration* maxRetryDelay);
 
- TaskBehavior ReactsToIINOnly_in_TaskBehavior_static(void);
+TaskBehavior ReactsToIINOnly_in_TaskBehavior_static(void);
 
-    /**
-     * Called when the task succeeds. Resets the retry timeout to the minimum, and returns the new expiration time
+/**
+ * Called when the task succeeds. Resets the retry timeout to the minimum, and returns the new expiration time
 * ¬ызываетс€ при успешном выполнении задачи. —брасывает тайм-аут повтора до минимума и возвращает новое врем€ истечени€ срока действи€.
-     */
-  void OnSuccess_in_TaskBehavior(TaskBehavior *pTaskBehavior, Timestamp* now);
+ */
+void OnSuccess_in_TaskBehavior(TaskBehavior *pTaskBehavior, Timestamp* now);
 
-    /**
-     * Called when the task fails due to a response timeout
+/**
+ * Called when the task fails due to a response timeout
 * ¬ызываетс€, когда задача не выполн€етс€ из-за таймаута ответа.
-     */
-   void OnResponseTimeout_in_TaskBehavior(TaskBehavior *pTaskBehavior, Timestamp* now);
+ */
+void OnResponseTimeout_in_TaskBehavior(TaskBehavior *pTaskBehavior, Timestamp* now);
 
-    /**
-     * return the current expiration time
-     */
-   Timestamp GetExpiration_in_TaskBehavior(TaskBehavior *pTaskBehavior);
+/**
+ * return the current expiration time
+ */
+Timestamp GetExpiration_in_TaskBehavior(TaskBehavior *pTaskBehavior);
 
-    /**
-     * return the time after which the task should fail if it hasn't start running
+/**
+ * return the time after which the task should fail if it hasn't start running
 * возвращает врем€, по истечении которого задача должна завершитьс€ неудачно, если она еще не запустилась
-     */
-    Timestamp GetStartExpiration_in_TaskBehavior(TaskBehavior *pTaskBehavior);
+ */
+Timestamp GetStartExpiration_in_TaskBehavior(TaskBehavior *pTaskBehavior);
 
-    /**
-     * reset to the initial state
-     */
-   void Reset_in_TaskBehavior(TaskBehavior *pTaskBehavior);
+/**
+ * reset to the initial state
+ */
+void Reset_in_TaskBehavior(TaskBehavior *pTaskBehavior);
 
-    /**
-     * Disable the task
-     */
-   void Disable_in_TaskBehavior(TaskBehavior *pTaskBehavior);
+/**
+ * Disable the task
+ */
+void Disable_in_TaskBehavior(TaskBehavior *pTaskBehavior);
 
-   TimeDuration CalcNextRetryTimeout_in_TaskBehavior(TaskBehavior* pTaskBehavior);
+TimeDuration CalcNextRetryTimeout_in_TaskBehavior(TaskBehavior* pTaskBehavior);
 
+TaskBehavior ReactsToIINOnly_in_TaskBehavior_static(void);
 
 ////} // namespace opendnp3
 

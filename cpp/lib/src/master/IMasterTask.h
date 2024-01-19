@@ -20,177 +20,238 @@
 #ifndef OPENDNP3_IMASTERTASK_H
 #define OPENDNP3_IMASTERTASK_H
 
-#include "app/APDUHeader.h"
-#include "app/APDURequest.h"
-#include "master/TaskBehavior.h"
-#include "master/TaskContext.h"
+#include "APDUHeader.h"
+#include "APDURequest.h"
+#include "TaskBehavior.h"
+///#include "TaskContext.h"
 
-#include "opendnp3/logging/Logger.h"
-#include "opendnp3/master/IMasterApplication.h"
-#include "opendnp3/master/TaskConfig.h"
+////#include "opendnp3/logging/Logger.h"
+#include "IMasterApplication.h"
+#include "TaskConfig.h"
 
-#include <exe4cpp/IExecutor.h>
-#include <exe4cpp/Typedefs.h>
+////#include <exe4cpp/IExecutor.h>
+////#include <exe4cpp/Typedefs.h>
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+#define ResponseResult_in_IMasterTask_uint8_t uint8_t
+
+enum ////class ResponseResult : uint8_t
 {
+  /// The response was bad, the task has failed
+  ResponseResult_in_IMasterTask_ERROR_BAD_RESPONSE,
+
+  /// The response was good and the task is complete
+  ResponseResult_in_IMasterTask_OK_FINAL,
+
+  /// The response was good and the task should repeat the format, transmit, and await response sequence
+  ResponseResult_in_IMasterTask_OK_REPEAT,
+
+  /// The response was good and the task should continue executing. Restart the response timer, and increment
+  /// expected SEQ#.
+  ResponseResult_in_IMasterTask_OK_CONTINUE
+};
 
 /**
  * A generic interface for defining master request/response style tasks
+* Общий интерфейс для определения основных задач стиля запроса/ответа.
  */
-class IMasterTask : private Uncopyable
+////class IMasterTask : private Uncopyable
+typedef struct
 {
 
-public:
-    enum class ResponseResult : uint8_t
-    {
-        /// The response was bad, the task has failed
-        ERROR_BAD_RESPONSE,
+////public:
 
-        /// The response was good and the task is complete
-        OK_FINAL,
+////    IMasterTask(std::shared_ptr<TaskContext> context,
+////                IMasterApplication& app,
+////                TaskBehavior behavior,
+////                const Logger& logger,
+////                TaskConfig config);
 
-        /// The response was good and the task should repeat the format, transmit, and await response sequence
-        OK_REPEAT,
+////    virtual ~IMasterTask();
 
-        /// The response was good and the task should continue executing. Restart the response timer, and increment
-        /// expected SEQ#.
-        OK_CONTINUE
-    };
+  /**
+   *
+   * @return	the name of the task
+   */
+  char * (*pName_in_IMasterTask)(void *);// const = 0;
 
-    IMasterTask(std::shared_ptr<TaskContext> context,
-                IMasterApplication& app,
-                TaskBehavior behavior,
-                const Logger& logger,
-                TaskConfig config);
+  /**
+   * The task's priority. Lower numbers are higher priority.
+* Приоритет задачи. Меньшие числа имеют более высокий приоритет.
+   */
+  int (*pPriority_in_IMasterTask)(void *);// const = 0;
 
-    virtual ~IMasterTask();
+  /**
+   * Indicates if the task should be rescheduled (true) or discarded
+   * after a single execution (false)
+* Указывает, следует ли перепланировать задачу (истина) или отказаться от нее.
+    * после однократного выполнения (ложь)
+   */
+  boolean (*pIsRecurring_in_IMasterTask)(void *);// const = 0;
 
-    /**
-     *
-     * @return	the name of the task
-     */
-    virtual char const* Name() const = 0;
+  /**
+   * The time when this task can run again.
+* Время, когда эта задача может быть запущена снова.
+   */
+////    Timestamp ExpirationTime() const;
 
-    /**
-     * The task's priority. Lower numbers are higher priority.
-     */
-    virtual int Priority() const = 0;
+  /**
+   * Helper to test if the task is expired
+* Помощник для проверки, истек ли срок действия задачи
+   */
+////    bool IsExpired(const Timestamp& now) const
+////    {
+////        return now >= this->ExpirationTime();
+////    }
 
-    /**
-     * Indicates if the task should be rescheduled (true) or discarded
-     * after a single execution (false)
-     */
-    virtual bool IsRecurring() const = 0;
+  /**
+   * Build a request APDU.
+   *
+   * Return false if some kind of internal error prevents the task for formatting the request.
+  * Возвращайте false, если какая-то внутренняя ошибка не позволяет выполнить задачу по форматированию запроса.
+   */
+  boolean (*pBuildRequest_in_IMasterTask)(void *, APDURequest* request, uint8_t seq);// = 0;
 
-    /**
-     * The time when this task can run again.
-     */
-    Timestamp ExpirationTime() const;
+  /**
+   * Handler for responses
+   */
+////    ResponseResult OnResponse_in_IMasterTask(IMasterTask *pIMasterTask, const APDUResponseHeader& response, const ser4cpp::rseq_t& objects, Timestamp now);
 
-    /**
-     * Helper to test if the task is expired
-     */
-    bool IsExpired(const Timestamp& now) const
-    {
-        return now >= this->ExpirationTime();
-    }
+  /**
+   * Called when a response times out
+   */
+////    void OnResponseTimeout_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
 
-    /**
-     * The time when this task expires if it is unable to start
-     */
-    Timestamp StartExpirationTime() const;
+  /**
+   * Called when the layer closes while the task is executing.
+* Вызывается, когда слой закрывается во время выполнения задачи.
+   */
+////    void OnLowerLayerClose_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
 
-    /**
-     * Build a request APDU.
-     *
-     * Return false if some kind of internal error prevents the task for formatting the request.
-     */
-    virtual bool BuildRequest(APDURequest& request, uint8_t seq) = 0;
+  /**
+   * The start timeout expired before the task could be run
+* Тайм-аут запуска истек до того, как задачу удалось запустить.
+   */
+////    void OnStartTimeout_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
 
-    /**
-     * Handler for responses
-     */
-    ResponseResult OnResponse(const APDUResponseHeader& response, const ser4cpp::rseq_t& objects, Timestamp now);
+  /**
+   * Called when the master is unable to format the request associated with the task
+* Вызывается, когда мастер не может отформатировать запрос, связанный с задачей.
+   */
+////    void OnMessageFormatError_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
 
-    /**
-     * Called when a response times out
-     */
-    void OnResponseTimeout(Timestamp now);
+  /**
+   * Called when the task first starts, before the first request is formatted
+* Вызывается при первом запуске задачи, до форматирования первого запроса.
+   */
+////    void OnStart_in_IMasterTask(IMasterTask *pIMasterTask);
 
-    /**
-     * Called when the layer closes while the task is executing.
-     */
-    void OnLowerLayerClose(Timestamp now);
+  /**
+   * Set the expiration time to minimum. The scheduler must also be informed
+* Установите срок годности на минимум. Планировщик также должен быть проинформирован
+   */
+////    void SetMinExpiration_in_IMasterTask(IMasterTask *pIMasterTask);
 
-    /**
-     * The start timeout expired before the task could be run
-     */
-    void OnStartTimeout(Timestamp now);
+  /**
+   * Check if the task is blocked from executing by another task
+   */
+////    boolean IsBlocked_in_IMasterTask(IMasterTask *pIMasterTask);
+////    {
+////        return this->context->IsBlocked(*this);
+////    }
 
-    /**
-     * Called when the master is unable to format the request associated with the task
-     */
-    void OnMessageFormatError(Timestamp now);
+////protected:
+  // called during OnStart() to initialize any state for a new run
+  void (*pInitialize_in_IMasterTask)(void *);// {}
 
-    /**
-     * Called when the task first starts, before the first request is formatted
-     */
-    void OnStart();
+  ResponseResult_in_IMasterTask_uint8_t (*pProcessResponse_in_IMasterTask)(void *, APDUResponseHeader* response, RSeq_for_Uint16_t* objects);// = 0;
 
-    /**
-     * Set the expiration time to minimum. The scheduler must also be informed
-     */
-    void SetMinExpiration();
+////    void CompleteTask_in_IMasterTask(IMasterTask *pIMasterTask, TaskCompletion result, Timestamp now);
 
-    /**
-     * Check if the task is blocked from executing by another task
-     */
-    bool IsBlocked() const
-    {
-        return this->context->IsBlocked(*this);
-    }
+  void (*pOnTaskComplete_in_IMasterTask)(void *, TaskCompletion_uint8_t result, Timestamp now);// {}
 
-protected:
-    // called during OnStart() to initialize any state for a new run
-    virtual void Initialize() {}
+  boolean (*pIsEnabled_in_IMasterTask)(void *);
+////    {
+////        return true;
+////    }
 
-    virtual ResponseResult ProcessResponse(const APDUResponseHeader& response, const ser4cpp::rseq_t& objects) = 0;
+  MasterTaskType_uint8_t (*pGetTaskType_in_IMasterTask)(void *);// const = 0;
 
-    void CompleteTask(TaskCompletion result, Timestamp now);
+//    TaskContext* context;
+  IMasterApplication* application;
+////    Logger logger;
 
-    virtual void OnTaskComplete(TaskCompletion result, Timestamp now) {}
+  // Validation helpers for various behaviors to avoid deep inheritance
+////    bool ValidateSingleResponse(const APDUResponseHeader& header);
+////    bool ValidateNullResponse(const APDUResponseHeader& header, const ser4cpp::rseq_t& objects);
+////    bool ValidateNoObjects(const ser4cpp::rseq_t& objects);
+////    bool ValidateInternalIndications(const APDUResponseHeader& header);
 
-    virtual bool IsEnabled() const
-    {
-        return true;
-    }
+////private:
+  /**
+   * Allows tasks to enter a blocking mode where lower priority
+   * tasks cannot run until this task completes
+  * Позволяет задачам переходить в режим блокировки с более низким приоритетом.
+    * задачи не могут выполняться, пока эта задача не завершится
+   */
+  boolean (*pBlocksLowerPriority_in_IMasterTask)(void *);// const = 0;
 
-    virtual MasterTaskType GetTaskType() const = 0;
+////    IMasterTask();
 
-    const std::shared_ptr<TaskContext> context;
-    IMasterApplication* const application;
-    Logger logger;
+  TaskConfig config;
+  TaskBehavior behavior;
 
-    // Validation helpers for various behaviors to avoid deep inheritance
-    bool ValidateSingleResponse(const APDUResponseHeader& header);
-    bool ValidateNullResponse(const APDUResponseHeader& header, const ser4cpp::rseq_t& objects);
-    bool ValidateNoObjects(const ser4cpp::rseq_t& objects);
-    bool ValidateInternalIndications(const APDUResponseHeader& header);
+  void *pParentPointer_in_IMasterTask;
+} IMasterTask;
 
-private:
-    /**
-     * Allows tasks to enter a blocking mode where lower priority
-     * tasks cannot run until this task completes
-     */
-    virtual bool BlocksLowerPriority() const = 0;
+void IMasterTask_in_IMasterTask(IMasterTask *pIMasterTask,
+//                TaskContext* context,
+                                IMasterApplication* app,
+                                TaskBehavior behavior,
+//                const Logger& logger,
+                                TaskConfig config);
+boolean ValidateSingleResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* header);
+boolean ValidateNullResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
+boolean ValidateNoObjects_in_IMasterTask(IMasterTask *pIMasterTask, RSeq_for_Uint16_t* objects);
+boolean ValidateInternalIndications_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* header);
+void CompleteTask_in_IMasterTask(IMasterTask *pIMasterTask, TaskCompletion_uint8_t result, Timestamp now);
+////    boolean IsBlocked_in_IMasterTask(IMasterTask *pIMasterTask);
+void SetMinExpiration_in_IMasterTask(IMasterTask *pIMasterTask);
+void OnStart_in_IMasterTask(IMasterTask *pIMasterTask);
+void OnMessageFormatError_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
+void OnStartTimeout_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
+void OnLowerLayerClose_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
+void OnResponseTimeout_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
+ResponseResult_in_IMasterTask_uint8_t OnResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* response, RSeq_for_Uint16_t* objects, Timestamp now);
+////    Timestamp StartExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask);
+////    boolean IsExpired_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp* now);
+Timestamp StartExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask);
+Timestamp ExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask);
 
-    IMasterTask();
 
-    TaskConfig config;
-    TaskBehavior behavior;
-};
+char * Name_in_IMasterTask(IMasterTask *pIMasterTask);
+int Priority_in_IMasterTask(IMasterTask *pIMasterTask);
+boolean IsRecurring_in_IMasterTask(IMasterTask *pIMasterTask);
+boolean BuildRequest_in_IMasterTask(IMasterTask *pIMasterTask, APDURequest* request, uint8_t seq);
+void Initialize_in_IMasterTask(IMasterTask *pIMasterTask);
+void Initialize_in_IMasterTask_override(void *pIMasterTask);
 
-} // namespace opendnp3
+ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* response, RSeq_for_Uint16_t* objects);
+
+void OnTaskComplete_in_IMasterTask(IMasterTask *pIMasterTask, TaskCompletion_uint8_t result, Timestamp now);
+void OnTaskComplete_in_IMasterTask_override(void *pIMasterTask, TaskCompletion_uint8_t result, Timestamp now);
+
+boolean IsEnabled_in_IMasterTask(IMasterTask *pIMasterTask);
+boolean IsEnabled_in_IMasterTask_override(void *pIMasterTask);
+
+MasterTaskType_uint8_t GetTaskType_in_IMasterTask(IMasterTask *pIMasterTask);
+boolean BlocksLowerPriority_in_IMasterTask(IMasterTask *pIMasterTask);
+
+void* getParentPointer_in_IMasterTask(IMasterTask*);
+void  setParentPointer_in_IMasterTask(IMasterTask*, void*);
+
+////} // namespace opendnp3
 
 #endif

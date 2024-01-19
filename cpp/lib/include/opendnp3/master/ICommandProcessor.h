@@ -20,30 +20,36 @@
 #ifndef OPENDNP3_ICOMMANDPROCESSOR_H
 #define OPENDNP3_ICOMMANDPROCESSOR_H
 
-#include "opendnp3/master/CommandResultCallbackT.h"
-#include "opendnp3/master/CommandSet.h"
-#include "opendnp3/master/TaskConfig.h"
+#include "CommandResultCallbackT.h"
+#include "CommandSet.h"
+#include "TaskConfig.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Interface used to dispatch SELECT / OPERATE / DIRECT OPERATE from application code to a master
+* Интерфейс, используемый для отправки SELECT / OPERATE / DIRECT OPERATE из кода приложения на мастер-сервер.
  */
-class ICommandProcessor
+////class ICommandProcessor
+typedef struct
 {
-public:
+////public:
     /**
      * Select and operate a set of commands
      *
      * @param commands Set of command headers
      * @param callback callback that will be invoked upon completion or failure
      * @param config optional configuration that controls normal callbacks and allows the user to be specified for SA
+* Выберите и управляйте набором команд
+      *
+      * команды @param Набор заголовков команд
+      * Обратный вызов @param, который будет вызван после завершения или сбоя.
+      * Дополнительная конфигурация @param config, которая управляет обычными обратными вызовами и позволяет указать пользователя для SA.
      */
-    virtual void SelectAndOperate(CommandSet&& commands,
-                                  const CommandResultCallbackT& callback,
-                                  const TaskConfig& config = TaskConfig::Default())
-        = 0;
+    void (*pSelectOperate_in_ICommandProcessor)(void *, CommandSet* commands,
+                                  CommandResultCallbackT* callback,
+                                  TaskConfig* config);// = TaskConfig::Default());// = 0;
 
     /**
      * Direct operate a set of commands
@@ -51,11 +57,15 @@ public:
      * @param commands Set of command headers
      * @param callback callback that will be invoked upon completion or failure
      * @param config optional configuration that controls normal callbacks and allows the user to be specified for SA
+* Прямое управление набором команд
+      *
+      * команды @param Набор заголовков команд
+      * Обратный вызов @param, который будет вызван после завершения или сбоя.
+      * Дополнительная конфигурация @param config, которая управляет обычными обратными вызовами и позволяет указать пользователя для SA.
      */
-    virtual void DirectOperate(CommandSet&& commands,
-                               const CommandResultCallbackT& callback,
-                               const TaskConfig& config = TaskConfig::Default())
-        = 0;
+    void (*pDirectOperate_in_ICommandProcessor)(void *, CommandSet* commands,
+                                CommandResultCallbackT* callback,
+                                TaskConfig* config);// = TaskConfig::Default())   = 0;
 
     /**
      * Select/operate a single command
@@ -64,12 +74,18 @@ public:
      * @param index of the command
      * @param callback callback that will be invoked upon completion or failure
      * @param config optional configuration that controls normal callbacks and allows the user to be specified for SA
+* Выберите/выполняйте одну команду
+      *
+      * @param команда Команда для работы
+      * @param индекс команды
+      * Обратный вызов @param, который будет вызван после завершения или сбоя.
+      * Дополнительная конфигурация @param config, которая управляет обычными обратными вызовами и позволяет указать пользователя для SA.
      */
-    template<class T>
-    void SelectAndOperate(const T& command,
-                          uint16_t index,
-                          const CommandResultCallbackT& callback,
-                          const TaskConfig& config = TaskConfig::Default());
+////    template<class T>
+////    void SelectAndOperate(const T& command,
+////                          uint16_t index,
+////                          const CommandResultCallbackT& callback,
+////                          const TaskConfig& config = TaskConfig::Default());
 
     /**
      * Direct operate a single command
@@ -78,34 +94,53 @@ public:
      * @param index of the command
      * @param callback callback that will be invoked upon completion or failure
      * @param config optional configuration that controls normal callbacks and allows the user to be specified for SA
+* Прямое управление одной командой
+      *
+      * @param команда Команда для работы
+      * @param индекс команды
+      * Обратный вызов @param, который будет вызван после завершения или сбоя.
+      * Дополнительная конфигурация @param config, которая управляет обычными обратными вызовами и позволяет указать пользователя для SA.
      */
-    template<class T>
-    void DirectOperate(const T& command,
-                       uint16_t index,
-                       const CommandResultCallbackT& callback,
-                       const TaskConfig& config = TaskConfig::Default());
-};
+////    template<class T>
+////    void DirectOperate(const T& command,
+////                       uint16_t index,
+////                       const CommandResultCallbackT& callback,
+////                       const TaskConfig& config = TaskConfig::Default());
 
-template<class T>
-void ICommandProcessor::SelectAndOperate(const T& command,
-                                         uint16_t index,
-                                         const CommandResultCallbackT& callback,
-                                         const TaskConfig& config)
-{
-    CommandSet commands({WithIndex(command, index)});
-    this->SelectAndOperate(std::move(commands), callback, config);
-}
+  void* pParentPointer_in_ICommandProcessor;
+} ICommandProcessor;
 
-template<class T>
-void ICommandProcessor::DirectOperate(const T& command,
-                                      uint16_t index,
-                                      const CommandResultCallbackT& callback,
-                                      const TaskConfig& config)
-{
-    CommandSet commands({WithIndex(command, index)});
-    this->DirectOperate(std::move(commands), callback, config);
-}
+void SelectOperate_in_ICommandProcessor(ICommandProcessor* pICommandProcessor, CommandSet* commands,
+                                  CommandResultCallbackT* callback,
+                                  TaskConfig* config);
 
-} // namespace opendnp3
+void DirectOperate_in_ICommandProcessor(ICommandProcessor* pICommandProcessor, CommandSet* commands,
+                                  CommandResultCallbackT* callback,
+                                  TaskConfig* config);
+
+void* getParentPointer_in_ICommandProcessor(ICommandProcessor*);
+void  setParentPointer_in_ICommandProcessor(ICommandProcessor*, void*);
+
+////template<class T>
+////void ICommandProcessor::SelectAndOperate(const T& command,
+////                                         uint16_t index,
+////                                         const CommandResultCallbackT& callback,
+////                                         const TaskConfig& config)
+////{
+////    CommandSet commands({WithIndex(command, index)});
+////    this->SelectAndOperate(std::move(commands), callback, config);
+////}
+////
+////template<class T>
+////void ICommandProcessor::DirectOperate(const T& command,
+////                                      uint16_t index,
+////                                      const CommandResultCallbackT& callback,
+////                                      const TaskConfig& config)
+////{
+////    CommandSet commands({WithIndex(command, index)});
+////    this->DirectOperate(std::move(commands), callback, config);
+////}
+////
+////} // namespace opendnp3
 
 #endif

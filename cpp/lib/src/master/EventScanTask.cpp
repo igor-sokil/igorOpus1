@@ -17,23 +17,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_IDECODERCALLBACKS_H
-#define OPENDNP3_IDECODERCALLBACKS_H
 
-#include "opendnp3/util/Uncopyable.h"
+#include "EventScanTask.h"
+
+#include "MasterTasks.h"
+#include "app/APDUBuilders.h"
+#include "app/parsing/APDUParser.h"
+#include "logging/LogMacros.h"
+#include "master/MeasurementHandler.h"
+
+#include "opendnp3/logging/LogLevels.h"
 
 namespace opendnp3
 {
 
-class IDecoderCallbacks : Uncopyable
+EventScanTask::EventScanTask(const std::shared_ptr<TaskContext>& context,
+                             IMasterApplication& application,
+                             std::shared_ptr<ISOEHandler> soeHandler,
+                             ClassField classes,
+                             const Logger& logger)
+    : PollTaskBase(
+          context, application, std::move(soeHandler), TaskBehavior::ReactsToIINOnly(), logger, TaskConfig::Default()),
+      classes(classes.OnlyEventClasses())
 {
-    friend class Indent;
+}
 
-protected:
-    virtual void PushIndent(){};
-    virtual void PopIndent(){};
-};
+bool EventScanTask::BuildRequest(APDURequest& request, uint8_t seq)
+{
+    build::ClassRequest(request, FunctionCode::READ, classes, seq);
+    return true;
+}
+
+bool EventScanTask::IsEnabled() const
+{
+    return classes.HasEventClass();
+}
 
 } // namespace opendnp3
-
-#endif

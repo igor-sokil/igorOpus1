@@ -37,7 +37,7 @@
 void NumParser_in_NumParser(NumParser *pNumParser, ReadFun_in_NumParser pReadFun, uint8_t size)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"NumParser_in_NumParser1"<<std::endl;
@@ -55,7 +55,7 @@ uint8_t NumBytes_in_NumParser(NumParser *pNumParser)
 ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t* buffer, uint16_t *count)///, Logger* pLogger) const
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseCount_in_NumParser1"<<std::endl;
@@ -95,7 +95,7 @@ ParseResult_uint8_t ParseCount_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
 ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint16_t* buffer, Range* range)////, Logger* pLogger) const
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseRange_in_NumParser1"<<std::endl;

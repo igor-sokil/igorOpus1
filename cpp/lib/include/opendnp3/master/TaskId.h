@@ -20,42 +20,50 @@
 #ifndef OPENDNP3_TASKID_H
 #define OPENDNP3_TASKID_H
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Interface that represents a running master.
+* »нтерфейс, представл€ющий работающего мастера.
  */
-class TaskId
+////class TaskId
+typedef struct
 {
-public:
-    static TaskId Defined(int id)
-    {
-        return TaskId(id, true);
-    }
-    static TaskId Undefined()
-    {
-        return TaskId(-1, false);
-    }
+////public:
+////    static TaskId Defined(int id)
+////    {
+////        return TaskId(id, true);
+////    }
+////    static TaskId Undefined()
+////    {
+////        return TaskId(-1, false);
+////    }
 
-    int GetId() const
-    {
-        return id;
-    }
-    bool IsDefined() const
-    {
-        return isDefined;
-    }
+////    int GetId() const
+////    {
+////        return id;
+////    }
+////    bool IsDefined() const
+////    {
+////        return isDefined;
+////    }
 
-private:
-    TaskId() = delete;
+////private:
+////    TaskId() = delete;
 
-    TaskId(int id_, bool isDefined_) : id(id_), isDefined(isDefined_) {}
+////    TaskId(int id_, bool isDefined_) : id(id_), isDefined(isDefined_) {}
 
-    int id;
-    bool isDefined;
-};
+  int id;
+  boolean isDefined;
+} TaskId;
 
-} // namespace opendnp3
+void TaskId_in_TaskId(TaskId *pTaskId, int id_, boolean isDefined_);
+TaskId Defined_in_TaskId_static(int id);
+TaskId Undefined_in_TaskId_static(void);
+int GetId_in_TaskId(TaskId *pTaskId);
+boolean IsDefined_in_TaskId(TaskId *pTaskId);
+
+////} // namespace opendnp3
 
 #endif

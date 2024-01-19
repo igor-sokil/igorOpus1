@@ -19,44 +19,53 @@
  */
 #include "MasterContext.h"
 
-#include "app/APDUBuilders.h"
-#include "app/APDULogging.h"
-#include "app/parsing/APDUHeaderParser.h"
-#include "gen/objects/Group12.h"
-#include "gen/objects/Group41.h"
-#include "logging/LogMacros.h"
-#include "master/CommandTask.h"
-#include "master/EmptyResponseTask.h"
-#include "master/MeasurementHandler.h"
-#include "master/RestartOperationTask.h"
-#include "master/UserPollTask.h"
+#include "APDUBuilders.h"
+//#include "app/APDULogging.h"
+#include "APDUHeaderParser.h"
+#include "Group12.h"
+#include "Group41.h"
+///#include "logging/LogMacros.h"
+#include "CommandTask.h"
+#include "EmptyResponseTask.h"
+#include "MeasurementHandler.h"
+#include "RestartOperationTask.h"
+#include "UserPollTask.h"
 
-#include "opendnp3/logging/LogLevels.h"
+///#include "opendnp3/logging/LogLevels.h"
 
-#include <utility>
+////#include <utility>
 
-namespace opendnp3
+////namespace opendnp3
+////{
+////MContext::MContext(const Addresses& addresses,
+////                   const Logger& logger,
+////                   const std::shared_ptr<exe4cpp::IExecutor>& executor,
+////                   std::shared_ptr<ILowerLayer> lower,
+////                   const std::shared_ptr<ISOEHandler>& SOEHandler,
+////                   const std::shared_ptr<IMasterApplication>& application,
+////                   std::shared_ptr<IMasterScheduler> scheduler,
+////                   const MasterParams& params)
+  void  MContext_in_MContext(MContext *pMContext,
+             Addresses* addresses,
+//             const Logger& logger,
+             IExecutor* executor,
+             ILowerLayer* lower,
+             ISOEHandler* SOEHandler,
+             IMasterApplication* application,
+             IMasterScheduler* scheduler,
+             MasterParams* params)
 {
-MContext::MContext(const Addresses& addresses,
-                   const Logger& logger,
-                   const std::shared_ptr<exe4cpp::IExecutor>& executor,
-                   std::shared_ptr<ILowerLayer> lower,
-                   const std::shared_ptr<ISOEHandler>& SOEHandler,
-                   const std::shared_ptr<IMasterApplication>& application,
-                   std::shared_ptr<IMasterScheduler> scheduler,
-                   const MasterParams& params)
-    : logger(logger),
-      executor(executor),
-      lower(std::move(lower)),
-      addresses(addresses),
-      params(params),
-      SOEHandler(SOEHandler),
-      application(application),
-      scheduler(std::move(scheduler)),
+////    : logger(logger),
+      pMContext->executor = executor;
+      pMContext->lower = lower;
+      pMContext->addresses = *addresses;
+      pMContext->params = *params;
+      pMContext->SOEHandler = SOEHandler;
+      pMContext->application = application;
+      pMContext->scheduler = scheduler;
       tasks(params, logger, *application, SOEHandler),
       txBuffer(params.maxTxFragSize),
       tstate(TaskState::IDLE)
-{
 }
 
 std::shared_ptr<MContext> MContext::Create(
@@ -177,6 +186,7 @@ void MContext::OnParsedHeader(const ser4cpp::rseq_t& /*apdu*/,
                               const ser4cpp::rseq_t& objects)
 {
     // Note: this looks silly, but OnParsedHeader() is virtual and can be overriden to do SA
+// Примечание: это выглядит глупо, но OnParsedHeader() является виртуальным и его можно переопределить для выполнения SA
     this->ProcessAPDU(header, objects);
 }
 

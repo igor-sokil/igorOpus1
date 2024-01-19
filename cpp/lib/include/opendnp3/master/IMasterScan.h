@@ -20,21 +20,31 @@
 #ifndef OPENDNP3_IMASTERSCAN_H
 #define OPENDNP3_IMASTERSCAN_H
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Interface for interacting w/ a permanently bound scan
+* »нтерфейс дл€ взаимодействи€ с посто€нно прив€занным сканированием
  */
-class IMasterScan
+////class IMasterScan
+typedef struct
 {
-public:
-    virtual ~IMasterScan() = default;
+////public:
+////    virtual ~IMasterScan() = default;
 
     // Request that the scan be performed as soon as possible
-    virtual void Demand() = 0;
-};
+// «апрос, чтобы сканирование было выполнено как можно скорее
+    void (*pDemand_in_IMasterScan)(void *);// = 0;
 
-} // namespace opendnp3
+  void* pParentPointer_in_IMasterScan;
+} IMasterScan;
+
+void Demand_in_IMasterScan(IMasterScan* pIMasterScan);
+
+void* getParentPointer_in_IMasterScan(IMasterScan*);
+void  setParentPointer_in_IMasterScan(IMasterScan*, void*);
+
+////} // namespace opendnp3
 
 #endif

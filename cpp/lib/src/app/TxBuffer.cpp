@@ -8,7 +8,7 @@
 void TxBuffer_in_TxBuffer(TxBuffer *pTxBuffer, uint32_t maxTxSize)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"TxBuffer_in_TxBuffer1"<<'\n';

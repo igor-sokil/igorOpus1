@@ -297,7 +297,7 @@ boolean WriteWithSerializer_CounterSpec_for_Group20Var6_in_StaticWriters_static(
 static_write_func_t_for_CounterSpec get_for_CounterSpec_in_StaticWriters_static(StaticCounterVariation_uint8_t variation)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_CounterSpec_in_StaticWriters_static1"<<'\n';
@@ -352,7 +352,7 @@ static_write_func_t_for_CounterSpec get_for_CounterSpec_in_StaticWriters_static(
     }
 /*
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_CounterSpec_in_StaticWriters_static1"<<'\n';

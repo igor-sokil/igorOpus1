@@ -49,7 +49,7 @@
 Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{ParseRequest_in_APDUHeaderParser_static1"<<std::endl;
@@ -94,7 +94,7 @@ Result_for_APDUHeader_in_APDUHeaderParser ParseRequest_in_APDUHeaderParser_stati
 Result_for_APDUResponseHeader_in_APDUHeaderParser ParseResponse_in_APDUHeaderParser_static(RSeq_for_Uint16_t *apdu)////, Logger* logger = nullptr);
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseResponse_in_APDUHeaderParser_static1"<<std::endl;

@@ -20,20 +20,22 @@
 #ifndef OPENDNP3_PRINTINGSOEHANDLER_H
 #define OPENDNP3_PRINTINGSOEHANDLER_H
 
-#include "opendnp3/master/ISOEHandler.h"
+#include "ISOEHandler.h"
 
-#include <iostream>
-#include <memory>
-#include <sstream>
+////#include <iostream>
+////#include <memory>
+////#include <sstream>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  *	ISOEHandler singleton that prints to the console.
  */
-class PrintingSOEHandler final : public ISOEHandler
+////class PrintingSOEHandler final : public ISOEHandler
+typedef struct
 {
+  ISOEHandler iISOEHandler;
 
 public:
     PrintingSOEHandler() {}
@@ -102,8 +104,8 @@ private:
     {
         return DoubleBitSpec::to_human_string(meas.value);
     }
-};
+} PrintingSOEHandler;
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

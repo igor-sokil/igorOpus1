@@ -20,56 +20,101 @@
 #ifndef OPENDNP3_IMASTERAPPLICATION_H
 #define OPENDNP3_IMASTERAPPLICATION_H
 
-#include "opendnp3/app/IINField.h"
-#include "opendnp3/gen/MasterTaskType.h"
-#include "opendnp3/gen/TaskCompletion.h"
-#include "opendnp3/link/ILinkListener.h"
-#include "opendnp3/master/HeaderTypes.h"
-#include "opendnp3/master/IUTCTimeSource.h"
-#include "opendnp3/master/TaskInfo.h"
+#include "IINField.h"
+#include "MasterTaskType.h"
+#include "TaskCompletion.h"
+#include "ILinkListener.h"
+#include "HeaderTypes.h"
+#include "IUTCTimeSource.h"
+#include "TaskInfo.h"
 
-#include <functional>
+////#include <functional>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
-typedef std::function<void(const Header&)> WriteHeaderFunT;
+////typedef std::function<void(const Header&)> WriteHeaderFunT;
+typedef void (*WriteHeaderFunT)(Header*);
 
 /**
  * Interface for all master application callback info except for measurement values.
+* »нтерфейс дл€ всей информации обратного вызова основного приложени€, за исключением значений измерений.
  */
-class IMasterApplication : public ILinkListener, public IUTCTimeSource
+////class IMasterApplication : public ILinkListener, public IUTCTimeSource
+typedef struct
 {
-public:
-    virtual ~IMasterApplication() {}
+  ILinkListener iILinkListener;
+  IUTCTimeSource  iIUTCTimeSource;
 
-    /// Called when a response or unsolicited response is receive from the outstation
-    virtual void OnReceiveIIN(const IINField& iin) {}
+////public:
+////    virtual ~IMasterApplication() {}
 
-    /// Task start notification
-    virtual void OnTaskStart(MasterTaskType type, TaskId id) {}
+  /// Called when a response or unsolicited response is receive from the outstation
+/// ¬ызываетс€ при получении ответа или незапрошенного ответа от удаленной станции
+////    virtual void OnReceiveIIN(const IINField& iin) {}
+  void (*pOnReceiveIIN_in_IMasterApplication)(void *, IINField* iin);
 
-    /// Task completion notification
-    virtual void OnTaskComplete(const TaskInfo& info) {}
+  /// Task start notification
+////    virtual void OnTaskStart(MasterTaskType type, TaskId id) {}
+  void (*pOnTaskStart_in_IMasterApplication)(void *, MasterTaskType_uint8_t type, TaskId* id);
 
-    /// Called when the application layer is opened
-    virtual void OnOpen() {}
+  /// Task completion notification
+////    virtual void OnTaskComplete(const TaskInfo& info) {}
+  void (*pOnTaskComplete_in_IMasterApplication)(void *, TaskInfo* info);
 
-    /// Called when the application layer is closed
-    virtual void OnClose() {}
+  /// Called when the application layer is opened
+////    virtual void OnOpen() {}
+  void (*pOnOpen_in_IMasterApplication)(void *);
 
-    /// @return true if the master should do an assign class task during startup handshaking
-    virtual bool AssignClassDuringStartup()
-    {
-        return false;
-    }
+  /// Called when the application layer is closed
+////    virtual void OnClose() {}
+  void (*pOnClose_in_IMasterApplication)(void *);
 
-    /// Configure the request headers for assign class. Only called if
-    /// "AssignClassDuringStartup" returns true
-    /// The user only needs to call the function for each header type to be written
-    virtual void ConfigureAssignClassRequest(const WriteHeaderFunT& fun) {}
-};
+  /// @return true if the master should do an assign class task during startup handshaking
+/// @return true, если мастер должен выполнить задачу назначени€ класса во врем€ установлени€ св€зи при запуске
+////    virtual bool AssignClassDuringStartup()
+////    {
+////        return false;
+////    }
+  boolean (*pAssignClassDuringStartup_in_IMasterApplication)(void *);
+////    {
+////        return false;
+////    }
 
-} // namespace opendnp3
+  /// Configure the request headers for assign class. Only called if
+  /// "AssignClassDuringStartup" returns true
+  /// The user only needs to call the function for each header type to be written
+/// Ќастройте заголовки запроса дл€ назначени€ класса. «вонок только если
+  /// "AssignClassDuringStartup" возвращает true
+  /// ѕользователю нужно вызывать функцию только дл€ каждого типа заголовка, который нужно записать
+////    virtual void ConfigureAssignClassRequest(const WriteHeaderFunT& fun) {}
+  void (*pConfigureAssignClassRequest_in_IMasterApplication)(void *, WriteHeaderFunT fun);
+
+  void* pParentPointer_in_IMasterApplication;
+
+} IMasterApplication;
+
+void IMasterApplication_in_IMasterApplication(IMasterApplication *pIMasterApplication);
+
+void OnReceiveIIN_in_IMasterApplication(IMasterApplication *pIMasterApplication, IINField* iin);
+void OnTaskStart_in_IMasterApplication(IMasterApplication *pIMasterApplication, MasterTaskType_uint8_t type, TaskId* id);
+void OnTaskComplete_in_IMasterApplication(IMasterApplication* pIMasterApplication, TaskInfo* info);
+void OnOpen_in_IMasterApplication(IMasterApplication* pIMasterApplication);
+void OnClose_in_IMasterApplication(IMasterApplication *pIMasterApplication);
+boolean AssignClassDuringStartup_in_IMasterApplication(IMasterApplication *pIMasterApplication);
+void ConfigureAssignClassRequest_in_IMasterApplication(IMasterApplication *pIMasterApplication, WriteHeaderFunT fun);
+
+void OnReceiveIIN_in_IMasterApplication_override(void *pIMasterApplication, IINField* iin);
+void OnTaskStart_in_IMasterApplication_override(void *pIMasterApplication, MasterTaskType_uint8_t type, TaskId* id);
+void OnTaskComplete_in_IMasterApplication_override(void* pIMasterApplication, TaskInfo* info);
+void OnOpen_in_IMasterApplication_override(void* pIMasterApplication);
+void OnClose_in_IMasterApplication_override(void *pIMasterApplication);
+boolean AssignClassDuringStartup_in_IMasterApplication_override(void *pIMasterApplication);
+void ConfigureAssignClassRequest_in_IMasterApplication_override(void *pIMasterApplication, WriteHeaderFunT fun);
+
+void* getParentPointer_in_IMasterApplication(IMasterApplication*);
+void  setParentPointer_in_IMasterApplication(IMasterApplication*, void*);
+
+////} // namespace opendnp3
 
 #endif

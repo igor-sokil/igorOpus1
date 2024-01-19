@@ -22,7 +22,7 @@ void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -38,7 +38,7 @@ void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_ControlRelayOutputBlock_in_CountWriteIterator_for_UInt8_ControlRelayOutputBlockOver2_2"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,7 +63,7 @@ void CountWriteIterator_for_UInt8_ControlRelayOutputBlock_destr_CountWriteIterat
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_ControlRelayOutputBlock_destr_CountWriteIterator_for_UInt8_ControlRelayOutputBlock1"<<'\n';
   decrement_stack_info();
 #endif

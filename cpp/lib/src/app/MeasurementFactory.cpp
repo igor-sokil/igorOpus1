@@ -154,7 +154,7 @@ ControlRelayOutputBlock From_in_ControlRelayOutputBlock_static(
   uint8_t code, uint8_t count, uint32_t onTime, uint32_t offTime, uint8_t status)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"From_in_ControlRelayOutputBlock_static1"<<'\n';

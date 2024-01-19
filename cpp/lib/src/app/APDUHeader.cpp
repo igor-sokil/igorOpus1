@@ -73,4 +73,14 @@ void APDUResponseHeader_in_APDUResponseHeaderOver2(APDUResponseHeader *pAPDUResp
   APDUHeader_in_APDUHeaderOver2(&(pAPDUResponseHeader -> aAPDUHeader), control, function);
   pAPDUResponseHeader -> IIN = (*pIIN);
 }
+
+ResponseInfo as_response_info_in_APDUResponseHeader(APDUResponseHeader *pAPDUResponseHeader) 
+{
+// void ResponseInfo_in_ResponseInfo(ResponseInfo *pResponseInfo, boolean unsolicited, boolean fir, boolean fin);
+////        return ResponseInfo(this->function == FunctionCode::UNSOLICITED_RESPONSE, control.FIR, control.FIN);
+ ResponseInfo rResponseInfo;
+ ResponseInfo_in_ResponseInfo(&rResponseInfo, pAPDUResponseHeader->aAPDUHeader.function == FunctionCode_UNSOLICITED_RESPONSE,
+                             pAPDUResponseHeader->aAPDUHeader.control.FIR, pAPDUResponseHeader->aAPDUHeader.control.FIN);
+ return rResponseInfo;
+}
 ////} // namespace opendnp3

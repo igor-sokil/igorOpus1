@@ -300,7 +300,7 @@ void Counter_in_CounterOver4(Counter *pCounter, uint32_t value, Flags flags, DNP
 void FrozenCounter_in_FrozenCounterOver1(FrozenCounter *pFrozenCounter)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{FrozenCounter_in_FrozenCounterOver1_1"<<'\n';
@@ -321,7 +321,7 @@ void FrozenCounter_in_FrozenCounterOver1(FrozenCounter *pFrozenCounter)
 void FrozenCounter_in_FrozenCounterOver2(FrozenCounter *pFrozenCounter, uint32_t value)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{FrozenCounter_in_FrozenCounterOver2_1"<<'\n';
@@ -342,7 +342,7 @@ void FrozenCounter_in_FrozenCounterOver2(FrozenCounter *pFrozenCounter, uint32_t
 void FrozenCounter_in_FrozenCounterOver3(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{FrozenCounter_in_FrozenCounterOver3_1"<<'\n';
@@ -361,7 +361,7 @@ void FrozenCounter_in_FrozenCounterOver3(FrozenCounter *pFrozenCounter, uint32_t
 void FrozenCounter_in_FrozenCounterOver4(FrozenCounter *pFrozenCounter, uint32_t value, Flags flags, DNPTime timeDNPTime)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{FrozenCounter_in_FrozenCounterOver4_1"<<'\n';

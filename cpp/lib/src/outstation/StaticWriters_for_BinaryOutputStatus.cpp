@@ -162,7 +162,7 @@ boolean WriteWithSerializer_BinaryOutputStatusSpec_for_Group10Var2_in_StaticWrit
 static_write_func_t_for_BinaryOutputStatusSpec get_for_BinaryOutputStatusSpec_in_StaticWriters_static(StaticBinaryOutputStatusVariation_uint8_t variation)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_BinaryOutputStatusSpec_in_StaticWriters_static1"<<'\n';

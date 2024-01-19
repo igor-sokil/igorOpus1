@@ -112,9 +112,9 @@ uint8_t ToByte_in_AppControlField(AppControlField *pAppControlField)
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ToByte_in_AppControlField_"<<'\n';
-  std::cout<<""<<getString_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"*uint8_t ret ="<<(uint16_t)ret<<'\n';
-  std::cout<<""<<getString_stack_info();
+  std::cout<<getString_stack_info();
   std::cout<<"*uint8_t seq ="<<(uint16_t)seq<<'\n';
   decrement_stack_info();
 #endif

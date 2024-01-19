@@ -38,7 +38,7 @@ void PrefixedWriteIterator_for_UInt8_AnalogOutputStatus_in_PrefixedWriteIterator
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"PrefixedWriteIterator_for_UInt8_AnalogOutputStatus_in_PrefixedWriteIterator_for_UInt8_AnalogOutputStatusOver2_1"<<'\n';
   decrement_stack_info();
 #endif

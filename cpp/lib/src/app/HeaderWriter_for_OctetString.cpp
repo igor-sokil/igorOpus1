@@ -9,7 +9,7 @@ PrefixedWriteIterator_for_UInt16_OctetString IterateOverCountWithPrefix_for_UInt
     QualifierCode_uint8_t qc, DNP3Serializer_for_OctetString* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefix_for_UInt16_OctetString_in_HeaderWriter1"<<'\n';
@@ -49,7 +49,7 @@ RangeWriteIterator_for_UInt8_OctetString IterateOverRange_for_UInt8_OctetString_
                                                                                      )
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverRange_for_UInt8_OctetString_in_HeaderWriter1"<<'\n';
@@ -104,7 +104,7 @@ RangeWriteIterator_for_UInt16_OctetString IterateOverRange_for_UInt16_OctetStrin
                                                                                      )
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverRange_for_UInt16_OctetString_in_HeaderWriter1"<<'\n';

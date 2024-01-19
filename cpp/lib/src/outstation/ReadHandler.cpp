@@ -31,7 +31,7 @@ void ReadHandler_in_ReadHandler(ReadHandler *pReadHandler, IStaticSelector* stat
 {
 #ifdef  LOG_INFO
   increment_stack_info();
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   std::cout<<getString_stack_info();
   std::cout<<"ReadHandler_in_ReadHandler1"<<std::endl;
 

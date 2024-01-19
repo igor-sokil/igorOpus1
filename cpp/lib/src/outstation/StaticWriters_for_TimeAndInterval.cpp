@@ -163,7 +163,7 @@ static_write_func_t_for_TimeAndIntervalSpec get_for_TimeAndIntervalSpec_in_Stati
 {
   UNUSED(variation);
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_TimeAndIntervalSpec_in_StaticWriters_static1"<<'\n';

@@ -20,140 +20,205 @@
 #ifndef OPENDNP3_IMASTEROPERATIONS_H
 #define OPENDNP3_IMASTEROPERATIONS_H
 
-#include "opendnp3/StackStatistics.h"
-#include "opendnp3/app/ClassField.h"
-#include "opendnp3/app/MeasurementTypes.h"
-#include "opendnp3/gen/FunctionCode.h"
-#include "opendnp3/gen/RestartType.h"
-#include "opendnp3/logging/LogLevels.h"
-#include "opendnp3/master/HeaderTypes.h"
-#include "opendnp3/master/ICommandProcessor.h"
-#include "opendnp3/master/IMasterScan.h"
-#include "opendnp3/master/ISOEHandler.h"
-#include "opendnp3/master/RestartOperationResult.h"
-#include "opendnp3/master/TaskConfig.h"
-#include "opendnp3/util/TimeDuration.h"
+#include "StackStatistics.h"
+#include "ClassField.h"
+#include "MeasurementTypes.h"
+#include "FunctionCode.h"
+#include "RestartType.h"
+////#include "opendnp3/logging/LogLevels.h"
+#include "HeaderTypes.h"
+#include "ICommandProcessor.h"
+#include "IMasterScan.h"
+#include "ISOEHandler.h"
+#include "RestartOperationResult.h"
+#include "TaskConfig.h"
+#include "TimeDuration.h"
 
-#include <memory>
-#include <string>
-#include <vector>
+////#include <memory>
+////#include <string>
+////#include <vector>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * All the operations that the user can perform on a running master
+* ¬се операции, которые пользователь может выполн€ть на работающем мастере
  */
-class IMasterOperations : public ICommandProcessor
+////class IMasterOperations : public ICommandProcessor
+typedef struct
 {
-public:
-    virtual ~IMasterOperations() {}
+  ICommandProcessor iICommandProcessor;
 
-    /**
-     *  @param filters Adjust the filters to this value
-     */
-    virtual void SetLogFilters(const opendnp3::LogLevels& filters) = 0;
+////public:
+////    virtual ~IMasterOperations() {}
 
-    /**
-     * Add a recurring user-defined scan from a vector of headers
-     * @ return A proxy class used to manipulate the scan
-     */
-    virtual std::shared_ptr<IMasterScan> AddScan(TimeDuration period,
-                                                 const std::vector<Header>& headers,
-                                                 std::shared_ptr<ISOEHandler> soe_handler,
-                                                 const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   *  @param filters Adjust the filters to this value
+  * @param filter Ќастройте фильтры на это значение.
+   */
+////    virtual void SetLogFilters(const opendnp3::LogLevels& filters) = 0;
 
-    /**
-     * Add a scan that requests all objects using qualifier code 0x06
-     * @ return A proxy class used to manipulate the scan
-     */
-    virtual std::shared_ptr<IMasterScan> AddAllObjectsScan(GroupVariationID gvId,
-                                                           TimeDuration period,
-                                                           std::shared_ptr<ISOEHandler> soe_handler,
-                                                           const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   * Add a recurring user-defined scan from a vector of headers
+   * @ return A proxy class used to manipulate the scan
+  * ƒобавление повтор€ющегос€ пользовательского сканировани€ из вектора заголовков.
+    * @ return ѕрокси-класс, используемый дл€ управлени€ сканированием.
+   */
+  IMasterScan* (*pAddScan_in_IMasterOperations)(void *, TimeDuration period,
+      std::vector<Header>& headers,
+      ISOEHandler* soe_handler,
+      TaskConfig* config);// = TaskConfig::Default())  = 0;
 
-    /**
-     * Add a class-based scan to the master
-     * @return A proxy class used to manipulate the scan
-     */
-    virtual std::shared_ptr<IMasterScan> AddClassScan(const ClassField& field,
-                                                      TimeDuration period,
-                                                      std::shared_ptr<ISOEHandler> soe_handler,
-                                                      const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   * Add a scan that requests all objects using qualifier code 0x06
+   * @ return A proxy class used to manipulate the scan
+  * ƒобавьте сканирование, которое запрашивает все объекты с использованием кода квалификатора 0x06.
+    * @ return ѕрокси-класс, используемый дл€ управлени€ сканированием.
+   */
+  IMasterScan* (*pAddAllObjectsScan_in_IMasterOperations)(void *, GroupVariationID gvId,
+      TimeDuration period,
+      ISOEHandler* soe_handler,
+      TaskConfig* config);// = TaskConfig::Default())   = 0;
 
-    /**
-     * Add a start/stop (range) scan to the master
-     * @return A proxy class used to manipulate the scan
-     */
-    virtual std::shared_ptr<IMasterScan> AddRangeScan(GroupVariationID gvId,
-                                                      uint16_t start,
-                                                      uint16_t stop,
-                                                      TimeDuration period,
-                                                      std::shared_ptr<ISOEHandler> soe_handler,
-                                                      const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   * Add a class-based scan to the master
+   * @return A proxy class used to manipulate the scan
+  * ƒобавить сканирование на основе классов в мастер-файл
+    * @return ѕрокси-класс, используемый дл€ управлени€ сканированием.
+   */
+  IMasterScan* (*pAddClassScan_in_IMasterOperations)(void *, ClassField* field,
+      TimeDuration period,
+      ISOEHandler* soe_handler,
+      TaskConfig* config);// = TaskConfig::Default())   = 0;
 
-    /**
-     * Initiate a single user defined scan via a vector of headers
-     */
-    virtual void Scan(const std::vector<Header>& headers,
-                      std::shared_ptr<ISOEHandler> soe_handler,
-                      const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   * Add a start/stop (range) scan to the master
+   * @return A proxy class used to manipulate the scan
+  * ƒобавление сканировани€ начала/остановки (диапазона) в мастер-файл.
+    * @return ѕрокси-класс, используемый дл€ управлени€ сканированием.
+   */
+  IMasterScan* (*pAddRangeScan_in_IMasterOperations)(void *, GroupVariationID gvId,
+      uint16_t start,
+      uint16_t stop,
+      TimeDuration period,
+      ISOEHandler* soe_handler,
+      TaskConfig* config);// = TaskConfig::Default())    = 0;
 
-    /**
-     * Initiate a single scan that requests all objects (0x06 qualifier code) for a certain group and variation
-     */
-    virtual void ScanAllObjects(GroupVariationID gvId,
-                                std::shared_ptr<ISOEHandler> soe_handler,
-                                const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   * Initiate a single user defined scan via a vector of headers
+  * »нициировать одно пользовательское сканирование через вектор заголовков.
+   */
+  void (*pScan_in_IMasterOperations)(void *, const std::vector<Header>& headers,
+                                     ISOEHandler* soe_handler,
+                                     TaskConfig* config);// = TaskConfig::Default())     = 0;
 
-    /**
-     * Initiate a single class-based scan
-     */
-    virtual void ScanClasses(const ClassField& field,
-                             std::shared_ptr<ISOEHandler> soe_handler,
-                             const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   * Initiate a single scan that requests all objects (0x06 qualifier code) for a certain group and variation
+  * »нициировать одно сканирование, которое запрашивает все объекты (код квалификатора 0x06) дл€ определенной группы и варианта.
+   */
+  void (*pScanAllObjects_in_IMasterOperations)(void *, GroupVariationID gvId,
+      ISOEHandler* soe_handler,
+      TaskConfig* config);// = TaskConfig::Default())    = 0;
 
-    /**
-     * Initiate a single start/stop (range) scan
-     */
-    virtual void ScanRange(GroupVariationID gvId,
-                           uint16_t start,
-                           uint16_t stop,
-                           std::shared_ptr<ISOEHandler> soe_handler,
-                           const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   * Initiate a single class-based scan
+  * »нициировать одно сканирование на основе классов.
+   */
+  void (*pScanClasses_in_IMasterOperations)(void *, ClassField* field,
+      ISOEHandler* soe_handler,
+      TaskConfig* config);// = TaskConfig::Default())      = 0;
 
-    /**
-     * Write a time and interval object to a specific index
-     */
-    virtual void Write(const TimeAndInterval& value, uint16_t index, const TaskConfig& config = TaskConfig::Default())
-        = 0;
+  /**
+   * Initiate a single start/stop (range) scan
+  * »нициировать одно сканирование старт/стоп (диапазон)
+   */
+  void (*pScanRange_in_IMasterOperations)(void *, GroupVariationID gvId,
+                                          uint16_t start,
+                                          uint16_t stop,
+                                          ISOEHandler* soe_handler,
+                                          TaskConfig* config);// = TaskConfig::Default())     = 0;
 
-    /**
-     * Perform a cold or warm restart and get back the time-to-complete value
-     */
-    virtual void Restart(RestartType op,
-                         const RestartOperationCallbackT& callback,
-                         TaskConfig config = TaskConfig::Default())
-        = 0;
+  /**
+   * Write a time and interval object to a specific index
+  * «апишите объект времени и интервала в определенный индекс.
+   */
+  void (*pWrite_in_IMasterOperations)(void *, TimeAndInterval* value, uint16_t index, TaskConfig* config);// = TaskConfig::Default())       = 0;
 
-    /**
-     * Perform any operation that requires just a function code
-     */
-    virtual void PerformFunction(const std::string& name,
-                                 FunctionCode func,
-                                 const std::vector<Header>& headers,
-                                 const TaskConfig& config = TaskConfig::Default())
-        = 0;
-};
+  /**
+   * Perform a cold or warm restart and get back the time-to-complete value
+  * ¬ыполните холодный или теплый перезапуск и верните значение времени завершени€.
+   */
+  void (*pRestart_in_IMasterOperations)(void *, RestartType_uint8_t op,
+                                        RestartOperationCallbackT callback,
+                                        TaskConfig* config);// = TaskConfig::Default()) = 0;
 
-} // namespace opendnp3
+  /**
+   * Perform any operation that requires just a function code
+  * ¬ыполните любую операцию, дл€ которой требуетс€ только код функции.
+   */
+  void (*pPerformFunction_in_IMasterOperations)(void *, std::string& name,
+      FunctionCode_uint8_t func,
+      std::vector<Header>& headers,
+      TaskConfig* config);// = TaskConfig::Default())      = 0;
+
+  void* pParentPointer_in_IMasterOperations;
+} IMasterOperations;
+
+IMasterScan* AddScan_in_IMasterOperations(IMasterOperations *, TimeDuration period,
+    std::vector<Header>& headers,
+    ISOEHandler* soe_handler,
+    TaskConfig* config);
+
+IMasterScan* AddAllObjectsScan_in_IMasterOperations(IMasterOperations *, GroupVariationID gvId,
+    TimeDuration period,
+    ISOEHandler* soe_handler,
+    TaskConfig* config);
+
+IMasterScan* AddClassScan_in_IMasterOperations(IMasterOperations *, ClassField* field,
+    TimeDuration period,
+    ISOEHandler* soe_handler,
+    TaskConfig* config);
+
+IMasterScan* AddRangeScan_in_IMasterOperations(IMasterOperations *, GroupVariationID gvId,
+    uint16_t start,
+    uint16_t stop,
+    TimeDuration period,
+    ISOEHandler* soe_handler,
+    TaskConfig* config);
+
+void Scan_in_IMasterOperations(IMasterOperations *, const std::vector<Header>& headers,
+                               ISOEHandler* soe_handler,
+                               TaskConfig* config);
+
+void ScanAllObjects_in_IMasterOperations(IMasterOperations *, GroupVariationID gvId,
+    ISOEHandler* soe_handler,
+    TaskConfig* config);
+
+void ScanClasses_in_IMasterOperations(IMasterOperations *, ClassField* field,
+                                      ISOEHandler* soe_handler,
+                                      TaskConfig* config);
+
+void ScanRange_in_IMasterOperations(IMasterOperations *, GroupVariationID gvId,
+                                    uint16_t start,
+                                    uint16_t stop,
+                                    ISOEHandler* soe_handler,
+                                    TaskConfig* config);
+
+void Write_in_IMasterOperations(IMasterOperations *, TimeAndInterval* value, uint16_t index, TaskConfig* config);// = TaskConfig::Default())       = 0;
+
+void Restart_in_IMasterOperations(IMasterOperations *, RestartType_uint8_t op,
+                                  RestartOperationCallbackT* callback,
+                                  TaskConfig* config);
+
+void PerformFunction_in_IMasterOperations(IMasterOperations *, std::string& name,
+    FunctionCode_uint8_t func,
+    std::vector<Header>& headers,
+    TaskConfig* config);
+
+void* getParentPointer_in_IMasterOperations(IMasterOperations*);
+void  setParentPointer_in_IMasterOperations(IMasterOperations*, void*);
+
+////} // namespace opendnp3
 
 #endif

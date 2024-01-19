@@ -61,7 +61,7 @@ void AssignClassHandler_in_AssignClassHandler(AssignClassHandler *pAssignClassHa
 IINField ProcessHeader_AllObjectsHeader_in_AssignClassHandler_override(void *pIAPDUHandler, AllObjectsHeader* header)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessHeader_AllObjectsHeader_in_AssignClassHandler_override1"<<'\n';

@@ -20,14 +20,15 @@
 #ifndef OPENDNP3_HEADERBUILDER_H
 #define OPENDNP3_HEADERBUILDER_H
 
-#include "app/HeaderWriter.h"
+#include "HeaderWriter.h"
 
-#include <functional>
+////#include <functional>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
-typedef std::function<bool(HeaderWriter&)> HeaderBuilderT;
-}
+////typedef std::function<bool(HeaderWriter&)> HeaderBuilderT;
+////}
+typedef boolean (*HeaderBuilderT)(HeaderWriter*);
 
 #endif

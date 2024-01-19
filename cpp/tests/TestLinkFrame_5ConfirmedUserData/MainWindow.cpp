@@ -3,18 +3,19 @@
 #include <QtWidgets>
 #include "key_filter.h"
 
-//#include "header.h"
+#include "header.h"
 
 #include "MainWindow.h"
-#include "loghandler.h"
+//#include "loghandler.h"
 
 extern key_filter *pkf;
 
-LogHandler loghandler;//логирование
 
 MainWindow::MainWindow(QWidget *parent): QWidget(parent)
 {
-  setWindowTitle(QString::fromLocal8Bit("FatFS"));
+  setWindowTitle(QString::fromLocal8Bit("qt_dnp3"));
+//  setWindowFlag(QtCore.Qt.WindowStaysOnTopHint)
+  setWindowFlags(Qt::WindowStaysOnTopHint);
 
   QFont tabFont = QFont("Times", 14, QFont::Normal);
 
@@ -68,7 +69,7 @@ MiniButtonWidget::MiniButtonWidget(QWidget *parent)
 
   QGridLayout *miniButtonLayout = new QGridLayout;
 
-  virtualMenuUpButton = createButton(" EvenList ", SLOT(upClicked()));
+  virtualMenuUpButton = createButton(" Message_in_Moc ", SLOT(upClicked()));
   virtualMenuDownButton = createButton("List_for_EventRecord", SLOT(downClicked()));
   virtualMenuUpButton->setFont(boldFont);
   virtualMenuDownButton->setFont(boldFont);
@@ -168,7 +169,7 @@ void MiniButtonWidget::freeClicked()
 //  func20ConfigDiskretRegistrator();//комтрейд config дикр регистратора
 }//freeClicked()
 
-void loghandler_List_for_EventRecord();
+//void loghandler_List_for_EventRecord();
 void MiniButtonWidget::downClicked()
 {
   qDebug()<<"BIT_KEY_DOWN";
@@ -177,10 +178,40 @@ void MiniButtonWidget::downClicked()
 //  periodical_operations();//один оборот
 }//downClicked()
 
-void loghandler_EvenLists();
+/*
+void inspect_LinkHeader(Memory_LinkHeader* pMemory_LinkHeader, int maxCount);
+void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord, int maxCount);
+void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader, int maxCount);
+void inspect_HeaderRecord(Memory_HeaderRecord* pMemory_HeaderRecord, int maxCount);
+void inspect_IINField(Memory_IINField* pMemory_IINField, int maxCount);
+void inspect_EventLists(Memory_EventLists* pMemory_EventLists, int maxCount);
+void inspect_PairSer4cpp_for_IINField_AppControlField(Memory_PairSer4cpp_for_IINField_AppControlField* pMemory_PairSer4cpp_for_IINField_AppControlField, int maxCount);
+void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest, int maxCount);
+void inspect_Message(Memory_Message* pMemory_Message, int maxCount);
+void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser, int maxCount);
+void inspect_EventRecord(Memory_EventRecord* pMemory_EventRecord, int maxCount);
+void inspect_RangeHeader(Memory_RangeHeader* pMemory_RangeHeader, int maxCount);
+*/
 void MiniButtonWidget::upClicked()
 {
   qDebug()<<"BIT_KEY_UP";
+//if(pMemory_RangeHeader_1) inspect_RangeHeader(pMemory_RangeHeader_1, 10);
+// if(pMemory_Message_1) inspect_Message(pMemory_Message_1, 10);
+// if(pMemory_Message_2) inspect_Message(pMemory_Message_2);
+// if(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1)inspect_Result_for_APDUHeader_in_APDUHeaderParser(pMemory_Result_for_APDUHeader_in_APDUHeaderParser_1, 10);
+// if(pMemory_ParsedRequest_1)inspect_ParsedRequest(pMemory_ParsedRequest_1, 10);
+// if(pMemory_IINField_1)inspect_IINField(pMemory_IINField_1, 10);
+// if(pMemory_PairSer4cpp_for_IINField_AppControlField_1)inspect_PairSer4cpp_for_IINField_AppControlField(pMemory_PairSer4cpp_for_IINField_AppControlField_1, 10);
+// if(pMemory_ObjectHeader_1)inspect_ObjectHeader(pMemory_ObjectHeader_1);
+// if(pMemory_HeaderRecord_1)inspect_HeaderRecord(pMemory_HeaderRecord_1);
+// if(pMemory_EventRecord_1)inspect_EventRecord(pMemory_EventRecord_1, 10);
+// if(pMemory_EventLists_1)inspect_EventLists(pMemory_EventLists_1, 10);
+// if(pMemory_LinkHeader_1)inspect_LinkHeader(pMemory_LinkHeader_1, 10);
+// if(pMemory_GroupVariationRecord_1)inspect_GroupVariationRecord(pMemory_GroupVariationRecord_1);
+
+//  inspect_Message(titleGlobal_1, memoryGlobal_1);
+//  inspect_Message(titleGlobal_2, memoryGlobal_2);
+//  inspect_Message("Moc", &mMessage1_global_in_MockLowerLayer);
 // loghandler_EvenLists();
 //  new_state_keyboard |= (1<<BIT_KEY_UP);
 //  periodical_operations();//один оборот

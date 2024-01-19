@@ -453,7 +453,7 @@ boolean WriteWithSerializer_FrozenCounterSpec_for_Group21Var10_in_StaticWriters_
 static_write_func_t_for_FrozenCounterSpec get_for_FrozenCounterSpec_in_StaticWriters_static(StaticFrozenCounterVariation_uint8_t variation)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_FrozenCounterSpec_in_StaticWriters_static1"<<'\n';

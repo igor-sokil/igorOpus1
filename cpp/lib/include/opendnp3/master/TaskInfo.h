@@ -20,27 +20,31 @@
 #ifndef OPENDNP3_TASK_INFO_H
 #define OPENDNP3_TASK_INFO_H
 
-#include "opendnp3/gen/MasterTaskType.h"
-#include "opendnp3/gen/TaskCompletion.h"
-#include "opendnp3/master/TaskId.h"
+#include "MasterTaskType.h"
+#include "TaskCompletion.h"
+#include "TaskId.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Struct that provides information about a completed or failed task.
  */
-class TaskInfo
+////class TaskInfo
+typedef struct
 {
 
-public:
-    TaskInfo(MasterTaskType type_, TaskCompletion result_, TaskId id_) : type(type_), result(result_), id(id_) {}
+////public:
+////    TaskInfo(MasterTaskType type_, TaskCompletion result_, TaskId id_) : type(type_), result(result_), id(id_) {}
 
-    MasterTaskType type;
-    TaskCompletion result;
-    TaskId id;
-};
+  MasterTaskType_uint8_t type;
+  TaskCompletion_uint8_t result;
+  TaskId id;
+} TaskInfo;
 
-} // namespace opendnp3
+void TaskInfo_in_TaskInfo(TaskInfo *pTaskInfo, MasterTaskType_uint8_t type_, TaskCompletion_uint8_t result_, TaskId id_);
+
+
+////} // namespace opendnp3
 
 #endif

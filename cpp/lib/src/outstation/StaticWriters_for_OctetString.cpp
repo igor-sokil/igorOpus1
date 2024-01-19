@@ -23,7 +23,7 @@ static_write_func_t_for_OctetStringSpec get_for_OctetStringSpec_in_StaticWriters
   UNUSED(variation);
 
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_OctetStringSpec_in_StaticWriters_static1"<<'\n';
@@ -61,7 +61,9 @@ boolean write_octet_strings_in_StaticWriters_static(StaticDataMap_for_OctetStrin
         (uint8_t)(range.start)
                                                                                                           );
 
-    return write_some_octet_strings_for_UInt8_in_StaticWriters_static(map, &iter);
+    boolean tmp = write_some_octet_strings_for_UInt8_in_StaticWriters_static(map, &iter);
+    RangeWriteIterator_for_UInt8_OctetString_destr_RangeWriteIterator_for_UInt8_OctetString(&iter);
+    return tmp;
   }
 
 ////    auto iter = writer.IterateOverRange<ser4cpp::UInt16>(QualifierCode::UINT16_START_STOP, serializer, range.start);
@@ -71,7 +73,9 @@ boolean write_octet_strings_in_StaticWriters_static(StaticDataMap_for_OctetStrin
       (uint16_t)(range.start)
                                                                                                           );
 
-  return write_some_octet_strings_for_UInt16_in_StaticWriters_static(map, &iter);
+  boolean tmp = write_some_octet_strings_for_UInt16_in_StaticWriters_static(map, &iter);
+  RangeWriteIterator_for_UInt16_OctetString_destr_RangeWriteIterator_for_UInt16_OctetString(&iter);
+  return tmp;
 }
 
 ////template<class Writer> bool write_some_octet_strings(StaticDataMap<OctetStringSpec>& map, Writer& writer)

@@ -20,27 +20,38 @@
 #ifndef OPENDNP3_IMASTERTASKRUNNER_H
 #define OPENDNP3_IMASTERTASKRUNNER_H
 
-#include "master/IMasterTask.h"
+#include "IMasterTask.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Interface used by the scheduler to start running a task on a particular master session
+* Интерфейс, используемый планировщиком для запуска задачи в определенном главном сеансе.
  */
-class IMasterTaskRunner
+////class IMasterTaskRunner
+typedef struct
 {
 
-public:
+////public:
     /**
      * Start running the task. The task runner will asynchronously make a call back to the scheduler
      * when execution is complete
+* Начните выполнение задачи. Исполнитель задач асинхронно выполнит обратный вызов планировщику.
+      * когда выполнение завершено
      *
      * @return true if the task can be started, false otherwise
      */
-    virtual bool Run(const std::shared_ptr<IMasterTask>& task) = 0;
-};
+    boolean (*pRun_in_IMasterTaskRunner)(void *, IMasterTask* task);// = 0;
 
-} // namespace opendnp3
+  void *pParentPointer_in_IMasterTaskRunner;
+} IMasterTaskRunner;
+
+boolean Run_in_IMasterTaskRunner(IMasterTaskRunner *pIMasterTaskRunner, IMasterTask* task);
+
+void* getParentPointer_in_IMasterTaskRunner(IMasterTaskRunner*);
+void  setParentPointer_in_IMasterTaskRunner(IMasterTaskRunner*, void*);
+
+////} // namespace opendnp3
 
 #endif

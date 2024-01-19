@@ -28,9 +28,9 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-expectsContents_in_CountParser = true;
-expectsContents_in_CountIndexParser = true;
-expectsContents_in_RangeParser = true;
+///expectsContents_in_CountParser = true;
+///expectsContents_in_CountIndexParser = true;
+///expectsContents_in_RangeParser = true;
 
 qDebug()<<"********SUITE('22octet')********";
 ////    OutstationConfig config;

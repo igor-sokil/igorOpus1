@@ -146,6 +146,11 @@ boolean WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(HeaderWriter *pHe
     QualifierCode_uint8_t qc, Group50Var1*);
 
 //--------------------------------WriteSingleValue_for_UInt8_Group50Var1--------------------------------------------------------
+//--------------------------------WriteSingleValue_for_UInt8_Group50Var3--------------------------------------------------------
+boolean WriteSingleValue_for_UInt8_Group50Var3_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc, Group50Var3*);
+
+//--------------------------------WriteSingleValue_for_UInt8_Group50Var3--------------------------------------------------------
 
 ////    template<class IndexType>
 ////    BitfieldRangeWriteIterator<IndexType> IterateOverSingleBitfield(GroupVariationID id,

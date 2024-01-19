@@ -22,7 +22,7 @@ void CountWriteIterator_for_UInt8_DoubleBitBinary_in_CountWriteIterator_for_UInt
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_DoubleBitBinary_in_CountWriteIterator_for_UInt8_DoubleBitBinaryOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -38,7 +38,7 @@ void CountWriteIterator_for_UInt8_DoubleBitBinary_in_CountWriteIterator_for_UInt
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_DoubleBitBinary_in_CountWriteIterator_for_UInt8_DoubleBitBinaryOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,7 +63,7 @@ void CountWriteIterator_for_UInt8_DoubleBitBinary_destr_CountWriteIterator_for_U
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_DoubleBitBinary_destr_CountWriteIterator_for_UInt8_DoubleBitBinary1"<<'\n';
   decrement_stack_info();
 #endif
@@ -113,7 +113,7 @@ void CountWriteIterator_for_UInt16_DoubleBitBinary_in_CountWriteIterator_for_UIn
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt16_DoubleBitBinary_in_CountWriteIterator_for_UInt16_DoubleBitBinaryOver1_1"<<'\n';
   decrement_stack_info();
 #endif

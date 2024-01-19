@@ -17,33 +17,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef OPENDNP3_DECODER_H
-#define OPENDNP3_DECODER_H
 
-#include "opendnp3/decoder/IDecoderCallbacks.h"
-#include "opendnp3/logging/Logger.h"
-#include "opendnp3/util/Buffer.h"
+#include "TaskContext.h"
+
+#include "master/IMasterTask.h"
 
 namespace opendnp3
 {
 
-class DecoderImpl;
-
-// stand-alone DNP3 decoder
-class Decoder
+void TaskContext::AddBlock(const IMasterTask& task)
 {
-public:
-    Decoder(IDecoderCallbacks& callbacks, const Logger& logger);
-    ~Decoder();
+    this->blocking_tasks.insert(&task);
+}
 
-    void DecodeLPDU(const Buffer& data);
-    void DecodeTPDU(const Buffer& data);
-    void DecodeAPDU(const Buffer& data);
+void TaskContext::RemoveBlock(const IMasterTask& task)
+{
+    this->blocking_tasks.erase(&task);
+}
 
-private:
-    DecoderImpl* impl;
-};
+bool TaskContext::IsBlocked(const IMasterTask& task) const
+{
+    for (auto& blocking : this->blocking_tasks)
+    {
+        // is there a block with better priority that's not the same task?
+        if (blocking->Priority() < task.Priority() && (blocking != &task))
+            return true;
+    }
+
+    return false;
+}
 
 } // namespace opendnp3
-
-#endif

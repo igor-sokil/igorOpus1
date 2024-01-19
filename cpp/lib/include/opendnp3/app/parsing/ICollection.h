@@ -20,6 +20,7 @@
 #ifndef OPENDNP3_ICOLLECTION_H
 #define OPENDNP3_ICOLLECTION_H
 
+#include "ICollection_for_CommandPointResult.h"
 #include "ICollection_for_CommandState.h"
 #include "ICollection_for_DNPTime.h"
 #include "ICollection_for_Group50Var1.h"

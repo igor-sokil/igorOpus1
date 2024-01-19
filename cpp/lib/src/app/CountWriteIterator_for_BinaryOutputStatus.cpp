@@ -22,7 +22,7 @@ void CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_U
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_UInt8_BinaryOutputStatusOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -38,7 +38,7 @@ void CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_U
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_BinaryOutputStatus_in_CountWriteIterator_for_UInt8_BinaryOutputStatusOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,7 +63,7 @@ void CountWriteIterator_for_UInt8_BinaryOutputStatus_destr_CountWriteIterator_fo
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_BinaryOutputStatus_destr_CountWriteIterator_for_UInt8_BinaryOutputStatus1"<<'\n';
   decrement_stack_info();
 #endif
@@ -113,7 +113,7 @@ void CountWriteIterator_for_UInt16_BinaryOutputStatus_in_CountWriteIterator_for_
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt16_BinaryOutputStatus_in_CountWriteIterator_for_UInt16_BinaryOutputStatusOver1_1"<<'\n';
   decrement_stack_info();
 #endif

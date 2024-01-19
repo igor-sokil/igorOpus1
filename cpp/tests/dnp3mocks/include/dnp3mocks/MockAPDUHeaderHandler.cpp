@@ -384,7 +384,7 @@ IINField ProcessAny_Indexed_for_AnalogCommandEvent_in_MockApduHeaderHandler(Mock
 void add_Indexed_for_BinaryCommandEvent_in_MockApduHeaderHandler(Indexed_for_BinaryCommandEvent* v);
 void add_Indexed_for_BinaryCommandEvent_in_MockApduHeaderHandler(Indexed_for_BinaryCommandEvent* v)
 {
-    std::cout<<""<<'\n';
+    std::cout<<'\n';
     std::cout<<"add_Indexed_for_BinaryCommandEvent_in_MockApduHeaderHandler1"<<'\n';
 ////        auto add = [&items](const T& v) { items.push_back(v); };
   std::vector<Indexed_for_BinaryCommandEvent>* items = (std::vector<Indexed_for_BinaryCommandEvent>*)pPointerGlobal1_in_MockApduHeaderHandler;

@@ -20,27 +20,42 @@
 #ifndef OPENDNP3_ITASKCALLBACK_H
 #define OPENDNP3_ITASKCALLBACK_H
 
-#include "opendnp3/gen/TaskCompletion.h"
+#include "TaskCompletion.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Callbacks for when a task starts and completes
+* Обратные вызовы, когда задача запускается и завершается.
  */
-class ITaskCallback
+////class ITaskCallback
+typedef struct
 {
 public:
     // Called when the task starts running
-    virtual void OnStart() = 0;
+// Вызывается, когда задача начинает выполняться
+    void (*pOnStart_in_ITaskCallback)(void *);// = 0;
 
     // Called when the task succeeds or fails
-    virtual void OnComplete(TaskCompletion result) = 0;
+// Вызывается, когда задача выполнена успешно или неудачно
+    void (*pOnComplete_in_ITaskCallback)(void *, TaskCompletion_uint8_t result);// = 0;
 
     // Called when the task no longer exists and no more calls will be made to OnStart/OnComplete
-    virtual void OnDestroyed() = 0;
-};
+// Вызывается, когда задача больше не существует и вызовы OnStart/OnComplete больше не выполняются
+    void (*pOnDestroyed_in_ITaskCallback)(void *);// = 0;
 
-} // namespace opendnp3
+  void* pParentPointer_in_ITaskCallback;
+
+} ITaskCallback;
+
+void OnStart_in_ITaskCallback(ITaskCallback* pITaskCallback);
+void OnComplete_in_ITaskCallback(ITaskCallback* pITaskCallback, TaskCompletion_uint8_t result);
+void OnDestroyed_in_ITaskCallback(ITaskCallback* pITaskCallback);
+
+void* getParentPointer_in_ITaskCallback(ITaskCallback*);
+void  setParentPointer_in_ITaskCallback(ITaskCallback*, void*);
+
+////} // namespace opendnp3
 
 #endif

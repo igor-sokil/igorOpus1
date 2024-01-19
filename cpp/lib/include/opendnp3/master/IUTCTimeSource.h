@@ -20,24 +20,32 @@
 #ifndef OPENDNP3_IUTCTIMESOURCE_H
 #define OPENDNP3_IUTCTIMESOURCE_H
 
-#include "opendnp3/util/UTCTimestamp.h"
+#include "UTCTimestamp.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  *  Interface that defines a method to get UTC timestamps
  */
-class IUTCTimeSource
+////class IUTCTimeSource
+typedef struct
 {
 
-public:
+////public:
     /**
      *  Returns a UTCTimestamp of the current time
      */
-    virtual UTCTimestamp Now() = 0;
-};
+    UTCTimestamp (*pNow_in_IUTCTimeSource)(void *);// = 0;
 
-} // namespace opendnp3
+  void* pParentPointer_in_IUTCTimeSource;
+} IUTCTimeSource;
+
+UTCTimestamp Now_in_IUTCTimeSource(IUTCTimeSource* pIUTCTimeSource);
+
+void* getParentPointer_in_IUTCTimeSource(IUTCTimeSource*);
+void  setParentPointer_in_IUTCTimeSource(IUTCTimeSource*, void*);
+
+////} // namespace opendnp3
 
 #endif

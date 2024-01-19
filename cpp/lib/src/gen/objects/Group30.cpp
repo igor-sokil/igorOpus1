@@ -77,7 +77,7 @@ void Group30Var1_in_Group30Var1(Group30Var1 *pGroup30Var1)
 boolean Read_in_Group30Var1_static(RSeq_for_Uint16_t* buffer, Group30Var1* output)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Read_in_Group30Var1_static1"<<'\n';
@@ -96,7 +96,7 @@ boolean Read_in_Group30Var1_static(RSeq_for_Uint16_t* buffer, Group30Var1* outpu
 boolean Write_in_Group30Var1_static(Group30Var1* arg, WSeq_for_Uint16_t* buffer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Write_in_Group30Var1_static"<<'\n';
@@ -151,7 +151,7 @@ Group30Var1 Apply_in_ConvertGroup30Var1_static(Analog* src, uint8_t Overrange)
   target.flags |= (src->tTypedMeasurement_for_Double64).mMeasurement.flags.value;
 
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Apply_in_ConvertGroup30Var1_static1"<<'\n';
@@ -186,7 +186,7 @@ void Group30Var2_in_Group30Var2(Group30Var2 *pGroup30Var2)
 boolean Read_in_Group30Var2_static(RSeq_for_Uint16_t* buffer, Group30Var2* output)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Read_in_Group30Var2_static1"<<'\n';
@@ -205,7 +205,7 @@ boolean Read_in_Group30Var2_static(RSeq_for_Uint16_t* buffer, Group30Var2* outpu
 boolean Write_in_Group30Var2_static(Group30Var2* arg, WSeq_for_Uint16_t* buffer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Write_in_Group30Var2_static"<<'\n';

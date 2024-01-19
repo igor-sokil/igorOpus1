@@ -20,41 +20,48 @@
 #ifndef OPENDNP3_TASKCONFIG_H
 #define OPENDNP3_TASKCONFIG_H
 
-#include "opendnp3/master/ITaskCallback.h"
-#include "opendnp3/master/TaskId.h"
+#include "ITaskCallback.h"
+#include "TaskId.h"
 
-#include <memory>
+////#include <memory>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  *	Object containing multiple fields for configuring tasks
+* Объект, содержащий несколько полей для настройки задач.
  */
-class TaskConfig
+////class TaskConfig
+typedef struct
 {
-public:
-    TaskConfig(TaskId taskId, std::shared_ptr<ITaskCallback> pCallback) : taskId(taskId), pCallback(pCallback) {}
+////public:
+////    TaskConfig(TaskId taskId, std::shared_ptr<ITaskCallback> pCallback) : taskId(taskId), pCallback(pCallback) {}
 
-    static TaskConfig Default()
-    {
-        return TaskConfig(TaskId::Undefined(), nullptr);
-    }
+////    static TaskConfig Default()
+////    {
+////        return TaskConfig(TaskId::Undefined(), nullptr);
+////    }
 
-    ///  --- syntax sugar for building configs -----
+  ///  --- syntax sugar for building configs -----
 
-    static TaskConfig With(std::shared_ptr<ITaskCallback> callback)
-    {
-        return TaskConfig(TaskId::Undefined(), callback);
-    }
+////    static TaskConfig With(std::shared_ptr<ITaskCallback> callback)
+////    {
+////        return TaskConfig(TaskId::Undefined(), callback);
+////    }
 
-    TaskConfig() = delete;
+////    TaskConfig() = delete;
 
-public:
-    TaskId taskId;
-    std::shared_ptr<ITaskCallback> pCallback;
-};
+////public:
+  TaskId taskId;
+////    std::shared_ptr<ITaskCallback> pCallback;
+  ITaskCallback* pCallback;
+} TaskConfig;
 
-} // namespace opendnp3
+void TaskConfig_in_TaskConfig(TaskConfig *pTaskConfig, TaskId taskId, ITaskCallback* pCallback);
+TaskConfig Default_in_TaskConfig_static(void);
+TaskConfig With_in_TaskConfig_static(ITaskCallback* callback);
+
+////} // namespace opendnp3
 
 #endif

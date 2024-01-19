@@ -556,7 +556,7 @@ boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
 boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_for_OctetStringSpec* event)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Update_OctetStringSpec_in_EventUpdate_static1"<<'\n';

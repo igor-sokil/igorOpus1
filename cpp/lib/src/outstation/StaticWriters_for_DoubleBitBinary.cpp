@@ -162,7 +162,7 @@ boolean WriteWithSerializer_DoubleBitBinarySpec_for_Group3Var2_in_StaticWriters_
 static_write_func_t_for_DoubleBitBinarySpec get_for_DoubleBitBinarySpec_in_StaticWriters_static(StaticDoubleBinaryVariation_uint8_t variation)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_DoubleBitBinarySpec_in_StaticWriters_static1"<<'\n';

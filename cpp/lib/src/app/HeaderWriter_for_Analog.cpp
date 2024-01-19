@@ -17,7 +17,7 @@ RangeWriteIterator_for_UInt8_Analog IterateOverRange_for_UInt8_Analog_in_HeaderW
                                                                                      )
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverRange_for_UInt8_Analog_in_HeaderWriter1"<<'\n';
@@ -73,7 +73,7 @@ RangeWriteIterator_for_UInt16_Analog IterateOverRange_for_UInt16_Analog_in_Heade
                                                                                      )
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverRange_for_UInt16_Analog_in_HeaderWriter1"<<'\n';
@@ -124,7 +124,7 @@ CountWriteIterator_for_UInt16_Analog IterateOverCount_for_UInt16_Analog_in_Heade
     DNP3Serializer_for_Analog* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCount_for_UInt16_Analog_in_HeaderWriter1"<<'\n';
@@ -168,7 +168,7 @@ CountWriteIterator_for_UInt8_Analog IterateOverCount_for_UInt8_Analog_in_HeaderW
     DNP3Serializer_for_Analog* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCount_for_UInt8_Analog_in_HeaderWriter1"<<'\n';
@@ -210,7 +210,7 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefix_for_UInt16_An
     QualifierCode_uint8_t qc, DNP3Serializer_for_Analog* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefix_for_UInt16_Analog_in_HeaderWriter1"<<'\n';
@@ -253,7 +253,7 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
     Group51Var1* cto)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefixAndCTO_for_UInt16_Analog_Group51Var1_in_HeaderWriter1"<<'\n';
@@ -298,7 +298,7 @@ PrefixedWriteIterator_for_UInt16_Analog IterateOverCountWithPrefixAndCTO_for_UIn
     Group51Var2* cto)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefixAndCTO_for_UInt16_Analog_Group51Var2_in_HeaderWriter"<<'\n';
@@ -339,7 +339,7 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputInt16 IterateOverCountWithPrefix_fo
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt16* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt16_in_HeaderWriter1"<<'\n';
@@ -377,7 +377,7 @@ PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 IterateOverCountWithPrefix_for
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt16* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt16_in_HeaderWriter1"<<'\n';
@@ -417,7 +417,7 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputInt32 IterateOverCountWithPrefix_fo
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt32* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefix_for_UInt16_AnalogOutputInt32_in_HeaderWriter1"<<'\n';
@@ -456,7 +456,7 @@ PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 IterateOverCountWithPrefix_for
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputInt32* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefix_for_UInt8_AnalogOutputInt32_in_HeaderWriter1"<<'\n';
@@ -496,7 +496,7 @@ PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 IterateOverCountWithPrefix_
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputFloat32* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefix_for_UInt16_AnalogOutputFloat32_in_HeaderWriter1"<<'\n';
@@ -534,7 +534,7 @@ PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32 IterateOverCountWithPrefix_f
     QualifierCode_uint8_t qc, DNP3Serializer_for_AnalogOutputFloat32* serializer)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"IterateOverCountWithPrefix_for_UInt8_AnalogOutputFloat32_in_HeaderWriter1"<<'\n';

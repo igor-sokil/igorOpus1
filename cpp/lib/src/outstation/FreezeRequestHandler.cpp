@@ -74,7 +74,7 @@ boolean IsAllowed_in_FreezeRequestHandler_override(void* v, uint32_t headerCount
 IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *pIAPDUHandler, AllObjectsHeader* record)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override1"<<'\n';
@@ -100,7 +100,7 @@ IINField ProcessHeader_AllObjectsHeader_in_FreezeRequestHandler_override(void *p
 IINField ProcessHeader_RangeHeader_in_FreezeRequestHandler_override(void *pIAPDUHandler, RangeHeader* header)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{ProcessHeader_RangeHeader_in_FreezeRequestHandler_override1"<<'\n';

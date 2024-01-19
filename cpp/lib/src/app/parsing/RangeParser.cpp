@@ -206,7 +206,7 @@ ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
   IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseRangeOfObjects_in_RangeParser_static1"<<std::endl;

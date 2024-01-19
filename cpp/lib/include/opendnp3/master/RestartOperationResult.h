@@ -20,34 +20,41 @@
 #ifndef OPENDNP3_RESTART_OPERATION_RESULT_H
 #define OPENDNP3_RESTART_OPERATION_RESULT_H
 
-#include "opendnp3/gen/TaskCompletion.h"
-#include "opendnp3/util/TimeDuration.h"
+#include "TaskCompletion.h"
+#include "TimeDuration.h"
 
-#include <cstdint>
-#include <functional>
+////#include <cstdint>
+////#include <functional>
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+////class RestartOperationResult
+typedef struct
 {
+////public:
+////    RestartOperationResult() : summary(TaskCompletion::FAILURE_NO_COMMS) {}
 
-class RestartOperationResult
-{
-public:
-    RestartOperationResult() : summary(TaskCompletion::FAILURE_NO_COMMS) {}
+////    RestartOperationResult(TaskCompletion summary_, TimeDuration restartTime_)
+////        : summary(summary_), restartTime(restartTime_)
+////    {
+////    }
 
-    RestartOperationResult(TaskCompletion summary_, TimeDuration restartTime_)
-        : summary(summary_), restartTime(restartTime_)
-    {
-    }
+  /// The result of the task as a whole.
+/// Результат выполнения задачи в целом.
+  TaskCompletion_uint8_t summary;
 
-    /// The result of the task as a whole.
-    TaskCompletion summary;
+  /// Time delay until restart
+/// Задержка времени до перезапуска
+  TimeDuration restartTime;
+} RestartOperationResult;
 
-    /// Time delay until restart
-    TimeDuration restartTime;
-};
+////typedef std::function<void(const RestartOperationResult&)> RestartOperationCallbackT;
+typedef void (*RestartOperationCallbackT)(RestartOperationResult*);
 
-typedef std::function<void(const RestartOperationResult&)> RestartOperationCallbackT;
+void RestartOperationResult_in_RestartOperationResultOver1(RestartOperationResult *pRestartOperationResult);
+void RestartOperationResult_in_RestartOperationResultOver2(RestartOperationResult *pRestartOperationResult, TaskCompletion_uint8_t summary_, TimeDuration restartTime_);
 
-} // namespace opendnp3
+////} // namespace opendnp3
 
 #endif

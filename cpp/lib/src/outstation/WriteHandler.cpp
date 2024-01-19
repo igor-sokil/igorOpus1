@@ -33,7 +33,7 @@ void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
                                   IOutstationApplication* application, TimeSyncState* timeSyncState, AppSeqNum seq, Timestamp now, IINField* writeIIN)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"WriteHandler_in_WriteHandler1"<<std::endl;
@@ -151,7 +151,7 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
 IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var1* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override1"<<std::endl;
@@ -229,7 +229,7 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
 IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var3* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override1"<<std::endl;
@@ -328,7 +328,7 @@ IINField ProcessHeader_PrefixHeader_for_TimeAndInterval_in_WriteHandler_override
     ICollection_Indexed_for_TimeAndInterval* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ProcessHeader_PrefixHeader_for_TimeAndInterval_in_WriteHandler_override1"<<std::endl;

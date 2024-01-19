@@ -1,11 +1,9 @@
 
 #include <QtWidgets>
 #include "header.h"
-#include "CRC.h"
-#include "LinkFrame.h"
-#include "LinkHeader.h"
-
-#include "WSeq.h"
+#include "FormatUserData.h"
+#include "BufferHelpers.h"
+#include "HexConversions.h"
 
 QString FormatUserData(
   boolean aIsMaster, boolean aIsConfirmed, int aDest, int aSrc, /*const std::string& data,*/uint8_t* data, uint16_t size_data, boolean aFcb);/// = false)
@@ -76,4 +74,58 @@ QString FormatUserData(
   }//for
 
   return str_response;
+}
+
+////std::string FormatUserData(
+////    bool aIsMaster, bool aIsConfirmed, int aDest, int aSrc, const std::string& data, bool aFcb = false)
+std::string FormatUserDataStr(
+  boolean aIsMaster, boolean aIsConfirmed, int aDest, int aSrc, std::string& data, boolean aFcb)/// = false)
+{
+////    HexSequence hs(data);
+ HexSequence hs;
+ HexSequence_in_HexSequence(&hs, data);
+
+////    REQUIRE(hs.Size() < 250);
+
+    uint8_t buffer[292];
+////    wseq_t wrapper(buffer, 292);
+  WSeq_for_Uint16_t wrapper;
+  WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&wrapper, buffer, 292);
+
+//  RSeq_for_Uint16_t rseq;
+
+    if (aIsConfirmed)
+    {
+//    RSeq_for_Uint16_t FormatConfirmedUserData_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
+//                                                   boolean aIsMaster,
+//                                                   boolean aFcb,
+//                                                   uint16_t aDest,
+//                                                   uint16_t aSrc,
+//                                                   RSeq_for_Uint16_t user_data);//,
+//std::string to_hex_in_HexConversionsOver2(RSeq_for_Uint16_t* buffer, bool spaced = true);
+////        return HexConversions::to_hex(
+////            LinkFrame::FormatConfirmedUserData(wrapper, aIsMaster, aFcb, aDest, aSrc, hs, nullptr));
+  RSeq_for_Uint16_t user_data = ToRSeq_in_CopyableBuffer(&(hs.bByteStr.cCopyableBuffer));
+  RSeq_for_Uint16_t rseq =
+      FormatConfirmedUserData_in_LinkFrame_static(&wrapper,
+          aIsMaster,
+          aFcb,
+          aDest,
+          aSrc,
+          user_data);
+
+ return to_hex_in_HexConversionsOver2(&rseq, true);
+
+    }
+
+////    return HexConversions::to_hex(LinkFrame::FormatUnconfirmedUserData(wrapper, aIsMaster, aDest, aSrc, hs, nullptr));
+  RSeq_for_Uint16_t user_data = ToRSeq_in_CopyableBuffer(&(hs.bByteStr.cCopyableBuffer));
+   RSeq_for_Uint16_t rseq =
+      FormatUnconfirmedUserData_in_LinkFrame_static(&wrapper,
+          aIsMaster,
+          aDest,
+          aSrc,
+          user_data);//,
+
+ return to_hex_in_HexConversionsOver2(&rseq, true);
 }

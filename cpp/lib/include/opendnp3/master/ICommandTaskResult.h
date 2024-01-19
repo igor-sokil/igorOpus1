@@ -40,6 +40,13 @@
  *
  * A result value is provided for every object in every header specified
  * in the CommandSet used to start the operation.
+* Абстрактный тип результата, возвращаемый посредством обратного вызова командной операции.
+  *
+  * Предоставляет сводное значение TaskCompleton и доступ к коллекции.
+  * сглаживания результатов.
+  *
+  * Значение результата предоставляется для каждого объекта в каждом указанном заголовке.
+  * в наборе команд, используемом для запуска операции.
  *
  */
 ////class ICommandTaskResult : public ICollection<CommandPointResult>
@@ -50,6 +57,7 @@ typedef struct
 ////    ICommandTaskResult(TaskCompletion result_) : summary(result_) {}
 
     /// A summary result for the entire task
+/// Сводный результат по всей задаче
     TaskCompletion_uint8_t summary;
 } ICommandTaskResult;
 

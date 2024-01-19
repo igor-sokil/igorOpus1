@@ -3,24 +3,16 @@
 #include <QtWidgets>
 
 #include <stdlib.h>
+#include <iostream>
 
 #include "MainWindow.h"
 #include "key_filter.h"
 
 #include "header.h"
 
-#include "OutstationConfig.h"
-#include "OutstationTestObject.h"
-#include "loghandler.h"
-
-QString FormatUserData(
-    boolean aIsMaster, boolean aIsConfirmed, int aDest, int aSrc, /*const std::string& data,*/uint8_t* data, uint16_t size_data, boolean aFcb);/// = false)
+#include "FormatUserData.h"
 
 #define UNUSED(x) (void)(x)
-
-void* pPointerGlobal1;
-void* pPointerGlobal2;
-void* pPointerGlobal3;
 
 key_filter *pkf;
 
@@ -32,40 +24,32 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
+qDebug()<<"********SUITE('5ConfirmedUserData')********";
 ////    Buffer buffer(292);
-
-uint8_t user_data[] = {0xC0, 0xC3, 0x01, 0x3C, 0x02, 0x06, 0x3C, 0x03, 0x06, 0x3C, 0x04, 0x06, 0x3C, 0x01, 0x06};
-
     // Confirmed User Data - Master (FCB = true)
-   QString str_response = FormatUserData(true, true, 1, 1024, user_data, 15, true);
+////    auto hex = FormatUserData(true, true, 1, 1024, "C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06", true);
+////    REQUIRE(hex == "05 64 14 F3 01 00 00 04 0A 3B C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06 9A 12");
 
-      qDebug()<<"REQUIRE(hex == '05 64 14 F3 01 00 00 04 0A 3B C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06 9A 12')";
-      qDebug()<<"str_response= "<<str_response;
+//std::string FormatUserDataStr(
+//  boolean aIsMaster, boolean aIsConfirmed, int aDest, int aSrc, std::string& data, boolean aFcb);/// = false)
+////    auto hex = FormatUserData(true, true, 1, 1024, "C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06", true);
+std::string name1 = "C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06";
 
+//05 64 1C 44 03 00 04 00 64 BD 
+std::string name2 = "C7 C6 83 90 00 78 01 5B 01 0C 00 03 00 00 00 00 92 87 00 04 01 73 74";// 65 76";// 80 5C";
+/*
+05 64 1E F3 01 00 00 04 61 87 C7 C6 83 90 00 78 01 5B 01 0C 00 03 00 00 00 00 92 87 92 87 00 04 01 73 74 65 76 7E C2
+05 64 1C F3 01 00 00 04 D6 A1 C7 C6 83 90 00 78 01 5B 01 0C 00 03 00 00 00 00 92 87 92 87 00 04 01 73 74 FD 52
+*/
 
-uint8_t user_data2[] = {
-                       0xC1, 0xE3, 0x81, 0x96, 0x00, 0x02, 0x01, 0x28, 0x01, 0x00,
-                       0x00, 0x00, 0x01, 0x02, 0x01, 0x28, 0x01, 0x00, 0x01, 0x00,
-                       0x01, 0x02, 0x01, 0x28, 0x01, 0x00, 0x02, 0x00, 0x01, 0x02,
-                       0x01, 0x28, 0x01, 0x00, 0x03, 0x00, 0x01, 0x20, 0x02, 0x28,
-                       0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x20, 0x02, 0x28,
-                       0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01,
-                       0x00, 0x00, 0x03, 0x00, 0x00, 0x1E, 0x02, 0x01, 0x00, 0x00,
-                       0x01, 0x00, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00
-                       };
-    // Confirmed User Data - Outstation (FCB = true)
-    str_response = FormatUserData(false, true, 1024, 1,
-                               user_data2, 78,
-//                               "C1 E3 81 96 00 02 01 28 01 00 00 00 01 02 01 28 01 00 01 00 01 02 01 28 01 00 02 00 01 "
-//                               "02 01 28 01 00 03 00 01 20 02 28 01 00 00 00 01 00 00 20 02 28 01 00 01 00 01 00 00 01 "
-//                               "01 01 00 00 03 00 00 1E 02 01 00 00 01 00 01 00 00 01 00 00",
-                               true);
-
-      qDebug()<<"REQUIRE(hex == '05 64 53 73 00 04 01 00 03 FC C1 E3 81 96 00 02 01 28 01 00 00 00 01 02 01 28 05 24 01 00 01 00 01 02 01 28 01 00 02 00 01 02 01 28 B4 77 01 00 03 00 01 20 02 28 01 00 00 00 01 00 00 20 A5 25 02 28 01 00 01 00 01 00 00 01 01 01 00 00 03 00 2F AC 00 1E 02 01 00 00 01 00 01 00 00 01 00 00 16 ED')";
-      qDebug()<<"str_response= "<<str_response;
+std::string stemp = FormatUserDataStr(
+  true, true, 1, 1024, name2, true);/// = false)
+////    REQUIRE(hex == "05 64 14 F3 01 00 00 04 0A 3B C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06 9A 12");
+qDebug()<<"REQUIRE(hex == '05 64 14 F3 01 00 00 04 0A 3B C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06 9A 12')";
+std::cout<<"stemp= "<<stemp<<'\n';
 
 /*
-TEST_CASE(SUITE("ConfirmedUserData"))
+TEST_CASE(SUITE("5ConfirmedUserData"))
 {
     Buffer buffer(292);
 
@@ -84,17 +68,6 @@ TEST_CASE(SUITE("ConfirmedUserData"))
                "01 28 01 00 02 00 01 02 01 28 B4 77 01 00 03 00 01 20 02 28 01 00 00 00 01 00 00 20 A5 25 02 28 01 00 "
                "01 00 01 00 00 01 01 01 00 00 03 00 2F AC 00 1E 02 01 00 00 01 00 01 00 00 01 00 00 16 ED");
 }
-*/
-/*
-    OutstationConfig config;
-    OutstationConfig_in_OutstationConfig(&config);
-////    OutstationTestObject t(config);
-    OutstationTestObject t;
-    OutstationTestObject_in_OutstationTestObject(&t, &config);
-
-//   uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
-////    t.LowerLayerUp();
-    LowerLayerUp_in_OutstationTestObject(&t);
 */
 
   MainWindow mainWindowObj;

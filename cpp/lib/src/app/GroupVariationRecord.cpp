@@ -56,7 +56,7 @@ QualifierCode_uint8_t GetQualifierCode_in_HeaderRecord(HeaderRecord *pHeaderReco
 GroupVariationRecord GetRecord_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
 #ifdef  LOG_INFO
-   std::cout<<""<<std::endl;
+   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
    std::cout<<"GetRecord_in_GroupVariationRecord_static1"<<std::endl;
@@ -84,7 +84,7 @@ uint16_t GetGroupVar_in_GroupVariationRecord_static(uint8_t group, uint8_t varia
 EnumAndType GetEnumAndType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"GetEnumAndType_in_GroupVariationRecord_static1"<<std::endl;
@@ -133,7 +133,7 @@ EnumAndType GetEnumAndType_in_GroupVariationRecord_static(uint8_t group, uint8_t
 GroupVariationType_int32_t GetType_in_GroupVariationRecord_static(uint8_t group, uint8_t variation)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"GetType_in_GroupVariationRecord_static1"<<std::endl;

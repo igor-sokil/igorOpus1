@@ -20,59 +20,80 @@
 #ifndef OPENDNP3_IMASTERSCHEDULER_H
 #define OPENDNP3_IMASTERSCHEDULER_H
 
-#include "master/IMasterTask.h"
-#include "master/IMasterTaskRunner.h"
+#include "IMasterTask.h"
+#include "IMasterTaskRunner.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
 /**
  * Interface used by master sessions to schedule tasks
  */
-class IMasterScheduler
+////class IMasterScheduler
+typedef struct
 {
 
-public:
-    virtual ~IMasterScheduler() {}
+////public:
+////    virtual ~IMasterScheduler() {}
 
-    virtual void Shutdown() = 0;
+  void (*pShutdown_in_IMasterScheduler)(void *);// = 0;
 
-    /**
-     * Add a single task to the scheduler. The tasks will be started asynchronously,
-     * i.e. not by the call to this method
-     */
-    virtual void Add(const std::shared_ptr<IMasterTask>& task, IMasterTaskRunner& runner) = 0;
+  /**
+   * Add a single task to the scheduler. The tasks will be started asynchronously,
+   * i.e. not by the call to this method
+  * Добавьте одну задачу в планировщик. Задачи будут запускаться асинхронно,
+    * т.е. не путем вызова этого метода
+   */
+  void (*pAdd_in_IMasterScheduler)(void *, IMasterTask* task, IMasterTaskRunner* runner);// = 0;
 
-    /**
-     * Remove all tasks associated with this context, including the running one
-     */
-    virtual void SetRunnerOffline(const IMasterTaskRunner& runner) = 0;
+  /**
+   * Remove all tasks associated with this context, including the running one
+  * Удалить все задачи, связанные с этим контекстом, включая запущенную.
+   */
+  void (*pSetRunnerOffline_in_IMasterScheduler)(void *, IMasterTaskRunner* runner);// = 0;
 
-    /**
-     *
-     */
-    virtual bool CompleteCurrentFor(const IMasterTaskRunner& runner) = 0;
+  /**
+   *
+   */
+  boolean (*pCompleteCurrentFor_in_IMasterScheduler)(void *, IMasterTaskRunner* runner);// = 0;
 
-    /**
-     *  Called if task changes in such a way that it might be runnable sooner than scheduled
-     */
-    virtual void Evaluate() = 0;
+  /**
+   *  Called if task changes in such a way that it might be runnable sooner than scheduled
+  * Вызывается, если задача изменяется таким образом, что ее можно запустить раньше, чем запланировано.
+   */
+  void (*pEvaluate_in_IMasterScheduler)(void *);// = 0;
 
-    /**
-     * Run a task as soon as possible
-     */
-    virtual void Demand(const std::shared_ptr<IMasterTask>& task) = 0;
+  /**
+   * Run a task as soon as possible
+  * Запустите задачу как можно скорее
+   */
+  void (*pDemand_in_IMasterScheduler)(void *, IMasterTask* task);// = 0;
 
-    /**
-     * Add multiple tasks in one call
-     */
-    void Add(std::initializer_list<std::shared_ptr<IMasterTask>> tasks, IMasterTaskRunner& runner)
-    {
-        for (auto& task : tasks)
-            this->Add(task, runner);
-    }
-};
+  /**
+   * Add multiple tasks in one call
+  * Добавляйте несколько задач за один звонок
+   */
+////    void Add_in_IMasterScheduler(std::initializer_list<std::shared_ptr<IMasterTask>> tasks, IMasterTaskRunner& runner)
+////    {
+////        for (auto& task : tasks)
+////            this->Add(task, runner);
+////    }
 
-} // namespace opendnp3
+  void *pParentPointer_in_IMasterScheduler;
+} IMasterScheduler;
+
+void Shutdown_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler);
+void Add_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTask* task, IMasterTaskRunner* runner);
+void SetRunnerOffline_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTaskRunner* runner);
+boolean CompleteCurrentFor_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTaskRunner* runner);
+void Evaluate_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler);
+void Demand_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTask* task);
+
+void Add_in_IMasterSchedulerOver2(IMasterScheduler *pIMasterScheduler, IMasterTask* tasks, IMasterTaskRunner* runner);
+
+void* getParentPointer_in_IMasterScheduler(IMasterScheduler* pIMasterScheduler);
+void  setParentPointer_in_IMasterScheduler(IMasterScheduler* pIMasterScheduler, void*);
+
+////} // namespace opendnp3
 
 #endif

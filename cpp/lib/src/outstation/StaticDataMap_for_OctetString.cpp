@@ -151,7 +151,7 @@ boolean update_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_Octet
     IEventReceiver* receiver)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"update_in_StaticDataMap_for_OctetStringSpecOver2_1"<<'\n';

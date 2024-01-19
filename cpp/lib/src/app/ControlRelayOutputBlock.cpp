@@ -38,7 +38,7 @@ void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1(ControlRelayOutputB
     CommandStatus_uint8_t status_)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ControlRelayOutputBlock_in_ControlRelayOutputBlockOver1_1"<<'\n';
@@ -64,7 +64,7 @@ void ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2(ControlRelayOutputB
     uint8_t rawCode_, uint8_t count_, uint32_t onTime_, uint32_t offTime_, CommandStatus_uint8_t status_)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ControlRelayOutputBlock_in_ControlRelayOutputBlockOver2_1"<<'\n';

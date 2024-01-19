@@ -22,7 +22,7 @@ void CountWriteIterator_for_UInt8_FrozenCounter_in_CountWriteIterator_for_UInt8_
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_FrozenCounter_in_CountWriteIterator_for_UInt8_FrozenCounterOver1_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -38,7 +38,7 @@ void CountWriteIterator_for_UInt8_FrozenCounter_in_CountWriteIterator_for_UInt8_
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_FrozenCounter_in_CountWriteIterator_for_UInt8_FrozenCounterOver2_1"<<'\n';
   decrement_stack_info();
 #endif
@@ -63,7 +63,7 @@ void CountWriteIterator_for_UInt8_FrozenCounter_destr_CountWriteIterator_for_UIn
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt8_FrozenCounter_destr_CountWriteIterator_for_UInt8_FrozenCounter1"<<'\n';
   decrement_stack_info();
 #endif
@@ -113,7 +113,7 @@ void CountWriteIterator_for_UInt16_FrozenCounter_in_CountWriteIterator_for_UInt1
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   std::cout<<"CountWriteIterator_for_UInt16_FrozenCounter_in_CountWriteIterator_for_UInt16_FrozenCounterOver1_1"<<'\n';
   decrement_stack_info();
 #endif

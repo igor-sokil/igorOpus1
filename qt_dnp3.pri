@@ -49,9 +49,20 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 \
                 cpp\lib\include\opendnp3\master\CommandPointResult.cpp \
                 cpp\lib\include\opendnp3\master\HeaderInfo.cpp \
-                cpp\lib\include\opendnp3\master\ResponseInfo.cpp \
+                cpp\lib\include\opendnp3\master\IMasterApplication.cpp \
                 cpp\lib\include\opendnp3\master\ISOEHandler.cpp \
                 cpp\lib\include\opendnp3\master\ICommandCollection.cpp \
+                cpp\lib\include\opendnp3\master\ICommandProcessor.cpp \
+                cpp\lib\include\opendnp3\master\IMasterScan.cpp \
+                cpp\lib\include\opendnp3\master\IMasterOperations.cpp \
+                cpp\lib\include\opendnp3\master\ITaskCallback.cpp \
+                cpp\lib\include\opendnp3\master\IUTCTimeSource.cpp \
+                cpp\lib\include\opendnp3\master\MasterParams.cpp \
+                cpp\lib\include\opendnp3\master\RestartOperationResult.cpp \
+                cpp\lib\include\opendnp3\master\ResponseInfo.cpp \
+                cpp\lib\include\opendnp3\master\TaskId.cpp \
+                cpp\lib\include\opendnp3\master\TaskConfig.cpp \
+                cpp\lib\include\opendnp3\master\TaskInfo.cpp \
                 \
                 cpp\lib\include\opendnp3\IResource.cpp \
                 cpp\lib\include\opendnp3\StackStatistics.cpp \
@@ -64,6 +75,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\include\opendnp3\app\OctetString.cpp \
                 cpp\lib\include\opendnp3\app\Indexed.cpp \
                 \
+                cpp\lib\include\opendnp3\app\parsing\ICollection_for_CommandPointResult.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_CommandState.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_DNPTime.cpp \
                 cpp\lib\include\opendnp3\app\parsing\ICollection_for_Group50Var1.cpp \
@@ -126,13 +138,24 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\link\SecLinkLayerStates.cpp \
                 cpp\lib\src\link\ShiftableBuffer.cpp \
                 \
+                cpp\lib\src\master\AssignClassTask.cpp \
                 cpp\lib\src\master\CommandSet.cpp \
                 cpp\lib\src\master\CommandSetOps.cpp \
+                cpp\lib\src\master\ClearRestartTask.cpp \
                 cpp\lib\src\master\HeaderTypes.cpp \
                 cpp\lib\src\master\ICommandHeader.cpp \
+                cpp\lib\src\master\IMasterTask.cpp \
+                cpp\lib\src\master\IMasterTaskRunner.cpp \
+                cpp\lib\src\master\IMasterScheduler.cpp \
+                cpp\lib\src\master\LANTimeSyncTask.cpp \
                 cpp\lib\src\master\MeasurementHandler.cpp \
+                cpp\lib\src\master\PollTaskBase.cpp \
+                cpp\lib\src\master\StartupIntegrityPoll.cpp \
+                cpp\lib\src\master\SerialTimeSyncTask.cpp \
                 cpp\lib\src\master\TypedCommandHeader.cpp \
                 cpp\lib\src\master\TaskBehavior.cpp \
+                cpp\lib\src\master\TimeSyncHandler.cpp \
+                cpp\lib\src\master\UserPollTask.cpp \
                 \
                 cpp\lib\src\app\parsing\APDUHeaderParser.cpp \
                 cpp\lib\src\app\parsing\APDUParser.cpp \
@@ -379,6 +402,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\CopyableBuffer.cpp \
                 cpp\tests\unit\utils\DNPHelpers.cpp \
                 cpp\tests\unit\utils\EventReceiver.cpp \
+                cpp\tests\unit\utils\FormatUserData.cpp \
                 cpp\tests\unit\utils\LinkHex.cpp \
                 cpp\tests\unit\utils\LinkParserTest.cpp \
                 cpp\tests\unit\utils\LinkLayerTest.cpp \

@@ -90,6 +90,7 @@ void APDUResponseHeader_in_APDUResponseHeaderOver2(APDUResponseHeader *pAPDUResp
     FunctionCode_uint8_t function,
     IINField *pIIN);
 
+ResponseInfo as_response_info_in_APDUResponseHeader(APDUResponseHeader *pAPDUResponseHeader);
 
 ////} // namespace opendnp3
 

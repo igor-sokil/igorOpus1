@@ -20,15 +20,16 @@
 #ifndef OPENDNP3_COMMANDRESULTCALLBACKT_H
 #define OPENDNP3_COMMANDRESULTCALLBACKT_H
 
-#include "opendnp3/master/ICommandTaskResult.h"
+#include "ICommandTaskResult.h"
 
-#include <functional>
+////#include <functional>
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
-using CommandResultCallbackT = std::function<void(const ICommandTaskResult&)>;
+////using CommandResultCallbackT = std::function<void(const ICommandTaskResult&)>;
+typedef void (*CommandResultCallbackT) (ICommandTaskResult*);
 
-}
+////}
 
 #endif

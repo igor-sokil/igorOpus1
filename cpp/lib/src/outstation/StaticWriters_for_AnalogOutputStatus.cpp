@@ -254,7 +254,7 @@ boolean WriteWithSerializer_AnalogOutputStatusSpec_for_Group40Var3_in_StaticWrit
 static_write_func_t_for_AnalogOutputStatusSpec get_for_AnalogOutputStatusSpec_in_StaticWriters_static(StaticAnalogOutputStatusVariation_uint8_t variation)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"get_for_AnalogOutputStatusSpec_in_StaticWriters_static1"<<'\n';

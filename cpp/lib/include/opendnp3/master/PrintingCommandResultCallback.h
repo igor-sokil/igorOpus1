@@ -20,20 +20,22 @@
 #ifndef OPENDNP3_PRINTINGCOMMANDRESULTCALLBACK_H
 #define OPENDNP3_PRINTINGCOMMANDRESULTCALLBACK_H
 
-#include "opendnp3/util/StaticOnly.h"
+////#include "opendnp3/util/StaticOnly.h"
 
-#include "opendnp3/master/CommandResultCallbackT.h"
+#include "CommandResultCallbackT.h"
 
-namespace opendnp3
-{
+////namespace opendnp3
+////{
 
-class PrintingCommandResultCallback : public StaticOnly
-{
+////class PrintingCommandResultCallback : public StaticOnly
+////typedef struct
+////{
 
-public:
-    static CommandResultCallbackT Get();
-};
+////public:
+////    static CommandResultCallbackT Get();
+////} PrintingCommandResultCallback;
 
-} // namespace opendnp3
+ CommandResultCallbackT Get_in_PrintingCommandResultCallback_static(void);
+////} // namespace opendnp3
 
 #endif

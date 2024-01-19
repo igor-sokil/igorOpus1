@@ -181,7 +181,7 @@ Indexed_for_TimeAndInterval WithIndex_in_Indexed_for_TimeAndInterval(
 void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver1(Indexed_for_ControlRelayOutputBlock *pIndexed_for_ControlRelayOutputBlock)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver1_1"<<'\n';
@@ -204,7 +204,7 @@ void Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockO
     ControlRelayOutputBlock* value_, uint16_t index_)
 {
 #ifdef  LOG_INFO
-  std::cout<<""<<'\n';
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Indexed_for_ControlRelayOutputBlock_in_Indexed_for_ControlRelayOutputBlockOver2_1"<<'\n';

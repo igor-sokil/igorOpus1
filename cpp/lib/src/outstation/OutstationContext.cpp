@@ -665,15 +665,33 @@ OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t desti
 ////    const auto data = response.ToRSeq();
   RSeq_for_Uint16_t data = ToRSeq_in_APDUWrapper(&(response->aAPDUWrapper));
 
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*BeginResponseTx_in_OContext2"<<std::endl;
+    inspect_RSeq(&data);
+#endif
+
 //void Record_in_TxBuffer(TxBuffer *pTxBuffer, AppControlField* control, RSeq_for_Uint16_t* view);
 //  AppControlField GetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 ////    this->sol.tx.Record(response.GetControl(), data);
   AppControlField temp = GetControl_in_APDUWrapper(&(response->aAPDUWrapper));
   Record_in_TxBuffer(&(pOContext->sol.tx), &temp, &data);
 
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*BeginResponseTx_in_OContext3"<<std::endl;
+    inspect_RSeq(&data);
+#endif
+
 ////    this->sol.seq.confirmNum = response.GetControl().SEQ;
 ////    pOContext->sol.seq.confirmNum = GetControl_in_APDUWrapper(&(response->aAPDUWrapper)).SEQ;////response.GetControl().SEQ;
   SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(&(pOContext->sol.seq.confirmNum), GetControl_in_APDUWrapper(&(response->aAPDUWrapper)).SEQ);
+
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*BeginResponseTx_in_OContext4"<<std::endl;
+    inspect_RSeq(&data);
+#endif
 
 //   void BeginTx_in_OContext(OContext *pOContext, uint16_t destination, RSeq_for_Uint16_t* message);
 ////    this->BeginTx(destination, data);
@@ -1450,7 +1468,7 @@ IINField GetResponseIIN_in_OContext(OContext *pOContext)
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*LSBMask_DEVICE_RESTART = 0x80"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
 
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*MSBMask_FUNC_NOT_SUPPORTED = 0x01"<<std::endl;
@@ -1469,7 +1487,7 @@ IINField GetResponseIIN_in_OContext(OContext *pOContext)
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*MSBMask_RESERVED2 = 0x80"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<""<<std::endl;
+  std::cout<<std::endl;
 #endif
 //    ApplicationIIN GetApplicationIIN_in_IOutstationApplication(IOutstationApplication*);
 //    IINField GetDynamicIIN_in_OContext(OContext *pOContext);

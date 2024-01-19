@@ -145,8 +145,10 @@ boolean  operatorLTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
 ////}
 
 ////bool Timestamp::operator>=(const Timestamp& other) const
-////{
+boolean  operatorGTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other)
+{
 ////    return this->value >= other.value;
-////}
+  return pTimestamp->time_point_value >= other->time_point_value;
+}
 
 ////} // namespace opendnp3

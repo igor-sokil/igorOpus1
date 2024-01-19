@@ -161,7 +161,7 @@ uint16_t WriteAny_for_Analog_in_MockEventWriteHandler(MockEventWriteHandler *pMo
 ////                                         opendnp3::IEventCollection<typename T::meas_t>& items)
 uint16_t WriteAny_for_Binary_in_MockEventWriteHandler(MockEventWriteHandler *pMockEventWriteHandler, EventBinaryVariation_uint8_t variation, IEventCollection_for_Binary* items)
 {
-   std::cout<<""<<'\n';
+   std::cout<<'\n';
    std::cout<<"WriteAny_for_Binary_in_MockEventWriteHandler1"<<'\n';
 
   UNUSED(pMockEventWriteHandler);
