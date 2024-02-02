@@ -56,7 +56,7 @@ typedef struct
 
   /// Task start notification
 ////    virtual void OnTaskStart(MasterTaskType type, TaskId id) {}
-  void (*pOnTaskStart_in_IMasterApplication)(void *, MasterTaskType_uint8_t type, TaskId* id);
+  void (*pOnTaskStart_in_IMasterApplication)(void *, MasterTaskType_uint8_t type, TaskId id);
 
   /// Task completion notification
 ////    virtual void OnTaskComplete(const TaskInfo& info) {}
@@ -97,7 +97,7 @@ typedef struct
 void IMasterApplication_in_IMasterApplication(IMasterApplication *pIMasterApplication);
 
 void OnReceiveIIN_in_IMasterApplication(IMasterApplication *pIMasterApplication, IINField* iin);
-void OnTaskStart_in_IMasterApplication(IMasterApplication *pIMasterApplication, MasterTaskType_uint8_t type, TaskId* id);
+void OnTaskStart_in_IMasterApplication(IMasterApplication *pIMasterApplication, MasterTaskType_uint8_t type, TaskId id);
 void OnTaskComplete_in_IMasterApplication(IMasterApplication* pIMasterApplication, TaskInfo* info);
 void OnOpen_in_IMasterApplication(IMasterApplication* pIMasterApplication);
 void OnClose_in_IMasterApplication(IMasterApplication *pIMasterApplication);
@@ -105,7 +105,7 @@ boolean AssignClassDuringStartup_in_IMasterApplication(IMasterApplication *pIMas
 void ConfigureAssignClassRequest_in_IMasterApplication(IMasterApplication *pIMasterApplication, WriteHeaderFunT fun);
 
 void OnReceiveIIN_in_IMasterApplication_override(void *pIMasterApplication, IINField* iin);
-void OnTaskStart_in_IMasterApplication_override(void *pIMasterApplication, MasterTaskType_uint8_t type, TaskId* id);
+void OnTaskStart_in_IMasterApplication_override(void *pIMasterApplication, MasterTaskType_uint8_t type, TaskId id);
 void OnTaskComplete_in_IMasterApplication_override(void* pIMasterApplication, TaskInfo* info);
 void OnOpen_in_IMasterApplication_override(void* pIMasterApplication);
 void OnClose_in_IMasterApplication_override(void *pIMasterApplication);

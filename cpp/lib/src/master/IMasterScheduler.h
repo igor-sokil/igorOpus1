@@ -82,14 +82,17 @@ typedef struct
   void *pParentPointer_in_IMasterScheduler;
 } IMasterScheduler;
 
+//void IMasterScheduler_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler);
+
 void Shutdown_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler);
 void Add_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTask* task, IMasterTaskRunner* runner);
+///void Add_in_IMasterScheduler_override(void *pIMasterScheduler, IMasterTask* task, IMasterTaskRunner* runner);
 void SetRunnerOffline_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTaskRunner* runner);
 boolean CompleteCurrentFor_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTaskRunner* runner);
 void Evaluate_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler);
 void Demand_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTask* task);
 
-void Add_in_IMasterSchedulerOver2(IMasterScheduler *pIMasterScheduler, IMasterTask* tasks, IMasterTaskRunner* runner);
+///void Add_in_IMasterSchedulerOver2(IMasterScheduler *pIMasterScheduler, IMasterTask* tasks, IMasterTaskRunner* runner);
 
 void* getParentPointer_in_IMasterScheduler(IMasterScheduler* pIMasterScheduler);
 void  setParentPointer_in_IMasterScheduler(IMasterScheduler* pIMasterScheduler, void*);

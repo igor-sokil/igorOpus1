@@ -1,6 +1,38 @@
 #include "header.h"
 #include "HeaderWriter_for_TimeAndInterval.h"
 
+////template<class CountType, class ValueType>
+////bool HeaderWriter::WriteSingleIndexedValue(QualifierCode qc,
+////                                           const DNP3Serializer<ValueType>& serializer,
+////                                           const ValueType& value,
+////                                           typename CountType::type_t index)
+boolean WriteSingleIndexedValue_for_UInt16_TimeAndInterval_in_HeaderWriter(HeaderWriter *pHeaderWriter,
+    QualifierCode_uint8_t qc,
+    DNP3Serializer_for_TimeAndInterval* serializer,
+    TimeAndInterval* value,
+    uint16_t index)
+{
+////    const auto reserve_size = 2 * CountType::size + serializer.get_size();
+  uint16_t reserve_size = size_in_UInt16 +
+                          get_size_in_Serializer_for_TimeAndInterval(&(serializer->sSerializer_for_TimeAndInterval));
+
+////    if (this->WriteHeaderWithReserve(serializer.ID(), qc, reserve_size))
+  if(WriteHeaderWithReserve_in_HeaderWriter(pHeaderWriter, ID_in_DNP3Serializer_for_TimeAndInterval(serializer), qc, reserve_size))
+  {
+//boolean write_to_in_UInt16_static(WSeq_for_Uint16_t *dest, uint16_t value);
+////        CountType::write_to(*position, 1);     // write the count
+    write_to_in_UInt16_static(pHeaderWriter->position, 1);     // write the count
+////        CountType::write_to(*position, index); // write the index
+    write_to_in_UInt16_static(pHeaderWriter->position, index); // write the index
+
+//boolean write_in_Serializer_for_TimeAndInterval(Serializer_for_TimeAndInterval *pSerializer_for_TimeAndInterval, TimeAndInterval *value, WSeq_for_Uint16_t *buffer);
+////        serializer.write(value, *position);
+    write_in_Serializer_for_TimeAndInterval(&(serializer->sSerializer_for_TimeAndInterval), value, pHeaderWriter->position);
+    return true;
+  }
+  else
+    return false;
+}
 //---------------------------------------------IterateOverRange_for_UInt8_TimeAndInterval_in_HeaderWriter--------------------------------------------
 ////template<class IndexType, class WriteType>
 ////RangeWriteIterator<IndexType, WriteType> HeaderWriter::IterateOverRange(QualifierCode qc,

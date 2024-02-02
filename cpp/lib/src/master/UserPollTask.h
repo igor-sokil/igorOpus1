@@ -35,6 +35,7 @@
 
 /**
  * A generic interface for defining master request/response style tasks
+* ќбщий интерфейс дл€ определени€ основных задач стил€ запроса/ответа.
  */
 
 ////class UserPollTask final : public PollTaskBase
@@ -81,7 +82,7 @@ typedef struct
 ////    }
 
   HeaderBuilderT builder;
-  boolean recurring;
+  boolean recurring;//повтор€ющийс€
 } UserPollTask;
 
 void UserPollTask_in_UserPollTask(UserPollTask *pUserPollTask,

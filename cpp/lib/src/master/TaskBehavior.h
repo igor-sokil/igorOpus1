@@ -121,9 +121,9 @@ void TaskBehavior_in_TaskBehavior(TaskBehavior *pTaskBehavior,
                                   TimeDuration* maxRetryDelay,
                                   Timestamp* startExpiration);
 
-TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(void);
+TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_staticOver1(void);
 
-TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(Timestamp* startExpiration);
+TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_staticOver2(Timestamp* startExpiration);
 
 TaskBehavior ImmediatePeriodic_in_TaskBehavior_static(TimeDuration* period,
     TimeDuration* minRetryDelay,
@@ -168,9 +168,20 @@ void Reset_in_TaskBehavior(TaskBehavior *pTaskBehavior);
 void Disable_in_TaskBehavior(TaskBehavior *pTaskBehavior);
 
 TimeDuration CalcNextRetryTimeout_in_TaskBehavior(TaskBehavior* pTaskBehavior);
-
+/*
 TaskBehavior ReactsToIINOnly_in_TaskBehavior_static(void);
 
+TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_staticOver1(void);
+
+TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_staticOver2(Timestamp* startExpiration);
+
+TaskBehavior ImmediatePeriodic_in_TaskBehavior_static(TimeDuration* period,
+                                           TimeDuration* minRetryDelay,
+                                           TimeDuration* maxRetryDelay);
+
+TaskBehavior SingleImmediateExecutionWithRetry_in_TaskBehavior_static(TimeDuration* minRetryDelay,
+                                                           TimeDuration* maxRetryDelay);
+*/
 ////} // namespace opendnp3
 
 #endif

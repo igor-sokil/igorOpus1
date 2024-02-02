@@ -27,6 +27,7 @@
 ////{
 
 // this is what the application layer sees from the master / outstation for transmission
+// это то, что прикладной уровень видит от главной/внешней станции для передачи
 ////class APDURequest : public APDUWrapper
 typedef struct
 {

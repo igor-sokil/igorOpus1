@@ -32,6 +32,7 @@
 
 /**
  * Timer are used to defer events for a later time on an executor.
+* “аймер используетс€ дл€ отсрочки событий на исполнителе на более позднее врем€.
  */
 ////class ITimer
 typedef struct

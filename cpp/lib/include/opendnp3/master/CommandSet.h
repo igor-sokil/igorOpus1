@@ -26,7 +26,7 @@
 #include "ICommandCollection.h"
 #include "ICommandHeader.h"
 
-#include <initializer_list>
+//#include <initializer_list>
 ////#include <memory>
 ////#include <vector>
 
@@ -41,6 +41,9 @@
  * Provides a mechanism for building a set of one or more command headers
 * Предоставляет механизм для создания набора из одного или нескольких заголовков команд.
  */
+
+  typedef std::vector<ICommandHeader> HeaderVector_in_CommandSet;
+
 ////class CommandSet final
 typedef struct
 {
@@ -50,7 +53,6 @@ typedef struct
 
 ////public:
 ////    typedef std::vector<std::shared_ptr<ICommandHeader>> HeaderVector;
-  typedef std::vector<ICommandHeader> HeaderVector;
 
   /// Contrsuct an empty command set
 ////    CommandSet() = default;
@@ -121,7 +123,7 @@ typedef struct
 ////    CommandSet(const CommandSet&) = delete;
 ////    CommandSet& operator=(const CommandSet& other) = delete;
 
-  HeaderVector m_headers;
+  HeaderVector_in_CommandSet m_headers;
 } CommandSet;
 
 /// Construct a command set from a list of AOInt16

@@ -47,6 +47,13 @@
 
     At worst, selection is O(n) but it has some type/class tracking to avoid looping
     over the SOE list when there are no more events to be written.
+Список последовательности событий представляет собой реализованный двусвязный список.
+     в конечном массиве. Список необходим для O(1) операций удаления из
+     произвольные части списка в зависимости от того, что запрашивает пользователь в терминах
+     типа события или класса 1/2/3.
+
+     В худшем случае выбор равен O(n), но он имеет некоторое отслеживание типов/классов, чтобы избежать зацикливания.
+     над списком SOE, когда больше нет событий для записи.
 */
 
 ////class EventBuffer final : public IEventReceiver, public IEventSelector, public IResponseLoader

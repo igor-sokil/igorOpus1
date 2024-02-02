@@ -45,6 +45,9 @@
 
     * Only performs dynamic allocation at initialization
     * Maintains distinct lists for each type of event to optimize memory usage
+Data-структура для проведения мероприятий. 
+* Выполняет динамическое выделение только при инициализации. 
+* Поддерживает отдельные списки для каждого типа событий для оптимизации использования памяти.
 */
 
 ////class EventStorage

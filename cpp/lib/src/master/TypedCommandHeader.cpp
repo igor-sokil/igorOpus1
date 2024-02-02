@@ -9,6 +9,15 @@
 #include "Group41.h"
 
 //------------------------AnalogOutputInt16----------------------------
+void Record_in_TypedCommandHeader_for_AnalogOutputInt16_in_Record_in_TypedCommandHeader_for_AnalogOutputInt16(Record_in_TypedCommandHeader_for_AnalogOutputInt16 *pRecord_in_TypedCommandHeader_for_AnalogOutputInt16,
+    Indexed_for_AnalogOutputInt16* pair);
+void Record_in_TypedCommandHeader_for_AnalogOutputInt16_in_Record_in_TypedCommandHeader_for_AnalogOutputInt16(Record_in_TypedCommandHeader_for_AnalogOutputInt16 *pRecord_in_TypedCommandHeader_for_AnalogOutputInt16,
+    Indexed_for_AnalogOutputInt16* pair)
+{
+  CommandState_in_CommandState(&(pRecord_in_TypedCommandHeader_for_AnalogOutputInt16->cCommandState), pair->index);
+  pRecord_in_TypedCommandHeader_for_AnalogOutputInt16->command = pair->value;
+}
+
 void TypedCommandHeader_for_AnalogOutputInt16_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16,
     DNP3Serializer_for_AnalogOutputInt16* serializer)
 {
@@ -24,6 +33,9 @@ void TypedCommandHeader_for_AnalogOutputInt16_in_TypedCommandHeader_for_AnalogOu
 
   pTypedCommandHeader_for_AnalogOutputInt16->iICommandCollection_for_AnalogOutputInt16.pAdd_in_ICommandCollection_for_AnalogOutputInt16 = Add_in_TypedCommandHeader_for_AnalogOutputInt16_override;
   pTypedCommandHeader_for_AnalogOutputInt16->iICommandHeader.pWrite_in_ICommandHeader = Write_in_TypedCommandHeader_for_AnalogOutputInt16_override;
+
+  pTypedCommandHeader_for_AnalogOutputInt16->iICommandHeader.iICollection_for_CommandState.pCount_in_ICollection_for_CommandState = Count_in_TypedCommandHeader_for_AnalogOutputInt16_override;
+  pTypedCommandHeader_for_AnalogOutputInt16->iICommandHeader.iICollection_for_CommandState.pForeach_in_ICollection_for_CommandState = Foreach_in_TypedCommandHeader_for_AnalogOutputInt16_override;
 
   setParentPointer_in_ICommandCollection_for_AnalogOutputInt16(&(pTypedCommandHeader_for_AnalogOutputInt16->iICommandCollection_for_AnalogOutputInt16), pTypedCommandHeader_for_AnalogOutputInt16);
   setParentPointer_in_ICommandHeader(&(pTypedCommandHeader_for_AnalogOutputInt16->iICommandHeader), pTypedCommandHeader_for_AnalogOutputInt16);
@@ -56,7 +68,7 @@ void* Add_in_TypedCommandHeader_for_AnalogOutputInt16_override(void* pICommandCo
 }
 
 boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16_override(void* pICommandHeader,
-              HeaderWriter* writer, IndexQualifierMode_uint8_t mode)
+    HeaderWriter* writer, IndexQualifierMode_uint8_t mode)
 {
   TypedCommandHeader_for_AnalogOutputInt16 *parent =
     (TypedCommandHeader_for_AnalogOutputInt16 *)getParentPointer_in_ICommandHeader((ICommandHeader*)pICommandHeader);
@@ -79,9 +91,15 @@ void* Add_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_Ana
     pTypedCommandHeader_for_AnalogOutputInt16->use_single_byte_index = false;
   }
 
+//void Record_in_TypedCommandHeader_for_AnalogOutputInt16_in_Record_in_TypedCommandHeader_for_AnalogOutputInt16(Record_in_TypedCommandHeader_for_AnalogOutputInt16 *pRecord_in_TypedCommandHeader_for_AnalogOutputInt16,
+//                      Indexed_for_AnalogOutputInt16* pair);
 //Indexed_for_AnalogOutputInt16 WithIndex_in_Indexed_for_AnalogOutputInt16(AnalogOutputInt16* value, uint16_t index);
 ////    this->records.push_back(WithIndex(command, index));
-  (pTypedCommandHeader_for_AnalogOutputInt16->records).push_back(WithIndex_in_Indexed_for_AnalogOutputInt16(command, index));
+  Indexed_for_AnalogOutputInt16 tmp = WithIndex_in_Indexed_for_AnalogOutputInt16(command, index);
+  Record_in_TypedCommandHeader_for_AnalogOutputInt16 rRecord_in_TypedCommandHeader_for_AnalogOutputInt16;
+  Record_in_TypedCommandHeader_for_AnalogOutputInt16_in_Record_in_TypedCommandHeader_for_AnalogOutputInt16(&rRecord_in_TypedCommandHeader_for_AnalogOutputInt16,
+      &tmp);
+  (pTypedCommandHeader_for_AnalogOutputInt16->records).push_back(rRecord_in_TypedCommandHeader_for_AnalogOutputInt16);
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -105,15 +123,13 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for
   if (pTypedCommandHeader_for_AnalogOutputInt16->records.empty())
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_1_"<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_1_"<<'\n';
+    decrement_stack_info();
 #endif
     return false;
   }
-/*
-  DNP3Serializer_for_AnalogOutputInt16 serializer = Inst_in_Group41Var2_static();
-*/
+
   // allow single byte indices if they're all <= 255 and the optimization is allowed
 ////    this->use_single_byte_index &= (mode == IndexQualifierMode::allow_one_byte);
   pTypedCommandHeader_for_AnalogOutputInt16->use_single_byte_index &= (mode == IndexQualifierMode_allow_one_byte);
@@ -129,25 +145,26 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for
           QualifierCode_UINT8_CNT_UINT8_INDEX, &(pTypedCommandHeader_for_AnalogOutputInt16->serializer));
 
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt16_2"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt16_2"<<'\n';
 #endif
 ////        for (auto& rec : this->records)
     for (auto& rec : pTypedCommandHeader_for_AnalogOutputInt16->records)
     {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt16_3"<<'\n';
+      std::cout<<"*"<<getString_stack_info();
+      std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt16_3"<<'\n';
 #endif
 //boolean Write_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16(PrefixedWriteIterator_for_UInt8_AnalogOutputInt16 *pPrefixedWriteIterator_for_UInt8_AnalogOutputInt16,
 //    AnalogOutputInt16* value, uint16_t index);
 ////            if (!iter.Write(rec.command, static_cast<uint8_t>(rec.index)))
-      if (!Write_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16(&iter, &rec.value, (uint8_t)rec.index))
+//      if (!Write_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16(&iter, &rec.value, (uint8_t)rec.index))
+      if (!Write_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16(&iter, &rec.command, (uint8_t)rec.cCommandState.index))
       {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_2_"<<'\n';
-  decrement_stack_info();
+        std::cout<<getString_stack_info();
+        std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_2_"<<'\n';
+        decrement_stack_info();
 #endif
         return false;
       }
@@ -158,9 +175,9 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for
     PrefixedWriteIterator_for_UInt8_AnalogOutputInt16_destr_PrefixedWriteIterator_for_UInt8_AnalogOutputInt16(&iter);
 
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_3_"<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_3_"<<'\n';
+    decrement_stack_info();
 #endif
     return tmp;
   }
@@ -173,23 +190,23 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for
           QualifierCode_UINT16_CNT_UINT16_INDEX, &(pTypedCommandHeader_for_AnalogOutputInt16->serializer));
 
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt16_3"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt16_3"<<'\n';
 #endif
 ////        for (auto& rec : this->records)
     for (auto& rec : pTypedCommandHeader_for_AnalogOutputInt16->records)
     {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt16_4"<<'\n';
+      std::cout<<"*"<<getString_stack_info();
+      std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt16_4"<<'\n';
 #endif
 ////            if (!iter.Write(rec.command, rec.index))
-      if (!Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16(&iter, &rec.value, rec.index))
+      if (!Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16(&iter, &rec.command, rec.cCommandState.index))
       {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_4_"<<'\n';
-  decrement_stack_info();
+        std::cout<<getString_stack_info();
+        std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_4_"<<'\n';
+        decrement_stack_info();
 #endif
         return false;
       }
@@ -200,15 +217,50 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for
     PrefixedWriteIterator_for_UInt16_AnalogOutputInt16_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputInt16(&iter);
 
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_5_"<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt16_5_"<<'\n';
+    decrement_stack_info();
 #endif
     return tmp;
   }
 }
+
+////template<class T> size_t TypedCommandHeader<T>::Count() const
+uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16)
+{
+  return pTypedCommandHeader_for_AnalogOutputInt16->records.size();
+}
+uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState)
+{
+  TypedCommandHeader_for_AnalogOutputInt16 *parent = (TypedCommandHeader_for_AnalogOutputInt16*)getParentPointer_in_ICollection_for_CommandState((ICollection_for_CommandState*) pICollection_for_CommandState);
+  return Count_in_TypedCommandHeader_for_AnalogOutputInt16(parent);
+}
+
+////template<class T> void TypedCommandHeader<T>::Foreach(IVisitor<CommandState>& visitor) const
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16,
+    IVisitor__for__CommandState* visitor)
+{
+  for (auto& rec : pTypedCommandHeader_for_AnalogOutputInt16->records)
+  {
+//void OnValue_in_IVisitor__for__CommandState(IVisitor__for__CommandState *, CommandState* );
+////        visitor.OnValue(rec);
+    OnValue_in_IVisitor__for__CommandState(visitor, &rec.cCommandState);
+  }
+}
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState, IVisitor__for__CommandState* visitor)
+{
+  TypedCommandHeader_for_AnalogOutputInt16 *parent = (TypedCommandHeader_for_AnalogOutputInt16*)getParentPointer_in_ICollection_for_CommandState((ICollection_for_CommandState*) pICollection_for_CommandState);
+  return Foreach_in_TypedCommandHeader_for_AnalogOutputInt16(parent, visitor);
+}
 //------------------------AnalogOutputInt16----------------------------
 //------------------------AnalogOutputInt32----------------------------
+void Record_in_TypedCommandHeader_for_AnalogOutputInt32_in_Record_in_TypedCommandHeader_for_AnalogOutputInt32(Record_in_TypedCommandHeader_for_AnalogOutputInt32 *pRecord_in_TypedCommandHeader_for_AnalogOutputInt32,
+    Indexed_for_AnalogOutputInt32* pair)
+{
+  CommandState_in_CommandState(&(pRecord_in_TypedCommandHeader_for_AnalogOutputInt32->cCommandState), pair->index);
+  pRecord_in_TypedCommandHeader_for_AnalogOutputInt32->command = pair->value;
+}
+
 void TypedCommandHeader_for_AnalogOutputInt32_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32,
     DNP3Serializer_for_AnalogOutputInt32* serializer)
 {
@@ -224,6 +276,9 @@ void TypedCommandHeader_for_AnalogOutputInt32_in_TypedCommandHeader_for_AnalogOu
 
   pTypedCommandHeader_for_AnalogOutputInt32->iICommandCollection_for_AnalogOutputInt32.pAdd_in_ICommandCollection_for_AnalogOutputInt32 = Add_in_TypedCommandHeader_for_AnalogOutputInt32_override;
   pTypedCommandHeader_for_AnalogOutputInt32->iICommandHeader.pWrite_in_ICommandHeader = Write_in_TypedCommandHeader_for_AnalogOutputInt32_override;
+
+  pTypedCommandHeader_for_AnalogOutputInt32->iICommandHeader.iICollection_for_CommandState.pCount_in_ICollection_for_CommandState = Count_in_TypedCommandHeader_for_AnalogOutputInt32_override;
+  pTypedCommandHeader_for_AnalogOutputInt32->iICommandHeader.iICollection_for_CommandState.pForeach_in_ICollection_for_CommandState = Foreach_in_TypedCommandHeader_for_AnalogOutputInt32_override;
 
   setParentPointer_in_ICommandCollection_for_AnalogOutputInt32(&(pTypedCommandHeader_for_AnalogOutputInt32->iICommandCollection_for_AnalogOutputInt32), pTypedCommandHeader_for_AnalogOutputInt32);
   setParentPointer_in_ICommandHeader(&(pTypedCommandHeader_for_AnalogOutputInt32->iICommandHeader), pTypedCommandHeader_for_AnalogOutputInt32);
@@ -256,7 +311,7 @@ void* Add_in_TypedCommandHeader_for_AnalogOutputInt32_override(void* pICommandCo
 }
 
 boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32_override(void* pICommandHeader,
-              HeaderWriter* writer, IndexQualifierMode_uint8_t mode)
+    HeaderWriter* writer, IndexQualifierMode_uint8_t mode)
 {
   TypedCommandHeader_for_AnalogOutputInt32 *parent =
     (TypedCommandHeader_for_AnalogOutputInt32 *)getParentPointer_in_ICommandHeader((ICommandHeader*)pICommandHeader);
@@ -281,7 +336,12 @@ void* Add_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_Ana
 
 //Indexed_for_AnalogOutputInt32 WithIndex_in_Indexed_for_AnalogOutputInt32(AnalogOutputInt32* value, uint16_t index);
 ////    this->records.push_back(WithIndex(command, index));
-  (pTypedCommandHeader_for_AnalogOutputInt32->records).push_back(WithIndex_in_Indexed_for_AnalogOutputInt32(command, index));
+//  (pTypedCommandHeader_for_AnalogOutputInt32->records).push_back(WithIndex_in_Indexed_for_AnalogOutputInt32(command, index));
+  Indexed_for_AnalogOutputInt32 tmp = WithIndex_in_Indexed_for_AnalogOutputInt32(command, index);
+  Record_in_TypedCommandHeader_for_AnalogOutputInt32 rRecord_in_TypedCommandHeader_for_AnalogOutputInt32;
+  Record_in_TypedCommandHeader_for_AnalogOutputInt32_in_Record_in_TypedCommandHeader_for_AnalogOutputInt32(&rRecord_in_TypedCommandHeader_for_AnalogOutputInt32,
+      &tmp);
+  (pTypedCommandHeader_for_AnalogOutputInt32->records).push_back(rRecord_in_TypedCommandHeader_for_AnalogOutputInt32);
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -305,15 +365,13 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for
   if (pTypedCommandHeader_for_AnalogOutputInt32->records.empty())
   {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_1_"<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_1_"<<'\n';
+    decrement_stack_info();
 #endif
     return false;
   }
-/*
-  DNP3Serializer_for_AnalogOutputInt32 serializer = Inst_in_Group41Var2_static();
-*/
+
   // allow single byte indices if they're all <= 255 and the optimization is allowed
 ////    this->use_single_byte_index &= (mode == IndexQualifierMode::allow_one_byte);
   pTypedCommandHeader_for_AnalogOutputInt32->use_single_byte_index &= (mode == IndexQualifierMode_allow_one_byte);
@@ -329,25 +387,25 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for
           QualifierCode_UINT8_CNT_UINT8_INDEX, &(pTypedCommandHeader_for_AnalogOutputInt32->serializer));
 
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt32_2"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt32_2"<<'\n';
 #endif
 ////        for (auto& rec : this->records)
     for (auto& rec : pTypedCommandHeader_for_AnalogOutputInt32->records)
     {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt32_3"<<'\n';
+      std::cout<<"*"<<getString_stack_info();
+      std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt32_3"<<'\n';
 #endif
 //boolean Write_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt32(PrefixedWriteIterator_for_UInt8_AnalogOutputInt32 *pPrefixedWriteIterator_for_UInt8_AnalogOutputInt32,
 //    AnalogOutputInt32* value, uint16_t index);
 ////            if (!iter.Write(rec.command, static_cast<uint8_t>(rec.index)))
-      if (!Write_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt32(&iter, &rec.value, (uint8_t)rec.index))
+      if (!Write_in_PrefixedWriteIterator_for_UInt8_AnalogOutputInt32(&iter, &rec.command, (uint8_t)rec.cCommandState.index))
       {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_2_"<<'\n';
-  decrement_stack_info();
+        std::cout<<getString_stack_info();
+        std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_2_"<<'\n';
+        decrement_stack_info();
 #endif
         return false;
       }
@@ -358,9 +416,9 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for
     PrefixedWriteIterator_for_UInt8_AnalogOutputInt32_destr_PrefixedWriteIterator_for_UInt8_AnalogOutputInt32(&iter);
 
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_3_"<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_3_"<<'\n';
+    decrement_stack_info();
 #endif
     return tmp;
   }
@@ -373,23 +431,23 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for
           QualifierCode_UINT16_CNT_UINT16_INDEX, &(pTypedCommandHeader_for_AnalogOutputInt32->serializer));
 
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt32_3"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt32_3"<<'\n';
 #endif
 ////        for (auto& rec : this->records)
     for (auto& rec : pTypedCommandHeader_for_AnalogOutputInt32->records)
     {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt32_4"<<'\n';
+      std::cout<<"*"<<getString_stack_info();
+      std::cout<<"*Write_in_TypedCommandHeader_for_AnalogOutputInt32_4"<<'\n';
 #endif
 ////            if (!iter.Write(rec.command, rec.index))
-      if (!Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt32(&iter, &rec.value, rec.index))
+      if (!Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputInt32(&iter, &rec.command, rec.cCommandState.index))
       {
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_4_"<<'\n';
-  decrement_stack_info();
+        std::cout<<getString_stack_info();
+        std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_4_"<<'\n';
+        decrement_stack_info();
 #endif
         return false;
       }
@@ -400,11 +458,39 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for
     PrefixedWriteIterator_for_UInt16_AnalogOutputInt32_destr_PrefixedWriteIterator_for_UInt16_AnalogOutputInt32(&iter);
 
 #ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_5_"<<'\n';
-  decrement_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"}Write_in_TypedCommandHeader_for_AnalogOutputInt32_5_"<<'\n';
+    decrement_stack_info();
 #endif
     return tmp;
   }
+}
+
+////template<class T> size_t TypedCommandHeader<T>::Count() const
+uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32)
+{
+  return pTypedCommandHeader_for_AnalogOutputInt32->records.size();
+}
+uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState)
+{
+  TypedCommandHeader_for_AnalogOutputInt32 *parent = (TypedCommandHeader_for_AnalogOutputInt32*)getParentPointer_in_ICollection_for_CommandState((ICollection_for_CommandState*) pICollection_for_CommandState);
+  return Count_in_TypedCommandHeader_for_AnalogOutputInt32(parent);
+}
+
+////template<class T> void TypedCommandHeader<T>::Foreach(IVisitor<CommandState>& visitor) const
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32,
+    IVisitor__for__CommandState* visitor)
+{
+  for (auto& rec : pTypedCommandHeader_for_AnalogOutputInt32->records)
+  {
+//void OnValue_in_IVisitor__for__CommandState(IVisitor__for__CommandState *, CommandState* );
+////        visitor.OnValue(rec);
+    OnValue_in_IVisitor__for__CommandState(visitor, &rec.cCommandState );
+  }
+}
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState, IVisitor__for__CommandState* visitor)
+{
+  TypedCommandHeader_for_AnalogOutputInt32 *parent = (TypedCommandHeader_for_AnalogOutputInt32*)getParentPointer_in_ICollection_for_CommandState((ICollection_for_CommandState*) pICollection_for_CommandState);
+  return Foreach_in_TypedCommandHeader_for_AnalogOutputInt32(parent, visitor);
 }
 //------------------------AnalogOutputInt32----------------------------

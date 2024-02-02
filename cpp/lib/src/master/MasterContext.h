@@ -38,6 +38,7 @@
 
 #include "TimerExe4cpp.h"
 ///#include <exe4cpp/asio/StrandExecutor.h>
+#include "IExecutorExe4cpp.h"
 
 #include <deque>
 ////#include <memory>
@@ -47,12 +48,12 @@
 
 #define TaskState_in_MContext_uint8_t uint8_t
 
-    enum ///class TaskState
-    {
-        TaskState_in_MContext_IDLE,
-        TaskState_in_MContext_TASK_READY,
-        TaskState_in_MContext_WAIT_FOR_RESPONSE
-    };
+enum ///class TaskState
+{
+  TaskState_in_MContext_IDLE,
+  TaskState_in_MContext_TASK_READY,
+  TaskState_in_MContext_WAIT_FOR_RESPONSE
+};
 
 /*
     All of the mutable state and configuration for a master
@@ -87,32 +88,33 @@ typedef struct
 ////    );
 
 ////    Logger logger;
-    IExecutor* executor;
-    ILowerLayer* lower;
+  IExecutorExe4cpp* executor;
+  ILowerLayer* lower;
 
-    // ------- configuration --------
-    Addresses addresses;
-    MasterParams params;
-    ISOEHandler* SOEHandler;
-    IMasterApplication* application;
-    IMasterScheduler* scheduler;
+  // ------- configuration --------
+  Addresses addresses;
+  MasterParams params;
+  ISOEHandler* SOEHandler;
+  IMasterApplication* application;
+  IMasterScheduler* scheduler;
 
-    // ------- dynamic state ---------
-    boolean isOnline;// = false;
-    boolean isSending;// = false;
-    AppSeqNum solSeq;
-    AppSeqNum unsolSeq;
-    IMasterTask* activeTask;
-    TimerExe4cpp responseTimer;
+  // ------- dynamic state ---------
+  boolean isOnline;// = false;
+  boolean isSending;// = false;
+  AppSeqNum solSeq;
+  AppSeqNum unsolSeq;
 
-    MasterTasks tasks;
-    std::deque<APDUHeader> confirmQueue;
-    BufferSer4 txBuffer;
-    TaskState_in_MContext_uint8_t tstate;
+  IMasterTask* activeTask;
+  TimerExe4cpp responseTimer;
 
-    // --- implement  IUpperLayer ------
+  MasterTasks tasks;
+  std::deque<APDUHeader> confirmQueue;
+  BufferSer4 txBuffer;
+  TaskState_in_MContext_uint8_t tstate;
 
-    ////bool OnLowerLayerUp() final;
+  // --- implement  IUpperLayer ------
+
+  ////bool OnLowerLayerUp() final;
 
 ////    bool OnLowerLayerDown() final;
 
@@ -120,23 +122,26 @@ typedef struct
 
 ////    bool OnTxReady() final;
 
-    // additional virtual methods that can be overriden to implement secure authentication
+  // additional virtual methods that can be overriden to implement secure authentication
 // дополнительные виртуальные методы, которые можно переопределить для реализации безопасной аутентификации
 
 ////    virtual void OnParsedHeader(const ser4cpp::rseq_t& apdu,
 ////                                const APDUResponseHeader& header,
 ////                                const ser4cpp::rseq_t& objects);
+  void (*pOnParsedHeader_in_MContext)(void *pMContext, RSeq_for_Uint16_t* apdu, APDUResponseHeader* header,
+                                      RSeq_for_Uint16_t* objects);
 
 ////    virtual void RecordLastRequest(const ser4cpp::rseq_t& apdu) {}
+  void (*pRecordLastRequest_in_MContext)(void *pMContext, RSeq_for_Uint16_t* apdu);// {}
 
-    // methods for initiating command sequences
+  // methods for initiating command sequences
 // методы для запуска последовательности команд
 
 ////    void DirectOperate(CommandSet&& commands, const CommandResultCallbackT& callback, const TaskConfig& config);
 
 ////    void SelectAndOperate(CommandSet&& commands, const CommandResultCallbackT& callback, const TaskConfig& config);
 
-    // -----  public methods used to add tasks -----
+  // -----  public methods used to add tasks -----
 
 ////    std::shared_ptr<IMasterTask> AddScan(TimeDuration period,
 ////                                         const HeaderBuilderT& builder,
@@ -160,7 +165,7 @@ typedef struct
 ////                                              std::shared_ptr<ISOEHandler> soe_handler,
 ////                                              TaskConfig config = TaskConfig::Default());
 
-    // ---- Single shot immediate scans ----
+  // ---- Single shot immediate scans ----
 // ---- Однократное немедленное сканирование ----
 
 ////    void Scan(const HeaderBuilderT& builder,
@@ -181,7 +186,7 @@ typedef struct
 ////                   std::shared_ptr<ISOEHandler> soe_handler,
 ////                   TaskConfig config = TaskConfig::Default());
 
-    /// ---- Write tasks -----
+  /// ---- Write tasks -----
 
 ////    void Write(const TimeAndInterval& value, uint16_t index, TaskConfig config = TaskConfig::Default());
 
@@ -192,7 +197,7 @@ typedef struct
 ////                         const HeaderBuilderT& builder,
 ////                         TaskConfig config = TaskConfig::Default());
 
-    /// public state manipulation actions
+  /// public state manipulation actions
 
 ////    TaskState ResumeActiveTask();
 
@@ -213,7 +218,7 @@ typedef struct
 ////    void Transmit(const ser4cpp::rseq_t& data);
 
 ////private:
-    // --- implement  IMasterTaskRunner ------
+  // --- implement  IMasterTaskRunner ------
 
 ////    virtual bool Run(const std::shared_ptr<IMasterTask>& task) override;
 
@@ -226,162 +231,183 @@ typedef struct
 ////protected:
 ////    void ScheduleAdhocTask(const std::shared_ptr<IMasterTask>& task);
 
-    // state switch lookups
+  // state switch lookups
 
 ////    TaskState OnTransmitComplete();
 ////    TaskState OnResponseEvent(const APDUResponseHeader& header, const ser4cpp::rseq_t& objects);
 ////    TaskState OnResponseTimeoutEvent();
 
-    // --- state handling functions ----
+  // --- state handling functions ----
 ////    TaskState StartTask_TaskReady();
 ////    TaskState OnResponse_WaitForResponse(const APDUResponseHeader& header, const ser4cpp::rseq_t& objects);
 ////    TaskState OnResponseTimeout_WaitForResponse();
+  void* pParentPointer_in_MContext;
 } MContext;
 
-  void  MContext_in_MContext(MContext *pMContext,
-             Addresses* addresses,
+void  MContext_in_MContext(MContext *pMContext,
+                           Addresses* addresses,
 //             const Logger& logger,
-             IExecutor* executor,
-             ILowerLayer* lower,
-             ISOEHandler* SOEHandler,
-             IMasterApplication* application,
-             IMasterScheduler* scheduler,
-             MasterParams* params);
+                           IExecutorExe4cpp* executor,
+                           ILowerLayer* lower,
+                           ISOEHandler* SOEHandler,
+                           IMasterApplication* application,
+                           IMasterScheduler* scheduler,
+                           MasterParams* params);
 
-    // --- implement  IUpperLayer ------
+MContext* Create_in_MContext_static(
+  Addresses* addresses,
+////        const Logger& logger,
+  IExecutorExe4cpp* executor,
+  ILowerLayer* lower,
+  ISOEHandler* SOEHandler,
+  IMasterApplication* application,
+  IMasterScheduler* scheduler,
+  MasterParams* params
+);
 
-    boolean OnLowerLayerUp_in_IUpDown(IUpDown *pIUpDown);
+// --- implement  IUpperLayer ------
 
-    boolean OnLowerLayerDown_in_IUpDown(IUpDown *pIUpDown);
+boolean OnLowerLayerUp_in_MContext(MContext *pMContext);
 
-    boolean OnReceive_in_IUpperLayer(IUpperLayer *pIUpperLayer, Message* message);
+boolean OnLowerLayerDown_in_MContext(MContext *pMContext);
 
-    boolean OnTxReady_in_IUpperLayer(IUpperLayer *pIUpperLayer);
+boolean OnReceive_in_MContext(MContext *pMContext, Message* message);
 
-    // additional virtual methods that can be overriden to implement secure authentication
+boolean OnTxReady_in_MContext(MContext *pMContext);
+
+// additional virtual methods that can be overriden to implement secure authentication
 // дополнительные виртуальные методы, которые можно переопределить для реализации безопасной аутентификации
 
-    void OnParsedHeader_in_MContext(MContext *pMContext,
-                                    RSeq_for_Uint16_t* apdu,
-                                 APDUResponseHeader* header,
+void OnParsedHeader_in_MContext(MContext *pMContext,
+                                RSeq_for_Uint16_t* apdu,
+                                APDUResponseHeader* header,
                                 RSeq_for_Uint16_t* objects);
 
-    void RecordLastRequest_in_MContext(MContext *pMContext, RSeq_for_Uint16_t* apdu);// {}
+void RecordLastRequest_in_MContext(MContext *pMContext, RSeq_for_Uint16_t* apdu);// {}
 
-    // methods for initiating command sequences
+// methods for initiating command sequences
 // методы для запуска последовательности команд
 
-    void DirectOperate_in_MContext(MContext *pMContext, CommandSet* commands, CommandResultCallbackT* callback, TaskConfig config);
+void DirectOperate_in_MContext(MContext *pMContext, CommandSet* commands, CommandResultCallbackT* callback, TaskConfig config);
 
-    void SelectAndOperate_in_MContext(MContext *pMContext, CommandSet* commands, CommandResultCallbackT* callback, TaskConfig* config);
+void SelectAndOperate_in_MContext(MContext *pMContext, CommandSet* commands, CommandResultCallbackT callback, TaskConfig* config);
 
-    // -----  public methods used to add tasks -----
+// -----  public methods used to add tasks -----
 
-    IMasterTask* AddScan_in_MContext(MContext *pMContext,
-                              TimeDuration period,
-                                         HeaderBuilderT* builder,
-                                         ISOEHandler* soe_handler,
-                                         TaskConfig config);// = TaskConfig::Default());
+IMasterTask* AddScan_in_MContext(MContext *pMContext,
+                                 TimeDuration period,
+                                 HeaderBuilderT builder,
+                                 ISOEHandler* soe_handler,
+                                 TaskConfig config);// = TaskConfig::Default());
 
-   IMasterTask* AddAllObjectsScan_in_MContext(MContext *pMContext,
-                GroupVariationID gvId,
-                                                   TimeDuration period,
-                                                   ISOEHandler* soe_handler,
-                                                   TaskConfig config);// = TaskConfig::Default());
+IMasterTask* AddAllObjectsScan_in_MContext(MContext *pMContext,
+    GroupVariationID gvId,
+    TimeDuration period,
+    ISOEHandler* soe_handler,
+    TaskConfig config);// = TaskConfig::Default());
 
-    IMasterTask* AddClassScan_in_MContext(MContext *pMContext,
-              ClassField* field,
-                                              TimeDuration period,
-                                              ISOEHandler* soe_handler,
-                                              TaskConfig config);// = TaskConfig::Default());
+IMasterTask* AddClassScan_in_MContext(MContext *pMContext,
+                                      ClassField* field,
+                                      TimeDuration period,
+                                      ISOEHandler* soe_handler,
+                                      TaskConfig config);// = TaskConfig::Default());
 
-    IMasterTask* AddRangeScan_in_MContext(MContext *pMContext,
-               GroupVariationID gvId,
-                                              uint16_t start,
-                                              uint16_t stop,
-                                              TimeDuration period,
-                                              ISOEHandler* soe_handler,
-                                              TaskConfig config);// = TaskConfig::Default());
+IMasterTask* AddRangeScan_in_MContext(MContext *pMContext,
+                                      GroupVariationID gvId,
+                                      uint16_t start,
+                                      uint16_t stop,
+                                      TimeDuration period,
+                                      ISOEHandler* soe_handler,
+                                      TaskConfig config);// = TaskConfig::Default());
 
-    // ---- Single shot immediate scans ----
+// ---- Single shot immediate scans ----
 // ---- Однократное немедленное сканирование ----
 
-    void Scan_in_MContext(MContext *pMContext,
-         HeaderBuilderT builder,
-              ISOEHandler* soe_handler,
-              TaskConfig config);// = TaskConfig::Default());
+void Scan_in_MContext(MContext *pMContext,
+                      HeaderBuilderT builder,
+                      ISOEHandler* soe_handler,
+                      TaskConfig config);// = TaskConfig::Default());
 
-    void ScanAllObjects_in_MContext(MContext *pMContext,
-                GroupVariationID gvId,
-                        ISOEHandler* soe_handler,
-                        TaskConfig config);// = TaskConfig::Default());
+void ScanAllObjects_in_MContext(MContext *pMContext,
+                                GroupVariationID gvId,
+                                ISOEHandler* soe_handler,
+                                TaskConfig config);// = TaskConfig::Default());
 
-    void ScanClasses_in_MContext(MContext *pMContext,
-         ClassField* field,
-                     ISOEHandler* soe_handler,
-                     TaskConfig config);// = TaskConfig::Default());
+void ScanClasses_in_MContext(MContext *pMContext,
+                             ClassField* field,
+                             ISOEHandler* soe_handler,
+                             TaskConfig config);// = TaskConfig::Default());
 
-    void ScanRange_in_MContext(MContext *pMContext,
-            GroupVariationID gvId,
-                   uint16_t start,
-                   uint16_t stop,
-                   ISOEHandler* soe_handler,
-                   TaskConfig config);// = TaskConfig::Default());
+void ScanRange_in_MContext(MContext *pMContext,
+                           GroupVariationID gvId,
+                           uint16_t start,
+                           uint16_t stop,
+                           ISOEHandler* soe_handler,
+                           TaskConfig config);// = TaskConfig::Default());
 
-    /// ---- Write tasks -----
+/// ---- Write tasks -----
 
-    void Write_in_MContext(MContext *pMContext, TimeAndInterval* value, uint16_t index, TaskConfig config);// = TaskConfig::Default());
+void Write_in_MContext(MContext *pMContext, TimeAndInterval* value, uint16_t index, TaskConfig config);// = TaskConfig::Default());
 
-   void Restart_in_MContext(MContext *pMContext, RestartType_uint8_t op, RestartOperationCallbackT callback, TaskConfig config);// = TaskConfig::Default());
+void Restart_in_MContext(MContext *pMContext, RestartType_uint8_t op, RestartOperationCallbackT callback, TaskConfig config);// = TaskConfig::Default());
 
-   void PerformFunction_in_MContext(MContext *pMContext, std::string& name,
-                         FunctionCode func,
-                         HeaderBuilderT* builder,
-                         TaskConfig config);// = TaskConfig::Default());
+void PerformFunction_in_MContext(MContext *pMContext, //std::string& name,
+                                 FunctionCode_uint8_t func,
+                                 HeaderBuilderT builder,
+                                 TaskConfig config);// = TaskConfig::Default());
 
-    /// public state manipulation actions
+/// public state manipulation actions
 
-    TaskState ResumeActiveTask_in_MContext(MContext *pMContext);
+TaskState_in_MContext_uint8_t ResumeActiveTask_in_MContext(MContext *pMContext);
 
-    void CompleteActiveTask_in_MContext(MContext *pMContext);
+void CompleteActiveTask_in_MContext(MContext *pMContext);
 
-    void QueueConfirm_in_MContext(MContext *pMContext, APDUHeader* header);
+void QueueConfirm_in_MContext(MContext *pMContext, APDUHeader* header);
 
-    void StartResponseTimer_in_MContext(MContext *pMContext);
+void StartResponseTimer_in_MContext(MContext *pMContext);
 
-    void ProcessAPDU_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
+void ProcessAPDU_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 
-    boolean CheckConfirmTransmit_in_MContext(MContext *pMContext);
+boolean CheckConfirmTransmit_in_MContext(MContext *pMContext);
 
-    void ProcessResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
+void ProcessResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 
-    void ProcessUnsolicitedResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
+void ProcessUnsolicitedResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 
-    void Transmit_in_MContext(MContext *pMContext, RSeq_for_Uint16_t* data);
+void Transmit_in_MContext(MContext *pMContext, RSeq_for_Uint16_t* data);
 
-    // --- implement  IMasterTaskRunner ------
+// --- implement  IMasterTaskRunner ------
 
-    boolean Run_in_MContext(MContext *pMContext, IMasterTask* task);
+boolean Run_in_MContext(MContext *pMContext, IMasterTask* task);
 
-   void ScheduleRecurringPollTask_in_MContext(MContext *pMContext, IMasterTask* task);
+void ScheduleRecurringPollTask_in_MContext(MContext *pMContext, IMasterTask* task);
 
-   void ProcessIIN_in_MContext(MContext *pMContext, IINField* iin);
+void ProcessIIN_in_MContext(MContext *pMContext, IINField* iin);
 
-    void OnResponseTimeout_in_MContext(MContext *pMContext);
+void OnResponseTimeout_in_MContext(MContext *pMContext);
 
-    void ScheduleAdhocTask_in_MContext(MContext *pMContext, IMasterTask* task);
+void ScheduleAdhocTask_in_MContext(MContext *pMContext, IMasterTask* task);
 
-    // state switch lookups
+// state switch lookups
 
-    TaskState OnTransmitComplete_in_MContext(MContext *pMContext);
-    TaskState OnResponseEvent_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
-    TaskState OnResponseTimeoutEvent_in_MContext(MContext *pMContext);
+TaskState_in_MContext_uint8_t OnTransmitComplete_in_MContext(MContext *pMContext);
+TaskState_in_MContext_uint8_t OnResponseEvent_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
+TaskState_in_MContext_uint8_t OnResponseTimeoutEvent_in_MContext(MContext *pMContext);
 
-    // --- state handling functions ----
-    TaskState StartTask_TaskReady_in_MContext(MContext *pMContext);
-    TaskState OnResponse_WaitForResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
-    TaskState OnResponseTimeout_WaitForResponse_in_MContext(MContext *pMContext);
+// --- state handling functions ----
+TaskState_in_MContext_uint8_t StartTask_TaskReady_in_MContext(MContext *pMContext);
+TaskState_in_MContext_uint8_t OnResponse_WaitForResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
+TaskState_in_MContext_uint8_t OnResponseTimeout_WaitForResponse_in_MContext(MContext *pMContext);
 
 ////} // namespace opendnp3
+void OnParsedHeader_in_MContext_override(void *pMContext,
+    RSeq_for_Uint16_t* apdu,
+    APDUResponseHeader* header,
+    RSeq_for_Uint16_t* objects);
+
+void RecordLastRequest_in_MContext_override(void *pMContext, RSeq_for_Uint16_t* apdu);
+
+void* getParentPointer_in_MContext(MContext* pMContext);
+void  setParentPointer_in_MContext(MContext* pMContext, void*);
 
 #endif

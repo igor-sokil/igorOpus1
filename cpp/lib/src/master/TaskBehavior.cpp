@@ -27,16 +27,16 @@
 ////{
 
 ////TaskBehavior TaskBehavior::SingleExecutionNoRetry()
-TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(void)
+TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_staticOver1(void)
 {
 // TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(Timestamp* startExpiration);
 ////    return SingleExecutionNoRetry(Timestamp::Max()); // no start expiration
   Timestamp smax = Max_in_Timestamp_static();
-  return SingleExecutionNoRetry_in_TaskBehavior_static(&smax);
+  return SingleExecutionNoRetry_in_TaskBehavior_staticOver2(&smax);
 }
 
 ////TaskBehavior TaskBehavior::SingleExecutionNoRetry(const Timestamp& startExpiration)
-TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_static(Timestamp* startExpiration)
+TaskBehavior SingleExecutionNoRetry_in_TaskBehavior_staticOver2(Timestamp* startExpiration)
 {
 //TimeDuration Min_in_TimeDuration_static(void);
 //Timestamp Min_in_Timestamp_static(void);

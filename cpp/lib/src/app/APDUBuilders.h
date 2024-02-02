@@ -33,7 +33,7 @@
 
 void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint8_t fc, ClassField* classes, uint8_t seq);
 
-bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes);
+boolean WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes);
 
 void ReadIntegrity_in_APDUBuilders_static(APDURequest* request, ClassField* classes, uint8_t seq);// = 0);
 

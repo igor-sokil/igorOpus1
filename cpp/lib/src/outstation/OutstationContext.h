@@ -54,7 +54,7 @@
 #include "DeferredRequest.h"
 #include "OutstationChannelStates.h"
 #include "OutstationConfig.h"
-#include "OutstationSeqNum.h"
+//#include "OutstationSeqNum.h"
 #include "OutstationStates.h"
 #include "ParsedRequest.h"
 

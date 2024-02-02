@@ -33,9 +33,9 @@ void ApplyOperateResponse_Indexed_for_ControlRelayOutputBlock_in_ICommandHeader(
 {
   (pICommandHeader->pApplyOperateResponse_Indexed_for_ControlRelayOutputBlock_in_ICommandHeader)(pICommandHeader, code, commands);
 }
-void ApplyOperateResponse_Indexed_for_for_AnalogOutputInt16_in_ICommandHeader(ICommandHeader *pICommandHeader, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands)
+void ApplyOperateResponse_Indexed_for_AnalogOutputInt16_in_ICommandHeader(ICommandHeader *pICommandHeader, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands)
 {
-  (pICommandHeader->pApplyOperateResponse_Indexed_for_for_AnalogOutputInt16_in_ICommandHeader)(pICommandHeader, code, commands);
+  (pICommandHeader->pApplyOperateResponse_Indexed_for_AnalogOutputInt16_in_ICommandHeader)(pICommandHeader, code, commands);
 }
 void ApplyOperateResponse_Indexed_for_AnalogOutputInt32_in_ICommandHeader(ICommandHeader *pICommandHeader, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt32* commands)
 {

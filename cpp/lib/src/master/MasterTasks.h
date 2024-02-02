@@ -20,81 +20,126 @@
 #ifndef OPENDNP3_MASTERTASKS_H
 #define OPENDNP3_MASTERTASKS_H
 
-#include "master/IMasterScheduler.h"
+#include "header.h"
+#include "IMasterScheduler.h"
 
-#include "opendnp3/master/IMasterApplication.h"
-#include "opendnp3/master/ISOEHandler.h"
-#include "opendnp3/master/MasterParams.h"
+#include "IMasterApplication.h"
+#include "ISOEHandler.h"
+#include "MasterParams.h"
 
-#include <vector>
+////#include <vector>
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+////class MasterTasks
+typedef struct
 {
 
-class MasterTasks
-{
+////public:
+////    MasterTasks(const MasterParams& params,
+////                const Logger& logger,
+////                IMasterApplication& application,
+////                std::shared_ptr<ISOEHandler> SOEHandler);
 
-public:
-    MasterTasks(const MasterParams& params,
-                const Logger& logger,
-                IMasterApplication& application,
-                std::shared_ptr<ISOEHandler> SOEHandler);
+////    void Initialize(IMasterScheduler& scheduler, IMasterTaskRunner& runner);
 
-    void Initialize(IMasterScheduler& scheduler, IMasterTaskRunner& runner);
+////    bool DemandTimeSync();
+////    bool DemandEventScan();
+////    bool DemandIntegrity();
+////
+////    void OnRestartDetected();
 
-    bool DemandTimeSync();
-    bool DemandEventScan();
-    bool DemandIntegrity();
+////    void BindTask(const std::shared_ptr<IMasterTask>& task);
 
-    void OnRestartDetected();
+////    const std::shared_ptr<TaskContext> context;
 
-    void BindTask(const std::shared_ptr<IMasterTask>& task);
+////private:
+////    bool Demand(const std::shared_ptr<IMasterTask>& task)
+////    {
+////        if (task)
+////        {
+////            task->SetMinExpiration();
+////            return true;
+////        }
+////        else
+////        {
+////            return false;
+////        }
+////    }
 
-    const std::shared_ptr<TaskContext> context;
+////    inline static TaskBehavior RetryBehavior(const MasterParams& params)
+////    {
+////        return TaskBehavior::SingleImmediateExecutionWithRetry(params.taskRetryPeriod, params.maxTaskRetryPeriod);
+////    }
 
-private:
-    bool Demand(const std::shared_ptr<IMasterTask>& task)
-    {
-        if (task)
-        {
-            task->SetMinExpiration();
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+////    const std::shared_ptr<IMasterTask> clearRestart;
+////    const std::shared_ptr<IMasterTask> assignClass;
+////    const std::shared_ptr<IMasterTask> startupIntegrity;
+////    const std::shared_ptr<IMasterTask> eventScan;
+////    const std::shared_ptr<IMasterTask> disableUnsol;
+////    const std::shared_ptr<IMasterTask> enableUnsol;
+////    const std::shared_ptr<IMasterTask> timeSynchronization;
+////
 
-    inline static TaskBehavior RetryBehavior(const MasterParams& params)
-    {
-        return TaskBehavior::SingleImmediateExecutionWithRetry(params.taskRetryPeriod, params.maxTaskRetryPeriod);
-    }
+  IMasterTask* clearRestart;
+  IMasterTask* assignClass;
+  IMasterTask* startupIntegrity;
+  IMasterTask* eventScan;
+  IMasterTask* disableUnsol;
+  IMasterTask* enableUnsol;
+  IMasterTask* timeSynchronization;
 
-    const std::shared_ptr<IMasterTask> clearRestart;
-    const std::shared_ptr<IMasterTask> assignClass;
-    const std::shared_ptr<IMasterTask> startupIntegrity;
-    const std::shared_ptr<IMasterTask> eventScan;
-    const std::shared_ptr<IMasterTask> disableUnsol;
-    const std::shared_ptr<IMasterTask> enableUnsol;
-    const std::shared_ptr<IMasterTask> timeSynchronization;
+////    static std::shared_ptr<IMasterTask> GetTimeSyncTask(const std::shared_ptr<TaskContext>& context,
+////                                                        TimeSyncMode mode,
+////                                                        const Logger& logger,
+////                                                        IMasterApplication& application);
+////    static std::shared_ptr<IMasterTask> GetEnableUnsolTask(const std::shared_ptr<TaskContext>& context,
+////                                                           const MasterParams& params,
+////                                                           const Logger& logger,
+////                                                           IMasterApplication& application);
+////    static std::shared_ptr<IMasterTask> GetDisableUnsolTask(const std::shared_ptr<TaskContext>& context,
+////                                                            const MasterParams& params,
+////                                                            const Logger& logger,
+////                                                            IMasterApplication& application);
 
-    static std::shared_ptr<IMasterTask> GetTimeSyncTask(const std::shared_ptr<TaskContext>& context,
-                                                        TimeSyncMode mode,
-                                                        const Logger& logger,
-                                                        IMasterApplication& application);
-    static std::shared_ptr<IMasterTask> GetEnableUnsolTask(const std::shared_ptr<TaskContext>& context,
-                                                           const MasterParams& params,
-                                                           const Logger& logger,
-                                                           IMasterApplication& application);
-    static std::shared_ptr<IMasterTask> GetDisableUnsolTask(const std::shared_ptr<TaskContext>& context,
-                                                            const MasterParams& params,
-                                                            const Logger& logger,
-                                                            IMasterApplication& application);
+  std::vector<IMasterTask> boundTasks;
+} MasterTasks;
 
-    std::vector<std::shared_ptr<IMasterTask>> boundTasks;
-};
+void MasterTasks_in_MasterTasks(MasterTasks *pMasterTasks,
+                                MasterParams* params,
+///                const Logger& logger,
+                                IMasterApplication* application,
+                                ISOEHandler* SOEHandler);
 
-} // namespace opendnp3
+TaskBehavior RetryBehavior_in_MasterTasks_static(MasterParams* params);
+
+void Initialize_in_MasterTasks(MasterTasks *pMasterTasks, IMasterScheduler* scheduler, IMasterTaskRunner* runner);
+
+boolean DemandTimeSync_in_MasterTasks(MasterTasks *pMasterTasks);
+boolean DemandEventScan_in_MasterTasks(MasterTasks *pMasterTasks);
+boolean DemandIntegrity_in_MasterTasks(MasterTasks *pMasterTasks);
+
+boolean Demand_in_MasterTasks(MasterTasks *pMasterTasks, IMasterTask* task);
+
+void OnRestartDetected_in_MasterTasks(MasterTasks *pMasterTasks);
+
+void BindTask_in_MasterTasks(MasterTasks *pMasterTasks, IMasterTask* task);
+
+
+IMasterTask* GetTimeSyncTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+  TimeSyncMode_uint8_t mode,
+///                                                        const Logger& logger,
+  IMasterApplication* application);
+IMasterTask* GetEnableUnsolTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+  MasterParams* params,
+////                                                           const Logger& logger,
+  IMasterApplication* application);
+IMasterTask* GetDisableUnsolTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+  MasterParams* params,
+////                                                            const Logger& logger,
+  IMasterApplication* application);
+
+////} // namespace opendnp3
 
 #endif

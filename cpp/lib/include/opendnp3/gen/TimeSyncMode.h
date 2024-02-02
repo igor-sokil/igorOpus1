@@ -39,16 +39,20 @@
 
 /**
   Determines what the master station does when it sees the NEED_TIME iin bit
+ќпредел€ет, что делает ведуща€ станци€, когда видит бит NEED_TIME iin.
 */
 ////enum class TimeSyncMode : uint8_t
 #define TimeSyncMode_uint8_t  uint8_t
 enum TimeSyncMode 
 {
   /// synchronize the outstation's time using the non-LAN time sync procedure
+/// синхронизируем врем€ удаленной станции, использу€ процедуру синхронизации времени вне локальной сети
   TimeSyncMode_NonLAN = 1,
   /// synchronize the outstation's time using the LAN time sync procedure
+/// синхронизируем врем€ удаленной станции с помощью процедуры синхронизации времени по локальной сети
   TimeSyncMode_LAN = 2,
   /// don't perform a time-sync
+/// не выполн€ть синхронизацию времени
   TimeSyncMode_None = 0
 };
 

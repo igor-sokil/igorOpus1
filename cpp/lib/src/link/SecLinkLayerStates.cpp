@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+
 #include "log_info.h"
 #ifdef  LOG_INFO
 #include <iostream>

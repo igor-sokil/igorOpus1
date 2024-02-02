@@ -216,7 +216,7 @@ void OnStart_in_IMasterTask(IMasterTask *pIMasterTask)
 //    MasterTaskType_uint8_t GetTaskType_in_IMasterTask(IMasterTask *pIMasterTask);
 //void OnTaskStart_in_IMasterApplication(IMasterApplication *pIMasterApplication, MasterTaskType type, TaskId* id);
 ////    this->application->OnTaskStart(this->GetTaskType(), config.taskId);
-  OnTaskStart_in_IMasterApplication(pIMasterTask->application, GetTaskType_in_IMasterTask(pIMasterTask), &(pIMasterTask->config.taskId));
+  OnTaskStart_in_IMasterApplication(pIMasterTask->application, GetTaskType_in_IMasterTask(pIMasterTask), pIMasterTask->config.taskId);
 
 //    void Initialize_in_IMasterTask(IMasterTask *pIMasterTask);
 ////    this->Initialize();

@@ -98,13 +98,12 @@ boolean BeginTransmit_in_MockLowerLayer_override(void* pILowerLayer, Message* me
 
 boolean BeginTransmit_in_MockLowerLayer(MockLowerLayer* pMockLowerLayer, Message* message)
 {
+  Message temp = *message;
 #ifdef  LOG_INFO
   std::cout<<'\n';
   std::cout<<"{BeginTransmit_in_MockLowerLayer1"<<'\n';
+  inspect_RSeq(&(temp.payload));
 #endif
-
-  Message temp = *message;
-inspect_RSeq(&(temp.payload));
 
   pMockLowerLayer->sendQueue.push(temp);////message);
 #ifdef  LOG_INFO

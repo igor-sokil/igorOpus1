@@ -29,17 +29,13 @@
 ////class DisableUnsolicitedTask final : public IMasterTask
 typedef struct
 {
-   IMasterTask iIMasterTask;
+  IMasterTask iIMasterTask;
 
 ////public:
 ////    DisableUnsolicitedTask(const std::shared_ptr<TaskContext>& context,
 ////                           IMasterApplication& application,
 ////                           const TaskBehavior& behavior,
 ////                           const Logger& logger);
-  void DisableUnsolicitedTask_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask,
-//                       const std::shared_ptr<TaskContext>& context,
-                    IMasterApplication* application,
-                    TaskBehavior* behavior);
 
 ////    virtual char const* Name() const override
 ////    {
@@ -71,6 +67,31 @@ typedef struct
 
 ////    virtual ResponseResult ProcessResponse(const APDUResponseHeader& header, const ser4cpp::rseq_t& objects) override;
 } DisableUnsolicitedTask;
+
+void DisableUnsolicitedTask_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask,
+//                       const std::shared_ptr<TaskContext>& context,
+    IMasterApplication* application,
+    TaskBehavior* behavior);
+
+boolean IsRecurring_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask);
+boolean IsRecurring_in_DisableUnsolicitedTask_override(void *pIMasterTask);
+
+boolean BuildRequest_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask, APDURequest* request, uint8_t seq);
+boolean BuildRequest_in_DisableUnsolicitedTask_override(void *pIMasterTask, APDURequest* request, uint8_t seq);
+
+int Priority_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask);
+int Priority_in_DisableUnsolicitedTask_override(void *pIMasterTask);
+
+MasterTaskType_uint8_t GetTaskType_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask);
+MasterTaskType_uint8_t GetTaskType_in_DisableUnsolicitedTask_override(void *pIMasterTask);
+
+boolean BlocksLowerPriority_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask);
+boolean BlocksLowerPriority_in_DisableUnsolicitedTask_override(void *pIMasterTask);
+
+ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask,
+    APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
+ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_DisableUnsolicitedTask_override(void *pIMasterTask,
+    APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 
 ////} // namespace opendnp3
 

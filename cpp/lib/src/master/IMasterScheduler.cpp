@@ -1,6 +1,17 @@
 #include "header.h"
 #include "IMasterScheduler.h"
 
+//void IMasterScheduler_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler)
+///{
+/// pIMasterScheduler->pAdd_in_IMasterScheduler = Add_in_IMasterScheduler_override;
+/// setParentPointer_in_IMasterScheduler(pIMasterScheduler->pParentPointer_in_IMasterScheduler, pIMasterScheduler);
+///}
+///void Add_in_IMasterScheduler_override(void *pIMasterScheduler, IMasterTask* task, IMasterTaskRunner* runner)
+///{
+/// IMasterScheduler* parent = (IMasterScheduler*)getParentPointer_in_IMasterScheduler((IMasterScheduler*) pIMasterScheduler);
+/// Add_in_IMasterSchedulerOver2(parent, tasks, runner);
+///}
+
 void Shutdown_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler)
 {
   (pIMasterScheduler->pShutdown_in_IMasterScheduler)(pIMasterScheduler);
@@ -26,10 +37,10 @@ void Demand_in_IMasterScheduler(IMasterScheduler *pIMasterScheduler, IMasterTask
   (pIMasterScheduler->pDemand_in_IMasterScheduler)(pIMasterScheduler, task);
 }
 
-void Add_in_IMasterSchedulerOver2(IMasterScheduler *pIMasterScheduler, IMasterTask* tasks, IMasterTaskRunner* runner)
-{
-  Add_in_IMasterScheduler(pIMasterScheduler, tasks, runner);
-}
+//void Add_in_IMasterSchedulerOver2(IMasterScheduler *pIMasterScheduler, IMasterTask* tasks, IMasterTaskRunner* runner)
+//{
+//  Add_in_IMasterScheduler(pIMasterScheduler, tasks, runner);
+//}
 
 void* getParentPointer_in_IMasterScheduler(IMasterScheduler* pIMasterScheduler)
 {

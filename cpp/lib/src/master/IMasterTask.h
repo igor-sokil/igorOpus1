@@ -217,7 +217,7 @@ boolean ValidateNullResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDURespo
 boolean ValidateNoObjects_in_IMasterTask(IMasterTask *pIMasterTask, RSeq_for_Uint16_t* objects);
 boolean ValidateInternalIndications_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* header);
 void CompleteTask_in_IMasterTask(IMasterTask *pIMasterTask, TaskCompletion_uint8_t result, Timestamp now);
-////    boolean IsBlocked_in_IMasterTask(IMasterTask *pIMasterTask);
+boolean IsBlocked_in_IMasterTask(IMasterTask *pIMasterTask);
 void SetMinExpiration_in_IMasterTask(IMasterTask *pIMasterTask);
 void OnStart_in_IMasterTask(IMasterTask *pIMasterTask);
 void OnMessageFormatError_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
@@ -225,8 +225,8 @@ void OnStartTimeout_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
 void OnLowerLayerClose_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
 void OnResponseTimeout_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp now);
 ResponseResult_in_IMasterTask_uint8_t OnResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* response, RSeq_for_Uint16_t* objects, Timestamp now);
-////    Timestamp StartExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask);
-////    boolean IsExpired_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp* now);
+Timestamp StartExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask);
+boolean IsExpired_in_IMasterTask(IMasterTask *pIMasterTask, Timestamp* now);
 Timestamp StartExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask);
 Timestamp ExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask);
 
@@ -251,6 +251,7 @@ boolean BlocksLowerPriority_in_IMasterTask(IMasterTask *pIMasterTask);
 
 void* getParentPointer_in_IMasterTask(IMasterTask*);
 void  setParentPointer_in_IMasterTask(IMasterTask*, void*);
+
 
 ////} // namespace opendnp3
 

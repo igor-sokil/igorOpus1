@@ -20,42 +20,55 @@
 #ifndef OPENDNP3_UNITTESTS_MASTERTESTFIXTURE_H
 #define OPENDNP3_UNITTESTS_MASTERTESTFIXTURE_H
 
-#include <opendnp3/logging/LogLevels.h>
+////#include <opendnp3/logging/LogLevels.h>
 
-#include <exe4cpp/MockExecutor.h>
+////#include <exe4cpp/MockExecutor.h>
+#include "MockExecutorExe4cpp.h"
 
-#include "dnp3mocks/MockLogHandler.h"
-#include "dnp3mocks/MockLowerLayer.h"
-#include "dnp3mocks/MockMasterApplication.h"
-#include "dnp3mocks/MockSOEHandler.h"
+////#include "dnp3mocks/MockLogHandler.h"
+#include "MockLowerLayer.h"
+#include "MockMasterApplication.h"
+#include "MockSOEHandler.h"
 
-#include <master/MasterContext.h>
-#include <master/MasterSchedulerBackend.h>
+#include "MasterContext.h"
+#include "MasterSchedulerBackend.h"
 
-opendnp3::MasterParams NoStartupTasks();
+////opendnp3::MasterParams NoStartupTasks();
 
-class MasterTestFixture
+////class MasterTestFixture
+typedef struct
 {
-public:
-    MasterTestFixture(const opendnp3::MasterParams& param,
-                      const opendnp3::Addresses& = opendnp3::Addresses(1, 1024),
-                      const std::string& id = "test",
-                      const std::shared_ptr<opendnp3::ILogHandler>& log = nullptr,
-                      const std::shared_ptr<exe4cpp::MockExecutor>& executor = nullptr,
-                      const std::shared_ptr<opendnp3::IMasterScheduler>& scheduler = nullptr);
-    virtual ~MasterTestFixture();
+////public:
+////    MasterTestFixture(const opendnp3::MasterParams& param,
+////                      const opendnp3::Addresses& = opendnp3::Addresses(1, 1024),
+////                      const std::string& id = "test",
+////                      const std::shared_ptr<opendnp3::ILogHandler>& log = nullptr,
+////                      const std::shared_ptr<exe4cpp::MockExecutor>& executor = nullptr,
+////                      const std::shared_ptr<opendnp3::IMasterScheduler>& scheduler = nullptr);
+////    virtual ~MasterTestFixture();
 
-    bool SendToMaster(const std::string& hex);
+////    bool SendToMaster(const std::string& hex);
 
-    const opendnp3::Addresses addresses;
+    Addresses addresses;
 
-    const std::shared_ptr<opendnp3::ILogHandler> log;
-    const std::shared_ptr<exe4cpp::MockExecutor> exe;
-    const std::shared_ptr<MockSOEHandler> meas;
-    const std::shared_ptr<MockLowerLayer> lower;
-    const std::shared_ptr<MockMasterApplication> application;
-    const std::shared_ptr<opendnp3::IMasterScheduler> scheduler;
-    const std::shared_ptr<opendnp3::MContext> context;
-};
+////    const std::shared_ptr<opendnp3::ILogHandler> log;
+    MockExecutor exe;
+    MockSOEHandler meas;
+    MockLowerLayer lower;
+    MockMasterApplication application;
+    IMasterScheduler scheduler;
+    MContext *context;
+} MasterTestFixture;
+
+   void MasterTestFixture_in_MasterTestFixture(MasterTestFixture *pMasterTestFixture,
+                      MasterParams* param,
+                      Addresses addresses,//& = opendnp3::Addresses(1, 1024),
+                      //const std::string& id = "test",
+                      //const std::shared_ptr<opendnp3::ILogHandler>& log = nullptr,
+                      MockExecutor* executor,// = nullptr,
+                      IMasterScheduler* scheduler);// = nullptr);
+
+   boolean SendToMaster_in_MasterTestFixture(MasterTestFixture *pMasterTestFixture, std::string& hex);
+MasterParams NoStartupTasks_static(void);
 
 #endif

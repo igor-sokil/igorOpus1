@@ -89,7 +89,17 @@ std::string DisableUnsol_in_APDUHexBuilders(uint8_t seq, ClassField* field)
 
 std::string IntegrityPoll_in_APDUHexBuilders(uint8_t seq, ClassField* field)
 {
-  return ClassTask_in_APDUHexBuilders(FunctionCode_READ, seq, field);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{IntegrityPoll_in_APDUHexBuilders1"<<'\n';
+#endif
+  std::string tmp = ClassTask_in_APDUHexBuilders(FunctionCode_READ, seq, field);
+
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"}IntegrityPoll_in_APDUHexBuilders_"<<'\n';
+#endif
+  return tmp;
 }
 
 std::string ClassPoll_in_APDUHexBuilders(uint8_t seq, PointClass_uint8_t pc)

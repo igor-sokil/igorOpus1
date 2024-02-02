@@ -17,40 +17,135 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "header.h"
 #include "EnableUnsolicitedTask.h"
 
-#include "MasterTasks.h"
-#include "app/APDUBuilders.h"
+////#include "MasterTasks.h"
+#include "APDUBuilders.h"
 
-#include <exe4cpp/IExecutor.h>
+////#include <exe4cpp/IExecutor.h>
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+////EnableUnsolicitedTask::EnableUnsolicitedTask(const std::shared_ptr<TaskContext>& context,
+////                                             IMasterApplication& app,
+////                                             const TaskBehavior& behavior,
+////                                             ClassField enabledClasses,
+////                                             const Logger& logger)
+////    : IMasterTask(context, app, behavior, logger, TaskConfig::Default()), enabledClasses(enabledClasses)
+///{
+////}
+void EnableUnsolicitedTask_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask,
+//                       const std::shared_ptr<TaskContext>& context,
+    IMasterApplication* application,
+    TaskBehavior* behavior,
+    ClassField enabledClasses)
 {
+////    : IMasterTask(context, application, behavior, logger, TaskConfig::Default())
+  IMasterTask_in_IMasterTask(&(pEnableUnsolicitedTask->iIMasterTask),
+//                TaskContext* context,
+                             application,
+                             *behavior,
+//                const Logger& logger,
+                             Default_in_TaskConfig_static());
 
-EnableUnsolicitedTask::EnableUnsolicitedTask(const std::shared_ptr<TaskContext>& context,
-                                             IMasterApplication& app,
-                                             const TaskBehavior& behavior,
-                                             ClassField enabledClasses,
-                                             const Logger& logger)
-    : IMasterTask(context, app, behavior, logger, TaskConfig::Default()), enabledClasses(enabledClasses)
-{
+  pEnableUnsolicitedTask->enabledClasses = enabledClasses;
+
+  pEnableUnsolicitedTask->iIMasterTask.pIsRecurring_in_IMasterTask = IsRecurring_in_EnableUnsolicitedTask_override;
+  pEnableUnsolicitedTask->iIMasterTask.pBuildRequest_in_IMasterTask = BuildRequest_in_EnableUnsolicitedTask_override;
+  pEnableUnsolicitedTask->iIMasterTask.pPriority_in_IMasterTask = Priority_in_EnableUnsolicitedTask_override;
+  pEnableUnsolicitedTask->iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_EnableUnsolicitedTask_override;
+  pEnableUnsolicitedTask->iIMasterTask.pBlocksLowerPriority_in_IMasterTask = BlocksLowerPriority_in_EnableUnsolicitedTask_override;
+  pEnableUnsolicitedTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_EnableUnsolicitedTask_override;
+
+  setParentPointer_in_IMasterTask(&(pEnableUnsolicitedTask->iIMasterTask), pEnableUnsolicitedTask);
 }
 
-bool EnableUnsolicitedTask::BuildRequest(APDURequest& request, uint8_t seq)
+boolean BuildRequest_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask, APDURequest* request, uint8_t seq)
 {
-    build::EnableUnsolicited(request, enabledClasses.OnlyEventClasses(), seq);
-    return true;
+  UNUSED(pEnableUnsolicitedTask);
+////    build::EnableUnsolicited(request, enabledClasses.OnlyEventClasses(), seq);
+  ClassField tmp = OnlyEventClasses_in_ClassField(&(pEnableUnsolicitedTask->enabledClasses));
+  EnableUnsolicited_in_APDUBuilders_static(request, &tmp, seq);
+  return true;
 }
 
-bool EnableUnsolicitedTask::IsEnabled() const
+boolean IsEnabled_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask)
 {
-    return enabledClasses.HasEventClass();
+//boolean HasEventClass_in_ClassField(ClassField *pClassField);
+////    return enabledClasses.HasEventClass();
+  return HasEventClass_in_ClassField(&(pEnableUnsolicitedTask->enabledClasses));
 }
 
-IMasterTask::ResponseResult EnableUnsolicitedTask::ProcessResponse(const APDUResponseHeader& header,
-                                                                   const ser4cpp::rseq_t& objects)
+////IMasterTask::ResponseResult EnableUnsolicitedTask::ProcessResponse(const APDUResponseHeader& header,
+////                                                                   const ser4cpp::rseq_t& objects)
+ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask,
+    APDUResponseHeader* header, RSeq_for_Uint16_t* objects)
 {
-    return ValidateNullResponse(header, objects) ? ResponseResult::OK_FINAL : ResponseResult::ERROR_BAD_RESPONSE;
+////    return ValidateNullResponse(header, objects) ? ResponseResult::OK_FINAL : ResponseResult::ERROR_BAD_RESPONSE;
+  return ValidateNullResponse_in_IMasterTask(&(pEnableUnsolicitedTask->iIMasterTask), header, objects) ?
+         ResponseResult_in_IMasterTask_OK_FINAL :  ResponseResult_in_IMasterTask_ERROR_BAD_RESPONSE;
 }
 
-} // namespace opendnp3
+////} // namespace opendnp3
+boolean BlocksLowerPriority_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask)
+{
+  UNUSED(pEnableUnsolicitedTask);
+  return true;
+}
+
+int Priority_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask)
+{
+  UNUSED(pEnableUnsolicitedTask);
+  return priority_ENABLE_UNSOLICITED;
+}
+
+boolean IsRecurring_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask)
+{
+  UNUSED(pEnableUnsolicitedTask);
+  return true;
+}
+
+MasterTaskType_uint8_t GetTaskType_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask)
+{
+  UNUSED(pEnableUnsolicitedTask);
+  return MasterTaskType_ENABLE_UNSOLICITED;
+}
+
+boolean IsRecurring_in_EnableUnsolicitedTask_override(void *pIMasterTask)
+{
+  EnableUnsolicitedTask *parent = (EnableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return IsRecurring_in_EnableUnsolicitedTask(parent);
+}
+
+boolean BuildRequest_in_EnableUnsolicitedTask_override(void *pIMasterTask, APDURequest* request, uint8_t seq)
+{
+  EnableUnsolicitedTask *parent = (EnableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return BuildRequest_in_EnableUnsolicitedTask(parent, request, seq);
+}
+
+int Priority_in_EnableUnsolicitedTask_override(void *pIMasterTask)
+{
+  EnableUnsolicitedTask *parent = (EnableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Priority_in_EnableUnsolicitedTask(parent);
+}
+
+MasterTaskType_uint8_t GetTaskType_in_EnableUnsolicitedTask_override(void *pIMasterTask)
+{
+  EnableUnsolicitedTask *parent = (EnableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return GetTaskType_in_EnableUnsolicitedTask(parent);
+}
+
+boolean BlocksLowerPriority_in_EnableUnsolicitedTask_override(void *pIMasterTask)
+{
+  EnableUnsolicitedTask *parent = (EnableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return BlocksLowerPriority_in_EnableUnsolicitedTask(parent);
+}
+
+ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_EnableUnsolicitedTask_override(void *pIMasterTask,
+    APDUResponseHeader* header, RSeq_for_Uint16_t* objects)
+{
+  EnableUnsolicitedTask *parent = (EnableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return ProcessResponse_in_EnableUnsolicitedTask_override(parent, header, objects);
+}

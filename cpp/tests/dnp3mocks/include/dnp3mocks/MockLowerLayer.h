@@ -27,37 +27,6 @@
 #include <queue>
 ////#include <string>
 
-/*
-typedef struct
-{
-
-////public:
-////    virtual ~ILowerLayer() {}
-
-   boolean (*pBeginTransmit_in_ILowerLayer)(void*, Message* message);// = 0;
-
-  void* pParentPointer_in_ILowerLayer;
-} ILowerLayer;
-*/
-/*
-typedef struct
-{
-
-////public:
-////    HasUpperLayer() : pUpperLayer(nullptr) {}
-
-    // Called by the lower layer when data arrives
-
-////    void SetUpperLayer(IUpperLayer& upperLayer)
-////    {
-////        assert(!pUpperLayer);
-////        pUpperLayer = &upperLayer;
-////    }
-
-////protected:
-    IUpperLayer* pUpperLayer;
-} HasUpperLayer;
-*/
 ////class MockLowerLayer : public opendnp3::ILowerLayer, public opendnp3::HasUpperLayer
 typedef struct
 {

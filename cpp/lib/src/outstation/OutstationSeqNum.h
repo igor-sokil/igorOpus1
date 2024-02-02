@@ -41,6 +41,8 @@ typedef struct
   AppSeqNum confirmNum;
 } OutstationSeqNum;
 
+void OutstationSeqNum_in_OutstationSeqNum(OutstationSeqNum *pOutstationSeqNum);
+
 ////} // namespace opendnp3
 
 #endif

@@ -32,18 +32,18 @@
 ////class ITaskCallback
 typedef struct
 {
-public:
-    // Called when the task starts running
+////public:
+  // Called when the task starts running
 // Вызывается, когда задача начинает выполняться
-    void (*pOnStart_in_ITaskCallback)(void *);// = 0;
+  void (*pOnStart_in_ITaskCallback)(void *);// = 0;
 
-    // Called when the task succeeds or fails
+  // Called when the task succeeds or fails
 // Вызывается, когда задача выполнена успешно или неудачно
-    void (*pOnComplete_in_ITaskCallback)(void *, TaskCompletion_uint8_t result);// = 0;
+  void (*pOnComplete_in_ITaskCallback)(void *, TaskCompletion_uint8_t result);// = 0;
 
-    // Called when the task no longer exists and no more calls will be made to OnStart/OnComplete
+  // Called when the task no longer exists and no more calls will be made to OnStart/OnComplete
 // Вызывается, когда задача больше не существует и вызовы OnStart/OnComplete больше не выполняются
-    void (*pOnDestroyed_in_ITaskCallback)(void *);// = 0;
+  void (*pOnDestroyed_in_ITaskCallback)(void *);// = 0;
 
   void* pParentPointer_in_ITaskCallback;
 

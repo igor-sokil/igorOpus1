@@ -67,11 +67,11 @@ boolean  operatorLTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
 boolean  operatorGTEQ_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
 boolean  operatorLT_in_Timestamp(Timestamp* pTimestamp, Timestamp* other);
 TimeDuration operatorMINUS_in_Timestamp(Timestamp* pTimestamp, Timestamp* timestamp);
+Timestamp operatorPLUS_in_Timestamp(Timestamp *pTimestamp, TimeDuration* duration);
 
 Timestamp Max_in_Timestamp_static(void);
 ////    static Timestamp Min();
 Timestamp Min_in_Timestamp_static(void);
-Timestamp operatorPLUS_in_Timestamp(Timestamp *pTimestamp, TimeDuration* duration);
 
 ////} // namespace opendnp3
 

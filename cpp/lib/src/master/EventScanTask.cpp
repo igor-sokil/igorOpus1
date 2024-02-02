@@ -18,39 +18,118 @@
  * limitations under the License.
  */
 
+#include "header.h"
 #include "EventScanTask.h"
 
-#include "MasterTasks.h"
-#include "app/APDUBuilders.h"
-#include "app/parsing/APDUParser.h"
-#include "logging/LogMacros.h"
-#include "master/MeasurementHandler.h"
+////#include "MasterTasks.h"
+#include "APDUBuilders.h"
+#include "APDUParser.h"
+////#include "logging/LogMacros.h"
+////#include "master/MeasurementHandler.h"
 
-#include "opendnp3/logging/LogLevels.h"
+////#include "opendnp3/logging/LogLevels.h"
 
-namespace opendnp3
+////namespace opendnp3
+////{
+
+////EventScanTask::EventScanTask(const std::shared_ptr<TaskContext>& context,
+////                             IMasterApplication& application,
+////                             std::shared_ptr<ISOEHandler> soeHandler,
+////                             ClassField classes,
+////                             const Logger& logger)
+////    : PollTaskBase(
+////          context, application, std::move(soeHandler), TaskBehavior::ReactsToIINOnly(), logger, TaskConfig::Default()),
+////      classes(classes.OnlyEventClasses())
+void EventScanTask_in_EventScanTask(EventScanTask *pEventScanTask,
+//                       const std::shared_ptr<TaskContext>& context,
+                                    IMasterApplication* app,
+                                    ISOEHandler* soeHandler,
+                                    ClassField   classes)
 {
+  TaskBehavior tmp = ReactsToIINOnly_in_TaskBehavior_static();
+  PollTaskBase_in_PollTaskBase(&(pEventScanTask->pPollTaskBase),
+//                 TaskContext* context,
+                               app,
+                               soeHandler,
+//                 const Logger& logger,
+                               &tmp, 
+                               Default_in_TaskConfig_static());
+//ClassField OnlyEventClasses_in_ClassField(ClassField *pClassField)
+  pEventScanTask->classes = OnlyEventClasses_in_ClassField(&classes);
 
-EventScanTask::EventScanTask(const std::shared_ptr<TaskContext>& context,
-                             IMasterApplication& application,
-                             std::shared_ptr<ISOEHandler> soeHandler,
-                             ClassField classes,
-                             const Logger& logger)
-    : PollTaskBase(
-          context, application, std::move(soeHandler), TaskBehavior::ReactsToIINOnly(), logger, TaskConfig::Default()),
-      classes(classes.OnlyEventClasses())
-{
+  pEventScanTask->pPollTaskBase.iIMasterTask.pIsRecurring_in_IMasterTask = IsRecurring_in_EventScanTask_override;
+  pEventScanTask->pPollTaskBase.iIMasterTask.pBuildRequest_in_IMasterTask = BuildRequest_in_EventScanTask_override;
+  pEventScanTask->pPollTaskBase.iIMasterTask.pPriority_in_IMasterTask = Priority_in_EventScanTask_override;
+  pEventScanTask->pPollTaskBase.iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_EventScanTask_override;
+
+  setParentPointer_in_IMasterTask(&(pEventScanTask->pPollTaskBase.iIMasterTask), pEventScanTask);
 }
 
-bool EventScanTask::BuildRequest(APDURequest& request, uint8_t seq)
+boolean BuildRequest_in_EventScanTask(EventScanTask *pEventScanTask, APDURequest* request, uint8_t seq)
 {
-    build::ClassRequest(request, FunctionCode::READ, classes, seq);
-    return true;
+//void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint8_t fc, ClassField* classes, uint8_t seq);
+////    build::ClassRequest(request, FunctionCode::READ, classes, seq);
+  ClassRequest_in_APDUBuilders_static(request, FunctionCode_READ, &(pEventScanTask->classes), seq);
+  return true;
 }
 
-bool EventScanTask::IsEnabled() const
+boolean IsEnabled_in_EventScanTask(EventScanTask *pEventScanTask)
 {
-    return classes.HasEventClass();
+////    return classes.HasEventClass();
+  return HasEventClass_in_ClassField(&(pEventScanTask->classes));
 }
 
-} // namespace opendnp3
+////} // namespace opendnp3
+boolean BlocksLowerPriority_in_EventScanTask(EventScanTask *pEventScanTask)
+{
+  UNUSED(pEventScanTask);
+  return true;
+}
+
+int Priority_in_EventScanTask(EventScanTask *pEventScanTask)
+{
+  UNUSED(pEventScanTask);
+  return priority_EVENT_SCAN;
+}
+
+boolean IsRecurring_in_EventScanTask(EventScanTask *pEventScanTask)
+{
+  UNUSED(pEventScanTask);
+  return true;
+}
+
+MasterTaskType_uint8_t GetTaskType_in_EventScanTask(EventScanTask *pEventScanTask)
+{
+  UNUSED(pEventScanTask);
+  return MasterTaskType_AUTO_EVENT_SCAN;
+}
+
+boolean IsRecurring_in_EventScanTask_override(void *pIMasterTask)
+{
+  EventScanTask *parent = (EventScanTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return IsRecurring_in_EventScanTask(parent);
+}
+
+boolean BuildRequest_in_EventScanTask_override(void *pIMasterTask, APDURequest* request, uint8_t seq)
+{
+  EventScanTask *parent = (EventScanTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return BuildRequest_in_EventScanTask(parent, request, seq);
+}
+
+int Priority_in_EventScanTask_override(void *pIMasterTask)
+{
+  EventScanTask *parent = (EventScanTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Priority_in_EventScanTask(parent);
+}
+
+MasterTaskType_uint8_t GetTaskType_in_EventScanTask_override(void *pIMasterTask)
+{
+  EventScanTask *parent = (EventScanTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return GetTaskType_in_EventScanTask(parent);
+}
+
+boolean BlocksLowerPriority_in_EventScanTask_override(void *pIMasterTask)
+{
+  EventScanTask *parent = (EventScanTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return BlocksLowerPriority_in_EventScanTask(parent);
+}

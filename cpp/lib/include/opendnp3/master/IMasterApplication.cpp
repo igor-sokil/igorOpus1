@@ -12,7 +12,7 @@ void IMasterApplication_in_IMasterApplication(IMasterApplication *pIMasterApplic
   pIMasterApplication->pConfigureAssignClassRequest_in_IMasterApplication = ConfigureAssignClassRequest_in_IMasterApplication_override;
 }
 
-void OnTaskStart_in_IMasterApplication(IMasterApplication *pIMasterApplication, MasterTaskType_uint8_t type, TaskId* id)
+void OnTaskStart_in_IMasterApplication(IMasterApplication *pIMasterApplication, MasterTaskType_uint8_t type, TaskId id)
 {
   (pIMasterApplication->pOnTaskStart_in_IMasterApplication)(pIMasterApplication, type, id);
 }
@@ -46,7 +46,7 @@ void OnReceiveIIN_in_IMasterApplication_override(void *pIMasterApplication, IINF
   UNUSED(pIMasterApplication);
   UNUSED(iin);
 }
-void OnTaskStart_in_IMasterApplication_override(void *pIMasterApplication, MasterTaskType_uint8_t type, TaskId* id)
+void OnTaskStart_in_IMasterApplication_override(void *pIMasterApplication, MasterTaskType_uint8_t type, TaskId id)
 {
   UNUSED(pIMasterApplication);
   UNUSED(type);

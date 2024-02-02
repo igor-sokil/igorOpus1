@@ -34,9 +34,9 @@
 * Задача автоматического сканирования событий, которая происходит, когда мастер видит биты события IN.
  */
 ////class EventScanTask final : public PollTaskBase
-typedef struct 
+typedef struct
 {
-   PollTaskBase pPollTaskBase;
+  PollTaskBase pPollTaskBase;
 
 ////public:
 ////    EventScanTask(const std::shared_ptr<TaskContext>& context,
@@ -63,7 +63,7 @@ typedef struct
 ////    }
 
 ////private:
-    ClassField classes;
+  ClassField classes;
 
 ////    virtual MasterTaskType GetTaskType() const override
 ////    {
@@ -73,12 +73,28 @@ typedef struct
 ////    virtual bool IsEnabled() const override;
 } EventScanTask;
 
-  void EventScanTask_in_EventScanTask(EventScanTask *pEventScanTask,
+void EventScanTask_in_EventScanTask(EventScanTask *pEventScanTask,
 //                       const std::shared_ptr<TaskContext>& context,
-                    IMasterApplication* application,
-                    ISOEHandler* soeHandler,
-                    ClassField classes);
+                                    IMasterApplication* application,
+                                    ISOEHandler* soeHandler,
+                                    ClassField classes);
+
+boolean IsRecurring_in_EventScanTask(EventScanTask *pEventScanTask);
+boolean IsRecurring_in_EventScanTask_override(void *pIMasterTask);
+
+boolean BuildRequest_in_EventScanTask(EventScanTask *pEventScanTask, APDURequest* request, uint8_t seq);
+boolean BuildRequest_in_EventScanTask_override(void *pIMasterTask, APDURequest* request, uint8_t seq);
+
+int Priority_in_EventScanTask(EventScanTask *pEventScanTask);
+int Priority_in_EventScanTask_override(void *pIMasterTask);
+
+MasterTaskType_uint8_t GetTaskType_in_EventScanTask(EventScanTask *pEventScanTask);
+MasterTaskType_uint8_t GetTaskType_in_EventScanTask_override(void *pIMasterTask);
+
+boolean BlocksLowerPriority_in_EventScanTask(EventScanTask *pEventScanTask);
+boolean BlocksLowerPriority_in_EventScanTask_override(void *pIMasterTask);
 
 ////} // namespace opendnp3
+
 
 #endif

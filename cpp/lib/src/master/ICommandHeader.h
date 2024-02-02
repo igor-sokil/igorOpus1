@@ -80,7 +80,7 @@ typedef struct
   void (*pApplyOperateResponse_Indexed_for_ControlRelayOutputBlock_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_ControlRelayOutputBlock* commands);
 ////    {
 ////    }
-  void (*pApplyOperateResponse_Indexed_for_for_AnalogOutputInt16_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands);// {}
+  void (*pApplyOperateResponse_Indexed_for_AnalogOutputInt16_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands);// {}
   void (*pApplyOperateResponse_Indexed_for_AnalogOutputInt32_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt32* commands);// {}
   void (*pApplyOperateResponse_Indexed_for_AnalogOutputFloat32_in_ICommandHeader)(void *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputFloat32* commands);// {}
 ////    virtual void ApplyOperateResponse(QualifierCode code, const ICollection<Indexed<AnalogOutputDouble64>>& commands) {}
@@ -102,7 +102,7 @@ void ApplySelectResponse_Indexed_for_AnalogOutputFloat32_in_ICommandHeader(IComm
 void ApplyOperateResponse_Indexed_for_ControlRelayOutputBlock_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_ControlRelayOutputBlock* commands);
 ////    {
 ////    }
-void ApplyOperateResponse_Indexed_for_for_AnalogOutputInt16_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands);
+void ApplyOperateResponse_Indexed_for_AnalogOutputInt16_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt16* commands);
 void ApplyOperateResponse_Indexed_for_AnalogOutputInt32_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputInt32* commands);
 void ApplyOperateResponse_Indexed_for_AnalogOutputFloat32_in_ICommandHeader(ICommandHeader *, QualifierCode_uint8_t code, ICollection_Indexed_for_AnalogOutputFloat32* commands);
 

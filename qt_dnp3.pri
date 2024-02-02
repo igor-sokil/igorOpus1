@@ -141,15 +141,27 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\master\AssignClassTask.cpp \
                 cpp\lib\src\master\CommandSet.cpp \
                 cpp\lib\src\master\CommandSetOps.cpp \
+                cpp\lib\src\master\CommandTaskResult.cpp \
+                cpp\lib\src\master\CommandTask.cpp \
                 cpp\lib\src\master\ClearRestartTask.cpp \
+                cpp\lib\src\master\DefaultMasterApplication.cpp \
+                cpp\lib\src\master\DisableUnsolicitedTask.cpp \
+                cpp\lib\src\master\EnableUnsolicitedTask.cpp \
+                cpp\lib\src\master\EventScanTask.cpp \
+                cpp\lib\src\master\EmptyResponseTask.cpp \
                 cpp\lib\src\master\HeaderTypes.cpp \
                 cpp\lib\src\master\ICommandHeader.cpp \
+                cpp\lib\src\master\ICommandTaskResult.cpp \
                 cpp\lib\src\master\IMasterTask.cpp \
                 cpp\lib\src\master\IMasterTaskRunner.cpp \
                 cpp\lib\src\master\IMasterScheduler.cpp \
                 cpp\lib\src\master\LANTimeSyncTask.cpp \
+                cpp\lib\src\master\MasterContext.cpp \
+                cpp\lib\src\master\MasterTasks.cpp \
+                cpp\lib\src\master\MasterSchedulerBackend.cpp \
                 cpp\lib\src\master\MeasurementHandler.cpp \
                 cpp\lib\src\master\PollTaskBase.cpp \
+                cpp\lib\src\master\RestartOperationTask.cpp \
                 cpp\lib\src\master\StartupIntegrityPoll.cpp \
                 cpp\lib\src\master\SerialTimeSyncTask.cpp \
                 cpp\lib\src\master\TypedCommandHeader.cpp \
@@ -281,6 +293,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\OutstationChannelStates.cpp \
                 cpp\lib\src\outstation\OutstationContext.cpp \
                 cpp\lib\src\outstation\OutstationStates.cpp \
+                cpp\lib\src\outstation\OutstationSeqNum.cpp \
                 cpp\lib\src\outstation\ParsedRequest.cpp \
                 cpp\lib\src\outstation\ReadHandler.cpp \
                 cpp\lib\src\outstation\ResponseContext.cpp \
@@ -406,6 +419,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\LinkHex.cpp \
                 cpp\tests\unit\utils\LinkParserTest.cpp \
                 cpp\tests\unit\utils\LinkLayerTest.cpp \
+                cpp\tests\unit\utils\MasterTestFixture.cpp \
                 cpp\tests\unit\utils\MockTransportSegment.cpp \
                 cpp\tests\unit\utils\OutstationTestObject.cpp \
                 cpp\tests\unit\utils\ProtocolUtil.cpp \
@@ -418,13 +432,14 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\TestTypedCommandHeader.cpp \
                 cpp\tests\unit\utils\TransportTestObject.cpp \
                 \
-                cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockAPDUHeaderHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockEventWriteHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockLinkListener.cpp \
-                cpp\tests\dnp3mocks\include\dnp3mocks\MockAPDUHeaderHandler.cpp \
-                cpp\tests\dnp3mocks\include\dnp3mocks\MockSOEHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockLinkLayer.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockMasterApplication.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockOutstationApplication.cpp \
+                cpp\tests\dnp3mocks\include\dnp3mocks\MockSOEHandler.cpp \
                 \
                 cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockUpperLayer.cpp \

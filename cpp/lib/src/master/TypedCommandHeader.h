@@ -39,6 +39,19 @@
 ////{
 
 //------------------------AnalogOutputInt16----------------------------
+////    struct Record : public CommandState
+typedef struct
+{
+  CommandState cCommandState;
+//void CommandState_in_CommandState(CommandState *pCommandState, uint16_t index_);
+////        Record(const Indexed<T>& pair) : CommandState(pair.index), command(pair.value) {}
+
+  AnalogOutputInt16 command;
+} Record_in_TypedCommandHeader_for_AnalogOutputInt16;
+
+void Record_in_TypedCommandHeader_for_AnalogOutputInt16_in_Record_in_TypedCommandHeader_for_AnalogOutputInt16(Record_in_TypedCommandHeader_for_AnalogOutputInt16 *pRecord_in_TypedCommandHeader_for_AnalogOutputInt16,
+    Indexed_for_AnalogOutputInt16* pair);
+
 ////template<class T> class TypedCommandHeader final : public ICommandHeader, public ICommandCollection<T>
 typedef struct
 {
@@ -83,8 +96,8 @@ typedef struct
 
   boolean use_single_byte_index;/// = true;
   DNP3Serializer_for_AnalogOutputInt16 serializer;
-//  std::vector<Record_in_TypedCommandHeader_for_AnalogOutputInt16> records;
-  std::vector<Indexed_for_AnalogOutputInt16> records;
+  std::vector<Record_in_TypedCommandHeader_for_AnalogOutputInt16> records;
+//  std::vector<Indexed_for_AnalogOutputInt16> records;
 } TypedCommandHeader_for_AnalogOutputInt16;
 
 void TypedCommandHeader_for_AnalogOutputInt16_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16,
@@ -96,11 +109,28 @@ void* Add_in_TypedCommandHeader_for_AnalogOutputInt16_override(void* pICommandCo
     AnalogOutputInt16* command, uint16_t index);
 
 boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16* pTypedCommandHeader_for_AnalogOutputInt16,
-              HeaderWriter*, IndexQualifierMode_uint8_t mode);
+    HeaderWriter*, IndexQualifierMode_uint8_t mode);
 boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16_override(void* pICommandHeader,
-              HeaderWriter*, IndexQualifierMode_uint8_t mode);
+    HeaderWriter*, IndexQualifierMode_uint8_t mode);
+
+uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16);
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16, IVisitor__for__CommandState* visitor);
+uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState);
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState, IVisitor__for__CommandState* visitor);
 //------------------------AnalogOutputInt16----------------------------
 //------------------------AnalogOutputInt32----------------------------
+////    struct Record : public CommandState
+typedef struct
+{
+  CommandState cCommandState;
+//void CommandState_in_CommandState(CommandState *pCommandState, uint16_t index_);
+////        Record(const Indexed<T>& pair) : CommandState(pair.index), command(pair.value) {}
+
+  AnalogOutputInt32 command;
+} Record_in_TypedCommandHeader_for_AnalogOutputInt32;
+
+void Record_in_TypedCommandHeader_for_AnalogOutputInt32_in_Record_in_TypedCommandHeader_for_AnalogOutputInt32(Record_in_TypedCommandHeader_for_AnalogOutputInt32 *pRecord_in_TypedCommandHeader_for_AnalogOutputInt32,
+    Indexed_for_AnalogOutputInt32* pair);
 ////template<class T> class TypedCommandHeader final : public ICommandHeader, public ICommandCollection<T>
 typedef struct
 {
@@ -145,8 +175,8 @@ typedef struct
 
   boolean use_single_byte_index;/// = true;
   DNP3Serializer_for_AnalogOutputInt32 serializer;
-//  std::vector<Record_in_TypedCommandHeader_for_AnalogOutputInt32> records;
-  std::vector<Indexed_for_AnalogOutputInt32> records;
+  std::vector<Record_in_TypedCommandHeader_for_AnalogOutputInt32> records;
+//  std::vector<Indexed_for_AnalogOutputInt32> records;
 } TypedCommandHeader_for_AnalogOutputInt32;
 
 void TypedCommandHeader_for_AnalogOutputInt32_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32,
@@ -158,9 +188,14 @@ void* Add_in_TypedCommandHeader_for_AnalogOutputInt32_override(void* pICommandCo
     AnalogOutputInt32* command, uint16_t index);
 
 boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32* pTypedCommandHeader_for_AnalogOutputInt32,
-              HeaderWriter*, IndexQualifierMode_uint8_t mode);
+    HeaderWriter*, IndexQualifierMode_uint8_t mode);
 boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32_override(void* pICommandHeader,
-              HeaderWriter*, IndexQualifierMode_uint8_t mode);
+    HeaderWriter*, IndexQualifierMode_uint8_t mode);
+
+uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32);
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32, IVisitor__for__CommandState* visitor);
+uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState);
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState, IVisitor__for__CommandState* visitor);
 //------------------------AnalogOutputInt32----------------------------
 
 ////template<class T> bool TypedCommandHeader<T>::AreAllSelected() const
@@ -252,18 +287,7 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32_override(void* pIComma
 ////    commands.ForeachItem(visit);
 ////}
 ////
-////template<class T> size_t TypedCommandHeader<T>::Count() const
-////{
-////    return this->records.size();
-////}
-////
-////template<class T> void TypedCommandHeader<T>::Foreach(IVisitor<CommandState>& visitor) const
-////{
-////    for (auto& rec : this->records)
-////    {
-////        visitor.OnValue(rec);
-////    }
-////}
+
 
 ////} // namespace opendnp3
 

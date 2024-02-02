@@ -87,7 +87,7 @@ void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint
   WriteClassHeaders_in_APDUBuilders_static(&writer, classes);
 }
 
-bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes)
+boolean WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes)
 {
 #ifdef  LOG_INFO
   std::cout<<'\n';
@@ -104,7 +104,7 @@ bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* 
     if(!WriteHeader_in_HeaderWriter(writer, ID_in_Group60Var2_static(), QualifierCode_ALL_OBJECTS))
     {
 #ifdef  LOG_INFO
-  decrement_stack_info();
+      decrement_stack_info();
 #endif
       return false;
     }
@@ -116,7 +116,7 @@ bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* 
     if(!WriteHeader_in_HeaderWriter(writer, ID_in_Group60Var3_static(), QualifierCode_ALL_OBJECTS))
     {
 #ifdef  LOG_INFO
-  decrement_stack_info();
+      decrement_stack_info();
 #endif
       return false;
     }
@@ -128,7 +128,7 @@ bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* 
     if(!WriteHeader_in_HeaderWriter(writer, ID_in_Group60Var4_static(), QualifierCode_ALL_OBJECTS))
     {
 #ifdef  LOG_INFO
-  decrement_stack_info();
+      decrement_stack_info();
 #endif
       return false;
     }
@@ -140,7 +140,7 @@ bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* 
     if(!WriteHeader_in_HeaderWriter(writer, ID_in_Group60Var1_static(), QualifierCode_ALL_OBJECTS))
     {
 #ifdef  LOG_INFO
-  decrement_stack_info();
+      decrement_stack_info();
 #endif
       return false;
     }
