@@ -74,6 +74,7 @@ void UserPollTask_in_UserPollTask(UserPollTask *pUserPollTask,
   pUserPollTask->pPollTaskBase.iIMasterTask.pIsRecurring_in_IMasterTask =  IsRecurring_in_UserPollTask_override;
   pUserPollTask->pPollTaskBase.iIMasterTask.pIsEnabled_in_IMasterTask = IsEnabled_in_UserPollTask_override;
   pUserPollTask->pPollTaskBase.iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_UserPollTask_override;
+  pUserPollTask->pPollTaskBase.iIMasterTask.pName_in_IMasterTask = Name_in_UserPollTask_override;
 
   setParentPointer_in_IMasterTask(&(pUserPollTask->pPollTaskBase.iIMasterTask), pUserPollTask);
 }
@@ -81,6 +82,12 @@ void UserPollTask_in_UserPollTask(UserPollTask *pUserPollTask,
 ////bool UserPollTask::BuildRequest(APDURequest& request, uint8_t seq)
 boolean BuildRequest_in_UserPollTask(UserPollTask *pUserPollTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_UserPollTask1"<<'\n';
+#endif
   pUserPollTask->pPollTaskBase.rxCount = 0;
 
 //void SetFunction_in_APDUWrapper(APDUWrapper *pAPDUWrapper, FunctionCode_uint8_t code);
@@ -98,7 +105,13 @@ boolean BuildRequest_in_UserPollTask(UserPollTask *pUserPollTask, APDURequest* r
 
 //typedef boolean (*HeaderBuilderT)(HeaderWriter*);
 ////    return builder(writer);
-  return pUserPollTask->builder(&writer);
+  boolean tmp = pUserPollTask->builder(&writer);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_UserPollTask_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 boolean BuildRequest_in_UserPollTask_override(void *pIMasterTask, APDURequest* request, uint8_t seq)
 {
@@ -162,4 +175,14 @@ MasterTaskType_uint8_t GetTaskType_in_UserPollTask_override(void *pIMasterTask)
   return GetTaskType_in_UserPollTask(parent);
 }
 
+char * Name_in_UserPollTask(UserPollTask *pUserPollTask)
+{
+   UNUSED(pUserPollTask);
+   return "UserPollTask";
+}
+char * Name_in_UserPollTask_override(void *pIMasterTask)
+{
+  UserPollTask *parent = (UserPollTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_UserPollTask(parent);
+}
 

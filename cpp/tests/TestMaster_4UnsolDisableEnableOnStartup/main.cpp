@@ -25,17 +25,19 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-qDebug()<<"********SUITE('1notifies application of state changes')********";
+qDebug()<<"********SUITE('3SolicitedResponseWithData')********";
 ////    MasterParams params;
-////    params.disableUnsolOnStartup = false;
 ////    MasterTestFixture t(params);
 ////    t.context->OnLowerLayerUp();
 ////    REQUIRE(t.exe->run_many() > 0);
-////    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(0));
+    // disable unsol on grp 60 var2, var3, var4
+////    REQUIRE(t.lower->PopWriteAsHex()
+////            == hex::ClassTask(FunctionCode::DISABLE_UNSOLICITED, 0, ClassField::AllEventClasses()));
 
     MasterParams params;
     MasterParams_in_MasterParams(&params);
-    params.disableUnsolOnStartup = false;
+//    params.disableUnsolOnStartup = false;
+//    params.unsolClassMask = None_in_ClassField_static();
 
 ////    MasterTestFixture t(params);
     MasterTestFixture t;
@@ -54,63 +56,85 @@ qDebug()<<"********SUITE('1notifies application of state changes')********";
 ////   t.context->OnLowerLayerUp();
  OnLowerLayerUp_in_MContext(t.context);
 
-////    REQUIRE(t.exe->run_many() > 0);
-////    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(0));
-    ClassField  ctmp = AllClasses_in_ClassField_static();
-std::string stmp = IntegrityPoll_in_APDUHexBuilders(0, &ctmp);// = opendnp3::ClassField::AllClasses());
+ MasterSchedulerBackend* pMasterSchedulerBackend = (MasterSchedulerBackend*)getMasterScheduler_in_MasterTestFixture();
+ setNumTask_in_MasterSchedulerBackend(pMasterSchedulerBackend, 5);
+  CheckForTaskRun_in_MasterSchedulerBackend(pMasterSchedulerBackend);
+
+//ClassField  AllEventClasses_in_ClassField_static(void);
+//std::string ClassTask_in_APDUHexBuilders(FunctionCode_uint8_t fc, uint8_t seq, ClassField* field)
+////    REQUIRE(t.lower->PopWriteAsHex()
+////            == hex::ClassTask(FunctionCode::DISABLE_UNSOLICITED, 0, ClassField::AllEventClasses()));
+ClassField ctmp = AllEventClasses_in_ClassField_static();
+inspect_ClassField(&ctmp);
+
+std::string stmp = ClassTask_in_APDUHexBuilders(FunctionCode_DISABLE_UNSOLICITED, 0, &ctmp);
 std::cout << "stmp= " << stmp<<'\n';
 
-////    REQUIRE(t.exe->run_many() > 0);
-////    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(0));
 std::string  popstr = PopWriteAsHex_in_MockLowerLayer(&t.lower);
 std::cout << "popstr= " << popstr<<'\n';
 
+////    t.context->OnTxReady();
+////    t.SendToMaster(hex::EmptyResponse(0));
+////    t.exe->run_many();
+////    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(1));
+
+//boolean OnTxReady_in_MContext(MContext *pMContext);
+////    t.context->OnTxReady();
+ OnTxReady_in_MContext(t.context);
+
+////    t.SendToMaster(hex::EmptyResponse(0));
+  IINField iIINField2 = Empty_in_IINField_static();
+std::string emptyStr = EmptyResponse_in_APDUHexBuilders(0, &iIINField2);// = opendnp3::IINField::Empty());
+
+std::cout << "----SendToMaster_in_MasterTestFixture" <<'\n';
+ SendToMaster_in_MasterTestFixture(&t, emptyStr);
+std::cout << "emptyStr= " << emptyStr<<'\n';
+
+////    t.exe->run_many();
+ setNumTask_in_MasterSchedulerBackend(pMasterSchedulerBackend, 2);
+ t.context->activeTask = NULL;
+ CheckForTaskRun_in_MasterSchedulerBackend(pMasterSchedulerBackend);
+
+     ctmp = AllClasses_in_ClassField_static();
+    inspect_ClassField(&ctmp);
+ stmp = IntegrityPoll_in_APDUHexBuilders(1, &ctmp);// = opendnp3::ClassField::AllClasses());
+std::cout << "stmp= " << stmp<<'\n';
+
+////    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(1));
+  popstr = PopWriteAsHex_in_MockLowerLayer(&t.lower);
+std::cout << "popstr= " << popstr<<'\n';
+
 /*
-////    REQUIRE(t.application->stateChanges.size() == 1);
-   btemp = t.application.stateChanges.size();
-  qDebug()<<"-----REQUIRE(t.application->stateChanges.size() == 1)";
-  std::cout<<"boolean btemp= "<<btemp<<std::endl;
-
-////    REQUIRE(t.application->stateChanges.front() == MockMasterApplication::State::OPEN);
-  uint8_t dtemp = t.application.stateChanges.front();
-  qDebug()<<"-----REQUIRE(t.application->stateChanges.front() == MockMasterApplication::State::OPEN))";
-  std::cout<<"State_in_MockMasterApplication_OPEN= "<<State_in_MockMasterApplication_OPEN<<std::endl;
-  std::cout<<"uint8_t dtemp= "<<(uint16_t)dtemp<<std::endl;
-
-////    t.application->stateChanges.pop_front();
-////    t.context->OnLowerLayerDown();
-////    REQUIRE(t.application->stateChanges.size() == 1);
-////    REQUIRE(t.application->stateChanges.front() == MockMasterApplication::State::CLOSED);
-////    t.application->stateChanges.pop_front();
-
-////    t.application->stateChanges.pop_front();
-   t.application.stateChanges.pop_front();
-
-////   t.context->OnLowerLayerDown();
- OnLowerLayerDown_in_MContext(t.context);
-
-////    REQUIRE(t.application->stateChanges.size() == 1);
-   btemp = t.application.stateChanges.size();
-  qDebug()<<"-----REQUIRE(t.application->stateChanges.size() == 1)";
-  std::cout<<"boolean btemp= "<<btemp<<std::endl;
-
-////    REQUIRE(t.application->stateChanges.front() == MockMasterApplication::State::CLOSED);
-  dtemp = t.application.stateChanges.front();
-  qDebug()<<"-----REQUIRE(t.application->stateChanges.front() == MockMasterApplication::State::CLOSED))";
-  std::cout<<"State_in_MockMasterApplication_CLOSED= "<<State_in_MockMasterApplication_CLOSED<<std::endl;
-  std::cout<<"uint8_t dtemp= "<<(uint16_t)dtemp<<std::endl;
-*/
-/*
-TEST_CASE(SUITE("2IntegrityOnStartup"))
+TEST_CASE(SUITE("4UnsolDisableEnableOnStartup"))
 {
     MasterParams params;
-    params.disableUnsolOnStartup = false;
     MasterTestFixture t(params);
     t.context->OnLowerLayerUp();
 
     REQUIRE(t.exe->run_many() > 0);
 
-    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(0));
+    // disable unsol on grp 60 var2, var3, var4
+    REQUIRE(t.lower->PopWriteAsHex()
+            == hex::ClassTask(FunctionCode::DISABLE_UNSOLICITED, 0, ClassField::AllEventClasses()));
+    t.context->OnTxReady();
+    t.SendToMaster(hex::EmptyResponse(0));
+
+    t.exe->run_many();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(1));
+    t.context->OnTxReady();
+    t.SendToMaster(hex::EmptyResponse(1));
+
+    t.exe->run_many();
+
+    REQUIRE(t.lower->PopWriteAsHex()
+            == hex::ClassTask(FunctionCode::ENABLE_UNSOLICITED, 2, ClassField::AllEventClasses()));
+    t.context->OnTxReady();
+    t.SendToMaster(hex::EmptyResponse(2));
+
+    t.exe->run_many();
+
+    REQUIRE(t.exe->num_pending_timers() == 1);
 }
 */
 

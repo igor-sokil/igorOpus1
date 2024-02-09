@@ -55,6 +55,7 @@ void ClearRestartTask_in_ClearRestartTask(ClearRestartTask *pClearRestartTask,
   pClearRestartTask->iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_ClearRestartTask_override;
   pClearRestartTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_ClearRestartTask_override;
   pClearRestartTask->iIMasterTask.pIsEnabled_in_IMasterTask = IsEnabled_in_ClearRestartTask_override;
+  pClearRestartTask->iIMasterTask.pName_in_IMasterTask = Name_in_ClearRestartTask_override;
 
   setParentPointer_in_IMasterTask(&(pClearRestartTask->iIMasterTask), pClearRestartTask);
 }
@@ -62,10 +63,22 @@ void ClearRestartTask_in_ClearRestartTask(ClearRestartTask *pClearRestartTask,
 ////bool ClearRestartTask::BuildRequest(APDURequest& request, uint8_t seq)
 boolean BuildRequest_in_ClearRestartTask(ClearRestartTask *pClearRestartTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_ClearRestartTask1"<<'\n';
+#endif
  UNUSED(pClearRestartTask);
 //void ClearRestartIIN_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
 ////    build::ClearRestartIIN(request, seq);
   ClearRestartIIN_in_APDUBuilders_static(request, seq);// = 0);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_ClearRestartTask_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -172,6 +185,16 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_ClearRestartTask_overri
 {
   ClearRestartTask *parent = (ClearRestartTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
   return ProcessResponse_in_ClearRestartTask_override(parent, header, objects);
+}
+
+char * Name_in_ClearRestartTask(ClearRestartTask *pClearRestartTask)
+{
+   return "ClearRestartTask";
+}
+char * Name_in_ClearRestartTask_override(void *pIMasterTask)
+{
+  ClearRestartTask *parent = (ClearRestartTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_ClearRestartTask(parent);
 }
 
 

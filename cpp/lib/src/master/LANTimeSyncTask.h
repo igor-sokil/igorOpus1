@@ -159,4 +159,7 @@ ResponseResult_in_IMasterTask_uint8_t OnResponseWriteTime_in_LANTimeSyncTask(LAN
 void Initialize_in_LANTimeSyncTask(LANTimeSyncTask *pLANTimeSyncTask);
 void Initialize_in_LANTimeSyncTask_override(void *pIMasterTask);
 
+char * Name_in_LANTimeSyncTask(LANTimeSyncTask *pLANTimeSyncTask);
+char * Name_in_LANTimeSyncTask_override(void *pLANTimeSyncTask);
+
 #endif

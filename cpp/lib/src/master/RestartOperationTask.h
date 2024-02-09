@@ -130,6 +130,9 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_RestartOperationTask_ov
 void OnTaskComplete_in_RestartOperationTask(RestartOperationTask *pRestartOperationTask, TaskCompletion_uint8_t result, Timestamp now);
 void OnTaskComplete_in_RestartOperationTask_override(void *pIMasterTask, TaskCompletion_uint8_t result, Timestamp now);
 
+char * Name_in_RestartOperationTask(RestartOperationTask *pRestartOperationTask);
+char * Name_in_RestartOperationTask_override(void *pRestartOperationTask);
+
 ////} // namespace opendnp3
 
 #endif

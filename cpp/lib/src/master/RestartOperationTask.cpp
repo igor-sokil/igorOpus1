@@ -18,6 +18,10 @@
  * limitations under the License.
  */
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "RestartOperationTask.h"
 
@@ -65,6 +69,7 @@ void RestartOperationTask_in_RestartOperationTask(RestartOperationTask *pRestart
   pRestartOperationTask->iIMasterTask.pBlocksLowerPriority_in_IMasterTask = BlocksLowerPriority_in_RestartOperationTask_override;
   pRestartOperationTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_RestartOperationTask_override;
   pRestartOperationTask->iIMasterTask.pOnTaskComplete_in_IMasterTask = OnTaskComplete_in_RestartOperationTask_override;
+  pRestartOperationTask->iIMasterTask.pName_in_IMasterTask = Name_in_RestartOperationTask_override;
 
   pRestartOperationTask->iIAPDUHandler.iIWhiteList.pIsAllowed_in_IWhiteList = IsAllowed_in_RestartOperationTask_override;//(void *pIWhiteList;
   pRestartOperationTask->iIAPDUHandler.pProcessHeader_CountHeader_for_Group52Var1_in_IAPDUHandler = ProcessHeader_for_Group52Var1_in_RestartOperationTask_override;//(void *pIAPDUHandler;
@@ -80,6 +85,12 @@ void RestartOperationTask_in_RestartOperationTask(RestartOperationTask *pRestart
 
 boolean BuildRequest_in_RestartOperationTask(RestartOperationTask *pRestartOperationTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_RestartOperationTask1"<<'\n';
+#endif
 ////    request.SetControl(AppControlField(true, true, false, false, seq));
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, false, false, seq);
@@ -87,6 +98,12 @@ boolean BuildRequest_in_RestartOperationTask(RestartOperationTask *pRestartOpera
 
 ////    request.SetFunction(this->function);
   SetFunction_in_APDUWrapper(&(request->aAPDUWrapper), pRestartOperationTask->function);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_RestartOperationTask_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -306,4 +323,14 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_RestartOperationTask_ov
 {
   RestartOperationTask *parent = (RestartOperationTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
   return ProcessResponse_in_RestartOperationTask_override(parent, header, objects);
+}
+
+char * Name_in_RestartOperationTask(RestartOperationTask *pRestartOperationTask)
+{
+   return "RestartOperationTask";
+}
+char * Name_in_RestartOperationTask_override(void *pIMasterTask)
+{
+  RestartOperationTask *parent = (RestartOperationTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_RestartOperationTask(parent);
 }

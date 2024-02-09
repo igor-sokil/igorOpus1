@@ -51,6 +51,8 @@ void MasterSchedulerBackend_in_MasterSchedulerBackend(MasterSchedulerBackend *pM
   pMasterSchedulerBackend->executor = executor;
   pMasterSchedulerBackend->isShutdown = false;
   pMasterSchedulerBackend->taskCheckPending = false;
+
+  pMasterSchedulerBackend->numTask = 0;
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}MasterSchedulerBackend_in_MasterSchedulerBackend_"<<'\n';
@@ -303,13 +305,28 @@ void callback_in_PostCheckForTaskRun(void)
 ////void MasterSchedulerBackend::PostCheckForTaskRun()
 void PostCheckForTaskRun_in_MasterSchedulerBackend(MasterSchedulerBackend *pMasterSchedulerBackend)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{PostCheckForTaskRun_in_MasterSchedulerBackend1"<<'\n';
+#endif
   pPointerGlobal1 = pMasterSchedulerBackend;
   if (!pMasterSchedulerBackend->taskCheckPending)//В ожидании
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*PostCheckForTaskRun_in_MasterSchedulerBackend2"<<'\n';
+#endif
     pMasterSchedulerBackend->taskCheckPending = true;
 ////        this->executor->post([this, self = shared_from_this()]() { this->CheckForTaskRun(); });
     Post_in_IExecutorExe4cpp(pMasterSchedulerBackend->executor, callback_in_PostCheckForTaskRun);
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}PostCheckForTaskRun_in_MasterSchedulerBackend_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void callback_in_CheckForTaskRun(void);
@@ -322,8 +339,21 @@ void callback_in_CheckForTaskRun(void)
 ////bool MasterSchedulerBackend::CheckForTaskRun()
 boolean CheckForTaskRun_in_MasterSchedulerBackend(MasterSchedulerBackend *pMasterSchedulerBackend)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{CheckForTaskRun_in_MasterSchedulerBackend1"<<'\n';
+#endif
   if (pMasterSchedulerBackend->isShutdown)
+{
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}CheckForTaskRun_in_MasterSchedulerBackend1_"<<'\n';
+  decrement_stack_info();
+#endif
     return false;
+}
 
   pMasterSchedulerBackend->taskCheckPending = false;
 
@@ -340,13 +370,34 @@ boolean CheckForTaskRun_in_MasterSchedulerBackend(MasterSchedulerBackend *pMaste
 
   // try to find a task that can run
   auto current = pMasterSchedulerBackend->tasks.begin();
-  auto best_task = current;
-  if (current == pMasterSchedulerBackend->tasks.end())
-    return false;
-  ++current;
 
+  ++current;
+  ++current;
+//  ++current;
+
+  auto best_task = current;
+
+  uint16_t numTask = getNumTask_in_MasterSchedulerBackend(pMasterSchedulerBackend);
+
+  Record_in_MasterSchedulerBackend best_rec = pMasterSchedulerBackend->tasks[numTask];
+
+  if (current == pMasterSchedulerBackend->tasks.end())
+{
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}CheckForTaskRun_in_MasterSchedulerBackend2_"<<'\n';
+  decrement_stack_info();
+#endif
+    return false;
+}
+  ++current;
+/*
   while (current != pMasterSchedulerBackend->tasks.end())
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*CheckForTaskRun_in_MasterSchedulerBackend2"<<'\n';
+#endif
 //   Comparison_in_MasterSchedulerBackend_uint8_t GetBestTaskToRun_in_MasterSchedulerBackend_static(Timestamp* now, Record_in_MasterSchedulerBackend* left, Record_in_MasterSchedulerBackend* right);
 ////        if (GetBestTaskToRun(now, *best_task, *current) == Comparison::RIGHT)
     Record_in_MasterSchedulerBackend crt = *current;
@@ -359,23 +410,44 @@ boolean CheckForTaskRun_in_MasterSchedulerBackend(MasterSchedulerBackend *pMaste
 
     ++current;
   }
-
+*/
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*CheckForTaskRun_in_MasterSchedulerBackend3"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pMasterSchedulerBackend->tasks.size()= "<<(uint16_t)pMasterSchedulerBackend->tasks.size()<<'\n';
+#endif
   // is the task runnable now?
 //Timestamp ExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask);
 ///    const auto is_expired = now >= best_task->task->ExpirationTime();
   Timestamp tmp = ExpirationTime_in_IMasterTask(best_task->task);
-  boolean is_expired = operatorGTEQ_in_Timestamp(&now, &tmp);
+  boolean is_expired = true;//operatorGTEQ_in_Timestamp(&now, &tmp);
   if (is_expired)
   {
-    pMasterSchedulerBackend->current = *best_task;
-    pMasterSchedulerBackend->tasks.erase(best_task);
+    pMasterSchedulerBackend->current = best_rec;////*best_task;
+////    pMasterSchedulerBackend->tasks.erase(best_task);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*CheckForTaskRun_in_MasterSchedulerBackend4"<<'\n';
+#endif
 
 //boolean Run_in_IMasterTaskRunner(IMasterTaskRunner *pIMasterTaskRunner, IMasterTask* task);
 ////        this->current.runner->Run(this->current.task);
     Run_in_IMasterTaskRunner(pMasterSchedulerBackend->current.runner, pMasterSchedulerBackend->current.task);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}CheckForTaskRun_in_MasterSchedulerBackend3_"<<'\n';
+  decrement_stack_info();
+#endif
     return true;
   }
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*CheckForTaskRun_in_MasterSchedulerBackend5"<<'\n';
+#endif
 
 ////    auto callback = [this, self = shared_from_this()]() { this->CheckForTaskRun(); };
 
@@ -391,6 +463,11 @@ boolean CheckForTaskRun_in_MasterSchedulerBackend(MasterSchedulerBackend *pMaste
   pMasterSchedulerBackend->taskTimer = Start_in_IExecutorExe4cpp(pMasterSchedulerBackend->executor,
                                        duration, callback_in_CheckForTaskRun);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}CheckForTaskRun_in_MasterSchedulerBackend4_"<<'\n';
+  decrement_stack_info();
+#endif
   return false;
 }
 
@@ -660,8 +737,19 @@ void   Record_in_MasterSchedulerBackend_in_Record_in_MasterSchedulerBackendOver1
 void   Record_in_MasterSchedulerBackend_in_Record_in_MasterSchedulerBackendOver2(Record_in_MasterSchedulerBackend *pRecord_in_MasterSchedulerBackend,
     IMasterTask* task, IMasterTaskRunner* runner)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Record_in_MasterSchedulerBackend_in_Record_in_MasterSchedulerBackendOver2_1"<<'\n';
+#endif
   pRecord_in_MasterSchedulerBackend->task = task;
   pRecord_in_MasterSchedulerBackend->runner = runner;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Record_in_MasterSchedulerBackend_in_Record_in_MasterSchedulerBackendOver2__"<<'\n';
+  decrement_stack_info();
+#endif
 }
 void Clear_in_Record_in_MasterSchedulerBackend(Record_in_MasterSchedulerBackend *pRecord_in_MasterSchedulerBackend)
 {
@@ -675,4 +763,14 @@ boolean BelongsTo_in_Record_in_MasterSchedulerBackend(Record_in_MasterSchedulerB
 ////            return this->runner == &runner;
   return pRecord_in_MasterSchedulerBackend->runner == runner;
 }
+
+uint16_t getNumTask_in_MasterSchedulerBackend(MasterSchedulerBackend *pMasterSchedulerBackend)
+{
+  return pMasterSchedulerBackend->numTask;
+}
+void setNumTask_in_MasterSchedulerBackend(MasterSchedulerBackend *pMasterSchedulerBackend, uint16_t num)
+{
+  pMasterSchedulerBackend->numTask = num;
+}
+
 

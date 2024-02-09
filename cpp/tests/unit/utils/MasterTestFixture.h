@@ -71,4 +71,6 @@ typedef struct
    boolean SendToMaster_in_MasterTestFixture(MasterTestFixture *pMasterTestFixture, std::string& hex);
 MasterParams NoStartupTasks_static(void);
 
+  void* getMasterScheduler_in_MasterTestFixture(void);
+
 #endif

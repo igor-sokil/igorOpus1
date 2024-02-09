@@ -163,6 +163,12 @@ void LoadDirectOperate_in_CommandTask(CommandTask *pCommandTask)
 ////bool CommandTask::BuildRequest(APDURequest& request, uint8_t seq)
 boolean BuildRequest_in_CommandTask(CommandTask *pCommandTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_CommandTask1"<<'\n';
+#endif
   if (!pCommandTask->functionCodes.empty())
   {
 ////        request.SetFunction(functionCodes.front());
@@ -177,9 +183,20 @@ boolean BuildRequest_in_CommandTask(CommandTask *pCommandTask, APDURequest* requ
     HeaderWriter writer = GetWriter_in_APDUWrapper(&(request->aAPDUWrapper));
 
 ////        return CommandSetOps::Write(commands, writer, this->mode);
-    return Write_in_CommandSetOps_static(&(pCommandTask->commands), &writer, pCommandTask->mode);
+    boolean tmp = Write_in_CommandSetOps_static(&(pCommandTask->commands), &writer, pCommandTask->mode);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_CommandTask1_"<<'\n';
+  decrement_stack_info();
+#endif
+    return tmp;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_CommandTask2_"<<'\n';
+  decrement_stack_info();
+#endif
   return false;
 }
 

@@ -64,10 +64,19 @@ void  MContext_in_MContext(MContext *pMContext,
                            IMasterScheduler* scheduler,
                            MasterParams* params)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{MContext_in_MContext1"<<'\n';
+#endif
   pMContext->pOnParsedHeader_in_MContext = OnParsedHeader_in_MContext_override;
   pMContext->pRecordLastRequest_in_MContext = RecordLastRequest_in_MContext_override;
-
   setParentPointer_in_MContext(pMContext, pMContext);
+
+  pMContext->iIMasterTaskRunner.pRun_in_IMasterTaskRunner = Run_in_MContext_override;
+  setParentPointer_in_IMasterTaskRunner(&(pMContext->iIMasterTaskRunner), pMContext);
+
 
 ////    : logger(logger),
   pMContext->executor = executor;
@@ -103,6 +112,11 @@ void  MContext_in_MContext(MContext *pMContext,
 
   pMContext->isOnline = false;
   pMContext->isSending = false;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}MContext_in_MContext_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////std::shared_ptr<MContext> MContext::Create(
@@ -347,12 +361,23 @@ boolean OnTxReady_in_MContext(MContext *pMContext)
 ////void MContext::OnResponseTimeout()
 void OnResponseTimeout_in_MContext(MContext *pMContext)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnResponseTimeout_in_MContext1"<<'\n';
+#endif
   if (pMContext->isOnline)
   {
 //    TaskState_in_MContext_uint8_t OnResponseTimeoutEvent_in_MContext(MContext *pMContext);
 ////        this->tstate = this->OnResponseTimeoutEvent();
     pMContext->tstate = OnResponseTimeoutEvent_in_MContext(pMContext);
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnResponseTimeout_in_MContext_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////void MContext::CompleteActiveTask()
@@ -465,15 +490,26 @@ void ProcessAPDU_in_MContext(MContext *pMContext, APDUResponseHeader* header, RS
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{ProcessAPDU_in_MContext1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*header->aAPDUHeader.function= "<<(uint16_t)header->aAPDUHeader.function<<'\n';
+  inspect_RSeq(objects);
 #endif
   switch (header->aAPDUHeader.function)
   {
   case (FunctionCode_UNSOLICITED_RESPONSE):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@FunctionCode_UNSOLICITED_RESPONSE"<<'\n';
+#endif
 //    void ProcessUnsolicitedResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 ////        this->ProcessUnsolicitedResponse(header, objects);
     ProcessUnsolicitedResponse_in_MContext(pMContext, header, objects);
     break;
   case (FunctionCode_RESPONSE):
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@FunctionCode_RESPONSE"<<'\n';
+#endif
 //    void ProcessResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 ////        this->ProcessResponse(header, objects);
     ProcessResponse_in_MContext(pMContext, header, objects);
@@ -497,10 +533,21 @@ void ProcessAPDU_in_MContext(MContext *pMContext, APDUResponseHeader* header, RS
 ////void MContext::ProcessIIN(const IINField& iin)
 void ProcessIIN_in_MContext(MContext *pMContext, IINField* iin)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessIIN_in_MContext1"<<'\n';
+  inspect_IINField(iin);
+#endif
 //boolean IsSet_in_IINField(IINField *, IINBit_uint8_t bit);
 ////    if (iin.IsSet(IINBit::DEVICE_RESTART) && !this->params.ignoreRestartIIN)
   if (IsSet_in_IINField(iin, IINBit_DEVICE_RESTART)  && !pMContext->params.ignoreRestartIIN)
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ProcessIIN_in_MContext2"<<'\n';
+#endif
 //void OnRestartDetected_in_MasterTasks(MasterTasks *pMasterTasks);
 ////        this->tasks.OnRestartDetected();
     OnRestartDetected_in_MasterTasks(&(pMContext->tasks));
@@ -512,6 +559,10 @@ void ProcessIIN_in_MContext(MContext *pMContext, IINField* iin)
 ////    if (iin.IsSet(IINBit::EVENT_BUFFER_OVERFLOW) && this->params.integrityOnEventOverflowIIN)
   if (IsSet_in_IINField(iin, IINBit_EVENT_BUFFER_OVERFLOW)  && pMContext->params.integrityOnEventOverflowIIN)
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ProcessIIN_in_MContext3"<<'\n';
+#endif
 //boolean DemandIntegrity_in_MasterTasks(MasterTasks *pMasterTasks);
 ////        if (this->tasks.DemandIntegrity())
 ////            this->scheduler->Evaluate();
@@ -522,6 +573,10 @@ void ProcessIIN_in_MContext(MContext *pMContext, IINField* iin)
 ////    if (iin.IsSet(IINBit::NEED_TIME))
   if (IsSet_in_IINField(iin, IINBit_NEED_TIME))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ProcessIIN_in_MContext4"<<'\n';
+#endif
 ////        if (this->tasks.DemandTimeSync())
 ////            this->scheduler->Evaluate();
     if (DemandTimeSync_in_MasterTasks(&(pMContext->tasks)))
@@ -539,6 +594,10 @@ void ProcessIIN_in_MContext(MContext *pMContext, IINField* iin)
       || (IsSet_in_IINField(iin, IINBit_CLASS3_EVENTS) &&
           HasClass3_in_ClassField(&(pMContext->params.eventScanOnEventsAvailableClassMask))))
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ProcessIIN_in_MContext5"<<'\n';
+#endif
 ////        if (this->tasks.DemandEventScan())
 ////            this->scheduler->Evaluate();
     if (DemandEventScan_in_MasterTasks(&(pMContext->tasks)))
@@ -548,6 +607,11 @@ void ProcessIIN_in_MContext(MContext *pMContext, IINField* iin)
 //void OnReceiveIIN_in_IMasterApplication(IMasterApplication *pIMasterApplication, IINField* iin);
 ////    this->application->OnReceiveIIN(iin);
   OnReceiveIIN_in_IMasterApplication(pMContext->application, iin);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessIIN_in_MContext_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////void MContext::ProcessUnsolicitedResponse(const APDUResponseHeader& header, const ser4cpp::rseq_t& objects)
@@ -598,16 +662,18 @@ void ProcessResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{ProcessResponse_in_MContext1"<<'\n';
+  inspect_IINField(&(header->IIN));
 #endif
 //    TaskState_in_MContext_uint8_t OnResponseEvent_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 ////    this->tstate = this->OnResponseEvent(header, objects);
   pMContext->tstate = OnResponseEvent_in_MContext(pMContext, header, objects);
+//void ProcessIIN_in_MContext(MContext *pMContext, IINField* iin);
 ////    this->ProcessIIN(header.IIN); // TODO - should we process IIN bits for unexpected responses?
   ProcessIIN_in_MContext(pMContext, &(header->IIN));
 #ifdef  LOG_INFO
-  increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"}ProcessResponse_in_MContext_"<<'\n';
+  decrement_stack_info();
 #endif
 }
 
@@ -629,6 +695,10 @@ boolean CheckConfirmTransmit_in_MContext(MContext *pMContext)
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{CheckConfirmTransmit_in_MContext1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pMContext->isSending= "<<(uint16_t)pMContext->isSending<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pMContext->confirmQueue.empty()= "<<(uint16_t)pMContext->confirmQueue.empty()<<'\n';
 #endif
   if (pMContext->isSending || pMContext->confirmQueue.empty())
   {
@@ -708,11 +778,22 @@ void timeout_in_MContext(void)
 ////void MContext::StartResponseTimer()
 void StartResponseTimer_in_MContext(MContext *pMContext)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{StartResponseTimer_in_MContext1"<<'\n';
+#endif
 ////    auto timeout = [self = shared_from_this()]() { self->OnResponseTimeout(); };
 //TimerExe4cpp Start_in_IExecutorExe4cpp(IExecutorExe4cpp *, uint32_t duration, void (*pAction)(void));
 ////    this->responseTimer = this->executor->start(this->params.responseTimeout.value, timeout);
   pPointerGlobal1 = pMContext;
   pMContext->responseTimer = Start_in_IExecutorExe4cpp(pMContext->executor, pMContext->params.responseTimeout.duration_value, timeout_in_MContext);//void (*pAction)(void));
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}StartResponseTimer_in_MContext_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 static UserPollTask uUserPollTask;
@@ -1140,6 +1221,12 @@ boolean Run_in_MContext(MContext *pMContext, IMasterTask* task)
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{Run_in_MContext1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pMContext->activeTask= "<<(uint32_t)pMContext->activeTask<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pMContext->tstate= "<<(uint32_t)pMContext->tstate<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*TaskState_in_MContext_IDLE= "<<TaskState_in_MContext_IDLE<<'\n';
 #endif
   if (pMContext->activeTask || pMContext->tstate != TaskState_in_MContext_IDLE)
   {
@@ -1155,6 +1242,7 @@ boolean Run_in_MContext(MContext *pMContext, IMasterTask* task)
 
   pMContext->activeTask = task;
 
+
 //void OnStart_in_IMasterTask(IMasterTask *pIMasterTask);
 ////    this->activeTask->OnStart();
   OnStart_in_IMasterTask(pMContext->activeTask);
@@ -1163,6 +1251,8 @@ boolean Run_in_MContext(MContext *pMContext, IMasterTask* task)
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"*FORMAT_LOG_BLOCK(logger, flags::INFO, 'Begining task: %s', this->activeTask->Name())"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Name_in_IMasterTask(pMContext->activeTask)= "<<std::string(Name_in_IMasterTask(pMContext->activeTask))<<'\n';
 #endif
 
   if (!pMContext->isSending)
@@ -1178,6 +1268,12 @@ boolean Run_in_MContext(MContext *pMContext, IMasterTask* task)
   decrement_stack_info();
 #endif
   return true;
+}
+
+boolean Run_in_MContext_override(void *pIMasterTaskRunner, IMasterTask* task)
+{
+ MContext* parent = (MContext*) getParentPointer_in_IMasterTaskRunner((IMasterTaskRunner*)pIMasterTaskRunner);
+ return Run_in_MContext(parent, task);
 }
 
 /// ------ private helpers ----------
@@ -1323,11 +1419,17 @@ TaskState_in_MContext_uint8_t OnResponseEvent_in_MContext(MContext *pMContext, A
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{OnResponseEvent_in_MContext1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pMContext->tstate= "<<(uint16_t)pMContext->tstate<<'\n';
 #endif
   switch (pMContext->tstate)
   {
   case (TaskState_in_MContext_WAIT_FOR_RESPONSE):
   {
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@@@@TaskState_in_MContext_WAIT_FOR_RESPONSE"<<'\n';
+#endif
 //    TaskState_in_MContext_uint8_t OnResponse_WaitForResponse_in_MContext(MContext *pMContext, APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 ////        return OnResponse_WaitForResponse(header, objects);
     TaskState_in_MContext_uint8_t tmp = OnResponse_WaitForResponse_in_MContext(pMContext, header, objects);
@@ -1354,18 +1456,35 @@ TaskState_in_MContext_uint8_t OnResponseEvent_in_MContext(MContext *pMContext, A
 ////MContext::TaskState MContext::OnResponseTimeoutEvent()
 TaskState_in_MContext_uint8_t OnResponseTimeoutEvent_in_MContext(MContext *pMContext)
 {
+#ifdef  LOG_INFO
+    std::cout<<'\n';
+    increment_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"{OnResponseTimeoutEvent_in_MContext1"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*pMContext->tstate= "<<(uint16_t)pMContext->tstate<<'\n';
+#endif
   switch (pMContext->tstate)
   {
   case (TaskState_in_MContext_WAIT_FOR_RESPONSE):
+  {
 //    TaskState_in_MContext_uint8_t OnResponseTimeout_WaitForResponse_in_MContext(MContext *pMContext);
 ////        return OnResponseTimeout_WaitForResponse();
-    return OnResponseTimeout_WaitForResponse_in_MContext(pMContext);
+    TaskState_in_MContext_uint8_t tmp = OnResponseTimeout_WaitForResponse_in_MContext(pMContext);
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}OnResponseTimeoutEvent_in_MContext1_"<<'\n';
+    decrement_stack_info();
+#endif
+    return tmp;
+   }
   default:
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "Unexpected response timeout");
 #ifdef  LOG_INFO
-    increment_stack_info();
     std::cout<<getString_stack_info();
     std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Unexpected response timeout')"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}OnResponseTimeoutEvent_in_MContext2_"<<'\n';
     decrement_stack_info();
 #endif
     return pMContext->tstate;
@@ -1441,6 +1560,11 @@ TaskState_in_MContext_uint8_t OnResponse_WaitForResponse_in_MContext(MContext *p
 //ResponseResult_in_IMasterTask_uint8_t OnResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* response, RSeq_for_Uint16_t* objects, Timestamp now);
 ////    auto result = this->activeTask->OnResponse(header, objects, now);
   ResponseResult_in_IMasterTask_uint8_t result = OnResponse_in_IMasterTask(pMContext->activeTask, header, objects, now);
+
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"*OnResponse_WaitForResponse_in_MContext3"<<'\n';
+#endif
 
   if (header->aAPDUHeader.control.CON)
   {

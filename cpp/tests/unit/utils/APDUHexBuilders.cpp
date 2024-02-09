@@ -64,6 +64,10 @@ std::string repeat_in_APDUHexBuilders(uint8_t value, uint16_t count)
 
 std::string ClassTask_in_APDUHexBuilders(FunctionCode_uint8_t fc, uint8_t seq, ClassField* field)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{ClassTask_in_APDUHexBuilders1"<<'\n';
+#endif
   BufferSer4 buffer;//(DEFAULT_MAX_APDU_SIZE);
   BufferSer4_in_BufferSer4Over2(&buffer, DEFAULT_MAX_APDU_SIZE);
 
@@ -79,7 +83,12 @@ std::string ClassTask_in_APDUHexBuilders(FunctionCode_uint8_t fc, uint8_t seq, C
 //RSeq_for_Uint16_t ToRSeq_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 ////    return HexConversions::to_hex(request.ToRSeq());
   RSeq_for_Uint16_t tmp = ToRSeq_in_APDUWrapper(&(request.aAPDUWrapper));
-  return to_hex_in_HexConversionsOver2(&tmp, true);
+  std::string strtmp = to_hex_in_HexConversionsOver2(&tmp, true);
+
+#ifdef  LOG_INFO
+  std::cout<<"}ClassTask_in_APDUHexBuilders_"<<'\n';
+#endif
+  return strtmp;
 }
 
 std::string DisableUnsol_in_APDUHexBuilders(uint8_t seq, ClassField* field)

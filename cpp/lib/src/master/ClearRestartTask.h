@@ -99,6 +99,9 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_ClearRestartTask(ClearR
 ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_ClearRestartTask_override(void *pIMasterTask,
     APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 
+char * Name_in_ClearRestartTask(ClearRestartTask *pClearRestartTask);
+char * Name_in_ClearRestartTask_override(void *pClearRestartTask);
+
 ////    virtual bool IsRecurring() const override
 ////    {
 ////        return true;

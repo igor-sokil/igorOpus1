@@ -379,6 +379,7 @@ void Transmit_in_MContext(MContext *pMContext, RSeq_for_Uint16_t* data);
 // --- implement  IMasterTaskRunner ------
 
 boolean Run_in_MContext(MContext *pMContext, IMasterTask* task);
+boolean Run_in_MContext_override(void *pIMasterTaskRunner, IMasterTask* task);
 
 void ScheduleRecurringPollTask_in_MContext(MContext *pMContext, IMasterTask* task);
 

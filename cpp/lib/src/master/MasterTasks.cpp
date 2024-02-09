@@ -57,9 +57,10 @@ void MasterTasks_in_MasterTasks(MasterTasks *pMasterTasks,
                                 ISOEHandler* SOEHandler)
 {
 #ifdef  LOG_INFO
-    increment_stack_info();
-    std::cout<<getString_stack_info();
-    std::cout<<"{MasterTasks_in_MasterTasks1"<<'\n';
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{MasterTasks_in_MasterTasks1"<<'\n';
 #endif
 ////    : context(std::make_shared<TaskContext>()),
 ////      clearRestart(std::make_shared<ClearRestartTask>(context, app, logger)),
@@ -73,7 +74,7 @@ void MasterTasks_in_MasterTasks(MasterTasks *pMasterTasks,
 //                       const std::shared_ptr<TaskContext>& context,
                                      app,
                                      &ttmp);
-  pMasterTasks->assignClass = &cClearRestartTask.iIMasterTask;
+  pMasterTasks->assignClass = &aAssignClassTask.iIMasterTask;
 
 ////      startupIntegrity(std::make_shared<StartupIntegrityPoll>(
 ////          context, app, SOEHandler, params.startupIntegrityClassMask, RetryBehavior(params), logger)),
@@ -95,9 +96,36 @@ void MasterTasks_in_MasterTasks(MasterTasks *pMasterTasks,
   pMasterTasks->eventScan = &eEventScanTask.pPollTaskBase.iIMasterTask;
 
   // optional tasks
+//IMasterTask* GetDisableUnsolTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+//  MasterParams* params,
+////                                                            const Logger& logger,
+//  IMasterApplication* application)
 ////      disableUnsol(GetDisableUnsolTask(context, params, logger, app)),
+  pMasterTasks->disableUnsol = GetDisableUnsolTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+  params,
+////                                                            const Logger& logger,
+  app);
+
+//IMasterTask* GetEnableUnsolTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+//  MasterParams* params,
+////                                                           const Logger& logger,
+//  IMasterApplication* application)
 ////      enableUnsol(GetEnableUnsolTask(context, params, logger, app)),
+  pMasterTasks->enableUnsol = GetEnableUnsolTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+  params,
+////                                                           const Logger& logger,
+  app);
+
+//IMasterTask* GetTimeSyncTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+//  TimeSyncMode_uint8_t mode,
+///                                                        const Logger& logger,
+//  IMasterApplication* application)
 ////      timeSynchronization(GetTimeSyncTask(context, params.timeSyncMode, logger, app))
+  pMasterTasks->timeSynchronization = GetTimeSyncTask_in_MasterTasks_static(////const std::shared_ptr<TaskContext>& context,
+  params->timeSyncMode,
+///                                                        const Logger& logger,
+  app);
+
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}MasterTasks_in_MasterTasks_"<<'\n';
@@ -257,6 +285,12 @@ IMasterTask* GetDisableUnsolTask_in_MasterTasks_static(////const std::shared_ptr
 ////                                                            const Logger& logger,
   IMasterApplication* application)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{GetDisableUnsolTask_in_MasterTasks_static1"<<'\n';
+#endif
 //TaskBehavior SingleImmediateExecutionWithRetry_in_TaskBehavior_static(TimeDuration* minRetryDelay,
 //    TimeDuration* maxRetryDelay);
 ////    return params.disableUnsolOnStartup
@@ -272,8 +306,19 @@ IMasterTask* GetDisableUnsolTask_in_MasterTasks_static(////const std::shared_ptr
     DisableUnsolicitedTask_in_DisableUnsolicitedTask(&dDisableUnsolTask,
 //                       const std::shared_ptr<TaskContext>& context,
         application, &tmp);
-    return &dDisableUnsolTask.iIMasterTask;
+    IMasterTask* ttmp = &dDisableUnsolTask.iIMasterTask;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}GetDisableUnsolTask_in_MasterTasks_static1_"<<'\n';
+  decrement_stack_info();
+#endif
+    return ttmp;
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}GetDisableUnsolTask_in_MasterTasks_static2_"<<'\n';
+  decrement_stack_info();
+#endif
   return NULL;
 }
 

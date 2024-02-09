@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EmptyResponseTask.h"
 
@@ -54,6 +58,7 @@ void EmptyResponseTask_in_EmptyResponseTask(EmptyResponseTask *pEmptyResponseTas
   pEmptyResponseTask->iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_EmptyResponseTask_override;
   pEmptyResponseTask->iIMasterTask.pBlocksLowerPriority_in_IMasterTask = BlocksLowerPriority_in_EmptyResponseTask_override;
   pEmptyResponseTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_EmptyResponseTask_override;
+  pEmptyResponseTask->iIMasterTask.pName_in_IMasterTask = Name_in_EmptyResponseTask_override;
 
   setParentPointer_in_IMasterTask(&(pEmptyResponseTask->iIMasterTask), pEmptyResponseTask);
 
@@ -65,6 +70,12 @@ void EmptyResponseTask_in_EmptyResponseTask(EmptyResponseTask *pEmptyResponseTas
 ////bool EmptyResponseTask::EmptyResponseTask::BuildRequest(APDURequest& request, uint8_t seq)
 boolean BuildRequest_in_EmptyResponseTask(EmptyResponseTask *pEmptyResponseTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_EmptyResponseTask1"<<'\n';
+#endif
 ////    request.SetControl(AppControlField(true, true, false, false, seq));
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, false, false, seq);
@@ -76,7 +87,14 @@ boolean BuildRequest_in_EmptyResponseTask(EmptyResponseTask *pEmptyResponseTask,
   HeaderWriter writer = GetWriter_in_APDUWrapper(&(request->aAPDUWrapper));
 //                                     std::function<bool(HeaderWriter&)> format,
 ////    return format(writer);
-  return pEmptyResponseTask->format(&writer);
+  boolean tmp = pEmptyResponseTask->format(&writer);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_EmptyResponseTask_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 /*func, priority::USER_REQUEST, format*/
@@ -151,4 +169,14 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_EmptyResponseTask_overr
 {
   EmptyResponseTask *parent = (EmptyResponseTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
   return ProcessResponse_in_EmptyResponseTask_override(parent, header, objects);
+}
+
+char * Name_in_EmptyResponseTask(EmptyResponseTask *pEmptyResponseTask)
+{
+   return "EmptyResponseTask";
+}
+char * Name_in_EmptyResponseTask_override(void *pIMasterTask)
+{
+  EmptyResponseTask *parent = (EmptyResponseTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_EmptyResponseTask(parent);
 }

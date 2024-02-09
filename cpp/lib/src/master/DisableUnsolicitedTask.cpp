@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "DisableUnsolicitedTask.h"
 
@@ -35,6 +39,12 @@ void DisableUnsolicitedTask_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pD
     IMasterApplication* application,
     TaskBehavior* behavior)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{DisableUnsolicitedTask_in_DisableUnsolicitedTask1"<<'\n';
+#endif
 ////    : IMasterTask(context, application, behavior, logger, TaskConfig::Default())
   IMasterTask_in_IMasterTask(&(pDisableUnsolicitedTask->iIMasterTask),
 //                TaskContext* context,
@@ -49,16 +59,34 @@ void DisableUnsolicitedTask_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pD
   pDisableUnsolicitedTask->iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_DisableUnsolicitedTask_override;
   pDisableUnsolicitedTask->iIMasterTask.pBlocksLowerPriority_in_IMasterTask = BlocksLowerPriority_in_DisableUnsolicitedTask_override;
   pDisableUnsolicitedTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_DisableUnsolicitedTask_override;
+  pDisableUnsolicitedTask->iIMasterTask.pName_in_IMasterTask = Name_in_DisableUnsolicitedTask_override;
 
   setParentPointer_in_IMasterTask(&(pDisableUnsolicitedTask->iIMasterTask), pDisableUnsolicitedTask);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}DisableUnsolicitedTask_in_DisableUnsolicitedTask_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 boolean BuildRequest_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_DisableUnsolicitedTask1"<<'\n';
+#endif
   UNUSED(pDisableUnsolicitedTask);
 //void DisableUnsolicited_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
 ////    build::DisableUnsolicited(request, seq);
   DisableUnsolicited_in_APDUBuilders_static(request, seq);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_DisableUnsolicitedTask_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -67,9 +95,28 @@ boolean BuildRequest_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableU
 ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask,
     APDUResponseHeader* header, RSeq_for_Uint16_t* objects)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ProcessResponse_in_DisableUnsolicitedTask1"<<'\n';
+#endif
 ////    return ValidateNullResponse(header, objects) ? ResponseResult::OK_FINAL : ResponseResult::ERROR_BAD_RESPONSE;
-  return ValidateNullResponse_in_IMasterTask(&(pDisableUnsolicitedTask->iIMasterTask), header, objects) ?
+  ResponseResult_in_IMasterTask_uint8_t tmp = ValidateNullResponse_in_IMasterTask(&(pDisableUnsolicitedTask->iIMasterTask), header, objects) ?
          ResponseResult_in_IMasterTask_OK_FINAL :  ResponseResult_in_IMasterTask_ERROR_BAD_RESPONSE;
+
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ResponseResult_in_IMasterTask_uint8_t tmp="<<(uint16_t)tmp<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ResponseResult_in_IMasterTask_OK_FINAL="<<(uint16_t)ResponseResult_in_IMasterTask_OK_FINAL<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ResponseResult_in_IMasterTask_ERROR_BAD_RESPONSE="<<(uint16_t)ResponseResult_in_IMasterTask_ERROR_BAD_RESPONSE<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessResponse_in_DisableUnsolicitedTask_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////} // namespace opendnp3
@@ -131,6 +178,15 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_DisableUnsolicitedTask_
     APDUResponseHeader* header, RSeq_for_Uint16_t* objects)
 {
   DisableUnsolicitedTask *parent = (DisableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
-  return ProcessResponse_in_DisableUnsolicitedTask_override(parent, header, objects);
+  return ProcessResponse_in_DisableUnsolicitedTask(parent, header, objects);
 }
 
+char * Name_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask)
+{
+   return "DisableUnsolicitedTask";
+}
+char * Name_in_DisableUnsolicitedTask_override(void *pIMasterTask)
+{
+  DisableUnsolicitedTask *parent = (DisableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_DisableUnsolicitedTask(parent);
+}

@@ -93,6 +93,9 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_DisableUnsolicitedTask(
 ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_DisableUnsolicitedTask_override(void *pIMasterTask,
     APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 
+char * Name_in_DisableUnsolicitedTask(DisableUnsolicitedTask *pDisableUnsolicitedTask);
+char * Name_in_DisableUnsolicitedTask_override(void *pDisableUnsolicitedTask);
+
 ////} // namespace opendnp3
 
 #endif

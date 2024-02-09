@@ -119,6 +119,9 @@ ResponseResult_in_IMasterTask_uint8_t OnResponseDelayMeas_in_SerialTimeSyncTask(
 ResponseResult_in_IMasterTask_uint8_t OnResponseWriteTime_in_SerialTimeSyncTask(SerialTimeSyncTask *pSerialTimeSyncTask,
     APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 
+char * Name_in_SerialTimeSyncTask(SerialTimeSyncTask *pSerialTimeSyncTask);
+char * Name_in_SerialTimeSyncTask_override(void *pSerialTimeSyncTask);
+
 ////} // namespace opendnp3
 
 #endif

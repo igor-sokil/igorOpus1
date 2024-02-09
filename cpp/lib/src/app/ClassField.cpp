@@ -18,6 +18,10 @@
  * limitations under the License.
  */
 ////#include "opendnp3/app/ClassField.h"
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "ClassField.h"
 
@@ -39,8 +43,23 @@ ClassField AllClasses_in_ClassField_static(void)
 
 ClassField AllEventClasses_in_ClassField_static(void)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{AllEventClasses_in_ClassField_static1"<<'\n';
+#endif
   ClassField cClassField;
-  ClassField_in_ClassFieldOver3(&cClassField, EVENT_CLASSES_in_ClassField);
+////  ClassField_in_ClassFieldOver3(&cClassField, EVENT_CLASSES_in_ClassField);
+//  ClassField_in_ClassFieldOver5(pClassField, false, ec == EventClass_EC1, ec == EventClass_EC2, ec == EventClass_EC3);
+  ClassField_in_ClassFieldOver5(&cClassField, false, true, true, true);
+
+#ifdef  LOG_INFO
+  inspect_ClassField(&cClassField);
+  std::cout<<getString_stack_info();
+  std::cout<<"}AllEventClasses_in_ClassField_static_"<<'\n';
+  decrement_stack_info();
+#endif
   return cClassField;
 }
 

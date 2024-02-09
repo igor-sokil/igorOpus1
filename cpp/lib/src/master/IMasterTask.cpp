@@ -88,9 +88,22 @@ Timestamp StartExpirationTime_in_IMasterTask(IMasterTask *pIMasterTask)
 ////                                                    Timestamp now)
 ResponseResult_in_IMasterTask_uint8_t OnResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* response, RSeq_for_Uint16_t* objects, Timestamp now)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{OnResponse_in_IMasterTask1"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"Name_in_IMasterTask(pIMasterTask)= "<<std::string(Name_in_IMasterTask(pIMasterTask))<<'\n';
+#endif
 //    ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_IMasterTask(IMasterTask *pIMasterTask, APDUResponseHeader* response, RSeq_for_Uint16_t* objects);
 ////    auto result = this->ProcessResponse(response, objects);
   ResponseResult_in_IMasterTask_uint8_t result = ProcessResponse_in_IMasterTask(pIMasterTask, response, objects);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*OnResponse_in_IMasterTask2"<<'\n';
+#endif
 
   switch (result)
   {
@@ -107,6 +120,11 @@ ResponseResult_in_IMasterTask_uint8_t OnResponse_in_IMasterTask(IMasterTask *pIM
     break;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnResponse_in_IMasterTask_"<<'\n';
+  decrement_stack_info();
+#endif
   return result;
 }
 

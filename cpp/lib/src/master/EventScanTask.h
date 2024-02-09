@@ -94,6 +94,9 @@ MasterTaskType_uint8_t GetTaskType_in_EventScanTask_override(void *pIMasterTask)
 boolean BlocksLowerPriority_in_EventScanTask(EventScanTask *pEventScanTask);
 boolean BlocksLowerPriority_in_EventScanTask_override(void *pIMasterTask);
 
+char * Name_in_EventScanTask(EventScanTask *pEventScanTask);
+char * Name_in_EventScanTask_override(void *pEventScanTask);
+
 ////} // namespace opendnp3
 
 

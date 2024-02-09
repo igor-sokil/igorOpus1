@@ -18,6 +18,10 @@
  * limitations under the License.
  */
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EventScanTask.h"
 
@@ -61,15 +65,28 @@ void EventScanTask_in_EventScanTask(EventScanTask *pEventScanTask,
   pEventScanTask->pPollTaskBase.iIMasterTask.pBuildRequest_in_IMasterTask = BuildRequest_in_EventScanTask_override;
   pEventScanTask->pPollTaskBase.iIMasterTask.pPriority_in_IMasterTask = Priority_in_EventScanTask_override;
   pEventScanTask->pPollTaskBase.iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_EventScanTask_override;
+  pEventScanTask->pPollTaskBase.iIMasterTask.pName_in_IMasterTask = Name_in_EventScanTask_override;
 
   setParentPointer_in_IMasterTask(&(pEventScanTask->pPollTaskBase.iIMasterTask), pEventScanTask);
 }
 
 boolean BuildRequest_in_EventScanTask(EventScanTask *pEventScanTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_EventScanTask1"<<'\n';
+#endif
 //void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint8_t fc, ClassField* classes, uint8_t seq);
 ////    build::ClassRequest(request, FunctionCode::READ, classes, seq);
   ClassRequest_in_APDUBuilders_static(request, FunctionCode_READ, &(pEventScanTask->classes), seq);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_EventScanTask_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -132,4 +149,14 @@ boolean BlocksLowerPriority_in_EventScanTask_override(void *pIMasterTask)
 {
   EventScanTask *parent = (EventScanTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
   return BlocksLowerPriority_in_EventScanTask(parent);
+}
+
+char * Name_in_EventScanTask(EventScanTask *pEventScanTask)
+{
+   return "EventScanTask";
+}
+char * Name_in_EventScanTask_override(void *pIMasterTask)
+{
+  EventScanTask *parent = (EventScanTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_EventScanTask(parent);
 }

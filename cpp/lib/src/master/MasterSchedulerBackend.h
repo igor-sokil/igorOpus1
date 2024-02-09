@@ -165,6 +165,7 @@ typedef struct
 ////    static Comparison ComparePriority(const Record& left, const Record& right);
 
 ////    static Comparison CompareTime(const Timestamp& now, const Record& left, const Record& right);
+  uint16_t numTask;
 } MasterSchedulerBackend;
 
 void MasterSchedulerBackend_in_MasterSchedulerBackend(MasterSchedulerBackend *pMasterSchedulerBackend, IExecutorExe4cpp* executor);
@@ -205,6 +206,8 @@ void RestartTimeoutTimer_in_MasterSchedulerBackend(MasterSchedulerBackend *pMast
 
 void TimeoutTasks_in_MasterSchedulerBackend(MasterSchedulerBackend *pMasterSchedulerBackend);
 
+uint16_t getNumTask_in_MasterSchedulerBackend(MasterSchedulerBackend *pMasterSchedulerBackend);
+void setNumTask_in_MasterSchedulerBackend(MasterSchedulerBackend *pMasterSchedulerBackend, uint16_t num);
 ////} // namespace opendnp3
 
 #endif

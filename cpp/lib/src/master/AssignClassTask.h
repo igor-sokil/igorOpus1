@@ -98,10 +98,10 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_AssignClassTask_overrid
 boolean IsEnabled_in_AssignClassTask(AssignClassTask *pAssignClassTask);
 boolean IsEnabled_in_AssignClassTask_override(void *pIMasterTask);
 
+char * Name_in_AssignClassTask(AssignClassTask *pAssignClassTask);
+char * Name_in_AssignClassTask_override(void *pAssignClassTask);
+
 ////    virtual char const* Name() const override
-////    {
-////        return "Assign Class";
-////    }
 
 
 

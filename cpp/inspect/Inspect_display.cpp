@@ -11,6 +11,14 @@
 
 static int16_t stack_info = -1;//рівень стеку для info
 
+void inspect_ClassField(ClassField *b)
+{
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_ClassField**"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@*uint8_t bitfield= "<<(uint16_t)b->bitfield<<'\n';
+}
+
 void inspect_IINField(IINField *b)
 {
   std::cout<<"*"<<getString_stack_info();

@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "MasterTestFixture.h"
@@ -38,6 +42,11 @@ MasterParams NoStartupTasks_static(void)
 
 static MasterSchedulerBackend mMasterSchedulerBackend;
 
+void* getMasterScheduler_in_MasterTestFixture(void)
+{
+  return &mMasterSchedulerBackend;
+}
+
 ////MasterTestFixture::MasterTestFixture(const MasterParams& params,
 ////                                     const Addresses& addresses,
 ////                                     const std::string& id,
@@ -52,6 +61,10 @@ void MasterTestFixture_in_MasterTestFixture(MasterTestFixture *pMasterTestFixtur
     MockExecutor* executor,// = nullptr,
     IMasterScheduler* scheduler)// = nullptr);
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{MasterTestFixture_in_MasterTestFixture1"<<'\n';
+#endif
   pMasterTestFixture->addresses = addresses;
 ////      log(log),
 ///      exe(executor ? executor : std::make_shared<exe4cpp::MockExecutor>()),
@@ -109,6 +122,10 @@ void MasterTestFixture_in_MasterTestFixture(MasterTestFixture *pMasterTestFixtur
                                   &(pMasterTestFixture->scheduler),
                                   params
                                 );
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"}MasterTestFixture_in_MasterTestFixture_"<<'\n';
+#endif
 }
 
 ////MasterTestFixture::~MasterTestFixture()

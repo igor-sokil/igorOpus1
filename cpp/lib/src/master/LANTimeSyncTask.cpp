@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "LANTimeSyncTask.h"
 
@@ -52,6 +56,7 @@ void LANTimeSyncTask_in_LANTimeSyncTask(LANTimeSyncTask *pLANTimeSyncTask,
   pLANTimeSyncTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_LANTimeSyncTask_override;
   pLANTimeSyncTask->iIMasterTask.pIsEnabled_in_IMasterTask = IsEnabled_in_LANTimeSyncTask_override;
   pLANTimeSyncTask->iIMasterTask.pInitialize_in_IMasterTask = Initialize_in_LANTimeSyncTask_override;
+  pLANTimeSyncTask->iIMasterTask.pName_in_IMasterTask = Name_in_LANTimeSyncTask_override;
 
   setParentPointer_in_IMasterTask(&(pLANTimeSyncTask->iIMasterTask), pLANTimeSyncTask);
 }
@@ -64,6 +69,12 @@ void Initialize_in_LANTimeSyncTask(LANTimeSyncTask *pLANTimeSyncTask)
 ////bool LANTimeSyncTask::BuildRequest(APDURequest& request, uint8_t seq)
 boolean BuildRequest_in_LANTimeSyncTask(LANTimeSyncTask *pLANTimeSyncTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_LANTimeSyncTask1"<<'\n';
+#endif
   if (pLANTimeSyncTask->state == State_in_LANTimeSyncTask_RECORD_CURRENT_TIME)
   {
 //UTCTimestamp Now_in_IUTCTimeSource(IUTCTimeSource* pIUTCTimeSource);
@@ -71,6 +82,12 @@ boolean BuildRequest_in_LANTimeSyncTask(LANTimeSyncTask *pLANTimeSyncTask, APDUR
 //void RecordCurrentTime_in_APDUBuilders_static(APDURequest* request, uint8_t seq);// = 0);
 ////        build::RecordCurrentTime(request, seq);
     RecordCurrentTime_in_APDUBuilders_static(request, seq);// = 0);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_LANTimeSyncTask1_"<<'\n';
+  decrement_stack_info();
+#endif
     return true;
   }
 
@@ -95,8 +112,15 @@ boolean BuildRequest_in_LANTimeSyncTask(LANTimeSyncTask *pLANTimeSyncTask, APDUR
 //boolean WriteSingleValue_for_UInt8_Group50Var3_in_HeaderWriter(HeaderWriter *pHeaderWriter,
 //    QualifierCode_uint8_t qc, Group50Var3*);
 ////    return writer.WriteSingleValue<ser4cpp::UInt8, Group50Var3>(QualifierCode::UINT8_CNT, time);
-  return WriteSingleValue_for_UInt8_Group50Var3_in_HeaderWriter(&writer,
+  boolean tmp = WriteSingleValue_for_UInt8_Group50Var3_in_HeaderWriter(&writer,
          QualifierCode_UINT8_CNT, &timeGroup50);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_LANTimeSyncTask2_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////IMasterTask::ResponseResult LANTimeSyncTask::ProcessResponse(const APDUResponseHeader& response,
@@ -211,4 +235,14 @@ void Initialize_in_LANTimeSyncTask_override(void *pIMasterTask)
 {
   LANTimeSyncTask *parent = (LANTimeSyncTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
   Initialize_in_LANTimeSyncTask(parent);
+}
+
+char * Name_in_LANTimeSyncTask(LANTimeSyncTask *pLANTimeSyncTask)
+{
+   return "LANTimeSyncTask";
+}
+char * Name_in_LANTimeSyncTask_override(void *pIMasterTask)
+{
+  LANTimeSyncTask *parent = (LANTimeSyncTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_LANTimeSyncTask(parent);
 }

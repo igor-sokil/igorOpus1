@@ -107,6 +107,8 @@ boolean IsEnabled_in_UserPollTask(UserPollTask *pUserPollTask);
 boolean IsEnabled_in_UserPollTask_override(void *pIMasterTask);
 MasterTaskType_uint8_t GetTaskType_in_UserPollTask(UserPollTask *pUserPollTask);
 MasterTaskType_uint8_t GetTaskType_in_UserPollTask_override(void *pIMasterTask);
+char * Name_in_UserPollTask(UserPollTask *pUserPollTask);
+char * Name_in_UserPollTask_override(void *pUserPollTask);
 
 
 ////} // namespace opendnp3

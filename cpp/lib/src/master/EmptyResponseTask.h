@@ -110,6 +110,9 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_EmptyResponseTask(Empty
 ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_EmptyResponseTask_override(void *pIMasterTask,
     APDUResponseHeader* header, RSeq_for_Uint16_t* objects);
 
+char * Name_in_EmptyResponseTask(EmptyResponseTask *pEmptyResponseTask);
+char * Name_in_EmptyResponseTask_override(void *EmptyResponseTask);
+
 ////} // namespace opendnp3
 
 #endif

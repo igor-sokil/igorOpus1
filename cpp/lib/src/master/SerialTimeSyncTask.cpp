@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "SerialTimeSyncTask.h"
 
@@ -53,6 +57,7 @@ void SerialTimeSyncTask_in_SerialTimeSyncTask(SerialTimeSyncTask *pSerialTimeSyn
   pSerialTimeSyncTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_SerialTimeSyncTask_override;
   pSerialTimeSyncTask->iIMasterTask.pIsEnabled_in_IMasterTask = IsEnabled_in_SerialTimeSyncTask_override;
   pSerialTimeSyncTask->iIMasterTask.pInitialize_in_IMasterTask = Initialize_in_SerialTimeSyncTask_override;
+  pSerialTimeSyncTask->iIMasterTask.pName_in_IMasterTask = Name_in_SerialTimeSyncTask_override;
 
   setParentPointer_in_IMasterTask(&(pSerialTimeSyncTask->iIMasterTask), pSerialTimeSyncTask);
 }
@@ -64,6 +69,12 @@ void Initialize_in_SerialTimeSyncTask(SerialTimeSyncTask *pSerialTimeSyncTask)
 
 boolean BuildRequest_in_SerialTimeSyncTask(SerialTimeSyncTask *pSerialTimeSyncTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_SerialTimeSyncTask1"<<'\n';
+#endif
   if (pSerialTimeSyncTask->delay < 0)
   {
 //UTCTimestamp Now_in_IUTCTimeSource(IUTCTimeSource* pIUTCTimeSource);
@@ -97,10 +108,21 @@ boolean BuildRequest_in_SerialTimeSyncTask(SerialTimeSyncTask *pSerialTimeSyncTa
     HeaderWriter writer = GetWriter_in_APDUWrapper(&(request->aAPDUWrapper));
 
 ////        writer.WriteSingleValue<ser4cpp::UInt8, Group50Var1>(QualifierCode::UINT8_CNT, time);
-    return WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(&writer,
+    boolean tmp = WriteSingleValue_for_UInt8_Group50Var1_in_HeaderWriter(&writer,
            QualifierCode_UINT8_CNT, &timeGroup50);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_SerialTimeSyncTask1_"<<'\n';
+  decrement_stack_info();
+#endif
+    return tmp;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_SerialTimeSyncTask2_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -248,3 +270,13 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_SerialTimeSyncTask_over
   return ProcessResponse_in_SerialTimeSyncTask_override(parent, header, objects);
 }
 
+char * Name_in_SerialTimeSyncTask(SerialTimeSyncTask *pSerialTimeSyncTask)
+{
+   UNUSED(pSerialTimeSyncTask);
+   return "SerialTimeSyncTask";
+}
+char * Name_in_SerialTimeSyncTask_override(void *pIMasterTask)
+{
+  SerialTimeSyncTask *parent = (SerialTimeSyncTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_SerialTimeSyncTask(parent);
+}

@@ -74,6 +74,13 @@ void ReadAllObjects_in_APDUBuilders_static(APDURequest* request, GroupVariationI
 
 void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint8_t fc,  ClassField* classes, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{ClassRequest_in_APDUBuilders_static1"<<'\n';
+  inspect_ClassField(classes);
+#endif
 ///        request.SetControl(AppControlField(true, true, false, false, seq));
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver4(&aAppControlField, true, true, false, false, seq);
@@ -85,6 +92,11 @@ void ClassRequest_in_APDUBuilders_static(APDURequest* request, FunctionCode_uint
 //    bool WriteClassHeaders_in_APDUBuilders_static(HeaderWriter& writer, const ClassField& classes)
 ////        WriteClassHeaders(writer, classes);
   WriteClassHeaders_in_APDUBuilders_static(&writer, classes);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ClassRequest_in_APDUBuilders_static_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 boolean WriteClassHeaders_in_APDUBuilders_static(HeaderWriter* writer, ClassField* classes)

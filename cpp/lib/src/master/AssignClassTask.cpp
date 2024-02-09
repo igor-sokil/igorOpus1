@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "AssignClassTask.h"
 
@@ -57,6 +61,7 @@ void AssignClassTask_in_AssignClassTask(AssignClassTask *pAssignClassTask,
   pAssignClassTask->iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_AssignClassTask_override;
   pAssignClassTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_AssignClassTask_override;
   pAssignClassTask->iIMasterTask.pIsEnabled_in_IMasterTask = IsEnabled_in_AssignClassTask_override;
+  pAssignClassTask->iIMasterTask.pName_in_IMasterTask = Name_in_AssignClassTask_override;
 
   setParentPointer_in_IMasterTask(&(pAssignClassTask->iIMasterTask), pAssignClassTask);
 }
@@ -75,6 +80,12 @@ void writeFun_in_AssignClassTask(Header *pHeader)
 ////bool AssignClassTask::BuildRequest(APDURequest& request, uint8_t seq)
 boolean BuildRequest_in_AssignClassTask(AssignClassTask *pAssignClassTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_AssignClassTask1"<<'\n';
+#endif
 //void AppControlField_in_AppControlFieldOver4(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns, uint8_t seq);
 ////    request.SetControl(AppControlField(true, true, false, false, seq));
   AppControlField aAppControlField;
@@ -98,6 +109,11 @@ boolean BuildRequest_in_AssignClassTask(AssignClassTask *pAssignClassTask, APDUR
 ////    this->application->ConfigureAssignClassRequest(writeFun);
   ConfigureAssignClassRequest_in_IMasterApplication(pAssignClassTask->iIMasterTask.application, writeFun_in_AssignClassTask);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_AssignClassTask_"<<'\n';
+  decrement_stack_info();
+#endif
   return success;
 }
 
@@ -181,4 +197,14 @@ boolean IsEnabled_in_AssignClassTask_override(void *pIMasterTask)
 {
   AssignClassTask *parent = (AssignClassTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
   return IsEnabled_in_AssignClassTask(parent);
+}
+
+char * Name_in_AssignClassTask(AssignClassTask *pAssignClassTask)
+{
+   return (char*)"Assign Class";
+}
+char * Name_in_AssignClassTask_override(void *pIMasterTask)
+{
+  AssignClassTask *parent = (AssignClassTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_AssignClassTask(parent);
 }

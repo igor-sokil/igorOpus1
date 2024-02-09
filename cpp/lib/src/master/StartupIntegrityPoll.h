@@ -102,6 +102,9 @@ MasterTaskType_uint8_t GetTaskType_in_StartupIntegrityPoll_override(void *pIMast
 boolean IsEnabled_in_StartupIntegrityPoll(StartupIntegrityPoll *pStartupIntegrityPoll);
 boolean IsEnabled_in_StartupIntegrityPoll_override(void *pIMasterTask);
 
+char * Name_in_StartupIntegrityPoll(StartupIntegrityPoll *pStartupIntegrityPoll);
+char * Name_in_StartupIntegrityPoll_override(void *pIMasterTask);
+
 ////} // namespace opendnp3
 
 #endif

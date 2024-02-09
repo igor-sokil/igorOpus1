@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "EnableUnsolicitedTask.h"
 
@@ -58,16 +62,29 @@ void EnableUnsolicitedTask_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnab
   pEnableUnsolicitedTask->iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_EnableUnsolicitedTask_override;
   pEnableUnsolicitedTask->iIMasterTask.pBlocksLowerPriority_in_IMasterTask = BlocksLowerPriority_in_EnableUnsolicitedTask_override;
   pEnableUnsolicitedTask->iIMasterTask.pProcessResponse_in_IMasterTask = ProcessResponse_in_EnableUnsolicitedTask_override;
+  pEnableUnsolicitedTask->iIMasterTask.pName_in_IMasterTask = Name_in_EnableUnsolicitedTask_override;
 
   setParentPointer_in_IMasterTask(&(pEnableUnsolicitedTask->iIMasterTask), pEnableUnsolicitedTask);
 }
 
 boolean BuildRequest_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_EnableUnsolicitedTask1"<<'\n';
+#endif
   UNUSED(pEnableUnsolicitedTask);
 ////    build::EnableUnsolicited(request, enabledClasses.OnlyEventClasses(), seq);
   ClassField tmp = OnlyEventClasses_in_ClassField(&(pEnableUnsolicitedTask->enabledClasses));
   EnableUnsolicited_in_APDUBuilders_static(request, &tmp, seq);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_EnableUnsolicitedTask_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -147,5 +164,15 @@ ResponseResult_in_IMasterTask_uint8_t ProcessResponse_in_EnableUnsolicitedTask_o
     APDUResponseHeader* header, RSeq_for_Uint16_t* objects)
 {
   EnableUnsolicitedTask *parent = (EnableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
-  return ProcessResponse_in_EnableUnsolicitedTask_override(parent, header, objects);
+  return ProcessResponse_in_EnableUnsolicitedTask(parent, header, objects);
+}
+
+char * Name_in_EnableUnsolicitedTask(EnableUnsolicitedTask *pEnableUnsolicitedTask)
+{
+   return "EnableUnsolicitedTask";
+}
+char * Name_in_EnableUnsolicitedTask_override(void *pIMasterTask)
+{
+  EnableUnsolicitedTask *parent = (EnableUnsolicitedTask*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_EnableUnsolicitedTask(parent);
 }

@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "StartupIntegrityPoll.h"
 
@@ -66,12 +70,19 @@ void StartupIntegrityPoll_in_StartupIntegrityPoll(StartupIntegrityPoll *pStartup
   pStartupIntegrityPoll->pPollTaskBase.iIMasterTask.pPriority_in_IMasterTask = Priority_in_StartupIntegrityPoll_override;
   pStartupIntegrityPoll->pPollTaskBase.iIMasterTask.pGetTaskType_in_IMasterTask = GetTaskType_in_StartupIntegrityPoll_override;
   pStartupIntegrityPoll->pPollTaskBase.iIMasterTask.pIsEnabled_in_IMasterTask = IsEnabled_in_StartupIntegrityPoll_override;
+  pStartupIntegrityPoll->pPollTaskBase.iIMasterTask.pName_in_IMasterTask = Name_in_StartupIntegrityPoll_override;
 
   setParentPointer_in_IMasterTask(&(pStartupIntegrityPoll->pPollTaskBase.iIMasterTask), pStartupIntegrityPoll);
 }
 
 boolean BuildRequest_in_StartupIntegrityPoll(StartupIntegrityPoll *pStartupIntegrityPoll, APDURequest* request, uint8_t seq)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{BuildRequest_in_StartupIntegrityPoll1"<<'\n';
+#endif
 //void ReadIntegrity_in_APDUBuilders_static(APDURequest* request, ClassField* classes, uint8_t seq)
 ////    build::ReadIntegrity(request, classes, seq);
   ReadIntegrity_in_APDUBuilders_static(request, &(pStartupIntegrityPoll->classes), seq);
@@ -81,6 +92,12 @@ boolean BuildRequest_in_StartupIntegrityPoll(StartupIntegrityPoll *pStartupInteg
 
 ////    request.SetControl(AppControlField::Request(seq));
   SetControl_in_APDUWrapper(&(request->aAPDUWrapper), Request_in_AppControlField_static(seq));
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}BuildRequest_in_StartupIntegrityPoll_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 
@@ -138,4 +155,15 @@ boolean IsEnabled_in_StartupIntegrityPoll_override(void *pIMasterTask)
 {
   StartupIntegrityPoll *parent = (StartupIntegrityPoll*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
   return IsEnabled_in_StartupIntegrityPoll(parent);
+}
+
+char * Name_in_StartupIntegrityPoll(StartupIntegrityPoll *pStartupIntegrityPoll)
+{
+   UNUSED(pStartupIntegrityPoll);
+   return "StartupIntegrityPoll";
+}
+char * Name_in_StartupIntegrityPoll_override(void *pIMasterTask)
+{
+  StartupIntegrityPoll *parent = (StartupIntegrityPoll*) getParentPointer_in_IMasterTask((IMasterTask*) pIMasterTask);
+  return Name_in_StartupIntegrityPoll(parent);
 }
