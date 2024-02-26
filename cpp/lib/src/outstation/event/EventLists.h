@@ -63,13 +63,13 @@ typedef struct
   // master list keeps the aggregate order and generic data
 // главный список сохраняет совокупный порядок и общие данные
 ////    List<EventRecord> events;
-  List_for_EventRecord events;
+  List_for_EventRecord events_in_EventLists;
 
 ////    template<class T> List<TypedEventRecord<T>>& GetList();
 
 ////    bool IsAnyTypeFull() const;
 
-  EventClassCounters counters;
+  EventClassCounters counters_in_EventLists;
 
 ////private:
   // sub-lists just act as type-specific storage

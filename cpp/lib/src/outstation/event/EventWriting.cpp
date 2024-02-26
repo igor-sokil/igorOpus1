@@ -46,7 +46,7 @@ uint32_t Write_in_EventWriting_static(EventLists* lists, IEventWriteHandler* han
 
 //    Iterator_in_List_for_EventRecord Iterate_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord);
 ////    auto iterator = lists.events.Iterate();
-  Iterator_in_List_for_EventRecord iter = Iterate_in_List_for_EventRecord(&(lists->events));
+  Iterator_in_List_for_EventRecord iter = Iterate_in_List_for_EventRecord(&(lists->events_in_EventLists));
 
   while (true)
   {
@@ -156,12 +156,12 @@ uint16_t WriteSome_in_EventWriting_static(Iterator_in_List_for_EventRecord* iter
   std::cout<<getString_stack_info();
   std::cout<<"WriteSome_in_EventWriting_static1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*lists->counters.selected= "<<(uint16_t)lists->counters.selected<<'\n';
+  std::cout<<"*lists->counters.selected= "<<(uint16_t)lists->counters_in_EventLists.selected<<'\n';
 #endif
   // don't bother searching
 // не утруждайтесь поиском
 ////    if (lists.counters.selected == 0)
-  if (lists->counters.selected == 0)
+  if (lists->counters_in_EventLists.selected == 0)
   {
 #ifdef  LOG_INFO
     decrement_stack_info();

@@ -330,7 +330,7 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 
 //boolean Equals_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t other);
 ////    if (!((OContext*)ctx)->sol.seq.confirmNum.Equals(request.header.control.SEQ))
-  if (!Equals_in_SequenceNum_for_uint8_Modulus16(&(((OContext*)ctx)->sol.seq.confirmNum), (request->header).control.SEQ))
+  if (!Equals_in_SequenceNum_for_uint8_Modulus16(&(((OContext*)ctx)->sol_in_OContext.seq.confirmNum), (request->header).control.SEQ))
   {
 ////        FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, "solicited confirm with wrong seq: %u, expected: %u",
 ////                         request.header.control.SEQ, ctx.sol.seq.confirmNum.Get());
@@ -347,14 +347,14 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 
 //   void Reset_in_RequestHistory(RequestHistory *pRequestHistory);
 ////    ctx.history.Reset(); // any time we get a confirm we can treat any request as a new request
-  Reset_in_RequestHistory(&(((OContext*)ctx)->history));
+  Reset_in_RequestHistory(&(((OContext*)ctx)->history_in_OContext));
 //boolean cancel_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp);
 ////    ctx.confirmTimer.cancel();
-  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
+  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer_in_OContext));
 ////    ctx.eventBuffer.ClearWritten();
-  ClearWritten_in_EventBuffer(&(((OContext*)ctx)->eventBuffer)); // called when a transmission succeeds
+  ClearWritten_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext)); // called when a transmission succeeds
 ////    ctx.lastBroadcastMessageReceived.clear();
-  clear_in_Settable_for_LinkBroadcastAddress(&(((OContext*)ctx)->lastBroadcastMessageReceived));
+  clear_in_Settable_for_LinkBroadcastAddress(&(((OContext*)ctx)->lastBroadcastMessageReceived_in_OContext));
 
   // information the application about the confirm
 //    void OnConfirmProcessed_in_IOutstationApplication(IOutstationApplication*, boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3);
@@ -366,13 +366,13 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
 ////        ctx.eventBuffer.NumEvents(EventClass::EC3)
 ////    );
   OnConfirmProcessed_in_IOutstationApplication((((OContext*)ctx)->application), false,
-      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC1),
-      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC2),
-      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC3));
+      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext), EventClass_EC1),
+      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext), EventClass_EC2),
+      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext), EventClass_EC3));
 
 // boolean HasSelection_in_ResponseContext(ResponseContext *pResponseContext);
 ////    if (ctx.rspContext.HasSelection())
-  if (HasSelection_in_ResponseContext(&(((OContext*)ctx)->rspContext)))
+  if (HasSelection_in_ResponseContext(&(((OContext*)ctx)->rspContext_in_OContext)))
   {
 //    OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addresses* addresses, AppSeqNum* seq);
 //void SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t value);
@@ -439,7 +439,7 @@ void* OnNewReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstationSt
 #endif
   UNUSED(pOutstationState);
 ////    ctx.confirmTimer.cancel();
-  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
+  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer_in_OContext));
 ////    return ctx.RespondToReadRequest(request);
   void* tmp = RespondToReadRequest_in_OContext((OContext *)ctx, request);
 
@@ -457,7 +457,7 @@ void* OnNewNonReadRequest_in_StateSolicitedConfirmWait_override(void* pOutstatio
   UNUSED(pOutstationState);
 //boolean cancel_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp);
 ////    ctx.confirmTimer.cancel();
-  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
+  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer_in_OContext));
 ////    return ctx.RespondToNonReadRequest(request);
   return RespondToNonReadRequest_in_OContext((OContext *)ctx, request);
 }
@@ -468,7 +468,7 @@ void* OnRepeatNonReadRequest_in_StateSolicitedConfirmWait_override(void* pOutsta
   StateSolicitedConfirmWait *parent =
     (StateSolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 ////    ctx.confirmTimer.cancel();
-  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
+  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer_in_OContext));
 ////    ctx.BeginRetransmitLastResponse(request.addresses.source);
 ////    return *this;
   BeginRetransmitLastResponse_in_OContext((OContext *)ctx, (request->addresses).source);
@@ -560,7 +560,7 @@ void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, 
   }
 
 ////    if (!ctx.unsol.seq.confirmNum.Equals(request.header.control.SEQ))
-  if (!Equals_in_SequenceNum_for_uint8_Modulus16(&(((OContext*)ctx)->unsol.seq.confirmNum), (request->header).control.SEQ))
+  if (!Equals_in_SequenceNum_for_uint8_Modulus16(&(((OContext*)ctx)->unsol_in_OContext.seq.confirmNum), (request->header).control.SEQ))
   {
 ////        FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, "unsolicited confirm with wrong seq: %u, expected: %u",
 ////                         request.header.control.SEQ, ctx.unsol.seq.confirmNum.Get());
@@ -580,11 +580,11 @@ void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, 
   std::cout<<"OnConfirm_in_StateUnsolicitedConfirmWait_override2"<<std::endl;
 #endif
 ////    ctx.history.Reset(); // any time we get a confirm we can treat any request as a new request
-  Reset_in_RequestHistory(&(((OContext*)ctx)->history));
+  Reset_in_RequestHistory(&(((OContext*)ctx)->history_in_OContext));
 ////    ctx.confirmTimer.cancel();
-  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
+  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer_in_OContext));
 ////    ctx.lastBroadcastMessageReceived.clear();
-  clear_in_Settable_for_LinkBroadcastAddress(&(((OContext*)ctx)->lastBroadcastMessageReceived));
+  clear_in_Settable_for_LinkBroadcastAddress(&(((OContext*)ctx)->lastBroadcastMessageReceived_in_OContext));
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -598,31 +598,31 @@ void* OnConfirm_in_StateUnsolicitedConfirmWait_override(void* pOutstationState, 
 ////        ctx.eventBuffer.NumEvents(EventClass::EC3)
 ////    );
   OnConfirmProcessed_in_IOutstationApplication((((OContext*)ctx)->application), true,
-      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC1),
-      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC2),
-      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer), EventClass_EC3));
+      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext), EventClass_EC1),
+      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext), EventClass_EC2),
+      NumEvents_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext), EventClass_EC3));
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"OnConfirm_in_StateUnsolicitedConfirmWait_override4"<<std::endl;
 #endif
-  if (((OContext*)ctx)->unsol.completedNull)
+  if (((OContext*)ctx)->unsol_in_OContext.completedNull)
   {
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"OnConfirm_in_StateUnsolicitedConfirmWait_override5"<<std::endl;
 #endif
 ////        ctx.eventBuffer.ClearWritten();
-    ClearWritten_in_EventBuffer(&(((OContext*)ctx)->eventBuffer)); // called when a transmission succeeds
+    ClearWritten_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext)); // called when a transmission succeeds
   }
   else
   {
 ////        ctx.unsol.completedNull = true;
-    ((OContext*)ctx)->unsol.completedNull = true;
+    ((OContext*)ctx)->unsol_in_OContext.completedNull = true;
   }
 
 ////    ctx.shouldCheckForUnsolicited = true;
-  ((OContext*)ctx)->shouldCheckForUnsolicited = true;
+  ((OContext*)ctx)->shouldCheckForUnsolicited_in_OContext = true;
 
 ////    return StateIdle::Inst();
   void *tmp = Inst_in_StateIdle_static();
@@ -652,14 +652,14 @@ void* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstation
 #endif
 
 ////    if (ctx.unsol.completedNull)
-  if (((OContext*)ctx)->unsol.completedNull)
+  if (((OContext*)ctx)->unsol_in_OContext.completedNull)
   {
 //   boolean Retry_in_NumRetries(NumRetries *pNumRetries);
 ////        auto shouldRetry = ctx.unsolRetries.Retry();
-    boolean shouldRetry = Retry_in_NumRetries(&(((OContext*)ctx)->unsolRetries));
+    boolean shouldRetry = Retry_in_NumRetries(&(((OContext*)ctx)->unsolRetries_in_OContext));
 //  boolean IsSet_in_DeferredRequest(DeferredRequest *pDeferredRequest);
 ////        if (shouldRetry && !ctx.deferred.IsSet())
-    if (shouldRetry && !IsSet_in_DeferredRequest(&(((OContext*)ctx)->deferred)))
+    if (shouldRetry && !IsSet_in_DeferredRequest(&(((OContext*)ctx)->deferred_in_OContext)))
     {
 //    void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext);
 ////            ctx.RestartUnsolConfirmTimer();
@@ -677,7 +677,7 @@ void* OnConfirmTimeout_in_StateUnsolicitedConfirmWait_override(void* pOutstation
     else
     {
 ////            ctx.eventBuffer.Unselect();
-      Unselect_in_EventBuffer(&(((OContext*)ctx)->eventBuffer));
+      Unselect_in_EventBuffer(&(((OContext*)ctx)->eventBuffer_in_OContext));
     }
   }
 
@@ -704,7 +704,7 @@ void* OnNewReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstation
     (StateUnsolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 //  void Set_in_DeferredRequest(DeferredRequest *pDeferredRequest, ParsedRequest* request);
 ////    ctx.deferred.Set(request);
-  Set_in_DeferredRequest(&(((OContext*)ctx)->deferred), request);
+  Set_in_DeferredRequest(&(((OContext*)ctx)->deferred_in_OContext), request);
 ////    return *this;
 
 #ifdef  LOG_INFO
@@ -722,7 +722,7 @@ void* OnNewNonReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstat
     (StateUnsolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 //  void Reset_in_DeferredRequest(DeferredRequest *pDeferredRequest);
 ////    ctx.deferred.Reset();
-  Reset_in_DeferredRequest(&(((OContext*)ctx)->deferred));
+  Reset_in_DeferredRequest(&(((OContext*)ctx)->deferred_in_OContext));
 //    OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////    ctx.RespondToNonReadRequest(request);
   RespondToNonReadRequest_in_OContext((OContext *)ctx, request);
@@ -748,7 +748,7 @@ void* OnRepeatReadRequest_in_StateUnsolicitedConfirmWait_override(void* pOutstat
     (StateUnsolicitedConfirmWait*)getParentPointer_in_OutstationState((OutstationState*)pOutstationState);
 //  void Set_in_DeferredRequest(DeferredRequest *pDeferredRequest, ParsedRequest* request);
 ////    ctx.deferred.Set(request);
-  Set_in_DeferredRequest(&(((OContext *)ctx)->deferred), request);
+  Set_in_DeferredRequest(&(((OContext *)ctx)->deferred_in_OContext), request);
 ////    return *this;
   return &(parent->oOutstationState);
 }
@@ -804,7 +804,7 @@ void* OnNewReadRequest_in_StateNullUnsolicitedConfirmWait_override(void* pOutsta
 #endif
   UNUSED(pOutstationState);
 ////    ctx.confirmTimer.cancel();
-  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer));
+  cancel_in_TimerExe4cpp(&(((OContext*)ctx)->confirmTimer_in_OContext));
 ////    return ctx.RespondToReadRequest(request);
   void* tmp = RespondToReadRequest_in_OContext((OContext *)ctx, request);
 

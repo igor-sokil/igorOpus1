@@ -205,7 +205,7 @@ typedef struct
 ////    IINField HandleFreezeAndClear(const ser4cpp::rseq_t& objects);
 
   // ------ resources --------
-  Addresses addresses;
+  Addresses addresses_in_OContext;
 ////    Logger logger;
 ////    const std::shared_ptr<exe4cpp::IExecutor> executor;
   IExecutorExe4cpp* executor;
@@ -217,40 +217,43 @@ typedef struct
   IOutstationApplication* application;
 
   // ------ Database, event buffer, and response tracking
-  EventBuffer eventBuffer;
-  Database database;
-  ResponseContext rspContext;//constructor default
+  EventBuffer eventBuffer_in_OContext;
+  Database database_in_OContext;
+  ResponseContext rspContext_in_OContext;//constructor default
 ////
   // ------ Static configuration -------
-  OutstationParams params;
+  OutstationParams params_in_OContext;
 
   // ------ Shared dynamic state --------
-  boolean isOnline;
-  boolean isTransmitting;
-  IINField staticIIN;
+  boolean isOnline_in_OContext;
+  boolean isTransmitting_in_OContext;
+  IINField staticIIN_in_OContext;
 ////    exe4cpp::Timer confirmTimer;
-  TimerExe4cpp confirmTimer;
+  TimerExe4cpp confirmTimer_in_OContext;
 
-  RequestHistory history;
-  DeferredRequest deferred;//constructor default
+  RequestHistory history_in_OContext;
+  DeferredRequest deferred_in_OContext;//constructor default Отложенный запрос
 
   // ------ Dynamic state related to controls ------
-  ControlState control;
+// ------ Динамическое состояние, связанное с элементами управления ------
+  ControlState control_in_OContext;
 
   // ------ Dynamic state related to time synchronization ------
-  TimeSyncState timeTimeSyncState;
+// ------ Динамическое состояние, связанное с синхронизацией времени ------
+  TimeSyncState timeTimeSyncState_in_OContext;
 
   // ------ Dynamic state related to solicited and unsolicited modes ------
-  OutstationSolState sol;
-  OutstationUnsolState unsol;
-  NumRetries unsolRetries;//constructor default
-  boolean shouldCheckForUnsolicited;
+// ------ Динамическое состояние, связанное с запрошенным и незапрошенным режимами ------
+  OutstationSolState sol_in_OContext;
+  OutstationUnsolState unsol_in_OContext;
+  NumRetries unsolRetries_in_OContext;//constructor default
+  boolean shouldCheckForUnsolicited_in_OContext;
 ////    OutstationState* state = &StateIdle::Inst();
-  OutstationState* state;//// = &StateIdle::Inst();
+  OutstationState* state_in_OContext;//// = &StateIdle::Inst();
 
   // ------ Dynamic state related to broadcast messages ------
 ////    ser4cpp::Settable<LinkBroadcastAddress> lastBroadcastMessageReceived;
-  Settable_for_LinkBroadcastAddress lastBroadcastMessageReceived;
+  Settable_for_LinkBroadcastAddress lastBroadcastMessageReceived_in_OContext;
 
 } OContext;
 

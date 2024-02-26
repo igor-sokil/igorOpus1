@@ -40,7 +40,7 @@ uint32_t SelectByClass_in_EventSelection_static(EventLists* lists, ClassField* c
 
   uint32_t num_selected = 0;
 //    auto iter = lists->events.Iterate();
-  Iterator_in_List_for_EventRecord iter = Iterate_in_List_for_EventRecord(&(lists->events));//List_for_EventRecord *pList_for_EventRecord)
+  Iterator_in_List_for_EventRecord iter = Iterate_in_List_for_EventRecord(&(lists->events_in_EventLists));//List_for_EventRecord *pList_for_EventRecord)
 
 //boolean HasNext__in__Iterator_in_List_for_EventRecord(Iterator_in_List_for_EventRecord *pIterator_in_List_for_EventRecord);
 ////    while (iter.HasNext() && num_selected < max)
@@ -63,7 +63,7 @@ uint32_t SelectByClass_in_EventSelection_static(EventLists* lists, ClassField* c
       ++num_selected;
 //void OnSelect_in_EventClassCounters(EventClassCounters *pEventClassCounters);
 ////            lists.counters.OnSelect();
-      OnSelect_in_EventClassCounters(&(lists->counters));
+      OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     }
   }
 
@@ -115,7 +115,7 @@ boolean select__for__TypedEventRecord_for_BinarySpec_in_EventSelection(EventList
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
-    OnSelect_in_EventClassCounters(&(lists->counters));
+    OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     ++(*pnum_selected);
   }
 
@@ -210,7 +210,7 @@ boolean select__for__TypedEventRecord_for_DoubleBitBinarySpec_in_EventSelection(
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
-    OnSelect_in_EventClassCounters(&(lists->counters));
+    OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     ++(*pnum_selected);
   }
 
@@ -337,7 +337,7 @@ boolean select__for__TypedEventRecord_for_AnalogSpec_in_EventSelection(EventList
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
-    OnSelect_in_EventClassCounters(&(lists->counters));
+    OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     ++(*pnum_selected);
   }
 
@@ -486,7 +486,7 @@ boolean select__for__TypedEventRecord_for_CounterSpec_in_EventSelection(EventLis
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
-    OnSelect_in_EventClassCounters(&(lists->counters));
+    OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     ++(*pnum_selected);
   }
 
@@ -588,7 +588,7 @@ boolean select__for__TypedEventRecord_for_FrozenCounterSpec_in_EventSelection(Ev
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
-    OnSelect_in_EventClassCounters(&(lists->counters));
+    OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     ++(*pnum_selected);
   }
 
@@ -677,7 +677,7 @@ boolean select__for__TypedEventRecord_for_BinaryOutputStatusSpec_in_EventSelecti
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
-    OnSelect_in_EventClassCounters(&(lists->counters));
+    OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     ++(*pnum_selected);
   }
 
@@ -766,7 +766,7 @@ boolean select__for__TypedEventRecord_for_AnalogOutputStatusSpec_in_EventSelecti
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
-    OnSelect_in_EventClassCounters(&(lists->counters));
+    OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     ++(*pnum_selected);
   }
 
@@ -855,7 +855,7 @@ boolean select__for__TypedEventRecord_for_OctetStringSpec_in_EventSelection(Even
     node->record->value.state = EventState_selected;
     node->selectedVariation = useDefaultVariation ? node->defaultVariation : variation;
 ////            lists.counters.OnSelect();
-    OnSelect_in_EventClassCounters(&(lists->counters));
+    OnSelect_in_EventClassCounters(&(lists->counters_in_EventLists));
     ++(*pnum_selected);
   }
 

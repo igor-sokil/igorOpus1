@@ -74,7 +74,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override(voi
 ////        EventCollection<T> collection(iterator, lists.counters, type->value.selectedVariation);
   EventCollection_for_Binary collection;
 
-  EventCollection_for_Binary_in_EventCollection_for_Binary(&collection, iteratorEv, &(lists->counters), (type->value).selectedVariation);
+  EventCollection_for_Binary_in_EventCollection_for_Binary(&collection, iteratorEv, &(lists->counters_in_EventLists), (type->value).selectedVariation);
 
 //uint16_t Write_for_Binary_in_IEventWriteHandler(IEventWriteHandler *, EventBinaryVariation_uint8_t variation, Binary* first, IEventCollection_for_Binary* items);//// = 0;
 ////        return handler.Write(type->value.selectedVariation, type->value.value, collection);
@@ -167,7 +167,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_DoubleBitBinarySpec_ove
 
   EventCollection_for_DoubleBitBinary_in_EventCollection_for_DoubleBitBinary(&collection,
       iteratorEv,
-      &(lists->counters),
+      &(lists->counters_in_EventLists),
       (type->value).selectedVariation);
 
 //     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventDoubleBitBinaryVariation_uint8_t variation, DoubleBitBinary* first, IEventCollection_for_DoubleBitBinary* items);//// = 0;
@@ -268,7 +268,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogSpec_override(voi
 #endif
   EventCollection_for_Analog_in_EventCollection_for_Analog(&collection,
       iteratorEv,
-      &(lists->counters),
+      &(lists->counters_in_EventLists),
       (type->value).selectedVariation);
 
 #ifdef  LOG_INFO
@@ -360,7 +360,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_CounterSpec_override(vo
 
   EventCollection_for_Counter_in_EventCollection_for_Counter(&collection,
       iteratorEv,
-      &(lists->counters),
+      &(lists->counters_in_EventLists),
       (type->value).selectedVariation);
 
 //     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventCounterVariation_uint8_t variation, Counter* first, IEventCollection_for_Counter* items);//// = 0;
@@ -441,7 +441,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_FrozenCounterSpec_overr
 
   EventCollection_for_FrozenCounter_in_EventCollection_for_FrozenCounter(&collection,
       iteratorEv,
-      &(lists->counters),
+      &(lists->counters_in_EventLists),
       (type->value).selectedVariation);
 
 //     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventFrozenCounterVariation_uint8_t variation, FrozenCounter* first, IEventCollection_for_FrozenCounter* items);//// = 0;
@@ -522,7 +522,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinaryOutputStatusSpec_
 
   EventCollection_for_BinaryOutputStatus_in_EventCollection_for_BinaryOutputStatus(&collection,
       iteratorEv,
-      &(lists->counters),
+      &(lists->counters_in_EventLists),
       (type->value).selectedVariation);
 
 //     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventBinaryOutputStatusVariation_uint8_t variation, BinaryOutputStatus* first, IEventCollection_for_BinaryOutputStatus* items);//// = 0;
@@ -603,7 +603,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_AnalogOutputStatusSpec_
 
   EventCollection_for_AnalogOutputStatus_in_EventCollection_for_AnalogOutputStatus(&collection,
       iteratorEv,
-      &(lists->counters),
+      &(lists->counters_in_EventLists),
       (type->value).selectedVariation);
 
 //     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventAnalogOutputStatusVariation_uint8_t variation, AnalogOutputStatus* first, IEventCollection_for_AnalogOutputStatus* items);//// = 0;
@@ -684,7 +684,7 @@ uint16_t WriteSome_in_EventTypeImpl_TypedEventRecord_for_OctetStringSpec_overrid
 
   EventCollection_for_OctetString_in_EventCollection_for_OctetString(&collection,
       iteratorEv,
-      &(lists->counters),
+      &(lists->counters_in_EventLists),
       (type->value).selectedVariation);
 
 //     uint16_t (*pWrite_in_IEventWriteHandlerOver1)(EventOctetStringVariation_uint8_t variation, OctetString* first, IEventCollection_for_OctetString* items);//// = 0;

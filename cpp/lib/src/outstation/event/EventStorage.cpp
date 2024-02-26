@@ -53,18 +53,18 @@ uint32_t NumSelected_in_EventStorage(EventStorage *pEventStorage)
   std::cout<<getString_stack_info();
   std::cout<<"NumSelected_in_EventStorage1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*(pEventStorage->state).counters.selected= "<<(uint16_t)(pEventStorage->state).counters.selected<<'\n';
+  std::cout<<"*(pEventStorage->state).counters.selected= "<<(uint16_t)(pEventStorage->state).counters_in_EventLists.selected<<'\n';
   decrement_stack_info();
 #endif
 ////  return this->state.counters.selected;
-  return (pEventStorage->state).counters.selected;
+  return (pEventStorage->state).counters_in_EventLists.selected;
 }
 
 uint32_t NumUnwritten_in_EventStorage(EventStorage *pEventStorage, EventClass_uint8_t clazz)
 {
 ////  return this->state.counters.total.Get(clazz) - this->state.counters.written.Get(clazz);
-  return Get_in_ClazzCount(&((pEventStorage->state).counters.total), clazz) -
-         Get_in_ClazzCount(&((pEventStorage->state).counters.written), clazz);
+  return Get_in_ClazzCount(&((pEventStorage->state).counters_in_EventLists.total), clazz) -
+         Get_in_ClazzCount(&((pEventStorage->state).counters_in_EventLists.written), clazz);
 }
 
 boolean Update_BinarySpec_in_EventStorage(EventStorage *pEventStorage, Event_for_BinarySpec* evt)
@@ -312,7 +312,7 @@ boolean written_in_EventStorage(EventStorage *pEventStorage, EventRecord* record
     RemoveTypeFromStorage_in_IEventType(((IEventType*)record->type), record, &(pEventStorage->state));//pRemoveTypeFromStorage(record, &(pEventStorage->state));
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////      this->state.counters.OnRemove(record.clazz, record.state);
-    OnRemove_in_EventClassCounters(&((pEventStorage->state).counters), record->clazz, record->state);
+    OnRemove_in_EventClassCounters(&((pEventStorage->state).counters_in_EventLists), record->clazz, record->state);
     return true;
   }
 
@@ -336,7 +336,7 @@ uint32_t ClearWritten_in_EventStorage(EventStorage *pEventStorage)
 ////  };
 
 ////  return this->state.events.RemoveAll(&((pEventStorage->state).events), written);
-  return RemoveAll_in_List_for_EventRecord(pEventStorage, &((pEventStorage->state).events), written_in_EventStorage);
+  return RemoveAll_in_List_for_EventRecord(pEventStorage, &((pEventStorage->state).events_in_EventLists), written_in_EventStorage);
 }
 
 void clear_in_EventStorage(EventRecord* record);
@@ -357,16 +357,17 @@ void Unselect_in_EventStorage(EventStorage *pEventStorage)
 ////  auto clear = [](EventRecord& record) -> void { record.state = EventState::unselected; };
 
 ////  this->state.events.Foreach(clear);
-  Foreach_in_List_for_EventRecord(&((pEventStorage->state).events), clear_in_EventStorage);
+  Foreach_in_List_for_EventRecord(&((pEventStorage->state).events_in_EventLists), clear_in_EventStorage);
 
   // keep the total, but clear the selected/written
+// сохраняем сумму, но очищаем выбранное/записанное
 ////  this->state.counters.ResetOnFail();
-  ResetOnFail_in_EventClassCounters(&((pEventStorage->state).counters));
+  ResetOnFail_in_EventClassCounters(&((pEventStorage->state).counters_in_EventLists));
 #ifdef  LOG_INFO
   decrement_stack_info();
 #endif
 }
-/*
+
 ////template<class T> template<class U> void List<T>::Foreach(const U& action)
 ////{
 ////    auto iter = this->Iterate();
@@ -375,5 +376,5 @@ void Unselect_in_EventStorage(EventStorage *pEventStorage)
 ////        action(iter.Next()->value);
 ////    }
 ////}
-*/
+
 ////} // namespace opendnp3

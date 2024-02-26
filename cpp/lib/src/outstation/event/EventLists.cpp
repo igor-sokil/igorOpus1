@@ -50,10 +50,10 @@ void EventLists_in_EventLists(EventLists *pEventLists, EventBufferConfig* config
   std::cout<<"EventLists_in_EventLists1"<<'\n';
   decrement_stack_info();
 #endif
-  EventClassCounters_in_EventClassCounters(&(pEventLists->counters));
+  EventClassCounters_in_EventClassCounters(&(pEventLists->counters_in_EventLists));
 //   uint32_t TotalEvents_in_EventBufferConfig(EventBufferConfig *pEventBufferConfig);
 //    pEventLists->events = TotalEvents_in_EventBufferConfig(config);//(config.TotalEvents()),
-  List_for_EventRecord_in_List_for_EventRecordOver2(&(pEventLists->events), TotalEvents_in_EventBufferConfig(config));
+  List_for_EventRecord_in_List_for_EventRecordOver2(&(pEventLists->events_in_EventLists), TotalEvents_in_EventBufferConfig(config));
 ////    pEventLists->binary = config->maxBinaryEvents),
   List_TypedEventRecord_for_BinarySpec_in_List_TypedEventRecord_for_BinarySpecOver2(&(pEventLists->binary),
       config->maxBinaryEvents);

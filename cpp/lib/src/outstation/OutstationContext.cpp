@@ -104,9 +104,9 @@ void OContext_in_OContext(OContext *pOContext,
   std::cout<<"{OContext_in_OContext1"<<'\n';
 #endif
 
-  TimerExe4cpp_in_TimerExe4cppOver1(&(pOContext->confirmTimer));
+  TimerExe4cpp_in_TimerExe4cppOver1(&(pOContext->confirmTimer_in_OContext));
 
-  pOContext->addresses = *addresses;
+  pOContext->addresses_in_OContext = *addresses;
 ////      logger(logger),
   pOContext->executor = executor;
   pOContext->lower = lower;
@@ -114,7 +114,7 @@ void OContext_in_OContext(OContext *pOContext,
   pOContext->application = application;
 
 ////      pOContext->eventBuffer(config->eventBufferConfig),
-  EventBuffer_in_EventBufferOver2(&(pOContext->eventBuffer), &(config->eventBufferConfig));
+  EventBuffer_in_EventBufferOver2(&(pOContext->eventBuffer_in_OContext), &(config->eventBufferConfig));
 
 //  void  Database_in_Database(Database *pDatabase,
 //             DatabaseConfig* config,
@@ -122,53 +122,53 @@ void OContext_in_OContext(OContext *pOContext,
 //             IDnpTimeSource* time_source,
 //             StaticTypeBitField allowed_class_zero_types);
 ////      pOContext->database(db_config, eventBuffer, *this->application, config.params.typesAllowedInClass0),
-  Database_in_Database(&(pOContext->database),
+  Database_in_Database(&(pOContext->database_in_OContext),
                        db_config,
-                       &(pOContext->eventBuffer.iIEventReceiver),
+                       &(pOContext->eventBuffer_in_OContext.iIEventReceiver),
                        &(pOContext->application->iIDnpTimeSource),
                        config->params.typesAllowedInClass0);
 
 // void ResponseContext_in_ResponseContext(ResponseContext *pResponseContext, IResponseLoader* staticLoader, IResponseLoader* eventLoader);
 ////      pOContext->rspContext(database, eventBuffer),
-  ResponseContext_in_ResponseContext(&(pOContext->rspContext), &(pOContext->database.iIResponseLoader), &(pOContext->eventBuffer.iIResponseLoader));
+  ResponseContext_in_ResponseContext(&(pOContext->rspContext_in_OContext), &(pOContext->database_in_OContext.iIResponseLoader), &(pOContext->eventBuffer_in_OContext.iIResponseLoader));
 
 ////      pOContext->params(config.params),
-  pOContext->params = config->params;
+  pOContext->params_in_OContext = config->params;
 
-  pOContext->isOnline = false;
-  pOContext->isTransmitting = false;
+  pOContext->isOnline_in_OContext = false;
+  pOContext->isTransmitting_in_OContext = false;
 ////      pOContext->staticIIN = IINBit_DEVICE_RESTART;
-  IINField_in_IINFieldOver2(&(pOContext->staticIIN), IINBit_DEVICE_RESTART);
+  IINField_in_IINFieldOver2(&(pOContext->staticIIN_in_OContext), IINBit_DEVICE_RESTART);
 
 //  void DeferredRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, uint32_t maxAPDUSize);
 ///      pOContext->deferred(config->params.maxRxFragSize),
-  DeferredRequest_in_DeferredRequest(&(pOContext->deferred), config->params.maxRxFragSize);
+  DeferredRequest_in_DeferredRequest(&(pOContext->deferred_in_OContext), config->params.maxRxFragSize);
 
 //  void  OutstationSolState_in_OutstationSolState(OutstationSolState *pOutstationSolState, uint32_t maxTxSize);
 ////      pOContext->sol(config->params.maxTxFragSize),
-  OutstationSolState_in_OutstationSolState(&(pOContext->sol), config->params.maxTxFragSize);
+  OutstationSolState_in_OutstationSolState(&(pOContext->sol_in_OContext), config->params.maxTxFragSize);
 
 //  void  OutstationUnsolState_in_OutstationUnsolState(OutstationUnsolState *pOutstationUnsolState, uint32_t maxTxSize);
 ////      pOContext->unsol(config->params.maxTxFragSize),
-  OutstationUnsolState_in_OutstationUnsolState(&(pOContext->unsol), config->params.maxTxFragSize);
+  OutstationUnsolState_in_OutstationUnsolState(&(pOContext->unsol_in_OContext), config->params.maxTxFragSize);
 
 //   void NumRetries_in_NumRetries(NumRetries *pNumRetries, uint16_t maxNumRetries, boolean isInfinite);
 ////      pOContext->unsolRetries(config->params.numUnsolRetries),
-  pOContext->unsolRetries = config->params.numUnsolRetries;
+  pOContext->unsolRetries_in_OContext = config->params.numUnsolRetries;
 
-  pOContext->shouldCheckForUnsolicited = false;
+  pOContext->shouldCheckForUnsolicited_in_OContext = false;
 
 //  pPointerGlobal1 = pOContext;
 //     OutstationState* Inst_in_StateIdle_static(void);
-  pOContext->state = Inst_in_StateIdle_static();//// = &StateIdle::Inst();
+  pOContext->state_in_OContext = Inst_in_StateIdle_static();//// = &StateIdle::Inst();
 
-  EventBuffer_in_EventBufferOver1(&(pOContext->eventBuffer));
+  EventBuffer_in_EventBufferOver1(&(pOContext->eventBuffer_in_OContext));
 
-  RequestHistory_in_RequestHistory(&(pOContext->history));
-  ControlState_in_ControlStateOver1(&(pOContext->control));
-  TimeSyncState_in_TimeSyncState(&(pOContext->timeTimeSyncState));
+  RequestHistory_in_RequestHistory(&(pOContext->history_in_OContext));
+  ControlState_in_ControlStateOver1(&(pOContext->control_in_OContext));
+  TimeSyncState_in_TimeSyncState(&(pOContext->timeTimeSyncState_in_OContext));
 
-  Settable_for_LinkBroadcastAddress_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived));
+  Settable_for_LinkBroadcastAddress_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext));
 
   setParentPointer_in_IUpDown(&(pOContext->iIUpperLayer.iIUpDown), pOContext);
   setParentPointer_in_IUpperLayer(&(pOContext->iIUpperLayer), pOContext);
@@ -192,7 +192,7 @@ boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
   std::cout<<getString_stack_info();
   std::cout<<"{OnLowerLayerUp_in_OContext1"<<'\n';
 #endif
-  if (pOContext->isOnline)
+  if (pOContext->isOnline_in_OContext)
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "already online");
 #ifdef  LOG_INFO
@@ -206,8 +206,8 @@ boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
     return false;
   }
 
-  pOContext->isOnline = true;
-  pOContext->shouldCheckForUnsolicited = true;
+  pOContext->isOnline_in_OContext = true;
+  pOContext->shouldCheckForUnsolicited_in_OContext = true;
 //    void CheckForTaskStart_in_OContext(OContext *pOContext);
 ////    this->CheckForTaskStart();
   CheckForTaskStart_in_OContext(pOContext);
@@ -223,7 +223,7 @@ boolean OnLowerLayerUp_in_OContext(OContext* pOContext)
 boolean OnLowerLayerDown_in_OContext(OContext* pOContext)
 {
 
-  if (!(pOContext->isOnline))
+  if (!(pOContext->isOnline_in_OContext))
   {
 ////        SIMPLE_LOG_BLOCK(logger, flags::ERR, "already offline");
 #ifdef  LOG_INFO
@@ -236,26 +236,26 @@ boolean OnLowerLayerDown_in_OContext(OContext* pOContext)
   }
 
 ////    this->state = &StateIdle::Inst();
-  pOContext->state = Inst_in_StateIdle_static();//// = &StateIdle::Inst();
+  pOContext->state_in_OContext = Inst_in_StateIdle_static();//// = &StateIdle::Inst();
 
-  pOContext->isOnline = false;
-  pOContext->isTransmitting = false;
+  pOContext->isOnline_in_OContext = false;
+  pOContext->isTransmitting_in_OContext = false;
 
 //    void Reset_in_OutstationSolState(OutstationSolState *pOutstationSolState);
 ////    sol.Reset();
-  Reset_in_OutstationSolState(&(pOContext->sol));
+  Reset_in_OutstationSolState(&(pOContext->sol_in_OContext));
 ////    unsol.Reset();
-  Reset_in_OutstationUnsolState(&(pOContext->unsol));
+  Reset_in_OutstationUnsolState(&(pOContext->unsol_in_OContext));
 ////    history.Reset();
-  Reset_in_RequestHistory(&(pOContext->history));
+  Reset_in_RequestHistory(&(pOContext->history_in_OContext));
 ////    deferred.Reset();
-  Reset_in_DeferredRequest(&(pOContext->deferred));
+  Reset_in_DeferredRequest(&(pOContext->deferred_in_OContext));
 ////    eventBuffer.Unselect();
-  Unselect_in_EventBuffer(&(pOContext->eventBuffer));
+  Unselect_in_EventBuffer(&(pOContext->eventBuffer_in_OContext));
 ////    rspContext.Reset();
-  Reset_in_ResponseContext(&(pOContext->rspContext));
+  Reset_in_ResponseContext(&(pOContext->rspContext_in_OContext));
 ////    confirmTimer.cancel();
-  cancel_in_TimerExe4cpp(&(pOContext->confirmTimer));
+  cancel_in_TimerExe4cpp(&(pOContext->confirmTimer_in_OContext));
 
   return true;
 }
@@ -269,7 +269,7 @@ boolean OnTxReady_in_OContext(OContext* pOContext)
   std::cout<<"{OnTxReady_in_OContext1"<<std::endl;
 #endif
 
-  if (!(pOContext->isOnline) || !(pOContext->isTransmitting))
+  if (!(pOContext->isOnline_in_OContext) || !(pOContext->isTransmitting_in_OContext))
   {
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
@@ -279,7 +279,7 @@ boolean OnTxReady_in_OContext(OContext* pOContext)
     return false;
   }
 
-  pOContext->isTransmitting = false;
+  pOContext->isTransmitting_in_OContext = false;
 ////    this->CheckForTaskStart();
   CheckForTaskStart_in_OContext(pOContext);
 
@@ -300,7 +300,7 @@ boolean OnReceive_in_OContext(OContext* pOContext, Message* message)
   std::cout<<getString_stack_info();
   std::cout<<"{OnReceive_in_OContext1"<<std::endl;
 #endif
-  if (!(pOContext->isOnline))
+  if (!(pOContext->isOnline_in_OContext))
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "ignoring received data while offline");
 #ifdef  LOG_INFO
@@ -379,22 +379,22 @@ OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequ
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*analyze this request to see how it compares to the last request"<<std::endl;
 #endif
-  if (HasLastRequest_in_RequestHistory(&(pOContext->history)))
+  if (HasLastRequest_in_RequestHistory(&(pOContext->history_in_OContext)))
   {
 //boolean Equals_in_SequenceNum_for_uint8_Modulus16(SequenceNum_for_uint8_Modulus16 *pSequenceNum_for_uint8_Modulus16, uint8_t other);
 ////        if (this->sol.seq.num.Equals(request.header.control.SEQ))
-    if (Equals_in_SequenceNum_for_uint8_Modulus16(&(pOContext->sol.seq.num), request->header.control.SEQ))
+    if (Equals_in_SequenceNum_for_uint8_Modulus16(&(pOContext->sol_in_OContext.seq.num), request->header.control.SEQ))
     {
 //   boolean FullyEqualsLastRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////            if (this->history.FullyEqualsLastRequest(request.header, request.objects))
-      if (FullyEqualsLastRequest_in_RequestHistory(&(pOContext->history), &(request->header), &(request->objects)))
+      if (FullyEqualsLastRequest_in_RequestHistory(&(pOContext->history_in_OContext), &(request->header), &(request->objects)))
       {
 ////                if (request.header.function == FunctionCode::READ)
         if (request->header.function == FunctionCode_READ)
         {
 //    OutstationState* OnRepeatReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////                    return this->state->OnRepeatReadRequest(*this, request);
-          OutstationState* tmp = OnRepeatReadRequest_in_OutstationState(pOContext->state, pOContext, request);
+          OutstationState* tmp = OnRepeatReadRequest_in_OutstationState(pOContext->state_in_OContext, pOContext, request);
 #ifdef  LOG_INFO
           std::cout<<getString_stack_info();
           std::cout<<"}OnReceiveSolRequest_in_OContext1_"<<std::endl;
@@ -405,7 +405,7 @@ OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequ
 
 //    OutstationState* OnRepeatNonReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////                return this->state->OnRepeatNonReadRequest(*this, request);
-        OutstationState* tmp = OnRepeatNonReadRequest_in_OutstationState(pOContext->state, pOContext, request);
+        OutstationState* tmp = OnRepeatNonReadRequest_in_OutstationState(pOContext->state_in_OContext, pOContext, request);
 #ifdef  LOG_INFO
         std::cout<<getString_stack_info();
         std::cout<<"}OnReceiveSolRequest_in_OContext2_"<<std::endl;
@@ -478,7 +478,7 @@ OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedReques
 #endif
 
 ////    pOContext->sol.seq.num = request->header.control.SEQ;
-  SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(&(pOContext->sol.seq.num), request->header.control.SEQ);
+  SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(&(pOContext->sol_in_OContext.seq.num), request->header.control.SEQ);
 
   if (request->header.function == FunctionCode_READ)
   {
@@ -488,7 +488,7 @@ OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedReques
 #endif
 //    OutstationState* OnNewReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////        return this->state->OnNewReadRequest(*this, request);
-    OutstationState* tmp = OnNewReadRequest_in_OutstationState(pOContext->state, pOContext, request);
+    OutstationState* tmp = OnNewReadRequest_in_OutstationState(pOContext->state_in_OContext, pOContext, request);
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ProcessNewRequest_in_OContext1_"<<std::endl;
@@ -499,7 +499,7 @@ OutstationState* ProcessNewRequest_in_OContext(OContext *pOContext, ParsedReques
 
 //    OutstationState* OnNewNonReadRequest_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////    return this->state->OnNewNonReadRequest(*this, request);
-  OutstationState* tmp = OnNewNonReadRequest_in_OutstationState(pOContext->state, pOContext, request);
+  OutstationState* tmp = OnNewNonReadRequest_in_OutstationState(pOContext->state_in_OContext, pOContext, request);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ProcessNewRequest_in_OContext2_"<<std::endl;
@@ -523,7 +523,7 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
   {
 //    OutstationState* OnBroadcastMessage_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////        this->state = &this->state->OnBroadcastMessage(*this, request);
-    pOContext->state = OnBroadcastMessage_in_OutstationState(pOContext->state, pOContext, request);
+    pOContext->state_in_OContext = OnBroadcastMessage_in_OutstationState(pOContext->state_in_OContext, pOContext, request);
 
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
@@ -552,11 +552,11 @@ boolean ProcessObjects_in_OContext(OContext *pOContext, ParsedRequest* request)
     return tmp;
   }
 
-  if (pOContext->isTransmitting)
+  if (pOContext->isTransmitting_in_OContext)
   {
 //  void Set_in_DeferredRequest(DeferredRequest *pDeferredRequest, ParsedRequest* request);
 ////        this->deferred.Set(request);
-    Set_in_DeferredRequest(&(pOContext->deferred), request);
+    Set_in_DeferredRequest(&(pOContext->deferred_in_OContext), request);
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ProcessObjects_in_OContext_"<<std::endl;
@@ -618,7 +618,7 @@ boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 
 //   OutstationState* OnReceiveSolRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////    this->state = &this->OnReceiveSolRequest(request);
-  pOContext->state = OnReceiveSolRequest_in_OContext(pOContext, request);
+  pOContext->state_in_OContext = OnReceiveSolRequest_in_OContext(pOContext, request);
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -639,7 +639,7 @@ boolean ProcessConfirm_in_OContext(OContext *pOContext, ParsedRequest* request)
 #endif
 //    OutstationState* OnConfirm_in_OutstationState(OutstationState*, void* pOContext, ParsedRequest* request);
 ////    this->state = &this->state->OnConfirm(*this, request);
-  pOContext->state = OnConfirm_in_OutstationState(pOContext->state, pOContext, request);
+  pOContext->state_in_OContext = OnConfirm_in_OutstationState(pOContext->state_in_OContext, pOContext, request);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ProcessConfirm_in_OContext_"<<std::endl;
@@ -675,7 +675,7 @@ OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t desti
 //  AppControlField GetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 ////    this->sol.tx.Record(response.GetControl(), data);
   AppControlField temp = GetControl_in_APDUWrapper(&(response->aAPDUWrapper));
-  Record_in_TxBuffer(&(pOContext->sol.tx), &temp, &data);
+  Record_in_TxBuffer(&(pOContext->sol_in_OContext.tx), &temp, &data);
 
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
@@ -685,7 +685,7 @@ OutstationState* BeginResponseTx_in_OContext(OContext *pOContext, uint16_t desti
 
 ////    this->sol.seq.confirmNum = response.GetControl().SEQ;
 ////    pOContext->sol.seq.confirmNum = GetControl_in_APDUWrapper(&(response->aAPDUWrapper)).SEQ;////response.GetControl().SEQ;
-  SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(&(pOContext->sol.seq.confirmNum), GetControl_in_APDUWrapper(&(response->aAPDUWrapper)).SEQ);
+  SequenceNum_for_uint8_Modulus16_in_SequenceNum_for_uint8_Modulus16Over2(&(pOContext->sol_in_OContext.seq.confirmNum), GetControl_in_APDUWrapper(&(response->aAPDUWrapper)).SEQ);
 
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
@@ -736,7 +736,7 @@ void BeginRetransmitLastResponse_in_OContext(OContext *pOContext, uint16_t desti
 //   void BeginTx_in_OContext(OContext *pOContext, uint16_t destination, RSeq_for_Uint16_t* message);
 //RSeq_for_Uint16_t* GetLastResponse_in_TxBuffer(TxBuffer *pTxBuffer);
 ////    this->BeginTx(destination, this->sol.tx.GetLastResponse());
-  BeginTx_in_OContext(pOContext, destination, GetLastResponse_in_TxBuffer(&(pOContext->sol.tx)));
+  BeginTx_in_OContext(pOContext, destination, GetLastResponse_in_TxBuffer(&(pOContext->sol_in_OContext.tx)));
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}BeginRetransmitLastResponse_in_OContext_"<<std::endl;
@@ -756,7 +756,7 @@ void BeginRetransmitLastUnsolicitedResponse_in_OContext(OContext *pOContext)
 #endif
 //   void BeginTx_in_OContext(OContext *pOContext, uint16_t destination, RSeq_for_Uint16_t* message);
 ////    this->BeginTx(this->addresses.destination, this->unsol.tx.GetLastResponse());
-  BeginTx_in_OContext(pOContext, pOContext->addresses.destination, GetLastResponse_in_TxBuffer(&(pOContext->unsol.tx)));
+  BeginTx_in_OContext(pOContext, pOContext->addresses_in_OContext.destination, GetLastResponse_in_TxBuffer(&(pOContext->unsol_in_OContext.tx)));
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}BeginRetransmitLastUnsolicitedResponse_in_OContext_"<<std::endl;
@@ -787,7 +787,7 @@ void BeginUnsolTx_in_OContext(OContext *pOContext, APDUResponse* response)
 
 ////    this->unsol.tx.Record(response.GetControl(), data);
   AppControlField temp = GetControl_in_APDUWrapper(&(response->aAPDUWrapper));
-  Record_in_TxBuffer(&(pOContext->unsol.tx), &temp, &data);
+  Record_in_TxBuffer(&(pOContext->unsol_in_OContext.tx), &temp, &data);
 
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
@@ -796,13 +796,13 @@ void BeginUnsolTx_in_OContext(OContext *pOContext, APDUResponse* response)
 #endif
 
 ////    this->unsol.seq.confirmNum = this->unsol.seq.num;
-  pOContext->unsol.seq.confirmNum = pOContext->unsol.seq.num;
+  pOContext->unsol_in_OContext.seq.confirmNum = pOContext->unsol_in_OContext.seq.num;
 
 ////    this->unsol.seq.num.Increment();
-  Increment_in_SequenceNum_for_uint8_Modulus16(&(pOContext->unsol.seq.num));
+  Increment_in_SequenceNum_for_uint8_Modulus16(&(pOContext->unsol_in_OContext.seq.num));
 //   void BeginTx_in_OContext(OContext *pOContext, uint16_t destination, RSeq_for_Uint16_t* message);
 ////    this->BeginTx(this->addresses.destination, data);
-  BeginTx_in_OContext(pOContext, pOContext->addresses.destination, &data);
+  BeginTx_in_OContext(pOContext, pOContext->addresses_in_OContext.destination, &data);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}BeginUnsolTx_in_OContext_"<<std::endl;
@@ -821,13 +821,13 @@ void BeginTx_in_OContext(OContext *pOContext, uint16_t destination, RSeq_for_Uin
   inspect_RSeq(message);
 #endif
 ////    logging::ParseAndLogResponseTx(this->logger, message);
-  pOContext->isTransmitting = true;
+  pOContext->isTransmitting_in_OContext = true;
 //void BeginTransmit_in_ILowerLayer(ILowerLayer *, Message* message);
 //  void Addresses_in_AddressesOver2(Addresses *pAddresses, uint16_t source, uint16_t destination);
 //  void  Message_in_Message(Message *pMessage, Addresses *addresses, RSeq_for_Uint16_t* payload);
 ////    this->lower->BeginTransmit(Message(Addresses(this->addresses.source, destination), message));
   Addresses aAddresses;
-  Addresses_in_AddressesOver2(&aAddresses, pOContext->addresses.source, destination);
+  Addresses_in_AddressesOver2(&aAddresses, pOContext->addresses_in_OContext.source, destination);
   Message mMessage;
   Message_in_Message(&mMessage, &aAddresses, message);
   BeginTransmit_in_ILowerLayer(pOContext->lower, &mMessage);
@@ -860,7 +860,7 @@ void CheckForTaskStart_in_OContext(OContext *pOContext)
 ////    this->CheckForUnsolicitedNull();
   CheckForUnsolicitedNull_in_OContext(pOContext);
 
-  if (pOContext->shouldCheckForUnsolicited)
+  if (pOContext->shouldCheckForUnsolicited_in_OContext)
   {
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
@@ -897,13 +897,13 @@ void CheckForDeferredRequest_in_OContext(OContext *pOContext)
 //   boolean CanTransmit_in_OContext(OContext *pOContext);
 //  boolean IsSet_in_DeferredRequest(DeferredRequest *pDeferredRequest);
 ////    if (this->CanTransmit() && this->deferred.IsSet())
-  if (CanTransmit_in_OContext(pOContext) && IsSet_in_DeferredRequest(&(pOContext->deferred)))//Отложенный запрос
+  if (CanTransmit_in_OContext(pOContext) && IsSet_in_DeferredRequest(&(pOContext->deferred_in_OContext)))//Отложенный запрос
   {
 //   boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* request);
 ////        auto handler = [this](const ParsedRequest& request) { return this->ProcessDeferredRequest(request); };
 ////        this->deferred.Process(handler);
 //  boolean  Process_for_handlerBooleanParsedRequest_in_DeferredRequest(DeferredRequest *pDeferredRequest, void*, boolean (*pHandlerBooleanParsedRequest)(ParsedRequest*));
-    Process_for_handlerBooleanParsedRequest_in_DeferredRequest(&(pOContext->deferred), pOContext, HandlerBooleanParsedRequest_in_OContext);
+    Process_for_handlerBooleanParsedRequest_in_DeferredRequest(&(pOContext->deferred_in_OContext), pOContext, HandlerBooleanParsedRequest_in_OContext);
   }
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -923,15 +923,15 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
 //   boolean CanTransmit_in_OContext(OContext *pOContext);
 //     boolean IsIdle_in_OutstationState(OutstationState *);
 ////    if (this->CanTransmit() && this->state->IsIdle() && this->params.allowUnsolicited)
-  if (CanTransmit_in_OContext(pOContext) && IsIdle_in_OutstationState(pOContext->state) && pOContext->params.allowUnsolicited)
+  if (CanTransmit_in_OContext(pOContext) && IsIdle_in_OutstationState(pOContext->state_in_OContext) && pOContext->params_in_OContext.allowUnsolicited)
   {
 ////        if (!this->unsol.completedNull)
-    if (!pOContext->unsol.completedNull)
+    if (!pOContext->unsol_in_OContext.completedNull)
     {
       // send a NULL unsolcited message
 //APDUResponse Start_in_TxBuffer(TxBuffer *pTxBuffer);
 ////            auto response = this->unsol.tx.Start();
-      APDUResponse response = Start_in_TxBuffer(&(pOContext->unsol.tx));
+      APDUResponse response = Start_in_TxBuffer(&(pOContext->unsol_in_OContext.tx));
 
 //    void NullUnsolicited_in_APDUBuilders_static(APDUResponse* response, uint8_t seq, IINField* iin);
 //    IINField GetResponseIIN_in_OContext(OContext *pOContext);
@@ -943,7 +943,7 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
       inspect_IINField(&temp);
 #endif
 
-      NullUnsolicited_in_APDUBuilders_static(&response, pOContext->unsol.seq.num.seq, &temp);
+      NullUnsolicited_in_APDUBuilders_static(&response, pOContext->unsol_in_OContext.seq.num.seq, &temp);
 
 #ifdef  LOG_INFO
       std::cout<<"*"<<getString_stack_info();
@@ -959,7 +959,7 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
 ////            this->state = this->params.noDefferedReadDuringUnsolicitedNullResponse
 ////                ? &StateNullUnsolicitedConfirmWait::Inst()
 ////                : &StateUnsolicitedConfirmWait::Inst();
-      pOContext->state = pOContext->params.noDefferedReadDuringUnsolicitedNullResponse
+      pOContext->state_in_OContext = pOContext->params_in_OContext.noDefferedReadDuringUnsolicitedNullResponse
                          ? Inst_in_StateNullUnsolicitedConfirmWait_static()
                          : Inst_in_StateUnsolicitedConfirmWait_static();
 
@@ -975,8 +975,6 @@ void CheckForUnsolicitedNull_in_OContext(OContext *pOContext)
 #endif
 }
 
-//#include "OutstationStates.h"
-
 ////void OContext::CheckForUnsolicited()
 void CheckForUnsolicited_in_OContext(OContext *pOContext)
 {
@@ -990,31 +988,31 @@ void CheckForUnsolicited_in_OContext(OContext *pOContext)
 //   boolean CanTransmit_in_OContext(OContext *pOContext);
 ////    if (this->shouldCheckForUnsolicited && this->CanTransmit() && this->state->IsIdle()
 ////        && this->params.allowUnsolicited)
-  if (pOContext->shouldCheckForUnsolicited &&
+  if (pOContext->shouldCheckForUnsolicited_in_OContext &&
       CanTransmit_in_OContext(pOContext) /*&&
       IsIdle_in_OutstationState(pOContext->state)*/
-      && pOContext->params.allowUnsolicited)
+      && pOContext->params_in_OContext.allowUnsolicited)
   {
-    pOContext->shouldCheckForUnsolicited = false;
+    pOContext->shouldCheckForUnsolicited_in_OContext = false;
 
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
-    std::cout<<"CheckForUnsolicited_in_OContext2"<<std::endl;
+    std::cout<<"*CheckForUnsolicited_in_OContext2"<<std::endl;
 #endif
 ////        if (this->unsol.completedNull)
-    if (pOContext->unsol.completedNull)
+    if (pOContext->unsol_in_OContext.completedNull)
     {
 #ifdef  LOG_INFO
       std::cout<<"*"<<getString_stack_info();
-      std::cout<<"CheckForUnsolicited_in_OContext3"<<std::endl;
+      std::cout<<"*CheckForUnsolicited_in_OContext3"<<std::endl;
 #endif
       // are there events to be reported?
 // есть ли события, о которых нужно сообщить?
 //  boolean Intersects_in_ClassField(ClassField *pClassField, ClassField *other);
 //    ClassField UnwrittenClassField_in_EventBuffer(EventBuffer *pEventBuffer);
 ////            if (this->params.unsolClassMask.Intersects(this->eventBuffer.UnwrittenClassField()))
-      ClassField temp = UnwrittenClassField_in_EventBuffer(&(pOContext->eventBuffer));
-      if (Intersects_in_ClassField(&(pOContext->params.unsolClassMask), &temp))
+      ClassField temp = UnwrittenClassField_in_EventBuffer(&(pOContext->eventBuffer_in_OContext));
+      if (Intersects_in_ClassField(&(pOContext->params_in_OContext.unsolClassMask), &temp))
       {
 
 #ifdef  LOG_INFO
@@ -1028,18 +1026,18 @@ void CheckForUnsolicited_in_OContext(OContext *pOContext)
 #endif
 //APDUResponse Start_in_TxBuffer(TxBuffer *pTxBuffer);
 ////                auto response = this->unsol.tx.Start();
-        APDUResponse response = Start_in_TxBuffer(&(pOContext->unsol.tx));
+        APDUResponse response = Start_in_TxBuffer(&(pOContext->unsol_in_OContext.tx));
 //  HeaderWriter GetWriter_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 ////                auto writer = response.GetWriter();
         HeaderWriter writer = GetWriter_in_APDUWrapper(&(response.aAPDUWrapper));
 
 //   void Reset_in_NumRetries(NumRetries *pNumRetries);
 ////                this->unsolRetries.Reset();
-        Reset_in_NumRetries(&(pOContext->unsolRetries));
+        Reset_in_NumRetries(&(pOContext->unsolRetries_in_OContext));
 
 //     void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
 ////                this->eventBuffer.Unselect();
-        Unselect_in_EventBuffer(&(pOContext->eventBuffer));
+        Unselect_in_EventBuffer(&(pOContext->eventBuffer_in_OContext));
 
 #ifdef  LOG_INFO
         std::cout<<"*"<<getString_stack_info();
@@ -1052,11 +1050,11 @@ void CheckForUnsolicited_in_OContext(OContext *pOContext)
 #endif
 //    void SelectAllByClass_in_EventBuffer(EventBuffer *pEventBuffer, ClassField* clazz);
 ////                this->eventBuffer.SelectAllByClass(this->params.unsolClassMask);
-        SelectAllByClass_in_EventBuffer(&(pOContext->eventBuffer), &(pOContext->params.unsolClassMask));
+        SelectAllByClass_in_EventBuffer(&(pOContext->eventBuffer_in_OContext), &(pOContext->params_in_OContext.unsolClassMask));
 
 //     boolean Load_in_EventBuffer(EventBuffer *pEventBuffer, HeaderWriter* writer);
 ////                this->eventBuffer.Load(writer);
-        Load_in_EventBuffer(&(pOContext->eventBuffer), &writer);
+        Load_in_EventBuffer(&(pOContext->eventBuffer_in_OContext), &writer);
 
 #ifdef  LOG_INFO
         std::cout<<"*"<<getString_stack_info();
@@ -1068,7 +1066,7 @@ void CheckForUnsolicited_in_OContext(OContext *pOContext)
 ////                build::NullUnsolicited(response, this->unsol.seq.num, this->GetResponseIIN());
         IINField temp = GetResponseIIN_in_OContext(pOContext);
 
-        NullUnsolicited_in_APDUBuilders_static(&response, pOContext->unsol.seq.num.seq, &temp);
+        NullUnsolicited_in_APDUBuilders_static(&response, pOContext->unsol_in_OContext.seq.num.seq, &temp);
 
 
 //    void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext);
@@ -1079,7 +1077,7 @@ void CheckForUnsolicited_in_OContext(OContext *pOContext)
 
 //     OutstationState* Inst_in_StateUnSolicitedConfirmWait_static(void);
 ////                this->state = &StateUnsolicitedConfirmWait::Inst();
-        pOContext->state =  Inst_in_StateUnsolicitedConfirmWait_static();
+        pOContext->state_in_OContext =  Inst_in_StateUnsolicitedConfirmWait_static();
 //   void BeginUnsolTx_in_OContext(OContext *pOContext, APDUResponse* response);
 ////                this->BeginUnsolTx(response);
         BeginUnsolTx_in_OContext(pOContext, &response);
@@ -1132,7 +1130,7 @@ boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* r
 #endif
 //     boolean IsIdle_in_OutstationState(OutstationState *);
 ////        if (this->state->IsIdle())
-    if (IsIdle_in_OutstationState(pOContext->state))
+    if (IsIdle_in_OutstationState(pOContext->state_in_OContext))
     {
 //    boolean ProcessRequest_in_OContext(OContext *pOContext, ParsedRequest* request)
 ////            this->ProcessRequest(request);
@@ -1181,8 +1179,8 @@ void timeout_RestartSolConfirmTimer_in_OContext(void)
 ////        this->CheckForTaskStart();
 ////    };
  OContext* pOContext = (OContext*)pPointerGlobal1;
- OutstationState* parent = (OutstationState*)getParentPointer_in_OutstationState(pOContext->state);
- pOContext->state = (OutstationState*) OnConfirmTimeout_in_OutstationState((OutstationState*) parent, pOContext);
+ OutstationState* parent = (OutstationState*)getParentPointer_in_OutstationState(pOContext->state_in_OContext);
+ pOContext->state_in_OContext = (OutstationState*) OnConfirmTimeout_in_OutstationState((OutstationState*) parent, pOContext);
  CheckForTaskStart_in_OContext(pOContext);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -1205,11 +1203,11 @@ void RestartSolConfirmTimer_in_OContext(OContext *pOContext)
 ////    };
 
 ////    this->confirmTimer.cancel();
-  cancel_in_TimerExe4cpp(&(pOContext->confirmTimer));
+  cancel_in_TimerExe4cpp(&(pOContext->confirmTimer_in_OContext));
 
   pPointerGlobal1 = pOContext;
 ////    this->confirmTimer = this->executor->start(this->params.solConfirmTimeout.value, timeout);
-  pOContext->confirmTimer =  Start_in_IExecutorExe4cpp(pOContext->executor, pOContext->params.solConfirmTimeout.duration_value, timeout_RestartSolConfirmTimer_in_OContext);
+  pOContext->confirmTimer_in_OContext =  Start_in_IExecutorExe4cpp(pOContext->executor, pOContext->params_in_OContext.solConfirmTimeout.duration_value, timeout_RestartSolConfirmTimer_in_OContext);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}RestartSolConfirmTimer_in_OContext_"<<std::endl;
@@ -1232,8 +1230,8 @@ void timeout_RestartUnsolConfirmTimer_in_OContext(void)
 ////        this->CheckForTaskStart();
 ////    };
  OContext* pOContext = (OContext*)pPointerGlobal1;
- OutstationState* parent = (OutstationState*)getParentPointer_in_OutstationState(pOContext->state);
- pOContext->state = (OutstationState*) OnConfirmTimeout_in_OutstationState((OutstationState*) parent, ((OContext*)pPointerGlobal1));
+ OutstationState* parent = (OutstationState*)getParentPointer_in_OutstationState(pOContext->state_in_OContext);
+ pOContext->state_in_OContext = (OutstationState*) OnConfirmTimeout_in_OutstationState((OutstationState*) parent, ((OContext*)pPointerGlobal1));
  CheckForTaskStart_in_OContext(pOContext);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -1252,7 +1250,7 @@ void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext)
   std::cout<<getString_stack_info();
   std::cout<<"*pOContext= "<<(uint32_t)pOContext<<std::endl;
   std::cout<<getString_stack_info();
-  std::cout<<"*&(pOContext->confirmTimer)= "<<(uint32_t)(&(pOContext->confirmTimer))<<std::endl;
+  std::cout<<"*&(pOContext->confirmTimer)= "<<(uint32_t)(&(pOContext->confirmTimer_in_OContext))<<std::endl;
 #endif
 ////    auto timeout = [&]() {
 ////        this->state = &this->state->OnConfirmTimeout(*this);
@@ -1261,13 +1259,13 @@ void RestartUnsolConfirmTimer_in_OContext(OContext *pOContext)
 
 ////    this->confirmTimer.cancel();
 
-  cancel_in_TimerExe4cpp(&(pOContext->confirmTimer));
+  cancel_in_TimerExe4cpp(&(pOContext->confirmTimer_in_OContext));
 
 
   pPointerGlobal1 = pOContext;
 //TimerExe4cpp Start_in_IExecutorExe4cpp(IExecutorExe4cpp *pIExecutorExe4cpp, uint32_t duration, void (*pAction)(void))
 ////    this->confirmTimer = this->executor->start(this->params.unsolConfirmTimeout.value, timeout);
-  pOContext->confirmTimer =  Start_in_IExecutorExe4cpp(pOContext->executor, pOContext->params.unsolConfirmTimeout.duration_value,
+  pOContext->confirmTimer_in_OContext =  Start_in_IExecutorExe4cpp(pOContext->executor, pOContext->params_in_OContext.unsolConfirmTimeout.duration_value,
                               timeout_RestartUnsolConfirmTimer_in_OContext);
 
 #ifdef  LOG_INFO
@@ -1288,11 +1286,11 @@ OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, Parsed
 #endif
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////    this->history.RecordLastProcessedRequest(request.header, request.objects);
-  RecordLastProcessedRequest_in_RequestHistory(&(pOContext->history), &(request->header), &(request->objects));
+  RecordLastProcessedRequest_in_RequestHistory(&(pOContext->history_in_OContext), &(request->header), &(request->objects));
 
 //APDUResponse Start_in_TxBuffer(TxBuffer *pTxBuffer);
 ////    auto response = this->sol.tx.Start();
-  APDUResponse response = Start_in_TxBuffer(&(pOContext->sol.tx));
+  APDUResponse response = Start_in_TxBuffer(&(pOContext->sol_in_OContext.tx));
 
 //  HeaderWriter GetWriter_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 ////    auto writer = response.GetWriter();
@@ -1344,10 +1342,10 @@ OutstationState* RespondToReadRequest_in_OContext(OContext *pOContext, ParsedReq
 #endif
 //   void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects);
 ////    this->history.RecordLastProcessedRequest(request.header, request.objects);
-  RecordLastProcessedRequest_in_RequestHistory(&(pOContext->history), &(request->header), &(request->objects));
+  RecordLastProcessedRequest_in_RequestHistory(&(pOContext->history_in_OContext), &(request->header), &(request->objects));
 
 ////    auto response = this->sol.tx.Start();
-  APDUResponse response = Start_in_TxBuffer(&(pOContext->sol.tx));
+  APDUResponse response = Start_in_TxBuffer(&(pOContext->sol_in_OContext.tx));
 
 ////    auto writer = response.GetWriter();
   HeaderWriter writer = GetWriter_in_APDUWrapper(&(response.aAPDUWrapper));
@@ -1391,14 +1389,14 @@ OutstationState* ContinueMultiFragResponse_in_OContext(OContext *pOContext, Addr
   std::cout<<"{ContinueMultiFragResponse_in_OContext1"<<std::endl;
 #endif
 ////    auto response = this->sol.tx.Start();
-  APDUResponse response = Start_in_TxBuffer(&(pOContext->sol.tx));
+  APDUResponse response = Start_in_TxBuffer(&(pOContext->sol_in_OContext.tx));
 ////    auto writer = response.GetWriter();
   HeaderWriter writer = GetWriter_in_APDUWrapper(&(response.aAPDUWrapper));
 ////    response.SetFunction(FunctionCode::RESPONSE);
   SetFunction_in_APDUWrapper(&(response.aAPDUWrapper), FunctionCode_RESPONSE);
 // AppControlField LoadResponse_in_ResponseContext(ResponseContext *pResponseContext, HeaderWriter* writer);
 ////    auto control = this->rspContext.LoadResponse(writer);
-  AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext), &writer);
+  AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext_in_OContext), &writer);
 
 ////    control.SEQ = seq;
   control.SEQ = seq->seq;// *seq;
@@ -1431,16 +1429,16 @@ boolean CanTransmit_in_OContext(OContext *pOContext)
   std::cout<<getString_stack_info();
   std::cout<<"{CanTransmit_in_OContext1"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pOContext->isOnline= "<<(uint16_t)(pOContext->isOnline)<<std::endl;
+  std::cout<<"*pOContext->isOnline= "<<(uint16_t)(pOContext->isOnline_in_OContext)<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pOContext->isTransmitting= "<<(uint16_t)(pOContext->isTransmitting)<<std::endl;
+  std::cout<<"*pOContext->isTransmitting= "<<(uint16_t)(pOContext->isTransmitting_in_OContext)<<std::endl;
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*pOContext->isOnline && !pOContext->isTransmitting= "<<(uint16_t)(pOContext->isOnline && !pOContext->isTransmitting)<<std::endl;
+  std::cout<<"*pOContext->isOnline && !pOContext->isTransmitting= "<<(uint16_t)(pOContext->isOnline_in_OContext && !pOContext->isTransmitting_in_OContext)<<std::endl;
   std::cout<<getString_stack_info();
   std::cout<<"}CanTransmit_in_OContext_"<<std::endl;
   decrement_stack_info();
 #endif
-  return pOContext->isOnline && !pOContext->isTransmitting;
+  return pOContext->isOnline_in_OContext && !pOContext->isTransmitting_in_OContext;
 }
 
 ////IINField OContext::GetResponseIIN()
@@ -1503,7 +1501,7 @@ IINField GetResponseIIN_in_OContext(OContext *pOContext)
   std::cout<<"*uint8_t MSB="<<std::hex<<(uint16_t)temp1.MSB<<std::dec<<std::endl;
 #endif
 
-  IINField temp2 = operatorOR_in_IINField(&(pOContext->staticIIN), &temp1);
+  IINField temp2 = operatorOR_in_IINField(&(pOContext->staticIIN_in_OContext), &temp1);
 
   ApplicationIIN temp = GetApplicationIIN_in_IOutstationApplication(pOContext->application);
   IINField temp3 = ToIIN_in_ApplicationIIN(&temp);
@@ -1539,7 +1537,7 @@ IINField GetDynamicIIN_in_OContext(OContext *pOContext)
 {
 //    ClassField UnwrittenClassField_in_EventBuffer(EventBuffer *pEventBuffer);
 ////    auto classField = this->eventBuffer.UnwrittenClassField();
-  ClassField classField = UnwrittenClassField_in_EventBuffer(&(pOContext->eventBuffer));
+  ClassField classField = UnwrittenClassField_in_EventBuffer(&(pOContext->eventBuffer_in_OContext));
 
   IINField ret;
   IINField_in_IINFieldOver1(&ret);
@@ -1557,7 +1555,7 @@ IINField GetDynamicIIN_in_OContext(OContext *pOContext)
 
 //    boolean IsOverflown_in_EventBuffer(EventBuffer *pEventBuffer);
 ////    ret.SetBitToValue(IINBit::EVENT_BUFFER_OVERFLOW, this->eventBuffer.IsOverflown());
-  SetBitToValue_in_IINField(&ret, IINBit_EVENT_BUFFER_OVERFLOW, IsOverflown_in_EventBuffer(&(pOContext->eventBuffer)));
+  SetBitToValue_in_IINField(&ret, IINBit_EVENT_BUFFER_OVERFLOW, IsOverflown_in_EventBuffer(&(pOContext->eventBuffer_in_OContext)));
 
   return ret;
 }
@@ -1583,7 +1581,7 @@ void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_
 //void set_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress, uint16_t *value_);
 ////        lastBroadcastMessageReceived.set(LinkBroadcastAddress::DontConfirm);
     uint16_t temp = LinkBroadcastAddress_DontConfirm;
-    set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived), &temp);
+    set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext), &temp);
   }
   break;
   case LinkBroadcastAddress_ShallConfirm:
@@ -1594,7 +1592,7 @@ void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_
 #endif
 ////        lastBroadcastMessageReceived.set(LinkBroadcastAddress::ShallConfirm);
     uint16_t temp = LinkBroadcastAddress_ShallConfirm;
-    set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived), &temp);
+    set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext), &temp);
   }
   break;
   case LinkBroadcastAddress_OptionalConfirm:
@@ -1605,13 +1603,13 @@ void UpdateLastBroadcastMessageReceived_in_OContext(OContext *pOContext, uint16_
 #endif
 ////        lastBroadcastMessageReceived.set(LinkBroadcastAddress::OptionalConfirm);
     uint16_t temp = LinkBroadcastAddress_OptionalConfirm;
-    set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived), &temp);
+    set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext), &temp);
   }
   break;
   default:
 //void clear_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
 ////        lastBroadcastMessageReceived.clear();
-    clear_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived));
+    clear_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext));
   }
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -1630,7 +1628,7 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
 #endif
 //boolean is_set_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
 ////    if (lastBroadcastMessageReceived.is_set())
-  if (is_set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived)))
+  if (is_set_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext)))
   {
 //    void SetIIN_in_APDUResponse(APDUResponse *pAPDUResponse, IINField *indications);
 //    IINField GetIIN_in_APDUResponse(APDUResponse *pAPDUResponse);
@@ -1665,7 +1663,7 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
 
 //uint16_t get_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
 ////        if (lastBroadcastMessageReceived.get() != LinkBroadcastAddress::ShallConfirm)
-    if (get_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived)) != LinkBroadcastAddress_ShallConfirm)
+    if (get_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext)) != LinkBroadcastAddress_ShallConfirm)
     {
 #ifdef  LOG_INFO
       std::cout<<"*"<<getString_stack_info();
@@ -1674,7 +1672,7 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
 #endif
 //void clear_in_Settable_for_LinkBroadcastAddress(Settable_for_LinkBroadcastAddress *pSettable_for_LinkBroadcastAddress);
 ////            lastBroadcastMessageReceived.clear();
-      clear_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived));
+      clear_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext));
     }
     else
     {
@@ -1684,6 +1682,7 @@ void CheckForBroadcastConfirmation_in_OContext(OContext *pOContext, APDUResponse
 //  inspect_IINField(&temp);
 #endif
       // The broadcast address requested a confirmation
+// Широковещательный адрес запросил подтверждение
 //  AppControlField GetControl_in_APDUWrapper(APDUWrapper *pAPDUWrapper);
 ////            auto control = response.GetControl();
       AppControlField control = GetControl_in_APDUWrapper(&(response->aAPDUWrapper));
@@ -1711,7 +1710,7 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
   // is the message addressed to this outstation
 //    boolean IsBroadcast_in_Addresses(Addresses *pAddresses);
 ////    if (message.addresses.destination != this->addresses.source && !message.addresses.IsBroadcast())
-  if (message->addresses.destination != pOContext->addresses.source && !IsBroadcast_in_Addresses(&(message->addresses)))////!message->addresses.IsBroadcast())
+  if (message->addresses.destination != pOContext->addresses_in_OContext.source && !IsBroadcast_in_Addresses(&(message->addresses)))////!message->addresses.IsBroadcast())
   {
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
@@ -1722,7 +1721,8 @@ boolean ProcessMessage_in_OContext(OContext *pOContext, Message* message)
   }
 
   // is the message coming from the expected master?
-  if (!pOContext->params.respondToAnyMaster && (message->addresses.source != pOContext->addresses.destination))
+// сообщение исходит от ожидаемого мастера?
+  if (!pOContext->params_in_OContext.respondToAnyMaster && (message->addresses.source != pOContext->addresses_in_OContext.destination))
   {
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
@@ -1814,7 +1814,7 @@ void HandleNewEvents_in_OContext(OContext *pOContext)
   std::cout<<getString_stack_info();
   std::cout<<"{HandleNewEvents_in_OContext1"<<std::endl;
 #endif
-  pOContext->shouldCheckForUnsolicited = true;
+  pOContext->shouldCheckForUnsolicited_in_OContext = true;
 ////    this->CheckForTaskStart();
   CheckForTaskStart_in_OContext(pOContext);
 #ifdef  LOG_INFO
@@ -1836,7 +1836,7 @@ void SetRestartIIN_in_OContext(OContext *pOContext)
 #endif
 //    void SetBit_in_IINField(IINField *, IINBit_uint8_t bit);
 ////    this->staticIIN.SetBit(IINBit::DEVICE_RESTART);
-  SetBit_in_IINField(&(pOContext->staticIIN), IINBit_DEVICE_RESTART);
+  SetBit_in_IINField(&(pOContext->staticIIN_in_OContext), IINBit_DEVICE_RESTART);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}SetRestartIIN_in_OContext_"<<std::endl;
@@ -1846,7 +1846,7 @@ void SetRestartIIN_in_OContext(OContext *pOContext)
 
 IUpdateHandler* GetUpdateHandler_in_OContext(OContext *pOContext)
 {
-  return &(pOContext->database.iIUpdateHandler);
+  return &(pOContext->database_in_OContext.iIUpdateHandler);
 }
 
 //// ----------------------------- function handlers -----------------------------
@@ -1991,7 +1991,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     std::cout<<"*FunctionCode_DISABLE_UNSOLICITED"<<std::endl;
 #endif
 ////        if (this->params.allowUnsolicited)
-    if (pOContext->params.allowUnsolicited)
+    if (pOContext->params_in_OContext.allowUnsolicited)
     {
 //   IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////            this->HandleDisableUnsolicited(request.objects, nullptr);
@@ -2020,7 +2020,7 @@ boolean ProcessBroadcastRequest_in_OContext(OContext *pOContext, ParsedRequest* 
     std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*FunctionCode_ENABLE_UNSOLICITED"<<std::endl;
 #endif
-    if (pOContext->params.allowUnsolicited)
+    if (pOContext->params_in_OContext.allowUnsolicited)
     {
 //   IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
 ////            this->HandleEnableUnsolicited(request.objects, nullptr);
@@ -2313,7 +2313,7 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
 //   IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-    IINField tmp = pOContext->params.allowUnsolicited ? ////this->HandleDisableUnsolicited(objects, &writer)
+    IINField tmp = pOContext->params_in_OContext.allowUnsolicited ? ////this->HandleDisableUnsolicited(objects, &writer)
                    HandleDisableUnsolicited_in_OContext(pOContext, objects, writer)
                    : iIINField;////IINField(IINBit::FUNC_NOT_SUPPORTED);
 #ifdef  LOG_INFO
@@ -2337,7 +2337,7 @@ IINField HandleNonReadResponse_in_OContext(OContext *pOContext, APDUHeader* head
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_FUNC_NOT_SUPPORTED);
 //   IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects, HeaderWriter* writer);
-    IINField tmp = pOContext->params.allowUnsolicited ? ////this->HandleEnableUnsolicited(objects, &writer)
+    IINField tmp = pOContext->params_in_OContext.allowUnsolicited ? ////this->HandleEnableUnsolicited(objects, &writer)
                    HandleEnableUnsolicited_in_OContext(pOContext, objects, writer)
                    : iIINField;////IINField(IINBit::FUNC_NOT_SUPPORTED);
 #ifdef  LOG_INFO
@@ -2412,7 +2412,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 // void Reset_in_ResponseContext(ResponseContext *pResponseContext);
 ////    this->rspContext.Reset();
-  Reset_in_ResponseContext(&(pOContext->rspContext));
+  Reset_in_ResponseContext(&(pOContext->rspContext_in_OContext));
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -2422,16 +2422,16 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 //     void Unselect_in_EventBuffer(EventBuffer *pEventBuffer);
 ////    this->eventBuffer.Unselect(); // always un-select any previously selected points when we start a new read request
   // всегда отменяем выбор ранее выбранных точек, когда начинаем новый запрос на чтение
-  Unselect_in_EventBuffer(&(pOContext->eventBuffer));
+  Unselect_in_EventBuffer(&(pOContext->eventBuffer_in_OContext));
 
 //    void Unselect_in_Database(Database *pDatabase);
 ////    this->database.Unselect();
-  Unselect_in_Database(&(pOContext->database));
+  Unselect_in_Database(&(pOContext->database_in_OContext));
 
 //void  ReadHandler_in_ReadHandler(ReadHandler *pReadHandler, IStaticSelector* staticSelector, IEventSelector* eventSelector);
 ////    ReadHandler handler(this->database, this->eventBuffer);
   ReadHandler handler;
-  ReadHandler_in_ReadHandler(&handler, &(pOContext->database.iIStaticSelector), &(pOContext->eventBuffer.iIEventSelector));
+  ReadHandler_in_ReadHandler(&handler, &(pOContext->database_in_OContext.iIStaticSelector), &(pOContext->eventBuffer_in_OContext.iIEventSelector));
 
 //    ParseResult_uint8_t Parse_in_APDUParser_static(
 //                             RSeq_for_Uint16_t *buffer,
@@ -2458,7 +2458,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 //    AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext), writer);
 
 ////        auto control = pOContext->rspContext.LoadResponse(writer);
-    AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext), writer);
+    AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext_in_OContext), writer);
 
 //void PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(PairSer4cpp_for_IINField_AppControlField *pPairSer4cpp_for_IINField_AppControlField,
 //                                                                           IINField *first_,
@@ -2483,7 +2483,7 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 // void Reset_in_ResponseContext(ResponseContext *pResponseContext);
 ////    this->rspContext.Reset();
-  Reset_in_ResponseContext(&(pOContext->rspContext));
+  Reset_in_ResponseContext(&(pOContext->rspContext_in_OContext));
 //  void AppControlField_in_AppControlFieldOver3(AppControlField *, boolean fir, boolean fin, boolean con, boolean uns);
 ////    return ser4cpp::Pair<IINField, AppControlField>(IINFromParseResult(result),
 ////                                                    AppControlField(true, true, false, false));
@@ -2525,7 +2525,7 @@ IINField HandleWrite_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objects
 
   WriteHandler handler;
   WriteHandler_in_WriteHandler(&handler,
-                               pOContext->application, &(pOContext->timeTimeSyncState), pOContext->sol.seq.num, tTimestamp, &(pOContext->staticIIN));
+                               pOContext->application, &(pOContext->timeTimeSyncState_in_OContext), pOContext->sol_in_OContext.seq.num, tTimestamp, &(pOContext->staticIIN_in_OContext));
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -2606,12 +2606,12 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
 // void  CommandActionAdapter_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ICommandHandler* handler, boolean is_select, IUpdateHandler* updates, OperateType_uint8_t op_type);
 ////    CommandActionAdapter adapter(*this->commandHandler, false, this->database, opType);
   CommandActionAdapter adapter;
-  CommandActionAdapter_in_CommandActionAdapter(&adapter, pOContext->commandHandler, false, &(pOContext->database.iIUpdateHandler), opType);
+  CommandActionAdapter_in_CommandActionAdapter(&adapter, pOContext->commandHandler, false, &(pOContext->database_in_OContext.iIUpdateHandler), opType);
 
 //   void CommandResponseHandler_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, uint32_t maxCommands_, ICommandAction* pCommandAction_, HeaderWriter* pWriter_);
 ////    CommandResponseHandler handler(this->params.maxControlsPerRequest, &adapter, pWriter);
   CommandResponseHandler handler;
-  CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params.maxControlsPerRequest, &(adapter.iICommandAction), pWriter);
+  CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params_in_OContext.maxControlsPerRequest, &(adapter.iICommandAction), pWriter);
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -2626,7 +2626,7 @@ IINField HandleDirectOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t*
                                  objects,
                                  &(handler.iIAPDUHandler));
 
-  pOContext->shouldCheckForUnsolicited = true;
+  pOContext->shouldCheckForUnsolicited_in_OContext = true;
 
   CommandActionAdapter_destr_CommandActionAdapter(&adapter);
 #ifdef  LOG_INFO
@@ -2689,11 +2689,11 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 // void  CommandActionAdapter_in_CommandActionAdapter(CommandActionAdapter *pCommandActionAdapter, ICommandHandler* handler, boolean is_select, IUpdateHandler* updates, OperateType_uint8_t op_type);
 ////    CommandActionAdapter adapter(*this->commandHandler, true, this->database, OperateType::DirectOperate);
   CommandActionAdapter adapter;
-  CommandActionAdapter_in_CommandActionAdapter(&adapter, pOContext->commandHandler, true, &(pOContext->database.iIUpdateHandler), OperateType_DirectOperate);
+  CommandActionAdapter_in_CommandActionAdapter(&adapter, pOContext->commandHandler, true, &(pOContext->database_in_OContext.iIUpdateHandler), OperateType_DirectOperate);
 
 ////    CommandResponseHandler handler(this->params.maxControlsPerRequest, &adapter, &writer);
   CommandResponseHandler handler;
-  CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params.maxControlsPerRequest, &(adapter.iICommandAction), writer);
+  CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params_in_OContext.maxControlsPerRequest, &(adapter.iICommandAction), writer);
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -2734,7 +2734,7 @@ IINField HandleSelect_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
       uint64_t temp = Get_time_in_ISteadyTimeSourceExe4cpp(&(pOContext->executor->iISteadyTimeSourceExe4cpp));
       Timestamp tTimestamp;
       Timestamp_in_TimestampOver2(&tTimestamp, temp);
-      Select_in_ControlState(&(pOContext->control), &(pOContext->sol.seq.num), &tTimestamp, objects);
+      Select_in_ControlState(&(pOContext->control_in_OContext), &(pOContext->sol_in_OContext.seq.num), &tTimestamp, objects);
     }
 
 #ifdef  LOG_INFO
@@ -2805,10 +2805,10 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 //    TimeDuration* timeout,
 //    RSeq_for_Uint16_t* objects);
 ////    auto result = this->control.ValidateSelection(this->sol.seq.num, now, this->params.selectTimeout, objects);
-  CommandStatus_uint8_t result = ValidateSelection_in_ControlState(&(pOContext->control),
-                                 &(pOContext->sol.seq.num),
+  CommandStatus_uint8_t result = ValidateSelection_in_ControlState(&(pOContext->control_in_OContext),
+                                 &(pOContext->sol_in_OContext.seq.num),
                                  &now,
-                                 &(pOContext->params.selectTimeout),
+                                 &(pOContext->params_in_OContext.selectTimeout),
                                  objects);
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
@@ -2825,11 +2825,11 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 #endif
 ////        CommandActionAdapter adapter(*this->commandHandler, false, this->database, OperateType::SelectBeforeOperate);
     CommandActionAdapter adapter;
-    CommandActionAdapter_in_CommandActionAdapter(&adapter, pOContext->commandHandler, false, &(pOContext->database.iIUpdateHandler), OperateType_SelectBeforeOperate);
+    CommandActionAdapter_in_CommandActionAdapter(&adapter, pOContext->commandHandler, false, &(pOContext->database_in_OContext.iIUpdateHandler), OperateType_SelectBeforeOperate);
 
 ////        CommandResponseHandler handler(this->params.maxControlsPerRequest, &adapter, &writer);
     CommandResponseHandler handler;
-    CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params.maxControlsPerRequest, &(adapter.iICommandAction), writer);
+    CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params_in_OContext.maxControlsPerRequest, &(adapter.iICommandAction), writer);
 
 ////        auto result = APDUParser::Parse(objects, handler, &this->logger);
     expectsContents = true;
@@ -2837,7 +2837,7 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
                                    objects,
                                    &(handler.iIAPDUHandler));
 
-    pOContext->shouldCheckForUnsolicited = true;
+    pOContext->shouldCheckForUnsolicited_in_OContext = true;
 
     CommandActionAdapter_destr_CommandActionAdapter(&adapter);
 #ifdef  LOG_INFO
@@ -2863,7 +2863,7 @@ IINField HandleOperate_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* objec
 #endif
 //void Unselect_in_ControlState(ControlState *pControlState);
 ////        this->control.Unselect();
-    Unselect_in_ControlState(&(pOContext->control));
+    Unselect_in_ControlState(&(pOContext->control_in_OContext));
   }
 
 #ifdef  LOG_INFO
@@ -2918,7 +2918,7 @@ IINField HandleRecordCurrentTime_in_OContext(OContext *pOContext)
   uint64_t temp = Get_time_in_ISteadyTimeSourceExe4cpp(&(pOContext->executor->iISteadyTimeSourceExe4cpp));
   Timestamp tTimestamp;
   Timestamp_in_TimestampOver2(&tTimestamp, temp);
-  RecordCurrentTime_in_TimeSyncState(&(pOContext->timeTimeSyncState), &(pOContext->sol.seq.num), &tTimestamp);
+  RecordCurrentTime_in_TimeSyncState(&(pOContext->timeTimeSyncState_in_OContext), &(pOContext->sol_in_OContext.seq.num), &tTimestamp);
 ////    return IINField::Empty();
   return Empty_in_IINField_static();
 }
@@ -3058,7 +3058,7 @@ IINField HandleAssignClass_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* o
 //  void AssignClassHandler_in_AssignClassHandler(AssignClassHandler *pAssignClassHandler, IOutstationApplication* application, IClassAssigner* assigner);
 ////        AssignClassHandler handler(*this->application, this->database);
     AssignClassHandler handler;
-    AssignClassHandler_in_AssignClassHandler(&handler, pOContext->application, &(pOContext->database.iIClassAssigner));
+    AssignClassHandler_in_AssignClassHandler(&handler, pOContext->application, &(pOContext->database_in_OContext.iIClassAssigner));
 
 //    ParseResult_uint8_t Parse_in_APDUParser_static(
 //                             RSeq_for_Uint16_t *buffer,
@@ -3128,7 +3128,7 @@ IINField HandleDisableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint
 //ClassField GetClassField_in_ClassBasedRequestHandler(ClassBasedRequestHandler *pClassBasedRequestHandler);
 ////        this->params.unsolClassMask.Clear(handler.GetClassField());
     ClassField temp = GetClassField_in_ClassBasedRequestHandler(&handler);
-    Clear_in_ClassField(&(pOContext->params.unsolClassMask), &temp);
+    Clear_in_ClassField(&(pOContext->params_in_OContext.unsolClassMask), &temp);
 ////        return handler.Errors();
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
@@ -3172,9 +3172,9 @@ IINField HandleEnableUnsolicited_in_OContext(OContext *pOContext, RSeq_for_Uint1
 //ClassField GetClassField_in_ClassBasedRequestHandler(ClassBasedRequestHandler *pClassBasedRequestHandler);
 ////        this->params.unsolClassMask.Set(handler.GetClassField());
     ClassField temp = GetClassField_in_ClassBasedRequestHandler(&handler);
-    Set_in_ClassFieldOver1(&(pOContext->params.unsolClassMask), &temp);
+    Set_in_ClassFieldOver1(&(pOContext->params_in_OContext.unsolClassMask), &temp);
 
-    pOContext->shouldCheckForUnsolicited = true;
+    pOContext->shouldCheckForUnsolicited_in_OContext = true;
 ////        return handler.Errors();
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
@@ -3209,7 +3209,7 @@ IINField HandleCommandWithConstant_in_OContext(OContext *pOContext, RSeq_for_Uin
 //   void CommandResponseHandler_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler, uint32_t maxCommands_, ICommandAction* pCommandAction_, HeaderWriter* pWriter_);
 ////    CommandResponseHandler handler(this->params.maxControlsPerRequest, &constant, &writer);
   CommandResponseHandler handler;
-  CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params.maxControlsPerRequest, &(constant.iICommandAction), writer);
+  CommandResponseHandler_in_CommandResponseHandler(&handler, pOContext->params_in_OContext.maxControlsPerRequest, &(constant.iICommandAction), writer);
 
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger);
   expectsContents = true;
@@ -3236,7 +3236,7 @@ IINField HandleFreeze_in_OContext(OContext *pOContext, RSeq_for_Uint16_t* object
 //   void FreezeRequestHandler_in_FreezeRequestHandler(FreezeRequestHandler *pFreezeRequestHandler, boolean clear, Database* database);
 ////    FreezeRequestHandler handler(false, database);
   FreezeRequestHandler handler;
-  FreezeRequestHandler_in_FreezeRequestHandler(&handler, false, &(pOContext->database));
+  FreezeRequestHandler_in_FreezeRequestHandler(&handler, false, &(pOContext->database_in_OContext));
 
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger, ParserSettings::NoContents());
   expectsContents = false;
@@ -3267,7 +3267,7 @@ IINField HandleFreezeAndClear_in_OContext(OContext *pOContext, RSeq_for_Uint16_t
 #endif
 ////    FreezeRequestHandler handler(true, database);
   FreezeRequestHandler handler;
-  FreezeRequestHandler_in_FreezeRequestHandler(&handler, true, &(pOContext->database));
+  FreezeRequestHandler_in_FreezeRequestHandler(&handler, true, &(pOContext->database_in_OContext));
 
 ////    auto result = APDUParser::Parse(objects, handler, &this->logger, ParserSettings::NoContents());
   expectsContents = false;

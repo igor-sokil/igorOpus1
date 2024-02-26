@@ -46,10 +46,10 @@ boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_Bin
     // remove the generic record
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
-    OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
+    OnRemove_in_EventClassCounters(&(lists->counters_in_EventLists), record_node->value.clazz, record_node->value.state);
 //   void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
 ////        lists.events.Remove(first->value.record);
-    Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
+    Remove_in_List_for_EventRecord(&(lists->events_in_EventLists), first->value.record);
 
     // remove the type specific record
 //void Remove_in_List_TypedEventRecord_for_BinarySpec(List_TypedEventRecord_for_BinarySpec *pList_TypedEventRecord_for_BinarySpec, Node_TypedEventRecord_for_BinarySpec* node);
@@ -63,7 +63,7 @@ boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_Bin
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
   EventRecord eEventRecord;
   EventRecord_in_EventRecordOver2(&eEventRecord, event->eEvented.index, event->eEvented.clazz);
-  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events), &eEventRecord);
+  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events_in_EventLists), &eEventRecord);
 
   // followed by the typed record
 ////    const auto typed_node = list.Add(TypedEventRecord<T>(event.value, event.variation, record_node));
@@ -84,7 +84,7 @@ boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_Bin
 
 //void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    lists.counters.OnAdd(event.clazz);
-  OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
+  OnAdd_in_EventClassCounters(&(lists->counters_in_EventLists), event->eEvented.clazz);
 
 #ifdef  LOG_INFO
   decrement_stack_info();
@@ -122,10 +122,10 @@ boolean Update_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Even
     // remove the generic record
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
-    OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
+    OnRemove_in_EventClassCounters(&(lists->counters_in_EventLists), record_node->value.clazz, record_node->value.state);
 //   void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
 ////        lists.events.Remove(first->value.record);
-    Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
+    Remove_in_List_for_EventRecord(&(lists->events_in_EventLists), first->value.record);
 
     // remove the type specific record
 //void Remove_in_List_TypedEventRecord_for_DoubleBitBinarySpec(List_TypedEventRecord_for_DoubleBitBinarySpec *pList_TypedEventRecord_for_DoubleBitBinarySpec, Node_TypedEventRecord_for_DoubleBitBinarySpec* node);
@@ -139,7 +139,7 @@ boolean Update_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Even
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
   EventRecord eEventRecord;
   EventRecord_in_EventRecordOver2(&eEventRecord, event->eEvented.index, event->eEvented.clazz);
-  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events), &eEventRecord);
+  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events_in_EventLists), &eEventRecord);
 
   // followed by the typed record
 ////    const auto typed_node = list.Add(TypedEventRecord<T>(event.value, event.variation, record_node));
@@ -160,7 +160,7 @@ boolean Update_DoubleBitBinarySpec_in_EventUpdate_static(EventLists* lists, Even
 
 //void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    lists.counters.OnAdd(event.clazz);
-  OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
+  OnAdd_in_EventClassCounters(&(lists->counters_in_EventLists), event->eEvented.clazz);
 
   return overflow;
 }
@@ -203,10 +203,10 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
 // удаляем общую запись
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
-    OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
+    OnRemove_in_EventClassCounters(&(lists->counters_in_EventLists), record_node->value.clazz, record_node->value.state);
 //   void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
 ////        lists.events.Remove(first->value.record);
-    Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
+    Remove_in_List_for_EventRecord(&(lists->events_in_EventLists), first->value.record);
 
     // remove the type specific record
 // удаляем запись определенного типа
@@ -222,7 +222,7 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
   EventRecord eEventRecord;
   EventRecord_in_EventRecordOver2(&eEventRecord, event->eEvented.index, event->eEvented.clazz);
-  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events), &eEventRecord);
+  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events_in_EventLists), &eEventRecord);
 
   // followed by the typed record
 ////    const auto typed_node = list.Add(TypedEventRecord<T>(event.value, event.variation, record_node));
@@ -250,7 +250,7 @@ boolean Update_AnalogSpec_in_EventUpdate_static(EventLists* lists, Event_for_Ana
 
 //void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    lists.counters.OnAdd(event.clazz);
-  OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
+  OnAdd_in_EventClassCounters(&(lists->counters_in_EventLists), event->eEvented.clazz);
 
   return overflow;
 }
@@ -285,10 +285,10 @@ boolean Update_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_Co
     // remove the generic record
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
-    OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
+    OnRemove_in_EventClassCounters(&(lists->counters_in_EventLists), record_node->value.clazz, record_node->value.state);
 //   void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
 ////        lists.events.Remove(first->value.record);
-    Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
+    Remove_in_List_for_EventRecord(&(lists->events_in_EventLists), first->value.record);
 
     // remove the type specific record
 //void Remove_in_List_TypedEventRecord_for_CounterSpec(List_TypedEventRecord_for_CounterSpec *pList_TypedEventRecord_for_CounterSpec, Node_TypedEventRecord_for_CounterSpec* node);
@@ -302,7 +302,7 @@ boolean Update_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_Co
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
   EventRecord eEventRecord;
   EventRecord_in_EventRecordOver2(&eEventRecord, event->eEvented.index, event->eEvented.clazz);
-  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events), &eEventRecord);
+  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events_in_EventLists), &eEventRecord);
 
   // followed by the typed record
 ////    const auto typed_node = list.Add(TypedEventRecord<T>(event.value, event.variation, record_node));
@@ -323,7 +323,7 @@ boolean Update_CounterSpec_in_EventUpdate_static(EventLists* lists, Event_for_Co
 
 //void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    lists.counters.OnAdd(event.clazz);
-  OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
+  OnAdd_in_EventClassCounters(&(lists->counters_in_EventLists), event->eEvented.clazz);
 
   return overflow;
 }
@@ -359,10 +359,10 @@ boolean Update_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_
     // remove the generic record
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
-    OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
+    OnRemove_in_EventClassCounters(&(lists->counters_in_EventLists), record_node->value.clazz, record_node->value.state);
 //   void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
 ////        lists.events.Remove(first->value.record);
-    Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
+    Remove_in_List_for_EventRecord(&(lists->events_in_EventLists), first->value.record);
 
     // remove the type specific record
 //void Remove_in_List_TypedEventRecord_for_FrozenCounterSpec(List_TypedEventRecord_for_FrozenCounterSpec *pList_TypedEventRecord_for_FrozenCounterSpec, Node_TypedEventRecord_for_FrozenCounterSpec* node);
@@ -376,7 +376,7 @@ boolean Update_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
   EventRecord eEventRecord;
   EventRecord_in_EventRecordOver2(&eEventRecord, event->eEvented.index, event->eEvented.clazz);
-  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events), &eEventRecord);
+  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events_in_EventLists), &eEventRecord);
 
   // followed by the typed record
 ////    const auto typed_node = list.Add(TypedEventRecord<T>(event.value, event.variation, record_node));
@@ -397,7 +397,7 @@ boolean Update_FrozenCounterSpec_in_EventUpdate_static(EventLists* lists, Event_
 
 //void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    lists.counters.OnAdd(event.clazz);
-  OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
+  OnAdd_in_EventClassCounters(&(lists->counters_in_EventLists), event->eEvented.clazz);
 
   return overflow;
 }
@@ -433,10 +433,10 @@ boolean Update_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
     // remove the generic record
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
-    OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
+    OnRemove_in_EventClassCounters(&(lists->counters_in_EventLists), record_node->value.clazz, record_node->value.state);
 //   void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
 ////        lists.events.Remove(first->value.record);
-    Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
+    Remove_in_List_for_EventRecord(&(lists->events_in_EventLists), first->value.record);
 
     // remove the type specific record
 //void Remove_in_List_TypedEventRecord_for_BinaryOutputStatusSpec(List_TypedEventRecord_for_BinaryOutputStatusSpec *pList_TypedEventRecord_for_BinaryOutputStatusSpec, Node_TypedEventRecord_for_BinaryOutputStatusSpec* node);
@@ -450,7 +450,7 @@ boolean Update_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
   EventRecord eEventRecord;
   EventRecord_in_EventRecordOver2(&eEventRecord, event->eEvented.index, event->eEvented.clazz);
-  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events), &eEventRecord);
+  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events_in_EventLists), &eEventRecord);
 
   // followed by the typed record
 ////    const auto typed_node = list.Add(TypedEventRecord<T>(event.value, event.variation, record_node));
@@ -471,7 +471,7 @@ boolean Update_BinaryOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
 
 //void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    lists.counters.OnAdd(event.clazz);
-  OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
+  OnAdd_in_EventClassCounters(&(lists->counters_in_EventLists), event->eEvented.clazz);
 
   return overflow;
 }
@@ -507,10 +507,10 @@ boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
     // remove the generic record
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
-    OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
+    OnRemove_in_EventClassCounters(&(lists->counters_in_EventLists), record_node->value.clazz, record_node->value.state);
 //   void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
 ////        lists.events.Remove(first->value.record);
-    Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
+    Remove_in_List_for_EventRecord(&(lists->events_in_EventLists), first->value.record);
 
     // remove the type specific record
 //void Remove_in_List_TypedEventRecord_for_AnalogOutputStatusSpec(List_TypedEventRecord_for_AnalogOutputStatusSpec *pList_TypedEventRecord_for_AnalogOutputStatusSpec, Node_TypedEventRecord_for_AnalogOutputStatusSpec* node);
@@ -524,7 +524,7 @@ boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
   EventRecord eEventRecord;
   EventRecord_in_EventRecordOver2(&eEventRecord, event->eEvented.index, event->eEvented.clazz);
-  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events), &eEventRecord);
+  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events_in_EventLists), &eEventRecord);
 
   // followed by the typed record
 ////    const auto typed_node = list.Add(TypedEventRecord<T>(event.value, event.variation, record_node));
@@ -545,7 +545,7 @@ boolean Update_AnalogOutputStatusSpec_in_EventUpdate_static(EventLists* lists, E
 
 //void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    lists.counters.OnAdd(event.clazz);
-  OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
+  OnAdd_in_EventClassCounters(&(lists->counters_in_EventLists), event->eEvented.clazz);
 
   return overflow;
 }
@@ -593,10 +593,10 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
     // remove the generic record
 //void OnRemove_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz, EventState_uint8_t state);
 ////        lists.counters.OnRemove(record_node->value.clazz, record_node->value.state);
-    OnRemove_in_EventClassCounters(&(lists->counters), record_node->value.clazz, record_node->value.state);
+    OnRemove_in_EventClassCounters(&(lists->counters_in_EventLists), record_node->value.clazz, record_node->value.state);
 //   void Remove_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, Node_for_EventRecord* node);
 ////        lists.events.Remove(first->value.record);
-    Remove_in_List_for_EventRecord(&(lists->events), first->value.record);
+    Remove_in_List_for_EventRecord(&(lists->events_in_EventLists), first->value.record);
 
     // remove the type specific record
 //void Remove_in_List_TypedEventRecord_for_OctetStringSpec(List_TypedEventRecord_for_OctetStringSpec *pList_TypedEventRecord_for_OctetStringSpec, Node_TypedEventRecord_for_OctetStringSpec* node);
@@ -611,7 +611,7 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);
   EventRecord eEventRecord;
   EventRecord_in_EventRecordOver2(&eEventRecord, event->eEvented.index, event->eEvented.clazz);
-  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events), &eEventRecord);
+  Node_for_EventRecord* record_node = Add_in_List_for_EventRecord(&(lists->events_in_EventLists), &eEventRecord);
 
   // followed by the typed record
 ////    const auto typed_node = list.Add(TypedEventRecord<T>(event.value, event.variation, record_node));
@@ -633,7 +633,7 @@ boolean Update_OctetStringSpec_in_EventUpdate_static(EventLists* lists, Event_fo
 
 //void OnAdd_in_EventClassCounters(EventClassCounters *pEventClassCounters, EventClass_uint8_t clazz);
 ////    lists.counters.OnAdd(event.clazz);
-  OnAdd_in_EventClassCounters(&(lists->counters), event->eEvented.clazz);
+  OnAdd_in_EventClassCounters(&(lists->counters_in_EventLists), event->eEvented.clazz);
 
 #ifdef  LOG_INFO
   decrement_stack_info();
