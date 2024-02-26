@@ -110,6 +110,8 @@ uint16_t CalcUserDataSize_in_LinkFrame_static(uint16_t dataLength)
 RSeq_for_Uint16_t FormatAck_in_LinkFrame_static(
   WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc)//, Logger* pLogger)
 {
+//RSeq_for_Uint16_t FormatHeader_in_LinkFrame_static(WSeq_for_Uint16_t* buffer, uint8_t aDataLength, boolean aIsMaster, 
+//                  boolean aFcb,    boolean aFcvDfc, LinkFunction_uint8_t aFuncCode, uint16_t aDest, uint16_t aSrc)//,
 ////    return FormatHeader(buffer, 0, aIsMaster, false, aIsRcvBuffFull, LinkFunction::SEC_ACK, aDest, aSrc, pLogger);
   return FormatHeader_in_LinkFrame_static(buffer, 0, aIsMaster, false, aIsRcvBuffFull, LinkFunction_SEC_ACK, aDest, aSrc);//, pLogger);
 }

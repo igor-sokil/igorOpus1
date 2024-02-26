@@ -3,29 +3,16 @@
 #include <QtWidgets>
 
 #include <stdlib.h>
+#include <iostream>
+#include <string>
 
 #include "MainWindow.h"
 #include "key_filter.h"
 
 #include "header.h"
-/*
-#include "APDUHelpers.h"
-#include "APDUHeader.h"
-#include "SerializationTemplates.h"
-#include "Group2.h"
-#include "EventStorage.h"
 
-#include <EventType.h>
-#include <MeasurementInfo.h>
-
-#include <IEventWriteHandler.h>
-
-#include <deque>
-*/
 #include "BufferSer4.h"
 #include "LinkFrame.h"
-#include "loghandler.h"
-
 
 #define UNUSED(x) (void)(x)
 
@@ -39,17 +26,9 @@ int main(int argc, char *argv[])
   QApplication app(argc, argv);
   key_filter kf;
   app.installEventFilter(pkf=&kf);
-/*
-TEST_CASE(SUITE("ResetLinks"))
-{
-    Buffer buffer(292);
 
-    // ResetLinkStates - Master
-    auto write = buffer.as_wslice();
-    auto wrapper = LinkFrame::FormatResetLinkStates(write, true, 1, 1024, nullptr);
-    REQUIRE(HexConversions::to_hex(wrapper) == "05 64 05 C0 01 00 00 04 E9 21");
-}
-*/
+
+qDebug()<<"********SUITE('2ResetLinks')********";
 ////    Buffer buffer(292);
 //   void BufferSer4_in_BufferSer4Over2(BufferSer4 *pBufferSer4, uint16_t length);
     BufferSer4 buffer;
@@ -68,24 +47,23 @@ TEST_CASE(SUITE("ResetLinks"))
 
 ////    REQUIRE(HexConversions::to_hex(wrapper) == "05 64 05 C0 01 00 00 04 E9 21");
     qDebug()<<"REQUIRE(HexConversions::to_hex(wrapper) == '05 64 05 C0 01 00 00 04 E9 21')";
+
      qDebug()<<"rseq.buffer_[0]= "<<hex<<rseq.buffer_[0] <<hex<<rseq.buffer_[1] <<hex<<rseq.buffer_[2] <<hex<<rseq.buffer_[3]
                                   <<hex<<rseq.buffer_[4] <<hex<<rseq.buffer_[5] <<hex<<rseq.buffer_[6] <<hex<<rseq.buffer_[7]
                                   <<hex<<rseq.buffer_[8] <<hex<<rseq.buffer_[9];
 
 /*
-//   void LinkHeader_in_LinkHeaderOver2(LinkHeader *pLinkHeader, uint8_t len, uint16_t src, uint16_t dest, boolean aFromMaster, boolean fcvdfc, boolean fcb, LinkFunction_uint8_t aCode);
-////    LinkHeader hdr(5, 1, 1024, true, true, true, LinkFunction::PRI_CONFIRMED_USER_DATA);
-   LinkHeader lLinkHeader;
-   LinkHeader_in_LinkHeaderOver2(&lLinkHeader, 5, 1, 1024, true, true, true, LinkFunction_PRI_CONFIRMED_USER_DATA);
+TEST_CASE(SUITE("ResetLinks"))
+{
+    Buffer buffer(292);
 
-//    uint8_t ControlByte_in_LinkHeader_static(boolean isMaster, boolean fcb, boolean fcvdfc, LinkFunction_uint8_t func);
-////    REQUIRE(hdr.ControlByte(true, true, true, LinkFunction::PRI_CONFIRMED_USER_DATA) == hdr.GetControl());
-    uint8_t getctrb1 = ControlByte_in_LinkHeader_static(true, true, true, LinkFunction_PRI_CONFIRMED_USER_DATA);
-   uint8_t getctrc1 = GetControl_in_LinkHeader(&lLinkHeader);
-  qDebug()<<"REQUIRE(hdr.ControlByte(true, true, true, LinkFunction::PRI_CONFIRMED_USER_DATA) == hdr.GetControl())";
-  qDebug()<<"getctrb1= "<<getctrb1;
-  qDebug()<<"getctrc1= "<<getctrc1;
+    // ResetLinkStates - Master
+    auto write = buffer.as_wslice();
+    auto wrapper = LinkFrame::FormatResetLinkStates(write, true, 1, 1024, nullptr);
+    REQUIRE(HexConversions::to_hex(wrapper) == "05 64 05 C0 01 00 00 04 E9 21");
+}
 */
+
 
   MainWindow mainWindowObj;
   mainWindow = &mainWindowObj;

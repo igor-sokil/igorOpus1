@@ -157,7 +157,7 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
   std::cout<<getString_stack_info();
   std::cout<<"{update_in_StaticDataMap_for_BinarySpecOver2_1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*iter->second.config.eEventConfig.clazz= "<<(uint16_t)iter->second.config.eEventConfig.clazz<<'\n';
+  std::cout<<"*iter->second.config.eEventConfig.clazz= "<<(uint16_t)iter->second.config_in_StaticDataCell.eEventConfig.clazz<<'\n';
   std::cout<<"+"<<getString_stack_info();
   std::cout<<"++++++int16_t nnn = iter->first="<<(uint16_t)iter->first<<'\n';
   inspect_Binary(new_value);
@@ -174,22 +174,22 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
 
   if (mode != EventMode_EventOnly)
   {
-    iter->second.value = *new_value;
+    iter->second.value_in_StaticDataCell = *new_value;
   }
 
-  Binary old_value = iter->second.event.eEventCellBase_for_Binary.lastEvent;
+  Binary old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_Binary.lastEvent;
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_BinarySpec_static(Binary *old_value, Binary *new_value, BinaryConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-      IsEvent_in_BinarySpec_static(&old_value, new_value, &(iter->second.config)))
+      IsEvent_in_BinarySpec_static(&old_value, new_value, &(iter->second.config_in_StaticDataCell)))
   {
-    iter->second.event.eEventCellBase_for_Binary.lastEvent = *new_value;
+    iter->second.event_in_StaticDataCell.eEventCellBase_for_Binary.lastEvent = *new_value;
     if (mode != EventMode_Suppress)
     {
       EventClass_uint8_t ec;
 //boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
-      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.eEventConfig.clazz, &ec))
+      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config_in_StaticDataCell.eEventConfig.clazz, &ec))
       {
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -205,7 +205,7 @@ boolean update_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_BinarySpec
         Event_for_BinarySpec_in_Event_for_BinarySpecOver2(&eEvent_for_BinarySpec,
             new_value, iter->first,
             ec,
-            iter->second.config.eEventConfig.evariation);
+            iter->second.config_in_StaticDataCell.eEventConfig.evariation);
         Update_BinarySpec_in_IEventReceiver(receiver, &eEvent_for_BinarySpec);
 
       }
@@ -262,7 +262,7 @@ boolean modify_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pSt
       return false;
     }
 
-    Binary new_value = iter->second.value;
+    Binary new_value = iter->second.value_in_StaticDataCell;
 ////        new_value.flags = Flags(flags);
     Flags fFlags;
     Flags_In_FlagsOver2(&fFlags, flags);
@@ -298,7 +298,7 @@ Range assign_class_in_StaticDataMap_for_BinarySpecOver1(StaticDataMap_for_Binary
 {
   for (auto& elem : pStaticDataMap_for_BinarySpec->map)
   {
-    elem.second.config.eEventConfig.clazz = clazz;
+    elem.second.config_in_StaticDataCell.eEventConfig.clazz = clazz;
   }
 
 ////    return this->get_full_range();
@@ -311,7 +311,7 @@ Range assign_class_in_StaticDataMap_for_BinarySpecOver2(StaticDataMap_for_Binary
 ////             range.Contains(iter->first);
        Contains_in_Range(range, iter->first); iter++)
   {
-    iter->second.config.eEventConfig.clazz = clazz;
+    iter->second.config_in_StaticDataCell.eEventConfig.clazz = clazz;
   }
 
 //Range get_full_range_in_StaticDataMap_for_BinarySpec(StaticDataMap_for_BinarySpec *pStaticDataMap_for_BinarySpec);

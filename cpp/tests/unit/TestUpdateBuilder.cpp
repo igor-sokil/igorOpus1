@@ -25,7 +25,7 @@ using namespace opendnp3;
 
 #define SUITE(name) "UpdateBuilderTestSuite - " name
 
-TEST_CASE(SUITE("builder is cleared after building"))
+TEST_CASE(SUITE("1builder is cleared after building"))
 {
     UpdateBuilder builder;
     builder.Update(Counter(42), 0);

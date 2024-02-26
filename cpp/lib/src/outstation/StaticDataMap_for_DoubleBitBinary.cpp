@@ -157,22 +157,22 @@ boolean update_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_D
 
   if (mode != EventMode_EventOnly)
   {
-    iter->second.value = *new_value;
+    iter->second.value_in_StaticDataCell = *new_value;
   }
 
-  DoubleBitBinary old_value = iter->second.event.eEventCellBase_for_DoubleBitBinary.lastEvent;
+  DoubleBitBinary old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_DoubleBitBinary.lastEvent;
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_DoubleBitBinarySpec_static(DoubleBitBinary *old_value, DoubleBitBinary *new_value, DoubleBitBinaryConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-      IsEvent_in_DoubleBitBinarySpec_static(&old_value, new_value, &(iter->second.config)))
+      IsEvent_in_DoubleBitBinarySpec_static(&old_value, new_value, &(iter->second.config_in_StaticDataCell)))
   {
-    iter->second.event.eEventCellBase_for_DoubleBitBinary.lastEvent = *new_value;
+    iter->second.event_in_StaticDataCell.eEventCellBase_for_DoubleBitBinary.lastEvent = *new_value;
     if (mode != EventMode_Suppress)
     {
       EventClass_uint8_t ec;
 //boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
-      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.eEventConfig.clazz, &ec))
+      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config_in_StaticDataCell.eEventConfig.clazz, &ec))
       {
 //void Event_for_DoubleBitBinarySpec_in_Event_for_DoubleBitBinarySpecOver2(Event_for_DoubleBitBinarySpec *pEvent_for_DoubleBitBinarySpec,
 //    DoubleBitBinary* value, uint16_t index,
@@ -184,7 +184,7 @@ boolean update_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_D
         Event_for_DoubleBitBinarySpec_in_Event_for_DoubleBitBinarySpecOver2(&eEvent_for_DoubleBitBinarySpec,
             new_value, iter->first,
             ec,
-            iter->second.config.eEventConfig.evariation);
+            iter->second.config_in_StaticDataCell.eEventConfig.evariation);
         Update_DoubleBitBinarySpec_in_IEventReceiver(receiver, &eEvent_for_DoubleBitBinarySpec);
 
       }
@@ -236,7 +236,7 @@ boolean modify_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_Double
       return false;
     }
 
-    DoubleBitBinary new_value = iter->second.value;
+    DoubleBitBinary new_value = iter->second.value_in_StaticDataCell;
 ////        new_value.flags = Flags(flags);
     Flags fFlags;
     Flags_In_FlagsOver2(&fFlags, flags);
@@ -272,7 +272,7 @@ Range assign_class_in_StaticDataMap_for_DoubleBitBinarySpecOver1(StaticDataMap_f
 {
   for (auto& elem : pStaticDataMap_for_DoubleBitBinarySpec->map)
   {
-    elem.second.config.eEventConfig.clazz = clazz;
+    elem.second.config_in_StaticDataCell.eEventConfig.clazz = clazz;
   }
 
 ////    return this->get_full_range();
@@ -285,7 +285,7 @@ Range assign_class_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_f
 ////             range.Contains(iter->first);
        Contains_in_Range(range, iter->first); iter++)
   {
-    iter->second.config.eEventConfig.clazz = clazz;
+    iter->second.config_in_StaticDataCell.eEventConfig.clazz = clazz;
   }
 
 //Range get_full_range_in_StaticDataMap_for_DoubleBitBinarySpec(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec);

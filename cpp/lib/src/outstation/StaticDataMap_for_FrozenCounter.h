@@ -100,7 +100,7 @@ public:
     void operator++()
     {
       // unselect the point
-      this->iter->second.selection.selected = false;
+      this->iter->second.selection_in_StaticDataCell.selected = false;
 
       while (true)
       {
@@ -116,7 +116,7 @@ public:
         // shorten the range
         this->range.start = iter->first;
 
-        if (iter->second.selection.selected)
+        if (iter->second.selection_in_StaticDataCell.selected)
         {
           return;
         }
@@ -125,7 +125,7 @@ public:
 
     reference operator*()
     {
-      return reference(iter->first, iter->second.selection);
+      return reference(iter->first, iter->second.selection_in_StaticDataCell);
     }
   };
 
@@ -251,11 +251,11 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_FrozenCounterSpecOver
 ////                check_for_promotion<Spec>(iter.second.value, get_variation(iter.second.config.svariation))};
       SelectedValue_for_FrozenCounterSpec sSelectedValue_for_FrozenCounterSpec;
       SelectedValue_for_FrozenCounterSpec_in_SelectedValue_for_FrozenCounterSpecOver2(&sSelectedValue_for_FrozenCounterSpec,
-          true, &iter.second.value,
-          check_for_promotion_for_FrozenCounterSpec_static(&iter.second.value, get_variation(iter.second.config.
+          true, &iter.second.value_in_StaticDataCell,
+          check_for_promotion_for_FrozenCounterSpec_static(&iter.second.value_in_StaticDataCell, get_variation(iter.second.config_in_StaticDataCell.
                                              dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.svariation)));
 
-      iter.second.selection = sSelectedValue_for_FrozenCounterSpec;
+      iter.second.selection_in_StaticDataCell = sSelectedValue_for_FrozenCounterSpec;
     }//for
 
 //qDebug()<<"map.size= "<<pStaticDataMap_for_FrozenCounterSpec->map.size();
@@ -309,11 +309,11 @@ template<class F> uint16_t select_in_StaticDataMap_for_FrozenCounterSpecOver5(St
 ////        iter->second.selection = SelectedValue<Spec>{
 ////            true, iter->second.value,
 ////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
-    FrozenCounter fFrozenCounter = iter->second.value;
+    FrozenCounter fFrozenCounter = iter->second.value_in_StaticDataCell;
     SelectedValue_for_FrozenCounterSpec sSelectedValue_for_FrozenCounterSpec = {
-      true, fFrozenCounter, check_for_promotion_for_FrozenCounterSpec_static(&fFrozenCounter, get_variation(iter->second.config.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.svariation))
+      true, fFrozenCounter, check_for_promotion_for_FrozenCounterSpec_static(&fFrozenCounter, get_variation(iter->second.config_in_StaticDataCell.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.svariation))
     };
-    iter->second.selection = sSelectedValue_for_FrozenCounterSpec;
+    iter->second.selection_in_StaticDataCell = sSelectedValue_for_FrozenCounterSpec;
     ++count;
   }
 

@@ -55,13 +55,13 @@ void SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver2(SelectedV
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  Binary  value;       // current value
+  Binary  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  BinaryConfig  config;    // configuration
+  BinaryConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_Binary event; // event cell
+  SimpleEventCell_for_Binary event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_BinarySpec  selection;     // selected value
+  SelectedValue_for_BinarySpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -107,13 +107,13 @@ void SelectedValue_for_DoubleBitBinarySpec_in_SelectedValue_for_DoubleBitBinaryS
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  DoubleBitBinary  value;       // current value
+  DoubleBitBinary  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  DoubleBitBinaryConfig  config;    // configuration
+  DoubleBitBinaryConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_DoubleBitBinary event; // event cell
+  SimpleEventCell_for_DoubleBitBinary event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_DoubleBitBinarySpec  selection;     // selected value
+  SelectedValue_for_DoubleBitBinarySpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -160,13 +160,13 @@ void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2(SelectedV
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  Analog  value;       // current value
+  Analog  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  AnalogConfig  config;    // configuration
+  AnalogConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_Analog event; // event cell
+  SimpleEventCell_for_Analog event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_AnalogSpec  selection;     // selected value
+  SelectedValue_for_AnalogSpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -212,13 +212,13 @@ void SelectedValue_for_CounterSpec_in_SelectedValue_for_CounterSpecOver2(Selecte
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  Counter  value;       // current value
+  Counter  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  CounterConfig  config;    // configuration
+  CounterConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_Counter event; // event cell
+  SimpleEventCell_for_Counter event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_CounterSpec  selection;     // selected value
+  SelectedValue_for_CounterSpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -263,13 +263,13 @@ void SelectedValue_for_FrozenCounterSpec_in_SelectedValue_for_FrozenCounterSpecO
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  FrozenCounter  value;       // current value
+  FrozenCounter  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  FrozenCounterConfig  config;    // configuration
+  FrozenCounterConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_FrozenCounter event; // event cell
+  SimpleEventCell_for_FrozenCounter event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_FrozenCounterSpec  selection;     // selected value
+  SelectedValue_for_FrozenCounterSpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -314,13 +314,13 @@ void SelectedValue_for_BinaryOutputStatusSpec_in_SelectedValue_for_BinaryOutputS
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  BinaryOutputStatus  value;       // current value
+  BinaryOutputStatus  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  BOStatusConfig  config;    // configuration
+  BOStatusConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_BinaryOutputStatus event; // event cell
+  SimpleEventCell_for_BinaryOutputStatus event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_BinaryOutputStatusSpec  selection;     // selected value
+  SelectedValue_for_BinaryOutputStatusSpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -365,13 +365,13 @@ void SelectedValue_for_AnalogOutputStatusSpec_in_SelectedValue_for_AnalogOutputS
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  AnalogOutputStatus  value;       // current value
+  AnalogOutputStatus  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  AOStatusConfig  config;    // configuration
+  AOStatusConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_AnalogOutputStatus event; // event cell
+  SimpleEventCell_for_AnalogOutputStatus event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_AnalogOutputStatusSpec  selection;     // selected value
+  SelectedValue_for_AnalogOutputStatusSpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -416,13 +416,13 @@ void SelectedValue_for_OctetStringSpec_in_SelectedValue_for_OctetStringSpecOver2
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  OctetString  value;       // current value
+  OctetString  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  OctetStringConfig  config;    // configuration
+  OctetStringConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_OctetString event; // event cell
+  SimpleEventCell_for_OctetString event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_OctetStringSpec  selection;     // selected value
+  SelectedValue_for_OctetStringSpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -467,13 +467,13 @@ void SelectedValue_for_TimeAndIntervalSpec_in_SelectedValue_for_TimeAndIntervalS
 typedef struct
 {
 ///    typename Spec::meas_t value;       // current value
-  TimeAndInterval  value;       // current value
+  TimeAndInterval  value_in_StaticDataCell;       // current value
 ////    typename Spec::config_t config;    // configuration
-  TimeAndIntervalConfig  config;    // configuration
+  TimeAndIntervalConfig  config_in_StaticDataCell;    // configuration
 ////    typename Spec::event_cell_t event; // event cell
-  SimpleEventCell_for_TimeAndInterval event; // event cell
+  SimpleEventCell_for_TimeAndInterval event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_TimeAndIntervalSpec  selection;     // selected value
+  SelectedValue_for_TimeAndIntervalSpec  selection_in_StaticDataCell;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)

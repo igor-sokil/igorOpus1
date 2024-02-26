@@ -28,6 +28,8 @@
 ////#include "ser4cpp/container/ArrayView.h"
 #include "ArrayView__for__Node_for_int.h"
 
+#define SIZE_for_int 100
+
 ////#include "ser4cpp/util/Uncopyable.h"
 
 ////#include <assert.h>

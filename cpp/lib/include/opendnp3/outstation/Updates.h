@@ -32,7 +32,8 @@
 
 ////typedef std::function<void(IUpdateHandler&)> update_func_t;
 ////typedef std::vector<update_func_t> shared_updates_t;
-typedef void (*pfn_MyFuncType)(IUpdateHandler*);
+typedef void (*update_func_t)(IUpdateHandler*);
+////typedef std::vector<update_func_t> shared_updates_t;
 //pfn_MyFuncType * myFuncTypeArray;
 // или
 //pfn_MyFuncType myFuncTypeArray[10];
@@ -62,7 +63,7 @@ typedef struct
 ////    Updates(std::shared_ptr<shared_updates_t> updates) : updates(std::move(updates)) {}
 
 ////    const std::shared_ptr<shared_updates_t> updates;
-  pfn_MyFuncType updates[10];
+///  pfn_MyFuncType updates[10];
 } Updates;
 
 ////} // namespace opendnp3

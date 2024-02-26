@@ -99,7 +99,7 @@ public:
     void operator++()
     {
       // unselect the point
-      this->iter->second.selection.selected = false;
+      this->iter->second.selection_in_StaticDataCell.selected = false;
 
       while (true)
       {
@@ -115,7 +115,7 @@ public:
         // shorten the range
         this->range.start = iter->first;
 
-        if (iter->second.selection.selected)
+        if (iter->second.selection_in_StaticDataCell.selected)
         {
           return;
         }
@@ -124,7 +124,7 @@ public:
 
     reference operator*()
     {
-      return reference(iter->first, iter->second.selection);
+      return reference(iter->first, iter->second.selection_in_StaticDataCell);
     }
   };
 
@@ -250,10 +250,10 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_TimeAndIntervalSpecOv
 ////                check_for_promotion<Spec>(iter.second.value, get_variation(iter.second.config.svariation))};
       SelectedValue_for_TimeAndIntervalSpec sSelectedValue_for_TimeAndIntervalSpec;
       SelectedValue_for_TimeAndIntervalSpec_in_SelectedValue_for_TimeAndIntervalSpecOver2(&sSelectedValue_for_TimeAndIntervalSpec,
-          true, &iter.second.value,
-          check_for_promotion_for_TimeAndIntervalSpec_static(&iter.second.value, get_variation(iter.second.config.svariation)));
+          true, &iter.second.value_in_StaticDataCell,
+          check_for_promotion_for_TimeAndIntervalSpec_static(&iter.second.value_in_StaticDataCell, get_variation(iter.second.config_in_StaticDataCell.svariation)));
 
-      iter.second.selection = sSelectedValue_for_TimeAndIntervalSpec;
+      iter.second.selection_in_StaticDataCell = sSelectedValue_for_TimeAndIntervalSpec;
     }//for
 
 //qDebug()<<"map.size= "<<pStaticDataMap_for_TimeAndIntervalSpec->map.size();
@@ -307,11 +307,11 @@ template<class F> uint16_t select_in_StaticDataMap_for_TimeAndIntervalSpecOver5(
 ////        iter->second.selection = SelectedValue<Spec>{
 ////            true, iter->second.value,
 ////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
-    TimeAndInterval tTimeAndInterval = iter->second.value;
+    TimeAndInterval tTimeAndInterval = iter->second.value_in_StaticDataCell;
     SelectedValue_for_TimeAndIntervalSpec sSelectedValue_for_TimeAndIntervalSpec = {
-      true, tTimeAndInterval, check_for_promotion_for_TimeAndIntervalSpec_static(&tTimeAndInterval, get_variation(iter->second.config.svariation))
+      true, tTimeAndInterval, check_for_promotion_for_TimeAndIntervalSpec_static(&tTimeAndInterval, get_variation(iter->second.config_in_StaticDataCell.svariation))
     };
-    iter->second.selection = sSelectedValue_for_TimeAndIntervalSpec;
+    iter->second.selection_in_StaticDataCell = sSelectedValue_for_TimeAndIntervalSpec;
     ++count;
   }
 

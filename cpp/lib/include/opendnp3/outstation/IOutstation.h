@@ -49,12 +49,15 @@ typedef struct
   /**
    * Sets the restart IIN bit. Normally applications should not
    * touch this bit, but it is provided for simulating restarts.
+* Устанавливает бит IIN перезапуска. Обычно приложения не должны
+    * коснитесь этого бита, но он предусмотрен для имитации перезапуска.
    */
   void (*pSetRestartIIN_in_IOutstation)(void*);
 ////    virtual void SetRestartIIN() = 0;
 
   /**
    * Apply a set of measurement updates to the outstation
+* Применить набор обновлений измерений к удаленной станции.
    */
   void (*pApply_in_IOutstation)(void*, Updates* updates);
 ////    virtual void Apply(const Updates& updates) = 0;

@@ -36,6 +36,8 @@
 /**
     A composite configuration struct that contains all the config
     information for a dnp3 outstation stack
+Составная структура конфигурации, содержащая всю конфигурацию.
+     информация о стеке удаленной станции dnp3
 */
 ////struct OutstationStackConfig
 typedef struct

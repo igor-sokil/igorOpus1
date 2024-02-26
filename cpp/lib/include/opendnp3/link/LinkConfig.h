@@ -85,10 +85,13 @@ typedef struct
   uint16_t RemoteAddr;
 
   /// the response timeout in milliseconds for confirmed requests
+/// таймаут ответа в миллисекундах для подтвержденных запросов
   TimeDuration Timeout;
 
   /// the interval for keep-alive messages (link status requests)
   /// if set to TimeDuration::Max(), the keep-alive is disabled
+/// интервал для сообщений проверки активности (запросов статуса канала)
+   /// если установлено значение TimeDuration::Max(), поддержание активности отключено
   TimeDuration KeepAliveTimeout;
 } LinkConfig;
 

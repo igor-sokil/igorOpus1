@@ -57,6 +57,7 @@ enum CounterQuality
   /// Deprecated flag that indicates value has rolled over
   CounterQuality_ROLLOVER = 0x20,
   /// indicates an unusual change in value
+/// указывает на необычное изменение значения
   CounterQuality_DISCONTINUITY = 0x40,
   /// reserved bit
   CounterQuality_RESERVED = 0x80

@@ -177,10 +177,10 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
 
   if (mode != EventMode_EventOnly)
   {
-    iter->second.value = *new_value;
+    iter->second.value_in_StaticDataCell = *new_value;
   }
 
-  Counter old_value = iter->second.event.eEventCellBase_for_Counter.lastEvent;
+  Counter old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_Counter.lastEvent;
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -193,14 +193,14 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_CounterSpec_static(Counter *old_value, Counter *new_value, CounterConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-      IsEvent_in_CounterSpec_static(&old_value, new_value, &(iter->second.config)))
+      IsEvent_in_CounterSpec_static(&old_value, new_value, &(iter->second.config_in_StaticDataCell)))
   {
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"update_in_StaticDataMap_for_CounterSpecOver2_3"<<'\n';
 #endif
 
-    iter->second.event.eEventCellBase_for_Counter.lastEvent = *new_value;
+    iter->second.event_in_StaticDataCell.eEventCellBase_for_Counter.lastEvent = *new_value;
     if (mode != EventMode_Suppress)
     {
 #ifdef  LOG_INFO
@@ -211,7 +211,7 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
       EventClass_uint8_t ec;
 //boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
-      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.dDeadbandConfig_for_CounterInfo.eEventConfig.clazz, &ec))
+      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config_in_StaticDataCell.dDeadbandConfig_for_CounterInfo.eEventConfig.clazz, &ec))
       {
 //void Event_for_CounterSpec_in_Event_for_CounterSpecOver2(Event_for_CounterSpec *pEvent_for_CounterSpec,
 //    Counter* value, uint16_t index,
@@ -223,7 +223,7 @@ boolean update_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSp
         Event_for_CounterSpec_in_Event_for_CounterSpecOver2(&eEvent_for_CounterSpec,
             new_value, iter->first,
             ec,
-            iter->second.config.dDeadbandConfig_for_CounterInfo.eEventConfig.evariation);
+            iter->second.config_in_StaticDataCell.dDeadbandConfig_for_CounterInfo.eEventConfig.evariation);
         Update_CounterSpec_in_IEventReceiver(receiver, &eEvent_for_CounterSpec);
 
       }
@@ -303,7 +303,7 @@ boolean modify_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *p
       return false;
     }
 
-    Counter new_value = iter->second.value;
+    Counter new_value = iter->second.value_in_StaticDataCell;
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"*modify_in_StaticDataMap_for_CounterSpec2"<<'\n';
@@ -350,7 +350,7 @@ Range assign_class_in_StaticDataMap_for_CounterSpecOver1(StaticDataMap_for_Count
 {
   for (auto& elem : pStaticDataMap_for_CounterSpec->map)
   {
-    elem.second.config.dDeadbandConfig_for_CounterInfo.eEventConfig.clazz = clazz;
+    elem.second.config_in_StaticDataCell.dDeadbandConfig_for_CounterInfo.eEventConfig.clazz = clazz;
   }
 
 ////    return this->get_full_range();
@@ -363,7 +363,7 @@ Range assign_class_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_Count
 ////             range.Contains(iter->first);
        Contains_in_Range(range, iter->first); iter++)
   {
-    iter->second.config.dDeadbandConfig_for_CounterInfo.eEventConfig.clazz = clazz;
+    iter->second.config_in_StaticDataCell.dDeadbandConfig_for_CounterInfo.eEventConfig.clazz = clazz;
   }
 
 //Range get_full_range_in_StaticDataMap_for_CounterSpec(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec);

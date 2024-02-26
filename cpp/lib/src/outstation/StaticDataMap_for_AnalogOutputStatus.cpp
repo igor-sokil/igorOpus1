@@ -157,22 +157,22 @@ boolean update_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_fo
 
   if (mode != EventMode_EventOnly)
   {
-    iter->second.value = *new_value;
+    iter->second.value_in_StaticDataCell = *new_value;
   }
 
-  AnalogOutputStatus old_value = iter->second.event.eEventCellBase_for_AnalogOutputStatus.lastEvent;
+  AnalogOutputStatus old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_AnalogOutputStatus.lastEvent;
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_AnalogOutputStatusSpec_static(AnalogOutputStatus *old_value, AnalogOutputStatus *new_value, AnalogOutputStatusConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-      IsEvent_in_AnalogOutputStatusSpec_static(&old_value, new_value, &(iter->second.config)))
+      IsEvent_in_AnalogOutputStatusSpec_static(&old_value, new_value, &(iter->second.config_in_StaticDataCell)))
   {
-    iter->second.event.eEventCellBase_for_AnalogOutputStatus.lastEvent = *new_value;
+    iter->second.event_in_StaticDataCell.eEventCellBase_for_AnalogOutputStatus.lastEvent = *new_value;
     if (mode != EventMode_Suppress)
     {
       EventClass_uint8_t ec;
 //boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
-      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.clazz, &ec))
+      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config_in_StaticDataCell.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.clazz, &ec))
       {
 //void Event_for_AnalogOutputStatusSpec_in_Event_for_AnalogOutputStatusSpecOver2(Event_for_AnalogOutputStatusSpec *pEvent_for_AnalogOutputStatusSpec,
 //    AnalogOutputStatus* value, uint16_t index,
@@ -184,7 +184,7 @@ boolean update_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMap_fo
         Event_for_AnalogOutputStatusSpec_in_Event_for_AnalogOutputStatusSpecOver2(&eEvent_for_AnalogOutputStatusSpec,
             new_value, iter->first,
             ec,
-            iter->second.config.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.evariation);
+            iter->second.config_in_StaticDataCell.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.evariation);
         Update_AnalogOutputStatusSpec_in_IEventReceiver(receiver, &eEvent_for_AnalogOutputStatusSpec);
 
       }
@@ -236,7 +236,7 @@ boolean modify_in_StaticDataMap_for_AnalogOutputStatusSpec(StaticDataMap_for_Ana
       return false;
     }
 
-    AnalogOutputStatus new_value = iter->second.value;
+    AnalogOutputStatus new_value = iter->second.value_in_StaticDataCell;
 ////        new_value.flags = Flags(flags);
     Flags fFlags;
     Flags_In_FlagsOver2(&fFlags, flags);
@@ -272,7 +272,7 @@ Range assign_class_in_StaticDataMap_for_AnalogOutputStatusSpecOver1(StaticDataMa
 {
   for (auto& elem : pStaticDataMap_for_AnalogOutputStatusSpec->map)
   {
-    elem.second.config.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.clazz = clazz;
+    elem.second.config_in_StaticDataCell.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.clazz = clazz;
   }
 
 ////    return this->get_full_range();
@@ -285,7 +285,7 @@ Range assign_class_in_StaticDataMap_for_AnalogOutputStatusSpecOver2(StaticDataMa
 ////             range.Contains(iter->first);
        Contains_in_Range(range, iter->first); iter++)
   {
-    iter->second.config.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.clazz = clazz;
+    iter->second.config_in_StaticDataCell.dDeadbandConfig_for_AnalogOutputStatusInfo.eEventConfig.clazz = clazz;
   }
 
 //Range get_full_range_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogOutputStatusSpec *pStaticDataMap_for_AnalogOutputStatusSpec);

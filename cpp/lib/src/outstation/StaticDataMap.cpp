@@ -84,7 +84,7 @@ boolean update_in_StaticDataMap_for_TimeAndIntervalSpecOver1(StaticDataMap_for_T
     return false;
   }
 
-  iter->second.value = *value;
+  iter->second.value_in_StaticDataCell = *value;
 
   return true;
 }

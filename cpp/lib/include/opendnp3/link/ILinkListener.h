@@ -29,6 +29,7 @@
 
 /**
  * Various optional callbacks that can be received for the link layer
+* –азличные дополнительные обратные вызовы, которые можно получить дл€ канального уровн€.
  */
 ////class ILinkListener
 typedef struct

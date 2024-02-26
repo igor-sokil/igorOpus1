@@ -45,20 +45,33 @@
 std::string Ack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
 
 ////    static std::string Nack(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
+std::string Nack_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
+
 ////    static std::string LinkStatus(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
 std::string LinkStatus_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
+
 ////    static std::string NotSupported(bool master, bool isRxBuffFull, uint16_t dest, uint16_t src);
+std::string NotSupported_in_LinkHex_static(boolean master, boolean isRxBuffFull, uint16_t dest, uint16_t src);
 
 ////////////////////////////////////////////////
 //	Functions for formatting outgoing Pri to Sec frames
 ////////////////////////////////////////////////
 
 ////    static std::string TestLinkStatus(bool master, bool fcb, uint16_t dest, uint16_t src);
+std::string TestLinkStatus_in_LinkHex_static(boolean master, boolean fcb, uint16_t dest, uint16_t src);
+
 ////    static std::string ResetLinkStates(bool master, uint16_t dest, uint16_t src);
+std::string ResetLinkStates_in_LinkHex_static(boolean master, uint16_t dest, uint16_t src);
+
 ////    static std::string RequestLinkStatus(bool master, uint16_t dest, uint16_t src);
+std::string RequestLinkStatus_in_LinkHex_static(boolean master, uint16_t dest, uint16_t src);
+
 ////    static std::string ConfirmedUserData(
 ////        bool master, bool fcb, uint16_t dest, uint16_t src, const std::string& userDataHex);
+std::string ConfirmedUserData_in_LinkHex_static(boolean master, boolean fcb, uint16_t dest, uint16_t src, std::string& userDataHex);
+
 ////    static std::string UnconfirmedUserData(bool master, uint16_t dest, uint16_t src, const std::string& userDataHex);
+std::string UnconfirmedUserData_in_LinkHex_static(boolean master, boolean fcb, uint16_t dest, uint16_t src, std::string& userDataHex);
 ////};
 
 #endif

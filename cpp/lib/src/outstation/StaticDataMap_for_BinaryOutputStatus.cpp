@@ -157,22 +157,22 @@ boolean update_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(StaticDataMap_fo
 
   if (mode != EventMode_EventOnly)
   {
-    iter->second.value = *new_value;
+    iter->second.value_in_StaticDataCell = *new_value;
   }
 
-  BinaryOutputStatus old_value = iter->second.event.eEventCellBase_for_BinaryOutputStatus.lastEvent;
+  BinaryOutputStatus old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_BinaryOutputStatus.lastEvent;
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_BinaryOutputStatusSpec_static(BinaryOutputStatus *old_value, BinaryOutputStatus *new_value, BinaryOutputStatusConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-      IsEvent_in_BinaryOutputStatusSpec_static(&old_value, new_value, &(iter->second.config)))
+      IsEvent_in_BinaryOutputStatusSpec_static(&old_value, new_value, &(iter->second.config_in_StaticDataCell)))
   {
-    iter->second.event.eEventCellBase_for_BinaryOutputStatus.lastEvent = *new_value;
+    iter->second.event_in_StaticDataCell.eEventCellBase_for_BinaryOutputStatus.lastEvent = *new_value;
     if (mode != EventMode_Suppress)
     {
       EventClass_uint8_t ec;
 //boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
-      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.eEventConfig.clazz, &ec))
+      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config_in_StaticDataCell.eEventConfig.clazz, &ec))
       {
 //void Event_for_BinaryOutputStatusSpec_in_Event_for_BinaryOutputStatusSpecOver2(Event_for_BinaryOutputStatusSpec *pEvent_for_BinaryOutputStatusSpec,
 //    BinaryOutputStatus* value, uint16_t index,
@@ -184,7 +184,7 @@ boolean update_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(StaticDataMap_fo
         Event_for_BinaryOutputStatusSpec_in_Event_for_BinaryOutputStatusSpecOver2(&eEvent_for_BinaryOutputStatusSpec,
             new_value, iter->first,
             ec,
-            iter->second.config.eEventConfig.evariation);
+            iter->second.config_in_StaticDataCell.eEventConfig.evariation);
         Update_BinaryOutputStatusSpec_in_IEventReceiver(receiver, &eEvent_for_BinaryOutputStatusSpec);
 
       }
@@ -236,7 +236,7 @@ boolean modify_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_Bin
       return false;
     }
 
-    BinaryOutputStatus new_value = iter->second.value;
+    BinaryOutputStatus new_value = iter->second.value_in_StaticDataCell;
 ////        new_value.flags = Flags(flags);
     Flags fFlags;
     Flags_In_FlagsOver2(&fFlags, flags);
@@ -272,7 +272,7 @@ Range assign_class_in_StaticDataMap_for_BinaryOutputStatusSpecOver1(StaticDataMa
 {
   for (auto& elem : pStaticDataMap_for_BinaryOutputStatusSpec->map)
   {
-    elem.second.config.eEventConfig.clazz = clazz;
+    elem.second.config_in_StaticDataCell.eEventConfig.clazz = clazz;
   }
 
 ////    return this->get_full_range();
@@ -285,7 +285,7 @@ Range assign_class_in_StaticDataMap_for_BinaryOutputStatusSpecOver2(StaticDataMa
 ////             range.Contains(iter->first);
        Contains_in_Range(range, iter->first); iter++)
   {
-    iter->second.config.eEventConfig.clazz = clazz;
+    iter->second.config_in_StaticDataCell.eEventConfig.clazz = clazz;
   }
 
 //Range get_full_range_in_StaticDataMap_for_BinaryOutputStatusSpec(StaticDataMap_for_BinaryOutputStatusSpec *pStaticDataMap_for_BinaryOutputStatusSpec);

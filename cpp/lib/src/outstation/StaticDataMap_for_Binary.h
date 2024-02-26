@@ -104,7 +104,7 @@ public:
     void operator++()
     {
       // unselect the point
-      this->iter->second.selection.selected = false;
+      this->iter->second.selection_in_StaticDataCell.selected = false;
 
       while (true)
       {
@@ -120,7 +120,7 @@ public:
         // shorten the range
         this->range.start = iter->first;
 
-        if (iter->second.selection.selected)
+        if (iter->second.selection_in_StaticDataCell.selected)
         {
           return;
         }
@@ -129,7 +129,7 @@ public:
 
     reference operator*()
     {
-      return reference(iter->first, iter->second.selection);
+      return reference(iter->first, iter->second.selection_in_StaticDataCell);
     }
   };
 
@@ -263,8 +263,8 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_BinarySpecOver3(Stati
 ////                check_for_promotion<Spec>(iter.second.value, get_variation(iter.second.config.svariation))};
       SelectedValue_for_BinarySpec sSelectedValue_for_BinarySpec;
       SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver2(&sSelectedValue_for_BinarySpec,
-          true, &iter.second.value,
-          check_for_promotion_for_BinarySpec_static(&iter.second.value, get_variation(iter.second.config.eEventConfig.svariation)));
+          true, &iter.second.value_in_StaticDataCell,
+          check_for_promotion_for_BinarySpec_static(&iter.second.value_in_StaticDataCell, get_variation(iter.second.config_in_StaticDataCell.eEventConfig.svariation)));
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -272,9 +272,9 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_BinarySpecOver3(Stati
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*sSelectedValue_for_BinarySpec.variation= "<<(uint16_t)sSelectedValue_for_BinarySpec.variation<<'\n';
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*iter.second.config.eEventConfig.svariation= "<<(uint16_t)iter.second.config.eEventConfig.svariation<<'\n';
+  std::cout<<"*iter.second.config.eEventConfig.svariation= "<<(uint16_t)iter.second.config_in_StaticDataCell.eEventConfig.svariation<<'\n';
 #endif
-      iter.second.selection = sSelectedValue_for_BinarySpec;
+      iter.second.selection_in_StaticDataCell = sSelectedValue_for_BinarySpec;
     }//for
 
 #ifdef  LOG_INFO
@@ -341,11 +341,11 @@ template<class F> uint16_t select_in_StaticDataMap_for_BinarySpecOver5(StaticDat
 ////        iter->second.selection = SelectedValue<Spec>{
 ////            true, iter->second.value,
 ////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
-    Binary bBinary = iter->second.value;
+    Binary bBinary = iter->second.value_in_StaticDataCell;
     SelectedValue_for_BinarySpec sSelectedValue_for_BinarySpec = {
-      true, bBinary, check_for_promotion_for_BinarySpec_static(&bBinary, get_variation(iter->second.config.eEventConfig.svariation))
+      true, bBinary, check_for_promotion_for_BinarySpec_static(&bBinary, get_variation(iter->second.config_in_StaticDataCell.eEventConfig.svariation))
     };
-    iter->second.selection = sSelectedValue_for_BinarySpec;
+    iter->second.selection_in_StaticDataCell = sSelectedValue_for_BinarySpec;
     ++count;
   }
 

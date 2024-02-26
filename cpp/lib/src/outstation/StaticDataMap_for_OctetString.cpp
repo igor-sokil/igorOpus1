@@ -164,22 +164,22 @@ boolean update_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_Octet
 
   if (mode != EventMode_EventOnly)
   {
-    iter->second.value = *new_value;
+    iter->second.value_in_StaticDataCell = *new_value;
   }
 
-  OctetString old_value = iter->second.event.eEventCellBase_for_OctetString.lastEvent;
+  OctetString old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_OctetString.lastEvent;
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_OctetStringSpec_static(OctetString *old_value, OctetString *new_value, OctetStringConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-      IsEvent_in_OctetStringSpec_static(&old_value, new_value, &(iter->second.config)))
+      IsEvent_in_OctetStringSpec_static(&old_value, new_value, &(iter->second.config_in_StaticDataCell)))
   {
-    iter->second.event.eEventCellBase_for_OctetString.lastEvent = *new_value;
+    iter->second.event_in_StaticDataCell.eEventCellBase_for_OctetString.lastEvent = *new_value;
     if (mode != EventMode_Suppress)
     {
       EventClass_uint8_t ec;
 //boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
-      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.eEventConfig.clazz, &ec))
+      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config_in_StaticDataCell.eEventConfig.clazz, &ec))
       {
 //void Event_for_OctetStringSpec_in_Event_for_OctetStringSpecOver2(Event_for_OctetStringSpec *pEvent_for_OctetStringSpec,
 //    OctetString* value, uint16_t index,
@@ -189,7 +189,7 @@ boolean update_in_StaticDataMap_for_OctetStringSpecOver2(StaticDataMap_for_Octet
 ////                receiver.Update(Event<Spec>(new_value, iter->first, ec, iter->second.config.evariation));
         Event_for_OctetStringSpec eEvent_for_OctetStringSpec;
         Event_for_OctetStringSpec_in_Event_for_OctetStringSpecOver2(&eEvent_for_OctetStringSpec,
-            new_value, iter->first, ec, iter->second.config.eEventConfig.evariation);
+            new_value, iter->first, ec, iter->second.config_in_StaticDataCell.eEventConfig.evariation);
         Update_OctetStringSpec_in_IEventReceiver(receiver, &eEvent_for_OctetStringSpec);
 
       }

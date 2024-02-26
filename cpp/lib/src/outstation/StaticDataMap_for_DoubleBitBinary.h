@@ -100,7 +100,7 @@ public:
     void operator++()
     {
       // unselect the point
-      this->iter->second.selection.selected = false;
+      this->iter->second.selection_in_StaticDataCell.selected = false;
 
       while (true)
       {
@@ -116,7 +116,7 @@ public:
         // shorten the range
         this->range.start = iter->first;
 
-        if (iter->second.selection.selected)
+        if (iter->second.selection_in_StaticDataCell.selected)
         {
           return;
         }
@@ -125,7 +125,7 @@ public:
 
     reference operator*()
     {
-      return reference(iter->first, iter->second.selection);
+      return reference(iter->first, iter->second.selection_in_StaticDataCell);
     }
   };
 
@@ -253,10 +253,10 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_DoubleBitBinarySpecOv
 ////                check_for_promotion<Spec>(iter.second.value, get_variation(iter.second.config.svariation))};
       SelectedValue_for_DoubleBitBinarySpec sSelectedValue_for_DoubleBitBinarySpec;
       SelectedValue_for_DoubleBitBinarySpec_in_SelectedValue_for_DoubleBitBinarySpecOver2(&sSelectedValue_for_DoubleBitBinarySpec,
-          true, &iter.second.value,
-          check_for_promotion_for_DoubleBitBinarySpec_static(&iter.second.value, get_variation(iter.second.config.eEventConfig.svariation)));
+          true, &iter.second.value_in_StaticDataCell,
+          check_for_promotion_for_DoubleBitBinarySpec_static(&iter.second.value_in_StaticDataCell, get_variation(iter.second.config_in_StaticDataCell.eEventConfig.svariation)));
 
-      iter.second.selection = sSelectedValue_for_DoubleBitBinarySpec;
+      iter.second.selection_in_StaticDataCell = sSelectedValue_for_DoubleBitBinarySpec;
     }//for
 
 //qDebug()<<"map.size= "<<pStaticDataMap_for_DoubleBitBinarySpec->map.size();
@@ -310,11 +310,11 @@ template<class F> uint16_t select_in_StaticDataMap_for_DoubleBitBinarySpecOver5(
 ////        iter->second.selection = SelectedValue<Spec>{
 ////            true, iter->second.value,
 ////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
-    DoubleBitBinary dDoubleBitBinary = iter->second.value;
+    DoubleBitBinary dDoubleBitBinary = iter->second.value_in_StaticDataCell;
     SelectedValue_for_DoubleBitBinarySpec sSelectedValue_for_DoubleBitBinarySpec = {
-      true, dDoubleBitBinary, check_for_promotion_for_DoubleBitBinarySpec_static(&dDoubleBitBinary, get_variation(iter->second.config.eEventConfig.svariation))
+      true, dDoubleBitBinary, check_for_promotion_for_DoubleBitBinarySpec_static(&dDoubleBitBinary, get_variation(iter->second.config_in_StaticDataCell.eEventConfig.svariation))
     };
-    iter->second.selection = sSelectedValue_for_DoubleBitBinarySpec;
+    iter->second.selection_in_StaticDataCell = sSelectedValue_for_DoubleBitBinarySpec;
     ++count;
   }
 

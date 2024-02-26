@@ -157,22 +157,22 @@ boolean update_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_Fro
 
   if (mode != EventMode_EventOnly)
   {
-    iter->second.value = *new_value;
+    iter->second.value_in_StaticDataCell = *new_value;
   }
 
-  FrozenCounter old_value = iter->second.event.eEventCellBase_for_FrozenCounter.lastEvent;
+  FrozenCounter old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_FrozenCounter.lastEvent;
   if (mode == EventMode_Force || mode == EventMode_EventOnly ||
 //boolean IsEvent_in_FrozenCounterSpec_static(FrozenCounter *old_value, FrozenCounter *new_value, FrozenCounterConfig *config);
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
-      IsEvent_in_FrozenCounterSpec_static(&old_value, new_value, &(iter->second.config)))
+      IsEvent_in_FrozenCounterSpec_static(&old_value, new_value, &(iter->second.config_in_StaticDataCell)))
   {
-    iter->second.event.eEventCellBase_for_FrozenCounter.lastEvent = *new_value;
+    iter->second.event_in_StaticDataCell.eEventCellBase_for_FrozenCounter.lastEvent = *new_value;
     if (mode != EventMode_Suppress)
     {
       EventClass_uint8_t ec;
 //boolean convert_to_event_class_in_StaticDataMap_static(PointClass_uint8_t pc, EventClass_uint8_t* ec);
 ////            if (convert_to_event_class(iter->second.config.clazz, ec))
-      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.clazz, &ec))
+      if (convert_to_event_class_in_StaticDataMap_static(iter->second.config_in_StaticDataCell.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.clazz, &ec))
       {
 //void Event_for_FrozenCounterSpec_in_Event_for_FrozenCounterSpecOver2(Event_for_FrozenCounterSpec *pEvent_for_FrozenCounterSpec,
 //    FrozenCounter* value, uint16_t index,
@@ -184,7 +184,7 @@ boolean update_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_Fro
         Event_for_FrozenCounterSpec_in_Event_for_FrozenCounterSpecOver2(&eEvent_for_FrozenCounterSpec,
             new_value, iter->first,
             ec,
-            iter->second.config.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.evariation);
+            iter->second.config_in_StaticDataCell.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.evariation);
         Update_FrozenCounterSpec_in_IEventReceiver(receiver, &eEvent_for_FrozenCounterSpec);
 
       }
@@ -236,7 +236,7 @@ boolean modify_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCo
       return false;
     }
 
-    FrozenCounter new_value = iter->second.value;
+    FrozenCounter new_value = iter->second.value_in_StaticDataCell;
 ////        new_value.flags = Flags(flags);
     Flags fFlags;
     Flags_In_FlagsOver2(&fFlags, flags);
@@ -272,7 +272,7 @@ Range assign_class_in_StaticDataMap_for_FrozenCounterSpecOver1(StaticDataMap_for
 {
   for (auto& elem : pStaticDataMap_for_FrozenCounterSpec->map)
   {
-    elem.second.config.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.clazz = clazz;
+    elem.second.config_in_StaticDataCell.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.clazz = clazz;
   }
 
 ////    return this->get_full_range();
@@ -285,7 +285,7 @@ Range assign_class_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for
 ////             range.Contains(iter->first);
        Contains_in_Range(range, iter->first); iter++)
   {
-    iter->second.config.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.clazz = clazz;
+    iter->second.config_in_StaticDataCell.dDeadbandConfig_for_FrozenCounterInfo.eEventConfig.clazz = clazz;
   }
 
 //Range get_full_range_in_StaticDataMap_for_FrozenCounterSpec(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec);

@@ -89,7 +89,7 @@ public:
     void operator++()
     {
       // unselect the point
-      this->iter->second.selection.selected = false;
+      this->iter->second.selection_in_StaticDataCell.selected = false;
 
       while (true)
       {
@@ -105,7 +105,7 @@ public:
         // shorten the range
         this->range.start = iter->first;
 
-        if (iter->second.selection.selected)
+        if (iter->second.selection_in_StaticDataCell.selected)
         {
           return;
         }
@@ -114,7 +114,7 @@ public:
 
     reference operator*()
     {
-      return reference(iter->first, iter->second.selection);
+      return reference(iter->first, iter->second.selection_in_StaticDataCell);
     }
   };
 
@@ -239,11 +239,11 @@ template<class F> uint16_t select_all_in_StaticDataMap_for_AnalogSpecOver3(Stati
 ////                check_for_promotion<Spec>(iter.second.value, get_variation(iter.second.config.svariation))};
       SelectedValue_for_AnalogSpec sSelectedValue_for_AnalogSpec;
       SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2(&sSelectedValue_for_AnalogSpec,
-          true, &iter.second.value,
-          check_for_promotion_for_AnalogSpec_static(&iter.second.value, get_variation(iter.second.config.
+          true, &iter.second.value_in_StaticDataCell,
+          check_for_promotion_for_AnalogSpec_static(&iter.second.value_in_StaticDataCell, get_variation(iter.second.config_in_StaticDataCell.
               dDeadbandConfig_for_AnalogInfo.eEventConfig.svariation)));
 
-      iter.second.selection = sSelectedValue_for_AnalogSpec;
+      iter.second.selection_in_StaticDataCell = sSelectedValue_for_AnalogSpec;
     }//for
 
 //qDebug()<<"map.size= "<<pStaticDataMap_for_AnalogSpec->map.size();
@@ -297,11 +297,11 @@ template<class F> uint16_t select_in_StaticDataMap_for_AnalogSpecOver5(StaticDat
 ////        iter->second.selection = SelectedValue<Spec>{
 ////            true, iter->second.value,
 ////            check_for_promotion<Spec>(iter->second.value, get_variation(iter->second.config.svariation))};
-    Analog aAnalog = iter->second.value;
+    Analog aAnalog = iter->second.value_in_StaticDataCell;
     SelectedValue_for_AnalogSpec sSelectedValue_for_AnalogSpec = {
-      true, aAnalog, check_for_promotion_for_AnalogSpec_static(&aAnalog, get_variation(iter->second.config.dDeadbandConfig_for_AnalogInfo.eEventConfig.svariation))
+      true, aAnalog, check_for_promotion_for_AnalogSpec_static(&aAnalog, get_variation(iter->second.config_in_StaticDataCell.dDeadbandConfig_for_AnalogInfo.eEventConfig.svariation))
     };
-    iter->second.selection = sSelectedValue_for_AnalogSpec;
+    iter->second.selection_in_StaticDataCell = sSelectedValue_for_AnalogSpec;
     ++count;
   }
 

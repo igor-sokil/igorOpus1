@@ -52,7 +52,7 @@
 
 #define SIZE_CopyableBuffer  2048
 
-#include "memory_header.h"
+//#include "memory_header.h"
 
 #define SIZE_for_EventRecord                             SIZE_TypedEventRecord_for_AnalogOutputStatusSpec + \
                                                          SIZE_TypedEventRecord_for_AnalogSpec + \
@@ -62,8 +62,6 @@
                                                          SIZE_TypedEventRecord_for_DoubleBitBinarySpec + \
                                                          SIZE_TypedEventRecord_for_FrozenCounterSpec + \
                                                          SIZE_TypedEventRecord_for_OctetStringSpec 
-
-#define SIZE_for_int 100
 
 extern void* pPointerGlobal1;
 extern void* pPointerGlobal2;
