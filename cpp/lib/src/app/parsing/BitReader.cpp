@@ -41,16 +41,32 @@ boolean GetBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t position)
 {
   uint32_t byte = position / 8;
   uint32_t bit = position % 8;
-////    assert(byte < buffer.length());
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  if(length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < byte) std::cout<<"*assert(byte < buffer.length())"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{GetBit_in_DoubleBit_static1"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*uint32_t position= "<<position<<'\n';
+#endif
+////    assert(byte < buffer.length());
+#ifdef  LOG_INFO
+  if(length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < byte)
+  {
+   std::cout<<getString_stack_info();
+   std::cout<<"*assert(byte < buffer.length())"<<'\n';
+  }
 #endif
 ////    return (buffer[byte] & (1 << bit)) != 0;
-  return (buffer->buffer_[byte] & (1 << bit)) != 0;
+  boolean tmp = (buffer->buffer_[byte] & (1 << bit)) != 0;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}GetBit_in_DoubleBit_static_"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*boolean tmp= "<<tmp<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////size_t NumBytesInDoubleBits(size_t numBits)
@@ -68,8 +84,11 @@ DoubleBit_uint8_t GetDoubleBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, ui
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
-  std::cout<<getString_stack_info();
-  if(length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < byteNumber) std::cout<<"*assert(byteNumber < buffer.length())"<<'\n';
+  if(length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < byteNumber)
+  {
+    std::cout<<getString_stack_info();
+    std::cout<<"*assert(byteNumber < buffer.length())"<<'\n';
+  }
   decrement_stack_info();
 #endif
   uint8_t byte = buffer->buffer_[byteNumber];////buffer[byteNumber];

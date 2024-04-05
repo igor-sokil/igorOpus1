@@ -11,6 +11,24 @@
 
 static int16_t stack_info = -1;//рівень стеку для info
 
+void inspect_LinkHeaderFields(LinkHeaderFields *b)
+{
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_LinkHeaderFields**"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@*LinkFunction_uint8_t func= "<<(uint16_t)b->func<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@*boolean isFromMaster= "<<(uint16_t)b->isFromMaster<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@*boolean fcb= "<<(uint16_t)b->fcb<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@*boolean fcvdfc= "<<(uint16_t)b->fcvdfc<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@*Addresses addresses.source= "<<(uint16_t)b->addresses.source<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"@*Addresses addresses.destination= "<<(uint16_t)b->addresses.destination<<'\n';
+}
+
 void inspect_ClassField(ClassField *b)
 {
   std::cout<<"*"<<getString_stack_info();
@@ -133,7 +151,7 @@ void inspect_RSeq(RSeq_for_Uint16_t *buffer)
   for(int i=0; i<length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)); i++)
  {
   std::cout<<"*"<<getString_stack_info();
-  std::cout<<"@*buffer->buffer_[i]= "<<std::hex<<(uint16_t)buffer->buffer_[i]<<std::dec<<'\n';
+  std::cout<<"@*buffer->buffer_[i]= "<<(uint32_t)&(buffer->buffer_[i])<<"<-"<<std::hex<<(uint16_t)buffer->buffer_[i]<<std::dec<<'\n';
  }//for
 }
 

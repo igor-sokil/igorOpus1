@@ -22,6 +22,9 @@ void BufferSer4_in_BufferSer4Over2(BufferSer4 *pBufferSer4, uint16_t length)
   std::cout<<"BufferSer4_in_BufferSer4Over2_1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*uint16_t length="<<length<<'\n';
+
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*sizeof(BufferSer4)="<<sizeof(pBufferSer4->bytes)<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*uint8_t bytes[SIZE_BufferSer4]="<<(uint32_t)pBufferSer4->bytes<<'\n';
   decrement_stack_info();
@@ -30,7 +33,6 @@ void BufferSer4_in_BufferSer4Over2(BufferSer4 *pBufferSer4, uint16_t length)
 ////        bytes(std::make_unique<uint8_t[]>(length))
   (pBufferSer4->hHasLength_for_Uint16_t).m_length = length;
 }
-
 ////    BufferSer4(BufferSer4&&) = default;
 ////    BufferSer4& operator=(BufferSer4&&) = default;
 

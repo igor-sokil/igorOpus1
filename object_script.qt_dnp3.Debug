@@ -8,6 +8,9 @@ debug/Settable_for_RSeq.o
 debug/Settable_for_WSeq.o
 debug/Settable_for_LinkBroadcastAddress.o
 debug/BufferSer4.o
+debug/BufferSer4_Core.o
+debug/BufferSer4_292.o
+debug/BufferSer4_2048.o
 debug/StaticBuffer_for_LPDU_HEADER_SIZE.o
 debug/StaticBuffer_for_LPDU_MAX_FRAME_SIZE.o
 debug/StaticBuffer_for_MAX_TPDU_LENGTH.o
@@ -394,10 +397,13 @@ debug/EventReceiver.o
 debug/FormatUserData.o
 debug/LinkHex.o
 debug/LinkParserTest.o
+debug/LinkParserMrzs.o
 debug/LinkLayerTest.o
+debug/LinkLayerMrzs.o
 debug/MasterTestFixture.o
 debug/MockTransportSegment.o
 debug/OutstationTestObject.o
+debug/OutstationObjectMrzs.o
 debug/ProtocolUtil.o
 debug/TestAPDUParsing.o
 debug/TestOutstation.o
@@ -407,6 +413,8 @@ debug/TestOutstationDiscontiguousIndices.o
 debug/TestMeasurementHandler.o
 debug/TestTypedCommandHeader.o
 debug/TransportTestObject.o
+debug/TransportObjectMrzs.o
+debug/txtLogEntry.o
 debug/MockAPDUHeaderHandler.o
 debug/MockCommandHandler.o
 debug/MockEventWriteHandler.o
@@ -418,6 +426,7 @@ debug/MockSOEHandler.o
 debug/MockLowerLayer.o
 debug/MockUpperLayer.o
 debug/MockFrameSink.o
+debug/MrzsFrameSink.o
 debug/MockTransportLayer.o
 debug/DatabaseHelpers.o
 debug/DataSink.o

@@ -127,6 +127,8 @@ boolean OnFrame_in_MockFrameSink(MockFrameSink *pMockFrameSink, LinkHeaderFields
 #ifdef  LOG_INFO
   std::cout<<'\n';
   std::cout<<"{OnFrame_in_MockFrameSink1"<<'\n';
+  std::cout<<"FinalDestination_in_MockFrameSink:"<<'\n';
+  inspect_LinkHeaderFields(header);
   inspect_RSeq(userdata);
 #endif
   ++(pMockFrameSink->m_num_frames);

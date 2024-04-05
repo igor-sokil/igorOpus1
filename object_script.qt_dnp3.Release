@@ -8,6 +8,9 @@ release/Settable_for_RSeq.o
 release/Settable_for_WSeq.o
 release/Settable_for_LinkBroadcastAddress.o
 release/BufferSer4.o
+release/BufferSer4_Core.o
+release/BufferSer4_292.o
+release/BufferSer4_2048.o
 release/StaticBuffer_for_LPDU_HEADER_SIZE.o
 release/StaticBuffer_for_LPDU_MAX_FRAME_SIZE.o
 release/StaticBuffer_for_MAX_TPDU_LENGTH.o
@@ -394,10 +397,13 @@ release/EventReceiver.o
 release/FormatUserData.o
 release/LinkHex.o
 release/LinkParserTest.o
+release/LinkParserMrzs.o
 release/LinkLayerTest.o
+release/LinkLayerMrzs.o
 release/MasterTestFixture.o
 release/MockTransportSegment.o
 release/OutstationTestObject.o
+release/OutstationObjectMrzs.o
 release/ProtocolUtil.o
 release/TestAPDUParsing.o
 release/TestOutstation.o
@@ -407,6 +413,8 @@ release/TestOutstationDiscontiguousIndices.o
 release/TestMeasurementHandler.o
 release/TestTypedCommandHeader.o
 release/TransportTestObject.o
+release/TransportObjectMrzs.o
+release/txtLogEntry.o
 release/MockAPDUHeaderHandler.o
 release/MockCommandHandler.o
 release/MockEventWriteHandler.o
@@ -418,6 +426,7 @@ release/MockSOEHandler.o
 release/MockLowerLayer.o
 release/MockUpperLayer.o
 release/MockFrameSink.o
+release/MrzsFrameSink.o
 release/MockTransportLayer.o
 release/DatabaseHelpers.o
 release/DataSink.o

@@ -12,6 +12,9 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                  ser4cpp\container\Settable_for_WSeq.cpp \
                  ser4cpp\container\Settable_for_LinkBroadcastAddress.cpp \
                  ser4cpp\container\BufferSer4.cpp \
+                 ser4cpp\container\BufferSer4_Core.cpp \
+                 ser4cpp\container\BufferSer4_292.cpp \
+                 ser4cpp\container\BufferSer4_2048.cpp \
                  ser4cpp\container\StaticBuffer_for_LPDU_HEADER_SIZE.cpp \
                  ser4cpp\container\StaticBuffer_for_LPDU_MAX_FRAME_SIZE.cpp \
                  ser4cpp\container\StaticBuffer_for_MAX_TPDU_LENGTH.cpp \
@@ -418,10 +421,13 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\FormatUserData.cpp \
                 cpp\tests\unit\utils\LinkHex.cpp \
                 cpp\tests\unit\utils\LinkParserTest.cpp \
+                cpp\tests\unit\utils\LinkParserMrzs.cpp \
                 cpp\tests\unit\utils\LinkLayerTest.cpp \
+                cpp\tests\unit\utils\LinkLayerMrzs.cpp \
                 cpp\tests\unit\utils\MasterTestFixture.cpp \
                 cpp\tests\unit\utils\MockTransportSegment.cpp \
                 cpp\tests\unit\utils\OutstationTestObject.cpp \
+                cpp\tests\unit\utils\OutstationObjectMrzs.cpp \
                 cpp\tests\unit\utils\ProtocolUtil.cpp \
                 cpp\tests\unit\utils\TestAPDUParsing.cpp \
                 cpp\tests\unit\utils\TestOutstation.cpp \
@@ -431,6 +437,8 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\unit\utils\TestMeasurementHandler.cpp \
                 cpp\tests\unit\utils\TestTypedCommandHeader.cpp \
                 cpp\tests\unit\utils\TransportTestObject.cpp \
+                cpp\tests\unit\utils\TransportObjectMrzs.cpp \
+                cpp\tests\unit\utils\txtLogEntry.cpp \
                 \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockAPDUHeaderHandler.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockCommandHandler.cpp \
@@ -444,6 +452,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockUpperLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockFrameSink.cpp \
+                cpp\tests\dnp3mocks\src\MrzsFrameSink.cpp \
                 cpp\tests\dnp3mocks\src\MockTransportLayer.cpp \
                 cpp\tests\dnp3mocks\src\DatabaseHelpers.cpp \
                 cpp\tests\dnp3mocks\src\DataSink.cpp

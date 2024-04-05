@@ -65,12 +65,12 @@ RSeq_for_Uint16_t temp2 = ToRSeq_in_CopyableBuffer(&(bs.cCopyableBuffer));
                  &temp2);//// = ser4cpp::rseq_t::empty());
 
 ////    REQUIRE(t.upper->receivedQueue.size() == 1);
-  uint16_t tmp16 =  t.upper.receivedQueue.size();// == 1);
+  uint16_t tmp16 =  t.upper_in_LinkLayerTest.receivedQueue_in_MockTransportLayer.size();// == 1);
 qDebug()<<"REQUIRE(t.upper->receivedQueue.size() == 1)";
 qDebug()<<"uint16_t tmp16 = "<<tmp16;
 
 qDebug()<<"REQUIRE(t.upper->receivedQueue.front()";
- std::string tmpStr = t.upper.receivedQueue.front();
+ std::string tmpStr = t.upper_in_LinkLayerTest.receivedQueue_in_MockTransportLayer.front();
 std::cout<<"std::string tmpStr ="<<tmpStr;
 
 qDebug()<<"";

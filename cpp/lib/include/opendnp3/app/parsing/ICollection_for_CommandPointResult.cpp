@@ -1,91 +1,65 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "ICollection_for_CommandPointResult.h"
 
 //--------------------------------ICollection_for_CommandPointResult--------------------------------
+////    template<class Fun> void ForeachItem(const Fun& fun) const
+void ForeachItem_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult *pICollection_for_CommandPointResult, void (*fun)(CommandPointResult item))
+   {
+//void FunctorVisitor__for__uint32_in_FunctorVisitor__for__uint32(FunctorVisitor__for__uint32 *pFunctorVisitor__for__uint32,
+//    void (*fun)(uint32_t* item));
+////        FunctorVisitor<T, Fun> visitor(fun);
+ FunctorVisitor_for_CommandPointResult visitor;
+ FunctorVisitor_for_CommandPointResult_in_FunctorVisitor_for_CommandPointResult(&visitor, fun);
+
+//void     Foreach_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult*, IVisitor_for_CommandPointResult* visitor);
+////        this->Foreach(visitor);
+  Foreach_in_ICollection_for_CommandPointResult(pICollection_for_CommandPointResult, &(visitor.iIVisitor_for_CommandPointResult));
+   }
+
+void* getParentPointer_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult* pICollection_for_CommandPointResult)
+{
+  return pICollection_for_CommandPointResult->pParentPointer_in_ICollection_for_CommandPointResult;
+}
+void  setParentPointer_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult* pICollection_for_CommandPointResult, void* pParentPointer)
+{
+  pICollection_for_CommandPointResult->pParentPointer_in_ICollection_for_CommandPointResult = pParentPointer;
+}
+uint16_t Count_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult *pICollection_for_CommandPointResult)
+{
+ return (pICollection_for_CommandPointResult->pCount_in_ICollection_for_CommandPointResult)(pICollection_for_CommandPointResult);
+}
+
+void  Foreach_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult *pICollection_for_CommandPointResult, IVisitor_for_CommandPointResult *pIVisitor_for_CommandPointResult)
+{
+  (pICollection_for_CommandPointResult->pForeach_in_ICollection_for_CommandPointResult)(pICollection_for_CommandPointResult, pIVisitor_for_CommandPointResult);
+}
+
 /**
  * Abstract way of visiting elements of a collection
  *
+
+template<class T> class IVisitor
+{
+public:
+    virtual void OnValue(const T& value) = 0;
+};
  */
 
-void* getParentPointer_in_IVisitor_for_CommandPointResult(IVisitor__for__CommandPointResult* pIVisitor__for__CommandPointResult)
+void* getParentPointer_in_IVisitor_for_CommandPointResult(IVisitor_for_CommandPointResult* pIVisitor_for_CommandPointResult)
 {
-  return pIVisitor__for__CommandPointResult->pParentPointer_in_IVisitor__for__CommandPointResult;
+  return pIVisitor_for_CommandPointResult->pParentPointer_in_IVisitor_for_CommandPointResult;
 }
-void  setParentPointer_in_IVisitor_for_CommandPointResult(IVisitor__for__CommandPointResult* pIVisitor__for__CommandPointResult, void* pParentPointer)
+void  setParentPointer_in_IVisitor_for_CommandPointResult(IVisitor_for_CommandPointResult* pIVisitor_for_CommandPointResult, void* pParentPointer)
 {
-  pIVisitor__for__CommandPointResult->pParentPointer_in_IVisitor__for__CommandPointResult = pParentPointer;
+  pIVisitor_for_CommandPointResult->pParentPointer_in_IVisitor_for_CommandPointResult = pParentPointer;
 }
-
-void OnValue_in_IVisitor__for__CommandPointResult(IVisitor__for__CommandPointResult *pIVisitor__for__CommandPointResult, CommandPointResult* pCommandPointResult)
+void OnValue_in_IVisitor_for_CommandPointResult(IVisitor_for_CommandPointResult *pIVisitor_for_CommandPointResult, CommandPointResult pCommandPointResult)
 {
-  (pIVisitor__for__CommandPointResult->pOnValue_in_IVisitor__for__CommandPointResult)(pIVisitor__for__CommandPointResult, pCommandPointResult);
-}
-
-/**
- * An interface representing an abstract immutable collection of things of type T.
- *
- * The user can only read these values via callback to receive each element.
- */
-uint16_t Count_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult* pICollection_CommandPointResult)
-{
-  return (pICollection_CommandPointResult->pCount_in_ICollection_for_CommandPointResult)
-         (pICollection_CommandPointResult);
-}
-void     Foreach_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult* pICollection_CommandPointResult, IVisitor__for__CommandPointResult* visitor)
-{
-  (pICollection_CommandPointResult->pForeach_in_ICollection_for_CommandPointResult)
-  (pICollection_CommandPointResult, visitor);
-}
-
-void* getParentPointer_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult* pICollection_CommandPointResult)
-{
-  return pICollection_CommandPointResult->pParentPointer_in_ICollection_for_CommandPointResult;
-}
-
-void  setParentPointer_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult* pICollection_CommandPointResult, void* pParentPointer)
-{
-  pICollection_CommandPointResult->pParentPointer_in_ICollection_for_CommandPointResult = pParentPointer;
-}
-
-void assignValue_in_ICollection_CommandPointResult(CommandPointResult* item);
-
-void assignValue_in_ICollection_CommandPointResult(CommandPointResult* item)
-{
-  *((CommandPointResult*)pPointerGlobal1) = *item;
-}
-
-boolean ReadOnlyValue_in_ICollection_for_CommandPointResult(
-  ICollection_for_CommandPointResult *pICollection_CommandPointResult, CommandPointResult* pValue)
-{
-  pPointerGlobal1 = pValue;
-
-////        if (this->Count() == 1)
-  if (Count_in_ICollection_for_CommandPointResult(pICollection_CommandPointResult) == 1)
-  {
-////            auto assignValue = [&value](const T& item) { value = item; };
-////            this->ForeachItem(assignValue);
-//void ForeachItem_in_ICollection_CommandPointResult(ICollection_CommandPointResult *pICollection_CommandPointResult,
-//                  void (*fun)(CommandPointResult* item));
-    ForeachItem_in_ICollection_for_CommandPointResult(pICollection_CommandPointResult, assignValue_in_ICollection_CommandPointResult);
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
-
-void ForeachItem_in_ICollection_for_CommandPointResult(
-  ICollection_for_CommandPointResult *pICollection_CommandPointResult,
-  void (*fun)(CommandPointResult* item))
-{
-  FunctorVisitor__for__CommandPointResult visitor;
-//void FunctorVisitor__for__CommandPointResult_in_FunctorVisitor__for__CommandPointResult(__FunctorVisitor__for__CommandPointResult *pFunctorVisitor__for__CommandPointResult,
-//    void (*fun)(CommandPointResult* item));
-  FunctorVisitor__for__CommandPointResult_in_FunctorVisitor__for__CommandPointResult(&visitor, fun);
-//  (pICollection_CommandPointResult->pForeach_in_ICollection_CommandPointResult)
-//       (pICollection_CommandPointResult, &(visitor.iIVisitor__for__CommandPointResult));
-  Foreach_in_ICollection_for_CommandPointResult(pICollection_CommandPointResult, &(visitor.iIVisitor__for__CommandPointResult));
+  (pIVisitor_for_CommandPointResult->pOnValue_in_IVisitor_for_CommandPointResult)(pIVisitor_for_CommandPointResult, pCommandPointResult);
 }
 
 /**
@@ -107,23 +81,59 @@ void ForeachItem_in_ICollection_for_CommandPointResult(
 ////    Fun fun;
 ////};
 
-void FunctorVisitor__for__CommandPointResult_in_FunctorVisitor__for__CommandPointResult(FunctorVisitor__for__CommandPointResult *pFunctorVisitor__for__CommandPointResult,
-    void (*fun)(CommandPointResult* item))
+void FunctorVisitor_for_CommandPointResult_in_FunctorVisitor_for_CommandPointResult(FunctorVisitor_for_CommandPointResult *pFunctorVisitor_for_CommandPointResult,
+    void (*fun)(CommandPointResult item))
 {
-  pFunctorVisitor__for__CommandPointResult->Fun = fun;
+  pFunctorVisitor_for_CommandPointResult->Fun = fun;
 
-  pFunctorVisitor__for__CommandPointResult->iIVisitor__for__CommandPointResult.pOnValue_in_IVisitor__for__CommandPointResult =
-    OnValue_in_FunctorVisitor__for__CommandPointResult_override;
+  pFunctorVisitor_for_CommandPointResult->iIVisitor_for_CommandPointResult.pOnValue_in_IVisitor_for_CommandPointResult =
+    OnValue_in_FunctorVisitor_for_CommandPointResult_override;
 
-  setParentPointer_in_IVisitor_for_CommandPointResult(&(pFunctorVisitor__for__CommandPointResult->iIVisitor__for__CommandPointResult), pFunctorVisitor__for__CommandPointResult);
+  setParentPointer_in_IVisitor_for_CommandPointResult(&(pFunctorVisitor_for_CommandPointResult->iIVisitor_for_CommandPointResult), pFunctorVisitor_for_CommandPointResult);
 }
 
-void OnValue_in_FunctorVisitor__for__CommandPointResult_override(void *pFunctorVisitor__for__CommandPointResult,
-    CommandPointResult *value)
+void OnValue_in_FunctorVisitor_for_CommandPointResult_override(void *pIVisitor_for_CommandPointResult, CommandPointResult value)
 {
-  ((FunctorVisitor__for__CommandPointResult*)pFunctorVisitor__for__CommandPointResult)->
-  Fun(value);
+  FunctorVisitor_for_CommandPointResult *parent = (FunctorVisitor_for_CommandPointResult *)
+           getParentPointer_in_IVisitor_for_CommandPointResult((IVisitor_for_CommandPointResult *) pIVisitor_for_CommandPointResult);
+///  parent -> Fun(value);
+  OnValue_in_FunctorVisitor_for_CommandPointResult(parent, value);
 }
+
+void OnValue_in_FunctorVisitor_for_CommandPointResult(FunctorVisitor_for_CommandPointResult *pFunctorVisitor_for_CommandPointResult, CommandPointResult value)
+{
+  pFunctorVisitor_for_CommandPointResult -> Fun(value);
+}
+
+//static void *pPointerGlobal1_in_ReadOnlyValue1;
+void assignValue_in_ICollection_for_CommandPointResult(CommandPointResult item);
+void assignValue_in_ICollection_for_CommandPointResult(CommandPointResult item)
+{
+  CommandPointResult *pValue = (CommandPointResult *)pPointerGlobal1;
+//  *((CommandPointResult*)pPointerGlobal1) = *item;
+  *pValue = item;
+}
+
+boolean ReadOnlyValue_in_ICollection_for_CommandPointResult(
+  ICollection_for_CommandPointResult *pICollection_for_CommandPointResult, CommandPointResult *pValue)
+{
+//  pPointerGlobal1 = pValue;
+  pPointerGlobal1 = pValue;
+
+////        if (this->Count() == 1)
+  if (Count_in_ICollection_for_CommandPointResult(pICollection_for_CommandPointResult) == 1)
+  {
+////            auto assignValue = [&value](const T& item) { value = item; };
+////            this->ForeachItem(assignValue);
+//void ForeachItem_in_ICollection_for_CommandPointResult(ICollection_for_CommandPointResult *pICollection_for_CommandPointResult,
+//                  void (*fun)(CommandPointResult* item));
+    ForeachItem_in_ICollection_for_CommandPointResult(pICollection_for_CommandPointResult, assignValue_in_ICollection_for_CommandPointResult);
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
 //--------------------------------ICollection_for_CommandPointResult--------------------------------
-
-

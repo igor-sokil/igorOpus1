@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 #include "log_info.h"
+//#undef  LOG_INFO
 #ifdef  LOG_INFO
 #include <iostream>
 #endif
@@ -36,6 +37,16 @@
 void LinkLayerParser_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)//const Logger& logger)
 ////    : logger(logger), state(State::FindSync), frameSize(0), buffer(rxBuffer, LPDU_MAX_FRAME_SIZE)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{LinkLayerParser_in_LinkLayerParser1"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*rxBuffer_in_LinkLayerParser[LPDU_MAX_FRAME_SIZE]="<<(uint32_t)pLinkLayerParser->rxBuffer_in_LinkLayerParser<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*sizeof(rxBuffer_in_LinkLayerParser)="<<(uint32_t)sizeof(pLinkLayerParser->rxBuffer_in_LinkLayerParser)<<'\n';
+#endif
   LinkHeader_in_LinkHeaderOver1(&(pLinkLayerParser->header));
   Parser_in_LinkStatistics__in__Parser_in_LinkStatistics(&(pLinkLayerParser->statistics));
 
@@ -44,7 +55,12 @@ void LinkLayerParser_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)//cons
   pLinkLayerParser->frameSize = 0;
 //void ShiftableBuffer_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint8_t* pBuffer_, uint16_t size);
 //// buffer(rxBuffer, LPDU_MAX_FRAME_SIZE)
-  ShiftableBuffer_in_ShiftableBuffer(&(pLinkLayerParser->buffer), pLinkLayerParser->rxBuffer, LPDU_MAX_FRAME_SIZE);
+  ShiftableBuffer_in_ShiftableBuffer(&(pLinkLayerParser->buffer), pLinkLayerParser->rxBuffer_in_LinkLayerParser, LPDU_MAX_FRAME_SIZE);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}LinkLayerParser_in_LinkLayerParser_"<<std::endl;
+  decrement_stack_info();
+#endif
 }
 
 void Reset_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
@@ -58,12 +74,14 @@ void Reset_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 
 WSeq_for_Uint16_t WriteBuff_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{WriteBuff_in_LinkLayerParser1"<<std::endl;
 #endif
+*/
 //uint16_t NumWriteBytes_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer);
 //uint8_t* WriteBuff_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer);
 ////    return ser4cpp::wseq_t(buffer.WriteBuff(), buffer.NumWriteBytes());
@@ -71,17 +89,19 @@ WSeq_for_Uint16_t WriteBuff_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser
   WSeq_for_Uint16_t_in_WSeq_for_Uint16_tOver2(&wWSeq_for_Uint16_t,
       WriteBuff_in_ShiftableBuffer(&(pLinkLayerParser->buffer)),
       NumWriteBytes_in_ShiftableBuffer(&(pLinkLayerParser->buffer)));
-
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}WriteBuff_in_LinkLayerParser_"<<std::endl;
   decrement_stack_info();
 #endif
+*/
   return wWSeq_for_Uint16_t;
 }
 
 void OnRead_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser, uint16_t numBytes, IFrameSink* sink)
 {
+/*
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
@@ -92,6 +112,7 @@ void OnRead_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser, uint16_t numBy
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*Complete_State_LinkLayerParser= "<<(uint16_t)Complete_State_LinkLayerParser<<std::endl;
 #endif
+*/
 //void AdvanceWrite_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t numBytes);
 ////    buffer.AdvanceWrite(numBytes);
   AdvanceWrite_in_ShiftableBuffer(&(pLinkLayerParser->buffer), numBytes);
@@ -111,17 +132,20 @@ void OnRead_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser, uint16_t numBy
 //void Shift_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer);
 ////    buffer.Shift();
   Shift_in_ShiftableBuffer(&(pLinkLayerParser->buffer));
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}OnRead_in_LinkLayerParser_"<<std::endl;
   decrement_stack_info();
 #endif
+*/
 }
 
 ////LinkLayerParser::State LinkLayerParser::ParseUntilComplete()
 State_LinkLayerParser_uint8_t ParseUntilComplete_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
   State_LinkLayerParser_uint8_t lastState = pLinkLayerParser->state;
+/*
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
@@ -130,7 +154,7 @@ State_LinkLayerParser_uint8_t ParseUntilComplete_in_LinkLayerParser(LinkLayerPar
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*State_LinkLayerParser_uint8_t lastState ="<<(uint16_t)lastState<<std::endl;
 #endif
-
+*/
   // continue as long as we're making progress, i.e. a state change
 // продолжаем до тех пор, пока мы добиваемс€ прогресса, т.е. изменени€ состо€ни€
 //    State_LinkLayerParser_uint8_t ParseOneStep_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser);
@@ -139,7 +163,7 @@ State_LinkLayerParser_uint8_t ParseUntilComplete_in_LinkLayerParser(LinkLayerPar
   {
     lastState = pLinkLayerParser->state;
   }
-
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ParseUntilComplete_in_LinkLayerParser_"<<std::endl;
@@ -147,12 +171,14 @@ State_LinkLayerParser_uint8_t ParseUntilComplete_in_LinkLayerParser(LinkLayerPar
   std::cout<<"*pLinkLayerParser->state ="<<(uint16_t)pLinkLayerParser->state<<std::endl;
   decrement_stack_info();
 #endif
+*/
   return pLinkLayerParser->state;
 }
 
 ////LinkLayerParser::State LinkLayerParser::ParseOneStep()
 State_LinkLayerParser_uint8_t ParseOneStep_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
@@ -161,16 +187,20 @@ State_LinkLayerParser_uint8_t ParseOneStep_in_LinkLayerParser(LinkLayerParser *p
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*pLinkLayerParser->state= "<<(uint16_t)pLinkLayerParser->state<<std::endl;
 #endif
+*/
   switch (pLinkLayerParser->state)
   {
   case (FindSync_State_LinkLayerParser):
   {
+/*
 #ifdef  LOG_INFO
   std::cout<<"@@@@"<<getString_stack_info();
   std::cout<<"*FindSync_State_LinkLayerParser"<<std::endl;
 #endif
+*/
 ////        return ParseSync();
     State_LinkLayerParser_uint8_t tmp = ParseSync_in_LinkLayerParser(pLinkLayerParser);
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseOneStep_in_LinkLayerParser1_"<<std::endl;
@@ -178,47 +208,58 @@ State_LinkLayerParser_uint8_t ParseOneStep_in_LinkLayerParser(LinkLayerParser *p
     std::cout<<"*State_LinkLayerParser_uint8_t tmp= "<<(uint16_t)tmp<<std::endl;
     decrement_stack_info();
 #endif
+*/
     return tmp;
   }
 
   case (ReadHeader_State_LinkLayerParser):
   {
+/*
 #ifdef  LOG_INFO
   std::cout<<"@@@@"<<getString_stack_info();
   std::cout<<"*ReadHeader_State_LinkLayerParser"<<std::endl;
 #endif
+*/
 ////        return ParseHeader();
     State_LinkLayerParser_uint8_t tmp = ParseHeader_in_LinkLayerParser(pLinkLayerParser);
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseOneStep_in_LinkLayerParser2_"<<std::endl;
     decrement_stack_info();
 #endif
+*/
     return tmp;
   }
 
   case (ReadBody_State_LinkLayerParser):
   {
+/*
 #ifdef  LOG_INFO
   std::cout<<"@@@@"<<getString_stack_info();
   std::cout<<"*ReadBody_State_LinkLayerParser"<<std::endl;
 #endif
+*/
 ////        return ParseBody();
     State_LinkLayerParser_uint8_t tmp = ParseBody_in_LinkLayerParser(pLinkLayerParser);
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseOneStep_in_LinkLayerParser3_"<<std::endl;
     decrement_stack_info();
 #endif
+*/
     return tmp;
   }
 
   default:
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseOneStep_in_LinkLayerParser4_"<<std::endl;
     decrement_stack_info();
 #endif
+*/
     return pLinkLayerParser->state;
   }
 }
@@ -226,12 +267,14 @@ State_LinkLayerParser_uint8_t ParseOneStep_in_LinkLayerParser(LinkLayerParser *p
 ////LinkLayerParser::State LinkLayerParser::ParseSync()
 State_LinkLayerParser_uint8_t ParseSync_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{ParseSync_in_LinkLayerParser1"<<std::endl;
 #endif
+*/
 //uint16_t NumBytesRead_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer);
 ////    if (this->buffer.NumBytesRead() >= 10) // && buffer.Sync())
   if (NumBytesRead_in_ShiftableBuffer(&(pLinkLayerParser->buffer)) >= 10)
@@ -240,13 +283,14 @@ State_LinkLayerParser_uint8_t ParseSync_in_LinkLayerParser(LinkLayerParser *pLin
 //boolean Sync_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t* skipCount);
 ////        const auto synced = buffer.Sync(skipCount);
     boolean synced = Sync_in_ShiftableBuffer(&(pLinkLayerParser->buffer), &skipCount);
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"*ParseSync_in_LinkLayerParser2"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*boolean synced= "<<(uint16_t)synced<<std::endl;
 #endif
-
+*/
     if (skipCount > 0)
     {
 ////            FORMAT_LOG_BLOCK(logger, flags::WARN, "Skipped %zu bytes seaching for start bytes", skipCount);
@@ -255,33 +299,37 @@ State_LinkLayerParser_uint8_t ParseSync_in_LinkLayerParser(LinkLayerParser *pLin
       std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Skipped %zu bytes seaching for start bytes', skipCount)***"<<std::endl;
 #endif
     }
-
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseSync_in_LinkLayerParser1_"<<std::endl;
     decrement_stack_info();
 #endif
+*/
 ////        return synced ? State::ReadHeader : State::FindSync;
     return synced ? ReadHeader_State_LinkLayerParser : FindSync_State_LinkLayerParser;
   }
-
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ParseSync_in_LinkLayerParser2_"<<std::endl;
   decrement_stack_info();
 #endif
+*/
   return FindSync_State_LinkLayerParser;
 }
 
 ////LinkLayerParser::State LinkLayerParser::ParseHeader()
 State_LinkLayerParser_uint8_t ParseHeader_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{ParseHeader_in_LinkLayerParser1"<<std::endl;
 #endif
+*/
 ////    if (this->buffer.NumBytesRead() >= 10)
   if (NumBytesRead_in_ShiftableBuffer(&(pLinkLayerParser->buffer)) >= 10)
   {
@@ -290,11 +338,13 @@ State_LinkLayerParser_uint8_t ParseHeader_in_LinkLayerParser(LinkLayerParser *pL
     if (ReadHeader_in_LinkLayerParser(pLinkLayerParser))
     {
       State_LinkLayerParser_uint8_t tmp = ReadBody_State_LinkLayerParser;////State::ReadBody;
+/*
 #ifdef  LOG_INFO
       std::cout<<getString_stack_info();
       std::cout<<"}ParseHeader_in_LinkLayerParser1_"<<std::endl;
       decrement_stack_info();
 #endif
+*/
       return tmp;
     }
 
@@ -302,21 +352,25 @@ State_LinkLayerParser_uint8_t ParseHeader_in_LinkLayerParser(LinkLayerParser *pL
 ////        this->FailFrame();
     FailFrame_in_LinkLayerParser(pLinkLayerParser);
     State_LinkLayerParser_uint8_t tmp = FindSync_State_LinkLayerParser;////State::FindSync;
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseHeader_in_LinkLayerParser2_"<<std::endl;
     decrement_stack_info();
 #endif
+*/
     return tmp;
   }
   else
   {
     State_LinkLayerParser_uint8_t tmp = ReadHeader_State_LinkLayerParser;////State::ReadHeader;
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseHeader_in_LinkLayerParser3_"<<std::endl;
     decrement_stack_info();
 #endif
+*/
     return tmp;
   }
 }
@@ -324,22 +378,26 @@ State_LinkLayerParser_uint8_t ParseHeader_in_LinkLayerParser(LinkLayerParser *pL
 ////LinkLayerParser::State LinkLayerParser::ParseBody()
 State_LinkLayerParser_uint8_t ParseBody_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{ParseBody_in_LinkLayerParser1"<<std::endl;
 #endif
+*/
 //uint16_t NumBytesRead_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer);
 ////    if (buffer.NumBytesRead() < this->frameSize)
   if (NumBytesRead_in_ShiftableBuffer(&(pLinkLayerParser->buffer)) < pLinkLayerParser->frameSize)
   {
     State_LinkLayerParser_uint8_t tmp = ReadBody_State_LinkLayerParser;////State::ReadBody;
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseBody_in_LinkLayerParser1_"<<std::endl;
     decrement_stack_info();
 #endif
+*/
     return tmp;
   }
 
@@ -351,11 +409,13 @@ State_LinkLayerParser_uint8_t ParseBody_in_LinkLayerParser(LinkLayerParser *pLin
 ////        this->TransferUserData();
     TransferUserData_in_LinkLayerParser(pLinkLayerParser);
     State_LinkLayerParser_uint8_t tmp = Complete_State_LinkLayerParser;////State::Complete;
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ParseBody_in_LinkLayerParser2_"<<std::endl;
     decrement_stack_info();
 #endif
+*/
     return tmp;
   }
 
@@ -363,24 +423,27 @@ State_LinkLayerParser_uint8_t ParseBody_in_LinkLayerParser(LinkLayerParser *pLin
 ////    this->FailFrame();
   FailFrame_in_LinkLayerParser(pLinkLayerParser);
   State_LinkLayerParser_uint8_t tmp = FindSync_State_LinkLayerParser;////State::FindSync;
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ParseBody_in_LinkLayerParser3_"<<std::endl;
   decrement_stack_info();
 #endif
+*/
   return tmp;
 }
 
 ////void LinkLayerParser::PushFrame(IFrameSink& sink)
 void PushFrame_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser, IFrameSink* sink)
 {
+/*
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{PushFrame_in_LinkLayerParser1"<<std::endl;
 #endif
-
+*/
 //  void LinkHeaderFields_in_LinkHeaderFieldsOver2(LinkHeaderFields *pLinkHeaderFields, LinkFunction_uint8_t func, boolean isMaster, boolean fcb, boolean fcvdfc, Addresses addresses);
 //    LinkFunction_uint8_t GetFuncEnum_in_LinkHeader(LinkHeader *pLinkHeader);
 //   boolean IsFromMaster_in_LinkHeader(LinkHeader *pLinkHeader);
@@ -408,11 +471,13 @@ void PushFrame_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser, IFrameSink*
 //void AdvanceRead_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t aNumBytes);
 ////    buffer.AdvanceRead(frameSize);
   AdvanceRead_in_ShiftableBuffer(&(pLinkLayerParser->buffer), pLinkLayerParser->frameSize);
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}PushFrame_in_LinkLayerParser_"<<std::endl;
   decrement_stack_info();
 #endif
+*/
 }
 
 void TransferUserData_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
@@ -427,27 +492,38 @@ void TransferUserData_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
   RSeq_for_Uint16_t temp = ReadBuffer_in_ShiftableBuffer(&(pLinkLayerParser->buffer));
 
   ReadUserData_in_LinkFrame_static(temp.buffer_ + LPDU_HEADER_SIZE,
-                                   pLinkLayerParser->rxBuffer, len);
+                                   pLinkLayerParser->rxBuffer_in_LinkLayerParser, len);
 
 //    void RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(RSeq_for_Uint16_t *pRSeq, uint8_t * buffer, uint16_t length);
 ////    userData = ser4cpp::rseq_t(rxBuffer, len);
-  RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&(pLinkLayerParser->userData), pLinkLayerParser->rxBuffer, len);
+  RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&(pLinkLayerParser->userData), pLinkLayerParser->rxBuffer_in_LinkLayerParser, len);
 }
 
 boolean ReadHeader_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{ReadHeader_in_LinkLayerParser1"<<'\n';
 #endif
+*/
 //    void Read_in_LinkHeader(LinkHeader *pLinkHeader, uint8_t* apBuff);
 //RSeq_for_Uint16_t ReadBuffer_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer);
 ////    header.Read(buffer.ReadBuffer());
   RSeq_for_Uint16_t temp = ReadBuffer_in_ShiftableBuffer(&(pLinkLayerParser->buffer));
   Read_in_LinkHeader(&(pLinkLayerParser->header), temp.buffer_);
-
+/*
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ReadHeader_in_LinkLayerParser2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pLinkLayerParser->header.src= "<<pLinkLayerParser->header.src<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pLinkLayerParser->header.dest= "<<pLinkLayerParser->header.dest<<'\n';
+#endif
+*/
 // boolean IsCorrectCRC_in_CRC_static(uint8_t* input, uint16_t length);
 ////    if (CRC::IsCorrectCRC(buffer.ReadBuffer(), LI_CRC))
   temp = ReadBuffer_in_ShiftableBuffer(&(pLinkLayerParser->buffer));
@@ -456,11 +532,13 @@ boolean ReadHeader_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 //    boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser);
 ////        return ValidateHeaderParameters();
     boolean tmp = ValidateHeaderParameters_in_LinkLayerParser(pLinkLayerParser);
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ReadHeader_in_LinkLayerParser1_"<<'\n';
     decrement_stack_info();
 #endif
+*/
     return tmp;
   }
   else
@@ -471,10 +549,11 @@ boolean ReadHeader_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::WARN, 'CRC failure in header')***"<<std::endl;
-
+/*
     std::cout<<getString_stack_info();
     std::cout<<"}ReadHeader_in_LinkLayerParser2_"<<'\n';
     decrement_stack_info();
+*/
 #endif
     return false;
   }
@@ -482,21 +561,20 @@ boolean ReadHeader_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 
 boolean ValidateBody_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{ValidateBody_in_LinkLayerParser1"<<'\n';
 #endif
+*/
 ////    uint32_t len = header.GetLength() - LPDU_MIN_LENGTH;
   uint32_t len = GetLength_in_LinkHeader(&(pLinkLayerParser->header)) - LPDU_MIN_LENGTH;
 
 //    boolean ValidateBodyCRC_in_LinkFrame_static(uint8_t* apBody, uint16_t aLength);
 ////    if (LinkFrame::ValidateBodyCRC(buffer.ReadBuffer() + LPDU_HEADER_SIZE, len))
   RSeq_for_Uint16_t temp = ReadBuffer_in_ShiftableBuffer(&(pLinkLayerParser->buffer));
-#ifdef  LOG_INFO
-  inspect_RSeq(&temp);
-#endif
 
   if (ValidateBodyCRC_in_LinkFrame_static(temp.buffer_ + LPDU_HEADER_SIZE, len))
   {
@@ -509,12 +587,13 @@ boolean ValidateBody_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"***FORMAT_HEX_BLOCK(logger, flags::LINK_RX_HEX, buffer.ReadBuffer().take(frameSize), 10, 18)***"<<std::endl;
 #endif
-
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ValidateBody_in_LinkLayerParser1_"<<'\n';
   decrement_stack_info();
 #endif
+*/
     return true;
   }
 
@@ -526,23 +605,26 @@ boolean ValidateBody_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'CRC failure in body')***"<<std::endl;
 #endif
 
-
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ValidateBody_in_LinkLayerParser2_"<<'\n';
   decrement_stack_info();
 #endif
+*/
   return false;
 }
 
 boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{ValidateHeaderParameters_in_LinkLayerParser1"<<'\n';
 #endif
+*/
 //    boolean ValidLength_in_LinkHeader(LinkHeader *pLinkHeader);
 ////    if (!header.ValidLength())
   if (!ValidLength_in_LinkHeader(&(pLinkLayerParser->header)))
@@ -554,12 +636,13 @@ boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerP
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*FORMAT_LOG_BLOCK(logger, flags::ERR, 'LENGTH out of range [5,255]: %i', header.GetLength())"<<'\n';
 #endif
-
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ValidateHeaderParameters_in_LinkLayerParser1_"<<'\n';
     decrement_stack_info();
 #endif
+*/
     return false;
   }
 
@@ -569,11 +652,13 @@ boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerP
 ////    if (!this->ValidateFunctionCode())
   if (!ValidateFunctionCode_in_LinkLayerParser(pLinkLayerParser))
   {
+/*
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}ValidateHeaderParameters_in_LinkLayerParser2_"<<'\n';
     decrement_stack_info();
 #endif
+*/
     return false;
   }
 
@@ -606,10 +691,11 @@ boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerP
     std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'User data with no payload. FUNCTION: %s',***"<<std::endl;
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*LinkFunction_uint8_t func= "<<(uint16_t)func<<'\n';
-
+/*
     std::cout<<getString_stack_info();
     std::cout<<"}ValidateHeaderParameters_in_LinkLayerParser3_"<<'\n';
     decrement_stack_info();
+*/
 #endif
     return false;
   }
@@ -628,10 +714,11 @@ boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerP
     std::cout<<"*LinkFunction_uint8_t func= "<<(uint16_t)func<<'\n';
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*uint8_t user_data_length= "<<(uint16_t)user_data_length<<'\n';
-
+/*
     std::cout<<getString_stack_info();
     std::cout<<"}ValidateHeaderParameters_in_LinkLayerParser4_"<<'\n';
     decrement_stack_info();
+*/
 #endif
     return false;
   }
@@ -640,18 +727,20 @@ boolean ValidateHeaderParameters_in_LinkLayerParser(LinkLayerParser *pLinkLayerP
 // uint16_t CalcFrameSize_in_LinkFrame_static(uint16_t dataLength);
 ////    pLinkLayerParser->frameSize = LinkFrame::CalcFrameSize(user_data_length);
   pLinkLayerParser->frameSize = CalcFrameSize_in_LinkFrame_static(user_data_length);
-
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ValidateHeaderParameters_in_LinkLayerParser5_"<<'\n';
   decrement_stack_info();
 #endif
+*/
   return true;
 }
 
 void FailFrame_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
   // All you have to do is advance the reader by one, when the resync happens the data will disappear
+// ¬се, что вам нужно сделать, это продвинуть читател€ на единицу, когда произойдет повторна€ синхронизаци€, данные исчезнут
 //void AdvanceRead_in_ShiftableBuffer(ShiftableBuffer *pShiftableBuffer, uint16_t aNumBytes);
 ////    buffer.AdvanceRead(1);
   AdvanceRead_in_ShiftableBuffer(&(pLinkLayerParser->buffer), 1);
@@ -659,12 +748,14 @@ void FailFrame_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 
 boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser)
 {
+/*
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{ValidateFunctionCode_in_LinkLayerParser1"<<'\n';
 #endif
+*/
   // Now make sure that the function code is known and that the FCV is appropriate
 // “еперь убедитесь, что код функции известен и что FCV подходит
 //   boolean IsPriToSec_in_LinkHeader(LinkHeader *pLinkHeader);
@@ -694,10 +785,11 @@ boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParse
 #ifdef  LOG_INFO
       std::cout<<"*"<<getString_stack_info();
       std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Unknown PriToSec FUNCTION: %s',***"<<std::endl;
-
+/*
       std::cout<<getString_stack_info();
       std::cout<<"}ValidateFunctionCode_in_LinkLayerParser1_"<<'\n';
       decrement_stack_info();
+*/
 #endif
       return false;
     }
@@ -715,10 +807,11 @@ boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParse
 #ifdef  LOG_INFO
       std::cout<<"*"<<getString_stack_info();
       std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Bad FCV for FUNCTION: %s',***"<<std::endl;
-
+/*
       std::cout<<getString_stack_info();
       std::cout<<"}ValidateFunctionCode_in_LinkLayerParser2_"<<'\n';
       decrement_stack_info();
+*/
 #endif
       return false;
     }
@@ -746,10 +839,11 @@ boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParse
 #ifdef  LOG_INFO
       std::cout<<"*"<<getString_stack_info();
       std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'Unknown SecToPri FUNCTION: %s',***"<<std::endl;
-
+/*
       std::cout<<getString_stack_info();
       std::cout<<"}ValidateFunctionCode_in_LinkLayerParser3_"<<'\n';
       decrement_stack_info();
+*/
 #endif
       return false;
     }
@@ -768,20 +862,22 @@ boolean ValidateFunctionCode_in_LinkLayerParser(LinkLayerParser *pLinkLayerParse
 #ifdef  LOG_INFO
       std::cout<<"*"<<getString_stack_info();
       std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::ERR, 'FCB set for SecToPri FUNCTION: %s',***"<<std::endl;
-
+/*
       std::cout<<getString_stack_info();
       std::cout<<"}ValidateFunctionCode_in_LinkLayerParser4_"<<'\n';
       decrement_stack_info();
+*/
 #endif
       return false;
     }
   }
-
+/*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}ValidateFunctionCode_in_LinkLayerParser5_"<<'\n';
   decrement_stack_info();
 #endif
+*/
   return true; // valid!
 }
 

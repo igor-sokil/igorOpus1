@@ -238,16 +238,16 @@ uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pIColl
 
 ////template<class T> void TypedCommandHeader<T>::Foreach(IVisitor<CommandState>& visitor) const
 void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16,
-    IVisitor__for__CommandState* visitor)
+    IVisitor_for_CommandState* visitor)
 {
   for (auto& rec : pTypedCommandHeader_for_AnalogOutputInt16->records)
   {
 //void OnValue_in_IVisitor__for__CommandState(IVisitor__for__CommandState *, CommandState* );
 ////        visitor.OnValue(rec);
-    OnValue_in_IVisitor__for__CommandState(visitor, &rec.cCommandState);
+    OnValue_in_IVisitor_for_CommandState(visitor, rec.cCommandState);
   }
 }
-void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState, IVisitor__for__CommandState* visitor)
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState, IVisitor_for_CommandState* visitor)
 {
   TypedCommandHeader_for_AnalogOutputInt16 *parent = (TypedCommandHeader_for_AnalogOutputInt16*)getParentPointer_in_ICollection_for_CommandState((ICollection_for_CommandState*) pICollection_for_CommandState);
   return Foreach_in_TypedCommandHeader_for_AnalogOutputInt16(parent, visitor);
@@ -479,16 +479,16 @@ uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pIColl
 
 ////template<class T> void TypedCommandHeader<T>::Foreach(IVisitor<CommandState>& visitor) const
 void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32,
-    IVisitor__for__CommandState* visitor)
+    IVisitor_for_CommandState* visitor)
 {
   for (auto& rec : pTypedCommandHeader_for_AnalogOutputInt32->records)
   {
-//void OnValue_in_IVisitor__for__CommandState(IVisitor__for__CommandState *, CommandState* );
+//void OnValue_in_IVisitor_for_CommandState(IVisitor__for__CommandState *, CommandState* );
 ////        visitor.OnValue(rec);
-    OnValue_in_IVisitor__for__CommandState(visitor, &rec.cCommandState );
+    OnValue_in_IVisitor_for_CommandState(visitor, rec.cCommandState );
   }
 }
-void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState, IVisitor__for__CommandState* visitor)
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState, IVisitor_for_CommandState* visitor)
 {
   TypedCommandHeader_for_AnalogOutputInt32 *parent = (TypedCommandHeader_for_AnalogOutputInt32*)getParentPointer_in_ICollection_for_CommandState((ICollection_for_CommandState*) pICollection_for_CommandState);
   return Foreach_in_TypedCommandHeader_for_AnalogOutputInt32(parent, visitor);

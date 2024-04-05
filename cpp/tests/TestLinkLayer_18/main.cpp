@@ -49,13 +49,13 @@ qDebug()<<"********SUITE('18SendUnconfirmed')********";
 //    std::string increment_hex_in_HexConversions(uint8_t start, uint16_t count, bool spaced = true);
 //  void MockTransportSegment_in_MockTransportSegment(MockTransportSegment *pMockTransportSegment, uint16_t segmentSize, std::string& hex, Addresses* addresses);
 ////    MockTransportSegment segments(250, HexConversions::increment_hex(0, 250), Addresses());
-    std::string hex = increment_hex_in_HexConversions(0, SIZE_CopyableBuffer_in_TestLinkLayer_CloseBehavior, true);
+    std::string hex = increment_hex_in_HexConversions(0, 292, true);//SIZE_CopyableBuffer_in_TestLinkLayer_CloseBehavior, true);
 // std::cout << "hex = " << hex;
 
    Addresses aAddresses;
    Addresses_in_AddressesOver1(&aAddresses);
    MockTransportSegment segments;
-   MockTransportSegment_in_MockTransportSegment(&segments, SIZE_CopyableBuffer_in_TestLinkLayer_CloseBehavior, hex, &aAddresses);
+   MockTransportSegment_in_MockTransportSegment(&segments, 292/*SIZE_CopyableBuffer_in_TestLinkLayer_CloseBehavior*/, hex, &aAddresses);
 
 //   boolean Send_in_LinkLayer(LinkLayer *pLinkLayer, ITransportSegment* segments);
 ////    t.link.Send(segments);
@@ -80,7 +80,7 @@ qDebug()<<"REQUIRE(t.exe->run_many() > 0)";
 qDebug()<<"tmp= "<<tmp;
 
 ////    REQUIRE(t.upper->GetCounters().numTxReady == 1);
-Counters_in_MockTransportLayer cnttemp = GetCounters_in_MockTransportLayer(&(t.upper));
+Counters_in_MockTransportLayer cnttemp = GetCounters_in_MockTransportLayer(&(t.upper_in_LinkLayerTest));
 qDebug()<<"REQUIRE(t.upper->GetCounters().numTxReady == 1)";
 qDebug()<<"cnttemp.numTxReady= "<<(uint16_t)cnttemp.numTxReady;
 

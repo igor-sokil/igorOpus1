@@ -10,6 +10,7 @@
 #include "key_filter.h"
 
 #include "header.h"
+
 #include "TransportTestObject.h"
 #include "ProtocolUtil.h"
 
@@ -18,6 +19,9 @@
 key_filter *pkf;
 
 MainWindow *mainWindow;
+
+//#undef DEFAULT_MAX_APDU_SIZE
+//#define DEFAULT_MAX_APDU_SIZE 70
 
 int main(int argc, char *argv[])
 {
@@ -33,24 +37,35 @@ qDebug()<<"********SUITE('9ReceiveLargestPossibleAPDU')********";
 ////    const auto apdu = test.GeneratePacketSequence(packets, num_packets, last_packet_length);
 
 ////void TransportTestObject_in_TransportTestObject(TransportTestObject *pTransportTestObject, boolean openOnStart,/* = false,*/ uint32_t maxRxFragmentSize);// = opendnp3::DEFAULT_MAX_APDU_SIZE);
+
  TransportTestObject test;
  TransportTestObject_in_TransportTestObject(&test, true, DEFAULT_MAX_APDU_SIZE);
-
+///*
 ////    uint32_t num_packets = CalcMaxPackets(opendnp3::DEFAULT_MAX_APDU_SIZE, MAX_TPDU_PAYLOAD);
     uint32_t num_packets = CalcMaxPackets(DEFAULT_MAX_APDU_SIZE, MAX_TPDU_PAYLOAD);
 
 ////    uint32_t last_packet_length = CalcLastPacketSize(opendnp3::DEFAULT_MAX_APDU_SIZE, MAX_TPDU_PAYLOAD);
     uint32_t last_packet_length = CalcLastPacketSize(DEFAULT_MAX_APDU_SIZE, MAX_TPDU_PAYLOAD);
-
+//*/
+///*
     std::vector<std::string> packets;
 //std::string GeneratePacketSequence_in_TransportTestObject(TransportTestObject *pTransportTestObject, std::vector<std::string>&, uint32_t aNumPackets, uint32_t aLastPacketLength);
 ////    const auto apdu = test.GeneratePacketSequence(packets, num_packets, last_packet_length);
 std::string stmp = GeneratePacketSequence_in_TransportTestObject(&test, packets, num_packets, last_packet_length);
-  std::cout<<"stmp= "<<stmp<<std::endl;
+//  std::cout<<"stmp= "<<stmp<<std::endl;
   std::cout<<"stmp.size()= "<<stmp.size()<<std::endl;
   std::cout<<"packets.size()= "<<packets.size()<<std::endl;
   std::cout<<std::endl;
   std::cout<<std::endl;
+///*
+    for (auto& s : packets)
+    {
+  std::cout<<"s.size()= "<<s.size()<<std::endl;
+  std::cout<<"s= "<<s<<std::endl;
+    }
+//*/
+//*/
+/*
   std::cout<<"packets[0]= "<<packets[0]<<std::endl;
   std::cout<<"packets[1]= "<<packets[1]<<std::endl;
   std::cout<<"packets[2]= "<<packets[2]<<std::endl;
@@ -60,17 +75,18 @@ std::string stmp = GeneratePacketSequence_in_TransportTestObject(&test, packets,
   std::cout<<"packets[6]= "<<packets[6]<<std::endl;
   std::cout<<"packets[7]= "<<packets[7]<<std::endl;
   std::cout<<"packets[8]= "<<packets[8]<<std::endl;
-
+*/
 ////    for (const auto& s : packets)
 ////    {
 ////        test.link.SendUp(s);
 ////    }
 ////    REQUIRE(test.upper.received.AsHex() == apdu); // check that the correct data was written
-
+/*
 Addresses aAddresses;
 Addresses_in_AddressesOver1(&aAddresses);
     for (auto& s : packets)
     {
+  std::cout<<"packets[i]= "<<s<<std::endl;
 ////        test.link.SendUp(s);
    SendUp_in_MockLinkLayer(&(test.link), s, &aAddresses);// = opendnp3::Addresses())
 //   SendUp_in_MockLinkLayer(&(test.link), packets[0], &aAddresses);// = opendnp3::Addresses())
@@ -81,19 +97,6 @@ Addresses_in_AddressesOver1(&aAddresses);
 std::string stmp2 = AsHex_in_DataSink(&(test.upper.received), true);
   qDebug()<<"REQUIRE(test.upper.received.AsHex() == apdu)";
   std::cout<<"stmp= "<<stmp2<<std::endl;
-
-/*
-//   boolean SendUp_in_MockLinkLayer(MockLinkLayer *pMockLinkLayer, std::string& hex, Addresses* addresses);// = opendnp3::Addresses())
-////    test.link.SendUp("C0 77");
-Addresses aAddresses;
-Addresses_in_AddressesOver1(&aAddresses);
-   std::string name1 = "C0 77";
-   SendUp_in_MockLinkLayer(&(test.link), name1, &aAddresses);// = opendnp3::Addresses())
-
-////    REQUIRE(test.upper.received.AsHex() == "77");
-std::string stmp = AsHex_in_DataSink(&(test.upper.received), true);
-  qDebug()<<"REQUIRE(test.upper.received.AsHex() == '77')";
-  std::cout<<"stmp= "<<stmp<<std::endl;
 */
 /*
 TEST_CASE(SUITE("9ReceiveLargestPossibleAPDU"))

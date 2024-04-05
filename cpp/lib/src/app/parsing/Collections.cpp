@@ -36,18 +36,18 @@ uint16_t Count_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedColle
   return Count_in_ICollection_for_Group50Var1(pTransformedCollection_Group50Var1_for_DNPTime->input);
 }
 
-void fun_in_TransformedCollection_Group50Var1_for_DNPTime(Group50Var1* elem);
-void fun_in_TransformedCollection_Group50Var1_for_DNPTime(Group50Var1* elem)
+void fun_in_TransformedCollection_Group50Var1_for_DNPTime(Group50Var1 elem);
+void fun_in_TransformedCollection_Group50Var1_for_DNPTime(Group50Var1 elem)
 {
   TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime = (TransformedCollection_Group50Var1_for_DNPTime *)pPointerGlobal1_in_TransformedCollection;
-  IVisitor__for__DNPTime* visitor = (IVisitor__for__DNPTime*)pPointerGlobal2_in_TransformedCollection;
+  IVisitor_for_DNPTime* visitor = (IVisitor_for_DNPTime*)pPointerGlobal2_in_TransformedCollection;
 //void OnValue_in_IVisitor__for__DNPTime(IVisitor__for__DNPTime *, DNPTime* );
 ////      visitor.OnValue(transform(elem));
-  DNPTime dDNPTime = (pTransformedCollection_Group50Var1_for_DNPTime->transform)(elem);
-  OnValue_in_IVisitor__for__DNPTime(visitor, &dDNPTime);
+  DNPTime dDNPTime = (pTransformedCollection_Group50Var1_for_DNPTime->transform)(&elem);
+  OnValue_in_IVisitor_for_DNPTime(visitor, dDNPTime);
 }
 ////  virtual void Foreach(IVisitor<U>& visitor) const override final
-void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime, IVisitor__for__DNPTime* visitor)
+void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime, IVisitor_for_DNPTime* visitor)
 {
 ////    auto process = [this, &visitor](const T& elem) {
 ////      visitor.OnValue(transform(elem));
@@ -64,7 +64,7 @@ uint16_t Count_in_TransformedCollection_Group50Var1_for_DNPTime_override(void* p
   TransformedCollection_Group50Var1_for_DNPTime *parent = (TransformedCollection_Group50Var1_for_DNPTime*) getParentPointer_in_ICollection_for_DNPTime((ICollection_for_DNPTime*)pICollection_for_DNPTime);
   return Count_in_TransformedCollection_Group50Var1_for_DNPTime(parent);
 }
-void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime_override(void* pICollection_for_DNPTime, IVisitor__for__DNPTime* visitor)
+void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime_override(void* pICollection_for_DNPTime, IVisitor_for_DNPTime* visitor)
 {
   TransformedCollection_Group50Var1_for_DNPTime *parent = (TransformedCollection_Group50Var1_for_DNPTime*) getParentPointer_in_ICollection_for_DNPTime((ICollection_for_DNPTime*)pICollection_for_DNPTime);
   Foreach_in_TransformedCollection_Group50Var1_for_DNPTime(parent, visitor);
@@ -103,17 +103,17 @@ uint16_t Count_in_TransformedCollection_Indexed_for_Binary(TransformedCollection
 //static void* pPointerGlobal1_in_TransformedCollection;
 //static void* pPointerGlobal2_in_TransformedCollection;
 
-void fun_in_TransformedCollection_Indexed_for_Binary(Indexed_for_Binary* elem);
-void fun_in_TransformedCollection_Indexed_for_Binary(Indexed_for_Binary* elem)
+void fun_in_TransformedCollection_Indexed_for_Binary(Indexed_for_Binary elem);
+void fun_in_TransformedCollection_Indexed_for_Binary(Indexed_for_Binary elem)
 {
   TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary = (TransformedCollection_Indexed_for_Binary *)pPointerGlobal1_in_TransformedCollection;
-  IVisitor__for__Indexed_for_Binary* visitor = (IVisitor__for__Indexed_for_Binary*)pPointerGlobal2_in_TransformedCollection;
+  IVisitor_Indexed_for_Binary* visitor = (IVisitor_Indexed_for_Binary*)pPointerGlobal2_in_TransformedCollection;
 ////      visitor.OnValue(transform(elem));
   Indexed_for_Binary iIndexed_for_Binary = (pTransformedCollection_Indexed_for_Binary->transform)(elem);
-  OnValue_in_IVisitor__for__Indexed_for_Binary(visitor, &iIndexed_for_Binary);
+  OnValue_in_IVisitor_Indexed_for_Binary(visitor, iIndexed_for_Binary);
 }
 ////  virtual void Foreach(IVisitor<U>& visitor) const override final
-void Foreach_in_TransformedCollection_Indexed_for_Binary(TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary, IVisitor__for__Indexed_for_Binary* visitor)
+void Foreach_in_TransformedCollection_Indexed_for_Binary(TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary, IVisitor_Indexed_for_Binary* visitor)
 {
 ////    auto process = [this, &visitor](const T& elem) {
 ////      visitor.OnValue(transform(elem));
@@ -129,7 +129,7 @@ uint16_t Count_in_TransformedCollection_Indexed_for_Binary_override(void* pIColl
   TransformedCollection_Indexed_for_Binary *parent = (TransformedCollection_Indexed_for_Binary*) getParentPointer_in_ICollection_Indexed_for_Binary((ICollection_Indexed_for_Binary*)pICollection_Indexed_for_Binary);
   return Count_in_TransformedCollection_Indexed_for_Binary(parent);
 }
-void Foreach_in_TransformedCollection_Indexed_for_Binary_override(void* pICollection_Indexed_for_Binary, IVisitor__for__Indexed_for_Binary* visitor)
+void Foreach_in_TransformedCollection_Indexed_for_Binary_override(void* pICollection_Indexed_for_Binary, IVisitor_Indexed_for_Binary* visitor)
 {
   TransformedCollection_Indexed_for_Binary *parent = (TransformedCollection_Indexed_for_Binary*) getParentPointer_in_ICollection_Indexed_for_Binary((ICollection_Indexed_for_Binary*)pICollection_Indexed_for_Binary);
   Foreach_in_TransformedCollection_Indexed_for_Binary(parent, visitor);
@@ -168,17 +168,17 @@ uint16_t Count_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedC
 //static void* pPointerGlobal1_in_TransformedCollection;
 //static void* pPointerGlobal2_in_TransformedCollection;
 
-void fun_in_TransformedCollection_Indexed_for_DoubleBitBinary(Indexed_for_DoubleBitBinary* elem);
-void fun_in_TransformedCollection_Indexed_for_DoubleBitBinary(Indexed_for_DoubleBitBinary* elem)
+void fun_in_TransformedCollection_Indexed_for_DoubleBitBinary(Indexed_for_DoubleBitBinary elem);
+void fun_in_TransformedCollection_Indexed_for_DoubleBitBinary(Indexed_for_DoubleBitBinary elem)
 {
   TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary = (TransformedCollection_Indexed_for_DoubleBitBinary *)pPointerGlobal1_in_TransformedCollection;
-  IVisitor__for__Indexed_for_DoubleBitBinary* visitor = (IVisitor__for__Indexed_for_DoubleBitBinary*)pPointerGlobal2_in_TransformedCollection;
+  IVisitor_Indexed_for_DoubleBitBinary* visitor = (IVisitor_Indexed_for_DoubleBitBinary*)pPointerGlobal2_in_TransformedCollection;
 ////      visitor.OnValue(transform(elem));
   Indexed_for_DoubleBitBinary iIndexed_for_DoubleBitBinary = (pTransformedCollection_Indexed_for_DoubleBitBinary->transform)(elem);
-  OnValue_in_IVisitor__for__Indexed_for_DoubleBitBinary(visitor, &iIndexed_for_DoubleBitBinary);
+  OnValue_in_IVisitor_Indexed_for_DoubleBitBinary(visitor, iIndexed_for_DoubleBitBinary);
 }
 ////  virtual void Foreach(IVisitor<U>& visitor) const override final
-void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary, IVisitor__for__Indexed_for_DoubleBitBinary* visitor)
+void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary, IVisitor_Indexed_for_DoubleBitBinary* visitor)
 {
 ////    auto process = [this, &visitor](const T& elem) {
 ////      visitor.OnValue(transform(elem));
@@ -194,7 +194,7 @@ uint16_t Count_in_TransformedCollection_Indexed_for_DoubleBitBinary_override(voi
   TransformedCollection_Indexed_for_DoubleBitBinary *parent = (TransformedCollection_Indexed_for_DoubleBitBinary*) getParentPointer_in_ICollection_Indexed_for_DoubleBitBinary((ICollection_Indexed_for_DoubleBitBinary*)pICollection_Indexed_for_DoubleBitBinary);
   return Count_in_TransformedCollection_Indexed_for_DoubleBitBinary(parent);
 }
-void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary_override(void* pICollection_Indexed_for_DoubleBitBinary, IVisitor__for__Indexed_for_DoubleBitBinary* visitor)
+void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary_override(void* pICollection_Indexed_for_DoubleBitBinary, IVisitor_Indexed_for_DoubleBitBinary* visitor)
 {
   TransformedCollection_Indexed_for_DoubleBitBinary *parent = (TransformedCollection_Indexed_for_DoubleBitBinary*) getParentPointer_in_ICollection_Indexed_for_DoubleBitBinary((ICollection_Indexed_for_DoubleBitBinary*)pICollection_Indexed_for_DoubleBitBinary);
   Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary(parent, visitor);

@@ -76,7 +76,7 @@ typedef struct
 ////    }
 ////
 ////private:
-  uint8_t buffer[LPDU_MAX_FRAME_SIZE];//LENGTH];// = { 0 };
+  uint8_t buffer[5];//LPDU_MAX_FRAME_SIZE];//LENGTH];// = { 0 };
 } StaticBuffer_for_LPDU_MAX_FRAME_SIZE;//_for_LENGTH10;
 ////
 ////}

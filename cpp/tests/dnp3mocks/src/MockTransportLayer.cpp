@@ -56,7 +56,14 @@ void MockTransportLayer_in_MockTransportLayer(MockTransportLayer *pMockTransport
 
 void SetLinkLayer_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer, ILinkLayer* linkLayer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{SetLinkLayer_in_MockTransportLayer1"<<'\n';
+#endif
   pMockTransportLayer->pLinkLayer = linkLayer;
+#ifdef  LOG_INFO
+  std::cout<<"}SetLinkLayer_in_MockTransportLayer_"<<'\n';
+#endif
 }
 
 ////bool MockTransportLayer::SendDown(ITransportSegment& segments)
@@ -72,8 +79,10 @@ boolean OnReceive_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer,
 #ifdef  LOG_INFO
   std::cout<<'\n';
   std::cout<<"{OnReceive_in_MockTransportLayer1"<<'\n';
+  std::cout<<"FinalDestination_in_MockTransportLayer:"<<'\n';
+  inspect_RSeq(&(message->payload));
 #endif
-  pMockTransportLayer->receivedQueue.push_back(to_hex_in_HexConversionsOver2(&(message->payload)));
+  pMockTransportLayer->receivedQueue_in_MockTransportLayer.push_back(to_hex_in_HexConversionsOver2(&(message->payload)));
 #ifdef  LOG_INFO
   std::cout<<"}OnReceive_in_MockTransportLayer_"<<'\n';
 #endif

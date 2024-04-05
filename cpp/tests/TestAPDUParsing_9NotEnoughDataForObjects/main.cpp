@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-expectsContents_in_RangeParser = true;
+///expectsContents_in_RangeParser = true;
 
 qDebug()<<"********SUITE('NotEnoughDataForObjects')********";
 

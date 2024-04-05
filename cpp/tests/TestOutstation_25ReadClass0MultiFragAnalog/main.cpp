@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-expectsContents_in_CountParser = true;
+//expectsContents_in_CountParser = true;
 //expectsContents_in_CountIndexParser = false;
 //expectsContents_in_RangeParser = false;
 
@@ -103,7 +103,7 @@ std::cout << "temp= " << temp<<'\n';
 
 qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == '21 81 80 00 1E 01 00 02 03 01 00 00 00 00 01 00 00 00 00')";
 std::cout << "temp1= " << temp1<<'\n';
-
+///*
  OnTxReady_in_OutstationTestObject(&t);
 
 ////    t.SendToOutstation("C1 00");
@@ -136,7 +136,7 @@ std::cout << "temp3= " << temp3<<'\n';
 
 qDebug()<<"REQUIRE(t.lower->PopWriteAsHex().empty())";
 std::cout << "temp4= " << temp4<<'\n';
-
+//*/
 /*
 TEST_CASE(SUITE("25ReadClass0MultiFragAnalog"))
 {

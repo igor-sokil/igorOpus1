@@ -31,11 +31,11 @@ void OutstationParams_in_OutstationParams(OutstationParams *pOutstationParams)
 
   /// The maximum fragment size the outstation will use for fragments it sends
 /// Максимальный размер фрагмента, который удаленная станция будет использовать для отправляемых фрагментов
-  pOutstationParams->maxTxFragSize = DEFAULT_MAX_APDU_SIZE;
+  pOutstationParams->maxTxFragSize = 292;//DEFAULT_MAX_APDU_SIZE;
 
   /// The maximum fragment size the outstation will be able to receive
 /// Максимальный размер фрагмента, который сможет получить удаленная станция
-  pOutstationParams->maxRxFragSize = DEFAULT_MAX_APDU_SIZE;
+  pOutstationParams->maxRxFragSize = 292;//DEFAULT_MAX_APDU_SIZE;
 
   /// Global enabled / disable for unsolicited messages. If false, the NULL unsolicited message is not even sent
 /// Глобальное включение/выключение нежелательных сообщений. Если false, незапрошенное сообщение NULL даже не отправляется.

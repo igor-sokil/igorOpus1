@@ -36,6 +36,12 @@
 
 void TransportLayer_in_TransportLayer(TransportLayer *pTransportLayer, uint32_t maxRxFragSize)
 {
+#ifdef  LOG_INFO
+    std::cout<<std::endl;
+    increment_stack_info();
+    std::cout<<getString_stack_info();
+    std::cout<<"{TransportLayer_in_TransportLayer1"<<'\n';
+#endif
 ////    : logger(logger), receiver(logger, maxRxFragSize), transmitter(logger)
   pTransportLayer->upper = NULL;
   pTransportLayer->lower = NULL;
@@ -45,7 +51,7 @@ void TransportLayer_in_TransportLayer(TransportLayer *pTransportLayer, uint32_t 
   pTransportLayer->isSending = false;
 
   TransportTx_in_TransportTx(&(pTransportLayer->transmitter));
-  TransportRx_in_TransportRx(&(pTransportLayer->receiver), maxRxFragSize);
+  TransportRx_in_TransportRx(&(pTransportLayer->receiver), maxRxFragSize > 292 ? 292 : maxRxFragSize);
 
   // ------ ILowerLayer ------
 
@@ -63,6 +69,11 @@ void TransportLayer_in_TransportLayer(TransportLayer *pTransportLayer, uint32_t 
 
   setParentPointer_in_ILowerLayer(&(pTransportLayer->iILowerLayer), pTransportLayer);
   setParentPointer_in_IUpperLayer(&(pTransportLayer->iIUpperLayer), pTransportLayer);
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}TransportLayer_in_TransportLayer_"<<'\n';
+    decrement_stack_info();
+#endif
 }
 
 ///////////////////////////////////////
@@ -180,10 +191,19 @@ boolean OnReceive_in_TransportLayer(TransportLayer *pTransportLayer, Message* me
 ////            upper->OnReceive(asdu);
       OnReceive_in_IUpperLayer(pTransportLayer->upper, &asdu);
     }
-
+    else
+    {
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
     std::cout<<"}OnReceive_in_TransportLayer1_"<<'\n';
+    decrement_stack_info();
+#endif
+      return false;//add
+    }
+
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}OnReceive_in_TransportLayer2_"<<'\n';
     decrement_stack_info();
 #endif
     return true;
@@ -194,7 +214,7 @@ boolean OnReceive_in_TransportLayer(TransportLayer *pTransportLayer, Message* me
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer offline')"<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<"}OnReceive_in_TransportLayer2_"<<'\n';
+  std::cout<<"}OnReceive_in_TransportLayer3_"<<'\n';
   decrement_stack_info();
 #endif
   return false;

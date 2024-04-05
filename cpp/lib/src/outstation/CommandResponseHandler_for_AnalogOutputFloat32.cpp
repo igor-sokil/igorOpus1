@@ -143,8 +143,8 @@ IINField  RespondToHeader_for_AnalogOutputFloat32_UInt16_in_CommandResponseHandl
   }
 }
 
-void process_for_UInt16_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for_AnalogOutputFloat32* pair);
-void process_for_UInt16_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for_AnalogOutputFloat32* pair)
+void process_for_UInt16_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for_AnalogOutputFloat32 pair);
+void process_for_UInt16_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for_AnalogOutputFloat32 pair)
 {
   CommandResponseHandler* pCommandResponseHandler = (CommandResponseHandler*)pPointerGlobal1;//CommandResponseHandler*
   PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32 * pIterator =
@@ -153,14 +153,14 @@ void process_for_UInt16_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_fo
 
 ////        Target response(pair.value);
   AnalogOutputFloat32 response;
-  response = pair->value;
+  response = pair.value;
 
 // CommandStatus_uint8_t ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
 //                               AnalogOutputFloat32* command, uint16_t index)
 //    CommandStatus_uint8_t status;
 ////        response.status = this->ProcessCommand(pair.value, pair.index);
   response.aAnalogOutput_for_Float32.status = ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler(pCommandResponseHandler,
-                    &(pair->value), pair->index);
+                    &(pair.value), pair.index);
 
 
   switch (response.aAnalogOutput_for_Float32.status)
@@ -183,7 +183,7 @@ void process_for_UInt16_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_fo
 //                                                                  AnalogOutputFloat32* value, uint16_t index);
 ////            pIterator->Write(response, static_cast<typename IndexType::type_t>(pair.index));
     Write_in_PrefixedWriteIterator_for_UInt16_AnalogOutputFloat32(pIterator,
-        &response, pair->index);
+        &response, pair.index);
   }
 }
 
@@ -288,8 +288,8 @@ IINField  RespondToHeader_for_AnalogOutputFloat32_UInt8_in_CommandResponseHandle
   }
 }
 
-void process_for_UInt8_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for_AnalogOutputFloat32* pair);
-void process_for_UInt8_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for_AnalogOutputFloat32* pair)
+void process_for_UInt8_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for_AnalogOutputFloat32 pair);
+void process_for_UInt8_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for_AnalogOutputFloat32 pair)
 {
 #ifdef  LOG_INFO
   std::cout<<'\n';
@@ -305,14 +305,14 @@ void process_for_UInt8_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for
 
 ////        Target response(pair.value);
   AnalogOutputFloat32 response;
-  response = pair->value;
+  response = pair.value;
 
 // CommandStatus_uint8_t ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
 //                               AnalogOutputFloat32* command, uint16_t index)
 //    CommandStatus_uint8_t status;
 ////        response.status = this->ProcessCommand(pair.value, pair.index);
   response.aAnalogOutput_for_Float32.status = ProcessCommand_for_AnalogOutputFloat32_in_CommandResponseHandler(pCommandResponseHandler,
-                    &(pair->value), pair->index);
+                    &(pair.value), pair.index);
 
 #ifdef  LOG_INFO
 //  response.status = CommandStatus_NOT_SUPPORTED;
@@ -340,7 +340,7 @@ void process_for_UInt8_AnalogOutputFloat32_in_CommandResponseHandler(Indexed_for
 //                                                                  AnalogOutputFloat32* value, uint16_t index);
 ////            pIterator->Write(response, static_cast<typename IndexType::type_t>(pair.index));
     Write_in_PrefixedWriteIterator_for_UInt8_AnalogOutputFloat32(pIterator,
-        &response, pair->index);
+        &response, pair.index);
   }
 #ifdef  LOG_INFO
   decrement_stack_info();

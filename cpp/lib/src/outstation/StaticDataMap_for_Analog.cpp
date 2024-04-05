@@ -159,7 +159,7 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"update_in_StaticDataMap_for_AnalogSpecOver2_1"<<'\n';
+  std::cout<<"{update_in_StaticDataMap_for_AnalogSpecOver2_1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*inspect_Analog(new_value)"<<'\n';
   inspect_Analog(new_value);
@@ -175,6 +175,8 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
   if (iter == pStaticDataMap_for_AnalogSpec->map.end())
   {
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}update_in_StaticDataMap_for_AnalogSpecOver21_"<<'\n';
   decrement_stack_info();
 #endif
     return false;
@@ -185,7 +187,7 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
     iter->second.value_in_StaticDataCell = *new_value;
   }
 
-  Analog old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_Analog.lastEvent;
+  Analog old_value = iter->second.event_in_StaticDataCell.eEventCellBase_for_Analog.lastEvent_in_EventCellBase;
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"update_in_StaticDataMap_for_AnalogSpecOver2_2"<<'\n';
@@ -199,7 +201,7 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
 ////        Spec::IsEvent(iter->second.event.lastEvent, new_value, iter->second.config))
       IsEvent_in_AnalogSpec_static(&old_value, new_value, &(iter->second.config_in_StaticDataCell)))
   {
-    iter->second.event_in_StaticDataCell.eEventCellBase_for_Analog.lastEvent = *new_value;
+    iter->second.event_in_StaticDataCell.eEventCellBase_for_Analog.lastEvent_in_EventCellBase = *new_value;
     if (mode != EventMode_Suppress)
     {
       EventClass_uint8_t ec;
@@ -225,6 +227,8 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
   }
 
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}update_in_StaticDataMap_for_AnalogSpecOver22_"<<'\n';
   decrement_stack_info();
 #endif
   return true;

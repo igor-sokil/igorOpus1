@@ -35,8 +35,11 @@ qDebug()<<"********SUITE('3BodyCRCError')********";
 
 //void WriteData_in_LinkParserTestOver2(LinkParserTest *pLinkParserTest, uint8_t *hex, uint16_t size_hex);////const std::string& hex)
 ////    t.WriteData("05 64 14 F3 01 00 00 04 0A 3B C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06 9A 11");
-uint8_t hex[] = {0x05, 0x64, 0x14, 0xF3, 0x01, 0x00, 0x00, 0x04, 0x0A, 0x3B, 0xC0, 0xC3, 0x01, 0x3C, 0x02, 0x06, 0x3C, 0x03, 0x06, 0x3C, 0x04, 0x06, 0x3C, 0x01, 0x06, 0x9A, 0x11};
- WriteData_in_LinkParserTestOver2(&t, hex, 27);////const std::string& hex)
+///uint8_t hex[] = {0x05, 0x64, 0x14, 0xF3, 0x01, 0x00, 0x00, 0x04, 0x0A, 0x3B, 0xC0, 0xC3, 0x01, 0x3C, 0x02, 0x06, 0x3C, 0x03, 0x06, 0x3C, 0x04, 0x06, 0x3C, 0x01, 0x06, 0x9A, 0x11};
+/// WriteData_in_LinkParserTestOver2(&t, hex, 27);////const std::string& hex)
+ std::string name1 = "05 64 14 F3 01 00 00 04 0A 3B C0 C3 01 3C 02 06 3C 03 06 3C 04 06 3C 01 06 9A 12";
+ std::string name2 = "05 64 05 C0 01 00 00 04 E9 21";
+ WriteData_in_LinkParserTestOver3(&t, name1);////const std::string& hex)
 
 qDebug()<<"REQUIRE(t.sink.m_num_frames == 0)";
 qDebug()<<"t.sink.m_num_frames= "<<t.sink.m_num_frames;
@@ -45,6 +48,7 @@ qDebug()<<"REQUIRE(t.parser.Statistics().numHeaderCrcError == 1)";
 Parser_in_LinkStatistics* temp = Statistics_in_LinkLayerParser(&t.parser);
 
 qDebug()<<"t.parser.Statistics().numBodyCrcError= "<<temp->numBodyCrcError;
+qDebug()<<"t.parser.Statistics().numHeaderCrcError= "<<temp->numHeaderCrcError;
 
 /*
 TEST_CASE(SUITE("3BodyCRCError"))

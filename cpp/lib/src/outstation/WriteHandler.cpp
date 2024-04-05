@@ -67,10 +67,10 @@ void WriteHandler_in_WriteHandler(WriteHandler *pWriteHandler,
 IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *pIAPDUHandler, RangeHeader* header, ICollection_Indexed_for_IINValue* values)
 {
 #ifdef  LOG_INFO
-  std::cout<<std::endl;
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override1"<<std::endl;
+  std::cout<<"{ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override1"<<std::endl;
 #endif
   UNUSED(header);
   WriteHandler *parent =
@@ -79,65 +79,76 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
   Indexed_for_IINValue pair;
   Indexed_for_IINValue_in_Indexed_for_IINValueOver1(&pair);
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override2a"<<std::endl;
+#endif
 ////    if (!values.ReadOnlyValue(pair))
   if (!ReadOnlyValue_in_ICollection_Indexed_for_IINValue(values, &pair))
   {
-#ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
-  decrement_stack_info();
-#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override1_"<<std::endl;
+  decrement_stack_info();
+#endif
     return iIINField;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override2"<<std::endl;
+#endif
   if (parent->wroteIIN)
   {
 ////        return IINBit::PARAM_ERROR;
-#ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
-  decrement_stack_info();
-#endif
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override2_"<<std::endl;
+  decrement_stack_info();
+#endif
     return iIINField;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override3"<<std::endl;
+#endif
 ////    if (pair.index != static_cast<uint16_t>(IINBit::DEVICE_RESTART))
   if (pair.index != (uint16_t)(IINBit_DEVICE_RESTART))
   {
-#ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
-  decrement_stack_info();
-#endif
 ////        return IINBit::PARAM_ERROR;
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override3_"<<std::endl;
+  decrement_stack_info();
+#endif
     return iIINField;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override4"<<std::endl;
+#endif
   if (pair.value.value)
   {
 ////        return IINBit::PARAM_ERROR;
-#ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
-  decrement_stack_info();
-#endif
     IINField iIINField;
     IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override4_"<<std::endl;
+  decrement_stack_info();
+#endif
     return iIINField;
   }
 
-#ifdef  LOG_INFO
-  std::cout<<"*123"<<getString_stack_info();
-  std::cout<<"*IINBit_DEVICE_RESTART"<<std::endl;
-  decrement_stack_info();
-#endif
   parent->wroteIIN = true;
 //    void ClearBit_in_IINField(IINField *, IINBit_uint8_t bit);
 ////    parent->writeIIN->ClearBit(IINBit::DEVICE_RESTART);
@@ -145,6 +156,11 @@ IINField ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override(void *p
 ////    return IINField();
   IINField iIINField;
   IINField_in_IINFieldOver1(&iIINField);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_RangeHeader_for_IINValue_in_WriteHandler_override5_"<<std::endl;
+  decrement_stack_info();
+#endif
   return iIINField;
 }
 
@@ -366,9 +382,21 @@ IINField ProcessHeader_PrefixHeader_for_TimeAndInterval_in_WriteHandler_override
 
 boolean IsAllowed_in_WriteHandler_override(void* pIWhiteList, uint32_t headerCount, GroupVariation_uint16_t gv, QualifierCode_uint8_t qc)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{IsAllowed_in_WriteHandler_override1"<<std::endl;
+#endif
   UNUSED(pIWhiteList);
   UNUSED(headerCount);
   UNUSED(gv);
   UNUSED(qc);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}IsAllowed_in_WriteHandler_override_"<<std::endl;
+  decrement_stack_info();
+#endif
   return true;
 }

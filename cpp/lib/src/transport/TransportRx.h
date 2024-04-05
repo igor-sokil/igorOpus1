@@ -27,7 +27,7 @@
 #include "StackStatistics.h"
 ////#include "opendnp3/logging/Logger.h"
 
-#include <BufferSer4.h>
+#include "BufferSer4_292.h"
 ////#include <ser4cpp/container/SequenceTypes.h>
 
 ////namespace opendnp3
@@ -63,7 +63,8 @@ typedef struct
   Rx_Transport statistics;
 
 ////    ser4cpp::Buffer rxBuffer;
-  BufferSer4 rxBuffer;
+//  BufferSer4 rxBuffer;
+  BufferSer4_292 rxBuffer;
 
   uint16_t numBytesRead;
   Addresses lastAddresses;

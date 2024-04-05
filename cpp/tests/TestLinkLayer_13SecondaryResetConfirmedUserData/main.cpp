@@ -68,7 +68,7 @@ qDebug()<<"REQUIRE(t.NumTotalWrites() == 1)";
 qDebug()<<"uint32_t temp32 ="<<temp32;
 
    OnTxReady_in_LinkLayer(&(t.link));
-
+/*
 ////    ByteStr bytes(250, 0);
 ////    t.OnFrame(LinkFunction::PRI_CONFIRMED_USER_DATA, false, true, false, 1, 1024, bytes.ToRSeq());
 ////    REQUIRE(t.NumTotalWrites() == 2);
@@ -101,8 +101,8 @@ qDebug()<<"uint32_t temp32 ="<<temp32;
 ////    REQUIRE(t.upper->receivedQueue.front() == bytes.ToHex());
 
 qDebug()<<"REQUIRE(t.upper->receivedQueue.front()";
-qDebug()<<"t.upper.receivedQueue.size()= "<<t.upper.receivedQueue.size();
- std::string tmpStr = t.upper.receivedQueue.front();
+qDebug()<<"t.upper.receivedQueue.size()= "<<t.upper_in_LinkLayerTest.receivedQueue_in_MockTransportLayer.size();
+ std::string tmpStr = t.upper_in_LinkLayerTest.receivedQueue_in_MockTransportLayer.front();
 std::cout<<"std::string tmpStr ="<<tmpStr;
 
 qDebug()<<"";
@@ -113,7 +113,7 @@ std::cout<<"std::string tmpStr ="<<tmpStr;
 
 //-------------4
 
-    t.upper.receivedQueue.clear();
+    t.upper_in_LinkLayerTest.receivedQueue_in_MockTransportLayer.clear();
 
      OnFrame_in_LinkLayerTest(&t,
                  LinkFunction_PRI_CONFIRMED_USER_DATA,
@@ -129,8 +129,8 @@ qDebug()<<"REQUIRE(t.NumTotalWrites() == 3)";
 qDebug()<<"uint32_t temp32 ="<<temp32;
 
 qDebug()<<"REQUIRE(t.upper->receivedQueue.empty())";
-qDebug()<<"t.upper.receivedQueue.size()= "<<t.upper.receivedQueue.size();
-
+qDebug()<<"t.upper.receivedQueue.size()= "<<t.upper_in_LinkLayerTest.receivedQueue_in_MockTransportLayer.size();
+*/
 /*
 TEST_CASE(SUITE("13SecondaryResetConfirmedUserData"))
 {

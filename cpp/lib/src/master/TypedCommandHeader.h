@@ -114,9 +114,9 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt16_override(void* pIComma
     HeaderWriter*, IndexQualifierMode_uint8_t mode);
 
 uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16);
-void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16, IVisitor__for__CommandState* visitor);
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16(TypedCommandHeader_for_AnalogOutputInt16 *pTypedCommandHeader_for_AnalogOutputInt16, IVisitor_for_CommandState* visitor);
 uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState);
-void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState, IVisitor__for__CommandState* visitor);
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt16_override(void *pICollection_for_CommandState, IVisitor_for_CommandState* visitor);
 //------------------------AnalogOutputInt16----------------------------
 //------------------------AnalogOutputInt32----------------------------
 ////    struct Record : public CommandState
@@ -193,9 +193,9 @@ boolean Write_in_TypedCommandHeader_for_AnalogOutputInt32_override(void* pIComma
     HeaderWriter*, IndexQualifierMode_uint8_t mode);
 
 uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32);
-void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32, IVisitor__for__CommandState* visitor);
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32(TypedCommandHeader_for_AnalogOutputInt32 *pTypedCommandHeader_for_AnalogOutputInt32, IVisitor_for_CommandState* visitor);
 uint16_t Count_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState);
-void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState, IVisitor__for__CommandState* visitor);
+void Foreach_in_TypedCommandHeader_for_AnalogOutputInt32_override(void *pICollection_for_CommandState, IVisitor_for_CommandState* visitor);
 //------------------------AnalogOutputInt32----------------------------
 
 ////template<class T> bool TypedCommandHeader<T>::AreAllSelected() const

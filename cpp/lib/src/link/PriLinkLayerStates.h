@@ -36,6 +36,7 @@ typedef struct
 {
 ////public:
   // Incoming messages for primary station
+// ¬ход€щие сообщени€ дл€ первичной станции
   void* (*pOnAck_in_PriStateBase)(void*, LinkContext*, boolean receiveBuffFull);//=0
   void* (*pOnNack_in_PriStateBase)(void*, LinkContext*, boolean receiveBuffFull);//=0
   void* (*pOnLinkStatus_in_PriStateBase)(void*, LinkContext*, boolean receiveBuffFull);//=0
@@ -50,10 +51,14 @@ typedef struct
   void* (*pTrySendRequestLinkStatus_in_PriStateBase)(void*, LinkContext*);//=0
 
   // every concrete state implements this for logging purposes
+// каждое конкретное состо€ние реализует это дл€ целей журналировани€
 ////    virtual char const* Name() const = 0;
+  uint16_t Name_in_PriStateBase;
 
   void* pParentPointer_in_PriStateBase;
 } PriStateBase;
+
+uint16_t getName_in_PriStateBase(void*);
 
 void PriStateBase_in_PriStateBase(PriStateBase *pPriStateBase);
 
@@ -128,6 +133,7 @@ PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriSt
 /////////////////////////////////////////////////////////////////////////////
 
 //	@section desc As soon as we get an ACK, send the delayed pri frame
+// @section desc  ак только мы получим подтверждение, отправл€ем задержанный pri-кадр
 ////class PLLS_RequestLinkStatusWait final : public PriStateBase
 //typedef struct
 //{

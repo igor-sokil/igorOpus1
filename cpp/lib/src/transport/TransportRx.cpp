@@ -41,13 +41,26 @@
 ////    : logger(logger), rxBuffer(maxRxFragSize), numBytesRead(0)
 void TransportRx_in_TransportRx(TransportRx *pTransportRx, uint32_t maxRxFragSize)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{TransportRx_in_TransportRx1"<<'\n';
+#endif
   Rx_Transport_in_Rx_Transport(&(pTransportRx->statistics));
   SequenceNum_for_uint8_Modulus64_in_SequenceNum_for_uint8_Modulus64Over1(&(pTransportRx->expectedSeq));
   Addresses_in_AddressesOver1(&(pTransportRx->lastAddresses));
 //void BufferSer4_in_BufferSer4Over2(BufferSer4 *pBufferSer4, uint16_t length);
 //// rxBuffer(maxRxFragSize), numBytesRead(0)
-  BufferSer4_in_BufferSer4Over2(&(pTransportRx->rxBuffer), maxRxFragSize);
+//  BufferSer4_in_BufferSer4Over2(&(pTransportRx->rxBuffer), maxRxFragSize);
+  BufferSer4_292_in_BufferSer4_292Over2(&(pTransportRx->rxBuffer), maxRxFragSize);
+
   pTransportRx->numBytesRead = 0;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}TransportRx_in_TransportRx_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////void TransportRx::Reset()
@@ -75,7 +88,7 @@ WSeq_for_Uint16_t GetAvailable_in_TransportRx(TransportRx *pTransportRx)
 #endif
 //WSeq_for_Uint16_t as_wslice_in_BufferSer4(BufferSer4 *pBufferSer4);
 ////    return rxBuffer.as_wslice().skip(numBytesRead);
-  WSeq_for_Uint16_t wtemp = as_wslice_in_BufferSer4(&(pTransportRx->rxBuffer));
+  WSeq_for_Uint16_t wtemp = as_wslice_in_BufferSer4_Core(&(pTransportRx->rxBuffer.bBufferSer4_Core));
   WSeq_for_Uint16_t tmp = skip_in_WSeq_for_Uint16_t(&wtemp, pTransportRx->numBytesRead);
 
 #ifdef  LOG_INFO
@@ -270,7 +283,7 @@ Message ProcessReceive_in_TransportRx(TransportRx *pTransportRx, Message* segmen
   {
 //RSeq_for_Uint16_t take_in_RSeq_for_Uint16_t(RSeq_for_Uint16_t *pRSeq, uint16_t count);
 ////        const auto ret = rxBuffer.as_rslice().take(numBytesRead);
-    RSeq_for_Uint16_t tmp = as_rslice_in_BufferSer4(&(pTransportRx->rxBuffer));
+    RSeq_for_Uint16_t tmp = as_rslice_in_BufferSer4_Core(&(pTransportRx->rxBuffer.bBufferSer4_Core));
     RSeq_for_Uint16_t ret = take_in_RSeq_for_Uint16_t(&tmp, pTransportRx->numBytesRead);
 
 #ifdef  LOG_INFO

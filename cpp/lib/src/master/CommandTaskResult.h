@@ -51,8 +51,8 @@ typedef struct
 void CommandTaskResult_in_CommandTaskResult(CommandTaskResult *pCommandTaskResult, TaskCompletion_uint8_t result, HeaderVector_in_CommandSet* vector);
 
 uint16_t Count_in_CommandTaskResult(CommandTaskResult *pCommandTaskResult);
-void Foreach_in_CommandTaskResult(CommandTaskResult *pCommandTaskResult, IVisitor__for__CommandPointResult* visitor);
-void Foreach_in_CommandTaskResult_override(void *pICollection_for_CommandPointResult, IVisitor__for__CommandPointResult* visitor);
+void Foreach_in_CommandTaskResult(CommandTaskResult *pCommandTaskResult, IVisitor_for_CommandPointResult* visitor);
+void Foreach_in_CommandTaskResult_override(void *pICollection_for_CommandPointResult, IVisitor_for_CommandPointResult* visitor);
 uint16_t Count_in_CommandTaskResult_override(void *pICollection_for_CommandPointResult);
 
 ////} // namespace opendnp3

@@ -32,6 +32,7 @@
 
 ////namespace opendnp3
 ////{
+static  LinkContext lLinkContext;
 
 void LinkContext_in_LinkContext(LinkContext *pLinkContext,
 //                         const Logger& logger,
@@ -46,47 +47,41 @@ void LinkContext_in_LinkContext(LinkContext *pLinkContext,
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{LinkContext_in_LinkContext1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticBuffer_for_LPDU_MAX_FRAME_SIZE priTxBuffer_in_LinkContext="<<(uint32_t)&(pLinkContext->priTxBuffer_in_LinkContext.buffer[0])<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*sizeof(priTxBuffer_in_LinkContext)="<<(uint32_t)sizeof(pLinkContext->priTxBuffer_in_LinkContext.buffer)<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticBuffer_for_LPDU_HEADER_SIZE secTxBuffer_in_LinkContext="<<(uint32_t)pLinkContext->secTxBuffer_in_LinkContext.buffer<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*sizeof(secTxBuffer_in_LinkContext)="<<(uint32_t)sizeof(pLinkContext->secTxBuffer_in_LinkContext.buffer)<<'\n';
 #endif
   pLinkContext->linktx = NULL;
 ////    : logger(logger),
   pLinkContext->config = *config;
-  pLinkContext->pSegments = NULL;
-  pLinkContext->txMode = LinkTransmitMode_Idle;
+  pLinkContext->pSegments_in_LinkContext = NULL;
+  pLinkContext->txMode_in_LinkContext = LinkTransmitMode_Idle;
   pLinkContext->executor = executor;
   pLinkContext->nextReadFCB = false;
   pLinkContext->isOnline = false;
   pLinkContext->keepAliveTimeout = false;
 
-#ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"LinkContext_in_LinkContext2"<<'\n';
-#endif
 //uint64_t Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
 // void Timestamp_in_TimestampOver2(Timestamp *pTimestamp, uint64_t value);
 ////      pLinkContext->lastMessageTimestamp = ///executor->get_time()),
-  uint64_t value = Get_time_in_ISteadyTimeSourceExe4cpp(&(executor->iISteadyTimeSourceExe4cpp));
-#ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"LinkContext_in_LinkContext2.1"<<'\n';
-#endif
+//  uint64_t value = Get_time_in_ISteadyTimeSourceExe4cpp(&(executor->iISteadyTimeSourceExe4cpp));
+  uint64_t value = get_time_in_IExecutorExe4cpp(executor);
+
   Timestamp_in_TimestampOver2(&(pLinkContext->lastMessageTimestamp), value);
-#ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"LinkContext_in_LinkContext3"<<'\n';
-#endif
 
 ////      pPriState(&PLLS_Idle::Instance()),
-  pLinkContext->pPriState = Instance_in_PLLS_Idle_static();
+  pLinkContext->pPriState_in_LinkContext = Instance_in_PLLS_Idle_static();
 ////      pSecState(&SLLS_NotReset::Instance()),
-  pLinkContext->pSecState = Instance_in_SLLS_NotReset_static();
+  pLinkContext->pSecState_in_LinkContext = Instance_in_SLLS_NotReset_static();
   pLinkContext->listener = listener;
   pLinkContext->upper = upper;
   pLinkContext->pSession = session;
 
-#ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"LinkContext_in_LinkContext4"<<'\n';
-#endif
 //   void TimerExe4cpp_in_TimerExe4cpp(TimerExe4cpp *pTimerExe4cpp, ITimer* tim);
 //  TimerExe4cpp rspTimeoutTimer;
 //  TimerExe4cpp keepAliveTimer;
@@ -98,8 +93,6 @@ void LinkContext_in_LinkContext(LinkContext *pLinkContext,
   decrement_stack_info();
 #endif
 }
-
-static  LinkContext lLinkContext;
 
 LinkContext* Create_in_LinkContext_static(//const Logger& logger,
   IExecutorExe4cpp* executor,
@@ -172,7 +165,7 @@ boolean OnLowerLayerDown_in_LinkContext(LinkContext *pLinkContext)
   {
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
-    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer already online')***"<<std::endl;
+    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer is not online')***"<<std::endl;
     std::cout<<getString_stack_info();
     std::cout<<"}OnLowerLayerDown_in_LinkContext1_"<<'\n';
     decrement_stack_info();
@@ -183,8 +176,8 @@ boolean OnLowerLayerDown_in_LinkContext(LinkContext *pLinkContext)
 
   pLinkContext->isOnline = false;
   pLinkContext->keepAliveTimeout = false;
-  pLinkContext->pSegments = NULL;
-  pLinkContext->txMode = LinkTransmitMode_Idle;
+  pLinkContext->pSegments_in_LinkContext = NULL;
+  pLinkContext->txMode_in_LinkContext = LinkTransmitMode_Idle;
 //void clear_in_Settable_for_RSeq_t(Settable_for_RSeq_t *pSettable_for_RSeq_t);
 ////    pendingPriTx.clear();
   clear_in_Settable_for_RSeq_t(&(pLinkContext->pendingPriTx));
@@ -199,15 +192,15 @@ boolean OnLowerLayerDown_in_LinkContext(LinkContext *pLinkContext)
 
 //PriStateBase* Instance_in_PLLS_Idle_static(void)
 ////    pPriState = &PLLS_Idle::Instance();
-  pLinkContext->pPriState = Instance_in_PLLS_Idle_static();
+  pLinkContext->pPriState_in_LinkContext = Instance_in_PLLS_Idle_static();
 //SecStateBase* Instance_in_SLLS_NotReset_static(void)
 ////    pSecState = &SLLS_NotReset::Instance();
-  pLinkContext->pSecState = Instance_in_SLLS_NotReset_static();
+  pLinkContext->pSecState_in_LinkContext = Instance_in_SLLS_NotReset_static();
 
 ////    listener->OnStateChange(LinkStatus::UNRESET);
   OnStateChange_in_ILinkListener(pLinkContext->listener, LinkStatus_UNRESET);
 ////    upper->OnLowerLayerDown();
-  OnLowerLayerUp_in_IUpDown(&(pLinkContext->upper->iIUpDown));
+  OnLowerLayerDown_in_IUpDown(&(pLinkContext->upper->iIUpDown));
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -239,7 +232,7 @@ boolean SetTxSegment_in_LinkContext(LinkContext *pLinkContext, ITransportSegment
     return false;
   }
 
-  if (pLinkContext->pSegments)
+  if (pLinkContext->pSegments_in_LinkContext)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Already transmitting a segment");
 #ifdef  LOG_INFO
@@ -252,7 +245,7 @@ boolean SetTxSegment_in_LinkContext(LinkContext *pLinkContext, ITransportSegment
     return false;
   }
 
-  pLinkContext->pSegments = segments;
+  pLinkContext->pSegments_in_LinkContext = segments;
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -270,8 +263,14 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{OnTxReady_in_LinkContext1"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*pLinkContext->txMode_in_LinkContext= "<<(uint16_t)pLinkContext->txMode_in_LinkContext<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*LinkTransmitMode_Primary= "<<(uint16_t)LinkTransmitMode_Primary<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*LinkTransmitMode_Secondary= "<<(uint16_t)LinkTransmitMode_Secondary<<'\n';
 #endif
-  if (pLinkContext->txMode == LinkTransmitMode_Idle)
+  if (pLinkContext->txMode_in_LinkContext == LinkTransmitMode_Idle)
   {
 ////        SIMPLE_LOG_BLOCK(this->logger, flags::ERR, "Unknown transmission callback");
 #ifdef  LOG_INFO
@@ -284,8 +283,8 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
     return false;
   }
 
-  boolean isPrimary = (pLinkContext->txMode == LinkTransmitMode_Primary);
-  pLinkContext->txMode = LinkTransmitMode_Idle;
+  boolean isPrimary = (pLinkContext->txMode_in_LinkContext == LinkTransmitMode_Primary);
+  pLinkContext->txMode_in_LinkContext = LinkTransmitMode_Idle;
 
   // before we dispatch the transmit result, give any pending transmissions access first
 // прежде чем мы отправим результат передачи, сначала предоставьте доступ к любым ожидающим передачам
@@ -293,7 +292,7 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
 ////    this->TryPendingTx(this->pendingSecTx, false);
   TryPendingTx_in_LinkContext(pLinkContext, &(pLinkContext->pendingSecTx), false);
 ////    this->TryPendingTx(this->pendingPriTx, true);
-  TryPendingTx_in_LinkContext(pLinkContext, &(pLinkContext->pendingSecTx), true);
+  TryPendingTx_in_LinkContext(pLinkContext, &(pLinkContext->pendingPriTx), true);
 
   // now dispatch the completion event to the correct state handler
 // теперь отправляем событие завершения правильному обработчику состояния
@@ -301,13 +300,13 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
   {
 //PriStateBase* OnTxReady_in_PriStateBase(PriStateBase*, LinkContext*);
 ////        this->pPriState = &this->pPriState->OnTxReady(*this);
-    pLinkContext->pPriState = OnTxReady_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext);
+    pLinkContext->pPriState_in_LinkContext = OnTxReady_in_PriStateBase((PriStateBase*)pLinkContext->pPriState_in_LinkContext, pLinkContext);
   }
   else
   {
-    SecStateBase* OnTxReady_in_SecStateBase(SecStateBase*, LinkContext* ctx);
+//    SecStateBase* OnTxReady_in_SecStateBase(SecStateBase*, LinkContext* ctx);
 ////        this->pSecState = &this->pSecState->OnTxReady(*this);
-    pLinkContext->pSecState = OnTxReady_in_SecStateBase((SecStateBase*)pLinkContext->pSecState, pLinkContext);
+    pLinkContext->pSecState_in_LinkContext = OnTxReady_in_SecStateBase((SecStateBase*)pLinkContext->pSecState_in_LinkContext, pLinkContext);
   }
 
 #ifdef  LOG_INFO
@@ -320,10 +319,18 @@ boolean OnTxReady_in_LinkContext(LinkContext *pLinkContext)
 
 ////ser4cpp::rseq_t LinkContext::FormatPrimaryBufferWithUnconfirmed(const Addresses& addr, const ser4cpp::rseq_t& tpdu)
 RSeq_for_Uint16_t FormatPrimaryBufferWithUnconfirmed_in_LinkContext(LinkContext *pLinkContext, Addresses* addr, RSeq_for_Uint16_t* tpdu)
+//PriStateBase* TrySendUnconfirmed_in_PLLS_Idle(PriStateBase *pPriStateBase, LinkContext* ctx, ITransportSegment* segments)
+//PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriStateBase, LinkContext* ctx)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{FormatPrimaryBufferWithUnconfirmed_in_LinkContext1"<<'\n';
+#endif
 //WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(StaticBuffer_for_LPDU_MAX_FRAME_SIZE *pStaticBuffer);
 ////    auto buffer = this->priTxBuffer.as_wseq();
-  WSeq_for_Uint16_t  buffer = as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(&(pLinkContext->priTxBuffer));
+  WSeq_for_Uint16_t  buffer = as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(&(pLinkContext->priTxBuffer_in_LinkContext));
 //    RSeq_for_Uint16_t FormatUnconfirmedUserData_in_LinkFrame_static(WSeq_for_Uint16_t* buffer,
 //                                                     boolean aIsMaster,
 //                                                     uint16_t aDest,
@@ -338,21 +345,36 @@ RSeq_for_Uint16_t FormatPrimaryBufferWithUnconfirmed_in_LinkContext(LinkContext 
         addr->source,
         *tpdu);//,
 ////    FORMAT_HEX_BLOCK(logger, flags::LINK_TX_HEX, output, 10, 18);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FormatPrimaryBufferWithUnconfirmed_in_LinkContext_"<<'\n';
+  decrement_stack_info();
+#endif
   return output;
 }
 
 ////void LinkContext::QueueTransmit(const ser4cpp::rseq_t& buffer, bool primary)
 void QueueTransmit_in_LinkContext(LinkContext *pLinkContext, RSeq_for_Uint16_t* buffer, boolean primary)
+//PriStateBase* TrySendUnconfirmed_in_PLLS_Idle(PriStateBase *pPriStateBase, LinkContext* ctx, ITransportSegment* segments)
+//PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriStateBase, LinkContext* ctx)
+//void QueueAck_in_LinkContext(LinkContext *pLinkContext, uint16_t destination)
+//void QueueLinkStatus_in_LinkContext(LinkContext *pLinkContext, uint16_t destination)
+//void QueueRequestLinkStatus_in_LinkContext(LinkContext *pLinkContext, uint16_t destination)
 {
 #ifdef  LOG_INFO
   increment_stack_info();
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{QueueTransmit_in_LinkContext1"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*boolean primary= "<<primary<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*pLinkContext->txMode_in_LinkContext= "<<(uint16_t)pLinkContext->txMode_in_LinkContext<<'\n';
 #endif
-  if (pLinkContext->txMode == LinkTransmitMode_Idle)
+  if (pLinkContext->txMode_in_LinkContext == LinkTransmitMode_Idle)
   {
-    pLinkContext->txMode = primary ? LinkTransmitMode_Primary : LinkTransmitMode_Secondary;
+    pLinkContext->txMode_in_LinkContext = primary ? LinkTransmitMode_Primary : LinkTransmitMode_Secondary;
 //void BeginTransmit_in_ILinkTx(ILinkTx*, RSeq_for_Uint16_t* buffer, ILinkSession* context);
 ////        linktx->BeginTransmit(buffer, *pSession);
     BeginTransmit_in_ILinkTx(pLinkContext->linktx, buffer, pLinkContext->pSession);
@@ -388,7 +410,7 @@ void QueueAck_in_LinkContext(LinkContext *pLinkContext, uint16_t destination)
 #endif
 //WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LPDU_HEADER_SIZEOver1(StaticBuffer_for_LPDU_HEADER_SIZE *pStaticBuffer);
 ////    auto dest = secTxBuffer.as_wseq();
-  WSeq_for_Uint16_t  dest =  as_wseq_in_StaticBuffer_for_LPDU_HEADER_SIZEOver1(&(pLinkContext->secTxBuffer));
+  WSeq_for_Uint16_t  dest =  as_wseq_in_StaticBuffer_for_LPDU_HEADER_SIZEOver1(&(pLinkContext->secTxBuffer_in_LinkContext));
 
 //    RSeq_for_Uint16_t FormatAck_in_LinkFrame_static(
 //        WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
@@ -409,8 +431,14 @@ void QueueAck_in_LinkContext(LinkContext *pLinkContext, uint16_t destination)
 
 void QueueLinkStatus_in_LinkContext(LinkContext *pLinkContext, uint16_t destination)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{QueueLinkStatus_in_LinkContext1"<<'\n';
+#endif
 ////    auto dest = secTxBuffer.as_wseq();
-  WSeq_for_Uint16_t  dest =  as_wseq_in_StaticBuffer_for_LPDU_HEADER_SIZEOver1(&(pLinkContext->secTxBuffer));
+  WSeq_for_Uint16_t  dest =  as_wseq_in_StaticBuffer_for_LPDU_HEADER_SIZEOver1(&(pLinkContext->secTxBuffer_in_LinkContext));
 //    RSeq_for_Uint16_t FormatLinkStatus_in_LinkFrame_static(
 //        WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
 ////    auto buffer
@@ -421,14 +449,25 @@ void QueueLinkStatus_in_LinkContext(LinkContext *pLinkContext, uint16_t destinat
 ////    FORMAT_HEX_BLOCK(logger, flags::LINK_TX_HEX, buffer, 10, 18);
 ////    this->QueueTransmit(buffer, false);
   QueueTransmit_in_LinkContext(pLinkContext, &buffer, false);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}QueueLinkStatus_in_LinkContext_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void QueueRequestLinkStatus_in_LinkContext(LinkContext *pLinkContext, uint16_t destination)
 {
+#ifdef  LOG_INFO
+  increment_stack_info();
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"{QueueRequestLinkStatus_in_LinkContext1"<<'\n';
+#endif
 //    StaticBuffer_for_LPDU_MAX_FRAME_SIZE priTxBuffer;
 //WSeq_for_Uint16_t  as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(StaticBuffer_for_LPDU_MAX_FRAME_SIZE *pStaticBuffer);
 ////    auto dest = priTxBuffer.as_wseq();
-  WSeq_for_Uint16_t  dest =  as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(&(pLinkContext->priTxBuffer));
+  WSeq_for_Uint16_t  dest =  as_wseq_in_StaticBuffer_for_LPDU_MAX_FRAME_SIZEOver1(&(pLinkContext->priTxBuffer_in_LinkContext));
 
 //    RSeq_for_Uint16_t FormatRequestLinkStatus_in_LinkFrame_static(
 //        WSeq_for_Uint16_t* buffer, boolean aIsMaster, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
@@ -441,6 +480,11 @@ void QueueRequestLinkStatus_in_LinkContext(LinkContext *pLinkContext, uint16_t d
 ////    FORMAT_HEX_BLOCK(logger, flags::LINK_TX_HEX, buffer, 10, 18);
 ////    this->QueueTransmit(buffer, true);
   QueueTransmit_in_LinkContext(pLinkContext, &buffer, true);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}QueueRequestLinkStatus_in_LinkContext_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 void PushDataUp_in_LinkContext(LinkContext *pLinkContext, Message* message)
@@ -470,7 +514,7 @@ void callback_in_LinkContext(void)
 
 void CompleteSendOperation_in_LinkContext(LinkContext *pLinkContext)
 {
-  pLinkContext->pSegments = NULL;
+  pLinkContext->pSegments_in_LinkContext = NULL;
   pPointerGlobal1 = pLinkContext->upper;
 ////    auto callback = [upper = upper]() { upper->OnTxReady(); };
 
@@ -486,19 +530,23 @@ void TryStartTransmission_in_LinkContext(LinkContext *pLinkContext)
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{TryStartTransmission_in_LinkContext1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pLinkContext->keepAliveTimeout= "<<pLinkContext->keepAliveTimeout<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pLinkContext->pSegments= "<<(uint32_t)pLinkContext->pSegments_in_LinkContext<<'\n';
 #endif
   if (pLinkContext->keepAliveTimeout)
   {
 //PriStateBase* TrySendRequestLinkStatus_in_PriStateBase(PriStateBase*, LinkContext*);
 ////        this->pPriState = &pPriState->TrySendRequestLinkStatus(*this);
-    pLinkContext->pPriState = TrySendRequestLinkStatus_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext);
+    pLinkContext->pPriState_in_LinkContext = TrySendRequestLinkStatus_in_PriStateBase((PriStateBase*)pLinkContext->pPriState_in_LinkContext, pLinkContext);
   }
 
-  if (pLinkContext->pSegments)
+  if (pLinkContext->pSegments_in_LinkContext)
   {
 //PriStateBase* TrySendUnconfirmed_in_PriStateBase(PriStateBase*, LinkContext*, ITransportSegment* segments);
 ////        this->pPriState = &pPriState->TrySendUnconfirmed(*this, *pSegments);
-    pLinkContext->pPriState = TrySendUnconfirmed_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext, pLinkContext->pSegments);
+    pLinkContext->pPriState_in_LinkContext = TrySendUnconfirmed_in_PriStateBase((PriStateBase*)pLinkContext->pPriState_in_LinkContext, pLinkContext, pLinkContext->pSegments_in_LinkContext);
   }
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -512,9 +560,10 @@ void OnKeepAliveTimeout_in_LinkContext(LinkContext *pLinkContext)
 // void Timestamp_in_TimestampOver2(Timestamp *pTimestamp, uint64_t value);
 //uint64_t Get_time_in_ISteadyTimeSourceExe4cpp(ISteadyTimeSourceExe4cpp *);
 ////    const auto now = Timestamp(this->executor->get_time());
+//  Timestamp now;
+//  Timestamp_in_TimestampOver2(&now, Get_time_in_ISteadyTimeSourceExe4cpp(&(pLinkContext->executor->iISteadyTimeSourceExe4cpp)));
   Timestamp now;
-  Timestamp_in_TimestampOver2(&now, Get_time_in_ISteadyTimeSourceExe4cpp(&(pLinkContext->executor->iISteadyTimeSourceExe4cpp)));
-
+  Timestamp_in_TimestampOver2(&now, get_time_in_IExecutorExe4cpp(pLinkContext->executor));
 //    uint64_t time_point_value;
 //    Timestamp lastMessageTimestamp;
 ///    const auto elapsed = now - this->lastMessageTimestamp;
@@ -541,7 +590,7 @@ void OnResponseTimeout_in_LinkContext(LinkContext *pLinkContext)
 {
 //PriStateBase* OnTimeout_in_PriStateBase(PriStateBase*, LinkContext*);
 ////    this->pPriState = &(this->pPriState->OnTimeout(*this));
-  pLinkContext->pPriState =  OnTimeout_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext);
+  pLinkContext->pPriState_in_LinkContext =  OnTimeout_in_PriStateBase((PriStateBase*)pLinkContext->pPriState_in_LinkContext, pLinkContext);
 
 ////    this->TryStartTransmission();
   TryStartTransmission_in_LinkContext(pLinkContext);
@@ -617,8 +666,6 @@ void RestartKeepAliveTimer_in_LinkContext(LinkContext *pLinkContext)
 ////    const auto expiration = this->lastMessageTimestamp + this->config.KeepAliveTimeout;
   uint64_t expiration = pLinkContext->lastMessageTimestamp.time_point_value + pLinkContext->config.lLinkConfig.KeepAliveTimeout.duration_value;
 
-//qDebug()<<"RestartKeepAliveTimer_in_LinkContext1.3";
-
 ////    this->keepAliveTimer = executor->start(expiration.value, [self = shared_from_this()]() {
 ////        if (self->isOnline)
 ////        {
@@ -665,6 +712,8 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
   std::cout<<'\n';
   std::cout<<getString_stack_info();
   std::cout<<"{OnFrame_in_LinkContext1"<<'\n';
+  inspect_LinkHeaderFields(header);
+  inspect_RSeq(userdata);
 #endif
 
   if (!pLinkContext->isOnline)
@@ -674,7 +723,7 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Layer is not online')***"<<std::endl;
     std::cout<<getString_stack_info();
-    std::cout<<"}OnFrame_in_LinkContext1_"<<'\n';
+    std::cout<<"}!OnFrame_in_LinkContext1_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -690,7 +739,7 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Outstation frame received for outstation')***"<<std::endl;
     std::cout<<getString_stack_info();
-    std::cout<<"}OnFrame_in_LinkContext2_"<<'\n';
+    std::cout<<"}!OnFrame_in_LinkContext2_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -705,7 +754,7 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
     OnUnknownDestinationAddress_in_ILinkListener(pLinkContext->listener, header->addresses.destination);
 #ifdef  LOG_INFO
     std::cout<<getString_stack_info();
-    std::cout<<"}OnFrame_in_LinkContext3_"<<'\n';
+    std::cout<<"}!OnFrame_in_LinkContext3_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -719,10 +768,8 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
     OnUnknownSourceAddress_in_ILinkListener(pLinkContext->listener, header->addresses.source);
 
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"***SIMPLE_LOG_BLOCK(logger, flags::ERR, 'Outstation frame received for outstation')***"<<std::endl;
     std::cout<<getString_stack_info();
-    std::cout<<"}OnFrame_in_LinkContext4_"<<'\n';
+    std::cout<<"}!OnFrame_in_LinkContext4_"<<'\n';
     decrement_stack_info();
 #endif
     return false;
@@ -742,7 +789,7 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"***FORMAT_LOG_BLOCK(logger, flags::WARN, 'Received invalid function (%s) with broadcast destination address')***"<<std::endl;
     std::cout<<getString_stack_info();
-    std::cout<<"}OnFrame_in_LinkContext5_"<<'\n';
+    std::cout<<"}!OnFrame_in_LinkContext5_"<<'\n';
     decrement_stack_info();
 #endif
     ++(pLinkContext->statistics.numUnexpectedFrame);
@@ -763,67 +810,67 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
   {
   case (LinkFunction_SEC_ACK):
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_SEC_ACK"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_SEC_ACK:"<<std::endl;
 #endif
 //PriStateBase* OnAck_in_PriStateBase(PriStateBase*, LinkContext*, boolean receiveBuffFull);
 ////        pPriState = &pPriState->OnAck(*this, header.fcvdfc);
-    pLinkContext->pPriState =  OnAck_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext, header->fcvdfc);
+    pLinkContext->pPriState_in_LinkContext =  OnAck_in_PriStateBase((PriStateBase*)pLinkContext->pPriState_in_LinkContext, pLinkContext, header->fcvdfc);
     break;
   case (LinkFunction_SEC_NACK):
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_SEC_NACK"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_SEC_NACK:"<<std::endl;
 #endif
 ////        pPriState = &pPriState->OnNack(*this, header.fcvdfc);
-    pLinkContext->pPriState =  OnNack_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext, header->fcvdfc);
+    pLinkContext->pPriState_in_LinkContext =  OnNack_in_PriStateBase((PriStateBase*)pLinkContext->pPriState_in_LinkContext, pLinkContext, header->fcvdfc);
     break;
   case (LinkFunction_SEC_LINK_STATUS):
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_SEC_LINK_STATUS"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_SEC_LINK_STATUS:"<<std::endl;
 #endif
 ////        pPriState = &pPriState->OnLinkStatus(*this, header.fcvdfc);
-    pLinkContext->pPriState =  OnLinkStatus_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext, header->fcvdfc);
+    pLinkContext->pPriState_in_LinkContext =  OnLinkStatus_in_PriStateBase((PriStateBase*)pLinkContext->pPriState_in_LinkContext, pLinkContext, header->fcvdfc);
     break;
   case (LinkFunction_SEC_NOT_SUPPORTED):
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_SEC_NOT_SUPPORTED"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_SEC_NOT_SUPPORTED:"<<std::endl;
 #endif
 ////        pPriState = &pPriState->OnNotSupported(*this, header.fcvdfc);
-    pLinkContext->pPriState =  OnNotSupported_in_PriStateBase((PriStateBase*)pLinkContext->pPriState, pLinkContext, header->fcvdfc);
+    pLinkContext->pPriState_in_LinkContext =  OnNotSupported_in_PriStateBase((PriStateBase*)pLinkContext->pPriState_in_LinkContext, pLinkContext, header->fcvdfc);
     break;
   case (LinkFunction_PRI_TEST_LINK_STATES):
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_PRI_TEST_LINK_STATES"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_PRI_TEST_LINK_STATES:"<<std::endl;
 #endif
 //SecStateBase* OnTestLinkStatus_in_SecStateBase(SecStateBase*, LinkContext*, uint16_t source, boolean fcb);
 ////        pSecState = &pSecState->OnTestLinkStatus(*this, header.addresses.source, header.fcb);
-    pLinkContext->pSecState =  OnTestLinkStatus_in_SecStateBase((SecStateBase*)pLinkContext->pSecState, pLinkContext, header->addresses.source, header->fcb);
+    pLinkContext->pSecState_in_LinkContext =  OnTestLinkStatus_in_SecStateBase((SecStateBase*)pLinkContext->pSecState_in_LinkContext, pLinkContext, header->addresses.source, header->fcb);
     break;
   case (LinkFunction_PRI_RESET_LINK_STATES):
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_PRI_RESET_LINK_STATES"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_PRI_RESET_LINK_STATES:"<<std::endl;
 #endif
 ////        pSecState = &pSecState->OnResetLinkStates(*this, header.addresses.source);
-    pLinkContext->pSecState =  OnResetLinkStates_in_SecStateBase((SecStateBase*)pLinkContext->pSecState, pLinkContext, header->addresses.source);
+    pLinkContext->pSecState_in_LinkContext =  OnResetLinkStates_in_SecStateBase((SecStateBase*)pLinkContext->pSecState_in_LinkContext, pLinkContext, header->addresses.source);
     break;
   case (LinkFunction_PRI_REQUEST_LINK_STATUS):
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_PRI_REQUEST_LINK_STATUS"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_PRI_REQUEST_LINK_STATUS:"<<std::endl;
 #endif
 ////        pSecState = &pSecState->OnRequestLinkStatus(*this, header.addresses.source);
-    pLinkContext->pSecState =  OnRequestLinkStatus_in_SecStateBase((SecStateBase*)pLinkContext->pSecState, pLinkContext, header->addresses.source);
+    pLinkContext->pSecState_in_LinkContext =  OnRequestLinkStatus_in_SecStateBase((SecStateBase*)pLinkContext->pSecState_in_LinkContext, pLinkContext, header->addresses.source);
     break;
   case (LinkFunction_PRI_CONFIRMED_USER_DATA):
   {
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_PRI_CONFIRMED_USER_DATA"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_PRI_CONFIRMED_USER_DATA:"<<std::endl;
 #endif
 //SecStateBase* OnConfirmedUserData_in_SecStateBase(SecStateBase*,
 //    LinkContext*, uint16_t source, boolean fcb, boolean isBroadcast, Message* message);
@@ -832,15 +879,15 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
 ////                                                    Message(header.addresses, userdata));
     Message mMessage;
     Message_in_Message(&mMessage, &(header->addresses), userdata);
-    pLinkContext->pSecState =  OnConfirmedUserData_in_SecStateBase((SecStateBase*)pLinkContext->pSecState, pLinkContext,
+    pLinkContext->pSecState_in_LinkContext =  OnConfirmedUserData_in_SecStateBase((SecStateBase*)pLinkContext->pSecState_in_LinkContext, pLinkContext,
                                header->addresses.source, header->fcb, IsBroadcast_in_Addresses(&(header->addresses)), &mMessage);
   }
   break;
   case (LinkFunction_PRI_UNCONFIRMED_USER_DATA):
   {
 #ifdef  LOG_INFO
-    std::cout<<"@@@@"<<getString_stack_info();
-    std::cout<<"*LinkFunction_PRI_UNCONFIRMED_USER_DATA"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"LinkFunction_PRI_UNCONFIRMED_USER_DATA:"<<std::endl;
 #endif
 //    void PushDataUp_in_LinkContext(LinkContext *pLinkContext, Message* message);
 ////        this->PushDataUp(Message(header.addresses, userdata));
@@ -865,7 +912,7 @@ boolean OnFrame_in_LinkContext(LinkContext *pLinkContext, LinkHeaderFields* head
 boolean TryPendingTx_in_LinkContext(LinkContext *pLinkContext, Settable_for_RSeq_t* pending, boolean primary)
 {
 //boolean is_set_in_Settable_for_RSeq_t(Settable_for_RSeq_t *pSettable_for_RSeq_t);
-  if (pLinkContext->txMode == LinkTransmitMode_Idle && is_set_in_Settable_for_RSeq_t(pending))////pending.is_set())
+  if (pLinkContext->txMode_in_LinkContext == LinkTransmitMode_Idle && is_set_in_Settable_for_RSeq_t(pending))////pending.is_set())
   {
 //void BeginTransmit_in_ILinkTx(ILinkTx*, RSeq_for_Uint16_t* buffer, ILinkSession* context);
 //RSeq_for_Uint16_t get_in_Settable_for_RSeq_t(Settable_for_RSeq_t *pSettable_for_RSeq_t);
@@ -877,7 +924,7 @@ boolean TryPendingTx_in_LinkContext(LinkContext *pLinkContext, Settable_for_RSeq
 ////        pending.clear();
     clear_in_Settable_for_RSeq_t(pending);
 
-    pLinkContext->txMode = primary ? LinkTransmitMode_Primary : LinkTransmitMode_Secondary;
+    pLinkContext->txMode_in_LinkContext = primary ? LinkTransmitMode_Primary : LinkTransmitMode_Secondary;
     return true;
   }
 

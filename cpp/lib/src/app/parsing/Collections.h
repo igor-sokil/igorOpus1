@@ -88,13 +88,13 @@ void TransformedCollection_Group50Var1_for_DNPTime_in_TransformedCollection_Grou
 TransformedCollection_Group50Var1_for_DNPTime Map_in_TransformedCollection_Group50Var1_for_DNPTime(ICollection_for_Group50Var1* input, Transform_Group50Var1_for_DNPTime transform);
 
 uint16_t Count_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime);
-void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime, IVisitor__for__DNPTime* visitor);
+void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime(TransformedCollection_Group50Var1_for_DNPTime *pTransformedCollection_Group50Var1_for_DNPTime, IVisitor_for_DNPTime* visitor);
 
 uint16_t Count_in_TransformedCollection_Group50Var1_for_DNPTime_override(void*);
-void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime_override(void*, IVisitor__for__DNPTime* visitor);
+void Foreach_in_TransformedCollection_Group50Var1_for_DNPTime_override(void*, IVisitor_for_DNPTime* visitor);
 //------------------------------Group50Var1_for_DNPTime-----------------------------------
 //------------------------------Indexed_for_Binary-----------------------------------
-typedef Indexed_for_Binary (*Transform_Indexed_for_Binary)(Indexed_for_Binary*);
+typedef Indexed_for_Binary (*Transform_Indexed_for_Binary)(Indexed_for_Binary);
 //Map<Group50Var1, DNPTime>
 ////template<class T, class U, class Transform> class TransformedCollection : public ICollection<U>
 typedef struct
@@ -128,13 +128,13 @@ void TransformedCollection_Indexed_for_Binary_in_TransformedCollection_Indexed_f
 TransformedCollection_Indexed_for_Binary Map_in_TransformedCollection_Indexed_for_Binary(ICollection_Indexed_for_Binary* input, Transform_Indexed_for_Binary transform);
 
 uint16_t Count_in_TransformedCollection_Indexed_for_Binary(TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary);
-void Foreach_in_TransformedCollection_Indexed_for_Binary(TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary, IVisitor__for__Indexed_for_Binary* visitor);
+void Foreach_in_TransformedCollection_Indexed_for_Binary(TransformedCollection_Indexed_for_Binary *pTransformedCollection_Indexed_for_Binary, IVisitor_Indexed_for_Binary* visitor);
 
 uint16_t Count_in_TransformedCollection_Indexed_for_Binary_override(void*);
-void Foreach_in_TransformedCollection_Indexed_for_Binary_override(void*, IVisitor__for__Indexed_for_Binary* visitor);
+void Foreach_in_TransformedCollection_Indexed_for_Binary_override(void*, IVisitor_Indexed_for_Binary* visitor);
 //------------------------------Indexed_for_Binary-----------------------------------
 //------------------------------Indexed_for_DoubleBitBinary-----------------------------------
-typedef Indexed_for_DoubleBitBinary (*Transform_Indexed_for_DoubleBitBinary)(Indexed_for_DoubleBitBinary*);
+typedef Indexed_for_DoubleBitBinary (*Transform_Indexed_for_DoubleBitBinary)(Indexed_for_DoubleBitBinary);
 //Map<Group50Var1, DNPTime>
 ////template<class T, class U, class Transform> class TransformedCollection : public ICollection<U>
 typedef struct
@@ -168,10 +168,10 @@ void TransformedCollection_Indexed_for_DoubleBitBinary_in_TransformedCollection_
 TransformedCollection_Indexed_for_DoubleBitBinary Map_in_TransformedCollection_Indexed_for_DoubleBitBinary(ICollection_Indexed_for_DoubleBitBinary* input, Transform_Indexed_for_DoubleBitBinary transform);
 
 uint16_t Count_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary);
-void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary, IVisitor__for__Indexed_for_DoubleBitBinary* visitor);
+void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary(TransformedCollection_Indexed_for_DoubleBitBinary *pTransformedCollection_Indexed_for_DoubleBitBinary, IVisitor_Indexed_for_DoubleBitBinary* visitor);
 
 uint16_t Count_in_TransformedCollection_Indexed_for_DoubleBitBinary_override(void*);
-void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary_override(void*, IVisitor__for__Indexed_for_DoubleBitBinary* visitor);
+void Foreach_in_TransformedCollection_Indexed_for_DoubleBitBinary_override(void*, IVisitor_Indexed_for_DoubleBitBinary* visitor);
 //------------------------------Indexed_for_DoubleBitBinary-----------------------------------
 
 ////} // namespace opendnp3

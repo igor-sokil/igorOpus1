@@ -64,9 +64,9 @@ uint16_t Count_in_CommandTaskResult_override(void *pICollection_for_CommandPoint
 static void* pPointerGlobal1_in_CommandTaskResult;
 static void* pPointerGlobal2_in_CommandTaskResult;
 
-void visit_in_CommandTaskResult(CommandState *state)
+void visit_in_CommandTaskResult(CommandState state)
 {
-  IVisitor__for__CommandPointResult* visitor = (IVisitor__for__CommandPointResult*) pPointerGlobal1_in_CommandTaskResult;
+  IVisitor_for_CommandPointResult* visitor = (IVisitor_for_CommandPointResult*) pPointerGlobal1_in_CommandTaskResult;
   uint32_t* headerIndex = (uint32_t*) pPointerGlobal2_in_CommandTaskResult;
 ////        auto visit = [&](const CommandState& state) {
 //  void CommandPointResult_in_CommandPointResult(CommandPointResult *pCommandPointResult,
@@ -76,12 +76,12 @@ void visit_in_CommandTaskResult(CommandState *state)
 ////        };
   CommandPointResult cCommandPointResult;
   CommandPointResult_in_CommandPointResult(&cCommandPointResult,
-      *headerIndex, state->index, state->state, state->status);
-  OnValue_in_IVisitor__for__CommandPointResult(visitor, &cCommandPointResult);
+      *headerIndex, state.index, state.state, state.status);
+  OnValue_in_IVisitor_for_CommandPointResult(visitor, cCommandPointResult);
 }
 
 ////void Foreach_in_CommandTaskResult(CommandTaskResult *pCommandTaskResult, IVisitor<CommandPointResult>& visitor) const
-void Foreach_in_CommandTaskResult(CommandTaskResult *pCommandTaskResult, IVisitor__for__CommandPointResult* visitor)
+void Foreach_in_CommandTaskResult(CommandTaskResult *pCommandTaskResult, IVisitor_for_CommandPointResult* visitor)
 {
   uint32_t headerIndex = 0;
 
@@ -100,7 +100,7 @@ void Foreach_in_CommandTaskResult(CommandTaskResult *pCommandTaskResult, IVisito
   }
 }
 
-void Foreach_in_CommandTaskResult_override(void *pICollection_for_CommandPointResult, IVisitor__for__CommandPointResult* visitor)
+void Foreach_in_CommandTaskResult_override(void *pICollection_for_CommandPointResult, IVisitor_for_CommandPointResult* visitor)
 {
   CommandTaskResult *parent = (CommandTaskResult*)getParentPointer_in_ICollection_for_CommandPointResult((ICollection_for_CommandPointResult*) pICollection_for_CommandPointResult);
   Foreach_in_CommandTaskResult(parent, visitor);

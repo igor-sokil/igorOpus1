@@ -103,8 +103,8 @@ boolean Update_for_TimeAndInterval_in_Database(Database *pDatabase, TimeAndInter
   return update_in_StaticDataMap_for_TimeAndIntervalSpecOver1(&(pDatabase->time_and_interval), meas, index, EventMode_Suppress, pDatabase->event_receiver);
 }
 
-void select_for_TimeAndIntervalSpec_in_DatabaseOver1(uint16_t *index);
-void select_for_TimeAndIntervalSpec_in_DatabaseOver1(uint16_t *index)
+void select_for_TimeAndIntervalSpec_in_DatabaseOver1(uint16_t index);
+void select_for_TimeAndIntervalSpec_in_DatabaseOver1(uint16_t index)
 {
   StaticDataMap_for_TimeAndIntervalSpec* map = (StaticDataMap_for_TimeAndIntervalSpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -113,7 +113,7 @@ void select_for_TimeAndIntervalSpec_in_DatabaseOver1(uint16_t *index)
 //boolean select_in_StaticDataMap_for_TimeAndIntervalSpecOver2(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, uint16_t index, StaticTimeAndIntervalVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_TimeAndIntervalSpecOver3(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, uint16_t index);
 ////        if (!map.select(index, variation))
-  if (!select_in_StaticDataMap_for_TimeAndIntervalSpecOver2(map, *index, *variation))
+  if (!select_in_StaticDataMap_for_TimeAndIntervalSpecOver2(map, index, *variation))
   {
     *missing_index = true;
   }
@@ -151,8 +151,8 @@ IINField select_indices_for_TimeAndIntervalSpec_in_Database_staticOver1(StaticDa
   return missing_index ? iIINField : Empty_in_IINField_static();
 }
 
-void select_for_TimeAndIntervalSpec_in_DatabaseOver2(uint16_t *index);
-void select_for_TimeAndIntervalSpec_in_DatabaseOver2(uint16_t *index)
+void select_for_TimeAndIntervalSpec_in_DatabaseOver2(uint16_t index);
+void select_for_TimeAndIntervalSpec_in_DatabaseOver2(uint16_t index)
 {
   StaticDataMap_for_TimeAndIntervalSpec* map = (StaticDataMap_for_TimeAndIntervalSpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -160,7 +160,7 @@ void select_for_TimeAndIntervalSpec_in_DatabaseOver2(uint16_t *index)
 //boolean select_in_StaticDataMap_for_TimeAndIntervalSpecOver2(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, uint16_t index, StaticTimeAndIntervalVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_TimeAndIntervalSpecOver3(StaticDataMap_for_TimeAndIntervalSpec *pStaticDataMap_for_TimeAndIntervalSpec, uint16_t index);
 ////        if (!map.select(index))
-  if (!select_in_StaticDataMap_for_TimeAndIntervalSpecOver3(map, *index))
+  if (!select_in_StaticDataMap_for_TimeAndIntervalSpecOver3(map, index))
   {
     *missing_index = true;
   }

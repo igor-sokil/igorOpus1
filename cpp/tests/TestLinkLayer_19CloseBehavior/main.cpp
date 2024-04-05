@@ -44,13 +44,13 @@ qDebug()<<"********SUITE('19CloseBehavior')********";
 //    std::string increment_hex_in_HexConversions(uint8_t start, uint16_t count, bool spaced = true);
 //  void MockTransportSegment_in_MockTransportSegment(MockTransportSegment *pMockTransportSegment, uint16_t segmentSize, std::string& hex, Addresses* addresses);
 ////    MockTransportSegment segments(250, HexConversions::increment_hex(0, 250), Addresses());
-    std::string hex = increment_hex_in_HexConversions(0, SIZE_CopyableBuffer_in_TestLinkLayer_CloseBehavior, true);
+    std::string hex = increment_hex_in_HexConversions(0, 250, true);
 // std::cout << "hex = " << hex;
 
    Addresses aAddresses;
    Addresses_in_AddressesOver1(&aAddresses);
    MockTransportSegment segments;
-   MockTransportSegment_in_MockTransportSegment(&segments, SIZE_CopyableBuffer_in_TestLinkLayer_CloseBehavior, hex, &aAddresses);
+   MockTransportSegment_in_MockTransportSegment(&segments, 250, hex, &aAddresses);
 
 //   boolean Send_in_LinkLayer(LinkLayer *pLinkLayer, ITransportSegment* segments);
 ////    t.link.Send(segments);
@@ -72,7 +72,7 @@ qDebug()<<"tmp= "<<tmp;
 
 //    boolean IsOnline_in_MockTransportLayer(MockTransportLayer *pMockTransportLayer);
 ////    REQUIRE_FALSE(t.upper->IsOnline());
-    boolean tt = IsOnline_in_MockTransportLayer(&(t.upper));
+    boolean tt = IsOnline_in_MockTransportLayer(&(t.upper_in_LinkLayerTest));
 qDebug()<<"REQUIRE_FALSE(t.upper->IsOnline())";
 qDebug()<<"tt= "<<tt;
 
@@ -80,7 +80,7 @@ qDebug()<<"tt= "<<tt;
    OnLowerLayerUp_in_LinkLayer(&(t.link));
 
 ////    REQUIRE(t.upper->IsOnline());
-    tt = IsOnline_in_MockTransportLayer(&(t.upper));
+    tt = IsOnline_in_MockTransportLayer(&(t.upper_in_LinkLayerTest));
 qDebug()<<"REQUIRE(t.upper->IsOnline())";
 qDebug()<<"tt= "<<tt;
 

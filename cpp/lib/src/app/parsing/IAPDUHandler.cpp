@@ -274,12 +274,16 @@ void OnHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(IAPDUHandler *pIA
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"OnHeader_RangeHeader_for_IINValue_in_IAPDUHandler1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{OnHeader_RangeHeader_for_IINValue_in_IAPDUHandler1"<<'\n';
 #endif
 ////    Record(header, this->ProcessHeader(header, values));
   IINField temp = ProcessHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(pIAPDUHandler, header, values);
   Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnHeader_RangeHeader_for_IINValue_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////void IAPDUHandler::OnHeader(const RangeHeader& header, const ICollection<Indexed<Binary>>& values)
@@ -289,14 +293,18 @@ void OnHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler(IAPDUHandler *pIAPD
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"OnHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{OnHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler1"<<'\n';
 #endif
 //    void Record_in_IAPDUHandler(IAPDUHandler *pIAPDUHandler, HeaderRecord* record, IINField* result)
 //IINField ProcessHeader_RangeHeader_for_Binary_in_IAPDUHandler(IAPDUHandler*, RangeHeader* header, ICollection_Indexed_for_Binary* values);
 ////    Record(header, this->ProcessHeader(header, values));
   IINField temp = ProcessHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler(pIAPDUHandler, header, values);
   Record_in_IAPDUHandler(pIAPDUHandler, &(header->hHeaderRecord), &temp);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}OnHeader_RangeHeader_Indexed_for_Binary_in_IAPDUHandler_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////void IAPDUHandler::OnHeader(const RangeHeader& header, const ICollection<Indexed<DoubleBitBinary>>& values)

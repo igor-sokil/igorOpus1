@@ -51,7 +51,7 @@ qDebug()<<"********SUITE('11BroadcastSecondaryResetLink')********";
                  false,
                  false,
                  false,
-                 LinkBroadcastAddress_ShallConfirm,
+                 1,////LinkBroadcastAddress_ShallConfirm,
                  1024,
                  &temp2);//// = ser4cpp::rseq_t::empty());
 

@@ -828,15 +828,15 @@ IINField LoadValues_for_TimeAndInterval_in_MeasurementHandler(MeasurementHandler
 }
 //--------------------------------TimeAndInterval----------------------------
 //--------------------------------Binary----------------------------
-Indexed_for_Binary transform_Indexed_for_Binary_in_MeasurementHandler(Indexed_for_Binary *input);
-Indexed_for_Binary transform_Indexed_for_Binary_in_MeasurementHandler(Indexed_for_Binary *input)
+Indexed_for_Binary transform_Indexed_for_Binary_in_MeasurementHandler(Indexed_for_Binary input);
+Indexed_for_Binary transform_Indexed_for_Binary_in_MeasurementHandler(Indexed_for_Binary input)
 {
 #ifdef  LOG_INFO
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{transform_Indexed_for_Binary_in_MeasurementHandler1"<<'\n';
-  inspect_Indexed_for_Binary(input);
+  inspect_Indexed_for_Binary(&input);
 #endif
   DNPTime* cto = (DNPTime*)pPointerGlobal1_in_MeasurementHandler;
 
@@ -850,10 +850,10 @@ Indexed_for_Binary transform_Indexed_for_Binary_in_MeasurementHandler(Indexed_fo
 ////        copy.value.time = DNPTime(input.value.time.value + cto.value, cto.quality);
 ////        return copy;
 ////    };
-  Indexed_for_Binary copy = *input;
+  Indexed_for_Binary copy = input;
 ////        copy.value.time = DNPTime(input.value.time.value + cto.value, cto.quality);
   DNPTime dDNPTime;
-  DNPTime_in_DNPTimeOver3(&dDNPTime, input->value.tTypedMeasurement_for_Boolean.mMeasurement.timeDNPTime.value + cto->value, cto->quality);
+  DNPTime_in_DNPTimeOver3(&dDNPTime, input.value.tTypedMeasurement_for_Boolean.mMeasurement.timeDNPTime.value + cto->value, cto->quality);
   copy.value.tTypedMeasurement_for_Boolean.mMeasurement.timeDNPTime = dDNPTime;
 
 #ifdef  LOG_INFO
@@ -923,8 +923,8 @@ IINField ProcessWithCTO_for_Binary_in_MeasurementHandler(MeasurementHandler *pMe
 }
 //--------------------------------Binary----------------------------
 //--------------------------------DoubleBitBinary----------------------------
-Indexed_for_DoubleBitBinary transform_Indexed_for_DoubleBitBinary_in_MeasurementHandler(Indexed_for_DoubleBitBinary *input);
-Indexed_for_DoubleBitBinary transform_Indexed_for_DoubleBitBinary_in_MeasurementHandler(Indexed_for_DoubleBitBinary *input)
+Indexed_for_DoubleBitBinary transform_Indexed_for_DoubleBitBinary_in_MeasurementHandler(Indexed_for_DoubleBitBinary input);
+Indexed_for_DoubleBitBinary transform_Indexed_for_DoubleBitBinary_in_MeasurementHandler(Indexed_for_DoubleBitBinary input)
 {
   DNPTime* cto = (DNPTime*)pPointerGlobal1_in_MeasurementHandler;
 ////    auto transform = [cto](const Indexed<T>& input) -> Indexed<T> {
@@ -932,10 +932,10 @@ Indexed_for_DoubleBitBinary transform_Indexed_for_DoubleBitBinary_in_Measurement
 ////        copy.value.time = DNPTime(input.value.time.value + cto.value, cto.quality);
 ////        return copy;
 ////    };
-  Indexed_for_DoubleBitBinary copy = *input;
+  Indexed_for_DoubleBitBinary copy = input;
 ////        copy.value.time = DNPTime(input.value.time.value + cto.value, cto.quality);
   DNPTime dDNPTime;
-  DNPTime_in_DNPTimeOver3(&dDNPTime, input->value.tTypedMeasurement_for_DoubleBit_uint8_t.mMeasurement.timeDNPTime.value + cto->value, cto->quality);
+  DNPTime_in_DNPTimeOver3(&dDNPTime, input.value.tTypedMeasurement_for_DoubleBit_uint8_t.mMeasurement.timeDNPTime.value + cto->value, cto->quality);
   copy.value.tTypedMeasurement_for_DoubleBit_uint8_t.mMeasurement.timeDNPTime = dDNPTime;
   return copy;
 }

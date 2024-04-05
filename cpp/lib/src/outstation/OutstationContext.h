@@ -255,6 +255,7 @@ typedef struct
 ////    ser4cpp::Settable<LinkBroadcastAddress> lastBroadcastMessageReceived;
   Settable_for_LinkBroadcastAddress lastBroadcastMessageReceived_in_OContext;
 
+  boolean unexpectedConfirm;
 } OContext;
 
 void OContext_in_OContext(OContext *pOContext,

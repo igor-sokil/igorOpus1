@@ -42,6 +42,8 @@ typedef struct
   /**
    * If true, the the link-layer will respond to any source address
    * user data frames will be passed up to transport reassembly for these frames
+* Если true, канальный уровень будет отвечать на любой исходный адрес.
+    * кадры пользовательских данных будут переданы для повторной сборки транспорта для этих кадров
    */
   boolean respondToAnySource;
 } LinkLayerConfig;

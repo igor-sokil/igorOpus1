@@ -67,8 +67,8 @@ typedef struct
 ////    std::shared_ptr<MockLinkListener> listener;
 ////    std::shared_ptr<MockTransportLayer> upper;
   MockExecutor exe;
-  MockLinkListener listener;
-  MockTransportLayer upper;
+  MockLinkListener listener_in_LinkLayerTest;
+  MockTransportLayer upper_in_LinkLayerTest;
 
   LinkLayer link;
 
@@ -79,7 +79,7 @@ typedef struct
   uint32_t numTotalWrites;
 
 ////    std::deque<std::string> writeQueue;
-  std::deque<std::string> writeQueue;
+  std::deque<std::string> writeQueue_in_LinkLayerTest;
 } LinkLayerTest;
 
 void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerConfig* config);

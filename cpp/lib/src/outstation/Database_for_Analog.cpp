@@ -102,8 +102,8 @@ boolean Update_for_Analog_in_Database(Database *pDatabase, Analog* meas, uint16_
   return update_in_StaticDataMap_for_AnalogSpecOver1(&(pDatabase->analog_input), meas, index, mode, pDatabase->event_receiver);
 }
 
-void select_for_AnalogSpec_in_DatabaseOver1(uint16_t *index);
-void select_for_AnalogSpec_in_DatabaseOver1(uint16_t *index)
+void select_for_AnalogSpec_in_DatabaseOver1(uint16_t index);
+void select_for_AnalogSpec_in_DatabaseOver1(uint16_t index)
 {
   StaticDataMap_for_AnalogSpec* map = (StaticDataMap_for_AnalogSpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -112,7 +112,7 @@ void select_for_AnalogSpec_in_DatabaseOver1(uint16_t *index)
 //boolean select_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, uint16_t index, StaticAnalogVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_AnalogSpecOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, uint16_t index);
 ////        if (!map.select(index, variation))
-  if (!select_in_StaticDataMap_for_AnalogSpecOver2(map, *index, *variation))
+  if (!select_in_StaticDataMap_for_AnalogSpecOver2(map, index, *variation))
   {
     *missing_index = true;
   }
@@ -150,8 +150,8 @@ IINField select_indices_for_AnalogSpec_in_Database_staticOver1(StaticDataMap_for
   return missing_index ? iIINField : Empty_in_IINField_static();
 }
 
-void select_for_AnalogSpec_in_DatabaseOver2(uint16_t *index);
-void select_for_AnalogSpec_in_DatabaseOver2(uint16_t *index)
+void select_for_AnalogSpec_in_DatabaseOver2(uint16_t index);
+void select_for_AnalogSpec_in_DatabaseOver2(uint16_t index)
 {
   StaticDataMap_for_AnalogSpec* map = (StaticDataMap_for_AnalogSpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -159,7 +159,7 @@ void select_for_AnalogSpec_in_DatabaseOver2(uint16_t *index)
 //boolean select_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, uint16_t index, StaticAnalogVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_AnalogSpecOver3(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, uint16_t index);
 ////        if (!map.select(index))
-  if (!select_in_StaticDataMap_for_AnalogSpecOver3(map, *index))
+  if (!select_in_StaticDataMap_for_AnalogSpecOver3(map, index))
   {
     *missing_index = true;
   }

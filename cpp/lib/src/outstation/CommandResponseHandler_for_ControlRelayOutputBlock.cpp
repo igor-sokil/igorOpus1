@@ -143,8 +143,8 @@ IINField  RespondToHeader_for_ControlRelayOutputBlock_UInt16_in_CommandResponseH
   }
 }
 
-void process_for_UInt16_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed_for_ControlRelayOutputBlock* pair);
-void process_for_UInt16_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed_for_ControlRelayOutputBlock* pair)
+void process_for_UInt16_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed_for_ControlRelayOutputBlock pair);
+void process_for_UInt16_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed_for_ControlRelayOutputBlock pair)
 {
   CommandResponseHandler* pCommandResponseHandler = (CommandResponseHandler*)pPointerGlobal1;//CommandResponseHandler*
   PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock * pIterator =
@@ -153,14 +153,14 @@ void process_for_UInt16_ControlRelayOutputBlock_in_CommandResponseHandler(Indexe
 
 ////        Target response(pair.value);
   ControlRelayOutputBlock response;
-  response = pair->value;
+  response = pair.value;
 
 // CommandStatus_uint8_t ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
 //                               ControlRelayOutputBlock* command, uint16_t index)
 //    CommandStatus_uint8_t status;
 ////        response.status = this->ProcessCommand(pair.value, pair.index);
   response.status = ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler(pCommandResponseHandler,
-                    &(pair->value), pair->index);
+                    &(pair.value), pair.index);
 
 
   switch (response.status)
@@ -183,7 +183,7 @@ void process_for_UInt16_ControlRelayOutputBlock_in_CommandResponseHandler(Indexe
 //                                                                  ControlRelayOutputBlock* value, uint16_t index);
 ////            pIterator->Write(response, static_cast<typename IndexType::type_t>(pair.index));
     Write_in_PrefixedWriteIterator_for_UInt16_ControlRelayOutputBlock(pIterator,
-        &response, pair->index);
+        &response, pair.index);
   }
 }
 
@@ -288,8 +288,8 @@ IINField  RespondToHeader_for_ControlRelayOutputBlock_UInt8_in_CommandResponseHa
   }
 }
 
-void process_for_UInt8_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed_for_ControlRelayOutputBlock* pair);
-void process_for_UInt8_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed_for_ControlRelayOutputBlock* pair)
+void process_for_UInt8_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed_for_ControlRelayOutputBlock pair);
+void process_for_UInt8_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed_for_ControlRelayOutputBlock pair)
 {
 #ifdef  LOG_INFO
   std::cout<<'\n';
@@ -305,14 +305,14 @@ void process_for_UInt8_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed
 
 ////        Target response(pair.value);
   ControlRelayOutputBlock response;
-  response = pair->value;
+  response = pair.value;
 
 // CommandStatus_uint8_t ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler(CommandResponseHandler *pCommandResponseHandler,
 //                               ControlRelayOutputBlock* command, uint16_t index)
 //    CommandStatus_uint8_t status;
 ////        response.status = this->ProcessCommand(pair.value, pair.index);
   response.status = ProcessCommand_for_ControlRelayOutputBlock_in_CommandResponseHandler(pCommandResponseHandler,
-                    &(pair->value), pair->index);
+                    &(pair.value), pair.index);
 
 #ifdef  LOG_INFO
 //  response.status = CommandStatus_NOT_SUPPORTED;
@@ -340,7 +340,7 @@ void process_for_UInt8_ControlRelayOutputBlock_in_CommandResponseHandler(Indexed
 //                                                                  ControlRelayOutputBlock* value, uint16_t index);
 ////            pIterator->Write(response, static_cast<typename IndexType::type_t>(pair.index));
     Write_in_PrefixedWriteIterator_for_UInt8_ControlRelayOutputBlock(pIterator,
-        &response, pair->index);
+        &response, pair.index);
   }
 #ifdef  LOG_INFO
   decrement_stack_info();

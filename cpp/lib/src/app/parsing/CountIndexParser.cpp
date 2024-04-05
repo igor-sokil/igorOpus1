@@ -78,19 +78,19 @@ ParseResult_uint8_t ParseHeader_in_CountIndexParser_static(
 ////                            GroupVariationSpec::to_human_string(record.enumeration),
 ////                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), count);
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-      std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), '%03u,%03u %s, %s [%u, %u]', record.group, record.variation,*"<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-      std::cout<<"*record.group= "<<(uint16_t)record->gGroupVariationRecord.group<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-      std::cout<<"*record.variation= "<<(uint16_t)record->gGroupVariationRecord.variation<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-      std::cout<<"*record.enumeration= "<<(uint16_t)record->gGroupVariationRecord.enumeration<<'\n';
-  std::cout<<"*"<<getString_stack_info();
-      std::cout<<"*record.GetQualifierCode()= "<<(uint16_t)GetQualifierCode_in_HeaderRecord(record)<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, settings.LoggingLevel(), '%03u,%03u %s, %s [%u, %u]', record.group, record.variation,*"<<std::endl;
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*record.group= "<<(uint16_t)record->gGroupVariationRecord.group<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*record.variation= "<<(uint16_t)record->gGroupVariationRecord.variation<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*record.enumeration= "<<(uint16_t)record->gGroupVariationRecord.enumeration<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*record.GetQualifierCode()= "<<(uint16_t)GetQualifierCode_in_HeaderRecord(record)<<'\n';
 //    std::cout<<"*range.start= "<<(uint16_t)range.start<<'\n';
 //    std::cout<<"*range.stop= "<<(uint16_t)range.stop<<'\n';
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 
     if (expectsContents)//_in_CountIndexParser)
@@ -113,19 +113,19 @@ ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexPar
 ////Logger* pLogger) const
 {
 #ifdef  LOG_INFO
-   std::cout<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-   std::cout<<"Process_in_CountIndexParser1"<<std::endl;
+  std::cout<<"Process_in_CountIndexParser1"<<std::endl;
 #endif
 ////    if (buffer.length() < requiredSize)
   if (length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)) < pCountIndexParser->requiredSize)
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified objects");
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified objects')***"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified objects')***"<<std::endl;
+    decrement_stack_info();
 #endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
   }
@@ -158,7 +158,7 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
   IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-   std::cout<<std::endl;
+  std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"ParseCountOfObjects_in_CountIndexParser_static1"<<std::endl;
@@ -168,12 +168,12 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
 
   switch (record->gGroupVariationRecord.enumeration)
   {
-  case (GroupVariation_Group2Var1):
+  case (GroupVariation_Group2Var1)://Binary Input Event
   {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group2Var1"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group2Var1"<<std::endl;
+    decrement_stack_info();
 #endif
 //CountIndexParser From_for_Group2Var1_in_CountIndexParser_static(uint16_t count, NumParser* numparser);
 //ParseResult_uint8_t Process_in_CountIndexParser(CountIndexParser *pCountIndexParser,
@@ -186,439 +186,439 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
   }
 
   case (GroupVariation_Group2Var2):
-{
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group2Var2"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group2Var2"<<std::endl;
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group2Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group2Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group2Var3):
-{
+  case (GroupVariation_Group2Var3):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group2Var3"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group2Var3"<<std::endl;
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group2Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group2Var3_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group4Var1):
-    {
+  case (GroupVariation_Group4Var1)://Double-bit Binary Input Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group4Var1"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group4Var1"<<std::endl;
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group4Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group4Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-    }
+  }
 
-    case (GroupVariation_Group4Var2):
-{
+  case (GroupVariation_Group4Var2):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group4Var2"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group4Var2"<<std::endl;
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group4Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group4Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group4Var3):
-    {
+  case (GroupVariation_Group4Var3):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group4Var3"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group4Var3"<<std::endl;
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group4Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group4Var3_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-    }
+  }
 
-    case (GroupVariation_Group11Var1):
-{
+  case (GroupVariation_Group11Var1)://Binary Output Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group11Var1"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group11Var1"<<std::endl;
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group11Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group11Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group11Var2):
-{
+  case (GroupVariation_Group11Var2):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group11Var2"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group11Var2"<<std::endl;
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group11Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group11Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group12Var1):
-{
+  case (GroupVariation_Group12Var1)://ControlRelayOutputBlock
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group12Var1"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group12Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group12Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-   case (GroupVariation_Group13Var1):
-{
+  case (GroupVariation_Group13Var1)://Binary Command Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group13Var1"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group13Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group13Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
-   case (GroupVariation_Group13Var2):
-{
+  }
+  case (GroupVariation_Group13Var2):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group13Var2"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group13Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group13Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-   case (GroupVariation_Group22Var1):
-{
+  case (GroupVariation_Group22Var1)://Counter Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group22Var1"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group22Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group22Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group22Var2):
-{
+  case (GroupVariation_Group22Var2):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group22Var2"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group22Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group22Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group22Var5):
-{
+  case (GroupVariation_Group22Var5):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group22Var5"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group22Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group22Var5_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-   case (GroupVariation_Group22Var6):
-{
+  case (GroupVariation_Group22Var6):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group22Var6"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group22Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group22Var6_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group23Var1):
-{
+  case (GroupVariation_Group23Var1)://Frozen Counter Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group23Var1"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group23Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group23Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group23Var2):
-{
+  case (GroupVariation_Group23Var2):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group23Var2"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group23Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group23Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group23Var5):
-{
+  case (GroupVariation_Group23Var5):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group23Var5"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group23Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group23Var5_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group23Var6):
-{
+  case (GroupVariation_Group23Var6):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group23Var6"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group23Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group23Var6_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group32Var1):
-{
+  case (GroupVariation_Group32Var1)://Analog Input Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group32Var1"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group32Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group32Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group32Var2):
-{
+  case (GroupVariation_Group32Var2):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group32Var2"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group32Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group32Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group32Var3):
-{
+  case (GroupVariation_Group32Var3):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group32Var3"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group32Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group32Var3_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group32Var4):
-{
+  case (GroupVariation_Group32Var4):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group32Var4"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group32Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group32Var4_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group32Var5):
-{
+  case (GroupVariation_Group32Var5):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group32Var5"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group32Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group32Var5_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
 ////    case (GroupVariation::Group32Var6):
 ////        return CountIndexParser::From<Group32Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
-    case (GroupVariation_Group32Var7):
-{
+  case (GroupVariation_Group32Var7):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group32Var7"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group32Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group32Var7_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
 ////    case (GroupVariation::Group32Var8):
 ////        return CountIndexParser::From<Group32Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation_Group41Var1):
-{
+  case (GroupVariation_Group41Var1)://Analog Output
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group41Var1"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group41Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group41Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group41Var2):
-{
+  case (GroupVariation_Group41Var2):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group41Var2"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group41Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group41Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group41Var3):
-{
+  case (GroupVariation_Group41Var3):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group41Var3"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group41Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group41Var3_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
 ////    case (GroupVariation::Group41Var4):
 ////        return CountIndexParser::From<Group41Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation_Group42Var1):
-{
+  case (GroupVariation_Group42Var1)://Analog Output Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group42Var1"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group42Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group42Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group42Var2):
-{
+  case (GroupVariation_Group42Var2):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group42Var2"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group42Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group42Var2_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group42Var3):
-{
+  case (GroupVariation_Group42Var3):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group42Var3"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group42Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group42Var3_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group42Var4):
-{
+  case (GroupVariation_Group42Var4):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group42Var4"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group42Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group42Var4_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
-    case (GroupVariation_Group42Var5):
-{
+  case (GroupVariation_Group42Var5):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group42Var5"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group42Var5>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group42Var5_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
 ////    case (GroupVariation::Group42Var6):
 ////        return CountIndexParser::From<Group42Var6>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
-   case (GroupVariation_Group42Var7):
-{
+  case (GroupVariation_Group42Var7):
+  {
 #ifdef  LOG_INFO
-  std::cout<<"@@@@"<<getString_stack_info();
+    std::cout<<"@@@@"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group42Var7"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group42Var7>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group42Var7_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
 ////    case (GroupVariation::Group42Var8):
 ////        return CountIndexParser::From<Group42Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation_Group43Var1):
-{
+  case (GroupVariation_Group43Var1)://Analog Command Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group43Var1"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group43Var1>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group43Var1_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
 ////    case (GroupVariation::Group43Var2):
 ////        return CountIndexParser::From<Group43Var2>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation_Group43Var3):
-{
+  case (GroupVariation_Group43Var3):
+  {
 #ifdef  LOG_INFO
     std::cout<<"*"<<"*GroupVariation_Group43Var3"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group43Var3>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group43Var3_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
+  }
 
 ////    case (GroupVariation::Group43Var4):
 ////        return CountIndexParser::From<Group43Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
@@ -631,23 +631,24 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
 ////    case (GroupVariation::Group43Var8):
 ////        return CountIndexParser::From<Group43Var8>(count, numparser).Process(record, buffer, pHandler, pLogger);
 
-    case (GroupVariation_Group50Var4):
-{
+  case (GroupVariation_Group50Var4)://Time and Date - Indexed absolute time and long interval
+  {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group50Var4"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group50Var4"<<std::endl;
+    decrement_stack_info();
 #endif
 ////        return CountIndexParser::From<Group50Var4>(count, numparser).Process(record, buffer, pHandler, pLogger);
     CountIndexParser temp = From_for_Group50Var4_in_CountIndexParser_static(count, numparser);
     return Process_in_CountIndexParser(&temp, record, buffer, pHandler);
-}
-    case (GroupVariation_Group111Var0):
-    {
+  }
+
+  case (GroupVariation_Group111Var0)://Octet String Event
+  {
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-     std::cout<<"*GroupVariation_Group111Var0"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group111Var0"<<std::endl;
+    decrement_stack_info();
 #endif
 //ParseResult_uint8_t ParseIndexPrefixedOctetData_in_CountIndexParser_static(
 //  RSeq_for_Uint16_t *buffer,
@@ -657,8 +658,8 @@ ParseResult_uint8_t ParseCountOfObjects_in_CountIndexParser_static(
 //                                                   Logger* pLogger,
 //  IAPDUHandler* pHandler)
 ////        return ParseIndexPrefixedOctetData(buffer, record, numparser, count, pLogger, pHandler);
-return ParseIndexPrefixedOctetData_in_CountIndexParser_static(buffer, record, numparser, count, pHandler);
-   }
+    return ParseIndexPrefixedOctetData_in_CountIndexParser_static(buffer, record, numparser, count, pHandler);
+  }
 
   default:
 
@@ -666,9 +667,9 @@ return ParseIndexPrefixedOctetData_in_CountIndexParser_static(buffer, record, nu
 ////                            QualifierCodeSpec::to_human_string(record.GetQualifierCode()), record.group,
 ////                            record.variation);
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-     std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Unsupported qualifier/object - %s - %i / %i'"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'Unsupported qualifier/object - %s - %i / %i'"<<std::endl;
+    decrement_stack_info();
 #endif
 
     return ParseResult_INVALID_OBJECT_QUALIFIER;
@@ -711,9 +712,9 @@ ParseResult_uint8_t ParseCountOfIndices_in_CountIndexParser_static(
   {
 ////        SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified sequence of indices");
 #ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified sequence of indices')"<<std::endl;
-  decrement_stack_info();
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified sequence of indices')"<<std::endl;
+    decrement_stack_info();
 #endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
   }
@@ -755,7 +756,7 @@ Indexed_for_OctetString read_for_OctetString_in_CountIndexParser(RSeq_for_Uint16
 ////    auto read = [&numparser, record](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<OctetString> {
 Indexed_for_OctetString read_for_OctetString_in_CountIndexParser(RSeq_for_Uint16_t *buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numParser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
   HeaderRecord *record = (HeaderRecord *)pPointerGlobal2_in_ParseCountOfIndices;
@@ -797,10 +798,10 @@ ParseResult_uint8_t ParseIndexPrefixedOctetData_in_CountIndexParser_static(
   {
 ////    SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Octet string variation 0 may only be used in requests");
 #ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<"*"<<getString_stack_info();
+    increment_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Octet string variation 0 may only be used in requests')"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
     return ParseResult_INVALID_OBJECT;
   }
@@ -813,10 +814,10 @@ ParseResult_uint8_t ParseIndexPrefixedOctetData_in_CountIndexParser_static(
   {
 ////    SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, "Not enough data for specified bitfield objects");
 #ifdef  LOG_INFO
-  increment_stack_info();
-  std::cout<<"*"<<getString_stack_info();
+    increment_stack_info();
+    std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified bitfield objects')"<<std::endl;
-  decrement_stack_info();
+    decrement_stack_info();
 #endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
   }
@@ -876,7 +877,7 @@ CountIndexParser From_for_Group2Var1_in_CountIndexParser_static(uint16_t count, 
 Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var1_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var1_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
@@ -947,7 +948,7 @@ CountIndexParser From_for_Group2Var2_in_CountIndexParser_static(uint16_t count, 
 Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var2_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var2_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
@@ -1018,7 +1019,7 @@ CountIndexParser From_for_Group2Var3_in_CountIndexParser_static(uint16_t count, 
 Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var3_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Binary readInvokeCountOf_for_Binary_Group2Var3_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
 ////        Indexed<typename Descriptor::Target> pair;
@@ -1359,7 +1360,7 @@ CountIndexParser From_for_Group4Var1_in_CountIndexParser_static(uint16_t count, 
 Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var1_for_DoubleBitBinary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var1_for_DoubleBitBinary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -1431,7 +1432,7 @@ CountIndexParser From_for_Group4Var2_in_CountIndexParser_static(uint16_t count, 
 Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var2_for_DoubleBitBinary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var2_for_DoubleBitBinary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -1503,7 +1504,7 @@ CountIndexParser From_for_Group4Var3_in_CountIndexParser_static(uint16_t count, 
 Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var3_for_DoubleBitBinary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_DoubleBitBinary readInvokeCountOf_Group4Var3_for_DoubleBitBinary_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -1575,7 +1576,7 @@ CountIndexParser From_for_Group13Var1_in_CountIndexParser_static(uint16_t count,
 Indexed_for_BinaryCommandEvent readInvokeCountOf_Group13Var1_for_BinaryCommandEvent_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_BinaryCommandEvent readInvokeCountOf_Group13Var1_for_BinaryCommandEvent_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -1647,7 +1648,7 @@ CountIndexParser From_for_Group13Var2_in_CountIndexParser_static(uint16_t count,
 Indexed_for_BinaryCommandEvent readInvokeCountOf_Group13Var2_for_BinaryCommandEvent_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_BinaryCommandEvent readInvokeCountOf_Group13Var2_for_BinaryCommandEvent_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -1719,7 +1720,7 @@ CountIndexParser From_for_Group43Var1_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogCommandEvent readInvokeCountOf_Group43Var1_for_AnalogCommandEvent_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogCommandEvent readInvokeCountOf_Group43Var1_for_AnalogCommandEvent_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -1791,7 +1792,7 @@ CountIndexParser From_for_Group43Var3_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogCommandEvent readInvokeCountOf_Group43Var3_for_AnalogCommandEvent_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogCommandEvent readInvokeCountOf_Group43Var3_for_AnalogCommandEvent_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -1863,7 +1864,7 @@ CountIndexParser From_for_Group50Var4_in_CountIndexParser_static(uint16_t count,
 Indexed_for_TimeAndInterval readInvokeCountOf_Group50Var4_for_TimeAndInterval_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_TimeAndInterval readInvokeCountOf_Group50Var4_for_TimeAndInterval_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -1935,7 +1936,7 @@ CountIndexParser From_for_Group22Var1_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Counter readInvokeCountOf_Group22Var1_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Counter readInvokeCountOf_Group22Var1_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2007,7 +2008,7 @@ CountIndexParser From_for_Group22Var2_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Counter readInvokeCountOf_Group22Var2_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Counter readInvokeCountOf_Group22Var2_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2079,7 +2080,7 @@ CountIndexParser From_for_Group22Var5_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Counter readInvokeCountOf_Group22Var5_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Counter readInvokeCountOf_Group22Var5_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2151,7 +2152,7 @@ CountIndexParser From_for_Group22Var6_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Counter readInvokeCountOf_Group22Var6_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Counter readInvokeCountOf_Group22Var6_for_Counter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2223,7 +2224,7 @@ CountIndexParser From_for_Group23Var1_in_CountIndexParser_static(uint16_t count,
 Indexed_for_FrozenCounter readInvokeCountOf_Group23Var1_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_FrozenCounter readInvokeCountOf_Group23Var1_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2295,7 +2296,7 @@ CountIndexParser From_for_Group23Var2_in_CountIndexParser_static(uint16_t count,
 Indexed_for_FrozenCounter readInvokeCountOf_Group23Var2_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_FrozenCounter readInvokeCountOf_Group23Var2_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2367,7 +2368,7 @@ CountIndexParser From_for_Group23Var5_in_CountIndexParser_static(uint16_t count,
 Indexed_for_FrozenCounter readInvokeCountOf_Group23Var5_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_FrozenCounter readInvokeCountOf_Group23Var5_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2439,7 +2440,7 @@ CountIndexParser From_for_Group23Var6_in_CountIndexParser_static(uint16_t count,
 Indexed_for_FrozenCounter readInvokeCountOf_Group23Var6_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_FrozenCounter readInvokeCountOf_Group23Var6_for_FrozenCounter_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2511,7 +2512,7 @@ CountIndexParser From_for_Group32Var1_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Analog readInvokeCountOf_Group32Var1_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Analog readInvokeCountOf_Group32Var1_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2583,7 +2584,7 @@ CountIndexParser From_for_Group32Var2_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Analog readInvokeCountOf_Group32Var2_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Analog readInvokeCountOf_Group32Var2_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2655,7 +2656,7 @@ CountIndexParser From_for_Group32Var3_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Analog readInvokeCountOf_Group32Var3_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Analog readInvokeCountOf_Group32Var3_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2727,7 +2728,7 @@ CountIndexParser From_for_Group32Var4_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Analog readInvokeCountOf_Group32Var4_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Analog readInvokeCountOf_Group32Var4_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2799,7 +2800,7 @@ CountIndexParser From_for_Group32Var5_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Analog readInvokeCountOf_Group32Var5_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Analog readInvokeCountOf_Group32Var5_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2871,7 +2872,7 @@ CountIndexParser From_for_Group32Var7_in_CountIndexParser_static(uint16_t count,
 Indexed_for_Analog readInvokeCountOf_Group32Var7_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_Analog readInvokeCountOf_Group32Var7_for_Analog_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -2943,7 +2944,7 @@ CountIndexParser From_for_Group41Var1_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputInt32 readInvokeCountOf_Group41Var1_for_AnalogOutputInt32_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputInt32 readInvokeCountOf_Group41Var1_for_AnalogOutputInt32_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -3015,7 +3016,7 @@ CountIndexParser From_for_Group41Var2_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputInt16 readInvokeCountOf_Group41Var2_for_AnalogOutputInt16_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputInt16 readInvokeCountOf_Group41Var2_for_AnalogOutputInt16_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -3087,7 +3088,7 @@ CountIndexParser From_for_Group41Var3_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputFloat32 readInvokeCountOf_Group41Var3_for_AnalogOutputFloat32_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputFloat32 readInvokeCountOf_Group41Var3_for_AnalogOutputFloat32_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -3159,7 +3160,7 @@ CountIndexParser From_for_Group42Var1_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var1_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var1_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -3231,7 +3232,7 @@ CountIndexParser From_for_Group42Var2_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var2_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var2_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -3303,7 +3304,7 @@ CountIndexParser From_for_Group42Var3_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var3_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var3_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -3375,7 +3376,7 @@ CountIndexParser From_for_Group42Var4_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var4_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var4_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -3447,7 +3448,7 @@ CountIndexParser From_for_Group42Var5_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var5_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var5_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 
@@ -3519,7 +3520,7 @@ CountIndexParser From_for_Group42Var7_in_CountIndexParser_static(uint16_t count,
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var7_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_AnalogOutputStatus readInvokeCountOf_Group42Var7_for_AnalogOutputStatus_in_CountIndexParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
-UNUSED(pos);
+  UNUSED(pos);
 
   NumParser *numparser = (NumParser *)pPointerGlobal1_in_ParseCountOfIndices;
 

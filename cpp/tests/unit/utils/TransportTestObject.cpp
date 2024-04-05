@@ -40,6 +40,10 @@
 ////    : transport(log.logger, maxRxFragmentSize)
 void TransportTestObject_in_TransportTestObject(TransportTestObject *pTransportTestObject, boolean openOnStart,/* = false,*/ uint32_t maxRxFragmentSize)// = opendnp3::DEFAULT_MAX_APDU_SIZE);
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{TransportTestObject_in_TransportTestObject1"<<'\n';
+#endif
   MockExecutor_in_MockExecutor(&(pTransportTestObject->exe));
   MockLinkLayer_in_MockLinkLayer(&(pTransportTestObject->link));
   MockUpperLayer_in_MockUpperLayer(&(pTransportTestObject->upper));
@@ -68,6 +72,10 @@ void TransportTestObject_in_TransportTestObject(TransportTestObject *pTransportT
 ////        transport.OnLowerLayerUp();
     OnLowerLayerUp_in_TransportLayer(&(pTransportTestObject->transport));
   }
+
+#ifdef  LOG_INFO
+  std::cout<<"}TransportTestObject_in_TransportTestObject_"<<'\n';
+#endif
 }
 
 ////std::string TransportTestObject::GetData(const std::string& arHdr, uint8_t aSeed, uint32_t aLength)

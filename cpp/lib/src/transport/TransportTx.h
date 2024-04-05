@@ -71,6 +71,7 @@ typedef struct
   Settable_for_RSeq_t  txSegment;
 
   // Static buffer where we store tpdus that are being transmitted
+// Статический буфер, в котором мы храним передаваемые tpdus
   ////ser4cpp::StaticBuffer<MAX_TPDU_LENGTH> tpduBuffer;
   StaticBuffer_for_MAX_TPDU_LENGTH  tpduBuffer;
 

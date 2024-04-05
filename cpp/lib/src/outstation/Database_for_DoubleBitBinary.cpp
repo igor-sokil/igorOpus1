@@ -97,8 +97,8 @@ boolean Update_for_DoubleBitBinary_in_Database(Database *pDatabase, DoubleBitBin
   return update_in_StaticDataMap_for_DoubleBitBinarySpecOver1(&(pDatabase->double_binary), meas, index, mode, pDatabase->event_receiver);
 }
 
-void select_for_DoubleBitBinarySpec_in_DatabaseOver1(uint16_t *index);
-void select_for_DoubleBitBinarySpec_in_DatabaseOver1(uint16_t *index)
+void select_for_DoubleBitBinarySpec_in_DatabaseOver1(uint16_t index);
+void select_for_DoubleBitBinarySpec_in_DatabaseOver1(uint16_t index)
 {
   StaticDataMap_for_DoubleBitBinarySpec* map = (StaticDataMap_for_DoubleBitBinarySpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -107,7 +107,7 @@ void select_for_DoubleBitBinarySpec_in_DatabaseOver1(uint16_t *index)
 //boolean select_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, uint16_t index, StaticDoubleBitBinaryVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_DoubleBitBinarySpecOver3(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, uint16_t index);
 ////        if (!map.select(index, variation))
-  if (!select_in_StaticDataMap_for_DoubleBitBinarySpecOver2(map, *index, *variation))
+  if (!select_in_StaticDataMap_for_DoubleBitBinarySpecOver2(map, index, *variation))
   {
     *missing_index = true;
   }
@@ -145,8 +145,8 @@ IINField select_indices_for_DoubleBitBinarySpec_in_Database_staticOver1(StaticDa
   return missing_index ? iIINField : Empty_in_IINField_static();
 }
 
-void select_for_DoubleBitBinarySpec_in_DatabaseOver2(uint16_t *index);
-void select_for_DoubleBitBinarySpec_in_DatabaseOver2(uint16_t *index)
+void select_for_DoubleBitBinarySpec_in_DatabaseOver2(uint16_t index);
+void select_for_DoubleBitBinarySpec_in_DatabaseOver2(uint16_t index)
 {
   StaticDataMap_for_DoubleBitBinarySpec* map = (StaticDataMap_for_DoubleBitBinarySpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -154,7 +154,7 @@ void select_for_DoubleBitBinarySpec_in_DatabaseOver2(uint16_t *index)
 //boolean select_in_StaticDataMap_for_DoubleBitBinarySpecOver2(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, uint16_t index, StaticDoubleBitBinaryVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_DoubleBitBinarySpecOver3(StaticDataMap_for_DoubleBitBinarySpec *pStaticDataMap_for_DoubleBitBinarySpec, uint16_t index);
 ////        if (!map.select(index))
-  if (!select_in_StaticDataMap_for_DoubleBitBinarySpecOver3(map, *index))
+  if (!select_in_StaticDataMap_for_DoubleBitBinarySpecOver3(map, index))
   {
     *missing_index = true;
   }

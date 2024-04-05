@@ -6,7 +6,7 @@
 #include "IINField.h"
 #include "ClassField.h"
 #include "Indexed.h"
-//#include "WSeq.h"
+#include "LinkHeaderFields.h"
 //#include "Message.h"
 //#include "APDUHeaderParser.h"
 //#include "ParsedRequest.h"
@@ -21,6 +21,7 @@ void inspect_Analog(Analog *b);
 void inspect_Binary(Binary *b);
 void inspect_Counter(Counter *b);
 void inspect_FrozenCounter(FrozenCounter *b);
+void inspect_LinkHeaderFields(LinkHeaderFields *b);
 
 void inspect_RSeq(RSeq_for_Uint16_t *buffer);
 void inspect_IINField(IINField *b);

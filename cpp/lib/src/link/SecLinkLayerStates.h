@@ -48,8 +48,12 @@ typedef struct
   // every concrete state implements this for logging purposes
 
 ////    virtual char const* Name() const = 0;
+  uint16_t Name_in_SecStateBase;
+
   void* pParentPointer_in_SecStateBase;
 } SecStateBase;
+
+uint16_t getName_in_SecStateBase(void*);
 
 void SecStateBase_in_SecStateBase(SecStateBase *pSecStateBase);
 

@@ -58,6 +58,22 @@ qDebug()<<"********SUITE('2ApplicationIINBits')********";
 qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == 'C0 81 F0 20')";
 std::cout << "temp= " << temp;
 
+//    LowerLayerDown_in_OutstationTestObject(&t);
+
+//    LowerLayerUp_in_OutstationTestObject(&t);
+uint16_t l = OnTxReady_in_OutstationTestObject(&t);
+qDebug()<< "l= " << l;
+
+    t.application.appIIN.deviceTrouble = true;
+    t.application.appIIN.localControl = true;
+    t.application.appIIN.configCorrupt = true;
+    t.application.appIIN.needTime = true;
+    SendToOutstation_in_OutstationTestObject(&t, name);   // blank read
+
+    std::string temp2 = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+qDebug()<<"REQUIRE(t.lower->PopWriteAsHex() == 'C0 81 F0 20')";
+std::cout << "temp2= " << temp2;
+
 /*
 TEST_CASE(SUITE("2ApplicationIINBits"))
 {

@@ -50,8 +50,11 @@ void PriStateBase_in_PriStateBase(PriStateBase *pPriStateBase)
   pPriStateBase->pOnTimeout_in_PriStateBase = OnTimeout_in_PriStateBase_override;
 
   // transmission events to handle
+  // события передачи для обработки
   pPriStateBase->pTrySendUnconfirmed_in_PriStateBase = TrySendUnconfirmed_in_PriStateBase_override;
   pPriStateBase->pTrySendRequestLinkStatus_in_PriStateBase = TrySendRequestLinkStatus_in_PriStateBase_override;
+
+  pPriStateBase->Name_in_PriStateBase = PriStateBase_Base;
 
   setParentPointer_in_PriStateBase(pPriStateBase, pPriStateBase);
 }
@@ -210,6 +213,8 @@ void PLLS_Idle_in_PLLS_Idle(PriStateBase *pPriStateBase)
   pPriStateBase->pTrySendUnconfirmed_in_PriStateBase = TrySendUnconfirmed_in_PLLS_Idle_override;
   pPriStateBase->pTrySendRequestLinkStatus_in_PriStateBase = TrySendRequestLinkStatus_in_PLLS_Idle_override;
 
+  pPriStateBase->Name_in_PriStateBase = PriStateBase_PLLS_Idle;
+
   setParentPointer_in_PriStateBase(pPriStateBase, pPriStateBase);
 }
 
@@ -275,6 +280,8 @@ void PLLS_SendUnconfirmedTransmitWait_in_PLLS_SendUnconfirmedTransmitWait(PriSta
 
   pPriStateBase->pOnTxReady_in_PriStateBase = OnTxReady_in_PLLS_SendUnconfirmedTransmitWait_override;
 
+  pPriStateBase->Name_in_PriStateBase = PriStateBase_PLLS_SendUnconfirmedTransmitWait;
+
   setParentPointer_in_PriStateBase(pPriStateBase, pPriStateBase);
 }
 
@@ -285,23 +292,22 @@ void* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait_override(void *pPriStateBase
 }
 
 ////PriStateBase& PLLS_SendUnconfirmedTransmitWait::OnTxReady(LinkContext& ctx)
-PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriStateBase,
-    LinkContext* ctx)
+PriStateBase* OnTxReady_in_PLLS_SendUnconfirmedTransmitWait(PriStateBase *pPriStateBase, LinkContext* ctx)
 {
   UNUSED(pPriStateBase);
 //boolean Advance_in_ITransportSegment(ITransportSegment*);
 ////    if (ctx.pSegments->Advance())
 
-  if (Advance_in_ITransportSegment(ctx->pSegments))
+  if (Advance_in_ITransportSegment(ctx->pSegments_in_LinkContext))
   {
 //    ser4cpp::rseq_t FormatPrimaryBufferWithUnconfirmed(const Addresses& addr, const ser4cpp::rseq_t& tpdu);
 //RSeq_for_Uint16_t GetSegment_in_ITransportSegment(ITransportSegment*);
 ////        auto output
 ////            = ctx.FormatPrimaryBufferWithUnconfirmed(ctx.pSegments->GetAddresses(), ctx.pSegments->GetSegment());
-    RSeq_for_Uint16_t temp = GetSegment_in_ITransportSegment(ctx->pSegments);
+    RSeq_for_Uint16_t temp = GetSegment_in_ITransportSegment(ctx->pSegments_in_LinkContext);
     RSeq_for_Uint16_t output
       = FormatPrimaryBufferWithUnconfirmed_in_LinkContext(ctx, ////const Addresses& addr, const ser4cpp::rseq_t& tpdu);
-          GetAddresses_in_ITransportSegment(ctx->pSegments),
+          GetAddresses_in_ITransportSegment(ctx->pSegments_in_LinkContext),
           &temp);
 
 ////        ctx.QueueTransmit(output, true);
@@ -334,7 +340,9 @@ void PLLS_RequestLinkStatusWait_in_PLLS_RequestLinkStatusWait(PriStateBase *pPri
   pPriStateBase->pOnNotSupported_in_PriStateBase = OnNotSupported_in_PLLS_RequestLinkStatusWait_override;
   pPriStateBase->pOnTxReady_in_PriStateBase = OnTxReady_in_PLLS_RequestLinkStatusWait_override;
   pPriStateBase->pOnTimeout_in_PriStateBase = OnTimeout_in_PLLS_RequestLinkStatusWait_override;
-  pPriStateBase->pOnTimeout_in_PriStateBase = OnTimeout_in_PLLS_RequestLinkStatusWait_override;
+//  pPriStateBase->pOnTimeout_in_PriStateBase = OnTimeout_in_PLLS_RequestLinkStatusWait_override;
+
+  pPriStateBase->Name_in_PriStateBase = PriStateBase_PLLS_RequestLinkStatusWait;
 
   setParentPointer_in_PriStateBase(pPriStateBase, pPriStateBase);
 }
@@ -459,6 +467,11 @@ PriStateBase* OnTimeout_in_PLLS_RequestLinkStatusWait(PriStateBase *pPriStateBas
 ////    return PLLS_Idle::Instance();
   PLLS_Idle_in_PLLS_Idle(&instance_PriStateBase);//&(instance_in_PLLS_Idle.pPriStateBase));
   return &instance_PriStateBase;//&(instance_in_PLLS_Idle.pPriStateBase);
+}
+
+uint16_t getName_in_PriStateBase(void* pPriStateBase)
+{
+ return ((PriStateBase*) pPriStateBase)->Name_in_PriStateBase;
 }
 
 ////} // namespace opendnp3

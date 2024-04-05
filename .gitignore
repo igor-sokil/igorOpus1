@@ -17,6 +17,7 @@ moc*.h
 
 # ignore files from  folder settings/
 settings/
+applications/
 
 # ignore files from  folder Flash-Debug/
 Flash-Debug/

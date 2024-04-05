@@ -40,6 +40,16 @@
 ////TransportTx::TransportTx(const Logger& logger) : logger(logger) {}
 void TransportTx_in_TransportTx(TransportTx *pTransportTx)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{TransportTx_in_TransportTx1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticBuffer_for_MAX_TPDU_LENGTH  *tpduBuffer="<<(uint32_t)&(pTransportTx->tpduBuffer)<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*sizeof(tpduBuffer)="<<(uint32_t)sizeof(pTransportTx->tpduBuffer)<<'\n';
+#endif
   Settable_for_RSeq_t_in_Settable_for_RSeq_t(&(pTransportTx->txSegment));
   Tx_Transport_in_Tx_Transport(&(pTransportTx->statistics));
   SequenceNum_for_uint8_Modulus64_in_SequenceNum_for_uint8_Modulus64Over1(&(pTransportTx->sequence));
@@ -50,6 +60,11 @@ void TransportTx_in_TransportTx(TransportTx *pTransportTx)
   pTransportTx->iITransportSegment.pGetSegment_in_ITransportSegment = GetSegment_in_TransportTx_override;
   pTransportTx->iITransportSegment.pAdvance_in_ITransportSegment = Advance_in_TransportTx_override;
   setParentPointer_in_ITransportSegment(&(pTransportTx->iITransportSegment), pTransportTx);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}TransportTx_in_TransportTx_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////void TransportTx::Configure(const Message& message)
@@ -103,6 +118,11 @@ RSeq_for_Uint16_t GetSegment_in_TransportTx(TransportTx *pTransportTx)
 ////    if (txSegment.is_set())
   if (is_set_in_Settable_for_RSeq_t(&(pTransportTx->txSegment)))
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}GetSegment_in_TransportTx1_"<<'\n';
+  decrement_stack_info();
+#endif
 //RSeq_for_Uint16_t get_in_Settable_for_RSeq_t(Settable_for_RSeq_t *pSettable_for_RSeq_t);
 ///        return txSegment.get();
     return get_in_Settable_for_RSeq_t(&(pTransportTx->txSegment));
@@ -177,6 +197,11 @@ RSeq_for_Uint16_t GetSegment_in_TransportTx(TransportTx *pTransportTx)
 ////    auto segment = tpduBuffer.as_seq(numToSend + 1);
   RSeq_for_Uint16_t segment = as_seq_in_StaticBuffer_for_MAX_TPDU_LENGTHOver2(&(pTransportTx->tpduBuffer),
                               numToSend + 1);
+#ifdef  LOG_INFO
+  inspect_RSeq(&segment);
+  std::cout<<getString_stack_info();
+  std::cout<<"*GetSegment_in_TransportTx2"<<'\n';
+#endif
 
 //void set_in_Settable_for_RSeq_t(Settable_for_RSeq_t *pSettable_for_RSeq_t, RSeq_for_Uint16_t *value_);
 ////    txSegment.set(segment);
@@ -184,7 +209,7 @@ RSeq_for_Uint16_t GetSegment_in_TransportTx(TransportTx *pTransportTx)
 
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
-  std::cout<<"}GetSegment_in_TransportTx_"<<'\n';
+  std::cout<<"}GetSegment_in_TransportTx2_"<<'\n';
   decrement_stack_info();
 #endif
   return segment;

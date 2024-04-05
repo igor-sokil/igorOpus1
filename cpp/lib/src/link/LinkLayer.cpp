@@ -165,6 +165,13 @@ boolean OnTxReady_in_LinkLayer(LinkLayer *pLinkLayer)
 ////    auto ret = ctx->OnTxReady();
   boolean ret = OnTxReady_in_LinkContext(pLinkLayer->ctx);
 
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*OnTxReady_in_LinkLayer2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"boolean ret= "<<ret<<'\n';
+#endif
+
   if (ret)
   {
 ////        ctx->TryStartTransmission();

@@ -85,8 +85,8 @@ IINField select_all_StaticDataMap_for_FrozenCounterSpec_in_Database_staticOver2(
   return Empty_in_IINField_static();
 }
 
-void select_for_FrozenCounterSpec_in_DatabaseOver1(uint16_t *index);
-void select_for_FrozenCounterSpec_in_DatabaseOver1(uint16_t *index)
+void select_for_FrozenCounterSpec_in_DatabaseOver1(uint16_t index);
+void select_for_FrozenCounterSpec_in_DatabaseOver1(uint16_t index)
 {
   StaticDataMap_for_FrozenCounterSpec* map = (StaticDataMap_for_FrozenCounterSpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -95,7 +95,7 @@ void select_for_FrozenCounterSpec_in_DatabaseOver1(uint16_t *index)
 //boolean select_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, uint16_t index, StaticFrozenCounterVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_FrozenCounterSpecOver3(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, uint16_t index);
 ////        if (!map.select(index, variation))
-  if (!select_in_StaticDataMap_for_FrozenCounterSpecOver2(map, *index, *variation))
+  if (!select_in_StaticDataMap_for_FrozenCounterSpecOver2(map, index, *variation))
   {
     *missing_index = true;
   }
@@ -133,8 +133,8 @@ IINField select_indices_for_FrozenCounterSpec_in_Database_staticOver1(StaticData
   return missing_index ? iIINField : Empty_in_IINField_static();
 }
 
-void select_for_FrozenCounterSpec_in_DatabaseOver2(uint16_t *index);
-void select_for_FrozenCounterSpec_in_DatabaseOver2(uint16_t *index)
+void select_for_FrozenCounterSpec_in_DatabaseOver2(uint16_t index);
+void select_for_FrozenCounterSpec_in_DatabaseOver2(uint16_t index)
 {
   StaticDataMap_for_FrozenCounterSpec* map = (StaticDataMap_for_FrozenCounterSpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -142,7 +142,7 @@ void select_for_FrozenCounterSpec_in_DatabaseOver2(uint16_t *index)
 //boolean select_in_StaticDataMap_for_FrozenCounterSpecOver2(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, uint16_t index, StaticFrozenCounterVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_FrozenCounterSpecOver3(StaticDataMap_for_FrozenCounterSpec *pStaticDataMap_for_FrozenCounterSpec, uint16_t index);
 ////        if (!map.select(index))
-  if (!select_in_StaticDataMap_for_FrozenCounterSpecOver3(map, *index))
+  if (!select_in_StaticDataMap_for_FrozenCounterSpecOver3(map, index))
   {
     *missing_index = true;
   }

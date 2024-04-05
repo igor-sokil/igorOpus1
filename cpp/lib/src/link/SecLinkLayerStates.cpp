@@ -55,6 +55,8 @@ void SecStateBase_in_SecStateBase(SecStateBase *pSecStateBase)
 
   pSecStateBase->pOnTxReady_in_SecStateBase           = OnTxReady_in_SecStateBase_override;
 
+  pSecStateBase->Name_in_SecStateBase = SecStateBase_Base;
+
   setParentPointer_in_SecStateBase(pSecStateBase, pSecStateBase);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -455,6 +457,8 @@ void SLLS_Reset_in_SLLS_Reset(SecStateBase *pSecStateBase)
   pSecStateBase->pOnResetLinkStates_in_SecStateBase   = OnResetLinkStates_in_SLLS_Reset_override;
   pSecStateBase->pOnTxReady_in_SecStateBase           = OnTxReady_in_SLLS_Reset_override;
 
+  pSecStateBase->Name_in_SecStateBase = SecStateBase_SLLS_Reset;
+
   setParentPointer_in_SecStateBase(pSecStateBase, pSecStateBase);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -566,6 +570,8 @@ void SLLS_NotReset_in_SLLS_NotReset(SecStateBase *pSecStateBase)
   pSecStateBase->pOnResetLinkStates_in_SecStateBase   = OnResetLinkStates_in_SLLS_NotReset_override;
   pSecStateBase->pOnTxReady_in_SecStateBase           = OnTxReady_in_SLLS_NotReset_override;
 
+  pSecStateBase->Name_in_SecStateBase = SecStateBase_SLLS_NotReset;
+
   setParentPointer_in_SecStateBase(pSecStateBase, pSecStateBase);
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -653,3 +659,9 @@ void  setParentPointer_in_SecStateBase(SecStateBase* pSecStateBase, void* pParen
 {
   pSecStateBase->pParentPointer_in_SecStateBase = pParentPointer;
 }
+
+uint16_t getName_in_SecStateBase(void* pSecStateBase)
+{
+ return ((SecStateBase*) pSecStateBase)->Name_in_SecStateBase;
+}
+

@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+
 #include "log_info.h"
 #ifdef  LOG_INFO
 #include <iostream>
@@ -69,7 +69,7 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"ParseHeader_in_RangeParser_static1"<<std::endl;
+  std::cout<<"{ParseHeader_in_RangeParser_static1"<<std::endl;
   inspect_RSeq(buffer);
 #endif
 
@@ -88,6 +88,8 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
   if (res != ParseResult_OK)
   {
 #ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseHeader_in_RangeParser_static1_"<<std::endl;
     decrement_stack_info();
 #endif
     return res;
@@ -123,10 +125,13 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
 //                                          Logger* pLogger,
 //  IAPDUHandler* pHandler);
 ////    return ParseRangeOfObjects(buffer, record, range, pLogger, pHandler);
+    ParseResult_uint8_t tmp = ParseRangeOfObjects_in_RangeParser_static(buffer, record, &range, pHandler);
 #ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseHeader_in_RangeParser_static2_"<<std::endl;
     decrement_stack_info();
 #endif
-    return ParseRangeOfObjects_in_RangeParser_static(buffer, record, &range, pHandler);
+    return tmp;
   }
 
   if (pHandler)
@@ -141,6 +146,8 @@ ParseResult_uint8_t ParseHeader_in_RangeParser_static(
   }
 
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ParseHeader_in_RangeParser_static3_"<<std::endl;
   decrement_stack_info();
 #endif
   return ParseResult_OK;
@@ -159,7 +166,7 @@ ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"Process_in_RangeParser1"<<std::endl;
+  std::cout<<"{Process_in_RangeParser1"<<std::endl;
   inspect_RSeq(buffer);
 #endif
 
@@ -170,6 +177,8 @@ ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for specified objects')"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}Process_in_RangeParser1_"<<std::endl;
     decrement_stack_info();
 #endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_OBJECTS;
@@ -187,6 +196,8 @@ ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 ////  buffer.advance(requiredSize);
   advance_in_RSeq_for_Uint16_t(buffer, pRangeParser->requiredSize);
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Process_in_RangeParser2_"<<std::endl;
   decrement_stack_info();
 #endif
   return ParseResult_OK;
@@ -206,10 +217,10 @@ ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
   IAPDUHandler* pHandler)
 {
 #ifdef  LOG_INFO
-  std::cout<<std::endl;
+  std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"ParseRangeOfObjects_in_RangeParser_static1"<<std::endl;
+  std::cout<<"{ParseRangeOfObjects_in_RangeParser_static1"<<std::endl;
   inspect_RSeq(buffer);
 #endif
 
@@ -217,25 +228,23 @@ ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
   {
   case (GroupVariation_Group1Var1):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group1Var1"<<std::endl;
-    decrement_stack_info();
-#endif
 // RangeParser FromBitfieldType_Indexed_for_Binary_in_RangeParser_static(Range* range);
 ////    return RangeParser::FromBitfieldType<Binary>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromBitfieldType_Indexed_for_Binary_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var1"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static1_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group1Var2);
   case (GroupVariation_Group1Var2):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group1Var2"<<std::endl;
-    decrement_stack_info();
-#endif
 //RangeParser FromFixedSize_for_Group1Var2_in_RangeParser_static(Range* range)
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
@@ -243,236 +252,286 @@ ParseResult_uint8_t ParseRangeOfObjects_in_RangeParser_static(
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group1Var2_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group1Var2"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static2_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
   case (GroupVariation_Group3Var1):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group3Var1"<<std::endl;
-    decrement_stack_info();
-#endif
 //RangeParser FromDoubleBitfieldType_for_DoubleBitBinary_in_RangeParser_static(Range* range)
 ////    return RangeParser::FromDoubleBitfieldType<DoubleBitBinary>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromDoubleBitfieldType_for_DoubleBitBinary_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var1"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static3_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
   case (GroupVariation_Group10Var1):
   {
+////    return RangeParser::FromBitfieldType<BinaryOutputStatus>(range).Process(record, buffer, pHandler, pLogger);
+    RangeParser temp = FromBitfieldType_Indexed_for_BinaryOutputStatus_in_RangeParser_static(range);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group10Var1"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static4_"<<std::endl;
     decrement_stack_info();
 #endif
-////    return RangeParser::FromBitfieldType<BinaryOutputStatus>(range).Process(record, buffer, pHandler, pLogger);
-    RangeParser temp = FromBitfieldType_Indexed_for_BinaryOutputStatus_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group3Var2);
   case (GroupVariation_Group3Var2):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group3Var2"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group3Var2_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group3Var2"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static5_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group10Var2);
   case (GroupVariation_Group10Var2):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group10Var2"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group10Var2_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group10Var2"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static6_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group20Var1);
   case (GroupVariation_Group20Var1):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group20Var1"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group20Var1_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var1"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static7_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group20Var2);
   case (GroupVariation_Group20Var2):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group20Var2"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group20Var2_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var2"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static8_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group20Var5);
   case (GroupVariation_Group20Var5):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group20Var5"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group20Var5_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var5"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static9_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group20Var6);
   case (GroupVariation_Group20Var6):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group20Var6"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group20Var6_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group20Var6"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static10_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group21Var1);
   case (GroupVariation_Group21Var1):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group21Var1"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group21Var1_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var1"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static11_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group21Var2);
   case (GroupVariation_Group21Var2):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group21Var2"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group21Var2_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var2"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static12_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group21Var5);
   case (GroupVariation_Group21Var5):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group21Var5"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group21Var5_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var5"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static13_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group21Var6);
   case (GroupVariation_Group21Var6):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group21Var6"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group21Var6_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var6"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static14_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group21Var9);
   case (GroupVariation_Group21Var9):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group21Var9"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group21Var9_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var9"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static15_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group21Var10);
   case (GroupVariation_Group21Var10):
   {
-#ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*GroupVariation_Group21Var10"<<std::endl;
-    decrement_stack_info();
-#endif
 //ParseResult_uint8_t Process_in_RangeParser(RangeParser *pRangeParser,
 //                                   HeaderRecord *record,
 //                                   RSeq_for_Uint16_t *buffer,
 //                                   IAPDUHandler* pHandler)
 ////        return RangeParser::FromFixedSize<descriptor>(range).Process(record, buffer, pHandler, pLogger);
     RangeParser temp = FromFixedSize_for_Group21Var10_in_RangeParser_static(range);
-    return Process_in_RangeParser(&temp, record, buffer, pHandler);
+    ParseResult_uint8_t tmp = Process_in_RangeParser(&temp, record, buffer, pHandler);
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*GroupVariation_Group21Var10"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRangeOfObjects_in_RangeParser_static16_"<<std::endl;
+    decrement_stack_info();
+#endif
+    return tmp;
   }
 
 ////    MACRO_PARSE_OBJECTS_WITH_RANGE(Group30Var1);
@@ -2505,9 +2564,19 @@ RangeParser FromBitfieldType_Indexed_for_BinaryOutputStatus_in_RangeParser_stati
 }
 //------------------------------BinaryOutputStatus---------------------------------------------
 //------------------------------IINValue---------------------------------------------
+//static void *pPointerGlobal1_in_readInvokeRangeOf1;
 Indexed_for_IINValue readInvokeRangeBitfieldType_for_IINValue_in_RangeParser(RSeq_for_Uint16_t* buffer, uint32_t pos);
 Indexed_for_IINValue readInvokeRangeBitfieldType_for_IINValue_in_RangeParser(RSeq_for_Uint16_t* buffer, uint32_t pos)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{readInvokeRangeBitfieldType_for_IINValue_in_RangeParser1"<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"*uint32_t pos= "<<pos<<std::endl;
+  inspect_RSeq(buffer);
+#endif
 ////    auto read = [range](ser4cpp::rseq_t& buffer, uint32_t pos) -> Indexed<Type> {
 ////        Type value(GetBit(buffer, pos));
 ////        return WithIndex(value, range.start + pos);
@@ -2516,7 +2585,14 @@ Indexed_for_IINValue readInvokeRangeBitfieldType_for_IINValue_in_RangeParser(RSe
   IINValue value;
 //boolean GetBit_in_DoubleBit_static(RSeq_for_Uint16_t* buffer, uint32_t position);
   IINValue_in_IINValueOver2(&value, GetBit_in_DoubleBit_static(buffer, pos));
-  return WithIndex_in_Indexed_for_IINValue(&value, range->start + pos);
+  Indexed_for_IINValue tmp = WithIndex_in_Indexed_for_IINValue(&value, range->start + pos);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}readInvokeRangeBitfieldType_for_IINValue_in_RangeParser_"<<std::endl;
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 void InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static(
@@ -2525,6 +2601,13 @@ void InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static(
   RSeq_for_Uint16_t* buffer,
   IAPDUHandler* handler)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static1"<<std::endl;
+  inspect_RSeq(buffer);
+#endif
 ////    const auto COUNT = range.Count();
   uint32_t COUNT = Count_in_Range(range);
 
@@ -2544,6 +2627,13 @@ void InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static(
   RangeHeader rRangeHeader;
   RangeHeader_in_RangeHeader(&rRangeHeader, record, range);
   OnHeader_RangeHeader_Indexed_for_IINValue_in_IAPDUHandler(handler, &rRangeHeader, &(collection.iICollection_Indexed_for_IINValue));
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}InvokeRangeBitfieldType_for_IINValue_in_RangeParser_static_"<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"*&(collection.iICollection_Indexed_for_IINValue)= "<<(uint32_t)&(collection.iICollection_Indexed_for_IINValue)<<std::endl;
+  decrement_stack_info();
+#endif
 }
 
 RangeParser FromBitfieldType_Indexed_for_IINValue_in_RangeParser_static(Range* range)

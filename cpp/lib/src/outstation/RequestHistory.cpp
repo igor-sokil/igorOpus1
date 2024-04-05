@@ -17,7 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "RequestHistory.h"
 
@@ -49,10 +52,24 @@ void RecordLastProcessedRequest_in_RequestHistory(RequestHistory *pRequestHistor
 
 boolean FullyEqualsLastRequest_in_RequestHistory(RequestHistory *pRequestHistory, APDUHeader* header, RSeq_for_Uint16_t* objects)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{FullyEqualsLastRequest_in_RequestHistory1"<<'\n';
+#endif
 //   boolean Equals_in_APDUHeader(APDUHeader *pAPDUHeader, APDUHeader *header);
 //   boolean EqualsLastObjects_in_RequestHistory(RequestHistory *pRequestHistory, RSeq_for_Uint16_t objects);
 ////    return lastHeader.Equals(header) && EqualsLastObjects(objects);
-  return  Equals_in_APDUHeader(&(pRequestHistory->lastHeader), header) && EqualsLastObjects_in_RequestHistory(pRequestHistory, objects);
+  boolean tmp = Equals_in_APDUHeader(&(pRequestHistory->lastHeader), header) && EqualsLastObjects_in_RequestHistory(pRequestHistory, objects);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}FullyEqualsLastRequest_in_RequestHistory_"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*boolean tmp= "<<tmp<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 APDUHeader GetLastHeader_in_RequestHistory(RequestHistory *pRequestHistory)

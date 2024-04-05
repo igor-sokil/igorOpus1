@@ -18,6 +18,10 @@
  * limitations under the License.
  */
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "DataSink.h"
@@ -32,12 +36,20 @@
 ////void DataSink::Write(const rseq_t& data)
 void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{Write_in_DataSink1"<<'\n';
+  inspect_RSeq(data);
+#endif
 //    uint16_t length_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
 ////    for (uint16_t i = 0; i < data.length(); ++i)
   for (uint16_t i = 0; i < length_in_HasLength_for_Uint16_t(&(data->hHasLength)); ++i)
   {
     pDataSink->buffer.push_back(data->buffer_[i]);////data[i]);
   }
+#ifdef  LOG_INFO
+  std::cout<<"}Write_in_DataSink_"<<'\n';
+#endif
 }
 
 void Clear_in_DataSink(DataSink *pDataSink)
@@ -64,11 +76,19 @@ boolean Equals_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
 ////std::string DataSink::AsHex(bool spaced) const
 std::string AsHex_in_DataSink(DataSink *pDataSink, boolean spaced)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{AsHex_in_DataSink1"<<'\n';
+#endif
 ////    const ser4cpp::rseq_t temp(this->buffer.data(), this->buffer.size());
   RSeq_for_Uint16_t temp;
   RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&temp, pDataSink->buffer.data(), pDataSink->buffer.size());
 ////    return HexConversions::to_hex(temp, spaced);
-  return to_hex_in_HexConversionsOver2(&temp, spaced);
+  std::string tmp = to_hex_in_HexConversionsOver2(&temp, spaced);
+#ifdef  LOG_INFO
+  std::cout<<"}AsHex_in_DataSink_"<<'\n';
+#endif
+  return tmp;
 }
 
 boolean IsEmpty_in_DataSink(DataSink *pDataSink)

@@ -74,7 +74,7 @@ typedef struct
 ////    virtual bool OnLowerLayerUp() override;
 ////    virtual bool OnLowerLayerDown() override;
 
-  std::deque<std::string> receivedQueue;
+  std::deque<std::string> receivedQueue_in_MockTransportLayer;
 
 ///private:
   ILinkLayer* pLinkLayer;

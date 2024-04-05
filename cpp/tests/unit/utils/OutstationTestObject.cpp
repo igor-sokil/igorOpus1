@@ -113,6 +113,22 @@ uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationT
 ////    context.OnLowerLayerDown();
 ////    return exe->run_many();
 ////}
+uint16_t LowerLayerDown_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)
+{
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{LowerLayerDown_in_OutstationTestObject1"<<'\n';
+#endif
+//boolean OnLowerLayerDown_in_OContext(OContext*);
+////    context.OnLowerLayerDown();
+  OnLowerLayerDown_in_OContext(&(pOutstationTestObject->context));
+
+#ifdef  LOG_INFO
+  std::cout<<"}LowerLayerDown_in_OutstationTestObject_"<<'\n';
+#endif
+////    return exe->run_many();
+  return run_many_in_MockExecutor(&(pOutstationTestObject->exe), 100);
+}
 
 ////size_t OutstationTestObject::OnTxReady()
 uint16_t OnTxReady_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject)

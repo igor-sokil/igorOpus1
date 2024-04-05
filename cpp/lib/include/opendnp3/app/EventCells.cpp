@@ -5,14 +5,14 @@
 //---------------------------------Analog---------------------------------------
 void SetEventValue_in_EventCellBase_for_Analog(EventCellBase_for_Analog *pEventCellBase_for_Analog, Analog* value)
 {
-  pEventCellBase_for_Analog->lastEvent = *value;
+  pEventCellBase_for_Analog->lastEvent_in_EventCellBase = *value;
 }
 
 void EventCellBase_for_Analog_in_EventCellBase_for_Analog(EventCellBase_for_Analog *pEventCellBase_for_Analog)
 {
-  pEventCellBase_for_Analog->clazz = PointClass_Class1;
-  Analog_in_AnalogOver1(&(pEventCellBase_for_Analog->lastEvent));
-  pEventCellBase_for_Analog->evariation = 0;
+  pEventCellBase_for_Analog->clazz_in_EventCellBase = PointClass_Class1;
+  Analog_in_AnalogOver1(&(pEventCellBase_for_Analog->lastEvent_in_EventCellBase));
+  pEventCellBase_for_Analog->evariation_in_EventCellBase = 0;
 }
 
 void SimpleEventCell_for_Analog_in_SimpleEventCell_for_Analog(SimpleEventCell_for_Analog *pSimpleEventCell_for_Analog)
@@ -29,7 +29,7 @@ boolean IsEvent_in_SimpleEventCell_for_Analog(SimpleEventCell_for_Analog *pSimpl
 //    AnalogConfig *config,
 //    Analog* newValue);
 ////        return Spec::IsEvent(this->lastEvent, newValue);
-    return IsEvent_in_AnalogSpec_static(&((pSimpleEventCell_for_Analog->eEventCellBase_for_Analog).lastEvent),
+    return IsEvent_in_AnalogSpec_static(&((pSimpleEventCell_for_Analog->eEventCellBase_for_Analog).lastEvent_in_EventCellBase),
                                         new_value,
                                         NULL);////const config_t& config)
 }
@@ -44,7 +44,7 @@ boolean IsEvent_in_DeadbandEventCell_for_Analog(DeadbandEventCell_for_Analog *pD
     Analog* new_value)
 {
 ////        return Spec::IsEvent(this->lastEvent, new_Value, config.deadband);
-  return IsEvent_in_AnalogSpec_static(&((pDeadbandEventCell_for_Analog->sSimpleEventCell_for_Analog.eEventCellBase_for_Analog).lastEvent),
+  return IsEvent_in_AnalogSpec_static(&((pDeadbandEventCell_for_Analog->sSimpleEventCell_for_Analog.eEventCellBase_for_Analog).lastEvent_in_EventCellBase),
                                       new_value,
                                       config);
 }

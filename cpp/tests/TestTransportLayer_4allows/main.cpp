@@ -38,11 +38,14 @@ qDebug()<<"********SUITE('4allows header-only final frame')********";
 ////    test.link.SendUp("41 DE AD BE EF");
 Addresses aAddresses;
 Addresses_in_AddressesOver1(&aAddresses);
-   std::string name = "41 DE AD BE EF";
+   std::string name = "41 DE AD BE EF 88";
    SendUp_in_MockLinkLayer(&(test.link), name, &aAddresses);// = opendnp3::Addresses())
 
 ////    test.link.SendUp("82");
-   std::string name2 = "82";
+   std::string name2 = "02 99";
+   SendUp_in_MockLinkLayer(&(test.link), name2, &aAddresses);// = opendnp3::Addresses())
+
+    name2 = "83 AA";
    SendUp_in_MockLinkLayer(&(test.link), name2, &aAddresses);// = opendnp3::Addresses())
 
 //std::string AsHex_in_DataSink(DataSink *pDataSink, boolean spaced)
@@ -51,42 +54,6 @@ std::string stmp = AsHex_in_DataSink(&(test.upper.received), true);
   qDebug()<<"REQUIRE(test.upper.received.AsHex() == 'DE AD BE EF')";
   std::cout<<"stmp= "<<stmp<<std::endl;
 
-/*
-//boolean IsOnline_in_MockUpperLayer(MockUpperLayer *pMockUpperLayer);
-////    REQUIRE(test.upper.IsOnline());
-Addresses aAddresses;
-Addresses_in_AddressesOver1(&aAddresses);
-boolean btmp = IsOnline_in_MockUpperLayer(&(test.upper));//// = opendnp3::Addresses());
-  qDebug()<<"REQUIRE(test.upper.IsOnline())";
-  std::cout<<"boolean btmp= "<<btmp<<std::endl;
-
-//boolean OnLowerLayerDown_in_TransportLayer(TransportLayer *pTransportLayer);
-////    test.transport.OnLowerLayerDown();
- OnLowerLayerDown_in_TransportLayer(&test.transport);
-
-////    REQUIRE_FALSE(test.upper.IsOnline());
- btmp = IsOnline_in_MockUpperLayer(&(test.upper));//// = opendnp3::Addresses());
-  qDebug()<<"REQUIRE_FALSE(test.upper.IsOnline())";
-  std::cout<<"boolean btmp= "<<btmp<<std::endl;
-
-////    test.transport.OnLowerLayerUp();
- OnLowerLayerUp_in_TransportLayer(&test.transport);
-
-////    REQUIRE(test.upper.IsOnline());
- btmp = IsOnline_in_MockUpperLayer(&(test.upper));//// = opendnp3::Addresses());
-  qDebug()<<"REQUIRE(test.upper.IsOnline())";
-  std::cout<<"boolean btmp= "<<btmp<<std::endl;
-
-////    REQUIRE_FALSE(test.transport.OnLowerLayerUp());
- btmp = OnLowerLayerUp_in_TransportLayer(&test.transport);
-  qDebug()<<"REQUIRE_FALSE(test.transport.OnLowerLayerUp())";
-  std::cout<<"boolean btmp= "<<btmp<<std::endl;
-
-////    REQUIRE_FALSE(test.transport.OnTxReady());
- btmp = OnTxReady_in_TransportLayer(&test.transport);
-  qDebug()<<"REQUIRE_FALSE(test.transport.OnTxReady())";
-  std::cout<<"boolean btmp= "<<btmp<<std::endl;
-*/
 /*
 TEST_CASE(SUITE("4allows header-only final frame"))
 {

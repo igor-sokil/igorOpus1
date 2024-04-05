@@ -64,6 +64,22 @@
 
 ////class PriStateBase;
 ////class SecStateBase;
+enum PriState
+{
+  PriStateBase_Base,
+  PriStateBase_PLLS_Idle,
+  PriStateBase_PLLS_SendUnconfirmedTransmitWait,
+  PriStateBase_PLLS_RequestLinkStatusWait
+};
+
+enum SecState
+{
+  SecStateBase_Base,
+  SecStateBase_SLLS_TransmitWaitBase_Reset,
+  SecStateBase_SLLS_TransmitWaitBase_NotReset,
+  SecStateBase_SLLS_NotReset,
+  SecStateBase_SLLS_Reset,
+};
 
 #define LinkTransmitMode_uint8_t  uint8_t
 ////enum class LinkTransmitMode : uint8_t
@@ -138,17 +154,17 @@ typedef struct
   // buffers used for primary and secondary requests
 ////    ser4cpp::StaticBuffer<LPDU_MAX_FRAME_SIZE> priTxBuffer;
 ////    ser4cpp::StaticBuffer<LPDU_HEADER_SIZE> secTxBuffer;
-  StaticBuffer_for_LPDU_MAX_FRAME_SIZE priTxBuffer;
+  StaticBuffer_for_LPDU_MAX_FRAME_SIZE priTxBuffer_in_LinkContext;
 
-  StaticBuffer_for_LPDU_HEADER_SIZE secTxBuffer;
+  StaticBuffer_for_LPDU_HEADER_SIZE secTxBuffer_in_LinkContext;
 
   Settable_for_RSeq_t pendingPriTx;
   Settable_for_RSeq_t pendingSecTx;
 
 ////    Logger logger;
   LinkLayerConfig config;
-  ITransportSegment* pSegments;
-  LinkTransmitMode_uint8_t txMode;
+  ITransportSegment* pSegments_in_LinkContext;
+  LinkTransmitMode_uint8_t txMode_in_LinkContext;
 
 ////    const std::shared_ptr<exe4cpp::IExecutor> executor;
   IExecutorExe4cpp* executor;
@@ -168,8 +184,8 @@ typedef struct
 
 ////    PriStateBase* pPriState;
 ////    SecStateBase* pSecState;
-  void* pPriState;
-  void* pSecState;
+  void* pPriState_in_LinkContext;
+  void* pSecState_in_LinkContext;
 
 ////    const std::shared_ptr<ILinkListener> listener;
   ILinkListener* listener;

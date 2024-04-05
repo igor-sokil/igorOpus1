@@ -176,15 +176,25 @@ boolean SupportsWriteAbsoluteTime_in_MockOutstationApplication(MockOutstationApp
 
 boolean WriteAbsoluteTime_in_MockOutstationApplication(MockOutstationApplication *pMockOutstationApplication, UTCTimestamp* timestamp)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{WriteAbsoluteTime_in_MockOutstationApplication1"<<'\n';
+#endif
   if (pMockOutstationApplication->allowTimeWrite)
   {
     UTCTimestamp Timestamp;
     Timestamp = *timestamp;
     pMockOutstationApplication->timestamps.push_back(Timestamp);
+#ifdef  LOG_INFO
+  std::cout<<"}WriteAbsoluteTime_in_MockOutstationApplication1_"<<'\n';
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<"}WriteAbsoluteTime_in_MockOutstationApplication2_"<<'\n';
+#endif
     return false;
   }
 }
@@ -194,18 +204,25 @@ boolean SupportsWriteTimeAndInterval_in_MockOutstationApplication(MockOutstation
   return pMockOutstationApplication->supportsWriteTimeAndInterval;
 }
 
-void __push_in_MockOutstationApplication(Indexed_for_TimeAndInterval* value);
+void __push_in_MockOutstationApplication(Indexed_for_TimeAndInterval value);
 
 //            void (*fun)(ICollection_Indexed_for_TimeAndInterval *pICollection_Indexed_for_TimeAndInterval,
 //            Indexed_for_TimeAndInterval* item));
 ////        auto push = [this](const opendnp3::Indexed<opendnp3::TimeAndInterval>& value)
-void __push_in_MockOutstationApplication(Indexed_for_TimeAndInterval* value)
+void __push_in_MockOutstationApplication(Indexed_for_TimeAndInterval value)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"{__push_in_MockOutstationApplication1"<<'\n';
+#endif
 //  pPointerGlobal1 = pMockOutstationApplication;
   Indexed_for_TimeAndInterval iIndexed_for_TimeAndInterval;
-  iIndexed_for_TimeAndInterval = *value;
+  iIndexed_for_TimeAndInterval = value;
 ////            this->timeAndIntervals.push_back(value);
   ((MockOutstationApplication*)pPointerGlobal1)->timeAndIntervals.push_back(iIndexed_for_TimeAndInterval);
+#ifdef  LOG_INFO
+  std::cout<<"}__push_in_MockOutstationApplication_"<<'\n';
+#endif
 }
 
 boolean __WriteTimeAndInterval_in_MockOutstationApplication(MockOutstationApplication *pMockOutstationApplication,
@@ -279,7 +296,7 @@ uint16_t WarmRestart_in_MockOutstationApplication(MockOutstationApplication *pMo
 void OnConfirmProcessed_in_MockOutstationApplication(MockOutstationApplication *pMockOutstationApplication,
     boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3)
 {
-  ConfirmResult confirm{};
+  ConfirmResult confirm;
   confirm.is_unsolicited = is_unsolicited;
   confirm.num_class1 = num_class1;
   confirm.num_class2 = num_class2;

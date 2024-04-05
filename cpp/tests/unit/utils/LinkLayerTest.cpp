@@ -53,8 +53,8 @@ void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerCon
   MockExecutor_in_MockExecutor(&(pLinkLayerTest->exe));
 
 
-  MockLinkListener_in_MockLinkListener(&(pLinkLayerTest->listener));
-  MockTransportLayer_in_MockTransportLayer(&(pLinkLayerTest->upper));
+  MockLinkListener_in_MockLinkListener(&(pLinkLayerTest->listener_in_LinkLayerTest));
+  MockTransportLayer_in_MockTransportLayer(&(pLinkLayerTest->upper_in_LinkLayerTest));
 
 //   void LinkLayer_in_LinkLayer(LinkLayer *pLinkLayer, ////const Logger& logger,
 //              IExecutorExe4cpp*,
@@ -64,14 +64,14 @@ void  LinkLayerTest_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, LinkLayerCon
 
   LinkLayer_in_LinkLayer(&(pLinkLayerTest->link), ////const Logger& logger,
                          &(pLinkLayerTest->exe.iIExecutorExe4cpp),
-                         &(pLinkLayerTest->upper.iIUpperLayer),
-                         &(pLinkLayerTest->listener.iILinkListener),
+                         &(pLinkLayerTest->upper_in_LinkLayerTest.iIUpperLayer),
+                         &(pLinkLayerTest->listener_in_LinkLayerTest.iILinkListener),
                          config);
 
   pLinkLayerTest->numTotalWrites = 0;
 
 ////    upper->SetLinkLayer(link);
-  SetLinkLayer_in_MockTransportLayer(&(pLinkLayerTest->upper), &(pLinkLayerTest->link.iILinkLayer));//ILinkLayer* linkLayer);
+  SetLinkLayer_in_MockTransportLayer(&(pLinkLayerTest->upper_in_LinkLayerTest), &(pLinkLayerTest->link.iILinkLayer));//ILinkLayer* linkLayer);
 
 //  void SetRouter_in_LinkLayer(LinkLayer *pLinkLayer, ILinkTx*);
 ////    link.SetRouter(*this);
@@ -116,18 +116,18 @@ boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
 ////std::string LinkLayerTest::PopLastWriteAsHex()
 std::string PopLastWriteAsHex_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest)
 {
-  if (pLinkLayerTest->writeQueue.empty())
+  if (pLinkLayerTest->writeQueue_in_LinkLayerTest.empty())
   {
     return "";
   }
 
-  while (pLinkLayerTest->writeQueue.size() > 1)
+  while (pLinkLayerTest->writeQueue_in_LinkLayerTest.size() > 1)
   {
-    pLinkLayerTest->writeQueue.pop_front();
+    pLinkLayerTest->writeQueue_in_LinkLayerTest.pop_front();
   }
 
-  std::string ret = pLinkLayerTest->writeQueue.front();
-  pLinkLayerTest->writeQueue.pop_front();
+  std::string ret = pLinkLayerTest->writeQueue_in_LinkLayerTest.front();
+  pLinkLayerTest->writeQueue_in_LinkLayerTest.pop_front();
   return ret;
 }
 
@@ -141,12 +141,17 @@ void BeginTransmit_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest, RSeq_for_Uint
 #ifdef  LOG_INFO
   std::cout<<'\n';
   std::cout<<"{BeginTransmit_in_LinkLayerTest1"<<'\n';
+  std::cout<<"FinalDestination_in_LinkLayerTest:"<<'\n';
 #endif
   UNUSED(context);
   ++(pLinkLayerTest->numTotalWrites);
-  pLinkLayerTest->writeQueue.push_back(to_hex_in_HexConversionsOver2(buffer));
+  pLinkLayerTest->writeQueue_in_LinkLayerTest.push_back(to_hex_in_HexConversionsOver2(buffer));
 #ifdef  LOG_INFO
-  std::cout<<'\n';
+  for(uint16_t i=0; i<pLinkLayerTest->writeQueue_in_LinkLayerTest.size(); i++)
+  {
+   std::string tt = pLinkLayerTest->writeQueue_in_LinkLayerTest[i];
+   std::cout<<"tt= "<<tt<<'\n';
+  }
   std::cout<<"}BeginTransmit_in_LinkLayerTest_"<<'\n';
 #endif
 }

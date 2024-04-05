@@ -44,6 +44,14 @@ qDebug()<<"********SUITE('16TestLinkStates')********";
 ////    t.link.OnLowerLayerUp();
    OnLowerLayerUp_in_LinkLayer(&(t.link));
 
+//boolean OnFrame_in_LinkLayerTest(LinkLayerTest *pLinkLayerTest,
+//                                 LinkFunction_uint8_t func,
+//                                 boolean isMaster,
+//                                 boolean fcb,
+//                                 boolean fcvdfc,
+//                                 uint16_t dest,
+//                                 uint16_t source,
+//                                 RSeq_for_Uint16_t* userdata);//// = ser4cpp::rseq_t::empty());
 ////    t.OnFrame(LinkFunction::PRI_TEST_LINK_STATES, false, false, false, 1, 1024);
      RSeq_for_Uint16_t temp2 = empty_in_RSeq_for_Uint16_t_static();
      OnFrame_in_LinkLayerTest(&t,

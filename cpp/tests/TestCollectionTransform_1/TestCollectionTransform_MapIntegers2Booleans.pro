@@ -7,27 +7,32 @@ TARGET = TestCollectionTransform_MapIntegers2Booleans
 
 QT += widgets
 
-INCLUDEPATH  += .
-INCLUDEPATH  += ..\..\..\cpp\tests\dnp3mocks\include\dnp3mocks
 
-include(TestCollectionTransform_MapIntegers2Booleans.pri)
+HEADERS       = ..\..\..\qtsrc\key_filter.h \
+                ..\..\..\qtsrc\MainWindow.h 
+
+HEADERS       += ICollection.h \
+                 Collections.h
+
+LIBS += "D:\MRZV_HOME\Xtended\dnp3\CODE_opendnp3-mrzs\opendnp3-mrzs\dll\libqt_dnp3.a"
+
+include(../../../include_tests.pri)
 
 SOURCES      += MainWindow.cpp \
-                loghandler.cpp \
                 main.cpp 
 
-#SOURCES      += __ICollection.cpp 
+#                \
+#                onAPDUPacket.cpp \
+#                onLinkLayerPacket.cpp \
+#                onReadInputPacketLinkLayer.cpp \
+#                onReadInputPacketAPDU.cpp \
+#                constructorLinkLayer.cpp \
+#                constructorAPDU.cpp 
 
-#SOURCES      += __List_for_EventRecord_part1.cpp \
-#                __HasLength.cpp \
-#                __EventStorage.cpp \
-#                __EventLists.cpp \
-#                __EventBufferConfig.cpp \
-#                __ClazzCount.cpp \
-#                __Array__for__Node_for_EventRecord.cpp
+#                \
+#                txtLogEntry.cpp
 
-#SOURCES      += logEntry_EvenLists.cpp \
-#                logEntry_List_for_EventRecord.cpp
+#    onReadInputPacketEx.cpp \
 
 DESTDIR = d:\QT_5.12\Examples\release_programs
 

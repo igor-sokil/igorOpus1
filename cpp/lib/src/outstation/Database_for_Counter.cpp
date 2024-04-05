@@ -112,8 +112,8 @@ boolean Update_for_Counter_in_Database(Database *pDatabase, Counter* meas, uint1
   return tmp;
 }
 
-void select_for_CounterSpec_in_DatabaseOver1(uint16_t *index);
-void select_for_CounterSpec_in_DatabaseOver1(uint16_t *index)
+void select_for_CounterSpec_in_DatabaseOver1(uint16_t index);
+void select_for_CounterSpec_in_DatabaseOver1(uint16_t index)
 {
   StaticDataMap_for_CounterSpec* map = (StaticDataMap_for_CounterSpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -122,7 +122,7 @@ void select_for_CounterSpec_in_DatabaseOver1(uint16_t *index)
 //boolean select_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, uint16_t index, StaticCounterVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_CounterSpecOver3(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, uint16_t index);
 ////        if (!map.select(index, variation))
-  if (!select_in_StaticDataMap_for_CounterSpecOver2(map, *index, *variation))
+  if (!select_in_StaticDataMap_for_CounterSpecOver2(map, index, *variation))
   {
     *missing_index = true;
   }
@@ -160,8 +160,8 @@ IINField select_indices_for_CounterSpec_in_Database_staticOver1(StaticDataMap_fo
   return missing_index ? iIINField : Empty_in_IINField_static();
 }
 
-void select_for_CounterSpec_in_DatabaseOver2(uint16_t *index);
-void select_for_CounterSpec_in_DatabaseOver2(uint16_t *index)
+void select_for_CounterSpec_in_DatabaseOver2(uint16_t index);
+void select_for_CounterSpec_in_DatabaseOver2(uint16_t index)
 {
   StaticDataMap_for_CounterSpec* map = (StaticDataMap_for_CounterSpec*)pPointerGlobal1;
   boolean *missing_index = (boolean *)pPointerGlobal2;
@@ -169,7 +169,7 @@ void select_for_CounterSpec_in_DatabaseOver2(uint16_t *index)
 //boolean select_in_StaticDataMap_for_CounterSpecOver2(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, uint16_t index, StaticCounterVariation_uint8_t variation);
 //boolean select_in_StaticDataMap_for_CounterSpecOver3(StaticDataMap_for_CounterSpec *pStaticDataMap_for_CounterSpec, uint16_t index);
 ////        if (!map.select(index))
-  if (!select_in_StaticDataMap_for_CounterSpecOver3(map, *index))
+  if (!select_in_StaticDataMap_for_CounterSpecOver3(map, index))
   {
     *missing_index = true;
   }

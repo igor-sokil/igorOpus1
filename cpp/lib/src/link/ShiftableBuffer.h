@@ -45,18 +45,22 @@ typedef struct
 ////    }
 
   /// @return Pointer to the next byte to be read in the buffer
+/// @return Указатель на следующий байт, который нужно прочитать в буфере
 ////    ser4cpp::rseq_t ReadBuffer() const
 ////    {
 ////        return ser4cpp::rseq_t(pBuffer + readPos, NumBytesRead());
 ///    }
 
   /// Signal that some bytes don't have to be stored any longer. They'll be recovered during the next shift operation.
+/// Сигнал о том, что некоторые байты больше не нужно хранить. Их найдут во время следующей смены.
 ////    void AdvanceRead(size_t aNumBytes);
 
   // ------- Functions related to writing -----------
 
   /// Shift the buffer back to front, writing over bytes that have already been read. The objective
   /// being to free space for further writing.
+/// Сдвигаем буфер назад вперед, записывая уже прочитанные байты. Цель
+   /// освобождение места для дальнейшей записи.
 ////    void Shift();
 
   /// Reset the buffer to its initial state, empty
@@ -75,6 +79,7 @@ typedef struct
 ////    }
 
   /// Signal to the buffer bytes were written to the current write position
+/// Сигнал в буфер: байты были записаны в текущую позицию записи
 ////    void AdvanceWrite(size_t numBytes);
 
   ////////////////////////////////////////////
@@ -83,6 +88,8 @@ typedef struct
 
   /// Searches the read subsequence for 0x0564 sync bytes
   /// @return true if both sync bytes were found in the buffer.
+/// Ищет в подпоследовательности чтения синхробайты 0x0564.
+   /// @return true, если оба байта синхронизации найдены в буфере.
 ////    bool Sync(size_t& skipCount);
 
 ////private:

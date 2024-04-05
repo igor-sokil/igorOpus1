@@ -73,7 +73,6 @@ typedef struct
 ////    std::unique_ptr<uint8_t[]> bytes;
   uint8_t bytes[SIZE_BufferSer4];
 } BufferSer4;
-
 ////}
 
 void  BufferSer4_in_BufferSer4Over1(BufferSer4 *pBufferSer4);

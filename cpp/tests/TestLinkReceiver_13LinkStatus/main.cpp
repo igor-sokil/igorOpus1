@@ -43,6 +43,7 @@ WSeq_for_Uint16_t writeTo = as_wslice_in_BufferSer4(&buffer);
 //  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
 ////    auto frame = LinkFrame::FormatLinkStatus(writeTo, true, true, 1, 2, nullptr);
 RSeq_for_Uint16_t frame = FormatLinkStatus_in_LinkFrame_static(
+
   &writeTo, true, true, 1, 2);//, Logger* pLogger);
 
 inspect_RSeq(&frame);
@@ -60,6 +61,8 @@ inspect_RSeq(&frame);
 qDebug()<<"REQUIRE(t.sink.m_num_frames == 1)";
 qDebug()<<"t.sink.m_num_frames= "<<t.sink.m_num_frames;
 
+//boolean CheckLastWithDFC_in_MockFrameSink(MockFrameSink *pMockFrameSink,
+//    LinkFunction_uint8_t func, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);
 ////    REQUIRE(t.sink.CheckLastWithDFC(LinkFunction::SEC_LINK_STATUS, true, true, 1, 2));
 boolean tmp = CheckLastWithDFC_in_MockFrameSink(&(t.sink),
     LinkFunction_SEC_LINK_STATUS, true, true, 1, 2);

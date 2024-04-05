@@ -14,14 +14,6 @@ void  BufferedCollection_uint16_in_BufferedCollection_uint16(
   uint32_t count,
   ReadFunc_uint16 readFunc)
 {
-#ifdef  LOG_INFO
-  std::cout<<std::endl;
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-  std::cout<<"BufferedCollection_uint16_in_BufferedCollection_uint16_1"<<std::endl;
-  decrement_stack_info();
-#endif
-
   pBufferedCollection_uint16->buffer = *buffer;
   pBufferedCollection_uint16->COUNT = count;
   pBufferedCollection_uint16->readFunc = readFunc;
@@ -57,14 +49,13 @@ uint16_t Count_in_BufferedCollection_uint16(BufferedCollection_uint16 *pBuffered
 }
 
 void Foreach_in_BufferedCollection_uint16(BufferedCollection_uint16 *pBufferedCollection_uint16,
-    IVisitor__for__uint16* visitor)
+    IVisitor_for_uint16* visitor)
 {
 #ifdef  LOG_INFO
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"Foreach_in_BufferedCollection_uint16_1"<<std::endl;
-//  decrement_stack_info();
 #endif
 
 ////        ser4cpp::rseq_t copy(buffer);
@@ -80,7 +71,7 @@ void Foreach_in_BufferedCollection_uint16(BufferedCollection_uint16 *pBufferedCo
   std::cout<<getString_stack_info();
   std::cout<<"Foreach_in_BufferedCollection_uint16_2"<<std::endl;
 #endif
-    OnValue_in_IVisitor__for__uint16(visitor, &temp );
+    OnValue_in_IVisitor_for_uint16(visitor, temp );
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"Foreach_in_BufferedCollection_uint16_3"<<std::endl;
@@ -99,7 +90,7 @@ uint16_t Count_in_BufferedCollection_uint16_override(void *pICollection_for_uint
   return Count_in_BufferedCollection_uint16(parent);
 }
 void Foreach_in_BufferedCollection_uint16_override(void *pICollection_for_uint16,
-    IVisitor__for__uint16* visitor)
+    IVisitor_for_uint16* visitor)
 {
   BufferedCollection_uint16* parent =
     (BufferedCollection_uint16*)getParentPointer_in_ICollection_for_uint16(
@@ -151,7 +142,7 @@ uint16_t Count_in_BufferedCollection_Group50Var1(BufferedCollection_Group50Var1 
 }
 
 void Foreach_in_BufferedCollection_Group50Var1(BufferedCollection_Group50Var1 *pBufferedCollection_Group50Var1,
-    IVisitor__for__Group50Var1* visitor)
+    IVisitor_for_Group50Var1* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -162,7 +153,7 @@ void Foreach_in_BufferedCollection_Group50Var1(BufferedCollection_Group50Var1 *p
 //void OnValue_in_IVisitor__for__Group50Var1(IVisitor__for__Group50Var1 *, Group50Var1* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Group50Var1 temp = pBufferedCollection_Group50Var1->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Group50Var1(visitor, &temp );
+    OnValue_in_IVisitor_for_Group50Var1(visitor, temp );
   }
 }
 
@@ -174,7 +165,7 @@ uint16_t Count_in_BufferedCollection_Group50Var1_override(void *pICollection_for
   return Count_in_BufferedCollection_Group50Var1(parent);
 }
 void Foreach_in_BufferedCollection_Group50Var1_override(void *pICollection_for_Group50Var1,
-    IVisitor__for__Group50Var1* visitor)
+    IVisitor_for_Group50Var1* visitor)
 {
   BufferedCollection_Group50Var1* parent =
     (BufferedCollection_Group50Var1*)getParentPointer_in_ICollection_for_Group50Var1(
@@ -226,7 +217,7 @@ uint16_t Count_in_BufferedCollection_Group50Var3(BufferedCollection_Group50Var3 
 }
 
 void Foreach_in_BufferedCollection_Group50Var3(BufferedCollection_Group50Var3 *pBufferedCollection_Group50Var3,
-    IVisitor__for__Group50Var3* visitor)
+    IVisitor_for_Group50Var3* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -237,7 +228,7 @@ void Foreach_in_BufferedCollection_Group50Var3(BufferedCollection_Group50Var3 *p
 //void OnValue_in_IVisitor__for__Group50Var3(IVisitor__for__Group50Var3 *, Group50Var3* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Group50Var3 temp = pBufferedCollection_Group50Var3->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Group50Var3(visitor, &temp );
+    OnValue_in_IVisitor_for_Group50Var3(visitor, temp );
   }
 }
 
@@ -249,7 +240,7 @@ uint16_t Count_in_BufferedCollection_Group50Var3_override(void *pICollection_for
   return Count_in_BufferedCollection_Group50Var3(parent);
 }
 void Foreach_in_BufferedCollection_Group50Var3_override(void *pICollection_for_Group50Var3,
-    IVisitor__for__Group50Var3* visitor)
+    IVisitor_for_Group50Var3* visitor)
 {
   BufferedCollection_Group50Var3* parent =
     (BufferedCollection_Group50Var3*)getParentPointer_in_ICollection_for_Group50Var3(
@@ -301,7 +292,7 @@ uint16_t Count_in_BufferedCollection_Group51Var1(BufferedCollection_Group51Var1 
 }
 
 void Foreach_in_BufferedCollection_Group51Var1(BufferedCollection_Group51Var1 *pBufferedCollection_Group51Var1,
-    IVisitor__for__Group51Var1* visitor)
+    IVisitor_for_Group51Var1* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -312,7 +303,7 @@ void Foreach_in_BufferedCollection_Group51Var1(BufferedCollection_Group51Var1 *p
 //void OnValue_in_IVisitor__for__Group51Var1(IVisitor__for__Group51Var1 *, Group51Var1* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Group51Var1 temp = pBufferedCollection_Group51Var1->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Group51Var1(visitor, &temp );
+    OnValue_in_IVisitor_for_Group51Var1(visitor, temp );
   }
 }
 
@@ -324,7 +315,7 @@ uint16_t Count_in_BufferedCollection_Group51Var1_override(void *pICollection_for
   return Count_in_BufferedCollection_Group51Var1(parent);
 }
 void Foreach_in_BufferedCollection_Group51Var1_override(void *pICollection_for_Group51Var1,
-    IVisitor__for__Group51Var1* visitor)
+    IVisitor_for_Group51Var1* visitor)
 {
   BufferedCollection_Group51Var1* parent =
     (BufferedCollection_Group51Var1*)getParentPointer_in_ICollection_for_Group51Var1(
@@ -376,7 +367,7 @@ uint16_t Count_in_BufferedCollection_Group51Var2(BufferedCollection_Group51Var2 
 }
 
 void Foreach_in_BufferedCollection_Group51Var2(BufferedCollection_Group51Var2 *pBufferedCollection_Group51Var2,
-    IVisitor__for__Group51Var2* visitor)
+    IVisitor_for_Group51Var2* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -387,7 +378,7 @@ void Foreach_in_BufferedCollection_Group51Var2(BufferedCollection_Group51Var2 *p
 //void OnValue_in_IVisitor__for__Group51Var2(IVisitor__for__Group51Var2 *, Group51Var2* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Group51Var2 temp = pBufferedCollection_Group51Var2->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Group51Var2(visitor, &temp );
+    OnValue_in_IVisitor_for_Group51Var2(visitor, temp );
   }
 }
 
@@ -399,7 +390,7 @@ uint16_t Count_in_BufferedCollection_Group51Var2_override(void *pICollection_for
   return Count_in_BufferedCollection_Group51Var2(parent);
 }
 void Foreach_in_BufferedCollection_Group51Var2_override(void *pICollection_for_Group51Var2,
-    IVisitor__for__Group51Var2* visitor)
+    IVisitor_for_Group51Var2* visitor)
 {
   BufferedCollection_Group51Var2* parent =
     (BufferedCollection_Group51Var2*)getParentPointer_in_ICollection_for_Group51Var2(
@@ -451,7 +442,7 @@ uint16_t Count_in_BufferedCollection_Group52Var1(BufferedCollection_Group52Var1 
 }
 
 void Foreach_in_BufferedCollection_Group52Var1(BufferedCollection_Group52Var1 *pBufferedCollection_Group52Var1,
-    IVisitor__for__Group52Var1* visitor)
+    IVisitor_for_Group52Var1* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -462,7 +453,7 @@ void Foreach_in_BufferedCollection_Group52Var1(BufferedCollection_Group52Var1 *p
 //void OnValue_in_IVisitor__for__Group52Var1(IVisitor__for__Group52Var1 *, Group52Var1* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Group52Var1 temp = pBufferedCollection_Group52Var1->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Group52Var1(visitor, &temp );
+    OnValue_in_IVisitor_for_Group52Var1(visitor, temp );
   }
 }
 
@@ -474,7 +465,7 @@ uint16_t Count_in_BufferedCollection_Group52Var1_override(void *pICollection_for
   return Count_in_BufferedCollection_Group52Var1(parent);
 }
 void Foreach_in_BufferedCollection_Group52Var1_override(void *pICollection_for_Group52Var1,
-    IVisitor__for__Group52Var1* visitor)
+    IVisitor_for_Group52Var1* visitor)
 {
   BufferedCollection_Group52Var1* parent =
     (BufferedCollection_Group52Var1*)getParentPointer_in_ICollection_for_Group52Var1(
@@ -526,7 +517,7 @@ uint16_t Count_in_BufferedCollection_Group52Var2(BufferedCollection_Group52Var2 
 }
 
 void Foreach_in_BufferedCollection_Group52Var2(BufferedCollection_Group52Var2 *pBufferedCollection_Group52Var2,
-    IVisitor__for__Group52Var2* visitor)
+    IVisitor_for_Group52Var2* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -537,7 +528,7 @@ void Foreach_in_BufferedCollection_Group52Var2(BufferedCollection_Group52Var2 *p
 //void OnValue_in_IVisitor__for__Group52Var2(IVisitor__for__Group52Var2 *, Group52Var2* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Group52Var2 temp = pBufferedCollection_Group52Var2->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Group52Var2(visitor, &temp );
+    OnValue_in_IVisitor_for_Group52Var2(visitor, temp );
   }
 }
 
@@ -549,7 +540,7 @@ uint16_t Count_in_BufferedCollection_Group52Var2_override(void *pICollection_for
   return Count_in_BufferedCollection_Group52Var2(parent);
 }
 void Foreach_in_BufferedCollection_Group52Var2_override(void *pICollection_for_Group52Var2,
-    IVisitor__for__Group52Var2* visitor)
+    IVisitor_for_Group52Var2* visitor)
 {
   BufferedCollection_Group52Var2* parent =
     (BufferedCollection_Group52Var2*)getParentPointer_in_ICollection_for_Group52Var2(
@@ -601,7 +592,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_Binary(BufferedCollection_Index
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_Binary(BufferedCollection_Indexed_for_Binary *pBufferedCollection_Indexed_for_Binary,
-    IVisitor__for__Indexed_for_Binary* visitor)
+    IVisitor_Indexed_for_Binary* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -612,7 +603,7 @@ void Foreach_in_BufferedCollection_Indexed_for_Binary(BufferedCollection_Indexed
 //void OnValue_in_IVisitor__for__Indexed_for_Binary(IVisitor__for__Indexed_for_Binary *, Indexed_for_Binary* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_Binary temp = pBufferedCollection_Indexed_for_Binary->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_Binary(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_Binary(visitor, temp );
   }
 }
 
@@ -624,7 +615,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_Binary_override(void *pICollect
   return Count_in_BufferedCollection_Indexed_for_Binary(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_Binary_override(void *pICollection_Indexed_for_Binary,
-    IVisitor__for__Indexed_for_Binary* visitor)
+    IVisitor_Indexed_for_Binary* visitor)
 {
   BufferedCollection_Indexed_for_Binary* parent =
     (BufferedCollection_Indexed_for_Binary*)getParentPointer_in_ICollection_Indexed_for_Binary(
@@ -676,7 +667,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_OctetString(BufferedCollection_
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_OctetString(BufferedCollection_Indexed_for_OctetString *pBufferedCollection_Indexed_for_OctetString,
-    IVisitor__for__Indexed_for_OctetString* visitor)
+    IVisitor_Indexed_for_OctetString* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -687,7 +678,7 @@ void Foreach_in_BufferedCollection_Indexed_for_OctetString(BufferedCollection_In
 //void OnValue_in_IVisitor__for__Indexed_for_OctetString(IVisitor__for__Indexed_for_OctetString *, Indexed_for_OctetString* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_OctetString temp = pBufferedCollection_Indexed_for_OctetString->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_OctetString(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_OctetString(visitor, temp );
   }
 }
 
@@ -699,7 +690,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_OctetString_override(void *pICo
   return Count_in_BufferedCollection_Indexed_for_OctetString(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_OctetString_override(void *pICollection_Indexed_for_OctetString,
-    IVisitor__for__Indexed_for_OctetString* visitor)
+    IVisitor_Indexed_for_OctetString* visitor)
 {
   BufferedCollection_Indexed_for_OctetString* parent =
     (BufferedCollection_Indexed_for_OctetString*)getParentPointer_in_ICollection_Indexed_for_OctetString(
@@ -751,7 +742,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_BinaryOutputStatus(BufferedColl
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_BinaryOutputStatus(BufferedCollection_Indexed_for_BinaryOutputStatus *pBufferedCollection_Indexed_for_BinaryOutputStatus,
-    IVisitor__for__Indexed_for_BinaryOutputStatus* visitor)
+    IVisitor_Indexed_for_BinaryOutputStatus* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -762,7 +753,7 @@ void Foreach_in_BufferedCollection_Indexed_for_BinaryOutputStatus(BufferedCollec
 //void OnValue_in_IVisitor__for__Indexed_for_BinaryOutputStatus(IVisitor__for__Indexed_for_BinaryOutputStatus *, Indexed_for_BinaryOutputStatus* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_BinaryOutputStatus temp = pBufferedCollection_Indexed_for_BinaryOutputStatus->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_BinaryOutputStatus(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_BinaryOutputStatus(visitor, temp );
   }
 }
 
@@ -774,7 +765,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_BinaryOutputStatus_override(voi
   return Count_in_BufferedCollection_Indexed_for_BinaryOutputStatus(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_BinaryOutputStatus_override(void *pICollection_Indexed_for_BinaryOutputStatus,
-    IVisitor__for__Indexed_for_BinaryOutputStatus* visitor)
+    IVisitor_Indexed_for_BinaryOutputStatus* visitor)
 {
   BufferedCollection_Indexed_for_BinaryOutputStatus* parent =
     (BufferedCollection_Indexed_for_BinaryOutputStatus*)getParentPointer_in_ICollection_Indexed_for_BinaryOutputStatus(
@@ -826,8 +817,17 @@ uint16_t Count_in_BufferedCollection_Indexed_for_IINValue(BufferedCollection_Ind
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_IINValue(BufferedCollection_Indexed_for_IINValue *pBufferedCollection_Indexed_for_IINValue,
-    IVisitor__for__Indexed_for_IINValue* visitor)
+    IVisitor_Indexed_for_IINValue* visitor)
 {
+#ifdef  LOG_INFO
+  std::cout<<std::endl;
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Foreach_in_BufferedCollection_Indexed_for_IINValue1"<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"*pBufferedCollection_Indexed_for_IINValue->COUNT= "<<(uint16_t)pBufferedCollection_Indexed_for_IINValue->COUNT<<std::endl;
+  inspect_RSeq(&(pBufferedCollection_Indexed_for_IINValue->buffer));
+#endif
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
   copy = pBufferedCollection_Indexed_for_IINValue->buffer;
@@ -837,8 +837,13 @@ void Foreach_in_BufferedCollection_Indexed_for_IINValue(BufferedCollection_Index
 //void OnValue_in_IVisitor__for__Indexed_for_IINValue(IVisitor__for__Indexed_for_IINValue *, Indexed_for_IINValue* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_IINValue temp = pBufferedCollection_Indexed_for_IINValue->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_IINValue(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_IINValue(visitor, temp );
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Foreach_in_BufferedCollection_Indexed_for_IINValue_"<<std::endl;
+  decrement_stack_info();
+#endif
 }
 
 uint16_t Count_in_BufferedCollection_Indexed_for_IINValue_override(void *pICollection_Indexed_for_IINValue)
@@ -849,7 +854,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_IINValue_override(void *pIColle
   return Count_in_BufferedCollection_Indexed_for_IINValue(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_IINValue_override(void *pICollection_Indexed_for_IINValue,
-    IVisitor__for__Indexed_for_IINValue* visitor)
+    IVisitor_Indexed_for_IINValue* visitor)
 {
   BufferedCollection_Indexed_for_IINValue* parent =
     (BufferedCollection_Indexed_for_IINValue*)getParentPointer_in_ICollection_Indexed_for_IINValue(
@@ -901,7 +906,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock(Buffere
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock(BufferedCollection_Indexed_for_ControlRelayOutputBlock *pBufferedCollection_Indexed_for_ControlRelayOutputBlock,
-    IVisitor__for__Indexed_for_ControlRelayOutputBlock* visitor)
+    IVisitor_Indexed_for_ControlRelayOutputBlock* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -912,7 +917,7 @@ void Foreach_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock(BufferedC
 //void OnValue_in_IVisitor__for__Indexed_for_ControlRelayOutputBlock(IVisitor__for__Indexed_for_ControlRelayOutputBlock *, Indexed_for_ControlRelayOutputBlock* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_ControlRelayOutputBlock temp = pBufferedCollection_Indexed_for_ControlRelayOutputBlock->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_ControlRelayOutputBlock(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_ControlRelayOutputBlock(visitor, temp );
   }
 }
 
@@ -924,7 +929,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock_overrid
   return Count_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock_override(void *pICollection_Indexed_for_ControlRelayOutputBlock,
-    IVisitor__for__Indexed_for_ControlRelayOutputBlock* visitor)
+    IVisitor_Indexed_for_ControlRelayOutputBlock* visitor)
 {
   BufferedCollection_Indexed_for_ControlRelayOutputBlock* parent =
     (BufferedCollection_Indexed_for_ControlRelayOutputBlock*)getParentPointer_in_ICollection_Indexed_for_ControlRelayOutputBlock(
@@ -976,7 +981,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_DoubleBitBinary(BufferedCollect
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_DoubleBitBinary(BufferedCollection_Indexed_for_DoubleBitBinary *pBufferedCollection_Indexed_for_DoubleBitBinary,
-    IVisitor__for__Indexed_for_DoubleBitBinary* visitor)
+    IVisitor_Indexed_for_DoubleBitBinary* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -987,7 +992,7 @@ void Foreach_in_BufferedCollection_Indexed_for_DoubleBitBinary(BufferedCollectio
 //void OnValue_in_IVisitor__for__Indexed_for_DoubleBitBinary(IVisitor__for__Indexed_for_DoubleBitBinary *, Indexed_for_DoubleBitBinary* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_DoubleBitBinary temp = pBufferedCollection_Indexed_for_DoubleBitBinary->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_DoubleBitBinary(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_DoubleBitBinary(visitor, temp );
   }
 }
 
@@ -999,7 +1004,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_DoubleBitBinary_override(void *
   return Count_in_BufferedCollection_Indexed_for_DoubleBitBinary(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_DoubleBitBinary_override(void *pICollection_Indexed_for_DoubleBitBinary,
-    IVisitor__for__Indexed_for_DoubleBitBinary* visitor)
+    IVisitor_Indexed_for_DoubleBitBinary* visitor)
 {
   BufferedCollection_Indexed_for_DoubleBitBinary* parent =
     (BufferedCollection_Indexed_for_DoubleBitBinary*)getParentPointer_in_ICollection_Indexed_for_DoubleBitBinary(
@@ -1051,7 +1056,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_BinaryCommandEvent(BufferedColl
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_BinaryCommandEvent(BufferedCollection_Indexed_for_BinaryCommandEvent *pBufferedCollection_Indexed_for_BinaryCommandEvent,
-    IVisitor__for__Indexed_for_BinaryCommandEvent* visitor)
+    IVisitor_Indexed_for_BinaryCommandEvent* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1062,7 +1067,7 @@ void Foreach_in_BufferedCollection_Indexed_for_BinaryCommandEvent(BufferedCollec
 //void OnValue_in_IVisitor__for__Indexed_for_BinaryCommandEvent(IVisitor__for__Indexed_for_BinaryCommandEvent *, Indexed_for_BinaryCommandEvent* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_BinaryCommandEvent temp = pBufferedCollection_Indexed_for_BinaryCommandEvent->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_BinaryCommandEvent(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_BinaryCommandEvent(visitor, temp );
   }
 }
 
@@ -1074,7 +1079,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_BinaryCommandEvent_override(voi
   return Count_in_BufferedCollection_Indexed_for_BinaryCommandEvent(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_BinaryCommandEvent_override(void *pICollection_Indexed_for_BinaryCommandEvent,
-    IVisitor__for__Indexed_for_BinaryCommandEvent* visitor)
+    IVisitor_Indexed_for_BinaryCommandEvent* visitor)
 {
   BufferedCollection_Indexed_for_BinaryCommandEvent* parent =
     (BufferedCollection_Indexed_for_BinaryCommandEvent*)getParentPointer_in_ICollection_Indexed_for_BinaryCommandEvent(
@@ -1126,7 +1131,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogCommandEvent(BufferedColl
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_AnalogCommandEvent(BufferedCollection_Indexed_for_AnalogCommandEvent *pBufferedCollection_Indexed_for_AnalogCommandEvent,
-    IVisitor__for__Indexed_for_AnalogCommandEvent* visitor)
+    IVisitor_Indexed_for_AnalogCommandEvent* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1137,7 +1142,7 @@ void Foreach_in_BufferedCollection_Indexed_for_AnalogCommandEvent(BufferedCollec
 //void OnValue_in_IVisitor__for__Indexed_for_AnalogCommandEvent(IVisitor__for__Indexed_for_AnalogCommandEvent *, Indexed_for_AnalogCommandEvent* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_AnalogCommandEvent temp = pBufferedCollection_Indexed_for_AnalogCommandEvent->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_AnalogCommandEvent(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_AnalogCommandEvent(visitor, temp );
   }
 }
 
@@ -1149,7 +1154,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogCommandEvent_override(voi
   return Count_in_BufferedCollection_Indexed_for_AnalogCommandEvent(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_AnalogCommandEvent_override(void *pICollection_Indexed_for_AnalogCommandEvent,
-    IVisitor__for__Indexed_for_AnalogCommandEvent* visitor)
+    IVisitor_Indexed_for_AnalogCommandEvent* visitor)
 {
   BufferedCollection_Indexed_for_AnalogCommandEvent* parent =
     (BufferedCollection_Indexed_for_AnalogCommandEvent*)getParentPointer_in_ICollection_Indexed_for_AnalogCommandEvent(
@@ -1201,7 +1206,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_TimeAndInterval(BufferedCollect
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_TimeAndInterval(BufferedCollection_Indexed_for_TimeAndInterval *pBufferedCollection_Indexed_for_TimeAndInterval,
-    IVisitor__for__Indexed_for_TimeAndInterval* visitor)
+    IVisitor_Indexed_for_TimeAndInterval* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1212,7 +1217,7 @@ void Foreach_in_BufferedCollection_Indexed_for_TimeAndInterval(BufferedCollectio
 //void OnValue_in_IVisitor__for__Indexed_for_TimeAndInterval(IVisitor__for__Indexed_for_TimeAndInterval *, Indexed_for_TimeAndInterval* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_TimeAndInterval temp = pBufferedCollection_Indexed_for_TimeAndInterval->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_TimeAndInterval(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_TimeAndInterval(visitor, temp );
   }
 }
 
@@ -1224,7 +1229,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_TimeAndInterval_override(void *
   return Count_in_BufferedCollection_Indexed_for_TimeAndInterval(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_TimeAndInterval_override(void *pICollection_Indexed_for_TimeAndInterval,
-    IVisitor__for__Indexed_for_TimeAndInterval* visitor)
+    IVisitor_Indexed_for_TimeAndInterval* visitor)
 {
   BufferedCollection_Indexed_for_TimeAndInterval* parent =
     (BufferedCollection_Indexed_for_TimeAndInterval*)getParentPointer_in_ICollection_Indexed_for_TimeAndInterval(
@@ -1276,7 +1281,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_Counter(BufferedCollection_Inde
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_Counter(BufferedCollection_Indexed_for_Counter *pBufferedCollection_Indexed_for_Counter,
-    IVisitor__for__Indexed_for_Counter* visitor)
+    IVisitor_Indexed_for_Counter* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1287,7 +1292,7 @@ void Foreach_in_BufferedCollection_Indexed_for_Counter(BufferedCollection_Indexe
 //void OnValue_in_IVisitor__for__Indexed_for_Counter(IVisitor__for__Indexed_for_Counter *, Indexed_for_Counter* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_Counter temp = pBufferedCollection_Indexed_for_Counter->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_Counter(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_Counter(visitor, temp );
   }
 }
 
@@ -1299,7 +1304,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_Counter_override(void *pICollec
   return Count_in_BufferedCollection_Indexed_for_Counter(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_Counter_override(void *pICollection_Indexed_for_Counter,
-    IVisitor__for__Indexed_for_Counter* visitor)
+    IVisitor_Indexed_for_Counter* visitor)
 {
   BufferedCollection_Indexed_for_Counter* parent =
     (BufferedCollection_Indexed_for_Counter*)getParentPointer_in_ICollection_Indexed_for_Counter(
@@ -1351,7 +1356,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_FrozenCounter(BufferedCollectio
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_FrozenCounter(BufferedCollection_Indexed_for_FrozenCounter *pBufferedCollection_Indexed_for_FrozenCounter,
-    IVisitor__for__Indexed_for_FrozenCounter* visitor)
+    IVisitor_Indexed_for_FrozenCounter* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1362,7 +1367,7 @@ void Foreach_in_BufferedCollection_Indexed_for_FrozenCounter(BufferedCollection_
 //void OnValue_in_IVisitor__for__Indexed_for_FrozenCounter(IVisitor__for__Indexed_for_FrozenCounter *, Indexed_for_FrozenCounter* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_FrozenCounter temp = pBufferedCollection_Indexed_for_FrozenCounter->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_FrozenCounter(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_FrozenCounter(visitor, temp );
   }
 }
 
@@ -1374,7 +1379,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_FrozenCounter_override(void *pI
   return Count_in_BufferedCollection_Indexed_for_FrozenCounter(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_FrozenCounter_override(void *pICollection_Indexed_for_FrozenCounter,
-    IVisitor__for__Indexed_for_FrozenCounter* visitor)
+    IVisitor_Indexed_for_FrozenCounter* visitor)
 {
   BufferedCollection_Indexed_for_FrozenCounter* parent =
     (BufferedCollection_Indexed_for_FrozenCounter*)getParentPointer_in_ICollection_Indexed_for_FrozenCounter(
@@ -1426,7 +1431,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_Analog(BufferedCollection_Index
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_Analog(BufferedCollection_Indexed_for_Analog *pBufferedCollection_Indexed_for_Analog,
-    IVisitor__for__Indexed_for_Analog* visitor)
+    IVisitor_Indexed_for_Analog* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1437,7 +1442,7 @@ void Foreach_in_BufferedCollection_Indexed_for_Analog(BufferedCollection_Indexed
 //void OnValue_in_IVisitor__for__Indexed_for_Analog(IVisitor__for__Indexed_for_Analog *, Indexed_for_Analog* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_Analog temp = pBufferedCollection_Indexed_for_Analog->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_Analog(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_Analog(visitor, temp );
   }
 }
 
@@ -1449,7 +1454,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_Analog_override(void *pICollect
   return Count_in_BufferedCollection_Indexed_for_Analog(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_Analog_override(void *pICollection_Indexed_for_Analog,
-    IVisitor__for__Indexed_for_Analog* visitor)
+    IVisitor_Indexed_for_Analog* visitor)
 {
   BufferedCollection_Indexed_for_Analog* parent =
     (BufferedCollection_Indexed_for_Analog*)getParentPointer_in_ICollection_Indexed_for_Analog(
@@ -1501,7 +1506,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputStatus(BufferedColl
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus(BufferedCollection_Indexed_for_AnalogOutputStatus *pBufferedCollection_Indexed_for_AnalogOutputStatus,
-    IVisitor__for__Indexed_for_AnalogOutputStatus* visitor)
+    IVisitor_Indexed_for_AnalogOutputStatus* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1512,7 +1517,7 @@ void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus(BufferedCollec
 //void OnValue_in_IVisitor__for__Indexed_for_AnalogOutputStatus(IVisitor__for__Indexed_for_AnalogOutputStatus *, Indexed_for_AnalogOutputStatus* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_AnalogOutputStatus temp = pBufferedCollection_Indexed_for_AnalogOutputStatus->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_AnalogOutputStatus(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_AnalogOutputStatus(visitor, temp );
   }
 }
 
@@ -1524,7 +1529,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(voi
   return Count_in_BufferedCollection_Indexed_for_AnalogOutputStatus(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(void *pICollection_Indexed_for_AnalogOutputStatus,
-    IVisitor__for__Indexed_for_AnalogOutputStatus* visitor)
+    IVisitor_Indexed_for_AnalogOutputStatus* visitor)
 {
   BufferedCollection_Indexed_for_AnalogOutputStatus* parent =
     (BufferedCollection_Indexed_for_AnalogOutputStatus*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputStatus(
@@ -1576,7 +1581,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedColle
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32,
-    IVisitor__for__Indexed_for_AnalogOutputInt32* visitor)
+    IVisitor_Indexed_for_AnalogOutputInt32* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1587,7 +1592,7 @@ void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedCollect
 //void OnValue_in_IVisitor__for__Indexed_for_AnalogOutputInt32(IVisitor__for__Indexed_for_AnalogOutputInt32 *, Indexed_for_AnalogOutputInt32* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_AnalogOutputInt32 temp = pBufferedCollection_Indexed_for_AnalogOutputInt32->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_AnalogOutputInt32(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_AnalogOutputInt32(visitor, temp );
   }
 }
 
@@ -1599,7 +1604,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override(void
   return Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override(void *pICollection_Indexed_for_AnalogOutputInt32,
-    IVisitor__for__Indexed_for_AnalogOutputInt32* visitor)
+    IVisitor_Indexed_for_AnalogOutputInt32* visitor)
 {
   BufferedCollection_Indexed_for_AnalogOutputInt32* parent =
     (BufferedCollection_Indexed_for_AnalogOutputInt32*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputInt32(
@@ -1651,7 +1656,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedColle
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16,
-    IVisitor__for__Indexed_for_AnalogOutputInt16* visitor)
+    IVisitor_Indexed_for_AnalogOutputInt16* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1662,7 +1667,7 @@ void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedCollect
 //void OnValue_in_IVisitor__for__Indexed_for_AnalogOutputInt16(IVisitor__for__Indexed_for_AnalogOutputInt16 *, Indexed_for_AnalogOutputInt16* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_AnalogOutputInt16 temp = pBufferedCollection_Indexed_for_AnalogOutputInt16->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_AnalogOutputInt16(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_AnalogOutputInt16(visitor, temp );
   }
 }
 
@@ -1674,7 +1679,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override(void
   return Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override(void *pICollection_Indexed_for_AnalogOutputInt16,
-    IVisitor__for__Indexed_for_AnalogOutputInt16* visitor)
+    IVisitor_Indexed_for_AnalogOutputInt16* visitor)
 {
   BufferedCollection_Indexed_for_AnalogOutputInt16* parent =
     (BufferedCollection_Indexed_for_AnalogOutputInt16*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputInt16(
@@ -1726,7 +1731,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedCol
 }
 
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32,
-    IVisitor__for__Indexed_for_AnalogOutputFloat32* visitor)
+    IVisitor_Indexed_for_AnalogOutputFloat32* visitor)
 {
 ////        ser4cpp::rseq_t copy(buffer);
   RSeq_for_Uint16_t copy;
@@ -1737,7 +1742,7 @@ void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedColle
 //void OnValue_in_IVisitor__for__Indexed_for_AnalogOutputFloat32(IVisitor__for__Indexed_for_AnalogOutputFloat32 *, Indexed_for_AnalogOutputFloat32* );
 ////            visitor.OnValue(readFunc(copy, pos));
     Indexed_for_AnalogOutputFloat32 temp = pBufferedCollection_Indexed_for_AnalogOutputFloat32->readFunc(&copy, pos);
-    OnValue_in_IVisitor__for__Indexed_for_AnalogOutputFloat32(visitor, &temp );
+    OnValue_in_IVisitor_Indexed_for_AnalogOutputFloat32(visitor, temp );
   }
 }
 
@@ -1749,7 +1754,7 @@ uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override(vo
   return Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(parent);
 }
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override(void *pICollection_Indexed_for_AnalogOutputFloat32,
-    IVisitor__for__Indexed_for_AnalogOutputFloat32* visitor)
+    IVisitor_Indexed_for_AnalogOutputFloat32* visitor)
 {
   BufferedCollection_Indexed_for_AnalogOutputFloat32* parent =
     (BufferedCollection_Indexed_for_AnalogOutputFloat32*)getParentPointer_in_ICollection_Indexed_for_AnalogOutputFloat32(

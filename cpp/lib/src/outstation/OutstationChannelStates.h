@@ -40,7 +40,7 @@ typedef struct
 ////    void Reset() {}
 
   OutstationSeqNum seq;
-  TxBuffer tx;
+  TxBuffer tx_in_OutstationSolState;
 } OutstationSolState;
 
 void  OutstationSolState_in_OutstationSolState(OutstationSolState *pOutstationSolState, uint32_t maxTxSize);

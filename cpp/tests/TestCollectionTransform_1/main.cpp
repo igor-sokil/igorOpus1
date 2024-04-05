@@ -32,27 +32,61 @@ qDebug()<<"********SUITE('MapIntegers2Booleans')********";
     int values[4] = {1, 2, 3, 4};
     ArrayCollection<int> collectionInt(values, 4);
 
-    auto greaterThanTwo = [](const int& x) -> bool { return x > 2; };
+    auto greaterThanTwo = [](const int& x) -> bool 
+    {
+#ifdef  LOG_INFO
+        std::cout<<'\n';
+        increment_stack_info();
+        std::cout<<getString_stack_info();
+        std::cout<<"{greaterThanTwo1"<<'\n';
+#endif
+#ifdef  LOG_INFO
+        std::cout<<getString_stack_info();
+        std::cout<<"}greaterThanTwo_"<<'\n';
+        decrement_stack_info();
+#endif
+      return x > 2; 
+    };
     auto collectionBool = Map<int, bool>(collectionInt, greaterThanTwo);
 
     std::vector<bool> items;
-    auto fillVector = [&items](const bool& item) { qDebug()<<"item="<<item;
-                                                   items.push_back(item); };
+    auto fillVector = [&items](const bool& item) { 
+#ifdef  LOG_INFO
+        std::cout<<'\n';
+        increment_stack_info();
+        std::cout<<getString_stack_info();
+        std::cout<<"{fillVector1"<<'\n';
+#endif
+//       qDebug()<<"item="<<item;
+       std::cout<<getString_stack_info();
+       std::cout<<"item= "<<item<<'\n';
+       items.push_back(item);
+
+#ifdef  LOG_INFO
+        std::cout<<getString_stack_info();
+        std::cout<<"}fillVector_"<<'\n';
+        decrement_stack_info();
+#endif
+    };
     collectionBool.ForeachItem(fillVector);
 
-////    REQUIRE(items.size() == 4);
+qDebug()<<"REQUIRE(items.size() == 4)";
 qDebug()<<"items.size() == 4  "<<items.size();
 
 ////    REQUIRE_FALSE(items[0]);
+qDebug()<<"REQUIRE_FALSE(items[0])";
 qDebug()<<"items[0]  "<<items[0];
 
 ////    REQUIRE_FALSE(items[1]);
+qDebug()<<"REQUIRE_FALSE(items[1])";
 qDebug()<<"items[1]  "<<items[1];
 
 ////    REQUIRE(items[2]);
+qDebug()<<"REQUIRE(items[2])";
 qDebug()<<"items[2]  "<<items[2];
 
 ////    REQUIRE(items[3]);
+qDebug()<<"REQUIRE(items[3])";
 qDebug()<<"items[3]  "<<items[3];
 
 /*

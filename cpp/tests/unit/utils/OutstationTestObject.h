@@ -94,6 +94,7 @@ void OutstationTestObject_in_OutstationTestObject(OutstationTestObject *pOutstat
     DatabaseConfig* db_config);// = opendnp3::DatabaseConfig());
 
 uint16_t LowerLayerUp_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
+uint16_t LowerLayerDown_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject);
 
 uint16_t SendToOutstation_in_OutstationTestObject(OutstationTestObject *pOutstationTestObject, std::string& hex);
 

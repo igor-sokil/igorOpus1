@@ -54,11 +54,11 @@
 ////template<class Spec> struct EventCellBase
 typedef struct
 {
-  PointClass_uint8_t clazz;
+  PointClass_uint8_t clazz_in_EventCellBase;
 ////    typename Spec::meas_t lastEvent;
-  Analog lastEvent;
+  Analog lastEvent_in_EventCellBase;
 ////    typename Spec::event_variation_t evariation;
-  event_variation_t_in_AnalogInfo evariation;
+  event_variation_t_in_AnalogInfo evariation_in_EventCellBase;
 
 ////    void SetEventValue(const typename Spec::meas_t& value)
 ////    {

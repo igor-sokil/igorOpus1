@@ -1,14 +1,8 @@
-
 #ifndef OPENDNP3_ICOLLECTION_Indexed_for_BinaryOutputStatus_H
 #define OPENDNP3_ICOLLECTION_Indexed_for_BinaryOutputStatus_H
 
 #include "Indexed.h"
-//#include "Group50.h"
-////#include <cstddef>
 
-////namespace opendnp3
-////{
-//--------------------------------ICollection_Indexed_for_BinaryOutputStatus--------------------------------
 /**
  * Abstract way of visiting elements of a collection
  *
@@ -17,72 +11,15 @@
 typedef struct
 {
 ////public:
-  void (*pOnValue_in_IVisitor__for__Indexed_for_BinaryOutputStatus)(void*, Indexed_for_BinaryOutputStatus* value);// = 0;
+  void (*pOnValue_in_IVisitor_Indexed_for_BinaryOutputStatus)(void*, Indexed_for_BinaryOutputStatus value);// = 0;
 
-  void* pParentPointer_in_IVisitor__for__Indexed_for_BinaryOutputStatus;
-} IVisitor__for__Indexed_for_BinaryOutputStatus;
+  void* pParentPointer_in_IVisitor_Indexed_for_BinaryOutputStatus;
+} IVisitor_Indexed_for_BinaryOutputStatus;
 
-void* getParentPointer_in_IVisitor__for__Indexed_for_BinaryOutputStatus(IVisitor__for__Indexed_for_BinaryOutputStatus*);
-void  setParentPointer_in_IVisitor__for__Indexed_for_BinaryOutputStatus(IVisitor__for__Indexed_for_BinaryOutputStatus*, void*);
+void* getParentPointer_in_IVisitor_Indexed_for_BinaryOutputStatus(IVisitor_Indexed_for_BinaryOutputStatus*);
+void  setParentPointer_in_IVisitor_Indexed_for_BinaryOutputStatus(IVisitor_Indexed_for_BinaryOutputStatus*, void*);
 
-void OnValue_in_IVisitor__for__Indexed_for_BinaryOutputStatus(IVisitor__for__Indexed_for_BinaryOutputStatus *, Indexed_for_BinaryOutputStatus* );
-
-/**
- * An interface representing an abstract immutable collection of things of type T.
- *
- * The user can only read these values via callback to receive each element.
- */
-////template<class T> class ICollection
-typedef struct
-{
-//  Indexed_for_BinaryOutputStatus *pValue_in_ICollection_Indexed_for_BinaryOutputStatus;
-////public:
-  /**
-   * The number of elements in the collection
-   */
-  uint16_t (*pCount_in_ICollection_Indexed_for_BinaryOutputStatus)(void*);// const = 0;
-
-  /**
-   * Visit all the elements of a collection
-   */
-  void (*pForeach_in_ICollection_Indexed_for_BinaryOutputStatus)(void*, IVisitor__for__Indexed_for_BinaryOutputStatus* visitor);// const = 0;
-
-  /**
-      visit all of the elements of a collection
-  */
-//    template<class Fun> void ForeachItem(const Fun& fun) const
-//    {
-//        FunctorVisitor<T, Fun> visitor(fun);
-//        this->Foreach(visitor);
-//    }
-
-  /**
-      Retrieve the only value from the collection.
-  */
-////    boolean ReadOnlyValue_in_ICollection_Indexed_for_BinaryOutputStatus(uint16_t* value) const
-////    {
-////        if (this->Count() == 1)
-////        {
-////            auto assignValue = [&value](const T& item) { value = item; };
-////            this->ForeachItem(assignValue);
-////            return true;
-////        }
-////        else
-////        {
-////            return false;
-////        }
-////    }
-  void* pParentPointer_in_ICollection_Indexed_for_BinaryOutputStatus;
-} ICollection_Indexed_for_BinaryOutputStatus;
-
-void* getParentPointer_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus*);
-void  setParentPointer_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus*, void*);
-uint16_t Count_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus*);
-void     Foreach_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus*, IVisitor__for__Indexed_for_BinaryOutputStatus* visitor);
-
-boolean ReadOnlyValue_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus *pICollection_Indexed_for_BinaryOutputStatus, Indexed_for_BinaryOutputStatus* value);
-
-void ForeachItem_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus *pICollection_Indexed_for_BinaryOutputStatus, void (*fun)(Indexed_for_BinaryOutputStatus* item));
+void OnValue_in_IVisitor_Indexed_for_BinaryOutputStatus(IVisitor_Indexed_for_BinaryOutputStatus *, Indexed_for_BinaryOutputStatus );
 
 /**
  * A visitor implemented as an abstract functor
@@ -105,17 +42,93 @@ void ForeachItem_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Index
 typedef struct
 {
 ////public:
-  IVisitor__for__Indexed_for_BinaryOutputStatus iIVisitor__for__Indexed_for_BinaryOutputStatus;
+  IVisitor_Indexed_for_BinaryOutputStatus iIVisitor_Indexed_for_BinaryOutputStatus;
 
 ////private:
-  void (*Fun)(Indexed_for_BinaryOutputStatus* item);
+  void (*Fun)(Indexed_for_BinaryOutputStatus item);
 
-} FunctorVisitor__for__Indexed_for_BinaryOutputStatus;
+} FunctorVisitor_Indexed_for_BinaryOutputStatus;
 
-void FunctorVisitor__for__Indexed_for_BinaryOutputStatus_in_FunctorVisitor__for__Indexed_for_BinaryOutputStatus(FunctorVisitor__for__Indexed_for_BinaryOutputStatus *pFunctorVisitor__for__Indexed_for_BinaryOutputStatus,
-    void (*fun)(Indexed_for_BinaryOutputStatus* item));
-void OnValue_in_FunctorVisitor__for__Indexed_for_BinaryOutputStatus_override(void *pFunctorVisitor__for__Indexed_for_BinaryOutputStatus, Indexed_for_BinaryOutputStatus *value);
-//--------------------------------ICollection_Indexed_for_BinaryOutputStatus--------------------------------
+void FunctorVisitor_Indexed_for_BinaryOutputStatus_in_FunctorVisitor_Indexed_for_BinaryOutputStatus(FunctorVisitor_Indexed_for_BinaryOutputStatus *pFunctorVisitor_Indexed_for_BinaryOutputStatus,
+    void (*fun)(Indexed_for_BinaryOutputStatus item));
+void OnValue_in_FunctorVisitor_Indexed_for_BinaryOutputStatus(FunctorVisitor_Indexed_for_BinaryOutputStatus *pFunctorVisitor_Indexed_for_BinaryOutputStatus, Indexed_for_BinaryOutputStatus value);
+void OnValue_in_FunctorVisitor_Indexed_for_BinaryOutputStatus_override(void *pIVisitor_Indexed_for_BinaryOutputStatus, Indexed_for_BinaryOutputStatus value);
 
-////} // namespace opendnp3
+/**
+ * An interface representing an abstract immutable collection of things of type T.
+ *
+ * The user can only read these values via callback to receive each element.
+ */
+////template<class T> class ICollection
+typedef struct
+{
+////public:
+    /**
+     * The number of elements in the collection
+     */
+////    virtual size_t Count() const = 0;
+    uint16_t (*pCount_in_ICollection_Indexed_for_BinaryOutputStatus)(void *);// const = 0;
+
+    /**
+     * Visit all the elements of a collection
+     */
+////    virtual void Foreach(IVisitor<T>& visitor) const = 0;
+    void (*pForeach_in_ICollection_Indexed_for_BinaryOutputStatus)(void *, IVisitor_Indexed_for_BinaryOutputStatus *pIVisitor_Indexed_for_BinaryOutputStatus);// const = 0;
+
+    /**
+        visit all of the elements of a collection
+    */
+////    template<class Fun> void ForeachItem(const Fun& fun) const
+////    {
+////        FunctorVisitor<T, Fun> visitor(fun);
+////        this->Foreach(visitor);
+////    }
+
+    /**
+        Retrieve the only value from the collection.
+    */
+////    bool ReadOnlyValue(T& value) const
+////    {
+////        if (this->Count() == 1)
+////        {
+////            auto assignValue = [&value](const T& item) { value = item; };
+////            this->ForeachItem(assignValue);
+////            return true;
+////        }
+////        else
+////        {
+////            return false;
+////        }
+////    }
+  void* pParentPointer_in_ICollection_Indexed_for_BinaryOutputStatus;
+} ICollection_Indexed_for_BinaryOutputStatus;
+
+
+void ForeachItem_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus *pICollection_Indexed_for_BinaryOutputStatus, void (*fun)(Indexed_for_BinaryOutputStatus item));
+
+void* getParentPointer_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus* pICollection_Indexed_for_BinaryOutputStatus);
+void  setParentPointer_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus* pICollection_Indexed_for_BinaryOutputStatus, void* pParentPointer);
+uint16_t  Count_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus *pICollection_Indexed_for_BinaryOutputStatus);
+void  Foreach_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus *pICollection_Indexed_for_BinaryOutputStatus, IVisitor_Indexed_for_BinaryOutputStatus *pIVisitor_Indexed_for_BinaryOutputStatus);
+
+
+    /**
+        Retrieve the only value from the collection.
+    */
+////    bool ReadOnlyValue(T& value) const
+////    {
+////        if (this->Count() == 1)
+////        {
+////            auto assignValue = [&value](const T& item) { value = item; };
+////            this->ForeachItem(assignValue);
+////            return true;
+////        }
+////        else
+////        {
+////            return false;
+////        }
+////    }
+boolean ReadOnlyValue_in_ICollection_Indexed_for_BinaryOutputStatus(ICollection_Indexed_for_BinaryOutputStatus *pICollection_Indexed_for_BinaryOutputStatus, Indexed_for_BinaryOutputStatus* value);
+
+
 #endif

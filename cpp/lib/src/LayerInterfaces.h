@@ -113,6 +113,7 @@ typedef struct
 ////    HasLowerLayer() : pLowerLayer(nullptr) {}
 
   // Called by the lower layer when data arrives
+// Вызывается нижним уровнем при поступлении данных
 
 ////    void SetLowerLayer(ILowerLayer& lowerLayer)
 ////    {

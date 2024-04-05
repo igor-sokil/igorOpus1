@@ -34,7 +34,7 @@ using namespace ser4cpp;
 
 #define SUITE(name) "LinkLayerKeepAliveTestSuite - " name
 
-TEST_CASE(SUITE("Timers activated and canceled in response to layer up/down"))
+TEST_CASE(SUITE("1Timers activated and canceled in response to layer up/down"))
 {
     LinkLayerTest t;
     REQUIRE(t.exe->num_pending_timers() == 0);
@@ -44,7 +44,7 @@ TEST_CASE(SUITE("Timers activated and canceled in response to layer up/down"))
     REQUIRE(t.exe->num_pending_timers() == 0);
 }
 
-TEST_CASE(SUITE("ForwardsKeepAliveTimeouts"))
+TEST_CASE(SUITE("2ForwardsKeepAliveTimeouts"))
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -60,7 +60,7 @@ TEST_CASE(SUITE("ForwardsKeepAliveTimeouts"))
     REQUIRE(t.listener->numKeepAliveTransmissions == 1);
 }
 
-TEST_CASE(SUITE("KeepAliveStopsOnAck"))
+TEST_CASE(SUITE("3KeepAliveStopsOnAck"))
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -83,7 +83,7 @@ TEST_CASE(SUITE("KeepAliveStopsOnAck"))
     REQUIRE(t.listener->numKeepAliveFailure == 0); // Not reported as a failure, because there is activity on the link
 }
 
-TEST_CASE(SUITE("KeepAliveStopsOnNack"))
+TEST_CASE(SUITE("4KeepAliveStopsOnNack"))
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -106,7 +106,7 @@ TEST_CASE(SUITE("KeepAliveStopsOnNack"))
     REQUIRE(t.listener->numKeepAliveFailure == 0); // Not reported as a failure, because there is activity on the link
 }
 
-TEST_CASE(SUITE("KeepAliveFailureCallbackIsInvokedOnTimeout"))
+TEST_CASE(SUITE("5KeepAliveFailureCallbackIsInvokedOnTimeout"))
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -129,7 +129,8 @@ TEST_CASE(SUITE("KeepAliveFailureCallbackIsInvokedOnTimeout"))
     REQUIRE(t.listener->numKeepAliveFailure == 1);
 }
 
-TEST_CASE(SUITE("KeepAliveSuccessCallbackIsInvokedWhenLinkStatusReceived"))
+TEST_CASE(SUITE("6KeepAliveSuccessCallbackIsInvokedWhenLinkStatusReceived"))
+Обратный вызов Keep Alive Success вызывается при получении статуса ссылки
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -152,7 +153,7 @@ TEST_CASE(SUITE("KeepAliveSuccessCallbackIsInvokedWhenLinkStatusReceived"))
     REQUIRE(t.exe->num_pending_timers() == 1);
 }
 
-TEST_CASE(SUITE("KeepAliveIsPeriodicOnFailure"))
+TEST_CASE(SUITE("7KeepAliveIsPeriodicOnFailure"))
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -179,7 +180,7 @@ TEST_CASE(SUITE("KeepAliveIsPeriodicOnFailure"))
     }
 }
 
-TEST_CASE(SUITE("KeepAliveIsPeriodicOnSuccess"))
+TEST_CASE(SUITE("8KeepAliveIsPeriodicOnSuccess"))
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -204,7 +205,8 @@ TEST_CASE(SUITE("KeepAliveIsPeriodicOnSuccess"))
     }
 }
 
-TEST_CASE(SUITE("KeepAliveSuccessCallbackIsInvokedWhenLinkStatusReceivedBeforeTransmitComplete"))
+TEST_CASE(SUITE("9KeepAliveSuccessCallbackIsInvokedWhenLinkStatusReceivedBeforeTransmitComplete"))
+Обратный вызов Keep Alive Success вызывается, когда статус соединения получен до завершения передачи
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -225,7 +227,7 @@ TEST_CASE(SUITE("KeepAliveSuccessCallbackIsInvokedWhenLinkStatusReceivedBeforeTr
     REQUIRE(t.exe->num_pending_timers() == 1);
 }
 
-TEST_CASE(SUITE("KeepAliveTimerRestartsWhenFrameIsReceived"))
+TEST_CASE(SUITE("10KeepAliveTimerRestartsWhenFrameIsReceived"))
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Seconds(5);
@@ -244,11 +246,13 @@ TEST_CASE(SUITE("KeepAliveTimerRestartsWhenFrameIsReceived"))
     REQUIRE(t.PopLastWriteAsHex() == ""); // Nothing sent
 
     t.exe->advance_time(std::chrono::seconds(2)); // The keep-alive should now be sent
+Теперь подтверждение активности должно быть отправлено
+
     REQUIRE(t.exe->run_many() > 0);
     REQUIRE(t.PopLastWriteAsHex() == LinkHex::RequestLinkStatus(true, 1024, 1));
 }
 
-TEST_CASE(SUITE("KeepAliveDisabled"))
+TEST_CASE(SUITE("11KeepAliveDisabled"))
 {
     LinkConfig config(true, false);
     config.KeepAliveTimeout = TimeDuration::Max();

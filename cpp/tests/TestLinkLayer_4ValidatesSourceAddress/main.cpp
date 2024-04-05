@@ -52,7 +52,7 @@ qDebug()<<"********SUITE('4ValidatesSourceAddress')********";
                  false,
                  false,
                  1,
-                 1023,
+                 1024,//1023,
                  &temp2);//// = ser4cpp::rseq_t::empty());
 
 //  Link_StackStatistics* GetStatistics_in_LinkLayer(LinkLayer *pLinkLayer)

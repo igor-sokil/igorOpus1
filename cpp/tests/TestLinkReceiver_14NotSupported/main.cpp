@@ -39,6 +39,8 @@ qDebug()<<"********SUITE('14NotSupported')********";
 ////    auto writeTo = buffer.as_wslice();
 WSeq_for_Uint16_t writeTo = as_wslice_in_BufferSer4(&buffer);
 
+//RSeq_for_Uint16_t FormatNotSupported_in_LinkFrame_static(
+//  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
 //RSeq_for_Uint16_t frame = FormatAck_in_LinkFrame_static(
 //  WSeq_for_Uint16_t* buffer, boolean aIsMaster, boolean aIsRcvBuffFull, uint16_t aDest, uint16_t aSrc);//, Logger* pLogger);
 ////    auto frame = LinkFrame::FormatNotSupported(writeTo, true, false, 1, 2, nullptr);

@@ -98,7 +98,7 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"ParseRange_in_NumParser1"<<std::endl;
+  std::cout<<"{ParseRange_in_NumParser1"<<std::endl;
 #endif
 
 ////    if (buffer.length() < (2 * static_cast<size_t>(size)))
@@ -108,6 +108,8 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"***SIMPLE_LOGGER_BLOCK(pLogger, flags::WARN, 'Not enough data for start / stop')***"<<std::endl;
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRange_in_NumParser1_"<<std::endl;
     decrement_stack_info();
 #endif
     return ParseResult_NOT_ENOUGH_DATA_FOR_RANGE;
@@ -121,6 +123,11 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
 ////    if (range.IsValid())
   if (IsValid_in_Range(range))
   {
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}ParseRange_in_NumParser2_"<<std::endl;
+    decrement_stack_info();
+#endif
     return ParseResult_OK;
   }
 
@@ -128,6 +135,8 @@ ParseResult_uint8_t ParseRange_in_NumParser(NumParser *pNumParser, RSeq_for_Uint
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"***FORMAT_LOGGER_BLOCK(pLogger, flags::WARN, 'start (%u) > stop (%u)', range.start, range.stop)***"<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"}ParseRange_in_NumParser3_"<<std::endl;
   decrement_stack_info();
 #endif
   return ParseResult_BAD_START_STOP;

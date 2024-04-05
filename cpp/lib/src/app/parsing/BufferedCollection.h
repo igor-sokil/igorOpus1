@@ -83,12 +83,12 @@ BufferedCollection_uint16 CreateBufferedCollection_uint16_static(
 
 uint16_t Count_in_BufferedCollection_uint16(BufferedCollection_uint16 *pBufferedCollection_uint16);
 void Foreach_in_BufferedCollection_uint16(BufferedCollection_uint16 *pBufferedCollection_uint16,
-    IVisitor__for__uint16* visitor);
+    IVisitor_for_uint16* visitor);
 
 
 uint16_t Count_in_BufferedCollection_uint16_override(void *pICollection_for_uint16);
 void Foreach_in_BufferedCollection_uint16_override(void *pICollection_for_uint16,
-    IVisitor__for__uint16* visitor);
+    IVisitor_for_uint16* visitor);
 //-----------------------------------uint16---------------------------------------------------
 //-----------------------------------Group50Var1---------------------------------------------------
 typedef Group50Var1 (*ReadFunc_Group50Var1)(
@@ -143,12 +143,12 @@ BufferedCollection_Group50Var1 CreateBufferedCollection_Group50Var1_static(
 
 uint16_t Count_in_BufferedCollection_Group50Var1(BufferedCollection_Group50Var1 *pBufferedCollection_Group50Var1);
 void Foreach_in_BufferedCollection_Group50Var1(BufferedCollection_Group50Var1 *pBufferedCollection_Group50Var1,
-    IVisitor__for__Group50Var1* visitor);
+    IVisitor_for_Group50Var1* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Group50Var1_override(void *pICollection_for_Group50Var1);
 void Foreach_in_BufferedCollection_Group50Var1_override(void *pICollection_for_Group50Var1,
-    IVisitor__for__Group50Var1* visitor);
+    IVisitor_for_Group50Var1* visitor);
 //-----------------------------------Group50Var1---------------------------------------------------
 //-----------------------------------Group50Var3---------------------------------------------------
 typedef Group50Var3 (*ReadFunc_Group50Var3)(
@@ -203,12 +203,12 @@ BufferedCollection_Group50Var3 CreateBufferedCollection_Group50Var3_static(
 
 uint16_t Count_in_BufferedCollection_Group50Var3(BufferedCollection_Group50Var3 *pBufferedCollection_Group50Var3);
 void Foreach_in_BufferedCollection_Group50Var3(BufferedCollection_Group50Var3 *pBufferedCollection_Group50Var3,
-    IVisitor__for__Group50Var3* visitor);
+    IVisitor_for_Group50Var3* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Group50Var3_override(void *pICollection_for_Group50Var3);
 void Foreach_in_BufferedCollection_Group50Var3_override(void *pICollection_for_Group50Var3,
-    IVisitor__for__Group50Var3* visitor);
+    IVisitor_for_Group50Var3* visitor);
 //-----------------------------------Group50Var3---------------------------------------------------
 //-----------------------------------Group51Var1---------------------------------------------------
 typedef Group51Var1 (*ReadFunc_Group51Var1)(
@@ -263,12 +263,12 @@ BufferedCollection_Group51Var1 CreateBufferedCollection_Group51Var1_static(
 
 uint16_t Count_in_BufferedCollection_Group51Var1(BufferedCollection_Group51Var1 *pBufferedCollection_Group51Var1);
 void Foreach_in_BufferedCollection_Group51Var1(BufferedCollection_Group51Var1 *pBufferedCollection_Group51Var1,
-    IVisitor__for__Group51Var1* visitor);
+    IVisitor_for_Group51Var1* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Group51Var1_override(void *pICollection_for_Group51Var1);
 void Foreach_in_BufferedCollection_Group51Var1_override(void *pICollection_for_Group51Var1,
-    IVisitor__for__Group51Var1* visitor);
+    IVisitor_for_Group51Var1* visitor);
 //-----------------------------------Group51Var1---------------------------------------------------
 //-----------------------------------Group51Var2---------------------------------------------------
 typedef Group51Var2 (*ReadFunc_Group51Var2)(
@@ -323,12 +323,12 @@ BufferedCollection_Group51Var2 CreateBufferedCollection_Group51Var2_static(
 
 uint16_t Count_in_BufferedCollection_Group51Var2(BufferedCollection_Group51Var2 *pBufferedCollection_Group51Var2);
 void Foreach_in_BufferedCollection_Group51Var2(BufferedCollection_Group51Var2 *pBufferedCollection_Group51Var2,
-    IVisitor__for__Group51Var2* visitor);
+    IVisitor_for_Group51Var2* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Group51Var2_override(void *pICollection_for_Group51Var2);
 void Foreach_in_BufferedCollection_Group51Var2_override(void *pICollection_for_Group51Var2,
-    IVisitor__for__Group51Var2* visitor);
+    IVisitor_for_Group51Var2* visitor);
 //-----------------------------------Group51Var2---------------------------------------------------
 //-----------------------------------Group52Var1---------------------------------------------------
 typedef Group52Var1 (*ReadFunc_Group52Var1)(
@@ -383,12 +383,12 @@ BufferedCollection_Group52Var1 CreateBufferedCollection_Group52Var1_static(
 
 uint16_t Count_in_BufferedCollection_Group52Var1(BufferedCollection_Group52Var1 *pBufferedCollection_Group52Var1);
 void Foreach_in_BufferedCollection_Group52Var1(BufferedCollection_Group52Var1 *pBufferedCollection_Group52Var1,
-    IVisitor__for__Group52Var1* visitor);
+    IVisitor_for_Group52Var1* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Group52Var1_override(void *pICollection_for_Group52Var1);
 void Foreach_in_BufferedCollection_Group52Var1_override(void *pICollection_for_Group52Var1,
-    IVisitor__for__Group52Var1* visitor);
+    IVisitor_for_Group52Var1* visitor);
 //-----------------------------------Group52Var1---------------------------------------------------
 //-----------------------------------Group52Var2---------------------------------------------------
 typedef Group52Var2 (*ReadFunc_Group52Var2)(
@@ -443,12 +443,12 @@ BufferedCollection_Group52Var2 CreateBufferedCollection_Group52Var2_static(
 
 uint16_t Count_in_BufferedCollection_Group52Var2(BufferedCollection_Group52Var2 *pBufferedCollection_Group52Var2);
 void Foreach_in_BufferedCollection_Group52Var2(BufferedCollection_Group52Var2 *pBufferedCollection_Group52Var2,
-    IVisitor__for__Group52Var2* visitor);
+    IVisitor_for_Group52Var2* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Group52Var2_override(void *pICollection_for_Group52Var2);
 void Foreach_in_BufferedCollection_Group52Var2_override(void *pICollection_for_Group52Var2,
-    IVisitor__for__Group52Var2* visitor);
+    IVisitor_for_Group52Var2* visitor);
 //-----------------------------------Group52Var2---------------------------------------------------
 //-----------------------------------Indexed_for_Binary---------------------------------------------------
 typedef Indexed_for_Binary (*ReadFunc_Indexed_for_Binary)(
@@ -503,12 +503,12 @@ BufferedCollection_Indexed_for_Binary CreateBufferedCollection_Indexed_for_Binar
 
 uint16_t Count_in_BufferedCollection_Indexed_for_Binary(BufferedCollection_Indexed_for_Binary *pBufferedCollection_Indexed_for_Binary);
 void Foreach_in_BufferedCollection_Indexed_for_Binary(BufferedCollection_Indexed_for_Binary *pBufferedCollection_Indexed_for_Binary,
-    IVisitor__for__Indexed_for_Binary* visitor);
+    IVisitor_Indexed_for_Binary* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_Binary_override(void *pICollection_Indexed_for_Binary);
 void Foreach_in_BufferedCollection_Indexed_for_Binary_override(void *pICollection_Indexed_for_Binary,
-    IVisitor__for__Indexed_for_Binary* visitor);
+    IVisitor_Indexed_for_Binary* visitor);
 //-----------------------------------Indexed_for_Binary---------------------------------------------------
 //-----------------------------------Indexed_for_OctetString---------------------------------------------------
 typedef Indexed_for_OctetString (*ReadFunc_Indexed_for_OctetString)(
@@ -563,12 +563,12 @@ BufferedCollection_Indexed_for_OctetString CreateBufferedCollection_Indexed_for_
 
 uint16_t Count_in_BufferedCollection_Indexed_for_OctetString(BufferedCollection_Indexed_for_OctetString *pBufferedCollection_Indexed_for_OctetString);
 void Foreach_in_BufferedCollection_Indexed_for_OctetString(BufferedCollection_Indexed_for_OctetString *pBufferedCollection_Indexed_for_OctetString,
-    IVisitor__for__Indexed_for_OctetString* visitor);
+    IVisitor_Indexed_for_OctetString* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_OctetString_override(void *pICollection_Indexed_for_OctetString);
 void Foreach_in_BufferedCollection_Indexed_for_OctetString_override(void *pICollection_Indexed_for_OctetString,
-    IVisitor__for__Indexed_for_OctetString* visitor);
+    IVisitor_Indexed_for_OctetString* visitor);
 //-----------------------------------Indexed_for_OctetString---------------------------------------------------
 //-----------------------------------Indexed_for_IINValue---------------------------------------------------
 typedef Indexed_for_IINValue (*ReadFunc_Indexed_for_IINValue)(
@@ -623,12 +623,12 @@ BufferedCollection_Indexed_for_IINValue CreateBufferedCollection_Indexed_for_IIN
 
 uint16_t Count_in_BufferedCollection_Indexed_for_IINValue(BufferedCollection_Indexed_for_IINValue *pBufferedCollection_Indexed_for_IINValue);
 void Foreach_in_BufferedCollection_Indexed_for_IINValue(BufferedCollection_Indexed_for_IINValue *pBufferedCollection_Indexed_for_IINValue,
-    IVisitor__for__Indexed_for_IINValue* visitor);
+    IVisitor_Indexed_for_IINValue* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_IINValue_override(void *pICollection_Indexed_for_IINValue);
 void Foreach_in_BufferedCollection_Indexed_for_IINValue_override(void *pICollection_Indexed_for_IINValue,
-    IVisitor__for__Indexed_for_IINValue* visitor);
+    IVisitor_Indexed_for_IINValue* visitor);
 //-----------------------------------Indexed_for_IINValue---------------------------------------------------
 //-----------------------------------Indexed_for_BinaryOutputStatus---------------------------------------------------
 typedef Indexed_for_BinaryOutputStatus (*ReadFunc_Indexed_for_BinaryOutputStatus)(
@@ -683,12 +683,12 @@ BufferedCollection_Indexed_for_BinaryOutputStatus CreateBufferedCollection_Index
 
 uint16_t Count_in_BufferedCollection_Indexed_for_BinaryOutputStatus(BufferedCollection_Indexed_for_BinaryOutputStatus *pBufferedCollection_Indexed_for_BinaryOutputStatus);
 void Foreach_in_BufferedCollection_Indexed_for_BinaryOutputStatus(BufferedCollection_Indexed_for_BinaryOutputStatus *pBufferedCollection_Indexed_for_BinaryOutputStatus,
-    IVisitor__for__Indexed_for_BinaryOutputStatus* visitor);
+    IVisitor_Indexed_for_BinaryOutputStatus* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_BinaryOutputStatus_override(void *pICollection_Indexed_for_BinaryOutputStatus);
 void Foreach_in_BufferedCollection_Indexed_for_BinaryOutputStatus_override(void *pICollection_Indexed_for_BinaryOutputStatus,
-    IVisitor__for__Indexed_for_BinaryOutputStatus* visitor);
+    IVisitor_Indexed_for_BinaryOutputStatus* visitor);
 //-----------------------------------Indexed_for_BinaryOutputStatus---------------------------------------------------
 //-----------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------
 typedef Indexed_for_ControlRelayOutputBlock (*ReadFunc_Indexed_for_ControlRelayOutputBlock)(
@@ -743,12 +743,12 @@ BufferedCollection_Indexed_for_ControlRelayOutputBlock CreateBufferedCollection_
 
 uint16_t Count_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock(BufferedCollection_Indexed_for_ControlRelayOutputBlock *pBufferedCollection_Indexed_for_ControlRelayOutputBlock);
 void Foreach_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock(BufferedCollection_Indexed_for_ControlRelayOutputBlock *pBufferedCollection_Indexed_for_ControlRelayOutputBlock,
-    IVisitor__for__Indexed_for_ControlRelayOutputBlock* visitor);
+    IVisitor_Indexed_for_ControlRelayOutputBlock* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock_override(void *pICollection_Indexed_for_ControlRelayOutputBlock);
 void Foreach_in_BufferedCollection_Indexed_for_ControlRelayOutputBlock_override(void *pICollection_Indexed_for_ControlRelayOutputBlock,
-    IVisitor__for__Indexed_for_ControlRelayOutputBlock* visitor);
+    IVisitor_Indexed_for_ControlRelayOutputBlock* visitor);
 //-----------------------------------Indexed_for_ControlRelayOutputBlock---------------------------------------------------
 //-----------------------------------Indexed_for_DoubleBitBinary---------------------------------------------------
 typedef Indexed_for_DoubleBitBinary (*ReadFunc_Indexed_for_DoubleBitBinary)(
@@ -803,12 +803,12 @@ BufferedCollection_Indexed_for_DoubleBitBinary CreateBufferedCollection_Indexed_
 
 uint16_t Count_in_BufferedCollection_Indexed_for_DoubleBitBinary(BufferedCollection_Indexed_for_DoubleBitBinary *pBufferedCollection_Indexed_for_DoubleBitBinary);
 void Foreach_in_BufferedCollection_Indexed_for_DoubleBitBinary(BufferedCollection_Indexed_for_DoubleBitBinary *pBufferedCollection_Indexed_for_DoubleBitBinary,
-    IVisitor__for__Indexed_for_DoubleBitBinary* visitor);
+    IVisitor_Indexed_for_DoubleBitBinary* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_DoubleBitBinary_override(void *pICollection_Indexed_for_DoubleBitBinary);
 void Foreach_in_BufferedCollection_Indexed_for_DoubleBitBinary_override(void *pICollection_Indexed_for_DoubleBitBinary,
-    IVisitor__for__Indexed_for_DoubleBitBinary* visitor);
+    IVisitor_Indexed_for_DoubleBitBinary* visitor);
 //-----------------------------------Indexed_for_DoubleBitBinary---------------------------------------------------
 //-----------------------------------Indexed_for_BinaryCommandEvent---------------------------------------------------
 typedef Indexed_for_BinaryCommandEvent (*ReadFunc_Indexed_for_BinaryCommandEvent)(
@@ -863,12 +863,12 @@ BufferedCollection_Indexed_for_BinaryCommandEvent CreateBufferedCollection_Index
 
 uint16_t Count_in_BufferedCollection_Indexed_for_BinaryCommandEvent(BufferedCollection_Indexed_for_BinaryCommandEvent *pBufferedCollection_Indexed_for_BinaryCommandEvent);
 void Foreach_in_BufferedCollection_Indexed_for_BinaryCommandEvent(BufferedCollection_Indexed_for_BinaryCommandEvent *pBufferedCollection_Indexed_for_BinaryCommandEvent,
-    IVisitor__for__Indexed_for_BinaryCommandEvent* visitor);
+    IVisitor_Indexed_for_BinaryCommandEvent* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_BinaryCommandEvent_override(void *pICollection_Indexed_for_BinaryCommandEvent);
 void Foreach_in_BufferedCollection_Indexed_for_BinaryCommandEvent_override(void *pICollection_Indexed_for_BinaryCommandEvent,
-    IVisitor__for__Indexed_for_BinaryCommandEvent* visitor);
+    IVisitor_Indexed_for_BinaryCommandEvent* visitor);
 //-----------------------------------Indexed_for_BinaryCommandEvent---------------------------------------------------
 //-----------------------------------Indexed_for_AnalogCommandEvent---------------------------------------------------
 typedef Indexed_for_AnalogCommandEvent (*ReadFunc_Indexed_for_AnalogCommandEvent)(
@@ -923,12 +923,12 @@ BufferedCollection_Indexed_for_AnalogCommandEvent CreateBufferedCollection_Index
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogCommandEvent(BufferedCollection_Indexed_for_AnalogCommandEvent *pBufferedCollection_Indexed_for_AnalogCommandEvent);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogCommandEvent(BufferedCollection_Indexed_for_AnalogCommandEvent *pBufferedCollection_Indexed_for_AnalogCommandEvent,
-    IVisitor__for__Indexed_for_AnalogCommandEvent* visitor);
+    IVisitor_Indexed_for_AnalogCommandEvent* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogCommandEvent_override(void *pICollection_Indexed_for_AnalogCommandEvent);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogCommandEvent_override(void *pICollection_Indexed_for_AnalogCommandEvent,
-    IVisitor__for__Indexed_for_AnalogCommandEvent* visitor);
+    IVisitor_Indexed_for_AnalogCommandEvent* visitor);
 //-----------------------------------Indexed_for_AnalogCommandEvent---------------------------------------------------
 //-----------------------------------Indexed_for_TimeAndInterval---------------------------------------------------
 typedef Indexed_for_TimeAndInterval (*ReadFunc_Indexed_for_TimeAndInterval)(
@@ -983,12 +983,12 @@ BufferedCollection_Indexed_for_TimeAndInterval CreateBufferedCollection_Indexed_
 
 uint16_t Count_in_BufferedCollection_Indexed_for_TimeAndInterval(BufferedCollection_Indexed_for_TimeAndInterval *pBufferedCollection_Indexed_for_TimeAndInterval);
 void Foreach_in_BufferedCollection_Indexed_for_TimeAndInterval(BufferedCollection_Indexed_for_TimeAndInterval *pBufferedCollection_Indexed_for_TimeAndInterval,
-    IVisitor__for__Indexed_for_TimeAndInterval* visitor);
+    IVisitor_Indexed_for_TimeAndInterval* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_TimeAndInterval_override(void *pICollection_Indexed_for_TimeAndInterval);
 void Foreach_in_BufferedCollection_Indexed_for_TimeAndInterval_override(void *pICollection_Indexed_for_TimeAndInterval,
-    IVisitor__for__Indexed_for_TimeAndInterval* visitor);
+    IVisitor_Indexed_for_TimeAndInterval* visitor);
 //-----------------------------------Indexed_for_TimeAndInterval---------------------------------------------------
 //-----------------------------------Indexed_for_Counter---------------------------------------------------
 typedef Indexed_for_Counter (*ReadFunc_Indexed_for_Counter)(
@@ -1043,12 +1043,12 @@ BufferedCollection_Indexed_for_Counter CreateBufferedCollection_Indexed_for_Coun
 
 uint16_t Count_in_BufferedCollection_Indexed_for_Counter(BufferedCollection_Indexed_for_Counter *pBufferedCollection_Indexed_for_Counter);
 void Foreach_in_BufferedCollection_Indexed_for_Counter(BufferedCollection_Indexed_for_Counter *pBufferedCollection_Indexed_for_Counter,
-    IVisitor__for__Indexed_for_Counter* visitor);
+    IVisitor_Indexed_for_Counter* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_Counter_override(void *pICollection_Indexed_for_Counter);
 void Foreach_in_BufferedCollection_Indexed_for_Counter_override(void *pICollection_Indexed_for_Counter,
-    IVisitor__for__Indexed_for_Counter* visitor);
+    IVisitor_Indexed_for_Counter* visitor);
 //-----------------------------------Indexed_for_Counter---------------------------------------------------
 //-----------------------------------Indexed_for_FrozenCounter---------------------------------------------------
 typedef Indexed_for_FrozenCounter (*ReadFunc_Indexed_for_FrozenCounter)(
@@ -1103,12 +1103,12 @@ BufferedCollection_Indexed_for_FrozenCounter CreateBufferedCollection_Indexed_fo
 
 uint16_t Count_in_BufferedCollection_Indexed_for_FrozenCounter(BufferedCollection_Indexed_for_FrozenCounter *pBufferedCollection_Indexed_for_FrozenCounter);
 void Foreach_in_BufferedCollection_Indexed_for_FrozenCounter(BufferedCollection_Indexed_for_FrozenCounter *pBufferedCollection_Indexed_for_FrozenCounter,
-    IVisitor__for__Indexed_for_FrozenCounter* visitor);
+    IVisitor_Indexed_for_FrozenCounter* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_FrozenCounter_override(void *pICollection_Indexed_for_FrozenCounter);
 void Foreach_in_BufferedCollection_Indexed_for_FrozenCounter_override(void *pICollection_Indexed_for_FrozenCounter,
-    IVisitor__for__Indexed_for_FrozenCounter* visitor);
+    IVisitor_Indexed_for_FrozenCounter* visitor);
 //-----------------------------------Indexed_for_FrozenCounter---------------------------------------------------
 //-----------------------------------Indexed_for_Analog---------------------------------------------------
 typedef Indexed_for_Analog (*ReadFunc_Indexed_for_Analog)(
@@ -1163,12 +1163,12 @@ BufferedCollection_Indexed_for_Analog CreateBufferedCollection_Indexed_for_Analo
 
 uint16_t Count_in_BufferedCollection_Indexed_for_Analog(BufferedCollection_Indexed_for_Analog *pBufferedCollection_Indexed_for_Analog);
 void Foreach_in_BufferedCollection_Indexed_for_Analog(BufferedCollection_Indexed_for_Analog *pBufferedCollection_Indexed_for_Analog,
-    IVisitor__for__Indexed_for_Analog* visitor);
+    IVisitor_Indexed_for_Analog* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_Analog_override(void *pICollection_Indexed_for_Analog);
 void Foreach_in_BufferedCollection_Indexed_for_Analog_override(void *pICollection_Indexed_for_Analog,
-    IVisitor__for__Indexed_for_Analog* visitor);
+    IVisitor_Indexed_for_Analog* visitor);
 //-----------------------------------Indexed_for_Analog---------------------------------------------------
 //-----------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------
 typedef Indexed_for_AnalogOutputStatus (*ReadFunc_Indexed_for_AnalogOutputStatus)(
@@ -1223,12 +1223,12 @@ BufferedCollection_Indexed_for_AnalogOutputStatus CreateBufferedCollection_Index
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputStatus(BufferedCollection_Indexed_for_AnalogOutputStatus *pBufferedCollection_Indexed_for_AnalogOutputStatus);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus(BufferedCollection_Indexed_for_AnalogOutputStatus *pBufferedCollection_Indexed_for_AnalogOutputStatus,
-    IVisitor__for__Indexed_for_AnalogOutputStatus* visitor);
+    IVisitor_Indexed_for_AnalogOutputStatus* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(void *pICollection_Indexed_for_AnalogOutputStatus);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputStatus_override(void *pICollection_Indexed_for_AnalogOutputStatus,
-    IVisitor__for__Indexed_for_AnalogOutputStatus* visitor);
+    IVisitor_Indexed_for_AnalogOutputStatus* visitor);
 //-----------------------------------Indexed_for_AnalogOutputStatus---------------------------------------------------
 //-----------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------
 typedef Indexed_for_AnalogOutputInt32 (*ReadFunc_Indexed_for_AnalogOutputInt32)(
@@ -1283,12 +1283,12 @@ BufferedCollection_Indexed_for_AnalogOutputInt32 CreateBufferedCollection_Indexe
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32(BufferedCollection_Indexed_for_AnalogOutputInt32 *pBufferedCollection_Indexed_for_AnalogOutputInt32,
-    IVisitor__for__Indexed_for_AnalogOutputInt32* visitor);
+    IVisitor_Indexed_for_AnalogOutputInt32* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override(void *pICollection_Indexed_for_AnalogOutputInt32);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt32_override(void *pICollection_Indexed_for_AnalogOutputInt32,
-    IVisitor__for__Indexed_for_AnalogOutputInt32* visitor);
+    IVisitor_Indexed_for_AnalogOutputInt32* visitor);
 //-----------------------------------Indexed_for_AnalogOutputInt32---------------------------------------------------
 //-----------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------
 typedef Indexed_for_AnalogOutputInt16 (*ReadFunc_Indexed_for_AnalogOutputInt16)(
@@ -1343,12 +1343,12 @@ BufferedCollection_Indexed_for_AnalogOutputInt16 CreateBufferedCollection_Indexe
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16(BufferedCollection_Indexed_for_AnalogOutputInt16 *pBufferedCollection_Indexed_for_AnalogOutputInt16,
-    IVisitor__for__Indexed_for_AnalogOutputInt16* visitor);
+    IVisitor_Indexed_for_AnalogOutputInt16* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override(void *pICollection_Indexed_for_AnalogOutputInt16);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputInt16_override(void *pICollection_Indexed_for_AnalogOutputInt16,
-    IVisitor__for__Indexed_for_AnalogOutputInt16* visitor);
+    IVisitor_Indexed_for_AnalogOutputInt16* visitor);
 //-----------------------------------Indexed_for_AnalogOutputInt16---------------------------------------------------
 //-----------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------
 typedef Indexed_for_AnalogOutputFloat32 (*ReadFunc_Indexed_for_AnalogOutputFloat32)(
@@ -1403,12 +1403,12 @@ BufferedCollection_Indexed_for_AnalogOutputFloat32 CreateBufferedCollection_Inde
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32(BufferedCollection_Indexed_for_AnalogOutputFloat32 *pBufferedCollection_Indexed_for_AnalogOutputFloat32,
-    IVisitor__for__Indexed_for_AnalogOutputFloat32* visitor);
+    IVisitor_Indexed_for_AnalogOutputFloat32* visitor);
 
 
 uint16_t Count_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override(void *pICollection_Indexed_for_AnalogOutputFloat32);
 void Foreach_in_BufferedCollection_Indexed_for_AnalogOutputFloat32_override(void *pICollection_Indexed_for_AnalogOutputFloat32,
-    IVisitor__for__Indexed_for_AnalogOutputFloat32* visitor);
+    IVisitor_Indexed_for_AnalogOutputFloat32* visitor);
 //-----------------------------------Indexed_for_AnalogOutputFloat32---------------------------------------------------
 
 ////} // namespace opendnp3
