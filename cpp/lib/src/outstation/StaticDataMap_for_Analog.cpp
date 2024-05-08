@@ -2,14 +2,24 @@
 #ifdef  LOG_INFO
 #include <iostream>
 #endif
-//#include <QtWidgets>
 #include <QApplication>
 #include "header.h"
 #include "StaticDataMap_for_Analog.h"
 
 void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec *pStaticDataMap)
 {
-  Range_in_RangeOver1(&(pStaticDataMap->selected));
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver1"<<'\n';
+#endif
+  Range_in_RangeOver1(&(pStaticDataMap->selected_in_StaticDataMap_for_AnalogSpec));
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////template<class Spec> StaticDataMap<Spec>::StaticDataMap(const std::map<uint16_t, typename Spec::config_t>& config)
@@ -42,36 +52,79 @@ void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2(StaticDat
 
 Range get_selected_range_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec)
 {
-  return pStaticDataMap_for_AnalogSpec->selected;
+  return pStaticDataMap_for_AnalogSpec->selected_in_StaticDataMap_for_AnalogSpec;
 }
 
 typename StaticDataMap_for_AnalogSpec::iterator StaticDataMap_for_AnalogSpec::begin()
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{iterator StaticDataMap_for_AnalogSpec::begin()"<<'\n';
+#endif
 //boolean IsValid_in_Range(Range *pRange);
 ////    if (!this->selected.IsValid())
-  if (!IsValid_in_Range(&(this->selected)))
+  if (!IsValid_in_Range(&(this->selected_in_StaticDataMap_for_AnalogSpec)))
   {
-    return iterator(this->map.end(), this->map.end(), this->selected);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}iterator StaticDataMap_for_AnalogSpec::begin()1_"<<'\n';
+  decrement_stack_info();
+#endif
+    return iterator(this->map.end(), this->map.end(), this->selected_in_StaticDataMap_for_AnalogSpec);
   }
 
-  const auto begin = this->map.lower_bound(this->selected.start);
+  const auto begin = this->map.lower_bound(this->selected_in_StaticDataMap_for_AnalogSpec.start);
 
-  return iterator(begin, this->map.end(), this->selected);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}iterator StaticDataMap_for_AnalogSpec::begin()2_"<<'\n';
+  decrement_stack_info();
+#endif
+  return iterator(begin, this->map.end(), this->selected_in_StaticDataMap_for_AnalogSpec);
 }
 
 ////template<class Spec> void StaticDataMap<Spec>::clear_selection()
 void clear_selection_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{clear_selection_in_StaticDataMap_for_AnalogSpec1"<<'\n';
+#endif
   // the act of iterating clears the selection
   for (auto iter = pStaticDataMap_for_AnalogSpec->begin(); iter != pStaticDataMap_for_AnalogSpec->end(); ++iter)
   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*clear_selection_in_StaticDataMap_for_AnalogSpec2"<<'\n';
+#endif
+
   }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}clear_selection_in_StaticDataMap_for_AnalogSpec_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////template<class Spec> typename StaticDataMap<Spec>::iterator StaticDataMap<Spec>::end()
 typename StaticDataMap_for_AnalogSpec::iterator StaticDataMap_for_AnalogSpec::end()
 {
-  return iterator(this->map.end(), this->map.end(), this->selected);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{iterator StaticDataMap_for_AnalogSpec::end()1"<<'\n';
+#endif
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}iterator StaticDataMap_for_AnalogSpec::end()_"<<'\n';
+  decrement_stack_info();
+#endif
+  return iterator(this->map.end(), this->map.end(), this->selected_in_StaticDataMap_for_AnalogSpec);
 }
 
 ////template<class Spec>
@@ -139,6 +192,16 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec
     EventMode_uint8_t mode,
     IEventReceiver* receiver)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{update_in_StaticDataMap_for_AnalogSpecOver1_1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t index= "<<index<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap_for_AnalogSpec->map.size()= "<<pStaticDataMap_for_AnalogSpec->map.size()<<'\n';
+#endif
 //boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec,
 //    map_iter_t_StaticDataMap_for_AnalogSpec & iter,
 //    Analog* new_value,
@@ -146,7 +209,14 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver1(StaticDataMap_for_AnalogSpec
 //    IEventReceiver* receiver);
 ////    return update(this->map.find(index), value, mode, receiver);
   map_iter_t_StaticDataMap_for_AnalogSpec  iter = pStaticDataMap_for_AnalogSpec->map.find(index);
-  return update_in_StaticDataMap_for_AnalogSpecOver2(pStaticDataMap_for_AnalogSpec, iter, value, mode, receiver);
+  boolean tmp = update_in_StaticDataMap_for_AnalogSpecOver2(pStaticDataMap_for_AnalogSpec, iter, value, mode, receiver);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}update_in_StaticDataMap_for_AnalogSpecOver1__"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec,
@@ -181,6 +251,8 @@ boolean update_in_StaticDataMap_for_AnalogSpecOver2(StaticDataMap_for_AnalogSpec
 #endif
     return false;
   }
+
+StaticDataCell_for_Analog ttt = iter->second;////!
 
   if (mode != EventMode_EventOnly)
   {
@@ -239,7 +311,7 @@ boolean has_any_selection_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_Anal
 {
 //boolean IsValid_in_Range(Range *pRange);
 ////        return this->selected.IsValid();
-  return IsValid_in_Range(&(pStaticDataMap_for_AnalogSpec->selected));
+  return IsValid_in_Range(&(pStaticDataMap_for_AnalogSpec->selected_in_StaticDataMap_for_AnalogSpec));
 }
 
 boolean add_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Analog *value, uint16_t index, AnalogConfig *config)
@@ -300,11 +372,27 @@ boolean modify_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pSt
 ////template<class Spec> Range StaticDataMap<Spec>::get_full_range() const
 Range get_full_range_in_StaticDataMap_for_AnalogSpec(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{get_full_range_in_StaticDataMap_for_AnalogSpec1"<<'\n';
+#endif
 //Range From_in_Range_static(uint16_t start, uint16_t stop);
 //Range Invalid_in_Range_static(void);
 ////    return this->map.empty() ? Range::Invalid() : Range::From(this->map.begin()->first, this->map.rbegin()->first);
-  return pStaticDataMap_for_AnalogSpec->map.empty() ? Invalid_in_Range_static() :
+  Range tmp = pStaticDataMap_for_AnalogSpec->map.empty() ? Invalid_in_Range_static() :
          From_in_Range_static(pStaticDataMap_for_AnalogSpec->map.begin()->first, pStaticDataMap_for_AnalogSpec->map.rbegin()->first);
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}get_full_range_in_StaticDataMap_for_AnalogSpec_"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*Range tmp.start= "<<tmp.start<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*Range tmp.stop= "<<tmp.stop<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 ////template<class Spec> Range StaticDataMap<Spec>::assign_class(PointClass clazz)

@@ -23,5 +23,6 @@ boolean WriteWithSerializer_AnalogSpec_for_Group30Var4_in_StaticWriters_static(S
 boolean WriteWithSerializer_AnalogSpec_for_Group30Var5_in_StaticWriters_static(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);
 //----------------------------------------------Group30Var------------------------------------------
 
+
 #endif
 

@@ -155,7 +155,6 @@ void* OnConfirm_in_StateIdle_override(void* pOutstationState, void *pOContext, P
   UNUSED(pOutstationState);
 //  UNUSED(pOContext);
   UNUSED(request);
-  ((OContext*)pOContext)->unexpectedConfirm = true;
 ////    FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, "unexpected confirm while IDLE with sequence: %u",
 ////                     request.header.control.SEQ);
 #ifdef  LOG_INFO
@@ -163,8 +162,6 @@ void* OnConfirm_in_StateIdle_override(void* pOutstationState, void *pOContext, P
   std::cout<<"*FORMAT_LOG_BLOCK(ctx.logger, flags::WARN, 'unexpected confirm while IDLE with sequence: %u'"<<std::endl;
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*request.header.control.SEQ= "<<(uint16_t)request->header.control.SEQ<<std::endl;
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*((OContext*)pOContext)->unexpectedConfirm= "<<((OContext*)pOContext)->unexpectedConfirm<<std::endl;
 #endif
   return Inst_in_StateIdle_static();////StateIdle::Inst();
 }
@@ -388,13 +385,9 @@ void* OnConfirm_in_StateSolicitedConfirmWait_override(void* pOutstationState, vo
     sSequenceNum_for_uint8_Modulus16.seq = Next_in_SequenceNum_for_uint8_Modulus16_staticOver2(sSequenceNum_for_uint8_Modulus16.seq);
     void* tmp = ContinueMultiFragResponse_in_OContext((OContext*)ctx, &(request->addresses), &sSequenceNum_for_uint8_Modulus16);
 
-    ((OContext*)ctx)->unexpectedConfirm = false;
-
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}OnConfirm_in_StateSolicitedConfirmWait_override3_"<<std::endl;
-  std::cout<<getString_stack_info();
-  std::cout<<"((OContext*)ctx)->unexpectedConfirm= "<<((OContext*)ctx)->unexpectedConfirm<<std::endl;
   decrement_stack_info();
 #endif
     return tmp;

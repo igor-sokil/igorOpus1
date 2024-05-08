@@ -1,4 +1,8 @@
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "Range.h"
 
@@ -12,16 +16,39 @@ Range From_in_Range_static(uint16_t start, uint16_t stop)
 
 Range Invalid_in_Range_static(void)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Invalid_in_Range_static1"<<'\n';
+#endif
   Range range;
   Range_in_RangeOver3(&range, 1, 0);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Invalid_in_Range_static_"<<'\n';
+  decrement_stack_info();
+#endif
   return range;
 ////        return Range(1, 0);
 }
 
 void Range_in_RangeOver1(Range *pRange)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Range_in_RangeOver1_1"<<'\n';
+#endif
   pRange -> start = 1;
   pRange -> stop  = 0;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Range_in_RangeOver1__"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 uint32_t Count_in_Range(Range *pRange)
@@ -31,6 +58,12 @@ uint32_t Count_in_Range(Range *pRange)
 
 boolean Advance_in_Range(Range *pRange)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"*Advance_in_Range1"<<'\n';
+#endif
   if (IsValid_in_Range(pRange))
   {
     if (pRange->start < pRange->stop)
@@ -39,15 +72,25 @@ boolean Advance_in_Range(Range *pRange)
     }
     else
     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*Advance_in_Range2"<<'\n';
+#endif
       // make the range invalid
       pRange->start = 1;
       pRange->stop = 0;
     }
 
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  decrement_stack_info();
+#endif
     return false;
   }
 }

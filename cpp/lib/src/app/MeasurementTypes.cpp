@@ -299,23 +299,23 @@ void Counter_in_CounterOver4(Counter *pCounter, uint32_t value, Flags flags, DNP
 
 void FrozenCounter_in_FrozenCounterOver1(FrozenCounter *pFrozenCounter)
 {
-#ifdef  LOG_INFO
-  std::cout<<'\n';
-  increment_stack_info();
-  std::cout<<getString_stack_info();
-  std::cout<<"{FrozenCounter_in_FrozenCounterOver1_1"<<'\n';
-#endif
+////#ifdef  LOG_INFO
+///  std::cout<<'\n';
+//  increment_stack_info();
+//  std::cout<<getString_stack_info();
+//  std::cout<<"{FrozenCounter_in_FrozenCounterOver1_1"<<'\n';
+//#endif
   Flags fFlags;
   Flags_In_FlagsOver2(&fFlags, Flags_RESTART);
   TypedMeasurement_for_Uint32_in_TypedMeasurement_for_Uint32Over3(&(pFrozenCounter->tTypedMeasurement_for_Uint32),
       0,
       fFlags);
 //// : TypedMeasurement(0, flags::RESTART) {}
-#ifdef  LOG_INFO
-  std::cout<<getString_stack_info();
-  std::cout<<"}FrozenCounter_in_FrozenCounterOver1__"<<'\n';
-  decrement_stack_info();
-#endif
+//#ifdef  LOG_INFO
+//  std::cout<<getString_stack_info();
+//  std::cout<<"}FrozenCounter_in_FrozenCounterOver1__"<<'\n';
+//  decrement_stack_info();
+//#endif
 }
 
 void FrozenCounter_in_FrozenCounterOver2(FrozenCounter *pFrozenCounter, uint32_t value)

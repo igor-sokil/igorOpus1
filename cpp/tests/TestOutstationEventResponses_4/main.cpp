@@ -51,6 +51,9 @@ void apply_in_4ReadClass1WithSOEWithTimeoutInBetween2(IUpdateHandler* db)
  Update_Binary_in_IUpdateHandler(db, &bBinary, 0, EventMode_Detect);// = EventMode::Detect) = 0;
 }
 
+void timeout_RestartSolConfirmTimer_in_OContext(void);
+
+extern void *pPointerGlobal1_in_RestartSolConfirmTimer;
 int main(int argc, char *argv[])
 {
   QApplication app(argc, argv);
@@ -123,12 +126,22 @@ qDebug()<<"{------------2";
     TimeDuration ttmp = Seconds_in_TimeDuration_static(5);
     AdvanceTime_in_OutstationTestObject(&t, &ttmp);
 
+qDebug()<<"{------------too late";
+///*
+ pPointerGlobal1_in_RestartSolConfirmTimer = //pOContext;
+     &(t.context);
+ timeout_RestartSolConfirmTimer_in_OContext();
+//*/
+
     // Send confirmation too late
 // Отправляем подтверждение слишком поздно
 ////    t.SendToOutstation(hex::SolicitedConfirm(0));
+///*
 std::string name2 = SolicitedConfirm_in_APDUHexBuilders(0);
  std::cout << "name2= " << name2<<'\n';
     SendToOutstation_in_OutstationTestObject(&t, name2);  
+//*/
+qDebug()<<"}------------too late";
 
     // Generate another event
 ////    t.Transaction([](IUpdateHandler& db) { db.Update(Binary(false), 0); });

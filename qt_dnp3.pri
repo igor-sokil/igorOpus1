@@ -20,6 +20,8 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                  ser4cpp\container\StaticBuffer_for_MAX_TPDU_LENGTH.cpp \
                  ser4cpp\container\Pair_for_IINField_AppControlField.cpp \
                  ser4cpp\container\Array__for__Node_for_int.cpp \
+                 ser4cpp\container\Array__for__Node_for_UserRecord.cpp \
+                 ser4cpp\container\Array__for__Node_for_CellAnalogRecord.cpp \
                  ser4cpp\container\Array__for__Node_for_EventRecord.cpp \
                  ser4cpp\container\ArrayView__for__Node_for_int.cpp \
                  ser4cpp\container\ArrayView__for__Node_for_EventRecord.cpp \
@@ -261,6 +263,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\AssignClassHandler.cpp \
                 cpp\lib\src\outstation\Database.cpp \
                 cpp\lib\src\outstation\Database_for_Analog.cpp \
+                cpp\lib\src\outstation\Database_for_AnalogMrzs.cpp \
                 cpp\lib\src\outstation\Database_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\outstation\Database_for_Binary.cpp \
                 cpp\lib\src\outstation\Database_for_BinaryOutputStatus.cpp \
@@ -270,6 +273,7 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\Database_for_OctetString.cpp \
                 cpp\lib\src\outstation\Database_for_TimeAndInterval.cpp \
                 cpp\lib\src\outstation\DatabaseConfig.cpp \
+                cpp\lib\src\outstation\DatabaseConfigMrzs.cpp \
                 cpp\lib\src\outstation\DeferredRequest.cpp \
                 cpp\lib\src\outstation\DeferredRequest_part2.cpp \
                 cpp\lib\src\outstation\ControlState.cpp \
@@ -310,10 +314,12 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_Counter.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_FrozenCounter.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_Analog.cpp \
+                cpp\lib\src\outstation\StaticDataMap_for_AnalogMrzs.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_OctetString.cpp \
                 cpp\lib\src\outstation\StaticDataMap_for_TimeAndInterval.cpp \
                 cpp\lib\src\outstation\StaticWriters_for_Analog.cpp \
+                cpp\lib\src\outstation\StaticWriters_for_AnalogMrzs.cpp \
                 cpp\lib\src\outstation\StaticWriters_for_AnalogOutputStatus.cpp \
                 cpp\lib\src\outstation\StaticWriters_for_Binary.cpp \
                 cpp\lib\src\outstation\StaticWriters_for_BinaryOutputStatus.cpp \
@@ -356,6 +362,10 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\event\IEventWriteHandler.cpp \
                 cpp\lib\src\outstation\event\List_for_EventRecord_part1.cpp \
                 cpp\lib\src\outstation\event\List_for_EventRecord_part2.cpp \
+                cpp\lib\src\outstation\event\List_for_UserRecord_part1.cpp \
+                cpp\lib\src\outstation\event\List_for_UserRecord_part2.cpp \
+                cpp\lib\src\outstation\event\List_for_CellAnalogRecord_part1.cpp \
+                cpp\lib\src\outstation\event\List_for_CellAnalogRecord_part2.cpp \
                 cpp\lib\src\outstation\event\List_for_int_part1.cpp \
                 cpp\lib\src\outstation\event\List_for_int_part2.cpp \
                 cpp\lib\src\outstation\event\List_TypedEventRecord_for_AnalogOutputStatusSpec_part1.cpp \
@@ -375,8 +385,12 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\lib\src\outstation\event\List_TypedEventRecord_for_OctetStringSpec_part1.cpp \
                 cpp\lib\src\outstation\event\List_TypedEventRecord_for_OctetStringSpec_part2.cpp \
                 cpp\lib\src\outstation\event\Nodes.cpp \
+                cpp\lib\src\outstation\event\Node_for_UserRecord.cpp \
+                cpp\lib\src\outstation\event\Node_for_CellAnalogRecord.cpp \
                 cpp\lib\src\outstation\event\TypedEventRecord.cpp \
                 cpp\lib\src\outstation\event\TypedStorage.cpp \
+                cpp\lib\src\outstation\event\UserRecord.cpp \
+                cpp\lib\src\outstation\event\CellAnalogRecord.cpp \
                 \
                 cpp\lib\src\gen\Attributes.cpp \
                 cpp\lib\src\gen\DoubleBit.cpp \
@@ -450,10 +464,12 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\dnp3mocks\include\dnp3mocks\MockSOEHandler.cpp \
                 \
                 cpp\tests\dnp3mocks\src\MockLowerLayer.cpp \
+                cpp\tests\dnp3mocks\src\MrzsLowerLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockUpperLayer.cpp \
                 cpp\tests\dnp3mocks\src\MockFrameSink.cpp \
                 cpp\tests\dnp3mocks\src\MrzsFrameSink.cpp \
                 cpp\tests\dnp3mocks\src\MockTransportLayer.cpp \
                 cpp\tests\dnp3mocks\src\DatabaseHelpers.cpp \
+                cpp\tests\dnp3mocks\src\DatabaseHelpersMrzs.cpp \
                 cpp\tests\dnp3mocks\src\DataSink.cpp
 

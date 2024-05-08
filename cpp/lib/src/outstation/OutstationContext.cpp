@@ -170,8 +170,6 @@ void OContext_in_OContext(OContext *pOContext,
 
   Settable_for_LinkBroadcastAddress_in_Settable_for_LinkBroadcastAddress(&(pOContext->lastBroadcastMessageReceived_in_OContext));
 
-  pOContext->unexpectedConfirm = false;
-
   setParentPointer_in_IUpDown(&(pOContext->iIUpperLayer.iIUpDown), pOContext);
   setParentPointer_in_IUpperLayer(&(pOContext->iIUpperLayer), pOContext);
 
@@ -182,8 +180,6 @@ void OContext_in_OContext(OContext *pOContext,
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}OContext_in_OContext_"<<'\n';
-  std::cout<<getString_stack_info();
-  std::cout<<"*pOContext->unexpectedConfirm= "<<pOContext->unexpectedConfirm<<std::endl;
   decrement_stack_info();
 #endif
 }
@@ -1149,6 +1145,7 @@ boolean ProcessDeferredRequest_in_OContext(OContext *pOContext, ParsedRequest* r
   }
 }
 
+void *pPointerGlobal1_in_RestartSolConfirmTimer;
 void timeout_RestartSolConfirmTimer_in_OContext(void);
 
 void timeout_RestartSolConfirmTimer_in_OContext(void)
@@ -1163,7 +1160,7 @@ void timeout_RestartSolConfirmTimer_in_OContext(void)
 ////        this->state = &this->state->OnConfirmTimeout(*this);
 ////        this->CheckForTaskStart();
 ////    };
- OContext* pOContext = (OContext*)pPointerGlobal1;
+ OContext* pOContext = (OContext*)pPointerGlobal1_in_RestartSolConfirmTimer;
  OutstationState* parent = (OutstationState*)getParentPointer_in_OutstationState(pOContext->state_in_OContext);
  pOContext->state_in_OContext = (OutstationState*) OnConfirmTimeout_in_OutstationState((OutstationState*) parent, pOContext);
  CheckForTaskStart_in_OContext(pOContext);
@@ -1190,7 +1187,7 @@ void RestartSolConfirmTimer_in_OContext(OContext *pOContext)
 ////    this->confirmTimer.cancel();
   cancel_in_TimerExe4cpp(&(pOContext->confirmTimer_in_OContext));
 
-  pPointerGlobal1 = pOContext;
+  pPointerGlobal1_in_RestartSolConfirmTimer = pOContext;
 ////    this->confirmTimer = this->executor->start(this->params.solConfirmTimeout.value, timeout);
   pOContext->confirmTimer_in_OContext =  Start_in_IExecutorExe4cpp(pOContext->executor, pOContext->params_in_OContext.solConfirmTimeout.duration_value, timeout_RestartSolConfirmTimer_in_OContext);
 #ifdef  LOG_INFO
@@ -2445,6 +2442,13 @@ PairSer4cpp_for_IINField_AppControlField HandleRead_in_OContext(OContext *pOCont
 
 ////        auto control = pOContext->rspContext.LoadResponse(writer);
     AppControlField control = LoadResponse_in_ResponseContext(&(pOContext->rspContext_in_OContext), writer);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*HandleRead_in_OContext6"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*ParseResult_uint8_t result ="<<(uint16_t)result<<std::endl;
+#endif
 
 //void PairSer4cpp_for_IINField_AppControlField_in_PairSer4cpp_for_IINField_AppControlField(PairSer4cpp_for_IINField_AppControlField *pPairSer4cpp_for_IINField_AppControlField,
 //                                                                           IINField *first_,

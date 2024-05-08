@@ -1,0 +1,71 @@
+#ifndef OPENDNP3_STATICDATAMAP_AnalogMrzs_H
+#define OPENDNP3_STATICDATAMAP_AnalogMrzs_H
+
+#include "Range.h"
+#include "IEventReceiver.h"
+#include "StaticDataCell.h"
+#include "StaticDataMap.h"
+
+#include "EventMode.h"
+
+#define SIZE_map_StaticDataMap_for_AnalogMrzs  10
+
+//typename StaticDataMap_for_AnalogSpec::iterator StaticDataMap_for_AnalogSpec::begin()
+
+typedef struct
+{
+  StaticDataRecord_for_Analog* begin;
+  StaticDataRecord_for_Analog* end;
+  Range range;
+} Iterator_StaticDataMap_for_AnalogMrzs;
+
+StaticDataRecord_for_Analog* Increment_in_Iterator_StaticDataMap_for_AnalogMrzs(Iterator_StaticDataMap_for_AnalogMrzs *pIterator_StaticDataMap_for_AnalogMrzs);
+
+////class StaticDataMap_for_AnalogMrzs
+typedef struct
+{
+  StaticDataRecord_for_Analog map_StaticDataMap_for_AnalogMrzs[SIZE_map_StaticDataMap_for_AnalogMrzs];
+  Range selected_in_StaticDataMap_for_AnalogMrzs;
+
+  uint16_t sizeMap_for_AnalogMrzs;
+  Iterator_StaticDataMap_for_AnalogMrzs iIterator_StaticDataMap_for_AnalogMrzs;
+} StaticDataMap_for_AnalogMrzs;
+
+//Iterator_StaticDataMap_for_AnalogMrzs* getIterator_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+StaticDataRecord_for_Analog* IncrementIteratorBegin_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+
+StaticDataRecord_for_Analog *mapEnd_in_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+StaticDataRecord_for_Analog *mapBegin_in_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+StaticDataRecord_for_Analog *mapLowerBound_in_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs, uint16_t lowerBound);
+
+void Iterator_StaticDataMap_for_AnalogMrzs_in_Iterator_StaticDataMap_for_AnalogMrzs(Iterator_StaticDataMap_for_AnalogMrzs *pIterator_StaticDataMap_for_AnalogMrzs,
+     StaticDataRecord_for_Analog* begin, StaticDataRecord_for_Analog* end, Range *range);
+
+//void IteratorEnd_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+StaticDataRecord_for_Analog* IteratorEnd_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+StaticDataRecord_for_Analog* setIteratorBegin_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+StaticDataRecord_for_Analog* getIteratorBegin_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+//boolean operatorEQ_in_Iterator_StaticDataMap_for_AnalogMrzs(Iterator_StaticDataMap_for_AnalogMrzs* iter1, Iterator_StaticDataMap_for_AnalogMrzs* iter2);
+
+void StaticDataMap_for_AnalogMrzs_in_StaticDataMap_for_AnalogMrzsOver1(StaticDataMap_for_AnalogMrzs *pStaticDataMap, uint16_t size);
+void StaticDataMap_for_AnalogMrzs_in_StaticDataMap_for_AnalogMrzsOver2(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+Range get_selected_range_in_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+
+boolean update_in_StaticDataMap_for_AnalogMrzsOver1(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs,
+    Analog* value,
+    uint16_t index,
+    EventMode_uint8_t mode,
+    IEventReceiver* receiver);
+boolean update_in_StaticDataMap_for_AnalogMrzsOver2(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs,
+//    map_iter_t_StaticDataMap_for_AnalogSpec & iter,
+    StaticDataRecord_for_Analog* iter,
+    Analog* new_value,
+    EventMode_uint8_t mode,
+    IEventReceiver* receiver);
+
+uint16_t select_in_StaticDataMap_for_AnalogMrzsOver5(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs, Range range, StaticAnalogVariation_uint8_t variation);
+void operatorPLUS_in_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs);
+
+uint16_t select_all_in_StaticDataMap_for_AnalogMrzsOver3(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs, StaticAnalogVariation_uint8_t variation);
+
+#endif

@@ -8,23 +8,23 @@
 //-------------------------------Binary-------------------------------------------------
 void SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver1(SelectedValue_for_BinarySpec *pSelectedValue_for_BinarySpec)
 {
-  Binary_in_BinaryOver1(&(pSelectedValue_for_BinarySpec->value));
+  Binary_in_BinaryOver1(&(pSelectedValue_for_BinarySpec->value_in_SelectedValue_for_BinarySpec));
 
-  pSelectedValue_for_BinarySpec->selected = false;
+  pSelectedValue_for_BinarySpec->selected_in_SelectedValue_for_BinarySpec = false;
   pSelectedValue_for_BinarySpec->variation = StaticBinaryVariation_Group1Var2;
 }
 void SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver2(SelectedValue_for_BinarySpec *pSelectedValue_for_BinarySpec,
                                           boolean selected, Binary* value, StaticBinaryVariation_uint8_t variation)
 {
 ////        : selected(selected), value(value), variation(variation)
-   pSelectedValue_for_BinarySpec->selected = selected;
-   pSelectedValue_for_BinarySpec->value = *value;
+   pSelectedValue_for_BinarySpec->selected_in_SelectedValue_for_BinarySpec = selected;
+   pSelectedValue_for_BinarySpec->value_in_SelectedValue_for_BinarySpec = *value;
    pSelectedValue_for_BinarySpec->variation = variation;
 }
 
 void StaticDataCell_for_Binary_in_StaticDataCell_for_BinaryOver1(StaticDataCell_for_Binary *pStaticDataCell_for_Binary)
 {
-  SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver1(&(pStaticDataCell_for_Binary->selection_in_StaticDataCell));
+  SelectedValue_for_BinarySpec_in_SelectedValue_for_BinarySpecOver1(&(pStaticDataCell_for_Binary->selection_in_StaticDataCell_for_Binary));
   Binary_in_BinaryOver1(&(pStaticDataCell_for_Binary->value_in_StaticDataCell));
   SimpleEventCell_for_Binary_in_SimpleEventCell_for_Binary(&(pStaticDataCell_for_Binary->event_in_StaticDataCell));
   BinaryConfig_in_BinaryConfig(&(pStaticDataCell_for_Binary->config_in_StaticDataCell));
@@ -94,17 +94,36 @@ void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver1(SelectedV
 {
   Analog_in_AnalogOver1(&(pSelectedValue_for_AnalogSpec->value));
 
-  pSelectedValue_for_AnalogSpec->selected = false;
+  pSelectedValue_for_AnalogSpec->selected_in_SelectedValue_for_AnalogSpec = false;
   pSelectedValue_for_AnalogSpec->variation = StaticAnalogVariation_Group30Var1;
 }
 
 void SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2(SelectedValue_for_AnalogSpec *pSelectedValue_for_AnalogSpec,
                                           boolean selected, Analog* value, StaticAnalogVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2_1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean selected= "<<selected<<'\n';
+#endif
 ////        : selected(selected), value(value), variation(variation)
-   pSelectedValue_for_AnalogSpec->selected = selected;
+   pSelectedValue_for_AnalogSpec->selected_in_SelectedValue_for_AnalogSpec = selected;
    pSelectedValue_for_AnalogSpec->value = *value;
    pSelectedValue_for_AnalogSpec->variation = variation;
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}SelectedValue_for_AnalogSpec_in_SelectedValue_for_AnalogSpecOver2__"<<'\n';
+  decrement_stack_info();
+#endif
+}
+
+void StaticDataRecord_for_Analog_in_StaticDataRecord_for_Analog(StaticDataRecord_for_Analog *pStaticDataRecord_for_Analog,
+           uint16_t index)
+{
+ pStaticDataRecord_for_Analog->index_in_StaticDataRecord_for_Analog = index;
 }
 
 void StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver1(StaticDataCell_for_Analog *pStaticDataCell_for_Analog)

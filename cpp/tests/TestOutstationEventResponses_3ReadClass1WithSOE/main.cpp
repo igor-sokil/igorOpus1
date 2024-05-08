@@ -113,6 +113,10 @@ std::string name1 = SolicitedConfirm_in_APDUHexBuilders(0);
  std::cout << "name1= " << name1<<'\n';
     SendToOutstation_in_OutstationTestObject(&t, name1);  
 
+    std::string temp1a = PopWriteAsHex_in_MockLowerLayer(&(t.lower));
+qDebug()<<"REQUIRE('empty')";
+std::cout << "temp1a= " << temp1a<<'\n';
+
 ////    t.SendToOutstation(hex::ClassPoll(1, PointClass::Class1)); // Repeat read class 1
  std::string request2 = ClassPoll_in_APDUHexBuilders(1, PointClass_Class1);
  std::cout << "request2= " << request2<<'\n';

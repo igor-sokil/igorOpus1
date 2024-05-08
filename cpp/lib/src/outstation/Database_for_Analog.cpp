@@ -13,17 +13,40 @@ boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& ma
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"load_type_for_Analog_in_Database_static1"<<'\n';
+  std::cout<<"{load_type_for_Analog_in_Database_static1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*map.size()= "<<map.map.size()<<'\n';
 #endif
   while (true)
   {
+#ifdef  LOG_INFO
+  uint16_t start = map.selected_in_StaticDataMap_for_AnalogSpec.start;
+  uint16_t stop  = map.selected_in_StaticDataMap_for_AnalogSpec.stop;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t start= "<<start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t stop= "<<stop<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*load_type_for_Analog_in_Database_static2"<<'\n';
+#endif
+
     auto iter = map.begin();
+#ifdef  LOG_INFO
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*load_type_for_Analog_in_Database_static2a"<<'\n';
+#endif
+//StaticDataCell_for_Analog sss = iter->second;
+//#ifdef  LOG_INFO
+//uint16_t index1 = iter.first;////!
+//    std::cout<<"*"<<getString_stack_info();
+//    std::cout<<"*uint16_t index=  "<<(uint16_t)index1<<'\n';
+//#endif
 
     if (iter == map.end())
     {
 #ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}load_type_for_Analog_in_Database_static1_"<<'\n';
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*if (iter == map.end())"<<'\n';
     decrement_stack_info();
@@ -32,10 +55,26 @@ boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& ma
       return true;
     }
 
+#ifdef  LOG_INFO
+  start = map.selected_in_StaticDataMap_for_AnalogSpec.start;
+  stop  = map.selected_in_StaticDataMap_for_AnalogSpec.stop;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t start= "<<start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t stop= "<<stop<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*load_type_for_Analog_in_Database_static3"<<'\n';
+#endif
+
+SelectedValue_for_AnalogSpec ttt = (*iter).second;////!
+uint16_t index = (*iter).first;////!
+
     StaticAnalogVariation_uint8_t variation = (*iter).second.variation;
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*StaticAnalogVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*uint16_t index=  "<<(uint16_t)index<<'\n';
 #endif
 
 //typedef boolean  (* static_write_func_t_for_AnalogSpec)(StaticDataMap_for_AnalogSpec& map, HeaderWriter* writer);//указатель на ф-цию
@@ -44,19 +83,43 @@ boolean load_type_for_Analog_in_Database_static(StaticDataMap_for_AnalogSpec& ma
     if (!get_for_AnalogSpec_in_StaticWriters_static(variation)(map, writer))
     {
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*if (!get_for_AnalogSpec_in_StaticWriters_static(variation)(map, writer))"<<'\n';
+    std::cout<<getString_stack_info();
+    std::cout<<"}load_type_for_Analog_in_Database_static2_"<<'\n';
     decrement_stack_info();
 #endif
+#ifdef  LOG_INFO
+  start = map.selected_in_StaticDataMap_for_AnalogSpec.start;
+  stop  = map.selected_in_StaticDataMap_for_AnalogSpec.stop;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t start= "<<start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t stop= "<<stop<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*load_type_for_Analog_in_Database_static4"<<'\n';
+#endif
+
       // the APDU is full
       return false;
     }
-  }
+
 #ifdef  LOG_INFO
-    std::cout<<"*"<<getString_stack_info();
-    std::cout<<"*return"<<'\n';
+  start = map.selected_in_StaticDataMap_for_AnalogSpec.start;
+  stop  = map.selected_in_StaticDataMap_for_AnalogSpec.stop;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t start= "<<start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t stop= "<<stop<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*load_type_for_Analog_in_Database_static5"<<'\n';
+#endif
+  }//while
+
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}load_type_for_Analog_in_Database_static3_"<<'\n';
     decrement_stack_info();
 #endif
+  return false;
 }
 
 ////template<class Spec> void Database::select_all_class_zero(StaticDataMap<Spec>& map)
@@ -211,6 +274,16 @@ uint16_t count = select_in_StaticDataMap_for_AnalogSpecOver1(map, *range);
 IINField select_range_for_AnalogSpec_in_Database_staticOver2(StaticDataMap_for_AnalogSpec* map,
     Range* range, StaticAnalogVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{select_range_for_AnalogSpec_in_Database_staticOver2_1"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*range->start= "<<range->start<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*range->stop= "<<range->stop<<'\n';
+#endif
 //uint16_t select_in_StaticDataMap_for_AnalogSpecOver4(StaticDataMap_for_AnalogSpec *pStaticDataMap_for_AnalogSpec, Range range, StaticAnalogVariation_uint8_t variation);
 ////    const auto count = map.select(range, variation);
 uint16_t count = select_in_StaticDataMap_for_AnalogSpecOver4(map, *range, variation);
@@ -218,5 +291,13 @@ uint16_t count = select_in_StaticDataMap_for_AnalogSpecOver4(map, *range, variat
 ////    return (count != range.Count()) ? IINField(IINBit::PARAM_ERROR) : IINField::Empty();
   IINField iIINField;
   IINField_in_IINFieldOver2(&iIINField, IINBit_PARAM_ERROR);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*uint16_t count= "<<count<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}select_range_for_AnalogSpec_in_Database_staticOver2__"<<'\n';
+  decrement_stack_info();
+#endif
   return (count != Count_in_Range(range)) ? iIINField : Empty_in_IINField_static();
 }

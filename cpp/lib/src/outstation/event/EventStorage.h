@@ -63,15 +63,19 @@ typedef struct
 ////    uint32_t NumSelected() const;
 
   // unselected/selected but not already written
+// не выбрано/выбрано, но еще не записано
 ////    uint32_t NumUnwritten(EventClass clazz) const;
 
   // write selected events to some handler
+// записываем выбранные события в какой-нибудь обработчик
 ////    uint32_t Write(IEventWriteHandler& handler);
 
   // all written events go back to unselected state
+// все записанные события возвращаются в невыбранное состояние
 ////    uint32_t ClearWritten();
 
   // all written and selected events are reverted to unselected state
+// все записанные и выбранные события возвращаются в невыбранное состояние
 ////    void Unselect();
 
   // ---- these functions return true if an overflow occurs ----
@@ -86,6 +90,7 @@ typedef struct
 ////    bool Update(const Event<OctetStringSpec>& evt);
 
   // ---- function used to select distinct types ----
+//функция, используемая для выбора отдельных типов
 
 ////    uint32_t SelectByType(EventBinaryVariation variation, uint32_t max);
 ////    uint32_t SelectByType(EventDoubleBinaryVariation variation, uint32_t max);

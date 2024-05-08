@@ -351,7 +351,7 @@ void Unselect_in_EventStorage(EventStorage *pEventStorage)
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"Unselect_in_EventStorage1"<<'\n';
+  std::cout<<"{Unselect_in_EventStorage1"<<'\n';
 #endif
 //void ResetOnFail_in_EventClassCounters(EventClassCounters *pEventClassCounters);
 ////  auto clear = [](EventRecord& record) -> void { record.state = EventState::unselected; };
@@ -364,6 +364,8 @@ void Unselect_in_EventStorage(EventStorage *pEventStorage)
 ////  this->state.counters.ResetOnFail();
   ResetOnFail_in_EventClassCounters(&((pEventStorage->state).counters_in_EventLists));
 #ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Unselect_in_EventStorage_"<<'\n';
   decrement_stack_info();
 #endif
 }

@@ -43,7 +43,7 @@ boolean LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters(StaticDataMa
 //boolean Write_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary,
 //    Binary* value);
 ////        if (!writer.Write(elem.second.value))
-    if (!Write_in_RangeWriteIterator_for_UInt8_Binary(writer, &elem.second.value))//.tTypedMeasurement_for_Double64.value))
+    if (!Write_in_RangeWriteIterator_for_UInt8_Binary(writer, &elem.second.value_in_SelectedValue_for_BinarySpec))//.tTypedMeasurement_for_Double64.value))
     {
       return false;
     }
@@ -82,7 +82,7 @@ boolean LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters(StaticDataM
 //boolean Write_in_RangeWriteIterator_for_UInt16_Binary(RangeWriteIterator_for_UInt16_Binary *pRangeWriteIterator_for_UInt16_Binary,
 //    Binary* value);
 ////        if (!writer.Write(elem.second.value))
-    if (!Write_in_RangeWriteIterator_for_UInt16_Binary(writer, &elem.second.value))//.tTypedMeasurement_for_Double64.value))
+    if (!Write_in_RangeWriteIterator_for_UInt16_Binary(writer, &elem.second.value_in_SelectedValue_for_BinarySpec))//.tTypedMeasurement_for_Double64.value))
     {
       return false;
     }
@@ -121,7 +121,7 @@ boolean LoadWithBitfieldIterator_BinarySpec_for_UInt8_in_StaticWriters(StaticDat
 
 //boolean Write_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8, boolean value);
 ////        if (!iter.Write(elem.second.value.value))
-    if (!Write_in_BitfieldRangeWriteIterator_for_UInt8(iter, elem.second.value.tTypedMeasurement_for_Boolean.value))
+    if (!Write_in_BitfieldRangeWriteIterator_for_UInt8(iter, elem.second.value_in_SelectedValue_for_BinarySpec.tTypedMeasurement_for_Boolean.value))
     {
       return false;
     }
@@ -160,7 +160,7 @@ boolean LoadWithBitfieldIterator_BinarySpec_for_UInt16_in_StaticWriters(StaticDa
 
 //boolean Write_in_BitfieldRangeWriteIterator_for_UInt8(BitfieldRangeWriteIterator_for_UInt8 *pBitfieldRangeWriteIterator_for_UInt8, boolean value);
 ////        if (!iter.Write(elem.second.value.value))
-    if (!Write_in_BitfieldRangeWriteIterator_for_UInt16(iter, elem.second.value.tTypedMeasurement_for_Boolean.value))
+    if (!Write_in_BitfieldRangeWriteIterator_for_UInt16(iter, elem.second.value_in_SelectedValue_for_BinarySpec.tTypedMeasurement_for_Boolean.value))
     {
       return false;
     }

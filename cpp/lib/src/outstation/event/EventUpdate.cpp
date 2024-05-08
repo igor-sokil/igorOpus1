@@ -58,6 +58,7 @@ boolean Update_BinarySpec_in_EventUpdate_static(EventLists* lists, Event_for_Bin
   }
 
   // now that we know that space exists, create the generic record
+// теперь, когда мы знаем, что пространство существует, создаем общую запись
 //Node_for_EventRecord* Add_in_List_for_EventRecord(List_for_EventRecord *pList_for_EventRecord, EventRecord* value);
 ////    const auto record_node = lists.events.Add(EventRecord(event.index, event.clazz));
 //void EventRecord_in_EventRecordOver2(EventRecord *pEventRecord, uint16_t index, EventClass_uint8_t clazz);

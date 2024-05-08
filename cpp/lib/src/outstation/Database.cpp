@@ -24,6 +24,7 @@
 #include <QApplication>
 #include "header.h"
 #include "Database.h"
+#include "Database_for_AnalogMrzs.h"////!
 
 ////Database::Database(const DatabaseConfig& config,
 ////                   IEventReceiver& event_receiver,
@@ -39,8 +40,7 @@ void  Database_in_Database(Database *pDatabase,
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"Database_in_Database1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{Database_in_Database1"<<'\n';
 #endif
 
   pDatabase->event_receiver = event_receiver;
@@ -58,6 +58,7 @@ void  Database_in_Database(Database *pDatabase,
 
 ////      analog_input(config.analog_input),
   StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2(&(pDatabase->analog_input), config->analog_input);
+  StaticDataMap_for_AnalogMrzs_in_StaticDataMap_for_AnalogMrzsOver2(&(pDatabase->analog_Mrzsinput));//, config->analog_input);////!
 
 ////      counter(config.counter),
   StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver2(&(pDatabase->counter), config->counter);
@@ -162,6 +163,11 @@ void  Database_in_Database(Database *pDatabase,
   boolean Update_in_Database_override(void *pIUpdateHandler, TimeAndInterval* meas, uint16_t index);
   boolean Modify_in_Database_override(void *pIUpdateHandler, FlagsType_uint8_t type, uint16_t start, uint16_t stop, uint8_t flags);
   */
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Database_in_Database_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////namespace opendnp3
@@ -955,7 +961,9 @@ IINField SelectAll_in_Database( Database *pDatabase, GroupVariation_uint16_t gv)
     std::cout<<"*GroupVariation_Group30Var2"<<'\n';
     decrement_stack_info();
 #endif
+//uint16_t select_all_in_StaticDataMap_for_AnalogMrzsOver3(StaticDataMap_for_AnalogMrzs *pStaticDataMap_for_AnalogMrzs, StaticAnalogVariation_uint8_t variation)
 ////        return select_all<AnalogSpec>(this->analog_input, StaticAnalogVariation::Group30Var2);
+    select_all_StaticDataMap_for_AnalogMrzs_in_Database_staticOver2(&(pDatabase->analog_Mrzsinput), StaticAnalogVariation_Group30Var2);
     return select_all_StaticDataMap_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), StaticAnalogVariation_Group30Var2);
 
   case (GroupVariation_Group30Var3):
@@ -1279,13 +1287,21 @@ IINField SelectRange_in_Database(Database *pDatabase, GroupVariation_uint16_t gv
     return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var1);
 
   case (GroupVariation_Group30Var2):
+{
 #ifdef  LOG_INFO
     std::cout<<"*"<<getString_stack_info();
     std::cout<<"*GroupVariation_Group30Var2"<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*range.start= "<<(uint16_t)range->start<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"*range.stop= "<<(uint16_t)range->stop<<'\n';
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var2);
-    return select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var2);
+    IINField tmp1 = select_range_for_AnalogMrzs_in_Database_staticOver2(&(pDatabase->analog_Mrzsinput), range, StaticAnalogVariation_Group30Var2);////!
+    IINField tmp = select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var2);
+    return tmp;
+}
 
   case (GroupVariation_Group30Var3):
 #ifdef  LOG_INFO
@@ -1734,6 +1750,12 @@ IINField SelectIndices_in_Database_override(void *pIStaticSelector, GroupVariati
 ////} // namespace opendnp3
 void Unselect_in_Database(Database *pDatabase)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Unselect_in_Database1"<<'\n';
+#endif
 ////    this->binary_input.clear_selection();
   clear_selection_in_StaticDataMap_for_BinarySpec(&(pDatabase->binary_input));
 ////    this->double_binary.clear_selection();
@@ -1752,6 +1774,11 @@ void Unselect_in_Database(Database *pDatabase)
   clear_selection_in_StaticDataMap_for_TimeAndIntervalSpec(&(pDatabase->time_and_interval));
 ////    this->octet_string.clear_selection();
   clear_selection_in_StaticDataMap_for_OctetStringSpec(&(pDatabase->octet_string));
+#ifdef  LOG_INFO
+    std::cout<<getString_stack_info();
+    std::cout<<"}Unselect_in_Database_"<<'\n';
+    decrement_stack_info();
+#endif
 }
 
 void Unselect_in_Database_override(void *pIStaticSelector)
@@ -1795,9 +1822,22 @@ boolean HasAnySelection_in_Database_override(void *pIResponseLoader)
 
 boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Load_in_Database_override1"<<'\n';
+#endif
   Database *parent =
     (Database*)getParentPointer_in_IResponseLoader((IResponseLoader*)pIResponseLoader);
-  return Load_in_Database(parent, writer);
+  boolean tmp = Load_in_Database(parent, writer);
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}Load_in_Database_override_"<<'\n';
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 ////bool Database::Load(HeaderWriter& writer)
 boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
@@ -1815,6 +1855,8 @@ boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
 ////        && load_type(this->frozen_counter, writer) && load_type(this->binary_output_status, writer)
 ////        && load_type(this->analog_output_status, writer) && load_type(this->time_and_interval, writer)
 ////        && load_type(this->octet_string, writer);
+
+         load_type_for_Analog_in_DatabaseMrzs_static(&(pDatabase->analog_Mrzsinput), writer);////!
 
   return load_type_for_Analog_in_Database_static(pDatabase->analog_input, writer) &&
          load_type_for_Binary_in_Database_static(pDatabase->binary_input, writer) &&

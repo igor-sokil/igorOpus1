@@ -170,7 +170,7 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
   std::cout<<std::endl;
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override1"<<std::endl;
+  std::cout<<"{ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override1"<<std::endl;
 #endif
   UNUSED(header);
   WriteHandler *parent =
@@ -181,6 +181,8 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override1_"<<std::endl;
   decrement_stack_info();
 #endif
 ////        return IINBit::PARAM_ERROR;
@@ -196,6 +198,8 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*IINBit_FUNC_NOT_SUPPORTED"<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override2_"<<std::endl;
   decrement_stack_info();
 #endif
 ////        return IINBit::FUNC_NOT_SUPPORTED;
@@ -214,6 +218,8 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override3_"<<std::endl;
   decrement_stack_info();
 #endif
 ////        return IINBit::PARAM_ERROR;
@@ -222,11 +228,11 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
     return iIINField;
   }
 
-#ifdef  LOG_INFO
-  std::cout<<"*"<<getString_stack_info();
-  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
-  decrement_stack_info();
-#endif
+///#ifdef  LOG_INFO
+///  std::cout<<"*"<<getString_stack_info();
+///  std::cout<<"*IINBit_PARAM_ERROR"<<std::endl;
+///  decrement_stack_info();
+///#endif
 
   parent->wroteTime = true;
 //void UTCTimestamp_in_UTCTimestampOver2(UTCTimestamp *pUTCTimestamp, uint64_t msSinceEpoch);
@@ -237,9 +243,16 @@ IINField ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override(void
   IINField iIINField1;
   IINField_in_IINFieldOver2(&iIINField1, IINBit_PARAM_ERROR);
 //   IINField Empty_in_IINField_static(void);
-  return WriteAbsoluteTime_in_IOutstationApplication(parent->application, &uUTCTimestamp) ?
+  IINField tmp = WriteAbsoluteTime_in_IOutstationApplication(parent->application, &uUTCTimestamp) ?
          Empty_in_IINField_static() :
          iIINField1;
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}ProcessHeader_CountHeader_for_Group50Var1_in_WriteHandler_override4_"<<std::endl;
+  decrement_stack_info();
+#endif
+  return tmp;
 }
 
 IINField ProcessHeader_CountHeader_for_Group50Var3_in_WriteHandler_override(void *pIAPDUHandler, CountHeader* header, ICollection_for_Group50Var3* values)

@@ -25,8 +25,10 @@
 #ifndef SER4CPP_Array__for__Node_for_EventRecord_H
 #define SER4CPP_Array__for__Node_for_EventRecord_H
 
+#include "Node_for_EventRecord.h"
 ////#include "ser4cpp/container/ArrayView.h"
 #include "ArrayView__for__Node_for_EventRecord.h"
+
 
 ////#include "ser4cpp/util/Uncopyable.h"
 

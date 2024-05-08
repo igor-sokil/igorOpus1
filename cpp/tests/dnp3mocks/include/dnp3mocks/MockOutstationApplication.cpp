@@ -184,6 +184,9 @@ boolean WriteAbsoluteTime_in_MockOutstationApplication(MockOutstationApplication
   {
     UTCTimestamp Timestamp;
     Timestamp = *timestamp;
+
+  std::cout<<"*UTCTimestamp.msSinceEpoch= "<<std::hex<<Timestamp.msSinceEpoch<<std::dec<<'\n';
+
     pMockOutstationApplication->timestamps.push_back(Timestamp);
 #ifdef  LOG_INFO
   std::cout<<"}WriteAbsoluteTime_in_MockOutstationApplication1_"<<'\n';
@@ -296,6 +299,8 @@ uint16_t WarmRestart_in_MockOutstationApplication(MockOutstationApplication *pMo
 void OnConfirmProcessed_in_MockOutstationApplication(MockOutstationApplication *pMockOutstationApplication,
     boolean is_unsolicited, uint32_t num_class1, uint32_t num_class2, uint32_t num_class3)
 {
+   std::cout<<'\n';
+   std::cout<<"OnConfirmProcessed_in_MockOutstationApplication1"<<'\n';
   ConfirmResult confirm;
   confirm.is_unsolicited = is_unsolicited;
   confirm.num_class1 = num_class1;

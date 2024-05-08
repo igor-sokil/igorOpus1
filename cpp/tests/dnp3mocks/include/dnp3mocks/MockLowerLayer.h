@@ -51,6 +51,7 @@ typedef struct
 ////private:
 ////    std::queue<opendnp3::Message> sendQueue;
   std::queue<Message> sendQueue;
+  boolean isResponse_in_MockLowerLayer;
 } MockLowerLayer;
 
 void MockLowerLayer_in_MockLowerLayer(MockLowerLayer *pMockLowerLayer);

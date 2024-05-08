@@ -37,9 +37,9 @@ typedef struct
 ////    {
 ////    }
 
-  boolean selected;// = false;
+  boolean selected_in_SelectedValue_for_BinarySpec;// = false;
 ////    typename Spec::meas_t value;
-  Binary value;
+  Binary value_in_SelectedValue_for_BinarySpec;
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
   static_variation_t_in_BinaryInfo variation;
 } SelectedValue_for_BinarySpec;
@@ -61,7 +61,7 @@ typedef struct
 ////    typename Spec::event_cell_t event; // event cell
   SimpleEventCell_for_Binary event_in_StaticDataCell; // event cell
 ////    SelectedValue<Spec> selection;     // selected value
-  SelectedValue_for_BinarySpec  selection_in_StaticDataCell;     // selected value
+  SelectedValue_for_BinarySpec  selection_in_StaticDataCell_for_Binary;     // selected value
 ////    StaticDataCell() = default;
 ////    StaticDataCell(const typename Spec::meas_t& value, const typename Spec::config_t& config)
 ///        : value(value), config(config)
@@ -141,7 +141,7 @@ typedef struct
 ////    {
 ////    }
 
-  boolean selected;// = false;
+  boolean selected_in_SelectedValue_for_AnalogSpec;// = false;
 ////    typename Spec::meas_t value;
   Analog value;
 ////    typename Spec::static_variation_t variation = Spec::DefaultStaticVariation;
@@ -174,6 +174,15 @@ typedef struct
 ////    }
 ////    StaticDataCell(const typename Spec::config_t& config) : config(config) {}
 } StaticDataCell_for_Analog;
+
+typedef struct
+{
+  uint16_t index_in_StaticDataRecord_for_Analog;
+  StaticDataCell_for_Analog sStaticDataCell_for_Analog;
+} StaticDataRecord_for_Analog;
+
+void StaticDataRecord_for_Analog_in_StaticDataRecord_for_Analog(StaticDataRecord_for_Analog *pStaticDataRecord_for_Analog,
+           uint16_t index);
 
 void StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver1(StaticDataCell_for_Analog *pStaticDataCell_for_Analog);
 

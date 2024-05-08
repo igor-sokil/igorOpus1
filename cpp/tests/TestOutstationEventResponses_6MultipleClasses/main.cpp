@@ -26,7 +26,7 @@ MainWindow *mainWindow;
 void apply_in_6MultipleClasses(IUpdateHandler*);
 void apply_in_6MultipleClasses(IUpdateHandler* db)
 {
-    std::cout << "apply_in_6MultipleClasses1" <<'\n';
+std::cout << "{apply_in_6MultipleClasses1" <<'\n';
 ////    t.Transaction([](IUpdateHandler& db) {
 ////        db.Update(Binary(true), 0);
 ////        db.Update(Analog(3), 0);
@@ -48,6 +48,7 @@ void apply_in_6MultipleClasses(IUpdateHandler* db)
  Update_Binary_in_IUpdateHandler(db, &bBinary, 0, EventMode_Detect);// = EventMode::Detect) = 0;
  Update_Analog_in_IUpdateHandler(db, &aAnalog, 0, EventMode_Detect);// = EventMode::Detect) = 0;
  Update_Counter_in_IUpdateHandler(db, &cCounter, 0, EventMode_Detect);// = EventMode::Detect) = 0;
+std::cout << "}apply_in_6MultipleClasses_" <<'\n';
 }
 
 int main(int argc, char *argv[])
@@ -111,7 +112,7 @@ qDebug()<<"********SUITE('6MultipleClasses')********";
     std::cout << "n1= " << n1<<'\n';
 qDebug()<<"REQUIRE('C0 81 8E 00' == t.lower->PopWriteAsHex())";
 std::cout << "temp= " << temp<<'\n';
-
+/*
 ////    t.OnTxReady();
     OnTxReady_in_OutstationTestObject(&t);
 
@@ -183,7 +184,7 @@ std::cout << "temp3= " << temp3<<'\n';
     std::cout << "n5= " << n5<<'\n';
 qDebug()<<"REQUIRE('C4 81 80 00' == t.lower->PopWriteAsHex())";
 std::cout << "temp4= " << temp4<<'\n';
-
+*/
 /*
 TEST_CASE(SUITE("6MultipleClasses"))
 {

@@ -39,6 +39,8 @@ void MockLowerLayer_in_MockLowerLayer(MockLowerLayer *pMockLowerLayer)
 
   pMockLowerLayer->iILowerLayer.pBeginTransmit_in_ILowerLayer = BeginTransmit_in_MockLowerLayer_override;
   setParentPointer_in_ILowerLayer(&(pMockLowerLayer->iILowerLayer), pMockLowerLayer);
+
+  pMockLowerLayer->isResponse_in_MockLowerLayer = false;
 }
 
 ////bool MockLowerLayer::HasNoData() const
@@ -106,6 +108,7 @@ boolean BeginTransmit_in_MockLowerLayer(MockLowerLayer* pMockLowerLayer, Message
 #endif
 
   pMockLowerLayer->sendQueue.push(temp);////message);
+  pMockLowerLayer->isResponse_in_MockLowerLayer = true;
 #ifdef  LOG_INFO
   std::cout<<"}BeginTransmit_in_MockLowerLayer_"<<'\n';
 #endif

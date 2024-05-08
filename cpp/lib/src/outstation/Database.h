@@ -40,6 +40,7 @@
 #include "IStaticSelector.h"
 #include "StaticDataMap_for_AnalogOutputStatus.h"
 #include "StaticDataMap_for_Analog.h"
+#include "StaticDataMap_for_AnalogMrzs.h"////!
 #include "StaticDataMap_for_Binary.h"
 #include "StaticDataMap_for_BinaryOutputStatus.h"
 #include "StaticDataMap_for_Counter.h"
@@ -109,6 +110,8 @@ typedef struct
   StaticDataMap_for_BinarySpec          binary_input;
   StaticDataMap_for_DoubleBitBinarySpec double_binary;
   StaticDataMap_for_AnalogSpec          analog_input;
+  StaticDataMap_for_AnalogMrzs          analog_Mrzsinput;////!
+
   StaticDataMap_for_CounterSpec         counter;
   StaticDataMap_for_FrozenCounterSpec   frozen_counter;
   StaticDataMap_for_BinaryOutputStatusSpec    binary_output_status;
