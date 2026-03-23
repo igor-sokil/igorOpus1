@@ -1,0 +1,7 @@
+TEST_CASE(SUITE("25TestIINValue"))
+{
+    TestComplex("50 01 00 07 07 00", ParseResult::OK, 1, [&](MockApduHeaderHandler& mock) {
+        REQUIRE(1 == mock.iinBits.size());
+        REQUIRE_FALSE(mock.iinBits[0].value.value);
+    });
+}

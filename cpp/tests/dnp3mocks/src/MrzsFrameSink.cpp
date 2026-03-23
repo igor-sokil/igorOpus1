@@ -93,7 +93,8 @@ void Reset_in_MrzsFrameSink(MrzsFrameSink *pMrzsFrameSink)
 {
 //   void Clear_in_DataSink(DataSink *pDataSink);
 ////    this->received.Clear();
-  Clear_in_DataSink(&(pMrzsFrameSink->received));
+  Clear_in_DataSinkMrzs(&(pMrzsFrameSink->received));
+//  Clear_in_DataSink(&(pMrzsFrameSink->received));
   pMrzsFrameSink->m_num_frames = 0;
 }
 
@@ -141,7 +142,8 @@ boolean OnFrame_in_MrzsFrameSink(MrzsFrameSink *pMrzsFrameSink, LinkHeaderFields
   {
 //    void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data);
 ////        this->received.Write(userdata);
-    Write_in_DataSink(&(pMrzsFrameSink->received), userdata);
+    Write_in_DataSinkMrzs(&(pMrzsFrameSink->received), userdata);
+//    Write_in_DataSink(&(pMrzsFrameSink->received), userdata);
   }
 
 #ifdef  LOG_INFO

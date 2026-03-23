@@ -1,0 +1,2 @@
+start d:\QT_5.12\Examples\release_programs\TestStaticDataMap_8can
+

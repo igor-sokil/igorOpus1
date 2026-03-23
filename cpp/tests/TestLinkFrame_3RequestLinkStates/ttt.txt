@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("RequestLinkStates"))
+{
+    Buffer buffer(292);
+
+    // ResetLinkStates - Master
+    auto write = buffer.as_wslice();
+    auto wrapper = LinkFrame::FormatRequestLinkStatus(write, false, 1, 1024, nullptr);
+    REQUIRE(HexConversions::to_hex(wrapper) == "05 64 05 49 01 00 00 04 D2 36");
+}

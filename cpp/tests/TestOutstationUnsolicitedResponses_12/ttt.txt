@@ -1,0 +1,6 @@
+// Test that non-read fragments are immediately responded to while
+// waiting for a response to unsolicited data
+TEST_CASE(SUITE("12WriteDuringUnsolBeforeTx"))
+{
+    WriteDuringUnsol(true);
+}

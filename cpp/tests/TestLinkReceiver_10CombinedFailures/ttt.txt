@@ -1,0 +1,12 @@
+// Write two bad packets back-to-back tests that this produces
+// back to back errors with a single write call
+// Ќаписание двух плохих пакетов подр€д, которые это производит
+// последовательные ошибки с одним вызовом записи
+TEST_CASE(SUITE("10CombinedFailures"))
+{
+    LinkParserTest t;
+    t.WriteData(RepairCRC("05 64 05 20 00 04 01 00 19 A6") + " " + RepairCRC("05 64 05 D0 01 00 00 04 E9 21"));
+    REQUIRE(t.sink.m_num_frames == 0);
+    REQUIRE(t.parser.Statistics().numBadFCV == 1);
+    REQUIRE(t.parser.Statistics().numBadFCB == 1);
+}

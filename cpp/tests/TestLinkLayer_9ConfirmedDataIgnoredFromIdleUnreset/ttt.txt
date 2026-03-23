@@ -1,0 +1,11 @@
+// Show that the base state of idle does not forward confirmed user data
+// Показать, что базовое состояние бездействия не пересылает подтвержденные пользовательские данные
+TEST_CASE(SUITE("9ConfirmedDataIgnoredFromIdleUnreset"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+    ByteStr bs(250, 0);
+    t.OnFrame(LinkFunction::PRI_CONFIRMED_USER_DATA, false, false, false, 1, 1024, bs.ToRSeq());
+    REQUIRE(t.upper->receivedQueue.empty());
+    REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1);
+}

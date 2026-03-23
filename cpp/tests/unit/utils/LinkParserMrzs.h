@@ -60,7 +60,7 @@ typedef struct
 ////    }
 
 ////    MockLogHandler log;
-  MrzsFrameSink sink;
+  MrzsFrameSink sink_in_LinkParserMrzs;
   LinkLayerParser parser;
 } LinkParserMrzs;
 

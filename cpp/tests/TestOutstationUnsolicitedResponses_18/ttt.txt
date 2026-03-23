@@ -1,0 +1,26 @@
+TEST_CASE(SUITE("18UnsolEnable"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.eventBufferConfig = EventBufferConfig(5);
+    OutstationTestObject t(cfg, configure::by_count_of::binary_input(5));
+
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0));
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(0));
+
+    // do a transaction to show that unsol data is not being reported yet
+    t.Transaction([](IUpdateHandler& db) { db.Update(Binary(false, Flags(0x01)), 0); });
+
+    REQUIRE(t.lower->PopWriteAsHex().empty());
+
+    // Enable unsol class 1
+    t.SendToOutstation("C0 14 3C 02 06");
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 82 00");
+    t.OnTxReady();
+
+    // should automatically send the previous data as unsol
+    REQUIRE(t.lower->PopWriteAsHex() == "F1 82 80 00 02 01 28 01 00 00 00 01");
+}

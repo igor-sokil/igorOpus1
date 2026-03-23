@@ -1,0 +1,6 @@
+TEST_CASE(SUITE("18ReadGrp2Var1"))
+{
+    auto update = [](IUpdateHandler& db) { db.Update(Binary(false, Flags(0x01)), 3); };
+
+    TestEventRead("C0 01 02 01 06", "E0 81 80 00 02 01 28 01 00 03 00 01", update); // 1 byte count == 1, ONLINE quality
+}

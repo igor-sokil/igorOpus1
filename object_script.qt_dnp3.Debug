@@ -446,4 +446,5 @@ debug/MockTransportLayer.o
 debug/DatabaseHelpers.o
 debug/DatabaseHelpersMrzs.o
 debug/DataSink.o
+debug/DataSinkMrzs.o
 debug/loghandler.o

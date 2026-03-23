@@ -1,0 +1,45 @@
+***{+++++++++6Unsolicited11
+apply_in_6Unsolicited2
+
+                update_in_StaticDataMap_for_BinarySpecOver2_1
+*                *iter->second.config.eEventConfig.clazz= 2
++                ++++++int16_t nnn = iter->first=0
+*                **inspect_Binary**
+*                *boolean value= 0
+*                *Flags flags.value= 1
+*                *DNPTime timeDNPTime.value= 6422216
+*                *DNPTime timeDNPTime.quality= 240
+
+                    convert_to_event_class_in_StaticDataMap_static1
+*                    *PointClass_uint8_t pc= 2
+*                    *PointClass_Class1= 2
+*                    *PointClass_Class2= 4
+*                    *PointClass_Class3= 8
+                update_in_StaticDataMap_for_BinarySpecOver2_2
+
+                    UpdateAny_BinarySpec_in_EventBuffer1
+
+                        Update_BinarySpec_in_EventUpdate_static1
+
+                            Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static1
+
++                HandleNewEvents_in_OContext1
+
++                    CheckForTaskStart_in_OContext1
++                    CheckForTaskStart_in_OContext2
+
++                        CheckForUnsolicitedNull_in_OContext1
+
+                            IsIdle_in_OutstationState1
+
+                            IsIdle_in_OutstationState_override1
++                        CheckForUnsolicitedNull_in_OContext3
++                    CheckForTaskStart_in_OContext3
+
++                        CheckForUnsolicited_in_OContext1
+
+                            IsIdle_in_OutstationState1
+
+                            IsIdle_in_OutstationState_override1
+*                        CheckForUnsolicited_in_OContext5
+}----------6Unsolicited11

@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("13LinkStatus"))
+{
+    Buffer buffer(292);
+    auto writeTo = buffer.as_wslice();
+    auto frame = LinkFrame::FormatLinkStatus(writeTo, true, true, 1, 2, nullptr);
+
+    LinkParserTest t;
+    t.WriteData(frame);
+    REQUIRE(t.sink.m_num_frames == 1);
+    REQUIRE(t.sink.CheckLastWithDFC(LinkFunction::SEC_LINK_STATUS, true, true, 1, 2));
+}

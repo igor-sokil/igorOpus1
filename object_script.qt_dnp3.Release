@@ -446,4 +446,5 @@ release/MockTransportLayer.o
 release/DatabaseHelpers.o
 release/DatabaseHelpersMrzs.o
 release/DataSink.o
+release/DataSinkMrzs.o
 release/loghandler.o

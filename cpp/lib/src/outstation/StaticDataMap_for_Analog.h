@@ -35,6 +35,7 @@
 #include <iostream>
 #endif
 #include "StaticDataMap.h"
+#include "StaticDataMap_for_AnalogMrzs.h"
 #include "MeasurementTypeSpecs.h"
 #include "Range.h"
 #include "IEventReceiver.h"
@@ -225,6 +226,7 @@ StaticDataCell_for_Analog sss = this->iter->second;//.second;
 ////private:
   map_t_StaticDataMap_for_AnalogSpec map;
   Range selected_in_StaticDataMap_for_AnalogSpec;
+//  Map_for_AnalogMrzs mMap_for_AnalogMrzs;
 
 ////    Range get_full_range() const;
 ////

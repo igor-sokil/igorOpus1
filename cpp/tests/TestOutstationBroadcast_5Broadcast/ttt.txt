@@ -1,0 +1,17 @@
+TEST_CASE(SUITE("5Broadcast with malformed request should still set the BROADCAST IIN"))
+Трансляция с неверным запросом по-прежнему должна устанавливать BROADCAST IIN.
+{
+    OutstationConfig config;
+    OutstationTestObject t(config, DatabaseConfig());
+    t.LowerLayerUp();
+
+    t.BroadcastToOutstation(LinkBroadcastAddress::DontConfirm, "FF FF FF");
+
+    // Outstation should not respond to broadcast request
+    REQUIRE(t.lower->HasNoData());
+
+    // The next response should have BROADCAST IIN
+    t.SendToOutstation(hex::ClassPoll(2, PointClass::Class0));
+    REQUIRE(t.lower->PopWriteAsHex() == "C2 81 81 00");
+    t.OnTxReady();
+}

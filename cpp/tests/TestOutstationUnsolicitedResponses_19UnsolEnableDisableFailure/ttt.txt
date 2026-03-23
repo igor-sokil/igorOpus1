@@ -1,0 +1,10 @@
+TEST_CASE(SUITE("19UnsolEnableDisableFailure"))
+{
+    OutstationConfig cfg;
+    cfg.eventBufferConfig = EventBufferConfig(5);
+    OutstationTestObject t(cfg, configure::by_count_of::binary_input(5));
+
+    t.LowerLayerUp();
+    t.SendToOutstation("C0 14 3C 02 06");
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 01"); // FUNC_NOT_SUPPORTED
+}

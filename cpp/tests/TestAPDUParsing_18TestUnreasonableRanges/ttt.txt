@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("18TestUnreasonableRanges"))
+{
+    // 2 byte start/stop 0->65535, no data - the default max objects is very low (32768)
+    TestSimple("01 02 01 00 00 FF FF", ParseResult::NOT_ENOUGH_DATA_FOR_OBJECTS, 0);
+}

@@ -45,6 +45,35 @@ void StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2(StaticDat
     StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver2(&sStaticDataCell_for_Analog, &temp);
     pStaticDataMap->map[item.first] = sStaticDataCell_for_Analog;
   }
+/*
+////!
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"StaticDataMap_for_AnalogMrzs_in_StaticDataMap_for_AnalogMrzsOver2_1"<<'\n';
+#endif
+  StaticDataMap_for_AnalogMrzs_in_StaticDataMap_for_AnalogMrzsOver1(pStaticDataMap_for_AnalogMrzs, getDatabaseConfigMrzs()->sizeConfig_for_AnalogMrzs);
+  if(pStaticDataMap_for_AnalogMrzs->sizeMap_for_AnalogMrzs > SIZE_map_StaticDataMap_for_AnalogMrzs) pStaticDataMap_for_AnalogMrzs->sizeMap_for_AnalogMrzs = SIZE_map_StaticDataMap_for_AnalogMrzs;
+
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*StaticDataMap_for_AnalogMrzs_in_StaticDataMap_for_AnalogMrzsOver2_2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap_for_AnalogMrzs->sizeMap_for_AnalogMrzs= "<<pStaticDataMap_for_AnalogMrzs->sizeMap_for_AnalogMrzs<<'\n';
+#endif
+
+// Increment_in_Iterator_StaticDataMap_for_AnalogMrzs(&(pStaticDataMap_for_AnalogMrzs->iIterator_StaticDataMap_for_AnalogMrzs));
+
+  for(uint16_t index=0; index<pStaticDataMap_for_AnalogMrzs->sizeMap_for_AnalogMrzs; index++)
+  {
+    StaticDataRecord_for_Analog sStaticDataRecord_for_Analog;
+    AnalogConfig temp = getDatabaseConfigMrzs()->analog_input[index];
+    StaticDataRecord_for_Analog_in_StaticDataRecord_for_Analog(&sStaticDataRecord_for_Analog, index);
+    StaticDataCell_for_Analog_in_StaticDataCell_for_AnalogOver2(&sStaticDataRecord_for_Analog.sStaticDataCell_for_Analog, &temp);
+    pStaticDataMap_for_AnalogMrzs->map_StaticDataMap_for_AnalogMrzs[index] = sStaticDataRecord_for_Analog;
+  }//for
+*/
+////!
+
 #ifdef  LOG_INFO
   decrement_stack_info();
 #endif

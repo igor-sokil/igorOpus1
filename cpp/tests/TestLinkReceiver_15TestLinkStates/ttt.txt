@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("15TestLinkStates"))
+{
+    Buffer buffer(292);
+    auto writeTo = buffer.as_wslice();
+    auto frame = LinkFrame::FormatTestLinkStatus(writeTo, false, true, 1, 2, nullptr);
+
+    LinkParserTest t;
+    t.WriteData(frame);
+    REQUIRE(t.sink.m_num_frames == 1);
+    REQUIRE(t.sink.CheckLastWithFCB(LinkFunction::PRI_TEST_LINK_STATES, false, true, 1, 2));
+}

@@ -1,0 +1,11 @@
+// Secondary Reset Links
+// Вторичные ссылки сброса
+TEST_CASE(SUITE("10SecondaryResetLink"))
+{
+    LinkLayerTest t(LinkLayerTest::DefaultConfig());
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
+
+    REQUIRE(t.NumTotalWrites() == 1);
+    REQUIRE(t.PopLastWriteAsHex() == LinkHex::Ack(true, false, 1024, 1));
+}

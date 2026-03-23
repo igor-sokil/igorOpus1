@@ -1,0 +1,25 @@
+TEST_CASE(SUITE("2Non-read during null unsol without workaround"))
+2Ќе читаетс€ во врем€ нулевой отмены без обходного пути.
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.unsolConfirmTimeout = TimeDuration::Seconds(5);
+    cfg.params.noDefferedReadDuringUnsolicitedNullResponse = false;
+//нет отложенного чтени€ во врем€ незапрошенного нулевого ответа
+    OutstationTestObject t(cfg);
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0, IINField(IINBit::DEVICE_RESTART)));
+    t.OnTxReady();
+    REQUIRE(t.lower->NumWrites() == 0);
+
+    // send any non-read message
+    t.SendToOutstation(hex::ClearRestartIIN(0));
+    REQUIRE(t.lower->PopWriteAsHex() == hex::EmptyResponse(0));
+    t.OnTxReady();
+
+    // Continue sending unsolicited NULL responses
+    t.AdvanceTime(TimeDuration::Seconds(5));
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(1, IINField()));
+    REQUIRE(t.NumPendingTimers() == 1);
+}

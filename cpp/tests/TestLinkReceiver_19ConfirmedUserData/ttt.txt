@@ -1,0 +1,14 @@
+TEST_CASE(SUITE("19ConfirmedUserData"))
+{
+    ByteStr data(250, 0); // initializes a buffer with increasing value
+
+    Buffer buffer(292);
+    auto writeTo = buffer.as_wslice();
+    auto frame = LinkFrame::FormatConfirmedUserData(writeTo, true, true, 1, 2, data.ToRSeq(), nullptr);
+
+    LinkParserTest t;
+    t.WriteData(frame);
+    REQUIRE(t.sink.m_num_frames == 1);
+    REQUIRE(t.sink.CheckLastWithFCB(LinkFunction::PRI_CONFIRMED_USER_DATA, true, true, 1, 2));
+    REQUIRE(t.sink.received.Equals(data.ToRSeq()));
+}

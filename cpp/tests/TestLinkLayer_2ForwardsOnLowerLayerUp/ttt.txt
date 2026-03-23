@@ -1,0 +1,11 @@
+// Prove that the upper layer is notified when the lower layer comes online
+// ƒоказать, что верхний уровень получает уведомление, когда нижний уровень подключаетс€ к сети
+TEST_CASE(SUITE("2ForwardsOnLowerLayerUp"))
+{
+    LinkLayerTest t;
+
+    REQUIRE_FALSE(t.upper->IsOnline());
+    REQUIRE(t.link.OnLowerLayerUp());
+    REQUIRE(t.upper->IsOnline());
+    REQUIRE_FALSE(t.link.OnLowerLayerUp());
+}

@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("9ReadDiscontiguousAllDataWithRangeError"))
+{
+    // read 01 var 2, [02 : 05]
+    REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 02 05") == "C0 81 80 04 01 02 00 02 02 81 01 02 00 04 05 01 02");
+}

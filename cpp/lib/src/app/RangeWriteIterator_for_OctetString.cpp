@@ -86,6 +86,12 @@ void RangeWriteIterator_for_UInt8_OctetString_destr_RangeWriteIterator_for_UInt8
 boolean Write_in_RangeWriteIterator_for_UInt8_OctetString(RangeWriteIterator_for_UInt8_OctetString *pRangeWriteIterator_for_UInt8_OctetString,
     OctetString* value)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Write_in_RangeWriteIterator_for_UInt8_OctetString1"<<'\n';
+#endif
 //    if (isValid && (pPosition->length() >= serializer.get_size()) && (count <= IndexType::max_value))
   if(pRangeWriteIterator_for_UInt8_OctetString->isValid &&
       (length_in_HasLength_for_Uint16_t(&(pRangeWriteIterator_for_UInt8_OctetString->pPosition->hHasLength)) >=
@@ -95,10 +101,22 @@ boolean Write_in_RangeWriteIterator_for_UInt8_OctetString(RangeWriteIterator_for
 //        serializer.write(value, *pPosition);
     write_in_Serializer_for_OctetString(&(pRangeWriteIterator_for_UInt8_OctetString->serializer), value, pRangeWriteIterator_for_UInt8_OctetString->pPosition);
     ++(pRangeWriteIterator_for_UInt8_OctetString->count);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_RangeWriteIterator_for_UInt8_OctetString1_"<<'\n';
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_RangeWriteIterator_for_UInt8_OctetString2_"<<'\n';
+  decrement_stack_info();
+#endif
     return false;
   }
 }

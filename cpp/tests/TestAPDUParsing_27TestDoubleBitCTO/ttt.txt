@@ -1,0 +1,13 @@
+TEST_CASE(SUITE("27TestDoubleBitCTO"))
+{
+    TestComplex("04 03 17 02 03 C1 07 00 05 41 09 00", ParseResult::OK, 1, [&](MockApduHeaderHandler& mock) {
+        REQUIRE(1 == mock.records.size());
+        REQUIRE(2 == mock.eventDoubleBinaries.size());
+
+        Indexed<DoubleBitBinary> event1(DoubleBitBinary(DoubleBit::INDETERMINATE, Flags(0x01), DNPTime(7)), 3);
+        Indexed<DoubleBitBinary> event2(DoubleBitBinary(DoubleBit::DETERMINED_OFF, Flags(0x01), DNPTime(9)), 5);
+
+        REQUIRE((event1 == mock.eventDoubleBinaries[0]));
+        REQUIRE((event2 == mock.eventDoubleBinaries[1]));
+    });
+}

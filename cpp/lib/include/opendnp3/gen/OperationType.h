@@ -50,10 +50,13 @@ enum OperationType
   /// Do nothing.
   OperationType_NUL = 0x0,
   /// Set output to active for the duration of the On-time.
+///// Установить выход активным на время включения.
   OperationType_PULSE_ON = 0x1,
   /// Non-interoperable code. Do not use for new applications.
+/// Несовместимый код. Не использовать для новых приложений.
   OperationType_PULSE_OFF = 0x2,
   /// Set output to active.
+/// Установить выход в активное состояние.
   OperationType_LATCH_ON = 0x3,
   /// Set the output to inactive.
   OperationType_LATCH_OFF = 0x4,

@@ -17,10 +17,10 @@ RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderW
                                                                                      )
 {
 #ifdef  LOG_INFO
-  increment_stack_info();
   std::cout<<'\n';
+  increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"IterateOverRange_for_UInt8_Binary_in_HeaderWriter1"<<'\n';
+  std::cout<<"{IterateOverRange_for_UInt8_Binary_in_HeaderWriter1"<<'\n';
 #endif
 //    const auto reserve_size = 2 * IndexType::size + serializer.get_size();
 //     pRangeWriteIterator_for_UInt8_Binary->isValid = length_in_HasLength_for_Uint16_t(&(position->hHasLength)) >= 2 * size_in_UInt8;
@@ -47,17 +47,25 @@ RangeWriteIterator_for_UInt8_Binary IterateOverRange_for_UInt8_Binary_in_HeaderW
         pHeaderWriter->position
                                                                                    );
 #ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}IterateOverRange_for_UInt8_Binary_in_HeaderWriter1_"<<'\n';
   decrement_stack_info();
 #endif
     return rRangeWriteIterator_for_UInt8_Binary;
   }
   else
   {
+    RangeWriteIterator_for_UInt8_Binary tmp = Null_in_RangeWriteIterator_for_UInt8_Binary_static();
 #ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}IterateOverRange_for_UInt8_Binary_in_HeaderWriter2_"<<'\n';
   decrement_stack_info();
 #endif
 //        return RangeWriteIterator<IndexType, WriteType>::Null();
-    return Null_in_RangeWriteIterator_for_UInt8_Binary_static();
+//    return Null_in_RangeWriteIterator_for_UInt8_Binary_static();
+  return tmp;
   }
 }
 //---------------------------------------------IterateOverRange_for_UInt8_Binary_in_HeaderWriter--------------------------------------------

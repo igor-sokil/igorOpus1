@@ -1,0 +1,25 @@
+TEST_CASE(SUITE("28reports octet string events w/ different sizes in separate headers"))
+{
+    OutstationConfig config;
+    config.eventBufferConfig = EventBufferConfig::AllTypes(5);
+    OutstationTestObject t(config, configure::by_count_of::octet_string(5));
+    t.LowerLayerUp();
+
+    auto update = [](IUpdateHandler& db) {
+        {
+            uint8_t bytes[2] = {0xCA, 0xFE};
+            OctetString data(opendnp3::Buffer(bytes, 2));
+            db.Update(data, 0);
+        }
+        {
+            uint8_t bytes[4] = {0xCA, 0xFE, 0xBA, 0xBE};
+            OctetString data(opendnp3::Buffer(bytes, 4));
+            db.Update(data, 0);
+        }
+    };
+
+    t.Transaction(update);
+
+    t.SendToOutstation("C0 01 3C 02 06"); // Read class 1
+    REQUIRE(t.lower->PopWriteAsHex() == "E0 81 80 00 6F 02 28 01 00 00 00 CA FE 6F 04 28 01 00 00 00 CA FE BA BE");
+}

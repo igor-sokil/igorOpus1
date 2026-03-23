@@ -31,6 +31,10 @@
 ////#include <iterator>
 ////#include <map>
 
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "StaticDataMap.h"
 #include "MeasurementTypeSpecs.h"
 #include "Range.h"
@@ -78,7 +82,17 @@ public:
 
   public:
     explicit iterator(map_iter_t_StaticDataMap_for_CounterSpec begin,
-                      map_iter_t_StaticDataMap_for_CounterSpec end, Range& range) : iter(begin), end(end), range(range) {}
+                      map_iter_t_StaticDataMap_for_CounterSpec end, Range& range) : iter(begin), end(end), range(range) 
+     {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"explicit iterator!"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"range.start= "<<range.start<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"range.stop= "<<range.stop<<'\n';
+#endif
+     }
 
 ////        using value_type = std::pair<uint16_t, SelectedValue<Spec>>;
     using value_type = std::pair<uint16_t, SelectedValue_for_CounterSpec>;
@@ -99,6 +113,12 @@ public:
 
     void operator++()
     {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{operator++"<<'\n';
+#endif
       // unselect the point
       this->iter->second.selection_in_StaticDataCell.selected = false;
 
@@ -110,17 +130,42 @@ public:
         {
 ////                    this->range = Range::Invalid();
           this->range = Invalid_in_Range_static();
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}operator++1_"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*iter->first= "<<iter->first<<'\n';
+  decrement_stack_info();
+#endif
           return;
         }
 
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*operator++1"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*iter->first= "<<iter->first<<'\n';
+#endif
         // shorten the range
         this->range.start = iter->first;
 
         if (iter->second.selection_in_StaticDataCell.selected)
         {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}operator++2_"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*iter->first= "<<iter->first<<'\n';
+  decrement_stack_info();
+#endif
           return;
         }
       }
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"}operator++3_"<<'\n';
+  decrement_stack_info();
+#endif
     }
 
     reference operator*()

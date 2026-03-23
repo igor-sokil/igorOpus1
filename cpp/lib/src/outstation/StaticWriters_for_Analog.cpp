@@ -33,6 +33,8 @@ boolean LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(StaticDataMa
   std::cout<<"{LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*map.size()= "<<map.map.size()<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticAnalogVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
 #endif
 ////    auto next_index = map.get_selected_range().start;
   uint16_t  next_index = get_selected_range_in_StaticDataMap_for_AnalogSpec(&map).start;
@@ -43,12 +45,14 @@ SelectedValue_for_AnalogSpec ttt = elem.second;////!
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"*LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters2"<<'\n';
-  std::cout<<getString_stack_info();
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*ttt.selected= "<<ttt.selected_in_SelectedValue_for_AnalogSpec<<'\n';
-  std::cout<<getString_stack_info();
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*ttt.value= "<<ttt.value.tTypedMeasurement_for_Double64.value<<'\n';
-  std::cout<<getString_stack_info();
+  std::cout<<"*"<<getString_stack_info();
   std::cout<<"*uint16_t next_index= "<<next_index<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*elem.second.variation= "<<(uint16_t)elem.second.variation<<'\n';
 #endif
     if (elem.second.variation != variation)
     {

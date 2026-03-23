@@ -1,0 +1,9 @@
+// Test that the presence of user data disagrees with the function code
+// Проверяем, что наличие пользовательских данных не соответствует коду функции
+TEST_CASE(SUITE("5UnexpectedData"))
+{
+    LinkParserTest t;
+    t.WriteData(RepairCRC("05 64 08 C0 01 00 00 04 E9 21"));
+    REQUIRE(t.sink.m_num_frames == 0);
+    REQUIRE(t.parser.Statistics().numBadLength == 1);
+}

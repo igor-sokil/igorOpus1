@@ -11,7 +11,7 @@ void  LinkParserMrzs_in_LinkParserMrzs(LinkParserMrzs *pLinkParserMrzs, boolean 
 {
   UNUSED(aImmediate);
 //// : log(), sink(), parser(log.logger) {}
-  MrzsFrameSink_in_MrzsFrameSink(&(pLinkParserMrzs->sink));
+  MrzsFrameSink_in_MrzsFrameSink(&(pLinkParserMrzs->sink_in_LinkParserMrzs));
   LinkLayerParser_in_LinkLayerParser(&(pLinkParserMrzs->parser));//const Logger& logger);
 }
 
@@ -31,7 +31,7 @@ void WriteData_in_LinkParserMrzsOver1(LinkParserMrzs *pLinkParserMrzs, RSeq_for_
 //    void OnRead_in_LinkLayerParser(LinkLayerParser *pLinkLayerParser, uint16_t numBytes, IFrameSink* sink);
 ////        parser.OnRead(input.length(), sink);
   OnRead_in_LinkLayerParser(&(pLinkParserMrzs->parser),
-                            length_in_HasLength_for_Uint16_t(&(input->hHasLength)), &(pLinkParserMrzs->sink.iILinkSession.iIFrameSink));
+                            length_in_HasLength_for_Uint16_t(&(input->hHasLength)), &(pLinkParserMrzs->sink_in_LinkParserMrzs.iILinkSession.iIFrameSink));
 #ifdef  LOG_INFO
   std::cout<<"}WriteData_in_LinkParserMrzsOver1__"<<'\n';
 #endif
@@ -51,7 +51,7 @@ void WriteData_in_LinkParserMrzsOver2(LinkParserMrzs *pLinkParserMrzs, uint8_t *
   memcpy(buff.buffer_, hex, size_hex);
 ////        parser.OnRead(hs.Size(), sink);
   OnRead_in_LinkLayerParser(&(pLinkParserMrzs->parser),
-                            size_hex, &(pLinkParserMrzs->sink.iILinkSession.iIFrameSink));
+                            size_hex, &(pLinkParserMrzs->sink_in_LinkParserMrzs.iILinkSession.iIFrameSink));
 #ifdef  LOG_INFO
   std::cout<<"}WriteData_in_LinkParserMrzsOver2__"<<'\n';
 #endif
@@ -79,7 +79,7 @@ void WriteData_in_LinkParserMrzsOver3(LinkParserMrzs *pLinkParserMrzs, std::stri
 
 ////        parser.OnRead(hs.Size(), sink);
   OnRead_in_LinkLayerParser(&(pLinkParserMrzs->parser),
-                            sz, &(pLinkParserMrzs->sink.iILinkSession.iIFrameSink));
+                            sz, &(pLinkParserMrzs->sink_in_LinkParserMrzs.iILinkSession.iIFrameSink));
 #ifdef  LOG_INFO
   std::cout<<"}WriteData_in_LinkParserMrzsOver3__"<<'\n';
 #endif
@@ -87,5 +87,5 @@ void WriteData_in_LinkParserMrzsOver3(LinkParserMrzs *pLinkParserMrzs, std::stri
 
 void Reset_in_LinkParserMrzs(LinkParserMrzs *pLinkParserMrzs)
 {
-  Reset_in_MrzsFrameSink(&(pLinkParserMrzs->sink));
+  Reset_in_MrzsFrameSink(&(pLinkParserMrzs->sink_in_LinkParserMrzs));
 }

@@ -1,0 +1,18 @@
+TEST_CASE(SUITE("3Formats one-byte qualifier properly if enough space is available"))
+ѕравильно форматирует однобайтовый квалификатор, если доступно достаточно места.
+{
+    TypedCommandHeader<AnalogOutputInt16> header(Group41Var2::Inst());
+    header.Add(AnalogOutputInt16(7), 10);
+    header.Add(AnalogOutputInt16(8), 11);
+
+    StaticBuffer<100> buffer;
+    auto dest = buffer.as_wseq();
+    APDURequest request(dest);
+    auto writer = request.GetWriter();
+
+    REQUIRE(header.Write(writer, IndexQualifierMode::allow_one_byte));
+
+    auto hex = HexConversions::to_hex(request.ToRSeq().skip(2));
+
+    REQUIRE(hex == "29 02 17 02 0A 07 00 00 0B 08 00 00");
+}

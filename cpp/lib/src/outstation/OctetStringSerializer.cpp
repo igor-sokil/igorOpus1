@@ -17,6 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "OctetStringSerializer.h"
 #include <string.h>
@@ -84,11 +88,23 @@ void OctetStringSerializer_in_OctetStringSerializer(OctetStringSerializer *pOcte
 ////bool OctetStringSerializer::Write(const OctetString& value, ser4cpp::wseq_t& buffer)
 boolean Write_in_OctetStringSerializer_static(OctetString* value, WSeq_for_Uint16_t* buffer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Write_in_OctetStringSerializer_static1"<<'\n';
+#endif
 //   uint16_t Size_in_OctetData(OctetData *pOctetData);
 ////    if (value.Size() > buffer.length())
 //    uint16_t length_in_HasLength_for_Uint16_t(HasLength_for_Uint16_t *pHasLength);
   if(Size_in_OctetData(&(value->oOctetData)) > length_in_HasLength_for_Uint16_t(&(buffer->hHasLength)))
   {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_OctetStringSerializer_static1_"<<'\n';
+  decrement_stack_info();
+#endif
     return false;
   }
 //   Buffer  ToBuffer_in_OctetData(OctetData *pOctetData);
@@ -98,9 +114,20 @@ boolean Write_in_OctetStringSerializer_static(OctetString* value, WSeq_for_Uint1
 ////    const ser4cpp::rseq_t slice(value_buffer.data, value_buffer.length);
   RSeq_for_Uint16_t slice;
   RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&slice, value_buffer.data, value_buffer.length);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*Write_in_OctetStringSerializer_static2"<<'\n';
+  inspect_RSeq(&slice);
+#endif
 //    RSeq_for_Uint16_t copy_from_in_WSeq_for_Uint16_t(WSeq_for_Uint16_t *pWSeq_for_Uint16_t, RSeq_for_Uint16_t *src);
 ////    buffer.copy_from(slice);
   copy_from_in_WSeq_for_Uint16_t(buffer, &slice);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_OctetStringSerializer_static2_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 //-----------------------------DNP3Serializer_for_OctetString-------------------------------------------

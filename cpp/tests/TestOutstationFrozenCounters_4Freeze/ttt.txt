@@ -1,0 +1,4 @@
+TEST_CASE(SUITE("4Freeze And Clear No Ack 0x0A"))
+{
+    TestFreezeOperation("0A", NoResponse, true);
+}

@@ -1,0 +1,10 @@
+TEST_CASE(SUITE("8LinkStatus"))
+{
+    Buffer buffer(292);
+
+    // LinkStatus - Master (DFC = true)
+    auto writeTo = buffer.as_wslice();
+    auto wrapper = LinkFrame::FormatLinkStatus(writeTo, true, true, 1, 1024, nullptr);
+    // take a length 10 frame, set the control to 9B and repair the CRC
+    REQUIRE(HexConversions::to_hex(wrapper) == RepairCRC("05 64 05 9B 01 00 00 04 E9 21"));
+}

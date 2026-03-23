@@ -1,0 +1,2 @@
+start d:\QT_5.12\Examples\release_programs\TestOutstationCommandResponses_18SelectOperateGroup41Var3
+

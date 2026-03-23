@@ -45,6 +45,12 @@ Range get_selected_range_in_StaticDataMap_for_OctetStringSpec(StaticDataMap_for_
 
 typename StaticDataMap_for_OctetStringSpec::iterator StaticDataMap_for_OctetStringSpec::begin()
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{iterator StaticDataMap_for_OctetStringSpec::begin()1"<<'\n';
+#endif
 //boolean IsValid_in_Range(Range *pRange);
 ////    if (!this->selected.IsValid())
   if (!IsValid_in_Range(&(this->selected)))
@@ -54,6 +60,14 @@ typename StaticDataMap_for_OctetStringSpec::iterator StaticDataMap_for_OctetStri
 
   const auto begin = this->map.lower_bound(this->selected.start);
 
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*const auto begin= this->selected.start= "<<this->selected.start<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}iterator StaticDataMap_for_OctetStringSpec::begin()_"<<'\n';
+  increment_stack_info();
+#endif
   return iterator(begin, this->map.end(), this->selected);
 }
 

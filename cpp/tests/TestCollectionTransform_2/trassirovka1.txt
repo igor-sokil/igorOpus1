@@ -1,0 +1,10 @@
+********SUITE('MapIntegers2Booleans')********
+item= false
+item= false
+item= true
+item= true
+items.size() == 4   4
+items[0]   false
+items[1]   false
+items[2]   true
+items[3]   true

@@ -1,0 +1,12 @@
+// All operations should fail except for OnLowerLayerUp, just a representative
+// number of them
+// ¬се операции должны завершитьс€ неудачно, кроме OnLowerLayerUp, просто представител€
+// их количество
+TEST_CASE(SUITE("1ClosedState"))
+{
+    LinkLayerTest t;
+    MockTransportSegment segment(250, "00", Addresses());
+    REQUIRE_FALSE(t.upper->SendDown(segment));
+    REQUIRE_FALSE(t.link.OnLowerLayerDown());
+    REQUIRE_FALSE(t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 1, 2));
+}

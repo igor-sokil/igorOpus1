@@ -1,0 +1,9 @@
+// Check that once the layer comes up, validation errors can occur
+// Проверяем, что после появления слоя могут возникнуть ошибки проверки
+TEST_CASE(SUITE("3ValidatesMasterOutstationBit"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::SEC_ACK, true, false, false, 1, 1024);
+    REQUIRE(t.link.GetStatistics().numBadMasterBit == 1);
+}

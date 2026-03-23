@@ -1,0 +1,10 @@
+TEST_CASE(SUITE("26Group60Var1Var2Var3Var4"))
+{
+    TestComplex("3C 01 06 3C 02 06 3C 03 06 3C 04 06", ParseResult::OK, 4, [&](MockApduHeaderHandler& mock) {
+        REQUIRE(4 == mock.records.size());
+        REQUIRE((GroupVariation::Group60Var1 == mock.records[0].enumeration));
+        REQUIRE((GroupVariation::Group60Var2 == mock.records[1].enumeration));
+        REQUIRE((GroupVariation::Group60Var3 == mock.records[2].enumeration));
+        REQUIRE((GroupVariation::Group60Var4 == mock.records[3].enumeration));
+    });
+}

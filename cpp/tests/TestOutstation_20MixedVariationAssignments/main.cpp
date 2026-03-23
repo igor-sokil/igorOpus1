@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
   key_filter kf;
   app.installEventFilter(pkf=&kf);
 
-expectsContents_in_CountParser = true;
+//expectsContents_in_CountParser = true;
 //expectsContents_in_CountIndexParser = false;
 //expectsContents_in_RangeParser = false;
 
@@ -42,8 +42,10 @@ qDebug()<<"********SUITE('20MixedVariationAssignments')********";
 
 //DatabaseConfig from_AnalogConfig_in_DatabaseHelpers(std::map<uint16_t, AnalogConfig> map);
 DatabaseConfig tmp = from_AnalogConfig_in_DatabaseHelpers(
-                                           {{0, analog_in_DatabaseHelpers(StaticAnalogVariation_Group30Var1)},
-                                            {1, analog_in_DatabaseHelpers(StaticAnalogVariation_Group30Var2)}}
+                                           {{300, analog_in_DatabaseHelpers(StaticAnalogVariation_Group30Var1)},
+                                            {301, analog_in_DatabaseHelpers(StaticAnalogVariation_Group30Var1)},
+                                            {302, analog_in_DatabaseHelpers(StaticAnalogVariation_Group30Var2)},
+                                            {303, analog_in_DatabaseHelpers(StaticAnalogVariation_Group30Var2)}}
                                                           );
 
 //    DatabaseConfig tmp;

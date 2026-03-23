@@ -1,0 +1,21 @@
+TEST_CASE(SUITE("3DontConfirm broadcast does not ask for confirmation, but set the BROADCAST IIN bit once"))
+3DontConfirm широковещательная рассылка не запрашивает подтверждение, а устанавливает бит BROADCAST IIN один раз.
+{
+    OutstationConfig config;
+    OutstationTestObject t(config, DatabaseConfig());
+    t.LowerLayerUp();
+
+    t.BroadcastToOutstation(LinkBroadcastAddress::DontConfirm, hex::ClearRestartIIN(0));
+
+    // Outstation should not respond to broadcast request
+    REQUIRE(t.lower->HasNoData());
+
+    // The next response should have BROADCAST IIN set and restart IIN reset.
+    t.SendToOutstation(hex::ClassPoll(2, PointClass::Class0));
+    REQUIRE(t.lower->PopWriteAsHex() == "C2 81 01 00");
+    t.OnTxReady();
+
+    // The next response should have BROADCAST IIN reset
+    t.SendToOutstation(hex::ClassPoll(3, PointClass::Class0));
+    REQUIRE(t.lower->PopWriteAsHex() == "C3 81 00 00");
+}

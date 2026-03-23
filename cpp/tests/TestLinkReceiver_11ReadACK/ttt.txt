@@ -1,0 +1,12 @@
+TEST_CASE(SUITE("11ReadACK"))
+{
+    Buffer buffer(292);
+
+    auto writeTo = buffer.as_wslice();
+    auto frame = LinkFrame::FormatAck(writeTo, true, false, 1, 2, nullptr);
+
+    LinkParserTest t;
+    t.WriteData(frame);
+    REQUIRE(t.sink.m_num_frames == 1);
+    REQUIRE(t.sink.CheckLastWithDFC(LinkFunction::SEC_ACK, true, false, 1, 2));
+}

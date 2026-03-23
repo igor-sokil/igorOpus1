@@ -1,0 +1,4 @@
+TEST_CASE(SUITE("49ReadGrp30Var4"))
+{
+    TestStaticAnalog(StaticAnalogVariation::Group30Var4, 100, "C0 81 80 00 1E 04 00 00 00 64 00");
+}

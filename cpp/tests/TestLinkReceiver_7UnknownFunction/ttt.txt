@@ -1,0 +1,11 @@
+// Test that the parser can handle an unknown PriToSec function code
+// Reset Links w/ function code changed from 0 to 6
+// Проверка того, что синтаксический анализатор может обработать неизвестный код функции PriToSec
+// Сброс ссылок с изменением кода функции с 0 на 6
+TEST_CASE(SUITE("7UnknownFunction"))
+{
+    LinkParserTest t;
+    t.WriteData(RepairCRC("05 64 05 C6 01 00 00 04 E9 21"));
+    REQUIRE(t.sink.m_num_frames == 0);
+    REQUIRE(t.parser.Statistics().numBadFunctionCode == 1);
+}

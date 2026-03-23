@@ -49,7 +49,7 @@ qDebug()<<"********SUITE('7WriteIIN')********";
 
 ////    t.SendToOutstation(hex::ClearRestartIIN(0));
 std::string str = ClearRestartIIN_in_APDUHexBuilders(0);
-std::cout << "str= " << str<<'\n';
+std::cout << "ClearRestartIIN_in_APDUHexBuilders str= " << str<<'\n';
 
     SendToOutstation_in_OutstationTestObject(&t, str);  
 

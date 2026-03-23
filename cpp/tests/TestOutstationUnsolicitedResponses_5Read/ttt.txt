@@ -1,0 +1,24 @@
+TEST_CASE(SUITE("5Read during null unsol with workaround"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.unsolConfirmTimeout = TimeDuration::Seconds(5);
+    cfg.params.noDefferedReadDuringUnsolicitedNullResponse = true;
+    OutstationTestObject t(cfg);
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0, IINField(IINBit::DEVICE_RESTART)));
+    t.OnTxReady();
+    REQUIRE(t.lower->NumWrites() == 0);
+
+    // send a read message
+    t.SendToOutstation(hex::ClassPoll(0, PointClass::Class1));
+
+    // Should respond immediatly
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00");
+    t.OnTxReady();
+
+    // Then continue sending unsolicited NULL responses
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(1, IINField(IINBit::DEVICE_RESTART)));
+    REQUIRE(t.NumPendingTimers() == 1);
+}

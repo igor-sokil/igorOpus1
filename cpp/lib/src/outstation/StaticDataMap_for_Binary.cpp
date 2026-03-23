@@ -17,7 +17,7 @@ void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2(StaticDat
   std::cout<<'\n';
   increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2_1"<<'\n';
+  std::cout<<"{StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2_1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*config.size()= "<<config.size()<<'\n';
 #endif
@@ -34,6 +34,13 @@ void StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2(StaticDat
     pStaticDataMap->map[item.first] = sStaticDataCell_for_Binary;
   }
 #ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap->selected.start= "<<(uint16_t)pStaticDataMap->selected.start<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pStaticDataMap->selected.stop= "<<(uint16_t)pStaticDataMap->selected.stop<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}StaticDataMap_for_BinarySpec_in_StaticDataMap_for_BinarySpecOver2__"<<'\n';
   decrement_stack_info();
 #endif
 }

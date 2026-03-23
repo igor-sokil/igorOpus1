@@ -1,3 +1,7 @@
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include <QApplication>
 #include "header.h"
 #include "StaticWriters_for_Binary.h"
@@ -23,19 +27,44 @@ boolean WriteSingleBitfield_BinarySpec_for_Group1Var2_in_StaticWriters_static(St
 boolean LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters(StaticDataMap_for_BinarySpec& map,
     RangeWriteIterator_for_UInt8_Binary *writer, StaticBinaryVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters1"<<'\n';
+#endif
 ////    auto next_index = map.get_selected_range().start;
   uint16_t  next_index = get_selected_range_in_StaticDataMap_for_BinarySpec(&map).start;
 
   for (const auto& elem : map)
   {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t  next_index= "<<next_index<<'\n';
+#endif
     if (elem.second.variation != variation)
     {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters1_"<<'\n';
+  decrement_stack_info();
+#endif
       // the variation has changed
       return true;
     }
 
     if (elem.first != next_index)
     {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters2_"<<'\n';
+  decrement_stack_info();
+#endif
       // we've loaded all we can with a contiguous range
       return true;
     }
@@ -45,12 +74,24 @@ boolean LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters(StaticDataMa
 ////        if (!writer.Write(elem.second.value))
     if (!Write_in_RangeWriteIterator_for_UInt8_Binary(writer, &elem.second.value_in_SelectedValue_for_BinarySpec))//.tTypedMeasurement_for_Double64.value))
     {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters3_"<<'\n';
+  decrement_stack_info();
+#endif
       return false;
     }
 
     ++next_index;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters4_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 //----------------------------------------LoadWithRangeIterator_BinarySpec_for_UInt8---------------------------------------------------------
@@ -62,19 +103,46 @@ boolean LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters(StaticDataMa
 boolean LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters(StaticDataMap_for_BinarySpec& map,
     RangeWriteIterator_for_UInt16_Binary *writer, StaticBinaryVariation_uint8_t variation)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters1"<<'\n';
+#endif
 ////    auto next_index = map.get_selected_range().start;
   uint16_t  next_index = get_selected_range_in_StaticDataMap_for_BinarySpec(&map).start;
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t  next_index= "<<next_index<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*StaticBinaryVariation_uint8_t variation= "<<(uint16_t)variation<<'\n';
+#endif
 
   for (const auto& elem : map)
   {
     if (elem.second.variation != variation)
     {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters1_"<<'\n';
+  decrement_stack_info();
+#endif
       // the variation has changed
       return true;
     }
 
     if (elem.first != next_index)
     {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters2_"<<'\n';
+  decrement_stack_info();
+#endif
       // we've loaded all we can with a contiguous range
       return true;
     }
@@ -84,12 +152,24 @@ boolean LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters(StaticDataM
 ////        if (!writer.Write(elem.second.value))
     if (!Write_in_RangeWriteIterator_for_UInt16_Binary(writer, &elem.second.value_in_SelectedValue_for_BinarySpec))//.tTypedMeasurement_for_Double64.value))
     {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters3_"<<'\n';
+  decrement_stack_info();
+#endif
       return false;
     }
 
     ++next_index;
   }
 
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters4_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 //----------------------------------------LoadWithRangeIterator_BinarySpec_for_UInt16---------------------------------------------------------
@@ -218,8 +298,23 @@ boolean WriteSingleBitfield_BinarySpec_for_Group1Var1_in_StaticWriters_static(St
 ////template<class Spec, class Serializer> bool WriteWithSerializer(StaticDataMap<Spec>& map, HeaderWriter& writer)
 boolean WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static(StaticDataMap_for_BinarySpec& map, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static1"<<'\n';
+#endif
 ////    const auto range = map.get_selected_range();
   Range  range = get_selected_range_in_StaticDataMap_for_BinarySpec(&map);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static2"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*range.start= "<<(uint16_t)range.start<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*range.stop= "<<(uint16_t)range.stop<<'\n';
+#endif
 
 ////    if (range.IsOneByte())
   if (IsOneByte_in_Range(&range))
@@ -239,6 +334,12 @@ boolean WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static(St
 ////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
     boolean btmp = LoadWithRangeIterator_BinarySpec_for_UInt8_in_StaticWriters(map, &iter, StaticBinaryVariation_Group1Var2);
     RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary(&iter);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static1_"<<'\n';
+  decrement_stack_info();
+#endif
     return btmp;
   }
 
@@ -253,6 +354,12 @@ boolean WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static(St
 ////    return LoadWithRangeIterator<Spec, ser4cpp::UInt16>(map, iter, Serializer::svariation);
   boolean btmp = LoadWithRangeIterator_BinarySpec_for_UInt16_in_StaticWriters(map, &iter, StaticBinaryVariation_Group1Var2);
   RangeWriteIterator_for_UInt16_Binary_destr_RangeWriteIterator_for_UInt16_Binary(&iter);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}WriteWithSerializer_BinarySpec_for_Group1Var2_in_StaticWriters_static2_"<<'\n';
+  decrement_stack_info();
+#endif
   return btmp;
 }
 

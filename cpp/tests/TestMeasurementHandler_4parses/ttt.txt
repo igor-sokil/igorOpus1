@@ -1,0 +1,13 @@
+TEST_CASE(SUITE("4parses g2v2 w/ synchronized timestamp quality"))
+{
+    auto verify = [](MockSOEHandler& soe) {
+        const auto record = soe.binarySOE.find(0XAA);
+        REQUIRE(record != soe.binarySOE.end());
+        REQUIRE(record->second.meas.time.value == 8);
+        REQUIRE(record->second.meas.time.quality == TimestampQuality::SYNCHRONIZED);
+    };
+
+    auto objects = "02 02 17 01 AA 81 08 00 00 00 00 00";
+
+    TestObjectHeaders(objects, ParseResult::OK, verify);
+}

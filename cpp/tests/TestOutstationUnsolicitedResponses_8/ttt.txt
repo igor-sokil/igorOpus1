@@ -1,0 +1,44 @@
+TEST_CASE(SUITE("8UnsolInfiniteRetries"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.unsolConfirmTimeout = TimeDuration::Seconds(5);
+    cfg.params.numUnsolRetries = NumRetries::Infinite();
+    cfg.params.unsolClassMask = ClassField::AllEventClasses();
+    cfg.eventBufferConfig = EventBufferConfig::AllTypes(5);
+    auto database = configure::by_count_of::binary_input(1);
+    OutstationTestObject t(cfg, std::move(database));
+
+    t.LowerLayerUp();
+
+    // Confirm the unsolicited NULL response
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0, IINField(IINBit::DEVICE_RESTART)));
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(0));
+
+    // Generate an event
+    t.Transaction([](IUpdateHandler& db) { db.Update(Binary(true), 0); });
+
+    // Check that it keeps repeating the unsolicited response
+// Проверяем, что он продолжает повторять незапрошенный ответ
+    for (unsigned int i = 0; i < 1000; ++i)
+    {
+        REQUIRE(t.NumPendingTimers() == 1); // confirm timer
+        REQUIRE(t.AdvanceTime(TimeDuration::Seconds(5)));
+        REQUIRE(t.lower->PopWriteAsHex() == "F1 82 80 00 02 01 28 01 00 00 00 81");
+        t.OnTxReady();
+    }
+
+    // Generate another event
+    t.Transaction([](IUpdateHandler& db) { db.Update(Binary(false), 0); });
+
+    // Check that it keeps repeating the same non-regenerated unsolicited response
+// Проверяем, что он продолжает повторять один и тот же неперегенерированный незапрошенный ответ
+    for (unsigned int i = 0; i < 1000; ++i)
+    {
+        REQUIRE(t.NumPendingTimers() == 1); // confirm timer
+        REQUIRE(t.AdvanceTime(TimeDuration::Seconds(5)));
+        REQUIRE(t.lower->PopWriteAsHex() == "F1 82 80 00 02 01 28 01 00 00 00 81");
+        t.OnTxReady();
+    }
+}

@@ -1,0 +1,4 @@
+TEST_CASE(SUITE("2Freeze No Ack 0x08"))
+{
+    TestFreezeOperation("08", NoResponse, false);
+}

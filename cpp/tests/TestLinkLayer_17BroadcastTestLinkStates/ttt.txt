@@ -1,0 +1,8 @@
+TEST_CASE(SUITE("17BroadcastTestLinkStates"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::PRI_TEST_LINK_STATES, false, false, false, LinkBroadcastAddress::ShallConfirm, 1024);
+    REQUIRE(t.NumTotalWrites() == 0);
+    REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1);
+}

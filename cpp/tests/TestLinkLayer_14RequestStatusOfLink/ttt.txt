@@ -1,0 +1,21 @@
+TEST_CASE(SUITE("14RequestStatusOfLink"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::PRI_REQUEST_LINK_STATUS, false, false, false, 1,
+              1024); // should be able to request this before the link is reset
+должен иметь возможность запросить это до того, как ссылка будет сброшена
+    REQUIRE(t.NumTotalWrites() == 1);
+    t.link.OnTxReady();
+
+    REQUIRE(t.PopLastWriteAsHex() == LinkHex::LinkStatus(true, false, 1024, 1));
+
+    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, 1, 1024);
+    REQUIRE(t.NumTotalWrites() == 2);
+    t.link.OnTxReady();
+
+    t.OnFrame(LinkFunction::PRI_REQUEST_LINK_STATUS, false, false, false, 1,
+              1024); // should be able to request this before the link is reset должен иметь возможность запросить это до того, как ссылка будет сброшена
+    REQUIRE(t.NumTotalWrites() == 3);
+    REQUIRE(t.PopLastWriteAsHex() == LinkHex::LinkStatus(true, false, 1024, 1));
+}

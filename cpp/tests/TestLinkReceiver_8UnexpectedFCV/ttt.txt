@@ -1,0 +1,11 @@
+// Test that the parser can handle an unexpected FCV bit
+// Reset Links w/ FCV toggled on
+// Проверяем, что синтаксический анализатор может обработать неожиданный бит FCV
+// Сброс ссылок с включенным FCV
+TEST_CASE(SUITE("8UnexpectedFCV"))
+{
+    LinkParserTest t;
+    t.WriteData(RepairCRC("05 64 05 D0 01 00 00 04 E9 21"));
+    REQUIRE(t.sink.m_num_frames == 0);
+    REQUIRE(t.parser.Statistics().numBadFCV == 1);
+}

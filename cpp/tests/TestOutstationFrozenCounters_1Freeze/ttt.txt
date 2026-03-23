@@ -1,0 +1,13 @@
+TEST_CASE(SUITE("1Freeze 0x07"))
+{
+    TestFreezeOperation("07", NullResponse, false);
+}
+void TestFreezeOperation(std::string func, 
+                        ////std::function<std::string(uint8_t)> freezeResponse,
+                         std::string (*freezeResponse)(uint8_t v),
+                         boolean clear)
+std::string NullResponse(uint8_t seq)
+{
+std::string EmptyResponse_in_APDUHexBuilders(uint8_t seq, IINField* iin);// = opendnp3::IINField::Empty());
+    return hex::EmptyResponse(seq, IINField(IINBit::DEVICE_RESTART));
+}

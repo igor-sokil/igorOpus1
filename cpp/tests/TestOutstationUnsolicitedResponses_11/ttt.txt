@@ -1,0 +1,47 @@
+TEST_CASE(SUITE("11UnsolMultiFragments"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.maxTxFragSize = 20;                             // this will cause the unsol response to get fragmented
+    cfg.params.unsolClassMask = ClassField::AllEventClasses(); // this allows the EnableUnsol sequence to be skipped
+    cfg.eventBufferConfig = EventBufferConfig(0, 0, 5);
+    OutstationTestObject t(cfg, configure::by_count_of::analog_input(5));
+
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0));
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(0));
+    REQUIRE(t.lower->PopWriteAsHex().empty());
+
+    t.Transaction([](IUpdateHandler& db) {
+        db.Update(Analog(7, Flags(0x01)), 1);
+        db.Update(Analog(13, Flags(0x01)), 3);
+    });
+
+    // Only enough room to in the APDU to carry a single value
+    REQUIRE(t.lower->PopWriteAsHex() == "F1 82 82 00 20 01 28 01 00 01 00 01 07 00 00 00");
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(1));
+
+    // Check that the confirm is reported to the IOutstationApplication
+    REQUIRE(t.application->confirms.size() == 2);
+    REQUIRE(t.application->confirms[1].is_unsolicited == true);
+    REQUIRE(t.application->confirms[1].num_class1 == 1);
+    REQUIRE(t.application->confirms[1].num_class2 == 0);
+    REQUIRE(t.application->confirms[1].num_class3 == 0);
+
+    // should immediately try to send another unsol packet
+    REQUIRE(t.lower->PopWriteAsHex() == "F2 82 80 00 20 01 28 01 00 03 00 01 0D 00 00 00");
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(2));
+
+    REQUIRE(t.lower->PopWriteAsHex().empty());
+
+    // Check that the confirm is reported to the IOutstationApplication
+    REQUIRE(t.application->confirms.size() == 3);
+    REQUIRE(t.application->confirms[2].is_unsolicited == true);
+    REQUIRE(t.application->confirms[2].num_class1 == 0);
+    REQUIRE(t.application->confirms[2].num_class2 == 0);
+    REQUIRE(t.application->confirms[2].num_class3 == 0);
+}

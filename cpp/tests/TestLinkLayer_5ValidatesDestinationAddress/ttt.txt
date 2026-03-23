@@ -1,0 +1,9 @@
+// Only process frame addressed to you directly, or broadcast
+// Обрабатывать только фреймы, адресованные вам напрямую или широковещательно
+TEST_CASE(SUITE("5ValidatesDestinationAddress"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 2, 1024);
+    REQUIRE(t.link.GetStatistics().numUnknownDestination == 1);
+}

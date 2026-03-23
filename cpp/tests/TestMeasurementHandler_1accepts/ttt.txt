@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("1accepts empty response"))
+{
+    auto verify = [](MockSOEHandler& soe) { REQUIRE(soe.TotalReceived() == 0); };
+
+    TestObjectHeaders("", ParseResult::OK, verify);
+}
+ParseResult_uint8_t TestObjectHeaders(std::string& objects,
+                              ParseResult_uint8_t expectedResult,
+                              void (*verify)(MockSOEHandler*));

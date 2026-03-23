@@ -1,0 +1,10 @@
+TEST_CASE(SUITE("1sends null unsol on startup"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    OutstationTestObject t(cfg);
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0, IINField(IINBit::DEVICE_RESTART)));
+    REQUIRE(t.NumPendingTimers() == 1);
+}

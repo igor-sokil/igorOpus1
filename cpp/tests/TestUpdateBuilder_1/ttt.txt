@@ -1,0 +1,15 @@
+TEST_CASE(SUITE("1builder is cleared after building"))
+{
+    UpdateBuilder builder;
+    builder.Update(Counter(42), 0);
+
+    {
+        const auto updates = builder.Build();
+        REQUIRE_FALSE(updates.IsEmpty());
+    }
+
+    {
+        const auto updates = builder.Build();
+        REQUIRE(updates.IsEmpty());
+    }
+}

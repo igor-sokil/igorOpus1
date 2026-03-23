@@ -1,0 +1,11 @@
+// Test that the absence of user data disagrees with the function code
+// This is the first 10 bytes of an unconfirmed user data packet w/ the length set to 5
+// Проверяем, что отсутствие пользовательских данных противоречит коду функции
+// Это первые 10 байт неподтвержденного пакета пользовательских данных с длиной, равной 5
+TEST_CASE(SUITE("6AbsenceOfData"))
+{
+    LinkParserTest t;
+    t.WriteData(RepairCRC("05 64 05 73 00 04 01 00 03 FC"));
+    REQUIRE(t.sink.m_num_frames == 0);
+    REQUIRE(t.parser.Statistics().numBadLength == 1);
+}

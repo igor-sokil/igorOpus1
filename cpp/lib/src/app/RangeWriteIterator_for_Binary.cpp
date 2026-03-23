@@ -40,11 +40,10 @@ void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryO
     WSeq_for_Uint16_t* position)
 {
 #ifdef  LOG_INFO
-  increment_stack_info();
   std::cout<<'\n';
+  increment_stack_info();
   std::cout<<getString_stack_info();
-  std::cout<<"RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver2_1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver2_1"<<'\n';
 #endif
   pRangeWriteIterator_for_UInt8_Binary->start = start_;
   pRangeWriteIterator_for_UInt8_Binary->serializer = *serializer;
@@ -62,6 +61,12 @@ void RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryO
 //        pPosition->advance(2 * IndexType::size);
     advance_in_WSeq_for_Uint16_t(pRangeWriteIterator_for_UInt8_Binary->pPosition, 2 * size_in_UInt8);
   }
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}RangeWriteIterator_for_UInt8_Binary_in_RangeWriteIterator_for_UInt8_BinaryOver2_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 ////    ~RangeWriteIterator()
@@ -71,21 +76,42 @@ void RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Bina
   increment_stack_info();
   std::cout<<'\n';
   std::cout<<getString_stack_info();
-  std::cout<<"RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary1"<<'\n';
-  decrement_stack_info();
+  std::cout<<"{RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary1"<<'\n';
 #endif
   if (pRangeWriteIterator_for_UInt8_Binary->isValid && pRangeWriteIterator_for_UInt8_Binary->count > 0)
   {
     uint32_t stop = pRangeWriteIterator_for_UInt8_Binary->start + pRangeWriteIterator_for_UInt8_Binary->count - 1;
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pRangeWriteIterator_for_UInt8_Binary->isValid= "<<pRangeWriteIterator_for_UInt8_Binary->isValid<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pRangeWriteIterator_for_UInt8_Binary->count= "<<(uint16_t)pRangeWriteIterator_for_UInt8_Binary->count<<'\n';
+#endif
 //        IndexType::write_to(range, static_cast<typename IndexType::type_t>(stop));
     write_to_in_UInt8_static(&(pRangeWriteIterator_for_UInt8_Binary->range), (uint8_t)(stop));
   }
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}RangeWriteIterator_for_UInt8_Binary_destr_RangeWriteIterator_for_UInt8_Binary1_"<<'\n';
+  decrement_stack_info();
+#endif
 }
 
 //    bool Write(const WriteType& value)
 boolean Write_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt8_Binary *pRangeWriteIterator_for_UInt8_Binary,
     Binary* value)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{Write_in_RangeWriteIterator_for_UInt8_Binary1"<<'\n';
+  inspect_Binary(value);
+#endif
 //    if (isValid && (pPosition->length() >= serializer.get_size()) && (count <= IndexType::max_value))
   if(pRangeWriteIterator_for_UInt8_Binary->isValid &&
       (length_in_HasLength_for_Uint16_t(&(pRangeWriteIterator_for_UInt8_Binary->pPosition->hHasLength)) >=
@@ -95,10 +121,22 @@ boolean Write_in_RangeWriteIterator_for_UInt8_Binary(RangeWriteIterator_for_UInt
 //        serializer.write(value, *pPosition);
     write_in_Serializer_for_Binary(&(pRangeWriteIterator_for_UInt8_Binary->serializer), value, pRangeWriteIterator_for_UInt8_Binary->pPosition);
     ++(pRangeWriteIterator_for_UInt8_Binary->count);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_RangeWriteIterator_for_UInt8_Binary1_"<<'\n';
+  decrement_stack_info();
+#endif
     return true;
   }
   else
   {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}Write_in_RangeWriteIterator_for_UInt8_Binary2_"<<'\n';
+  decrement_stack_info();
+#endif
     return false;
   }
 }

@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("14NotSupported"))
+{
+    Buffer buffer(292);
+    auto writeTo = buffer.as_wslice();
+    auto frame = LinkFrame::FormatNotSupported(writeTo, true, false, 1, 2, nullptr);
+
+    LinkParserTest t;
+    t.WriteData(frame);
+    REQUIRE(t.sink.m_num_frames == 1);
+    REQUIRE(t.sink.CheckLastWithDFC(LinkFunction::SEC_NOT_SUPPORTED, true, false, 1, 2));
+}

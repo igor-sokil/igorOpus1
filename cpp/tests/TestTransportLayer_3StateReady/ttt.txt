@@ -1,0 +1,16 @@
+TEST_CASE(SUITE("3StateReady"))
+{
+    TransportTestObject test(true); // makes an implicit call to 'test.link.ThisLayerUp()'
+//делает не€вный вызов
+
+    // check that that the transport layer is correctly forwarding up/down
+// провер€ем, что транспортный уровень правильно пересылает вверх/вниз
+    REQUIRE(test.upper.IsOnline());
+    test.transport.OnLowerLayerDown();
+    REQUIRE_FALSE(test.upper.IsOnline());
+    test.transport.OnLowerLayerUp();
+    REQUIRE(test.upper.IsOnline());
+
+    REQUIRE_FALSE(test.transport.OnLowerLayerUp());
+    REQUIRE_FALSE(test.transport.OnTxReady());
+}

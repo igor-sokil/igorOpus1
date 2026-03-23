@@ -1,0 +1,11 @@
+// Test that the parser can handle an unexpected FCB bit for SecToPri
+// ACK w/ FCB toggled on
+// ѕровер€ем, что синтаксический анализатор может обработать неожиданный бит FCB дл€ SecToPri
+// ACK с включенным FCB
+TEST_CASE(SUITE("9UnexpectedFCB"))
+{
+    LinkParserTest t;
+    t.WriteData(RepairCRC("05 64 05 20 00 04 01 00 19 A6"));
+    REQUIRE(t.sink.m_num_frames == 0);
+    REQUIRE(t.parser.Statistics().numBadFCB == 1);
+}

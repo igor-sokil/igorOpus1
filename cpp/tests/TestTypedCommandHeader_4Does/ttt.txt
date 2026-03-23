@@ -1,0 +1,13 @@
+TEST_CASE(SUITE("4Does not format if insufficient space"))
+{
+    TypedCommandHeader<AnalogOutputInt16> header(Group41Var2::Inst());
+    header.Add(AnalogOutputInt16(7), 10);
+    header.Add(AnalogOutputInt16(8), 11);
+
+    StaticBuffer<14> buffer;
+    auto dest = buffer.as_wseq();
+    APDURequest request(dest);
+    auto writer = request.GetWriter();
+
+    REQUIRE_FALSE(header.Write(writer, IndexQualifierMode::always_two_bytes));
+}

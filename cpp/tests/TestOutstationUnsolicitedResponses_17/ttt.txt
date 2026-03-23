@@ -1,0 +1,27 @@
+TEST_CASE(SUITE("17RepeatRequestDuringUnsol"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.unsolClassMask = ClassField::AllEventClasses();
+    cfg.eventBufferConfig = EventBufferConfig(5);
+    OutstationTestObject t(cfg, configure::by_count_of::binary_input(5));
+
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == "F0 82 80 00");
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(0));
+
+    t.SendToOutstation(hex::ClearRestartIIN(0));
+    REQUIRE(t.lower->PopWriteAsHex() == hex::EmptyResponse(0));
+    t.OnTxReady();
+
+    t.Transaction([](IUpdateHandler& db) { db.Update(Binary(true, Flags(0x01)), 1); });
+    REQUIRE(t.lower->PopWriteAsHex() == "F1 82 00 00 02 01 28 01 00 01 00 81");
+    t.OnTxReady();
+
+    // while waiting for a confirm, repeat the previous request, byte-for-byte
+    t.SendToOutstation(hex::ClearRestartIIN(0));
+    REQUIRE(t.lower->PopWriteAsHex() == hex::EmptyResponse(0));
+    t.OnTxReady();
+}

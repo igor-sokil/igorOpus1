@@ -38,16 +38,20 @@ boolean LoadWithRangeIterator_AnalogMrzs_for_UInt8_in_StaticWriters(StaticDataMa
 ///*
 //StaticDataRecord_for_Analog* Increment_in_Iterator_StaticDataMap_for_AnalogMrzs(Iterator_StaticDataMap_for_AnalogMrzs *pIterator_StaticDataMap_for_AnalogMrzs)
 //StaticDataRecord_for_Analog *begin = mapBegin_in_StaticDataMap_for_AnalogMrzs(map);
-StaticDataRecord_for_Analog *endIter   = mapEnd_in_StaticDataMap_for_AnalogMrzs(map);
+  StaticDataRecord_for_Analog *endIter   = mapEnd_in_StaticDataMap_for_AnalogMrzs(map);
 //StaticDataRecord_for_Analog* current = begin;
+  StaticDataRecord_for_Analog* beginIter = NULL;
 ////  for (const auto& elem : map)
 //  do
 //  {
   setIteratorBegin_StaticDataMap_for_AnalogMrzs(map);
-for(int idx=0; idx<5; idx++)
+//for(int idx=0; idx<5; idx++)
+do
 {
 //SelectedValue_for_AnalogSpec ttt = elem.second;////!
-  StaticDataRecord_for_Analog* beginIter = getIteratorBegin_StaticDataMap_for_AnalogMrzs(map);
+  //StaticDataRecord_for_Analog* 
+  beginIter = getIteratorBegin_StaticDataMap_for_AnalogMrzs(map);
+///*
 if(beginIter >= endIter)
 {
 #ifdef  LOG_INFO
@@ -60,6 +64,7 @@ if(beginIter >= endIter)
 #endif
   break;
 }//if
+//*/
 /*
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -68,6 +73,17 @@ if(beginIter >= endIter)
   std::cout<<"*beginIter->index_in_StaticDataRecord_for_Analog= "<<beginIter->index_in_StaticDataRecord_for_Analog<<'\n';
 #endif
 */
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*LoadWithRangeIterator_AnalogMrzs_for_UInt8_in_StaticWriters7"<<'\n';
+//  uint16_t valueIndex = beginIter->index_in_StaticDataRecord_for_Analog;
+  std::cout<<getString_stack_info();
+  std::cout<<"*Cell.variation= "<<(uint16_t)beginIter->sStaticDataCell_for_Analog.selection_in_StaticDataCell.variation<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*variation= "<<(uint16_t)variation<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*selection_in_StaticDataCell.selected= "<<(uint16_t)beginIter->sStaticDataCell_for_Analog.selection_in_StaticDataCell.selected_in_SelectedValue_for_AnalogSpec<<'\n';
+#endif
 /*
     if (elem.second.variation != variation)
     {
@@ -95,6 +111,19 @@ if(beginIter >= endIter)
 //boolean Write_in_RangeWriteIterator_for_UInt8_Analog(RangeWriteIterator_for_UInt8_Analog *pRangeWriteIterator_for_UInt8_Analog,
 //    Analog* value);
 ////        if (!writer.Write(elem.second.value))
+//beginIter->
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*LoadWithRangeIterator_AnalogMrzs_for_UInt8_in_StaticWriters6"<<'\n';
+  uint16_t valueIndex = beginIter->index_in_StaticDataRecord_for_Analog;
+  std::cout<<getString_stack_info();
+  std::cout<<"*valueIndex= "<<valueIndex<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*next_index= "<<next_index<<'\n';
+//map_StaticDataMap_for_AnalogMrzs[beginIter->index_in_StaticDataRecord_for_Analog]
+  inspect_Analog(&(beginIter->sStaticDataCell_for_Analog.selection_in_StaticDataCell.value));
+#endif
+///*
     if (!Write_in_RangeWriteIterator_for_UInt8_Analog(writer,
      &(beginIter->sStaticDataCell_for_Analog.selection_in_StaticDataCell.value)))//&elem.second.value))
     {
@@ -143,7 +172,17 @@ if(beginIter >= endIter)
   break;
 }//if
 */
-}//for
+/*
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"*LoadWithRangeIterator_AnalogMrzs_for_UInt8_in_StaticWriters5"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*StaticDataRecord_for_Analog* beginIter= "<<(uint32_t)beginIter<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*StaticDataRecord_for_Analog* endIter= "<<(uint32_t)endIter<<'\n';
+#endif
+*/
+} while(beginIter < endIter);//for
 //*/
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
@@ -174,7 +213,6 @@ boolean WriteWithSerializer_AnalogMrzs_for_Group30Var2_in_StaticWriters_static(S
   std::cout<<"*range.stop= "<<(uint16_t)range.stop<<'\n';
 #endif
 
-
   boolean btmp = false;
 
 ////    if (range.IsOneByte())
@@ -189,23 +227,23 @@ boolean WriteWithSerializer_AnalogMrzs_for_Group30Var2_in_StaticWriters_static(S
 ////        auto iter = writer.IterateOverRange<ser4cpp::UInt8, typename Serializer::Target>(
 ////            QualifierCode::UINT8_START_STOP, Serializer::Inst(), static_cast<uint8_t>(range.start));
 */
-/*
+///*
     DNP3Serializer_for_Analog tmp = Inst_in_Group30Var2_static();
     RangeWriteIterator_for_UInt8_Analog iter = IterateOverRange_for_UInt8_Analog_in_HeaderWriter(writer,
         QualifierCode_UINT8_START_STOP,
         &tmp,
         (uint8_t) range.start );
-*/
+//*/
 /*
 //boolean LoadWithRangeIterator_AnalogSpec_for_UInt8_in_StaticWriters(StaticDataMap_for_AnalogSpec& map,
 //    RangeWriteIterator_for_UInt8_Analog *writer, StaticAnalogVariation_uint8_t variation)
 ////        return LoadWithRangeIterator<Spec, ser4cpp::UInt8>(map, iter, Serializer::svariation);
 */
     //boolean 
-    btmp = LoadWithRangeIterator_AnalogMrzs_for_UInt8_in_StaticWriters(map, /*&iter*/NULL, StaticAnalogVariation_Group30Var2);
-/*
+    btmp = LoadWithRangeIterator_AnalogMrzs_for_UInt8_in_StaticWriters(map, &iter, StaticAnalogVariation_Group30Var2);
+///*
     RangeWriteIterator_for_UInt8_Analog_destr_RangeWriteIterator_for_UInt8_Analog(&iter);
-*/
+//*/
 #ifdef  LOG_INFO
   std::cout<<getString_stack_info();
   std::cout<<"}WriteWithSerializer_AnalogMrzs_for_Group30Var2_in_StaticWriters_static1_"<<'\n';
@@ -266,6 +304,8 @@ static_write_func_t_for_AnalogMrzs get_for_AnalogMrzs_in_StaticWriters_static(St
 #endif
 ////        return &WriteWithSerializer<AnalogSpec, Group30Var2>;
     return WriteWithSerializer_AnalogMrzs_for_Group30Var2_in_StaticWriters_static;
+//    return WriteWithSerializer_AnalogSpec_for_Group30Var2_in_StaticWriters_static;
+
 /*
    case (StaticAnalogVariation_Group30Var3):
 #ifdef  LOG_INFO

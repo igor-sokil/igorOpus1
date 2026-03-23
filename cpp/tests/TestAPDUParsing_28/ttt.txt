@@ -1,0 +1,16 @@
+// "hello" == [0x68, 0x65, 0x6C, 0x6C, 0x6F]
+// "world" == [0x77, 0x6F, 0x72, 0x6C, 0x64]
+
+TEST_CASE(SUITE("28OctetStringEvents"))
+{
+    // Group 111 (0x6F) Variation (length == 5), 1 byte count / 1 byte index (4), count of 1, "hello" == [0x68, 0x65,
+    // 0x6C, 0x6C, 0x6F]
+    TestComplex("6F 05 17 02 04 68 65 6C 6C 6F FF 77 6F 72 6C 64", ParseResult::OK, 1,
+                [&](MockApduHeaderHandler& mock) {
+                    REQUIRE(2 == mock.indexPrefixedOctets.size());
+                    REQUIRE(4 == mock.indexPrefixedOctets[0].index);
+                    REQUIRE("hello" == BufferToString(mock.indexPrefixedOctets[0].value.ToBuffer()));
+                    REQUIRE(255 == mock.indexPrefixedOctets[1].index);
+                    REQUIRE("world" == BufferToString(mock.indexPrefixedOctets[1].value.ToBuffer()));
+                });
+}

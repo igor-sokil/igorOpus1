@@ -1,0 +1,4 @@
+TEST_CASE(SUITE("45ReadGrp20Var5"))
+{
+    TestStaticCounter(StaticCounterVariation::Group20Var5, 5, "C0 81 80 00 14 05 00 00 00 05 00 00 00");
+}

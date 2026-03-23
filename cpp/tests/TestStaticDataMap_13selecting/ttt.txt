@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("13selecting a range that doesn't match anything return Range::Invalid"))
+выбор диапазона, который ничему не соответствует, возвращает Range::Invalid
+{
+    StaticDataMap<BinarySpec> map{{
+        {1, {}},
+        {7, {}},
+    }};
+
+    REQUIRE(map.select(Range::From(2, 6)) == 0);
+    REQUIRE_FALSE(map.get_selected_range().IsValid());
+}

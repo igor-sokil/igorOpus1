@@ -45,7 +45,7 @@ void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
 ////    for (uint16_t i = 0; i < data.length(); ++i)
   for (uint16_t i = 0; i < length_in_HasLength_for_Uint16_t(&(data->hHasLength)); ++i)
   {
-    pDataSink->buffer.push_back(data->buffer_[i]);////data[i]);
+    pDataSink->buffer_in_DataSink.push_back(data->buffer_[i]);////data[i]);
   }
 #ifdef  LOG_INFO
   std::cout<<"}Write_in_DataSink_"<<'\n';
@@ -54,18 +54,18 @@ void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
 
 void Clear_in_DataSink(DataSink *pDataSink)
 {
-  pDataSink->buffer.clear();
+  pDataSink->buffer_in_DataSink.clear();
 }
 
 boolean Equals_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data)
 {
 ////    if (data.length() != this->buffer.size())
-  if (length_in_HasLength_for_Uint16_t(&(data->hHasLength)) != pDataSink->buffer.size())
+  if (length_in_HasLength_for_Uint16_t(&(data->hHasLength)) != pDataSink->buffer_in_DataSink.size())
     return false;
 
-  for (uint16_t i = 0; i < pDataSink->buffer.size(); i++)
+  for (uint16_t i = 0; i < pDataSink->buffer_in_DataSink.size(); i++)
   {
-    if (data->buffer_[i] != pDataSink->buffer[i])
+    if (data->buffer_[i] != pDataSink->buffer_in_DataSink[i])
     {
       return false;
     }
@@ -82,7 +82,7 @@ std::string AsHex_in_DataSink(DataSink *pDataSink, boolean spaced)
 #endif
 ////    const ser4cpp::rseq_t temp(this->buffer.data(), this->buffer.size());
   RSeq_for_Uint16_t temp;
-  RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&temp, pDataSink->buffer.data(), pDataSink->buffer.size());
+  RSeq_for_Uint16_t_in_RSeq_for_Uint16_tOver2(&temp, pDataSink->buffer_in_DataSink.data(), pDataSink->buffer_in_DataSink.size());
 ////    return HexConversions::to_hex(temp, spaced);
   std::string tmp = to_hex_in_HexConversionsOver2(&temp, spaced);
 #ifdef  LOG_INFO
@@ -93,10 +93,10 @@ std::string AsHex_in_DataSink(DataSink *pDataSink, boolean spaced)
 
 boolean IsEmpty_in_DataSink(DataSink *pDataSink)
 {
-  return pDataSink->buffer.size() == 0;
+  return pDataSink->buffer_in_DataSink.size() == 0;
 }
 
 uint16_t Size_in_DataSink(DataSink *pDataSink)
 {
-  return pDataSink->buffer.size();
+  return pDataSink->buffer_in_DataSink.size();
 }

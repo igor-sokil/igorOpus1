@@ -78,7 +78,17 @@ public:
 
   public:
     explicit iterator(map_iter_t_StaticDataMap_for_OctetStringSpec begin,
-                      map_iter_t_StaticDataMap_for_OctetStringSpec end, Range& range) : iter(begin), end(end), range(range) {}
+                      map_iter_t_StaticDataMap_for_OctetStringSpec end, Range& range) : iter(begin), end(end), range(range) 
+   {
+#ifdef  LOG_INFO
+  std::cout<<getString_stack_info();
+  std::cout<<"explicit iterator!"<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"range.start= "<<range.start<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"range.stop= "<<range.stop<<'\n';
+#endif
+   }
 
 ////        using value_type = std::pair<uint16_t, SelectedValue<Spec>>;
     using value_type = std::pair<uint16_t, SelectedValue_for_OctetStringSpec>;

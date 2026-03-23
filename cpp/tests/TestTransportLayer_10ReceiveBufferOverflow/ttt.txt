@@ -1,0 +1,20 @@
+TEST_CASE(SUITE("10ReceiveBufferOverflow"))
+{
+    TransportTestObject test(true, 4); // maximum ASDU size of 4
+
+    REQUIRE(test.link.SendUp("40 11 22 33")); // FIN = 0, FIR = 1, SEQ = 0
+
+    {
+        auto stats = test.transport.GetStatistics().rx;
+        REQUIRE(stats.numTransportRx == 1);
+        REQUIRE(stats.numTransportBufferOverflow == 0);
+    }
+
+    REQUIRE(test.link.SendUp("81 44 55")); // FIN = 0, FIR = 1, SEQ = 1
+
+    {
+        auto stats = test.transport.GetStatistics().rx;
+        REQUIRE(stats.numTransportRx == 2);
+        REQUIRE(stats.numTransportBufferOverflow == 1);
+    }
+}

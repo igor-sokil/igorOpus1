@@ -66,7 +66,7 @@ DatabaseConfig tmp = database_by_sizes_in_DatabaseHelpers(3,
 
     LowerLayerUp_in_OutstationTestObject(&t);
 
-    std::string name("C0 01 01 02 28 02 00 00 00 02 00"); // Read g1v2 indices 0 and 2      
+    std::string name("C0 01 01 02 28 02 00 05 00 06 00"); // Read g1v2 indices 0 and 2      
     SendToOutstation_in_OutstationTestObject(&t, name);  
 
     std::string temp = PopWriteAsHex_in_MockLowerLayer(&(t.lower));

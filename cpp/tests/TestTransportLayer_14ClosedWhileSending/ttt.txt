@@ -1,0 +1,11 @@
+// if we're in the middle of a send and the layer goes down
+// если мы находимся в середине отправки и слой отключается
+TEST_CASE(SUITE("14ClosedWhileSending"))
+{
+    TransportTestObject test(true);
+    test.upper.SendDown("11"); // get the layer into the sending state
+// переводим слой в состояние отправки
+
+    test.transport.OnLowerLayerDown();
+    REQUIRE_FALSE(test.upper.IsOnline());
+}

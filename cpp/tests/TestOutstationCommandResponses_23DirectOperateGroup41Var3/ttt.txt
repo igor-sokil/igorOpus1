@@ -1,0 +1,18 @@
+TEST_CASE(SUITE("23DirectOperateGroup41Var3"))
+{
+    OutstationConfig config;
+    OutstationTestObject t(config);
+    t.LowerLayerUp();
+
+    // Direct operate group 41 Var 3, count = 1, index = 1
+    t.SendToOutstation("C1 05 29 03 17 01 01 00 00 C7 42 00");
+    REQUIRE(t.lower->PopWriteAsHex()
+            == "C1 81 80 00 29 03 17 01 01 00 00 C7 42 00"); // 0x00 status == CommandStatus::SUCCESS
+
+    REQUIRE(t.cmdHandler->aoFloat32Ops.size() == 1);
+    auto op = t.cmdHandler->aoFloat32Ops[0];
+
+    REQUIRE(op.value.value == Approx(99.5).epsilon(1e-6));
+    REQUIRE(op.index == 1);
+    REQUIRE(op.opType == OperateType::DirectOperate);
+}

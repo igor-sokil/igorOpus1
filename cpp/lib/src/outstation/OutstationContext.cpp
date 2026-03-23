@@ -1297,6 +1297,18 @@ OutstationState* RespondToNonReadRequest_in_OContext(OContext *pOContext, Parsed
 //    IINField operatorOR_in_IINField(IINField *pIINField, IINField* aIIN);
 ////    response.SetIIN(iin | this->GetResponseIIN());
   IINField temp = GetResponseIIN_in_OContext(pOContext);
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*RespondToNonReadRequest_in_OContext2"<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*temp.LSB= "<<(uint16_t)temp.LSB<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*temp.MSB= "<<(uint16_t)temp.MSB<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*iin.LSB= "<<(uint16_t)iin.LSB<<std::endl;
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*iin.MSB= "<<(uint16_t)iin.MSB<<std::endl;
+#endif
 
   IINField temp2 = operatorOR_in_IINField(&iin, &temp);
 

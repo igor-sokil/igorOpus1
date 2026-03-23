@@ -1,0 +1,7 @@
+TEST_CASE(SUITE("7PacketsCanBeOfVaryingSize"))
+{
+    TransportTestObject test(true);
+    test.link.SendUp("40 0A 0B 0C"); // FIR/_/0
+    test.link.SendUp("81 0D 0E 0F"); // _/FIN/1
+    REQUIRE(test.upper.received.AsHex() == "0A 0B 0C 0D 0E 0F");
+}

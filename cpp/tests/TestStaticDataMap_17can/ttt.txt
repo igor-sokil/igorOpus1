@@ -1,0 +1,28 @@
+TEST_CASE(SUITE("17can select disjoint ranges and iterate over them"))
+{
+    StaticDataMap<BinarySpec> map{{
+        {1, {}},
+        {2, {}},
+        {5, {}},
+        {9, {}},
+    }};
+
+    REQUIRE(map.select(Range::From(1, 3)) == 2);
+    REQUIRE(map.select(Range::From(6, 9)) == 1);
+
+    const auto selected = map.get_selected_range();
+    REQUIRE(selected.start == 1);
+    REQUIRE(selected.stop == 9);
+
+    std::vector<StaticDataMap<BinarySpec>::iterator::value_type> items;
+    for (const auto& item : map)
+    {
+        items.push_back(item);
+    }
+
+    // doesn't include index 5
+    REQUIRE(items.size() == 3);
+    REQUIRE(items[0].first == 1);
+    REQUIRE(items[1].first == 2);
+    REQUIRE(items[2].first == 9);
+}

@@ -1,0 +1,8 @@
+TEST_CASE(SUITE("5ReceiveNoFIR"))
+{
+    TransportTestObject test(true);
+    // try sending a non-FIR w/ no prior packet
+// пробуем отправить не-FIR без предварительного пакета
+    test.link.SendUp("80 77"); // _/FIN
+    REQUIRE(test.transport.GetStatistics().rx.numTransportIgnore == 1);
+}

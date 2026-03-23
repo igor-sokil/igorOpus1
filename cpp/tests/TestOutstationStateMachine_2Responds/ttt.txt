@@ -1,0 +1,16 @@
+TEST_CASE(SUITE("2Responds to non-READ request while waiting for unsolicited confirm"))
+{
+    OutstationConfig config;
+    config.params.allowUnsolicited = true;
+    OutstationTestObject t(config, configure::by_count_of::analog_input(1));
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == "F0 82 80 00");
+    t.OnTxReady();
+
+    t.SendToOutstation("C0 02");                        // empty write
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00"); // null response
+    t.OnTxReady();
+
+    REQUIRE(t.lower->PopWriteAsHex().empty()); // shouldn't send anything else
+}

@@ -1,0 +1,12 @@
+TEST_CASE(SUITE("19ReadGrp2Var1LimitedCount"))
+{
+    auto update = [](IUpdateHandler& db) {
+        db.Update(Binary(false, Flags(0x01)), 3);
+        db.Update(Binary(true, Flags(0x01)), 2);
+        db.Update(Binary(false, Flags(0x01)), 1);
+    };
+
+    // read 2 events only, Class 1 data IIN still set
+    TestEventRead("C0 01 02 01 07 02", "E0 81 82 00 02 01 28 02 00 03 00 01 02 00 81",
+                  update); // 1 byte count == 1, ONLINE quality
+}

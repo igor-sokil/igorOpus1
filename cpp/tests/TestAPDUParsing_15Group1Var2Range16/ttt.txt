@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("15Group1Var2Range16"))
+{
+    // 2 byte count == 1, 1 octet data
+    TestComplex("01 02 01 03 00 03 00 81", ParseResult::OK, 1, [](MockApduHeaderHandler& mock) {
+        REQUIRE(1 == mock.staticBinaries.size());
+        Indexed<Binary> value(Binary(true), 3);
+        REQUIRE((value == mock.staticBinaries[0]));
+    });
+}

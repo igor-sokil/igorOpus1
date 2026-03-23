@@ -1,0 +1,6 @@
+TEST_CASE(SUITE("53ReadGrp40Var1"))
+{
+void TestStaticAnalogOutputStatus(StaticAnalogOutputStatusVariation_uint8_t variation, double value, std::string& response)
+    TestStaticAnalogOutputStatus(StaticAnalogOutputStatusVariation::Group40Var1, 100,
+                                 "C0 81 80 00 28 01 00 00 00 01 64 00 00 00");
+}

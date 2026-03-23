@@ -1,0 +1,26 @@
+TEST_CASE(SUITE("8can select all points using specified variation and iterate"))
+{
+    const auto other_variation = StaticBinaryVariation::Group1Var1;
+
+    REQUIRE(BinarySpec::DefaultStaticVariation != other_variation);
+
+    StaticDataMap<BinarySpec> map{{
+        {0, {}},
+        {3, {}},
+        {7, {}},
+    }};
+
+    REQUIRE(map.select_all(other_variation) == 3);
+
+    std::vector<StaticDataMap<BinarySpec>::iterator::value_type> items;
+    for (const auto& item : map)
+    {
+        items.push_back(item);
+    }
+
+    REQUIRE(items.size() == 3);
+    for (const auto& item : map)
+    {
+        REQUIRE(item.second.variation == other_variation);
+    }
+}

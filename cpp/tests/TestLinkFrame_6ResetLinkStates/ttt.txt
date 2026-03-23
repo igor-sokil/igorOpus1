@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("6ResetLinkStates"))
+{
+    Buffer buffer(292);
+
+    // Reset Link States - Outstation
+    auto writeTo = buffer.as_wslice();
+    auto wrapper = LinkFrame::FormatResetLinkStates(writeTo, false, 1024, 1, nullptr);
+    REQUIRE(HexConversions::to_hex(wrapper) == "05 64 05 40 00 04 01 00 A3 96");
+}

@@ -1,0 +1,10 @@
+TEST_CASE(SUITE("57read g1v2 using qualifer 0x17"))
+{
+    OutstationConfig config;
+    config.params.allowUnsolicited = false;
+    OutstationTestObject t(config, configure::database_by_sizes(3, 0, 0, 0, 0, 0, 0, 0, 0));
+
+    t.LowerLayerUp();
+    t.SendToOutstation("C0 01 01 02 17 02 00 02"); // Read g1v2 indices 0 and 2
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 01 02 00 00 00 02 01 02 00 02 02 02");
+}

@@ -1,0 +1,25 @@
+TEST_CASE(SUITE("14ReadDuringUnsolConfirm"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.unsolClassMask = ClassField::AllEventClasses();
+    cfg.eventBufferConfig = EventBufferConfig(5);
+    OutstationTestObject t(cfg, configure::by_count_of::binary_input(5));
+
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0));
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(0));
+
+    t.Transaction([](IUpdateHandler& db) { db.Update(Binary(true, Flags(0x01)), 0); });
+
+    REQUIRE(t.lower->PopWriteAsHex() == "F1 82 80 00 02 01 28 01 00 00 00 81");
+
+    t.OnTxReady();
+    t.SendToOutstation("C0 01 3C 02 06");
+
+    t.SendToOutstation(hex::UnsolConfirm(1));
+
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00");
+}

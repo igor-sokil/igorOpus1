@@ -1,0 +1,7 @@
+TEST_CASE(SUITE("8ReceiveSinglePacket"))
+{
+    TransportTestObject test(true);
+    // now try receiving 1 a single FIR/FIN with a magic value
+    test.link.SendUp("C0 77");
+    REQUIRE(test.upper.received.AsHex() == "77");
+}

@@ -1,0 +1,27 @@
+TEST_CASE(SUITE("12StateSending"))
+{
+    TransportTestObject test(true);
+
+    // this puts the layer into the Sending state
+// это переводит слой в состо€ние отправки
+    REQUIRE(test.upper.SendDown("11"));
+    REQUIRE("C0 11" == test.link.PopWriteAsHex()); // FIR/FIN SEQ=0
+
+    // Check that while we're sending, all other send requests are rejected
+// ѕровер€ем, что во врем€ отправки все остальные запросы на отправку отклон€ютс€
+    REQUIRE_FALSE(test.upper.SendDown("00"));
+
+    REQUIRE_FALSE(test.transport.OnLowerLayerUp());
+
+    // while we are sending, we should still be able to receive data as normal
+// пока мы отправл€ем, мы все равно должны иметь возможность получать данные в обычном режиме
+    test.link.SendUp("C0 77");
+    REQUIRE(test.upper.received.AsHex() == "77");
+
+    // this should put us back in the Ready state since it was a single tpdu send
+// это должно вернуть нас в состо€ние готовности, поскольку это была одна отправка tpdu
+    test.transport.OnTxReady();
+    REQUIRE(test.upper.GetCounters().numTxReady == 1);
+
+    REQUIRE_FALSE(test.transport.OnTxReady());
+}

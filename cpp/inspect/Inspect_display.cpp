@@ -7,7 +7,7 @@
 
 #include "header.h"
 #include "IEventType.h"
-
+#include "StaticDataMap_for_AnalogMrzs.h"
 
 static int16_t stack_info = -1;//рівень стеку для info
 
@@ -116,6 +116,21 @@ void inspect_FrozenCounter(FrozenCounter *b)
   std::cout<<"@*DNPTime timeDNPTime.value= "<<(uint32_t)b->tTypedMeasurement_for_Uint32.mMeasurement.timeDNPTime.value<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"@*DNPTime timeDNPTime.quality= "<<(uint32_t)b->tTypedMeasurement_for_Uint32.mMeasurement.timeDNPTime.quality<<'\n';
+}
+
+void inspect_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *b)
+{
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"**inspect_StaticDataMap_for_AnalogMrzs**"<<'\n';
+  for(int i=0; i<b->sizeMap_for_AnalogMrzs; i++)
+  {
+    StaticDataRecord_for_Analog dataRecord = b->map_StaticDataMap_for_AnalogMrzs[i];
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@*uint16_t index_in_StaticDataRecord_for_Analog= "<<(uint16_t)dataRecord.index_in_StaticDataRecord_for_Analog<<'\n';
+    std::cout<<"*"<<getString_stack_info();
+    std::cout<<"@*boolean selected_in_SelectedValue_for_AnalogSpec= "<<(uint16_t)dataRecord.sStaticDataCell_for_Analog.selection_in_StaticDataCell.selected_in_SelectedValue_for_AnalogSpec<<'\n';
+    std::cout<<'\n';
+  }
 }
 
 int16_t get_stack_info(void);

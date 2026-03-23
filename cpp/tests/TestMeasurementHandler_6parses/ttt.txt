@@ -1,0 +1,13 @@
+TEST_CASE(SUITE("6parses g2v3 w/ unsynchronized CTO"))
+{
+    auto verify = [](MockSOEHandler& soe) {
+        const auto record = soe.binarySOE.find(8);
+        REQUIRE(record != soe.binarySOE.end());
+        REQUIRE(record->second.meas.time.value == 8); // 7 + 1
+        REQUIRE(record->second.meas.time.quality == TimestampQuality::UNSYNCHRONIZED);
+    };
+
+    auto objects = "33 02 07 01 07 00 00 00 00 00 02 03 17 01 08 81 01 00";
+
+    TestObjectHeaders(objects, ParseResult::OK, verify);
+}

@@ -30,7 +30,9 @@
 
 #include "LinkFunction.h"
 
-#include "DataSink.h"
+////#include "DataSink.h"
+#include "DataSinkMrzs.h"
+//#include "DataSinkMrzs.h"
 
 #include "ILinkSession.h"
 #include "LinkLayerConstants.h"
@@ -72,7 +74,8 @@ typedef struct
    // Это позволяет нам тестировать поведение повторного входа
 ////    void AddAction(const std::function<void()>& fun);
 
-  DataSink received;
+////  DataSink received;//_in_MrzsFrameSink;
+  DataSinkMrzs received;//_in_MrzsFrameSink;
 
 ////private:
   // Executes one action, if one is available

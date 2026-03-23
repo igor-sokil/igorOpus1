@@ -1,0 +1,18 @@
+TEST_CASE(SUITE("6can generate events on existing point"))
+{
+    StaticDataMap<BinarySpec> map{{{0, {}}}};
+    map.select_all();
+
+    EventReceiver receiver;
+    REQUIRE(map.update(Binary(true), 0, EventMode::EventOnly, receiver));
+    map.select(0, StaticBinaryVariation::Group1Var1);
+    REQUIRE((*map.begin()).second.value.value == false);
+    REQUIRE(receiver.count == 1);
+    REQUIRE(receiver.latestBinaryEvent.value.value == true);
+
+    REQUIRE(map.update(Binary(true), 0, EventMode::EventOnly, receiver));
+    map.select(0, StaticBinaryVariation::Group1Var1);
+    REQUIRE((*map.begin()).second.value.value == false);
+    REQUIRE(receiver.count == 2);
+    REQUIRE(receiver.latestBinaryEvent.value.value == true);
+}

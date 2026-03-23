@@ -1,0 +1,15 @@
+// make sure an invalid state exception gets thrown
+// for every event other than LowerLayerUp() since
+// the layer starts in the online state
+// убедиться, что генерируется исключение недопустимого состояния
+// для каждого события, кроме LowerLayerUp(), поскольку
+// слой запускается в онлайн-состоянии
+TEST_CASE(SUITE("2StateOffline"))
+{
+    TransportTestObject test;
+
+    REQUIRE_FALSE(test.upper.SendDown("00"));
+    REQUIRE_FALSE(test.link.SendUp(""));
+    REQUIRE_FALSE(test.transport.OnTxReady());
+    REQUIRE_FALSE(test.transport.OnLowerLayerDown());
+}

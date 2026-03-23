@@ -1,0 +1,6 @@
+TEST_CASE(SUITE("27TimeAndIntervalViaIntegrity"))
+{
+//ClassField  AllClasses_in_ClassField_static(void);
+//std::string IntegrityPoll_in_APDUHexBuilders(uint8_t seq, ClassField* field);// = opendnp3::ClassField::AllClasses());
+    TestTimeAndIntervalRead(hex::IntegrityPoll(0));
+}

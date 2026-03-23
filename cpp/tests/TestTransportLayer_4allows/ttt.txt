@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("4allows header-only final frame"))
+{
+    TransportTestObject test(true);
+
+    test.link.SendUp("41 DE AD BE EF");
+    test.link.SendUp("82");
+
+    REQUIRE(test.upper.received.AsHex() == "DE AD BE EF");
+}

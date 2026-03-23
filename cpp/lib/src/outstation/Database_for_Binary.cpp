@@ -16,6 +16,11 @@ boolean load_type_for_Binary_in_Database_static(StaticDataMap_for_BinarySpec& ma
   std::cout<<"load_type_for_Binary_in_Database_static1"<<'\n';
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*map.map.size()= "<<map.map.size()<<'\n';
+  Range  range = get_selected_range_in_StaticDataMap_for_BinarySpec(&map);
+  std::cout<<getString_stack_info();
+  std::cout<<"*range.start= "<<(uint16_t)range.start<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"*range.stop= "<<(uint16_t)range.stop<<'\n';
 #endif
   while (true)
   {

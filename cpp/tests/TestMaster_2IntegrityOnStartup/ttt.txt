@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("2IntegrityOnStartup"))
+{
+    MasterParams params;
+    params.disableUnsolOnStartup = false;
+    MasterTestFixture t(params);
+    t.context->OnLowerLayerUp();
+
+    REQUIRE(t.exe->run_many() > 0);
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(0));
+}

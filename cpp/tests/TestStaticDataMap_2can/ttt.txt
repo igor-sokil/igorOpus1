@@ -1,0 +1,6 @@
+TEST_CASE(SUITE("2can only add points that aren't already defined"))
+может добавить только точки, которые еще не определены
+{
+    StaticDataMap<BinarySpec> map{{{0, {}}}};
+    REQUIRE_FALSE(map.add(Binary(), 0, BinaryConfig()));
+}

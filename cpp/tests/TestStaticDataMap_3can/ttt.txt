@@ -1,0 +1,12 @@
+TEST_CASE(SUITE("3can detect events on existing point"))
+{
+    StaticDataMap<BinarySpec> map{{{0, {}}}};
+    map.select_all();
+
+    EventReceiver receiver;
+    REQUIRE(map.update(Binary(true), 0, EventMode::Detect, receiver));
+    REQUIRE(receiver.count == 1);
+    REQUIRE(receiver.latestBinaryEvent.value.value == true);
+    REQUIRE(map.update(Binary(true), 0, EventMode::Detect, receiver));
+    REQUIRE(receiver.count == 1);
+}

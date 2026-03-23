@@ -1,0 +1,13 @@
+TEST_CASE(SUITE("5Command set can be moved and written"))
+{
+    CommandSet commands;
+
+    commands.Add<AnalogOutputInt16>({WithIndex(AnalogOutputInt16(7), 10)});
+    commands.Add<AnalogOutputInt32>({WithIndex(AnalogOutputInt32(8), 11)});
+
+    CommandSet commands2(std::move(commands));
+
+    REQUIRE(WriteToHex(commands, IndexQualifierMode::always_two_bytes).empty());
+    REQUIRE(WriteToHex(commands2, IndexQualifierMode::always_two_bytes)
+            == "29 02 28 01 00 0A 00 07 00 00 29 01 28 01 00 0B 00 08 00 00 00 00");
+}

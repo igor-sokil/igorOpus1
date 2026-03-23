@@ -1,0 +1,17 @@
+TEST_CASE(SUITE("13SendSuccess"))
+{
+    TransportTestObject test(true);
+
+    // this puts the layer into the Sending state
+// это переводит слой в состояние отправки
+    test.upper.SendDown("11");
+    REQUIRE("C0 11" == test.link.PopWriteAsHex()); // FIR/FIN SEQ=0
+    test.transport.OnTxReady();
+
+    // this puts the layer into the Sending state
+// это переводит слой в состояние отправки
+    test.upper.SendDown("11");
+    REQUIRE("C1 11" == test.link.PopWriteAsHex()); // FIR/FIN SEQ=1
+    test.transport.OnTxReady();
+    REQUIRE(test.upper.GetCounters().numTxReady == 2);
+}

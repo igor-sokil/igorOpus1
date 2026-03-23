@@ -1,0 +1,307 @@
+*** {+++++++++6Unsolicited7
+apply_in_6Unsolicited
+
+            update_in_StaticDataMap_for_BinarySpecOver2_1
+*            *iter->second.config.eEventConfig.clazz= 2
++            ++++++int16_t nnn = iter->first=0
+*            **inspect_Binary**
+*            *boolean value= 1
+*            *Flags flags.value= 129
+*            *DNPTime timeDNPTime.value= 6422216
+*            *DNPTime timeDNPTime.quality= 240
+
+                convert_to_event_class_in_StaticDataMap_static1
+*                *PointClass_uint8_t pc= 2
+*                *PointClass_Class1= 2
+*                *PointClass_Class2= 4
+*                *PointClass_Class3= 8
+            update_in_StaticDataMap_for_BinarySpecOver2_2
+
+                UpdateAny_BinarySpec_in_EventBuffer1
+
+                    Update_BinarySpec_in_EventUpdate_static1
+
+                        Instance_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_static1
+
++            HandleNewEvents_in_OContext1
+
++                CheckForTaskStart_in_OContext1
++                CheckForTaskStart_in_OContext2
+
++                    CheckForUnsolicitedNull_in_OContext1
+
+                        IsIdle_in_OutstationState1
+
+                        IsIdle_in_StateIdle_override1
++                    CheckForUnsolicitedNull_in_OContext3
++                CheckForTaskStart_in_OContext3
+
++                    CheckForUnsolicited_in_OContext1
+
+                        IsIdle_in_OutstationState1
+
+                        IsIdle_in_StateIdle_override1
+*                    CheckForUnsolicited_in_OContext2
+*                    CheckForUnsolicited_in_OContext3
+*                    CheckForUnsolicited_in_OContext4
+
+                        Unselect_in_EventStorage1
+
+                            Foreach_in_List_for_EventRecord1
+
+                                Iterate_in_List_for_EventRecord1
+*                                *pList_for_EventRecord->head= 6412672
+
+                                    From__in__Iterator_in_List_for_EventRecord_static1
+*                                    *Node_for_EventRecord* start= 6412672
+
+                                    Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord1
+*                                    *Node_for_EventRecord* start= 6412672
+
+                        SelectByClass_in_EventSelection_static1
+*                        *uint32_t max= 65535
+
+                            Iterate_in_List_for_EventRecord1
+*                            *pList_for_EventRecord->head= 6412672
+
+                                From__in__Iterator_in_List_for_EventRecord_static1
+*                                *Node_for_EventRecord* start= 6412672
+
+                                Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord1
+*                                *Node_for_EventRecord* start= 6412672
+                        SelectByClass_in_EventSelection_static2
+
+                            OnSelect_in_EventClassCounters1
+
+                        Load_in_EventBuffer1
+
+                            Write_in_EventWriting_static1
+
+                                Iterate_in_List_for_EventRecord1
+*                                *pList_for_EventRecord->head= 6412672
+
+                                    From__in__Iterator_in_List_for_EventRecord_static1
+*                                    *Node_for_EventRecord* start= 6412672
+
+                                    Iterator_in_List_for_EventRecord__in__Iterator_in_List_for_EventRecord1
+*                                    *Node_for_EventRecord* start= 6412672
+
+                                WriteSome_in_EventWriting_static1
+*                                *lists->counters.selected= 1
+                                WriteSome_in_EventWriting_static2
+                                WriteSome_in_EventWriting_static3
+
+                                    WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override1
+
+                                        Write_for_Binary_in_ASDUEventWriteHandler_override1
+*                                        *EventBinaryVariation_uint8_t variation= 0
+@@@@                                        *EventBinaryVariation_Group2Var1
+
+                                            Write_for_Binary_in_EventWriters_static1
+
+                                                BasicEventWriter_for_Binary_in_BasicEventWriter_for_Binary1
+
+                                                    IterateOverCountWithPrefix_for_UInt16_Binary_in_HeaderWriter1
+
+                                                        WriteHeaderWithReserve_in_HeaderWriter1
+*                                                        *qc= 40
+*                                                        *reserve= 5
+
+                                                        WriteHeader_in_HeaderWriter1
+*                                                        *id.group= 2
+*                                                        *id.variation= 1
+*                                                        *qc= 40
+@@@@                                                        *write_in_UInt8_static = 6421874->2
+@@@@                                                        *write_in_UInt8_static = 6421875->1
+@@@@                                                        *write_in_UInt8_static = 6421876->40
+
+                                                        PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver2_1
+                                                        PrefixedWriteIterator_for_UInt16_Binary_in_PrefixedWriteIterator_for_UInt16_BinaryOver2_2
+                                                    IterateOverCountWithPrefix_for_UInt16_Binary_in_HeaderWriter2
+
+                                                WriteSome_in_EventCollection_for_Binary_override1
+
+                                                    WriteOne_in_EventCollection_for_Binary1
+
+                                                        FindNextSelected_in_EventWriting_static1
+                                                        FindNextSelected_in_EventWriting_static3
+                                                    WriteOne_in_EventCollection_for_Binary2
+*                                                    **inspect_Binary**
+*                                                    *boolean value= 1
+*                                                    *Flags flags.value= 129
+*                                                    *DNPTime timeDNPTime.value= 6422216
+*                                                    *DNPTime timeDNPTime.quality= 240
+
+                                                        Write_in_BasicEventWriter_for_Binary_override1
+
+                                                            Write_in_PrefixedWriteIterator_for_UInt16_Binary1
+*                                                            **inspect_Binary**
+*                                                            *boolean value= 1
+*                                                            *Flags flags.value= 129
+*                                                            *DNPTime timeDNPTime.value= 6422216
+*                                                            *DNPTime timeDNPTime.quality= 240
+@@@@                                                            *write_in_UInt16_static = 6421879->0
+
+                                                                WriteTarget_in_Group2Var1_static1
+
+                                                                Write_in_Group2Var1_static1
+*                                                                *arg->flags= 129
+@@@@                                                            *write_in_UInt8_static = 6421881->129
+                                                    WriteOne_in_EventCollection_for_Binary3
+
+                                                    WriteOne_in_EventCollection_for_Binary1
+                                            Write_for_Binary_in_EventWriters_static2
+
+                                                PrefixedWriteIterator_for_UInt16_Binary_destr_PrefixedWriteIterator_for_UInt16_Binary1
+@@@@                                                *write_in_UInt16_static = 6421877->1
+*                                    *(type->value).selectedVariation= 0
+*                                    *bBinary.tTypedMeasurement_for_Boolean.value= 1
+*                                    *bBinary.tTypedMeasurement_for_Boolean.mMeasurement.flags= 129
+                                    WriteSome_in_EventTypeImpl_TypedEventRecord_for_BinarySpec_override2
+*                            *uint16_t num_written =1
+
+                                WriteSome_in_EventWriting_static1
+*                                *lists->counters.selected= 0
+*                            *uint16_t num_written =0
+
+                                NumSelected_in_EventStorage1
+*                                *(pEventStorage->state).counters.selected= 0
+*                            *boolean tmp= 1
+
++                            GetResponseIIN_in_OContext1
+*                            *LSBMask_BROADCAST = 0x01
+*                            *LSBMask_CLASS1_EVENTS = 0x02
+*                            *LSBMask_CLASS2_EVENTS = 0x04
+*                            *LSBMask_CLASS3_EVENTS = 0x08
+*                            *LSBMask_NEED_TIME = 0x10
+*                            *LSBMask_LOCAL_CONTROL = 0x20
+*                            *LSBMask_DEVICE_TROUBLE = 0x40
+*                            *LSBMask_DEVICE_RESTART = 0x80
+*
+*                            *MSBMask_FUNC_NOT_SUPPORTED = 0x01
+*                            *MSBMask_OBJECT_UNKNOWN = 0x02
+*                            *MSBMask_PARAM_ERROR = 0x04
+*                            *MSBMask_EVENT_BUFFER_OVERFLOW = 0x08
+*                            *MSBMask_ALREADY_EXECUTING = 0x10
+*                            *MSBMask_CONFIG_CORRUPT = 0x20
+*                            *MSBMask_RESERVED1 = 0x40
+*                            *MSBMask_RESERVED2 = 0x80
+*
+
+                                IsOverflown_in_EventBuffer1
+*                                *pEventBuffer->overflow= 0
+*                            IINField temp1 = GetDynamicIIN_in_OContext(pOContext)
+*                            *uint8_t LSB=0
+*                            *uint8_t MSB=0
+*                            IINField temp3 = ToIIN_in_ApplicationIIN(&temp)
+*                            *uint8_t LSB=0
+*                            *uint8_t MSB=0
+*                            IINField temp4 = operatorOR_in_IINField(&temp2, &temp3)
+*                            *uint8_t LSB=0
+*                            *uint8_t MSB=0
+
+                            NullUnsolicited_in_APDUBuilders_static1
+*                            *uint8_t seq= 1
+
+                                ToByte_in_AppControlField1
+                                ToByte_in_AppControlField2
+                                *uint8_t ret =240
+                                *uint8_t seq =1
+
+                                SetControl_in_APDUWrapper1
+@@@@                                *write_uint8=6421870->241
+
+                                SetFunction_in_APDUWrapper1
+@@@@                                *write_uint8=6421871->130
+
+                                SetIIN_in_APDUResponse1
+@@@@                                *write_uint8=6421872->0
+@@@@                                *write_uint8=6421873->0
+                            NullUnsolicited_in_APDUBuilders_static2
+*                            **inspect_IINField**
+*                            *uint8_t LSB= 0
+*                            *uint8_t MSB= 0
+
+                            StateSolicitedConfirmWait_in_StateSolicitedConfirmWait1
+
+                            OutstationState_in_OutstationState1
+
++                            BeginUnsolTx_in_OContext1
+
++                                CheckForBroadcastConfirmation_in_OContext1
++                                CheckForBroadcastConfirmation_in_OContext2
+*                                **inspect_IINField**
+*                                *uint8_t LSB= 1
+*                                *uint8_t MSB= 0
++                                CheckForBroadcastConfirmation_in_OContext3
+*                                **inspect_IINField**
+*                                *uint8_t LSB= 1
+*                                *uint8_t MSB= 0
+
+                                    SetIIN_in_APDUResponse1
+@@@@                                    *write_uint8=6421872->1
+@@@@                                    *write_uint8=6421873->0
++                                CheckForBroadcastConfirmation_in_OContext4
+*                                **inspect_IINField**
+*                                *uint8_t LSB= 1
+*                                *uint8_t MSB= 0
+*                            BeginUnsolTx_in_OContext2
+*                            **inspect_RSeq**
+*                            *buffer->buffer_[i]=  f1
+*                            *buffer->buffer_[i]=  82
+*                            *buffer->buffer_[i]=  1
+*                            *buffer->buffer_[i]=  0
+*                            *buffer->buffer_[i]=  2
+*                            *buffer->buffer_[i]=  1
+*                            *buffer->buffer_[i]=  28
+*                            *buffer->buffer_[i]=  1
+*                            *buffer->buffer_[i]=  0
+*                            *buffer->buffer_[i]=  0
+*                            *buffer->buffer_[i]=  0
+*                            *buffer->buffer_[i]=  81
+*                            BeginUnsolTx_in_OContext3
+*                            **inspect_RSeq**
+*                            *buffer->buffer_[i]=  f1
+*                            *buffer->buffer_[i]=  82
+*                            *buffer->buffer_[i]=  1
+*                            *buffer->buffer_[i]=  0
+*                            *buffer->buffer_[i]=  2
+*                            *buffer->buffer_[i]=  1
+*                            *buffer->buffer_[i]=  28
+*                            *buffer->buffer_[i]=  1
+*                            *buffer->buffer_[i]=  0
+*                            *buffer->buffer_[i]=  0
+*                            *buffer->buffer_[i]=  0
+*                            *buffer->buffer_[i]=  81
+
++                                BeginTx_in_OContext1
+*                                **inspect_RSeq**
+*                                *buffer->buffer_[i]=  f1
+*                                *buffer->buffer_[i]=  82
+*                                *buffer->buffer_[i]=  1
+*                                *buffer->buffer_[i]=  0
+*                                *buffer->buffer_[i]=  2
+*                                *buffer->buffer_[i]=  1
+*                                *buffer->buffer_[i]=  28
+*                                *buffer->buffer_[i]=  1
+*                                *buffer->buffer_[i]=  0
+*                                *buffer->buffer_[i]=  0
+*                                *buffer->buffer_[i]=  0
+*                                *buffer->buffer_[i]=  81
+
+BeginTransmit_in_MockLowerLayer1
+*                                **inspect_RSeq**
+*                                *buffer->buffer_[i]=  f1
+*                                *buffer->buffer_[i]=  82
+*                                *buffer->buffer_[i]=  1
+*                                *buffer->buffer_[i]=  0
+*                                *buffer->buffer_[i]=  2
+*                                *buffer->buffer_[i]=  1
+*                                *buffer->buffer_[i]=  28
+*                                *buffer->buffer_[i]=  1
+*                                *buffer->buffer_[i]=  0
+*                                *buffer->buffer_[i]=  0
+*                                *buffer->buffer_[i]=  0
+*                                *buffer->buffer_[i]=  81
+*                        CheckForUnsolicited_in_OContext5
+}----------6Unsolicited7

@@ -58,7 +58,7 @@ void  Database_in_Database(Database *pDatabase,
 
 ////      analog_input(config.analog_input),
   StaticDataMap_for_AnalogSpec_in_StaticDataMap_for_AnalogSpecOver2(&(pDatabase->analog_input), config->analog_input);
-  StaticDataMap_for_AnalogMrzs_in_StaticDataMap_for_AnalogMrzsOver2(&(pDatabase->analog_Mrzsinput));//, config->analog_input);////!
+//  StaticDataMap_for_AnalogMrzs_in_StaticDataMap_for_AnalogMrzsOver2(&(pDatabase->analog_Mrzsinput));//, config->analog_input);////!
 
 ////      counter(config.counter),
   StaticDataMap_for_CounterSpec_in_StaticDataMap_for_CounterSpecOver2(&(pDatabase->counter), config->counter);
@@ -1298,8 +1298,13 @@ IINField SelectRange_in_Database(Database *pDatabase, GroupVariation_uint16_t gv
     decrement_stack_info();
 #endif
 ////        return select_range<AnalogSpec>(this->analog_input, range, StaticAnalogVariation::Group30Var2);
-    IINField tmp1 = select_range_for_AnalogMrzs_in_Database_staticOver2(&(pDatabase->analog_Mrzsinput), range, StaticAnalogVariation_Group30Var2);////!
-    IINField tmp = select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var2);
+////!
+    IINField tmp = select_range_for_AnalogMrzs_in_Database_staticOver2(&(pDatabase->analog_Mrzsinput), range, StaticAnalogVariation_Group30Var2);////!
+////!
+/*
+    IINField 
+*/
+       tmp = select_range_for_AnalogSpec_in_Database_staticOver2(&(pDatabase->analog_input), range, StaticAnalogVariation_Group30Var2);
     return tmp;
 }
 
@@ -1839,6 +1844,9 @@ boolean Load_in_Database_override(void *pIResponseLoader, HeaderWriter* writer)
 #endif
   return tmp;
 }
+
+void inspect_StaticDataMap_for_AnalogMrzs(StaticDataMap_for_AnalogMrzs *b);
+
 ////bool Database::Load(HeaderWriter& writer)
 boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
 {
@@ -1855,8 +1863,12 @@ boolean Load_in_Database(Database *pDatabase, HeaderWriter* writer)
 ////        && load_type(this->frozen_counter, writer) && load_type(this->binary_output_status, writer)
 ////        && load_type(this->analog_output_status, writer) && load_type(this->time_and_interval, writer)
 ////        && load_type(this->octet_string, writer);
+/*
+////!
+*/
+//        load_type_for_Analog_in_DatabaseMrzs_static(&(pDatabase->analog_Mrzsinput), writer);////!
 
-         load_type_for_Analog_in_DatabaseMrzs_static(&(pDatabase->analog_Mrzsinput), writer);////!
+//   inspect_StaticDataMap_for_AnalogMrzs(&(pDatabase->analog_Mrzsinput));
 
   return load_type_for_Analog_in_Database_static(pDatabase->analog_input, writer) &&
          load_type_for_Binary_in_Database_static(pDatabase->binary_input, writer) &&
@@ -2013,6 +2025,8 @@ boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, E
   increment_stack_info();
   std::cout<<getString_stack_info();
   std::cout<<"{FreezeSelectedCounters_in_Database1"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*pDatabase->counter.map.size()= "<<pDatabase->counter.map.size()<<'\n';
 #endif
   for (auto c : pDatabase->counter)
   {
@@ -2025,6 +2039,8 @@ boolean FreezeSelectedCounters_in_Database(Database *pDatabase, boolean clear, E
 #ifdef  LOG_INFO
   std::cout<<"*"<<getString_stack_info();
   std::cout<<"*FreezeSelectedCounters_in_Database2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t c.first= "<<(uint16_t)c.first<<'\n';
   inspect_FrozenCounter(&new_value);
 #endif
 

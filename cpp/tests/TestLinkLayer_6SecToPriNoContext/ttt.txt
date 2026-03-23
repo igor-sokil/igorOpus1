@@ -1,0 +1,10 @@
+// Show that the base state of idle logs SecToPri frames as errors
+// ѕоказать, что базовое состо€ние бездействи€ регистрирует кадры SecToPri как ошибки
+TEST_CASE(SUITE("6SecToPriNoContext"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+
+    t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 1, 1024);
+    REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1);
+}

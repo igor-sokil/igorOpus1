@@ -1,0 +1,10 @@
+// Only process frames from your designated remote address
+// Обрабатывать кадры только с указанного вами удаленного адреса
+TEST_CASE(SUITE("4ValidatesSourceAddress"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::SEC_ACK, false, false, false, 1, 1023);
+    REQUIRE(t.link.GetStatistics().numUnknownSource == 1);
+}
+

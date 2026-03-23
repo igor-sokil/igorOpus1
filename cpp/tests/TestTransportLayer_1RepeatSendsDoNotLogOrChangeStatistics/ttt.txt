@@ -1,0 +1,15 @@
+TEST_CASE(SUITE("1RepeatSendsDoNotLogOrChangeStatistics"))
+{
+    MockLogHandler log;
+    TransportTx tx(log.logger);
+    HexSequence hs("12 34 56");
+    tx.Configure(Message(Addresses(), hs.ToRSeq()));
+
+    auto segment1 = tx.GetSegment();
+    REQUIRE("C0 12 34 56" == HexConversions::to_hex(segment1));
+    REQUIRE(tx.Statistics().numTransportTx == 1);
+
+    auto segment2 = tx.GetSegment();
+    REQUIRE("C0 12 34 56" == HexConversions::to_hex(segment2));
+    REQUIRE(tx.Statistics().numTransportTx == 1);
+}

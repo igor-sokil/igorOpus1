@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("56ReadGrp40Var4"))
+{
+    TestStaticAnalogOutputStatus(StaticAnalogOutputStatusVariation::Group40Var4, -20.0,
+                                 "C0 81 80 00 28 04 00 00 00 01 00 00 00 00 00 00 34 C0");
+}

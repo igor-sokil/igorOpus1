@@ -1,0 +1,21 @@
+TEST_CASE(SUITE("6UnsolConfirmTimeout"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.unsolConfirmTimeout = TimeDuration::Seconds(5);
+    OutstationTestObject t(cfg);
+
+    t.LowerLayerUp();
+
+    // check for the startup null unsol packet, but fail the transaction
+// проверяем стартовый нулевой пакет unsol, но транзакция не выполняется
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0, IINField(IINBit::DEVICE_RESTART)));
+    t.OnTxReady();
+
+    REQUIRE(t.NumPendingTimers() == 1); // confirm timer
+    REQUIRE(t.AdvanceTime(TimeDuration::Seconds(5)));
+
+    // immediately retries with new sequence #
+// немедленно повторяет попытку с новой последовательностью #
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(1, IINField(IINBit::DEVICE_RESTART)));
+}

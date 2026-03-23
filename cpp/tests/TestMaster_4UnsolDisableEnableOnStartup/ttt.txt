@@ -1,0 +1,31 @@
+TEST_CASE(SUITE("4UnsolDisableEnableOnStartup"))
+{
+    MasterParams params;
+    MasterTestFixture t(params);
+    t.context->OnLowerLayerUp();
+
+    REQUIRE(t.exe->run_many() > 0);
+
+    // disable unsol on grp 60 var2, var3, var4
+    REQUIRE(t.lower->PopWriteAsHex()
+            == hex::ClassTask(FunctionCode::DISABLE_UNSOLICITED, 0, ClassField::AllEventClasses()));
+    t.context->OnTxReady();
+    t.SendToMaster(hex::EmptyResponse(0));
+
+    t.exe->run_many();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::IntegrityPoll(1));
+    t.context->OnTxReady();
+    t.SendToMaster(hex::EmptyResponse(1));
+
+    t.exe->run_many();
+
+    REQUIRE(t.lower->PopWriteAsHex()
+            == hex::ClassTask(FunctionCode::ENABLE_UNSOLICITED, 2, ClassField::AllEventClasses()));
+    t.context->OnTxReady();
+    t.SendToMaster(hex::EmptyResponse(2));
+
+    t.exe->run_many();
+
+    REQUIRE(t.exe->num_pending_timers() == 1);
+}

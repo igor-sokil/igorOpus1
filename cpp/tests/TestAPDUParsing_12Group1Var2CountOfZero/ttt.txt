@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("12Group1Var2CountOfZero"))
+{
+    // 1 byte count == 0, 0 octets data
+    TestSimple("01 02 07 00", ParseResult::COUNT_OF_ZERO, 0);
+}

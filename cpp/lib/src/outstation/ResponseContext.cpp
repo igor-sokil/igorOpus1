@@ -17,7 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#include <QtWidgets>
+#include "log_info.h"
+#ifdef  LOG_INFO
+#include <iostream>
+#endif
 #include "header.h"
 #include "ResponseContext.h"
 
@@ -46,6 +49,12 @@ void Reset_in_ResponseContext(ResponseContext *pResponseContext)
 
 AppControlField LoadResponse_in_ResponseContext(ResponseContext *pResponseContext, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{LoadResponse_in_ResponseContext1"<<'\n';
+#endif
   boolean fir = pResponseContext->fragmentCount == 0;
   ++(pResponseContext->fragmentCount);
 
@@ -69,12 +78,24 @@ AppControlField LoadResponse_in_ResponseContext(ResponseContext *pResponseContex
 ////        return AppControlField(fir, fin, con, false);
     AppControlField aAppControlField;
     AppControlField_in_AppControlFieldOver3(&aAppControlField, fir, fin, con, false);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadResponse_in_ResponseContext1_"<<'\n';
+  decrement_stack_info();
+#endif
     return aAppControlField;
   }
 
 ////    return AppControlField(fir, false, true, false);
   AppControlField aAppControlField;
   AppControlField_in_AppControlFieldOver3(&aAppControlField, fir, false, true, false);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}LoadResponse_in_ResponseContext2_"<<'\n';
+  decrement_stack_info();
+#endif
   return aAppControlField;
 }
 

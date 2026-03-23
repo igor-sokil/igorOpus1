@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("20TestTwoPackets"))
+{
+    LinkParserTest t;
+    // back to back reset link
+// обратная ссылка для сброса
+    t.WriteData("05 64 05 C0 01 00 00 04 E9 21 05 64 05 C0 01 00 00 04 E9 21");
+    REQUIRE(t.sink.m_num_frames == 2);
+    REQUIRE(t.sink.CheckLast(LinkFunction::PRI_RESET_LINK_STATES, true, 1, 1024));
+}

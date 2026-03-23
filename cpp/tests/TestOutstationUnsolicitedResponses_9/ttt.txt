@@ -1,0 +1,49 @@
+TEST_CASE(SUITE("9UnsolData"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.unsolClassMask = ClassField::AllEventClasses(); // allows us to skip the "enable unsol" step
+    cfg.eventBufferConfig = EventBufferConfig::AllTypes(5);
+
+    auto database = configure::by_count_of::binary_input(3);
+    database.binary_input[0].clazz = PointClass::Class1;
+    database.binary_input[1].clazz = PointClass::Class2;
+    database.binary_input[2].clazz = PointClass::Class3;
+
+    OutstationTestObject t(cfg, std::move(database));
+
+    t.LowerLayerUp();
+
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0, IINField(IINBit::DEVICE_RESTART)));
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(0));
+
+    // Check that the confirm is reported to the IOutstationApplication
+    REQUIRE(t.application->confirms.size() == 1);
+    REQUIRE(t.application->confirms[0].is_unsolicited == true);
+    REQUIRE(t.application->confirms[0].num_class1 == 0);
+    REQUIRE(t.application->confirms[0].num_class2 == 0);
+    REQUIRE(t.application->confirms[0].num_class3 == 0);
+
+    // do a transaction before the layer comes online to prove that the null transaction
+    // is occuring before unsol data is sent
+// выполняем транзакцию до того, как уровень перейдет в режим онлайн, чтобы доказать, что нулевая транзакция
+     // происходит до отправки данных unsol
+    t.Transaction([](IUpdateHandler& db) { db.Update(Binary(false, Flags(0x01)), 2); });
+
+    // should immediately try to send another unsol packet,
+// следует немедленно попытаться отправить еще один пакет unsol,
+    // Grp2Var1, qual 0x17, count 1, index 2, quality+val == 0x01
+    REQUIRE(t.lower->PopWriteAsHex() == "F1 82 80 00 02 01 28 01 00 02 00 01");
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(1));
+    REQUIRE(t.lower->PopWriteAsHex().empty());
+
+    // Check that the confirm is reported to the IOutstationApplication
+// Проверяем, что подтверждение передается в IOutstationApplication
+    REQUIRE(t.application->confirms.size() == 2);
+    REQUIRE(t.application->confirms[1].is_unsolicited == true);
+    REQUIRE(t.application->confirms[1].num_class1 == 0);
+    REQUIRE(t.application->confirms[1].num_class2 == 0);
+    REQUIRE(t.application->confirms[1].num_class3 == 0);
+}

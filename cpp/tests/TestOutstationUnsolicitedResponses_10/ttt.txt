@@ -1,0 +1,38 @@
+TEST_CASE(SUITE("10UnsolEventBufferOverflow"))
+{
+    OutstationConfig cfg;
+    cfg.params.allowUnsolicited = true;
+    cfg.params.unsolClassMask = ClassField(PointClass::Class1);
+    cfg.eventBufferConfig = EventBufferConfig(2);
+    OutstationTestObject t(cfg, configure::by_count_of::binary_input(1));
+
+    t.LowerLayerUp();
+    REQUIRE(t.lower->PopWriteAsHex() == hex::NullUnsolicited(0, IINField(IINBit::DEVICE_RESTART)));
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(0));
+
+    t.Transaction([](IUpdateHandler& db) {
+        db.Update(Binary(true, Flags(0x01)), 0);
+        db.Update(Binary(false, Flags(0x01)), 0);
+        db.Update(Binary(true, Flags(0x01)), 0);
+    });
+
+    // should immediately try to send 2 unsol events
+// следует немедленно попытатьс€ отправить 2 событи€ unsol
+    // Grp2Var1, qual 0x17, count 2, index 0
+    // The last two values should be published, 0x01 and 0x81 (false and true)
+    // the first value is lost off the front of the buffer
+// первое значение тер€етс€ в начале буфера
+    REQUIRE(t.lower->PopWriteAsHex() == "F1 82 80 08 02 01 28 02 00 00 00 01 00 00 81");
+    t.OnTxReady();
+    t.SendToOutstation(hex::UnsolConfirm(1));
+
+    // Check that the confirm is reported to the IOutstationApplication
+    REQUIRE(t.application->confirms.size() == 2);
+    REQUIRE(t.application->confirms[1].is_unsolicited == true);
+    REQUIRE(t.application->confirms[1].num_class1 == 0);
+    REQUIRE(t.application->confirms[1].num_class2 == 0);
+    REQUIRE(t.application->confirms[1].num_class3 == 0);
+
+    REQUIRE(t.lower->PopWriteAsHex().empty());
+}

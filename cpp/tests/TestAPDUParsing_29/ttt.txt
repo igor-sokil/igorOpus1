@@ -1,0 +1,12 @@
+TEST_CASE(SUITE("29OctetStringStatic"))
+{
+    // Group 110 (0x6E) Variation (length == 5), 1 byte start/stop (7), count of 1, "hello" == [0x68, 0x65, 0x6C, 0x6C,
+    // 0x6F]
+    TestComplex("6E 05 00 07 08 68 65 6C 6C 6F 77 6F 72 6C 64", ParseResult::OK, 1, [&](MockApduHeaderHandler& mock) {
+        REQUIRE(2 == mock.rangedOctets.size());
+        REQUIRE(7 == mock.rangedOctets[0].index);
+        REQUIRE("hello" == BufferToString(mock.rangedOctets[0].value.ToBuffer()));
+        REQUIRE(8 == mock.rangedOctets[1].index);
+        REQUIRE("world" == BufferToString(mock.rangedOctets[1].value.ToBuffer()));
+    });
+}

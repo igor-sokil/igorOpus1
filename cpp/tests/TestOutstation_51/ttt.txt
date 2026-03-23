@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("51ReadGrp30Var6"))
+{
+    TestStaticAnalog(StaticAnalogVariation::Group30Var6, -20, "C0 81 80 00 1E 06 00 00 00 01 00 00 00 00 00 00 34 C0");
+}
+void TestStaticAnalog(StaticAnalogVariation_uint8_t variation, double value, std::string& response)

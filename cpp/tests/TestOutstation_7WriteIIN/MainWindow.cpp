@@ -179,7 +179,7 @@ void MiniButtonWidget::downClicked()
 //  periodical_operations();//один оборот
 }//downClicked()
 
-
+/*
 void inspect_LinkHeader(Memory_LinkHeader* pMemory_LinkHeader, int maxCount);
 void inspect_GroupVariationRecord(Memory_GroupVariationRecord* pMemory_GroupVariationRecord, int maxCount);
 void inspect_ObjectHeader(Memory_ObjectHeader* pMemory_ObjectHeader, int maxCount);
@@ -191,6 +191,7 @@ void inspect_ParsedRequest(Memory_ParsedRequest* pMemory_ParsedRequest, int maxC
 void inspect_Message(Memory_Message* pMemory_Message, int maxCount);
 void inspect_Result_for_APDUHeader_in_APDUHeaderParser(Memory_Result_for_APDUHeader_in_APDUHeaderParser* pMemory_Result_for_APDUHeader_in_APDUHeaderParser, int maxCount);
 void inspect_EventRecord(Memory_EventRecord* pMemory_EventRecord, int maxCount);
+*/
 void MiniButtonWidget::upClicked()
 {
   qDebug()<<"BIT_KEY_UP";

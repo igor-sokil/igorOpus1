@@ -1,0 +1,9 @@
+TEST_CASE(SUITE("26ReadFuncNotSupported"))
+{
+    OutstationConfig config;
+    OutstationTestObject t(config);
+    t.LowerLayerUp();
+
+    t.SendToOutstation("C0 01 0C 01 06");               // try to read 12/1 (control block)
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 01"); // restart/func not supported
+}

@@ -5,24 +5,36 @@
 # ignore dep-files integrated dev. environment
 *.dep
 # ignore my.bat
-my.bat
 *.ses
 # *.txt
 log.txt
 trassirovka.txt
 *.log
 *.o
-moc*.cpp
-moc*.h
-
+*.opt
+*.Debug
+*.Release
+Makefile
 # ignore files from  folder settings/
-settings/
+dll/
+release/
+debug/
 applications/
+# Ігнорувати dep-файли середовища розробки
+*.dep
+# Ігнорувати log-файли
+*.log
+# Ігнорувати my.bat
+my.bat
 
-# ignore files from  folder Flash-Debug/
+# Ігнорувати файли з папки settings/
+settings/
+
+# Ігнорувати файли з папки Flash-Debug/
 Flash-Debug/
-# ignore files from  folders 
-ses/
-nppBackup/
-.vscode/
+# Ігнорувати html-файли
+*.html
+# Ігнорувати pdf-файли
+*.pdf
+
 

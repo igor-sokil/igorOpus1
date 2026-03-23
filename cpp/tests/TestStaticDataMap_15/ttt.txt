@@ -1,0 +1,13 @@
+TEST_CASE(SUITE("15selecting the upper bound only returns a partial range"))
+{
+    StaticDataMap<BinarySpec> map{{
+        {1, {}},
+        {7, {}},
+    }};
+
+    REQUIRE(map.select(Range::From(2, 8)) == 1);
+
+    const auto selected = map.get_selected_range();
+    REQUIRE(selected.start == 7);
+    REQUIRE(selected.stop == 7);
+}

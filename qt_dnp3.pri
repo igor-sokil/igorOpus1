@@ -471,5 +471,8 @@ SOURCES       += ser4cpp\util\Comparisons.cpp \
                 cpp\tests\dnp3mocks\src\MockTransportLayer.cpp \
                 cpp\tests\dnp3mocks\src\DatabaseHelpers.cpp \
                 cpp\tests\dnp3mocks\src\DatabaseHelpersMrzs.cpp \
-                cpp\tests\dnp3mocks\src\DataSink.cpp
+                cpp\tests\dnp3mocks\src\DataSink.cpp  \
+                cpp\tests\dnp3mocks\src\DataSinkMrzs.cpp
+
+#                cpp\lib\src\outstation\Map_for_AnalogMrzs.cpp \
 

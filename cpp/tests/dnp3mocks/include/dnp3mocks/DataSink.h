@@ -53,7 +53,7 @@ typedef struct
 ////    }
 
 ////private:
-  std::vector<uint8_t> buffer;
+  std::vector<uint8_t> buffer_in_DataSink;
 } DataSink;
 
 void Write_in_DataSink(DataSink *pDataSink, RSeq_for_Uint16_t* data);

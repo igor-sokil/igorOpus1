@@ -35,6 +35,12 @@ static_write_func_t_for_OctetStringSpec get_for_OctetStringSpec_in_StaticWriters
 
 boolean write_octet_strings_in_StaticWriters_static(StaticDataMap_for_OctetStringSpec& map, HeaderWriter* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{write_octet_strings_in_StaticWriters_static1"<<'\n';
+#endif
   Range range = get_selected_range_in_StaticDataMap_for_OctetStringSpec(&map);////map.get_selected_range();
 
 //uint16_t Size_in_OctetData(OctetData *pOctetData);
@@ -63,6 +69,12 @@ boolean write_octet_strings_in_StaticWriters_static(StaticDataMap_for_OctetStrin
 
     boolean tmp = write_some_octet_strings_for_UInt8_in_StaticWriters_static(map, &iter);
     RangeWriteIterator_for_UInt8_OctetString_destr_RangeWriteIterator_for_UInt8_OctetString(&iter);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}write_octet_strings_in_StaticWriters_static1_"<<'\n';
+  decrement_stack_info();
+#endif
     return tmp;
   }
 
@@ -75,12 +87,24 @@ boolean write_octet_strings_in_StaticWriters_static(StaticDataMap_for_OctetStrin
 
   boolean tmp = write_some_octet_strings_for_UInt16_in_StaticWriters_static(map, &iter);
   RangeWriteIterator_for_UInt16_OctetString_destr_RangeWriteIterator_for_UInt16_OctetString(&iter);
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}write_octet_strings_in_StaticWriters_static2_"<<'\n';
+  decrement_stack_info();
+#endif
   return tmp;
 }
 
 ////template<class Writer> bool write_some_octet_strings(StaticDataMap<OctetStringSpec>& map, Writer& writer)
 boolean write_some_octet_strings_for_UInt8_in_StaticWriters_static(StaticDataMap_for_OctetStringSpec& map, RangeWriteIterator_for_UInt8_OctetString* writer)
 {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  increment_stack_info();
+  std::cout<<getString_stack_info();
+  std::cout<<"{write_some_octet_strings_for_UInt8_in_StaticWriters_static1"<<'\n';
+#endif
   boolean first = true;
   uint8_t last_length = 0;
   uint16_t next_index = 0;
@@ -88,19 +112,41 @@ boolean write_some_octet_strings_for_UInt8_in_StaticWriters_static(StaticDataMap
   for (const auto& elem : map)
   {
 
+#ifdef  LOG_INFO
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*write_some_octet_strings_for_UInt8_in_StaticWriters_static2"<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*boolean first= "<<first<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*uint16_t next_index= "<<next_index<<'\n';
+  std::cout<<"*"<<getString_stack_info();
+  std::cout<<"*elem.first= "<<elem.first<<'\n';
+#endif
     if(!first) {
 
       if(next_index != elem.first) {
         // discontiguous indices
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}write_some_octet_strings_for_UInt8_in_StaticWriters_static1_"<<'\n';
+  decrement_stack_info();
+#endif
         return true;
-      }
+      }//if(!first)
 
 //uint16_t Size_in_OctetData(OctetData *pOctetData);
       if(last_length != Size_in_OctetData(&elem.second.value.oOctetData)) {////elem.second.value.Size()) {
         // different lengths
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}write_some_octet_strings_for_UInt8_in_StaticWriters_static2_"<<'\n';
+  decrement_stack_info();
+#endif
         return true;
       }
-    }
+    }//if(!first)
 
     first = false;
     next_index = elem.first + 1;
@@ -111,10 +157,22 @@ boolean write_some_octet_strings_for_UInt8_in_StaticWriters_static(StaticDataMap
 ////        if (!writer.Write(elem.second.value))
     if (!Write_in_RangeWriteIterator_for_UInt8_OctetString(writer, &elem.second.value))
     {
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}write_some_octet_strings_for_UInt8_in_StaticWriters_static3_"<<'\n';
+  decrement_stack_info();
+#endif
       return false;
     }
   }
 
+#ifdef  LOG_INFO
+  std::cout<<'\n';
+  std::cout<<getString_stack_info();
+  std::cout<<"}write_some_octet_strings_for_UInt8_in_StaticWriters_static4_"<<'\n';
+  decrement_stack_info();
+#endif
   return true;
 }
 

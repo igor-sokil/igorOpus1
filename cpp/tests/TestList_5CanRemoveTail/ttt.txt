@@ -1,0 +1,16 @@
+TEST_CASE(SUITE("5CanRemoveTail"))
+{
+    List<int> list(3);
+
+    list.Add(1);
+    list.Add(2);
+    auto three = list.Add(3);
+
+    list.Remove(three);
+
+    REQUIRE(2 == list.length());
+
+    auto four = list.Add(4);
+
+    REQUIRE(four == three); // these pointers should be the same
+}

@@ -1,0 +1,4 @@
+TEST_CASE(SUITE("3Freeze And Clear 0x09"))
+{
+    TestFreezeOperation("09", NullResponse, true);
+}

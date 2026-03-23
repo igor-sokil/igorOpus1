@@ -1,0 +1,15 @@
+TEST_CASE(SUITE("18SendUnconfirmed"))
+{
+    LinkLayerTest t;
+    t.link.OnLowerLayerUp();
+
+    MockTransportSegment segment(250, HexConversions::increment_hex(0, 250), Addresses());
+    t.link.Send(segment);
+    REQUIRE(t.NumTotalWrites() == 1);
+    t.link.OnTxReady();
+
+    REQUIRE(t.exe->run_many() > 0);
+
+    REQUIRE(t.upper->GetCounters().numTxReady == 1);
+    REQUIRE(t.NumTotalWrites() == 1);
+}

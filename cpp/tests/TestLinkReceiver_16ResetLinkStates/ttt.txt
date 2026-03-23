@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("16ResetLinkStates"))
+{
+    Buffer buffer(292);
+    auto writeTo = buffer.as_wslice();
+    auto frame = LinkFrame::FormatResetLinkStates(writeTo, false, 1, 2, nullptr);
+
+    LinkParserTest t;
+    t.WriteData(frame);
+    REQUIRE(t.sink.m_num_frames == 1);
+    REQUIRE(t.sink.CheckLast(LinkFunction::PRI_RESET_LINK_STATES, false, 1, 2));
+}

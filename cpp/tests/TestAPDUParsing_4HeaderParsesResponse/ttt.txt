@@ -1,0 +1,10 @@
+TEST_CASE(SUITE("HeaderParsesResponse"))
+{
+    HexSequence buffer("C0 02 01 02 BE EF");
+    const auto result = APDUHeaderParser::ParseResponse(buffer.ToRSeq());
+    REQUIRE(result.success);
+    REQUIRE(result.header.control.ToByte() == AppControlField(true, true, false, false, 0).ToByte());
+    REQUIRE(result.header.function == FunctionCode::WRITE);
+    REQUIRE(result.header.IIN == IINField(01, 02));
+    REQUIRE("BE EF" == HexConversions::to_hex(result.objects));
+}

@@ -1,0 +1,5 @@
+TEST_CASE(SUITE("35RreadGrp20Var1ViaIntegrity"))
+{
+    NewTestStaticRead("C0 01 14 01 06",
+                      "C0 81 80 00 14 01 00 00 00 02 00 00 00 00"); // 1 byte start/stop, RESTART quality
+}

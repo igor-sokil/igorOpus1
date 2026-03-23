@@ -1,0 +1,6 @@
+TEST_CASE(SUITE("2ReadDiscontiguousBadRangeBelow"))
+2. ѕрочитайте ниже несмежный неверный диапазон.
+{
+    // read 01 var 2, [00 : 01]
+    REQUIRE(QueryDiscontiguousBinary("C0 01 01 02 00 00 01") == "C0 81 80 04");
+}

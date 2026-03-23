@@ -1,0 +1,8 @@
+TEST_CASE(SUITE("6ReceiveWrongSequence"))
+{
+    TransportTestObject test(true);
+    // send a FIR, followed by a FIN w/ the wrong sequence
+    test.link.SendUp(test.GetData("40")); // FIR/_/0
+    test.link.SendUp(test.GetData("82")); // _/FIN/2
+    REQUIRE(test.transport.GetStatistics().rx.numTransportIgnore == 1);
+}

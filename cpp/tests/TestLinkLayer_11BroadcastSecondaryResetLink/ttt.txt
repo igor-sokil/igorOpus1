@@ -1,0 +1,11 @@
+// Secondary Reset Links with broadcast address
+// Вторичные ссылки сброса с широковещательным адресом
+TEST_CASE(SUITE("11BroadcastSecondaryResetLink"))
+{
+    LinkLayerTest t(LinkLayerTest::DefaultConfig());
+    t.link.OnLowerLayerUp();
+    t.OnFrame(LinkFunction::PRI_RESET_LINK_STATES, false, false, false, LinkBroadcastAddress::ShallConfirm, 1024);
+
+    REQUIRE(t.NumTotalWrites() == 0);
+    REQUIRE(t.link.GetStatistics().numUnexpectedFrame == 1);
+}

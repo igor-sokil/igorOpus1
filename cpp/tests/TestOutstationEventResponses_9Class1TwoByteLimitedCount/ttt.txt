@@ -1,0 +1,11 @@
+TEST_CASE(SUITE("9Class1TwoByteLimitedCount"))
+{
+    auto update = [](IUpdateHandler& db) {
+        db.Update(Binary(false, Flags(0x01)), 2);
+        db.Update(Binary(true, Flags(0x01)), 1);
+        db.Update(Binary(true, Flags(0x01)), 3);
+    };
+
+    // reads a single event, IIB bit indicates more events present
+    TestEventRead("C0 01 3C 02 08 02 00", "E0 81 82 00 02 01 28 02 00 02 00 01 01 00 81", update);
+}

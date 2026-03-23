@@ -1,0 +1,10 @@
+TEST_CASE(SUITE("14SelectGroup41Var3"))
+{
+    OutstationConfig config;
+    OutstationTestObject t(config);
+    t.LowerLayerUp();
+
+    // Select group 41 Var 3, count = 1, index = 1, value = 100.0
+    t.SendToOutstation("C0 03 29 03 17 01 01 00 00 C8 42 00");
+    REQUIRE(t.lower->PopWriteAsHex() == "C0 81 80 00 29 03 17 01 01 00 00 C8 42 00");
+}
